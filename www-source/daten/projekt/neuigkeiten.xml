@@ -35,6 +35,19 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
 </box>
 
 <chapter>
+<section>
+	<body>
+		<news type="news" date="29.12.2003" title="Gentoo-Newsletter">
+		<p>
+			Der Gentoo Weekly Newsletter wird genau ein Jahr alt. Was gibt es besseres als dieses Ereignis mit
+			einem Interview von Daniel Robbins zu feieren? Wie immer auch mit dem üblichen Mix aus Neuigkeiten
+			und Wochenrückblick.
+ 			<uri link="http://www.gentoo.org/news/en/gwn/20031229-newsletter.xmll">Viel Spass beim Lesen</uri>.
+ 		</p>
+  		</news>
+  	</body>
+</section>
+
 
 <section>
 	<body>
@@ -76,7 +89,7 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
 			GLEP 14, die das automatische Prüfen eines Systems auf bekannte Sicherheitslücken und das automatische Beheben
 			der selben beschreibt. Im Portrait wird in dieser Woche Robin Hugh Johnson vorgestellt, es gibt Tipps zur Verwendung
 			von ls und natürlich viele weitere Informationen.
- 			<uri link="http://www.gentoo.org/news/en/gwn/20031215-newsletter.xml">Viel Spass beim Lesen</uri>.
+ 			<uri link="http://www.gentoo.org/news/de/gwn/20031215-newsletter.xml">Viel Spass beim Lesen</uri>.
  		</p>
   		</news>
   	</body>
@@ -90,7 +103,7 @@ Der zweite Gentoo Newsletter für Dezember berichtet über die Sicherheitsmeldun
 Zusammenhang mit dem Einbruch im Gentoo rsync Server in der letzten Woche, enthält Infomationen
 über den Gentoo Store in 2004, einen Artikel über Gentoo Linux im Linux Journal, eine
 Vorstellung des Entwickler Arcady Genkin, sowie Tips über Backup mittels tar.
- <uri link="http://www.gentoo.org/news/en/gwn/20031208-newsletter.xml">Viel Spass beim Lesen</uri>.
+ <uri link="http://www.gentoo.org/news/de/gwn/20031208-newsletter.xml">Viel Spass beim Lesen</uri>.
  </p>
   </news>
   </body>
