@@ -39,7 +39,7 @@ mit Portage anbietet
 So wie bei Allem in Gentoo-Linux ist es auch das Ziel des Gentoo-Kernel-Teams
 Ihnen, dem Anwender, soviele Wahlmöglichkeiten wie möglich zu geben. Wenn man sich
 die Ausgabe von <c>emerge -s sources</c> ansieht, wird deutlich wie viele Kernel
-bei Gentoo zur Auswahl stehen. In diesem Dokument möchsten wir einen kurzen Überblick
+bei Gentoo zur Auswahl stehen. In diesem Dokument möchten wir einen kurzen Überblick
 über die Ziele der einzelnen Patchsätze geben die wir entwerfen und ausserdem die
 anderen Kernelquellen erklären, die wir anbieten.
 </p>
@@ -117,7 +117,7 @@ noch in der Entwicklung befindliche Teile) und Hardwareunterstützung wirklich z
 <p>
 Die <c>vanilla-sources</c> sind möglicherweise die stabilsten aller verfügbaren
 Kernelquellen, da sie auch die am meisten getesteten sind und alle anderen Kernelquellen
-auf ihnen basieren. Wenn Sie keines der von den anderen Kernel mitgebrachten Extras brauchen,
+auf ihnen basieren. Wenn Sie keines der von den anderen Kernels mitgebrachten Extras brauchen,
 sollten Sie sich für die <c>vanilla-sources</c> entscheiden.
 </p>
 
@@ -129,11 +129,11 @@ sollten Sie sich für die <c>vanilla-sources</c> entscheiden.
 
 <p>
 Für Anwender für die Arbeitsplatzleistung erst nach Verlässlichkeit und Hardwareunterstützung kommt,
-haben wir die <c>gs-sources</c>. GS steht für Gentoo Stable (wie kreativ, gell). Dieser Patch-Satz
+haben wir die <c>gs-sources</c> im Angebot. GS steht für Gentoo Stable (wie kreativ, gell). Dieser Patch-Satz
 ist im Hinblick auf Unterstützung von neuester Hardware erweitert und getestet und stellt sicher,
-daß kritische Server verfügbar sind, wenn sie benötigt werden. Dieser Kernel lässt einige der
+daß kritische Server dann verfügbar sind, wenn sie benötigt werden. Dieser Kernel lässt einige der
 überagressiven in den <c>gentoo-sources</c> verfügbaren Leistungs-Tuning-Patches aussen vor, aber die
-hervorragende Leistung die man von den Vanilla Kernel kennt und liebt sind immer noch enthalten.
+hervorragende Leistung die man von den Vanilla Kernels kennt und liebt sind immer noch enthalten.
 Dort wo es ohne Stabilitätseinbußen möglich ist, fügen wir serverbezogene Patches dem Kernel hinzu.
 </p>
 
@@ -217,7 +217,7 @@ Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werde
 Die <c>xfs-sources</c> enthalten Unterstützung für EVMS, ACPI, grSecurity und
 - was Sie sich vielleicht schon gedacht haben - die neuesten Patches für die
 Unterstützung von XFS. Falls Sie es wissen müssen : die Gentoo LiveCD
-benutzt die <c>xfs-sources :-)</c>.
+benutzt die <c>xfs-sources</c> :-).
 </p>
 
 <p>
@@ -242,7 +242,7 @@ Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werde
 <p>
 <c>alpha-sources</c>, <c>arm-sources</c>, <c>hppa-sources</c>,
 <c>mips-sources</c>, <c>ppc-sources</c> und <c>sparc-sources</c> sind - wie
-der Name vermuten lässt, für die bestmögliche Lauffähigkeit auf den entsprechenden
+der Name vermuten lässt - für die bestmögliche Lauffähigkeit auf den entsprechenden
 Plattformen angepasst. Sie enthalten aussderdem einige der oben und unten
 genannten Hardware- und Feature-Patchsätze.
 </p>
@@ -331,7 +331,7 @@ den neuesten TUX-Webserver (ein im Kernel befindlicher Webserver).
 </p>
 
 <p>
-Wenn Sie bei anderen Kernel Probleme mit der Speicherverwaltung haben, dann
+Wenn Sie bei anderen Kernels Probleme mit der Speicherverwaltung haben, dann
 könnten die <c>aa-sources</c> die Lösung des Problems darstellen. Wenn Sie die
 Linux Speicherverwaltung für Ihr System optimieren wollen, dann sollten die <c>aa-sources</c>
 <e>auf jeden Fall</e> das sein, was Sie brauchen.
@@ -350,7 +350,7 @@ um mehr Informationen über alle Patches in diesen Kernelquellen zu erhalten.
 
 <p>
 Als Nächstes haben wie die <c>ac-sources</c>. Es handelt sich hierbei um Alan Cox
-Patchsatz für die Kernel Serie 2.4. In diesesm Patchsatz finden Sie den O(1) Scheduler,
+Patchsatz für die Kernel Serie 2.4. In diesem Patchsatz finden Sie den O(1) Scheduler,
 die neuesten Aktualisierungen für das IDE-System von 2.4 und viele andere Patches die auf
 eine mögliche Integration in die Kernel Serie 2.4 warten.
 </p>
@@ -495,9 +495,9 @@ Ebuild an, damit Sie auf möglichst einfachem Wege in den Genuß kommen.
 <body>
 
 <p>
-Die<c>rsbac-sources</c> enthalten die Patches von <uri>http://www.rsbac.org</uri>.
-RSBAC steht für <e>Rule Set Based Access Control</e>. Diese kernelpatches erlauben Ihnen,
-Benutzer anhand von Regeln anstatt Kombinationen von UID-/GID-Berechtigungen zu authorisieren.
+Die <c>rsbac-sources</c> enthalten die Patches von <uri>http://www.rsbac.org</uri>.
+RSBAC steht für <e>Rule Set Based Access Control</e>. Diese Kernelpatches erlauben Ihnen,
+Benutzer anhand von Regeln anstatt Kombinationen von UID-/GID-Berechtigungen zu authentifizeren.
 </p>
 
 </body>
@@ -555,7 +555,7 @@ entwickelt wurden mit fast normaler Geschwindigkeit auszuführen. Weitere Inform
 Die <c>wolk-sources</c> enthalten den <e>Working Overloaded Linux Kernel</e> von
 <uri>http://sourceforge.net/projects/wolk</uri>. Dieser Kernel enthält viele verschiedene
  Patches, die alle mit größter Vorsicht in den Kernel eingepasst wurden. Dies erlaubt Ihnen als
-Anwender fast jeden davon entweder bei der Kompilierung des Kernel zu berücksichtigen oder
+Anwender fast jeden davon entweder bei der Kompilierung des Kernels zu berücksichtigen oder
 dies eben zu lassen - der Kernel selber wird bei fast jeder Kombination von einkompilierten Patches
 funktionieren.
 </p>
