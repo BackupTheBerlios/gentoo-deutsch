@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Linux Frequently Asked Questions 2</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux Frequently Asked Questions 2</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Installation</option>
+<option value="#doc_chap2">2. Laufendes System</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Installation</p>
+<p class="secthead"><a name="_sect1">Installation mit Stage 1 über ein Proxy funktioniert nicht. </a></p>
+<p>Stellen Sie sicher, dass in der /etc/make.conf der RSYNC_PROXY angegeben ist.
+		Erlaubt der Proxy nur Verbindungen über die Ports 80, so sollte dies mit:
+		<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+    	export http_proxy=123.123.123.123:8080
+
+    	export ftp_proxy=123.123.123.123:8080
+
+		</pre></td></tr>
+</table> eingestellt werden.
+		</p>
+<p class="secthead"><a name="_sect2">Wie installiere ich Gentoo auf einem Motherboard mit dem nforce Chipsatz? </a></p>
+			<p>Für den Onboard Netzwerkcontroller ist ein spezieller Treiber ist auf der nVidia
+			<a href="http://download.nvidia.com/XFree86_40/nforce/1.0-0236/NVIDIA_nforce-1.0-0236.tar.gz">Webseite</a>,
+			zu haben. Falls Sie keine externe Netzwerkkarte während der Installation zur Hand haben, kopieren
+			Sie diesen Treiber einfach auf ein Medium und verfahren Sie wie bei einer Stage 3 Installation bis zu der Stelle,
+			nach dem Sie den KErnel kompiliert haben.
+			Dann entpacken Sie das tar Archiv und wechseln Sie in das Unterverzeichnis nforce/nvnet/ und führen
+			Sie folgendes aus:
+			<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+			# make clean
+			# make
+			# make install
+			</pre></td></tr>
+</table>
+			Dies muss bei jeder Kernel Neukompilierung erneut ausgeführt werden.
+			Dann sollte noch in die /etc/modules.conf um folgende Zeilen werweitert werden:
+			<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+			alias eth0 nvnet
+			</pre></td></tr>
+</table>
+			Anschliessend sollte wie gewohnt nach der Installationsanleitung weiter verfahren werden.
+			 ASUS Motherboards mit dem nforce Chipsatz besitzen ein modifizierten Netwerkontroller.
+			Der Realtek 8139TOO ist hier die richtige Wahl.
+			
+			</p>
+        <p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Laufendes System</p>
+<p class="secthead"><a name="_sect1">Wenn ich meinen Kernel aktualisiere, habe ich keinen Sound mehr. Ausserdem
+		bekomme ich Fehlermeldungen beim booten, dass die module der Soundkarte nicht gefunden werden. </a></p>
+<p>Wenn ALSA Sound verwendet wird, muss nach jeder Kernel-Neukompilation auch die ALSA
+		treiber neu kompiliert werden. Stellen Sie sicher, dass /usr/src/linux auf die richtigen
+		Quelldateien verweist und dann starten sie:
+		<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		# emerge alsa-driver
+		</pre></td></tr>
+</table>
+		Eine ausführliche ALSA-Installationsanleitung finden Sie im Desktop-Guide.
+		</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung  Juli 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Das gentoo.de Team</a></b><br><i>Verfasser</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt, die noch nicht
+in der offiziellen Gentoo FAQ auftauchen.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
