@@ -5,80 +5,26 @@
 
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 
-<date>18. Oktober 2002</date>
+<date>19. Februar 2003</date>
 
 <box>
-  <block>
-    <title>Aktuelles:</title>
-    <p>
-      Was gibt es aktuelles bei Gentoo Linux. Hier erfahren Sie es...
-    </p>
-  </block>
 
 </box>
 
 <chapter>
-<title>Aktuelles</title>
+<title>Unser IRC-Channel</title>
 
 <section>
 
-<title>Gentoo Linux in a paragraph</title>
+<title>Schnellanleitung</title>
 
 <body>
-<p>
-Gentoo Linux is a versatile and fast, completely free Linux distribution for x86, PowerPC, UltraSparc and Alpha systems
-that's geared towards Linux power users. Unlike other distros, Gentoo Linux has an advanced package management system called
-Portage. Portage is a true ports system in the tradition of BSD ports, but is Python-based and sports a number of advanced
-features including dependencies, fine-grained package management, "fake" (OpenBSD-style) installs, path sandboxing, safe
-unmerging, system profiles, virtual packages, config file management, and more.
-</p>
-</body>
-
-</section>
-
-<section>
-
-<title>Gentoo Linux 1.4_rc1</title>
-
-<body>
-<p>
-Gentoo Linux 1.4 features Linux 2.4.19+ and a modern GNU development environment (glibc-2.2.5, gcc 3.2, XFS, ReiserFS, ext3,
-EVMS, LVM, ALSA, pcmcia-cs support, "vanilla" (stock) kernel compatibility for those who prefer unpatched kernels, Xfree86
-4.2, OpenGL, KDE 3.0 and 3.1_beta and GNOME 2.0.2, tcp-wrappers, xinetd, iptables and Linux QoS tools, modern qmail (with
-optional mysql and LDAP support), postfix and exim MTAs, GRUB boot loader (LILO also available if you need it), 2400+
-up-to-date ebuild scripts of your favorite apps, an innovative dependency-based startup script design, and of course
-Portage, a completely open design and a great developer and user community.
-</p>
-</body>
-
-</section>
-
-<section>
-
-<title>More about Portage</title>
-
-<body>
-<p>
-Portage allows you to set up Gentoo Linux the way you like it -- with the optimization settings that you want, and with
-optional build-time functionality (like GNOME, KDE, mysql, ALSA, LDAP support, etc.) enabled or disabled as you desire. If
-you don't want GNOME on your system, your apps won't have optional GNOME support enabled, and if you do, then they will.
-That's why we prefer thinking of Gentoo Linux as a meta-distribution or Linux technology engine. You decide what kind of
-system you want, and Portage will create it for you.
-</p>
-
-<p>
-We maintain an official Gentoo Linux Portage tree that contains the most recent versions of our ebuild autobuild scripts. By
-updating your Portage tree, you gain instant access to the latest and greatest Linux technologies and applications. Tell
-Portage what ebuild you'd like to install, and Portage will auto-download, unpack, patch, configure, compile and install the
-package. Thanks to Portage auto-dependency resolution, you can install KDE 3.0 or GNOME 2.0.2 by typing in a single command,
-and the resultant installed binaries will be optimized and customized to your exact specifications.
-</p>
-
-<p>
-If this kind of power and flexibility appeals to you, then we encourage you to try Gentoo Linux for yourself. You won't be
-disappointed.
-</p>
-
+<ul>
+  <li>emerge irssi</li>
+  <li># irssi</li>
+  <li>/connect freenode</li>
+  <li>/join #gentoo.de</li>
+</ul>
 </body>
 
 </section>
