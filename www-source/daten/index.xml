@@ -5,7 +5,7 @@
 <title>Willkommen</title>
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 <author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
-<date>05. Oktober 2003</date>
+<date>31. Oktober 2003</date>
 
 <box>
   <block>
@@ -15,9 +15,11 @@
 			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 29.10.03)</uri></b></li>
 			<li><uri link="http://www.gentoo.de/inhalte/doku/#header_8">Die Dokus auf einen Blick</uri></li>
 			<li><uri link="http://tobias.scherbaum.info/gentoo/faq" target="_blank">Gentoo FAQ</uri></li>
-			<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
-	    <li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/">Projektübersicht gentoo.de </uri></li>
-			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das gentoo.de Team</uri></li>
+	   <li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
+        		Projektübersicht gentoo.de </uri></li>
+			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433" target="_blank">Das 
+			       gentoo.de Team</uri></li>
+			<li><uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/" target="_blank">Unser CVS Tree</uri></li>
 		</ul>
     </p>
   </block>
@@ -27,7 +29,8 @@
     <p>
 		<ul>
 			<li><uri link="/inhalte/projekt/praesentation">Über Gentoo-Linux</uri></li>
-			<li><uri link="/inhalte/doku">Üersetzte Dokumentationen</uri></li>
+			<li><uri link="/inhalte/projekt/site/">Das guide XML Projekt von Gentoo</uri></li>
+			<li><uri link="/inhalte/doku">Übersetzte Dokumentationen</uri></li>
 		</ul>
     </p>
   </block>
@@ -41,6 +44,7 @@
 			<li><uri link="/inhalte/community/archiv">Mail-Archiv</uri></li>
 			<li><uri link="/inhalte/community/irc">IRC-Channels</uri></li>
 			<li><uri link="/inhalte/community/foren">Foren</uri></li>
+			<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
 		</ul>
     </p>
   </block>
@@ -115,7 +119,9 @@
 		Wer mitarbeiten will, einfach <uri link="http://developer.berlios.de/account/register.php" target="_blank">bei berliOS registrieren</uri> und auf der
 		<uri link="http://developer.berlios.de/projects/gentoo-deutsch" target="_blank">Projektübersicht</uri> einem der Admins eine Nachricht mit dem
 		Benutzernamen bei berliOS schicken. Der Developer-Status den man daraufhin erhält bringt Schreibzugriff auf das
-		CVS-Repository mit sich, d.h. man kann Neues einchecken und Altes verbessern. Wer mit
+		CVS-Repository mit sich, d.h. man kann Neues einchecken und Altes verbessern.</p>
+		<p>Erste Anlaufstelle für das Übersetzen von englischen Dokumentationen ist sicher das <uri link="/inhalte/projekt/site/">guide XML Projekt von Gentoo</uri>. 
+		Wer mit
 		<uri link="http://cvsbook.red-bean.com/translations/german/">CVS nichts am Hut</uri> hat, findet sicher
 		jemanden der einem bei der Bedienung behilflich ist. ;)
   	</p>
