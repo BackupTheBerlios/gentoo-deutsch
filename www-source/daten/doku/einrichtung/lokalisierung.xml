@@ -9,7 +9,7 @@
 eines Gentoo Linux behilflich sein.</abstract>
 
 <chapter>
-<title>Enlish, please</title>
+<title>English, please</title>
 <section>
         <body>
                 <p>This guide is also available in english.
@@ -196,6 +196,6 @@ eines Gentoo Linux behilflich sein.</abstract>
 
 </chapter>
 
-<version>$Revision: 1.6 $</version>
-<date>$Date: 2003/02/18 19:12:22 $</date>
+<version>$Revision: 1.7 $</version>
+<date>$Date: 2003/02/18 19:16:07 $</date>
 </guide>
