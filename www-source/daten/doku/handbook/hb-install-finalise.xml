@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.11 -->
+<!-- English CVS Version: 1.12 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-finalise.xml,v 1.7 2003/12/21 14:21:00 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-finalise.xml,v 1.8 2004/01/02 15:52:37 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -230,7 +230,7 @@ kopiert. Stellen Sie sicher, dass der Kopierbefehl korrekt ist!
 </p>
 
 <pre caption="Kopieren der vorkompilierten Binärpakete">
-# <i>cp -a /mnt/cdrom/packages/* /usr/portage/packages/</i>
+# <i>cp /mnt/cdrom/packages/All/* /usr/portage/packages/All/</i>
 </pre>
 
 <p>
