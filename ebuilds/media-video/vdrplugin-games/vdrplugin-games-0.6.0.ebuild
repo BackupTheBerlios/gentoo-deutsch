@@ -1,12 +1,12 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-games/vdrplugin-games-0.6.0.ebuild,v 1.1 2003/09/13 17:28:13 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-games/vdrplugin-games-0.6.0.ebuild,v 1.2 2003/10/13 21:14:39 martini Exp $
 
 IUSE=""
 VDRPLUGIN="games"
 
 S=${WORKDIR}/${VDRPLUGIN}-${PV}
-DESCRIPTION="Video Disk Recorder - Games PlugIn"
+DESCRIPTION="Video Disk Recorder ${VDRPLUGIN} plugin"
 HOMEPAGE="http://www.thf.ath.cx/"
 SRC_URI="http://www.thf.ath.cx/public/vdr-${VDRPLUGIN}-${PV}.tar.gz"
 KEYWORDS="~x86"
