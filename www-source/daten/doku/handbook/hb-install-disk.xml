@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.21 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.2 2003/12/01 14:28:42 pyrania Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.3 2003/12/05 13:07:11 pyrania Exp $ -->
 
 <sections>
 <section>
@@ -288,24 +288,24 @@ Ihrer Festplatte fort:
 
 <ul>
 <li>
-  <uri link="#doc_chap3">Umgang mit fdisk auf x86 um Ihre Festplatte zu
-  partitionieren</uri>
+  <uri link="#doc_chap3">Benutzung von fdisk auf x86 zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 <li>
-  <uri link="#doc_chap4">Umgang mit fdisk auf Alpha um Ihre Festplatte zu
-  partitionieren</uri>
+  <uri link="#doc_chap4">Benutzung von fdisk auf Alpha zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 <li>
-  <uri link="#doc_chap5">Umgang mit fdisk auf SPARC um Ihre Festplatte zu
-  partitionieren</uri>
+  <uri link="#doc_chap5">Benutzung von fdisk auf SPARC zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 <li>
-  <uri link="#doc_chap6">Umgang mit mac-fdisk auf x86 um Ihre Festplatte zu
-  partitionieren</uri>
+  <uri link="#doc_chap6">Benutzung von mac-fdisk auf PPC zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 <li>
-  <uri link="#doc_chap7">Umgang mit fdisk auf HPPA um Ihre Festplatte zu
-  partitionieren</uri>
+  <uri link="#doc_chap7">Benutzung von fdisk auf HPPA zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 </ul>
 
@@ -363,11 +363,12 @@ keinen auf einder anderen frei hat.
 </p>
 
 <p>
-As an example partitioning, we show you one for a 20Gb disk, used as a
-demonstration laptop (containing webserver, mailserver, gnome, ...):
+Als Beispiel zeigen wir Ihnen die Partitionierung einer 20GB Festplatte, welche
+in einem Notebook zu Demonstrationszwecken genutzt wird (inklusive webserver,
+mailserver, gnome, ...):
 </p>
 
-<pre caption="Filesystem usage example">
+*<pre caption="Filesystem usage example">
 Filesystem    Type    Size  Used Avail Use% Mounted on
 /dev/hda5     ext3    509M  132M  351M  28% /
 /dev/hda2     ext3    5.0G  3.0G  1.8G  63% /home
@@ -376,39 +377,46 @@ Filesystem    Type    Size  Used Avail Use% Mounted on
 /dev/hda9     ext3    2.0G  607M  1.3G  32% /var
 /dev/hda1     ext2     51M   17M   31M  36% /boot
 /dev/hda6     swap    516M   12M  504M   2% &lt;not mounted&gt;
-<comment>(Unpartitioned space for future usage: 2 Gb)</comment>
+<comment>(Unpartitionierter Speicherplatz für zukünftige Benutzung: 2 GB)</comment>
 </pre>
 
 <p>
-<path>/usr</path> is rather full (83% used) here, but once
-all software is installed, <path>/usr</path> doesn't tend to grow that much.
-For <path>/var</path>, people might think the assigned
-space is too much. However, Gentoo compiles all programs inside
-<path>/var/tmp/portage</path>, so you should have <path>/var</path> with at
-least 1G free if you don't want to compile big programs, up to 3G free if 
-compiling KDE and OpenOffice.org at the same time is no big deal for you.
+<path>/usr</path> ist ziemlich voll (83% used), aber sobald die ganze Software
+installiert ist, tendiert <path>/usr</path> nicht mehr dazu allzuviel zu
+wachsen.
+Man könnte denken der zugewiesene Speicherplatz für <path>/var</path>, sei
+zuviel, aber Gentoo kompiliert alle Programme in <path>/var/tmp/portage</path>,
+daher sollten Sie für <path>/var</path> mindestens 1GB frei haben, wenn Sie
+keine großen Programme installieren wollen; mit einer Größe von bis zu 3GB
+sollten auch KDE und OpenOffice.org kein Problem mehr sein.
 </p>
 
 <p>
-Now partition your disk(s) using the instructions available for your
-architecture as an example:
+Jetzt partitionieren Sie Ihre Festplatte(n) mit Hilfe der Anleitungen die für
+Ihre Architektur als Beispiel zur Verfügung stehen:
 </p>
 
 <ul>
 <li>
-  <uri link="#doc_chap3">Using fdisk on x86 to Partition your Disk</uri>
+  <uri link="#doc_chap3">Benutzung von fdisk auf x86 zur Partitionierung Ihrer
+  	Festplatte
+  </uri>
 </li>
 <li>
-  <uri link="#doc_chap4">Using fdisk on Alpha to Partition your Disk</uri>
+  <uri link="#doc_chap4">Benutzung von fdisk auf Alpha zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 <li>
-  <uri link="#doc_chap5">Using fdisk on SPARC to Partition your Disk</uri>
+  <uri link="#doc_chap5">Benutzung von fdisk auf SPARC zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 <li>
-  <uri link="#doc_chap6">Using mac-fdisk on PPC to Partition your Disk</uri>
+  <uri link="#doc_chap6">Benutzung von mac-fdisk auf PPC zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 <li>
-  <uri link="#doc_chap7">Using fdisk on HPPA to Partition your Disk</uri>
+  <uri link="#doc_chap7">Benutzung von fdisk auf HPPA zur Partitionierung Ihrer
+  	Festplatte</uri>
 </li>
 </ul>
 
@@ -416,71 +424,71 @@ architecture as an example:
 </subsection>
 </section>
 <section>
-<title>Using fdisk on x86 to Partition your Disk</title>
+<title>Benutzung von fdisk auf x86 zur Partitionierung Ihrer Festplatte</title>
 <subsection>
 <body>
 
 <impo>
-Only users with <e>x86</e> based systems should read this section.
+Nur Benutzer mit <e>x86</e> basierten System sollten diese Sektion lesen.
 </impo>
 
 <p>
-The following parts explain how to create the example non-LVM partition layout 
-described previously, namely:
+Die folgenden Teile erklären, wie das bereits beschriebene Beispiel Partitions
+Layout (ohne LVM) erstellt wird:
 </p>
 
 <table>
 <tr>
   <th>Partition</th>
-  <th>Description</th>
+  <th>Beschreibung</th>
 </tr>
 <tr>
   <ti><path>/dev/hda1</path></ti>
-  <ti>Boot partition</ti>
+  <ti>Boot Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda2</path></ti>
-  <ti>Swap partition</ti>
+  <ti>Swap Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda3</path></ti>
-  <ti>Root partition</ti>
+  <ti>Root Partition</ti>
 </tr>
 </table>
 
 <p>
-Change your partition layout according to your own will.
+Ändern Sie Ihr Partitionslayout nach Ihrem eigenen willen.
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Viewing the Current Partition Layout</title>
+<title>Das derzeitge Partitionslayout ansehen</title>
 <body>
 
 <p>
-<c>fdisk</c> is a popular and powerful tool to split your disk into partitions.
-Fire up <c>fdisk</c> on your disk (in our example, we use
-<path>/dev/hda</path>):
+<c>fdisk</c> ist ein verbreitetes und mächtiges Tool um Ihre Festplatte in
+Partitionen zu teilen. Starten Sie <c>fdisk</c> für Ihre Festplatte (in unserem
+Beispiel benutzen wir <path>/dev/hda</path>):
 </p>
 
-<pre caption="Starting fdisk">
+<pre caption="Starten von fdisk">
 # <i>fdisk /dev/hda</i>
 </pre>
 
 <p>
-Once in <c>fdisk</c>, you'll be greeted with a prompt that looks like this:
+Sobald Sie in <c>fdisk</c> sind, werden Sie mit folgendem Prompt begrüßt:
 </p>
 
-<pre caption="fdisk prompt">
+<pre caption="fdisk Prompt">
 Command (m for help): 
 </pre>
 
 <p>
-Type <c>p</c> to display your disk's current partition configuration:
+Drücken Sie <c>p</c> um Ihr derzeitiges Partitionslayout anzeigen zu lassen:
 </p>
 
-<pre caption="An example partition configuration">
+<pre caption="Ein Beispiel Partitionslayout">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda: 240 heads, 63 sectors, 2184 cylinders
@@ -501,42 +509,44 @@ Command (m for help):
 </pre>
 
 <p>
-This particular disk is configured to house seven Linux filesystems (each with a
-corresponding partition listed as "Linux") as well as a swap partition (listed
-as "Linux swap"). 
+Diese Festplatte beherbergt sieben Linux Dateisysteme (jedes mit einer
+dazugehörigen Partition, gelistet als "Linux") und auch eine Swap Partition
+(gelistet als "Linux swap").
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Removing all Partitions</title>
+<title>Löschen aller Partitionen</title>
 <body>
 
 <p>
-We will first remove all existing partitions from the disk. Type <c>d</c> to
-delete a partition. For instance, to delete an existing <path>/dev/hda1</path>:
+Zuerst entfernen wir alle existierenden Partitionen von der Festplatte. Drücken
+Sie <c>d</c> um eine Partition zu löschen. Zum Beispiel um ein bestehendes
+<path>/dev/hda1</path> zu löschen:
 </p>
 
-<pre caption="Deleting a partition">
+<pre caption="Löschen einer Partition">
 Command (m for help): <i>d</i>
 Partition number (1-4): <i>1</i>
 </pre>
 
 <p>
-The partition has been scheduled for deletion. It will no longer show up if you
-type <c>p</c>, but it will not be erased until your changes have been saved. If
-you made a mistake and want to abort without saving your changes, type <c>q</c>
-immediately and hit enter and your partition will not be deleted.
+Die Partition wurde zur Löschung markiert und wird nicht mehr angezeigt, wenn
+Sie <c>p</c> drücken, aber wird nicht gelöscht, bis Sie Ihre Änderungen
+gespeichert sind. Wenn Sie einen Fehler gemacht haben und ohne zu speichern
+abbrechen wollen, drücken Sie umgehend <c>q</c> und enter; Ihre Partition wird
+dann nicht gelöscht.
 </p>
 
 <p>
-Now, assuming that you do indeed want to wipe out all the partitions on your
-system, repeatedly type <c>p</c> to print out a partition listing and then type
-<c>d</c> and the number of the partition to delete it. Eventually, you'll end 
-up with a partition table with nothing in it:
+Angenommen, dass Sie wirklich all Ihre Partitionen auf Ihrer Festplatte löschen
+wollen, drücken Sie noch einmal <c>p</c> um die Partitionstabelle anzuzeigen und
+dann <c>d</c> und die Nummer der Partition die Sie löschen wollen. Irgendwann
+werden Sie eine leere Partitionstabelle haben:
 </p>
 
-<pre caption="An empty partition table">
+<pre caption="Eine leere Partition Tabelle">
 Disk /dev/hda: 30.0 GB, 30005821440 bytes
 240 heads, 63 sectors/track, 3876 cylinders
 Units = cylinders of 15120 * 512 = 7741440 bytes
@@ -547,27 +557,28 @@ Command (m for help):
 </pre>
 
 <p>
-Now that the in-memory partition table is empty, we're ready to create the
-partitions. We will use a default partitioning scheme as discussed previously.
-Of course, don't follow these instructions to the letter if you don't want the
-same partitioning scheme!
+Jetzt, da die Partitions Tabelle im Speicher leer ist, sind wir vorbereitet, um
+die Partitionen zu erstellen. Wir werden ein Default Partitions Schema benutzen,
+wie wir es zuvor angesprochen haben.
+Natuürlich sollten Sie den Instruktionen nicht buchstäblich ausführen, wenn Sie
+ein anderes Partitions Schema verwenden wollen!
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Creating the Boot Partition</title>
+<title>Erstellung der Boot Partition</title>
 <body>
 
 <p>
-We first create a small boot partition. Type <c>n</c> to create a new partition,
-then <c>p</c> to select a primary partition, followed by <c>1</c> to select the
-first primary partition. When prompted for the first cylinder, hit enter. When
-prompted for the last cylinder, type <c>+32M</c> to create a partition 32 Mbyte
-in size:
+Zuerst erstellen wir eine kleine Boot Partition. Drücken Sie <c>n</c> um eine
+neue Partition zu erstelle, dann <c>p</c> um eine primäre Partition zu wählen,
+gefolgt von <c>1</c> für die erste primäre Partition. Wenn Sie nach dem ersten
+Zylinder gefragt werden, drücken Sie enter. Für den letzten Zylinder geben Sie
+<c>+32M</c> ein, um eine 32 MB Partition zu erzeugen.
 </p>
 
-<pre caption="Creating the boot partition">
+<pre caption="Erstellen der Boot Partition">
 Command (m for help): <i>n</i>
 Command action
   e   extended
@@ -580,10 +591,11 @@ Last cylinder or +size or +sizeM or +sizeK (1-3876, default 3876): <i>+32M</i>
 </pre>
 
 <p>
-Now, when you type <c>p</c>, you should see the following partition printout:
+Wenn Sie jetzt <c>p</c> drücken, solltgen Sie die folgende Partitionstabelle
+sehen:
 </p>
 
-<pre caption="Created boot partition">
+<pre caption="Erstellte Boot Partition">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda: 30.0 GB, 30005821440 bytes
@@ -597,7 +609,7 @@ Device Boot    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Creating the Swap Partition</title>
+<title>Erstellen der Swap Partition</title>
 <body>
 
 <p>
