@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.19 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/handbook.xml,v 1.4 2003/11/22 22:45:24 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/handbook.xml,v 1.5 2003/11/27 12:28:09 jay Exp $ -->
 
 <book link="handbook.xml">
 <title>Gentoo Handbuch</title>
@@ -112,7 +112,7 @@
 </author>
 
 <abstract>
-Das ist das Gentoo Handbuch, eine Versuch Informationen zu Gentoo/Linux zu
+Das ist das Gentoo Handbuch, ein Versuch Informationen zu Gentoo/Linux zu
 bündeln.
 </abstract>
 
@@ -126,7 +126,7 @@ bündeln.
 <part>
 <title>Gentoo installieren</title>
 <abstract>
-In diesem Abschnitt lernen Sie, wie Sie Gentoo auf Ihrem System installieren
+In diesem Abschnitt lernen Sie, wie Sie Gentoo Linux auf Ihrem System installieren
 können.
 </abstract>
 
@@ -134,7 +134,7 @@ können.
 <title>Über die Gentoo Linux Installation</title>
 <abstract>
 Benutzer, die nicht besonders geübt im Umgang mit Gentoo sind, wissen vielleicht
-nicht, das es bei Gentoo hauptsächlich um <e>Auswahl</e> geht.
+nicht, das es bei Gentoo hauptsächlich um Flexibilität in der <e>Auswahl</e> geht.
 </abstract>
   <include href="hb-install-about.xml"/>
 </chapter>
@@ -182,7 +182,7 @@ chroot in Ihr neues System ausführen.
 <abstract>
 Unabhängig davon, welche Stage Sie gewählt haben, ist das Ergebnis, dass
 Sie ein Basis System zur Verfügung haben. Dieses Kapitel beschreibt, wie Sie bis
-zu diesem Stadium fortfahren.
+zu diesem Stadium voranschreiten.
 </abstract>
   <include href="hb-install-system.xml"/>
 </chapter>
