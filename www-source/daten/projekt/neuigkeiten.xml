@@ -20,8 +20,8 @@
 <chapter>
 
 <section>
-	<title>[04. August 2003] Gentoo-Newsletter</title>
 	<body>
+	<news type="news" date="04.08.2003" title="Gentoo-Newsletter">
 		<p>
 		Dieses Mal gibts weitere Einzelheiten über die Veröffentlichung von Gentoo-1.4 diese Woche auf der
 		Linux-World-Expo in San Drancisco, ein Resumee des Gentoo-Bug-Tages am 2. August und eine Begründung
@@ -29,12 +29,13 @@
 		alle anderen Rubriken. Also,
 		<uri link="http://www.gentoo.org/news/en/gwn/20030804-newsletter.xml">viel Spass beim Lesen</uri>
 		</p>
+	</news>
 	</body>
 </section>
 
 <section>
-	<title>[28. Juli 2003] Gentoo-Newsletter</title>
 	<body>
+	<news type="news" date="28.07.2003" title="Gentoo-Newsletter">
 		<p>
 		In dieser Woche gibts die Lösung zu dem in letzter Woche oft erlebten Problem von blockenden Modulen beim anstehenden Update
 		von Perl - etwas worauf viele von Euch sicherlich schon gewartet haben ;). Desweiteren wird angekündigt, dass es am 2. August
@@ -44,13 +45,14 @@
 		stehen auch wieder die üblichen Rubriken zur Verfügung. Also :
 		<uri link="http://www.gentoo.org/news/en/gwn/20030728-newsletter.xml">viel Spass beim Lesen</uri>
 		</p>
+	</news>
 	</body>
 </section>
 
 
 <section>
-	<title>[21. Juli 2003] Gentoo-Newsletter</title>
 	<body>
+	<news type="news" date="21.07.2003" title="Gentoo-Newsletter">
 		<p>
 		In dieser Woche gibt es Nachrichten über Gentoo auf der kommenden Linux-World-Expo und das kurz bevorstehende Veröffentlichung
 		von Gentoo-Linux 1.4. Desweiteren stellen wir den Gentoo-Linux-Store vor und schreiben neue Stellen im Projekt aus.
@@ -58,37 +60,40 @@
 		um Gentoo in Produktionsumgebungen dreht. Und ausserdem die erste Hosting-Gesellschaft Ihren Kunden nun Gentoo an.
 		<uri link="http://www.gentoo.org/news/en/gwn/20030721-newsletter.xml">Viel Spass beim Lesen</uri>
 		</p>
+	</news>
 	</body>
 </section>
 
 <title>Aktuelles</title>
 
 <section>
-	<title>[18. Juli 2003] Gentoo 1.4 Releasedatum steht fest</title>
 	<body>
+	<news type="news" date="18.07.2003" title="Gentoo 1.4 Releasedatum steht fest">
 		<p>
 			Das langerwartete Gentoo-Linux 1.4 wird auf der Linux World Expo (San Francisco, 5.-7. August) veröffentlicht
 			werden.
 		</p>
+	</news>
 	</body>
 </section>
 
 <section>
-	<title>[14. Juli 2003] Gentoo-Newsletter</title>
 	<body>
+	<news type="news" date="14.07.2003" title="Gentoo-Newsletter">
 		<p>
 		In dieser Woche geht es um Gentoo-Linux auf dem Linuxtag in Karlsruhe (siehe auch <uri link="../lt2k3/index.html">tantives Tagebuch</uri>,
 		Neuigkeiten über die kürzlich nicht erreichbaren CVS-Server, die Security-News, das Entwicklerportrait der Woche, und natürlich weitere
 		Interessante Artikel und die üblichen Rubriken.
 		<uri link="http://www.gentoo.org/news/en/gwn/20030714-newsletter.xml">Viel Spass beim Lesen</uri>
 		</p>
+	</news>
 	</body>
 </section>
 
 
 <section>
-	<title>[07. Juli 2003] Gentoo-Newsletter</title>
 	<body>
+	<news type="news" date="07.07.2003" title="Gentoo-Newsletter">
 		<p>
 		Im dieswöchigen Newsletter verabschiedet sich Kurt Lieber als Betreuer des Newsletters; die Aufgabe
 		wird in Zukunft von Yuji Carlos Kosugi übernommen. Desweiteren wird angekündigt, daß die Gentoo Plattform
@@ -97,13 +102,14 @@
 		Anwenderportrait, und <b>es werden wieder einmal Leute gesucht, die beim GWN aktiv mitarbeiten wollen!</b>
 		<uri link="http://www.gentoo.org/news/en/gwn/20030707-newsletter.xml">Viel Spass beim Lesen</uri>
 		</p>
+	</news>
 	</body>
 </section>
 
 
 <section>
-<title>[02. Juli 2003] Munich-Gentoo-Linux-Users-Group</title>
 <body>
+<news type="other" date="02.07.2003" title="Munich-Gentoo-Linux-Users-Group">
 <p>
 Oliver Rath ist an uns herangetreten und hat uns gebeten doch bitte bekannt zu geben,
 daß er und einige seiner Freunde sich dazu entschlossen haben einen <b>Gentoo-Stammtisch in München</b>
@@ -133,25 +139,28 @@ des Monats angedacht.
 <p>
 <b>Das Organisationsteam freut Sich auf Euer kommen</b>
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[30. Juni 2003] Gentoo-Newsletter</title>
 <body>
+<news type="news" date="30.06.2003" title="Gentoo-Newsletter">
 <p>
 Der letzte Newsletter im Juni bringt Infos über eine wichtige Änderung im Management des Gentoo-Linux Projektes.
 Desweiteren gibt es Informationen über eine neue Linux-Distribution, die sich auf den Embedded-Markt und einen Aufruf
 sich als Übersetzer am GWN zu beteiligen. Der Portage-Watch kehrt nach einer kurzen Auszeit nun auch wieder zurück.
 <uri link="http://www.gentoo.org/news/de/gwn/20030630-newsletter.xml">Viel Spass beim Lesen</uri>
 </p>
+</news>
 </body>
 </section>
 
+
 <section>
-<title>[25. Juni 2003] Gentoo-Linux... auf dem Weg in die Zukunft</title>
 <body>
+<news type="other" date="25.06.2003" title="Gentoo-Linux... auf dem Weg in die Zukunft">
 	<p>
 	<b>Das außergewöhnlich steigende Popularität von Gentoo-Linux (bewiesen durch eine Umfrage von <uri link="http://www.novell.com/linux">Novell.com</uri>, laut der
 	Gentoo die zweithöchste Popularität nach RedHat genießt) hat sicherlich einige Herausforderungen für uns aufgestellt.</b>
@@ -166,37 +175,41 @@ sich als Übersetzer am GWN zu beteiligen. Der Portage-Watch kehrt nach einer ku
 	Es wird gebeten, auch diese <uri link="http://article.gmane.org/gmane.linux.gentoo.devel/9539">Nachricht der gentoo-dev Mailingliste</uri>
 	zu lesen, da sie vielleicht helfen wird einige offene Fragen bezüglich dieser angedachten Managementstruktur zu beantworten.
 	</p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[23. Juni 2003] Gentoo-Newsletter</title>
 <body>
+<news type="news" date="23.06.2003" title="Gentoo-Newsletter">
 <p>
 Der dieswöchige Newsletter enthält Neuigkeiten über Gentoo Linux 1.4 und warum seine Veröffentlichung
 vielleicht keine Auswirkung auf die jetzigen Nutzer hat. Desweiteren gibt es Neuigkeiten bez. mehreren neuen
 Source-Mirrors in Nordamerika, viele Sicherheitshinweise und Vieles Andere mehr.
 <uri link="http://www.gentoo.org/news/en/gwn/20030623-newsletter.xml">Viel Spass beim Lesen (Englisch)</uri>
 </p>
+</news>
 </body>
 </section>
 
+
 <section>
-<title>[16. Juni 2003] Gentoo-Newsletter</title>
 <body>
+<news type="news" date="16.06.2003" title="Gentoo-Newsletter">
 <p>
 Diese Woche gibt es Neuigkeiten über GLEPS (Gentoo Linux Enhancement Proposals), eine neue Anwendergeschichte
 und natürlich das Entwicklerportrait der Woche. Desweiteren wird berichtet, daß bugs.gentoo.org auf einen neuen
 Server umziehen wird. <uri link="http://www.gentoo.org/news/en/gwn/20030616-newsletter.xml">Viel Spass beim Lesen (momentan nur in Englisch)</uri>
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[05. Juni 2003] Gentoo-Newsletter</title>
 <body>
+<news type="news" date="05.06.2003" title="Gentoo-Newsletter">
 <p>
 Wir freuen uns ankündigen zu dürfen, daß die Gentoo-Plattform bald für MacOS X verfügbar sein
 wird. Das bedeutet, daß es für die Anwender möglich sein wird die Leistungsfähigkeit und Einfachheit der
@@ -209,13 +222,14 @@ Momentan fertigen wir gerade eine passende Infrastruktur für dieses Projekt (Ma
 und integrieren gerade Portage für MacOS X in die Produktionslinie einzuarbeiten. Weitere Meldungen werden folgen,
 wenn diese Vorarbeiten abgeschlossen sind.
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[04. Juni 2003] Neue KDE/GNOME LiveCDs für PowerPC</title>
 <body>
+<news type="release" date="04.06.2003" title="Neue KDE/GNOME LiveCDs für PowerPC">
 <p>
 <uri link="http://apple.slashdot.org/apple/03/05/25/2217237.shtml?tid=106&amp;tid=185">In einem kürzlich auf Slashdot erschienenen Artikel</uri>
 stellte jemand die Frage, ob es möglich sei, eine voll ausgestattete bootfähige Linux LiveCD für den Macintosh zu machen.</p>
@@ -245,26 +259,28 @@ Desweiteren sind auf den LiveCDs:
 	<li>Apache 2/SSL mit PHP</li>
 	<li>Und viele andere tolle Sachen</li>
 </ul>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[02. Juni 2003] Gentoo-Newsletter</title>
 <body>
+<news type="news" date="02.06.2003" title="Gentoo-Newsletter">
 <p>
 Zu Allererst geht es im heutigen Gentoo-Newsletter um <b>zwei neue Source-Mirror-Server in Nordamerika</b>.
 Weitere Artikel drehen sich unter Anderem um ein Projekt für die automatische Generierung von CHOST/CFLAGS/CXXFLAGS
 für eine bestimmte Plattform und eine Ankündigung von Änderungen in der Infrastruktur.
 <uri link="http://www.gentoo.org/news/en/gwn/20030602-newsletter.xml">Viel Spass beim Lesen (momentan nur in Englisch)</uri>
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[26. Mai 2003] Gentoo-Newsletter</title>
 <body>
+<news type="news" date="26.05.2003" title="Gentoo-Newsletter">
 <p>
 Im heutigen GWN gibt es wichtige Nachrichten über Probleme des
 Oregon State Gentoo-Linux Mirror und eine Rekrutierungskampagne für
@@ -272,25 +288,26 @@ GNOME-Entwickler. Desweiteren werden wir einige kürzlich in den Medien
 erschienenen Meldungen ber Gentoo-Linux Revue passieren lassen.
 <uri link="http://www.gentoo.org/news/de/gwn/20030526-newsletter.xml">Viel Spass beim Lesen</uri>
 </p>
+</news>
 </body>
 </section>
 
 
-
 <section>
-<title>[24. Mai 2003] Kernel Leitfaden</title>
 <body>
+<news type="other" date="24.05.2003" title="Kernel Leitfaden">
 <p>
 Der Gentoo Kernel Leitfaden wurde von uns übersetzt und ist nun auf Deutsch verfügbar.
 <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/gentoo-kernel/">Hier könnt Ihr ihn lesen</uri>
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[19. Mai 2003] Gentoo Newsletter</title>
 <body>
+<news type="news" date="19.05.2003" title="Gentoo Newsletter">
 <p>
 Zusätzliche News bezüglich Gentoo Games und seine Beziehung zu Gentoo Linux bilden
 diesmal das Hauptthema des Newsletters. Neuigkeiten und Bilder von der E3 sind auch darin enthalten.
@@ -298,59 +315,66 @@ Natürlich gibts auch die Anwendergeschichten, einen deftigen Portage-Überblick
 Rubriken die auch sonst in diesem Newsletter vorkommen.
 <uri link="http://www.gentoo.org/news/de/gwn/20030519-newsletter.xml">Hier gehts zum Newsletter</uri>
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[17. Mai 2003] Gentoo Games</title>
 <body>
+<news type="news" date="17.05.2003" title="Gentoo Games">
 <p>
 Hiermit kündigen wir die Gründung von <uri link="http://www.gentoogames.com">Gentoo Games Inc.</uri>, einer Firma für Spieletechniken
 an deren Ziel es ist innovative Linuxbasierte Spieletechnologien für die Öffentlichkeit anzubieten. Die Firma wurde in Zusammenarbeit mit
 <uri link="http://supercomputerinc.com">Super Computer,Inc.</uri> gegründet.
 </p>
+</news>
 </body>
 </section>
 
+
 <section>
-<title>[12. Mai 2003] Gentoo Newsletter</title>
 <body>
+<news type="news" date="12.05.2003" title="Gentoo Newsletter">
 <p>
 Zwei grosse Ankündigungen führen den dieswöchigen Newsletter an. Erstens wird Gentoo dank der neuen Partnerschaft mit
 <uri link="http://www.supercomputerinc.com">Super Computer Inc.</uri> bald für die AMD-Opteron-Plattform verfügbar sein.
 Lest den Newsletter, um die zweite grosse Ankündigung zu Erfahren. Ausserdem gibt es noch zwei neue Rubriken im GWN: Anwendergeschichten
 und den Spruch der Woche. <uri link="http://www.gentoo.org/news/de/gwn/20030512-newsletter.xml">Hier gehts zum Newsletter</uri>
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[05. Mai 2003] Gentoo Newsletter</title>
 <body>
+<news type="news" date="05.05.2003" title="Gentoo Newsletter">
 <p>
 Der erste Mai-Newsletter enthält einige wichtige Verhaltensmassregeln zum Thema "emerge rsync" und und Neuigkeiten über
 kommende Features im nächsten 1.4 Release-Candidate. Diese Woche gibt es leider keinen Portage-Watch, man erholt sich vom
 Ausschau halten ;) <uri link="http://www.gentoo.org/news/en/gwn/20030505-newsletter.xml">Viel Spass beim Lesen! (momentan leider noch auf Englisch)</uri>
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-<title>[03. Mai 2003] vi Guide nun auch auf Deutsch verfgbar</title>
 <body>
+<news type="other" date="03.05.2003" title="vi Guide nun auch auf Deutsch verfgbar">
 <p>
 Der Gentoo vi-Guide wurde von uns auf Deutsch bersetzt und ist nun hier auf der Website
 verfügbar. <uri link="http://www.gentoo.de/inhalte/doku/anwendungen/vi-guide">Hier</uri> könnt Ihr ihn lesen.
 </p>
+</news>
 </body>
 </section>
 
+
 <section>
-<title>[30. April 2003] Bootsplash HowTo</title>
 <body>
+<news type="other" date="30.04.2003" title="Bootsplash HowTo">
 <p>
 Ein britischer User hat in den Foren ein (unserer Meinung nach) erstklassiges HowTo veröffentlicht.
 In diesem HowTo geht es um die nachträgliche Einrichtung des auf dem Framebuffer basierenden Bootsplashs.
@@ -361,26 +385,26 @@ ein Gimp-Plugin, mit dem man spielend einfach Hintergrundbilder für Grub machen
 leider nur in Englischer Sprache und in einer Art Wiki-Form in den Foren.
 <uri link="http://forums.gentoo.org/viewtopic.php?t=49036">Hier</uri> könnt Ihr den Guide lesen.
 </p>
+</news>
 </body>
 </section>
 
 
 <section>
-
-<title>[29. April 2003] Deutsche Übersetzung des Installationsguides von Gentoo-Linux 1.4rc4 fertig</title>
-
 <body>
+<news type="other" date="29.04.2003" title="Deutsche Übersetzung des Installationsguides von Gentoo-Linux 1.4rc4 fertig">
 <p>
 Die Übersetzung des Installationsleitfadens fr die Gentoo-Linux 1.4rc4 Live-CD ist fertig. Den
 Guide gibt es hier : <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/installation14rc4">Installtion Gentoo 1.4rc4</uri>
 </p>
+</news>
 </body>
-
 </section>
+
 
 <section>
 <body>
-<news sort="news" date="28. April 2003" title="Gentoo Newsletter">
+<news type="news" date="28. April 2003" title="Gentoo Newsletter">
 	Der dieswöchige Newsletter bringt Neuigkeiten über einen Vorschlag, wie das Management
 	der Ebuilds ab demnächst gestaltet werden könnte. Desweiteren gibt es Informationen
 	über einige Ãnderungen bei den Mailinglisten, das wöchtentliche Entwicklerportrait
@@ -390,9 +414,10 @@ Guide gibt es hier : <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/in
 </body>
 </section>
 
+
 <section>
 <body>
-<news sort="other" date="20.04.2003" title="Planung des Usertreffens">
+<news type="other" date="20.04.2003" title="Planung des Usertreffens">
 	Nachdem sich nun alle in die Liste für das Usertreffen eingetragen haben, stellt sich
 	nun die Frage, wo dieses stattfinden soll. Zu diesem Zwecke haben phoen][x und cybersystem
 	eine interaktive Karte eingerichtet, auf der Ihr Euch eintragen könnt. Die Karte sollte
@@ -401,9 +426,10 @@ Guide gibt es hier : <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/in
 </body>
 </section>
 
+
 <section>
 <body>
-<news sort="release" date="14.04.2003" title="Gentoo-Linux-1.4rc4 veröffentlicht">
+<news type="release" date="14.04.2003" title="Gentoo-Linux-1.4rc4 veröffentlicht">
 Anfang der Woche wurde entschieden, daß die nächste Version von Gentoo-Linux 1.4 als
 Release-Candidate 4 an Stelle von Final veröffentlicht werden würde. Die Verbesserungen
 enthalten wesentlich bessere Hardware-Erkennung auf der Live-CD sowie weitreichende Updates

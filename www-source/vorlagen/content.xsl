@@ -485,17 +485,16 @@
 				<td valign="top">
 					<img>
 						<xsl:attribute name="src">
-							http://www.gentoo.de/media/bilder/icons/news/<xsl:value-of select="@sort"/>.jpg
+							http://www.gentoo.de/media/bilder/icons/news/<xsl:value-of select="@type"/>.jpg
 						</xsl:attribute>
 						<xsl:attribute name="alt">
-							<xsl:value-of select="@sort"/>
+							<xsl:value-of select="@type"/>
 						</xsl:attribute>
 					</img>
 
 				</td>
 				<td>
 					<xsl:apply-templates/>
-					<!-- <xsl:value-of select="."/> -->
 				</td>
 			</tr>
 		</table>
