@@ -398,7 +398,7 @@ emerge net-im/gaim
 	
 
 <section>
-<title>Schutz der Konfigurations Dateien</title>
+<title>Schutz der Konfigurationsdateien</title>
 <body>
 	<p>
         Portage erlaubt den Schutz aller Konfigurations Dateien in bestimmten 
@@ -956,45 +956,26 @@ Portage unterst&#252;tzt au&#223;erdem die M&#246;glichkeit, alle nicht-essenzie
 Das world-update-Feature von Portage &#252;berpr&#252;ft das Systemprofil, die Liste der blockierten Pakete (<i>package.mask</i>), das world-Profil und die Abh&#228;ngigkeiten (inkl. Versionkontrolle) von Paketen die im world-Profil stehen. Dadurch findet es heraus, welche Pakete aktualisiert werden m&#252;ssen. Ein Paket wird nur aktualisiert, wenn es eine neue Version gibt und das Paket im world-Profil aufgef&#252;hrt wird oder ein anderes Paket, das im world-Profil steht von ihm abh&#228;ngt. Selbstverst&#228;ndlich darf das Paket oder eine spezielle Version dessen nicht durch das Systemprofil oder die <i>package.mask</i> blockiert sein.
 </p>
 
-	<p>When considering which packages to upgrade, Portage tries to 
-	upgrade all packages mentioned in the world profile to the newest
-	unblocked version available.Portage also considers the dependencies
-	of each package mentioned in the world profile and will try to
-	upgrade the dependency to a newer version if one is available, matches
-	the version ranges specified, and is not blocked by either the system
-	profile or <i>package.mask</i>.  It also takes into consideration
-	<i>SLOTS</i> as mentioned in a previous chapter.
-	</p>
+<p>
+Portage versucht nun alle Pakete, die im world-Profil aufgef&#252;hrt sind auf die neuste verf&#252;gbare und unblockierte Version zu aktualisieren. Desweiteren &#252;berpr&#252;ft Portage auch die Abh&#246;ngigkeiten von jedem Paket im world-Profil und wird versuchen diese auf die neuste Version zu aktualisieren. Dabei wird eine Versionkontrolle durchgef&#252;hrt, so dass die Versionhierachie gewahrt bleibt. Au&#223;erdem d&#252;rfen diese Pakte weder durch das Systemprofil noch durch <i>package.mask</i> blockiert sein. Schlie&#223;lich werden auch noch die <i>SLOTS</i> &#252;berpr&#252;ft, die in einem vorangegangenen Kapitel besprochen wurden.
+</p>
 
-	<p>Users familiar with other distributions and packaging methods
-	besides Portage may be confused by why Portage does not simply
-	do a blind upgrade of packages based solely on version numbers (as it
-	did before Gentoo 1.0).  Many of the packages included in Gentoo's
-	Portage Tree have many versions available.  An older or newer
-	version of a package may be incompatible with the software that relies
-	on it.  Blindly upgrading libraries and tools without taking into
-	consideration the needs of other packages can quickly result in
-	many severe problems.  To avoid this Portage tries to take care when
-	upgrading and takes the needs of all packages into consideration based
-	on the needs declared in individual package ebuilds.
-	</p>
-	
-	<p>
-	The heart of Portage's world update is the world profile.  Unlike
-	the system profile which is usually defined by developers and never
-	touched by users, the world update profile is generated indirectly
-	over time by actions performed by the user.
-	The world profile operates much like a "favorites list".
-	Packages that are manually installed by the user through use of the
-	<i>emerge</i> command are recorded in the <i>world</i> file located at
-	<i>/var/cache/edb/world</i>.  Portage assumes that because you took
-	the effort to tell it to install the package then you must have some
-	interest in keeping it up to date.
-	</p>
-	<p>
-	The <i>world</i> file consists of one package name with category per
-	line and may look something like the following:
-	</p>
+<p>
+Benutzer, die andere Distributionen und ihre Paket-Management-Systeme neben Portage kennen, sind vielleicht etwas dar&#252;ber verwirrt, dass Portage nicht nur ein blindes Aktualisieren der Pakete vornimmt, einfach nur anhand der Versionsnummern (Wie es bis Gentoo 1.0 gehandhabt wurde).
+</p>
+
+<p>
+Viele der Pakete die in Gentoo's Portage-Tree sind, stehen in verschiedenen Versionen zur Verf&#52;gung. Eine &#228;ltere oder neuere Version eines Paketes kann mit der Software, die auf sie aufbaut inkompatibel sein. Blindes Aktualisieren von Bibliotheken und Programmen, ohne R&#252;cksicht darauf, dass sie von anderen Paketen gebraucht werden, kann schnell zu vielen schwerwiegenden Problemen f&#252;hren. Um dies zu verhindern l&#228;sst Portage beim Aktualisieren Vorsicht walten und bezieht die Abh&#228;ngigkeiten aller Pakete, basierend auf den Angaben in den einzelnen ebuilds, mit ein.
+</p>
+
+<p>
+Das Herz von Portage's-World-Update ist das world-Profil. Anders als das System-Profil, welches nur von den Entwicklern definiert wird und nie vom Benutzer ver&#228;ndert werden sollte, wird das World-Update-Profil indirekt mit der Zeit durch Aktionen des Benutzers erstellen. Das world-Profil funktioniert in etwa wie eine "Favoriten-Liste". Pakete die vom Benutzer manuell mit Hilfe von <c>emerge</c> installiert werden, werden in der Datei <i>world</i> aufgezeichnet. Diese Datei findet sich unter <path>/var/cache/edb/world</path>. Portage macht dies, da sie ihm  mitgeteilt haben es zu installieren (per emerge) und es annimmt, dass sie ein Interesse daran haben, das Paket immer auf dem aktuellsten Stand zu halten.
+</p>
+
+<p>
+Die Datei <i>world</i> besteht aus einem Paketnamen mit Kategorie pro Zeile und sollte in etwa wie folgt aussehen:
+</p>
+
 <pre>
 net-im/gaim
 net-www/skipstone
@@ -1012,148 +993,100 @@ sys-apps/acl
 app-office/gnucash
 app-cdr/xcdroast
 </pre>
-	<p>
-	Almost all of the entries in this example file were added 
-	automatically by Portage when the user manually merged the specific 
-	packages.  These packages will be upgrade if a newer version is 
-	available.
-	</p>
+
+<p>
+Nahezu alle Eintr&#228;ge in diesem Beispiel wurden von Portage automatisch hinzugef&#252;gt, als der Benutzer eines der Pakete manuell "ein-merge-te". Diese Pakete werden aktualisiert, wenn eine neuere Version verf&#252;gbar ist.
+</p>
+
+<note>
+Um Zeit zu sparen und sicher zu stellen, dass alle Ihre bevorzugten Pakete aktuell gehalten werden, k&#246;nnen Sie die Datei <i>world</i> selbst bearbeiten und so Eintr&#228;ge f&#252;r diese Pakete hinzuf&#252;gen. Wenn Sie eine &#228;lteren Version von Portage aktualisieren, m&#252;ssen sie das world-Profil erstellen und dem System bekannt machen. Bei aktuellen Installationen von Gentoo und Portage sollte das world-Profil w&#228;rend der Installation erzeugt werden.
+</note>
 	
-	<note>To save time and make sure your favorite packages are kept updated
-	you may manually edit the <i>world</i> file and add entries for these
-	packages.  Users upgrading from old versions of Portage may need
-	to populate this file.  Recent installations of Gentoo and Portage
-	should have a fairly populated world profile created during
-	installation.</note>
+<p>
+Ein interessanter Eintrag ist der f&#252;r das Mozilla-Paket (<i>=net-www/mozilla-0.9.8-r3</i>). Dieser Eintrag wurde von Hand hinzugef&#252;gt, um eine exakte Version festzulegen. Paketeinschr&#228;nkungen, wie sie im Abschnitt "Unmergen (Deinstallieren) von Paketen" in diesem Handbuch besprochen wurden, k&#246;nnen dazu verwendet werden Portage zu zwingen nur spezielle Versionen beim Aktualisieren von Paketen zu verwenden. Der obige Eintrag hat z.B. den Effekt, dass Portage auf das Paket mozilla-0.9.8-r3 als einzig verf&#252;gbare Version festgelegt ist. Somit wird es dieses Paket im Verlaufe eines World-Update nie aktualisieren.
+</p>	
 	
-	<p>An interesting entry to note is the entry for the mozilla package
-	(<i>=net-www/mozilla-0.9.8-r3</i>).  This entry was added manually
-	by a user to "pin" a specific version.  Package ranges (as discussed
-	in the <i>Unmerge Packages</i> section of this manual) can be used
-	to force Portage to only consider certain version ranges when 
-	updating packages.  This entry in effect "pins" Portage into 
-	considering mozilla-0.9.8-r3 to be the only available version and 
-	thus it will never attempt to update the package during a world
-	update for any reason.
-	</p>
-	
-	<p>World updates are done using the following command:</p>
+<p>World-Updates werden durch den folgenden Befehl gestartet:</p>
+
 <pre>
 emerge --update world
 </pre>
-	<p>Portage will then attempt to update all packages mentioned in
-	the <i>world</i> file and will update any dependencies if needed.
-	Dependencies are upgraded to the newest version available that
-	satisfies the needs of the package being upgraded.  Packages
-	that are not listed in <i>world</i> and are not dependencies of
-	the aforementioned packages are not updated.
-	</p>
 
-	<warn>Portage will not overwrite files in directories protected
-	by Configuration File Protection.  You will need to manually
-	merge the differences between your current configuration files
-	and the new versions Portage saved for you.  If you do not
-	update your configuration files installed software may stop 
-	functioning.  Please see <i>Configuration File Protection</i> 
-	in the <i>Configuring Portage</i> chapter or use the command 
-	<i>emerge --help config</i> for more information. </warn> 
+<p>
+Portage wird nun versuchen alle Pakete die in der Datei <i>world</i> stehen und (wenn n&#246;tig) deren Abh&#246;ngigkeiten aktualisieren. Abh&#246;ngigkeiten werden auf die neuste verf&#252;gbare Version, die vom zu aktualisierenden Paket gebraucht wird, gebracht. Pakete die nicht in der Datei <i>world</i> aufgef&#252;hrt sind und keine Abh&#246;ngigkeiten von den voher genannten Paketen sind, werden nicht aktualisiert.
+</p>
 
-	<p>To view a list of what would be updated or installed during 
-	a world update, you can use the <i>--pretend</i> argument as 
-	mentioned in previous sections of this chapter.
-	</p>
+<warn>
+Portage wird keine Dateien in Verzeichnissen &#252;berschreiben, die durch die "Configuration File Protection" (Schutz von Konfigurationsdateien) gesch&#252;tzt sind. Es ist notwendig, dass Sie selbst die Unterschiede zwischen Ihren bestehenden und den neuen Dateien, die von Portage generiert wurden, ausgleichen. Wenn Sie Ihre Konfigurationsdateien nicht aktualisieren, werden verschiedene Programme nicht mehr funktionieren. Bitte schauen sie f&#252;r weitere Informationen unter "Schutz der Konfigurationsdateien" im Kapitel "Portage konfigurieren" nach oder benutzen sie den Befehl <i>emerge --help config</i>.
+</warn>
 
-	<note>A world update also performs a system update automatically.  
-	Core packages cannot be pinned using the <i>world</i> file method as 
-	the current Portage profile will always override it.</note>
+<p>
+Um eine Liste mit den Paketen zu bekommen, die von einem World-Update betroffen w&#228;ren, k&#246;nnen sie das Argument <i>--pretend</i> verwenden, so wie es bereits in einem vorangegangen Abschnitt in diesem Kapitel besprochen wurde.
+</p>
 
-	<p>
-	An interesting side effect of how world update works can
-	be exploited by users wishing to recompile all installed software
-	on a system.  Since world update will try to update all packages
-	mentioned in the <i>world</i> file and their dependencies, the use
-	of the argument <i>--emptytree</i> is a way of forcing the recompile
-	of these packages and every dependency except for glibc.
-	This can be useful for users wishing to change their compiler options
-	or USE keyword settings and want these changes to be used by all
-	the software they use without manually remerging every package.
-	Simply populate the <i>world</i> file with all your commonly used
-	applications and issue the following command: 
-	</p>
+<note>
+Durch ein World-Update wird gleichzeitig auch ein System-Update durchgef&#252;hrt. Au&#223;erdem k&#246;nnen Kernpakete nicht auf Versionen in <i>world</i> festgelegt werden, da sie vom aktuellen Portage-Profil immer &#252;berschrieben werden!
+</note>
+
+<p>
+Ein praktischer Nebeneffekt der Art wie World-Update arbeitet, ist f&#252;r Benutzer interessant, die ein komplettes neu-&#220;bersetzen aller installierten Pakete auf einem System w&#252;nschen. Da World-Update alle Pakete und deren Abh&#228;ngigkeiten, die in der Datei <i>world</i> stehen aktualisiert, gibt einem die Option <i>--emptytree</i> die M&#246;glichkeit ein Neu&#252;bersetzung s&#228;mtlicher Pakete und aller Abh&#228;ngigkeiten - mit Ausnahme der glibc - zu erzwingen. Das ist z.B. f&#252;r Leute n&#252;tzlich, die ihre Compiler-Optionen oder ihre USE-Variablen ge&#228;ndert haben und wollen, dass diese Ver&#228;nderungen von der gesamten Software die sie benutzen verwendet wird - ohne das sie nun jedes Paket selbst erneut "ein-mergen" m&#252;ssen. Dazu m&#252;ssen sie einfach die Datei <i>world</i> mit allen Paketen, die sie verwenden auff&#252;llen und den folgenden Befehl verwenden:
+</p>
+
 <pre>
 emerge --update world --emptytree
 </pre>
-	<p>
-	You can add the <i>--pretend</i> argument to this command to get a 
-	list of packages that would be recompiled as a result of this action.
-	</p>
-	
+
+<p>
+Sie k&#246;nnen die Option <i>--pretend</i> mit diesem Befehl verwenden, um eine Liste mit den Paketen, welche neu-&#220;bersetzt w&#252;rden, zu bekommen. 
+</p>
 </body>
 </section>
 
 <section>
-<title>Cleaning System</title>
+<title>System aufr&#228;umen</title>
 <body>
-	<p>Portage supports the ability to install multiple versions
-	of the same version on top of each other.  There are quite a few
-	packages in Gentoo's Portage Tree that makes use of this
-	functionality (for backwards compatibility as older applications may
-	be incompatible with a newer version of another package)
-	</p>
-	<p>In most cases though when a newer version of a package is installed
-	most of the older package is overwritten and all that remains is
-	a few documentation files and other files unimportant to the operation
-	of a system.  Overtime this "cruft" can build up and waste valuable
-	disk-space.
-	</p>
-	<p>To combat this, Portage provides an easy way to remove traces
-	of older versions from a user's system.  This functionality is referred
-	to as the emerge <i>clean</i> option and be used by issuing the
-	following command:
-	</p>
+
+<p>
+Portage hat die F&#228;higkeit verschiedene Versionen eines Paketes parallel zu installieren. Es gibt einige Pakete in Gentoo's Portage-Tree die diese Funktion nutzen (z.B. zur Kompatibilit&#228;tssicherung, wenn &#228;ltere Programme mit neueren Versionen inkompatibel sind).
+</p>
+
+<p>
+Denken Sie daran, dass wenn eine neuere Version eines Paketes installiert wird, in den meisten F&#228;llen ein Gro&#223;teil des &#228;lteren Paketes &#252;berschrieben wird und alles was zur&#252;ckbleibt sind einige Dokumentationsdateien und andere, f&#252;r das System unwichtige. Mit der Zeit k&#246;nnen diese "Dateileichen" sehr viel Festplattenplatz verschwenden.
+</p>
+
+<p>
+Um dies zu verhindern bietet Portage einen einfachen Weg an, R&#252;ckst&#228;nde veralteter Dateiversionen vom Benutzersystem zu entfernen. Diese Funktionalit&#228;t ergibt sich aus der emerge-Option <i>clean</i> und kann folgenderma&#223;en benutzt werden:
+</p>
+
 <pre>
 emerge clean
 </pre>
-	<p><i>emerge</i> will then display a list of package revisions and 
-	versions to be removed, the versions that will remain, and give
-	the user time to cancel out of the action by pressing Control-C.
-	On a typical system a flurry of activity will occur as it displays
-	long lists of files that were either deleted or kept.
-	</p>
 
-	<p>Unless specified, Portage assumes the clean action is to be
-	performed for the <i>world</i> (all installed packages).  You can
-	narrow the scope of the clean action by using options such as 
-	<i>world</i>, <i>system</i>, a list of package names, and package 
-	version ranges as mentioned in the unmerge section of this chapter.
-	</p>
+<p>
+<i>emerge</i> wird nun eine Liste ausgeben mit Paketrevisionen und -versionen die entfernt werden und die Versionen die erhalten bleiben. Au&#223;erdem gibt es dem Benutzer Zeit, die Aktion mit STRG+C abzubrechen. Auf einem normalen System werden nun eine Vielzahl von Aktionen durchgef&#252;hrt, die lange Listen mit Dateien die entweder gel&#246;scht oder erhalten wurden, ausgibt.
+</p>
 
-	<p>When considering which package versions should be removed the 
-	Portage system considers the various profiles, the needs of other
-	installed packages, and a packages SLOT.  Assuming dependencies
-	are correctly defined for all packages, the clean action will
-	safely remove old package system and should not remove any
-	functionality or prevent the system from functioning.
-	</p>	
+<p>
+Naheliegenderweise wird Portage die Aufr&#228;umaktion auf die Datei <i>world</i> (alle installierten Pakete) anwenden. Sie k&#246;nnen den Umfang der S&#228;uberung durch Optionen wie <i>world</i>, <i>system</i>, eine Liste von Paketnamen oder eine Einschr&#228;nkung auf Paketversionen, wie es im Abschnitt "Unmerge" in diesem Kapitel besprochen wurde, beeinflussen.
+</p>
+
+<p>
+Beim Herausfinden, welche Paketversionen entfernt werden sollten, &#252;berpr&#252;ft Portage die verschiedenen Profile, die Beziehungen zu anderen Paketen und den SLOT eines Paketes. Vorausgesetzt dass alle Paketabh&#228;ngigkeiten f&#252;r alle Pakete richtig definiert sind, wird <c>emerge clean</c> nur veraltet Pakete vom System entfernen und nicht solche, deren Entfernung die Funktionalit&#228;t des Systems einschr&#228;nken w&#252;rde.
+</p>
 </body>
 </section>
 
 <section>
-<title>Pruning Packages</title>
+<title>Pakete s&#228;ubern</title>
 <body>
-	<p>
-	Portage also supports a package <i>prune</i> action.   The prune
-	action is an unsafe form of the clean.  It removes all versions
-	of all packages except for the last installed version.  It does
-	not perform many of the checks <i>clean</i> performs and can
-	remove essential dependencies from your system.  Users of this 
-	option can easily break their systems and its use is not recommended
-	except in specific specialized circumstances.
-	</p>
+<p>
+Portage bietet au&#223;erdem die Funktion ein Paket zu s&#228;ubern (engl. <i>prune</i>). <i>prune</i> ist eine unsichere Variante von <i>clean</i>. Es entfernt alle Versionen aller Pakete, ausgenommen der zuletzt installierten Version. Es f&#252;hrt nur wenige &#220;berpr&#252;fung aus, die <i>clean</i> durchf&#252;hrt und kann grundlegende Abh&#228;ngigkeiten von Ihrem System entfernen! Wenn Sie diese Option nutzen, k&#246;nnen sie sehr schnell ihr System unbrauchbar machen. Somit wird diese Variante nicht empfohlen und sollte nur in wenigen Ausnahmenf&#228;llen verwendet werden.
+</p>
 
-	<p>The <i>prune</i> action accepts the same list as options as the
-	<i>clean</i> action and can be used like the following:
-	</p>
+<p>
+Die Aktion <i>prune</i> akzeptiert die selben Optionen wie die Aktion <i>clean</i> und kann wie folgt angewendet werden:
+</p>
+
 <pre>
 emerge prune
 </pre>
@@ -1162,36 +1095,34 @@ emerge prune
 
 
 <section>
-<title>Searching The Portage Tree</title>
+<title>Den Portage-Tree durchsuchen</title>
 <body>
-	<p>Portage Trees such as the one that forms the heart of the Gentoo
-	Linux distribution can be quite large.  The <i>emerge</i> command
-	provides a search feature which accepts a search string in the form
-	of a regular expression contained in quotes.  Regular expressions
-	are very complicated beasts so it is recommended you find a good book
-	on the topic if you are interested in fully using regular expressions.
-	</p>
-	<p>
-	Most simple searches can be done without knowing how to form
-	regular expressions.  The following is an example of a simple search 
-	for a package either named "gcc" or has "gcc" as part of its name:
-	</p>
+<p>
+Portage-Tress, wie jener der das Herzst&#252;ck von Gentoo Linux bildet k&#246;nnen sehr gro&#223; sein. Der Befehl <i>emerge</i> bietet eine Suchfunktion an, welche Suchanfragen in Form eines regul&#228;ren Ausdrucks, dieser muss von Anf&#252;hrungszeichen eingeschlossen sein, akzeptiert. Regul&#228;re Ausdr&#252;cke sind sehr komplizierte Biester und Anwendern die sich daf&#252;r interessieren, sei ein gutes Buch zum Thema empfohlen.
+</p>
+
+<p>
+Die meisten einfachen Suchen k&#246;nne ohne Wissen, wie ein regul&#228;rer Ausdruck zu bilden ist durchgef&#252;hrt werden. Das folgende ist ein Beispiel f&#252;r eine einfache Suche nach einem Paket, das "gcc" hei&#223;t oder "gcc" im Namen hat:
+</p>
+
 <pre>
 emerge search gcc
 </pre>
-	<p>
-	For each match the search action lists the package name, newest 
-	available version, newest version installed, its home page, and
-	a description of the software contained in the package.
-	</p>
+
+<p>
+F&#252;r jeden Treffer gibt der Befehl den Paketnamen, die neuste Version, die neuste installierte Version, seine Homepage und eine Beschreibung &#252;ber die Software im Paket aus.
+</p>
+
 </body>
 </section>
 
 <section>
-<title>Getting Help</title>
+<title>Hilfe erhalten</title>
 <body>
-	<p>More information on the many options and actions <i>emerge</i>
-	supports can be found by issuing the following command:</p>
+<p>
+Mehr Informationen &#252;ber die zahlreichen Optionen und Aktionen die <i>emerge</i> unterst&#252;tzt, erhalten Sie durch die Eingabe von:
+</p>
+
 <pre>
 emerge --help
 </pre>
@@ -1201,18 +1132,17 @@ emerge --help
 		
 
 <section>
-<title>Useful Utilities</title>
+<title>N&#252;tzliche Werkzeuge</title>
 <body>
-	<p>Several utilities have been made available by Gentoo users
-	to make life easier.  These utilities are available in the
-	<i>app-admin/gentoolkit</i> in the Gentoo Portage tree.
-	</p>
+<p>
+Verschiedenste Werkzeuge wurden von Gentoo-Nutzern erstellt, um das Leben mit <i>emerge</i> zu erleichtern. Diese Werkzeuge sind im Paket <i>app-admin/gentoolkit</i> im Gentoo-Portage-Tree zu finden.
+</p>
+
 	<p>
 	<ul>
-	<li><i>etc-update</i> : shell script using vim to assist with the
-	merging of /etc files (can be dangerous if used incorrectly)</li>
-	<li><i>qpkg</i> : package database query tool</li>
-	<li><i>epm</i> : another package database query tool with RPM like syntax</li>
+	<li><i>etc-update</i> : Shell-Skripte f&#252;r <i>vim</i>, die dabei helfen die Dateien in <path>/etc</path> abzugleichen (es ist gef&#228;hrlich diese falsch zu verwenden!)</li>
+	<li><i>qpkg</i> : Werkzeug f&#252;r Datenbankanfragen</li>
+	<li><i>epm</i> : ein weiteres Anfragewerkzeug f&#252;r die Datenbank mit RPM-&#252;hnlicher Syntax</li>
 	</ul>
 	</p>
 </body>
