@@ -217,7 +217,7 @@
 <xsl:template match="author">
   <xsl:choose>
     <xsl:when test="mail">
-      <a href="mailto:{mail/@link}" title="{@title}">
+      <a href="mailto:KEINSPAM-{mail/@link}" title="{@title}">
         <xsl:value-of select="mail"/>
       </a>
     </xsl:when>
