@@ -1,7 +1,12 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.10 2003/04/11 17:22:53 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.11 2003/04/11 21:38:25 mad Exp $
 
+*vdr-1.1.26-r1 (11 Apr 2003)
+  11 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26-r1.ebuild
+  changed to vdr-vanilla, added PROVIDE Flag, removed elchi, 
+
+  03 Apr 2003; H.Ryll <henning.ryll@web.de> rc.vdr-1.1.26
 *vdr-1.1.26 (19 Mar 2003)
   04 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26.ebuild
   added the libs to the installation (needed by some dvb tools)
