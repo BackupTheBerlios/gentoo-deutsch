@@ -6,16 +6,13 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="x86 ppc sparc "
 
-DEPEND="media-sound/xmms
+DEPEND=">=media-sound/xmms-1.2.7
 		media-plugins/alsa-xmms
 		avi-xmms? ( media-plugins/avi-xmms )
 		media-plugins/dumb-xmms
 		media-plugins/efxmms
 		media-plugins/modplugxmms
-		media-plugins/rmxmms
-		media-libs/alsa-lib-0.5.*? ( media-plugins/xmms-aalsa )
 		media-plugins/xmms-alarm
-		xmms-arts? ( media-plugins/xmms-arts )
 		media-plugins/xmms-blursk
 		media-plugins/xmms-cdread
 		media-plugins/xmms-compress
@@ -52,4 +49,8 @@ DEPEND="media-sound/xmms
 		media-plugins/xmms-spc
 		media-plugins/xmms-status-plugin
 		media-plugins/xmms-synaesthesia
-		media-plugins/xmms-volnorm"
+		media-plugins/xmms-volnorm
+		media-sound/xmmsctrl
+		media-video/smpeg-xmms
+		x11-themes/xmms-themes
+		"
