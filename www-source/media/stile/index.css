@@ -257,6 +257,16 @@ table.resultlist td.title{
 	color: #FFFFFF;  
 }
 
+table.resultlist td.title a{
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+table.resultlist td.title a:hover{
+	text-decoration: none;
+	color: #F2F0F9;
+}
+
 table.resultlist td.info{
 	background-color:#F2F0F9;
 }

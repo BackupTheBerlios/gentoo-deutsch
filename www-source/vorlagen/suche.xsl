@@ -34,6 +34,9 @@
         <![CDATA[<!--item: description-->]]>
       </td>
     </tr>
+    <tr>
+      <td colspan="3">&#160;</td>
+    </tr>
   <![CDATA[<!--end: results-->]]>
   </table>
 
