@@ -39,71 +39,91 @@
   </xsl:for-each>    
 </xsl:template>    
 
+<xsl:template name="menurecurser">
+  <xsl:param name="level"/>
+  <xsl:param name="href"/>
+  <xsl:param name="filename"/>    
+
+  <xsl:if test="count(item) &gt; 0">
+    
+    <!-- Baue Menue -->
+    <div id="gmenu{$level}">
+      <xsl:attribute name="class">
+        <xsl:choose>
+          <xsl:when test="string-length($level) = 0">mainmenu</xsl:when>
+          <xsl:otherwise>submenu</xsl:otherwise>      
+        </xsl:choose>
+      </xsl:attribute>      
+
+      <xsl:for-each select="item">
+        <xsl:variable name="current_linkid">
+          <xsl:value-of select="$level"/>
+          <xsl:text>_</xsl:text>
+          <xsl:value-of select="position()"/>
+        </xsl:variable>
+	
+        <xsl:variable name="current_href">
+          <xsl:value-of select="$href"/>
+          <xsl:text>/</xsl:text>
+          <xsl:value-of select="@href"/>
+        </xsl:variable>	
+    
+        <a href="{$current_href}" id="glink{$current_linkid}">
+	  <xsl:if test="count(item) &gt; 0">
+	    <xsl:attribute name="onmouseover">menu.handle(this.id)</xsl:attribute>
+	  </xsl:if>
+          <xsl:value-of select="@title"/>
+        </a> 
+      </xsl:for-each>
+    </div>
+    
+    <!-- Schaue nach Unterpunkten -->
+    <xsl:for-each select="item">
+      <xsl:variable name="current_linkid">
+        <xsl:value-of select="$level"/>
+        <xsl:text>_</xsl:text>
+        <xsl:value-of select="position()"/>
+      </xsl:variable>
+	
+      <xsl:variable name="current_href">
+        <xsl:value-of select="$href"/>
+        <xsl:text>/</xsl:text>
+        <xsl:value-of select="@href"/>
+      </xsl:variable>	
+            
+      <xsl:call-template name="menurecurser">
+        <xsl:with-param name="level"><xsl:value-of select="$current_linkid"/></xsl:with-param>  
+        <xsl:with-param name="href"><xsl:value-of select="$current_href"/></xsl:with-param>
+        <xsl:with-param name="filename"><xsl:value-of select="$filename"/></xsl:with-param>
+      </xsl:call-template>
+    </xsl:for-each>
+    
+  </xsl:if>
+ 
+</xsl:template>
+
+
 <xsl:template match="menu">
   <xsl:element name="xsl:template">
-  <xsl:attribute name="name">menu</xsl:attribute>
- 
-  <xsl:variable name="defhtml">
+    <xsl:attribute name="name">menu</xsl:attribute>  
+  
+  <xsl:variable name="filename">
     <xsl:value-of select="../online/basename"/>
     <xsl:text>.</xsl:text>
     <xsl:value-of select="../online/extension"/>
   </xsl:variable>
   
-  <xsl:variable name="siteurl">
+  <xsl:variable name="href">
     <xsl:value-of select="../online/@value"/>
     <xsl:text>/</xsl:text>
     <xsl:value-of select="../public/content"/>
-  </xsl:variable>    
+  </xsl:variable>
   
-  
-  <![CDATA[<!--ignore_search-->]]>
-  
-  <!-- ERSTELLE BUTTONBAR -->
-  <div id="bar">
-    <xsl:for-each select="item">
-      <a href="{$siteurl}/{@href}/{$defhtml}" id="btn_m{position()}" onmouseover="__main(this)" onfocus="__focus(this)"><xsl:value-of select="@title"/></a>
-      <xsl:text>  </xsl:text>
-    </xsl:for-each>
-  </div>
-
-  <div id="special">
-    <xsl:for-each select="special">
-      <a href="{$siteurl}/{@href}/{$defhtml}" onfocus="__focus(this)"><xsl:value-of select="@title"/></a>
-      <xsl:text>  </xsl:text>
-    </xsl:for-each>
-  </div>
-  
-  <!-- ERSTELLE HAUPTMENUES -->
-  <xsl:for-each select="item">
-    <xsl:variable name="mainurl"><xsl:value-of select="$siteurl"/>/<xsl:value-of select="@href"/>/</xsl:variable>
-    <xsl:variable name="mpos"><xsl:value-of select="position()"/></xsl:variable>
-    <div id="menu_m{$mpos}" class="menu">
-      <xsl:for-each select="item">
-        <a href="{$mainurl}{@href}/{$defhtml}" onmouseover="__sub(this)" onfocus="__focus(this)">
-          <xsl:if test="item">
-            <xsl:attribute name="id">btn_s<xsl:value-of select="$mpos"/>-<xsl:value-of select="position()"/></xsl:attribute>
-          </xsl:if>
-          <span class="text"><xsl:value-of select="@title"/></span>
-          <xsl:if test="item">
-            <span class="arrow">&#9654;</span>
-          </xsl:if>
-        </a>
-      </xsl:for-each>
-    </div>
-    
-    <xsl:for-each select="item">
-      <xsl:variable name="suburl"><xsl:value-of select="$mainurl"/><xsl:value-of select="@href"/>/</xsl:variable>
-      <xsl:if test="item">
-      <div id="menu_s{$mpos}-{position()}" class="menu">
-         <xsl:for-each select="item">
-           <a href="{$suburl}{@href}/{$defhtml}"><xsl:value-of select="@title"/></a>
-         </xsl:for-each>
-      </div>
-      </xsl:if>
-    </xsl:for-each>
-  </xsl:for-each>
-  
-  <![CDATA[<!--/ignore_search-->]]>
+  <xsl:call-template name="menurecurser">
+    <xsl:with-param name="level"></xsl:with-param>  
+    <xsl:with-param name="href"><xsl:value-of select="$href"/></xsl:with-param>
+    <xsl:with-param name="filename"><xsl:value-of select="$filename"/></xsl:with-param>
+  </xsl:call-template>
   
   </xsl:element>
 </xsl:template>

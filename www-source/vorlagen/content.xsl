@@ -2,6 +2,13 @@
 
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<!--
+  Part of the Gentoo WebSite:
+  Document Version: 0.9
+
+
+-->
+
 <xsl:include href="../temp/config.xsl"/>
 <xsl:include href="../temp/ebuild_new_org.xsl"/>
 <xsl:include href="../temp/ebuild_all_de.xsl"/>
@@ -9,17 +16,26 @@
 <xsl:include href="suche.xsl"/>
 
 <!--
-<xsl:output method="html" encoding="iso-8859-15" indent="no" doctype-system="http://www.w3.org/TR/html4/loose.dtd" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" omit-xml-declaration="no"/>
+<xsl:output 
+  method="xml" 
+  encoding="utf-8" 
+  indent="no" 
+  doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" 
+  doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" 
+  omit-xml-declaration="no"
+  cdata-section-elements=""
+/>
 -->
 
-<!--
-<xsl:output method="xml" encoding="iso-8859-15" indent="no" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN" 
-omit-xml-declaration="yes"/>
--->
-
-<xsl:output method="html" encoding="iso-8859-15" indent="no" 
-omit-xml-declaration="no"/>
-
+<xsl:output
+  method="html"
+  encoding="utf-8"
+  indent="no"
+  doctype-public="-//W3C//DTD HTML 4.01//EN"
+  doctype-system="http://www.w3.org/TR/html4/strict.dtd"
+  omit-xml-declaration="yes"
+  cdata-section-elements=""
+/>
 
 
 <xsl:variable name="baseurl"><xsl:value-of select="$def_online"/>/</xsl:variable>
@@ -30,28 +46,50 @@ omit-xml-declaration="no"/>
 <xsl:template match="guide|info">
   <html>
   <head>
-
-
-
-    <title>Gentoo Linux - Das deutschprachige Portal</title>
+    <title>Gentoo Linux - Das deutschsprachige Portal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="{$styleurl}index.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="{$styleurl}print.css" media="print"/>    
     <link rel="shortcut icon" href="{$baseurl}favicon.ico" type="image/x-icon"/>
-    <script type="text/javascript" src="{$scripturl}index.js"></script>
+    <script type="text/javascript" src="{$scripturl}corelib.js"></script>
     <style type="text/css"><![CDATA[img { behavior: url("]]><xsl:value-of select="$scripturl"/>pngbehavior.htc<![CDATA["); }]]></style>
   </head>
 
-  <body onclick="__body()">
+  <body onclick="menu.closeAll()">
 
   <xsl:call-template name="menu"/>
   
+  <div id="logo_bg">&#160;</div>
+
   <div id="logo">
-    <a href="{$baseurl}/index.html" title="Zur Gentoo.de-Startseite">    
-      <img src="{$imageurl}logo/logo.jpg" height="105" width="272" alt="Gentoo Linux Logo"/>
-    </a>  
-  </div>
-  <div id="logobk">
-    <img src="{$imageurl}logo/title.jpg" height="88" width="218" alt="Gentoo Linux - Das deutschsprachige Portal"/>
+    <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+    
+    <td style="width: 50%" valign="top">
+      <img src="{$imageurl}logo/title.jpg" height="88" width="218" alt="Gentoo Linux - Das deutschsprachige Portal"/>
+    </td>
+    
+    <td style="width: 272px">
+      <a href="{$baseurl}/index.html" title="Zur Gentoo.de-Startseite">    
+        <img src="{$imageurl}logo/logo.jpg" height="105" width="272" alt="Gentoo Linux Logo"/>
+      </a>  
+    </td>
+    
+    <td valign="bottom" align="right" style="width: 50%">
+      <form method="get" action="/cgi-bin/perlfect/search/search.pl" style="margin-bottom: 30px">
+        <p>
+        <input type="hidden" name="p" value="1"/>
+	<input type="hidden" name="lang" value="de"/>
+
+
+	<input type="hidden" name="penalty" value="0"/>
+	<input type="hidden" name="mode" value="any"/>
+	<input type="text" name="q" value="Suchbegriff" size="20"/>
+	</p>
+      </form>
+    </td>  
+    
+    </tr>
+    </table>
   </div>  
 
   <div id="about">
@@ -83,6 +121,7 @@ omit-xml-declaration="no"/>
         <xsl:apply-templates select="abstract"/>
       </p>
     
+      <xsl:if test="count(//uri) &gt; 0">
       <h4><xsl:value-of select="$lng_links"/></h4>
       <p>
         <xsl:for-each select="//uri">
@@ -93,7 +132,7 @@ omit-xml-declaration="no"/>
             </xsl:choose>
           </xsl:variable>
 
-          <a href="{$uri}" target="_blank">
+          <a href="{$uri}" onclick="window.open(this.href,'_blank');return false;">
             <xsl:if test="position() &lt; 10 and count(//uri) &gt; 9">
 	      <xsl:text>0</xsl:text>
             </xsl:if>  
@@ -118,6 +157,7 @@ omit-xml-declaration="no"/>
           <br/>
         </xsl:for-each>
       </p>
+      </xsl:if>
     </xsl:if>
 
     <xsl:apply-templates select="/*/box/*"/>
@@ -125,22 +165,52 @@ omit-xml-declaration="no"/>
   </div>
 
   <div id="body">
+    <a id="top"/>
+
     <h1 style="margin-top: 0px" class="top">
       <span style="font-size: 0.8em">&gt;&gt; </span>
       <xsl:value-of select="title"/>
     </h1>
+
+    <xsl:if test="count(chapter/title) &gt; 1">
+    <form>
+      <b>Inhalte</b>:
+      <select name="url" size="1" class="jumpbox"
+        onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
+        <option value="---">&#187;&#187; Bitte Kapitel auswählen</option>  
+        
+        <xsl:for-each select="chapter/title">
+          <option value="header_{position()}"><xsl:value-of select="."/></option>
+        </xsl:for-each>
+      </select>
+    </form>
+    </xsl:if>
+
     
     <xsl:apply-templates select="chapter"/>
-      
+    
     <br/><br/>
     <p>
-      <a href="http://validator.w3.org/check/referer"><img
-          src="http://www.w3.org/Icons/valid-html401"
-          alt="Valid HTML 4.01!" height="31" width="88"/></a>
-    </p>
+      <a href="http://validator.w3.org/check/referer">
+        <img src="{$imageurl}w3c/valid-html401.png" alt="Valid HTML 4.01!" height="31" width="88"/>
+      </a>
+
+      <!--
+      <a href="http://validator.w3.org/check/referer">
+        <img src="http://www.w3.org/Icons/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88"/>
+      </a>
+      -->
+      <!--
+      &#160;
+      <a href="http://validator.w3.org/check/referer">
+        <img src="http://www.w3.org/Icons/valid-css.png" alt="Valid CSS 2.0!" height="31" width="88"/>
+      </a>
+      -->
+    </p>    
+
   </div>
   
-  <script type="text/javascript"><![CDATA[var browser = new __browser(); var ctl = new __ctl(); __init()]]></script>
+  <script type="text/javascript" src="{$scripturl}corelib_start.js"></script>
   
   </body>
   </html>
@@ -177,6 +247,11 @@ omit-xml-declaration="no"/>
   
   <xsl:if test="title">
     <h1>
+      <xsl:attribute name="id">
+        <xsl:text>header_</xsl:text>
+        <xsl:number/>
+      </xsl:attribute>
+
       <xsl:if test="/guide">
         <span class="nr"><xsl:value-of select="$cid"/></span>
         <xsl:text> </xsl:text>
@@ -260,14 +335,17 @@ omit-xml-declaration="no"/>
       </xsl:choose>
     </xsl:attribute>
     <xsl:if test="@target">
-      <xsl:attribute name="target">
-        <xsl:value-of select="@target"/>
-   
+      <xsl:attribute name="target"><xsl:value-of select="@target"/></xsl:attribute>
 
-      
+
+    </xsl:if>
+    <!-- XHTML erlaubt kein echtes Target mehr 
+    <xsl:if test="@target">
+      <xsl:attribute name="onclick">
+        <xsl:text>window.open(this.href,'_blank');return false;</xsl:text>
       </xsl:attribute>
     </xsl:if>
-
+    -->
     <xsl:apply-templates/>
   </a>
 </xsl:template>
@@ -346,7 +424,10 @@ omit-xml-declaration="no"/>
 <xsl:template match="pre">
   <xsl:variable name="prenum"><xsl:number level="any"/></xsl:variable>
   <xsl:variable name="preid">doc_pre<xsl:number level="any"/></xsl:variable>
-  <a name="{$preid}"/>
+  <!-- produziert merkwuerdige Fehler in Pfoenix 0.5...
+       wird zur Zeit auch nicht benoetigt denke ich... (SW, 23.12.2002)
+  <a id="{$preid}"/>
+  -->
   
   <div class="codetitle">
     <xsl:text>Befehlsauflistung </xsl:text>
