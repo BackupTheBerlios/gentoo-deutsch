@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/doc-unmaint.xml,v 1.2 2003/12/05 13:01:18 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/doc-unmaint.xml,v 1.3 2003/12/06 23:22:11 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/doc-unmaint/">
@@ -61,12 +61,12 @@ Entwicklerseite</uri>
   <tr>
   <ti>ldap-howto.xml</ti>
   </tr>
-  <tr>
-  <ti>ltsp.xml</ti>
-  </tr>
 <!--  <tr>
-  <ti>lvm.xml</ti>
+  <ti>ltsp.xml</ti>
   </tr>-->
+  <tr>
+  <ti>lvm.xml</ti>
+  </tr>
   <tr>
   <ti>management-structure.xml</ti>
   </tr>

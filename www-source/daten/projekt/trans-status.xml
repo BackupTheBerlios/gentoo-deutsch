@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/trans-status.xml,v 1.4 2003/12/05 12:58:33 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/trans-status.xml,v 1.5 2003/12/06 23:23:28 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/hb-status/">
@@ -57,6 +57,10 @@ Entwicklerseite</uri>
   <tr>
   <ti>gnupg</ti>
   <ti>.</ti>
+  </tr>
+  <tr>
+  <ti>ltsp.xml</ti>
+  <ti>Gero Kunter</ti>
   </tr>
   <tr>
   <ti>mutt.xml</ti>
