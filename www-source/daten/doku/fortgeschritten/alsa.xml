@@ -183,6 +183,9 @@ an ALSA_CARDS &#252;bergeben werden, z.B. so:  <c>env ALSA_CARDS='emu10k1 intel8
 compatibility wrapper auf Ihrem System einzurichten. 
 </note>
 
+<note>
+Die Angabe der ALSA-Matrix stimmt für den in vielen ACER Notebooks verwendeten M4145-chip nicht. Das gesuchte Modul heisst "ali5451"
+</note>
 </p>
 <p>
 Mit diesen wenigen Handgriffen, sollten die ALSA Module bereits auf Ihrem System installiert sein.
@@ -210,7 +213,7 @@ Ihrem System angeben (im Normalfall ist dies nur eine einzige).
 <p>
 <pre caption="Am Anfang von of /etc/modules.d/alsa">
 # Alsa 0.9.X kernel modules' configuration file.
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/fortgeschritten/Attic/alsa.xml,v 1.4 2003/09/04 17:50:08 beejay Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/fortgeschritten/Attic/alsa.xml,v 1.5 2003/10/16 18:43:39 jay Exp $
 
 # ALSA portion
 alias char-major-116 snd
