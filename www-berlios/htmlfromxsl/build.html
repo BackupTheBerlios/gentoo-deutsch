@@ -32,8 +32,8 @@
 <option value="#doc_chap10">10. Rsync</option>
 <option value="#doc_chap11">11. Von &quot;stage1&quot; zu &quot;stage2&quot;</option>
 <option value="#doc_chap12">12. Von &quot;stage2&quot; zu &quot;stage3&quot;</option>
-<option value="#doc_chap13">13. Final steps: timezone</option>
-<option value="#doc_chap14">14. Final steps: kernel and system logger</option>
+<option value="#doc_chap13">13. Letzte Schritte: Zeitzone</option>
+<option value="#doc_chap14">14. Letze Schritte: Kernel und System Logger</option>
 <option value="#doc_chap15">15. Final steps: install additional packages</option>
 <option value="#doc_chap16">16. Final steps: /etc/fstab</option>
 <option value="#doc_chap17">17. Installation complete!</option></select>
@@ -661,54 +661,57 @@ Wars - Super Bombad Racing&quot; für die PS2. Wenn <font class="code">emerge sys
 sind Sie auf dem Stand des &quot;stage3&quot; Archivs.</p>
 
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap13">13.</a></font>Final steps: timezone</p>
+<font class="chapnum"><a name="doc_chap13">13.</a></font>Letzte Schritte: Zeitzone</p>
 
-<p>At this point, you should have a stage3 system that's ready for final configuration.  We'll start this process by setting the timezone.  By setting the timezone before building the kernel we ensure that
-users get reasonable <font class="code">uname -a</font> output.</p>
-<p>Look for your timezone (or GMT if you using Greenwich Mean Time) in <font class="path">/usr/share/zoneinfo</font>.  Then, make a symbolic link by typing:
-</p>
+<p>Sie sollten nun ein &quot;stage3&quot; System haben, das zur abschließenden Konfiguration bereit ist.
+Sie beginnen mit dem Einstellen der Zeitzone. Durch setzen der Zeitzone bevor der Kernel
+gebaut wird, stellen Sie sicher, das Sie eine sinnvolle <font class="code">uname -a</font> Ausgabe bekommen.</p>
+
+<p>Sie finden die Zeitzonendateien (oder GMT wenn Sie Greenwich Mean Time einstellen wollen)
+in <font class="path">/usr/share/zoneinfo</font>. Erstellen Sie nun einen symbolischen Link:</p>
+
 <a name="doc_pre23"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 23</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
-# <font class="input">ln -sf /usr/share/zoneinfo/path/to/timezonefile /etc/localtime</font>
+# <font class="input">ln -sf /usr/share/zoneinfo/pfad/zur/zeitzonendatei /etc/localtime</font>
 </pre></td></tr>
 </table>
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap14">14.</a></font>Final steps: kernel and system logger</p>
+<font class="chapnum"><a name="doc_chap14">14.</a></font>Letze Schritte: Kernel und System Logger</p>
 <p>
-If you're installing a Gentoo Linux 1.1+ stage3 tarball, we've made things convenient
-for you and included recent Linux sources in <font class="path">/usr/src/linux</font>.
-Otherwise, you'll need to merge Linux source ebuilds.  Here are the ones we currently
-offer:</p>
+Wenn Sie mit dem &quot;stage3&quot; Archiv installieren erleichtern wir Ihnen die Arbeit durch 
+bereitstellen der aktuellen Linux Quellen in <font class="path">/usr/src/linux</font>.
+Ansonsten müssen Sie die Linux Quellen von mit <font class="code">emerge</font> nachinstallieren.
+Zur Zeit bieten wir folgende Pakete (ebuilds) an:</p>
 <table class="ntable">
 <tr>
 <td bgcolor="#7a5ada" class="infohead"><b>ebuild</b></td>
-<td bgcolor="#7a5ada" class="infohead"><b>description</b></td>
+<td bgcolor="#7a5ada" class="infohead"><b>Beschreibung</b></td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="path">gentoo-sources</font></td>
-<td bgcolor="#ddddff" class="tableinfo">Our own performance and functionality-enhanced kernel based on -ac (doesn't include XFS support)</td>
+<td bgcolor="#ddddff" class="tableinfo">Ein von uns Leistungs- und Funktionalitätserweiterter Kernel, basierenden auf den -ac Quellen (ohne XFS Unterstützung)</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="path">xfs-sources</font></td>
-<td bgcolor="#ddddff" class="tableinfo">A snapshot of the SGI XFS CVS Linux source tree; this is the kernel to run if you're using the XFS filesystem</td>
+<td bgcolor="#ddddff" class="tableinfo">Ein Auszug aus der SGI XFS CVS Linux Quellen. Verwenden Sie diesen Kernel wenn Sie XFS verwenden wollen</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="path">openmosix-sources</font></td>
-<td bgcolor="#ddddff" class="tableinfo">A stock Linux kernel source tree patched with support for the GPL <a href="http://www.openmosix.com">openMosix</a> load-balancing/clustering technology</td>
+<td bgcolor="#ddddff" class="tableinfo">Ein Linux Kernel mit Unterstützung der GPL <a href="http://www.openmosix.com">openMosix</a> Load-Balancing/Clustering Technologie</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="path">usermode-sources</font></td>
-<td bgcolor="#ddddff" class="tableinfo">A stock Linux kernel source tree patched with support for User-Mode Linux.  (&quot;Linux inside Linux&quot; technology)</td>
+<td bgcolor="#ddddff" class="tableinfo">Ein Linux Kernel der Unterstützung für User-Mode Linux.  (&quot;Linux inside Linux&quot; Technologie)</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="path">vanilla-sources</font></td>
-<td bgcolor="#ddddff" class="tableinfo">A stock Linux kernel source tree, just like you'd get from kernel.org</td>
+<td bgcolor="#ddddff" class="tableinfo">Die unveränderten Linux Kernel Quellen von kernel.org</td>
 </tr>
 </table>
 
-<p>Choose one and then merge as follows:</p>
+<p>Wählen Sie einen aus und installieren Sie ihn wie folgt:</p>
 
 <a name="doc_pre24"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -718,8 +721,8 @@ offer:</p>
 </pre></td></tr>
 </table>
 
-<p>Once you have a Linux kernel source tree available, it's time to compile your own custom kernel:
-</p>
+<p>Sobald Sie die Linux Quellen installiert haben, können Sie Ihren eigenen Kernel kompilieren:</p>
+
 <a name="doc_pre25"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 25</p></td></tr>
@@ -727,51 +730,49 @@ offer:</p>
 # <font class="input">cd /usr/src/linux</font>
 # <font class="input">make menuconfig</font>
 # <font class="input">make dep &amp;&amp; make clean bzImage modules modules_install</font>
-# <font class="input">mv /boot/bzImage /boot/bzImage.orig</font> <font class="comment">[if bzImage already exists]</font>
+# <font class="input">mv /boot/bzImage /boot/bzImage.orig</font> <font class="comment">[falls bzImage bereits existiert]</font>
 # <font class="input">cp /usr/src/linux/arch/i386/boot/bzImage /boot</font>
 </pre></td></tr>
 </table>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
-<b>Warnung: </b>For your kernel to function properly, there are several options that you will
-need to ensure are in the kernel proper -- that is, they should <font class="input">be enabled and not
-compiled as modules</font>.  You will need to enable the <font class="input">&quot;Code maturity
-level options --&gt; Prompt for development and/or incomplete code/drivers&quot;</font>
-option to see several of these selections.
-Under the &quot;File systems&quot; section, be sure to enable the <font class="input">&quot;Device File System&quot;</font> (note that
-you <font class="emphasis">don't</font> need to enable the &quot;/dev/pts file system support&quot; option). You'll also
-need to enable the <font class="input">&quot;Virtual Memory Filesystem&quot;</font>.  Be sure to enable &quot;ReiserFS&quot; if you have
-any ReiserFS partitions; the same goes for &quot;Ext3&quot;.  If you're using XFS, enable the 
-&quot;SGI XFS filesystem support&quot;
-option.  It's always a good idea to leave ext2
-enabled whether you are using it or not.    Also, most people using IDE hard drives will
-want to enable the &quot;USE DMA by default&quot; option; otherwise, your IDE drives may perform
-very poorly.  Of course, remember to enable &quot;IDE disk&quot; support as well -- otherwise your
-kernel won't be able to see your IDE disks.
-</p></td></tr></table>
+<b>Warnung: </b>
+Damit Ihr Kernel fehlerfrei funktioniert müssen Sie sicherstellen, das einige wichtige
+Optionen <font class="input">aktiviert sind und nicht als Modul kompiliert</font> werden. Sie müssen die
+Option <font class="input">&quot;Code maturity level options --&gt; Prompt for development and/or incomplete code/drivers&quot;</font>
+aktivieren damit alle nötigen Optionen verfügbar sind.
+Im Menü &quot;File systems&quot; aktivieren Sie den Punkt <font class="input">&quot;Device File System&quot;</font> (beachten Sie, dass
+Sie die &quot;/dev/pts file system support&quot; Option <font class="emphasis">nicht</font> aktivieren müssen). Sie müssen
+außerdem noch den Punkt <font class="input">&quot;Virtual Memory Filesystem&quot;</font> aktivieren. Entsprechend der 
+Dateisysteme die Sie verwenden wollen, aktivieren die Unterstützung für ReiserFS 
+(&quot;Reiserfs support&quot;), Ext3 (&quot;Ext3 journalling file system support&quot;) oder 
+XFS (&quot;SGI XFS filesystem support&quot;). Es ist immer eine gute Idee auch die Unterstützung 
+Ext2 (&quot;Second extended fs support&quot;) einzubinden auch wenn Sie es nicht verwenden.
+Wenn Sie IDE Festplatten verwenden, sollten Sie zusätzlich die Option &quot;USE DMA by default&quot; aktivieren,
+da die Festplatten sonst sehr langsam sind. Natürlich muss dazu die Unterstützung für IDE Festplatten 
+(&quot;IDE disk support&quot;) einkompiliert werden, da der Kernel diese Platten sonst nicht sieht.</p></td></tr></table>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
-For those who prefer it, 
-it is now possible to install Gentoo Linux with a 2.2 kernel.
-Such stability will come at a price: 
-you will lose many of the nifty features that
-are new to the 2.4 series kernels (such as XFS and tmpfs
-filesystems, iptables, and more), although the 2.2 kernel sources can be
-patched with Reiserfs and devfs support.  
-Gentoo linux bootscripts require either tmpfs or ramdisk support in the kernel, so 
-2.2 kernel users need to make sure that ramdisk support is compiled in (ie, not a module).
-It is <font class="comment">vital</font> that a <font class="emphasis">gentoo=notmpfs</font> flag be added to the kernel
-line in <font class="path">/boot/grub/menu.lst</font> for the 2.2 kernel so that a ramdisk is mounted
-for the bootscripts instead of tmpfs.  If you choose not to use devfs, then
-<font class="emphasis">gentoo=notmpfs,nodevfs</font> should be used instead.
+Wenn Sie einen Kernel der 2.2er Serie vorziehen, ist es nun möglich einen solchen 
+zu installieren. Die Stabilität die ein solcher Kernel bietet hat aber ihren Preis:
+Sie verlieren viele der neuen Fähigkeiten die ein 2.4er Kernel bietet (z.B.: XFS und
+tmpfs Dateisysteme, iptables, uvm.); aber es gibt Patches damit ReiserFS und devfs
+auch von einem 2.2er Kernel unterstützt werden.
+Die Gentoo Linux Boot Scripte benötigen entweder &quot;tmpfs&quot; oder &quot;ramdisk&quot; Support im
+Kernel, d.h. Anwender des 2.2er Kernels müssen sicherstellen das der Kernel 
+mit &quot;ramdisk support&quot; kompiliert wird (nicht als Modul). Es ist <font class="emphasis">entscheidend</font>
+das bei einem 2.2er Kernel in der <font class="path">/boot/grub/menu.lst</font> die Option
+<font class="emphasis">gentoo=notmpfs</font> angegeben wird, damit von den Boot Scripten anstelle des 
+&quot;tmpfs&quot; eine Ramdisk gemountet wird. Wenn Sie auch auf devfs verzichten wollen
+trage Sie dort stattdessen <font class="emphasis">gentoo=notmpfs,nodevfs</font> ein.
 </p></td></tr></table>
 
-<p>
-Your new custom kernel (and modules) are now installed.  Now you need to choose a system
-logger that you would like to install.  We offer sysklogd, which is the traditional set
-of system logging daemons.  We also have syslog-ng as well as metalog.  Power users seem
-to gravitate away from sysklogd (not very good performance) and towards syslog-ng and 
-metalog.  If in doubt, you may want to try metalog, since it seems to be quite popular.
-To merge your logger of choice, type <font class="emphasis">one</font> of the next three lines:
+<p>Ihr eigener Kernel (und die Modules) sind jetzt installiert. Als nächstes sollten
+Sie das Logsystem installieren. Wir bieten <font class="code">sysklogd</font>, das übliche Set von 
+&quot;logging daemons&quot;. Außerdem stehen noch <font class="code">syslog-ng</font> und <font class="code">metalog</font> zur
+Verfügung.Power User scheinen sich von sysklogd (schlechte Performance) abzuwenden und
+sich für syslog-ng oder metalog zu entscheiden. Wenn Sie sich nicht sicher sind, 
+versuchen Sie metalog, da es ziemlich populär zu sein scheint.
+Um einen der Logger zu installieren, tippen Sie <font class="emphasis">eine</font> der folgenden drei Zeilen: 
 </p>
 
 <a name="doc_pre26"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -780,48 +781,48 @@ To merge your logger of choice, type <font class="emphasis">one</font> of the ne
 <tr><td bgcolor="#ddddff"><pre>
 # <font class="input">emerge sys-apps/sysklogd</font>
 # <font class="input">rc-update add sysklogd default</font>
-<font class="comment">or</font>
+<font class="comment">oder</font>
 # <font class="input">emerge app-admin/syslog-ng</font>
 # <font class="input">rc-update add syslog-ng default</font>
-<font class="comment">or</font>
+<font class="comment">oder</font>
 # <font class="input">emerge app-admin/metalog</font>
 # <font class="input">rc-update add metalog default</font>
 </pre></td></tr>
 </table>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
 <b>Warnung: </b>
-In the case of syslog-ng you need to create 
-<font class="path">/etc/syslog-ng/syslog-ng.conf</font>.
-See <font class="path">/etc/syslog-ng</font> 
-for a sample configuration file.
-</p></td></tr></table>
+Wenn Sie syslog-ng installieren müssen Sie auch <font class="path">/etc/syslog-ng/syslog-ng.conf</font> erstellen.
+Eine Beispielkonfiguration finden Sie in <font class="path">/etc/syslog-ng</font> </p></td></tr></table>
+
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
 <b>Wichtig: </b>
-Metalog flushes output to the disk in blocks, so messages aren't immediately recorded into
-the system logs.  If you are trying to debug a daemon, this performance-enhancing behavior is less than helpful.  When your
-Gentoo Linux system is up and running, you can send
-metalog a USR1 signal to temporarily turn off this message buffering (meaning that 
-<font class="input">tail -f <font class="path">/var/log/everything/current</font></font> will now work 
-in real time, as expected), 
-and a USR2 signal to turn buffering back on
-again. 
-</p></td></tr></table>
-<p>Now, you may optionally choose a cron package that you'd like to use.  Right now, we offer dcron, fcron and vcron.
-If you don't know which one to choose, you might as well grab vcron.  They can be installed as follows:</p>
+Metalog schreibt seine Daten blockweise auf die Festplatte was bewirkt, das Nachrichten
+nicht sofort in den Logdateien auftauchen. Wenn sie versuchen einen Daemon zu debuggen,
+ist dieses Verhalten weniger hilfreich. Wenn Sie Ihr Gentoo Linux System in Gang gebracht 
+haben, können Sie Metalog mit dem USR1 Signal veranlassen das Puffern der Nachrichten 
+temporär zu deaktivieren (was bedeutet, das <font class="input">tail -f <font class="path">/var/log/irgendwas</font></font>
+wie erwartet in Echtzeit arbeitet). Mit dem USR2 Signal schalten Sie den Datenpuffer 
+wieder ein.</p></td></tr></table>
+
+<p>
+Sie können jetzt ein beliebiges &quot;cron&quot; Paket zur Installation auswählen. Momentan bieten wir
+&quot;dcron&quot;, &quot;fcron&quot;, &quot;vcron&quot; an. Wenn Sie nicht wissen welches Sie nehmen sollen, nehmen Sie 
+&quot;vcron&quot;. Installiert wird folgendermaßen:</p>
 <a name="doc_pre27"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 27</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 # <font class="input">emerge sys-apps/dcron</font>
 # <font class="input">crontab /etc/crontab</font>
-<font class="comment">or</font>
+<font class="comment">oder</font>
 # <font class="input">emerge sys-apps/fcron</font>
 # <font class="input">crontab /etc/crontab</font>
-<font class="comment">or</font>
+<font class="comment">oder</font>
 # <font class="input">emerge sys-apps/vcron</font>
 </pre></td></tr>
 </table>
-<p>For more information how how cron works under Gentoo Linux, see <a href="http://lists.gentoo.org/pipermail/gentoo-announce/2002-April/000151.html">this announcement</a>.</p>
+<p>Nähere Informationen darüber wie &quot;cron&quot; bei Gentoo Linux arbeitet finden Sie
+<a href="http://lists.gentoo.org/pipermail/gentoo-announce/2002-April/000151.html">hier</a>.</p>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap15">15.</a></font>Final steps: install additional packages</p>
 <p>
