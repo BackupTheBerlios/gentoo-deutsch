@@ -684,17 +684,18 @@ diff -Nru mp3-0.9.0.orig/mp3.c mp3-0.9.0/mp3.c
 diff -Nru mp3-0.9.0.orig/player-mplayer.c mp3-0.9.0/player-mplayer.c
 --- mp3-0.9.0.orig/player-mplayer.c	2004-04-30 22:19:56.000000000 +0200
 +++ mp3-0.9.0/player-mplayer.c	2004-05-17 19:39:32.000000000 +0200
-@@ -91,6 +91,13 @@
+@@ -91,6 +91,14 @@
  
  cMPlayerPlayer::~cMPlayerPlayer()
  {
-+  while(pid!=-1 || !waitpid(pid,0,WNOHANG)) {
++ if( pid != -1)
++   while(!waitpid(pid,0,WNOHANG)) {
 +    kill(pid,SIGKILL); // kill it anyways
 +    d(printf(" SIGKILL"));
 +    usleep(250*1000);
 +    d(printf("."));
-+  }
-+  
++     }  
++ 
    Detach();
    ClosePipe();
    free(filename);
