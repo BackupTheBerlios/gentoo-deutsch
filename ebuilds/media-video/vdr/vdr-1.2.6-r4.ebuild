@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.10 2004/01/04 21:45:15 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.11 2004/01/24 08:21:09 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -23,7 +23,7 @@ SRC_URI="
 		http://www.magoa.net/linux/files/icons.tar.gz
 		"
 
-KEYWORDS="~x86"
+KEYWORDS="x86"
 SLOT="0"
 LICENSE="GPL-2"
 

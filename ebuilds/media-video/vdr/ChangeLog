@@ -1,8 +1,10 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.36 2004/01/04 20:30:35 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.37 2004/01/24 08:21:09 mad Exp $
 
 *vdr-1.2.6-r4
+  24 Jan 2004; M.Hierling <mad@cc.fh-lippe.de>
+  marked as stable for x86 tree
 
   7 Jan 2004; H.Ryll <henning.ryll@web.de>
   Optional 256 Color OSD added VDR_OPTS=256color
