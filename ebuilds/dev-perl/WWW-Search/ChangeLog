@@ -1,0 +1,9 @@
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-perl/WWW-Search/ChangeLog,v 1.1 2003/12/05 04:16:47 shermann Exp $
+
+*WWW-Search-2.45.0 (04 Dec 2003)
+
+  04 Dec 2003; Stephan Hermann <sh@sourcecode.de> :
+  Initial import.  
+ 
