@@ -4,7 +4,7 @@
 <xsl:output method="html" encoding="iso-8859-15" indent="no"/>
 
 <xsl:template match="cgi:result_list">
-  <table class="resultlist">
+  <table class="resultlist" cellpadding="0" cellspacing="0" border="0">
   <![CDATA[<!--loop: results-->]]>
     <tr>
       <td class="rank">

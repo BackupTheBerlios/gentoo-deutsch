@@ -247,12 +247,14 @@ table.resultlist td.rank{
 	font-size: 1.3em;
 	font-weight: bold;
         background-color:#45347B;  
+	color: #FFFFFF;  
 }
 
 table.resultlist td.title{
 	font-size: 1.1em;
 	font-weight: bold;
-        background-color:#45347B;  
+        background-color:#45347B;
+	color: #FFFFFF;  
 }
 
 table.resultlist td.info{
