@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.1.26.ebuild,v 1.2 2003/04/03 18:15:34 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.1.26.ebuild,v 1.3 2003/04/11 17:22:53 mad Exp $
 
 IUSE="lirc rcu vdr_elchi vdr_vfat"
 
@@ -47,8 +47,21 @@ src_install() {
 	dodoc CONTRIBUTORS COPYING README INSTALL MANUAL HISTORY
 	dohtml PLUGINS.html
 	doman vdr.[15] 
+
+	dolib.a libdtv/libdtv.a
+	dolib.a libdtv/liblx/liblx.a
+	dolib.a libdtv/libsi/libsi.a
+	dolib.a libdtv/libvdr/libvdr.a
+
 	insinto /usr/include/vdr
 	doins *.h
+	doins libdtv/liblx/liblx.h
+	doins libdtv/libsi/si_debug_services.h
+	doins libdtv/libsi/include/libsi.h
+	doins libdtv/libsi/include/si_tables.h
+	doins libdtv/libvdr/libvdr.h
+	doins libdtv/libdtv.h
+
 	exeinto /usr/bin
 	doexe vdr
 	doexe ${FILESDIR}/vdrwatchdog.sh 
