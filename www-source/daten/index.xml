@@ -12,7 +12,7 @@
     <title>Quick Links:</title>
     <p>
 		<ul>
-			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 06.10.03)</uri></b></li>
+			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 13.10.03)</uri></b></li>
 			<li><uri link="http://tobias.scherbaum.info/gentoo/faq" target="_blank">Gentoo FAQ</uri></li>
 			<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
 	     		<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
@@ -141,18 +141,6 @@
 		<uri link="http://cvsbook.red-bean.com/translations/german/">CVS nichts am Hut</uri> hat, findet sicher
 		jemanden der einem bei der Bedienung behilflich ist. ;)
   	</p>
-	</body>
-</section>
-
-<section>
-	<title>Planung des Usertreffens</title>
-	<body>
-	<p>
-		Nachdem sich nun alle in die Liste für das Usertreffen eingetragen haben, stellt sich
-		nun die Frage, wo dieses stattfinden soll. Zu diesem Zweck haben phoen][x und cybersystem
-		eine interaktive Karte eingerichtet, auf der Ihr Euch eintragen könnt. Die Karte sollte
-		weitestgehend selbsterklärend sein. Ihr findet die Karte <uri link="http://cybersystem.iq-computing.de/gentoo">hier</uri>
-	</p>
 	</body>
 </section>
 

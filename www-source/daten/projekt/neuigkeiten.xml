@@ -22,6 +22,18 @@
 
 <section>
 	<body>
+	<news type="news" date="13.10.2003" title="Gentoo-Newsletter">
+		<p>
+			Im aktuellen Newsletter gibt es Erläuterungen zum Übergang von Gnome 2.4 nach x86, die Sicherheitsmeldungen,
+			 das Entwicklerportratir der Woche und natürlich die restlichen berühmt-verüchtigten Rubriken.
+			<uri link="http://www.gentoo.org/news/de/gwn/20031013-newsletter.xml">Viel Spass beim Lesen</uri> ;)
+		</p>
+	</news>
+	</body>
+</section>
+
+<section>
+	<body>
 	<news type="news" date="06.10.2003" title="Gentoo-Newsletter">
 		<p>
 			In dieser Woche gibt es das Ergebnis eines weiteren Vergleichsbenchmarks zwischen
