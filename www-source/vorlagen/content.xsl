@@ -479,7 +479,7 @@
 		<span style="font-size:small;"><xsl:value-of select="@date"/></span><br/>
 		<span style="font-weight:bold; font-size:large;"><xsl:value-of select="@title"/></span><br/>
 	</p>
-	<p style="font-size:medium; background-color:#F5F5F5; padding:3px; margin-top:0px">
+	<p style="font-size:medium; padding:3px; margin-top:0px">
 		<table>
 			<tr>
 				<td>
