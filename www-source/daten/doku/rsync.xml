@@ -1,14 +1,18 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/rsync.xml,v 1.2 2003/12/12 15:55:12 dertobi123 Exp $ -->
+
 <!-- English CVS Version: 1.2 -->
 
 <guide link="/doc/de/rsync.xml">
-
 <title>Gentoo Linux Rsync-Mirror-Politik</title>
-
-<author title="Autor"><mail link="mirror-admin@gentoo.org">Gentoo Mirror Administrators</mail></author>
-<author title="&#220;bersetzung"><mail link="moixa@users.berlios.de">Tobias Sager</mail></author>
+<author title="Autor">
+  <mail link="mirror-admin@gentoo.org">Gentoo Mirror Administrators</mail>
+</author>
+<author title="Übersetzung">
+  <mail link="moixa@users.berlios.de">Tobias Sager</mail>
+</author>
 
 <version>1.2</version>
 <date>4. Dezember 2003</date>
@@ -17,7 +21,6 @@
 
 <chapter>
 <title>Anforderungen</title>
-
 <section>
 <title>Minimale Bandbreite</title>
 <body>
@@ -29,10 +32,8 @@ einen Mirror angemessen betreiben zu können.
 
 </body>
 </section>
-
 <section>
 <title>Minimale Useranzahl</title>
-
 <body>
 
 <p>
@@ -42,49 +43,45 @@ tragen können.
 
 </body>
 </section>
-
 <section>
 <title>Minimale Hardware</title>
 
 <body>
 
 <p>
-Um 15 gleichzeitige User effizient bedienen zu können, bitten wir Sie
+Um gleichzeitig 15 User effizient bedienen zu können, bitten wir Sie
 darum, die folgenden Hardware-Mindestanforderungen zu erfüllen:
 </p>
 
 <ul>
-	<li>PIII 500 Prozessor</li>
-	<li>256MB RAM</li>
+  <li>PIII 500 Prozessor</li>
+  <li>256MB RAM</li>
 </ul>
 
 </body>
 </section>
-
 <section>
 <title>Update-Häufigkeit</title>
 
 <body>
 
 <p>
-Updates müssen 24 Stunden am Tag um :00 und :30 jede Stunde erfolgen.
+Updates müssen 24 Stunden am Tag um :00 und :30 jeder Stunde erfolgen.
 Es ist <e>sehr</e> wichtig, dass dieser Zeitplan exakt eingehalten wird,
 weil wir ein Round-Robin DNS-System einsetzen, um den aktuellen
 User-Rsync-Server zu bestimmen.
 </p>
 
 <impo>
-Dies wird strikte durchgesetzt, weil ein solcher "out of sync"-Server
+Dies wird strikt durchgesetzt, weil ein solcher "out of sync"-Server
 grossen Verkehr für alle im Prozess beteiligten Server erzeugen kann 
 (siehe FAQ für weitere Details).
 </impo>
 
 </body>
 </section>
-
 <section>
 <title>MOTD (<path>/etc/rsync/rsyncd.motd</path>)</title>
-
 <body>
 
 <p>
@@ -93,9 +90,9 @@ enthalten sein:
 </p>
 
 <ul>
-	<li>Server Name</li>
-	<li>Server IP-Adresse</li>
-	<li>Server Spezifikationen (CPU und RAM)</li>
+  <li>Server Name</li>
+  <li>Server IP-Adresse</li>
+  <li>Server Spezifikationen (CPU und RAM)</li>
   <li>Verfügbare Bandbreite</li>
   <li>User-Verbindungs-Limiten, falls vorhanden</li>
   <li>Server Standort (Stadt und Land)</li>
@@ -113,7 +110,6 @@ es einfacher, einen Mirror im Falle eines Problems zu identifizieren.
 
 <chapter>
 <title>Details zur Implementierung</title>
-
 <section>
 <body>
 
@@ -122,31 +118,31 @@ Um einen neuen Mirror aufzusetzen, befolgen Sie bitte die folgenden Schritte:
 </p>
 
 <ul>
-  <li>
+<li>
   Konfigurieren Sie Ihren Mirror so, dass er zu einem bereits existierenden
   öffentlichen Gentoo Linux - Mirror synchronisiert. Es spielt keine Rolle,
   welchen Mirror Sie wählen. Stellen Sie aber bitte sicher, dass Sie gemäss
   unseren <e>Update Häufigkeits</e>-Angaben oben synchronisieren.
-  </li>
-  <li>
+</li>
+<li>
   Füllen Sie einen Bug-Report auf
   <uri link="http://bugs.gentoo.org">bugs.gentoo.org</uri> aus, der Ihren
   Server-Namen, die IP-Adresse, Kontaktinformationen und die Tatsache enthält,
   dass Sie neuer Rsync-Mirror werden wollen. Wir werden überprüfen,
-  dass Ihr Server korrekt synchronisiert. Wenn er nicht exakt um :00 und :30
+  ob Ihr Server korrekt synchronisiert. Wenn er nicht exakt um :00 und :30
   syncronisiert, werden wir Sie kontaktieren und auffordern, den Zeitplan
-  zu ajustieren.
-  </li>
-  <li>
+  zu adjustieren.
+</li>
+<li>
   Sobald wir sichergestellt haben, dass der Server korrekt läuft, fügen wir
   die IP-Adresse zur rsync1.us.gentoo.org-Zugriffsliste hinzu.
-  </li>
-  <li>
+</li>
+<li>
   Ändern Sie ihren Rsync-Cronjob, damit er auf
   <path>rsync1.us.gentoo.org</path> zeigt. Wir beobachten Ihren Server über
   die nächsten 48 bis 72 Stunden, um sicherzustellen, dass er korrekt
   synchronisiert.
-  </li>
+</li>
 </ul>
 
 <p>
@@ -159,7 +155,7 @@ den ersten Rsync-Verkehr sehen.
 
 <p>
 Daneben werden Sie, der Mirror-Administrator, zur gentoo-mirrors Mailingliste
-(wenig Mailverkehr) hinzugefügt, um Sie bei allfälligen Problemen mit
+(wenig Mailverkehr) hinzugefügt, um Sie bei eventuellen Problemen mit
 Rsync-Mirrors auf dem Laufenden zu halten.
 </p>
 
@@ -176,7 +172,6 @@ und füllen einen Bug zum Produkt "Rsync" aus.
 
 <chapter>
 <title>Parallele Aufgaben</title>
-
 <section>
 <body>
 
@@ -203,12 +198,8 @@ aus dem RR-Schema entfernt.
 
 <chapter>
 <title>Kurze FAQ</title>
-
 <section>
-<title>
-Q: Wen sollte ich betreffend Rsync-Problemen und -Unterhalt kontaktieren?
-</title>
-
+<title>Q: Wen sollte ich betreffend Rsync-Problemen und -Unterhalt kontaktieren?</title>
 <body>
 
 <p>
@@ -218,23 +209,19 @@ und füllen Sie einen Bug-Report zum Produkt "Rsync" aus.
 
 </body>
 </section>
-
 <section>
-<title>
-Q: Ich betreibe einen privaten Rsync-Mirror für meine Firma. Darf ich
-trotzdem auf rsync1.us.gentoo.org zugreifen?
-</title>
-
+<title>Q: Ich betreibe einen privaten Rsync-Mirror für meine Firma. Darf ich
+trotzdem auf rsync1.us.gentoo.org zugreifen?</title>
 <body>
 
 <p>
 Weil unsere verfügbaren Ressourcen limitiert sind, müssen wir sicherstellen,
-dass wir sie so verteilen, damit wir den grössten Ertrag für unsere User
+dass wir sie so verteilen, dass wir den grössten Ertrag für unsere User
 erreichen können. Demgemäss limitieren wir die Verbindung zu unserem
 Haupt-Rsync-Server und den Distfiles-Server auf offizielle öffentliche
 Mirrors. Anwender werden dazu aufgefordert, unser reguläres
 Mirror-System zu benutzen, um einen privaten Rsync-Mirror zu erstellen.
-Es sollten aber gewisse grundlegende 
+Es sollten aber gewisse grundlegende
 <uri link="http://www.gentoo.org/news/de/gwn/20030505-newsletter.xml#doc_chap1_sect3">
 Rsync Verhaltensregeln
 </uri> eingehalten werden.
@@ -242,17 +229,15 @@ Rsync Verhaltensregeln
 
 </body>
 </section>
-
 <section>
 <title>
 Q: Ist es wichtig, dass ich meinen Mirror genau um :00 und :30 jede
 Stunde synchronisiere?
 </title>
-
 <body>
 
 <p>
-A: Ja, es ist wichtig. Wenn ein User Rsync mit einem Mirror durchführt, 
+A: Ja, es ist wichtig. Wenn ein User Rsync mit einem Mirror durchführt,
 überträgt er nur die Unterschiede zwischen dem Mirror und seiner Maschine.
 Wenn Ihr Mirror anders ist und ein Benutzer einen Round-Robin-Hostnamen
 benutzt, erhöhen Sie die Menge der benötigten Bandbreite für den User,
@@ -295,7 +280,7 @@ Bandbreite benötigt hat. Dies ist drei Mal soviel wie effektiv benötigt
 würde und schadet dem Gesamteindruck des Portage-Systems. Zudem haben
 rsync2 und rsync3 je 5MB mehr übertragen als nötig gewesen wäre,
 wenn rsync2 aktuell gewesen wäre. Multiplizieren Sie dies mit der
-Anzahl Users, welche DNS Round-Robin benutzen und Sie haben eine Menge
+Anzahl Benutzer, welche DNS Round-Robin benutzen und Sie haben eine Menge
 Bandbreite verbraucht und damit nicht nur Ihre, sondern auch die Kosten
 aller anderen Mirror-Betreiber erhöht.
 </p>
@@ -315,10 +300,8 @@ einmal am Tag zu starten.
 
 </body>
 </section>
-
 <section>
 <title>Q: Wie finde ich den nahesten Mirror?</title>
-
 <body>
 
 <p>
@@ -333,13 +316,9 @@ welcher Mirror es ist. Ändern Sie ihre /etc/make.conf dementsprechend.
 
 </body>
 </section>
-
 <section>
-<title>
-Q: Kann ich Kompression benutzen, wenn ich mit rsync1.us.gentoo.org
-synchronisiere?
-</title>
-
+<title>Q: Kann ich Kompression benutzen, wenn ich mit rsync1.us.gentoo.org
+synchronisiere?</title>
 <body>
 
 <p>
@@ -356,7 +335,6 @@ diesem Server zu benutzen.
 <chapter>
 <title>Beispiel-Skripte</title>
 <section>
-
 <body>
 
 <p>
@@ -430,7 +408,7 @@ echo "End: "`date` >> $0.log 2>&amp;1
 #!/sbin/runscript
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/rsync.xml,v 1.1 2003/12/12 10:31:34 moixa Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/rsync.xml,v 1.2 2003/12/12 15:55:12 dertobi123 Exp $
 
 depend() {
         need net
@@ -454,15 +432,14 @@ stop() {
 
 <p>
 Ihr rsyncd.motd sollte Ihre IP-Adresse und andere relevante Informationen
-über Ihren Mirror enthalten. Zum Beispiel Hinweise über den Host, der 
+über Ihren Mirror enthalten. Zum Beispiel Hinweise über den Host, der
 den Mirror zur Verfügung stellt und einen administrativen Kontakt.
 Nachdem Sie als offizieller Rsync-Mirror anerkannt wurden, wird
-Ihr Host einen Alias in der Form 
+Ihr Host einen Alias in der Form
 <path>rsync[nummer].[ländercode].gentoo.org</path> bekommen.
 </p>
 
 </body>
 </section>
 </chapter>
-
 </guide>
