@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/xml-guide.xml,v 1.8 2003/11/19 21:35:28 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/xml-guide.xml,v 1.9 2003/11/19 21:45:24 jay Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version: 1.23 -->
@@ -10,8 +10,7 @@
 <author title="Editor">
   <mail link="drobbins@gentoo.org">Daniel Robbins</mail>
 </author>
-<author title="Author"><!-- zhen@gentoo.org -->
-  John P. Davis
+<author title="Author"><!-- zhen@gentoo.org -->John P. Davis
 </author>
 <author title="Editor">
   <mail link="peesh@gentoo.org">Jorge Paulo</mail>
@@ -99,7 +98,7 @@ einem Guide-XML-Dokument verwendet werden:
 &lt;/author&gt;
 
 &lt;abstract&gt;<i>
-Dieser Leitfaden erklärt ihnen, wie Sie Dokumente mit Hilfe der neuen 
+Dieser Leitfaden erklärt Ihnen, wie Sie Dokumente mit Hilfe der neuen 
 minimalitischen Gentoo GuideXML Syntax erstellen können.
 Diese Syntax stellt das offizielle Format für Gentoo-Linux-Dokumente dar - 
 auch dieses Dokument wurde mit Hilfe der Gentoo's Guide-XML erstellt. 
@@ -442,22 +441,23 @@ einfach <c>&lt;uri link="doc_chap2_pre2"&gt;Quelltextbeispiel 2.2&lt;/uri&gt;</c
 In Zukunft werden weitere Möglichkeiten, der automatischen Verknüpfung 
 (wie z.B. Unterstützung von Tabellen) hinzukommen.
 </p>
-  	 <p>
-	Allerdings ändern sich viele Anleitungen öfters und solches "Zählen" kann dann
-	zu fehlerhaften Links führen. Um dem abzuhelfen, kann ein Name für ein
-  	 <c>&lt;chapter&gt;</c> oder <c>&lt;section&gt;</c> mit Hilfe des <c>id</c>
-	Attributes hinzugefügt werden. Nun muss man nur noch auf dieses Attribut
-	verweisen:
-  	 </p>
+ 
+<p>
+Allerdings ändern sich viele Anleitungen öfters und solches "Zählen" kann dann
+zu fehlerhaften Links führen. Um dem abzuhelfen, kann ein Name für ein
+<c>&lt;chapter&gt;</c> oder <c>&lt;section&gt;</c> mit Hilfe des <c>id</c>
+Attributes hinzugefügt werden. Nun muss man nur noch auf dieses Attribut
+verweisen:
+</p>
   	 
-  	 <pre caption="Verwendung des id Attributes">
-  	 &lt;chapter id="foo"&gt;
-  	 &lt;title&gt;Das ist foo!&lt;/title&gt;
-  	 ...
-  	 &lt;p&gt;
-  	 Weitere Informationen finden Sie im &lt;uri link="#foo"&gt;foo Kapitel&lt;/uri&gt;
-  	 &lt;/p&gt;
-  	 </pre>
+<pre caption="Verwendung des id Attributes">
+&lt;chapter id="foo"&gt;
+&lt;title&gt;Das ist foo!&lt;/title&gt;
+ ...
+&lt;p&gt;
+Weitere Informationen finden Sie im &lt;uri link="#foo"&gt;foo Kapitel&lt;/uri&gt;
+&lt;/p&gt;
+</pre>
 
 </body>
 </section>
