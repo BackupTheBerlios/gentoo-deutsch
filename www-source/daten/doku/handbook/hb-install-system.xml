@@ -1,0 +1,319 @@
+<!-- The content of this document is licensed under the CC-BY-SA license -->
+<!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
+
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-system.xml,v 1.1 2003/12/08 07:49:32 dertobi123 Exp $ -->
+
+<sections>
+<section>
+<title>Chrooting</title>
+<subsection>
+<title>Optional: Auswahl eines Mirrors</title>
+<body>
+
+<p>
+Falls Sie von einer Gentoo LiveCD gebootet haben, so knnen sie <c>mirrorselect</c> benutzen um Ihre <path>/etc/make.conf</path> zu updaten. Mit diesem Schritt werden die schnellsten Mirrors fr Portage als auch Quellcode benutzt. 
+</p>
+
+<pre caption="Schnelle Mirrors auswhlen">
+# <i>mirrorselect -a -s4 -o &gt;&gt; /mnt/gentoo/etc/make.conf</i>
+</pre>
+
+<p>Keine Panik falls aus irgendeinem Grund <c>mirrorselect</c> fehlschlgt, denn dieser Schritt ist absolut optional. Falls <c>mirrorselect</c> aus irgendeinem Grund nicht funktioniert werden die default Eintrge benutzt.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Kopieren der DNS Informationen</title>
+<body>
+
+<p>
+Einen Schritt mssen Sie noch machen bevor Sie Ihre neue Umgebung betreten knnen und dass ist das kopieren der DNS
+Informationen aus der <path>/etc/resolv.conf</path>. Sie mssen diesen Schritt machen um sicherzustellen dass Ihr Netzwerk noch immer funktioniert nachdem Sie die neue Umgebung betreten haben. <path>/etc/resolv.conf</path> enthlt die Nameserver fr Ihr Netzwerk.
+</p>
+
+<pre caption="Kopieren der DNS Informationen">
+# <i>cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf</i>
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Betreten der neuen Umgebung</title>
+<body>
+
+<p>
+Nachdem nun alle Partitionen initialisiert sind und die Basis Umgebung installiert ist, ist es an der Zeit Ihre neue
+Installationsumgebung zu betreten indem Sie in die Umgebung chrooten. Das bedeutet dass wir von der aktuellen 
+Installationsumgebung (die LiveCD oder ein anderes Installationsmedium) auf Ihr installiertes System (nmlich das
+der initialisierten Partitionen) wechseln.
+</p>
+
+<p>
+Das chrooting erfolgt in 3 Schritten. Als erstes werden wir das root von / (auf dem Installationsmedium) nach /mnt/gentoo
+(auf Ihren Partitionen) mittels chroot wechseln. Wir werden dann eine neuem Umgebung anlegen indem wir env-update benutzen, was hauptschlich neue Umgebungsvariablen anlegt. Als letztes laden wir diese Variablen in den Speicher durch den Befehl <c>source</c>.
+</p>
+
+<pre caption = "Chrooten in die neue Umgebung">
+# <i>chroot /mnt/gentoo /bin/bash</i>
+# <i>env-update</i>
+Regenerating /etc/ld.so.cache...
+# <i>source /etc/profile</i>
+</pre>
+
+<p>
+Glckwunsch! Sie sind nun in Ihrer neuen Gentoo Linux Umgebung.
+Natrlich sind wir noch nicht fertig, darum gibt es auch noch einige Abschnitte
+zu folgen.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Optional: Portage updaten</title>
+<body>
+
+<p>
+Falls Sie <e>nicht</e> GRP benutzen mssen Sie einen aktuellen Portage
+snapshot aus dem Internet mit <c>emerge sync</c> herunterladen. GRP Benutzer
+sollten diesen Abschnitt berspringen und mit <uri link="#doc_chap1_sect5">Optional: Distributed
+Compiling benutzen</uri> or <uri link="#doc_chap2">Unterschiede zwischen
+Stage1, Stage2 und Stage3</uri> fortfahren.
+</p>
+
+<pre caption="Portage updaten">
+# <i>emerge sync</i>
+</pre>
+
+<p>
+Falls Sie gewarnt werden dass eine neue Portage Version verfgbar ist, so knnen
+Sie getrost diese Meldung ignorieren. Portage wird zu einem spteren Zeitpunkt whrend
+der Installation fr Sie geupdated.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Optional: Distributed Compiling benutzen</title>
+<body>
+
+<p>
+Wenn Sie daran interessiert sind mehrere Systeme zu benutzen um Ihr System
+zu kompilieren, dann sollten Sie einen Blick in den <uri link="/doc/en/distcc.xml">DistCC Guide</uri>
+werfen. Mit <c>distcc</c> knnen Sie die Prozessorpower von mehreren Systemen als Untersttzung bei der
+Installation von Ihrem System benutzen.
+</p>
+
+</body>
+</subsection>
+</section>
+<section>
+<title>Unterschiede zwischen Stage1, Stage2 and Stage3</title>
+<body>
+
+<p>
+Nun lehnen Sie sich zurck und berdenken Ihre vorhergehenden Schritte. Wir baten Sie zwischen
+<e>stage1</e>, <e>stage2</e> oder <e>stage3</e> auszuwhlen und wiesen darauf hin dass Ihre Wahl
+wichtig ist fr die folgenden Installationsschritte. Nun, an erster Stelle steht jetzt Ihre Wahl die 
+die nchsten Schritte beeinflusst.
+</p>
+
+<ul>
+<li>
+ Falls Sie <e>stage1</e> auswhlen, dann mssen Sie <e>beide</e> Abschnitte in diesem Kapitel folgen 
+ (angefangen bei <uri link="#doc_chap3">Fortschritt von Stage1 zu Stage2</uri>)
+</li>
+<li>
+ Falls Sie <e>stage2</e> auswhlen, ignorieren Sie den ersten Abschnitt und fahren mit dem zweiten 
+ fort (<uri link="#doc_chap4">Fortschritt von Stage2 zu Stage3</uri>).
+</li>
+<li>
+ Falls Sie Stage3 (mit oder ohne GRP) whlen, knnen Sie beide Schritte ignorieren und mit dem Abschnitt: 
+ <uri link="?part=1&amp;chap=7">Konfiguration des Kernels</uri> fortfahren.
+</li>
+</ul>
+
+</body>
+</section>
+<section>
+<title>Fortschritt von Stage1 zu Stage2</title>
+<subsection>
+<title>Einfhrung ins bootstrapping</title>
+<body>
+
+<p>
+So, Sie wollen also wirklich alles von Grund auf kompilieren? Fein :-)
+</p>
+
+<p>
+In diesem Schritt, werden wir ihr Gentoo System <e>bootstrappen</e>. Dieser
+Schritt bentigt eine Menge Zeit, aber das Ergebnis ist ein System, das
+von Grund auf fr Ihren Computer und Ihren Anforderungen optimiert wurde
+</p>
+
+<p>
+<e>Bootstrappen</e> bedeutet das Bauen der GNU C Library, der GNU Compiler Collection
+und verschiedene anderer wichtiger Systemprogramme. Die GNU Compiler Collection muss sogar zweimal 
+gebaut werden. Das erste Mal mit dem Compiler den wir untersttzen, das zweite Mal mit dem Compiler 
+den Sie gebaut haben.
+</p>
+
+<p>
+Bevor Sie mit bootstrap anfangen, listen wir ihnen einige Optionen auf die sie wollen oder nicht wollen. Falls Sie diese nicht wissen wollen so fahren Sie fort bei <uri link="#doc_chap3_sect4">Bootstrappen des Systems</uri> zu lesen.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Optional: Senken der Kompilierungsdauer</title>
+<body>
+
+<p>
+Sie knnen den java-support zeitweillig deaktiveren, um die Geschwindigkeit des bootstrapp Vorgangs zu erhhen. Das bedeutet dass die GNU Compiler Collection und die GNU C Library ohne java-support (was die Kompilierungsdauer erheblich senkt) kompiliert werden. Weiterhin bedeutet dass das Sie den GNU Java Compiler (<c>gcj</c>) nicht installiert haben und somit Ihr System nicht in der Lage ist Java Applets oder andere Java Sachen auszufhren.
+</p>
+
+<p>
+Um java-support zu temporr zu deaktivieren setzen Sie bitte bevor Sie das bootstrap script starten 
+<e>USE="-java"</e>.
+</p>
+
+<pre caption = "Java Support deaktivieren">
+# <i>export USE="-java"</i>
+</pre>
+
+<p>
+Bitte vergessen Sie nicht die Variable nach dem bootstrappen zurckzusetzen:
+</p>
+
+<pre caption="USE zurcksetzen">
+# <i>unset USE</i>
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Optional: Zuerst die Quellen herunterladen</title>
+<body>
+
+<p>
+Wenn Sie nicht den Quellcode heruntergeladen haben wird bootstrap die
+ntigen Dateien herunterladen. Es wird nichts ausgeben und es funktioniert auch nur
+wenn Sie eine Netzwerkverbindung haben. Falls Sie den Quellcode zuerst runterladen wollen
+und spter das System bootstrappen wollen (zum Beispiel weil Sie Ihre Internetverbindung
+nicht offen lassen wollen whrend Sie kompilieren) benutzen Sie die <e>-f</e> Option des
+bootstrap Skripts, was den gesamten Quellcode fr Sie herunterldt 
+</p>
+
+<pre caption = "Herunterladen der ntigen Quellen">
+# <i>cd /usr/portage</i>
+# <i>scripts/bootstrap.sh -f</i>
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Bootstrappen des Systems</title>
+<body>
+
+<p>
+Okay, schnappen Sie sich ihre Keyboard und hmmern Sie die nchsten Kommandos ein um zu bootstrappen.
+Da dieser Schritt etwas Zeit kostet bis er fertig ist sollten Sie sich mit irgendwas anderem beschftigen (zum Beispiel 
+Gentoo Entwickler in #gentoo nerven).
+</p>
+
+<pre caption = "Bootstrappen des Systems">
+# <i>cd /usr/portage</i>
+# <i>scripts/bootstrap.sh</i>
+</pre>
+
+<p>
+Falls Sie vorher den <c>CHOST</c> Eintrag in der <path>/etc/make.conf</path> abgendert haben
+mssen Sie einige Variablen reinitialisieren damit der <c>gcc</c> schneller arbeitet.
+</p>
+
+<pre caption="Reinitialisieren der Umgebungsvariablen">
+# <i>source /etc/profile</i>
+</pre>
+
+<p>
+Fahren Sie bitte jetzt mit dem Schritt, <uri link="#doc_chap4">Fortschritt von Stage2
+zu Stage3</uri> fort.
+</p>
+
+</body>
+</subsection>
+</section>
+<section>
+<title>Fortschritt von Stage2 zu Stage3</title>
+<subsection>
+<title>Einfhrung</title>
+<body>
+
+<p>
+Falls Sie diese Abschnitt lesen, dann haben Sie bereits ein bootstrapped System (deswegen weil sie eben gerade gebootstrapped haben oder Sie <e>stage2</e> benutzen). Nun ist der Moment da wo Sie alle System Packete bauen mssen.
+</p>
+
+<p>
+<e>Alle</e> Systempackete? Nein, eigentlich nicht. In diesem Schritt werden Sie nur die Systempackete bauen von 
+denen es keine Alternativpackete existieren. Dennoch haben einige Systempackete verschiedene Alternativen (zum Beispiel system loggers) und da Gentoo fr seine Auswahlmglichkeiten bekannt ist wollen wir Sie nicht zu einer zwingen.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Optional: Sehen was gemacht wird</title>
+<body>
+
+<p>
+Fhren Sie bitte <c>emerge --pretend system</c> aus, falls Sie wissen wollen
+welche Packete installiert werden. Dieser Befehl fhrt alle Packete auf die
+installiert werden. Da diese Liste sehr gross ist empfehlen wir Ihnen einen
+pager wie <c>less</c> oder <c>more</c> zu benutzen. Mit diesen Befehlen knnen
+Sie die Liste hoch und runter blttern. 
+</p>
+
+<pre caption = "Sehen was 'emerge system' machen wird">
+# <i>emerge --pretend system | less</i>
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Optional: Downloaden der Quellen</title>
+<body>
+
+<p>
+Sie knnen <c>emerge</c> benutzen um zuerst die Quellen herunterzuladen bevor Sie fortfahren (zum Beispiel
+weil Sie nicht wollen dass die Internetverbindung bestehen bleibt whrend Sie gerade alle Packete bauen). Dafr
+benutzen sie die <e>-f</e> Option von <c>emerge</c> um alle Quellen runterzuladen die Sie bentigen.
+</p>
+
+<pre caption = "Herunterladen der Quellen">
+# <i>emerge --fetchonly system</i>
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Bauen des Systems</title>
+<body>
+
+<p>
+Um das System zu bauen, fhren Sie bitte <c>emerge system</c> aus. Sie sollten
+sich in der Zwischenzeit mit etwas anderem beschftigen da dieser Schritt viel
+Zeit bentigt.
+</p>
+
+<pre caption = "Bauen des Systems">
+# <i>emerge system</i>
+</pre>
+
+<p>
+Wenn sie mit dem bauen fertig sind, fahren Sie bitte mit<uri
+link="?part=1&amp;chap=7">Konfiguration des Kernels</uri> fort.
+</p>
+
+</body>
+</subsection>
+</section>
+</sections>
