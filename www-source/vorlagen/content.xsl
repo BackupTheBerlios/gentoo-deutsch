@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
@@ -97,7 +97,7 @@
 
   <div id="about">
     <a href="{$baseurl}" class="icon">
-      <img src="{$imageurl}icons/home.png" width="16" height="16" alt="Zurück zur Startseite"/>
+      <img src="{$imageurl}icons/home.png" width="16" height="16" alt="ZurÃŒck zur Startseite"/>
       <xsl:value-of select="$lng_homepage"/>
     </a>
     <xsl:text>&#160; &#160;</xsl:text>
@@ -184,7 +184,7 @@
         <form style="font-size: 0.7em" action="http://www.gentoo.de/">
           <p><select name="url" size="1" class="jumpbox"
             onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
-            <option value="---">[Bitte Kapitel auswählen]</option>  
+            <option value="---">[Bitte Kapitel auswÃ€hlen]</option>  
         
             <xsl:for-each select="chapter/title">
               <option value="header_{position()}"><xsl:value-of select="."/></option>

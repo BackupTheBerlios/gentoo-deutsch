@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cgi="http://www.sebastian-werner.net">
 
 <xsl:output method="html" encoding="iso-8859-15" indent="no"/>
@@ -29,7 +29,7 @@
             <![CDATA[<!--item: date-->]]> &#160;
           </p>
           <p>
-            Größe:
+            GrÃ¶Ãe:
             <![CDATA[<!--item: size-->]]> kB
           </p>         
         </td>        
@@ -89,8 +89,8 @@
     <input type="hidden" name="exclude" value=""/>
     <input type="hidden" name="penalty" value="0"/>
     <select name="mode">
-      <option value="all">Alle Wörter finden</option>
-      <option value="any">Eines der Wörter finden</option>
+      <option value="all">Alle WÃ¶rter finden</option>
+      <option value="any">Eines der WÃ¶rter finden</option>
     </select>
     <input type="text" name="q" value=""/>
     <input type="submit" value="Suchen"/>
@@ -108,7 +108,7 @@
     results_num		= Anzahl der Ergebnisse
     docs_total		= Anzahl indizierter Dokumente
     search_time		= Dauer der Suche
-    ignored_terms	= Ignorierte Wörter
+    ignored_terms	= Ignorierte WÃ¶rter
   -->
 </xsl:template>
 

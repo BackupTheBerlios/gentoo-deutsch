@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <info>
 <title>Willkommen</title>
@@ -23,13 +23,26 @@
 <title>Aktuelles</title>
 
 <section>
+<title>[02. Juni 2003] Gentoo-Newsletter</title>
+<body>
+<p>
+Zu Allererst geht es im heutigen Gentoo-Newsletter um <b>zwei neue Source-Mirror-Server in Nordamerika</b>.
+Weitere Artikel drehen sich unter Anderem um ein Projekt fÃŒr die automatische Generierung von CHOST/CFLAGS/CXXFLAGS
+fÃŒr eine bestimmte Plattform und eine AnkÃŒndigung von Ãnderungen in der Infrastruktur.
+<uri link="http://www.gentoo.org/news/de/gwn/20030526-newsletter.xml">Viel Spass beim Lesen</uri>
+</p>
+</body>
+</section>
+
+
+<section>
 <title>[26. Mai 2003] Gentoo-Newsletter</title>
 <body>
 <p>
-Im heutigen GWN gibt es wichtige Nachrichten über Probleme des
-Oregon State Gentoo-Linux Mirror und eine Rekrutierungskampagne für
-GNOME-Entwickler. Desweiteren werden wir einige kürzlich in den Medien
-erschienene Meldungen über Gentoo-Linux Revue passieren lassen.
+Im heutigen GWN gibt es wichtige Nachrichten ber Probleme des
+Oregon State Gentoo-Linux Mirror und eine Rekrutierungskampagne fr
+GNOME-Entwickler. Desweiteren werden wir einige krzlich in den Medien
+erschienene Meldungen ber Gentoo-Linux Revue passieren lassen.
 <uri link="http://www.gentoo.org/news/de/gwn/20030526-newsletter.xml">Viel Spass beim Lesen</uri>
 </p>
 </body>
@@ -41,8 +54,8 @@ erschienene Meldungen über Gentoo-Linux Revue passieren lassen.
 <title>[24. Mai 2003] Kernel Leitfaden</title>
 <body>
 <p>
-Der Gentoo Kernel Leitfaden wurde von uns übersetzt und ist nun auf Deutsch verfügbar.
-<uri link="http://www.gentoo.de/inhalte/doku/einrichtung/gentoo-kernel/">Hier könnt Ihr ihn lesen</uri>
+Der Gentoo Kernel Leitfaden wurde von uns bersetzt und ist nun auf Deutsch verfgbar.
+<uri link="http://www.gentoo.de/inhalte/doku/einrichtung/gentoo-kernel/">Hier knnt Ihr ihn lesen</uri>
 </p>
 </body>
 </section>
@@ -52,9 +65,9 @@ Der Gentoo Kernel Leitfaden wurde von uns übersetzt und ist nun auf Deutsch verf
 <title>[19. Mai 2003] Gentoo Newsletter</title>
 <body>
 <p>
-Zusätzliche News bezüglich Gentoo Games und seine Beziehung zu Gentoo Linux bilden
+Zusï¿œzliche News bezglich Gentoo Games und seine Beziehung zu Gentoo Linux bilden
 diesmal das Hauptthema des Newsletters. Neuigkeiten und Bilder von der E3 sind auch darin enthalten.
-Natürlich gibts auch die Anwendergeschichten, einen deftigen Portage-Überblick und all die ganzen anderen
+Natrlich gibts auch die Anwendergeschichten, einen deftigen Portage-ï¿œerblick und all die ganzen anderen
 Rubriken die auch sonst in diesem Newsletter vorkommen.
 <uri link="http://www.gentoo.org/news/de/gwn/20030519-newsletter.xml">Hier gehts zum Newsletter</uri>
 </p>
@@ -66,9 +79,9 @@ Rubriken die auch sonst in diesem Newsletter vorkommen.
 <title>[17. Mai 2003] Gentoo Games</title>
 <body>
 <p>
-Hiermit kündigen wir die Gründung von <uri link="http://www.gentoogames.com">Gentoo Games Inc.</uri>, einer Firma für Spieletechniken
-an deren Ziel es ist innovative Linuxbasierte Spieletechnologien für die Öffentlichkeit anzubieten. Die Firma wurde in Zusammenarbeit mit
-<uri link="http://supercomputerinc.com">Super Computer,Inc.</uri> gegründet.
+Hiermit kndigen wir die Grndung von <uri link="http://www.gentoogames.com">Gentoo Games Inc.</uri>, einer Firma fr Spieletechniken
+an deren Ziel es ist innovative Linuxbasierte Spieletechnologien fr die ï¿œfentlichkeit anzubieten. Die Firma wurde in Zusammenarbeit mit
+<uri link="http://supercomputerinc.com">Super Computer,Inc.</uri> gegrndet.
 </p>
 </body>
 </section>
@@ -77,9 +90,9 @@ an deren Ziel es ist innovative Linuxbasierte Spieletechnologien für die Öffentl
 <title>[12. Mai 2003] Gentoo Newsletter</title>
 <body>
 <p>
-Zwei grosse Ankündigungen führen den dieswöchigen Newsletter an. Erstens wird Gentoo dank der neuen Partnerschaft mit
-<uri link="http://www.supercomputerinc.com">Super Computer Inc.</uri> bald für die AMD-Opteron-Plattform verfügbar sein.
-Lest den Newsletter, um die zweite grosse Ankündigung zu Erfahren. Ausserdem gibt es noch zwei neue Rubriken im GWN: Anwendergeschichten
+Zwei grosse Ankndigungen fhren den dieswchigen Newsletter an. Erstens wird Gentoo dank der neuen Partnerschaft mit
+<uri link="http://www.supercomputerinc.com">Super Computer Inc.</uri> bald fr die AMD-Opteron-Plattform verfgbar sein.
+Lest den Newsletter, um die zweite grosse Ankndigung zu Erfahren. Ausserdem gibt es noch zwei neue Rubriken im GWN: Anwendergeschichten
 und den Spruch der Woche. <uri link="http://www.gentoo.org/news/de/gwn/20030512-newsletter.xml">Hier gehts zum Newsletter</uri>
 </p>
 </body>
@@ -90,8 +103,8 @@ und den Spruch der Woche. <uri link="http://www.gentoo.org/news/de/gwn/20030512-
 <title>[05. Mai 2003] Gentoo Newsletter</title>
 <body>
 <p>
-Der erste Mai-Newsletter enthält einige wichtige Verhaltensmassregeln zum Thema "emerge rsync" und und Neuigkeiten über
-kommende Features im nächsten 1.4 Release-Candidate. Diese Woche gibt es leider keinen Portage-Watch, man erholt sich vom
+Der erste Mai-Newsletter enthï¿œt einige wichtige Verhaltensmassregeln zum Thema "emerge rsync" und und Neuigkeiten ber
+kommende Features im nï¿œhsten 1.4 Release-Candidate. Diese Woche gibt es leider keinen Portage-Watch, man erholt sich vom
 Ausschau halten ;) <uri link="http://www.gentoo.org/news/en/gwn/20030505-newsletter.xml">Viel Spass beim Lesen! (momentan leider noch auf Englisch)</uri>
 </p>
 </body>
@@ -99,11 +112,11 @@ Ausschau halten ;) <uri link="http://www.gentoo.org/news/en/gwn/20030505-newslet
 
 
 <section>
-<title>[03. Mai 2003] vi Guide nun auch auf Deutsch verfügbar</title>
+<title>[03. Mai 2003] vi Guide nun auch auf Deutsch verfgbar</title>
 <body>
 <p>
-Der Gentoo vi-Guide wurde von uns auf Deutsch übersetzt und ist nun hier auf der Website
-verfügbar. <uri link="http://www.gentoo.de/inhalte/doku/anwendungen/vi-guide">Hier</uri> könnt Ihr ihn lesen.
+Der Gentoo vi-Guide wurde von uns auf Deutsch bersetzt und ist nun hier auf der Website
+verfgbar. <uri link="http://www.gentoo.de/inhalte/doku/anwendungen/vi-guide">Hier</uri> knnt Ihr ihn lesen.
 </p>
 </body>
 </section>
@@ -112,14 +125,14 @@ verfügbar. <uri link="http://www.gentoo.de/inhalte/doku/anwendungen/vi-guide">Hi
 <title>[30. April 2003] Bootsplash HowTo</title>
 <body>
 <p>
-Ein britischer User hat in den Foren ein (unserer Meinung nach) erstklassiges HowTo veröffentlicht.
-In diesem HowTo geht es um die nachträgliche Einrichtung des auf dem Framebuffer basierenden Bootsplashs.
+Ein britischer User hat in den Foren ein (unserer Meinung nach) erstklassiges HowTo verffentlicht.
+In diesem HowTo geht es um die nachtrï¿œliche Einrichtung des auf dem Framebuffer basierenden Bootsplashs.
 Gemeint ist hier mit die Textkonsole im Grafikmodus und mit Hintergrundbild, die seit Gentoo-Linux 1.4rc4
-Bestandteil der Live-CD ist, und schon länger von anderen Distributionen bekannt ist. Neben dem HowTo bietet
-er auch noch zwei Tools an, mit denen sich z.B. ein Screenshot der Framebufferkonsole machen lässt, bzw.
-ein Gimp-Plugin, mit dem man spielend einfach Hintergrundbilder für Grub machen kann. Momentan gibt es den Guide
+Bestandteil der Live-CD ist, und schon lï¿œger von anderen Distributionen bekannt ist. Neben dem HowTo bietet
+er auch noch zwei Tools an, mit denen sich z.B. ein Screenshot der Framebufferkonsole machen lï¿œst, bzw.
+ein Gimp-Plugin, mit dem man spielend einfach Hintergrundbilder fr Grub machen kann. Momentan gibt es den Guide
 leider nur in Englischer Sprache und in einer Art Wiki-Form in den Foren.
-<uri link="http://forums.gentoo.org/viewtopic.php?t=49036">Hier</uri> könnt Ihr den Guide lesen.
+<uri link="http://forums.gentoo.org/viewtopic.php?t=49036">Hier</uri> knnt Ihr den Guide lesen.
 </p>
 </body>
 </section>
@@ -127,11 +140,11 @@ leider nur in Englischer Sprache und in einer Art Wiki-Form in den Foren.
 
 <section>
 
-<title>[29. April 2003] Deutsche Übersetzung des Installationsguides von Gentoo-Linux 1.4rc4 fertig</title>
+<title>[29. April 2003] Deutsche ï¿œersetzung des Installationsguides von Gentoo-Linux 1.4rc4 fertig</title>
 
 <body>
 <p>
-Die Übersetzung des Installationsleitfadens für die Gentoo-Linux 1.4rc4 Live-CD ist fertig. Den
+Die ï¿œersetzung des Installationsleitfadens fr die Gentoo-Linux 1.4rc4 Live-CD ist fertig. Den
 Guide gibt es hier : <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/installation14rc4">Installtion Gentoo 1.4rc4</uri>
 </p>
 </body>
@@ -145,10 +158,10 @@ Guide gibt es hier : <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/in
 
 <body>
 <p>
-Der dieswöchige Newsletter bringt Neuigkeiten über einen Vorschlag, wie das Management
-der Ebuilds ab demnächst gestaltet werden könnte. Desweiteren gibt es Informationen
-über einige Änderungen bei den Mailinglisten, das wöchtentliche Entwicklerportrait
-und eine Warnung über ein frühes Release von Tcl/Tk.
+Der dieswchige Newsletter bringt Neuigkeiten ber einen Vorschlag, wie das Management
+der Ebuilds ab demnï¿œhst gestaltet werden knnte. Desweiteren gibt es Informationen
+ber einige ï¿œderungen bei den Mailinglisten, das wchtentliche Entwicklerportrait
+und eine Warnung ber ein frhes Release von Tcl/Tk.
 <uri link="http://www.gentoo.org/news/de/gwn/20030428-newsletter.xml">Viel Spass beim Lesen!</uri>
 </p>
 </body>
@@ -162,37 +175,37 @@ und eine Warnung über ein frühes Release von Tcl/Tk.
 
 <body>
 <p>
-Nachdem sich nun alle in die Liste für das Usertreffen eingetragen haben, stellt sich
+Nachdem sich nun alle in die Liste fr das Usertreffen eingetragen haben, stellt sich
 nun die Frage, wo dieses stattfinden soll. Zu diesem Zwecke haben phoen][x und cybersystem
-eine interaktive Karte eingerichtet, auf der Ihr Euch eintragen könnt. Die Karte sollte
-weitestgehend selbsterklärend sein. Ihr findet die Karte <uri link="http://cybersystem.iq-computing.de/gentoo">hier</uri>
+eine interaktive Karte eingerichtet, auf der Ihr Euch eintragen knnt. Die Karte sollte
+weitestgehend selbsterklï¿œend sein. Ihr findet die Karte <uri link="http://cybersystem.iq-computing.de/gentoo">hier</uri>
 </p>
 </body>
 
 </section>
 
 <section>
-<title>[14. April 2003] Gentoo-Linux-1.4rc4 veröffentlicht</title>
+<title>[14. April 2003] Gentoo-Linux-1.4rc4 verffentlicht</title>
 
 <body>
 <p>
-Anfang der Woche wurde entschieden, daß die Nächste Version von Gentoo-Linux 1.4 als
-Release-Candidate 4 an Stelle von Final veröffentlicht werden würde. Die Verbesserungen
+Anfang der Woche wurde entschieden, daï¿œdie Nï¿œhste Version von Gentoo-Linux 1.4 als
+Release-Candidate 4 an Stelle von Final verffentlicht werden wrde. Die Verbesserungen
 enthalten wesentlich bessere Hardware-Erkennung auf der Live-CD sowie weitreichende Updates
 bei einigen Paketen im Portage-Tree. Die Entscheidung einen weiteren Release-Candidate anstelle
-einer Final-Version zu veröffentlichen wurde aus folgenden Gründen getroffen:
+einer Final-Version zu verffentlichen wurde aus folgenden Grnden getroffen:
 <ul>
 	<li>
-	Es müssen noch Binärpakete die für die Referenz-Plattform benötigt werden erstellt oder getestet werden.
-	Solange dies noch nicht geschehen ist, kann 1.4-Final nicht veröffentlicht werden.
+	Es mssen noch Binï¿œpakete die fr die Referenz-Plattform bentigt werden erstellt oder getestet werden.
+	Solange dies noch nicht geschehen ist, kann 1.4-Final nicht verffentlicht werden.
 	</li>
 	<li>Das momentan als Stable angesehene Baselayout basiert immernoch auf tmpfs. Von Anfang an war eines der Ziele von 1.4
-	war, diese Abhängigkeit zu eleminieren. Im Portage-Tree existiert eine maskierte Baselayout-Version, die dieses Problem löst,
-	allerdings wurde diese bisher noch nicht ausreichend getestet. (Jeder der diese Version gerade testet oder testen möchte wird
-	dazu aufgefordert, seine Erfahrungen auf <uri link="http://stable.gentoo.org">Gentoo Stable</uri> zu veröffentlichen)
+	war, diese Abhï¿œgigkeit zu eleminieren. Im Portage-Tree existiert eine maskierte Baselayout-Version, die dieses Problem lst,
+	allerdings wurde diese bisher noch nicht ausreichend getestet. (Jeder der diese Version gerade testet oder testen mchte wird
+	dazu aufgefordert, seine Erfahrungen auf <uri link="http://stable.gentoo.org">Gentoo Stable</uri> zu verffentlichen)
 	</li>
     	<li>
-	Automatischer Kernelbau wird bisher noch getestet und wird in der 1.4-final verfügbar sein
+	Automatischer Kernelbau wird bisher noch getestet und wird in der 1.4-final verfgbar sein
 	</li>
 </ul>
 </p>
@@ -200,16 +213,16 @@ einer Final-Version zu veröffentlichen wurde aus folgenden Gründen getroffen:
 </section>
 
 <section>
-<title>O'Reilly Artikel über Gentoo Linux 1.4</title>
+<title>O'Reilly Artikel ber Gentoo Linux 1.4</title>
 <body>
 <p>
-Ein neuer Artikel von Daniel Robbins über Gentoo-Linux ist ab heute auf der
-Website von O'Reilly Network's. In diesem Artikel wird eine Übersicht über die
-Features von Gentoo-Linux gegeben und Daniel erläutert welche Weiterentwicklungen
-die Nutzer von Gentoo-Linux-1.4final erwarten können: Unterstützung für echte 64 Bit
+Ein neuer Artikel von Daniel Robbins ber Gentoo-Linux ist ab heute auf der
+Website von O'Reilly Network's. In diesem Artikel wird eine ï¿œersicht ber die
+Features von Gentoo-Linux gegeben und Daniel erlï¿œtert welche Weiterentwicklungen
+die Nutzer von Gentoo-Linux-1.4final erwarten knnen: Untersttzung fr echte 64 Bit
 auf UltraSparc, KDE 3.0.4, ein Gentoo-Sources Kernel mit Andrea Archangeli's 3.5GB
-"user address space"-Patch und grsec, und natürlich die neue Gentoo Referent Plattform
-für schnelle Binärinstallationen.
+"user address space"-Patch und grsec, und natrlich die neue Gentoo Referent Plattform
+fr schnelle Binï¿œinstallationen.
 </p>
 </body>
 
@@ -222,14 +235,14 @@ für schnelle Binärinstallationen.
 <body>
   <p>
 Ein neues Release unserer Unreal Tournament 2003 Gentoo LiveCD ist jetzt
-verfügbar und enthält einige Neuerungen. Die Unreal Tournament
+verfgbar und enthï¿œt einige Neuerungen. Die Unreal Tournament
 2003 Demo wurde auf Patchlevel 1080c aktualisiert, wobei einige
 Dinge im Spiel selbst in Ordnung gebracht wurden. Desweiteren ist die UT2003
-LiveCD nun für moderne Pentium-Systeme und für den P6 Instruktions-Satz
-wie dem Pentium II und III (ursprünglich war es eine relativ unoptimierte CD
-für i486+) optimiert, sodass ein Pentium-Classic oder besser benötigt
-wird um sie benutzen zu können auszuführen . Die CD unterstützt nun Monitore
-ohne EDID-Funktionalität sowie Wheel-Mäuse. Desweiteren können Maschinen mit
+LiveCD nun fr moderne Pentium-Systeme und fr den P6 Instruktions-Satz
+wie dem Pentium II und III (ursprnglich war es eine relativ unoptimierte CD
+fr i486+) optimiert, sodass ein Pentium-Classic oder besser bentigt
+wird um sie benutzen zu knnen auszufhren . Die CD untersttzt nun Monitore
+ohne EDID-Funktionalitï¿œ sowie Wheel-Mï¿œse. Desweiteren knnen Maschinen mit
 512MB oder mehr Speicher nun die komplette ZT2003 Demo in tmpfs (also den RAM)
 cachen und somit die Leistung erheblich verbessern. Oh, und SoundBlaster
 PCI 512 Soundkarten werden nun korrekt erkannt.
