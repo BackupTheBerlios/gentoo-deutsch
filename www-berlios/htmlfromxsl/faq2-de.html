@@ -22,7 +22,8 @@
 <b>Inhalt</b>:
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Installation</option>
 <option value="#doc_chap2">2. Laufendes System</option>
-<option value="#doc_chap3">3. Netzwerk</option></select>
+<option value="#doc_chap3">3. Netzwerk</option>
+<option value="#doc_chap4">4. Ebuilds von BerliOS</option></select>
 </form>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap1">1.</a></font>Installation</p>
@@ -105,7 +106,43 @@
                 </pre></td></tr>
 </table>
                 </p>
-                <br><br>
+                <p class="chaphead">
+<font class="chapnum"><a name="doc_chap4">4.</a></font>Ebuilds von BerliOS</p>
+<p class="secthead"><a name="_sect1">Wie benutze ich Ebuilds von BerliOS? </a></p>
+<p>
+		Seit Portage Version 2.0.21 existiert eine einfache Möglichkeit &quot;inoffizielle&quot; Ebuilds zu benutzen.
+		Dies geschieht indem man die Environmentvariable <font class="input">PORTDIR_OVERLAY</font> entsprechend setzt.
+		Z.B. in <font class="path">/etc/profile</font> durch
+		<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		export PORTDIR_OVERLAY=/usr/local/ebuilds
+		</pre></td></tr>
+</table>
+		Um die Ebuilds von BerliOS dort abzulegen einfach folgende Befehle (als root) ausführen:
+		<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		# cd /usr/local
+		# cvs -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
+		[Enter]
+		# cvs -z3 -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co ebuilds
+		</pre></td></tr>
+</table>
+		Fertig. Diese Befehle müssen nur einmal ausgeführt werden. Zum Aktualisieren der 
+		Ebuilds ist später nur noch folgendes (wiederum als root) nötig:
+		<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		# cd /usr/local/ebuilds
+		# cvs update -Pd
+		</pre></td></tr>
+</table>
+		</p>
+<br><br>
 </td>
 <td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>

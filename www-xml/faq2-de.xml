@@ -93,4 +93,31 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
                 </body>
         </section>
         </chapter>
+<chapter>
+	<title>Ebuilds von BerliOS</title>
+	<section>
+		<title>Wie benutze ich Ebuilds von BerliOS?</title>
+		<body><p>
+		Seit Portage Version 2.0.21 existiert eine einfache M&#246;glichkeit "inoffizielle" Ebuilds zu benutzen.
+		Dies geschieht indem man die Environmentvariable <i>PORTDIR_OVERLAY</i> entsprechend setzt.
+		Z.B. in <path>/etc/profile</path> durch
+		<pre>
+		export PORTDIR_OVERLAY=/usr/local/ebuilds
+		</pre>
+		Um die Ebuilds von BerliOS dort abzulegen einfach folgende Befehle (als root) ausf&#252;hren:
+		<pre>
+		# cd /usr/local
+		# cvs -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
+		[Enter]
+		# cvs -z3 -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co ebuilds
+		</pre>
+		Fertig. Diese Befehle m&#252;ssen nur einmal ausgef&#252;hrt werden. Zum Aktualisieren der 
+		Ebuilds ist sp&#228;ter nur noch folgendes (wiederum als root) n&#246;tig:
+		<pre>
+		# cd /usr/local/ebuilds
+		# cvs update -Pd
+		</pre>
+		</p></body>
+	</section>
+</chapter>
 </guide>
