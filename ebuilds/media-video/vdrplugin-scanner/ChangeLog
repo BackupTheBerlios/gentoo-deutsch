@@ -1,0 +1,8 @@
+# ChangeLog for media-video/vdr-clock
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-scanner/ChangeLog,v 1.1 2003/06/10 19:01:09 fow0ryl Exp $
+
+*vdrscanner-clock-0.0.4 (24 Feb 2003)
+
+  05 Jun 2003; H.Ryll <henning.ryll@web.de.de>
+  moved to vdr 1.2.0, new lib path
