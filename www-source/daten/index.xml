@@ -85,6 +85,12 @@ Gentoo-Benutzer</uri>
    Das Projekt gentoo-deutsch soll als Sammelstelle für Anpassungen von Gentoo Linux an deutsche Gegebenheiten dienen.
   </p>
 
+  	<p style="align:center;">
+  		<uriimg uri="http://www.linuxtag.org/2003/de/expo/exhibitors-detail.xsp?id=360" icuri="http://www.gentoo.de/media/bilder/icons/genxinlt.png"/>
+		Gentoo und Xine zusammen auf dem Linuxtag<br/>
+		<b>Stand Nr. G16</b>
+	</p>
+
   <p>
 Es sollte in erster Linie dazu dienen, daß nicht jede Dokumentation 4 mal übersetzt wird, bevor sie auf Gentoo.org
 veröffentlicht wird. Durch die langen Antwortzeiten auf Bugs und neue Ebuilds im bugzilla bei <uri link="http://www.gentoo.org" target="_blank">Gentoo.org</uri>, bietet es sich
