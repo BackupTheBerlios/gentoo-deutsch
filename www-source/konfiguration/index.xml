@@ -31,6 +31,7 @@
     <item title="Dokumentation" href="doku">
       <item href="einrichtung" title="Einrichtung">
         <item href="installation" title="Installation"/>
+        <item href="installationppc" title="Installation Apple"/>
         <item href="lokalisierung" title="Lokalisierung"/>
         <item href="desktop" title="Desktop-Konfiguration"/>
         <item href="alternativ" title="Alternativ Installation"/>
