@@ -33,7 +33,7 @@ omit-xml-declaration="no"/>
 
 
 
-    <title><xsl:value-of select="$var_title"/> @ Gentoo Linux - Das deutschprachige Portal</title>
+    <title>Gentoo Linux - Das deutschprachige Portal</title>
     <link rel="stylesheet" type="text/css" href="{$styleurl}index.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="{$styleurl}print.css" media="print"/>    
     <link rel="shortcut icon" href="{$baseurl}favicon.ico" type="image/x-icon"/>
