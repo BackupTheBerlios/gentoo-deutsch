@@ -22,19 +22,17 @@
 <title>Gentoo.de</title>
 
 <section>
+  <title>Entwickler Diskussionen</title>
 
-<title>Entwickler Diskussionen</title>
-
-<body>
-<p>
-<uri link="http://lists.berlios.de/pipermail/gentoo-deutsch-dev/">Das Entwickler-Archiv</uri>
-</p>
-</body>
-
+  <body>
+    <p>
+      <uri link="http://lists.berlios.de/pipermail/gentoo-deutsch-dev/">Das Entwickler-Archiv</uri>
+    </p>
+  </body>
 </section>
 
 <section>                                                                                                                           
-                                                                                                                                    
+                                                                                                                                   
 <title>CVS-Vorgänge</title>                                                                                                           
                                                                                                                                     
 <body>                                                                                                                              
