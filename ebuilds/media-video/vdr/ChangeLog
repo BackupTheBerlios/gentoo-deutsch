@@ -1,17 +1,24 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.35 2003/12/27 18:17:58 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.36 2004/01/04 20:30:35 fow0ryl Exp $
+
 *vdr-1.2.6-r4
+
+  7 Jan 2004; H.Ryll <henning.ryll@web.de>
+  Optional 256 Color OSD added VDR_OPTS=256color
+
   27 Dez 2003; M.Hierling <mad@cc.fh-lippe.de>
   fixed some typos
   added full path to all binarys
   added VDR_OPTS emergeplugs for automatically emerge of all used plugins (read wiki!)
   qpkg change output to uncolored for use with emerge
   changed all patch stuff to epatch (not that much unwanted output, only nice green [OK] )
-  removed duplicate Symblol 59 patch, there is no file for that patch!!
 
   27 Dez 2003; H.Ryll <henning.ryll@web.de>
   Update to Improved OSD 3a
+
+  7 Jan 2004; H.Ryll <henning.ryll@web.de>
+  Optional 256 Color OSD added
 
   24 Dez 2003; F.Schilhabel <fernsehleo@gmx.net>
   initial import of r4 with new logic w/o gentoo-patch(es)
@@ -50,7 +57,7 @@
   18 Aug 2003; P.Frank <pfrank@gmx.de>
   added new vdr version
 
-*vdr-1.2.1 
+*vdr-1.2.1
   05 Aug 2003; M.Hierling <mad@cc.fh-lippe.de>
   added support for splash screen
 
