@@ -15,19 +15,87 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 <title>Übersicht</title>
 
 <section>
-<title>Kategorien</title>
+<title>Einrichtung</title>
+	<body>
+  		<p>
+			<ul>
+				<li><uri link="einrichtung/installation">Installationsanleitung für Gentoo-Linux 1.2</uri></li>
+				<li><uri link="einrichtung/installation14rc4">Installationsanleitung für Gentoo-Linux 1.4rc4</uri></li>
+				<li><uri link="einrichtung/installationppc">Installation PPC</uri></li>
+				<li><uri link="einrichtung/lokalisierung">Lokalisierung</uri></li>
+				<li><uri link="einrichtung/desktop">Desktop-Konfiguration</uri></li>
+				<li><uri link="einrichtung/alternativ">Alternative Installation</uri></li>
+				<li><uri link="einrichtung/dsleinrichtung">DSL-Einrichtung</uri></li>
+				<li><uri link="einrichtung/gentoo-kernel">Kernel Leitfaden</uri></li>
+			</ul>
+  		</p>
+	</body>
+</section>
 
-<body>
-  <p>
-    <uri link="einrichtung/index.html">Einrichtung</uri><br/>
-    <uri link="antworten/index.html">Fragen &#38; Antworten</uri><br/>
-    <uri link="anwendungen/index.html">Anwendungen</uri><br/>
-    <uri link="fortgeschritten/index.html">Fortgeschritten</uri><br/>
-    <uri link="entwickler/index.html">Entwickler</uri><br/>
-    <uri link="englisch/index.html">Englisch</uri><br/>
-  </p>
-</body>
+<section>
+<title>Antworten</title>
+	<body>
+		<p>
+			<ul>
+				<li><uri link="antworten/faq">FAQ</uri></li>
+				<li><uri link="antworten/faq_ergaenzung">FAQ Ergänzung</uri></li>
+			</ul>
+		</p>
+	</body>
+</section>
 
+<section>
+<title>Anwendungen</title>
+	<body>
+		<p>
+			<ul>
+				<li><uri link="anwendungen/nano">Nano Editor</uri></li>
+				<li><uri link="anwendungen/fluxbox">Fluxbox</uri></li>
+				<li><uri link="anwendungen/portage">Portage</uri></li>
+				<li><uri link="anwendungen/vi-guide">vi-Guide</uri></li>
+			</ul>
+		</p>
+	</body>
+</section>
+
+<section>
+<title>Fortgeschritten</title>
+	<body>
+		<p>
+			<ul>
+				<li><uri link="fortgeschritten/alsa">Soundsystem (ALSA) einrichten</uri></li>
+				<li><uri link="fortgeschritten/sicherheit">Sicherheitsleitfaden</uri></li>
+				<li><uri link="fortgeschritten/systemstart">Systemstart</uri></li>
+				<li><uri link="fortgeschritten/upgrade-1.4">Upgrade von Gentoo 1.2 auf Gentoo 1.4</uri></li>
+				<li><uri link="fortgeschritten/java">Java</uri></li>
+			</ul>
+		</p>
+	</body>
+</section>
+
+<section>
+<title>Entwickler</title>
+	<body>
+		<p>
+			<ul>
+				<li><uri link="entwickler/internet-seite">Internet Seite</uri></li>
+				<li><uri link="entwickler/howto">HowTo</uri></li>
+				<li><uri link="entwickler/einreichen">Ebuilds einreichen</uri></li>
+				<li><uri link="entwickler/mirror">Mirror einrichten</uri></li>
+			</ul>
+		</p>
+	</body>
+</section>
+
+<section>
+<title>Englisches</title>
+	<body>
+		<p>
+			<ul>
+				<li><uri link="englisch/localization">Localization</uri></li>
+			</ul>
+		</p>
+	</body>
 </section>
 
 </chapter>
