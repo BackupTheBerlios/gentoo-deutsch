@@ -16,7 +16,7 @@
 
 <section>
 
-<title>Schnellanleitung</title>
+<title>Schnellanleitung für Freunde von Textmodusanwendungen</title>
 
 <body>
 <ul>
@@ -28,6 +28,84 @@
 </body>
 
 </section>
+
+<section>
+
+<title>Schnellanleitung für Freunde von X-Anwendungen</title>
+
+<body>
+<ul>
+  <li>emerge xchat</li>
+  <li>xchat starten</li>
+  <li>Verbindung mit dem FreeNode-Netz herstellen</li>
+  <li>/join #gentoo.de</li>
+</ul>
+</body>
+
+</section>
+
+<section>
+
+<title>Verhalten im IRC-Channel</title>
+
+<body>
+<p>
+Der IRC-Channel #gentoo.de ist nun schon fast ein Jahr alt und hat sich schon oft
+als letzte Rettung bei Problemen bewährt. Als der Channel gegründet wurde, gab es
+eine Stamm-Mannschaft von 5 Personen. Mit der steigenden Bekanntheit von Gentoo-Linux
+hat sich diese Zahl und auch die Zahl der Besucher im Allgemeinen drastisch erhöht.
+</p>
+<p>
+Um diesem Wachstum Rechnung zu tragen, müssen wir einige Dinge klarstellen, die bitte
+nicht negativ zu sehen sind. Hierzu gelten folgende Regeln:
+</p>
+
+<ul>
+	<li>
+	Gentoo ist keine Distribution für Linux-Einsteiger - viel Erfahrung ist Mindestvoraussetzung für die
+	Benutzung von Gentoo. Wer die Standardbefehle "cp", "ln", "chmod" und alle mit diesen Befehlen verwandte
+	Eigenschaften von Linux im Allgemeinen nicht kennt, der ist bei Gentoo-Linux völlig fehl am Platz. Wer in
+	den IRC-Channel kommt und Fragen stellt, die er sich mit ein wenig Linux-Grundkenntnissen eigentlich selbst
+	beantowrten könnte, wird entsprechend behandelt. Man kann eine Frage dieser Art stellen - nicht jeder weiss
+	Alles. Man kann auch zwei Fragen dieser Art stellen - jeder hat mal einen schlechten Tag. Wer aber drei oder
+	mehr Fragen dieser Art stellt wird alsbald keine Beachtung mehr finden. Bitte bedenkt - diese Fragen behindern
+	den Fluss anderer Konversationen mit evtl. schwerwiegenderen Problemen. Lest zuerst die Manpages und die
+	Dokumentation!
+	</li>
+
+	<li>
+	Durchsucht zuerst die Foren unter <uri link="http://forums.gentoo.org">http://forums.gentoo.org</uri>
+	um festzustellen, ob jemand anderes schonmal das Problem hatte und wie er/sie es u.U. gelöst hat. Sollte
+	sich dort keine Lösung finden, dann bitte bei <uri link="http://bugs.gentoo.org">http://bugs.gentoo.org</uri>
+	nachsehen ob sich dort etwas findet, was zu Eurer Problemlösung beiträgt. Erst <b>nachdem</b> Ihr diese
+	Möglichkeiten ausgeschöpft habt solltet Ihr Euch an #gentoo.de wenden.
+	</li>
+
+	<li>
+	Macht keine langen Vorreden wie "Kann mir jemand helfen???????" oder "Kennt sich hier jemand mit $APP aus??".
+	Stellt einfach Eure Frage. Wartet fünf Minuten. Wenn bis dahin keine Reaktion kam, dann stellt die Frage nochmal und
+	wartet weitere fünf Minuten. Wenn dann immer noch keine Antwort kam, dann ist momentan niemand da, der Euch helfen könnte.
+	Kommt später nochmal wieder oder schreibt einen Beitrag in den Foren.
+	</li>
+
+	<li>
+	Überhaupt solltet Ihr zuerst die Manpages des Probleme-bereitenden Programmes oder die entsprechende Dokumentation
+	in /usr/share/doc/ lesen. Vielleicht ist es auch sinnvoll, Google zu konsultieren.
+	</li>
+
+	<li>
+	Persönliche Beleidigungen (soweit nicht als Scherz erkennbar) werden <b>sofort</b> geahndet. Ebenso unnötiges Flooden
+	oder Parts/Joins. Je nach Schwere kann ein Kick erfolgen oder evtl. sogar ein temporärer oder ewiger Ban!
+	</li>
+</ul>
+<p>
+Zum fröhlichen Plaudern während der Installation und auch sonst ist natürlich jeder Willkommen !
+</p>
+
+</body>
+
+</section>
+
 
 </chapter>
 
