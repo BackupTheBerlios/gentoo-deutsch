@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
 <guide>
 <title>Gentoo Linux Localization Instructions</title>
-<author><mail link="holler@ahsoftware.de">
+<author><mail link="holler@gentoo.de">
         Alexander Holler</mail>
 </author>
 
@@ -105,6 +105,20 @@ with another language than english. It also explains what to do to get the Euro 
 </chapter>
 
 <chapter>
+<title>KDE</title>
+<section>
+        <body>
+                <p>For KDE the appropriate i18n-packet needs to be installed.
+<pre>
+# <i>emerge kde-i18n-de</i>
+</pre>
+		</p>
+        </body>
+</section>
+</chapter>
+
+
+<chapter>
 <title>Euro character (terminal)</title>
 <section>
         <body>
@@ -113,7 +127,7 @@ with another language than english. It also explains what to do to get the Euro 
 		<i>CONSOLEFONT</i> in <path>/etc/rc.conf</path>. Available fonts will be find in
 		<path>/usr/share/consolefonts</path>.
 <pre>
- CONSOLEFONT="lat0-16"
+ CONSOLEFONT="lat9w-16"
 </pre>
 		</p>
         </body>
@@ -167,6 +181,6 @@ with another language than english. It also explains what to do to get the Euro 
 
 </chapter>
 
-<version>$Revision: 1.3 $</version>
-<date>$Date: 2003/01/27 22:57:49 $</date>
+<version>$Revision: 1.4 $</version>
+<date>$Date: 2003/02/18 18:28:10 $</date>
 </guide>
