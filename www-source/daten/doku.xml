@@ -18,14 +18,14 @@ Hier finden Sie ien Übersicht unsere Dokumentationen
 <title>Kategorien</title>
 
 <body>
-<p>
-<uri link="einrichtung/index.html">Einrichtung</uri><br/>
-<uri link="antworten/index.html">Fragen &#38; Antworten</uri><br/>
-<uri link="anwendungen/index.html">Anwendungen</uri><br/>
-<uri link="fortgeschritten/index.html">Fortgeschritten</uri><br/>
-<uri link="entwickler/index.html">Entwickler</uri><br/>
-<uri link="englisch/index.html">Englisch</uri><br/>
-</p>
+  <p>
+    <uri link="einrichtung/index.html">Einrichtung</uri><br/>
+    <uri link="antworten/index.html">Fragen &#38; Antworten</uri><br/>
+    <uri link="anwendungen/index.html">Anwendungen</uri><br/>
+    <uri link="fortgeschritten/index.html">Fortgeschritten</uri><br/>
+    <uri link="entwickler/index.html">Entwickler</uri><br/>
+    <uri link="englisch/index.html">Englisch</uri><br/>
+  </p>
 </body>
 
 </section>

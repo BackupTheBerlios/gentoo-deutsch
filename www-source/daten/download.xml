@@ -3,18 +3,17 @@
 <info>
 <title>Downloaden von Arbeiten der Mitglieder von Gentoo.de</title>
 
-
 <chapter>
 <title>Übersicht</title>
 
 <section>
 
 <body>
-<p>
-<uri link="mirrors/index.html">Mirrors</uri><br/>
-<uri link="ebuilds/index.html">Neue Ebuilds im Portage-Baum</uri><br/>          
-<uri link="ebuilds_de/index.html">Ebuild Ergänzungen</uri><br/>
-</p>
+  <p>
+    <uri link="mirrors/index.html">Mirrors</uri><br/>
+    <uri link="ebuilds/index.html">Neue Ebuilds im Portage-Baum</uri><br/>          
+    <uri link="ebuilds_de/index.html">Ebuild Ergänzungen</uri><br/>
+  </p>
 </body>
 
 </section>
