@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.9.ebuild,v 1.1 2004/06/01 12:49:11 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.9.ebuild,v 1.2 2004/06/01 17:03:16 fow0ryl Exp $
 
 IUSE="lirc"
 #AC3_OVER_DVB="vdr-1.3.6-AC3overDVB-0.2.4"
@@ -70,9 +70,11 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	# vanilla vdr-1.3.8
-	#ewarn "Applying libsi patch"
-	#epatch ${DISTDIR}/libsi.diff
+	# vanilla vdr-1.3.9
+	# patch to support newer gcc versions
+	/bin/sed -i PLUGINS/src/skincurses/skincurses.c \
+	    -e 's:void cCursesOsd\:\:DrawText(int x, int y, const char \*s, tColor ColorFg, tColor ColorBg, const cFont \*Font, int Width = 0, int Height = 0, int Alignment = taDefault):void cCursesOsd\:\:DrawText(int x, int y, const char \*s, tColor ColorFg, tColor ColorBg, const cFont \*Font, int Width, int Height, int Alignment):'
+#	    (int x, int y, const char *s, tColor ColorFg, tColor ColorBg, const cFont *Font, int Width, int Height, int Alignment):'
 	
 	# AC3 over DVB Patch
 	# needs app-admin/fam-oss
