@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-dicts/XSteak/XSteak-1.7.3.ebuild,v 1.1 2003/10/03 15:35:32 dertobi123 Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-dicts/XSteak/XSteak-1.7.3.ebuild,v 1.2 2003/10/03 15:36:52 dertobi123 Exp $
 
 DESCRIPTION="GTK+ based GUI for the steak Dictionary"
 HOMEPAGE="http://www.tm.informatik.uni-frankfurt.de/~razi/steak"
@@ -13,6 +13,7 @@ KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="app-text/ispell
+	app-dicts/Steak
 	x11-libs/gtk+"
 RDEPEND=""
 S="${WORKDIR}"
