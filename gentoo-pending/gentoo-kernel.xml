@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+<guide link="/doc/en/gentoo-kernel.xml">
+<title>Gentoo Linux Kernel Guide</title>
+<author title="Author">
+    <mail link="swift@gentoo.org">Sven Vermeulen</mail>
+</author>
+<author title="Mitarbeit">
+    <mail link="lostlogic@gentoo.org">Brandon Low</mail>
+</author>
+<author title="Bearbeitung">
+    <mail link="carl@gentoo.org">Carl Anderson</mail>
+</author>
+<author title="Bearbeitung">
+    <mail link="peesh@gentoo.org">Jorge Paulo</mail>
+</author>
+
+<abstract>
+Dieses Dokument gibt Ihnen einen Überblick über die Kernelquellen die Gentoo
+mit Portage abietet
+</abstract>
+
+<version>0.1</version>
+<date>16. Mai 2003</date>
+
+<chapter>
+<title>Einleitung</title>
+<section>
+<body>
+
+<p>
+So wie bei Allem in Gentoo-Linux ist es auch das Ziel des Gentoo-Kernel-Teams
+Ihnen, dem Anwender, soviele Wahlmöglichkeiten wie möglich zu geben. Wenn man sich
+die Ausgabe von <c>emerge -s sources</c> ansieht, wird deutlich wie viele Kernels
+bei Gentoo zur Auswahl stehen. In diesem Dokument möchsten wir einen kurzen Überblick
+über die Ziele der einzelnen Patchsätze geben die wir entwerfen und ausserdem die
+anderen Kernelquellen erklären, die wir anbieten.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Die Auswahlmöglichkeiten, Teil I</title>
+<section>
+<title>gentoo-sources</title>
+<body>
+
+<p>
+Für die meisten Anwender sind die empfehlenswertesten Kernelquellen die <c>gentoo-sources</c>.
+Das <c>gentoo-sources</c> Paket enthält speziell auf Leistung getrimmte Kernelpatches die bestimmte
+Aufgaben wie z.B. Kompilieren und gleichzeitig Musikhören und im Web surfen optimieren sollen.
+Viele von Ihnen haben möglicherweise noch nie ein System benutzt, bei dem man viele Sachen
+aus den Quellen heraus kompiliert, während man die tägliche Arbeit erledigt.
+
+Sie werden vielleicht feststellen, daß die Benutzung der <c>vanilla-sources</c>
+(den offiziellen Kernelquellen von <uri>http://www.kernel.org</uri>) dazu führt,
+daß normale Aufgaben wie Musikhören, Mausbewegungen und ähnliches "Sprünge"
+aufweisen können
+</p>
+
+<p>
+Die <c>gentoo-sources</c> enthalten ein erweitertes ACPI-Subsystem und basieren
+auf Con Kolivas High-Performance Kernelpatches (den sog. <c>ck-sources</c>). Wir
+ünsterstützen ausserdem grSecurity (einen Satz von sicherheitstechnischen Patches
+mit Unterstützung für ACLs), EVMS(2) (ein hochfelxibles Speicherverwaltungs-System
+mit einfacher Partitionsgrößenveränderung), JFS (ein Hochleistungs-Dateisystem von IBM),
+die neuesten NTFS-Treiber und vieles, vieles mehr.
+</p>
+
+<p>
+Da die <c>gentoo-sources</c> auf Höchstleistungs ausgelegt sind, stellen sie außerderm
+eine gute Grundlage für Spiele dar.
+</p>
+
+<p>
+Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werden:
+</p>
+
+<table>
+<tr><th>Flag</th><th>Beschreibung</th></tr>
+<tr><ti>aavm</ti><ti>Andrea Arcangeli's Speicherverwaltung nutzen</ti></tr>
+<tr><ti>evms2</ti><ti>EVMS 2.0.1 anstelle von EVMS 1.2.1 nutzen</ti></tr>
+<tr><ti>crypt</ti><ti>Kryptographie-Patches benutzen</ti></tr>
+<tr><ti>usagi</ti><ti>USAGI beibehalten, superfreeswan, patch-int und loop-jari nicht beibehalten</ti></tr>
+</table>
+
+
+</body>
+</section>
+<section>
+<title>vanilla-sources</title>
+<body>
+
+<p>
+Die nächsten Kernelquellen mit denen Sie als Linux-Anwender vielleicht vertraut sind,
+sind die <c>vanille-sources</c>. Wie ich vorher schon kurz erwähnt habe, sind dies
+die offiziellen Kernelquellen von <uri>http://www.kernel.org/</uri>. Diese Quellen werden
+(entgegen dem weitverbreiteteten Glauben) nicht von Linus Torvalds selbst, sondern von
+Marcelo Tosati verwaltet. Linus ist der "Chef" der aktiven Kernelentwicklung und da er eben
+nur eine Person ist, vergibt er die Verwaltungsaufgaben von stabilen Kernels an Personen,
+denen er das Vertrauen entgegen bringt, diese Kernels zu verwalten. So war zum Beispiel
+Alan Cox Verwalter der Kernel-Serie 2.2 und Marcelo Tosati wurde eben Verwalter der Kernel-Serie
+2.4. Dies ist exakt das, worauf alle Patchsätze der Serie 2.4 basieren. Marcelo hat hervorragende Arbeit
+mit seiner Verwaltung geleistet und man kann auf diesen Kernel in Sachen Stabilität, Aktualität (betrifft nicht
+noch in Entwicklung befindlicher Teile) und Hardwareunterstützung wirklich zählen.
+</p>
+
+<p>
+Die <c>vanilla-sources</c> sind möglicherweise die stabilsten aller verfügbaren
+Kernelquellen, da sie auch die am meisten getesteten sind und alle anderen Kernelquellen
+auf ihnen basieren. Wenn Sie keines der von den anderen Kernels mitgebrachten Extras brauchen,
+dann sollten Sie sich für die <c>vanilla-sources</c> entscheiden.
+</p>
+
+</body>
+</section>
+<section>
+<title>gs-sources</title>
+<body>
+
+<p>
+Für Anwender für die Arbeitsplatzleistung erst nach Verlässlichkeit und Hardwareunterstützung kommt,
+haben wir die <c>gs-sources</c>. GS steht für Gentoo Stable (wie kreativ, gell). Dieser Patch-Satz
+ist im Hinblick auf Unterstützung von neuester Hardware erweitert und getestet und stellt sicher,
+daß kritische Server verfügbar sind, wenn sie benötigt werden. Dieses Kernel lässt einige der
+überagressiven in den <c>gentoo-sources</c> verfügbaren Leistungs-Tuning-Patches aussen vor, aber die
+hervorragende Leistung die man von den Vanilla Kernels kennt und liebt sind immer noch enthalten.
+Dort wo es ohne Stabilitätseinbußen möglich ist, fügen wir serverbezogene Patches dem Kernel hinzu.
+</p>
+
+<p>
+Dieser Kernel bietet Unterstützung für das neueste ACPI Subsystem, EVMS,
+ECC (wird für Hochverfügbarkeitskernels benötigt), verschlüsselte Loopbackgeräte,
+NTFS, Win4Lin und XFS. Es enthält ausserdem Aktualisierungen für IDE, ext3 und diverse
+Netzwerkkarten und noch einige andere Patches.
+</p>
+
+<p>
+Mit anderen Worten sind diese Quellen perfekt für Server und
+Hochverfügbarkeitssysteme.
+</p>
+
+<p>
+Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werden:
+</p>
+
+<table>
+<tr><th>Flags</th><th>Beschreibung</th></tr>
+<tr><ti>crypt</ti><ti>Kryptographie-Patches benutzen</ti></tr>
+</table>
+
+</body>
+</section>
+<section>
+<title>pfeifer-sources</title>
+<body>
+
+<p>
+<c>pfeifer-sources</c> werden nach viel Testarbeit und Qualitätssicherung der
+Nachfolger der <c>gentoo-sources</c> werden. Patches für die <c>gentoo-sources</c>
+werden zu Testzwecken zuerst an den <c>pfeifer-sources</c> angewendet. Wenn Sie also
+die Leistung der <c>gentoo-sources</c> zusammen mit den neuesten Patches haben wollen, dann
+benutzen sie die <c>pfeifer-sources</c>.
+
+</p>
+
+<p>
+Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werden:
+</p>
+
+<table>
+<tr><th>Flag</th><th>Beschreibung</th></tr>
+<tr><ti>aavm</ti><ti>Andrea Arcangeli's Speicherverwaltung nutzen</ti></tr>
+<tr><ti>evms2</ti><ti>EVMS 2.0.1 anstelle von EVMS 1.2.1 nutzen</ti></tr>
+<tr><ti>crypt</ti><ti>Kryptographie-Patches benutzen</ti></tr>
+<tr><ti>usagi</ti><ti>USAGI beibehalten, superfreeswan, patch-int und loop-jari nicht beibehalten</ti></tr>
+
+</table>
+
+</body>
+</section>
+<section>
+<title>hardened-sources</title>
+<body>
+
+<p>
+Die <c>hardened-sources</c> enthalten neben Patches für die verschiedenen
+Unterprojekte von Gentoo Hardened auch einige andere Stabilitäts- und Sicherheitserweiterungen.
+Besuchen Sie <uri>http://www.gentoo.org/proj/en/hardened/</uri> für weitere Informationen.
+</p>
+
+<p>
+Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werden:
+</p>
+
+<table>
+<tr><th>Flags</th><th>Beschreibung</th></tr>
+<tr><ti>selinux</ti><ti>Ersetze grSecurity mit Unterstützung für SELinux</ti></tr>
+</table>
+
+</body>
+</section>
+<section>
+<title>xfs-sources</title>
+<body>
+
+<p>
+Die <c>xfs-sources</c> enthalten Unterstützung für EVMS, ACPI, grSecurity und
+- was Sie sich vielleicht schon gedacht haben - die neuesten Patches für die
+Unterstützung von XFS. Falls Sie es wissen müssen : die Gentoo LiveCD
+benutzt die <c>xfs-sources :-)</c>.
+</p>
+
+<p>
+Mehr Informationen über XFS gibt es bei <uri>http://oss.sgi.com/projects/xfs/</uri>.
+</p>
+
+<p>
+Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werden:
+</p>
+
+<table>
+<tr><th>Flags</th><th>Beschreibung</th></tr>
+<tr><ti>crypt</ti><ti>Kryptographie-Patches benutzen</ti></tr>
+</table>
+
+</body>
+</section>
+<section>
+<title>Architektur-spezifische Kernels</title>
+<body>
+
+<p>
+<c>alpha-sources</c>, <c>arm-sources</c>, <c>hppa-sources</c>,
+<c>mips-sources</c>, <c>ppc-sources</c> und <c>sparc-sources</c> sind - wie
+der Name vermuten lässt, für die bestmögliche Lauffähigkeit auf den entsprechenden
+Plattformen angepasst. Sie enthalten aussderdem einige der oben und unten
+genannten Hardware- und Feature-Patchsätze.
+</p>
+
+</body>
+</section>
+<section>
+<title>ppc-sources-benh</title>
+<body>
+
+<p>
+Die <c>ppc-sources-benh</c> Ebuilds bieten zusätzliche Hardwareunterstützung
+für die <c>ppc-sources</c>-Kernel. Sie sind ein bisschen experimenteller als die
+<c>ppc-sources</c>
+</p>
+
+</body>
+</section>
+<section>
+<title>ppc-sources-crypto</title>
+<body>
+
+<p>
+Die <c>ppc-sources-crypto</c> Ebuilds bieten Crypto-API Unterstützung für
+das Gentoo Linux PPC-Kernel. Mehr Informationen über CryptoAPI können Sie unter
+<uri>http://www.kerneli.org/about/</uri> bekommen.
+</p>
+
+</body>
+</section>
+<section>
+<title>ppc-sources-dev</title>
+<body>
+
+<p>
+Die <c>ppc-sources-dev</c>-Pakete bieten die Entwicklerquellen für die
+<c>ppc-sources</c>. Jeder Patch der in die <c>ppc-sources</c> einfliessen soll
+muß seine Funktionsfähigkeit erst in den <c>ppc-sources-dev</c> beweisen.
+</p>
+
+</body>
+</section>
+<section>
+<title>compaq-sources</title>
+<body>
+
+<p>
+Die <c>compaq-sources</c> bieten die Kernel Quellen von RedHat für Alpha,
+das von Compaq verwaltet wird.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Die Auswahlmöglichkeiten, Teil II</title>
+<section>
+<body>
+
+<p>
+Nun werde ich versuchen, kurz einige der anderen in <path>sys-kernel/*-sources</path>
+befindlichen Kernelquellen, die Sie bei <c>emerge -s sources</c> vorbeihuschen gesehen
+haben, zu erklären. Lassen Sie sie uns in alphabetischer Reihenfolge durchgehen.
+</p>
+
+</body>
+</section>
+<section>
+<title>aa-sources</title>
+<body>
+
+<p>
+Zu allererst haben wir die <c>aa-sources</c>. Hierbei handelt es sich um
+Andrea Arcangelis Patch-Satz. Sein Kernelpatch hat einige der am agressivsten
+getunten VM (Virtual Memory) Patches die der Menschheit bekannt sind. Als ich
+das letzte Mal nachgesehen habe, enthielten Sie auch SGIs XFS-Dateisystem und den
+O(1)-Scheduler von Ingo Molar (welcher der Default-Scheduler in Linux 2.6 werden wird).
+</p>
+
+<p>
+Es bietet ausserdem Unterstützung für User-Mode-Linux (siehe auch unseren
+<uri link="/doc/en/uml.xml">UML Guide (englisch)</uri> für weitere Informationen) und
+den neuesten TUX-Webserver (ein im Kernel befindlicher Webserver).
+
+</p>
+
+<p>
+Wenn Sie bei anderen Kernels Probleme mit der Speicherverwaltung haben, dann
+könnten die <c>aa-sources</c> die Lösung des Problems darstellen. Wenn Die
+Linux Speicherverwaltung für Ihr System optimieren willen, dann sind die <c>aa-sources</c>
+<e>auf jeden Fall</e> das sein, was Sie brauchen.
+</p>
+
+<p>
+Besuchen Sie <uri>http://www.kernel.org/pub/linux/kernel/people/andrea/kernels/v2.4</uri>
+um mehr Informationen über alle Patches in diesen Kernelquellen zu erhalten.
+</p>
+
+</body>
+</section>
+<section>
+<title>ac-sources</title>
+<body>
+
+<p>
+Als Nächstes haben wie die <c>ac-sources</c>. Es handelt sich hierbei um Alan Cox
+Patchsatz für die Kernel Serie 2.4. In diesesm Patchsatz finden Sie den O(1) Scheduler,
+die neuesten Aktualisierungen für das IDE-System von 2.4 und viele andere Patches die auf
+eine mögliche Integration in die Kernel Serie 2.4 warten.
+</p>
+
+<p>
+Dieser Kernel ist dafür bekannt, anständige Unterstützung für einige zusätzliche
+Hardware-Teile zu haben und kann ein Kandidat für Sie sein, wenn Sie einen stabilen aber
+weniger konservativen Kernel als die <c>vanilla-sources</c> möchten.
+</p>
+
+<p>
+Besuchen Sie <uri>http://www.kernel.org/pub/linux/kernel/people/alan/linux-2.4/</uri>
+um einen Überblick über Alan Cox Arbeit zu bekommen.
+</p>
+
+</body>
+</section>
+<section>
+<title>ck-sources</title>
+<body>
+
+<p>
+Die <c>ck-sources</c> sind Con Kolivas Kernelpatch-Satz. Dieser Kernel ist
+<e>HÖCHST</e> optimiert für Desktopleistung mit dem Nachteil von Durchsatz und
+ein paar Fähigkeiten des Schedulers bei der Priorisierung von Anwendungen.
+Con Kolivas "benchmarkt" Kernel um die bestmögliche Kombination der einzelnen Features
+für die Benutzung auf Desktops zu finden. Besuchen Sie <uri>http://kernel.kolivas.org</uri> um
+mehr Informationen über Con und seine Patches zu finden.
+</p>
+
+</body>
+</section>
+<section>
+<title>development-sources</title>
+<body>
+
+<p>
+<c>development-sources</c> is the current unstable kernel branch.  This
+is the branch of the Linux kernel that Linus himself maintains.  This
+rapidly changing playground is where the features for the next stable
+branch are implemented, enhanced and tested before they are released
+to the vast majority of Linux users.
+</p>
+
+<p>
+If you want the latest, bleeding edge support and experimental core-system
+changes, this is what you want. Note however that these are <e>highly</e>
+experimental kernel sources and it is advised <e>not</e> to use them on mission
+critical or production systems.
+</p>
+
+<warn>
+Do note that Gentoo Linux does not support issues with or related
+to the <c>development-sources</c> or derivatives as it changes too often
+and is known to break things occasionally.
+</warn>
+
+</body>
+</section>
+<section>
+<title>gaming-sources</title>
+<body>
+
+<p>
+<c>gaming-sources</c> are based on <c>ck-sources</c> and are therefore
+tuned for high performance. They also contain patches for the latest
+game-related hardware (graphic cards, sound cards, and such).
+</p>
+
+<p>
+If you are a hardcore gamer, this is your choice.
+</p>
+
+</body>
+</section>
+<section>
+<title>mm-sources</title>
+<body>
+
+<p>
+The <c>mm-sources</c> are based on the <c>development-sources</c> and
+contain Andrew Morton's patch set. It assembles several other patches,
+like ext2/3 Extended Attributes and Access Control Lists, Page Table
+Sharing, the Orlov Allocator, non-linear mapping behaviour, etc into one
+patch set.
+</p>
+
+<p>
+If you really want to live on the edge and you think 
+<c>development-sources</c> are for wussies, then try out
+<c>mm-sources</c>.
+</p>
+
+</body>
+</section>
+<section>
+<title>mosix-sources</title>
+<body>
+
+<p>
+The <c>mosix-sources</c> are patched to support MOSIX operation for 
+clustered computing. A cluster is a set of nodes (PCs) with software 
+that enables them to handle tasks in a distributed manner. With 
+clusters, you don't need high-profile supercomputers to do lengthy 
+tasks. For more information see <uri>http://www.mosix.org</uri>.
+</p>
+
+</body>
+</section>
+<section>
+<title>openmosix-sources</title>
+<body>
+
+<p>
+The <c>openmosix-sources</c> are patched to support the openMosix system 
+(like MOSIX but Open Source).  For more information see 
+<uri>http://www.openmosix.org</uri>.
+</p>
+
+</body>
+</section>
+
+<!--
+    TODO:   Add descriptions of the other ppc-sources here
+-->
+
+<section>
+<title>redhat-sources</title>
+<body>
+
+<p>
+The <c>redhat-sources</c> are, as the name suggests, the sources for the 
+RedHat Linux kernel.  Thanks to the wonders of Open Source, anyone can 
+take advantage of the work the RedHat engineers put into making their 
+kernels. We at Gentoo have provided an ebuild so that you can easily
+use this kernel with Gentoo.
+</p>
+
+</body>
+</section>
+<section>
+<title>rsbac-sources</title>
+<body>
+
+<p>
+<c>rsbac-sources</c> contain the patches from 
+<uri>http://www.rsbac.org</uri>.  RSBAC stands for <e>Rule Set Based 
+Access Control</e>. These kernel patches allow you to authorize users 
+based on rules instead of normal uid/gid permissions.
+</p>
+
+</body>
+</section>
+<section>
+<title>selinux-sources</title>
+<body>
+
+<p>
+<c>selinux-sources</c> from <uri>http://www.nsa.gov/selinux</uri> are 
+patches for the security conscious to support the LSM (Linux Security 
+Modules) and the Flask Security Architecture.
+</p>
+
+</body>
+</section>
+<section>
+<title>usermode-sources</title>
+<body>
+
+<p>
+<c>usermode-sources</c> are the User Mode Linux kernel patches.  This 
+kernel is designed to allow Linux to run within Linux to run within Linux
+to ... User Mode Linux is intended for testing and virtual server support.
+For more information about this amazing tribute to the stability and 
+scalability of Linux, see <uri>http://user-mode-linux.sourceforge.net</uri>. 
+</p>
+
+<p>
+For more information on UML and Gentoo, read the 
+<uri link="/doc/en/uml.xml">Gentoo UML Guide</uri>.
+</p>
+
+</body>
+</section>
+<section>
+<title>win4lin-sources</title>
+<body>
+
+<p>
+<c>win4lin-sources</c> are patched to support the userland win4lin tools 
+that allow Linux users to run many Microsoft Windows (TM) applications
+at almost native speeds.  See <uri>http://www.netraverse.com/</uri> for more 
+information.
+</p>
+
+</body>
+</section>
+<section>
+<title>wolk-sources</title>
+<body>
+
+<p>
+<c>wolk-sources</c> contains the <e>Working Overloaded Linux Kernel</e> from 
+<uri>http://sourceforge.net/projects/wolk</uri>. This kernel contains
+many patches of a wide variety, all combined into the kernel with
+extreme care. This allows you to configure nearly every one into and out
+of the kernel at compile time -- so the kernel will work with nearly any
+combination of the patches.
+</p>
+
+<p>
+If you need a certain combination of patches that you cannot find in other
+kernel sources, WOLK is definitely worth a shot.
+</p>
+
+</body>
+</section>
+</chapter>
+</guide>
