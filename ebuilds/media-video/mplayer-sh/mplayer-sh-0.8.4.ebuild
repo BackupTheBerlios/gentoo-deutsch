@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/mplayer-sh/mplayer-sh-0.8.4.ebuild,v 1.1 2003/10/13 20:50:12 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/mplayer-sh/mplayer-sh-0.8.4.ebuild,v 1.2 2003/10/27 19:39:37 martini Exp $
 
 IUSE=""
 
@@ -24,7 +24,7 @@ src_unpack() {
 
 src_compile() {
 	sed -i "s/^declare CFGFIL.*$/declare CFGFIL=\"\/etc\/vdr\/mplayer.sh.conf\"/"  mplayer.sh
-	sed -i "s/^MPLAYER.*$/MPLAYER=\/usr\/bin\/mplayer/"  mplayer.sh.conf
+	sed -i "s/^MPLAYER=.*$/MPLAYER=\/usr\/bin\/mplayer/"  mplayer.sh.conf
 	sed -i "s/^LIRCRC.*$/LIRCRC=\/etc\/lircd.conf/"  mplayer.sh.conf
 }
 
