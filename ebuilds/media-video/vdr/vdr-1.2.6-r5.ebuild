@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r5.ebuild,v 1.2 2004/02/25 19:14:57 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r5.ebuild,v 1.3 2004/02/25 19:19:17 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -17,7 +17,7 @@ SRC_URI="
 		http://sites.inka.de/seca/vdr/vdr-mailbox-${MAILBOX_VN}.tgz
 		http://michael.justfor-e.net/gentoo/vdr/dvbdevice.diff.gz
 		http://www.vdr-portal.de/download/patches/KomplettPatch-1.2.6-E.diff.bz2
-		http://linvdr.org/download/VDR-AIO/vdr-${ELCHI_VN}/vdr-${ELCHI_VN}-Elchi-AIO3c.diff.gz
+		http://linvdr.org/download/VDR-AIO/vdr-${ELCHI_VN}/vdr-${ELCHI_VN}-ElchiAIO3c.diff.gz
 		http://www.magoa.net/linux/files/improvedosd-3a.diff.gz
 		http://www.magoa.net/linux/contrib/improvedosd-3-3a.diff.gz
 		http://www.magoa.net/linux/files/iconscolored.tar.gz
