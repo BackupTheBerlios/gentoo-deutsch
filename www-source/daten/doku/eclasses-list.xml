@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/eclasses-list.xml,v 1.2 2003/12/10 21:39:41 sirseoman Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/eclasses-list.xml,v 1.3 2003/12/11 06:41:23 sirseoman Exp $ -->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <!--
@@ -41,7 +41,7 @@ unterstützen.
 Die autotools.eclass gestattet die Entwicklung von Programmen, die die
 neuesten Versionen von autconf/automake benötigen.
 <note>
-   Dieses Eclass wurde erstellt, um Inkompatibilitätsprobleme zwischen
+   Diese Eclass wurde erstellt, um Inkompatibilitätsprobleme zwischen
    autoconf-2.13 und autoconf-2.5x auf der einen Seite und automake-1.4x
    und automake-1.5x auf der anderen Seite zu überbrücken. Die meisten
    Pakete benötigen autoconf-2.13 und automake-1.4x, können aber wegen
@@ -54,7 +54,7 @@ Kommentiertes Beispiel:
    # Copyright 1999-2002 Gentoo Technologies, Inc.
    # Distributed under the terms of the GNU General Public License, v2 or later
    # Maintainer:  John Doe &lt;john@foo.com&gt;
-   # $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/eclasses-list.xml,v 1.2 2003/12/10 21:39:41 sirseoman Exp $
+   # $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/eclasses-list.xml,v 1.3 2003/12/11 06:41:23 sirseoman Exp $
 #
    # Sollten Sie von hier abweichende Versionen setzen wollen, *muss* dies getan
    # werden, bevor inherit.eclass gesourced wird
@@ -69,7 +69,7 @@ Kommentiertes Beispiel:
    S=${WORKDIR}/${P}
    DESCRIPTION="My Application"
 #
-   # Hier *mÃŒssen* Sie $SRC_URI als Quell-URL haben um automake und autoconf
+   # Hier *müssen* Sie $SRC_URI als Quell-URL haben um automake und autoconf
    # Quellcode-Tarballs mit einzubeziehen
    SRC_URI="${SRC_URI}
             http://download.foo.com/files/${P}.tar.gz"
@@ -119,7 +119,7 @@ anderen erben von hier.
 <section>
 <body>
 Die commonbox.eclass wurde dazu konstruiert, um einfachere Installationen
-von Box Window-Manager wie blackbox, fluxbox oder commonbox zu
+von Box Window-Managern wie blackbox, fluxbox oder commonbox zu
 ermöglichen. Die Standard-Utilities dieser Window-Manager werden in der
 Commonbox-Utils Abhängigkeit installiert und die Standardstile in der
 Commonbox-Style Utility. Sie alle teilen sich nun das
@@ -142,7 +142,7 @@ Verfügung.
 <title>debug.eclass</title>
 <section>
 <body>
-Ein allgemeines DEBUG Eclass, um die Einbeziehung von Debug-Informationen
+Eine allgemeine DEBUG Eclass, um die Einbeziehung von Debug-Informationen
 zu vereinfachen und "schlechte" USE-Flags von <c>CFLAGS</c> zu entfernen.
 </body>
 </section>
@@ -163,7 +163,7 @@ Gentoo Linux-System zu ermöglichen.
 <title>ebook.eclass</title>
 <section>
 <body>
-Das ebook.eclass definiert einige Standardfunktionen und -variablen um
+Die ebook.eclass definiert einige Standardfunktionen und -variablen um
 Ebooks zu installieren.
 </body>
 </section>
@@ -173,7 +173,7 @@ Ebooks zu installieren.
 <title>elisp.eclass</title>
 <section>
 <body>
-Dieses Eclass setzt das "site-lisp"-Verzeichnis für Pakete, die mit dem
+Diese Eclass setzt das "site-lisp"-Verzeichnis für Pakete, die mit dem
 Emacs-Paket verbunden sind.
 </body>
 </section>
@@ -183,7 +183,7 @@ Emacs-Paket verbunden sind.
 <title>eutils.eclass</title>
 <section>
 <body>
-Dieses Eclass ist für allgemeine Funktionen, die die meisten Ebuilds zu
+Diese Eclass ist für allgemeine Funktionen, die die meisten Ebuilds zu
 implementieren haben.
 </body>
 </section>
@@ -212,7 +212,7 @@ in app-games zu nutzen.
 <title>gcc.eclass</title>
 <section>
 <body>
-Dieses Eclass enthält (oder sollte enthalten) Funktionen um allgemeine
+Diese Eclass enthält (oder sollte enthalten) Funktionen um allgemeine
 Informationen über den gcc zu bekommen.
 </body>
 </section>
@@ -239,8 +239,8 @@ Gnome Eclass. Hauptsächlich <c>SRC_URI</c> Einstellungen.
 <title>gnuconfig.eclass</title>
 <section>
 <body>
-Dieses Eclass updated config.guess und config.sub. Das ist hilfreich, falls
-das Konfigurieren wegen eines falschen kanonischen Systemnamens (<c>CHOST</c>)
+Diese Eclass updated config.guess und config.sub. Das ist hilfreich, falls
+das Konfigurieren wegen eines falschen Systemnamens (<c>CHOST</c>)
 fehlschlägt.
 </body>
 </section>
@@ -260,7 +260,7 @@ Das gtk-engines.eclass wird von allen gtk-engines-* Ebuilds geerbt.
 <section>
 <body>
 <note>
-Dieses Eclass muss existieren, da ohne es ältere installierte Pakete, die
+Diese Eclass muss existieren, da ohne es ältere installierte Pakete, die
 die alte Vererbungsmethode nutzen, nicht mehr deinstalliert werden können.
 Wie dem auch sei, es muss keine Codezeilen enthalten :-)
 </note>
@@ -345,13 +345,13 @@ ihrem Quellverzeichnissen und - archiven. Wird vererbt, nachdem
 <title>kde-source.eclass</title>
 <section>
 <body>
-Dieses ist für kde-base cvs Ebuilds. Lesen Sie die Kommentare über
-Einstellungen. Es benutzt <c>$S</c> und setzt <c>$SRC_URI</c>,
+Diese ist für kde-base cvs Ebuilds. Lesen Sie die Kommentare über
+Einstellungen. Sie benutzt <c>$S</c> und setzt <c>$SRC_URI</c>,
 also "erben" Sie es so spät wie möglich (auf jeden Fall nach jedem anderen
 Eclass). Schauen Sie unter
 <uri>http://www.gentoo.org/~danarmak/kde-cvs.html</uri>
 nach! Die wirkliche Funktonalität liegt in <c>cvs.eclass</c>;
-Dieses hier fügt lediglich einige triviale kde-spezifische Dinge hinzu.
+Diese hier fügt lediglich einige triviale kde-spezifische Dinge hinzu.
 </body>
 </section>
 </chapter>
@@ -379,7 +379,7 @@ Enthält die Seiten der <uri>ftp://ftp.kde.org/</uri> Pakete und deren Mirrors.
 <title>kernel.eclass</title>
 <section>
 <body>
-Dieses Eclass enthält allgemeine Funktionen, die von allen auf lostlogic
+Diese Eclass enthält allgemeine Funktionen, die von allen auf lostlogic
 basierenden Kernel-Ebuilds benutzt werden können.
 </body>
 </section>
@@ -459,7 +459,7 @@ wo Sie ein Archiv erstellen können. (iBiblio)
 <title>libtool.eclass</title>
 <section>
 <body>
-Dieses Eclass patched <c>ltmain.sh</c>, die mit libtoolized Paketen verteilt wird,
+Diese Eclass patched <c>ltmain.sh</c>, die mit libtoolized Paketen verteilt wird,
 mit dem Relink- und Portage-Patch.
 </body>
 </section>
@@ -529,7 +529,7 @@ integriert werden.
 <title>virtualx.eclass</title>
 <section>
 <body>
-Dieses Eclass kann von Paketen genutzt werden, die eine laufende X-Umgebung
+Diese Eclass kann von Paketen genutzt werden, die eine laufende X-Umgebung
 zum Erstellen benötigen.
 </body>
 </section>
