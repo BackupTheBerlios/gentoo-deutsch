@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Documentation
+	
+-- 
+	Nano Grundlagen</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Nano Grundlagen</p>
+<form>
+<b>Contents</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Nano Grundlagen</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Nano Grundlagen</p>
+<p class="secthead"><a name="_sect1">Zweck </a></p>
+<p>
+Diese Hilfe wurde geschrieben, um grundlegende Aktionen mit nano zu umfassen. Mehr Informationen über nano finden Sie hier:
+</p>
+<p>
+<a href="http://www.nano-editor.org">http://www.nano-editor.org</a>
+</p>
+<p class="secthead"><a name="_sect2">Öffnen und erstellen von Dateien </a></p>
+<p>
+Das Öffnen und Erstellen von Dateien ist in nano sehr einfach, geben Sie einfach folgendes ein: <a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input"><font class="code">nano filename</font></font></pre></td></tr>
+</table>Nano ist 
+ein Editor ohne Modus, Sie können also sofort Text einfügen. Wenn Sie eine Konfigurationsdatei wie z.b. <font class="path">/etc/fstab</font> bearbeiten, 
+dann benutzen Sie die Option -w z.B. <a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input"><font class="code">nano -w /etc/fstab</font></font></pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warning: </b>Es ist sehr wichtig, dass Sie die Option -w benutzen, wenn Sie 
+eine Konfigurationsdatei öffnen. Wenn Sie dies vergessen, könnte das Ihr System davon abhalten zu booten oder andere schädliche 
+Dinge anrichten.</p></td></tr></table> </p>
+<p class="secthead"><a name="_sect3">Ausschneiden und Einfügen </a></p>
+<p>
+Um eine einzige Zeile auszuschneiden benutzen Sie <font class="code">^K</font>. Sie halten einfach die Tasten <font class="code">CTRL</font> und <font class="code">k</font> zur selben Zeit gedrückt.
+Die Zeile verschwindet nun. Um Sie wieder einzufügen, bewegen Sie den Cursor einfach dahin, wo Sie sie wieder einfügen wollen und drücken
+<font class="code">^U</font> (<font class="code">CTRL u</font>) auf der Tastatur.  BAM!  Die Zeile ist wieder da. Gehen wir davon aus, Sie müssen einen ganzen Paragraphen bewegen.
+Um mehrere Zeilen zu bewegen, schneiden Sie einfach jede Zeile einzeln aus und fügen Sie dann wieder ein.  BAM! 
+Der komplette Paragraph erscheint an dieser Stelle.</p>
+<p>
+Wenn Sie eine etwas feinere Kontrolle haben wollen, dann müssen Sie den Text markieren. Bewegen Sie den Cursor an den Anfang des Textes wo sie zu 
+schneiden beginnen wollen. Drücken Sie dann <font class="code">^^</font> (Das ist <font class="code">ctrl ^</font> oder <font class="code">ctrl 6</font>).  
+Bewegen Sie nun den Cursor an das Ende des Textes der ausgeschnitten werden soll. Der gewünschte Text sollte nun aufleuchten.
+Wenn Sie die Markierung rückgängig machen wollen, drücken Sie einfach wieder <font class="code">^^</font>.
+Drücken Sie <font class="code">^K</font> um den Text auszuschneiden.
+Benutzen Sie <font class="code">^U</font> um Ihn einzufügen.  BAM!  Nun funktioniert es.
+</p>
+<p class="secthead"><a name="_sect4">Nach Text suchen </a></p>
+<p>
+Nach einem  string zu suchen ist einfach, solange Sie an &quot;WhereIs&quot; anstatt an &quot;Search&quot; denken. Drücken Sie einfach <font class="code">^W</font> 
+(<font class="code">CTRL w</font>) und geben Sie den string ein. Wie ich sagte, einfach.</p>
+<p class="secthead"><a name="_sect5">Zusammenfassung </a></p>
+<p>
+Das ist alles!  Danke an kiyose und quazion aus #gentoo. Um mehr Informationen über nano zu bekommen schauen Sie hier:
+</p>
+<p>
+<a href="http://www.nano-editor.org">http://www.nano-editor.org</a>
+</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+					Updated 15 April 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:meekrob@gentoo.org">Sherman Boyd</a></b><br><i>Gentoo Doc Editor</i><br><br><b><a class="altlink" href="mailto:scandium@gentoo-linux.net">Rainer Groesslinger</a></b><br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Summary:</b> Das hier ist eine simple Einführung in nano. Damit Sie schnell mit den Grundlagen vertraut werden.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Support our development efforts by donating via credit card!</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="drobbins@gentoo.org"><input type="hidden" name="item_name" value="Gentoo Linux Support"><input type="hidden" name="item_number" value="1000"><input type="hidden" name="image_url" value="http://www.gentoo.org/images/paypal.png"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="return" value="http://www.gentoo.org"><input type="hidden" name="cancel_return" value="http://www.gentoo.org"><input type="image" src="http://images.paypal.com/images/x-click-but21.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Purchase RAM using this link, and a percentage
+of your sale will go towards further Gentoo Linux development.</p>
+<a href="http://www.qksrv.net/click-477620-5032687" target="_top"><img src="http://www.qksrv.net/image-477620-5032687" width="125" height="125" alt="DDR Memory at Crucial.com" border="0"></a><p class="alttext">Why these guys?  Because <b>cvs.gentoo.org</b> and <b>inventor.gentoo.org</b> use high-quality Crucial RAM. We know that it's good stuff because we rely on it ourselves.</p>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Copyright 2001 Gentoo
+		Technologies, Inc.  Questions, Comments, Corrections?  Email <a class="highlight" href="mailto:gentoo-dev@gentoo.org">gentoo-dev@gentoo.org</a>.
+			</td></tr>
+</table></body>
+</html>
