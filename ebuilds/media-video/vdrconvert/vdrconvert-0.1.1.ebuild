@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.1.1.ebuild,v 1.2 2004/07/30 22:20:39 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.1.1.ebuild,v 1.3 2004/08/03 12:55:40 austriancoder Exp $
 
 IUSE=""
 SCRIPT="vdrconvert"
@@ -41,10 +41,9 @@ DEPEND=">=media-video/vdr-1.2.0
 	>=cdlabelgen-0.3.0
 	>=app-cdr/dvd+rw-tools-5.13.4.7.4
 "
-	
 
-
-VDRVERSION=$(awk -F'"' '/VDRVERSION/ {print $2}' /usr/include/vdr/config.h )
+# not needed - or?
+#VDRVERSION=$(awk -F'"' '/VDRVERSION/ {print $2}' /usr/include/vdr/config.h )
 
 src_unpack() {
 	unpack ${A}

@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.0.12j.ebuild,v 1.2 2004/02/29 09:24:19 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.0.12j.ebuild,v 1.3 2004/08/03 12:55:40 austriancoder Exp $
 
 IUSE=""
 SCRIPT="vdrconvert"
@@ -38,8 +38,8 @@ DEPEND=">=media-video/vdr-1.2.0
 	>=tosvcd-0.9-r2
 "
 	
-
-VDRVERSION=$(awk -F'"' '/VDRVERSION/ {print $2}' /usr/include/vdr/config.h )
+# not needed - or?
+#VDRVERSION=$(awk -F'"' '/VDRVERSION/ {print $2}' /usr/include/vdr/config.h )
 
 src_unpack() {
 	unpack ${A}
