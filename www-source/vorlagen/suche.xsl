@@ -6,24 +6,37 @@
 <xsl:template match="cgi:result_list">
   <table cellpadding="0" cellspacing="0" class="resultlist">
     <![CDATA[<!--loop: results-->]]>
-    <tr>
+
       <tr>
         <td class="title" colspan="2">
+          <![CDATA[<!--item: rank-->]]>
+          <xsl:text>. </xsl:text> 
           <![CDATA[<a href="<!--item: url-->"><!--item: title--></a>]]>
         </td> 
       </tr>
       
       <tr>
         <td>Beschreibung</td>
-        <td>Daten</td>        
+        <td>
+          <p>
+            Relevanz:
+            <![CDATA[<!--item: score-->]]> &#160;
+          </p>
+          <p> 
+            Datum:
+            <![CDATA[<!--item: date-->]]> &#160;
+          </p>
+          <p>
+            Größe:
+            <![CDATA[<!--item: size-->]]> kB
+          </p>         
+        </td>        
       </tr>
     
       <tr>
         <td colspan="2">&#160;</td>
       </tr>    
-    
-    </tr>
-    
+ 
   
     <![CDATA[<!--end: results-->]]>
   </table>
