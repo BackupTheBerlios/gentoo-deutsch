@@ -87,8 +87,8 @@
 		<item href="projekt/neuigkeiten" title="Neuigkeiten"/>
 		<item href="doku" title="Dokumentationen"/>
 		<item href="download/ebuilds_de" title="Unsere Ebuilds"/>
-		<item href="community/irc/" title="Forum"/>
-		<item href="http://forums.gentoo.org/viewforum.php?f=28" title="IRC"/>
-		<item href="http://www.gentoo.org/main/en/mirrors.xml" title="Download"/>
+		<item href="community/foren/" title="Forum"/>
+		<item href="community/irc/" title="IRC"/>
+		<item href="community/mailinglisten/" title="Mailliste"/>
 	</menu>
 </config>
