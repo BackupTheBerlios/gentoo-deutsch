@@ -33,7 +33,7 @@
 </author>
 <author title="Übersetzer">
   <mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
-</author>  
+</author>
 <author title="Übersetzer">
   <mail link="pylon@gentoo.org">Lars Weiler</mail>
 </author>
@@ -255,7 +255,7 @@ wirklich brauchen auch kompilieren wird. Bei mir sieht das folgendermaßen aus:
 </p>
 
 <pre caption="Kompilieren der richtigen Module">
-# <i>env ALSA_CARDS='emu10k1' emerge alsa-driver</i> 
+# <i>env ALSA_CARDS='emu10k1' emerge alsa-driver</i>
 </pre>
 
 <note>
@@ -584,9 +584,9 @@ wurden die Fehler schon längst beseitigt während Sie diese Zeilen hier lesen.
 </section>
 
 <section>
-  	 <title>Aktivieren der Joystick Unterstützung</title>
+  <title>Aktivieren der Joystick Unterstützung</title>
 <body>
-  	 
+
 <p>
 Sollte Ihre Soundkarte einen Joystick-Stecker enthalten, sind Sie sicher daran
 interessiert, die Unterstützung für Ihren Joystick einzuschalten. Zunächst
@@ -595,7 +595,7 @@ Joystick enthält. Sie können dies mit dem Befehl <c>modinfo</c> gegen
 <path>snd-&lt;Ihr Chipsatz&gt;</path> ausführen. Als Beispiel für den
 <c>snd-via82xx</c> Chipsatz:
 </p>
-  	 
+
  <pre caption="Ausführen von modinfo">
 # <i>modinfo snd-via82xx</i>
 filename:    /lib/modules/2.4.22-ck2/snd-via82xx.o
@@ -609,15 +609,15 @@ parm:        mpu_port long array (min = 1, max = 8), description "MPU-401 port. 
 <i>parm:        joystick int array (min = 1, max = 8), description "Enable joystick. (VT82C686x only)"</i>
 parm:        ac97_clock int array (min = 1, max = 8), description "AC'97 codec clock (default 48000Hz)."
 parm:        dxs_support int array (min = 1, max = 8), description "Support for DXS channels
-  	              (0 = auto, 1 = enable, 2 = disable, 3 = 48k only, 4 = no VRA)"
+             (0 = auto, 1 = enable, 2 = disable, 3 = 48k only, 4 = no VRA)"
  </pre>
- 	 
+
 <p>
 Sollte in der Ausgabe der <c>joystick</c> Parameter auftreten, dann können Sie mit
 <c>joystick=1</c>in der Zeile <c>options</c> der Datei <path>/etc/modules.d/alsa</path>
 die Unterstützung aktivieren. Wieder ein Beispiel für <c>snd-via82xx</c>:
 </p>
-  	 
+
 <pre caption="Hinzufügen der Joystick parameter">
 alias snd-card-0 snd-via82xx
 options snd-via82xx joystick=1

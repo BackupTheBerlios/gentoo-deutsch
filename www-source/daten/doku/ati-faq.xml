@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ati-faq.xml,v 1.3 2003/12/04 18:17:07 schnitz Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ati-faq.xml,v 1.4 2003/12/05 14:26:29 pylon Exp $ -->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <guide link="/doc/en/ati-faq.xml">
@@ -35,13 +35,13 @@ zusammenhängen, zu lösen.
 <body>
 
 <p>
-Fast jede ATI Grafikkarte wird von <uri 
-link="http://www.xfree86.org">XFree86</uri> unterstützt, zumindest die 2D 
-Beschleunigung.  Der 3D Support wird entweder vom <uri 
-link="http://dri.sf.net">DRI Projekt</uri>, welches schon in XFree86
-enthalten ist, oder von <uri 
-link="http://mirror.ati.com/support/drivers/linux/radeon-linux.html">
-Closed Source Treibern </uri> von ATI bereitgestellt.
+Fast jede ATI Grafikkarte wird von <uri
+link="http://www.xfree86.org">XFree86</uri> unterstützt, zumindest die 2D
+Beschleunigung.  Der 3D Support wird entweder vom <uri
+link="http://dri.sf.net">DRI Projekt</uri>, welches schon in XFree86 enthalten
+ist, oder von <uri
+link="http://mirror.ati.com/support/drivers/linux/radeon-linux.html"> Closed
+Source Treibern </uri> von ATI bereitgestellt.
 </p>
 
 <table>
@@ -82,7 +82,7 @@ unterstützt?
 <body>
 
 <p>
-Die Multimedia Features werden momentan vom <uri 
+Die Multimedia Features werden momentan vom <uri
 link="http://gatos.sf.net">GATOS Projekt</uri> bereitgestellt.
 </p>
 
@@ -100,13 +100,12 @@ zur Verfügung?
 <body>
 
 <p>
-Sie haben fast den selben XFree Support auf PPC oder Alpha Rechnern,
-allerdings können Sie die Closed Source Treiber von ATI auf diesen Systemen
-nicht nutzen. Das bedeutet, dass Sie die r300 3D Beschleunigung nicht nutzen
-können. Falls Sie eine solche Grafikkarte besitzen und wollen, dass sie von
-XFree unterstützt wird, wenden Sie sich an <uri
-link="http://www.ati.com">ATI</uri> und bitten Sie darum, die Spezifikationen
-öffentlich zu machen.
+Sie haben fast den selben XFree Support auf PPC oder Alpha Rechnern, allerdings
+können Sie die Closed Source Treiber von ATI auf diesen Systemen nicht nutzen.
+Das bedeutet, dass Sie die r300 3D Beschleunigung nicht nutzen können. Falls Sie
+eine solche Grafikkarte besitzen und wollen, dass sie von XFree unterstützt
+wird, wenden Sie sich an <uri link="http://www.ati.com">ATI</uri> und bitten Sie
+darum, die Spezifikationen öffentlich zu machen.
 </p>
 
 </body>
@@ -140,8 +139,8 @@ ATIs Closed Source Treiber und Kernel Module.
 </p>
 
 <impo>
-Ihr Kernel muss agpgart Support enthalten und die DRM Module dürfen nicht
-fest im Kernel enthalten sein.
+Ihr Kernel muss agpgart Support enthalten und die DRM Module dürfen nicht fest
+im Kernel enthalten sein.
 </impo>
 
 <pre caption="Installing drivers">
@@ -164,8 +163,8 @@ fest im Kernel enthalten sein.
 <body>
 
 <p>
-Es wird empfohlen <c>xf86config</c>, <c>xf86cfg</c> oder gleich das
-automatische Konfigurationstool von XFree86 zu verwenden.
+Es wird empfohlen <c>xf86config</c>, <c>xf86cfg</c> oder gleich das automatische
+Konfigurationstool von XFree86 zu verwenden.
 </p>
 
 <pre caption="Automatische XFree Konfiguration">
@@ -173,18 +172,19 @@ automatische Konfigurationstool von XFree86 zu verwenden.
 </pre>
 
 <p>
-Wenn Sie mehr Informationen hierzu benötigen, lesen Sie bitte die
-<uri link="http://www.gentoo.org/doc/de/desktop.xml">Anleitung zur Desktop
+Wenn Sie mehr Informationen hierzu benötigen, lesen Sie bitte die <uri
+link="http://www.gentoo.org/doc/de/desktop.xml">Anleitung zur Desktop
 Konfiguration</uri>.
 </p>
 
 <note>
-Wenn Sie die Treiber von ATI nutzen, können Sie auch <c>fglrxconfig</c> verwenden.
+Wenn Sie die Treiber von ATI nutzen, können Sie auch <c>fglrxconfig</c>
+verwenden.
 </note>
 
 <impo>
-Besitzer von PPC Systemen sollten <c>Xeasyconf</c> verwenden, indem sie
-das <c>xeasyconf</c> ebuild emergen.
+Besitzer von PPC Systemen sollten <c>Xeasyconf</c> verwenden, indem sie das
+<c>xeasyconf</c> ebuild emergen.
 </impo>
 
 </body>
