@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvtv/vdrplugin-tvtv-0.1.6.ebuild,v 1.1 2003/06/05 08:44:35 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvtv/vdrplugin-tvtv-0.1.6.ebuild,v 1.2 2003/06/05 10:27:59 mad Exp $
 
 IUSE=""
 PVERSION="0.1.6"
@@ -31,8 +31,9 @@ src_install() {
 	insinto /usr/lib/vdr
 	insopts -m0755
 	newins libvdr-tvtv.so libvdr-tvtv.so.${PVERSION}
-	dosym /usr/lib/vdr/libvdr-tvtv.so.${PVERSION} /usr/lib/vdr/libvdr-tvtv.so
 	dodoc COPYING README HISTORY
+	cd ${D}/usr/lib/vdr/
+	ln -s libvdr-tvtv.so.${PVERSION} libvdr-tvtv.so
 }
 
 pkg_postinst() {
