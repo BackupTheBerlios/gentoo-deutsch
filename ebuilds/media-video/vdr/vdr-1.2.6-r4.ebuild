@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.13 2004/01/24 15:24:52 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.14 2004/01/26 17:07:19 fow0ryl Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -247,15 +247,21 @@ pkg_postinst() {
 	einfo
 	einfo "here is a list:"
 	einfo
+	echo "#!/bin/sh" > /usr/local/bin/emerge-vdrplugs.sh
+	chmod 766 /usr/local/bin/emerge-vdrplugs.sh
 	for i in ${INSTALLED_PLUGINS}
 		do
 		 einfo ${i}
 		 echo "ACCEPT_KEYWORDS=\"~x86\" /usr/bin/emerge ${i}" >> /usr/local/bin/emerge-vdrplugs.sh
 	done
-	chmod 766 /usr/local/bin/emerge-vdrplugs.sh
 	if vdr_opts emergeplugs quiet ; then
 		einfo
 	 	ACCEPT_KEYWORDS="~x86" /usr/bin/emerge ${INSTALLED_PLUGINS}
 		einfo
 	 fi
+	einfo
+	einfo "for your convenience you can use the script"
+	einfo "/usr/local/bin/emerge-vdrplugs.sh"
+	einfo "to (re)emerge all installed plugins"
+	einfo
 }
