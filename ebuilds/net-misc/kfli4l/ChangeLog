@@ -1,0 +1,9 @@
+# ChangeLog for net-misc/capi4hylafax
+# Copyright 2002 Alexander Holler; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/kfli4l/ChangeLog,v 1.1 2003/04/16 20:59:43 fow0ryl Exp $
+
+*kfli4l-1.4.01 (15 April 2003)
+
+  15 April 2003; H.Ryll <henning.ryll@web.de>
+
+  Initial checkin of this package.
