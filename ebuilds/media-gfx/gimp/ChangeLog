@@ -1,0 +1,47 @@
+# ChangeLog for media-gfx/gimp
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-gfx/gimp/Attic/ChangeLog,v 1.1 2002/08/23 09:39:37 elefantenfloh Exp $
+
+  14 Jul 2002; Martin Schlemmer <azarah@gentoo.org> gimp-1.2.3-r2:
+  Some automake warning cleanups.  Dont really fix anything except
+  getting rid of the warnings, so no revision bump.
+
+*gimp-1.3.7-r1 (02 Jun 2002)
+  02 Jun 2002; Spider <spider@gentoo.org> gimp-1.3.7-r1.ebuild:
+  new version out
+    
+*gimp-1.3.7 (01 Jun 2002)
+  01 Jun 2002; Spider <spider@gentoo.org> gimp-1.3.7.ebuild:
+  new version out
+  
+*gimp-1.3.5 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org> gimp-1.3.5.ebuild:
+  in the big gnome2 move I'm adding this beta..
+
+*gimp-1.2.3-r2 (22 Feb 2002)
+
+  22 Feb 2002; Daniel Robbins <drobbins@gentoo.org> added gimptool symlink, 
+  closing bug #810.
+  
+*gimp-1.2.3-r1 (15 Feb 2002)
+  
+  15 Feb 2002; Martin Schlemmer <azarah@gentoo.org> gimp-1.2.3-r1.build:
+
+  Fix /usr/bin/gimp symlink.
+
+*gimp-1.2.3 (14 Feb 2002)
+
+  14 Feb 2002; Karl Trygve Kalleberg <karltk@gentoo.org> ChangeLog
+  digest/digest-gimp-1.2.3 gimp-1.2.3.ebuild files/gimp-1.2.3-gentoo.diff:
+
+  New upstream version.
+
+*gimp-1.2.2-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.
