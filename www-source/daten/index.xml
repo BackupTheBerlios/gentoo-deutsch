@@ -84,11 +84,11 @@
 	</p>
 	<p>
 		Es wird empfohlen, sich vor der Installation die <uri link="http://www.gentoo.org/doc/en/gentoo-x86-install.xml">
-		Installationsdokumentation</uri> zu lesen.
+		Installationsdokumentation</uri> durchzulesen.
 		In dieser ist auch aufgeführt, wo Gentoo-Linux 1.4 heruntergeladen werden kann. Es wird
 		<b>dringendst</b> darum gebeten, auf die Mirror-Server auszuweichen damit sich die
 		ganze Last nicht auf den Hauptserver konzentriert. Eine Liste der Mirrors kan unter
-		<uri link="http://www.gentoo.org">http://www.gentoo.org</uri> eingesehen werden.
+		<uri link="http://www.gentoo.org/main/en/mirrors.xml">http://www.gentoo.org/main/en/mirrors.xml</uri> eingesehen werden.
 	</p>
 	</body>
 </section>
