@@ -1,0 +1,526 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Linux Frequently Asked Questions</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux Frequently Asked Questions</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Mit Gentoo &quot;anfangen&quot;</option>
+<option value="#doc_chap2">2. Installation</option>
+<option value="#doc_chap3">3. Package Management</option>
+<option value="#doc_chap4">4. Usage</option>
+<option value="#doc_chap5">5. Maintenance</option>
+<option value="#doc_chap6">6. Development</option>
+<option value="#doc_chap7">7. Resources</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Mit Gentoo &quot;anfangen&quot;</p>
+<p class="secthead"><a name="_sect1">Wie wird Gentoo ausgesprochen, und was wird damit gemeint? </a></p>
+<p>Gentoo ist eine Art von kleinen schnellen Penguins, ausgesprochen &quot;jen-two&quot;.</p>
+<p class="secthead"><a name="_sect2">Was ist an Gentoo anders? </a></p>
+			<p>Gentoo Linux ist eine schnelle, moderne Distribution mit einem sauberen und flexiblen
+			Design -- in dieser Hinsicht kann Gentoo
+			<a href="http://www.slackware.com/">Slackware</a>,
+			<a href="http://www.linuxfromscratch.org">Linux From Scratch</a> oder
+            <a href="http://www.bsd.org">BSD</a> Usern gefallen. Anders als die meisten Linux
+            Distributionen, hat Gentoo ein Paket System errinernd an die BSD's &quot;Ports&quot;,
+            wir meinen, Sie koennen immer sich sein das sie die Letzten Version der Pakete haben.
+        </p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Installation</p>
+<p class="secthead"><a name="_sect1">Wo ist der Unterschied zwischen .iso und .tbz2 Datein? </a></p>
+<p>Die Fertigen <font class="emphasis">.tbz2</font> Datein sind Mimimales Archiv von System Datein
+		die den Usern den bootstrap und die Installation von Gentoo Linux erlauben.
+		Die Fertige <font class="emphasis">.iso</font> ist eine Komplette, Bootbare CD Image das
+		einen System Kernel, einen zum Teil komplette Zusammenstellung von Kernel Modulen,
+		wichtigen System Hilfsprogrammen wie <font class="code">mkfs</font> und Netzwerk Unterstuetzung,
+		sowie das Minimal-System <font class="emphasis">.tbz2</font> Archiv.  Die meisten User werden
+		
+		Gentoo Linux durch das Brennen der .iso Datei auf eine CD, Booten von der CD,
+		und mit einer Minimalen Linux Umgebung von der Gentoo Boot CD Installieren.
+		
+		Es ist jedoch moeglich fuer User Gentoo Linux direkt von einer
+		bereits vorhandenen Linux distribution zu Installieren.
+		Solche Benutzer muessen nur eine die .tbz2 Datei downloaden,
+		den Inhalt auf eine Reserve Partitionen entpacken
+		(gehen sie sicher das sie das <font class="code">p</font> Argument benutzen wen sie das Archiv entpacken),
+		nun in das System einen chroot ausfuehren und ueber normale Art und Weise installieren.</p>
+        <p class="secthead"><a name="_sect2">Warum werden .iso und .tbz2 Datein mit Unterschiedlichen -r (Revisionen) gebaut/veroeffentlicht? </a></p>
+<p>
+		Das Minimal-System .tbz2 Archiv benoetigt nur
+		
+		The .tbz2 minimal-system tarball only needs to be revised when there have
+		been significant changes to the core Gentoo Linux system (such as baselayout
+		changes, or a new profile), and as such .tbz2 updates are relatively rare.
+		
+		Die .iso Datei muss nur geupdatet werden, wenn jemand andere Hardware hat
+		die nicht mit der .iso booten will. Seitdem Kernel Module und Updates
+		regelmaessig gemacht werden kann es kaum zu dieser Situation kommen.
+		</p>
+	<p class="secthead"><a name="_sect3">I have a Sony Super-Slim VAIO laptop, and the Gentoo Linux CD is having problems 
+			finding my PCMCIA ATAPI CD-ROM. </a></p>
+		<p>Make sure the second IDE port is set to CDROM (it unsets itself if the device isn't 
+			attached on boot) then do the following at the isolinux <font class="code">boot:</font> prompt:</p>
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+boot: <font class="input">rescue ide2=0x180,0x386</font>
+</pre></td></tr>
+</table>
+<p>If you are using a 1.0_rc5 or earlier boot CD, apart from thinking about downloading the latest iso, 
+type <font class="code">gentoo</font> instead of <font class="code">rescue</font>, above.</p>
+<p class="secthead"><a name="_sect4">I'm finding things to be really unstable and I'm using &quot;-O9 -ffast-math 
+		-fomit-frame-pointer&quot; optimizations.  What gives? </a></p>
+		<p>When you use any optimizations beyond <font class="code">-O3</font>, you're really taking the risk of 
+		having broken packages.
+		Very aggressive optimizations sometimes cause the compiler to streamline the assembly code 
+		to the point where it doesn't quite do the same thing anymore.  <font class="emphasis">Loc-Dog</font> (on IRC) 
+		uses <font class="code">-O3 -mcpu=i686 -march=i686 -fforce-addr -fomit-frame-pointer -funroll-loops 
+		-frerun-cse-after-loop -frerun-loop-opt -malign-functions=4</font>, which is about
+		as much as I'd want to push global optimization settings.  Beyond this, it's best to use
+		ultra-high optimizations only with specific packages where you really need that extra 2%,
+		(eg graphics and various multimedia programs), and where you can easily test the package 
+		to ensure that it hasn't been optimized into oblivion.</p>
+		<p class="secthead"><a name="_sect5">Wie lautet das Standard Root Passwort nach der Installation? </a></p>
+<p>Das Standard Passwort ist leer, einfach Enter Druecken.</p>
+<p class="secthead"><a name="_sect6">Wie kann ich bei root (oder anderen User) das Passwort aendern? </a></p>
+<p>Sie koennen <font class="code">passwd</font> benutzen um das Passwort fuer den User mit den sie eingelogt sind aendern.
+		Fuer zusaetzliche Optionen und Einstellen, sehen sie sich bitte <font class="code">man passwd</font> an nachdem sie Gentoo Linux fertig Installiert haben.
+		</p>
+<p class="secthead"><a name="_sect7">Wie kann man einen Normalen User hinzufuegen? </a></p>
+		<p>Jeder weiss wohl, das es nicht sehr empfehlenswert ist immer <font class="emphasis">root</font> zu benutzen,
+		Wie kann man also andere User hinzufuegen?</p>
+		<p>Der Befehl <font class="code">adduser gentoo</font> wuerde einen User mit dem Username gentoo erstellen. Der naechste Schritt ist es
+		diesem User ein Password zu geben und <font class="code">passwd</font> tut genau das.</p>
+		<p class="secthead"><a name="_sect8">Warum kann ein User nicht mit su zu root werden? </a></p>
+<p>Wegen Sicherheitsgruenden, koennen User nur mit <font class="code">su</font> zu root werden wenn sie in der 
+		<font class="emphasis">wheel</font> Groupe sind. Um einen <font class="input">Usernamen</font> zu der <font class="emphasis">wheel</font> Gruppe hinzufuegen, benutzen sie den 
+		folgenden Befehl als root:</p>
+		<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">usermod -G users,wheel username</font></pre></td></tr>
+</table>
+		<p class="secthead"><a name="_sect9">How do I enable devfs? </a></p>
+		<p>
+		If you're using 1.0_rc5 or greater, you don't need to do anything special to get 
+		devfs working; it's already active (you did make sure that devfs was built into the
+		kernel, didn't you?).
+		However, if you are using a version of Gentoo Linux <font class="emphasis">prior</font> to version 1.0_rc5, add 
+		<font class="code">devfs=mount</font> to your <font class="code">GRUB</font> kernel boot options so that the line looks something 
+		like <font class="code">kernel /boot/boot/bzImage devfs=mount foo=bar</font>  The kernel will then mount the 
+		<font class="path">/dev</font> <font class="emphasis">devfs</font> filesystem automatically at boot-time.
+		</p>
+		<p class="secthead"><a name="_sect10">Wie kann ich devfs deaktivieren? </a></p>
+		<p>Bei Gentoo Linux 1.0_rc6 und besser/neuer, kann man devfs deaktivieren durch das uebergeben des
+		<font class="code">gentoo=nodevfs</font> Argumentes zum Kernel.</p>
+		<p class="secthead"><a name="_sect11">How do I get a /dev/mouse  that
+		doesn't go away when I reboot (when using devfs)? </a></p>
+		<p>
+		If you are using 1.0_rc6 or later, then you can just use <font class="code">ln -s</font>
+		to make the usual symbolic link from <font class="path">/dev/mouse</font>, and
+		it will be preserved between reboots.
+		</p>
+		<p>All other users need to edit <font class="path">/etc/devfsd.conf</font>
+		and add these lines:</p>
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+REGISTER        ^misc/psaux$    CFUNCTION GLOBAL symlink misc/psaux mouse
+UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
+</pre></td></tr>
+</table>
+		<p>If you are not using the devfs PS/2 mouse <font class="path">/dev/misc/psaux</font> device,
+		adjust the <font class="code">misc/psaux</font> strings above accoringly.  You'll then want to 
+		<font class="code">killall -HUP devfsd</font>
+		to get devfsd to reread <font class="path">/etc/devfsd.conf</font>.</p>
+		<p class="secthead"><a name="_sect12">Grub can't find stage x.y? </a></p>
+<p>
+		During installation the grub boot files are copied
+		to <font class="path">/boot/grub</font> (<font class="path">/boot/boot/grub</font> in Gentoo Linux 1.0_rc5 and 
+		earlier.) Grub automatically looks in the <font class="path">/boot/grub</font> directory on the boot 
+		partition.  (We strongly recommend having a separate no-auto boot partition mounted at 
+		<font class="path">/boot</font>, since that way it is much more difficult to clobber your kernel and boot
+		info by accident.)  The above error generally arises from (a) not using a separate boot 
+		partition, (b) forgetting to mount the boot partition at <font class="path">/boot</font> before either 
+		unpacking the build snapshot or running
+		<font class="code">emerge --usepkg system</font>, or (c) forgetting the
+		<font class="code">notail</font> option when mounting a ReiserFS <font class="path">/boot</font> partition.
+		You can get more information on grub, including how to
+		debug grub from the grub prompt, by reading the 
+		<a href="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/0F1731DC664023B7862569D0005C44AF?OpenDocument">IBM developerWorks Grub tutorial</a>.
+		</p>
+                <p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Package Management</p>
+<p class="secthead"><a name="_sect1">In what format are the packages stored? </a></p>
+<p>They exist in our portage tree as <font class="emphasis">ebuild</font> autobuild scripts; we are primarily 
+		a ports-based distribution, meaning that we provide scripts (<font class="code">.ebuild</font> files) and a 
+		special system (Portage) so that you can build apps from sources. We generally only build 
+		binaries for releases and snapshots. The <a href="/doc/gentoo-howto.html">Development HOWTO
+		</a> covers the contents of an ebuild script in detail.  For full binary ISO releases, we 
+		create a full suite of binary packages in an enhanced <font class="code">.tbz2</font> format (<font class="code">.tar.bz2</font> 
+		compatible with meta-information attached to the end of the file.)</p>
+		<p class="secthead"><a name="_sect2">Why write a new port system (Portage) instead of using BSD's version? </a></p>
+		<p>In one sentence, because Portage is much better in so many ways.  One of the design
+		philosophies of the <font class="code">.ebuild</font> syntax was to make it an analog of what you'd type to 
+		install the program manually, thus making Portage very easy to learn and modify to your 
+		needs.  We also have OpenBSD-style &quot;fake&quot; installs, safe unmerging, system profiles, 
+		package masking, a real dependency system, and lots of other good stuff.</p>
+		<p class="secthead"><a name="_sect3">How does this differ from Debian's apt or BSD's ports? </a></p>
+<p>Portage features the best of apt and ports; for example, USE options, a full
+		dependency system, safe installs and uninstalls, and a true package database.  Think of
+		Portage as the best of both worlds; a ports system with the sensibilities and safety of a
+		Linux package management system built-in.</p>
+<p class="secthead"><a name="_sect4">How do I install and uninstall packages? </a></p>
+		<p>The <a href="/doc/portage-user.html">Portage User Guide</a> details how to install
+		and uninstall packages, and update Portage.</p>
+	        <p class="secthead"><a name="_sect5">How can I set a global configuration for compiling packages? </a></p>
+<p>
+<font class="path">/etc/make.conf</font> should be modified to override global and
+		profile-specific default options used to compile and merge packages. The most common options 
+		are as follows:</p>
+		<table class="ntable">
+		<tr>
+			<td bgcolor="#7a5ada" class="infohead"><b>Flag</b></td>
+			<td bgcolor="#7a5ada" class="infohead"><b>Description</b></td>
+		</tr>
+		<tr>
+			<td bgcolor="#ddddff" class="tableinfo">CHOST</td>
+			<td bgcolor="#ddddff" class="tableinfo">This sets the HOST variable for compiles, e.g. <font class="code">i686-pc-linux-gnu</font>
+</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ddddff" class="tableinfo">CFLAGS</td>
+			<td bgcolor="#ddddff" class="tableinfo">The options for <font class="code">gcc</font> when compiling programs written in C (*.c files)</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ddddff" class="tableinfo">CXXFLAGS</td>
+			<td bgcolor="#ddddff" class="tableinfo">The options for <font class="code">gcc</font> when compiling programs written in C++ (*.c,*.cpp etc.
+			files)</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ddddff" class="tableinfo">USE</td>
+			<td bgcolor="#ddddff" class="tableinfo">This allows you to set what optional components you'd like compiled-in, if
+			available.  For example, if you have <font class="code">gnome</font> inside the USE string, then when
+			you compile <font class="code">xchat</font>, it will include GNOME support.  All our dependencies are
+			also USE-aware.</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ddddff" class="tableinfo">GENTOO_MIRRORS</td>
+			<td bgcolor="#ddddff" class="tableinfo">A space separated list of URIs currently mirroring the Gentoo packages.  Portage 
+			will attempt download from a <font class="code">GENTOO_MIRROR</font> first before trying the official
+			<font class="code">SRC_URI</font>.  To force Portage to skip mirrors, set this variable to &quot;&quot;.</td>
+		</tr>
+		</table>
+		<p class="secthead"><a name="_sect6">What happened to /etc/make.defaults? </a></p>
+		<p>As of Portage 1.5 onwards, <font class="path">/etc/make.defaults</font> is antiquated; 
+		if you have portage-1.5-r1 or above installed then you can safely delete it.
+		This file has been replaced by <font class="path">/etc/make.profile/make.defaults</font>
+		(<font class="path">/etc/make.profile</font> should actually be a symlink to, 
+		<font class="path">/usr/portage/profiles/default</font>),
+		which contains system profile-specific default settings. The priority order of
+		the various configuration files is as follows (highest first):
+		<ol>
+			<li>Environment variables</li>
+			<li>
+<font class="path">/etc/make.conf</font>, for your use</li>
+			<li>
+<font class="path">/etc/make.profile/make.defaults</font>, for profile-specific defaults</li>
+			<li>
+<font class="path">/etc/make.globals</font>, for global defaults (settings not specified in
+			any other place come from here)</li>
+		</ol>
+</p>
+<p class="secthead"><a name="_sect7">Is there a way to upgrade all installed packages
+		e.g. apt-get upgrade or make World? </a></p>
+<p>
+<b>YES!</b>  Type <font class="code">emerge --update</font> (use it with <font class="code">--pretend</font> first) to
+		update all core system packages, and use <font class="code">emerge --update world</font> (again, use it with 
+		<font class="code">--pretend</font> first) to do a complete system upgrade of all installed packages.
+
+
+		</p>
+<p class="secthead"><a name="_sect8">When updating a package using emerge or ebuild, how do I avoid 
+		clobbering my config files? </a></p>
+<p>
+		Portage now includes config file management support by default.  Type 
+		<font class="code">emerge --help config</font> for more details.  The (overly) simple answer is that if
+		a package installs <font class="path">foo</font> somewhere under <font class="path">/etc</font>, and
+		another <font class="path">foo</font> already exists there, then the new <font class="path">foo</font> will
+		instead be renamed to <font class="path">._cfgxxxx_foo</font> in that directory.  A useful
+		tool for examining and updating any protected config files is <font class="code">etc-update</font>,
+		currently obtained by <font class="code">emerge app-admin/gentoolkit</font>.
+		</p>
+<p class="secthead"><a name="_sect9">I want to perform the ./configure step myself.  Can I? </a></p>
+<p>
+		Yes, but it is not trivial.  First do <font class="code">man ebuild</font> followed by
+		<font class="code">ebuild foo-x.y.z.ebuild unpack</font>.  Then <font class="code">cd</font> to 
+		<font class="path">/var/tmp/portage/foo-x.y.z/work</font>.  You can manually perform
+		the <font class="code">./configure</font> and <font class="code">make</font> steps yourself (you'll have to do
+		both, since Portage does not separate the configure and build steps).  To
+		have Portage finish the installation (so that you can easily remove it later,
+		should you desire to do so, and it will be registered in Portage as a possible
+		dependency) you first need to <font class="code">touch /var/tmp/portage/foo-x.y.z/.compiled</font>
+		(tricking Portage into thinking that <font class="code">ebuild foo-x.y.z.ebuild compile</font> has
+		completed), followed by <font class="code">ebuild foo-x.y.z.ebuild merge</font>.
+		</p>
+<p class="secthead"><a name="_sect10">What if rsync doesn't work for me? </a></p>
+<p>
+		If you're behind a firewall that doesn't permit
+		rsync traffic, then you can instead download the daily
+		/usr/portage snapshot from 
+		<a href="http://cvs.gentoo.org/snapshots">http://cvs.gentoo.org/snapshots</a>.  Just unpack
+		the tarball (using <font class="code">tar xvjf portage-foo.tbz2</font>) in
+		the <font class="path">/usr</font> directory.
+		</p>
+<p class="secthead"><a name="_sect11">How do I use emerge from behind a firewall? </a></p>
+<p>
+		Edit the PROXY settings in <font class="path">/etc/make.conf</font>.  If that doesn't work,
+		edit <font class="path">/etc/wget/wgetrc</font> and edit http_proxy and ftp_proxy
+		appropriately.
+		</p>
+<p class="secthead"><a name="_sect12">Can I rsync from another operating system? </a></p>
+<p>There's a program called unison that works under both UNIX and Win32, available from
+		<a href="http://www.cis.upenn.edu/~bcpierce/unison/">http://www.cis.upenn.edu/~bcpierce/unison/</a>.</p>
+<p class="secthead"><a name="_sect13">I have only slow modem connection at home. Can I download sources somewhere else and
+		add them to my system? </a></p>
+<p>
+		Definitely. You can run <font class="code">emerge --pretend package</font> to see what programs
+		are going to be installed. Download sources and bring them on any media
+		home. Put the sources into <font class="path">/usr/portage/distfiles</font> and run
+		<font class="code">emerge package</font> to see it picking up the sources you just brought in!
+		</p>
+<p class="secthead"><a name="_sect14">.tar.gz sources for installed software are piling up in /usr/portage/distfiles/ using 
+		valuable space. Is it safe to delete these files? </a></p>
+<p>
+		Yes, you can safely delete these files. But if you are on a slow
+		connection, such as a modem, you might want to keep the archives if
+		possible; often several ebuilds will be released for the same version of
+		a specific piece of software  - if you have deleted the archive and you
+		upgrade the software it will have to be downloaded from the internet
+		again.
+		</p>
+<p class="secthead"><a name="_sect15">How can I manage my own ebuilds without destroying them by (r)sync? </a></p>
+		<p>The simplest method is to use anonymous CVS instead of rsync, and 
+		maintain your local
+		ebuilds in /usr/portage/local.  Here's how to do it:</p>
+		<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge cvs</font> <font class="comment">(if necessary)</font>
+# <font class="input">cd <font class="path">/usr</font></font>
+# <font class="input">cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs login</font> <font class="comment">(hit &lt;enter&gt;)</font>
+# <font class="input">cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs get gentoo-x86</font>
+# <font class="input">cp /usr/portage/distfiles/* gentoo-x86/distfiles/</font>
+# <font class="input">cp -a /usr/portage/packages/* gentoo-x86/packages/</font>
+# <font class="input">mv portage portage.old</font>
+# <font class="input">ln -s gentoo-x86 portage</font>
+# <font class="input">mkdir /usr/portage/local</font>
+# <font class="input">echo local &gt;&gt; /usr/portage/profiles/categories</font>
+# <font class="input">cp /etc/make.conf /etc/make.conf.orig</font>
+# <font class="input">sed -e 's/#SYNC=&quot;cvs/SYNC=&quot;cvs/' /etc/make.conf.orig &gt; /etc/make.conf</font>
+		</pre></td></tr>
+</table>
+		<p class="chaphead">
+<font class="chapnum"><a name="doc_chap4">4.</a></font>Usage</p>
+<p class="secthead"><a name="_sect1">I have installed openssh on my box, but can only log in as root - my normal user
+		account doesn't work.  </a></p>
+		<p>
+		This is most probably because your user account doesn't have a valid shell specified. Check
+		for your user entry in 
+		<font class="path">/etc/passwd</font> and see if it ends in /bin/bash (or any other shell). If it doesn't,
+		you must set a shell for the user. This is done using the usermod command, like this ;
+		</p>
+		<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">usermod -s /bin/bash myuser</font></pre></td></tr>
+</table>
+		<p class="secthead"><a name="_sect2">I can start X applications as root only. </a></p>
+<p>Your <font class="path">/tmp</font> directory has the wrong permissions (it needs the sticky bit 
+		set). Type the following as root:</p>
+		<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">chmod 1777 /tmp</font></pre></td></tr>
+</table>
+		<p class="secthead"><a name="_sect3">How do I set up an International Keyboard Layout? </a></p>
+<p>Edit the <font class="code">KEYMAP</font> variable in <font class="path">/etc/rc.conf</font>.
+		Then either reboot or restart the keymaps script:
+		<font class="code">/etc/init.d/keymaps restart</font>.</p>
+		<p class="secthead"><a name="_sect4">DNS name resolution works for root only. </a></p>
+<p>
+<font class="path">/etc/resolv.conf</font> has the wrong permissions; <font class="code">chmod</font> it as follows:
+		</p>
+		<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">chmod 0644 /etc/resolv.conf</font></pre></td></tr>
+</table>
+		<p class="secthead"><a name="_sect5">Why is KDE not reading /etc/profile? </a></p>
+<p>You need to add <font class="code">--login</font> to the first line in <font class="path">/opt/kde2.1/bin/startkde
+		</font>, so that it reads as follows:</p>
+		<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>#!/bin/sh --login</pre></td></tr>
+</table>
+		<p>This fix has been added to recent versions of KDE.</p>
+		<p class="chaphead">
+<font class="chapnum"><a name="doc_chap5">5.</a></font>Maintenance</p>
+<p class="secthead"><a name="_sect1">ReiserFS and filesystem corruption issues -- how to fix'em, etc </a></p>
+		<p>
+		ReiserFS has had serious problems with the 2.4-series kernels; we
+		highly recommend avoiding ReiserFS for the time being.  If your
+		ReiserFS partition is already corrupt, try booting the Gentoo 
+		Linux boot CD and run <font class="code">reiserfsck --rebuild-tree</font> on
+		the corrupted filesystem.  This should make the filesystem consistent
+		again, although you may have lost some files or directories due
+		to the corruption.
+		</p>
+		<p class="secthead"><a name="_sect2">How to I view the timestamps in /var/log/syslog.d, etc. on a pre-1.0_rc5 Gentoo 
+		system? </a></p>
+		<p>To view multilog (Gentoo Linux 1.0_rc5 and earlier) timestamps, you need to pipe the 
+		current log through the <font class="code">tai64nlocal</font>command:</p>
+
+<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 9</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cat /var/log/syslog.d/current | tai64nlocal | less</font>
+</pre></td></tr>
+</table>
+
+<p>Or, alternatively, if you want to &quot;tail&quot; the log:</p>
+
+<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 10</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">tail -f /var/log/syslog.d/current | tai64nlocal</font>
+</pre></td></tr>
+</table>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap6">6.</a></font>Development</p>
+<p class="secthead"><a name="_sect1">Where can I report bugs? </a></p>
+<p>For bugs within a specific program, contact the program's author. Otherwise, use our
+		Bugzilla bug tracker at <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a>.  You can also visit us in
+		<font class="code">#gentoo</font> on the <a href="http://www.openprojects.net">OpenProjects</a> IRC network.
+		</p>
+<p class="secthead"><a name="_sect2">How often are new releases made? </a></p>
+<p>New releases are announced on the <a href="http://lists.gentoo.org/mailman/listinfo/gentoo-announce">gentoo-announce</a> 
+		mailing list, In reality the packages themselves 
+		are updated shortly after the main authors release new code. As for when new Cd images etc
+		are released, that tends to be whenever there are any major updates to the base code, or when
+		new modules get added.</p>
+<p class="secthead"><a name="_sect3">I would like a package to be added to Portage; how would I go about this? </a></p>
+<p>Head over to <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> and submit a new bug of the type
+		&quot;ebuild&quot;.  Attach your ebuild to the bug report.</p>
+<p class="secthead"><a name="_sect4">How can I add a question or answer to this FAQ? </a></p>
+<p>Submit a new bug over at <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> and add it to the
+		&quot;Docs-user&quot; product.</p>
+<p class="secthead"><a name="_sect5">make -f Makefile.cvs on a KDE app produces &quot;invalid unused variable&quot; errors </a></p>
+<p>
+		Export <font class="code">WANT_AUTOMAKE_1_4=1</font> for all KDE projects before running 
+		<font class="code">make -f Makefile.cvs</font>. Also, for KDE2 apps export <font class="code">WANT_AUTOCONF_2_1=1</font>, 
+		and for KDE3 apps export <font class="code">WANT_AUTOCONF_2_5=1</font>.
+		</p>
+<p class="secthead"><a name="_sect6">My speaker beeps like crazy while compiling Mozilla. How do I disable console beeps?
+    		 </a></p>
+        <p>
+            Console beeps can be turned off using setterm, like this ;
+
+        <a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 11</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">setterm -blength 0</font></pre></td></tr>
+</table>
+
+            If you would like to turn off the console beeps on boot
+            you need to put this command in  
+            <font class="path">/etc/conf.d/local.start</font>. However, this only
+            disables beeps for the current terminal. To disable
+            beeps for other terminals, pipe the command output to the 
+            target terminal, like this ;
+
+        <a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 12</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">setterm -blength 0 &gt;/dev/vc/1</font></pre></td></tr>
+</table>
+
+            You need to replace /dev/vc/1 with the terminal
+            you would like to disable console beeps for.
+        </p>
+    	<p class="chaphead">
+<font class="chapnum"><a name="doc_chap7">7.</a></font>Resources</p>
+<p class="secthead"><a name="_sect1">Where can I find more about supervise used by default in Gentoo Linux 1.0_rc5 and earlier? </a></p>
+<p><a href="http://cr.yp.to/daemontools.html">http://cr.yp.to/daemontools.html</a></p>
+<p class="secthead"><a name="_sect2">Where can I find more information about Gentoo Linux? </a></p>
+<p>The official Gentoo documentation can be found on <a href="http://www.gentoo.org">http://www.gentoo.org</a>; general Linux information is at <a href="http://www.linuxdoc.org">http://www.linuxdoc.org</a>.</p>
+<p class="secthead"><a name="_sect3">Can I buy a CD of Gentoo Linux? </a></p>
+<p>Yes!  Fresh CDRs are available for $5 USD apiece from <a href="http://www.cheapbytes.com">http://www.cheapbytes.com</a>.
+		</p>
+<p class="secthead"><a name="_sect4">This FAQ hasn't answered my question.  What do I do now? </a></p>
+		<p>A good first step is to browse through the relevant doumentation at <a href="http://www.gentoo.org/index-docs.html">http://www.gentoo.org/index-docs.html</a>, 
+		failing that, the various Gentoo Linux mailing
+		lists listed on <a href="www.gentoo.org">www.gentoo.org</a>.  To search through the Gentoo mailling lists, Google
+		(<a href="www.google.com">www.google.com</a>) is a wonderful resource: just enter &quot;lists.gentoo.org foo&quot; to search the
+		Gentoo mailing lists for &quot;foo&quot;.  If all else fails, or you just want
+		to hang out with Gentoo folks, visit us on irc: <font class="code">#gentoo</font>
+		on <a href="irc.openprojects.net">irc.openprojects.net</a>.
+		</p>
+		<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung  Juni 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Leitender Architekt</i><br><br>Colin Morey<br><i>Reviewer</i><br><br><b><a class="altlink" href="mailto:marko@nexboard.de">Marko Kercmar</a></b><br><i>Uebersetzter</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt in der gentoo-dev Mailingliste und aus dem IRC -- Wenn du andere Fragen (oder antworten!) zum hinzufuegen hast, bitte Kontaktier einen Author oder ein Mitglied vom Dokumentations Team.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Support our development efforts by donating via credit card!</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="drobbins@gentoo.org"><input type="hidden" name="item_name" value="Gentoo Linux Support"><input type="hidden" name="item_number" value="1000"><input type="hidden" name="image_url" value="http://www.gentoo.org/images/paypal.png"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="return" value="http://www.gentoo.org"><input type="hidden" name="cancel_return" value="http://www.gentoo.org"><input type="image" src="http://images.paypal.com/images/x-click-but21.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Purchase RAM using this link, and a percentage
+of your sale will go towards further Gentoo Linux development.</p>
+<a href="http://www.qksrv.net/click-477620-5032687" target="_top"><img src="http://www.qksrv.net/image-477620-5032687" width="125" height="125" alt="DDR Memory at Crucial.com" border="0"></a><p class="alttext">Why these guys?  Because <b>cvs.gentoo.org</b> and <b>inventor.gentoo.org</b> use high-quality Crucial RAM. We know that it's good stuff because we rely on it ourselves.</p>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Copyright 2001 Gentoo
+		Technologies, Inc.  Questions, Comments, Corrections?  Email <a class="highlight" href="mailto:gentoo-dev@gentoo.org">gentoo-dev@gentoo.org</a>.
+			</td></tr>
+</table></body>
+</html>
