@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/trans-status.xml,v 1.11 2003/12/23 15:31:57 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/trans-status.xml,v 1.12 2003/12/26 11:21:01 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/hb-status/">
@@ -33,6 +33,10 @@ Entwicklerseite</uri>
   <tr>
   <th>Dokument</th>
   <th>Übersetzer</th>
+  </tr>
+  <tr>
+  <ti>diskless-howto.xml</ti>
+  <ti>zaengerlein</ti>
   </tr>
   <tr>
   <ti>gentoo-pda.xml</ti>
