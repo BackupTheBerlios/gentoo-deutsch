@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-wm/expocity/expocity-2.6.2.1.ebuild,v 1.1 2004/01/05 14:02:42 dertobi123 Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-wm/expocity/expocity-2.6.2.1.ebuild,v 1.2 2004/01/05 18:31:26 dertobi123 Exp $
 
 inherit gnome2
 
@@ -28,6 +28,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0
 	>=dev-util/intltool-0.21
-	!=x11-wm/metacity"
+	!x11-wm/metacity"
 
 DOCS="AUTHORS COPYING ChangeLog HACKING INSTALL NEWS README README.expocity"
