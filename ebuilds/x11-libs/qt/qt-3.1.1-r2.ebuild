@@ -1,6 +1,7 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-libs/qt/Attic/qt-3.1.1-r2.ebuild,v 1.6 2003/02/01 15:05:31 wpbasti Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-libs/qt/Attic/qt-3.1.1-r2.ebuild,v 1.7 2003/02/01 17:39:56 wpbasti Exp $
+
 
 inherit eutils
 
