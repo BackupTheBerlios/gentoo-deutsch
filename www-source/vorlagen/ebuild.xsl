@@ -24,18 +24,58 @@
         </xsl:choose>
       </xsl:variable>
       
-      <table cellpadding="0" cellspacing="0" class="ebuildlist">
       <xsl:for-each select="pkg">
-        <tr id="info_{name}">
+        <xsl:sort select="category"/>
+        <xsl:sort select="name"/>
+
+        <table>
+
+        <tr>
+          <td>Paketname:</td>
           <td><xsl:value-of select="name"/></td>
-
-
-
         </tr>
-        <tr id="details_{name}" style="display:none">
 
-
+        <tr>
+          <td>Version:</td>
+          <td><xsl:value-of select="version"/></td>
         </tr>
+
+        <tr>
+          <td>Revision:</td>
+          <td><xsl:value-of select="revision"/></td>
+        </tr>
+
+        <tr>
+          <td>Lizenz:</td>
+          <td><xsl:value-of select="license"/></td>
+        </tr>
+
+        <tr>
+          <td>Slot:</td>
+          <td><xsl:value-of select="slot"/></td>
+        </tr>
+
+        <tr>
+          <td>Änderung:</td>
+          <td>
+            <xsl:value-of select="date/@day"/>
+            <xsl:text>.</xsl:text>
+            <xsl:value-of select="date/@month"/>
+            <xsl:text>.</xsl:text>
+            <xsl:value-of select="date/@year"/>
+          </td>   
+        </tr>
+
+        <tr>
+          <td>Homepage: </td>
+          <td>
+            <a href="{homepage}">
+              <xsl:value-of select="homepage"/>
+            </a>
+          </td>
+        </tr>
+
+        </table>
       </xsl:for-each> 
       </table>
     </xsl:element>
