@@ -11,6 +11,7 @@
 </source>
 
 <public value="/home/groups/gentoo-deutsch/htdocs/neu" short="pub">
+  <media>media</media>
   <content>inhalte</content>
   <images>bilder</images>
   <script>skripte</script>

@@ -23,9 +23,9 @@ omit-xml-declaration="no"/>
 
 
 <xsl:variable name="baseurl"><xsl:value-of select="$def_online"/>/</xsl:variable>
-<xsl:variable name="styleurl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_style"/>/</xsl:variable>
-<xsl:variable name="scripturl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_script"/>/</xsl:variable>
-<xsl:variable name="imageurl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_images"/>/</xsl:variable>
+<xsl:variable name="styleurl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_style"/>/</xsl:variable>
+<xsl:variable name="scripturl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_script"/>/</xsl:variable>
+<xsl:variable name="imageurl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_images"/>/</xsl:variable>
 
 <xsl:template match="guide|info">
   <html>
