@@ -6,7 +6,7 @@
 <author title="Author"><mail link="stocke2@gentoo.org">Eric Stockbridge</mail></author>
 <author title="Übersetzung"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
 
-<abstract>Dieser Leitfade soll Ihnen beibringen, wie man einen Spickzettel benutzen kann, um
+<abstract>Dieser Leitfaden soll Ihnen beibringen, wie man einen Spickzettel benutzen kann um
 das Lernen von vi zu beschleunigen. Dieses ist der erste Leitfaden für vi, der sich an Anfänger
 richtet catering to beginners.</abstract>
 
@@ -312,87 +312,122 @@ richtet catering to beginners.</abstract>
 
 
 <chapter>
-<title>Saving and Editing</title>
+<title>Speichern und Bearbeiten</title>
+
 <section>
-<title>Save and save as...</title>
+<title>Speichern und Speichern unter...</title>
 <body>
-<p>We've covered how you can use the <i>ex</i> command <c>:q</c> to quit from vi.  If you want to save your
-changes, type <c>:w</c>.  If you want to save your changes to another file, type <c>:w filename.txt</c> to 
-save as <e>filename.txt</e>.  If you want to save and quit, type <c>:x</c> or <c>:wq</c>.</p>
-<p>In vim (and other advanced vi editors, like elvis)<c>:w</c>, you can have multiple buffers open at once.  To open a file into a new window, type <c>:sp filename.txt</c>.  <e>filename.txt</e> will appear open for editing in a new split window.  To switch between windows, type <c>&lt;CTR&gt;w&lt;CTR&gt;w</c> (control-w twice).  Any <c>:q</c>, <c>:q!</c>, <c>:w</c> and <c>:x</c> commands that you enter will only be applied to the currently-active window.</p>
+	<p>
+	Wir haben behandelt, wie das <i>ex</i> Kommando <c>:q</c> zu benutzen ist, um vi zu beenden. Wenn Sie die
+	gemachten Änderungen Speichern wollen, dann geben Sie <c>:w</c> ein. Wenn Sie die Änderungen in einer anderen
+	Datei speichern wollen, dann geben Sie <c>:w dateiname.txt</c> ein, um in der Datei <e>dateiname.txt</e> zu
+	speichern. Wenn Sie speichern und beenden wollen, so geben Sie <c>:x</c> oder <c>:wq</c> ein.
+	</p>
+	<p>
+	In vim (und anderen fortgeschrittenen vi Editoren wie elvis) können Sie mehrere Puffer auf einmal
+	geöffnet haben. Um eine Datei in einem neuen Fenster zu öffnen, geben Sie <c>:sp dateiname.txt</c> ein.
+	<e>dateiname.txt</e> wird ein einem neuen geteilten Fenster erscheinen. Um zwischen Fenstern hin und her
+	zu springen, geben Sie <c>&lt;CTR&gt;w&lt;CTR&gt;w</c> (also zweimal Control-W) ein. Alle <c>:q</c>,
+	<c>:q!</c>, <c>:w</c> und <c>:x</c> -Eingaben die Sie machen werden jeweils nur auf das momentan aktive Fenster
+	angewendet.
+	</p>
 </body>
 </section>
 
 <section>
-<title>Simple edits</title>
+<title>Einfache Änderungen</title>
 <body>
-<p>Now, it's time to start learning some of the simple editing commands.  The commands that
-we'll cover here are considered "simple" because the commands keep you in command mode.  The
-more complex editing commands automatically put you into insert mode -- a mode that allows
-you to enter literal data from the keyboard.  We'll cover those in a bit.</p>
-<p>For now, try moving over some characters and hitting <c>x</c> repeatedly.  You'll see that <c>x</c>
-will delete the current character under the cursor.  Now, move to the middle of the paragraph
-somewhere in your text file, and hit <c>J</c> (capitalized).  You'll see that the <c>J</c> command tells
-vi to join the next line to the end of the current line.  Now, move over a character and hit
-<c>r</c>, and then type in a new character; you'll see that the original character has been replaced. 
-Finally, move to any line in the file and
-type <c>dd</c>.  You'll see that <c>dd</c> deletes the current line of text.</p>
-
-</body>
-</section>
-<section>
-<title>Repeating and deleting</title>
-<body>
-	<p>You can repeat any editing command by hitting the <c>.</c> key.  If you experiment, you'll see that
-	typing <c>dd...</c> will delete 4 lines, and <c>J......</c> will join four lines.  As usual, vi provides with
-another handy shortcut.
-</p>
-<p>To delete text, you can also use the <c>d</c> command combined with any movement command.  For example,
-	<c>dw</c> will delete from the current position to the beginning of the next word; <c>d)</c> will delete up until the
-	end of the next sentence, and <c>d}</c> will delete the remainder of the paragraph.  Experiment with the
-	<c>d</c> command and the other editing commands until you're comfortable with them.</p>
-</body>
-</section>
-<section>
-<title>Undo!</title>
-<body>
-<p>Now that we're experimenting with deletion, it would be a good time to learn how to undo any changes.
-	By pressing <c>u</c>, the original version of vi allowed you to undo the last edit only.  However, modern versions
-	of vi like vim will allow you to repeatedly press <c>u</c> to continue to undo changes to your file.  Try combining
-	some <c>d</c> and <c>u</c> commands together.
-</p>
+	<p>
+	Nun wird es Zeit einige der einfachen Bearbeitungskommandos kennenzulernen. Die Kommandos
+	die wir hier behandeln werden werden "einfache" Bearbeitungskommandos genannt, weil sie Sie im
+	Kommandomodus halten. Die komplexeren Bearbeitungskommandos bringen Sie in den Einfügemodus
+	(insert mode) - ein Modus, der es Ihnen erlaubt Text von der Tastatur ganz normal einzugeben.
+	Wir werden gleich darauf zurückkommen.
+	</p>
+	<p>
+	Versuchen Sie einmal, den Cursor über einige Zeichen zu stellen und die Eingabe von <c>x</c> zu wiederholen.
+	Sie werden sehen, dass dies jeweils den aktuellen Buchstaben am Cursor löschen wird. Nun bewegen Sie sich
+	zur Mitte eines Absatzes irgendwo im Text und geben Sie <c>J</c> (Gross!) ein. Sie werden sehen, dass dieses
+	Kommando vi anweist, die nächste Zeile an das Ende der aktuellen Zeile anzuhängen. Nun bewegen Sie den Cursor
+	über ein Zeichen und geben <c>r</c> ein und dann ein neues Zeichen; Sie werden sehen, daß das alte Zeichen
+	gegen das neu eingegebene ersetzt wurde. Zuletzt bewegen Sie den Cursor zu irgendeiner Zeile im Text und geben
+	Sie <c>dd</c> ein. Sie werden sehen, daß <c>dd</c> die aktuelle Textzeile löscht.
+	</p>
 </body>
 </section>
 
+
 <section>
-<title>Updating the cheat sheet</title>
+<title>Wiederholen und löschen</title>
 <body>
-<p>Time to update the cheat sheet!  After adding all the commands we've covered so far, your 
-cheat sheet should look like this:</p>
+	<p>
+	Sie können jedes Bearbeitungskommando wiederholen, indem Sie <c>.</c> drücken. Wenn Sie damit experimentieren
+	werden Sie merken, daß <c>dd...</c> vier Zeilen löschen wird und <c>J......</c> vier Zeilen aneinanderhängen wird.
+	Wie erwartet, bietet vi eine weitere Abkürzung.
+	</p>
+	<p>
+	Um Text zu löschen können Sie auch das <c>d</c> Kommando kombiniert mit Bewegungskommando benutzen. Zum Beispiel
+	wird <c>dw</c> alles von der aktuellen Position bis zum Anfang des nächsten Wortes löschen; <c>d)</c> wird alles
+	bis zum Beginn des nächsten Satzes löschen und <c>d}</c> wird den kompletten Rest des aktuellen Absatzes löschen.
+	Experimentieren Sie mit dem <c>d</c> Kommando und den anderen Bearbeitungskommandos bis Sie sich mit ihnen vertraut
+	fühlen.
+	</p>
+</body>
+</section>
+
+<section>
+<title>Rückgängig !</title>
+<body>
+	<p>
+	Nun da wir mit Löschen experimentieren ist es sicherlich genau der richtige Zeitpunkt, auch zu lernen, wie
+	man seine Änderungen wieder rückgängig macht. Durch das drücken von <c>u</c> erlaubte die Originalversion von vi nur
+	den letzten Bearbeitungsschritt wieder rückgängig zu machen. Trotzdem erlauben moderne vi Versionen wie vim mehrere Änderungen
+	durch wiederholtes drücken von <c>u</c> auch weitere Änderungen an Ihrer Datei wieder rückgängig zu machen. Vesuchen
+	Sie einige der <c>d</c> und <c>u</c> Kommandos miteinander zu kombinieren.
+	</p>
+</body>
+</section>
+
+<section>
+<title>Aktualisieren des Spickzettels</title>
+<body>
+	<p>
+	Time to update the cheat sheet!  After adding all the commands we've covered so far, your
+	cheat sheet should look like this:
+
+	Es wird Zeit unseren Spickzettel zu akualisieren! Nachdem Sie alle Kommandos die wir bisher
+	behandelt haben, sollte der Spickzettel in etwa so aussehen:
+	</p>
 
 	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-edit.png" short="Cheat sheet" caption="Cheat sheet with editing commands"/>
 
 </body>
 </section>
 </chapter>
-<chapter>
-<title>Insert mode</title>
-<section>
-<title>Insert mode</title>
 
+<chapter>
+<title>Einfügemodus</title>
+
+<section>
+<title>Einfügemodus</title>
 <body>
-<p>So far, we've covered how to move around in vi, perform file i/o, and perform basic editing
-operations.  However, I still haven't shown you how to actually type in free-form text!  This
-was intentional, because vi's insert mode is a bit complicated at first.  However, after you 
-become comfortable with insert mode, its complexity (and flexibility) will become an asset.
-</p>
-<p>In vi insert mode, you'll be able to enter text directly to the screen just like you can in many
-other visual editors.  Once you've entered your modifications, you can hit escape to return to 
-command mode.  You can enter insert mode by pressing <c>i</c> or <c>a</c>.  If you press <c>i</c>, your text will be <e>inserted</e>
-before the current character, and if you hit <c>a</c>, your text will be <e>appended</e> after the current character.
-Remember, after you enter your text, hit <c>&lt;ESC&gt;</c> to return to command mode.</p>
+	<p>
+	So far, we've covered how to move around in vi, perform file i/o, and perform basic editing
+	operations.  However, I still haven't shown you how to actually type in free-form text!  This
+	was intentional, because vi's insert mode is a bit complicated at first.  However, after you
+	become comfortable with insert mode, its complexity (and flexibility) will become an asset.
+	</p>
+	<p>
+	In vi insert mode, you'll be able to enter text directly to the screen just like you can in many
+	other visual editors.  Once you've entered your modifications, you can hit escape to return to
+	command mode.  You can enter insert mode by pressing <c>i</c> or <c>a</c>.  If you press <c>i</c>,
+	your text will be <e>inserted</e> before the current character, and if you hit <c>a</c>, your text
+	will be <e>appended</e> after the current character. Remember, after you enter your text, hit
+	<c>&lt;ESC&gt;</c> to return to command mode.
+	</p>
 </body>
 </section>
+
 <section>
 <title>Benefits of insert mode</title>
 <body>
