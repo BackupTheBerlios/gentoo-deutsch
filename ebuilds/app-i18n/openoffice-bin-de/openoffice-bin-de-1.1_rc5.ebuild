@@ -1,7 +1,7 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
 # Author: Tobias Scherbaum <tobias@scherbaum.info>
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/Attic/openoffice-bin-de-1.1_rc5.ebuild,v 1.1 2003/09/28 15:25:05 dertobi123 Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/Attic/openoffice-bin-de-1.1_rc5.ebuild,v 1.2 2003/10/04 15:16:57 baka Exp $
 
 IUSE="kde gnome"
 
@@ -29,7 +29,7 @@ OO_DICT="de_DE.zip"
 OO_TH="OOo-Thesaurus-snapshot.zip"
 
 DESCRIPTION="OpenOffice productivity suite"
-SRC_URI="x86? ( ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/contrib/rc/${MY_PV}/OOo_${MY_PV}_030926_LinuxIntel_install_de.tar.gz
+SRC_URI="x86? ( ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/contrib/rc/${MY_PV}/OOo_${MY_PV}_030929_LinuxIntel_install_de.tar.gz
 		ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/contrib/dictionaries/$OO_DICT
 		http://thesaurus.kdenews.org/download/$OO_TH)"
 
