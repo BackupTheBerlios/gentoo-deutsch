@@ -13,8 +13,9 @@
     <p>
 		<ul>
 			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 29.09.03)</uri></b></li>
+			<li><uri link="/http://tobias.scherbaum.info/gentoo/faq" target="_blank">Gentoo FAQ</uri></li>
 			<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
-	     	<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
+	     		<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
         		Zur Projektübersicht von BerliOS</uri></li>
 			<li><uri link="http://cybersystem.iq-computing.de/gentoo">Zeigt uns die Gentoo-Hochburg in Deutschland</uri></li>
 			<li><uri link="ftp://ftp.berlios.de/pub/gentoo-deutsch/gentoo-pppoe-dsl.tar.bz2">Kurzanleitung für DSL</uri></li>
