@@ -63,12 +63,9 @@
 		Das Minimal-System aus dem .tbz2 Archiv braucht nur erneuert zu werden, wenn signifikante &#xC4;nderungen am Kern
 		von Gentoo Linux gemacht wurden (z. B. &#xC4;nderungen am Basislayout oder ein neues Profil) - dadurch sind .tbz2
 		Updates relativ selten.
-		<!-- Blub.. Was fuer ein Satz.. Keine Ahnung, mal ueberlegen -->
-		<!-- Nicht schoen aber ok -S.E -->
-		<!--The .tbz2 minimal-system tarball only needs to be revised when there have
-		been significant changes to the core Gentoo Linux system (such as baselayout
-		changes, or a new profile), and as such .tbz2 updates are relatively rare.//-->
-		<!-- Das kann ich wieder -->
+		Das .tbz2 minimal-system Archiv ben&#xF6;tigt nur versioniert zu sein wenn wir
+		bedeutende &#xC4;nderungen im Gentoo Linux Basissystem (wie baselayout
+		&#xE4;nderungen, oder ein neues Profil) gemacht wurden, und solche .tbz2 Updates sind relativ selten.
 		Die .iso Datei muss nur aktualisiert werden, wenn jemand andere Hardware hat
 		die nicht mit der .iso booten will. Seitdem Aktualisierungen der Kernel Module und Updates
 		regelm&#xE4;ssig gemacht werden kann es nur selten zu dieser Situation kommen.
@@ -589,15 +586,15 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verf&#xFC;gbar.
 		</p></body>
 	</section>
-
+	
 	<section>
 		<title>Kann man CDs von Gentoo Linux kaufen?</title>
-		<body><p>USA: Ja! Frische CDRs sind f&#xFC;r $5 USD von <uri>http://www.cheapbytes.com</uri> kaufbar.
-		</p>
-		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's k&#xF6;nnen f&#xFC;r 5 Euro bei <uri>http://www.lin24.de</uri> und <uri>http://www.liniso.de</uri> bezogen werden.
+		<body>
+		<p>In Deutschland kann man Gentoo Linux 1.4 CD's unteranderem unter <uri>http://www.lin24.de</uri> und <uri>http://www.liniso.de</uri> finden.
 		</p></body>
 	</section>
-
+	
+	<!-- Unwichtig - Oder?
 	<section>
 		<title>Why, when I hit reply to a post on a Gentoo mailing list, does my answer 
 		only go to the original poster and not the entire list?</title>
@@ -629,15 +626,18 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		administrators have seen them.) </p>
 		</body>
 	</section>
+	-->
 	
 	<section>
-		<title>This FAQ hasn't answered my question.  What do I do now?</title>
+		<title>Diese FAQ beantwortet nicht meine Frage(n). Was kann ich nun tun?</title>
 		<body>
-		<p>A good first step is to browse through the relevant doumentation <uri link="http://www.gentoo.org/index-docs.html">here</uri>, 
-		failing that, the various Gentoo Linux mailing
-		lists listed on <uri link="http://www.google.com">Google</uri>.  To search through the Gentoo mailling lists, just enter "lists.gentoo.org foo" to search for "foo".  If all else fails, or you just want
-		to hang out with Gentoo folks, visit us on irc: <i>#gentoo</i>
-		on <i>irc.freenode.net</i>.
+		<p>Ein guter erster Schritt ist es das durchschauen der wichtigen Dokumentationen - <uri link="http://www.gentoo.org/index-docs.html">hier</uri> (Aktuelle Deutsche Dokumentationen: <uri link="http://www.gentoo.de">gentoo.de</uri>), 
+		falls dies nichts bringt, durchsuchen sie die vielen verschiedenen Gentoo Linux Mailinglisten
+		unter <uri link="http://www.google.com">Google</uri>. Zum durchsuchen der Gentoo Mailinglisten, geben Sie einfach "lists.gentoo.org foo" ein, um "foo" zu suchen.  Falls alles andere nicht funktioniert, oder einfach nur um
+		mit den Gentoo fans zu reden, besuchen Sie uns im irc: <i>#gentoo</i>
+		auf <i>irc.freenode.net</i>.
+		
+		Desweiteren finden Sie die Deutsche gentoo.de FAQ unter <uri link="http://www.gentoo.de">gentoo.de</uri>. Sie enth&#xE4;lt Erweiterungen zu dieser FAQ.
 		</p>
 		</body>
 	</section>
