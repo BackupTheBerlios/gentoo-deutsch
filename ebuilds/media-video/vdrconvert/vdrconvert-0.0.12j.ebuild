@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.0.12j.ebuild,v 1.1 2003/12/14 16:05:08 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.0.12j.ebuild,v 1.2 2004/02/29 09:24:19 fow0ryl Exp $
 
 IUSE=""
 SCRIPT="vdrconvert"
@@ -9,10 +9,9 @@ CONV_DIR="/var/vdr/vdrconvert"
 
 S=${WORKDIR}/${SCRIPT}-${PV}
 DESCRIPTION="Video Disk Recorder VDRconvert Script"
-HOMEPAGE="http://vdrportal.homelinux.com"
-SRC_URI="http://vdrportal.homelinux.com/vdrconvert/releases/${SCRIPT}-${PV}.tar.bz2
-	 http://gd.tuwien.ac.at/visual/ibiblio/apps/video/${PANTELTJE}.tgz
-	"
+HOMEPAGE="http://vdrconvert.vdr-portal.de/"
+SRC_URI="http://vdrconvert.vdr-portal.de/releases/${SCRIPT}-${PV}.tar.bz2
+	 http://www.ibiblio.org/pub/Linux/apps/video/${PANTELTJE}.tgz"
 	 
 KEYWORDS="~x86"
 SLOT="0"
@@ -43,9 +42,7 @@ DEPEND=">=media-video/vdr-1.2.0
 VDRVERSION=$(awk -F'"' '/VDRVERSION/ {print $2}' /usr/include/vdr/config.h )
 
 src_unpack() {
-#	mkdir ${S}
 	unpack ${A}
-	#tar xfvz ${DISTDIR}/${A} -C ${S}
 }
 
 src_compile() {
