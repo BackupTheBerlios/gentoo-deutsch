@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: 
 
-
 S="${WORKDIR}/${P}"
 DESCRIPTION="Mirroring tool"
 SRC_URI="http://mirrordir.sourceforge.net/${P}.tar.gz"
@@ -45,3 +44,4 @@ src_install() {
 	dosym /usr/bin/mirrordir /usr/bin/copydir
 	dosym /usr/bin/mirrordir /usr/bin/recursdir
 }
+ 
