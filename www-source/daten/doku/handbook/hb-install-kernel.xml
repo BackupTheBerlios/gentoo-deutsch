@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-kernel.xml,v 1.5 2003/12/14 15:48:51 schnitz Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-kernel.xml,v 1.6 2003/12/21 14:51:30 dertobi123 Exp $ -->
 
-<!-- English CVS Version 1.19 -->
+<!-- English CVS Version 1.21 -->
 
 <sections>
 <section>
@@ -45,8 +45,14 @@ Standardkernelquelle wie entwickelt von den Linux-Kernel Entwicklern) und die
 </p>
 
 <p>
+Bei MIPS basierten Systemen können Sie zwischen den <c>mips-sources</c>
+(Standard Kernel Sourcen für die MIPS Architektur) und den
+<c>mips-prepatch-sources</c> (Prerelease Kernel Tree) wählen.
+</p>
+
+<p>
 Bei anderen Architekturen sollten Sie die Kernelquelle benutzen, die spezifisch
-für ihre Architektur optimiert ist: <c>hppa-sources</c> (HPPA) und
+für ihre Architektur optimiert ist: <c>hppa-sources</c> (HPPA) oder
 <c>ppc-sources</c> (PowerPC).
 </p>
 
@@ -238,6 +244,7 @@ Optionen auswählen:
 <li><uri link="#doc_chap2_sect5">Aktivieren von HPPA-empfohlenen Optionen</uri></li>
 <li><uri link="#doc_chap2_sect6">Aktivieren von PPC-empfohlenen Optionen</uri></li>
 <li><uri link="#doc_chap2_sect7">Aktivieren von SPARC-empfohlenen Optionen</uri></li>
+<li><uri link="#doc_chap2_sect8">Aktivieren von MIPS-empfohlenen Optionen</uri></li>
 </ul>
 
 </body>
@@ -259,7 +266,7 @@ Processor type and features  ---&gt;
 
 <p>
 Wenn Sie die Konfiguration des Kernel beendet haben fahren Sie mit <uri
-link="#doc_chap2_sect8">Kompilieren und Installieren</uri> fort.
+link="#compiling">Kompilieren und Installieren</uri> fort.
 </p>
 
 </body>
@@ -328,7 +335,7 @@ Sound ---&gt;
 
 <p>
 Wenn Sie die Konfiguration des Kernel beendet haben fahren Sie mit <uri
-link="#doc_chap2_sect8">Kompilieren und Installieren</uri> fort.
+link="#compiling">Kompilieren und Installieren</uri> fort.
 </p>
 
 </body>
@@ -374,7 +381,7 @@ HIL support ---&gt;
 
 <p>
 Wenn Sie die Konfiguration des Kernel beendet haben fahren Sie mit <uri
-link="#doc_chap2_sect8">Kompilieren und Installieren</uri> fort.
+link="#compiling">Kompilieren und Installieren</uri> fort.
 </p>
 
 </body>
@@ -417,7 +424,7 @@ File Systems ---&gt;
 
 <p>
 Wenn Sie die Konfiguration des Kernel beendet haben fahren Sie mit <uri
-link="#doc_chap2_sect8">Kompilieren und Installieren</uri> fort.
+link="#compiling">Kompilieren und Installieren</uri> fort.
 </p>
 
 </body>
@@ -473,7 +480,7 @@ Network device support ---&gt;
 
 <p>
 Wenn Sie die Konfiguration des Kernel beendet haben fahren Sie mit <uri
-link="#doc_chap2_sect8">Kompilieren und Installieren</uri> fort.
+link="#compiling">Kompilieren und Installieren</uri> fort.
 Überprüfen Sie aber nach dem kompilieren des Kernels seine Größe:
 </p>
 
@@ -502,6 +509,148 @@ Kommando strippen:
 </body>
 </subsection>
 <subsection>
+<title>Aktivieren der MIPS-empfohlenen Optionen</title>
+<body>
+
+<p>
+Wenn Sie ein Indy/Indigo2 basiertes System benutzen, dann müssen Sie
+Unterstützung für dieses aktivieren.
+</p>
+
+<pre caption="Aktivieren von SGI IP22">
+Machine selection ---&gt;
+  [*] Support for SGI IP22 (Indy/Indigo2)
+</pre>
+
+<p>
+Wenn Sie Irix Binaries ausführen möchten, schliessen Sie die folgende Option
+ein:
+</p>
+
+<pre caption="IRIX Binary Unterstützung inkludieren">
+General setup ---&gt;
+  [*] Include IRIX binary compatibility
+</pre>
+
+<p>
+Wenn Sie ISA/EISA in Ihrer SGI Indigo2 haben, müssen Sie Unterstützung für diese
+aktivieren.
+</p>
+
+<pre caption="ISA/EISA Untersützung für SGI Indigo2 aktivieren">
+General setup ---&gt;
+  [*] Indigo-2 (IP22) EISA bus support
+  [*]   ISA bus support
+</pre>
+
+<p>
+Wenn Sie einen SGI Paralell Port haben, dann können Sie Unterstützung für diesen
+aktivieren. Wenn Sie aber einen ISA Paralell Port haben, sollten Sie "PC-style
+hardware" wählen.
+</p>
+
+<pre caption="SGI Parallel Port Unterstützung aktivieren">
+Parallel port support  ---&gt;
+  &lt;*&gt; Parallel port support
+  &lt;*&gt;   SGI Indy/Indigo2 hardware (EXPERIMENTAL) (NEW)
+  &lt;*&gt;   IEEE 1284 transfer modes (NEW)
+</pre>
+
+<p>
+Wenn Sie die Indigo2 ISA Slots benutzen möchten, aktivieren Sie den Plug &amp;
+Play Support.
+</p>
+
+<pre caption="PnP Support für ISA Unterstützung">
+Plug and Play configuration  ---&gt;
+  &lt;*&gt; Plug and Play support
+  &lt;*&gt;   ISA Plug and Play support
+</pre>
+
+<p>
+Vergessen sie nicht die SCSI Unterstützung. Benutzen Sie den SGI WD93C93 Treiber:
+</p>
+
+<pre caption="WD93C93 Treiber Unterstützung aktivieren">
+SCSI low-level drivers  ---&gt;
+  &lt;*&gt; SGI WD93C93 SCSI Driver
+</pre>
+
+<p>
+Für Netzwerkkarten benötigen Sie vermutlich Unterstützung für den SGI Seeq
+Ethernet Controller:
+</p>
+
+<pre caption="SGI Seeq Support aktivieren">
+Network device support  ---&gt;
+  Ethernet (10 or 100Mbit)  ---&gt;
+    [*] Ethernet (10 or 100Mbit)
+    [*]   SGI Seeq ethernet controller support
+</pre>
+
+<p>
+Vergessen Sie nicht die Serielle Konsole und Unterstützung für SGI Zilog85C30 zu
+aktivieren:
+</p>
+
+<pre caption="SGI Zilog85C30 Untersützung aktivieren">
+ Character devices ---&gt;
+   [*] Non-standard serial port support
+   [*]   SGI Zilog85C30 serial support
+</pre>
+
+<p>
+Vergessen Sie nicht die Indy/I2 Watchdog und den SGI DS1286 RTC Unterstützung:
+</p>
+
+<pre caption="Watchdog und RTC Unterstützung aktivieren">
+Character Devices ---&gt;
+  [*] SGI DS1286 RTC support
+  Watchdog Cards  ---&gt;
+    [*] Watchdog Timer Support
+    &lt;*&gt;   Indy/I2 Hardware Watchdog
+</pre>
+
+<p>
+Sie sollten auch Unterstützung für SGI Partitionen aktivieren :)
+</p>
+
+<pre caption="Unterstützung für SGI Partitionen aktivieren">
+File Systems ---&gt;
+  Partition Types ---&gt;
+    [*] Advanced partition selection
+    [*]   SGI partition support
+</pre>
+
+<p>
+Wenn Sie eine SGI Newport (XL Gfx) Karte haben und diese benutzen möchten, dann
+müssen Sie Unterstützung für diese aktivieren:
+</p>
+
+<pre caption="Unterstützung für eine SGI Newport Karte aktivieren">
+Console drivers  ---&gt;
+  &lt;*&gt; SGI Newport Console support (NEW)
+</pre>
+
+<p>
+Wenn Sie Sound Unterstützung auf Ihrer Indy/Indigo2 haben möchten, müssen Sie
+Unterstützung dafür aktivieren:
+</p>
+
+<pre caption="Unterstützung für SGI HAL2 aktivieren">
+Sound  ---&gt;
+  &lt;*&gt; Sound card support
+  &lt;*&gt;   SGI HAL2 sound (EXPERIMENTAL)
+</pre>
+
+<p>
+Wenn Sie Ihren Kernel konfiguriert haben, fahren Sie mit dem
+<uri link="#compiling">Kompilieren und Installieren </uri> fort.
+</p>
+
+</body>
+</subsection>
+<subsection id="compiling">
 <title>Kompilieren und Installieren</title>
 <body>
 
@@ -548,7 +697,13 @@ nur für alle Fälle :)
 </pre>
 
 <p>
-Fahren Sie nun mit dem <uri link="#doc_chap4">Installieren separater
+Wenn Sie ein MIPS Benutzer sind und Ihr System keine ELF Kernel bootet,
+kompilieren Sie den Kernel mit <c>make vmlinux.ecoff</c> anstelle von <c>make
+vmlinux</c>. Das Kernel Image wird in <path>arch/mips/boot/vmlinux.ecoff</path>
+anstelle von <path>vmlinux</path> gespeichert.
+</p>
+
+<p>Fahren Sie nun mit dem <uri link="#doc_chap4">Installieren separater
 Kernelmodule</uri> fort.
 </p>
 
@@ -564,6 +719,7 @@ Wenn Sie diesen Abschnitt lesen, haben Sie sich entschieden unser
 <c>genkernel</c> Script zu benutzen, um sich Ihren Kernel konfigurieren zu
 lassen. Dies bedeutet auch, dass Sie ein x86-basierendes System haben. Andere
 Architekturen werden von <c>genkernel</c> <e>nicht unterstützt</e>.
+<!-- TODO: Add ppc as it should be available with the first 2004 release -->
 </p>
 
 <p>
