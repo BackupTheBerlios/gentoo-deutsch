@@ -388,14 +388,15 @@ USE="tcpd pam ssl"
 </section>
 
 <section>
-<title>GRUB/LILO password</title>
+<title>GRUB/LILO Passwort</title>
 <body>
 <section>
 <title>GRUB</title>
 <body>
 
 <p>
-Grub supports 2 different ways of adding password restriction to its configuration file (<path>/boot/grub/menu.1st</path>). One with plain text password and one with md5+salt encryption.
+Grub unterstützt 2 verschiedene Wege für Passwortkontrolle in seiner Konfigurationsdatei(<path>/boot/grub/menu.1st</path>):
+Einmal Normalen Text und einmal mit md5+salt Verschlüsselung.
 </p>
 
 <pre caption="/boot/grub/menu.lst">
@@ -404,15 +405,18 @@ password changeme
 </pre>
 
 <p>
-This will add the password <e>changeme</e> and if no password is entered simply use the default boot setting.
+Dies wird das Passwort <e>changeme</e> hinzufügen; wenn kein Passwort eingegeben ist, wird die Standard-Boot-Einstellung genommen.
 </p>
 
 <p>
-When adding a md5 password, you need to convert the password into crypt format (man crypt) which is the same format as the shadow file. For example could the encrypted password <e>changeme</e> look like this <e>$1$T7/dgdIJ$dJM.n2wZ8RG.oEiIOwJUs.</e>
+When adding a md5 password, you need to convert the password into crypt format (man crypt) which is the same format
+Sollte ein md5-Passwort genommen werden, dann müssen Sie das Passwort ins Crypt-Format konvertieren (man crypt), daß
+das selbe Format wie die Shadow-Datei hat. Zum beispiel könnte das verschlüsselte Passwort <e>changeme</e> so aussehen:
+<e>$1$T7/dgdIJ$dJM.n2wZ8RG.oEiIOwJUs.</e>
 </p>
 
 <p>
-Or this:
+Oder dies:
 </p>
 
 <pre caption="/boot/grub/menu.lst">
@@ -421,11 +425,13 @@ password --md5 $1$T7/dgdIJ$dJM.n2wZ8RG.oEiIOwJUs.
 </pre>
 
 <warn>
-When testing this, remember to insert the timeout. Otherwise you will not be able to boot the system, if your password is incorrect.
+Wenn Sie das hier testen, dann denken sie daran, den Zeitablauf festzulegen. Ansonsten werden Sie nicht fähig sein das System zu
+starten, wenn das Kennwort nicht korrekt ist.
 </warn>
 
 <p>
-The timeout on 5 seconds becomes very handy if the system is remote and should be able to reboot without any keyboard interaction. More on Grub passwords can be found by executing <path>info grub</path>
+Der Zeitablauf von 5 Sekunden wird sehr sinnvoll, wenn das System von fern bedient wird und bei einem Neustart ohne Tastatureingaben auskommen muss.
+Mehr Informationen über Grub-Passwörter können Sie über die Ausführung von <path>info grub</path> bekommen.
 </p>
 
 </body>
