@@ -1,7 +1,7 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-system.xml,v 1.4 2003/12/12 23:28:15 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-system.xml,v 1.5 2003/12/14 15:29:33 jay Exp $ -->
 
 <!-- English CVS Version: 1.18 -->
 
@@ -16,7 +16,7 @@
 Falls Sie von einer Gentoo LiveCD gebootet haben, können sie
 <c>mirrorselect</c> benutzen, um Ihre <path>/etc/make.conf</path> zu
 aktualisieren. Mit diesem Schritt werden die schnellsten Spiegel für
-Quellcodeachive ausgewählt.
+die Quellcodeachive ausgewählt.
 </p>
 
 <pre caption="Schnelle Spiegel auswählen">
@@ -96,8 +96,8 @@ Regenerating /etc/ld.so.cache...
 
 <p>
 Glückwunsch! Sie sind nun in Ihrer neuen Gentoo Linux Umgebung. Natürlich sind
-wir noch nicht fertig, darum gibt es auch noch einige Abschnitte denen Sie
-folgen müssen.
+wir noch nicht fertig, darum gibt es auch noch einige Abschnitte in der Anleitung
+denen Sie folgen müssen.
 </p>
 
 </body>
@@ -161,7 +161,7 @@ beeinflusst die nächsten Schritte.
 </li>
 <li>
  Falls Sie <e>stage2</e> auswählen, ignorieren Sie den ersten Abschnitt und
- fahren mit dem Zweiten fort (<uri link="#doc_chap4">Fortschritt von Stage2
+ fahren mit dem zweiten fort (<uri link="#doc_chap4">Fortschritt von Stage2
  zu Stage3</uri>).
 </li>
 <li>
@@ -232,7 +232,7 @@ bootstrap Script die Option <e>USE="-java"</e>.
 Bitte vergessen Sie nicht, die Variable nach dem bootstrappen zurückzusetzen
 </p>
 
-<pre caption="USE zurcksetzen">
+<pre caption="USE zurücksetzen">
 # <i>unset USE</i>
 </pre>
 
@@ -314,7 +314,7 @@ einer Entscheidung zwingen.
 </body>
 </subsection>
 <subsection>
-<title>Optional: Ssehen was 'emerge system' machen wird</title>
+<title>Optional: Sehen was 'emerge system' machen wird</title>
 <body>
 
 <p>
@@ -355,10 +355,10 @@ erhalten wird). Dazu benutzen Sie die <e>-f</e> Option von <c>emerge</c>.
 <p>
 Um das System zu bauen, führen Sie bitte <c>emerge system</c> aus. Sie sollten
 sich in der Zwischenzeit mit etwas anderem beschäftigen, da dieser Schritt viel
-Zeit benötigt.
+Zeit benötigen wird.
 </p>
 
-<pre caption = "Kompilieren der Grundlegenden Systemprogramme">
+<pre caption = "Kompilieren der grundlegenden Systemprogramme">
 # <i>emerge system</i>
 </pre>
 
