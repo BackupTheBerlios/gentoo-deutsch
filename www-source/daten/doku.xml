@@ -578,7 +578,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <tr><ti><uri link="dsl-guide">DSL Anleitung</uri></ti></tr>
         <tr><ti><uri link="fluxbox">Fluxbox Handbuch</uri></ti></tr>
         <tr><ti><uri link="gnome-guide">Gnome 2.4 Howto und FAQ</uri></ti></tr>
-        <tr><ti><uri link="ati-faq.xml">ATI FAQ</uri></ti></tr>
+        <tr><ti><uri link="ati-faq">ATI FAQ</uri></ti></tr>
         <tr><ti><uri link="nano-basics-guide">Nano Basics Handbuch</uri></ti></tr>
         <tr><ti><uri link="vi-guide">Vi Handbuch</uri></ti></tr>
         <!--<tr><ti><uri link="guide-to-mutt.xml">Schnellstarter Handbuch zu CLI E-mail Programmen</uri></ti></tr>-->
