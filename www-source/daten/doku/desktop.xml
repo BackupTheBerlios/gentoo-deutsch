@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/desktop.xml,v 1.4 2003/11/15 10:25:04 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/desktop.xml,v 1.5 2003/12/03 19:34:37 pylon Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-<!-- English CVS version: 1.46 -->
+<!-- English CVS version: 1.48 -->
 
 <guide link="/doc/de/desktop.xml">
   <title>Anleitung zur Gentoo Linux Desktop Konfiguration</title>
@@ -18,14 +18,14 @@
   <author title="Korrektur"><mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail></author>
 
   <abstract>Mit Hilfe dieser Anleitung können Sie Ihr Gentoo Linux zu einem
-  vollwertigen Desktop-System einrichten. Sie erfahren, wie man X, KDE, Alsa
+  vollwertigen Desktop-System einrichten. Sie erfahren, wie man X, KDE, ALSA
   (Sound), postfix (E-Mail) und Samba (Unix/Windows Dateiaustausch) installiert
   und konfiguriert.</abstract>
 
   <license/>
 
-  <version>1.4.10</version>
-  <date>19. Oktober 2003</date>
+  <version>1.4.13</version>
+  <date>16. November 2003</date>
 
   <chapter>
     <title>Voraussetzungen</title>
@@ -401,7 +401,7 @@ EndSection
     <section>
       <title>KDE</title>
       <body>
-        
+
         <p>Ich gehe davon aus, dass Sie KDE installieren möchten, wenn Sie
         diesen Abschnitt lesen.  KDE wird komplett von Gentoo Linux unterstützt,
         aber es gibt einige Dinge, die Sie überprüfen sollten, bevor Sie KDE
@@ -455,6 +455,7 @@ XSESSION="kde-3.1.2"
           <tr><th>Paket</th><th>Beschreibung</th></tr>
           <tr><ti>kdeaccessibility</ti><ti>Programme rund  um Zugänglichkeit</ti></tr>
           <tr><ti>kdebase</ti><ti>KDE Basispaket und notwendige Applikationen</ti></tr>
+          <tr><ti>kdeaccessibility</ti><ti>Programme zur behindertenfreundlichen Benutzung</ti></tr>
           <tr><ti>kdeaddons</ti><ti>Diverse ältere oder nicht mehr verwendete KDE Tools</ti></tr>
           <tr><ti>kdeadmin</ti><ti>KDE Administrationstools</ti></tr>
           <tr><ti>kdeartwork</ti><ti>Styles für KDE</ti></tr>
@@ -464,10 +465,10 @@ XSESSION="kde-3.1.2"
           <tr><ti>kdemultimedia</ti><ti>Multimediaprogramme für KDE</ti></tr>
           <tr><ti>kdenetwork</ti><ti>KDE Netzwerktools</ti></tr>
           <tr><ti>kdepim</ti><ti>Personal Information Manager, KDE Kalender, Schreibtischnotizen etc.</ti></tr>
-          <tr><ti>kdesdk</ti><ti>Entwicklungs Tools</ti></tr>
+          <tr><ti>kdesdk</ti><ti>Programmierentwicklungsumgebungen</ti></tr>
           <tr><ti>kdetoys</ti><ti>Unterhaltungstools für den KDE Desktop</ti></tr>
           <tr><ti>kdeutils</ti><ti>Grafische Systemprogramme</ti></tr>
-          <tr><ti>kde-i18n</ti><ti>Sprachenpakete, beachten Sie die Anmerkung</ti></tr>
+          <tr><ti>kde-i18n</ti><ti>Internationale Sprachpakete -- siehe Anmerkung</ti></tr>
         </table>
 
         <note>Wenn Sie CUPS zum Drucken verwenden möchten, sollten Sie "cups"
@@ -485,6 +486,11 @@ XSESSION="kde-3.1.2"
         Umgebungsvariable mindestens den Wert <c>de</c> erhalten, also
         <c>LINGUAS="de"</c>.
         </p>
+
+        <note>Das kde-i18n liest die LINGUAS Umgebungsvariable aus, um das von
+        Ihnen gewünschte Sprachpaket zu installieren.  Zum Beispiel wird
+        <c>LINGUAS="fr it"</c> die Pakete für Französisch und Italienisch
+        installieren.</note>
 
         <p>Habe Sie nun ein nettes Nickerchen!</p>
 
@@ -506,7 +512,7 @@ vorhanden) bei Abhängigkeiten verwendet werden.</comment>
     <section>
       <title>KDM konfigurieren</title>
       <body>
-        
+
         <p>Ist die Installation von KDE beendet, möchten Sie sicherlich einen
         netten Login Manager haben, in diesem Fall den KDE Login Manager, oder
         KDM.  KDM ist in den KDE Paketen enthalten und braucht lediglich nur noch
@@ -560,7 +566,7 @@ DISPLAYMANAGER="kdm"
     <section>
       <title>Installation</title>
       <body>
-        
+
         <p>Bevor Sie die GNOME Pakete installieren, sollten Sie Ihre
         USE-Variable anpassen.  Damit wird die GNOME-Unterstützung in
         Applikationen, die Sie installieren, aktiviert.</p>
@@ -615,7 +621,7 @@ XSESSION="Gnome"
     <section>
       <title>GDM konfigurieren</title>
       <body>
-        
+
         <p>Nachdem GNOME installiert ist, möchten Sie sicherlich einen netten
         Login Manager, in diesem Fall den GNOME Login Manger, oder GDM
         verwenden.  GDM ist im bereits installierten GDE-Paket enthalten, sodass
@@ -695,9 +701,10 @@ DISPLAYMANAGER="gdm"
     <section>
       <title>GNOME und Sound</title>
       <body>
-        
-        <p>Sie können mit <c>gnome-alsamixer</c> Ihre Lautstärken einstellen.
-        Er ist der Teil des <path>media-sound/gnome-alsamixer</path> Paket.</p>
+
+        <p>Probieren Sie den <c>gnome-alsamixer</c> zur Regelung der Lautstärke
+        aus.  Dieser ist im <path>media-sound/gnome-alsamixer</path> Paket
+        enthalten.</p>
 
       </body>
     </section>
@@ -708,7 +715,7 @@ DISPLAYMANAGER="gdm"
     <section>
       <title>Postfix -- Installation und Konfiguration</title>
       <body>
-        
+
         <p>Ich mag <c>postfix</c>, da es <c>sendmail</c> emuliert, ohne den
         Alptraum einer <c>sendmail</c>-Konfiguration durchleben zu müssen.  Wo
         wir gerade dabei sind, werden wir gleich <c>mutt</c> installieren, ein
@@ -749,7 +756,7 @@ DISPLAYMANAGER="gdm"
     <section>
       <title>Testen von Postfix (mit Mutt)</title>
       <body>
-        
+
         <p>Schauen wir, ob es klappt:</p>
 
         <pre caption="Testen von Postfix">
@@ -798,7 +805,7 @@ test
 postfix-script: stopping the Postfix mail system
 # <i>rc-update add postfix default</i>
 * postfix added to runlevel default...
-* Caching service dependencies...          [ ok ] 
+* Caching service dependencies...          [ ok ]
 * rc-update complete.
 # <i>/etc/init.d/postfix start</i>
 Starting postfix......     [  ok  ]
@@ -841,7 +848,7 @@ Starting postfix......     [  ok  ]
       <title>Installation und Konfiguration von Samba</title>
 
       <body>
-        
+
         <p>Samba ist ein ausgezeichnetes Paket um Dateien und Drucker von Ihrem
         Linux Rechner an Windows Maschinen zur Verfügung zu stellen.  Für
         detaillierte Informationen lesen Sie den Samba Artikel von Daniel
@@ -930,7 +937,7 @@ Starting samba...        [  ok  ]
     <section>
       <title>Apache mit SSL und PHP</title>
       <body>
-        
+
         <p>Angenommen, Sie haben eine feste IP-Adresse (oder benutzen einen
         Dienst wie dyndns mit Ihrer dynamischen IP-Adresse), dann möchten Sie
         einen praktischen Weg nutzen, Ihre E-Mails zu lesen, wenn Sie nicht
@@ -951,12 +958,12 @@ Starting samba...        [  ok  ]
         vielfältig anpassbar ist.  Standardmäßig ist der Apache DocumentRoot
         (dort, wo zuerst nach html-Dateien geschaut wird, wenn Sie auf
         http://www.ihrservername.lan oder http://localhost zugreifen)
-        <path>/home/httpd/htdocs</path>; ändern Sie diesen, wenn Sie wollen.</p>
+        <path>/var/www/localhost</path>; ändern Sie diesen, wenn Sie wollen.</p>
 
         <pre caption="/etc/apache/conf/apache2.conf">
 # Do NOT add a slash at the end of the directory path.
 #
-DocumentRoot "/home/httpd/htdocs" <comment>(passen Sie diese Zeile ggf. an)</comment>
+DocumentRoot "/var/www/localhost" <comment>(passen Sie diese Zeile ggf. an)</comment>
         </pre>
 
         <pre caption="Apache beim Booten starten">
@@ -979,7 +986,7 @@ APACHE2_OPTS="-D SSL -D PHP4"
         <pre caption="Apache neu starten">
 # <i>/etc/init.d/apache2 start</i>
  * Starting Apache...                            [ OK ]
-# <i>lynx localhost</i>
+# <i>links localhost</i>
         </pre>
 
         <p>Sie können testen, ob Ihr Apache Web-Server läuft, indem Sie mit
@@ -1002,17 +1009,17 @@ APACHE2_OPTS="-D SSL -D PHP4"
         dann in das DocumentRoot-Verzeichnis kopiert.</p>
 
         <pre caption="PHP testen">
-# <i>nano -w /home/httpd/htdocs/test.php</i>
-&lt;? phpinfo(=; &gt;
-# <i>lynx http://localhost/test.php</i>
+# <i>nano -w /var/www/localhost/test.php</i>
+&lt;? phpinfo(); &gt;
+# <i>links http://localhost/test.php</i>
         </pre>
 
         <pre caption="funktionierender Apache + PHP">
                                                              phpinfo() (p1 of 26)
                                    PHP Logo
-   
+
                               PHP Version 4.0.6
- 
+
      System Linux my.server.edu 2.4.10 #1 Tue Oct 9 16:33:50 Local
            time zone must be set--see zic manuali686 i686 unknown
                             Build Date Oct 16 2001
@@ -1036,7 +1043,7 @@ APACHE2_OPTS="-D SSL -D PHP4"
     <section>
       <title>Courier IMAP</title>
       <body>
-        
+
         <p>Squirrelmail ist eine PHP-Applikation, aber sie beruht auf einem
         IMAP-Server als Bindeglied zwischen dem Web-Server und den E-Mails.  Da
         Gentoo Linux üblicherweise <e>maildir</e> Mail Verzeichnisse verwendet,
@@ -1115,19 +1122,19 @@ authmodulelist="authpam"
     <section>
       <title>Squirrelmail</title>
       <body>
-        
+
         <p>Glücklicherweise ist, nachdem nun die anderen Komponenten zur
         Verfügung stehen, die Installation und Konfiguration von Squirrelmail
         recht einfach.</p>
 
         <pre caption="Squirrelmail mergen">
 # <i>emerge squirrelmail</i>
-# <i>cd /home/httpd/htdocs</i>
+# <i>cd /var/www/localhost</i>
 # <i>cd squirrelmail</i>
 # <i>./configure</i>
         </pre>
 
-        <note>Wenn Ihr Apache DocumentRoot nicht <path>/home/httpd/htdocs</path>
+        <note>Wenn Ihr Apache DocumentRoot nicht <path>/var/www/localhost</path>
         ist, müssen Sie das <path>net-mail/squirrelmail</path> ebuild editieren
         und den Pfad anpassen.</note>
 
@@ -1155,7 +1162,7 @@ R   Return to Main Menu
 C.  Turn color off
 S   Save data
 Q   Quit
- 
+
 Command >>
         </pre>
 
@@ -1172,12 +1179,12 @@ General Options
 3.  Attachment Directory   : /tmp/
 4.  Default Left Size      : 150
 5.  Usernames in Lowercase : false
- 
+
 R   Return to Main Menu
 C.  Turn color off
 S   Save data
 Q   Quit
- 
+
 Command >>
         </pre>
 
@@ -1197,7 +1204,7 @@ Command >>
         sollte.</p>
 
         <pre caption="Squirrelmail testen">
-# <i>lynx https://localhost/squirrelmail/</i>
+# <i>links https://localhost/squirrelmail/</i>
         </pre>
 
         <pre caption="Squirrelmail Login Seite">
@@ -1206,16 +1213,16 @@ Command >>
 
                        SquirrelMail version 1.2.0 [rc2]
                      By the SquirrelMail Development Team
- 
+
                               SquirrelMail Login
- 
+
        Name: ____________________
  Password: ____________________
- 
+
                                     Login
         </pre>
 
-        <p>(Ich empfehle nicht wirklich Squirrelmail mit lynx zu bedienen, aber
+        <p>(Ich empfehle nicht wirklich Squirrelmail mit links zu bedienen, aber
         Sie können es tun!)</p>
 
       </body>
@@ -1227,7 +1234,7 @@ Command >>
     <section>
       <title>Evolution mit Unterstützung für Palm</title>
       <body>
-        
+
         <p>Evolution ist eine ganz besonders nette Personal Information
         Management Software, die mit dem Palm pilot recht gut syncen kann.  Der
         erste Schritt ist Evolution zu mergen.  Wenn Sie Evolution mit einem
