@@ -35,7 +35,7 @@
         
         <xsl:if test="preceding-sibling::pkg/child::category != $cname">
           <tr class="header">
-            <td>           
+            <td colspan="2">           
               <xsl:value-of select="$cname"/>
             </td>
           </tr>    
@@ -56,10 +56,10 @@
               
                 <td style="vertical-align:top">
                   <b><xsl:value-of select="name"/></b>
-                  <br/><br/>
+                  <br/>
                   <xsl:value-of select="description"/>
                 </td>
-                <td>
+                <td style="max-width:150px; width:30%">
                   <b>Letzte Änderung:</b>
                   <br/>
                   <xsl:for-each select="../pkg[name = $pname]">
