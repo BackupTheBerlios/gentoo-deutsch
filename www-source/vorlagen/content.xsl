@@ -480,7 +480,7 @@
 		<span style="font-weight:bold; font-size:large;"><xsl:value-of select="@title"/></span><br/>
 	</p>
 	<p style="font-size:medium; padding:3px; margin-top:0px">
-		<table>
+		<table width="100%">
 			<tr>
 				<td valign="top">
 					<img>
@@ -503,6 +503,9 @@
 
 <xsl:template match="uriimg">
 	<p style="text-align:center;">
+		<xsl:attribute name="style">
+			text-align:<xsl:value-of select="@align"/>
+		</xsl:attribute>
 	<a>
 		<xsl:attribute name="href">
 			<xsl:value-of select="@uri"/>
