@@ -4,9 +4,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-working-features.xml,v 1.1 2004/01/20 20:15:45 sirseoman Exp $ -->
-
 <!-- English CVS Version: 1.10-->
+
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-working-features.xml,v 1.2 2004/01/23 23:45:24 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -16,17 +16,17 @@
 <body>
 
 <p>
-<c>distcc</c> ist ein Programm das "Kompilierungen" über mehere, nicht
+<c>distcc</c> ist ein Programm das "Kompilierungen" über mehrere, nicht
 notwendigerweise identische Computer, über ein Netzwerk verteilt. Der
 <c>distcc</c> - Client sendet alle notwendigen Informationen zu den
 erreichbaren DistCC - Servern (die den <c>distccd</c> laufen haben), so
-daß diese Teile des Quellcodes vom Client kompilieren können. Als Resultat
+dass diese Teile des Quellcodes vom Client kompilieren können. Als Resultat
 wird Zeit beim Kompilieren eingespart.
 </p>
 
 <p>
 Sie finden tiefer gehende Informationen über <c>distcc</c> (und wie Sie es bei
-Gentoo zum Laufen bringen) in unserer <uri link="/doc/en/distcc.xml">Gentoo
+Gentoo zum Laufen bringen) in unserer <uri link="/doc/de/distcc.xml">Gentoo
 Distcc Dokumentation</uri>.
 </p>
 
@@ -39,9 +39,9 @@ Distcc Dokumentation</uri>.
 <p>
 Distcc bringt einen grafischen Monitor mit, der Sie über alle Aufgaben
 informiert, die der Computer zum Kompilieren wegsendet. Falls Sie
-Gnome benutzen, setzen Sie 'gnome' in Ihrer <c>USE</c> - Variablen.
+Gnome benutzen, setzen Sie 'gnome' in Ihrer <c>USE</c> - Variable.
 Wenn Sie nicht Gnome nutzen, den Monitor aber trotzdem haben
-wollen, dann sollten Sie 'gtk' in Ihrer <c>USE</c> - Variablen setzen. 
+wollen, dann sollten Sie 'gtk' in Ihrer <c>USE</c> - Variable setzen.
 </p>
 
 <p>
@@ -66,21 +66,21 @@ Handbuchs weglassen.
 <body>
 
 <p>
-Nun gut, da die Installation schon einfach ist, so sollte es der Rest auch sein
+Nun gut, da die Installation schon einfach ist, sollte es der Rest auch sein
 :) Also lassen Sie uns schnell die Unterstützung von <c>distcc</c> für Portage
 aktivieren.
 </p>
 
 <p>
 Öffnen Sie zuerst <path>/etc/make.conf</path> und editieren die <c>FEATURES</c>
-- Variable, so daß diese das <c>distcc</c> - Schlüsselwort enthält. Dann editieren
-Sie die <c>MAKEOPTS</c> - Variable, so daß diese <c>-jX</c> enthält - <c>X</c>
+- Variable, so dass diese das <c>distcc</c> - Schlüsselwort enthält. Dann editieren
+Sie die <c>MAKEOPTS</c> - Variable, so dass diese <c>-jX</c> enthält - <c>X</c>
 ist die Anzahl von CPUs, die den <c>distccd</c> am Laufen haben (der Host mit
 eingeschlossen), plus eins:
 </p>
 
 <pre caption="Mögliche MAKEOPTS Einstellung in /etc/make.conf">
-<comment># Angenommen Sie haben zwei einprozessor - Distcc, ohne den Host:</comment>
+<comment># Angenommen Sie haben zwei Einprozessor - Distcc Clients, ohne den Host:</comment>
 MAKEOPTS="-j4"
 </pre>
 
@@ -97,7 +97,7 @@ DISTCC_DIR=${PORTAGE_TMPDIR}/portage/.distcc
 
 <p>
 Nun rufen Sie <c>distcc-config</c> auf und tragen eine Liste der verfügbaren
-Server ein. Als einfaches Beispiel nehmen wir einmal an, daß die verfügbaren
+Server ein. Als einfaches Beispiel nehmen wir einmal an, dass die verfügbaren
 DistCC - Server <c>192.168.1.102</c> (der momentane Host),
 <c>192.168.1.103</c> und <c>192.168.1.104</c> (zwei "entfernte" Hosts):
 </p>
@@ -117,7 +117,7 @@ Vergessen Sie bitte nicht, auch den <c>distccd</c> - Dämonen zu starten:
 <p>
 Glückwunsch, Ihr System wird nun die verteilte Kompilierung nutzen. Um weitere,
 tiefergehende Informationen über DistCC und Gentoo zu erhalten, schauen Sie
-bitte in unserer <uri link="/doc/en/distcc.xml">Gentoo DistCC Documentation</uri>
+bitte in unserer <uri link="/doc/de/distcc.xml">Gentoo DistCC Documentation</uri>
 nach.
 </p>
 
@@ -132,7 +132,7 @@ nach.
 
 <p>
 <c>ccache</c> ist ein schneller Compiler - Cache. Wenn Sie ein Programm
-kompilieren, werden Zwischenresultate gecacht, so daß bei einer Rekompilierung
+kompilieren, werden Zwischenresultate gecacht, so dass bei einer Rekompilierung
 des Programms die Zeit zum Kompilieren viel kürzer ist. Das kann bei normalen
 Kompilierungen eine 5 bis 10 Mal schnellere Kompilierung ausmachen.
 </p>
@@ -165,7 +165,7 @@ und das war es :)
 
 <p>
 Öffnen Sie zuerst <path>/etc/make.conf</path> und editieren die <c>FEATURES</c>
-- Variable, so daß diese das <c>ccache</c> - Schlüsselwort enthält.
+- Variable, so dass diese das <c>ccache</c> - Schlüsselwort enthält.
 </p>
 
 <pre caption="FEATURES in /etc/make.conf editieren">
@@ -175,7 +175,7 @@ FEATURES="ccache"
 <p>
 Dann editieren (oder erstellen) Sie die <c>CCACHE_SIZE</c> - Variable
 (auch in <path>/etc/make.conf</path>), damit diese die Größe des
-Festplattenplatzes enthält, den Sie für <c>ccache</c> opfern wolllen:
+Festplattenplatzes enthält, den Sie für <c>ccache</c> opfern wollen:
 </p>
 
 <pre caption="CCACHE_SIZE in /etc/make.conf editieren">
@@ -228,7 +228,7 @@ nutzt dazu die <c>--buildpkg</c> Option (kurz <c>-b</c> ) um dies zu tun:
 </pre>
 
 <p>
-Falls Sie wollen, daß Portage dies standardmäßig macht, sollten Sie das
+Falls Sie wollen, dass Portage dies standardmäßig macht, sollten Sie das
 Schlüsselword <c>buildpkg</c> in der <c>FEATURES</c> - Variablen
 in <path>/etc/make.conf</path> setzen.
 </p>
@@ -258,9 +258,9 @@ erstellen wollen, können Sie die<c>--buildpkgonly</c> Option
 
 <p>
 Während Portage Pakete erstellt und installiert, nutzt es eine <e>sandbox</e>,
-um Ihr Live - System zu schützen. Das heißt, daß das Paket keine Datei auf
+um Ihr Live - System zu schützen. Das heißt, dass das Paket keine Datei auf
 Ihrem System außerhalb der Sandbox berühren kann, solange es noch nicht
-komplett installiert ist. Das stellt sicher, daß Portage weiß, welche Dateien
+komplett installiert ist. Das stellt sicher, dass Portage weiß, welche Dateien
 von einem Paket erstellt und modifiziert wurden.
 </p>
 
@@ -278,8 +278,8 @@ Live - System geschoben.
 <body>
 
 <p>
-Portage unterstützz auch das Erstellen von Paketen durch normale User
-(um präziser zu werden, von User "portage", Gruppe "Portage"). Das
+Portage unterstützt auch das Erstellen von Paketen durch normale User
+(um präziser zu werden, von User "portage", Gruppe "portage"). Das
 verbessert die Sicherheit während dem Erstellen. Sie können
 entscheiden, ob Sie Benutzerprivilegien mit oder ohne der Sandbox nutzen
 wollen. Die Nutzung von Benutzerprivilegien und der Sandbox ist die
@@ -295,7 +295,7 @@ bevorzugteste Methode :)
 <p>
 Standardmäßig nutzt Portage die <c>sandbox</c>. Wenn Sie <c>userpriv</c>
 nutzen möchten, fügen Sie es zu der <c>FEATURES</c> - Variablen hinzu.
-Beachten Sie, daß die Aktivierung von <c>userpriv</c>, <c>sandbox</c>
+Beachten Sie, dass die Aktivierung von <c>userpriv</c>, <c>sandbox</c>
 deaktiviert, es sei denn Sie aktivieren zusätzlich <c>usersandbox</c>:
 </p>
 
@@ -305,7 +305,7 @@ FEATURES="userpriv usersandbox"
 
 <warn>
 Entfernen Sie <c>sandbox</c> <e>nicht</e> aus der <c>FEATURES</c> -
-Variablen!
+Variable!
 </warn>
 
 </body>
@@ -315,7 +315,7 @@ Variablen!
 <body>
 
 <p>
-Portage can gefragt werden, sehr streng möglichen gefährlichen Bedingungen
+Portage kann gefragt werden, möglicherweise gefährlichen Bedingungen streng
 zu begegnen (so wie fehlende oder inkorrekte Manifest - Dateien). Um diese
 strenge Überprüfung zu aktivieren, fügen Sie das <c>strict</c> - Schlüsselwort
 zu der <c>FEATURES</c> - Variablen hinzu:
