@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Gentoo Linux (tm) deutsche Anpassungen</title>
+</head>
+<body bgcolor="#ffffff">
+<center>
+<table>
+  <tr>
+    <td align="center"><img src="images/gentoo-project.gif" alt="Gentoo Linux Logo" border="0" width="160" height="130" /><br /><small>deutsch</small><br/>
+      <br />
+      <sub>Da der Vorbesitzer von gentoo.de so nett war,<br />seine Domain abzugeben, ist diese Seite<br />
+      jetzt auch unter <a href="http://gentoo.de/">http://gentoo.de/</a> erreichbar.
+      </sub><br />
+    </td><td>
+      Das Projekt gentoo-deutsch soll als Sammelstelle f&uuml;r Anpassungen von Gentoo Linux an 
+      deutsche Gegebenheiten dienen.<br />
+      <br />
+      Es sollte in erster Linie dazu dienen da&szlig; nicht jede Dokumentation 4 mal &uuml;bersetzt wird, bevor 
+      sie auf <a href="http://www.gentoo.org/">Gentoo.org</a> ver&ouml;ffentlicht wird. Durch die langen 
+      Antwortzeiten auf Bugs und neue Ebuilds im bugzilla bei Gentoo.org, bietet es sich aber auch an,
+      neue Ebuilds hier zwischenzulagern. Per CVS sind diese leichter wartbar, und andere k&ouml;nnen 
+      besser von den neuen Ebuilds profitieren. Sind sie dann in den Portage-Tree aufgenommen, kann man die Ebuilds
+      nat&uuml;rlich wieder aus dem cvs hier entfernen, was aber wohl nur Sinn macht, wenn man Entwicklerstatus bei gentoo.org
+      erreicht hat, um seine Ebuilds sinnvoll per cvs zu warten.
+    </td>
+  </tr>
+</table>
+<br />
+<table border="0">
+<tr><td valign="top">
+Desweiteren ist hier nat&uuml;rlich Platz f&uuml;r andere Kleinigkeiten deren Urheber evtl. nicht der 
+Meinung sind, da&szlig; sie es wert sind auf gentoo.org ver&ouml;ffentlich zu werden 
+(oder einfach den Aufwand dazu scheuen).
+<br /><br />
+Und nicht zuletzt gibt der CVS-Service von berliOS uns die M&ouml;glichkeit gemeinsam Tippfehler und 
+sonstige Verbesserungen / Korrekturen an den deutschen Dokumentationen vorzunehmen, ohne da&szlig;
+alle Beteiligten Developer-Status bei gentoo.org haben m&uuml;&szlig;en. Hier gibt es diesen Status wesentlich 
+schneller ;)
+<br /><br />
+Wer mitarbeiten will, einfach bei berliOS registrieren (<a href="http://developer.berlios.de/account/register.php">hier</a>) 
+und auf der Projektübersicht (<a href="http://developer.berlios.de/projects/gentoo-deutsch/">hier</a>) einem der Admins 
+eine Nachricht mit dem Benutzernamen bei berliOS schicken. Der Developer-Status den man daraufhin erh&auml;lt
+bringt Schreibzugriff auf das CVS-Repository mit sich, d.h. man kann Neues einchecken und Altes verbessern.
+Wer mit <a href="http://cvsbook.red-bean.com/translations/german/">CVS</a> nichts am Hut hat, findet sicher jemanden der einem das eincheckt. ;)
+<br /><br />
+<a href="http://developer.berlios.de/projects/gentoo-deutsch/">Zur Projekt&uuml;bersicht von BerliOS</a>
+<br /><br />
+Da die Seite hier noch im Aufbau ist, und sich bisher niemand erbarmt hat ein richtiges Design zu erstellen,
+folgt eine (evtl. unvollst&auml;ndige) Kurz&uuml;bersicht &uuml;ber die Dinge die im cvs zu finden sind:<br />
+<table>
+  <tr>
+    <td valign="top">
+      <table bgcolor="#eeeeee" border="1">
+        <tr><th>Kommunikationsmittel</th></tr>
+        <tr><td><a href="http://developer.berlios.de/mail/?group_id=433">2 Maillinglisten.</a>
+	  Die -dev ist f&uuml;r alle Belange um dieses Projekt, in der -cvs werden &Auml;nderungen
+	  im CVS-Repository announced. Wegen einer deutschen -user sollte evtl. einmal jemand bei gentoo.org anfragen. ;)
+	</td></tr>
+        <tr><td><a href="http://forums.gentoo.org/viewforum.php?f=28">Web-Forum</a></td></tr>
+        <tr><td>IRC-Channel #gentoo.de im OPN-Netz</td></tr>
+      </table> 
+    </td><td valign="top">
+      <table bgcolor="#eeeeee" border="1">
+        <tr><th>Dokumentationen</th></tr>
+        <tr><td><a href="htmlfromxsl/guide-localization-de.html">Anleitung zur Lokalisierung (Umlaute usw.)</a></td></tr>
+        <tr><td><a href="htmlfromxsl/guide-localization-en.html">Das gleiche in Englisch f&uuml;r andere Europ&auml;er</a></td></tr>
+        <tr><td><a href="htmlfromxsl/portage-user.html">Der Portage User Guide</a></td></tr>
+        <tr><td><a href="htmlfromxsl/use-howto.html">Gentoo Anleitung zu den USE Flags</a></td></tr>
+        <tr><td><a href="htmlfromxsl/nano-basics-guide.html">Nano Grundlagen</a></td></tr>
+        <tr><td><a href="htmlfromxsl/mirroring.html">Gentoo Linux Mirroring Anleitung</a></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table bgcolor="#eeeeee" border="1">
+  <tr><th colspan=2>Ebuilds</th></tr>
+  <tr>
+    <td><a href="http://cvs.berlios.de/cgi-bin/cvsweb.cgi/ebuilds/net-mail/cyrus-imapd/?cvsroot=gentoo-deutsch">cyrus-imapd</a></td>
+    <td><a href="http://cvs.berlios.de/cgi-bin/cvsweb.cgi/ebuilds/net-mail/cyrus-imap-admin/?cvsroot=gentoo-deutsch">cyrus-imap-admin</a></td>
+  </tr><tr>
+    <td><a href="http://cvs.berlios.de/cgi-bin/cvsweb.cgi/ebuilds/dev-libs/cyrus-imap-dev/?cvsroot=gentoo-deutsch">cyrus-imap-dev</a></td>
+    <td><a href="http://cvs.berlios.de/cgi-bin/cvsweb.cgi/ebuilds/dev-libs/cyrus-sasl/?cvsroot=gentoo-deutsch">cyrus-sasl</a></td>
+  </tr><tr>
+    <td><a href="http://cvs.berlios.de/cgi-bin/cvsweb.cgi/ebuilds/net-mail/postfix/?cvsroot=gentoo-deutsch">postfix 1.11, angepasst an saslv2</a></td>
+    <td><a href="http://cvs.berlios.de/cgi-bin/cvsweb.cgi/ebuilds/net-misc/freeswan/?cvsroot=gentoo-deutsch">FreeS/WAN inkl. X.509 Patches</a></td>
+  </tr><tr>    
+    <td><a href="http://cvs.berlios.de/cgi-bin/cvsweb.cgi/ebuilds/sys-apps/checkinstall/?cvsroot=gentoo-deutsch">CheckInstall</a></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<br />
+<a href="ftp://ftp.berlios.de/pub/gentoo-deutsch/gentoo-pppoe-dsl.tar.bz2">Kurzanleitung inkl. Dateien f&uuml;r DSL</a>
+</td><td valign="top">
+<!--#include virtual="newebuilds.html" -->
+</td></tr>
+</table>
+</center>
+<p />
+<a href="http://validator.w3.org/check/referer"><img border="0"
+  src="images/valid-html401.png"
+  alt="Valid HTML 4.01!" height="31" width="88"></a>
+</body>
+</html>
