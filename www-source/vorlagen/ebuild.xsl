@@ -30,6 +30,7 @@
           <td>Version</td>
           <td>Revision</td>
           <td>Kategorie</td>
+          <td>Download</td>           
           <td>Datum</td>
         </tr>
 
@@ -57,6 +58,9 @@
                 <xsl:value-of select="category"/>
               </a>
             </td>
+            <td>
+              <a href="{$baselink}/{category}/{name}/{name}.tar.gz?tarball=1">Download</a>
+            </td>  
             <td>
               <xsl:value-of select="date/@day"/>
               <xsl:text>.</xsl:text>
