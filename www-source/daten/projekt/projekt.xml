@@ -4,17 +4,17 @@
 
 <title>Willkommen</title>
 <author title="Author"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
-<date>20. November 2003</date>
+<date>3. Dezember 2003</date>
 
 <box>
   <block>
 	<title>Projekt:</title>
     <p>
 		<ul>
-			<li><uri link="http://www.gentoo.org/main/de/about.xml">Über Gentoo-Linux</uri></li>
-			<li><uri link="/inhalte/projekt/site/">Das Guide XML Projekt von Gentoo</uri></li>
 			<li><uri link="/inhalte/projekt/translation/">Information für Übersetzer</uri></li>
+			<li><uri link="/inhalte/projekt/site/">Das Guide XML Projekt von Gentoo</uri></li>
 			<li><uri link="/inhalte/doku">Übersetzte Dokumentationen</uri></li>
+			<li><uri link="/inhalte/projekt/hb-status/">Projektstatus Handbuch</uri></li>
 	   		<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/">
         		Projektübersicht bei BerliOS </uri></li>
 			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das 
