@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <info>
 <title>Willkommen</title>
@@ -6,7 +6,7 @@
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 <author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
 
-<date>20. Mai 2003</date>
+<date>26. Mai 2003</date>
 
 <box>
   <block>
@@ -21,6 +21,21 @@
 <chapter>
 
 <title>Aktuelles</title>
+
+<section>
+<title>[26. Mai 2003] Gentoo-Newsletter</title>
+<body>
+<p>
+Im heutigen GWN gibt es wichtige Nachrichten über Probleme des
+Oregon State Gentoo-Linux Mirror und eine Rekrutierungskampagne für
+GNOME-Entwickler. Desweiteren werden wir einige kürzlich in den Medien
+erschienene Meldungen über Gentoo-Linux Revue passieren lassen.
+<uri link="http://www.gentoo.org/news/de/gwn/20030526-newsletter.xml">Viel Spass beim Lesen</uri>
+</p>
+</body>
+</section>
+
+
 
 <section>
 <title>[24. Mai 2003] Kernel Leitfaden</title>
