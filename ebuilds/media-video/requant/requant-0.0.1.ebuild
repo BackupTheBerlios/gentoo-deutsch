@@ -19,8 +19,8 @@ LICENSE="GPL-2"
 
 DEPEND=""
 	
-
-VDRVERSION=$(awk -F'"' '/VDRVERSION/ {print $2}' /usr/include/vdr/config.h )
+# not needed - or?
+#VDRVERSION=$(awk -F'"' '/VDRVERSION/ {print $2}' /usr/include/vdr/config.h )
 
 src_unpack() {
 	unpack ${A}
