@@ -35,6 +35,7 @@
         <item href="desktop" title="Desktop-Konfiguration"/>
         <item href="alternativ" title="Alternativ Installation"/>
         <item href="dsleinrichtung" title="DSL-Einrichtung"/>
+	<item href="gentoo-kernel" title="Kernel Leitfaden"/>
       </item>
       <item href="antworten" title="Antworten">
         <item href="faq" title="FAQ"/>

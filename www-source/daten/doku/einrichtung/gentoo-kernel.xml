@@ -325,7 +325,7 @@ O(1)-Scheduler von Ingo Molar (welcher der Default-Scheduler in Linux 2.6 werden
 
 <p>
 Sie bieten ausserdem Unterstützung für User-Mode-Linux (siehe auch unseren
-<uri link="/doc/en/uml.xml">UML Guide (englisch)</uri> für weitere Informationen) und
+<uri link="http://www.gentoo.org/doc/en/uml.xml">UML Guide (englisch)</uri> für weitere Informationen) und
 den neuesten TUX-Webserver (ein im Kernel befindlicher Webserver).
 
 </p>
@@ -483,7 +483,7 @@ Die <c>openmosix-sources</c> sind für die Unterstützung von openMosix Systemen
 <p>
 Die <c>redhat-sources</c> sind - wie der Name schon vermuten lässt -
 die Quellen des RedHat Kernels. Dank der Vorteile von Open Source
-kann jeder an den Früchte der Arbeit, die die RedHat-Ingenieure in
+kann jeder an den Früchten der Arbeit, die die RedHat-Ingenieure in
 ihren Kernel investieren teilhaben. Wir von Gentoo bieten ein entsprechendes
 Ebuild an, damit Sie auf möglichst einfachem Wege in den Genuß kommen.
 </p>
