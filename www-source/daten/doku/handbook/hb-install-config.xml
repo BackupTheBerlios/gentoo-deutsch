@@ -9,7 +9,7 @@
 <body>
 
 <p>
-Zuerst müssen Sie dem System sagen in welcher Zeitzone es sich befindet. Dazu
+Zuerst müssen Sie dem System sagen, in welcher Zeitzone es sich befindet. Dazu
 suchen Sie sich unter <path>/usr/share/zoneinfo</path> die entsprechende
 Zeitzone aus und verlinken sie mit <c>ln</c> nach <path>/etc/localtime</path>:
 </p>
@@ -74,10 +74,11 @@ eine bestimmte Bedeutung:
   Wert auf <c>0</c> (Null).
 </li>
 <li>
-  Das sechste Feld wird von <c>fsck</c> ausgelesen um festzustellen, ob es nach unsauberem
-  Herunterfahren des System nötig ist das Dateisystem auf Inkonsistenz zu <b>prüfen</b>.
-  Das Root-Dateisystem sollte in diesem Feld eine <c>2</c> eingetragen haben, Dateisysteme,
-  bei denen keine Prüfung notwendig ist eine <c>0</c>.
+  Das sechste Feld wird von <c>fsck</c> ausgelesen um festzustellen, ob es nach
+  unsauberem Herunterfahren des System nötig ist das Dateisystem auf
+  Inkonsistenz zu <b>prüfen</b>. Das Root-Dateisystem sollte in diesem Feld
+  eine <c>2</c> eingetragen haben, Dateisysteme, bei denen keine Prüfung
+  notwendig ist eine <c>0</c>.
 </li>
 </ul>
 
@@ -97,10 +98,10 @@ benötigt, übernehmen Sie den Eintrag einfach nicht.
 </p>
 
 <p>
-In diesem Beispiel ist die <path>/boot</path> Partion auf <path>/dev/hda1</path> und mit dem
-<c>ext2</c> Dateisystem formatiert. Die Partition sollte nicht automatisch gemountet werden
-(<c>noauto</c>) aber ggf. beim Systemstart geprüft werden. Also muß der Eintrag folgendermaßen
- aussehen:
+In diesem Beispiel ist die <path>/boot</path> Partion auf
+<path>/dev/hda1</path> und mit dem <c>ext2</c> Dateisystem formatiert. Die
+Partition soll nicht automatisch gemountet werden (<c>noauto</c>) aber ggf.
+beim Systemstart geprüft werden. Also muß der Eintrag folgendermaßen aussehen:
 </p>
 
 <pre caption="Beispiel: /boot Partition in /etc/fstab">
@@ -108,10 +109,11 @@ In diesem Beispiel ist die <path>/boot</path> Partion auf <path>/dev/hda1</path>
 </pre>
 
 <p>
-Um die Zugriffsgeschwindigkeit zu erhöhen, werden manche Administratoren <c>noatime</c>
-als Mountoption hinzufügen. Dadurch wird beim Lesen die Inode-Accesstime nicht
-auf das Dateisystem geschrieben und das System kann eventuell schneller laufen
-(In den meisten Fällen brauchen Sie diese Option nicht).
+Um die Zugriffsgeschwindigkeit zu erhöhen, werden manche Administratoren
+<c>noatime</c> als Mountoption hinzufügen. Dadurch wird beim Lesen die
+Inode-Accesstime nicht auf das Dateisystem geschrieben und das System kann
+eventuell schneller laufen. (In den meisten Fällen brauchen Sie diese Option
+nicht).
 </p>
 
 <pre caption="/boot Partiton mit noatime in /etc/fstab">
@@ -130,7 +132,7 @@ die Swap-Partiton übertragen, erhalten wir folgende 3 Zeilen in der fstab:
 </pre>
 
 <p>
-Um die <path>/etc/fstab</path> zu vervollständigen fehlen noch Einträge für
+Um die <path>/etc/fstab</path> zu vervollständigen, fehlen noch Einträge für
 <path>/proc</path>,<c>tmpfs</c> (notwendig) und  für das CD-ROM. Falls Sie
 weitere Partitionen oder ein Diskettenlaufwerk haben, sollten Sie diese
 natürlich auch eintragen:
@@ -155,9 +157,9 @@ Usern das CD-ROM zu mounten.
 </p>
 
 <p>
-Erstellen Sie nun anhand des Beispiel Ihre <path>/etc/fstab</path>. Falls Sie 
-Gentoo auf einer Sparc-Architektur installieren, sollten Sie noch folgende Zeile 
-hinzufügen:
+Erstellen Sie nun anhand des Beispiel Ihre <path>/etc/fstab</path>. Falls Sie
+Gentoo auf einer Sparc-Architektur installieren, sollten Sie noch folgende
+Zeile hinzufügen:
 </p>
 
 <pre caption="openprom Dateisystem in /etc/fstab">
@@ -173,25 +175,27 @@ none        /proc/bus/usb   usbfs         defaults      0 0
 </pre>
 
 <p>
-Überprüfen Sie nochmal jeden Eintrag, da bei Tippfehlern Ihr System möglicherweise
-nicht bootet. Speichern Sie die Datei ab und beenden Sie den Editor.
+Überprüfen Sie nochmal jeden Eintrag, da bei Tippfehlern Ihr System
+möglicherweise nicht bootet. Speichern Sie die Datei ab und beenden Sie den
+Editor.
 </p>
 
 </body>
 </subsection>
 </section>
 <section>
-<title>Netzwerk Konfiguration</title>
+<title>Netzwerk-Konfiguration</title>
 <subsection>
 <title>Hostname, Domainname usw.</title>
 <body>
 
 <p>
-Jetzt müssen Sie Ihrem Computer einen Namen geben, den sogenannten Hostnamen. Das ist
-eigentlich keine Kunst, aber <e>einige</e> Administratoren haben Schwierigkeiten einen
-angemessenen Namen für Ihr System zu finden. Sie sollten jetzt keine großen Gedanken
-damit verschwenden, da Sie den Namen später noch ändern können. Im folgendem Beispiel
-nennen wir unser System <c>tux</c> und die Domain <c>homenetwork</c>.
+Jetzt müssen Sie Ihrem Computer einen Namen geben, den sogenannten Hostnamen.
+Das ist eigentlich keine Kunst, aber <e>einige</e> Administratoren haben
+Schwierigkeiten einen angemessenen Namen für Ihr System zu finden. Sie sollten
+jetzt keine großen Gedanken damit verschwenden, da Sie den Namen später noch
+ändern können. Im folgendem Beispiel nennen wir unser System <c>tux</c> und die
+Domain <c>homenetwork</c>.
 </p>
 
 <p>
@@ -235,22 +239,22 @@ Fügen Sie das <c>domainname</c> Script nun in den default Runlevel ein:
 <body>
 
 <p>
-Bevor Sie jetzt denken: "Hey, das habe ich doch schon gemacht!", sollten Sie sich
-daran erinnern, daß wir am Anfang der Gentoo-Installation das Netzwerk nur manuell
-konfiguriert haben und diese Einstellungen beim nächsten Reboot nicht mehr gültig sind.
-Deswegen konfigurieren wir jetzt das Netzwerk, so daß es beim Systemstart automatisch
-konfiguriert wird.
+Bevor Sie jetzt denken: "Hey, das habe ich doch schon gemacht!", sollten Sie
+sich daran erinnern, daß wir am Anfang der Gentoo-Installation das Netzwerk nur
+manuell konfiguriert haben und diese Einstellungen beim nächsten Reboot nicht
+mehr gültig sind. Deswegen konfigurieren wir jetzt das Netzwerk, so daß es beim
+Systemstart automatisch konfiguriert wird.
 </p>
 
 <p>
-Die Netzwerkkonfiguration wird bei einem Gentoo-System unter <path>/etc/conf.d/net</path>
-abgespeichert. Die Syntax der Datei ist nicht unbedingt intuitiv, wenn Sie so
-etwas noch nie manuell konfiguriert haben, aber keine Panik, es wird in folgendem
-Abschnitt genau erklärt :)
+Die Netzwerk-Konfiguration wird bei einem Gentoo-System unter
+<path>/etc/conf.d/net</path> abgespeichert. Die Syntax der Datei ist nicht
+unbedingt intuitiv, wenn Sie so etwas noch nie manuell konfiguriert haben, aber
+keine Panik, es wird in folgendem Abschnitt genau erklärt :)
 </p>
 
 <p>
-Öffnen Sie die Datei  <path>/etc/conf.d/net</path> mit dem Editor Ihrer Wahl
+Öffnen Sie die Datei <path>/etc/conf.d/net</path> mit dem Editor Ihrer Wahl
 (in diesem Beispiel benutzen wir <c>nano</c>):
 </p>
 
@@ -259,27 +263,27 @@ Abschnitt genau erklärt :)
 </pre>
 
 <p>
-Die erste Variable ist  <c>iface_eth0</c> und beschreibt die Einstellungen des
+Die erste Variable ist <c>iface_eth0</c> und beschreibt die Einstellungen des
 Netzwerkinterfaces eth0. Folgende Syntax wird benutzt:
 </p>
 
 <pre caption="iface_eth0 Syntax">
-iface_eth0="<i>&lt;ihre IP-Adresse&gt;</i> broadcast <i>&lt;Ihre Broadcast-Address&gt;</i> netmask <i>&lt;Ihre Netzmaske&gt;</i>"
+iface_eth0="<i>&lt;Ihre IP-Adresse&gt;</i> broadcast <i>&lt;Ihre Broadcast-Address&gt;</i> netmask <i>&lt;Ihre Netzmaske&gt;</i>"
 </pre>
 
 <p>
 Falls Ihr System die IP-Adresse von einem DHCP-Server beziehen soll, müssen
 Sie <c>iface_eth0</c> auf <c>dhcp</c> setzen. Falls Sie mit den Begriffen,
 die hier erwähnt werden, noch nicht vertraut sind, sollten Sie sich den
-Abschnitt <uri link="?part=1&amp;chap=3#doc_chap5_sect3">Die Netzwerk Terminologie
-verstehen</uri> noch einmal genau durchlesen.
+Abschnitt <uri link="?part=1&amp;chap=3#doc_chap5_sect3">Die Netzwerk
+Terminologie verstehen</uri> noch einmal genau durchlesen.
 </p>
 
 <p>
-Hier 2 Beispiele; das Erste benutzt DHCP, im Zweiten weisen wir unserem System
+Hier 2 Beispiele; das erste benutzt DHCP, im zweiten weisen wir unserem System
 eine statische IP (192.168.0.2) mit der Netzmaske 255.255.255.0 und der
-Broadcast-Adresse 192.168.0.255 zu. Der Gateway soll im letzten Fall 192.168.0.1
-sein:
+Broadcast-Adresse 192.168.0.255 zu. Der Gateway soll im letzten Fall
+192.168.0.1 sein:
 </p>
 
 <pre caption="Beispiele für  /etc/conf.d/net">
@@ -310,9 +314,9 @@ Speichern Sie nun die Konfiguration um fortzufahren.
 
 <p>
 Wenn Sie Ihre Netzwerkinterfaces beim Systemstart aktivieren wollen, müssen Sie
-diese zum default-Runlevel hinzufügen. Falls Sie eine PCMCIA-Netzwerkkarte haben,
-können Sie diese Sektion überspringen, weil diese durch das PCMCIA-Initscript
-gestartet werden.
+diese zum default-Runlevel hinzufügen. Falls Sie eine PCMCIA-Netzwerkkarte
+haben, können Sie diese Sektion überspringen, weil diese durch das
+PCMCIA-Initscript gestartet werden.
 </p>
 
 <pre caption="net.eth0 dem default Runlevel hinzufügen">
@@ -320,8 +324,9 @@ gestartet werden.
 </pre>
 
 <p>
-Wenn Sie mehrere Netzwerk-Interfaces haben, müssen Sie für jedes ein entsprechendes 
-Initscript anlegen. Sie können einen Link mit <c>ln</c> auf das Script für eth0 setzen:
+Wenn Sie mehrere Netzwerk-Interfaces haben, müssen Sie für jedes ein
+entsprechendes Initscript anlegen. Sie können einen Link mit <c>ln</c> auf das
+Script für eth0 setzen:
 </p>
 
 <pre caption="Anlegen von weiteren Initscripts">
@@ -338,11 +343,11 @@ Initscript anlegen. Sie können einen Link mit <c>ln</c> auf das Script für eth
 
 <p>
 Sie müssen jetzt noch Ihrem System Informationen über Ihr Netzwerk geben. Dazu
-müssen Sie die Datei <path>/etc/hosts</path> anpassen, damit Hostnamen zu IP-Adressen
-aufgelöst werden, wenn Sie keinen Nameserver haben. Wenn Ihr lokales Netzwerk
-aus 3 Rechnern <c>jenny</c> (192.168.0.5), <c>benny</c> (192.168.0.6) und
-<c>tux</c> (dieses System) besteht, müssen Sie in <path>/etc/hosts</path>
-folgendes eintragen:
+müssen Sie die Datei <path>/etc/hosts</path> anpassen, damit Hostnamen zu
+IP-Adressen aufgelöst werden, wenn Sie keinen Nameserver haben. Wenn Ihr
+lokales Netzwerk aus 3 Rechnern <c>jenny</c> (192.168.0.5), <c>benny</c>
+(192.168.0.6) und <c>tux</c> (dieses System) besteht, müssen Sie in
+<path>/etc/hosts</path> folgendes eintragen:
 </p>
 
 <pre caption="Öffnen von /etc/hosts">
@@ -356,8 +361,8 @@ folgendes eintragen:
 </pre>
 
 <p>
-Wenn Sie nur einen Rechner haben, oder alle anderen Rechner von einem Nameserver
-aufgelöst werden können, genügt der folgende Eintrag:
+Wenn Sie nur einen Rechner haben, oder alle anderen Rechner von einem
+Nameserver aufgelöst werden können, genügt der folgende Eintrag:
 </p>
 
 <pre caption="Minimale /etc/hosts Konfiguration">
@@ -381,7 +386,7 @@ fortfahren. PCMCIA-Benutzer sollten sich folgenden Abschnitt durchlesen.
 <body>
 
 <p>
-Zuerst muß das <c>pcmcia-cs</c> Paket installiert werden:
+Zuerst muss das <c>pcmcia-cs</c> Paket installiert werden:
 </p>
 
 <pre caption="Installation von pcmcia-cs">
