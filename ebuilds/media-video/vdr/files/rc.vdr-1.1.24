@@ -1,0 +1,40 @@
+#!/sbin/runscript
+# Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.24,v 1.1 2003/02/17 20:51:26 mad Exp $
+
+
+depend() {
+	after *
+}
+
+start() {
+	ebegin "Starting vdr"
+
+	if [ -e /etc/conf.d/vdr ]
+		then
+		source /etc/conf.d/vdr
+	[ -n "$AUDIO" ] && vdropts="${vdropts} --audio=${AUDIO} "
+	[ -n "$CONFIG" ] && vdropts="${vdropts} --config=${CONFIG} "
+	[ -n "$DEVICE" ] && for i in ${DEVICE}; do vdropts="${vdropts} --device=${i} "; done
+	[ -n "$SHUTDOWN" ] && vdropts="${vdropts} --shutdown=${SHUTDOWN} "
+	[ -n "$EPGFILE" ] && vdropts="${vdropts} --epgfile=${EPGFILE} "
+	[ -n "$LOG" ] && vdropts="${vdropts} --log=${LOG} "
+	[ -n "$VIDEO" ] && vdropts="${vdropts} --video=${VIDEO} "
+	[ -n "$RECORD" ] && vdropts="${vdropts} --record=${RECORD} "
+	[ -n "$PORT" ] && vdropts="${vdropts} --port=${PORT} "
+	[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIBS} "
+	[ -n "$LIB" -a -n "$PLUGINS" ] && for i in ${PLUGINS}; do vdropts="${vdropts} --plugin=${i} "; done
+	fi
+
+	/usr/bin/vdr --daemon ${vdropts}
+	eend $? "Failed to start vdr."
+}
+
+stop() {
+	ebegin "Stopping vdr"
+
+	killall vdr
+	eend $? "Failed to stop vdr."
+}
+
