@@ -442,7 +442,7 @@ verteilten, netzwerkbasierten Datenaustausch-Technologie.
 </p>
 
 <p>
-Das <b><uri link="virt-mail-howto">Virtual/Mailhost
+Das <b><uri link="virtual-mailhost-guide">Virtual/Mailhost
 Handbuch</uri></b> ist das unverzichtbare Handbuch für einen Mail
 Administrator.  Es beschreibt die Verwendung von MySQL für virtuelle
 Benutzer, webbasierter E-Mail-Software, Mailinglisten Software usw.
@@ -710,7 +710,7 @@ Upgrade Anleitung</uri></ti></tr>-->
 <tr><ti><uri link="devfs-guide">DevFS Anleitung</uri></ti></tr>
 <tr><ti><uri link="printing-howto">Drucken Anleitung</uri></ti></tr>
 <!--<tr><ti><uri link="openafs.xml">OpenAFS Handbuch</uri></ti></tr>-->
-<tr><ti><uri link="virt-mail-howto">Virtual/Mailhost Howto</uri></ti></tr>
+<tr><ti><uri link="virtual-mailhost-guide">Virtual/Mailhost Howto</uri></ti></tr>
 <tr><th>Dokumentation für einen Arbeitsplatzrechner</th></tr>
 <tr><ti><uri link="desktop">Desktop Konfigurations-Leitfaden</uri></ti></tr>
 <tr><ti><uri link="alsa-guide">ALSA Konfigurations Leitfaden</uri></ti></tr>
