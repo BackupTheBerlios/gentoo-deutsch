@@ -1214,7 +1214,7 @@ session  required pam_warn.so
 Ist ein Weg um Zugang zu kontrollieren für Dienste die normalerweise von inetd ausgeführt werden (welches Gentoo nicht hat) aber es kann auch von xinetd und anderen Diensten benutzt werden.
 </p>
 <note>
-Use in make.conf sollte tcpd beinhalten und der Dienst sollte tcpd in seinem Serverargument (in xinetd) asugeführt werden. The use in make.conf should contain tcpd and the service should be executing tcpd in its server argument (in xinetd). Siehe das Kapitel über xinted für weitere Informationen.</note>
+Use in make.conf sollte tcpd beinhalten und der Dienst sollte tcpd in seinem Serverargument (in xinetd) asugeführt werden. </note>
 
 <pre caption="/etc/hosts.deny">
 ALL:PARANOID
