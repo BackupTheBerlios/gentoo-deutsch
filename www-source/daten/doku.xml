@@ -520,12 +520,10 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
           <li>Mehr über die <b><uri
           link="http://www.gentoo.org/proj/en/site.xml">XML Projekte</uri></b>,
           die Gentoo bestritten hat.</li>
-<!--
-          <li>Wie <b><uri link="rsync.xml">Gentoo : Rsync  gemirrort</uri></b>
-          wird.</li>
-          <li>Wie <b><uri link="source_mirrors.xml">Gentoo : Distfiles
-          gemirrort</uri></b> wird.</li>
--->
+          <li>Wie ein Gentoo <b><uri link="rsync">rsync Spiegel</uri></b>
+          aufgesetzt wird.</li>
+<!--      <li>Wie <b><uri link="source_mirrors.xml">Gentoo : Distfiles
+          gemirrort</uri></b> wird.</li>-->
           <li>Gentoo Linux News (<uri
           link="http://www.gentoo.org/rdf/en/gentoo-news.rdf">RDF</uri>, <uri
           link="http://purl.org/net/syndication/subscribe/?rss=http://www.gentoo.org/rdf/en/gentoo-news.rdf">Subscribe</uri>).</li>
@@ -603,8 +601,8 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <tr><ti><uri link="stage-building-guide">Stage Building Handbuch</uri></ti></tr>
         <tr><ti><uri link="ebuild-submit">Beisteuern von Ebuilds Handbuch</uri></ti></tr>
         <tr><ti><uri link="xml-guide">GuideXML Handbuch</uri></ti></tr>
-        <!--<tr><th>Andere Dokumentation</th></tr>-->
-        <!--<tr><ti><uri link="rsync">Gentoo RSync Mirror</uri></ti></tr>-->
+        <tr><th>Andere Dokumentation</th></tr>
+        <tr><ti><uri link="rsync">Gentoo rsync Mirror</uri></ti></tr>
         <!--<tr><ti><uri link="source_mirrors">Gentoo Distfiles Mirror</uri></ti></tr>-->
       </table>
 
