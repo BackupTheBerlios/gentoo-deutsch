@@ -430,11 +430,8 @@
 
 <xsl:template match="pre">
   <xsl:variable name="prenum"><xsl:number level="any"/></xsl:variable>
-  <xsl:variable name="preid">doc_pre<xsl:number level="any"/></xsl:variable>
-  <!-- produziert merkwuerdige Fehler in Pfoenix 0.5...
-       wird zur Zeit auch nicht benoetigt denke ich... (SW, 23.12.2002)
-  <a id="{$preid}"/>
-  -->
+  <xsl:variable name="preid">doc_pre<xsl:value-of select="$prenum"/></xsl:variable>
+  <a name="{$preid}"/>
   
   <div class="codetitle">
     <xsl:text>Befehlsauflistung </xsl:text>
@@ -478,15 +475,13 @@
 
 <xsl:template match="figure">
   <xsl:param name="cid"/>
-  <xsl:variable name="fignum">
-    <xsl:number level="any" from="chapter" count="figure"/>
-  </xsl:variable>
-  <xsl:variable name="figid">doc_chap<xsl:value-of select="$cid"/>_fig<xsl:value-of select="$fignum"/></xsl:variable>
+  <xsl:variable name="fignum"><xsl:number level="any"/></xsl:variable>
+  <xsl:variable name="figid">doc_fig<xsl:value-of select="$fignum"/></xsl:variable>
   <br/>
   <a name="{$figid}"/>
   <table cellspacing="0" cellpadding="0" border="0">
     <tr>
-      <td class="head" nowrap="nowrap">
+      <td class="head">
         <xsl:choose>
           <xsl:when test="@caption">
             Grafik <xsl:value-of select="$cid"/>.<xsl:value-of select="$fignum"/>: <xsl:value-of select="@caption"/>
