@@ -1,7 +1,17 @@
 # ChangeLog for app-office/openoffice-bin
 # Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/ChangeLog,v 1.5 2003/10/17 12:29:08 elefantenfloh Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/ChangeLog,v 1.6 2003/10/19 15:09:14 dertobi123 Exp $
 
+*openoffice-bin-de-1.1.0 (19 Oct 2003)
+    
+    19 Oct 2003, T.Scherbaum <tobias.alexander@scherbaum.info> openoffice-1.1.0
+    change version to 1.1.0
+    change installation directory to /opt/OpenOffice.org${PV}
+    add blocking dependencies
+    change wrapper-script location
+    wrapper-script is working
+    clean up ebuild, fixed some typos, changed some einfo's
+    
 *openoffice-bin-de-1.1 (17 Oct 2003)
 
     17 Oct 2003; H.Brandt <kontakt@hendrik-brandt.de> openoffice-bin-de-1.1
