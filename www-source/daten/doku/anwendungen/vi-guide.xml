@@ -89,8 +89,10 @@ richtet catering to beginners.</abstract>
 	meinem System:
 	</p>
 
+	<p>
 	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vishot.png" short="Screenshot" caption="VIM Screenshot"/>
-
+	</p>
+	
 	<p>
 	Wenn Sie ein vi-Neuling sind, dann versuchen Sie, gvim auf Ihrem System zu Laufen
 	zu bekommen. Von einer GUI aus sind die Dinge etwas einfacher für Anfänger.
