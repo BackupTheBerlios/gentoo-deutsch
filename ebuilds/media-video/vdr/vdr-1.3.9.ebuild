@@ -1,9 +1,9 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.9.ebuild,v 1.2 2004/06/01 17:03:16 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.9.ebuild,v 1.3 2004/06/03 19:26:11 fow0ryl Exp $
 
 IUSE="lirc"
-#AC3_OVER_DVB="vdr-1.3.6-AC3overDVB-0.2.4"
+AC3_OVER_DVB="vdr-1.3.7-AC3overDVB-0.2.5"
 #AKOOL="vdr-1.3.6.patch"
 #ELCHI="vdr-1.3.6-ElchiAIO4d"
 
@@ -11,7 +11,10 @@ S=${WORKDIR}/vdr-${PV}
 DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://www.cadsoft.de/vdr/"
 SRC_URI="
-		ftp://ftp.cadsoft.de/vdr/Developer/vdr-${PV}.tar.bz2"
+	ftp://ftp.cadsoft.de/vdr/Developer/vdr-${PV}.tar.bz2
+	http://www.die-rylls.de/downloads/vdr/${AC3_OVER_DVB}.diff.gz
+	"
+
 
 KEYWORDS="~x86 ~ppc"
 SLOT="0"
@@ -78,29 +81,16 @@ src_unpack() {
 	
 	# AC3 over DVB Patch
 	# needs app-admin/fam-oss
-	#if vdr_opts ac3
-	#then
+	if vdr_opts ac3
+	then
 	#	if vdr_opts akool
 	#	then
 	#		ewarn "AC3 patch is already part of akool/complete patch ... skipping"
 	#	else
-	#		ewarn "Applying native AC3_OVER_DVB patch now"
-	#		epatch ../${AC3_OVER_DVB}.diff
+			ewarn "Applying native AC3_OVER_DVB patch now"
+			epatch ../${AC3_OVER_DVB}.diff
 	#	fi
-	#fi
-
-	# Elchi Patch
-	#if vdr_opts elchi
-	#then
-	#	if vdr_opts akool
-	#	then
-	#		ewarn "Elchi patch is already part of akool/complete patch ... skipping"
-	#	else
-	#		ewarn "Applying native Elchi patch now"
-	#		cd ${S}
-	#		epatch ../${ELCHI}.diff
-	#	fi
-	#fi
+	fi
 
 	# Andreas Akools Komplett Patch
 	#if vdr_opts akool
@@ -217,15 +207,15 @@ src_install() {
 	fowners vdr:video /etc/vdr/plugins
 
 	# changed to /usr/share/vdr -> see above... fs(12/23/2003)
-	if vdr_opts elchi || vdr_opts akool
-	then
-		insinto /etc/vdr/logos
-		doins ../logos/*.xpm
-		fowners vdr:video /etc/vdr/logos
-		insinto /etc/vdr/schemes
-		doins ../schemes/*
-		fowners vdr:video /etc/vdr/schemes
-	fi
+#	if vdr_opts elchi || vdr_opts akool
+#	then
+#		insinto /etc/vdr/logos
+#		doins ../logos/*.xpm
+#		fowners vdr:video /etc/vdr/logos
+#		insinto /etc/vdr/schemes
+#		doins ../schemes/*
+#		fowners vdr:video /etc/vdr/schemes
+#	fi
 }
 
 pkg_setup(){
