@@ -45,19 +45,9 @@
           
             <xsl:variable name="pname" select="name"/>
             
-            <!--
             <xsl:if test="preceding-sibling::pkg/child::name != $pname">
-            -->
-            
-            <xsl:for-each select="../pkg[name = $pname][position() = 1]">
-              <tr>
-                <xsl:attribute name="class">
-                  <xsl:choose>
-                    <xsl:when test="position() mod 2 = 0">low</xsl:when>
-                    <xsl:otherwise>high</xsl:otherwise>
-                  </xsl:choose>
-                </xsl:attribute>              
-              
+
+              <tr class="low">
                 <td style="vertical-align:top; border-bottom: 1px dotted #45347B">
                   <b>
                     <a class="uri" href="{$baselink}/{category}/{name}">
@@ -94,12 +84,7 @@
                 </td>
               </tr>
             
-            </xsl:for-each>  
-                            
-            <!--
             </xsl:if>
-            -->
-            
           </xsl:for-each>
         </xsl:if>  
       </xsl:for-each>
