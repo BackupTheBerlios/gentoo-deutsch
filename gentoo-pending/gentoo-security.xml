@@ -1190,17 +1190,17 @@ session	 required pam_limits.so
 </pre>
 
 <p>
-Jeder andere Dienst der nicht mit einer PAM Datei in <path>/etc/pam.d</path> konfiguriert ist wird die "andere" Regel benutzen. Die Standardeinstellung sind auf Verweigern gesetzt, so wie es sein sollte. Jedoch habe ich gerne viele Protokolle und deswegen habe ich pam_warn.so hinzugefügt. Die letzte Konfiguration ist pam_limits welche von <path>/etc/security/limits.conf</path> kontrolliert wird. Siehe das passende Kapitel hierzu. 
+Jeder andere Dienst der nicht mit einer PAM Datei in <path>/etc/pam.d</path> konfiguriert ist wird die "andere" Regel benutzen. Die Standardeinstellung sind auf Verweigern gesetzt, so wie es sein sollte. Jedoch habe ich gerne viele Protokolle und deswegen habe ich pam_warn.so hinzugefügt. Die letzte Konfiguration ist pam_limits welche von <path>/etc/security/limits.conf</path> kontrolliert wird. Siehe das passende Kapitel hierzu.
 </p>
 
 <pre caption="/etc/pam.d/other">
-auth     required pam_deny.so 
-auth     required pam_warn.so 
-account  required pam_deny.so 
-account  required pam_warn.so 
-password required pam_deny.so 
-password required pam_warn.so 
-session  required pam_deny.so 
+auth     required pam_deny.so
+auth     required pam_warn.so
+account  required pam_deny.so
+account  required pam_warn.so
+password required pam_deny.so
+password required pam_warn.so
+session  required pam_deny.so
 session  required pam_warn.so
 </pre>
 
@@ -1281,7 +1281,7 @@ Um dynamisch Kernelparameter und -variablen sofort zu ändern benötigen Sie CON
 </pre>
 
 <p>
-Dies sperrt icmp Typ 0 (auch bekannt als Ping) Pakete. Der Grund hierfür ist, dass icmp Nutzlast mit anderen Informationen beinhalten kann als Sie denken. Administratoren benutzen Ping als Diagnoseprogramm und beschweren sich oft wenn sie Ping nicht benutzen können. Es gibt keinen Grund für einen Außenstehenden die Möglichkeit zu haben Ping zu benutzen, aber ab und zu kann es hilfreich für Eingeweihte sein diese Möglichkeit zu haben. Das Problem kann dadurch gelöst werden indem man icmp type 0 in der Firewall deaktiviert. 
+Dies sperrt icmp Typ 0 (auch bekannt als Ping) Pakete. Der Grund hierfür ist, dass icmp Nutzlast mit anderen Informationen beinhalten kann als Sie denken. Administratoren benutzen Ping als Diagnoseprogramm und beschweren sich oft wenn sie Ping nicht benutzen können. Es gibt keinen Grund für einen Außenstehenden die Möglichkeit zu haben Ping zu benutzen, aber ab und zu kann es hilfreich für Eingeweihte sein diese Möglichkeit zu haben. Das Problem kann dadurch gelöst werden indem man icmp type 0 in der Firewall deaktiviert.
 </p>
 
 <pre caption="Ignorieren von broadcast-Pings">
@@ -1397,7 +1397,8 @@ Der Patch von <uri link="http://grsecurity.net">Grsecurity</uri> ist Standard im
 </p>
 
 <p>
-Konfigurieren Sie Ihren Kernel wie Sie normalerweise würden und dann konfigurieren Sie die Grsecurity Option: (wählen sie customized) und stellen sie folgende Optionen ein:
+Konfigurieren Sie Ihren Kernel wie Sie normalerweise würden und dann konfigurieren Sie die Grsecurity Option:
+(wählen sie customized) und stellen sie folgende Optionen ein:
 </p>
 
 <ul>
@@ -1649,66 +1650,76 @@ Dies fügt zwei Dateien zu Ihrem <path>~/.ssh/</path> Verzeichnis mit den Namen 
 <body>
 
 <p>
-Per default XFree is configured to act as a Xserver. This can be dangerous since X uses unencrypted tcp connections and listens for xclients. If you do not need this service disable it! But if you depend on using your workstation as a Xserver use the <path>/usr/X11R6/bin/xhost</path> command with caution. This command allows clients from other hosts to connect and use your display. This can become handy if you need an X application from a different machine and the only way is through the network. The syntax is <path>/usr/X11R6/bin/xhost +hostname</path>
+XFree ist von Haus aus als Xserver konfiguriert. Dies kann gefährlich sein, denn X benutzt unverschlüsselte
+TCP-Verbindungen und wartet auf xclients. Wenn Sie diesen Dienst nicht brauchen, dann deaktivieren Sie ihn!.
+Aber wenn Sie Ihren Arbeitsplatz als Xserver betreiben, dann benutzen Sie das Kommando <path>/usr/X11R6/bin/xhost</path>
+nur mit äußerster Vorsicht. Dieses Kommando erlaubt Clients von anderen Rechnern sich mit Ihrer Anzeige zu verbinden
+und diese auch zu nutzen. Dies kann sinnvoll sein, wenn Sie eine X-Anwendung von einem anderen Rechner brauchen und die
+einzige Verbindung zwischen den Rechnern ein Netzwerk ist. Die Syntax lautet <path>/usr/X11R6/bin/xhost +hostname</path>.
 </p>
-<warn>Don't ever use the xhost + feature! This will allow any client to connect and take control of your X. If an attacker can get access to your X, he can log your keystrokes and control your desktop.</warn>
+<warn>
+Benutzen Sie nie das xhost + feature! Dies wird jedem Client erlauben sich mit Ihrem X zu Verbinden und dieses unter
+Kontrolle bringen. Wenn ein Angreifer Zugang zu Ihrem X erlangt, dann kann er Ihre Tastatureingaben überwachen und
+Kontrolle über Ihren Desktop erlangen.
+</warn>
 
 <p>
-A more secure solution is to disable this feature completely by starting you X with <c>startx -- -nolisten</c> tcp or disable it permanently in the configuration file by changing the line 
+Eine sichere Lösung ist dieses Feature vollständig zu deaktivieren indem Sie X mit <c>startx -- -nolisten</c> tcp
+oder es auf Dauer über eine entsprechende Einstellung in der Konfigurationsdatei; ändern Sie die Zeile:
 </p>
 <pre caption="/usr/X11R6/bin/startx">
 defaultserverargs=""
 </pre>
 
-<p> to </p>
+<p> zu </p>
 <pre caption="/usr/X11R6/bin/startx">
 defaultserverargs="-nolisten tcp"
 </pre>
 
 <p>
-If you use a graphical login manager you need a different approach.
+Wenn Sie einen grafischen Login-Manager benutzen, dann brauchen Sie einen anderen Ansatz.
 </p>
 
 <p>gdm (Gnome Display Manager)</p>
 
-<p>Change:</p>
+<p>Änderung:</p>
 <pre caption="/etc/X11/gdm/gdm.conf">
 [server-Standard]
 command=/usr/X11R6/bin/X
 </pre>
 <p>
-to
+zu
 </p>
 <pre caption="/etc/X11/gdm/gdm.conf">
 [server-Standard]
 command=/usr/X11R6/bin/X -nolisten tcp
 </pre>
 
-<p>xdm (X Display Manager) and kdm (Kde Display Manager)</p>
+<p>xdm (X Display Manager) und kdm (Kde Display Manager)</p>
 
-<p>Change</p>
+<p>Änderung</p>
 <pre caption="/etc/X11/xdm/Xservers">
-:0 local /usr/bin/X11/X 
+:0 local /usr/bin/X11/X
 </pre>
 
-<p>to</p>
+<p>zu</p>
 
 <pre caption="/etc/X11/xdm/Xservers">
-:0 local /usr/bin/X11/X -nolisten tcp 
+:0 local /usr/bin/X11/X -nolisten tcp
 </pre>
 
 </body>
 </section>
 
 <section>
-<title>Print services</title>
+<title>Druckdienste</title>
 <body>
 
 <section>
 <title>Lpd</title>
 <body>
 <p>
-TODO
+Muss noch geschrieben wernden
 </p>
 </body>
 </section>
@@ -1720,7 +1731,7 @@ TODO
 <p>http://pdq.sourceforge.net/</p>
 
 <p>
-TODO
+Muss noch geschrieben werden
 </p>
 
 </body>
@@ -1735,7 +1746,10 @@ TODO
 <title>FTP</title>
 <body>
 <p>
-FTP (File Transfer Protocol) is in general a bad idea. It uses unencrypted data, listens on 2 ports (normally port 20 and 21), support for anonymous users and is what some attackers are looking for (for trading warez). If you can avoid it use sftpd or http instead since the ftp protocol contains several security problems. If not, secure your services as good as you can and prepare yourself.
+FTP (File Transfer Protocol) ist im Allgemeinen eine schlechte Idee. Es benutzt unverschlüsselte Daten, lauscht auf zwei Ports
+(normalerweise 20 und 21), unterstützt anonyme Anwender und ist etwas, nachdem Angreifer gerne zuerst schauen (um warez zu verteilen).
+Wenn möglich benutzen Sie bitte sftpd oder http, denn das ftp-Protokoll enthält einige Sicherheitslücken. Wenn dies nicht möglich sein
+sollte, dann sichern Sie Ihre Dienste so gut wie nur möglich und bereiten Sie sich vor.
 </p>
 
 <section>
@@ -1743,33 +1757,37 @@ FTP (File Transfer Protocol) is in general a bad idea. It uses unencrypted data,
 <body>
 
 <p>
-Pure-ftpd is an branch of the original trollftpd. Modified for security reasons and functionality by Frank Dennis.
+Pure-ftpd ist ein Abkömmling des originalen trollftpd. Für mehr Sicherheit und Funktionalität wurde es von Frank Dennis modifiziert.
 </p>
 
 <p>
-Use virtual users (never system accounts) by enabling the AUTH option. Set it to -lpuredb:/etc/pureftpd.pdb and create your users by using <path>/usr/bin/pure-pw</path>. 
+Benutzen Sie virtuelle Benutzer (niemals Systemkonten) indem Sie die AUTH-Option aktivieren. Setzen Sie diese auf -lpuredb:/etc/pureftpd.pdb
+und erstellen Sie Ihre Benutzer mittels <path>/usr/bin/pure-pw</path>.
 </p>
 
 <pre caption="/etc/conf.d/pure-ftpd">
-## Number of simultaneous connections in total, and per ip ##
+## Anzahl der gleichzeitigen Verbindungen - insgesamt und je IP ##
 MAX_CONN="-c 30"
 MAX_CONN_IP="-C 10"
 
-## Don't allow uploads if the partition is more full then this var ##
+## Keine Uploads erlauben, wenn die Partition voller als dieser Wert hier ist##
 DISK_FULL="-k 90%"
 
 AUTH="-lpuredb:/etc/pureftpd.pdb"
 
-## Misc. Others ##
+## Diverse andere ##
 MISC_OTHER="-A -E -X -U 177:077 -d -4 -L100:5 -I 15"
 </pre>
 
 <p>
-And configure your MISC_OTHER setting for not allowing anonymous (-E), chroot everyone (-A), Users can not read or write to files beginning with a . (dot) (-X), max idle time (-I), limit recursion (-L) and a reasonable umask. And do __not__ use the option -w or -W! If you want to have a warez site, stop reading this doc!.
+Desweiteren konfigurieren Sie die MISC_OTHER-Einstellung so, dass Folgendes verboten ist: keine Anonyma (-E)
+und chroot auf jeden (-A). Benutzer können keine Dateien lesen oder schreiben, die mit einem . (Punkt) beginnen (-X),
+maximale Leerlaufzeit (-I), Rekursion begrenzen (-L) und einen sinnvollen umask. Und benutzen Sie __nicht__ die Option -w oder -W !
+Wenn Sie eine Warez Seite möchten, dann hören Sie nun bitte auf dieses Dokument zu lesen!
 </p>
 
 <p>
-More can be read at <uri>http://www.pureftpd.org</uri>
+Mehr dazu gibts auf <uri>http://www.pureftpd.org</uri>
 </p>
 
 </body>
