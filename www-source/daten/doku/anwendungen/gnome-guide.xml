@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
+
+	<!-- Letzte Änderung: 29.09.2003 -->
+
+<guide>
+
+	<title>Gentoo Linux Gnome Upgrade HowTo und FAQ</title>
+	<author title="Autor"><mail link="tobias@scherbaum.info">Tobias Scherbaum</mail></author>
+	
+	<abstract>Dieses HowTo erläutert dem Leser, was bei einem Upgrade von Gnome 2.2 auf
+	Gnome 2.4 zu beachten ist. Ausserdem werden bisher in den Gentoo Foren aufgetauchte
+	Fragen rund um das Upgrade und mögliche Probleme thematisiert.</abstract>
+
+	<version>1.0</version>
+	<date>29.09.2003</date>
+	
+	<chapter>
+		<title>Grundlegendes</title>
+			
+			<section>
+				<title>Gnome 2.4</title>
+				<body>
+
+					<p>11 neue Programme und über 100 Verbesserungen, die auf Benutzer zurückgehen, 
+					haben den Weg in Gnome 2.4 gefunden. Mit Epiphany hat Gnome wieder einen eigenen 
+					(auf Mozillas Gecko Engine aufbauenden) Browser, der Dateimanager Nautilus wurde 
+					überarbeitet und die Tools zur Barrierefreiheit erweitert.
+					Soviel nur als kurzer Vorgeschmack, eine umfassende Übersicht über die 
+					wichtigsten Änderungen von Gnome 2.4 finden Sie bei 
+					<uri link="http://www.gnome-de.org/gnome-2.4.php">gnome-de.org</uri> und bei 
+					<uri link="http://www.gnome.org/start/2.4/notes/rnwhatsnew.html">gnome.org</uri>; 
+					einen kurzen Überblick verschafft Ihnen ein Blick in die 
+					<uri link="http://www.gnome.org/start/2.4/notes/">Release Notes</uri>.</p>
+				
+				</body>
+			</section>
+
+			<section>
+				<title>Wer sollte das Upgrade durchführen?</title>
+				<body>
+
+					<p>- Jeder, der von den zahlreiche Verbesserungen Gebrauch machen will.
+					<br />- Jeder, dem langweilig ist.
+					<br />- Jeder, der verhindern möchte, dass sich seine CPU langweilt.
+					<br />- Jeder, dem 'Bleeding Edge' schon fast zu alt ist.</p>
+
+				</body>
+			</section>
+
+			<section>
+				<title>Wer sollte auf das Upgrade (vorerst) verzichten?</title>
+				<body>
+
+					<p>Jeder, der nicht genau weiss, was er tut. Momentan ist Gnome 2.4 im 
+					Portage noch nicht als Stable gekennzeichnet, 
+					und das nicht ohne Grund. Eine Suche nach 'gnome 2.4' auf 
+					<uri link="bugs.gentoo.org">bugs.gentoo.org</uri> bringt noch einige offene 
+					Bugs hervor.</p>
+
+				</body>
+			</section>
+
+	</chapter>
+
+	<chapter>
+		<title>Vor dem Upgrade</title>
+
+			<section>
+				<title>Portage aktualisieren</title>
+				<body>	
+			
+					<p>... sollten Sie ihr Portage auf den aktuellen Stand bringen.</p>
+					<pre caption="Portage aktualisieren"># <c>emerge sync</c></pre>
+					<p>Als nächstes schauen wir uns an, welche Pakete Gnome upgraden möchte.</p>
+					<pre caption="Blockende Abhängigkeiten"># <c>ACCEPT_KEYWORDS="~x86" emerge -p gnome</c></pre>
+					<p>Wie Sie sehen, blocken die Pakete <c>linc</c> und <c>bonobo-activation</c> das Upgrade. 
+					Beide Pakete können wir vor dem Upgrade bedenkenlos unmergen; 
+					<c>linc</c> wird während des Upgrades neu installiert, 
+					<c>bonobo-activation</c> ist ab Gnome 2.4 Teil von <c>libbonobo</c>.</p>
+					<pre caption="Entfernen der blockenden Pakete"># <c>emerge -C bonobo-activation</c>
+# <c>emerge -C linc</c></pre>
+			
+				</body>
+			</section>
+		
+	</chapter>
+
+	<chapter>
+		<title>Das Upgrade</title>
+
+			<section>
+				<title>Gnome aktualisieren.</title>
+				<body>
+								
+				<warn>Da Gnome 2.4 momentan noch als Unstable gekennzeichnet ist, 
+				zieht es unter anderem ein neues <c>xfree</c> und einen neuen 
+				<c>GCC</c> mit. Vor allem der neue GCC 3.3.x scheint bei einigen 
+				Gentooists größere Probleme zu machen!</warn>
+				<p>Jetzt können wir das Upgrade anstossen, wenn alles glatt läuft, 
+				dauert das ein Weilchen ;)</p>
+				<pre caption="Gnome upgraden"># <c>ACCEPT_KEYWORDS="~x86" emerge gnome</c></pre>
+			
+			</body>
+		</section>
+
+	</chapter>
+
+	<chapter>
+		<title>FAQ</title>
+		
+			<section>
+				<title>Bisher bekannte Probleme und deren Lösungen</title>
+				<body>
+						
+					<p><b>Ich nutze Opera als Browser, jetzt will Gnome auch Mozilla mergen. 
+					Was soll das?</b><br />
+					Der neue Gnome eigene Browser Epiphany benötigt die Gecko Engine des Mozilla. 
+					Durch ein Anpassen der USE-Flags können Sie Mozilla 
+					ohne die IRC-, Composer- und Mail/Newskomponenten emergen.</p>
+					<note> Epiphany benötigt einen mit gtk2 kompilierten Mozilla.</note>
+					<pre caption="Mozilla ohne optionale Komponenten emergen">USE="moznoirc moznomail moznocompose gtk2"</pre>
+					
+					<p><b>Wenn ich mich anmelde, dann bleibt der Gnome Splash-Screen solange stehen, 
+					bis ich einmal draufgeklickt habe.</b><br />
+					Eine Lösung ist momentan noch nicht bekannt, bei einigen Gentooists lässt sich 
+					der Splash-Screen mit einem Mausklick in die Wüste jagen, bei anderen nicht.</p>
+
+					<p><b>Nach dem Upgrade auf Gnome 2.4 funktioniert Evolution nicht mehr. 
+					Was kann ich tun?</b><br />
+					Führen Sie ein <c>revdep-rebuild</c> durch. <c>revdep-rebuild</c> prüft, 
+					ob einem Programm Abhängigkeiten fehlen und emerged diese bei Bedarf.</p>
+
+					<p><b>Was ist mit den Gnome 2.4 ebuilds von breakmygentoo.net?</b><br />
+					Die können Sie auch benutzen. Wichtig ist dabei, unbedingt die Anleitung auf der 
+					Seite zu beachten und nicht zu vergessen, das USE-Flag 'breakme' zu setzen.</p>
+					<pre caption="zusätzliches USE-Flag für Gnome 2.4 ebuilds von breakmygentoo.net">USE="breakme"</pre>
+			
+			</body>			
+		</section>
+
+	</chapter>
+
+	<chapter>
+		<title>Lobhudelei</title>
+
+		<section>
+			<title>Dank an:</title>
+			<body>
+
+				<p>ralph für den revdep-rebuild Tipp.<br />
+				ian! aka. Christian Hartmann für seinen XML-Editor, manches hakt noch, 
+				aber das Teil wird immer besser!</p>
+
+			</body>
+		</section>		
+
+		<section>
+			<title>Sie haben einen Fehler gefunden, oder Vorschläge für Ergänzungen?</title>
+			<body>
+				
+				<p>Egal ob Rechtschreibfehler oder eine inhaltliche Korrektur oder Ergänzung, her damit!
+				<uri link="mailto:tobias@scherbaum.info">tobias@scherbaum.info</uri></p>
+
+			</body>
+		</section>
+		
+		<section>
+			<title>Interessante Threads in den Gentoo Foren:</title>
+			<body>
+				
+				<p>[1] <uri link="http://forums.gentoo.org/viewtopic.php?t=84851">http://forums.gentoo.org/viewtopic.php?t=84851</uri>
+				[2] <uri link="http://forums.gentoo.org/viewtopic.php?t=83880">http://forums.gentoo.org/viewtopic.php?t=83880</uri>
+				[3] <uri link="http://forums.gentoo.org/viewtopic.php?t=83456">http://forums.gentoo.org/viewtopic.php?t=83456</uri></p>
+			</body>
+		</section>
+	
+	</chapter>
+
+</guide>
