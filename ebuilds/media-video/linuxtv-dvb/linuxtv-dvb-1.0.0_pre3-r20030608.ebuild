@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/linuxtv-dvb/Attic/linuxtv-dvb-1.0.0_pre3-r20030608.ebuild,v 1.1 2003/06/10 10:03:30 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/linuxtv-dvb/Attic/linuxtv-dvb-1.0.0_pre3-r20030608.ebuild,v 1.2 2003/06/20 12:03:09 mad Exp $
 
 IUSE=""
 
@@ -11,11 +11,11 @@ DESCRIPTION="This is the standalone DVB driver for Kernel 2.4.x (CVS HEAD)"
 SRC_URI="ftp://ftp.cadsoft.de/vdr/Developer/linux-dvb.${VERSION}.tar.bz2"
 
 # Use this if it is a pre/stable release
-#VERSION="1.0.0-pre2"
+#VERSION="1.0.0-pre3"
 #DESCRIPTION="This is the standalone DVB driver for Kernel 2.4.x"
 #SRC_URI="http://www.linuxtv.org/download/dvb/${PN}-${VERSION}.tar.gz"
 
-HOMEPAGE="http://linuxtv.org"
+HOMEPAGE="http://linuxtv.org/"
 
 S=${WORKDIR}/linux-dvb.${VERSION}
 KEYWORDS="~x86"
@@ -31,7 +31,7 @@ pkg_setup() {
 	if [ -z "$(modinfo -n input 2>/dev/null)" -o -z "$(modinfo -n evdev 2>/dev/null)" ]; then
 	ewarn
 	ewarn "If something goes wrong, make sure you have evdev,video, i2c and "
-	ewarn "input support in your kernel. Check your Kernelconfiguration"
+	ewarn "input support in your kernel. Check your kernelconfiguration"
 	ewarn "for input core support, event interface support, i2c support,"
 	ewarn "and video for linux support. Be sure /usr/src/linux point's to"
 	ewarn "your current kernel or make will die."
@@ -40,12 +40,12 @@ pkg_setup() {
 }
 
 src_unpack() {
-        unpack ${A} || die "unpack failed"
+	unpack ${A} || die "unpack failed"
 }
 
 src_compile() {
 	cd ${S}
-        make || die "compile problem"
+	make || die "compile problem"
 }
 
 src_install() {
@@ -97,7 +97,7 @@ src_install() {
 	insinto /usr/include/linux/dvb
 	doins   include/linux/dvb/*.h
 	
-	sed -i "s/alps_bsru6 //" driver/modules.conf
+	sed -i  "s/alps_bsru6 //" driver/modules.conf
 	insinto /etc/modules.d
 	newins  driver/modules.conf linuxtv-dvb
 	insinto /etc/devfs.d
@@ -111,3 +111,4 @@ pkg_postinst() {
 pkg_postrm() {
 	[ -x /sbin/update-modules ] && /sbin/update-modules
 }
+
