@@ -1,11 +1,10 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/vdrplugin-osdpip-0.0.6.ebuild,v 1.2 2004/08/03 18:48:59 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/vdrplugin-osdpip-0.0.6.ebuild,v 1.3 2004/08/11 13:26:16 austriancoder Exp $
 
 IUSE=""
-VDRPLUGIN="osdpip"
+inherit vdrplugin
 
-S=${WORKDIR}/${VDRPLUGIN}-${PV}
 DESCRIPTION="Video Disk Recorder OSD-PIP PlugIn"
 HOMEPAGE="http://www.magoa.net/linux"
 SRC_URI="http://www.magoa.net/linux/files/vdr-${VDRPLUGIN}-${PV}.tgz"
@@ -19,41 +18,10 @@ DEPEND=">=media-video/vdr-1.3.7
 	"
 
 src_unpack() {
-	unpack ${A}
-}
+	vdrplugin_src_unpack
 
-src_compile() {
-
-	# if we are using a 2.6 Kernel the dvb includes are in the /usr/src/linux dir (fix by Christian Gmeiner)
-	if [ "${KV:0:3}" == "2.6" ] ; then
-		sed -i "s/^DVBDIR.*$/DVBDIR = \/usr\/src\/linux/" Makefile
-	fi
-	if [ "${KV:0:3}" == "2.4" ] ; then
-		sed -i "s/^DVBDIR.*$/DVBDIR = \/usr/" Makefile
-	fi
-
+	cd ${S}
 	/bin/sed -i Makefile \
-	  -e '/cp.*LIBDIR/d' \
-	  -e 's/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/' \
-	  -e 's/^FFMDIR.*$/FFMDIR = \/usr\/include\/ffmpeg/' \
-	  -e 's/^LIBDIR.*$/LIBDIR = \/usr\/lib/' \
-	  -e 's/@install.*$//' \
-	  -e '/@install.*$/d'
-	make all || die "compile problem"
+	  -e 's/^FFMDIR.*$/FFMDIR = \/usr\/include\/ffmpeg/'
 }
 
-src_install() {
-	insinto /usr/lib/vdr
-	insopts -m0755
-	newins libvdr-${VDRPLUGIN}.so libvdr-${VDRPLUGIN}.so.${PV}
-	dodoc COPYING README HISTORY
-	cd ${D}/usr/lib/vdr/
-	ln -s libvdr-${VDRPLUGIN}.so.${PV} libvdr-${VDRPLUGIN}.so
-}
-
-pkg_postinst() {
-	einfo
-	einfo "you need to add the module to /etc/conf.d/vdr"
-	einfo "and restart vdr to activate it."
-	einfo
-}
