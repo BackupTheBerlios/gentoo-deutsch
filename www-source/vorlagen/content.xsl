@@ -474,7 +474,6 @@
 </xsl:template>
 
 <xsl:template match="figure">
-  <xsl:param name="cid"/>
   <xsl:variable name="fignum"><xsl:number level="any"/></xsl:variable>
   <xsl:variable name="figid">doc_fig<xsl:value-of select="$fignum"/></xsl:variable>
   <br/>
@@ -484,10 +483,10 @@
       <td class="head">
         <xsl:choose>
           <xsl:when test="@caption">
-            Grafik <xsl:value-of select="$cid"/>.<xsl:value-of select="$fignum"/>: <xsl:value-of select="@caption"/>
+            Grafik <xsl:value-of select="$fignum"/>: <xsl:value-of select="@caption"/>
           </xsl:when>
           <xsl:otherwise>
-            Grafik <xsl:value-of select="$cid"/>.<xsl:value-of select="$fignum"/>
+            Grafik <xsl:value-of select="$fignum"/>
           </xsl:otherwise>
         </xsl:choose>
       </td>
