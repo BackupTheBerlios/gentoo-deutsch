@@ -1,17 +1,20 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.1.25-r3.ebuild,v 1.1 2003/03/15 22:23:06 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.1.25-r3.ebuild,v 1.2 2003/03/18 19:33:15 fow0ryl Exp $
 
-IUSE="lirc rcu vdr_elchi vdr_vfat"
+IUSE="lirc rcu vdr_sc vdr_elchi vdr_vfat"
 
 ELCHI="ElchiAIO3-1.1.25"
+SC_VER="0.1.10"
+
 S=${WORKDIR}/${P}
 DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="http://linvdr.org/download/vdr/Developer/${P}.tar.bz2
-		http://www.fh-lippe.de/~mad/${ELCHI}.diff.gz"
+	vdr_sc? http://208.231.8.113/vdr-sc-${SC_VER}.tar.gz
+	vdr_elchi? http://www.fh-lippe.de/~mad/${ELCHI}.diff.gz"
 
-KEYWORDS="x86"
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL-2"
 
@@ -23,6 +26,14 @@ src_unpack() {
 	if [ -n "`use vdr_elchi`" ]; then
 		cd ${S}
 		patch < ${WORKDIR}/${ELCHI}.diff || die "patch problem"
+	fi
+
+	if [ -n "`use vdr_sc`" ]; then
+		cd ${S}/PLUGINS/src
+		unpack vdr-sc-${SC_VER}.tar.gz
+		cp ${S}/PLUGINS/src/sc-${SC_VER}/patches/vdr-${PV}-sc.diff ${S}/sc.diff
+		cd ${S}
+		cat ${S}/sc.diff | patch -p1
 	fi
 }
 
