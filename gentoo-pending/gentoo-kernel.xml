@@ -51,9 +51,9 @@ anderen Kernelquellen erklären, die wir anbieten.
 <p>
 Für die meisten Anwender sind die empfehlenswertesten Kernelquellen die <c>gentoo-sources</c>.
 Das <c>gentoo-sources</c> Paket enthält speziell auf Leistung getrimmte Kernelpatches die bestimmte
-Aufgaben wie z.B. Kompilieren und gleichzeitig Musikhören und im Web surfen optimieren sollen.
+Aufgaben wie z.B. Kompilieren, gleichzeitiges Musikhören und im Web surfen optimieren sollen.
 Viele von Ihnen haben möglicherweise noch nie ein System benutzt, bei dem man viele Sachen
-aus den Quellen heraus kompiliert, während man die tägliche Arbeit erledigt.
+aus den Quellen heraus kompiliert, während man nebenbei noch die tägliche Arbeit erledigt.
 
 Sie werden vielleicht feststellen, daß die Benutzung der <c>vanilla-sources</c>
 (den offiziellen Kernelquellen von <uri>http://www.kernel.org</uri>) dazu führt,
@@ -64,14 +64,14 @@ aufweisen können
 <p>
 Die <c>gentoo-sources</c> enthalten ein erweitertes ACPI-Subsystem und basieren
 auf Con Kolivas High-Performance Kernelpatches (den sog. <c>ck-sources</c>). Wir
-ünsterstützen ausserdem grSecurity (einen Satz von sicherheitstechnischen Patches
-mit Unterstützung für ACLs), EVMS(2) (ein hochfelxibles Speicherverwaltungs-System
+ünterstützen ausserdem grSecurity (einen Satz von sicherheitsbezogenen Patches
+mit Unterstützung für ACLs), EVMS(2) (ein hochflexibles Speicherverwaltungs-System
 mit einfacher Partitionsgrößenveränderung), JFS (ein Hochleistungs-Dateisystem von IBM),
 die neuesten NTFS-Treiber und vieles, vieles mehr.
 </p>
 
 <p>
-Da die <c>gentoo-sources</c> auf Höchstleistungs ausgelegt sind, stellen sie außerderm
+Da die <c>gentoo-sources</c> auf Höchstleistung ausgelegt sind, stellen sie außerderm
 eine gute Grundlage für Spiele dar.
 </p>
 
@@ -96,7 +96,7 @@ Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werde
 
 <p>
 Die nächsten Kernelquellen mit denen Sie als Linux-Anwender vielleicht vertraut sind,
-sind die <c>vanille-sources</c>. Wie ich vorher schon kurz erwähnt habe, sind dies
+sind die <c>vanilla-sources</c>. Wie ich vorher schon kurz erwähnt habe, sind dies
 die offiziellen Kernelquellen von <uri>http://www.kernel.org/</uri>. Diese Quellen werden
 (entgegen dem weitverbreiteteten Glauben) nicht von Linus Torvalds selbst, sondern von
 Marcelo Tosati verwaltet. Linus ist der "Chef" der aktiven Kernelentwicklung und da er eben
@@ -104,15 +104,15 @@ nur eine Person ist, vergibt er die Verwaltungsaufgaben von stabilen Kernels an 
 denen er das Vertrauen entgegen bringt, diese Kernels zu verwalten. So war zum Beispiel
 Alan Cox Verwalter der Kernel-Serie 2.2 und Marcelo Tosati wurde eben Verwalter der Kernel-Serie
 2.4. Dies ist exakt das, worauf alle Patchsätze der Serie 2.4 basieren. Marcelo hat hervorragende Arbeit
-mit seiner Verwaltung geleistet und man kann auf diesen Kernel in Sachen Stabilität, Aktualität (betrifft nicht
-noch in Entwicklung befindlicher Teile) und Hardwareunterstützung wirklich zählen.
+bei der Verwaltung geleistet und man kann auf diesen Kernel in Sachen Stabilität, Aktualität (betrifft nicht
+noch in der Entwicklung befindliche Teile) und Hardwareunterstützung wirklich zählen.
 </p>
 
 <p>
 Die <c>vanilla-sources</c> sind möglicherweise die stabilsten aller verfügbaren
 Kernelquellen, da sie auch die am meisten getesteten sind und alle anderen Kernelquellen
 auf ihnen basieren. Wenn Sie keines der von den anderen Kernels mitgebrachten Extras brauchen,
-dann sollten Sie sich für die <c>vanilla-sources</c> entscheiden.
+sollten Sie sich für die <c>vanilla-sources</c> entscheiden.
 </p>
 
 </body>
@@ -125,7 +125,7 @@ dann sollten Sie sich für die <c>vanilla-sources</c> entscheiden.
 Für Anwender für die Arbeitsplatzleistung erst nach Verlässlichkeit und Hardwareunterstützung kommt,
 haben wir die <c>gs-sources</c>. GS steht für Gentoo Stable (wie kreativ, gell). Dieser Patch-Satz
 ist im Hinblick auf Unterstützung von neuester Hardware erweitert und getestet und stellt sicher,
-daß kritische Server verfügbar sind, wenn sie benötigt werden. Dieses Kernel lässt einige der
+daß kritische Server verfügbar sind, wenn sie benötigt werden. Dieser Kernel lässt einige der
 überagressiven in den <c>gentoo-sources</c> verfügbaren Leistungs-Tuning-Patches aussen vor, aber die
 hervorragende Leistung die man von den Vanilla Kernels kennt und liebt sind immer noch enthalten.
 Dort wo es ohne Stabilitätseinbußen möglich ist, fügen wir serverbezogene Patches dem Kernel hinzu.
@@ -134,7 +134,7 @@ Dort wo es ohne Stabilitätseinbußen möglich ist, fügen wir serverbezogene Pa
 <p>
 Dieser Kernel bietet Unterstützung für das neueste ACPI Subsystem, EVMS,
 ECC (wird für Hochverfügbarkeitskernels benötigt), verschlüsselte Loopbackgeräte,
-NTFS, Win4Lin und XFS. Es enthält ausserdem Aktualisierungen für IDE, ext3 und diverse
+NTFS, Win4Lin und XFS. Er enthält ausserdem Aktualisierungen für IDE, ext3, diverse
 Netzwerkkarten und noch einige andere Patches.
 </p>
 
@@ -261,7 +261,7 @@ für die <c>ppc-sources</c>-Kernel. Sie sind ein bisschen experimenteller als di
 
 <p>
 Die <c>ppc-sources-crypto</c> Ebuilds bieten Crypto-API Unterstützung für
-das Gentoo Linux PPC-Kernel. Mehr Informationen über CryptoAPI können Sie unter
+den Gentoo Linux PPC-Kernel. Mehr Informationen über CryptoAPI können Sie unter
 <uri>http://www.kerneli.org/about/</uri> bekommen.
 </p>
 
@@ -285,7 +285,7 @@ muß seine Funktionsfähigkeit erst in den <c>ppc-sources-dev</c> beweisen.
 
 <p>
 Die <c>compaq-sources</c> bieten die Kernel Quellen von RedHat für Alpha,
-das von Compaq verwaltet wird.
+die von Compaq verwaltet werden.
 </p>
 
 </body>
@@ -318,7 +318,7 @@ O(1)-Scheduler von Ingo Molar (welcher der Default-Scheduler in Linux 2.6 werden
 </p>
 
 <p>
-Es bietet ausserdem Unterstützung für User-Mode-Linux (siehe auch unseren
+Sie bieten ausserdem Unterstützung für User-Mode-Linux (siehe auch unseren
 <uri link="/doc/en/uml.xml">UML Guide (englisch)</uri> für weitere Informationen) und
 den neuesten TUX-Webserver (ein im Kernel befindlicher Webserver).
 
@@ -326,8 +326,8 @@ den neuesten TUX-Webserver (ein im Kernel befindlicher Webserver).
 
 <p>
 Wenn Sie bei anderen Kernels Probleme mit der Speicherverwaltung haben, dann
-könnten die <c>aa-sources</c> die Lösung des Problems darstellen. Wenn Die
-Linux Speicherverwaltung für Ihr System optimieren willen, dann sind die <c>aa-sources</c>
+könnten die <c>aa-sources</c> die Lösung des Problems darstellen. Wenn Sie die
+Linux Speicherverwaltung für Ihr System optimieren wollen, dann sollten die <c>aa-sources</c>
 <e>auf jeden Fall</e> das sein, was Sie brauchen.
 </p>
 
@@ -351,7 +351,7 @@ eine mögliche Integration in die Kernel Serie 2.4 warten.
 
 <p>
 Dieser Kernel ist dafür bekannt, anständige Unterstützung für einige zusätzliche
-Hardware-Teile zu haben und kann ein Kandidat für Sie sein, wenn Sie einen stabilen aber
+Hardware-Komponenten zu haben und kann ein Kandidat für Sie sein, wenn Sie einen stabilen aber
 weniger konservativen Kernel als die <c>vanilla-sources</c> möchten.
 </p>
 
