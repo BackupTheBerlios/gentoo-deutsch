@@ -186,16 +186,15 @@
 <chapter>
   <title>Installation</title>
     <section>
-    
+      <title>Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</title>
+      <body>
+
       <warn>
         Berichten Sie alle Bugs an <uri>bugs.gentoo.org</uri>! Berichten Sie die
         Bugs nicht Upstream (den originalen Autoren). Berichten Sie Bugs an
         Gentoo, wenn nötig leiten wir diese an die Autoren weiter.
       </warn>
-
-    <title>Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</title>
-    <body>
-
+      
       <p>
         Die fertigen <e>.tbz2</e> Dateien sind ein Minimal-Archiv von System
         Dateien die Ihnen den bootstrap und die Installation von Gentoo Linux
@@ -205,7 +204,7 @@
         Netzwerk Unterstützung, sowie das Minimal-System des <e>.tbz2</e>
         Archivs enthält. In den meisten Fällen werden Sie das .iso
         Image auf eine CD brennen, von dieser CD booten und von der 
-	Gentoo Boot CD installieren. Sie können Gentoo jedoch auch direkt aus einer bereits
+      	Gentoo Boot CD installieren. Sie können Gentoo jedoch auch direkt aus einer bereits
         vorhandenen Linux Distribution zu installieren.  In diesem Fall müssen
         Sie nur eine .tbz2 Datei downloaden, den Inhalt auf eine Reserve Partitionen
         entpacken (stellen Sie sicher, dass Sie das <c>p</c> Argument benutzen
