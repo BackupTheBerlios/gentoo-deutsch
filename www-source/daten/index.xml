@@ -87,14 +87,14 @@
 		Boot-CD.
 	</p>
 	<p>
-		<warning>
+		<warn>
 		Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn sie sind dazu bereit viele Dokumentationen
 		zu lesen -- auch englische. Es gibt keine Konfigurationshilfen, fast alles muss von Hand nachkonfiguriert werden. Sollten Sie bisher
 		nur über KDE, Gnome oder irgend einer anderen graphischen Oberfäche in Berührung gekommen sein, dann ist Gnome sicherlich nicht die
 		richtige Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer Ihrem Rechner ein Speicherupgrade zu gönnen
 		oder eben auch eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein, aber der Status eines fortgeschrittenen Anwenders
 		ist ratsam - sonst erleided Ihr Ausflug ins Gentoo-Land bald einen herben Rückschlag.
-		</warning>
+		</warn>
 	</p>
 	</body>
 </section>
