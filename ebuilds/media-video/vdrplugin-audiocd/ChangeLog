@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-audiocd/ChangeLog,v 1.1 2004/01/24 15:20:28 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-audiocd/ChangeLog,v 1.2 2004/03/22 18:41:33 fow0ryl Exp $
+
+*vdrplugin-audiocd-0.0.5 (21 March 2004)
+
+  21 March 2004; H.Ryll <henning.ryll@web.de.de>
+  upgrade to plugin version 0.0.5
 
 *vdrplugin-audiocd-0.0.4 (26 Jan 2004)
 
