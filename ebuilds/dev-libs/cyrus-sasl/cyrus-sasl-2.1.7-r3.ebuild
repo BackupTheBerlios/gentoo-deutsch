@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-sasl/cyrus-sasl-2.1.7-r3.ebuild,v 1.3 2002/10/08 11:43:21 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-sasl/cyrus-sasl-2.1.7-r3.ebuild,v 1.4 2002/10/11 21:25:44 holler Exp $
 
 S=${WORKDIR}/${P}
 
@@ -103,7 +103,7 @@ src_install () {
 	echo "gentoo" | ${D}usr/sbin/saslpasswd2 -f ${D}etc/sasl2/sasldb2 -p cyrus
 	${D}usr/sbin/saslpasswd2 -f ${D}etc/sasl2/sasldb2 -d cyrus
 	export LD_LIBRARY_PATH=${LD_OLD}
-	chown root.mail ${D}etc/sasl2/sasldb2
+	chown postfix.mail ${D}etc/sasl2/sasldb2
 	chmod 0640 ${D}etc/sasl2/sasldb2
 																
 	insinto /etc/conf.d ; newins ${FILESDIR}/saslauthd.confd saslauthd
