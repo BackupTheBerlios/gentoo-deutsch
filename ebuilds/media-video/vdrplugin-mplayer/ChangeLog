@@ -1,6 +1,18 @@
 # ChangeLog for media-video/vdr-mplayer
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.6 2004/03/22 18:35:06 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.7 2004/06/02 12:18:06 austriancoder Exp $
+
+*vdrplugin-mplayer-0.9.0
+  27 Mai 2004; J.Bornkesse <hd.brummy@web.de>
+  moved to plugin version 0.9.0
+  changlog on the homepage says:
+  - Added OSS soundcard output. Use make option WITH_OSS_OUTPUT=1 to compile support, 
+    commandline option -D to change DSP device and plugin setup menu to select output mode. 
+    Thanks to Gunnar Roth. 
+  - Added shoutcast/icecast metadata parsing. Thanks to Andreas Brachold. 
+  _ Now restoring locale settings in MPlayer plugin. 
+  _ Fixed MPlayer exit problem while paused. 
+  _ Fixed showing outdated song name shortly after start of a new song.
 
 *vdrplugin-mplayer-0.8.3
   21. Mar 2004; H.Ryll <henning.ryll@web.de>

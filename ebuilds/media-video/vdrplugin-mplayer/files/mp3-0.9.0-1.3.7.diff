@@ -1,0 +1,728 @@
+diff -Nru mp3-0.9.0.orig/decoder-snd.c mp3-0.9.0/decoder-snd.c
+--- mp3-0.9.0.orig/decoder-snd.c	2004-05-01 15:58:58.000000000 +0200
++++ mp3-0.9.0/decoder-snd.c	2004-05-17 19:37:50.000000000 +0200
+@@ -648,9 +648,14 @@
+   bool res=false;
+   
+   if(Interface) {
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtStatus, tr("Remote CDDB lookup..."));
++    Skins.Flush();
++#else
+     Interface->Open(0,-1);
+     Interface->Status(tr("Remote CDDB lookup..."));
+     Interface->Flush();
++#endif
+     }
+ 
+   delete net; net=new cNet(16*1024,CDDB_TOUT,CDDB_TOUT);
+@@ -709,9 +714,11 @@
+ 
+   delete net; net=0;
+ 
++#if VDRVERSNUM < 10307
+   if(Interface) {
+     Interface->Close();
+     }
++#endif
+ 
+   return res;
+ }
+diff -Nru mp3-0.9.0.orig/menu.c mp3-0.9.0/menu.c
+--- mp3-0.9.0.orig/menu.c	2004-05-01 18:44:30.000000000 +0200
++++ mp3-0.9.0/menu.c	2004-05-18 15:24:07.000000000 +0200
+@@ -107,8 +107,13 @@
+ bool cMenuBrowse::LoadDir(const char *dir)
+ {
+   Clear();
++#if VDRVERSNUM >= 10307
++  Skins.Message(mtStatus, tr("Scanning directory..."));
++  Skins.Flush();
++#else
+   Interface->Status(tr("Scanning directory..."));
+   Interface->Flush();
++#endif
+   if(!list->Load(source,dir)) return false;
+ 
+   cFileObj *item=list->First();
+@@ -132,7 +137,11 @@
+     return true;
+     }
+   free(ncur);
++#if VDRVERSNUM >= 10307
++  Skins.Message(mtError, tr("Error scanning directory!"));
++#else
+   Interface->Error(tr("Error scanning directory!"));
++#endif
+   return false;
+ }
+ 
+@@ -265,7 +274,11 @@
+ {
+   cFileSource *src=selected ? selected:current;
+   if(src->NeedsMount() && !src->Status()) {
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtError, tr("Selected source is not mounted!"));
++#else
+     Interface->Error(tr("Selected source is not mounted!"));
++#endif    
+     return false;
+     }
+   return true;
+@@ -277,7 +290,12 @@
+ 
+   cFileSource *src = ((cMenuSourceItem *)Get(Current()))->Source();
+   if(src->NeedsMount() && !src->Status()) {
+-    if(!DoMount(src)) Interface->Info(tr("Mount failed!"));
++    if(!DoMount(src)) 
++#if VDRVERSNUM >= 10307
++      Skins.Message(mtInfo, tr("Mount failed!"));
++#else
++      Interface->Info(tr("Mount failed!"));
++#endif    
+     }
+   if(!src->NeedsMount() || src->Status()) {
+     selected=src;
+@@ -292,8 +310,18 @@
+ 
+   cFileSource *src = ((cMenuSourceItem *)Get(Current()))->Source();
+   if(src->NeedsMount() && !src->Status()) {
+-    if(DoMount(src)) Interface->Info(tr("Mount succeeded"));
+-    else Interface->Error(tr("Mount failed!"));
++    if(DoMount(src)) 
++#if VDRVERSNUM >= 10307
++      Skins.Message(mtInfo, tr("Mount succeeded"));
++#else
++      Interface->Info(tr("Mount succeeded"));
++#endif
++    else 
++#if VDRVERSNUM >= 10307
++      Skins.Message(mtError, tr("Mount failed!"));
++#else
++      Interface->Error(tr("Mount failed!"));
++#endif
+     }
+   return osContinue;
+ }
+@@ -307,8 +335,18 @@
+     bool res=src->Unmount();
+     RefreshCurrent();
+     DisplayCurrent(true);
+-    if(res) Interface->Info(tr("Unmount succeeded"));
+-    else Interface->Error(tr("Unmount failed!"));
++    if(res) 
++#if VDRVERSNUM >= 10307
++      Skins.Message(mtInfo, tr("Unmount succeeded"));
++#else
++      Interface->Info(tr("Unmount succeeded"));
++#endif
++    else 
++#if VDRVERSNUM >= 10307
++      Skins.Message(mtError, tr("Unmount failed!"));
++#else
++      Interface->Error(tr("Unmount failed!"));
++#endif
+     }
+   return osContinue;
+ }
+@@ -322,7 +360,12 @@
+     bool res=src->Eject();
+     RefreshCurrent();
+     DisplayCurrent(true);
+-    if(!res) Interface->Error(tr("Eject failed!"));
++    if(!res) 
++#if VDRVERSNUM >= 10307
++      Skins.Message(mtError, tr("Eject failed!"));
++#else
++      Interface->Error(tr("Eject failed!"));
++#endif
+     }
+   return osContinue;
+ }
+@@ -352,9 +395,14 @@
+ :cBitmap(Width, Height, 2)
+ {
+   if(Total > 0) {
+-    int p = Current * width / Total;;
++    int p = Current * cBitmap::Width() / Total;;
++#if VDRVERSNUM >= 10307
++    DrawRectangle(0, 0, p, Height - 1, clrGreen);
++    DrawRectangle(p + 1, 0, Width - 1, Height - 1, clrWhite);
++#else
+     Fill(0, 0, p, Height - 1, clrGreen);
+     Fill(p + 1, 0, Width - 1, Height - 1, clrWhite);
++#endif
+     }
+ }
+ 
+diff -Nru mp3-0.9.0.orig/menu.h mp3-0.9.0/menu.h
+--- mp3-0.9.0.orig/menu.h	2004-05-01 16:04:22.000000000 +0200
++++ mp3-0.9.0/menu.h	2004-05-17 18:31:49.000000000 +0200
+@@ -23,6 +23,7 @@
+ #define ___MENU_H
+ 
+ #include <vdr/osd.h>
++#include <vdr/menu.h>
+ 
+ // ----------------------------------------------------------------
+ 
+diff -Nru mp3-0.9.0.orig/menu-mplayer.c mp3-0.9.0/menu-mplayer.c
+--- mp3-0.9.0.orig/menu-mplayer.c	2004-05-01 16:05:51.000000000 +0200
++++ mp3-0.9.0/menu-mplayer.c	2004-05-17 19:29:30.000000000 +0200
+@@ -59,6 +59,9 @@
+ private:
+   static char * fileName;
+   cMPlayerPlayer *player;
++#if VDRVERSNUM >= 10307
++  cSkinDisplayReplay *display;
++#endif
+   bool visible, modeOnly, haveBeauty;
+   time_t timeoutShow;
+   int lastCurrent, lastTotal, osdPos;
+@@ -107,6 +110,9 @@
+   if(symD != osdD) haveBeauty=true;
+   d(printf("mplayer: beauty patch %sdetected\n",haveBeauty?"":"NOT "))
+ #endif
++#if VDRVERSNUM >= 10307
++  display=NULL;
++#endif
+ }
+ 
+ cMPlayerControl::~cMPlayerControl()
+@@ -138,13 +144,18 @@
+ void cMPlayerControl::Hide(void)
+ {
+   if(visible) {
++#if VDRVERSNUM >= 10307
++    delete display;
++#else
+     Interface->Close();
++#endif
+     needsFastResponse=visible=modeOnly=false;
+     }
+ }
+ 
+ void cMPlayerControl::DisplayAtBottom(const char *s)
+ {
++#if VDRVERSNUM < 10307
+   const int p=modeOnly ? 0 : 2;
+   if(s) {
+     const int d=max(Width()-cOsd::WidthInCells(s),0) / 2;
+@@ -153,6 +164,7 @@
+     }
+   else
+     Interface->Fill(12, p, Width() - 22, 1, clrBackground);
++#endif
+ }
+ 
+ void cMPlayerControl::ShowProgress(void)
+@@ -162,11 +174,18 @@
+   if(GetIndex(Current,Total) && Total>0) {
+     bool flush=false;
+     if(!visible) {
++#if VDRVERSNUM < 10307
+       Interface->Open(Setup.OSDwidth,osdPos-3);
+       Interface->Clear();
+       if(osdPos<0) Interface->Fill(0,3,Interface->Width(),-osdPos,clrTransparent);
++#else
++      display = Skins.Current()->DisplayReplay(modeOnly);
++#endif
+       needsFastResponse=visible=true;
+       if(fileName) {
++#if VDRVERSNUM >= 10307
++        display->SetTitle(fileName);
++#else
+         int n=strlen(fileName);
+         if(n>Width()) {
+           n=n-Width()+4; if(n<0) n=0;
+@@ -175,19 +194,29 @@
+           Interface->Write(0,0,str);
+           }
+         else Interface->Write(0,0,fileName);
++#endif
+         }
+       lastCurrent=lastTotal=-1;
+       flush=true;
+       }
+ 
+     if(Current!=lastCurrent) {
++#if VDRVERSNUM >= 10307
++       display->SetProgress(Current, Total);
++#else
+        cProgressBar ProgressBar(Width() * cOsd::CellWidth(), cOsd::LineHeight(), Current, Total);
+        Interface->SetBitmap(0, cOsd::LineHeight(), ProgressBar);
+        Interface->Write(0,2,IndexToHMSF(Current));
++#endif
+        flush=true;
+        lastCurrent=Current; lastTotal=Total;
+        }
+-    if(flush) Interface->Flush();
++    if(flush) 
++#if VDRVERSNUM >= 10307
++    Skins.Flush();
++#else
++    Interface->Flush();
++#endif
+     ShowMode();
+     }
+ }
+@@ -207,7 +236,11 @@
+ 
+        if(!visible) {
+          if(NormalPlay) return;
++#if VDRVERSNUM >= 10307
++         display = Skins.Current()->DisplayReplay(modeOnly);
++#else
+          Interface->Open(0,osdPos-1);
++#endif
+          visible=modeOnly=true;
+          }
+ 
+@@ -237,12 +270,18 @@
+          strn0cpy(buf, Mode, sizeof(buf));
+          char *p = strchr(buf, 'X');
+          if(p) *p = Speed > 0 ? '1' + Speed - 1 : ' ';
++#if VDRVERSNUM < 10307
+          OldFont = Interface->SetFont(fontFix);
++#endif
+ #ifdef HAVE_BEAUTYPATCH
+          }
+ #endif
++#if VDRVERSNUM >= 10307
++       display->SetMode(Play, Forward, Speed);
++#else
+        DisplayAtBottom(buf);
+        Interface->SetFont(OldFont);
++#endif
+        }
+     }
+ }
+diff -Nru mp3-0.9.0.orig/mp3.c mp3-0.9.0/mp3.c
+--- mp3-0.9.0.orig/mp3.c	2004-05-01 17:33:50.000000000 +0200
++++ mp3-0.9.0/mp3.c	2004-05-17 19:36:27.000000000 +0200
+@@ -26,6 +26,10 @@
+ #include <vdr/menuitems.h>
+ #include <vdr/status.h>
+ #include <vdr/plugin.h>
++#include <vdr/interface.h>
++#if VDRVERSNUM >= 10307
++#include <vdr/skins.h>
++#endif
+ 
+ #include "common.h"
+ #include "setup.h"
+@@ -120,6 +124,9 @@
+ private:
+   static cPlayList *plist;
+   cMP3Player *player;
++#if VDRVERSNUM >= 10307
++  cSkinDisplayReplay *display;
++#endif
+   bool visible, shown, bigwin;
+   time_t timeoutShow, greentime, oktime;
+   int lastkeytime, number;
+@@ -164,6 +171,9 @@
+   lastMode=0;
+   framesPerSecond=SecondsToFrames(1);
+   plist=0; // the player is responsible to delete playlist
++#if VDRVERSNUM >= 10307
++  display=NULL;
++#endif
+ }
+ 
+ cMP3Control::~cMP3Control()
+@@ -209,7 +219,11 @@
+ void cMP3Control::Hide(void)
+ {
+   if(visible) {
++#if VDRVERSNUM >= 10307
++    delete display;
++#else
+     Interface->Close();
++#endif
+     needsFastResponse=visible=bigwin=false;
+     }
+ }
+@@ -226,12 +240,16 @@
+   if(player->GetIndex(index,total) && total>=0) {
+     index/=framesPerSecond; total/=framesPerSecond;
+     if(!visible && open) {
++#if VDRVERSNUM >= 10307
++      display = Skins.Current()->DisplayReplay(false);
++#else
+       static int cols[] = { 5,0 };
+       Interface->Open(Setup.OSDwidth, bigWin?0:-2);
+       Interface->SetCols(cols);
++      Interface->Clear();
++#endif
+       bigwin=bigWin;
+       needsFastResponse=visible=true;
+-      Interface->Clear();
+       fliptime=listtime=0; flipint=0; flip=-1; top=lastTop=-1; lastIndex=lastTotal=-1;
+       delete lastMode; lastMode=0;
+       }
+@@ -254,6 +272,7 @@
+       bool changed=(!lastMode || mode->Num!=lastMode->Num);
+       bool flush=false;
+ 
++#if VDRVERSNUM < 10307 // TODO
+       if(!selecting && changed) {
+         char *buf=0;
+         asprintf(&buf,"(%d/%d)",mode->Num,mode->MaxNum);
+@@ -273,15 +292,24 @@
+         else Interface->Fill(-2,-1,2,1,clrBackground);
+         flush=true;
+         }
++#endif
+ 
+       if(index!=lastIndex || total!=lastTotal) {
+         if(total>0) {
++#if VDRVERSNUM >= 10307
++          display->SetProgress(index, total);
++#else
+           cProgressBar ProgressBar((Width()-CTAB-CTAB2)*cOsd::CellWidth(), cOsd::LineHeight(), index, total);
+           Interface->SetBitmap(CTAB*cOsd::CellWidth(), (abs(Height())-1)*cOsd::LineHeight(), ProgressBar);
++#endif
+           }
+         char *buf;
+         asprintf(&buf,total?"%02d:%02d/%02d:%02d":"%02d:%02d",index/60,index%60,total/60,total%60);
++#if VDRVERSNUM >= 10307
++        display->SetCurrent(buf);
++#else
+         Interface->Write(0,-1,buf);
++#endif
+         free(buf);
+         flush=true;
+         }
+@@ -328,6 +356,7 @@
+             }
+           }
+ 
++#if VDRVERSNUM < 10300 // TODO
+         if(bigwin && mode->PlayList) {
+           bool all=(top!=lastTop || changed);
+           if(all || time(0)>listtime+2) {
+@@ -358,9 +387,15 @@
+             listtime=time(0); lastTop=top;
+             }
+           }
++#endif
+         }
+ 
+-      if(flush) Interface->Flush();
++      if(flush) 
++#if VDRVERSNUM >= 10307
++        Skins.Flush();
++#else
++        Interface->Flush();
++#endif
+       }
+ 
+     lastIndex=index; lastTotal=total;
+@@ -370,8 +405,12 @@
+ 
+ void cMP3Control::DisplayInfo(const char *s)
+ {
++#if VDRVERSNUM >= 10307
++  display->SetTitle(s ? s : "");
++#else
+   Interface->Fill(CTAB,-2,Width()-CTAB,1,clrBackground);
+   if(s) Interface->Write(CTAB,-2,s);
++#endif
+ }
+ 
+ void cMP3Control::JumpDisplay(void)
+@@ -438,10 +477,13 @@
+ 
+     case kDown:    player->Backward(); break;
+ 
+-    case kLeft:    if(bigwin) {
++    case kLeft:    
++#if VDRVERSNUM < 10307 // TODO
++                   if(bigwin) {
+                      if(top>0) { top-=PL_ROWS; if(top<1) top=1; }
+                      break;
+                      }
++#endif
+                    // fall through
+     case kLeft|k_Repeat:
+                    if(bigwin) break;
+@@ -451,10 +493,13 @@
+                    if(!player->IsStream()) player->SkipSeconds(-JUMPSIZE);
+                    break;
+ 
+-    case kRight:   if(bigwin) {
++    case kRight:   
++#if VDRVERSNUM < 10307 // TODO
++                   if(bigwin) {
+                      if(top>0) top+=PL_ROWS;
+                      break;
+                      }
++#endif
+                    // fall through
+     case kRight|k_Repeat:
+                    if(bigwin) break;
+@@ -494,12 +539,14 @@
+                    if(lastMode && number>0 && number<=lastMode->MaxNum) {
+                      if(!visible) { ShowTimed(); selecthide=true; }
+                      selecting=true; lastkeytime=time_ms();
++#if VDRVERSNUM < 10307 // TODO
+                      char *buf=0;
+                      asprintf(&buf,"(%d-/%d)",number,lastMode->MaxNum);
+                      Interface->Fill(0,-2,CTAB,1,clrBackground);
+                      Interface->Write(0,-2,buf);
+                      Interface->Flush();
+                      free(buf);
++#endif
+                      break;
+                      }
+                    number=0; lastkeytime=0;
+@@ -593,7 +640,9 @@
+   char *buf=0;
+   asprintf(&buf,"%s:\t%s",name,text?text:"");
+   cOsdItem *item = new cOsdItem(buf,osBack);
++#if VDRVERSNUM < 10307
+   item->SetColor(clrWhite, clrBackground);
++#endif
+   free(buf);
+   Add(item); return item;
+ }
+@@ -756,8 +805,13 @@
+ {
+   cFileObj *item=cMenuInstantBrowse::GetSelected();
+   if(item) {
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtStatus, tr("Scanning directory..."));
++    Skins.Flush();
++#else
+     Interface->Status(tr("Scanning directory..."));
+     Interface->Flush();
++#endif  
+     cInstantPlayList *newpl=new cInstantPlayList(item);
+     if(newpl->Load()) {
+       if(newpl->Count()) {
+@@ -780,9 +834,19 @@
+           Refresh(); Display();
+           }
+         }
+-      else Interface->Error(tr("Empty directory!"));
++      else 
++#if VDRVERSNUM >= 10307
++        Skins.Message(mtError, tr("Empty directory!"));
++#else
++        Interface->Error(tr("Empty directory!"));
++#endif
+       }
+-    else Interface->Error(tr("Error scanning directory!"));
++    else 
++#if VDRVERSNUM >= 10307
++      Skins.Message(mtError, tr("Error scanning directory!"));
++#else
++      Interface->Error(tr("Error scanning directory!"));
++#endif
+     delete newpl;
+     }
+ }
+@@ -869,7 +933,9 @@
+   char *buf=NULL;
+   asprintf(&buf,"%s\t%s",tr("Old name:"),oldname);
+   cOsdItem *old = new cOsdItem(buf,osContinue);
++#if VDRVERSNUM < 10307
+   old->SetColor(clrWhite, clrBackground);
++#endif
+   Add(old);
+   free(buf);
+ 
+@@ -972,8 +1038,13 @@
+ void cMenuMP3::ScanLists(void)
+ {
+   Clear();
++#if VDRVERSNUM >= 10307
++  Skins.Message(mtStatus, tr("Scanning playlists..."));
++  Skins.Flush();
++#else
+   Interface->Status(tr("Scanning playlists..."));
+   Interface->Flush();
++#endif
+   if(lists->Load(MP3Sources.GetSource())) {
+     cPlayList *plist=lists->First();
+     while(plist) {
+@@ -981,7 +1052,12 @@
+       plist=lists->Next(plist);
+       }
+     }
+-  else Interface->Error(tr("Error scanning playlists!"));
++  else 
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtError, tr("Error scanning playlists!"));
++#else
++    Interface->Error(tr("Error scanning playlists!"));
++#endif
+ }
+ 
+ eOSState cMenuMP3::Delete(void)
+@@ -995,7 +1071,12 @@
+         cOsdMenu::Del(Current());
+         Display();
+         }
+-      else Interface->Error(tr("Error deleting playlist!"));
++      else 
++#if VDRVERSNUM >= 10307
++        Skins.Message(mtError, tr("Error deleting playlist!"));
++#else
++        Interface->Error(tr("Error deleting playlist!"));
++#endif
+       }
+     }
+   return osContinue;
+@@ -1018,7 +1099,11 @@
+     isyslog("MP3: playlist %s added", plist->Name());
+     return AddSubMenu(new cMenuPlayList(plist));
+     }
+-  Interface->Error(tr("Error creating playlist!"));
++#if VDRVERSNUM >= 10307
++  Skins.Message(mtError, tr("Error creating playlist!"));
++#else
++   Interface->Error(tr("Error creating playlist!"));
++#endif
+   delete plist;
+   return osContinue;
+ }
+@@ -1039,7 +1124,12 @@
+       RefreshCurrent();
+       DisplayCurrent(true);
+       }
+-    else Interface->Error(tr("Error renaming playlist!"));
++    else 
++#if VDRVERSNUM >= 10307
++      Skins.Message(mtError, tr("Error renaming playlist!"));
++#else
++      Interface->Error(tr("Error renaming playlist!"));
++#endif
+     }
+   return osContinue;
+ }
+@@ -1049,12 +1139,22 @@
+   if(HasSubMenu() || Count() == 0) return osContinue;
+ 
+   cPlayList *plist = ((cMenuMP3Item *)Get(Current()))->List();
+-  if(!plist->Load()) Interface->Error(tr("Error loading playlist!"));
++  if(!plist->Load()) 
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtError, tr("Error loading playlist!"));
++#else
++    Interface->Error(tr("Error loading playlist!"));
++#endif
+   else if(!plist->IsWinAmp()) {
+     isyslog("MP3: editing playlist %s", plist->Name());
+     return AddSubMenu(new cMenuPlayList(plist));
+     }
+-  else Interface->Error(tr("Can't edit a WinAmp playlist!"));
++  else 
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtError, tr("Can't edit a WinAmp playlist!"));
++#else
++    Interface->Error(tr("Can't edit a WinAmp playlist!"));
++#endif
+   return osContinue;
+ }
+ 
+@@ -1062,8 +1162,13 @@
+ {
+   if(HasSubMenu() || Count() == 0) return osContinue;
+ 
++#if VDRVERSNUM >= 10307
++  Skins.Message(mtStatus, tr("Loading playlist..."));
++  Skins.Flush();
++#else
+   Interface->Status(tr("Loading playlist..."));
+   Interface->Flush();
++#endif
+   cPlayList *newpl=new cPlayList(((cMenuMP3Item *)Get(Current()))->List());
+   if(newpl->Load() && newpl->Count()) {
+     isyslog("mp3: playback started with playlist %s", newpl->Name());
+@@ -1071,7 +1176,11 @@
+     return osEnd;
+     }
+   delete newpl;
++#if VDRVERSNUM >= 10307
++  Skins.Message(mtError, tr("Error loading playlist!"));
++#else
+   Interface->Error(tr("Error loading playlist!"));
++#endif
+   return osContinue;
+ }
+ 
+@@ -1104,8 +1213,13 @@
+   instanting=false;
+   cFileObj *item=cMenuInstantBrowse::GetSelected();
+   if(item) {
+-    Interface->Status(tr("Building playlist..."));
+-    Interface->Flush();
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtStatus, tr("Building playlist..."));
++    Skins.Flush();
++#else
++     Interface->Status(tr("Building playlist..."));
++     Interface->Flush();
++#endif
+     cInstantPlayList *newpl = new cInstantPlayList(item);
+     if(newpl->Load() && newpl->Count()) {
+       isyslog("mp3: playback started with instant playlist %s", newpl->Name());
+@@ -1113,7 +1227,11 @@
+       return osEnd;
+       }
+     delete newpl;
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtError, tr("Error building playlist!"));
++#else
+     Interface->Error(tr("Error building playlist!"));
++#endif
+     }
+   return osContinue;
+ }
+diff -Nru mp3-0.9.0.orig/player-mplayer.c mp3-0.9.0/player-mplayer.c
+--- mp3-0.9.0.orig/player-mplayer.c	2004-04-30 22:19:56.000000000 +0200
++++ mp3-0.9.0/player-mplayer.c	2004-05-17 19:39:32.000000000 +0200
+@@ -91,6 +91,13 @@
+ 
+ cMPlayerPlayer::~cMPlayerPlayer()
+ {
++  while(pid!=-1 || !waitpid(pid,0,WNOHANG)) {
++    kill(pid,SIGKILL); // kill it anyways
++    d(printf(" SIGKILL"));
++    usleep(250*1000);
++    d(printf("."));
++  }
++  
+   Detach();
+   ClosePipe();
+   free(filename);
+diff -Nru mp3-0.9.0.orig/stream.c mp3-0.9.0/stream.c
+--- mp3-0.9.0.orig/stream.c	2004-05-01 22:01:14.000000000 +0200
++++ mp3-0.9.0/stream.c	2004-05-17 19:31:11.000000000 +0200
+@@ -371,9 +371,14 @@
+ 
+   cc++;
+   if(cc==1 && Interface) {
++#if VDRVERSNUM >= 10307
++    Skins.Message(mtStatus, tr("Connecting to stream server ..."));
++    Skins.Flush();
++#else
+     Interface->Open(0,-1);
+     Interface->Status(tr("Connecting to stream server ..."));
+     Interface->Flush();
++#endif
+     }
+ 
+   if(net->Connect(MP3Setup.UseProxy ? MP3Setup.ProxyHost:host , MP3Setup.UseProxy ? MP3Setup.ProxyPort:port)) {
+@@ -382,7 +387,9 @@
+     }
+ 
+   if(cc==1 && Interface) {
++#if VDRVERSNUM < 10307
+     Interface->Close();
++#endif
+     }
+   cc--;
+   return res;
