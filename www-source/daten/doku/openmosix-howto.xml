@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/openmosix-howto.xml,v 1.3 2003/12/10 11:19:42 jay Exp $ -->
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/openmosix-howto.xml,v 1.4 2003/12/10 11:58:54 dertobi123 Exp $ -->
 <guide link="/doc/de/openmosix-howto.xml">
 
 <!-- English CVS Version: 1.4 -->
