@@ -5,11 +5,11 @@
 <title>Anleitung zur Gentoo Linux Desktop Konfiguration</title>
 <author title="Editor"><mail link="g2boojum@gentoo.org">Grant 
 Goodyear</mail></author>
-<author title="Übersetzter"><mail link="gentoo@naggelgames.de">Hendrik 
+<author title="&#252;bersetzter"><mail link="gentoo@naggelgames.de">Hendrik 
 Richter</mail></author>
 
 <abstract>
-Mit Hilfe dieser Anleitung können Sie Ihr Gentoo Linux zu einem vollwertigen 
+Mit Hilfe dieser Anleitung k&#246;nnen Sie Ihr Gentoo Linux zu einem vollwertigen 
 Desktop-System einrichten. Sie erfahren, wie man X, KDE, OSS und alsa (Sound), 
 postfix (E-Mail), cups (Drucken), und samba (Unix/Windows Dateiaustausch) 
 installiert und konfiguriert.
@@ -23,9 +23,9 @@ installiert und konfiguriert.
 <title>Voraussetzungen</title>
 <section>
 <body>
-<p>Eigendlich nicht nötig zu erwähnen: bevor Sie mit dieser Anleitung anfangen, 
-müssen Sie Gentoo Linux <uri link="build.html">installiert</uri> haben. Nach 
-Abschluss dieser recht amüsanten Prozedur brauchen Sie noch zusätzlich den 
+<p>Eigentlich nicht n&#246;tig zu erw&#228;hnen: bevor Sie mit dieser Anleitung anfangen, 
+m&#252;ssen Sie Gentoo Linux <uri link="build.html">installiert</uri> haben. Nach 
+Abschluss dieser recht am&#252;santen Prozedur brauchen Sie noch zus&#228;tzlich den 
 aktuellen <e>Portage</e> tree. Es ist wirklich empfehlenswert, den <uri 
 link="portage-user.html">Portage User Guide</uri> zu lesen, aber falls Sie 
 ungeduldig sind oder unter Zeitdruck stehen, schreiben Sie einfach:</p>
@@ -33,11 +33,11 @@ ungeduldig sind oder unter Zeitdruck stehen, schreiben Sie einfach:</p>
 <pre># <i>emerge rsync</i></pre>
 
 <p>
-Noch ein kurzer Hinweis zu den Paketen die ich hierfür ausgewählt habe. Gentoo 
+Noch ein kurzer Hinweis zu den Paketen die ich hierf&#252;r ausgew&#228;hlt habe. Gentoo 
 Linux hat eine riesige Menge an Window Managern, E-Mail-Programme, etc, die 
-einfach installiert werden können. Die Pakete, die ich ausgewählt habe sind 
-nicht besonders für Gentoo Linux gemacht, es sind einfach die Pakete, die der 
-Autor kennt und zu konfigurieren weiß. Mit anderen Worten, dies sind die Pakete 
+einfach installiert werden k&#246;nnen. Die Pakete, die ich ausgew&#228;hlt habe sind 
+nicht besonders f&#252;r Gentoo Linux gemacht, es sind einfach die Pakete, die der 
+Autor kennt und zu konfigurieren wei&#223;. Mit anderen Worten, dies sind die Pakete 
 des Desktops des Autors.
 </p>
 
@@ -54,12 +54,12 @@ des Desktops des Autors.
 <p>
 Nach der Installation von Gentoo Linux und dem updaten des Portage, ist mein 
 erster weiterer Schritt die Installation von X und KDE. X braucht ewig lange zum 
-kompilieren, und KDE sogar noch länger; daher empfehle ich wirklich, mit dem 
+kompilieren, und KDE sogar noch l&#228;nger; daher empfehle ich wirklich, mit dem 
 Vorgang kurz vorm Zubettgehen zu beginnen.
 </p>
 <p>
-Es ist immer nützlich, die <c>--pretend</c> flag vor einem <c>emerge</c> zu 
-benutzen, um eine Auflistung aller installierenden Abhängigkeiten zu erhalten, 
+Es ist immer n&#252;tzlich, die <c>--pretend</c> flag vor einem <c>emerge</c> zu 
+benutzen, um eine Auflistung aller installierenden Abh&#228;ngigkeiten zu erhalten, 
 was in unserem Fall eine recht lange Liste ist.</p>
 <pre>
 # <i>emerge --pretend kde-base/kde</i>
@@ -116,7 +116,7 @@ Calculating dependencies............... done!
 [ebuild N  ] kde-base/kdegraphics-2.2.2 to /
 [ebuild N  ] kde-base/kde-2.2.2-r1 to /
 
-<comment>Ihre Abhängigkeiten sehen möglicherweise etwas anders aus.</comment>
+<comment>Ihre Abh&#228;ngigkeiten sehen m&#246;glicherweise etwas anders aus.</comment>
 
 # <i>emerge kde-base/kde</i>
 </pre>
@@ -131,16 +131,16 @@ Ihre USE-Variablen in <path>/etc/make.conf</path> eintragen, bevor Sie
 kde-base/kdebase emergen.
 </note>
 <note>
-Sind Sie im Besitz eine Gentoo Linux Binary CD, so können Sie die Pakete direkt 
+Sind Sie im Besitz eine Gentoo Linux Binary CD, so k&#246;nnen Sie die Pakete direkt 
 von der CD installieren.
 </note>
-<pre caption="Die Binärpakete direkt von CD installieren">
+<pre caption="Die Bin&#228;rpakete direkt von CD installieren">
 # <c>export PKGDIR=/mnt/cdrom/gentoo/packages</c>
 <comment>Normalerweise erwartet Portage die Pakete in 
 /usr/portage/packages</comment>
 # <c>emerge --usepkg /mnt/cdrom/gentoo/packages/All/kdebase-x.y.z.tbz2</c>
-<comment>Die <c>--usepkg</c> flag stellt sicher, dass Binärpakete (falls 
-vormakes handen) für die Abhängigkeiten benutzt werden.</comment>
+<comment>Die <c>--usepkg</c> flag stellt sicher, dass Bin&#228;rpakete (falls 
+vormakes handen) f&#252;r die Abh&#228;ngigkeiten benutzt werden.</comment>
 </pre>
 </body>
 </section>
@@ -153,33 +153,33 @@ Um X zu konfigurieren, benutze ich das Konsolen-Tool <c>xf86config</c>, obwohl
 die erstellte <path>/etc/X11/XF86Config</path> nicht sehr elegant ist - siehe
 <uri
 link="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/3100FF4795B3F31F86256AF70056FDB3?OpenDocument">
-dieses Tutorial (englisch)</uri> für eine alternative und sogfältigere 
+dieses Tutorial (englisch)</uri> f&#252;r eine alternative und sorgf&#228;ltigere 
 Konfiguration.
-Bevor Sie anfangen, benötigen Sie die Horizontale und die Vertikale Frequenz 
+Bevor Sie anfangen, ben&#246;tigen Sie die Horizontale und die Vertikale Frequenz 
 (Refresh Rate) Ihres Monitors (mein Viewsonic G773 hat Horizontal: 30-69 KHz, 
 Vertikal: 55-90 KHz), den Type und den RAM (in KB) Ihrer Grafikkarte (meine 
 GeForce hat 32768 KB) sowie den Typ und Anschluss Ihrer Maus (bei mir eine 
 Intellimaus im PS/2 Port <path>/dev/psaux</path>).
 </p>
 <pre># <c>/usr/X11R6/bin/xf86config</c></pre>
-<p>Da ich eine Maus mit 3 Knöpfen habe, entscheide ich mich gegen die 
-3-Button-Emulation. Auf die zusätzlichen XKB-Keyboard-Options verzichte ich 
-ebenfalls, da ich nicht weiß, was sie bewirken.
-Später müssen Sie sich für eine Bildschirmauflösung und eine Farbtiefe 
+<p>Da ich eine Maus mit 3 Kn&#246;pfen habe, entscheide ich mich gegen die 
+3-Button-Emulation. Auf die zus&#228;tzlichen XKB-Keyboard-Options verzichte ich 
+ebenfalls, da ich nicht wei&#223;, was sie bewirken.
+Sp&#228;ter m&#252;ssen Sie sich f&#252;r eine Bildschirmaufl&#246;sung und eine Farbtiefe 
 entscheiden, die Ihnen liegt. Ich benutze 1280x1024 bei 24bpp auf meinem 
-Viewsonic, da er eine höhere Auflösung leider nicht unterstützt. Falls Sie noch 
+Viewsonic, da er eine h&#246;here Aufl&#246;sung leider nicht unterst&#252;tzt. Falls Sie noch 
 nie etwas vergleichbares getan haben, wundern Sie sich nicht, wenn Sie 
-<c>xf86config</c> noch mehrere Male aufrüfen müssen, bis Sie ein 
-zufriedenstellendes Ergebnis haben.</p>
+<c>xf86config</c> noch mehrere Male aufrufen m&#252;ssen, bis Sie ein 
+zufrieden stellendes Ergebnis haben.</p>
 
 <note>Wenn Sie nicht wissen, welche Refresh Rate Ihr Monitor hat, versuchen Sie 
 es mit einer <uri link="http://www.google.de">Google-Suche</uri> nach der 
 Modelnummer und dem Hersteller Ihres Monitors. Die Refresh Raten sind 
-normalerweise Teile der übrigen Monitor-Spezifikationen.</note>
+normalerweise Teile der &#252;brigen Monitor-Spezifikationen.</note>
 
 <p>Wenn Sie ein Veteran im Konfigurieren von X sind, sollte Ihnen die 
 Einrichtung eines symbolischen Linkes Ihrer Maus auf 
-<path>/dev/mouse</path> geläufig sein. Solche 'symlinks' sind bekannt für 
+<path>/dev/mouse</path> gel&#228;ufig sein. Solche 'symlinks' sind bekannt f&#252;r 
 Probleme mit devfs (dem <b>Dev</b>ice <b>F</b>ile<b>S</b>ystem), da sie dazu 
 neigten, nach einem Neustart zu verschwinden. Gentoo Linux behandelt symbolische 
 Links in <path>/dev</path> nun korrekt. Erstellen Sie den 
@@ -188,8 +188,8 @@ einem Neustart noch vorhanden sein.</p>
 
 <pre># <i>startx</i></pre>
 <p>Wenn Sie X richtig konfiguriert haben, sollte <c>startx</c> einen 
-überraschend hässlichen X Window Manager starten (twm, um genau zu sein). Wenn X 
-hochfährt, sind Sie gut dran. Drücken Sie
+&#252;berraschend h&#228;sslichen X Window Manager starten (twm, um genau zu sein). Wenn X 
+hochf&#228;hrt, sind Sie gut dran. Dr&#252;cken Sie
 <c>&lt;Strg&gt;&lt;Alt&gt;&lt;Backspace&gt;</c> um den X Server zu beenden.</p>
 
 <p>Sollte Ihre Maus ein Mausrad haben, dann sollten Sie die XF86Config-Datei von 
@@ -209,19 +209,19 @@ Section "InputDevice"
     <i>Option "ZAxisMapping"	"4 5"</i>
 
 </pre>
-<p>Da ich eine Intellimaus habe, änderte ich das "Protocol" von "PS/2" in 
-"IMPS/2". Um das Rad zum scrollen zu benutzen, müssen Sie die Zeile 'Option 
-"ZAxisMapping" "4 5"' hinzufügen. Hierbei steht '4' für Mausrad auf und '5' für 
+<p>Da ich eine Intellimaus habe, &#228;nderte ich das "Protocol" von "PS/2" in 
+"IMPS/2". Um das Rad zum scrollen zu benutzen, m&#252;ssen Sie die Zeile 'Option 
+"ZAxisMapping" "4 5"' hinzuf&#252;gen. Hierbei steht '4' f&#252;r Mausrad auf und '5' f&#252;r 
 Mausrad ab.</p>
-<note>Netscape 4.x benutzt das Mausrad normalerweise nicht, Sie müssen dafür 
+<note>Netscape 4.x benutzt das Mausrad normalerweise nicht, Sie m&#252;ssen daf&#252;r 
 eine .Xdefaults Datei erstellen; wie das geht, steht <uri 
 link="http://www-sop.inria.fr/koala/colas/mouse-wheel-scroll/">hier 
 (englisch)</uri>. Noch besser ist die Benutzung eines richtigen Browsers wie 
 <c>konqueror</c>, <c>opera</c>, <c>mozilla</c> oder <c>galeon</c>.</note>
-<p>Führen Sie <c>startx</c> noch einmal aus, um sicherzustellen, das X immernoch 
+<p>F&#252;hren Sie <c>startx</c> noch einmal aus, um sicherzustellen, das X immernoch 
 starten. Falls Sie eine nVidia-Grafikkarte haben, sollten Sie nun die nVidia 
 beschleunigten Treiber installieren.</p>
-<pre caption="Nur für Besitezr von nVidia-Karten">
+<pre caption="Nur f&#252;r Besitezr von nVidia-Karten">
 # <c>emerge media-video/nvidia-kernel media-video/nvidia-glx</c>
 # <c>nano -w /etc/X11/XF86Config</c>
 # <c>echo NVdriver >> /etc/modules.autoload</c>
@@ -230,7 +230,7 @@ beschleunigten Treiber installieren.</p>
 Section "Module"
 
 # This loads the GLX module
-#    Load       "glx" <comment>(Das # in dieser Zeile entfehrnen)</comment>
+#    Load       "glx" <comment>(Das # in dieser Zeile entfernen)</comment>
 </pre>
 <pre caption="Mithilfe der /etc/X11/XF86Config X anweisen, die nVidia-Treiber 
 zu benutzen">
@@ -247,19 +247,19 @@ startet (falls Sie die nVidia-Treiber installiert haben, sehen Sie vorher den
 nVidia Splash Screen).
 Davon ausgehen, dass es weiterhin funktioniert, beenden Sie X und wir starten 
 einen richtigen Window Manager an seiner Stelle. Hierbei geht mein Dank Achim,
-Danarmak and Verwilst, Gentoos Entwickler für die KDE-Pakete, die sich 
+Danarmak and Verwilst, Gentoos Entwickler f&#252;r die KDE-Pakete, die sich 
 automatisch und recht gut konfigurieren. Der KDM Display Manager sollte nach 
 seinem Starten erscheinen.</p>
 <pre># <i>kdm</i></pre>
-<p>Sie sollten sich nun einloggen und KDE in voller Pracht bestaunen können. 
-Natürlich arbeitet der Sound nocht nicht, aber dies werden wir in wenigen 
-Augenblicken beheben. Öffnen Sie eine Konsole und tippen Sie <c>ls /usr/bin</c> 
+<p>Sie sollten sich nun einloggen und KDE in voller Pracht bestaunen k&#246;nnen. 
+Nat&#252;rlich arbeitet der Sound noch nicht, aber dies werden wir in wenigen 
+Augenblicken beheben. &#246;ffnen Sie eine Konsole und tippen Sie <c>ls /usr/bin</c> 
 (oder etwas anderes, dass mehr Platz beansprucht als das Fenster der Konsole 
 bietet), und probieren Sie, ob Sie mit dem Mausrad hoch und runter scrollen 
-können. Es sollte problemlos funktionieren!</p>
+k&#246;nnen. Es sollte problemlos funktionieren!</p>
 
-<p>Das einzige was noch zu tun ist, ist für einen automatischen Start von X beim 
-Booten zu sorgen. Ändern Sie die <path>/etc/rc.conf</path> so um,
+<p>Das einzige was noch zu tun ist, ist f&#252;r einen automatischen Start von X beim 
+Booten zu sorgen. &#196;ndern Sie die <path>/etc/rc.conf</path> so um,
 dass <e>DISPLAYMANAGER="kdm"</e>.
 </p>
 <pre>
@@ -271,7 +271,7 @@ dass <e>DISPLAYMANAGER="kdm"</e>.
 DISPLAYMANAGER=kdm
 </pre>
 <p>
-Nun müssen wir nur noch sicherstellen, das <e>xdm</e> automatisch starten beim 
+Nun m&#252;ssen wir nur noch sicherstellen, das <e>xdm</e> automatisch starten beim 
 Booten.
 </p>
 <pre>
@@ -279,7 +279,7 @@ Booten.
 </pre>
 <p>Starten Sie den PC neu, und sehen Sie, ob X automatisch starten.</p>
 <impo>Der Befehl <c>rc-update</c> ist Gentoo Linux' verbesserte Version des 
-ehrwürdigen <c>chkconfig</c> Befehls zur Verwaltung der init-Scripte. Durch 
+ehrw&#252;rdigen <c>chkconfig</c> Befehls zur Verwaltung der init-Scripte. Durch 
 alleinigen Aufruf von <c>rc-update</c> erhalten Sie eine Liste seiner Optionen.
 </impo>
 
