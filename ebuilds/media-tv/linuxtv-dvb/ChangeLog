@@ -1,8 +1,12 @@
 # ChangeLog for media-video/linuxdvb
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/ChangeLog,v 1.1 2003/08/04 16:04:58 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/ChangeLog,v 1.2 2003/08/05 17:09:13 mad Exp $
 
 *linuxtv-dvb-1.0.0_pre3-r20030801 (04 Aug 2003)
+  04 Aug 2003; Martin Hierling <mad@cc.fh-lippe.de>
+  added stillimage prog and gentoo.mpg as splash screen
+  for vdr
+
   04 Aug 2003; Martin Hierling <mad@cc.fh-lippe.de>
   moved from media-video to media-tv
 

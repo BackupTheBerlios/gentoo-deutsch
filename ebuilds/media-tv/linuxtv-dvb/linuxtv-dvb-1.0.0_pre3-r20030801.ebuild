@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/linuxtv-dvb-1.0.0_pre3-r20030801.ebuild,v 1.1 2003/08/04 16:04:58 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/linuxtv-dvb-1.0.0_pre3-r20030801.ebuild,v 1.2 2003/08/05 17:09:13 mad Exp $
 
 IUSE=""
 
@@ -41,6 +41,8 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A} || die "unpack failed"
+	einfo patching stillimage
+	cat ${FILESDIR}/stillimage.patch | patch ${S}/apps/test/test_stillimage.c
 }
 
 src_compile() {
@@ -74,6 +76,8 @@ src_install() {
 			apps/av7110_loadkeys/*.rc5 \
 			apps/av7110_loadkeys/*.rcmm
 
+	newbin  apps/test/test_stillimage dvb_stillimage
+
 	# install scan
 	dobin   apps/scan/scan
 
@@ -102,6 +106,9 @@ src_install() {
 	newins  driver/modules.conf linuxtv-dvb
 	insinto /etc/devfs.d
 	newins  driver/devfsd.conf linuxtv-dvb
+
+	insinto /usr/share/linuxtv-dvb/splash
+	doins	${FILESDIR}/gentoo.mpg
 }
 
 pkg_postinst() {
