@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.24 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.1 2003/12/07 02:27:47 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.2 2003/12/08 22:55:48 jay Exp $ -->
 
 <sections>
 <section>
@@ -13,9 +13,9 @@
 <body>
 
 <p>
-Bevor wir starten sollten Sie eine Liste aller Hardware Anforderungen erstellen,
+Bevor wir loslegen, sollten Sie eine Liste aller Hardware Anforderungen erstellen,
 um Gentoo erfolgreich auf Ihrem System installieren zu können. Diese Liste hängt
-natürlich auch von ihrer Architektur ab.
+natürlich auch von Ihrer Architektur ab.
 </p>
 
 </body>
@@ -34,8 +34,8 @@ experimentellen Support für weitere drei. Die offiziellen Architekturen sind
 </p>
 
 <p>
-Wir gehen Mal davon aus, dass Sie ihre Architektur kennen. Kontrollieren Sie die
-folgenden Voraussetzungen bevor Sie mit der Installation fortfahren.
+Wir gehen einfach davon aus, dass Sie ihre Architektur kennen. Kontrollieren Sie die
+folgenden Voraussetzungen, bevor Sie mit der Installation fortfahren.
 </p>
 
 <ul>
@@ -74,14 +74,14 @@ folgenden Voraussetzungen bevor Sie mit der Installation fortfahren.
 <body>
 
 <p>
-Sind Sie immer noch interessiert Gentoo auszuprobieren? Gut, dann is es nun Zeit
+Sind Sie immer noch interessiert Gentoo auszuprobieren? Gut, dann ist es nun Zeit
 das Installationsmedium auszuwählen, welches Sie benutzen möchten. Ja, Sie haben
 die Wahl, sie sind nicht alle gleich, aber das Ergebnis ist immer dasselbe: Ein
 Gentoo Basis System.
 </p>
 
 <p>
-Wir werden folgenede Installationsmedien beschreiben:
+Wir werden nun folgende Installationsmedien beschreiben:
 </p>
 
 <ul>
@@ -92,7 +92,7 @@ Wir werden folgenede Installationsmedien beschreiben:
 
 <p>
 Jedes Medium hat seine Vor- und seine Nachteile. Wir werden alle Pro und Kontra
-auflisten, so dass Sie alle nötigen Informationen haben, um eine Entscheidung zu
+Gesichtspunkte auflisten, so dass Sie alle nötigen Informationen haben, um eine Entscheidung zu
 treffen. Doch bevor wir fortfahren, möchten wir Ihnen unsere 3 Stage
 Installation erklären.
 </p>
@@ -110,14 +110,14 @@ möchten. Das <e>Stage 1</e> Archiv wird benutzt, wenn Sie den bootstrap
 ausführen und das ganze System von Beginn an bauen möchten. Das <e>Stage 2</e>
 Archiv wird benutzt um das ganze System aus einem &quot;halb-kompilierten&quot;
 Status heraus zu bauen. Das <e>Stage 3</e> Archiv enthält bereits ein Gentoo
-Linux Basis System, das für sie gebaut wurde. Wie wir später erklären werden,
+Linux Basis System, das für Sie gebaut wurde. Wie wir später erklären werden,
 können Sie Gentoo auch installieren ohne etwas kompilieren zu müssen (ausser dem
 Kernel natürlich). Wenn Sie diesen Weg gehen möchten ist das <e>Stage 3</e>
 Archiv das richtige für Sie.
 </p>
 
 <p>
-Welches Stage Archiv sollen sie auswählen?
+Welches Stage Archiv sollen Sie auswählen?
 </p>
 
 <p>
@@ -137,13 +137,13 @@ Gentoo Linux erfahren möchten.
   <th>+</th>
   <ti>
     Erlaubt Ihnen die totale Kontrolle über die Optimierungseinstellungen und
-    optionale Funktionalitäten, die anfänglich auf Ihrem System aktiviert
+    optionale Funktionalitäten, die von Beginn an auf Ihrem System aktiviert
     werden.
   </ti>
 </tr>
 <tr>
   <th>+</th>
-  <ti>Geeignet für Benutzer, die wissen, was Sie tun</ti>
+  <ti>Geeignet für Benutzer, die wissen, was sie tun</ti>
 </tr>
 <tr>
   <th>+</th>
@@ -156,7 +156,7 @@ Gentoo Linux erfahren möchten.
 <tr>
   <th>-</th>
   <ti>
-    Wenn Sie nicht beabsichtigen Einstellungen zu verändern ist es vermutlich
+    Wenn Sie nicht beabsichtigen, die Einstellungen zu verändern, ist es vermutlich
     Zeitverschwendung
   </ti>
 </tr>
@@ -225,16 +225,16 @@ Geschwindigkeit und Stabilität wiederspiegeln).
 </tr>
 <tr>
   <th>-</th>
-  <ti>Sie können nicht damit angeben eine Stage 1 oder Stage 2 Installion zu haben</ti>
+  <ti>Sie können nicht damit angeben, eine Stage 1 oder Stage 2 Installiation zu haben</ti>
 </tr>
 </table>
 
 <p>
 Schreiben Sie sich auf (oder denken Sie daran) welches Stage Archiv sie
-gewählt haben. Sie brauchen das später, wenn Sie auswählen welche LiveCD
-(oder anderes Installationsmedium) Sie benutzen möchten. Es könnte interessant
-für Sie sein, dass Sie, wenn Sie nach der Installation beschliessen, andere
-Optimierungs Einstellungen zu benutzen, ihr komplettes System neu kompilieren
+gewählt haben. Sie brauchen dies später, wenn Sie auswählen möchten, welche 
+LiveCD (oder anderes Installationsmedium) Sie verwenden werden. In diesem Zusammenhang
+könnte es für Sie interessant sein, wenn Sie nach der Installation beschliessen, andere
+Optimierungs-Einstellungen zu benutzen, dass Sie Ihr gesamtes System jederzeit neu kompilieren
 können.
 </p>
 
@@ -262,16 +262,16 @@ Nun werfen wir einen Blick auf die verfügbaren Installationsmedien:
 <body>
 
 <p>
-Die <e>Gentoo LiveCDs</e> sind bootbare CDs, die eine eigene Gentoo Umgebung
+Die <e>Gentoo LiveCDs</e> sind bootfähige CDs, die eine eigene Gentoo Umgebung
 enthalten. Sie erlauben es Ihnen, Linux von der CD zu booten. Während des
 Bootvorgangs wird Ihre Hardware erkannt und die entsprechenden Treiber geladen.
-Sie sind von Gentoo Entwicklern betreut und für alle vollunterstützen
+Sie wird von den Gentoo Entwicklern betreut und ist für alle vollunterstützen
 Plattformen (x86, alpha, sparc, ppc, hppa) verfügbar. Ausserdem gibt es LiveCDs
 für einige andere Architekturen.
 </p>
 
 <p>
-Alle LiveCDs erlauben es Ihnen zu booten, das Netzwerk einzurichten, die
+Alle LiveCDs erlauben es Ihnen das System zu booten, das Netzwerk einzurichten, die
 Festplatte zu partitionieren und die Partitionen zu formatieren und eine Gentoo
 Installation über das Internet durchzuführen. Ausserdem enthalten einige LiveCDs
 alle benötigten Source Archive oder sogar vorkompilierte Pakete, die Ihnen eine
@@ -279,7 +279,7 @@ Gentoo Installation ohne Netzwerk ermöglichen.
 </p>
 
 <p>
-&quot;Was? Vorkompilierte Pakete?&quot; Ich hab sie Schreien gehört. Ja,
+&quot;Was? Vorkompilierte Pakete?&quot; Ich hab Sie schon schreien gehört. Ja,
 richtig, vorkompilierte Pakete. Da es bei Gentoo ja um die Auswahl geht, möchten
 wir Ihnen auch die Möglichkeit geben, Gentoo ganz schnell zu installieren. Die
 Kollektion vorkompilierter Pakete nennen wir <e>Gentoo Reference Platform</e>
@@ -341,7 +341,7 @@ Nun, was enthalten diese LiveCDs??
 <body>
 
 <p>
-Das ist eine kleine, bootbare CD, ohne jeglichen Schnickschnack, deren
+Das ist eine kleine, bootfähige CD, ohne jeglichen Schnickschnack, deren
 einziger Sinn es ist, ein Linux System zu starten, das Netzwerk einzurichten und
 mit der Gentoo Installation fortzufahren. Diese LiveCD beinhaltet keine
 Stage Archive (in einigen Situationen nur ein Stage 1 Archiv), Source Code oder
@@ -372,7 +372,7 @@ vorkompilierte Pakete.
   <th>-</th>
   <ti>
     Beinhaltet keine Stage Archive, keinen Portage Snapshot, keine GRP
-    Pakete und ist somit nicht für eine netzwerklose oder GRP Installation
+    Pakete und ist somit nicht für eine netzwerklose oder reine GRP Installation
     geeignet.
   </ti>
 </tr>
@@ -389,9 +389,9 @@ Die erste CD ist bootbar und enthält alle Stage Archive für eine spezifische
 Subarchitektur (wie zum Beispiel Athlon-XP, G4, und so weiter) zusammen mit
 Source Code und vorkompliierten Paketen. Die zweite CD beinhaltet nur
 vorkompilierte Pakete und kann nach der Gentoo Installation benutzt werden, um
-zusätzliche Pakete zu installieren. Um Gentoo zu installieren benötigen Sie nur
+zusätzliche Pakete zu installieren. Zur Installation von  Gentoo benötigen Sie nur
 die erste CD, aber wenn Sie OpenOffice.org, Mozilla, KDE, GNOME und einiges mehr
-installieren möchten, ohne jedes von davon kompilieren zu müssen, benötigen Sie
+installieren möchten, ohne jedes Paket davon kompilieren zu müssen, benötigen Sie
 auch die zweite CD.
 </p>
 
@@ -505,7 +505,7 @@ Distribution. Sie können den Rest dieses Kapitels überspringen und mit der
 Treffen Sie nun die Wahl des Installationsmedium und fahren Sie mit dem
 entsprechenden Abschnitt fort. Da dies ein Gentoo Handbuch ist, benutzen wir
 Gentoo LiveCDs, Sie finden dennoch die notwendigen Informationen über die
-Benutzung anderer Installationsmedien in alternativen Abschnitten.
+Benutzung anderer Installationsmedien in den alternativen Abschnitten.
 </p>
 
 <ul>
@@ -527,7 +527,7 @@ Benutzung anderer Installationsmedien in alternativen Abschnitten.
 <body>
 
 <p>
-Sie haben also entschieden, eine Gentoo LiveCD zu benutzen (wenn nicht sind Sie
+Sie haben also entschieden, eine Gentoo LiveCD zu benutzen (wenn nicht, sind Sie
 gerade im falschen Abschnitt). Zuerst werden wir nun die LiveCD herunterladen
 und brennen. Wir haben nun einige Worte über die zahlreichen LiveCDs verloren,
 vermutlich interessiert Sie nun auch wo Sie sie herbekommen können?
@@ -572,7 +572,7 @@ gehen Sie in den Pfad, in dem die LiveCD(s) Ihrer Wahl liegen. In dem
 Verzeichnis liegen sogenannte ISO-Dateien. Diese sind komplette CD Images, die
 Sie auf CD-R schreiben können. Wenn Sie verschiedene ISOs mit verschiedenen
 Datums-Tags finden (wie zum Beispiel <path>livecd-x86-cd1-20031029.iso</path>),
-nehmen Sie die aktuellste.
+nehmen Sie das aktuellste ISO.
 </p>
 
 <p>
@@ -757,8 +757,8 @@ erläutert die Kernel Optionen.
 <tr>
   <ti>cdcache</ti>
   <ti>
-    Speichert den kompletten Runtime Teil der CD im Arbeitsspeicher, so dass Sie
-    die CD unmounten und während der Installation eine weitere benutzen können.
+    Legt den kompletten Runtime Teil der CD im Arbeitsspeicher ab, so dass Sie
+    die CD unmounten und während der Installation eine weitere CD benutzen können.
   </ti>
 </tr>
 </table>
@@ -881,7 +881,7 @@ To terminate search, press and hold the ESCAPE key.
 
 <p>
 Wenn diese Nachricht erscheint drücken und halten Sie die Esc Taste solange, bis
-ein Options Menü erscheint. Dies kann eine Weile dauern, seien Sie geduldig. Per
+ein Options Menü erscheint. Dies kann eine Weile dauern, haben Sie bitte Geduld. Per
 Standard sollten Sie die BOOT_ADMIN Konsole betreten. Wenn Sie ein Options Menü
 erhalten, wählen Sie <c>Enter Boot Administration mode</c> um in die BOOT_ADMIN
 Konsole zu gelangen. Sie sollten nun einen '&gt;' Prompt haben.
@@ -1082,7 +1082,7 @@ Melden Sie sich als <c>root</c> an und drücken Sie Enter.
 
 <pre caption="Anmelden an der LiveCD">
 login: <i>root</i>
-password: <comment>(Press Enter here)</comment>
+password: <comment>(Hier Enter drücken)</comment>
 </pre>
 
 <p>
@@ -1122,7 +1122,7 @@ Hardware</uri> fort.
 <body>
 
 <p>
-Wenn Sie die LiveCD Starten versucht diese alle Ihre Hardware Geräte zu erkennen
+Wenn Sie die LiveCD starten, versucht diese alle Ihre Hardware Geräte zu erkennen
 und die entsprechende Kernel Module zu laden. In den allermeisten Fällen
 funktioniert dies wunderbar. Dennoch kann es in einzelnen Fällen passieren, dass
 nicht alle benötigten Module automatisch geladen werden. Wenn die PCI
@@ -1175,7 +1175,7 @@ nutzt.
 <body>
 
 <p>
-Wenn Sie planen anderen Menschen Zugriff auf Ihre Installation zu geben, müssen
+Wenn Sie planen, anderen Menschen Zugriff auf Ihre Installation zu geben, müssen
 Sie die notwendigen Benutzer Accounts anlegen und das root Passwort ändern.
 </p>
 
@@ -1199,8 +1199,8 @@ Benutzer &quot;john&quot;.
 <pre caption="Erstellen eines Benutzer Accounts">
 # <i>useradd john</i>
 # <i>passwd john</i>
-New password: <comment>(Enter john's password)</comment>
-Re-enter password: <comment>(Re-enter john's password)</comment>
+New password: <comment>(Hier Johns Passwort eingeben)</comment>
+Re-enter password: <comment>(Das Passwort wiederholen)</comment>
 </pre>
 
 </body>
@@ -1219,7 +1219,7 @@ Wenn Sie anderen Benutzern während der Installation Zugriff auf Ihren Rechner
 geben wollen (vielleicht weil diese Benutzer Sie bei der Installation
 unterstützen oder sie diese für Sie durchführen), müssen Sie einen Benutzer
 Account für sie erstellen oder Ihnen das root Passwort geben (machen Sie das
-<e>nur</e>, wenn Sie diesem Benutzer <e>Vertrauen</e>).
+<e>nur</e>, wenn Sie diesem Benutzer <e>vertrauen</e> können).
 </p>
 
 <p>
@@ -1299,7 +1299,7 @@ Re-enter password: <comment>(Re-enter the password)</comment>
 <p>
 Werden Sie nun mit <c>su</c> zu root und setzen Sie das Home-Verzeichnis des
 Benutzers root auf <path>/root</path>. Wenn Sie dies nicht tun, werden Sie
-während des emergen Fehler wie folgenden erhalten: &quot;/home/root:
+während des emergen Fehler, wie z.B. folgenden erhalten: &quot;/home/root:
 not found&quot;.
 </p>
 
@@ -1317,7 +1317,7 @@ Verlassen Sie die aktuelle Shell nun mit <c>exit</c> und werden Sie mit
 <pre caption="Laden der Änderungen">
 # <i>exit</i>
 $ <i>su -</i>
-Password: <comment>(Enter the root password)</comment>
+Password: <comment>(Eingabe des root Passwortes)</comment>
 </pre>
 
 </body>
