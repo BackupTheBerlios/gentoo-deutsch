@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-clock/vdrplugin-clock-0.0.4.ebuild,v 1.3 2003/09/24 18:12:08 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-clock/vdrplugin-clock-0.0.4.ebuild,v 1.4 2004/01/20 16:13:48 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="clock"
@@ -36,6 +36,7 @@ src_install() {
 	dodoc COPYING README HISTORY
 	cd ${D}/usr/lib/vdr/
 	ln -s libvdr-${VDRPLUGIN}.so.${PV} libvdr-${VDRPLUGIN}.so
+	rm -R ${WORKDIR}/../man
 }
 
 pkg_postinst() {
