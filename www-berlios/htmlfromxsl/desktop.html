@@ -1,0 +1,1155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<link title="new" rel="stylesheet" href="/css/main.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Documentation
+	
+-- 
+	Anleitung zur Gentoo Linux Desktop Konfiguration</title>
+</head>
+<body style="margin-left:0px;margin-top:0px;" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.xml"><img border="0" src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/gtop-s.jpg" alt="Gentoo Logo"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.xml"><img border="0" src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/gbot-s.gif" alt="Gentoo Logo Side"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" colspan="1" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Anleitung zur Gentoo Linux Desktop Konfiguration</p>
+<form>
+<b>Contents</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Voraussetzungen</option>
+<option value="#doc_chap2">2. X und KDE</option>
+<option value="#doc_chap3">3. Sound</option>
+<option value="#doc_chap4">4. Mail</option>
+<option value="#doc_chap5">5. Drucken</option>
+<option value="#doc_chap6">6. Samba</option>
+<option value="#doc_chap7">7. Apache und Squirrelmail Webmail</option>
+<option value="#doc_chap8">8. Personal Information Management</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Voraussetzungen</p>
+<p>Eigentlich nicht nötig zu erwähnen: bevor Sie mit dieser Anleitung anfangen, 
+müssen Sie Gentoo Linux <a href="build.html">installiert</a> haben. Nach 
+Abschluss dieser recht amüsanten Prozedur brauchen Sie noch zusätzlich den 
+aktuellen <font class="emphasis">Portage</font> tree. Es ist wirklich empfehlenswert, den <a href="portage-user.html">Portage User Guide</a> zu lesen, aber falls Sie 
+ungeduldig sind oder unter Zeitdruck stehen, schreiben Sie einfach:</p>
+
+<a name="doc_chap1_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 1.1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">emerge rsync</font></pre></td></tr>
+</table>
+
+<p>
+Noch ein kurzer Hinweis zu den Paketen die ich hierfür ausgewählt habe. Gentoo 
+Linux hat eine riesige Menge an Window Managern, E-Mail-Programme, etc, die 
+einfach installiert werden können. Die Pakete, die ich ausgewählt habe sind 
+nicht besonders für Gentoo Linux gemacht, es sind einfach die Pakete, die der 
+Autor kennt und zu konfigurieren weiß. Mit anderen Worten, dies sind die Pakete 
+des Desktops des Autors.
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>X und KDE</p>
+<p class="secthead"><a name="doc_chap2_sect1">Installation </a></p>
+<p>
+Nach der Installation von Gentoo Linux und dem updaten des Portage, ist mein 
+erster weiterer Schritt die Installation von X und KDE. X braucht ewig lange zum 
+kompilieren, und KDE sogar noch länger; daher empfehle ich wirklich, mit dem 
+Vorgang kurz vorm Zubettgehen zu beginnen.
+</p>
+<p>
+Es ist immer nützlich, die <font class="code">--pretend</font> flag vor einem <font class="code">emerge</font> zu 
+benutzen, um eine Auflistung aller installierenden Abhängigkeiten zu erhalten, 
+was in unserem Fall eine recht lange Liste ist.</p>
+<a name="doc_chap2_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge --pretend kde-base/kde</font>
+
+These are the packages that I would merge, in order.
+
+Calculating dependencies............... done!
+[ebuild N  ] x11-base/xfree-4.2.0-r5 to /
+[ebuild N  ] media-libs/lcms-1.06 to /
+[ebuild N  ] media-libs/jpeg-6b-r2 to /
+[ebuild N  ] media-libs/libmng-1.0.1 to /
+[ebuild N  ] media-libs/libpng-1.0.12 to /
+[ebuild N  ] x11-libs/qt-2.3.1 to /
+[ebuild N  ] dev-libs/libxml2-2.4.13 to /
+[ebuild N  ] dev-libs/libxslt-1.0.10 to /
+[ebuild N  ] dev-lang/tcl-8.3.3 to /
+[ebuild N  ] dev-lang/tk-8.3.3 to /
+[ebuild N  ] dev-lang/python-2.2-r4 to /
+[ebuild N  ] media-libs/tiff-3.5.7 to /
+[ebuild N  ] net-print/cups-1.1.13 to /
+[ebuild N  ] app-text/sgml-common-0.6.1 to /
+[ebuild N  ] net-nds/portmap-5b-r6 to /
+[ebuild N  ] app-admin/fam-oss-2.6.4-r1 to /
+[ebuild N  ] media-libs/audiofile-0.2.3 to /
+[ebuild N  ] media-sound/alsa-driver-0.5.12a to /
+[ebuild N  ] media-libs/alsa-lib-0.5.10b to /
+[ebuild N  ] kde-base/kdelibs-2.2.2-r2 to /
+[ebuild N  ] kde-base/kdegames-2.2.2 to /
+[ebuild N  ] kde-base/kdenetwork-2.2.2 to /
+[ebuild N  ] dev-libs/popt-1.5 to /
+[ebuild N  ] app-arch/rpm-3.0.6-r1 to /
+[ebuild N  ] kde-base/kdeadmin-2.2.2 to /
+[ebuild N  ] kde-base/kdeartwork-2.2.2 to /
+[ebuild N  ] dev-libs/pilot-link-0.9.6-r3 to /
+[ebuild N  ] kde-base/kdepim-2.2.2 to /
+[ebuild N  ] kde-base/kdetoys-2.2.2 to /
+[ebuild N  ] kde-base/kdeutils-2.2.2 to /
+[ebuild N  ] dev-lang/nasm-0.98-r3 to /
+[ebuild N  ] media-sound/esound-0.2.23 to /
+[ebuild N  ] media-libs/libsdl-1.2.3-r1 to /
+[ebuild N  ] x11-libs/gtk+-1.2.10-r4 to /
+[ebuild N  ] media-video/xanim-2.80.1-r1 to /
+[ebuild N  ] x11-libs/openmotif-2.1.30-r1 to /
+[ebuild N  ] media-libs/libogg-1.0_rc3 to /
+[ebuild N  ] media-libs/libvorbis-1.0_rc3 to /
+[ebuild N  ] media-sound/cdparanoia-3.9.8 to /
+[ebuild N  ] kde-base/kdemultimedia-2.2.2 to /
+[ebuild N  ] kde-base/kdebase-2.2.2-r2 to /
+[ebuild N  ] kde-base/kdeaddons-2.2.2-r1 to /
+[ebuild N  ] media-gfx/sane-backends-1.0.5-r1 to /
+[ebuild N  ] dev-util/dialog-0.7 to /
+[ebuild N  ] net-libs/libwww-5.3.2-r1 to /
+[ebuild N  ] app-text/tetex-1.0.7-r7 to /
+[ebuild N  ] kde-base/kdegraphics-2.2.2 to /
+[ebuild N  ] kde-base/kde-2.2.2-r1 to /
+
+<font class="comment">Ihre Abhängigkeiten sehen möglicherweise etwas anders aus.</font>
+
+# <font class="input">emerge kde-base/kde</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>
+Seit portage-1.8.7 kann der Befehl <font class="code">emerge</font> ohne Angabe der Kategorie 
+benutzt werden. Dadurch kann KDE mit einem einfachen <font class="code">emerge kde</font> 
+installiert werden.
+</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>
+Falls Sie vorhaben, CUPS zum Drucken zu benutzen, dann sollten sie &quot;cups&quot; in 
+Ihre USE-Variablen in <font class="path">/etc/make.conf</font> eintragen, bevor Sie 
+kde-base/kdebase emergen.
+</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>
+Sind Sie im Besitz eine Gentoo Linux Binary CD, so können Sie die Pakete direkt 
+von der CD installieren.
+</p></td></tr></table>
+<a name="doc_chap2_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.2: Die Binärpakete direkt von CD installieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">export PKGDIR=/mnt/cdrom/gentoo/packages</font>
+<font class="comment">Normalerweise erwartet Portage die Pakete in 
+/usr/portage/packages</font>
+# <font class="code">emerge --usepkg /mnt/cdrom/gentoo/packages/All/kdebase-x.y.z.tbz2</font>
+<font class="comment">Die <font class="code">--usepkg</font> flag stellt sicher, dass Binärpakete (falls 
+vorhanden) für die Abhängigkeiten benutzt werden.</font>
+</pre></td></tr>
+</table>
+<p class="secthead"><a name="doc_chap2_sect2">Konfiguration </a></p>
+<p>
+Um X zu konfigurieren, benutze ich das Konsolen-Tool <font class="code">xf86config</font>, obwohl 
+die erstellte <font class="path">/etc/X11/XF86Config</font> nicht sehr elegant ist - siehe
+<a href="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/3100FF4795B3F31F86256AF70056FDB3?OpenDocument">
+dieses Tutorial (englisch)</a> für eine alternative und sorgfältigere 
+Konfiguration.
+Bevor Sie anfangen, benötigen Sie die Horizontale und die Vertikale Frequenz 
+(Refresh Rate) Ihres Monitors (mein Viewsonic G773 hat Horizontal: 30-69 KHz, 
+Vertikal: 55-90 KHz), den Type und den RAM (in KB) Ihrer Grafikkarte (meine 
+GeForce hat 32768 KB) sowie den Typ und Anschluss Ihrer Maus (bei mir eine 
+Intellimaus im PS/2 Port <font class="path">/dev/psaux</font>).
+</p>
+<a name="doc_chap2_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="code">/usr/X11R6/bin/xf86config</font></pre></td></tr>
+</table>
+<p>Da ich eine Maus mit 3 Knöpfen habe, entscheide ich mich gegen die 
+3-Button-Emulation. Auf die zusätzlichen XKB-Keyboard-Options verzichte ich 
+ebenfalls, da ich nicht weiß, was sie bewirken.
+Später müssen Sie sich für eine Bildschirmauflösung und eine Farbtiefe 
+entscheiden, die Ihnen liegt. Ich benutze 1280x1024 bei 24bpp auf meinem 
+Viewsonic, da er eine höhere Auflösung leider nicht unterstützt. Falls Sie noch 
+nie etwas vergleichbares getan haben, wundern Sie sich nicht, wenn Sie 
+<font class="code">xf86config</font> noch mehrere Male aufrufen müssen, bis Sie ein 
+zufrieden stellendes Ergebnis haben.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Wenn Sie nicht wissen, welche Refresh Rate Ihr Monitor hat, versuchen Sie 
+es mit einer <a href="http://www.google.de">Google-Suche</a> nach der 
+Modelnummer und dem Hersteller Ihres Monitors. Die Refresh Raten sind 
+normalerweise Teile der übrigen Monitor-Spezifikationen.</p></td></tr></table>
+
+<p>Wenn Sie ein Veteran im Konfigurieren von X sind, sollte Ihnen die 
+Einrichtung eines symbolischen Linkes Ihrer Maus auf 
+<font class="path">/dev/mouse</font> geläufig sein. Solche 'symlinks' sind bekannt für 
+Probleme mit devfs (dem <b>Dev</b>ice <b>F</b>ile<b>S</b>ystem), da sie dazu 
+neigten, nach einem Neustart zu verschwinden. Gentoo Linux behandelt symbolische 
+Links in <font class="path">/dev</font> nun korrekt. Erstellen Sie den 
+<font class="path">/dev/mouse</font> symlink mit <font class="code">ln -s</font> und er <font class="emphasis">wird</font> auch nach 
+einem Neustart noch vorhanden sein.</p>
+
+<a name="doc_chap2_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">startx</font></pre></td></tr>
+</table>
+<p>Wenn Sie X richtig konfiguriert haben, sollte <font class="code">startx</font> einen 
+überraschend hässlichen X Window Manager starten (twm, um genau zu sein). Wenn X 
+hochfährt, sind Sie gut dran. Drücken Sie
+<font class="code">&lt;Strg&gt;&lt;Alt&gt;&lt;Backspace&gt;</font> um den X Server zu beenden.</p>
+
+<p>Sollte Ihre Maus ein Mausrad haben, dann sollten Sie die XF86Config-Datei von 
+hand editieren:</p>
+<a name="doc_chap2_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cp /etc/X11/XF86Config /etc/X11/XF86Config.working</font>
+# <font class="input">nano -w /etc/X11/XF86Config</font></pre></td></tr>
+</table>
+<a name="doc_chap2_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.6: Der Abschnitt Pointer in XF86Config</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Section &quot;InputDevice&quot;
+
+# Identifier and driver
+
+    Identifier	&quot;Mouse1&quot;
+    Driver	&quot;mouse&quot;
+    <font class="input">Option &quot;Protocol&quot;    &quot;IMPS/2&quot; </font>
+    Option &quot;Device&quot;      &quot;/dev/psaux&quot;
+    <font class="input">Option &quot;ZAxisMapping&quot;	&quot;4 5&quot;</font>
+
+</pre></td></tr>
+</table>
+<p>Da ich eine Intellimaus habe, änderte ich das &quot;Protocol&quot; von &quot;PS/2&quot; in 
+&quot;IMPS/2&quot;. Um das Rad zum scrollen zu benutzen, müssen Sie die Zeile 'Option 
+&quot;ZAxisMapping&quot; &quot;4 5&quot;' hinzufügen. Hierbei steht '4' für Mausrad auf und '5' für 
+Mausrad ab.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Netscape 4.x benutzt das Mausrad normalerweise nicht, Sie müssen dafür 
+eine .Xdefaults Datei erstellen; wie das geht, steht <a href="http://www-sop.inria.fr/koala/colas/mouse-wheel-scroll/">hier 
+(englisch)</a>. Noch besser ist die Benutzung eines richtigen Browsers wie 
+<font class="code">konqueror</font>, <font class="code">opera</font>, <font class="code">mozilla</font> oder <font class="code">galeon</font>.</p></td></tr></table>
+<p>Führen Sie <font class="code">startx</font> noch einmal aus, um sicherzustellen, das X immernoch 
+starten. Falls Sie eine nVidia-Grafikkarte haben, sollten Sie nun die nVidia 
+beschleunigten Treiber installieren.</p>
+<a name="doc_chap2_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.7: Nur für Besitezr von nVidia-Karten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">emerge media-video/nvidia-kernel media-video/nvidia-glx</font>
+# <font class="code">nano -w /etc/X11/XF86Config</font>
+# <font class="code">echo NVdriver &gt;&gt; /etc/modules.autoload</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap2_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.8: GLX in /etc/X11/XF86Config einschalten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Section &quot;Module&quot;
+
+# This loads the GLX module
+#    Load       &quot;glx&quot; <font class="comment">(Das # in dieser Zeile entfernen)</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap2_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.9: Mithilfe der /etc/X11/XF86Config X anweisen, die nVidia-Treiber  zu benutzen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Section &quot;Device&quot;
+    Identifier  &quot;NVIDIA GeForce&quot;
+    #Driver      &quot;nv&quot;
+    Driver      &quot;nvidia&quot;
+    #VideoRam    32768
+    # Insert Clocks lines here if appropriate
+EndSection
+</pre></td></tr>
+</table>
+<p>Starten Sie nun nocheinmal <font class="code">startx</font> um sicherzustellen, das X immernoch 
+startet (falls Sie die nVidia-Treiber installiert haben, sehen Sie vorher den 
+nVidia Splash Screen).
+Davon ausgehen, dass es weiterhin funktioniert, beenden Sie X und wir starten 
+einen richtigen Window Manager an seiner Stelle. Hierbei geht mein Dank Achim,
+Danarmak and Verwilst, Gentoos Entwickler für die KDE-Pakete, die sich 
+automatisch und recht gut konfigurieren. Der KDM Display Manager sollte nach 
+seinem Starten erscheinen.</p>
+<a name="doc_chap2_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.10</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">kdm</font></pre></td></tr>
+</table>
+<p>Sie sollten sich nun einloggen und KDE in voller Pracht bestaunen können. 
+Natürlich arbeitet der Sound noch nicht, aber dies werden wir in wenigen 
+Augenblicken beheben. öffnen Sie eine Konsole und tippen Sie <font class="code">ls /usr/bin</font> 
+(oder etwas anderes, dass mehr Platz beansprucht als das Fenster der Konsole 
+bietet), und probieren Sie, ob Sie mit dem Mausrad hoch und runter scrollen 
+können. Es sollte problemlos funktionieren!</p>
+
+<p>Das einzige was noch zu tun ist, ist für einen automatischen Start von X beim 
+Booten zu sorgen. Ändern Sie die <font class="path">/etc/rc.conf</font> so um,
+dass <font class="emphasis">DISPLAYMANAGER=&quot;kdm&quot;</font>.
+</p>
+<a name="doc_chap2_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.11</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/rc.conf</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap2_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.12: /etc/rc.conf -- Abschnitt DISPLAYMANAGER</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# What display manager do you use ?  [ xdm | gdm | kdm ]
+
+DISPLAYMANAGER=kdm
+</pre></td></tr>
+</table>
+<p>
+Nun müssen wir nur noch sicherstellen, dass <font class="emphasis">xdm</font> automatisch startet beim 
+Booten.
+</p>
+<a name="doc_chap2_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2.13</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">rc-update add xdm default</font>
+</pre></td></tr>
+</table>
+<p>Starten Sie den PC neu, und sehen Sie, ob X automatisch starten.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Der Befehl <font class="code">rc-update</font> ist Gentoo Linux' verbesserte Version des 
+ehrwürdigen <font class="code">chkconfig</font> Befehls zur Verwaltung der init-Scripte. Durch 
+alleinigen Aufruf von <font class="code">rc-update</font> erhalten Sie eine Liste seiner Optionen.
+</p></td></tr></table>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Sound</p>
+<p class="secthead"><a name="doc_chap3_sect1">Alsa </a></p>
+
+<p>Gentoo Linux unterstütz Alsa für den Sound mit Hilfe des Standartkernels. Alsa kann sowohl mit als auch ohne <font class="emphasis">devfs</font> benutzt werden. Jedoch ein Hinweis: Wenn Sie ein neues <font class="path">sys-kernel/linux-sources</font>-Paket installiert haben, sollten Sie sicherstellen, dass in Ihrem Kernel &quot;sound support&quot; aktiviert ist.</p>
+
+<a name="doc_chap3_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge media-sound/alsa-driver</font>
+</pre></td></tr>
+</table>
+<p>
+Ich gehe nun davon aus, dass <font class="emphasis">devfs</font> aktiviert ist; falls nicht, lesen Sie bitte die <a href="http://www.gentoo.org/doc/faq.html">Gentoo FAQ</a>.
+</p>
+<p>Nun stellen wie die <font class="emphasis">kerneld</font>-Aliase ein.</p>
+<a name="doc_chap3_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/modules.d/alsa</font>
+# <font class="input">update-modules</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap3_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.3: Am Anfang von /etc/modules.d/alsa</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+##
+## IMPORTANT:
+## You need to customise this section for your specific sound card(s)
+## and then run `update-modules' command.
+## Read alsa-driver's INSTALL file in /usr/share/doc for more info.
+##
+##  ALSA portion
+<font class="input">alias snd-card-0 snd-emu10k1</font>
+<font class="input">alias snd-card-1 snd-emu10k1</font>
+<font class="input">alias snd-card-2 snd-emu10k1</font>
+<font class="input">alias snd-card-3 snd-emu10k1</font>
+<font class="input">alias snd-card-4 snd-emu10k1</font>
+<font class="input">alias snd-card-5 snd-emu10k1</font>
+<font class="input">alias snd-card-6 snd-emu10k1</font>
+<font class="input">alias snd-card-7 snd-emu10k1</font>
+</pre></td></tr>
+</table>
+<p>
+<font class="emphasis">snd-card-emu10k1</font> ersetzen Sie bitte mit Ihrer Soundkarte.
+</p>
+<p>Sie sollten ausserdem überprüfen, ob in <font class="path">/etc/devfsd.conf</font> die Alsa-Geräte sowie -Rechte korrekt registriert sind.</p>
+<a name="doc_chap3_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/devfsd.conf</font>
+# <font class="input">rc-update add alsasound boot</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap3_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.5: In der Mitte von devfsd.conf mit 'Alsa/OSS stuff'</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# ALSA/OSS stuff
+# Comment/change these if you want to change the permissions on
+# the audio devices
+LOOKUP          snd          MODLOAD ACTION snd
+LOOKUP          dsp          MODLOAD
+LOOKUP          mixer        MODLOAD
+LOOKUP          midi         MODLOAD
+REGISTER        sound/.*     PERMISSIONS root.audio 660
+REGISTER        snd/.*       PERMISSIONS root.audio 660
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Beachten Sie bitte, dass devfsd.conf die Rechte für <font class="path">/dev/sound</font> auf <font class="code">root.audio</font> setzt. Daher müssen nicht-root-Benutzer in der Gruppe <font class="code">audio</font> sein, um Sound zu haben.
+</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warning: </b>Das alsasound-Script sollte dem &quot;boot&quot;-Runlevel hinzugefügt werden, nicht dem &quot;default&quot;-runlevel.</p></td></tr></table>
+<p>
+An diesem Punkt ist es am einfachsten, einen Neustart auszufüren. Jedoch werden Sie auch danach noch keinen Ton hören, Alsa schaltet von Haus aus alle Kanäle stumm.
+</p>
+<a name="doc_chap3_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge media-sound/alsa-utils</font>
+# <font class="input">amixer</font>
+
+Group 'Input Gain',0
+  Capabilities: volume mute jointly-mute
+  Channels: Front-Left Front-Right
+  Limits: min = 0, max = 15
+  Front-Left: 11 [73%] [mute] [---]
+  Front-Right: 11 [73%] [mute] [---]
+Group 'Master Mono',0
+  Capabilities: volume mute capture exclusive-capture
+  Capture exclusive group: 1
+  Channels: Front-Left Front-Right
+  Limits: min = 0, max = 31
+  Front-Left: 23 [74%] [mute] [---]
+  Front-Right: 23 [74%] [mute] [---]
+Group 'Headphone',0
+  Capabilities: volume mute jointly-mute
+  Channels: Front-Left Front-Right
+  Limits: min = 0, max = 31
+  Front-Left: 0 [0%] [mute] [---]
+  Front-Right: 0 [0%] [mute] [---]
+Group 'Master',0
+  Capabilities: volume mute jointly-mute capture exclusive-capture
+  Capture exclusive group: 1
+  Channels: Front-Left Front-Right
+  Limits: min = 0, max = 63
+  Front-Left: 50 [79%] [mute] [---]
+  Front-Right: 50 [79%] [mute] [---]
+<font class="comment">[chopped for brevity]</font>
+
+# <font class="input">amixer set Master 100 unmute</font>
+# <font class="input">amixer set PCM 100 unmute</font>
+# <font class="input">aplay /usr/kde/3/share/sounds/pop.wav</font> <font class="comment">(pop.wav is part of 
+KDE)</font>
+</pre></td></tr>
+</table>
+<p>
+Nach der Installation der &quot;alsa utilities&quot; benutzen wir <font class="code">amixer</font> um die Master- und PCM-Soundkanäle auf eine Lautstärke von 100% zu stellen. Ausserdem überprüfen wir mit Hilfe von <font class="code">aplay</font> (alsa play), ob die Soundausgabe funktioniert. Wenn Sie einen &quot;pop&quot; hören, funktioniert Ihre Soundunterstützung. Danach sollten Sie die Lautstärke Ihrem Geschmack anpassen, was mit Hilfe des ncurses-basiertem <font class="code">alsamixer</font> sehr gut funktioniert.
+</p>
+<p>
+Sobald Sie Ihr System neu starten, speichert das <font class="emphasis">alsasound</font> Init-Script Ihre Einstellungen und stellt sie später wieder her.
+</p>
+<p class="secthead"><a name="doc_chap3_sect2">Standard Kernel Sound-Module </a></p>
+<p>Um Standard Kernel Sound zu benutzen, müssen Sie Ihren Kernel neu kompillieren, soforn Sie Ihr Sound-Modul nicht bei der Gentoo-Installation einkompilliert haben.
+Falls Sie den Soundtreiber als ein Modul kompillieren (anstatt direkt in den Kernel), dann müssen Sie den Modulnamen (ohne die .o Extension) in <font class="path">/etc/modules.autoload</font> eintragen. Wenn Sie das Sound-Modul in den Kernel kompilliert haben, starten Sie Ihren Rechner neu; wenn Sie das Modul als Modul benutzen, reicht auch ein <font class="code">modprobe drivername</font> aus.
+Mit etwas Glück ist nun der richtige Sound-Treiber geladen, um Sound zu haben, sind jedoch noch einige weitere Schritte erforderlich.
+</p>
+<a name="doc_chap3_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.7: non-devfs users only</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cd /dev</font>
+# <font class="input">/usr/sbin/MAKEDEV audio</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap3_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cat /usr/kde/2/share/sounds/pop.wav &gt; /dev/dsp</font>
+# <font class="input">emerge media-sound/sox</font>
+# <font class="input">play /usr/kde/2/share/sounds/pop.wav</font>
+</pre></td></tr>
+</table>
+<p>
+Wenn Sie nach dem &quot;cat'ten&quot; der .wav-Datei zu <font class="path">/dev/dsp</font> etwas hören, dann sollte Ihre Sound funktionieren. Durch das emergen von sox kann der Befehl <font class="code">play</font> zum Abspielen von .wav-Dateien benutzt werden, wodurch sich die .wav-Dateien (anders als beim Benutzen des cat-Befehls) sogar gut anhören. 
+</p>
+
+<p class="secthead"><a name="doc_chap3_sect3">Sound und KDE </a></p>
+<p>
+KDE hat einige nette Sound-Hilfsmittel, unter Anderem den KDE-Sound-Mixer <font class="code">kmix</font>.
+</p>
+<a name="doc_chap3_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.9</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge --search kdemultimedia</font>
+[ Results for search key : kdemultimedia ]
+[ Applications found : 1 ]
+
+*   kde-base/kdemultimedia
+      Latest version Available:  2.2.2
+      Latest version Installed:  2.2.2
+      Description:  ${DESCRIPTION}Multimedia
+# <font class="input">kmix</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Sollte kmix keinen Mixer finden, dann denkt es eventuell, dass Sie keine Soundunterstützung haben. Loggen Sie sich aus und entfernen Sie <font class="path">~/.kde/share/config/kmixrc</font> und <font class="path">~/.kde/share/config/kmix:*</font>, danach loggen Sie sich wieder ein. Danach sollte der Sound-Mixer richtig funktionieren.</p></td></tr></table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap4">4.</a></font>Mail</p>
+<p class="secthead"><a name="doc_chap4_sect1">Postfix -- Installation und Konfiguration </a></p>
+<p>
+Mir persönlich gefällt das <font class="code">postfix</font> Mail-System am besten, da es <font class="code">sendmail</font> (ohne den Albtraum seiner Konfiguration) emuliert. Wo wir schon dabei sind, installieren wir auch gleich den Mail-Client <font class="code">mutt</font>, sodass wir unsere <font class="code">postfix</font>-Konfiguration überprüfen können.</p>
+<a name="doc_chap4_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge --pretend net-mail/postfix net-mail/mutt</font>
+
+These are the packages that I would merge, in order.
+ 
+Calculating dependencies... done!
+[ebuild N  ] dev-libs/libpcre-3.4-r1 to /
+[ebuild N  ] net-mail/mailbase-0.00-r1 to /
+[ebuild N  ] net-mail/postfix-20010228.2 to /
+[ebuild N  ] net-mail/mutt-1.3.22.1 to /
+
+# <font class="input">emerge net-mail/postfix net-mail/mutt</font>
+</pre></td></tr>
+</table>
+<p>
+Falls Sie Ihren Mail-Server ausschließlich zum Versenden von Mails benutzen möchten, dann ist postfix bereit richtig konfiguriert für Sie. Andernfalls sollten Sie die Datei <font class="path">/etc/postfix/main.cf</font> editieren. Die <font class="path">main.cf</font> ist gut kommentiert und biete gute Standartwerte für einen Standalone-Rechner. Wenn Ihr Rechner direkt mit dem Internet verbunden ist (z.B. mit einer nicht-privaten IP-Adresse und DNS-Namen), dann gibt es nur eine Änderung, die Sie durchführen sollten: das Aktivieren des Mailempfangs mit postfix.
+
+</p>
+<a name="doc_chap4_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.2: Mailempfang in main.cf einschalten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# RECEIVING MAIL
+
+# The inet_interfaces parameter specifies the network interface
+# addresses that this mail system receives mail on.  By default,
+# the software claims all active interfaces on the machine. The
+# parameter also controls delivery of mail to user@[ip.address].
+#
+#inet_interfaces = all
+#inet_interfaces = $myhostname
+#inet_interfaces = $myhostname, localhost
+<font class="input">inet_interfaces = $myhostname, localhost</font>
+<font class="input">mydestination = $myhostname, localhost.$mydomain</font>
+</pre></td></tr>
+</table>
+
+
+<p class="secthead"><a name="doc_chap4_sect2">Postfix-Test (mitt Mutt) </a></p>
+<p>
+Schau'n wir mal, ob's funktioniert.
+</p>
+<a name="doc_chap4_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">postfix check</font>
+
+# <font class="input">newaliases</font>
+# <font class="input">postfix start</font>
+postfix-script: starting the Postfix mail system
+# <font class="input">mutt -x root</font>
+/root/.maildir does not exist. Create it? ([y]/n): <font class="comment">[y eingeben]</font>
+To:  &lt;root&gt;
+Subject: test
+(End message with a . on a line by itself)
+test
+.
+
+# <font class="input">mutt</font>
+<font class="comment">[Hier sollten Sie Ihre Nachricht sehen]</font>
+</pre></td></tr>
+</table>
+<p>
+Mit <font class="code">postfix check</font> stellen wir sicher, dass in <font class="path">main.cf</font> keine Fehler sind und einige wichtige Verzeichnisse erstellt werden. <font class="code">newaliases</font> stellt die Mail-Aliase des Systems ein, und <font class="code">postfix start</font> startet den Mailer.
+Danach benutze ich <font class="code">mutt</font> (im <font class="code">mailx</font>- oder altmodischem <font class="code">mail</font>-Modus) um eine Nachricht an mich selber (auf dem lokalen Rechner) zu schicken. Dabei erstellt <font class="code">mutt</font> das Mail-Verzeichnis <font class="path">~/.maildir</font> des Benutzers (in diesem Fall root). <font class="code">mutt</font> im völlig interaktiven Modus zeigte mir dann meine Nachricht, es funktioniert also schonmal wenigstens der lokale Mailversand und -empfang. Danach verschickt ich eine Mail an eine meiner nicht-lokalen Adressen (nicht gezeigt) und überprüfte, ob sie dort ankam, was sie tat.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warning: </b>Wenn Sie eine Mails mit den Standarteinstellungen der <font class="path">main.cf</font> verschicken, dann wird diese vielleicht niemals ankommen. Viele Mailserver lehnen automatisch Mails ab, deren Ursprungsserver nicht mit reverse-DNS festgestellt werden kann.
+</p></td></tr></table>
+<p>
+Davon ausgehend, dass nun alles funktioniert, sorgen wir nun dafür, dass postfix beim Booten automatisch startet.
+</p>
+<a name="doc_chap4_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">postfix stop</font>
+postfix-script: starting the Postfix mail system
+# <font class="input">rc-update add postfix default</font>
+ * postfix added to runlevel default...
+ * Caching service dependencies...          [ ok ] 
+ * rc-update complete.
+# <font class="input">/etc/init.d/postfix start</font>
+Starting postfix......     [  ok  ]
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b><font class="code">sendmail</font>- und <font class="code">postfix</font>-Veteranen sollten es gewohnt sein, dass Mails in <font class="path">/var/spool/mail</font> anstatt im Home-Verzeichnis sowie im <font class="emphasis">mbox</font>- anstatt dem <font class="emphasis">maildir</font>-Format gespeichert werden. Trotzdem ist es nicht wirklich kompliziert, <font class="code">postfix</font> und <font class="code">mutt</font> entsprechend zu konfigurieren. Editieren Sie die <font class="path">/etc/postfix/main.cf</font> und entkommentieren Sie <font class="input">home_mailbox</font> und <font class="input">mail_spool_directory = /var/spool/mail</font>. Das mail spool-Verzeichnis erstellen Sie mit <font class="code">mkdir -p /var/spool/mail</font>, danach starten Sie <font class="code">postfix</font> neu. Danach müssen Sie noch Ihr Mailprogramm anpassen, für <font class="code">mutt</font> müssen Sie nur die Datei <font class="path">/etc/mutt/Muttrc</font> ändern, sodass <font class="emphasis">mbox</font> mit <font class="input">set mbox_type = mbox</font> benutzt wird und das <font class="path">/var/spool/mail</font>-Verzeichnis mit <font class="input">set spoolfile=/var/spool/mail</font> gesetzt wird.</p></td></tr></table>
+<p>
+Wenn Sie einen GUI Mailclient vorziehen, installieren wir später den webbasierten Mailserver Squirrelmail. Alternativ empfiehlt Daniel Robbins stärkstenst eine Kombination aus IMAP (welches wir später für Squirrelmail installieren) und dem KDE-Programm <font class="code">kmail</font>. Das Programm kmail ist im Paket <font class="path">kde-base/kdenetwork</font>:
+</p>
+<a name="doc_chap4_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ # <font class="input">emerge --search kdenetwork</font>
+[ Results for search key : kdenetwork ]
+[ Applications found : 1 ]
+
+*  kde-base/kdenetwork
+      Latest version Available:  2.2.2
+      Latest version Installed:  2.2.2
+      Description:  ${DESCRIPTION}Network
+</pre></td></tr>
+</table>
+<p>
+Nachher installieren wir noch Ximians <font class="emphasis">Evolution</font> als unsere PIM-Software (Personal Information Management), inklusive PalmPilot-Support. Auch mit diesem Programm kann man excellent Mails empfangen und verschicken.</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap5">5.</a></font>Drucken</p>
+<p class="secthead"><a name="doc_chap5_sect1">Einfaches Drucken -- PDQ </a></p>
+<p>
+Auf einem einfachen System das ohne <font class="code">samba</font> läuft, ist das PDQ printing system gut und simpel.
+</p>
+<a name="doc_chap5_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 5.1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge net-print/pdq</font>
+# <font class="input">xpdq</font>
+</pre></td></tr>
+</table>
+<p>
+Klicken Sie einfach auf <font class="path">Printer/Add printer</font> und fügen Ihren Drucker hinzu. Sollte Ihr Drucker dort nicht gelistet sein, so können Sie mit Hilfe von <a href="http://www.linuxprinting.org">http://www.linuxprinting.org</a> die benötigten Dateien bekommen. Möglicherweise möchten Sie per Klick auf &quot;Driver options&quot; weitere Einstellungen für <font class="code">xpdq</font> vornehmen. Jeder als root unter <font class="code">xpdq</font> installierte Drucker ist für alle User verfügbar. Das ist auch schon alles, was zum Drucken nötig ist!
+</p>
+<p class="secthead"><a name="doc_chap5_sect2">Drucken mit Komfort -- CUPS </a></p>
+<p>
+CUPS ist ein viel größerer print spooler und ist voll benutzbar für einen großen Druckerserver. Glücklicherweise ist es schön leicht zu konfigurieren, da die meisten Einstellungen über CUPS' eingebauten Webserver möglich sind. Obwohl CUPS eigentlich ein System 5 print spooler ist (das bedeutet, es benutzt die <font class="code">lp</font>-Serie von Befehlen), emuliert es auch alle <font class="code">lpr</font>-Befehle.
+</p>
+<a name="doc_chap5_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 5.2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# emerge --pretend net-print/gimp-print-cups
+These are the packages that I would merge, in order.
+ 
+Calculating dependencies.. done!
+[ebuild N  ] net-print/cups-1.1.10-r6 to /
+[binary N  ] net-print/gimp-print-cups-4.1.1 to /
+# emerge gimp-print-cups
+# rc-update add cupsd default
+ * cupsd added to runlevel default...
+ * Caching service dependencies...         [ ok ] 
+ * rc-update complete.
+# /etc/init.d/cupsd start
+Starting Common Unix Printing System...... [  ok  ]
+# konqueror localhost:631
+</pre></td></tr>
+</table>
+<p>
+Das Paket <font class="code">gimp-print-cups</font> ist eine Sammlung von Druckertreibern; das CUPS-Paket ansich enthält nur Treiber für HP und Epson-Drucker. Das emergen von <font class="code">gimp-print-cups</font> erstellt auch cups als eine Abhängigkeit. Sobald cups fertig kompilliert ist, fügen wir es unserem Runlevel mit Hilfe von <font class="code">rc-update</font> hinzu; danach starten wir den Daemon mit Hilfe des init Scripts.
+</p>
+<p>
+Zur Konfiguration von cups benötigen wir lediglich einen Webbrowser mit dem wir eine Verbindung zum cups-Webserver (localhost, port 631) herstellen. (Beachten Sie, dass der cups-Webserver lediglich Verbindungen mit localhost herstellt und <font class="emphasis">nicht</font> über eines ethX-Geräte. Dadurch ist es natürlich recht sicher, macht aber leider auch Fernadministration unmöglich. Für diese muss man auf das Tool <font class="code">lpadmin</font> zurück greifen, was jedoch ein wahrer Alptraum ist. Glücklicherweise kann man über ein Terminal auf den Server zugreifen und die Konfiguration mit <font class="code">lynx</font> ausführen.) Nachdem Sie das Webinterface mit http://localhost:631 aufgerufen haben, klicken Sie auf &quot;Do Administrative Tasks&quot;. Danach werden Sie nach einem Accountnamen inklusive Passwort gefragt; geben Sie hier entweder &quot;root&quot; (und das root-Passwort) ein, oder einen User in der Gruppe &quot;lp&quot; ein. Da der Webserver wie gesagt nur auf localhost läuft, brauchen Sie dich keine sorgen um die Sicherheit Ihres (root-)Passwortes zu machen, es wird nicht über das Internet gesendet.
+Um einen Drucker hinzuzufügen, klicken Sie auf &quot;Add Printer&quot; und folgen den weiteren Anweisungen. Falls Sie dazu weitere Hilfe benötigen, klicken Sie einfach auf &quot;Help&quot; und lesen das &quot;Software Administrator's Manual&quot;. Sollte Ihnen der richtige Treiber fehlen, verweise ich hier nocheinmal auf die Seite <a href="http://www.linuxprinting.org">http://www.linuxprinting.org</a>.
+</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap6">6.</a></font>Samba</p>
+<p>
+Mit Samba können Sie mit Ihrem Linux-Rechner Dateien mit Windows-Rechnern austauschen. Für mehr Informationen dazu können Sie die <a href="http://www.ibm.com/developerworks">Samba Artikel</a> von Daniel Robbins lesen.
+
+</p>
+<a name="doc_chap6_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge net-fs/samba</font>
+# <font class="input">rc-update add samba default</font>
+# <font class="input">cd /etc/samba</font>
+# <font class="input">cp smb.conf.example smb.conf</font>
+# <font class="input">nano -w smb.conf</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap6_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.2: smb.conf -- Arbeitsgruppe</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# workgroup = NT-Domain-Name or Workgroup-Name, eg: REDHAT4
+   workgroup = MYGROUP <font class="comment">[hier Ihre Arbeitsgruppe eintragen]</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap6_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.3: smb.conf -- Drucken mit CUPS</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# It should not be necessary to specify the print system type unless
+# it is non-standard. Currently supported print systems include:
+# bsd, sysv, plp, lprng, aix, hpux, qnx
+;   printing = bsd
+    printing = cups
+</pre></td></tr>
+</table>
+<a name="doc_chap6_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.4: smb.conf -- Verschlüsselung</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# You may wish to use password encryption. Please read
+# ENCRYPTION.txt, Win95.txt and WinNT.txt in the Samba documentation.
+# Do not enable this option unless you have read those documents
+  encrypt passwords = yes
+</pre></td></tr>
+</table>
+<p>
+Ich persönlich hab recht kleine Ansprüche an Samba. Ich möchte lediglich Dateien zwischen Linux- und Windowsrechner austauschen und meinen Linuxrechner als Druckerserver (mit <font class="code">cups</font>) benutzen. Nach der Installation ist es nötig, ein paar kleinere Änderungen an <font class="path">/etc/samba/smb.conf</font> auszuführen. Die Variable <font class="emphasis">workgroup</font> muss mit der Arbeitsgruppe Ihres Windowsrechners übereinstimmen, <font class="emphasis">printing</font> muss <font class="emphasis">cups</font> anstatt <font class="emphasis">bsd</font> lauten und die Zeile <font class="emphasis">encrypt passwords = yes</font> muss entkommentiert werden. Windowsrechner benutzten standartmäßig verschlüsselte Passwörter, daher ist die letzte Änderung nötig, um ohne &quot;Herumhacken&quot; an der Windows-Registrierung <font class="comment">[nicht empfohlen]</font> auf Windowsrechner zuzugreifen. Leider benutzt Windows eine andere Methode zur Verschlüsselung als Linux, daher müssen Sie eine seperates Passwort-Datei für samba erstellen.   
+</p>
+<a name="doc_chap6_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">smbpasswd -a IhrUserName</font>
+New SMB password:
+Retype new SMB password:
+Added user grant.
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>
+Bevor ein Benutzer in sambas Passwort-Datei hinzugefügt werden kann, muss er in <font class="path">/etc/passwd</font> stehen.
+</p></td></tr></table>
+<p>
+Für jeden Benutzer der auf Windowsrechner zugreifen soll, müssen Sie den Befehl <font class="code">smbpasswd</font> benutzen. Samba speichert seine Passwörter in der Datei <font class="path">/etc/samba/private/smbpasswd</font>, welche beim ersten Aufruf von <font class="code">smbpasswd</font> automatisch erstellt wird. 
+</p>
+<a name="doc_chap6_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">/etc/init.d/samba start</font>
+Starting samba...        [  ok  ]
+</pre></td></tr>
+</table>
+<p>
+Starten Sie samba, und Sie sollten nun von jedem Windowsrechner auf Ihr Home-Verzeichnis sowie freigegebene Drucker zugreifen können. Falls Sie nicht darauf zugreifen können, sollten Sie unter <font class="path">/usr/share/doc/samba-2.2.3a/full_docs/textdocs/DIAGNOSIS.txt.gz</font> nach weiteren Hinweisen suchen.
+</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap7">7.</a></font>Apache und Squirrelmail Webmail</p>
+<p class="secthead"><a name="doc_chap7_sect1">Apache mit SSL und PHP </a></p>
+<p>Wir gehen nun mal davon aus, dass Sie eine statische IP-Adresse haben (oder einen Service wie dyndns für Ihre dynamische IP-Adresse) und Ihre E-Mails schnell und effektiv von woanders abrufen möchten. Ich entschied mich für die Lösung Squirrelmail, das ich aus der Ferne mit einem Webbrowser benutzen kann.</p>
+<p>Zuerst müssen wir einen Webserver installieren; da fast alle den Apache benutzen, werden wir dies auch tun. Ausserdem installieren wir PHP4, da Squirrelmail ein PHP-Programm ist. Die weiter unten auftauchenden Versionsnummern weichen höchstverscheinlich von den Ihren ab, ersetzen Sie sie also durch Ihre versionen. Fügen Sie die folgendenen Befehle also nicht per Copy und Past in Ihre Konsole ein!</p>
+<a name="doc_chap7_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge net-www/apache dev-lang/php net-www/mod_ssl</font>
+# <font class="input">ebuild /var/db/pkg/dev-lang/php-4.1.2-r7/php-4.1.2-r7.ebuild config</font>
+# <font class="input">ebuild /var/db/pkg/net-www/mod_ssl-2.8.8/mod_ssl-2.8.8.ebuild config</font>
+# <font class="input">nano -w /etc/apache/conf/apache.conf</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Wenn Sie SSL-Unterstützung wollen, so sollten Sie sicherstellen, dass Sie mod_ssl installiert haben. Wenn Sie Ihre E-Mails über das Internet abrufen möchten, dann <font class="emphasis">wollen</font> Sie SSL!</p></td></tr></table>
+
+<p>Sie sollten sich <font class="path">/etc/apache/conf/apache.conf</font> anschauen, da Apache sehr anpassbar ist. Standartmäßig ist das document root des Apaches (wo er als erstes nach HTML-Dateien schaut, wenn Sie sich zu http://www.servername.foo oder http://localhost verbinden) <font class="path">/home/httpd/htdocs</font>; passen Sie es ruhig Ihren Wünschen an.</p>
+<a name="doc_chap7_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.2: /etc/apache/conf/apache.conf</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# Do NOT add a slash at the end of the directory path.
+#
+DocumentRoot &quot;/home/httpd/htdocs&quot; <font class="comment">(ändern Sie diese Zeile wie gewünscht)</font>
+
+</pre></td></tr>
+</table>
+<a name="doc_chap7_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">rc-update add apache default</font>
+ * apache added to runlevel default...
+ * Caching service dependencies...               [ ok ]
+ * rc-update complete.
+# <font class="input">nano -w /etc/conf.d/apache</font>
+</pre></td></tr>
+</table>
+<p>Benutzen Sie <font class="code">rc-update</font> um Apache in den default runlevel hinzuzufügen. Danach editieren Sie <font class="path">/etc/conf.d/apache</font> und fügen die folgenden Zeilen hinzu, sodass der Apache beim Starten die SSL- und PHP-Module läd.</p>
+<a name="doc_chap7_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.4: /etc/conf.d/apache</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+APACHE_OPTS=&quot;-D SSL -D PHP4&quot;
+</pre></td></tr>
+</table>
+<a name="doc_chap7_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">/etc/init.d/apache start</font>
+ * Starting Apache...                            [ OK ]
+# <font class="input">lynx localhost</font>
+</pre></td></tr>
+</table>
+<p>Um zu schauen, ob Ihr Apache Webserver funktioniert, rufen Sie einfach mit einem Browser <a href="http://localhost%20auf">http://localhost auf</a>. Wenn Sie testen möchten, ob auch SSL funktioniert, rufen Sie <a href="https://localhost">http<font class="comment">s</font>://localhost</a> auf. Grafische Browser (wie Konqueror oder Mozilla) haben irgendwo ein Schloss-Symbol, was die sichere Verbindung per SSL anzeigt.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Wenn Sie eine sicher Verbindung zu Ihrem Server hinzufügen, sollten Sie eine Warnung erhalten, dass das Zertifikat der Seite nicht erekannt worden ist. Das mod_ssl-Ebuild installiert ein selbst unterzeichnetes Zertifikat, welches nur für Testzwecke benutzt werden sollte. Weiter Informationen erhalten Sie im <font class="code">mod_ssl</font> Handbuch unter <a href="http://localhost/doc/mod_ssl-2.8.8/html">http://localhost/doc/mod_ssl-2.8.8/html</a>.  Für privaten Gebraucht reicht dieses Zertifikat jedoch aus.</p></td></tr></table>
+
+<p>Nun stellen wir noch sicher, dass auch PHP korrekt funktioniert. Zuerst erstellen eine simple PHP-Datei im Apache Documentoot-Verzeichnis.</p>
+<a name="doc_chap7_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">echo &quot;&lt;? phpinfo(); ?&gt;&quot; &gt; /home/httpd/htdocs/test.php</font>
+# <font class="input">lynx http://localhost/test.php</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap7_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.7: working Apache + PHP</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+                                                           phpinfo() (p1 of 26)
+                                  PHP Logo
+ 
+                             PHP Version 4.0.6
+ 
+     System Linux my.server.edu 2.4.10 #1 Tue Oct 9 16:33:50 Local
+           time zone must be set--see zic manuali686 i686 unknown
+                           Build Date Oct 16 2001
+</pre></td></tr>
+</table>
+<p>Wenn Sie eine Ausgabe wie oben sehen, dann führt der Apache den PHP-Code korrekt aus.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warning: </b>Wenn Sie sich die volle Ausgabe des Scriptes anschauen, dann werden Sie feststellen, dass es <font class="emphasis">eine Menge</font> an Informationen über Ihr System verrät. Möglicherweise stört Sie das, also löschen Sie die Datei test.php oder machen Sie es wie ich: <font class="code">mv test.php test.phps</font>. Apache zeigt Dateien mit Erweiterung .phps als Quellcode an, anstatt das Script auszuführen.</p></td></tr></table>
+<p class="secthead"><a name="doc_chap7_sect2">Courir IMAP </a></p>
+<p>Squirrelmail ist eine PHP-Applikation, die jedoch einen IMAP-Server benötigt. Da Gentoo Linux standartmäßig das Maildir-Format benutzt, ist Courier IMAP eine gute Wahl.</p>
+<a name="doc_chap7_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge net-mail/courier-imap</font>
+# <font class="input">rc-update add courier-imapd default</font>
+ * courier-imapd added to runlevel default...
+ * Caching service dependencies...                        [ ok ]
+ * rc-update complete.
+# <font class="input">nano -w /etc/courier-imap/authdaemonrc</font>
+# <font class="input">/etc/init.d/courier-imapd start</font>
+# <font class="input">telnet localhost 143</font>
+Trying 127.0.0.1...
+Connected to localhost.localdomain.
+Escape character is '^]'.
+* OK Courier-IMAP ready. Copyright 1998-2001 Double Precision, Inc.  
+See COPYING for distribution information.
+1 LOGIN IhrUserName IhrPasswort
+1 OK LOGIN OK
+<font class="comment">(Drücken Sie &lt;Strg&gt;-&quot;]&quot; und schreiben &quot;quit&quot; zum Beenden)</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap7_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.9: Correct authorization in /etc/courier-imap/authdaemonrc</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+##NAME: authmodulelist:0
+#
+# The authentication modules that are linked into authdaemond.  The
+# default list is installed.  You may selectively disable modules simply
+# by removing them from the following list.  The available modules you
+# can use are: authcustom authcram authuserdb authpam
+
+#authmodulelist=&quot;authcustom authcram authuserdb authpam&quot;
+authmodulelist=&quot;authpam&quot;
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>
+Courier IMAP geht normalerweise in seinem rc start-up-Script <font class="path">/usr/lib/courier-imap/imapd.rc</font> davon aus, dass das benutze Maildir in <font class="path">$HOME/Maildir</font> liegt. Gentoo Linux benutzt jedoch$HOME/.maildir, daher modifiziert das courier-imap-Ebuild das <font class="path">imapd.rc</font>-Script, sodass <font class="emphasis">$MAILDIR</font> aus dem init-Script <font class="path">/etc/init.d/courier-imap</font> benutzt wird. Sollten Sie einen anderen Mailbox-Ordner als <font class="path">.maildir</font> gewählt haben, dann müssen Sie den Eintrag <font class="emphasis">MAILDIR=.maildir</font> im init-Script von Courier IMAP anpassen.</p></td></tr></table>
+
+<p>
+Wenn Sie Courier IMAP mit SSL-Unterstützung wollen, so müssen Sir nur das IMAP SSL-Zertifikat erstellen (und Courier IMAP sagen, wo es zu finden ist)</p>
+
+<a name="doc_chap7_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.10</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">/usr/sbin/mkimapdcert</font> 
+</pre></td></tr>
+</table>
+<p>und danach imap-ssl starten.</p>
+<a name="doc_chap7_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.11</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">rc-update add courier-imapd-ssl default</font>
+# <font class="input">/etc/init.d/courier-imapd-ssl start</font>
+</pre></td></tr>
+</table>
+<p>Sie können mit irgendeinem IMAP-fähigen Mailclient wie Netscape, Kmail oder mutt prüfen, ob IMAP richtig funktioniert.</p>
+<a name="doc_chap7_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.12</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mutt -f imap://localhost</font>
+</pre></td></tr>
+</table>
+<p class="secthead"><a name="doc_chap7_sect3">Squirrelmail </a></p>
+<p>Glücklicherweise ist die Installation und Konfiguration sehr, sehr einfach, nachdem Sie die obigen Schritte bereits ausgeführt haben.</p>
+<a name="doc_chap7_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.13</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge net-mail/squirrelmail</font>
+# <font class="input">cd /home/httpd/htdocs</font>
+# <font class="input">cd squirrelmail</font>
+# <font class="input">./configure</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Wenn Ihr Apache DocumentRoot nicht <font class="path">/home/httpd/htdocs</font> ist, dann müssen Sie das <font class="path">net-mail/squirrelmail</font>-Ebuild entsprechend anpassen.</p></td></tr></table>
+
+<p>Damit Squirrelmail richtig funktioniert, müssen Sie sicherstellen, dass alle seine Dateien dem User, unter dem Apache läuft, gehört (das Squirrelmail-Ebuild geht davon aus, dass dieser Benutzer &quot;apache&quot; ist). Benutzen Sie <font class="code">./configure</font> und wählen Sie Option <font class="emphasis">2</font>.</p>
+<a name="doc_chap7_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.14: Squirrelmail Configuration -- Server settings</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+SquirrelMail Configuration : Read: config.php
+---------------------------------------------------------
+Server Settings
+1.  Domain               : my.server.edu
+2.  IMAP Server          : localhost
+3.  IMAP Port            : 143
+4.  Use Sendmail/SMTP    : SMTP
+6.    SMTP Server        : localhost
+7.    SMTP Port          : 25
+8.    Authenticated SMTP : false
+9.  Server               : courier
+10. Invert Time          : false
+11. Delimiter            : detect
+ 
+R   Return to Main Menu
+C.  Turn color off
+S   Save data
+Q   Quit
+ 
+Command &gt;&gt;
+</pre></td></tr>
+</table>
+<p>Stellen Sie sicher, dass <font class="emphasis">Server</font> auf <font class="emphasis">courier</font> gesetzt ist. Kehren Sie ins Hauptmenü zurück (<font class="emphasis">R</font>) und wählen dann die Option <font class="emphasis">4</font>, General Options.</p>
+<a name="doc_chap7_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.15: Squirrelmail configuration -- General options</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+SquirrelMail Configuration : Read: config.php
+---------------------------------------------------------
+General Options
+1.  Default Charset        : iso-8859-1
+2.  Data Directory         : ../data/
+3.  Attachment Directory   : /tmp/
+4.  Default Left Size      : 150
+5.  Usernames in Lowercase : false
+ 
+R   Return to Main Menu
+C.  Turn color off
+S   Save data
+Q   Quit
+ 
+Command &gt;&gt;
+</pre></td></tr>
+</table>
+<p>Ich benutze das Data Directory aus dem Paket, obwohl es sicherer wäre, es ausserhalb des Apache Document-Trees zu haben. Ich benutze ausserdem <font class="path">/tmp</font> als das Verzeichnis, wo meine Anhänge gespeichert werden.</p>
+
+<p>Bevor wir Squirrelmail benutzen können, müssen wir zuerst die PHP Konfigurations-Datei <font class="path">/etc/php4/php.ini</font> anpassen, und register_globals auf On schlaten;</p>
+<a name="doc_chap7_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.16</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/php4/php.ini</font>
+# <font class="input">/etc/init.d/apache restart</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap7_pre17"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.17: Editieren von /etc/php4/php.ini</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+; You should do your best to write your scripts so that they do not require
+; register_globals to be on;  Using form variables as globals can easily lead
+; to possible security problems, if the code is not very well thought of.
+;register_globals = Off
+<font class="comment">register_globals = On</font>
+</pre></td></tr>
+</table>
+
+<p>Nun können Sie mit einem Browser <a href="https://localhost/squirrelmail/">https://localhost/squirrelmail/</a>, und es sollte klappen!</p>
+<a name="doc_chap7_pre18"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.18</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">lynx https://localhost/squirrelmail/</font>
+</pre></td></tr>
+</table>
+<a name="doc_chap7_pre19"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.19: Squirrelmail Login-Seite</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+                                           SquirrelMail - Login
+                               [sm_logo.jpg]
+ 
+                      SquirrelMail version 1.2.0 [rc2]
+                    By the SquirrelMail Development Team
+ 
+                             SquirrelMail Login
+ 
+       Name: ____________________
+   Password: ____________________
+ 
+                                   Login
+</pre></td></tr>
+</table>
+<p>(Ich empfehle nicht wirklich, lynx mit Squirrelmail zu benutzen, aber Sie können!)</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap8">8.</a></font>Personal Information Management</p>
+<p class="secthead"><a name="doc_chap8_sect1">Evolution mit Palm-Unterstützung </a></p>
+<p>Evolution ist ein ausnahmslos schönes Personal Information Management-Tool, dass sich auch mit einem Palm Pilot abgleichen kann. Zuallererst müssen wir Evolution emergen; wenn Sie die Palm-Unterstützung benutzen möchten, sollten Sie vorher &quot;pda&quot; in Ihre USE-Variablen in <font class="path">/etc/make.conf</font> eintragen.
+</p>
+<a name="doc_chap8_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 8.1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge --pretend net-mail/evolution</font>
+
+These are the packages that I would merge, in order.
+
+Calculating dependencies................................ done!
+[ebuild N  ] app-text/ghostscript-6.50-r2 to /
+[ebuild N  ] app-text/tetex-1.0.7-r4 to /
+[ebuild   U] media-libs/freetype-2.0.5-r1 to /
+[ebuild N  ] gnome-base/ORBit-0.5.12-r1 to /
+[ebuild N  ] media-libs/giflib-4.1.0-r3 to /
+[ebuild N  ] media-libs/imlib-1.9.10-r1 to /
+[ebuild N  ] gnome-base/gnome-libs-1.4.1.2-r2 to /
+[ebuild N  ] dev-libs/libxml-1.8.16 to /
+[ebuild N  ] gnome-base/libglade-0.17-r3 to /
+[ebuild N  ] media-libs/gdk-pixbuf-0.14.0 to /
+[ebuild N  ] gnome-base/gnome-print-0.34 to /
+[ebuild N  ] dev-libs/popt-1.5 to /
+[ebuild N  ] dev-util/intltool-0.12 to /
+[ebuild N  ] gnome-base/oaf-0.6.7 to /
+[ebuild N  ] gnome-base/bonobo-1.0.17 to /
+[ebuild N  ] dev-libs/libunicode-0.4-r1 to /
+[ebuild N  ] dev-util/guile-1.5.4 to /
+[ebuild N  ] gnome-base/gconf-1.0.7-r2 to /
+[ebuild N  ] gnome-base/gnome-vfs-1.0.3 to /
+[ebuild N  ] gnome-extra/gal-0.18.1 to /
+[ebuild N  ] gnome-base/control-center-1.4.0.1-r3 to /
+[ebuild N  ] dev-libs/pilot-link-0.9.6-r3 to /
+[ebuild N  ] app-text/scrollkeeper-0.2 to /
+[ebuild N  ] gnome-base/gnome-core-1.4.0.4-r3 to /
+[ebuild N  ] gnome-extra/gnome-pilot-0.1.64 to /
+[ebuild N  ] gnome-base/libghttp-1.0.9-r1 to /
+[ebuild N  ] gnome-extra/gtkhtml-1.0.0 to /
+[ebuild N  ] gnome-extra/bonobo-conf-0.14 to /
+[ebuild N  ] app-arch/zip-2.3-r1 to /
+[ebuild N  ] app-arch/unzip-5.42 to /
+[ebuild N  ] net-www/mozilla-0.9.6-r4 to /
+[ebuild N  ] net-mail/evolution-1.0-r2 to /
+
+# <font class="input">emerge net-mail/evolution</font> 
+</pre></td></tr>
+</table>
+<p>
+Leider braucht das Kompillieren von Evolution sehr, sehr viel Zeit (beachten Sie, das <font class="code">mozilla</font> eine Abhängigkeit ist!); Sie können während des Wartens einige Liter Kaffee oder Tee drinken...
+</p>
+<p>
+Durch des kompillieren von <font class="code">evolution</font> sollten auch die nötigen Palm Pilot-Tools installiert worden sein. Um sicherzustellen, dass normale Benutzer sich mit einem Palm Pilot abgleichen können, müssen wir einige Änderungen an den Serial-Port-Rechten durchführen. Ich gehe jetzt mal davon aus, dass Ihr Palm an den ersten Serial-Port angeschlossen wird (/dev/ttyS0 order /dev/tts/0 in der &quot;devfs&quot;-Notation).
+</p>
+<a name="doc_chap8_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 8.2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">groupadd serial</font>
+# <font class="input">chown root.serial /dev/tts/0</font>
+# <font class="input">chmod g+rw /dev/tts/0</font>
+# <font class="input">ls -l /dev/tts/0</font>
+crw-rw----    1 root     serial     4,  64 Dec 31  1969 /dev/tts/0
+# <font class="input">ln -s /dev/tts/0 /dev/pilot</font>
+# <font class="input">nano -w /etc/group</font> <font class="comment">(fügen Sie weitere Benutzer in die Gruppe &quot;serial&quot; hinzu)</font>
+</pre></td></tr>
+</table>
+<p>
+Wir haben die Gruppe &quot;serial&quot; dem System hinzugefügt, und sollten nun alle Benutzer die den Serial-Port benutzen (alle Palm Pilot-Benutzer) dieser Gruppe hinzufügen. Wir gaben der Grupe &quot;rw&quot;-Rechte (lesen/schreiben) auf <font class="path">/dev/tts/0</font>, und für später haben wir einen SymLink von <font class="path">/dev/pilot</font> auf <font class="path">/dev/tts/0</font> erstellt.  Dank einiger Änderungen in devfs sind diese Einstellungen auch nach einem Neustart noch vorhanden.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>
+Benutzer von pre-rc6-r13 können entweder <font class="path">sys-apps/baselayout</font> und <font class="path">sys-apps/devfsd</font> upgraden (und dadurch alle  &quot;._cfg*&quot;-Dateien in <font class="path">/etc</font> einbinden), oder einfach die entsprechenden Rechte inklusive einem SymLink in <font class="path">/etc/devfsd.conf</font> setzen.
+</p></td></tr></table>
+<p>
+Die Benutzer sollten danach die Menü-Option <font class="path">Tools/Pilot settings</font> in Evolution benutzen, um die Gnome Pilot Software zu installieren. Vergessen Sie auch nicht, die &quot;Pilot Conduits&quot; und den &quot;Pilot Link&quot; im Gnome Control Center einzustellen.
+</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif" alt="line"></td></tr>
+<tr><td align="center" class="alttext">
+				Updated 17 May 2002 (Übersetzung: 19 Okt 2002)</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif" alt="line"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:g2boojum@gentoo.org">Grant Goodyear</a></b><br><i>Editor</i><br><br><b><a class="altlink" href="mailto:gentoo@naggelgames.de">Hendrik Richter</a></b><br><i>Übersetzter</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif" alt="line"></td></tr>
+<tr><td class="alttext">
+<b>Summary:</b> 
+Mit Hilfe dieser Anleitung können Sie Ihr Gentoo Linux zu einem vollwertigen 
+Desktop-System einrichten. Sie erfahren, wie man X, KDE, OSS und alsa (Sound), 
+postfix (E-Mail), cups (Drucken), und samba (Unix/Windows Dateiaustausch) 
+installiert und konfiguriert.
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif" alt="line"></td></tr>
+<tr><td align="center">
+<p class="alttext">
+<b>Donate</b> to support our development efforts.</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="drobbins@gentoo.org"><input type="hidden" name="item_name" value="Gentoo Linux Support"><input type="hidden" name="item_number" value="1000"><input type="hidden" name="image_url" value="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/paypal.png"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="return" value="http://www.gentoo.org"><input type="hidden" name="cancel_return" value="http://www.gentoo.org"><input type="image" src="http://images.paypal.com/images/x-click-but21.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif" alt="line"></td></tr>
+<tr><td align="center">
+<a href="http://www.qksrv.net/click-477620-5032687" target="_top"><img src="http://www.qksrv.net/image-477620-5032687" width="125" height="125" alt="DDR Memory at Crucial.com" border="0"></a><p class="alttext">Purchase RAM from <b>Crucial.com</b> and a percentage of your sale will go towards further Gentoo Linux development.</p>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif" alt="line"></td></tr>
+<tr><td><p class="alttext">
+<b>Looking for the right Web designer?</b> Marketingtool.com is the world's
+				largest directory of Web developers and other marketing-oriented firms. Use
+				Marketingtool.com's free <a href="http://www.marketingtool.com/editorspick.php?gentoo=1">&quot;Editor's Pick&quot; service</a> to find the Web design team
+				that meets your exact needs.
+				<br><br><b>Are you a Web designer?</b> Then <a href="http://www.marketingtool.com/contribute/webfirm.html?gentoo=1">place a featured listing</a> on Marketingtool.com to
+				get noticed world-wide!
+				<br><br>
+				When you use &quot;Editor's Pick&quot; or place a featured listing, <a href="http://www.marketingtool.com?gentoo=1">Marketingtool.com</a>
+				will donate a portion of revenue to the Gentoo Linux free software project.
+				</p></td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif" alt="line"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td colspan="2" align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Copyright 2001-2002 Gentoo Technologies, Inc.  Questions, Comments, Corrections?  Email <a class="highlight" href="mailto:www@gentoo.org">www@gentoo.org</a>.
+			</td></tr>
+</table></body>
+</html>
