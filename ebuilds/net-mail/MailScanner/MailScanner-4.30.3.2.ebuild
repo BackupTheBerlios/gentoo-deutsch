@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/MailScanner/MailScanner-4.30.3.2.ebuild,v 1.1 2004/05/22 09:24:39 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/MailScanner/MailScanner-4.30.3.2.ebuild,v 1.2 2004/05/22 14:16:58 mad Exp $
 
 PV=4.30.3
 SUBVERSION=2
@@ -43,10 +43,8 @@ src_compile() {
 		-e "s/^\(Run As Group =\)$/\1 mail/" \
 		-e "s/^PID file.*/PID file = \/var\/run\/MailScanner\/MailScanner.pid/" \
 		${S}/etc/MailScanner.conf
-	sed -i \
-		-e "s/\/opt\/MailScanner\/etc\//\/etc\/MailScanner\//g" \
-		${S}/lib/MailScanner/ConfigDefs.pl
-		# change run as user and group
+    sed -i "s/^\$ConfFile.*/\$ConfFile \=\ \'\/etc\/MailScanner\/Mailscanner\.conf\' unless \$ConfFile;/" \
+		${S}/bin/MailScanner
 }
 
 src_install() {
@@ -82,6 +80,8 @@ src_install() {
 		
 	dodoc COPYING INSTALL notes.txt README docs/QuickInstall.txt docs/README.sql-logging	
 
+	dodir /opt/MailScanner/lib/MailScanner/CustomFunctions
+	touch ${D}/opt/MailScanner/lib/MailScanner/CustomFunctions/.keep
 	dodir /var/spool/MailScanner/incoming
 	touch ${D}/var/spool/MailScanner/incoming/.keep
 	dodir /var/spool/MailScanner/quarantine
