@@ -252,7 +252,7 @@
 </xsl:template>
 
 <xsl:template match="chapter">
-  <xsl:variable name="cid"><xsl:number/>.</xsl:variable>
+  <xsl:variable name="cid"><xsl:number/></xsl:variable>
 
   <xsl:if test="title">
     <h1>
@@ -262,7 +262,7 @@
       </xsl:attribute>
 
       <xsl:if test="/guide">
-        <span class="nr"><xsl:value-of select="$cid"/></span>
+        <span class="nr"><xsl:value-of select="$cid"/>.</span>
         <xsl:text> </xsl:text>
       </xsl:if>
 
@@ -286,7 +286,7 @@
     <xsl:if test="title">
       <h2 id="{$sectid}">
         <xsl:if test="/guide">
-          <span class="nr"><xsl:value-of select="$cid"/><xsl:value-of select="$sid"/></span>
+          <span class="nr"><xsl:value-of select="$cid"/>.<xsl:value-of select="$sid"/></span>
           <xsl:text> </xsl:text>
         </xsl:if>
 
