@@ -212,113 +212,147 @@
 </section>
 
 <section>
-<title>Policies</title>
+<title>Richtlinien</title>
 <body>
-<section>
-<title>Why policies are needed</title>
-<body>
+	<section>
+	<title>Warum Richtlinien benötigt werden</title>
+	<body>
+		<p>
+			Es gibt verschiedene Gründe, weshalb Richtlinien benötigt werden.
+		</p>
+		<ul>
+			<li>
+				Sie können nicht behaupten ein sicheres Netzwerk zu haben, ohne jemals definiert zu haben, was sicher ist.
+			</li>
+			<li>
+				Es ist fast unmöglich potientielle Angreifer zu erwischen, Netzwerkprobleme zu lösen, oder Prüfungen zu dirigieren
+				ohne den Netzwerkverkehr abzuhören oder in private Home-Verzeichnisse zu sehen. Aber dieses Reinhören ohne
+				Erlaubnis des Nutzers ist in den meisten Ländern illegal. Und da 60% aller Angriffe von innerhalb eines Unternehmens kommen ist
+				es wichtig, dass Sie die Augen offen halten.
+			</li>
+			<li>
+				Sie können von Ihren Anwendern nicht erwarten, dass sie sich Gedanken über Sicherheit machen, wenn Sie
+				niemals erklärt haben warum es wichtig ist oder wie sie sich selbst und ihre Kollegen schützen sollten.
+			</li>
+			<li>
+				Gute Richtlinien und Netzwerkdokumentation zahlt sich immer aus - egal wie.
+			</li>
+			<li>
+				Die Polizei oder die Staatliche Kriminalbehörde kann Ihnen nicht helfen den Angreifer dingfest zu machen,
+				wenn diese nicht wissen wie Ihre Netzwerkkonfiguration aussieht oder welche Dienste Sie anbieten.
+			</li>
+			<li>
+				Was werden Sie tun, wenn es einen Angriff gab? Sie müssen definieren, was Sie tun würden und wen Sie
+				informieren würden. Würden Sie bloss die Polizei oder ein CERT-Team bei jeder Gelegenheit anrufen?
+				Die würden Sie nicht ernst nehmen.
+			</li>
+		</ul>
 
-<p>There are several reasons why policies are needed.</p>
+		<p>
+			Dies sollte eigentlich darlegen, warum es wichtig ist, Richtlinien auf Systemen mit mehr als einem Benutzer
+			festzulegen und warum es wichtig ist, die Anwender zu erziehen.
+		</p>
+		<p>
+			A policy is a document (or several documents) with answers to questions like who, where, why and what.
+			Every user on your system/network should read, understand and sign it. It is important that you take the
+			time to help the users understand the policy and why the policy needs to be signed or what will happens
+			if they act directly against the policy (the policy should also state this). This should be repeated at
+			least once a year since the policy can change but also as a reminder to the user.
+		</p>
+		<note>
+			Create policies that are easy to read and be very clear/specific on every subject.
+		</note>
+		<p>
+			Most parts of a policy can be enforced directly in the operating system or through firewalls and others cannot.
+		</p>
+	</body>
+	</section>
 
-<ul>
+	<section>
+	<title>Security policies</title>
+	<body>
+		<p>
+			A security policy is basically a set of rules that will insure your network/host security. It is basically
+			a document containing information on how computer, network, password, email and even how users should or should
+			not behave, how to act then attacked, how machines (workstation/servers) are installed, infrastructure etc.
+		</p>
+		<p>
+			A security policy should at least contain the following subjects:
+		</p>
+		<ul>
+			<li>
+				Acceptable use.
+			</li>
+			<ul>
+  				<li>
+					Screen savers.
+				</li>
+  				<li>
+					Password handling.
+				</li>
+  				<li>
+					Download of software.
+				</li>
+  				<li>
+					Knowledge of if they are being monitored.
+				</li>
+  				<li>
+					Use of anti-virus software.
+				</li>
+  				<li>
+					etc.
+				</li>
+			</ul>
 
-<li>
-You cannot claim to have a secure network without a definition of what you think is secure.
-</li>
+			<li>
+				Handling of sensitive information (any written form, paper or digital).
+			</li>
+			<ul>
+  				<li>
+					Clean desk and locked up classified information.
+				</li>
+  				<li>
+					PC shutdown before leaving.
+				</li>
+  				<li>
+					Use of encryption.
+				</li>
+  				<li>
+					Handling of keys to trusted co-workers.
+				</li>
+  				<li>
+					Handling of classified material when traveling.
+				</li>
+			</ul>
 
-<li>
-It's almost impossible to catch potential attackers, resolve network problems, or conduct audits, without spying on network traffic or looking in private home directories. And spying without the users agreement is illegal in most countries. And since about 60% of all attacks currently come from inside the organization, it's important that you keep an open eye.
-</li>
+			<li>
+				Handling of computer equipment when traveling.
+			</li>
+			<ul>
+    			<li>
+					Laptop handling during travels and hotel stays.
+				</li>
+			</ul>
+		</ul>
 
-<li>
-You cannot expect your users to think about security, if you never explained why it was important or how they should protect themselves and their colleagues.
-</li>
-
-<li>
-Good guidelines and network documentation always pays off, no matter what.
-</li>
-
-<li>
-Police or federal law enforcement can't help you catch the attacker, if they don't know your network configuration or the services that you provide.
-</li>
-
-<li>
-What will you do when there has been an attack? You need to define what you are going to do and who you are going to tell about it. Are you just going to call the police/a CERT team on every occasion? They won't take you serious!
-</li>
-
-</ul>
-
-<p>
-This should clearly state why it is important to create policies on systems with more than one user and why it's important to educate users.
-</p>
-
-<p>
-A policy is a document (or several documents) with answers to questions like who, where, why and what.
-Every user on your system/network should read, understand and sign it. It is important that you take the time to help the users understand the policy and why the policy needs to be signed or what will happens if they act directly against the policy (the policy should also state this). This should be repeated at least once a year since the policy can change but also as a reminder to the user.
-</p>
-<note>Create policies that are easy to read and be very clear/specific on every subject.</note>
-
-<p>
-Most parts of a policy can be enforced directly in the operating system or through firewalls and others cannot.
-</p>
-
-</body>
-</section>
-
-<section>
-<title>Security policies</title>
-<body>
-
-<p>
-A security policy is basically a set of rules that will insure your network/host security. It is basically a document containing information on how computer, network, password, email and even how users should or should not behave, how to act then attacked, how machines (workstation/servers) are installed, infrastructure etc.
-</p>
-
-<p>
-A security policy should at least contain the following subjects:
-</p>
-
-<ul>
-
-<li>Acceptable use.</li>
-<ul>
-  <li>Screen savers.</li>
-  <li>Password handling.</li>
-  <li>Download of software.</li>
-  <li>Knowledge of if they are being monitored.</li>
-  <li>Use of anti-virus software.</li>
-  <li>etc.</li>
-</ul>
-
-<li>Handling of sensitive information (any written form, paper or digital).</li>
-<ul>
-  <li>Clean desk and locked up classified information.</li>
-  <li>PC shutdown before leaving.</li>
-  <li>Use of encryption.</li>
-  <li>Handling of keys to trusted co-workers.</li>
-  <li>Handling of classified material when traveling.</li>
-</ul>
-
-<li>Handling of computer equipment when traveling.</li>
-<ul>
-    <li>Laptop handling during travels and hotel stays.</li>
-</ul>
-
-</ul>
-
-<p>
-The policy for the IT-staff might be a bit different then the normal users.
-</p>
-
-<p>
-The security policy can become huge, and vital information can easily be forgotten. The IT-staff's policy could contain information that is classified for the ordinary user, so it is wise to split it up into small policies; i.e. Acceptable Use Policy, Password policy, Email policy and Remote Access policy.
-</p>
-
-<p>
-Examples of policies can be found at the <uri link="http://www.sans.org/newlook/resources/policies/policies.htm">The SANS Security Policy Project</uri>. If you have a small network and think these policies is to much you should look at <uri link="http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2196.html">RFC2196</uri> which is a site security handbook.
-</p>
-
-</body>
-</section>
+		<p>
+			The policy for the IT-staff might be a bit different then the normal users.
+		</p>
+		<p>
+			The security policy can become huge, and vital information can easily be forgotten.
+			The IT-staff's policy could contain information that is classified for the ordinary
+			user, so it is wise to split it up into small policies; i.e. Acceptable Use Policy,
+			Password policy, Email policy and Remote Access policy.
+		</p>
+		<p>
+			Examples of policies can be found at the
+			<uri link="http://www.sans.org/newlook/resources/policies/policies.htm">The SANS Security Policy Project</uri>.
+			If you have a small network and think these policies is to much you should look at
+			<uri link="http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2196.html">RFC2196</uri> which is a site
+			security handbook.
+		</p>
+	</body>
+	</section>
 </body>
 </section>
 </chapter>
