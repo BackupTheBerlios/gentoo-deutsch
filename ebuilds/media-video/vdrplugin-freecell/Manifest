@@ -1,3 +1,5 @@
-MD5 df371556a97a078ce670f397ca65dabd ChangeLog 334
-MD5 b1d23f460e473b2e99f0546bcc2009c7 vdrplugin-freecell-0.0.1.ebuild 1390
+MD5 3a8d7fb4c675d8015bae8c25412af225 ChangeLog 484
+MD5 80a9fc82ceb65b97b10bda41a94b2ac3 vdrplugin-freecell-0.0.1.ebuild 1396
+MD5 fd526d0b91a6ab96df21c7f018c26074 vdrplugin-freecell-0.0.1-r1.ebuild 1646
 MD5 f6aac43785515831387eb67829767357 files/digest-vdrplugin-freecell-0.0.1 66
+MD5 f6aac43785515831387eb67829767357 files/digest-vdrplugin-freecell-0.0.1-r1 66
