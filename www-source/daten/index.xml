@@ -128,19 +128,6 @@ alle Personen, die maximale Kontrolle über ihr System erhalten wollen. Man kann
 - vom Server bis zum Desktop-System, vom Cluster bis zur einfachen Boot-CD.
 </p>
 
-<p>
-<warn>
-Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele
-Dokumentationen zu lesen -- auch Englische. Es gibt keine grafischen Konfigurationshilfen, fast alles muss
-von Hand konfiguriert werden. Sollten Sie bisher nur über KDE, Gnome oder irgend einer anderen grafischen
-Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht gleich die richtige
-Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer sein Ihrem Rechner ein
-Speicherupgrade zu gönnen oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein,
-aber der Status eines fortgeschrittenen Anwenders ist hilfreich - sonst könnte Ihr Ausflug ins Gentoo-Land
-recht bald einen herben Rückschlag erleiden.
-</warn>
-</p>
-
 </body>
 </section>
 
