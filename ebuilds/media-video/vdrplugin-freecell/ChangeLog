@@ -1,6 +1,12 @@
 # ChangeLog for media-video/vdrplugin-freecell
 # Copyright 2004 Frederik Kunz; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-freecell/ChangeLog,v 1.3 2004/08/14 15:55:59 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-freecell/ChangeLog,v 1.4 2004/08/15 16:20:29 austriancoder Exp $
+
+*vdrplugin-freecell-0.0.2-r1 (15 Aug 2004)
+
+  15. Aug 2004; Christian Gmeiner <christian at visual-page dot de>
+  fixed ebuild
+
 
 *vdrplugin-freecell-0.0.2 (14 Aug 2004)
 
