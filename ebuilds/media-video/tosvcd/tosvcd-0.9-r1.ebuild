@@ -1,6 +1,6 @@
 # Copyright 2003 Henning Ryll <henning.ryll@web.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/tosvcd/tosvcd-0.9.ebuild,v 1.2 2003/03/28 17:23:30 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/tosvcd/tosvcd-0.9-r1.ebuild,v 1.1 2003/03/28 17:23:30 mad Exp $
 
 
 S=${WORKDIR}/tosvcd-${PV}/
@@ -30,10 +30,11 @@ src_compile() {
 }
 
 src_install() {
-	einstall
+
+	dobin tosvcd
 
 	# Docs
-	dodoc ${S}/README
+	dodoc README
 }
 
 pkg_postinst() {

@@ -1,11 +1,13 @@
 # ChangeLog for media-video/tosvcd
 # Copyright 2003 Henning Ryll; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/tosvcd/ChangeLog,v 1.1 2003/03/05 21:42:21 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/tosvcd/ChangeLog,v 1.2 2003/03/28 17:23:30 mad Exp $
+
+*tosvcd-0.90-r1 (28 March 2003)
+  28 March 2003; M.Hierling <mad@cc.fh-lippe.de> tosvcd-0.90-r1.ebuild
+  fixed installissue (cp in makefile)
 
 *tosvcd.0.90 (05 March 2003)
-
-  17 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.24.ebuild
-  fixed typo in rc script
+  initial
 
   05 March 2003; H.Ryll <henning.ryll@web.de> ChangeLog :
 
