@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Unsere Mailinglisten</title>
+
+<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+
+<date>18. Oktober 2002</date>
+
+<box>
+  <block>
+    <title>Information:</title>
+    <p>
+Mailinglisten dienen dem einfachen Austausch von Informationen. Jeder angemeldete Nutzer kann jederzeit Mails lesen und beantworten. Dies ist generell
+übersichtlicher und weniger frequentiert als z. B. ein IRC-Kanal.
+    </p>
+  </block>
+
+</box>
+
+<chapter>
+<title>Gentoo.de</title>
+
+<section>
+
+<title>Entwickler Diskussionen</title>
+
+<body>
+<p>
+Schreiben Sie einfach eine Mail an: <mail link="gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</mail> um alle eingetragenen Benutzer
+zu erreichen. 
+</p>
+<p>
+Diese Mailingliste ist speziell für Personen, die am Projekt Gentoo.de mitwirken möchten. Hier werden generell keine Fragen zum System
+beantwortet. Hierfür wenden Sie sich bitte an die deutsche User Mailingsliste <mail link="gentoo-user-de@gentoo.org">gentoo-user-de@gentoo.org</mail> bzw.
+besuchen Sie die <uri link="http://lists.gentoo.org/mailman/listinfo/gentoo-user-de">zugehörige Homepage</uri>
+</p>
+</body>
+
+</section>
+
+<section>                                                                                                                           
+                                                                                                                                    
+<title>CVS-Vorgänge</title>                                                                                                           
+                                                                                                                                    
+<body>                                                                                                                              
+<p>                                                                                                                                 
+Schreiben Sie einfach eine Mail an: <mail link="gentoo-deutsch-cvs@lists.berlios.de">gentoo-deutsch-cvs@lists.berlios.de</mail> um alle eingetragenen Benutzer zu
+erreichen. An diese Maillingsliste gehen normalerweise nur automatische CVS-Logs. Bitte benutzen Sie für Mitteilungen an die Addressaten der Mailingliste die
+oben genannte Liste.
+</p>                                                                                                                                
+</body>                                                                                                                             
+                                                                                                                                    
+</section>
+
+<section>
+
+<title>Andere Mailinglisten</title>
+
+<body>
+<p>
+<uri link="http://lists.gentoo.org/cgi-bin/listinfo">Auflistung aller Gentoo.org Mailingslisten</uri>
+</p>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

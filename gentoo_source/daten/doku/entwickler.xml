@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Dokumentation für Entwickler</title>
+
+<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+
+<abstract>
+Hier finden Sie ien Übersicht unsere Dokumentationen
+</abstract>
+
+<date>17. November 2002</date>
+
+<chapter>
+<title>Übersicht</title>
+
+<section>
+<title>Kategorien</title>
+
+<body>
+<p>
+<uri link="ebuilds/index.html">Einrichtung</uri><br/>
+<uri link="einreichen/index.html">Eigene Ebuilds einrichen</uri><br/>
+<uri link="howto/index.html">Erste Schritte - Das HowTo</uri><br/>
+<uri link="internet-seite/index.html">Pflege der Internet-Seite</uri><br/>
+<uri link="mirror/index.html">Einen Portage-Mirror einrichten</uri><br/>
+</p>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

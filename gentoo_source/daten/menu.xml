@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<menu>
+  <item title="Projekt" href="projekt">
+    <item href="neuigkeiten" title="Neuigkeiten"/>
+    <item href="praesentation" title="Präsentation"/>
+    <item href="mitglieder" title="Mitglieder"/>
+  </item>
+  <item title="Dokumentation" href="doku">
+    <item href="installation" title="Gentoo Installation"/>
+    <item href="desktop" title="Desktop Einrichtung"/>
+    <item href="lokalisierung" title="Lokalisierung (Umlaute usw.)"/>
+    <item href="faq" title="Gentoo Linux FAQ"/>
+    <item href="faq_de" title="gentoo.de FAQ"/>
+    <item href="leitfaden" title="Portage Leitfaden"/>
+    <item href="nano" title="Nano Grundlagen"/>
+    <item href="fortgeschritten" title="Forgeschrittene">
+      <item href="useflags" title="Die Gentoo USE Flags"/>
+      <item href="init" title="Das Gentoo Init System"/>
+      <item href="alternativ" title="Alternative Installationen"/>
+      <item href="portage" title="Portage Handbuch"/>
+      <item href="sicherheit" title="Sicherheit optimieren"/>
+      <item href="java" title="Installation von Java"/>
+    </item>
+    <item href="entwickler" title="Entwickler">
+      <item href="howto" title="Entwickler Howto"/>
+      <item href="ebuilds" title="Ebuilds einreichen"/>
+      <item href="mirror" title="Mirroring Anleitung"/>
+    </item>
+    <item href="englisch" title="Englisch">
+      <item href="localization" title="Localization"/>
+    </item>
+  </item>
+  <item title="Community" href="community">
+    <item href="mailinglisten" title="Mailinglisten"/>
+    <item href="archiv" title="Archiv"/>
+    <item href="irc" title="IRC-Channels"/>
+    <item href="foren" title="Foren"/>
+  </item>
+  <item title="Download" href="download">
+    <item href="mirrors" title="Mirrors"/>
+    <item href="ebuilds" title="Ebuilds"/>
+  </item>
+    
+  <!--
+  <special title="Finden" href="finden"/>
+  -->
+  <special title="Übersicht" href="uebersicht"/>
+</menu>

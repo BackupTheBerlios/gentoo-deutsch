@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Das deutsche Forum</title>
+
+<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+
+<date>18. Oktober 2002</date>
+
+<box>
+  <block>
+    <title>Information:</title>
+    <p>
+Foren dienen hauptsächlich der Diskussion unter den Mitgliedern. Hier kann man aber auch in Ruhe stöbern, lesen oder lernen.
+    </p>
+  </block>
+</box>
+
+<chapter>
+<title>Aktuelles</title>
+
+<section>
+
+<title>Gentoo Linux in a paragraph</title>
+
+<body>
+<p>
+<uri link="http://forums.gentoo.org/viewforum.php?f=28">Das Forum besuchen</uri>
+
+</p>
+
+</body>
+
+</section>
+
+</chapter>
+
+</info>

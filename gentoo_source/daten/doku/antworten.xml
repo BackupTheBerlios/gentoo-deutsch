@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Fragen &#38; Antworten</title>
+
+<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+
+<abstract>
+Hier finden Sie ien Übersicht unsere Dokumentationen
+</abstract>
+
+<date>17. November 2002</date>
+
+<chapter>
+<title>Übersicht</title>
+
+<section>
+<title>Kategorien</title>
+
+<body>
+<p>
+<uri link="faq/index.html">FAQ</uri><br/>
+<uri link="faq_ergaenzung/index.html">FAQ Ergänzung von Gentoo.de</uri><br/>
+</p>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Das Projekt Gentoo.de</title>
+
+<chapter>
+<title>Übersicht</title>
+
+<section>
+
+<body>
+<p>
+<uri link="neuigkeiten/index.html">Neuigkeiten</uri><br/>
+<uri link="praesentation/index.html">Präsentation</uri><br/>          
+<uri link="mitglieder/index.html">Mitglieder</uri><br/>
+</p>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Dokumentation für Gentoo Linux</title>
+
+<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+
+<abstract>
+Hier finden Sie ien Übersicht unsere Dokumentationen
+</abstract>
+
+<date>29. September 2002</date>
+
+<chapter>
+<title>Übersicht</title>
+
+<section>
+<title>Kategorien</title>
+
+<body>
+<p>
+<uri link="einrichtung/index.html">Einrichtung</uri><br/>
+<uri link="antworten/index.html">Fragen &#38; Antworten</uri><br/>
+<uri link="anwendungen/index.html">Anwendungen</uri><br/>
+<uri link="fortgeschritten/index.html">Fortgeschritten</uri><br/>
+<uri link="entwickler/index.html">Entwickler</uri><br/>
+<uri link="englisch/index.html">Englisch</uri><br/>
+</p>
+</body>
+
+</section>
+
+</chapter>
+
+</info>
