@@ -35,7 +35,6 @@
   cdata-section-elements=""
 />
 
-
 <xsl:variable name="baseurl"><xsl:value-of select="$def_online"/>/</xsl:variable>
 <xsl:variable name="styleurl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_style"/>/</xsl:variable>
 <xsl:variable name="scripturl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_script"/>/</xsl:variable>
