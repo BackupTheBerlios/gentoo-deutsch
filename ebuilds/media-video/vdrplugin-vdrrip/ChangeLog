@@ -1,0 +1,8 @@
+# ChangeLog for media-video/vdrplugin-vdrrip
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-vdrrip/ChangeLog,v 1.1 2004/04/07 17:28:14 fow0ryl Exp $
+
+*vdrplugin-vdrrip-0.2.0a (06 Apr 2004)
+
+  06 Apr 2004; Michael Mauch <michael.mauch@gmx.de>
+  Initial version.

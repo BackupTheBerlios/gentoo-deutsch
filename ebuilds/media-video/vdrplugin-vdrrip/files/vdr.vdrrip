@@ -1,0 +1,2 @@
+# The PlugIn has to find mplayer and mencoder.
+_EXTRAOPTS="--MPlayer=/usr/bin/mplayer --MEncoder=/usr/bin/mencoder"
