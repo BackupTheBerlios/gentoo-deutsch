@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.4 2003/06/05 10:15:36 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.5 2003/06/05 21:09:19 mad Exp $
 
 IUSE="lirc"
 
@@ -124,11 +124,10 @@ src_install() {
 	insinto /etc/vdr/plugins/.keep
 	fowners vdr /etc/vdr/plugins
 }
-
-pkg_preinst(){
+pkg_setup(){
 	einfo "adding vdr user"
 	# temp userid 270 until got one from gentoo.org
-	if ! grep -q ^vdr: /etc/passwd ; then
+	if ! grep -q "^vdr:" /etc/passwd ; then
 		useradd -u 270 -g video -G audio,cdrom -d /video -s /bin/bash -c "VDR Daemon" vdr
 	fi
 }
