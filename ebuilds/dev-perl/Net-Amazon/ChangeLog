@@ -1,0 +1,14 @@
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-perl/Net-Amazon/ChangeLog,v 1.1 2003/12/03 16:41:16 shermann Exp $
+
+*Net-Amazon-0.16-0 (03 Dec 2003)
+	
+  03 Dec 2003; Stephan Hermann <sh@sourcecode.de> :
+  Version Bump
+	
+*Net-Amazon-0.16-0 (15 Oct 2003)
+
+  15 Oct 2003; Stephan Hermann <sh@sourcecode.de> :
+  Initial import.  
+ 
