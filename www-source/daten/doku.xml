@@ -113,6 +113,30 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 
       </body>
     </section>
+    <section>
+      <title>Gentoo Handbuch</title>
+      <body>
+
+      <p>
+      Das Gentoo Documentation Project hat mit der Entwicklung des <uri
+      link="handbook/handbook.html">Gentoo Handbuch</uri> begonnen. Aktuell ist der
+      erste Teil <uri link="handbook/handbook_part1.html">Gentoo installieren</uri>
+      <!-- und der zweite Teil <uri link="handbook/handbook.xml?part=2">Arbeiten mit
+      Gentoo</uri>-->
+      fertiggestellt worden und hat den "offiziellen" Status erreicht. Benutzer sind
+      dazu aufgefordert diese Installationsanweisungen zu testen und uns
+      <uri link="http://bugs.gentoo.org/enter_bug.cgi?product=Docs-user">Fehler</uri>
+      zu melden (Benutzen Sie bitte die <e>Handbook</e> Komponente).
+      </p>
+
+      <p>
+      Mehr Informationen finden Sie auf der <uri
+      link="http://www.gentoo.org/doc/en/handbook/index.xml">Gentoo Handbook Effort</uri>
+      Homepage.
+      </p>
+
+      </body>
+    </section>
   </chapter>
 
   <chapter>
@@ -121,10 +145,13 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
       <title>Einführung</title>
       <body>
 
-        <p>Die Installationshilfen liefern nützliche Informationen zur
-        Installation von Gentoo Linux.  Diese beinhalten architekturbezogene
-        Installationsanleitungen und Anweisungen denen während der Installation
-        gefolgt werden kann (wie z.B. LVM).</p>
+        <p>
+        Die Installationshilfen liefern nützliche Informationen zur
+        Installation von Gentoo Linux.  Diese beinhalten <!-- den Teil "Gentoo
+        installieren" unseres Gentoo Handbuch genauso, wie die älteren, aber weiterhin
+        gepflegten--> Architekturbezogene Installationsanleitungen und Anweisungen
+        denen während der Installation gefolgt werden kann (wie z.B. LVM).
+        </p>
 
       </body>
     </section>
@@ -136,6 +163,20 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         Linux 1.4 Installationsprozess.  Wir bieten unterschiedliche
         Installationsmethoden, ausgehend davon, wie viel Ihres Systems Sie
         selbst von Grund auf bauen möchten.</p>
+
+        <p>
+        Der Teil <uri link="handbook/handbook_part1.html">Gentoo
+        installieren</uri> in unserem <uri link="handbook/handbook.html">Gentoo Handbuch</uri>
+        erklärt Ihnen, wie Sie Gentoo auf Ihrem System installieren. Es beinhaltet
+        Anleitungen für alle Benutzer und alle Architekturen.
+        </p>
+
+        <p>
+        Die Installationsanleitungen wurden durch die Anleitungen des Gentoo Handbuch
+        ersetzt, sind aber noch online und werden gepflegt, bis das neue Gentoo Linux
+        veröffentlicht wird. Sie sind für die folgenden Archtikturen verfügbar:
+        </p>
+
 
         <p>Die Installationsanleitungen sind für die folgenden Architekturen
         verfügbar:</p>
