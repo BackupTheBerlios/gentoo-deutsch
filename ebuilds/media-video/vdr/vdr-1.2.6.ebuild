@@ -1,10 +1,10 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6.ebuild,v 1.1 2003/11/16 10:36:04 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6.ebuild,v 1.2 2003/11/16 11:28:28 fow0ryl Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
-#AC3_OVER_DVB="vdr-1.2.0-AC3overDVB-0.2.0"
+AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.2a"
 AKOOL_VN="1.2.6"
 ELCHI_VN="1.2.6"
 
@@ -13,7 +13,7 @@ DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
-		http://www.vdr-portal.de/download/patches/Komplettpatch-1.2.6_no-LSP.diff.bz2
+		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz						http://www.vdr-portal.de/download/patches/Komplettpatch-1.2.6_no-LSP.diff.bz2
 		http://linvdr.org/download/VDR-AIO/vdr-${ELCHI_VN}-ElchiAIO3c.diff.gz
 		"
 #		http://www.akool.de/download/vdr-${AKOOL_VN}.patch.bz2
@@ -58,17 +58,15 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-#
-# no ac3oDVB yet, commented out by mad
-#	# AC3 over DVB Patch
-#	# needs app-admin/fam-oss
-#	if vdr_opts ac3; then
-#		if vdr_opts akool; then
-#			ewarn "ac3 patch is already part of akool patch ... skipping"
-#		fi
-#		einfo "Apply AC3 patch ..."
-#		epatch ../${AC3_OVER_DVB}.diff
-#	fi
+	# AC3 over DVB Patch
+	# needs app-admin/fam-oss
+	if vdr_opts ac3; then
+		if vdr_opts akool; then
+			ewarn "ac3 patch is already part of akool patch ... skipping"
+		fi
+		einfo "Apply AC3 patch ..."
+		epatch ../${AC3_OVER_DVB}.diff
+	fi
 
 	# Akool Patch
 	if vdr_opts akool; then
@@ -85,7 +83,7 @@ src_unpack() {
 		if ! vdr_opts akool; then
 		cd ${S}
 			einfo "Apply ElchiAOI3b patch ..."
-			patch < ../vdr-${ELCHI_VN}-ElchiAIO3b.diff
+			patch < ../vdr-${ELCHI_VN}-ElchiAIO3c.diff
 		fi
 	fi
 
