@@ -2,13 +2,14 @@
 
 <config>
 
-<source value="/home/groups/gentoo-deutsch/htdocs/gentoo_source" short="src">
+<source value="/home/groups/gentoo-deutsch/htdocs/neu/cache/www-source" short="src">
   <templates>vorlagen</templates>
   <data>daten</data>
   <bin>programme</bin>
+  <media>media</media>
 </source>
 
-<public value="/home/groups/gentoo-deutsch/htdocs/gentoo_public" short="pub">
+<public value="/home/groups/gentoo-deutsch/htdocs/neu" short="pub">
   <content>inhalte</content>
   <images>bilder</images>
   <script>skripte</script>
@@ -20,7 +21,7 @@
   <ebuilds_dest>de</ebuilds_dest>
 </public>
 
-<online value="http://www.gentoo.de/gentoo" short="www">
+<online value="http://www.gentoo.de/neu" short="www">
   <basename>index</basename>
   <extension>html</extension>
 </online>
@@ -92,9 +93,6 @@
     <item href="mirrors" title="Mirrors"/>
     <item href="ebuilds" title="Ebuilds"/>
   </item>
-    
-  <special title="Finden" href="finden"/>
-  <special title="Übersicht" href="uebersicht"/>
 </menu>
 
 </config>
