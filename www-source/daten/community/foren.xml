@@ -11,7 +11,7 @@
   <block>
     <title>Information:</title>
     <p>
-Foren dienen hauptsächlich der Diskussion unter den Mitgliedern. Hier kann man aber auch in Ruhe stöbern, lesen oder lernen.
+	Foren dienen hauptsächlich der Diskussion unter den Mitgliedern. Hier kann man aber auch in Ruhe stöbern, lesen oder lernen.
     </p>
   </block>
 </box>
@@ -19,15 +19,16 @@ Foren dienen hauptsächlich der Diskussion unter den Mitgliedern. Hier kann man a
 <chapter>
 <title>Aktuelles</title>
 
+<section>
 
 <body>
 <p>
-<uri link="http://forums.gentoo.org/viewforum.php?f=28">Das Forum besuchen</uri>
-
+	<uri link="http://forums.gentoo.org/viewforum.php?f=28">Das Forum besuchen</uri>
 </p>
-
 </body>
 
-</chapter>
+</section>
 
+
+</chapter>
 </info>
