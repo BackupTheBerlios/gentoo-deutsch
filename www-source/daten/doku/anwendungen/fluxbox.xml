@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
+<guide link="/doc/fluxbox.html">
 
-<guide>
 <title>Fluxbox Desktop in Gentoo</title>
+
 <author title="Autor"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
 
 <abstract>
@@ -9,7 +10,7 @@ Dieses Dokument erl&#xE4;utert die Einrichtung von Fluxbox unter Gentoo Linux.
 </abstract>
 
 <version>0.1</version>
-<date>27. Januar 2003</date>
+<date>17 Juli 2002</date>
 
 <chapter>
 <title>Vorbemerkungen</title>

@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
 
-<guide>
+
+<guide link="doc/alsa-guide.html">
 <title>Gentoo Linux ALSA Anleitung</title>
 <author title="Author"><mail link="zu@pandora.be">
 	Vincent Verleye</mail>
@@ -209,7 +210,7 @@ Ihrem System angeben (im Normalfall ist dies nur eine einzige).
 <p>
 <pre caption="Am Anfang von of /etc/modules.d/alsa">
 # Alsa 0.9.X kernel modules' configuration file.
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/fortgeschritten/Attic/alsa.xml,v 1.2 2003/01/27 22:31:19 wpbasti Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/fortgeschritten/Attic/alsa.xml,v 1.3 2003/01/27 22:57:49 wpbasti Exp $
 
 # ALSA portion
 alias char-major-116 snd

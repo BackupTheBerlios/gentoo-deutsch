@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <info>
 <title>Das Projekt Gentoo.de</title>
@@ -7,14 +7,11 @@
 <title>Übersicht</title>
 
 <section>
-<title>Alles um das Projekt Gentoo-Deutsch</title>
 
 <body>
-bla bla
 <p>
 <uri link="neuigkeiten/index.html">Neuigkeiten</uri><br/>
 <uri link="praesentation/index.html">Präsentation</uri><br/>          
-<uri link="mitglieder/index.html">Mitglieder</uri><br/>
 </p>
 </body>
 

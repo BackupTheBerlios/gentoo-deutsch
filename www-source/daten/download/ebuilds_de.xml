@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Unsere Ebuilds</title>
+
+<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+
+<date>12. Dezember 2002</date>
+
+<box>
+  <block>
+    <title>Information:</title>
+    <p>
+Diese Liste enthält die gesamte Liste aller von uns hinzugefügten
+Ebuild-Dateien. Diese Programme bzw. Versionen finden sich noch nicht
+im 'echten' Portage-Baum wieder. Um diese Ebuilds zu nutzen, kopiert man
+Sie in das Verzeichnis $PORTAGE_OVERLAY, welches ab Portage ~2.0.30 
+untersützt wird.
+    </p>
+  </block>
+</box>
+
+<chapter>
+<title>Ergänzungen für den globalen Portage-Baum</title>
+
+<section>
+
+<body>
+  <title>Ergänzende Ebuilds unserere Gemeinde</title>
+  <pkglist_all_de/>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

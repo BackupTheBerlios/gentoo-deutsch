@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
 
-<guide>
+
+<guide link="/doc/gentoo-howto.html">
 <title>Gentoo Linux Entwickler HOWTO</title>
 <author title="Autor"><mail link="woodchip@gentoo.org">Donny Davies</mail></author>
 <author title="Autor"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>

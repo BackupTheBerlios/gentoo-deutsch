@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
 
-<guide>
+
+<guide link="/doc/faq.html">
 <title>Gentoo Linux Frequently Asked Questions 2</title>
 <author title="Verfasser"><mail link="gentoo-deutsch-dev@lists.berlios.de">Das gentoo.de Team</mail></author>
 <abstract>Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt, die noch nicht

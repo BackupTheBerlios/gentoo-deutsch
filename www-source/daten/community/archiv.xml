@@ -1,45 +1,51 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <info>
-
 <title>Archive unserer Mailinglisten</title>
+
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
-<date>27. Januar 2003</date>
+
+<date>18. Oktober 2002</date>
 
 <box>
   <block>
     <title>Information:</title>
     <p>
-      Alle Nachrichten der Mailingslisten werden auch auf unserem Server als Archiv abgelegt. Hier haben Sie die
-      Möglichkeit diese zu durchsuchen auch wenn Sie keine lokale Kopie besitzen.
+Alle Nachrichten der Mailingslisten werden auch auf unserem Server als Archiv abgelegt. Hier haben Sie die
+Möglichkeit diese zu durchsuchen auch wenn Sie keine lokale Kopie besitzen.
     </p>
   </block>
+
 </box>
 
 <chapter>
 <title>Gentoo.de</title>
 
 <section>
-  <title>Entwickler Diskussionen</title>
 
-  <body>
-    <p>
-      <uri link="http://lists.berlios.de/pipermail/gentoo-deutsch-dev/">Das Entwickler-Archiv</uri>
-    </p>
-  </body>
+<title>Entwickler Diskussionen</title>
+
+<body>
+<p>
+<uri link="http://lists.berlios.de/pipermail/gentoo-deutsch-dev/">Das Entwickler-Archiv</uri>
+</p>
+</body>
+
 </section>
 
 <section>                                                                                                                           
-                                                                                                                        
-  <title>CVS-Vorgänge</title>                                                                                                           
                                                                                                                                     
-  <body>                                                                                                                              
-    <p>                                                                                                                                 
-      <uri link="http://lists.berlios.de/pipermail/gentoo-deutsch-cvs/">Das CVS-Archiv</uri>
-    </p>                                                                                                                                
-  </body>                                                                                                                             
-                                                                                                                                   
+<title>CVS-Vorgänge</title>                                                                                                           
+                                                                                                                                    
+<body>                                                                                                                              
+<p>                                                                                                                                 
+<uri link="http://lists.berlios.de/pipermail/gentoo-deutsch-cvs/">Das CVS-Archiv</uri>
+</p>                                                                                                                                
+</body>                                                                                                                             
+                                                                                                                                    
 </section>
+
+
 
 </chapter>
 

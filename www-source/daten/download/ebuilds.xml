@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <info>
-<title>Ebuilds für Gentoo</title>
+<title>Aktuelle Neuzugänge im Portage Baum</title>
 
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 
-<date>27. Januar 2002</date>
+<date>12. Dezember 2002</date>
 
 <box>
+  <block>
+    <title>Information:</title>
+    <p>
+Diese Liste enthält die aktuellsten Zugänge im internationalen öffentlichen Portage-Verzeichnis.
+Hier gewinnen Sie eine Übersicht, was sich aktuell im Portage-Baum ändert und können leichter
+die Entscheidung treffen, ob sich ein Update lohnen könnte.
+    </p>
+  </block>
 </box>
 
 <chapter>
+<title>Der globale Portage-Baum</title>
 
 <section>
 
 <body>
+  <title>Neue Ebuilds im globalen Portage-Baum</title>
+  <pkglist_new_org/>
 </body>
 
 </section>

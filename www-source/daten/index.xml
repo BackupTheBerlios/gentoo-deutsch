@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <info>
 <title>Willkommen</title>
 
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 
-<date>27. Januar 2003</date>
+<date>29. September 2002</date>
 
 <box>
   <block>
@@ -25,6 +25,28 @@ bereiten. <b>Deshalb: Wer nicht weiß wie man einen Kernel compiliert oder für de
 andere Distribution probieren.</b> Wer einfach nur mehr Geschwindigkeit möchte, für den ist es meist ratsamer einfach auf einen
 schnelleren Prozessor aufzurüsten. Da vieles per Hand gemacht werden muss ist das Lesen von umfangreicher Dokumentation
 Pflicht bei Gentoo Linux!
+    </p>
+  </block>
+
+  <block>
+    <title>QuickLinks:</title>
+    <p>
+      <uri link="download/ebuilds">Neue Ebuilds im Portage Baum</uri>
+      <br/>
+      
+      <uri link="download/ebuilds_de">Ergänzende Ebuilds unserer Leute</uri>    
+      <br/>
+
+      <uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">Zur Projektübersicht von 
+BerliOS</uri>
+      <br/>
+
+      <uri link="http://gentoo-deutsch.berlios.de/cgi-bin/treffen.pl">Das erste Treffen deutschsprachiger 
+Gentoo-Benutzer</uri>
+      <br/>
+
+      <uri link="ftp://ftp.berlios.de/pub/gentoo-deutsch/gentoo-pppoe-dsl.tar.bz2">Kurzanleitung für DSL</uri>
+      <br/>
     </p>
   </block>
 </box>
@@ -64,27 +86,6 @@ Benutzernamen bei berliOS schicken. Der Developer-Status den man daraufhin erhäl
 CVS-Repository mit sich, d.h. man kann Neues einchecken und Altes verbessern. Wer mit <uri link="http://cvsbook.red-bean.com/translations/german/">CVS nichts am Hut</uri> hat, findet sicher
 jemanden der einem das eincheckt. ;)
   </p>
-
-
-  <br/>
- 
-  <uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">Zur Projektübersicht von BerliOS</uri>
-  <br/>
-  <uri link="http://gentoo-deutsch.berlios.de/cgi-bin/treffen.pl">Das erste Gentoo-User Treffen</uri>
-  <br/>
-  <uri link="ftp://ftp.berlios.de/pub/gentoo-deutsch/gentoo-pppoe-dsl.tar.bz2">Kurzanleitung für DSL incl. Dateien</uri>
-  <br/>
-  
-
-  <br/>
-
-  <title>Neue Ebuilds im globalen Portage-Baum</title>
-  <pkglist_new_org/>
- 
-  <br/>
-
-  <title>Alle Ebuilds im lokalen Portage-Baum</title>
-  <pkglist_all_de/>
 
 </body>
 
