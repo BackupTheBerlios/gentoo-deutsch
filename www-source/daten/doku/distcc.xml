@@ -98,7 +98,7 @@ x11-libs/pango
   	                 <title>Installing Distcc</title>
   	                 <body>
   	                         <p>Distcc unter Portage einzurichten ist sehr einfach. Setzen Sie einfach Ihre gewünschten USE Flags  und führen Sie <i>emerge distcc</i> aus.  
-					Allerdings gibt es einige Optionen über die Sie bescheid wissen sollten.</p>
+					Allerdings gibt es einige Optionen über die Sie Bescheid wissen sollten.</p>
 				<p>Distcc kommt mit einem grafischen Überwachungstool, um einzelne Aufgaben, die an andere PCs verteilt werden, aufzuzeichnen. Als Gnome
 				Benutzer sollten sie 'gnome' in Ihren USE Flags setzen. Verwenden Sie kein Gnome, wollen jedoch die Funktionalität des grafischen Tools nicht missen,
 				dann sollten Sie 'gtk' in den USE Flags gesetzt haben.</p>
@@ -289,7 +289,7 @@ deaktiviert.
 				<p>Wenn Sie verschiendene Pakete emergen werden Sie bemerken, dass nicht
 				alle verteilt kompiliert (und vorallem noch nicht einmal parallel
 				gebaut) werden. Der Grund ist, dass die Entwickler der Mozilla und XFree
-				.ebuilds paralleles Kompilieren abgestellt haben, da bekannt ist dass
+				.ebuilds paralleles Kompilieren abgestellt haben, da bekannt ist, dass
 				dies Probleme verursachen kann. Es muss also nicht unbedingt ein distcc
 				Problem sein.</p>
 
@@ -325,9 +325,8 @@ deaktiviert.
 			<body>
 
 				<p>Wenn Sie verschiedene GCC Versionen auf Ihren Rechnern installiert
-				haben, können sehr seltsame Probleme auftreten. Die Lösung ist
-				sicherzustellen, dass auf allen Rechnern die gleiche GCC Version
-				vorhanden ist.</p>
+				haben, können sehr seltsame Probleme auftreten. Eine mögliche Lösung ist,
+				dass auf allen Rechnern die gleiche GCC Version vorhanden sein sollte.</p>
 
 			</body>
 		</section>
@@ -356,7 +355,7 @@ deaktiviert.
 				<p>Ich liebe es im Projekt "Gentoo Cross-Compiling" aushelfen zu
 				können, aber ich habe unglücklicherweise keine nicht-x86 Rechner zur
 				Verfügung. Ich kann Dinge produzieren, die <e>in der Theorie</e>
-				funktionieren, aber ich muss andere Leute bemühen dass sie die Dinge
+				funktionieren, aber ich muss andere Leute bemühen, dass sie die Dinge
 				testen, die ich schreibe. Dies geht auch bis zu einem gewissen Grad,
 				aber es ist schon schwierig. ;-)</p>
 
