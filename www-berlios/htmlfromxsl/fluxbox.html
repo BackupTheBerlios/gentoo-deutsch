@@ -23,7 +23,8 @@
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Vorbemerkungen</option>
 <option value="#doc_chap2">2. Fluxbox</option>
 <option value="#doc_chap3">3. Dateimanagement mit dem ROX-Filer</option>
-<option value="#doc_chap4">4. &quot;Dockapps&quot; und der mysteriöse &quot;Slit&quot;</option></select>
+<option value="#doc_chap4">4. Bildschirmschoner</option>
+<option value="#doc_chap5">5. &quot;Dockapps&quot; und der mysteriöse &quot;Slit&quot;</option></select>
 </form>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap1">1.</a></font>Vorbemerkungen</p>
@@ -95,6 +96,7 @@
 <tr><td bgcolor="#ddddff"><pre>
 	#!/bin/sh
 	source /etc/profile
+	startup=$HOME/.xsession
 	/usr/bin/fluxbox
 	</pre></td></tr>
 </table>
@@ -209,7 +211,7 @@
 	# <font class="input">emerge fluxconf</font>
 	</pre></td></tr>
 </table>
-	ein grafisches Konfiguartionstool für Fluxbox aus dem Netz ziehen, welches mit <font class="input">fluxconf</font> gestartet wird.
+	ein grafisches Konfigurationstool für Fluxbox aus dem Netz ziehen, welches mit <font class="input">fluxconf</font> gestartet wird.
 	</p>
 <p class="secthead"><a name="_sect4">Der Fluxbox Stil </a></p>
 <p>
@@ -253,9 +255,37 @@
 	</pre></td></tr>
 </table>
 	kann nun der Benutzer auf alle installierten Themen zugreifen.
-	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>Werden externe Themes installiert, die noch nicht im Portage Tree vorhanden sind, so sollte der Pfad in der
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Werden externe Themes installiert, die noch nicht im Portage Tree vorhanden sind, so sollte der Pfad in der jeweiligen
 	<font class="input">styles</font> Datei den Gentoo  Verhältnissen angepasst werden, also: <font class="path">/usr/share/commonbox/backgrounds/Bildname.jpg</font>
+	</p></td></tr></table>
+	</p>
+<p class="secthead"><a name="_sect5">Setzen des Hintergrundes </a></p>
+<p>
+	Wem die gerenderten Hintergründe von Fluxbox nicht zusagen, oder ein einfach spezielles Hintergrundbild gewünscht
+	wird, der kann dies mit:
+	<a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 12</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">bsetbg -f /usr/share/commonbox/backkgrounds/meinbild.jpg</font>
+	</pre></td></tr>
+</table>
+	setzen. Die <font class="comment">-f</font> Option passt das Bild an die Bilschirmauflösung an. Für geckachelte Bilder
+	bietet sich stattdessen<font class="comment">-t</font> an. Wer Transparenten Hintergrund in bestimmten Anwednungen, wie 
+	zum Beispiel <font class="input">xchat</font> oder <font class="input">Eterm</font> sehen möchte, sollte den Hintergrund besser mit Esetroot setzen:
+	<a name="doc_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 13</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">Esetroot -f /usr/share/commonbox/backkgrounds/meinbild.jpg</font>
+	</pre></td></tr>
+</table>
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+	Natürlich kann der Hintergrund über <font class="path">~/.xinitrc</font> bzw. <font class="path">~/.xsession</font> bei jedem Start
+	aufgerufen werden, es empfiehlt sich aber, wie bereits oben beschrieben, die Anpassung der entsprechenden
+	Theme-Datei in <font class="path">/usr/share/commonbox/styles</font>.
 	</p></td></tr></table>
 	</p>
 <p class="chaphead">
@@ -267,9 +297,9 @@
 	abzulegen wollen, oder mal schnell in einem Verzeichnis zu blättern kommt man um ein grafisches Dateimanagement
 	kaum herum. Auswahl gibt es hier wie Sand am Meer, <font class="input">endeavour</font>, <font class="input">gentoo</font> um nur einige zu nennen. Ich
 	persönlich bevorzuge den ROX-Filer, aber das ist Ansichtssache.
-	<a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+	<a name="doc_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 12</p></td></tr>
+			Beispiel 14</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 	# <font class="input">emerge -p rox</font>
 
@@ -288,9 +318,9 @@
 <p>Um mit dem ROX Filer Icons auf dem Desktop abzulegen können, muss dieser vor dem Start von Fluxbox
 	ausgeführt werden. Damit jeder Benutzer in den Genuss kommt, habe ich die /etc/X11/Sessions/fluxbox wie
 	folgt erweitert:
-	<a name="doc_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+	<a name="doc_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 13: Erweitertes /etc/X11/Sessions/fluxbox Skript</p></td></tr>
+			Beispiel 15: Erweitertes /etc/X11/Sessions/fluxbox Skript</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 	#!/bin/sh
 	source /etc/profile
@@ -305,9 +335,9 @@
 	auf dem Desktop abgelegt werden. Mit Rechtsklick darauf kann ein Kontextmenue geöffnet werden, das
 	benuzerdefinierte Einstellungen (anderes Icon, neuer Name etc...) erlaubt. Noch schneller geht es, wenn
 	man die Einstellungen direkt unter ~/Choices/ROX-Filer/pb_myboard vornimmt.
-	<a name="doc_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+	<a name="doc_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 14: Desktop Icons in ~/Choices/ROX-Filer/pb_myboard</p></td></tr>
+			Beispiel 16: Desktop Icons in ~/Choices/ROX-Filer/pb_myboard</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 	&lt;?xml version=&quot;1.0&quot;?&gt;
 	&lt;pinboard&gt;
@@ -321,17 +351,17 @@
 	<p>
 	Im Dateimanager selber kann nun festgelegt werden, welche Anwendung sich beim Klicken auf die Datei öffnet.
 	Für Textdateien bietet sich <font class="input">xedit</font> an:
-	<a name="doc_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+	<a name="doc_pre17"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 15</p></td></tr>
+			Beispiel 17</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 	# <font class="input">nano -w ~/Choices/MIME-types/text-plain</font>
 	</pre></td></tr>
 </table>
 	und trägt folgende Werte ein:
-	<a name="doc_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+	<a name="doc_pre18"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 16: Modifikationen an ~/Choices/MIME-types/text-plain</p></td></tr>
+			Beispiel 18: Modifikationen an ~/Choices/MIME-types/text-plain</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 	#!/bin/sh
 	exec xedit &quot;$1&quot;
@@ -341,10 +371,77 @@
 	sind. Weitere MIME-Info Vorlagen befinden sich unter /usr/share/mime-info.
 	</p>
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap4">4.</a></font>&quot;Dockapps&quot; und der mysteriöse &quot;Slit&quot;</p>
-<p class="secthead"><a name="_sect1">Wozu ein Dateimanager? </a></p>
+<font class="chapnum"><a name="doc_chap4">4.</a></font>Bildschirmschoner</p>
+<p class="secthead"><a name="_sect1">Konfiguration von xscreensaver </a></p>
+<p>
+	Obwohl bei den heutigen Monitoren die Gefahr des Einbrennens von Bildern schon lange nicht mehr gegeben ist,
+	lohnt sich die Installation von <font class="input">xscreensaver</font>, da mit einigen Powermanagement-Optionen aufwarten kann
+	und darüberhinaus viele schöne Motive, wie z.B. den schon lang vermissten &quot;Blue Screen of Death&quot; bereitstellt.
+	Die Installation ist denkbar einfach:
+	<a name="doc_pre19"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 19</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">emerge -p xscreensaver</font>
+	</pre></td></tr>
+</table>
+	Das Programm besteht aus zwei Teilen, dem <font class="input">xscreensaver</font> Daemon und einer Applikation, die den Zugriff
+	für alle Einstellungen dafür bereitstellt. Damit der Daemon bei jedem Start von Fluxbox geladen wird, legen wir
+	die <font class="input">.xsession</font> Datei wie folgt an:
+	<a name="doc_pre20"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 20: Beispiel für ~/.xsession</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	exec xscreensaver &amp;
+	</pre></td></tr>
+</table>
+	Dann setzen wir noch die korrekten Werte, damit das Skript auch ausgeführt werden kann:
+	<a name="doc_pre21"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 21</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">chmod +744 .xsession</font>
+	</pre></td></tr>
+</table>
+	Mit <font class="input">xscreensaver-demo</font> passen wir den Bilschirmschoner ganz unseren Wünschen an. Empfehlensert ist es,
+	unter &quot;Advanced&quot; das Häckchen vor &quot;Display Splash Screen on Startup&quot; zu entfernen, um einen schnelleren
+	Start zu gewährleisten. Natürlich können alle Einstellungen auch direkt in der <font class="path">~/.xscreensaver</font>
+	Konfigurationsdatei vorgenommen werden.
+	</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap5">5.</a></font>&quot;Dockapps&quot; und der mysteriöse &quot;Slit&quot;</p>
+<p class="secthead"><a name="_sect1">Einführung? </a></p>
 <p>
 	Wird fortgesetzt...
+	</p>
+<p class="secthead"><a name="_sect2">Gkrellm </a></p>
+<p>
+	<a name="doc_pre22"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 22</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">emerge -p gkrellm-plugins</font>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild   R  ] app-admin/gkrellm-1.2.13 to /
+	[ebuild  N   ] x11-misc/gkrellm-mailwatch-0.7.2 to /
+	[ebuild  N   ] x11-misc/gkrellmwireless-0.2.2 to /
+	[ebuild  N   ] x11-misc/gkrellmouse-0.0.2 to /
+	[ebuild  N   ] x11-misc/gkrellm-gnome-0.1 to /
+	[ebuild  N   ] x11-misc/gkrellm-reminder-0.3.5 to /
+	[ebuild  N   ] x11-misc/gkrellm-volume-0.8-r1 to /
+	[ebuild  N   ] x11-misc/gkrellmwho-0.4 to /
+	[ebuild  N   ] x11-misc/gkrellmitime-0.4 to /
+	[ebuild  N   ] x11-misc/gkrellm-radio-0.3.3 to /
+	[ebuild  N   ] x11-misc/gkrellshoot-0.3.11 to /
+	[ebuild  N   ] x11-misc/gkrellmoon-0.3 to /
+	[ebuild  N   ] x11-misc/gkrellm-plugins-1.2.11-r1 to /
+
+	#
+	</pre></td></tr>
+</table>
 	</p>
 <br><br>
 </td>

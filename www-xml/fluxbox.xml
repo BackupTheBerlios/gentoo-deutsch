@@ -73,6 +73,7 @@ Dieses Dokument erl&#xE4;utert die Einrichtung von Fluxbox unter Gentoo Linux.
 	<pre caption="Erweitertes /etc/X11/Sessions/fluxbox Skript">
 	#!/bin/sh
 	source /etc/profile
+	startup=$HOME/.xsession
 	/usr/bin/fluxbox
 	</pre>
 	Nun sollte sich Fluxbox starten und mit einem Rechtsklick auf den leeren Hintergrund das Herz von Fluxbox, das
@@ -162,7 +163,7 @@ Dieses Dokument erl&#xE4;utert die Einrichtung von Fluxbox unter Gentoo Linux.
 	<pre>
 	# <i>emerge fluxconf</i>
 	</pre>
-	ein grafisches Konfiguartionstool f&#xFC;r Fluxbox aus dem Netz ziehen, welches mit <i>fluxconf</i> gestartet wird.
+	ein grafisches Konfigurationstool f&#xFC;r Fluxbox aus dem Netz ziehen, welches mit <i>fluxconf</i> gestartet wird.
 	</p></body>
 </section>
 <section>
@@ -201,8 +202,29 @@ Dieses Dokument erl&#xE4;utert die Einrichtung von Fluxbox unter Gentoo Linux.
 	# <i>ln -s /usr/share/commonbox/backgrounds /home/username/.fluxbox/backgrounds</i>
 	</pre>
 	kann nun der Benutzer auf alle installierten Themen zugreifen.
-	<note>Werden externe Themes installiert, die noch nicht im Portage Tree vorhanden sind, so sollte der Pfad in der
+	<impo>Werden externe Themes installiert, die noch nicht im Portage Tree vorhanden sind, so sollte der Pfad in der jeweiligen
 	<i>styles</i> Datei den Gentoo  Verh&#xE4;ltnissen angepasst werden, also: <path>/usr/share/commonbox/backgrounds/Bildname.jpg</path>
+	</impo>
+	</p></body>
+</section>
+<section>
+	<title>Setzen des Hintergrundes</title>
+	<body><p>
+	Wem die gerenderten Hintergr&#xFC;nde von Fluxbox nicht zusagen, oder ein einfach spezielles Hintergrundbild gew&#xFC;nscht
+	wird, der kann dies mit:
+	<pre>
+	# <i>bsetbg -f /usr/share/commonbox/backkgrounds/meinbild.jpg</i>
+	</pre>
+	setzen. Die <comment>-f</comment> Option passt das Bild an die Bilschirmaufl&#xF6;sung an. F&#xFC;r geckachelte Bilder
+	bietet sich stattdessen<comment>-t</comment> an. Wer Transparenten Hintergrund in bestimmten Anwednungen, wie 
+	zum Beispiel <i>xchat</i> oder <i>Eterm</i> sehen m&#xF6;chte, sollte den Hintergrund besser mit Esetroot setzen:
+	<pre>
+	# <i>Esetroot -f /usr/share/commonbox/backkgrounds/meinbild.jpg</i>
+	</pre>
+	<note>
+	Nat&#xFC;rlich kann der Hintergrund &#xFC;ber <path>~/.xinitrc</path> bzw. <path>~/.xsession</path> bei jedem Start
+	aufgerufen werden, es empfiehlt sich aber, wie bereits oben beschrieben, die Anpassung der entsprechenden
+	Theme-Datei in <path>/usr/share/commonbox/styles</path>.
 	</note>
 	</p></body>
 </section>
@@ -275,11 +297,67 @@ Dieses Dokument erl&#xE4;utert die Einrichtung von Fluxbox unter Gentoo Linux.
 </section>
 </chapter>
 <chapter>
+<title>Bildschirmschoner</title>
+<section>
+	<title>Konfiguration von xscreensaver</title>
+	<body><p>
+	Obwohl bei den heutigen Monitoren die Gefahr des Einbrennens von Bildern schon lange nicht mehr gegeben ist,
+	lohnt sich die Installation von <i>xscreensaver</i>, da mit einigen Powermanagement-Optionen aufwarten kann
+	und dar&#xFC;berhinaus viele sch&#xF6;ne Motive, wie z.B. den schon lang vermissten "Blue Screen of Death" bereitstellt.
+	Die Installation ist denkbar einfach:
+	<pre>
+	# <i>emerge -p xscreensaver</i>
+	</pre>
+	Das Programm besteht aus zwei Teilen, dem <i>xscreensaver</i> Daemon und einer Applikation, die den Zugriff
+	f&#xFC;r alle Einstellungen daf&#xFC;r bereitstellt. Damit der Daemon bei jedem Start von Fluxbox geladen wird, legen wir
+	die <i>.xsession</i> Datei wie folgt an:
+	<pre caption="Beispiel f&#xFC;r ~/.xsession">
+	exec xscreensaver &amp;
+	</pre>
+	Dann setzen wir noch die korrekten Werte, damit das Skript auch ausgef&#xFC;hrt werden kann:
+	<pre>
+	# <i>chmod +744 .xsession</i>
+	</pre>
+	Mit <i>xscreensaver-demo</i> passen wir den Bilschirmschoner ganz unseren W&#xFC;nschen an. Empfehlensert ist es,
+	unter "Advanced" das H&#xE4;ckchen vor "Display Splash Screen on Startup" zu entfernen, um einen schnelleren
+	Start zu gew&#xE4;hrleisten. Nat&#xFC;rlich k&#xF6;nnen alle Einstellungen auch direkt in der <path>~/.xscreensaver</path>
+	Konfigurationsdatei vorgenommen werden.
+	</p></body>
+</section>
+</chapter>
+<chapter>
 <title>"Dockapps" und der mysteri&#xF6;se "Slit"</title>
 <section>
-	<title>Wozu ein Dateimanager?</title>
+	<title>Einf&#xFC;hrung?</title>
 	<body><p>
 	Wird fortgesetzt...
+	</p></body>
+</section>
+<section>
+	<title>Gkrellm</title>
+	<body><p>
+	<pre>
+	# <i>emerge -p gkrellm-plugins</i>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild   R  ] app-admin/gkrellm-1.2.13 to /
+	[ebuild  N   ] x11-misc/gkrellm-mailwatch-0.7.2 to /
+	[ebuild  N   ] x11-misc/gkrellmwireless-0.2.2 to /
+	[ebuild  N   ] x11-misc/gkrellmouse-0.0.2 to /
+	[ebuild  N   ] x11-misc/gkrellm-gnome-0.1 to /
+	[ebuild  N   ] x11-misc/gkrellm-reminder-0.3.5 to /
+	[ebuild  N   ] x11-misc/gkrellm-volume-0.8-r1 to /
+	[ebuild  N   ] x11-misc/gkrellmwho-0.4 to /
+	[ebuild  N   ] x11-misc/gkrellmitime-0.4 to /
+	[ebuild  N   ] x11-misc/gkrellm-radio-0.3.3 to /
+	[ebuild  N   ] x11-misc/gkrellshoot-0.3.11 to /
+	[ebuild  N   ] x11-misc/gkrellmoon-0.3 to /
+	[ebuild  N   ] x11-misc/gkrellm-plugins-1.2.11-r1 to /
+
+	#
+	</pre>
 	</p></body>
 </section>
 </chapter>
