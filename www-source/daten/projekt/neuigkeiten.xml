@@ -22,12 +22,25 @@
 
 <section>
 	<body>
+	<news type="news" date="29.09.2003" title="Gentoo-Newsletter">
+		<p>
+			Im aktuellen <uri link="http://www.gentoo.org/news/de/gwn/20030922-newsletter.xml">Newsletter</uri>
+			gibts ein Portrait über Gentoos größten Sponsor, die Oregon State University. Ausserdem gibts die
+			Ankündigung des nächsten Bug-Tages, das Entwicklerportrait über Joachim Blaabjerg und Tipps zur
+			Benutzung von netstat. Viel Spass!
+		</p>
+	</news>
+	</body>
+</section>
+
+<section>
+	<body>
 	<news type="news" date="23.09.2003" title="Gentoo-Newsletter">
 		<p>
-			Im aktuellen <uri link="http://www.gentoo.org/news/de/gwn/20030922-newsletter.xml">Newsletter</uri> 
+			Im aktuellen <uri link="http://www.gentoo.org/news/de/gwn/20030922-newsletter.xml">Newsletter</uri>
 			wird die Verfügbarkeit von neuen LiveCDs angekündigt, in denen zahlreiche Bugs gefixt sind.
-			Auserdem erfahrt ihr neues über den Stand der Portierung von Gentoo auf IA/64 
-			und über die Gentoo-Woche im Oktober mit Usertreffen in Oberhausen und Bonn, 
+			Auserdem erfahrt ihr neues über den Stand der Portierung von Gentoo auf IA/64
+			und über die Gentoo-Woche im Oktober mit Usertreffen in Oberhausen und Bonn,
 			sowie dem Practical Linux Tag in Giessen.
 		</p>
 	</news>
