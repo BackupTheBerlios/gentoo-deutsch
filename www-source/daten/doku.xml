@@ -97,10 +97,10 @@ gepflegt werden:
 </p>
 
 <ul>
-<li>Die <b><uri link="faq.xml">Gentoo FAQ</uri></b> beantwortet häufig
+<li>Die <b><uri link="faq">Gentoo FAQ</uri></b> beantwortet häufig
 gestellte Fragen über Gentoo Linux mit einem Fokus auf x86
 Plattformen.</li>
-<li>Die <b><uri link="gentoo-ppc-faq.xml">Gentoo PPC FAQ</uri></b>
+<li>Die <b><uri link="gentoo-ppc-faq">Gentoo PPC FAQ</uri></b>
 häufig gestellte Fragen über Gentoo Linux auf der PowerPC
 Systemen.</li>
 </ul>
@@ -120,8 +120,8 @@ Sie direkt nach
 
 <p>
 Das Gentoo Documentation Project hat mit der Entwicklung des <uri
-link="handbook/handbook.xml">Gentoo Handbuch</uri> begonnen. Aktuell ist der
-erste Teil <uri link="handbook/handbook.xml?part=1">Gentoo installieren</uri>
+link="handbook/handbook.html">Gentoo Handbuch</uri> begonnen. Aktuell ist der
+erste Teil <uri link="handbook/handbook_part1.html">Gentoo installieren</uri>
 <!-- und der zweite Teil <uri link="handbook/handbook.xml?part=2">Arbeiten mit
 Gentoo</uri>-->
 fertiggestellt worden und hat den "offiziellen" Status erreicht. Benutzer sind
@@ -168,8 +168,8 @@ selbst von Grund auf bauen möchten.
 </p>
 
 <p>
-Der Teil <uri link="/doc/de/handbook/handbook.xml?part=1">Gentoo
-installieren</uri> in unserem <uri link="handbook/handbook.xml">Gentoo Handbuch</uri>
+Der Teil <uri link="handbook/handbook_part1.html">Gentoo
+installieren</uri> in unserem <uri link="handbook/handbook.html">Gentoo Handbuch</uri>
 erklärt Ihnen, wie Sie Gentoo auf Ihrem System installieren. Es beinhaltet
 Anleitungen für alle Benutzer und alle Architekturen.
 </p>
@@ -183,8 +183,7 @@ veröffentlicht wird. Sie sind für die folgenden Architekturen verfügbar:
 <table>
 <tr>
   <ti>x86</ti>
-  <ti><b><uri link="gentoo-x86-install.xml">Online</uri></b></ti>
-  <ti><b><uri link="gentoo-x86-install.xml?style=printable">Druckerfreundlich</uri></b></ti>
+  <ti><b><uri link="gentoo-x86-install">Online</uri></b></ti>
   </tr>
 <!--<tr>
   <ti>Alpha</ti>
@@ -210,9 +209,9 @@ veröffentlicht wird. Sie sind für die folgenden Architekturen verfügbar:
 
 <p>
 Der Großteil der Benutzer wird vermutlich die <b><uri
-link="gentoo-x86-install.xml">x86 Installationsanleitung</uri></b>
+link="gentoo-x86-install">x86 Installationsanleitung</uri></b>
 verwenden.  Für erfahrene Benutzer bieten wir zusätzlich eine <b><uri
-link="gentoo-x86-quickinstall.xml">x86
+link="gentoo-x86-quickinstall">x86
 Schellinstallationsanleitung</uri></b> an.
 </p>
 
@@ -234,7 +233,7 @@ Compaq Tools package für Gentoo Alpha Benutzer aufsetzen.
 <p>
 Für einige Personen ist die oben genannte Installationsanleitung
 nicht ausreichend, da ihr System nicht von einer LiveCD gestartet werden
-kann.  Die <b><uri link="altinstall.xml">Alternative
+kann.  Die <b><uri link="altinstall">Alternative
 Installationsanleitung</uri></b> listet nötigen die Schritte, um Gentoo
 von einem anderen Medium zu installieren (Distribution, bootbare CD,
 Booten via Netzwerk, usw.).</p>
@@ -282,14 +281,14 @@ Init System und Umgebungsvariablen enthält.
 <body>
 
 <p>
-Die <b><uri link="portage-user.xml">Portage User Anleitung</uri></b>
+Die <b><uri link="portage-user">Portage User Anleitung</uri></b>
 erklärt kurz wie Sie Ihre Pakete auf den neuesten Stand halten und Ihre
 installierte Software warten.  In anderen Worten: diese Anleitung
 erklärt Ihnen, wie Sie <c>emerge</c> verwenden.
 </p>
 
 <p>
-Der <b><uri link="portage-manual.xml">Portage Leitfaden</uri></b>
+Der <b><uri link="portage-manual">Portage Leitfaden</uri></b>
 bietet einen generellen Überblick zu Portage, detaillierte
 Konfigurationsinformationen und eine Endbenutzeranleitung zur
 Installation und Wartung von Paketen mittels des Portage Systems.  Es
@@ -297,7 +296,7 @@ ist um einiges umfangreicher als die Portage User Anleitung.
 </p>
 
 <p>
-Die <b><uri link="use-howto.xml">Anleitung zu USE Variablen</uri></b>
+Die <b><uri link="use-howto">Anleitung zu USE Variablen</uri></b>
 führt Sie in das ultimative Tool zur Anpassung von Gentoo ein -- den
 USE Flags.  Diese Anleitung hilft Ihnen bei der Wahl Ihrer benötigten
 USE Flags.  Es beschreibt außerdem die Benutzung von <c>etcat</c>, um
@@ -312,12 +311,12 @@ erhalten.
 <body>
 
 <p>
-Das <b><uri link="env.d-howto.xml">ENV.D Howto</uri></b> erklärt,
+Das <b><uri link="env.d-howto">ENV.D Howto</uri></b> erklärt,
 wie Sie Umgebungsvariablen (wie <path>$PATH</path>) und den "dynamic
 linker cache" einfach verwalten.</p>
 
 <p>
-Die <b><uri link="rc-scripts.xml">RC-Script Anleitung</uri></b>
+Die <b><uri link="rc-scripts">RC-Script Anleitung</uri></b>
 beschreibt unsere System Start- und Service Management Skripte.  Neben
 den normalen initscript-bezogenen Punkten beinhaltet es auch initscript
 Abhängigkeiten und Unterstützung für virtuelle Abhängigkeiten.
@@ -330,7 +329,7 @@ Abhängigkeiten und Unterstützung für virtuelle Abhängigkeiten.
 <body>
 
 <p>
-Der <b><uri link="gentoo-kernel.xml">Kernel Guide</uri></b> listet
+Der <b><uri link="gentoo-kernel">Kernel Guide</uri></b> listet
 die verschiedenen Kernelquellen bei Gentoo.  Viele dieser Kernel werden
 vom <uri link="http://www.gentoo.org/proj/en/kernel">Gentoo Kernel
 Project</uri> gepflegt.
@@ -361,7 +360,7 @@ verwendet werden.
 <body>
 
 <p>
-Das <b><uri link="gentoo-security.xml">Gentoo Sicherheitsleitfaden</uri></b>
+Das <b><uri link="gentoo-security">Gentoo Sicherheitsleitfaden</uri></b>
 erklärt das Sichern eines Gentoo Linux Systems gegen
 Einbrecher und Attacken.  Er enthält einige grundsätzliche
 Sicherheitsinformationen (Absichern von Diensten, Entwurf von Firewalls,
@@ -379,7 +378,7 @@ können.  Durch prelinking starten große Applikationen schneller.
 </p>
 -->
 <p>
-Der <b><uri link="ipv6.xml">IPv6 Leitfaden</uri></b> zeigt, wie Sie
+Der <b><uri link="ipv6">IPv6 Leitfaden</uri></b> zeigt, wie Sie
 IPv6 unter Gentoo Linux einrichten.  IPv6 ist das kommende Internet
 Protokoll und erfreut sich immer größerer Popularität.
 </p>
@@ -407,29 +406,29 @@ zentralisiert administrieren.
 </p>
 -->
 <p>
-Das <b><uri link="openmosix-howto.xml">OpenMosix Howto</uri></b>
+Das <b><uri link="openmosix-howto">OpenMosix Howto</uri></b>
 beschreibt Schritt für Schritt, wie Sie eine Farm voller plattenloser
 Rechner erstellen (ein Cluster mit mehreren PCs).
 </p>
 
 <p>
-Die <b><uri link="ltsp.xml">LTSP Anleitung</uri></b> erläutert die
+Die <b><uri link="ltsp">LTSP Anleitung</uri></b> erläutert die
 Einrichtung eines Linux Terminal Servers mit Gentoo.
 </p>
 
 <p>
-Die <b><uri link="distcc.xml">Distcc Dokumentation</uri></b> informiert
+Die <b><uri link="distcc">Distcc Dokumentation</uri></b> informiert
 Sie über die Benutzung von distcc für ein verteiltes Kompilieren mit
 Gentoo Linux.
 </p>
 
 <p>
-Die <b><uri link="devfs-guide.xml">DevFS Anleitung</uri></b>
+Die <b><uri link="devfs-guide">DevFS Anleitung</uri></b>
 beschreibt wie DevFS funktioniert und wie es zu administrieren ist.
 </p>
 
 <p>
-Der <b><uri link="printing-howto.xml">Leitfaden zur Druckereinrichtung</uri></b>
+Der <b><uri link="printing-howto">Leitfaden zur Druckereinrichtung</uri></b>
 ist eine kompakte Einführung zum Drucken mit Gentoo.
 </p>
 
@@ -471,7 +470,7 @@ diverse Anwendungen.
 <body>
 
 <p>
-Der <b><uri link="desktop.xml">Desktop
+Der <b><uri link="desktop">Desktop
 Konfigurations-Leitfaden</uri></b> erklärt, wie Sie einen voll
 funktionsfähigen Gentoo Linux Arbeitsplatzrechner aufsetzen.  Das
 beinhaltet die Konfiguration von KDE/GNOME, Verwendung von E-Mail,
@@ -479,30 +478,30 @@ Datenaustausch (mittels Samba) usw.
 </p>
 
 <p>
-Die <b><uri link="alsa-guide.xml">ALSA Konfigurations
+Die <b><uri link="alsa-guide">ALSA Konfigurations
 Anleitung</uri></b> ist eine kompakte Einführung zur Installation und der
 Benutzung von ALSA (Advanced Linux Sound Architecture).
 </p>
 
 <p>
-Die <b><uri link="java.xml">Java Anleitung</uri></b> erklärt, wie Java
+Die <b><uri link="java">Java Anleitung</uri></b> erklärt, wie Java
 unter Gentoo Linux verwendet wird.
 </p>
 
 <p>
-Die <b><uri link="guide-localization.xml">Lokalisierungs
+Die <b><uri link="guide-localization">Lokalisierungs
 Anleitung</uri></b> beschreibt die Einstellungen für Gentoo Linux für
 nicht englischsprachige Benutzer.
 </p>
 
 <p>
-Die <b><uri link="dri-howto.xml">Direct Rendering Anleitung</uri></b>
+Die <b><uri link="dri-howto">Direct Rendering Anleitung</uri></b>
 erläutert, wie Sie funktionierende 3D-Beschleunigung mit Hilfe von
 XFree-DRM erhalten.
 </p>
 
 <p>
-Die <b><uri link="ati-faq.xml">ATI FAQ</uri></b> beantwortet häufig
+Die <b><uri link="ati-faq">ATI FAQ</uri></b> beantwortet häufig
 gestellte Fragen zu ATI Grafikkarten.
 </p>
 
@@ -513,12 +512,12 @@ gestellte Fragen zu ATI Grafikkarten.
 <body>
 
 <p>
-Das <b><uri link="nano-basics-guide.xml">Nano Grundlagen</uri></b> Dokument
+Das <b><uri link="nano-basics-guide">Nano Grundlagen</uri></b> Dokument
 führt durch die Grundlagen von Nano.
 </p>
 
 <p>
-Die <b><uri link="vi-guide.xml">Vi Anleitung</uri></b> benutzt die
+Die <b><uri link="vi-guide">Vi Anleitung</uri></b> benutzt die
 Spickzettel-Methode für eine Einführung in vi.
 </p>
 
@@ -536,7 +535,7 @@ und nbsmtp benutzen.
 -->
 
 <p>
-Das <b><uri link="cvs-tutorial.xml">CVS Tutorial</uri></b> erläutert
+Das <b><uri link="cvs-tutorial">CVS Tutorial</uri></b> erläutert
 die Grundlagen zur Benutzung von CVS, dem Concurrent Versioning
 System.
 </p>
@@ -605,18 +604,18 @@ Verfügung stellen.
 -->
 
 <p>
-Die <b><uri link="stage-building-guide.xml">Stage Building
+Die <b><uri link="stage-building-guide">Stage Building
 Anleitung</uri></b> erklärt die Erstellung eines Stage Tar-Archiv.
 </p>
 
 <p>
-Die <b><uri link="ebuild-submit.xml">Beisteuern von Ebuilds
+Die <b><uri link="ebuild-submit">Beisteuern von Ebuilds
 Anleitung</uri></b> erläutert, wie von Benutzern erstellte ebuilds
 eingepflegt werden.
 </p>
 
 <p>
-Der <b><uri link="xml-guide.xml">Dokumentationsleitfaden</uri></b>
+Der <b><uri link="xml-guide">Dokumentationsleitfaden</uri></b>
 beschreibt das GuideXML Format, das für Gentoo Linux' webbasierte
 Dokumentation verwendet wird.
 </p>
@@ -657,61 +656,61 @@ Für Personen, die einen kurzen Überblick lieber haben, hier gibt es ihn:
 
 <table>
 <tr><th>Regelmäßig gestellte Fragen</th></tr>
-<tr><ti><uri link="faq.xml">Gentoo FAQ</uri></ti></tr>
+<tr><ti><uri link="faq">Gentoo FAQ</uri></ti></tr>
 <!--<tr><ti><uri link="gentoo-ppc-faq.xml">Gentoo PPC FAQ</uri></ti></tr>-->
 <tr><th>Installationshilfen</th></tr>
-<tr><ti><uri link="gentoo-x86-install.xml">Gentoo x86 Installationsanleitung</uri></ti></tr>
-<tr><ti><uri link="gentoo-x86-quickinstall.xml">Gentoo x86 Schnellinstallationsanleitung</uri></ti></tr>
+<tr><ti><uri link="gentoo-x86-install">Gentoo x86 Installationsanleitung</uri></ti></tr>
+<tr><ti><uri link="gentoo-x86-quickinstall">Gentoo x86 Schnellinstallationsanleitung</uri></ti></tr>
 <!--<tr><ti><uri link="gentoo-alpha-install.xml">Gentoo Alpha Installationsanleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-hppa-install.xml">Gentoo HPPA Installationsanleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-ppc-install.xml">Gentoo PPC Installationsanleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-sparc-install.xml">Gentoo SPARC Installationsanleitung</uri></ti></tr>-->
-<tr><ti><uri link="altinstall.xml">Alternative Installationsanleitung</uri></ti></tr>
+<tr><ti><uri link="altinstall">Alternative Installationsanleitung</uri></ti></tr>
 <!--<tr><ti><uri link="lvm.xml">LVM Anleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="new-upgrade-to-gentoo-1.4.xml">Gentoo Linux 1.4
 Upgrade Anleitung</uri></ti></tr>-->
 <tr><th>Dokumentation zu Gentoo Entwicklungen</th></tr>
-<tr><ti><uri link="portage-user.xml">Portage User Anleitung</uri></ti></tr>
-<tr><ti><uri link="portage-manual.xml">Portage Leitfaden</uri></ti></tr>
-<tr><ti><uri link="use-howto.xml">USE Variablen Anleitung</uri></ti></tr>
-<tr><ti><uri link="env.d-howto.xml">ENV.D Anleitung</uri></ti></tr>
-<tr><ti><uri link="rc-scripts.xml">RC-Script Anleitung</uri></ti></tr>
-<tr><ti><uri link="gentoo-kernel.xml">Gentoo Kernel Guide</uri></ti></tr>
+<tr><ti><uri link="portage-user">Portage User Anleitung</uri></ti></tr>
+<tr><ti><uri link="portage-manual">Portage Leitfaden</uri></ti></tr>
+<tr><ti><uri link="use-howto">USE Variablen Anleitung</uri></ti></tr>
+<tr><ti><uri link="env.d-howto">ENV.D Anleitung</uri></ti></tr>
+<tr><ti><uri link="rc-scripts">RC-Script Anleitung</uri></ti></tr>
+<tr><ti><uri link="gentoo-kernel">Gentoo Kernel Guide</uri></ti></tr>
 <tr><th>Dokumentation zur Systemadministration</th></tr>
-<tr><ti><uri link="gentoo-security.xml">Gentoo Sicherheitsleitfaden</uri></ti></tr>
+<tr><ti><uri link="gentoo-security">Gentoo Sicherheitsleitfaden</uri></ti></tr>
 <!--<tr><ti><uri link="prelink-howto.xml">Prelinking Handbuch</uri></ti></tr>-->
-<tr><ti><uri link="ipv6.xml">IPv6-Handbuch</uri></ti></tr>
+<tr><ti><uri link="ipv6">IPv6-Handbuch</uri></ti></tr>
 <!--<tr><ti><uri link="uml.xml">User Mode Linux Handbuch</uri></ti></tr>-->
 <!--<tr><ti><uri link="ldap-howto.xml">LDAP Authentification Handbuch</uri></ti></tr>-->
-<tr><ti><uri link="openmosix-howto.xml">OpenMosix Howto</uri></ti></tr>
-<tr><ti><uri link="ltsp.xml">LTSP Anleitung</uri></ti></tr>
-<tr><ti><uri link="distcc.xml">DistCC Anleitung</uri></ti></tr>
-<tr><ti><uri link="devfs-guide.xml">DevFS Anleitung</uri></ti></tr>
-<tr><ti><uri link="printing-howto.xml">Drucken Anleitung</uri></ti></tr>
+<tr><ti><uri link="openmosix-howto">OpenMosix Howto</uri></ti></tr>
+<tr><ti><uri link="ltsp">LTSP Anleitung</uri></ti></tr>
+<tr><ti><uri link="distcc">DistCC Anleitung</uri></ti></tr>
+<tr><ti><uri link="devfs-guide">DevFS Anleitung</uri></ti></tr>
+<tr><ti><uri link="printing-howto">Drucken Anleitung</uri></ti></tr>
 <!--<tr><ti><uri link="openafs.xml">OpenAFS Handbuch</uri></ti></tr>-->
 <!--<tr><ti><uri link="virt-mail-howto.xml">Virtual/Mailhost Howto</uri></ti></tr>-->
 <tr><th>Dokumentation für einen Arbeitsplatzrechner</th></tr>
-<tr><ti><uri link="desktop.xml">Desktop Konfigurations-Leitfaden</uri></ti></tr>
- <tr><ti><uri link="alsa-guide.xml">ALSA Konfigurations Leitfaden</uri></ti></tr>
-<tr><ti><uri link="java.xml">Java Anleitung</uri></ti></tr>
-<tr><ti><uri link="guide-localization.xml">Lokalisierungs Anleitung</uri></ti></tr>
-<tr><ti><uri link="dri-howto.xml">Direct Rendering Anleitung</uri></ti></tr>
- <tr><ti><uri link="ati-faq.xml">ATI FAQ</uri></ti></tr>
-<tr><ti><uri link="nano-basics-guide.xml">Nano Basics Anleitung</uri></ti></tr>
-<tr><ti><uri link="vi-guide.xml">Vi Anleitung</uri></ti></tr>
+<tr><ti><uri link="desktop">Desktop Konfigurations-Leitfaden</uri></ti></tr>
+ <tr><ti><uri link="alsa-guide">ALSA Konfigurations Leitfaden</uri></ti></tr>
+<tr><ti><uri link="java">Java Anleitung</uri></ti></tr>
+<tr><ti><uri link="guide-localization">Lokalisierungs Anleitung</uri></ti></tr>
+<tr><ti><uri link="dri-howto">Direct Rendering Anleitung</uri></ti></tr>
+ <tr><ti><uri link="ati-faq">ATI FAQ</uri></ti></tr>
+<tr><ti><uri link="nano-basics-guide">Nano Basics Anleitung</uri></ti></tr>
+<tr><ti><uri link="vi-guide">Vi Anleitung</uri></ti></tr>
 <!--<tr><ti><uri link="guide-to-mutt.xml">Schnellstarter Handbuch zu CLI E-mail Programmen</uri></ti></tr>-->
-<tr><ti><uri link="cvs-tutorial.xml">CVS Tutorial</uri></ti></tr>
+<tr><ti><uri link="cvs-tutorial">CVS Tutorial</uri></ti></tr>
 <tr><th>Dokumentation für Gentoo Entwickler</th></tr>
 <!--<tr><ti><uri link="policy.xml">Gentoo Linux Entwicklungs-Richtlinie</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-release-policy.xml">Gentoo Linux Release Richtlinie</uri></ti></tr>-->
 <!--<tr><ti><uri link="doc-policy.xml">Gentoo Linux Dokumentations Richtlinie</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-howto.xml">Ebuild Handbuch</uri></ti></tr>-->
 <!--<tr><ti><uri link="eclass-howto.xml">Eclass Handbuch</uri></ti></tr>-->
-<tr><ti><uri link="stage-building-guide.xml">Stage Building Anleitung</uri></ti></tr>
-<tr><ti><uri link="ebuild-submit.xml">Beisteuern von Ebuilds Anleitung</uri></ti></tr>
-<tr><ti><uri link="xml-guide.xml">GuideXML Anleitung</uri></ti></tr>
+<tr><ti><uri link="stage-building-guide">Stage Building Anleitung</uri></ti></tr>
+<tr><ti><uri link="ebuild-submit">Beisteuern von Ebuilds Anleitung</uri></ti></tr>
+<tr><ti><uri link="xml-guide">GuideXML Anleitung</uri></ti></tr>
 <tr><th>Andere Dokumentation</th></tr>
-<tr><ti><uri link="rsync.xml">Gentoo rsync Mirror</uri></ti></tr>
+<tr><ti><uri link="rsync">Gentoo rsync Mirror</uri></ti></tr>
 <!--<tr><ti><uri link="source_mirrors.xml">Gentoo Distfiles Mirror</uri></ti></tr>-->
 </table>
 
