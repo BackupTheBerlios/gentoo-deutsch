@@ -9,8 +9,8 @@
  
 <abstract>Eine Kurzübersicht zur Einrichtung von ATAPI IDE Brennern unter Gentoo Linux. Dieses Dokument ist noch nicht vollständig.</abstract> 
  
-<version>1.1</version> 
-<date>20. Oktober 2003</date> 
+<version>1.2</version> 
+<date>21. Oktober 2003</date> 
  
 <chapter> 
 <title>Brennen unter Linux</title> 
@@ -57,6 +57,19 @@ Brennen zu erhalten, dürfen Leser und Brenner nicht an dasselbe IDE Kabel anges
 
 <chapter> 
 <title>Einrichten des Brenners</title> 
+<section> 
+	<title>ATAPI-IDE Brenner</title> 
+<body>
+<p>Auf dem Markt sind inzwischen viele unterschiedliche Typen von Brennern erhältlich. Je nach Anschluss unterscheidet
+man zwischen ATAPI-IDE, USB, Firewire oder echten SCSI Brennern. Auch in der Fähigkeit mit unterschiedliche Medien, wie
+CD-ROM, CD-RW,  DVD-RW/-R, DVD+RW/+R, DVD+-RW oder DVD/CD-RW Combos macht den Markt nicht gerade
+übersichtlicher. Die meisten Geräte, egal ob sie CD oder DVDs brennen, sind derzeit mit einem IDE Anschluss
+ausgestattet.</p>
+<p>Die folgenden Schritte dieser Anleitung beziehen sich daher auf ein korrekt angeschlossenes und gejumpertes ATAPI-IDE Gerät.
+Im Anschluss daran werde ich die Eigenheiten von SCSI, USB und Firewire kurz anschneiden.
+</p>
+</body>
+</section>
 <section> 
 	<title>Kernel-Optionen</title> 
 <body>
@@ -242,6 +255,71 @@ xcdroast, welches dank GTK auch Drag'n drop unterstützt. Puristen an der Komman
 mkisofs und cdrecord verwenden. Die Manpages erläutern hier alle möglichen Optionen.
 </p>
 </body>
+</section>
+<section> 
+	<title>cdrdao</title> 
+<body>
+<p>
+Als nächstes installieren wir <uri link="http://cdrdao.sourceforge.net/">cdrdao</uri> von Andreas Müller.
+Es ermöglicht unter anderem das Kopieren von Audio CDs on-the-fly, sowie der Name schon sagt, das
+Schreiben von CDs im DAO ("Disk-at-once") - Modus.</p>
+<p>
+<note>Cdrecord kann ebenfalls DAO. Die meisten grafischen Frontents verwenden aber weiterhin
+cdrdao zum Schreiben von Audio CDs.</note>
+</p>
+<p>
+<pre caption="Installation von cdrdao">
+# emerge -p cdrdao
+ 
+These are the packages that I would merge, in order:
+ 
+Calculating dependencies ...done!
+[ebuild   N   ] app-cdr/cdrdao-1.1.7-r1
+ 
+# emerge cdrdao
+</pre></p>
+<p>Nach der Installation prüfen wir auch noch, ob das Gerät auch korrekt erkannt wird. Sollte die
+Ausgabe ähnlich wie hier aussehen, dann hat alles geklappt:
+</p><p>
+<pre caption="cdrdao">
+# cdrdao scanbus
+Cdrdao version 1.1.7 - (C) Andreas Mueller &lt;andreas*daneb.de&gt;
+  SCSI interface library - (C) Joerg Schilling
+  Paranoia DAE library - (C) Monty
+ 
+Check http://cdrdao.sourceforge.net/drives.html#dt for current driver tables.
+ 
+Using libscg version 'andreas-0.5-UNIXWARE_Patch'
+ 
+0,0,0: ASUS, CRW-2410A, 1.0
+</pre></p>
+<p>Benutzer eines CD-Brenners haben hiermit schon alle für die Kommandozeile notwendigen Tools
+beisammen und können bedenkenlos den nächsten Punkt überspringen. Besitzer eines DVD Brenners
+brauchen dagegen noch einige weiteren Programme.</p>
+</body>
+</section>
+<section> 
+	<title>dvd+rw-tools</title> 
+<body>
+<p>Die <uri link="http://fy.chalmers.se/~appro/linux/DVD+RW/">DVD+RW-Tools</uri> sind eine
+Sammlung von Programmen für + und - Brenner. Der Name DVD+RW-Tools wurde aus historischen
+Gründen beibehalten, als nur + Brenner unterstützt wurden. Wir installieren das maskierte Paket
+wie folgt:
+</p><p>
+<pre caption="Installation von dvd+rw-tools">
+# ACCEPT_KEYWORDS="~x86" emerge -p dvd+rw-tools
+ 
+These are the packages that I would merge, in order:
+ 
+Calculating dependencies ...done!
+[ebuild  N    ] app-cdr/dvd+rw-tools-5.13.4.7.4
+ 
+# ACCEPT_KEYWORDS="~x86" emerge dvd+rw-tools
+</pre></p>
+<p>Im Paket ist auch <i>growisofs</i> enthalten, ein bequemes Frontend für mkisofs</p>
+<p>
+<note>Um nicht nur Daten DVDs lesen zu können, sollte <i>udf Unterstützung</i> in den Kernel einkompiliert sein.</note>
+</p></body>
 </section>
 </chapter>
 
