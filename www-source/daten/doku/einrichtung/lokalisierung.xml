@@ -9,6 +9,21 @@
 eines Gentoo Linux behilflich sein.</abstract>
 
 <chapter>
+<title>Enlish, please</title>
+<section>
+        <body>
+                <p>This guide is also available in english.</p>
+		<p>
+		<ul>
+		<li>As XML: <uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/www-source/daten/doku/englisch/localization.xml">localization.xml</uri></li>
+		<li>Online: <uri link="http://www.gentoo.de/inhalte/doku/englisch/localization/index.html">localization.html</uri></li>
+		</ul>
+		</p>
+        </body>
+</section>
+</chapter>
+
+<chapter>
 <title>Zeitzone</title>
 <section>
         <body>
@@ -182,6 +197,6 @@ eines Gentoo Linux behilflich sein.</abstract>
 
 </chapter>
 
-<version>$Revision: 1.4 $</version>
-<date>$Date: 2003/02/18 18:22:10 $</date>
+<version>$Revision: 1.5 $</version>
+<date>$Date: 2003/02/18 19:07:08 $</date>
 </guide>
