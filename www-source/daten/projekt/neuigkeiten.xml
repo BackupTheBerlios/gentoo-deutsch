@@ -35,6 +35,21 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
 </box>
 
 <chapter>
+
+<section>
+	<body>
+		<news type="news" date="5.1.2004" title="Gentoo-Newsletter">
+		<p>
+			Happy New Year! Der erste Newsletter für dieses Jahr beginnt mit einer Zusammenfassung des
+			letzten Gentoo Manager Treffen. Wie immer mit neuen Berichten aus der Community einschließlich
+			der Eröffnung der italienischen und spanischen Seiten, sowie einem Tip, wie man die Shell automatisch
+			abmeldet.
+ 			<uri link="http://www.gentoo.org/news/en/gwn/20040105-newsletter.xml">Viel Spass beim Lesen</uri>.
+ 		</p>
+  		</news>
+  	</body>
+</section>
+
 <section>
 	<body>
 		<news type="news" date="29.12.2003" title="Gentoo-Newsletter">
