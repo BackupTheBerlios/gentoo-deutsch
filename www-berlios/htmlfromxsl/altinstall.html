@@ -1,0 +1,264 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Das Gentoo Linux alternative Installations Methoden HOWTO</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Das Gentoo Linux alternative Installations Methoden HOWTO</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Über dieses Dokument</option>
+<option value="#doc_chap2">2. Netboot Installation</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Über dieses Dokument</p>
+       <p>
+       Wenn die Standard Boot-von-CD Installation für Sie nicht funktioniert
+       (oder Sie sie einfach nicht mögen), ist nun Hilfe verfügbar.
+       Dieses Dokument soll eine Sammlung verschiedener alternativer Installations 
+       Methoden bieten. Sollten Sie eine alternative Installations Methode kennen, 
+       von der Sie meinen, daß sie auch für andere hilfreich sein könnte, zögern Sie 
+       bitte nicht <a href="mailto:lordviram@rebelpacket.net">mir zu schreiben</a> 
+       (Englisch), bzw. sich an das <a href="mailto:gentoo-deutsch-dev@lists.berlios.de">
+       Team von Gentoo.de</a> zu wenden.
+       </p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Netboot Installation</p>
+<p class="secthead"><a name="_sect1">Voraussetzungen </a></p>
+<p>Die Voraussetzungen für eine Netboot Installation sind ein Ziel-Computer,
+wo ein tftp-Server läuft, und ein Computer, der sich selber via netboot
+entweder vom BIOS oder von Diskette aus, wo GRUB oder ein anderer
+Netzwerk-Bootloader installiert ist, vom Netzwerk bootet. Ein dhcp-Server ist unter Umständen
+ebenfalls nötig. Natürlich brauchen wir auch das aktuellste ISO, das unter
+<a href="http://www.ibiblio.org/gentoo/snapshots/build/">http://www.ibiblio.org/gentoo/snapshots/build/</a> gefunden werden kann.
+</p>
+<p class="secthead"><a name="_sect2">Überblick </a></p>
+
+<p>Als erstes muss die Netboot-Maschine eine IP Adresse beziehen, bevor es das
+Images aus dem Netzwerk ziehen kann. Es gibt mehrere Möglichkeiten, um an
+eine IP-Adresse zu kommen, und jede wird genügen. Persönlich bevorzuge
+ich GRUB für alles, aber wenn Ihr Computer bereits das Booten vom Netzwerk
+unterstützt, ist GRUB nicht unbedingt notwendig. Auch wenn es vielleicht
+einfach ist GRUBs <font class="code">ifconfig</font> Kommando zu verwenden, und keinen bootp
+oder dhcp Server zu installieren.
+</p>
+
+<p>
+Nachdem Ihr Computer eine IP Adresse bezogen hat folgt der nächste logische Schritt.
+Wie müssen herausfinden, was gebootet werden soll und wo es aufbewahrt wird.
+Nochmals wäre es natürlich einfacher mit GRUB Kommandos zu arbeiten, anstatt einen BOOTP 
+oder DHCP Server aufzusetzen. Außerdem müssen Sie festlegen wie eine Initrd erstellt 
+werden soll und wie der Kernel diese als ROOT-Dateisystem verwenden soll.
+</p>
+
+<p>
+Wenn Ihr Kernel geladen und das ROOT-Dateisystem gemountet wurde, können Sie mit 
+einer normalen Installation fortfahren. Das Installations Image kann entweder von CD 
+geladen oder via tftp vom Netzwerk bezogen werden.
+</p>
+
+<p class="secthead"><a name="_sect3">GRUB verwenden </a></p>
+
+<p>
+Damit GRUB für das Netzwerkbooten genutzt werden kann, muss es erst mit Unterstützung 
+für Ihre Netzwerkkarte kompiliert werden. Dabei spielt es keine Rolle, ob Sie GRUB auf 
+eine Diskette oder Festplatte installieren wollen. Sollte Ihr Installationsziel bereits 
+über ein GRUB mit Netzwerkunterstützung verfügen, können Sie beim nächsten Schritt fortfahren. 
+GRUB kann von <a href="ftp://alpha.gnu.org/gnu/grub/">ftp://alpha.gnu.org/gnu/grub/</a> heruntergeladen werden.
+</p>
+
+<p>Ein Konfigurations-Beispiel mit Tulip Unterstützung, die Netzwerkkarte
+in meinem Rechner:</p>
+
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1: Manuelle GRUB Installation</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">./configure --enable-tulip --prefix=/usr</font>
+# <font class="input">make &amp;&amp; make install</font>
+</pre></td></tr>
+</table>
+
+<p>
+Falls Sie sich bereits in Gentoo befinden sollten und GRUB mit Netzwerkunterstützung 
+durch Gentoo-Tools installieren möchten, sollten Sie die folgenden Schritte genau 
+befolgen. Ein Beispiel, um ein Ebuild zur Installation von GRUB mit Tulip Unterstützung 
+zu nutzen:
+</p>
+
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2: Installation und Konfiguration von GRUB unter Gentoo Linux</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">ebuild /usr/portage/sys-apps/grub/grub-0.91.ebuild clean fetch unpack</font>
+# <font class="input">cd /var/tmp/portage/grub-0.91/work/grub-0.91/</font>
+# <font class="input">./configure --prefix=/usr --sbindir=/sbin --mandir=/usr/share/man \ </font>
+&gt; <font class="input">--infodir=/usr/share/info --enable-tulip</font>
+# <font class="input">make</font>
+# <font class="input">touch /var/tmp/portage/grub-0.91/.compiled</font>
+# <font class="input">cd /usr/portage/</font>
+# <font class="input">ebuild sys-apps/grub/grub-0.91.ebuild install merge</font>
+</pre></td></tr>
+</table>
+
+<p>
+Nachdem wir die GRUB Shell nun installiert haben, müssen wir GRUB noch in einen 
+Bootsektor installieren. Auch wenn Sie GRUB direkt in den Bootsektor der Festplatte 
+Ihres Installations Systems installieren könnten, gehen wir hier davon aus, dass die 
+Installation auf eine Diskette erfolgt. Dafür gibt es zwei Möglichkeiten. Sie können 
+zum einen direkt die GRUB Shell oder ein mitgeliefertes Script, <font class="input">grub-install</font> 
+genannt, benutzen. Sie sollten <font class="code">grub-install</font> zur Installation auf einer Diskette 
+den Vorzug geben.
+</p>
+
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3: GRUB Installations Beispiel</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mkfs.ext2 /dev/fd0</font>
+# <font class="input">mount /dev/fd0 /mnt/floppy/</font>
+# <font class="input">grub-install --root-directory=/mnt/floppy/ '(fd0)'</font>
+# <font class="input">umount /mnt/floppy/</font>
+</pre></td></tr>
+</table>
+
+<p>
+<font class="code">grub-install</font> funktioniert nicht immer ... und ist nicht immer der beste Weg zur 
+Installation. Da die GRUB Shell genauso arbeitet, wie GRUB beim Booten, könnte es 
+wünschenswert sein die GRUB Shell zu benutzten. Hier ist ein Beispiel zur Verwendung der 
+GRUB Shell zur Installation von GRUB auf einer Diskette:
+</p>
+
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4: Benutzung der GRUB Shell</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mkfs.ext2 /dev/fd0</font>
+# <font class="input">mount /dev/fd0 /mnt/floppy/</font>
+# <font class="input">mkdir -p /mnt/floppy/boot/grub/</font>
+# <font class="input">cp -v /usr/share/grub/i386-pc/* /mnt/floppy/boot/grub/</font>
+# <font class="input">grub</font>
+grub&gt; <font class="input">root (fd0)</font>
+grub&gt; <font class="input">setup (fd0)</font>
+grub&gt; <font class="input">quit</font>
+# <font class="input">umount /mnt/floppy/</font>
+</pre></td></tr>
+</table>
+
+<p>
+Da wir nun eine bootfähige GRUB Diskette haben, müssen wir nun einen tftp Server 
+(ich schlage Netkit's TFTP Server vor) für das Laden des Kernels und der Initrd 
+aufsetzen. Sollten Sie Inetd nutzen, benötigen Sie folgende Zeile in Ihrer 
+<font class="path">/etc/inetd.conf</font>: 
+</p>
+
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5: /etc/inetd.conf</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+tftp	dgram	udp	wait	nobody	/usr/sbin/tcpd	in.tftpd
+</pre></td></tr>
+</table>
+
+<p>
+Um den NEtkit tftp Server unter Gentoo Linux zu installieren, benutzen Sie 
+&quot;emerge net-misc/netkit-tftp&quot;.
+</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Es gibt ein Ebuild für Xinetd ... sollten Sie dieses bevorzugen, können Sie es natürlich 
+ebenfalls verwenden. Auf jeden Fall benutzt ich es nicht, daher weiß ich auch nicht, wie 
+man es mit tftp einrichtet. Sollten Sie es benutzten, wäre es sehr freundlichen, wenn Sie 
+mir Details mailen könnten. Dann könnte ich dies in diesem Howto integrieren.
+</p></td></tr></table>
+
+<p>
+Da wir nun einen tftp Server am Laufen haben, brauchen wir nur noch einen Kernel und eine 
+ROOT-Initrd. Sie können einen eigenen Kernel kompilieren, aber achten Sie darauf, dass dieser 
+alle wichtigen Dinge, die für das funktionieren von Gentoo Linux nötig sind (wie devfs und 
+initrd fürs Netbooting), enthält. Die ROOT Initrd stellt die Datei rescue.gz vom Gentoo ISO.
+</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Zum Mounten einer ISO-Datei ohne sie zu brennen, wird die
+Unterstützung für das Loopback-Dateisystem benötigt.</p></td></tr></table>
+
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mkdir /tftpboot</font>
+# <font class="input">mount -o loop /path/to/build-ix86-1.0_rc6-r14.iso /mnt/cdrom/</font>
+# <font class="input">cp /mnt/cdrom/isolinux/kernel /mnt/cdrom/isolinux/rescue.gz /tftpboot</font>
+# <font class="input">chmod 644 /tftpboot/*</font>
+# <font class="input">umount /mnt/cdrom/</font>
+</pre></td></tr>
+</table>
+
+<p>
+Booten Sie nun den Rechner auf dem Gentoo installiert werden soll mit Ihrer unglaublich 
+nützlichen GRUB Diskette. Nachdem Sie gebootet haben, müssen Sie noch den Weg festlegen, 
+wie die IP Adresse bezogen werden soll. Nun legen Sie noch fest woher der Kernel und seine Initrd 
+bezogen werden sollen.
+</p>
+
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+grub&gt; <font class="input">ifconfig --address=192.168.0.10 --server=192.168.0.2</font>
+grub&gt; <font class="input">root (nd)</font>
+grub&gt; <font class="input">kernel /tftpboot/kernel devfs=nomount vga=normal load_ramdisk=1 </font>
+      <font class="input">prompt_ramdisk=0 ramdisk_size=18580 root=/dev/ram0 rw</font> <font class="comment">(alles in eine Zeile)</font>
+grub&gt; <font class="input">initrd /tftpboot/rescue.gz</font>
+grub&gt; <font class="input">boot</font>
+</pre></td></tr>
+</table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Sie können auch bootp und dhcp verwenden, um Ihre IP via GRUB zu
+konfigurieren. Verwenden Sie die bootp und dcpd Kommandos.</p></td></tr></table>
+
+<p>Jetzt wo Ihre Maschine gebootet ist, können Sie wie immer installieren. Lesen Sie dazu im HOWTO 
+zur Installation von CD weiter.
+</p>
+
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 5. Juli 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:lordviram@rebelpacket.net">Travis Tilley</a></b><br><i>Autor</i><br><br><b><a class="altlink" href="mailto:egbers@netzraum.com">Sebastian Egbers</a></b><br><i>Übersetzung</i><br><br><b><a class="altlink" href="mailto:sebastian@beneke-it.de">Sebastian Beneke</a></b><br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> 
+Dieses HOWTO soll eine Art Fundgrube von alternativen Gentoo Installations-
+Methoden werden, für die, die spezielle Installations Anforderungen haben,
+wie kein CD-ROM oder ein Computer der keine CDs bootet.
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
