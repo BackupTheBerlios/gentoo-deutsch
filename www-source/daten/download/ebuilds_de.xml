@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="iso-8859-15"?>
+
 <info>
   <title>Unsere Ebuilds</title>
   <author title="Author">
     <mail link="sebastian@werner-productions.de">Sebastian Werner</mail>
   </author>
   <date>01. Fabruar 2002</date>
+
   <box>
     <block>
       <title>Information:</title>
@@ -17,6 +19,7 @@
     </p>
     </block>
   </box>
+
   <chapter>
     <title>Ergänzungen für den globalen Portage-Baum</title>
     <section>
@@ -25,4 +28,5 @@
       </body>
     </section>
   </chapter>
+
 </info>
