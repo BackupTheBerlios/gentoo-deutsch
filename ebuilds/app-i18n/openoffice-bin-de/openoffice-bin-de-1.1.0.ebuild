@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/openoffice-bin-de-1.1.0.ebuild,v 1.1 2003/10/19 15:09:14 dertobi123 Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/openoffice-bin-de-1.1.0.ebuild,v 1.2 2003/10/19 15:19:24 dertobi123 Exp $
 
 IUSE="kde gnome"
 
@@ -137,7 +137,7 @@ src_install() {
     # Install wrapper script
     exeinto /usr/bin
     sed -e "s|<pv>|${PV}|g" \
-        ${FILESDIR}/${PV}/ooffice-wrapper-1.3 > ${T}/ooffice
+        ${FILESDIR}/ooffice-wrapper-1.3 > ${T}/ooffice
     doexe ${T}/ooffice
 
     # Component symlinks
