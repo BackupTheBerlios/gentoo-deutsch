@@ -1,6 +1,12 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/vserver/Attic/vserver-0.26.ebuild,v 1.1 2003/11/08 11:12:02 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/vserver/Attic/vserver-0.26.ebuild,v 1.2 2003/11/08 11:31:08 mad Exp $
+
+inherit flag-o-matic 
+# Compile problems with these ...
+filter-flags "-funroll-loops"
+filter-flags "-fomit-frame-pointer"
+replace-flags "-O3" "-O2"
 
 IUSE=""
 
