@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr-tvtv
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dvd/ChangeLog,v 1.1 2003/06/16 14:23:31 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dvd/ChangeLog,v 1.2 2003/10/06 19:45:22 fow0ryl Exp $
+
+*vdrplugin-dvd-0.3.3-r0 (15 Jun 2003)
+
+  06 Oct 2003; H.Ryll <henning.ryll@web.de>
+  update to version 0.3.3 with jau patches-7
 
 *vdrplugin-dvd-0.3.2a (15 Jun 2003)
 
