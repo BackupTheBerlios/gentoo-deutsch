@@ -100,19 +100,19 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 
 </section>
 	<section>
-		<title>Mir erscheint das ganze sehr instabiel und ich benutzte "-O9 -ffast-math
+		<title>Mir erscheint das ganze sehr instabil und ich benutzte "-O9 -ffast-math
 		-fomit-frame-pointer" optimierungen. Warum?</title>
 		<body>
-		<p>When you use any optimizations beyond <c>-O3</c>, you're really taking the risk of 
-		having broken packages.
-		Very aggressive optimizations sometimes cause the compiler to streamline the assembly code 
-		to the point where it doesn't quite do the same thing anymore.  <e>Loc-Dog</e> (on IRC) 
-		uses <c>-O3 -mcpu=i686 -march=i686 -fforce-addr -fomit-frame-pointer -funroll-loops 
-		-frerun-cse-after-loop -frerun-loop-opt -malign-functions=4</c>, which is about
-		as much as I'd want to push global optimization settings.  Beyond this, it's best to use
-		ultra-high optimizations only with specific packages where you really need that extra 2%,
-		(eg graphics and various multimedia programs), and where you can easily test the package 
-		to ensure that it hasn't been optimized into oblivion.</p>
+		<p>Bei Optimierungen über <c>-O3</c> hinaus, ist das Risko hoch, daß einzelne Pakete
+		nicht mehr funktionieren. Sehr agressive Optimimierungen können den Assembler Code
+		insoweit bis zu einem Punkt verändern, wo er nicht mehr das tut, was eigentlich von ihm
+		erwartet wird. <e>Loc-Dog</e> (im IRC)benutzt <c>-O3 -mcpu=i686 -march=i686 -fforce-addr
+		-fomit-frame-pointer -funroll-loops -frerun-cse-after-loop -frerun-loop-opt -malign-functions=4</c>,
+		um sein System so weit es geht im Bereich des noch tragbaren zu optimieren. Darüber hinaus
+		sollten ultra-hohe Optimierungen nur noch bei einzelnen Paketen angewendet werden, wo die
+		Leistungssteigerung um 2% noch gerechtfertigt ist (Graphik und verschiedene Multimedia-Programme)
+		auch, um die jeweiligen Pakete noch testen zu können und sicherzustellen, dass sie nicht bis in
+		den Status des Vergessens optimiert wurden.</p>
 		</body>
 	</section>
 
@@ -167,24 +167,24 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 		</body>
 	</section>
 	<section>
-		<title>How do I get a <path>/dev/mouse </path> that
-		doesn't go away when I reboot (when using devfs)?</title>
+		<title>Wie erhalte ich ein <path>/dev/mouse </path> das nach dem Booten nicht
+		wieder verloren geht (bei benutzung von devfs)?</title>
 		<body>
 		<p>
-		If you are using 1.0_rc6 or later, then you can just use <c>ln -s</c>
-		to make the usual symbolic link from <path>/dev/mouse</path>, and
-		it will be preserved between reboots.
+		Ab Version 1.0_rc6 oder später, es genügt einfach <c>ln -s</c>
+		um einen gewohnten symbolischen link von <path>/dev/mouse</path> zu
+		erstellen, welcher auch zwischen Neustarts erhalten bleibt.
 		</p>
-		<p>All other users need to edit <path>/etc/devfsd.conf</path>
-		and add these lines:</p>
+		<p>Alle anderen benutzer sollten Ihre <path>/etc/devfsd.conf</path>
+		editieren und folgende Zeilen hinzufügen:</p>
 <pre>
 REGISTER        ^misc/psaux$    CFUNCTION GLOBAL symlink misc/psaux mouse
 UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 </pre>
-		<p>If you are not using the devfs PS/2 mouse <path>/dev/misc/psaux</path> device,
-		adjust the <c>misc/psaux</c> strings above accoringly.  You'll then want to 
-		<c>killall -HUP devfsd</c>
-		to get devfsd to reread <path>/etc/devfsd.conf</path>.</p>
+		<p>Benutzen Sie eine andere Maus, als die standardmäßig vorgegebene devfs PS/2 Maus 
+		unter <path>/dev/misc/psaux</path>, sollten die <c>misc/psaux</c> Zeilen entsprechend
+		abgeändert werden. Anschliessend sollte noch <c>killall -HUP devfsd</c> ausgeführt werden,
+		um die Pfadangaben in <path>/etc/devfsd.conf</path> erneut einzulesen.</p>
 		</body>
 	</section>
 	<section>
