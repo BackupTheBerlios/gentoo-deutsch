@@ -22,17 +22,17 @@ Zuerst muss man dem System sagen in welcher Zeitzone es sich befindet. Dazu such
 </body>
 </section>
 <section>
-<title>Einträge in der Datei /etc/fstab</title>
+<title>EintrÃ¤ge in der Datei /etc/fstab</title>
 <subsection>
 <title>Was ist die fstab?</title>
 <body>
 
 <p>
-Unter Linux müssen alle für das System notwendigen Partitionen in der Datei
-<path>/etc/fstab</path> aufgelistet sein. Die Datei beinhaltet Informationen darüber,
-an welcher Stelle jede Partition im Verzeichnisbaum eingehängt werden soll, um welches
-Dateisystem es sich handelt und weitere Optionen (automatisches Einhägen beim Systemstart
-oder nicht, Einhängen durch User erlauben für z.B. CD-Rom, Floppy, USB-Sticks usw.).
+Unter Linux mÃ¼ssen alle fÃ¼r das System notwendigen Partitionen in der Datei
+<path>/etc/fstab</path> aufgelistet sein. Die Datei beinhaltet Informationen darÃ¼ber,
+an welcher Stelle jede Partition im Verzeichnisbaum eingehÃ¤ngt werden soll, um welches
+Dateisystem es sich handelt und weitere Optionen (automatisches EinhÃ¤gen beim Systemstart
+oder nicht, EinhÃ¤ngen durch User erlauben fÃ¼r z.B. CD-Rom, Floppy, USB-Sticks usw.).
 </p>
 
 </body>
@@ -48,38 +48,38 @@ die durch Leerzeichen oder Tabs getrennt sind. Jedes Feld hat eine bestimmte Bed
 
 <ul>
 <li>
-  Das erste Feld beschreibt die einzuhängende <b>Partition</b> (also den Pfad zur Geräte-Datei)
+  Das erste Feld beschreibt die einzuhÃ¤ngende <b>Partition</b> (also den Pfad zur GerÃ¤te-Datei)
 </li>
 <li>
-  Das zweite Feld gibt den <b>Mountpoint</b> im Verzeichnisbaum für die Partition
+  Das zweite Feld gibt den <b>Mountpoint</b> im Verzeichnisbaum fÃ¼r die Partition
 </li>
 <li>
   Das dritte Feld gibt den Typ des <b>Dateisystems</b> der Partition an. 
 </li>
 <li>
-  Das vierte Feld gibt die <b>Mount Optionen</b> an, die beim Ausführen von <c>mount</c>
-  benutzt werden. Da es für jedes Dateisystem verschiedene Mount Optionen gibt, ist es
+  Das vierte Feld gibt die <b>Mount Optionen</b> an, die beim AusfÃ¼hren von <c>mount</c>
+  benutzt werden. Da es fÃ¼r jedes Dateisystem verschiedene Mount Optionen gibt, ist es
   empfehlenswert die Liste der Optionen in den Manual Seiten (<c>man mount</c>) nachzulesen.
   Mehrere Optionen werden mit einem Komma getrennt.
 </li>
 <li>
-  Das fünfte Feld wird von <c>dump</c> benutzt um festzustellen, ob die Partition 
-  gesichert werden soll oder nicht. Normalerweise lässt man diesen Wert auf <c>0</c> (Null).
+  Das fÃ¼nfte Feld wird von <c>dump</c> benutzt um festzustellen, ob die Partition 
+  gesichert werden soll oder nicht. Normalerweise lÃ¤sst man diesen Wert auf <c>0</c> (Null).
 </li>
 <li>
   Das sechste Feld wird von <c>fsck</c> ausgelesen um festzustellen, ob es nach unsauberem 
-  Herunterfahren des System nötig ist das Dateisystem auf Inkonsistenz zu <b>prüfen</b>.
+  Herunterfahren des System nÃ¶tig ist das Dateisystem auf Inkonsistenz zu <b>prÃ¼fen</b>.
   Das Root-Dateisystem sollte in diesem Feld eine <c>2</c> eingetragen haben, Dateisysteme, 
-  bei denen keine Prüfung notwendig ist eine <c>0</c>.
+  bei denen keine PrÃ¼fung notwendig ist eine <c>0</c>.
 </li>
 </ul>
 
 <p>
-So start <c>nano</c> (or your favorite editor) to create your 
-<path>/etc/fstab</path>:
+Starten Sie <c>nano</c> (oder den Editor Ihrer Wahl) um die Datei 
+<path>/etc/fstab</path> zu erstellen:
 </p>
 
-<pre caption="Opening /etc/fstab">
+<pre caption="Ã–ffnen von /etc/fstab">
 # <i>nano -w /etc/fstab</i>
 </pre>
 
