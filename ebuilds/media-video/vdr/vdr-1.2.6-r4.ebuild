@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.6 2003/12/27 20:42:56 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.7 2003/12/27 22:26:06 fow0ryl Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -68,9 +68,8 @@ src_unpack() {
 	then
 		if vdr_opts akool
 		then
-			ewarn "ac3 patch is already part of akool/complete patch ... skipping"
+			ewarn "AC3 patch is already part of akool/complete patch ... skipping"
 		else
-			einfo "applying AC3 patch ..."
 			epatch ../${AC3_OVER_DVB}.diff
 		fi
 	fi
@@ -80,10 +79,9 @@ src_unpack() {
 	then
 		if vdr_opts akool
 		then
-			ewarn "elchi patch is already part of akool/complete patch ... skipping"
+			ewarn "Elchi patch is already part of akool/complete patch ... skipping"
 		else
 			cd ${S}
-			einfo "applying ElchiAOI3c patch ..."
 			epatch ../vdr-${ELCHI_VN}-ElchiAIO3c.diff
 			if vdr_opts iosd
 			then
@@ -99,14 +97,11 @@ src_unpack() {
 	# Dirk's Komplett Patch
 	if vdr_opts akool
 	then
-		einfo "applying complete patch ..."
 		epatch ../KomplettPatch-1.2.6-E.diff
-		einfo "applying improved OSD 3a patch ..."
 		epatch ../improvedosd-3-3a.diff
 
-		einfo "applying remove duplicate Symblol 59 patch ..."
-		epatch ${FILESDIR}/KomplettPatch-1.2.6-E.diff
-		#/bin/sed -i -e '782,811d' fontsym.c
+		einfo "Applying remove duplicate Symblol 59 patch ..."
+		/bin/sed -i -e '782,811d' fontsym.c
 	fi
 
 	# here comes the gentoo specific stuff ( also called the "fun part")
@@ -148,7 +143,7 @@ src_compile() {
 	vdr_opts rcu && myconf="${myconf} REMOTE=RCU"
 	vdr_opts vfat && myconf="${myconf} VFAT=1"
 
-	einfo "building VDR with this options ${myconf} now"
+	einfo "Building VDR with this options ${myconf} now"
 	make ${myconf} || die "vdr compile problem"
 
 	mkdir -p include/vdr
@@ -219,7 +214,7 @@ pkg_setup(){
 	# temp userid 270 until got one from gentoo.org
 	if ! grep -q "^vdr:" /etc/passwd ; then
 		useradd -u 270 -g video -G audio,cdrom -d /video -s /bin/bash -c "VDR Daemon" vdr
-		einfo "added vdr user with id 270 and groups video, audio and cdrom."
+		einfo "Added vdr user with id 270 and groups video, audio and cdrom."
 	fi
 }
 
@@ -246,7 +241,7 @@ pkg_postinst() {
 	einfo "here is a list:"
 	einfo
 	for i in ${INSTALLED_PLUGINS}
-		do 
+		do
 		 einfo ${i}
 		 if vdr_opts emergeplugs quiet ; then
 			einfo
