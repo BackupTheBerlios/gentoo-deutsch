@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-DESCRITION="Yet another free Raytracer"
+DESCRIPTION="Yet another free Raytracer"
 SRC_URI="http://www.coala.uniovi.es/~jandro/noname/downloads/${P}.tar.gz"
 HOMEPAGE="http://www.coala.uniovi.es/~jandro/noname/"
 S=${WORKDIR}/${P}
