@@ -9,9 +9,9 @@
 <body>
 
 <p>
-Zuerst muss man dem System sagen in welcher Zeitzone es sich befindet. Dazu sucht man sich unter
-<path>/usr/share/zoneinfo</path> die entsprechende Zeitzone aus und verlinkt sie mit <c>ln</c> nach
- <path>/etc/localtime</path>:
+Zuerst müssen Sie dem System sagen in welcher Zeitzone es sich befindet. Dazu
+suchen Sie sich unter <path>/usr/share/zoneinfo</path> die entsprechende
+Zeitzone aus und verlinken sie mit <c>ln</c> nach <path>/etc/localtime</path>:
 </p>
 
 <pre caption="Setzen der Zeitzone">
@@ -30,10 +30,11 @@ Zuerst muss man dem System sagen in welcher Zeitzone es sich befindet. Dazu such
 
 <p>
 Unter Linux müssen alle für das System notwendigen Partitionen in der Datei
-<path>/etc/fstab</path> aufgelistet sein. Die Datei beinhaltet Informationen darüber,
-an welcher Stelle jede Partition im Verzeichnisbaum eingehängt (gemountet) werden soll, um welches
-Dateisystem es sich handelt und weitere Optionen (automatisches Mounten beim Systemstart
-oder nicht, mounten durch User erlauben für z.B. CD-Rom, Floppy, USB-Sticks usw.).
+<path>/etc/fstab</path> aufgelistet sein. Die Datei beinhaltet Informationen
+darüber, an welcher Stelle jede Partition im Verzeichnisbaum eingehängt
+(gemountet) werden soll, um welches Dateisystem es sich handelt und weitere
+Optionen (automatisches Mounten beim Systemstart oder nicht, mounten durch User
+erlauben für z.B. CD-Rom, Floppy, USB-Sticks usw.).
 </p>
 
 </body>
@@ -43,41 +44,46 @@ oder nicht, mounten durch User erlauben für z.B. CD-Rom, Floppy, USB-Sticks usw
 <body>
 
 <p>
-<path>/etc/fstab</path> benutzt folgende Syntax. Jede Zeile besteht aus sechs Feldern,
-die durch Leerzeichen oder Tabs getrennt sind. Jedes Feld hat eine bestimmte Bedeutung:
+<path>/etc/fstab</path> benutzt die folgende Syntax. Jede Zeile besteht aus
+sechs Feldern, die durch Leerzeichen oder Tabs getrennt sind. Jedes Feld hat
+eine bestimmte Bedeutung:
 </p>
 
 <ul>
 <li>
-  Das erste Feld beschreibt die einzuhängende <b>Partition</b> (also den Pfad zur Geräte-Datei)
+  Das erste Feld beschreibt die einzuhängende <b>Partition</b> (also den Pfad
+  zur Geräte-Datei)
 </li>
 <li>
-  Das zweite Feld gibt den <b>Mountpoint</b> im Verzeichnisbaum für die Partition an.
+  Das zweite Feld gibt den <b>Mountpoint</b> im Verzeichnisbaum für die
+  Partition an.
 </li>
 <li>
-  Das dritte Feld gibt den Typ des <b>Dateisystems</b> der Partition an. 
+  Das dritte Feld gibt den Typ des <b>Dateisystems</b> der Partition an.
 </li>
 <li>
-  Das vierte Feld gibt die <b>Mount Optionen</b> an, die beim Ausführen von <c>mount</c>
-  benutzt werden. Da es für jedes Dateisystem verschiedene Mountoptionen gibt, ist es
-  empfehlenswert die Liste der Optionen in der man-page (<c>man mount</c>) nachzulesen.
-  Mehrere Optionen werden durch Komma getrennt.
+  Das vierte Feld gibt die <b>Mount Optionen</b> an, die beim Ausführen von
+  <c>mount</c> benutzt werden. Da es für jedes Dateisystem verschiedene
+  Mountoptionen gibt, ist es empfehlenswert die Liste der Optionen in der
+  man-page (<c>man mount</c>) nachzulesen. Mehrere Optionen werden durch
+  Kommata getrennt.
 </li>
 <li>
-  Das fünfte Feld wird von <c>dump</c> benutzt um festzustellen, ob die Partition 
-  gesichert werden soll oder nicht. Normalerweise läßt man diesen Wert auf <c>0</c> (Null).
+  Das fünfte Feld wird von <c>dump</c> benutzt um festzustellen, ob die
+  Partition gesichert werden soll oder nicht. Normalerweise läßt man diesen
+  Wert auf <c>0</c> (Null).
 </li>
 <li>
-  Das sechste Feld wird von <c>fsck</c> ausgelesen um festzustellen, ob es nach unsauberem 
+  Das sechste Feld wird von <c>fsck</c> ausgelesen um festzustellen, ob es nach unsauberem
   Herunterfahren des System nötig ist das Dateisystem auf Inkonsistenz zu <b>prüfen</b>.
-  Das Root-Dateisystem sollte in diesem Feld eine <c>2</c> eingetragen haben, Dateisysteme, 
+  Das Root-Dateisystem sollte in diesem Feld eine <c>2</c> eingetragen haben, Dateisysteme,
   bei denen keine Prüfung notwendig ist eine <c>0</c>.
 </li>
 </ul>
 
 <p>
-Starten Sie <c>nano</c> (oder den Editor Ihrer Wahl) um die Datei 
-<path>/etc/fstab</path> zu erstellen:
+Starten Sie <c>nano</c> (oder den Editor Ihrer Wahl) um die Datei
+<path>/etc/fstab</path> zu editieren:
 </p>
 
 <pre caption="Öffnen von /etc/fstab">
@@ -86,7 +92,7 @@ Starten Sie <c>nano</c> (oder den Editor Ihrer Wahl) um die Datei
 
 <p>
 Schauen wir uns einmal die Optionen für die <path>/boot</path> Partition an.
-Das ist nur ein Beispiel, falls Ihr System keine <path>/boot</path> Partition 
+Das ist nur ein Beispiel, falls Ihr System keine <path>/boot</path> Partition
 benötigt, übernehmen Sie den Eintrag einfach nicht.
 </p>
 
@@ -105,7 +111,7 @@ In diesem Beispiel ist die <path>/boot</path> Partion auf <path>/dev/hda1</path>
 Um die Zugriffsgeschwindigkeit zu erhöhen, werden manche Administratoren <c>noatime</c>
 als Mountoption hinzufügen. Dadurch wird beim Lesen die Inode-Accesstime nicht
 auf das Dateisystem geschrieben und das System kann eventuell schneller laufen
-(In den meisten Fällen braucht diese Informationen sowieso nicht).
+(In den meisten Fällen brauchen Sie diese Option nicht).
 </p>
 
 <pre caption="/boot Partiton mit noatime in /etc/fstab">
@@ -125,9 +131,9 @@ die Swap-Partiton übertragen, erhalten wir folgende 3 Zeilen in der fstab:
 
 <p>
 Um die <path>/etc/fstab</path> zu vervollständigen fehlen noch Einträge für
-<path>/proc</path>,<c>tmpfs</c> (notwendig) und  für das CD-ROM. Falls Sie 
-weitere Partitionen oder ein Diskettenlaufwerk haben, sollten Sie diese 
-natürlich auch eintragen: 
+<path>/proc</path>,<c>tmpfs</c> (notwendig) und  für das CD-ROM. Falls Sie
+weitere Partitionen oder ein Diskettenlaufwerk haben, sollten Sie diese
+natürlich auch eintragen:
 </p>
 
 <pre caption="Beispiel: Vollständige /etc/fstab">
@@ -168,7 +174,7 @@ none        /proc/bus/usb   usbfs         defaults      0 0
 
 <p>
 Überprüfen Sie nochmal jeden Eintrag, da bei Tippfehlern Ihr System möglicherweise
-nicht bootet, speichern Sie die Datei ab und beenden Sie den Editor.  
+nicht bootet. Speichern Sie die Datei ab und beenden Sie den Editor.
 </p>
 
 </body>
@@ -182,7 +188,7 @@ nicht bootet, speichern Sie die Datei ab und beenden Sie den Editor.
 
 <p>
 Jetzt müssen Sie Ihrem Computer einen Namen geben, den sogenannten Hostnamen. Das ist
-eigentlich keine Kunst,aber <e>einige</e> Administratoren haben Schwierigkeiten einen
+eigentlich keine Kunst, aber <e>einige</e> Administratoren haben Schwierigkeiten einen
 angemessenen Namen für Ihr System zu finden. Sie sollten jetzt keine großen Gedanken
 damit verschwenden, da Sie den Namen später noch ändern können. Im folgendem Beispiel
 nennen wir unser System <c>tux</c> und die Domain <c>homenetwork</c>.
@@ -238,13 +244,14 @@ konfiguriert wird.
 
 <p>
 Die Netzwerkkonfiguration wird bei einem Gentoo-System unter <path>/etc/conf.d/net</path>
-abgespeichert. Die Syntax der Datei ist nicht unbedingt intuitiv, wenn Sie so etwas noch
-nie manuell konfiguriert haben, aber keine Panik, es wird in folgendem Abschnitt genau erklärt :) 
+abgespeichert. Die Syntax der Datei ist nicht unbedingt intuitiv, wenn Sie so
+etwas noch nie manuell konfiguriert haben, aber keine Panik, es wird in folgendem
+Abschnitt genau erklärt :)
 </p>
 
 <p>
-Öffnen Sie die Datei  <path>/etc/conf.d/net</path> mit dem Editor Ihrer Wahl (in diesem Beispiel
-benutzen wir <c>nano</c>):
+Öffnen Sie die Datei  <path>/etc/conf.d/net</path> mit dem Editor Ihrer Wahl
+(in diesem Beispiel benutzen wir <c>nano</c>):
 </p>
 
 <pre caption="Öffnen der Datei /etc/conf.d/net">
@@ -252,8 +259,8 @@ benutzen wir <c>nano</c>):
 </pre>
 
 <p>
-Die erste Variable ist  <c>iface_eth0</c> und beschreibt die Einstellungen des Netzwerkinterfaces eth0.
-Folgende Syntax wird benutzt:
+Die erste Variable ist  <c>iface_eth0</c> und beschreibt die Einstellungen des
+Netzwerkinterfaces eth0. Folgende Syntax wird benutzt:
 </p>
 
 <pre caption="iface_eth0 Syntax">
@@ -261,17 +268,18 @@ iface_eth0="<i>&lt;ihre IP-Adresse&gt;</i> broadcast <i>&lt;Ihre Broadcast-Addre
 </pre>
 
 <p>
-Falls Ihr System die IP-Adresse von einem DHCP-Server beziehen soll, müssen Sie <c>iface_eth0</c>
-auf <c>dhcp</c> setzen. 
-Falls Sie mit den Begriffen, die hier erwähnt werden, noch nicht vertraut sind, sollten Sie sich
-den Abschnitt <uri link="?part=1&amp;chap=3#doc_chap4_sect3">Netzwerk Terminologie</uri>
-noch einmal genau durchlesen.
+Falls Ihr System die IP-Adresse von einem DHCP-Server beziehen soll, müssen
+Sie <c>iface_eth0</c> auf <c>dhcp</c> setzen. Falls Sie mit den Begriffen,
+die hier erwähnt werden, noch nicht vertraut sind, sollten Sie sich den
+Abschnitt <uri link="?part=1&amp;chap=3#doc_chap5_sect3">Die Netzwerk Terminologie
+verstehen</uri> noch einmal genau durchlesen.
 </p>
 
 <p>
-Hier 2 Beispiele; das Erste benutzt DHCP, im Zweiten weisen wir unserem System eine statische IP
-(192.168.0.2) mit der Netzmaske 255.255.255.0 und der Broadcast-Adresse 192.168.0.255 zu. Der Gateway 
-soll im letzten Fall 192.168.0.1 sein:
+Hier 2 Beispiele; das Erste benutzt DHCP, im Zweiten weisen wir unserem System
+eine statische IP (192.168.0.2) mit der Netzmaske 255.255.255.0 und der
+Broadcast-Adresse 192.168.0.255 zu. Der Gateway soll im letzten Fall 192.168.0.1
+sein:
 </p>
 
 <pre caption="Beispiele für  /etc/conf.d/net">
@@ -284,10 +292,10 @@ gateway="eth0/192.168.0.1"
 </pre>
 
 <p>
-Falls Sie mehrer Netzwerkkarten in Ihrem Comuter haben, legen Sie für jede eine neue
-<c>iface_eth</c> Variable an, also <c>iface_eth1</c>, <c>iface_eth2</c> usw.
-Die <c>gateway</c> Variable darf nur einmal verwendet werden, da es auf jedem System nur
-einen Default-Gateway geben darf.
+Falls Sie mehrere Netzwerkkarten in Ihrem Comuter haben, legen Sie für jede
+eine neue <c>iface_eth</c> Variable an, also <c>iface_eth1</c>,
+<c>iface_eth2</c> usw. Die <c>gateway</c> Variable darf nur einmal verwendet
+werden, da es auf jedem System nur einen Default-Gateway geben darf.
 </p>
 
 <p>
@@ -301,12 +309,13 @@ Speichern Sie nun die Konfiguration um fortzufahren.
 <body>
 
 <p>
-Wenn Sie Ihre Netzwerkinterfaces beim Systemstart aktivieren wollen, müssen Sie diesse
-zu dem Default-Runlevel hinzufügen. Falls Sie eine PCMCIA-Netzwerkkarte haben, können Sie diese 
-Sektion überspringen, weil diese durch das PCMCIA-Initscript gestartet werden 
+Wenn Sie Ihre Netzwerkinterfaces beim Systemstart aktivieren wollen, müssen Sie
+diese zum default-Runlevel hinzufügen. Falls Sie eine PCMCIA-Netzwerkkarte haben,
+können Sie diese Sektion überspringen, weil diese durch das PCMCIA-Initscript
+gestartet werden.
 </p>
 
-<pre caption="net.eth0 zum Default-Runlevel hinzufügen">
+<pre caption="net.eth0 dem default Runlevel hinzufügen">
 # <i>rc-update add net.eth0 default</i>
 </pre>
 
@@ -330,9 +339,10 @@ Initscript anlegen. Sie können einen Link mit <c>ln</c> auf das Script für eth
 <p>
 Sie müssen jetzt noch Ihrem System Informationen über Ihr Netzwerk geben. Dazu
 müssen Sie die Datei <path>/etc/hosts</path> anpassen, damit Hostnamen zu IP-Adressen
-aufgelöst werden, wenn Sie keinen Nameserver haben. Wenn Ihr lokales Netzwerk aus 3 Rechnern
-<c>jenny</c> (192.168.0.5), <c>benny</c> (192.168.0.6) und <c>tux</c> (dieses System) besteht,
-müssen Sie in <path>/etc/hosts</path> folgendes Eintragen:
+aufgelöst werden, wenn Sie keinen Nameserver haben. Wenn Ihr lokales Netzwerk
+aus 3 Rechnern <c>jenny</c> (192.168.0.5), <c>benny</c> (192.168.0.6) und
+<c>tux</c> (dieses System) besteht, müssen Sie in <path>/etc/hosts</path>
+folgendes eintragen:
 </p>
 
 <pre caption="Öffnen von /etc/hosts">
@@ -346,7 +356,7 @@ müssen Sie in <path>/etc/hosts</path> folgendes Eintragen:
 </pre>
 
 <p>
-Wenn Sie nur einen Rechner haben, oder alle anderen Rechner von einem Nameserver 
+Wenn Sie nur einen Rechner haben, oder alle anderen Rechner von einem Nameserver
 aufgelöst werden können, genügt der folgende Eintrag:
 </p>
 
@@ -359,9 +369,9 @@ Speichern Sie die Datei ab, um fortzufahren.
 </p>
 
 <p>
-Falls Sie keine PCMCIA-Netzwerkkarte haben können Sie diesen Abschnitt überspringen und mit
-Kapitel <uri link="#doc_chap4">System Informationen</uri> fortfahren.
-PCMCIA-Benutzer sollten sich folgenden Abschnitt durchlesen.
+Falls Sie keine PCMCIA-Netzwerkkarte haben können Sie diesen Abschnitt
+überspringen und mit dem Kapitel <uri link="#doc_chap4">System Informationen</uri>
+fortfahren. PCMCIA-Benutzer sollten sich folgenden Abschnitt durchlesen.
 </p>
 
 </body>
@@ -379,7 +389,7 @@ Zuerst muß das <c>pcmcia-cs</c> Paket installiert werden:
 </pre>
 
 <p>
-Fügen Sie nach der Installation von <c>pcmcia-cs</c> <c>pcmcia</c> zu dem  
+Fügen Sie nach der Installation von <c>pcmcia-cs</c> <c>pcmcia</c> zu dem
 <e>boot</e> Runlevel hinzu:
 </p>
 
@@ -405,10 +415,10 @@ die Kommentare durch.
 </pre>
 
 <p>
-Die Datei ist gut kommentiert, deswegen werde ich die einzelnen Variablen nicht erläutern.
-Nachdem Sie Datei editiert haben, speichern Sie und schließen Sie den Editor, um fortzufahren.
+Die Datei ist gut kommentiert, deswegen werde ich die einzelnen Variablen nicht
+erläutern. Nachdem Sie Datei editiert haben, speichern Sie sie und schließen
+Sie den Editor, um fortzufahren.
 </p>
-
 
 </body>
 </section>

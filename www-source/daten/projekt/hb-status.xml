@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.13 2003/12/13 22:09:36 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.14 2003/12/14 10:29:07 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/hb-status/">
@@ -15,7 +15,7 @@ Statusübersicht über den Stand der Handbuchübersetzung.
 </abstract>
 
 <version>1.1</version>
-<date>13. Dezember 2003</date>
+<date>14. Dezember 2003</date>
 
 <chapter>
 <title>Über das Handbuch</title>
@@ -113,15 +113,15 @@ noch nicht, eine Lösung ist noch unbekannt.
   <ti>hb-install-config.xml ( 8 )</ti>
   <ti>bobo</ti>
   <ti>X</ti>
-  <ti></ti>
-  <ti></ti>
+  <ti>dertobi123</ti>
+  <ti>X</ti>
   </tr>
   <tr>
   <ti>hb-install-bootloader.xml ( 9 )</ti>
   <ti>baka</ti>
   <ti>X</ti>
-  <ti></ti>
-  <ti></ti>
+  <ti>dertobi123</ti>
+  <ti>X</ti>
   </tr>
   <tr>
   <ti>hb-install-tools.xml ( 10 )</ti>
