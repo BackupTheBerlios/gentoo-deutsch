@@ -15,13 +15,7 @@ while sleep 8; do
 
 	if [ -z $RUN ]; then
 		 logger -i -t vdrwatchdog -p local0.info "initializing full VDR restart"
-		/etc/init.d/vdr stop 2>&1 >/dev/null
-		/etc/init.d/vdr zap 2>&1 >/dev/null
-		/etc/init.d/dvb stop 2>&1 >/dev/null
-		/etc/init.d/dvb zap 2>&1 >/dev/null
-		sleep 2
-		/etc/init.d/dvb start 2>&1 >/dev/null
-		/etc/init.d/vdr start 2>&1 >/dev/null
-		fi
+		/etc/init.d/vdr fullrestart 2>&1 >/dev/null
+	fi
 	unset RUN
 done
