@@ -79,13 +79,15 @@
 		Nach der langen Durststrecke von über einem Jahr seit der Letzten stabilen
 		Gentoo-Version ist es nun endlich so weit - <b>Gentoo-Linux 1.4 ist da !</b>
 	</p>
-
+	<p>
+		<uriimg uri="http://www.gentoo.org/doc/en/gentoo-x86-install.xml" picuri="http://www.gentoo.de/media/bilder/icons/14final.jpg"/>
+	</p>
 	<p>
 		Es wird empfohlen, sich vor der Installation die <uri link="http://www.gentoo.org/doc/en/gentoo-x86-install.xml">
-		Installationsdokumentation</uri> durchzulesen.
+		Installationsdokumentation</uri> zu lesen.
 		In dieser ist auch aufgeführt, wo Gentoo-Linux 1.4 heruntergeladen werden kann. Es wird
 		<b>dringendst</b> darum gebeten, auf die Mirror-Server auszuweichen damit sich die
-		ganze Last nicht auf den Hauptserver konzentriert. Eine Liste der Mirrors kann unter
+		ganze Last nicht auf den Hauptserver konzentriert. Eine Liste der Mirrors kan unter
 		<uri link="http://www.gentoo.org">http://www.gentoo.org</uri> eingesehen werden.
 	</p>
 	</body>
