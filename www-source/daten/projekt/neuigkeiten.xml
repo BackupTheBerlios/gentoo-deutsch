@@ -41,13 +41,13 @@ weitestgehend selbsterklärend sein. Ihr findet die Karte <uri link="http://cyber
 
 <body>
 <p>
-A new article introducing Gentoo Linux written by Daniel Robbins is featured 
-on O'Reilly Network's Web site today. In the article, a brief overview of some 
-of the features of Gentoo Linux, Daniel expounds on what kinds of enhancements 
-users can expect in the 1.4 final release: support for true 64-bit on the 
-UltraSparc architecture, KDE 3.0.4, a gentoo-sources kernel with Andrea 
-Archangeli's 3.5GB "user address space" patch and grsec, and of course the new 
-Gentoo Reference Platform for fast binary installs.
+Ein neuer Artikel von Daniel Robbins über Gentoo-Linux ist ab heute auf der
+Website von O'Reilly Network's. In diesem Artikel wird eine Übersicht über die
+Features von Gentoo-Linux gegeben und Daniel erläutert welche Weiterentwicklungen
+die Nutzer von Gentoo-Linux-1.4final erwarten können: Unterstützung für echte 64 Bit
+auf UltraSparc, KDE 3.0.4, ein Gentoo-Sources Kernel mit Andrea Archangeli's 3.5GB
+"user address space"-Patch und grsec, und natürlich die neue Gentoo Referent Plattform
+für schnelle Binärinstallationen.
 </p>
 </body>
 
@@ -59,18 +59,18 @@ Gentoo Reference Platform for fast binary installs.
 
 <body>
   <p>
-A new release of our Unreal Tournament 2003 Gentoo LiveCD is now
-available and includes quite a few enhancements. The Unreal Tournament
-2003 Demo has been upgraded to the 1080c patchlevel, fixing numerous
-quirks in the game itself. In addition, the UT2003 LiveCD now is now
-optimized for modern systems, requiring a Pentium Classic or greater to
-run and optimized for a P6-class instruction set like the Pentium II and
-III (it was previously a relatively unoptimized i486+ CD.) The CD now
-supports monitors with and without EDID functionality as well as wheel
-mice. In addition, machines with 512MB or more of RAM can now cache the
-entire UT2003 Demo to tmpfs (RAM) to dramatically enhance load-time
-performance. Oh, and SoundBlaster PCI 512 cards will now be correctly
-detected.
+Ein neues Release unserer Unreal Tournament 2003 Gentoo LiveCD ist jetzt
+verfügbar und enthält einige Neuerungen. Die Unreal Tournament
+2003 Demo wurde auf Patchlevel 1080c aktualisiert, wobei einige
+Dinge im Spiel selbst in Ordnung gebracht wurden. Desweiteren ist die UT2003
+LiveCD nun für moderne Pentium-Systeme und für den P6 Instruktions-Satz
+wie dem Pentium II und III (ursprünglich war es eine relativ unoptimierte CD
+für i486+) optimiert, sodass ein Pentium-Classic oder besser benötigt
+wird um sie benutzen zu können auszuführen . Die CD unterstützt nun Monitore
+ohne EDID-Funktionalität sowie Wheel-Mäuse. Desweiteren können Maschinen mit
+512MB oder mehr Speicher nun die komplette ZT2003 Demo in tmpfs (also den RAM)
+cachen und somit die Leistung erheblich verbessern. Oh, und SoundBlaster
+PCI 512 Soundkarten werden nun korrekt erkannt.
   </p>
 </body>
 
