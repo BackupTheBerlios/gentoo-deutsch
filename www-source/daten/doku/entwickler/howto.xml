@@ -46,7 +46,7 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 			 "ebuild" auswählen. Im Suchfeld dann den Namen des ebuilds eingeben, sowie als Status NEW, ASSIGNED, REOPENED und (wichtig!) 
 			RESOLVED markieren, dann die Suchabfrage starten.</p>
 			
-			<p>Generell sollte im Portage Verzeichnis nur die .ebuild Dateien und sehr kleine zugehörige Dateien wie 
+			<p>Generell sollte im Portage Verzeichnis nur die .ebuild Dateien und sehr kleine zugehörige Dateien, wie 
 			zum Beispiel Patches oder Beispielskonfigurationen gespeichert werden. Diese Dateien sollten immer unter 
 			/usr/portage/kategorie/paket/files abgespeichert werden, um das kategorie/paket Verzeichnis nicht zu 
 			unübersichtlich machen. Generell ist es für Entwickler keine gute Idee Binärdateien (Nicht-ASCII-Dateien) 
@@ -73,16 +73,16 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	</section>
         <section>
 		<title>Allgemeine CVS Commit Regeln</title>
-		<body><p><warn>Achtung <i>lintool</i> hat einige Probleme. Es sollte <i>repoman</i> verwendet werden.</warn></p>
-		<p><li>
-		<ul>Vor einem commit immer repoman ausführen</ul>
-                <ul>Bitte lintool vor dem commit ausführen</ul>
-		<ul>Immer testen, ob package.mask in Ordnung ist, indem mit 'emerge --pretend glibc' mögliche Konflikte angezeigt werden</ul>
-		<ul>Immer das ChangeLog vor dem commit aktualisieren!</ul>
-		<ul>Um sicherzugehen, das Konflikte während dem CVS commit keine schwerwiegenden Auswirkungen auf den Portage Verzeichnisbaum
-		auftreten, sollte immer vor dem commit des eigentlichen ebuilds, das aktualisierte package.mask eincheckt werden.</ul>
-		<ul>Bitte sauber einchecken! Zuerst das aktualisierte package.mask, dann das ebuild, ChangeLog und die Lizenz in einem Zug, da
-		ansonsten die Benutzer bei ihren Installationen Probleme bekommen.</ul></li>
+		<body><p><warn>Achtung <i>lintool</i> hat einige Probleme. Es sollte stattdessen <i>repoman</i> verwendet werden.</warn></p>
+		<p><ul>
+		<li>Vor einem commit immer repoman ausführen</li>
+                <li>Bitte lintool vor dem commit ausführen</li>
+		<li>Immer testen, ob package.mask in Ordnung ist, indem mit 'emerge --pretend glibc' mögliche Konflikte angezeigt werden</li>
+		<li>Immer das ChangeLog vor dem commit aktualisieren!</li>
+		<li>Um sicherzugehen, das Konflikte während dem CVS commit keine schwerwiegenden Auswirkungen auf den Portage Verzeichnisbaum
+		auftreten, sollte immer vor dem commit des eigentlichen ebuilds, das aktualisierte package.mask eincheckt werden.</li>
+		<li>Bitte sauber einchecken! Zuerst das aktualisierte package.mask, dann das ebuild, ChangeLog und die Lizenz in einem Zug, da
+		ansonsten die Benutzer bei ihren Installationen Probleme bekommen.</li></ul>
 		</p></body>
 	</section> 
 	<section>
@@ -100,8 +100,8 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 		Unterscheidung benötigt wird, ein anderes Suffix verwendet werden.</p>
 
 		<p>Bei einer grösseren Anzahl von Dateien empfiehlt es sich ein Unterverzeichnis wie z.B. files/mypkg-1.0 anzulegen
-		und die jeweiligen zugehörigen Dateien hier hineinzukopieren. Bei dieser methode kann man natürlich auf das Suffix
-		bei den einzelnen Dateien verzichten, da dies bereits aus dem verzeichnisnamen hervorgeht. Das spart einiges an Arbeit.</p>
+		und die jeweiligen zugehörigen Dateien hier hineinzukopieren. Bei dieser Methode kann man natürlich auf das Suffix
+		bei den einzelnen Dateien verzichten, da dies bereits aus dem Verzeichnisnamen hervorgeht. Das spart einiges an Arbeit.</p>
 	        </body>
 	</section>
 </chapter>	
@@ -111,22 +111,22 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	<section>
 	<title>Einführung</title>
 	<body>
-	<p>Die ebuild Skripte sind die Grundlage des gesamten Portage Systems. Sie enthalten die gesamte Information
-	zum downloaden, entpacken, kompilieren und installieren des Quellcodes aber auch eventuelle änderungen und 
-	Konfigurationen , die vor oder nach der Installation oder beim Entfernen durchgeführt werden. Während das meiste
+	<p>Die ebuild Skripte bilden die Grundlage des gesamten Portage Systems. Sie enthalten die gesamte Information
+	zum Herunterladen, Entpacken, Kompilieren und Installieren des Quellcodes, aber auch eventuelle Änderungen und 
+	Konfigurationen, die vor oder nach der Installation oder beim Entfernen durchgeführt werden. Während das meiste
 	von Portage in Python geschrieben ist, sind die ebuilds als bash-Skripte gehalten, da dies das Aufrufen von Befehlszeilen
 	wie auf der Kommandozeile ermöglicht. Eines der Hauptdesign-Prinzipien der ebuild Skripte ist, dass die darin aufgerufenen
-	Befehle denen der Kommandozeil entsprechen, wie wenn der Benutzer das Paket manuell installieren würde. Aus diesem
+	Befehle denen der Kommandozeile entsprechen, wie wenn der Benutzer das Paket manuell installieren würde. Aus diesem
 	Grund ist die bash-Syntax eine gute Wahl.</p>
 
 	<p>Ebuild Skripte werden durch die <c>ebuild</c> und <c>emerge</c> Befehle ausgeführt. Man muss sich das 
-	<c>ebuild</c> Kommando als einfaches Erstellungswerkzeug vorstellen. Es kann ein ebuild erstellen und installieren, 
+	<c>ebuild</c> Kommando als einfaches Handwerkzeug vorstellen. Es kann ein ebuild erstellen und installieren, 
 	aber mehr auch nicht. Es kontrolliert, ob Abhängigkeiten erfüllt sind, kann diese aber nicht selbständig auflösen. Auf
 	der anderen Seite ist <c>emerge</c> als hochspezialisierte Zentrale für <c>ebuild</c>, welches die Möglichkeit 
 	besitzt, selbständig abhängige Pakete zu installieren, wenn gewünscht als "was wäre wenn..." dem Benutzer anzeigen,
 	welche ebuilds eingeführt <e>würden</e> und vieles mehr. Allgemein sticht <c>emerge</c> den <c>ebuild</c> Befehl
 	in allen Belangen aus, bis auf einen Punkt. Mit <c>ebuild</c> kann der Benutzer inkrementell alle unterschiedlichen
-	Bereiche einer Paketinstallation (herunterladen, entpacken, kompilieren, installieren und einführen) Schritt für Schritt.  
+	Bereiche einer Paketinstallation (herunterladen, entpacken, kompilieren, installieren und einführen) Schritt für Schritt  
 	ausführen. Für Entwickler ist dies ein unverzichtbares Werkzeug zum debuggen, da nur so Probleme mit dem ebuild
 	auf einen kleinen Bereich des Gesamtprozesses eingegrenzt werden können.</p>
 	</body>
@@ -167,7 +167,7 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 
 	<p>Der vierte Abschnitt (ebenfalls optional) ist die Gentoo Linux spetzifische <e>Revisionsnummer</e>, welche durch <c>-r#</c>
 	angegeben wird, wobei <c>#</c> ein Integer (Zahlenwert) ist, als Beispiel: <c>package-4.5.3-r3</c>. Die Revisionsnummer ist
-	unabhängig von der Versionsnummer des Quellpaketes und kann dazu genutzt werden, die Benutzer davon in kennntnis zu setzen, 
+	unabhängig von der Versionsnummer des Quellpaketes und kann dazu genutzt werden, die Benutzer davon in Kennntnis zu setzen, 
 	dass es sich um ein neues bzw. erweiterte Revision eines ebuilds handelt.</p>
 
 	<p>Wenn grössere Veränderungen an einem bestehenden ebuild vorgenommen werden, sollte die Datei vorher kopiert und mit einer
@@ -288,15 +288,15 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	<title>Die USE Variablen</title>
 	<body><p>Die USE-Variablen dienen dem Zweck, Portage global zu konfigurieren und automatisch bestimmte Kompilierungsoptionen an- oder abzuschalten.
 	Hier ist ein Beispiel. Wir gehen nun davon aus, dass Sie ein GNOME-Fan sind, und jedes ebuild, welches eine optionale GNOME Unterstützung anbietet, soll 
-   	dies automatisch miteinkompilieren. In diesem Fall fürgen wir <c>gnome</c> in die USE variable von <i>/etc/make.conf</i> hinzu und Portage berücksichgt dies
+   	dies automatisch miteinkompilieren. In diesem Fall fügen wir <c>gnome</c> in die USE variable von <i>/etc/make.conf</i> hinzu und Portage berücksichgt dies
 	bei jeder Kompilierung eines Paketes mit GNOME Unterstützung. Im umgekehrten Fall, wenn optinale GNOME Funktionen nicht gewünscht sind, editiert man
-	/etc/make.conf und stellt sicher, dass <c>gnome</c> in der USE Variable nicht gesetzt ist. Gentoo Linux besitzt eine Überwältigende Anzahl von USE Optionen,
+	/etc/make.conf und stellt sicher, dass <c>gnome</c> in der USE Variable nicht gesetzt ist. Gentoo Linux besitzt eine überwältigende Anzahl von USE Optionen,
 	die es Ihnen erlauben, das System genau so zu konfigurieren, wie Sie es haben möchten.</p>
 
 	<p><note> Wenn eine USE Variable deaktiviert ist (hier im Beispiel <c>gnome</c>) wirk sich dies nur auf die <i>optinalen</i> Kompilierungsoptionen aus. Wenn 
 	Sie jedoch ein ebuild <c>emergen</c>, welches auf ein GNOME Paket angewiesen ist, wird GNOME automatisch als eine Abhängigkeit hiervon mitinstalliert,
 	falls es nicht bereits erfolgt ist. Das ist auch der Grund, weshalb man vor dem eigentlichen <c>emerge</c> ein <c>emerge --pretend</c> ausführen sollte. In
-	so einem Fall wissen Sie bereits vorher bescheid, was alles auf Ihrem System installiert wird.</note></p>
+	so einem Fall wissen Sie bereits vorher Bescheid, was alles auf Ihrem System installiert wird.</note></p>
 
 	<p>In Ihren eigenen ebuilds kann mit Hilfe der USE Variable geprüft werden, ob die entsprechende Variable vom Besitzer der Installation bereits gesetzt ist. Das 
 	<c>use</c> Kommando gibt den Namen jeder Variable zurück, die USE und seiner Befehlszeile präsent ist. Der Befehl wird normalerweise so angewendet:</p>
@@ -383,7 +383,7 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	<p>Normalerweise wird bei der Verwendung von autoconf und automake das Paket standardmässig korrekt installiert, allerdings mit einigen wenigen
 	Ausnahmen:
 	<ul>
-	<li>Wenn das Programm nach /bin, /sbin, /usr/bin oder /usr/sbin installiert wird, die dazugehörigen Man-Pages sollten nach /usr/share/man kopiert werden.
+	<li>Wenn das Programm nach /bin, /sbin, /usr/bin oder /usr/sbin installiert wird, sollten die dazugehörigen Man-Pages nach /usr/share/man kopiert werden.
 	Dies kann meistens durch Übergabe des Arguments <c>./configure --mandir=/usr/share/man</c> im ebuild Skript bewerkstelligt werden.</li>
 	<li>GNU Info Dateien gehören nach /usr/share/info, <i> auch wenn die Info-Dateien X11, GNOME oder KDE-Programme betreffen</i>. Nochmals:
 	/usr/share/info ist der <i>einzige</i> offizielle Platz für GNU Info-Dateien! Leider instellieren die meisten ./configure Skripte die GNU Dateien nach
@@ -398,10 +398,10 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	</ul></p>
 
 	<impo>Manche Distributionen installieren KDE und GNOME nach /opt. Zur Zeit existiert kein Standard für die Installtion von Dateien der Desktop-Umgebungen.
-	Im Interesse einer einfachen und konsistenten Handhabung, haben wir uns entschieden, alle KDE und GNOME Pakete nach /usr zu installieren.</impo>
+	Im Interesse einer einfachen und konsistenten Handhabung haben wir uns entschieden, alle KDE und GNOME Pakete nach /usr zu installieren.</impo>
 
 	<p>Generell sollte das ebuild seine Dateien in den /usr Verzeichnisbaum installieren. Manche Programme können mit oder ohne GNOME; KDE und X11
-	bibliotheken kompiliert werden, was für verwirrung sorgt. Unsere Lösung, alles nach /usr zu installieren, verhindert doppelte Arbeit und unnötige Komplexität
+	Bibliotheken kompiliert werden, was für verwirrung sorgt. Unsere Lösung, alles nach /usr zu installieren, verhindert doppelte Arbeit und unnötige Komplexität
 	für die ebuild Entwickler. Der Pfad, in den die Programmdateien installiert werden, sollte nicht an das Vorhandensein oder Fehlen von USE Variablen
 	geknüpft werden. Somit installieren die ebuilds im Portage Verzeichnisbaum in fast allen Fällen ihre Dateien nach /usr.</p>
 
