@@ -474,10 +474,10 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<section>
 		<!--noch nicht &#xFC;bersetzt (JS)-->
 		<title>Warum liesst KDE nicht <path>/etc/profile</path>?</title>
-		<body><p>You need to add <c>--login</c> to the first line in <path>/opt/kde2.1/bin/startkde
-		</path>, so that it reads as follows:</p>
+		<body><p>Man muss <c>--login</c> in der ersten Zeile in <path>/opt/kde2.1/bin/startkde
+		</path> hinzuf&#xFC;gen, damit es so aussieht:</p>
 		<pre>#!/bin/sh --login</pre>
-		<p>This fix has been added to recent versions of KDE.</p>
+		<p>Diese &#xC4;nderung wurde in h&#xF6;cheren KDE Version eingebaut.</p>
 		</body>
 	</section>
 </chapter>
