@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.24 -->
+<!-- English CVS Version: 1.29 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.2 2003/12/08 22:55:48 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.3 2003/12/12 21:20:09 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -41,6 +41,10 @@ folgenden Voraussetzungen, bevor Sie mit der Installation fortfahren.
 <ul>
 <li>
   Sie benötigen mindestens 1 GB freien Festplattenplatz
+</li>
+<li>
+  Wenn Sie keine vorkompilierten Pakete benutzen benötigen Sie mindestens 300 MB
+  Speicher (RAM + Swap)
 </li>
 <li>
   Für die <e>x86 Architektur</e> benötigen Sie mindestens einen 486+ Prozessor
@@ -231,7 +235,7 @@ Geschwindigkeit und Stabilität wiederspiegeln).
 
 <p>
 Schreiben Sie sich auf (oder denken Sie daran) welches Stage Archiv sie
-gewählt haben. Sie brauchen dies später, wenn Sie auswählen möchten, welche 
+gewählt haben. Sie brauchen dies später, wenn Sie auswählen möchten, welche
 LiveCD (oder anderes Installationsmedium) Sie verwenden werden. In diesem Zusammenhang
 könnte es für Sie interessant sein, wenn Sie nach der Installation beschliessen, andere
 Optimierungs-Einstellungen zu benutzen, dass Sie Ihr gesamtes System jederzeit neu kompilieren
@@ -575,6 +579,14 @@ Datums-Tags finden (wie zum Beispiel <path>livecd-x86-cd1-20031029.iso</path>),
 nehmen Sie das aktuellste ISO.
 </p>
 
+<note>
+Bitte beachten Sie die Beschreibungen im <uri link="http://store.gentoo.org">
+Gentoo Store</uri> um zu erfahren welche LiveCD (oder Stage) sie für Ihre CPU
+benutzen sollten. Ein gebrüuchlicher Fehler ist es, eine LiveCD (oder Stage) für
+eine CPU aktuellere als die eigene es ist auszuwählen (zum Beispiel "athlon-xp"
+für einen normalen AMD Athlon).
+</note>
+
 <p>
 Um die heruntergeladenen ISO(s) zu brennen müssen Sie den RAW-Modus wählen. Wie
 das im einzelnen funktioniert hängt sehr stark vom verwendeten Programm ab. Wir
@@ -605,8 +617,9 @@ werden ein paar populäre Tools vorstellen, die das für Sie machen können.
     Klicken Sie nun auf <c>OK</c> und dann auf <c>Burn</c>
   </li>
   <li>
-    Mit cdrecord schreiben sie einfach <c>cdrecord</c> gefolgt vom Pfad zu dem
-    ISO Image :)
+    Mit cdrecord schreiben sie einfach <c>cdrecord dev=/dev/hdc</c> (ersetzen
+    Sie <path>/dev/hdc</path> mit dem Device Pfad Ihres CD-RW Laufwerk) gefolgt
+    vom Pfad zu dem ISO Image :)
   </li>
 </ul>
 
@@ -1279,8 +1292,9 @@ machen.
     Klicken Sie nun auf <c>OK</c> und dann auf <c>Burn</c>
   </li>
   <li>
-    Mit cdrecord schreiben sie einfach <c>cdrecord</c> gefolgt vom Pfad zu dem
-    ISO Image :)
+    Mit cdrecord schreiben sie einfach <c>cdrecord dev=/dev/hdc</c> (ersetzen
+    Sie <path>/dev/hdc</path> mit dem Device Pfad Ihres CD-RW Laufwerk) gefolgt
+    vom Pfad zu dem ISO Image :)
   </li>
 </ul>
 
