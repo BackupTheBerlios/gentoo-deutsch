@@ -1,0 +1,375 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Druckereinrichtung</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Druckereinrichtung</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Lokales Drucken mit CUPS</option>
+<option value="#doc_chap2">2. 
+The GIMP, OpenOffice.org 1.0 und Abiword für das Drucken für CUPS einrichten
+</option>
+<option value="#doc_chap3">3. Drucken im Netzwerk mit CUPS und SAMBA</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Lokales Drucken mit CUPS</p>
+<p class="secthead"><a name="_sect1">CUPS installieren </a></p> 
+ 
+<p>
+Gentoo Linux für das Drucken vorzubereiten ist relativ einfach, da alle benötigten Pakete seit 8. August 2002 im Portage-Tree vorhanden sind.
+Alles was wir machen müssen, ist den gewünschten Drucker zu konfigurieren und sicherzustellen, dass er Postscript richtig interpretiert. Der erste Schritt ist die Installation der notwendige Software.</p>
+ 
+ 
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Der nächste Schritt beschreibt die Installation für GNOME2.
+Das könnte mit KDE funktionieren, da CUPS systemunabhängig ist. TODO: Anleitung für CUPS unter KDE.</p></td></tr></table>
+ 
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre> 
+# <font class="code">emerge net-print/cups</font>  
+# <font class="code">emerge gnome-base/gnome-print</font> 
+# <font class="code">emerge gnome-base/libgnomeprint</font> 
+# <font class="code">emerge media-gfx/gimp-print</font> 
+# <font class="code">emerge net-print/gimp-print-cups</font> 
+</pre></td></tr>
+</table> 
+ 
+<p>Jetzt, da die Pakete mit ihren Abhängigkeiten installiert sind, ist es an der Zeit den Drucker selbst zu installieren.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Dieses Dokument baut auf Hewlett-Packard-USB-Drucker auf, allerdings sollte sich die Einrichtung eines Parallel-Port-Druckers nicht sehr davon unterscheiden.
+Nicht-HP-Drucker sind noch nicht einbezogen, somit wird sich das Besorgen und Installieren zugehöriger Treiber vom hier geschilderten Vorgehen unterscheiden.
+</p></td></tr></table>
+
+<p>
+Wenn noch nicht geschehen, muss USB-Core- und die USB-Drucker-Unterstützung [<font class="path">USB-Support -&gt; USB Printer support</font>] in den Kernel einkompiliert werden.
+Ich habe beide Teile als Module übersetzt; durch <font class="code">lsmod</font> konnte ich sehen dass die Unterstützung geladen wurde und funktioniert -- allerdings ist dies jedem selbst überlassen.</p> 
+ 
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>
+Wenn sie einen Parallel-Port-Drucker verwenden, stellen sie sicher, dass die Parallel-Port-Kernel-Optionen anstatt der USB-Optionen aktiviert sind.
+</p></td></tr></table> 
+ 
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Wenn sie nicht sicher sind, wie man den Kernel übersetzt, dann hilft ihnen das <a href="http://www.tldp.org/HOWTO/Kernel-HOWTO.html">offizielle Kernel-HOWTO</a>.</p></td></tr></table>
+ 
+<p>
+Jetzt, da die notwendigen Kernel-Optionen installiert sind, ist es an der Zeit, zu überprüfen ob der Drucker erkannt wurde und funktioniert. Nachdem sie alles neu gestartet haben, müssen sie nun noch die Drucker-Module laden.
+</p> 
+ 
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Wenn sie USB in den Kernel eingebaut haben, dürfen sie die USB-Module nicht laden. Wenn sie einen Parallel-Port-Drucker verwenden, ersetzen sie die entsprechenden Module.
+</p></td></tr></table> 
+ 
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre> 
+# <font class="code">insmod usbcore</font> 
+# <font class="code">insmod printer</font> 
+</pre></td></tr>
+</table> 
+ 
+<p>
+Nachdem die Module erfolgreich geladen wurden, stecken sie den Drucker ein und sehen dann in <font class="path">/var/log/messages</font> nach, ob er erkannt wurde.
+</p> 
+ 
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre> 
+# <font class="code">tail /var/log/messages</font> 
+</pre></td></tr>
+</table> 
+ 
+<p>Sie sollten in etwa folgendes sehen: </p>
+   
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<font class="code">hub.c: USB new device connect on bus2/2, assigned device number 2 </font> 
+<font class="code">printer.c: usblp0: USB bidirectional printer dev 2 if 0 alt 1 proto 2 vid 0x03F0 pid 0x1104 </font>
+</pre></td></tr>
+</table>    
+ 
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Wenn sie einen Parallel-Port-Drucker verwenden, müssen sie diesen <font class="emphasis">vor</font> dem Neustart einstecken.
+Nachdem das System hochgefahren ist, sollten sie mittels <font class="code">dmesg</font> überprüfen, ob der Kernel ihren Drucker erkannt hat.
+</p></td></tr></table> 
+ 
+<p>
+Ehe sie ihren Drucker für CUPS einrichten, ist es möglich ihn mittels <font class="input">cat</font> zu testen.
+</p> 
+
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">touch test.txt</font>
+# <font class="code">echo &quot;Hallo Welt&quot; &gt; test.txt</font>
+# <font class="code">cat test.txt &gt; /dev/usb/lp0 </font>
+
+<font class="input"> Alternativ für Parallel-Port-Drucker: </font>
+# <font class="code">cat test.txt &gt; /dev/lp0 </font>
+</pre></td></tr>
+</table>
+<p class="secthead"><a name="_sect2">Konfiguration der PPD-Datei </a></p> 
+<p>
+Jetzt ist es an der Zeit, den Drucker und CUPS zu konfigurieren. Wenn sie einen HP-InkJet-Drucker verwenden, ist es notwendig, dass sie den <font class="code">hpijs</font> Druckertreiber installieren.
+Dieser Treiber übernimmt die Interpretation von Postscript, die notwendig ist, um den HP-Drucker zum arbeiten zu bringen. Wenn sie keinen HP-Drucker verwenden, wird es notwendig sein, herstellerspezifische Treiber zu besorgen.
+</p> 
+ 
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Der <font class="code">hpijs</font> Treiber ist <font class="emphasis">nur</font> für HP-InkJet-Drucker geeignet. 
+Wenn sie einen HP-LaserJet verwenden, könnte die Unterstützung über das GNOME-Drucksystem möglich sein.
+Überspringen sie den folgenden Text, wenn sie keinen HP-InkJet-Drucker verwenden.
+</p></td></tr></table> 
+ 
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre> 
+# <font class="code">emerge net-print/hpijs</font> 
+</pre></td></tr>
+</table> 
+ 
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>
+Die Dokumentation von HP zum <font class="code">hpijs</font>-Treiber findet sich unter <font class="path">/usr/share/doc/hpijs-1.1</font>. Sie sollten diese unbedingt lesen.
+</p></td></tr></table> 
+ 
+<p> 
+Damit ihr Drucker Postscript richtig interpretiert, benötigt CUPS die PPD-Datei (Printer Postscript Definition).
+Der einfachste Weg eine PPD zu erzeugen ist mit <font class="input">foomatic</font>.
+Die foomatic Konfigurationsskripte sind über Link <a href="http://www.linuxprinting.org/download/foomatic">http://www.linuxprinting.org/download/foomatic</a> erhältlich.
+Außerdem ist ein Ebuild für Gentoo in der Entwicklung - dieser ist aber noch nicht im offizielle Portage-Tree.
+Wenn foomatic einmal eingerichtet ist, führen sie folgende Befehle aus, um ihren Drucker zu konfigurieren und verschieben sie dann die PPD an die richtige Stelle. Das folgende Beispiel verwendet die hpijs-Treiber für HP-Drucker.
+</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Die Drucker-ID finder sich in der foomatic-Datenbank unter <font class="path">/usr/share/foomatic/db/source/printer</font>.
+Sie müssen ihre Drucker-ID ausfindigen machen und seine genaue Bezeichnung verwenden.
+Achten sie auf Groß/Kleinschreibung!
+</p></td></tr></table>
+
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">foomatic-configure -s cups -p printer ID -c print_device -n queue name -d hpijs </font>
+# <font class="code">mv /etc/foomatic/your.new.ppd /etc/cups/ppd </font>
+</pre></td></tr>
+</table>
+ 
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>
+Wenn sie keinen HP-Drucker verwenden, könnten sie trotzdem foomatic zum erstellen ihrer PPD verwenden.
+Bitte sehen sie in der <a href="http://www.linuxprinting.org/foomatic/USAGE">foomatic-Dokumentation</a> und bei <a href="http://www.linuxprinting.org">linuxprinting.org</a> für mehr Informationen nach.
+</p></td></tr></table>
+<p class="secthead"><a name="_sect3">Konfiguration von CUPS </a></p> 
+<p>
+Jetzt da der Drucker selbst konfiguriert ist, muss CUPS so eingerichtet werden, dass es mit den Druckaufträgen umgehen kann.
+Praktischerweise kann CUPS über einen Web-Browser auf Port 631 des Drucker-Computers verwaltet werden.
+</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>
+CUPS bringt eine eigene Konfigurationsdatei für den Daemon mit, die gegebenfalls angepasst werden muss. Sie sollten die Datei <font class="path">/etc/cups/cupsd.conf</font> durchsehen und anpassen.
+</p></td></tr></table>
+	
+<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">rc-update add cupsd default</font>
+# <font class="code">/etc/init.d/cupsd start</font>
+</pre></td></tr>
+</table>
+
+<p>
+Der CUPS-Daemon sollte jetzt laufen; öffnen sie also ihren Lieblings-Browser und setzen sie ihn auf <a href="http://localhost:631">http://localhost:631</a>.
+</p> 
+
+<p>
+Jetzt werden sie hoffentlich von der CUPS-Konfigurations-Startseite begrüßt.
+Klicken sie auf den Punkt <font class="input">Administration</font> am Seitenanfang und geben sie das Passwort von root oder jemanden aus der Gruppe <font class="input">lp</font> ein.
+Nachdem sie angemeldet sind,  klicken sie auf <font class="input">Add Printer</font> - ein Unterpunkt von <font class="input">Printers</font>. Geben sie den benötigten Namen, die Beschreibung und den Ort ihres Druckers ein.
+Der Name des Druckers muss genau der selbe sein, wie der den sie für foomatic festgelegt hatten!
+Jetzt müssen sie noch die Schnittstelle angegeben, an der ihr Drucker angeschlossen ist.
+Wählen sie nun zuerst ihren Druckerhersteller und anschließend ihren Druckertyp aus.
+</p>
+
+<p>
+Die Einrichtung ist abgeschlossen. Klicken sie nun den Namen ihres Druckers an und versuchen sie eine Testseite zu drucken. Voila, ihre Druckereinrichtung wurde erfolgreich abgeschlossen!
+</p>
+
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Wenn der Drucker aus unbekanntem Grund nicht funktioniert, sollten sie in der Datei <font class="input">error_log</font> nachschauen, die sich im Verzeichnis für die CUPS-Meldungen (meist <font class="path">/var/log/cups</font>) befindet.
+</p></td></tr></table>
+ 
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>
+The GIMP, OpenOffice.org 1.0 und Abiword für das Drucken für CUPS einrichten
+</p>
+<p class="secthead"><a name="_sect1">The GIMP </a></p>
+<p>
+Als erstes werden wir The GIMP einrichten - einfach weil es cool ist. Starten sie The GIMP und öffnen sie ein existierendes Bild oder erstellen sie einfach ein neues, es ist völlig egal - alles was wir wollen ist das <font class="input">Datei</font>-Menü.
+Klicken sie das Bild mit der rechten Maustaste an und öffnen sie <font class="input">Datei -&gt; Drucken...</font>. Der Druckdialog sollte erscheinen; wenn ja klicken sie auf <font class="input">Neuer Drucker</font>.
+Wenn ihr Drucker noch nicht aufgeführt ist, geben sie den Namen ihres Druckers ein und wählen sie den Druckertyp aus.
+Ok, jetzt können sie von The GIMP aus drucken.
+Probieren sie etwas mit den Einstellungen herum.
+</p>
+<p class="secthead"><a name="_sect2">OpenOffice.org 1.0 / StarOffice 6 </a></p>	
+<p>
+Drucken mit OpenOffice.org-1.0 ist nicht sehr schwer. Gehen sie nach <font class="path">OpenOffice.org1.0/program</font> und führen sie <font class="code">spadmin</font> aus.
+Erstellen sie einen neuen Drucker und wenn <font class="input">Choose a Driver</font> (Treiber wählen) erscheint, klicken sie auf <font class="input">import</font> und gehen sie zum Ort der PPD ihres Druckers - es sollte die Datei <font class="path">/etc/cups/ppd</font> sein.
+Benutzen sie die voreingestellten Druckerkommandos, geben sie dem Drucker einen Namen, setzen sie ihn als Voreinstellung und sie können losdrucken!
+Starten sie dafür OpenOffice.org 1.0, öffnen sie das Druckfeld und wählen sie ihren Drucker aus. Drucken sie nun eine Testseite und fertig.
+</p>
+<p class="secthead"><a name="_sect3">Abiword </a></p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>
+Abiword verursacht mit CUPS-1.1.15-r2 Speicherzugriffsfehler und stürzt ab.
+Sie sollten zurück zur .14-Serie wechseln, da dies das Problem behebt.
+</p></td></tr></table>
+
+<p>TODO: Abiword-Unterstützung hinzufügen.</p>
+<p>Lokales Drucken ist hiermit abgeschlossen; wir fahren fort mit der Netzwerkunterstützung.</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Drucken im Netzwerk mit CUPS und SAMBA</p>
+<p class="secthead"><a name="_sect1">Drucken mit einem Windows-Drucker von einer Linux-Maschine aus </a></p>
+<p>Damit die nächsten beiden Netzwerkdruckoptionen funktionieren, muss zunächst SAMBA installiert werden.</p>
+
+<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 9</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">emerge net-fs/samba</font>
+</pre></td></tr>
+</table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Mehr Informationen zu SAMBA finden sie in der offiziellen <a href="http://www.tldp.org/HOWTO/SMB-HOWTO.html">SAMBA HOWTO</a>.
+</p></td></tr></table>
+
+<p>
+Zunächst erstellen sie mit <font class="input">foomatic</font> eine PPD-Datei für den Zieldrucker. Vergessen sie nicht in der Datenbank der Seite <a href="http://www.linuxprinting.org/printer_list.cgi">linuxprinting.org</a> nachzusehen, ob ihr Drucker mit Linux kompatibel ist oder nicht.
+Jetzt teilen wir <font class="input">foomatic</font> mit, wo der und welcher Drucker es ist. Anschließend verschieben wir die erzeugte PPD an die richtige Stelle.
+</p>
+
+<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 10</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">foomatic-configure -s cups -p printer ID -c smb://user:password@server/share -n queue name -d hpijs </font> 
+# <font class="code">mv /etc/foomatic/your.new.ppd /etc/cups/ppd </font>
+</pre></td></tr>
+</table>
+
+<p>
+Setzen sie jetzt ihren Lieblings-Browser auf <a href="http://localhost:631">http://localhost:631</a>, um das CUPS-Konfiguration-Interface zu starten.
+Führen sie jetzt die oben beschriebenen Schritte aus, um einen Drucker hinzuzufügen - geben sie jedoch diesmal bei der Frage nach der Schnittstelle <font class="input">smb://user:password@server/share</font> ein.
+Dies setzt CUPS auf den Drucker am Windows-Rechner.
+</p>
+<p class="secthead"><a name="_sect2">Linux als Windows-kompatiblen Drucker-Server verwenden </a></p>
+
+<p>
+Linux eignet sich hervorragend als Drucker-Server, eigentlich für jede Art Server.
+Der erste Schritt ist die Bearbeitung der Datei <font class="path">/etc/samba/smb.conf</font>, um die Einstellungen anzupassen.
+Die Datei <font class="input">smb.conf</font> beinhaltet alle Einstellungen, um ihre Linux-Rechner als Windows-NT-Server für alle Windows-Rechner zu tarnen.
+Im folgenden habe ich ein allgemeines Beispiel von <font class="input">smb.conf</font> erstellt.
+Passen sie dieses auf ihre Netzwerkumgebung an.
+</p>
+
+<a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 11</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<font class="code">[global]</font>
+
+      <font class="code">workgroup = YOUR_WORKGROUP</font>
+      <font class="code">server string = Gentoo Linux Server</font>
+      <font class="code">encrypt passwords = True</font>
+      <font class="code">security = user</font>
+      <font class="code">smb passwd file = /etc/samba/private/smbpasswd</font>
+      <font class="code">log file = /var/log/samba/log.%m</font>
+      <font class="code">socket options = IPTOS_LOWDELAY TCP_NODELAY</font>
+      <font class="code">domain master = Yes</font>
+      <font class="code">local master = Yes</font>
+      <font class="code">preferred master = Yes</font>
+      <font class="code">os level = 65</font>
+      <font class="code">dns proxy = No</font>
+      <font class="code">name resolve order = lmhosts host bcast</font>
+      <font class="code">bind interfaces only = True</font>
+      <font class="code">interfaces = eth0</font>
+      <font class="code">hosts deny = ALL</font>
+      <font class="code">hosts allow = 192.168.1.4 127.0.0.1 (list of allow hosts here) </font>
+      <font class="code">debug level = 1</font>
+      <font class="code">create mask = 0644</font>
+      <font class="code">directory mask = 0755</font>
+      <font class="code">level2 oplocks = True</font>
+      <font class="code">read raw = no</font>
+      <font class="code">write cache size = 262144</font>
+
+<font class="code">[printers]</font>
+      <font class="code">comment = All Printer</font>
+      <font class="code">path = /var/spool/samba</font>
+      <font class="code">browseable = no </font>
+   
+</pre></td></tr>
+</table>
+
+<p>
+Jetzt, da SAMBA konfiguriert ist, starten sie es neu, wechseln sie auf ihren Windows-Rechner und installieren sie einen Netzwerkdrucker. Ganz einfach - oder?
+</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 8. August 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:davisjp@muc.edu"> 
+	John P. Davis</a></b>
+<br><i>Autor</i><br><br><b><a class="altlink" href="mailto:sunflare@gentoo.org">Phil Bordelon</a></b>
+<br><i>Copyeditor</i><br><br><b><a class="altlink" href="mailto:hendrik.brandt@stud.tu-ilmenau.de">Hendrik Brandt</a></b>
+<br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Eine umfassende Anleitung für das Drucken unter Gentoo Linux. Dieses Dokument beschreibt sowohl lokales als auch drucken im Netzwerk.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
