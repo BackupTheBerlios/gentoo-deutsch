@@ -1,2 +1,4 @@
 MD5 76e1b373167afdada52b22236cf3968e vdr-1.2.0.tar.bz2 360236
 MD5 97e445d807bf5843c94bc227299b319f vdr-1.2.0.patch.bz2 79010
+MD5 4f73e004c7c2801a7b1bec15b54883d3 vdr-1.2.0-without-Elchi.patch.bz2 62893
+MD5 6b45f5dfd8753f518d86dc1c7feba147 ElchiAIO3a-1.2.0.diff.gz 24530
