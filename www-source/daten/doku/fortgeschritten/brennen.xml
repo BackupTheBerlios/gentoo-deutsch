@@ -181,7 +181,7 @@ In diesem Fall wurde der Brenner erfolgreich vom IDE-CDROM Treiber ignoriert und
 	<title>cdrecord</title> 
 <body>
 <p> 
-Jörg Schillings fantastisches Programm [uri link="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html"]cdrecord[/uri] wird von fast allen grafischen Frontends under KDE und GNOME
+Jörg Schillings fantastisches Programm <uri link="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html">cdrecord</uri> wird von fast allen grafischen Frontends under KDE und GNOME
 verwendet. Natürlich ist es als Bestandteil des cdrtools Paketes in Portage zu haben:
 <pre>
 # emerge -p cdrtools
@@ -226,11 +226,11 @@ mkisofs und cdrecord verwenden. Die Manpages erläutern hier alle möglichen Opt
 	<title>Weiterführende Dokumentation</title> 
 <body>
 <p> 
-[uri link="http://wt.xpilot.org/publications/linux/howtos/cd-writing/html/"]Das CD Writing HOWTO[/uri]</p>
+<uri link="http://wt.xpilot.org/publications/linux/howtos/cd-writing/html/">Das CD Writing HOWTO</uri></p>
 <p>
-[uri link="http://www.cdrfaq.org/"]Das CD-Recordable FAQ[/uri]</p>
+<uri link="http://www.cdrfaq.org/">Das CD-Recordable FAQ</uri></p>
 <p>
-Und natürlich die [uri link="http://forums.gentoo.org/viewtopic.php?t=68321&amp;highlight=cdrecord+howto"Gentoo Foren[/uri] - bitte wie immer erst suchen, dann posten! Gerade zum Thema CDs Brennen gibt es zahlreiche Threads.</p>
+Und natürlich die <uri link="http://forums.gentoo.org/viewtopic.php?t=68321&amp;highlight=cdrecord+howto">Gentoo Foren</uri> - bitte wie immer erst suchen, dann posten! Gerade zum Thema CDs Brennen gibt es zahlreiche Threads.</p>
 </body>
 </section>
 </chapter>
