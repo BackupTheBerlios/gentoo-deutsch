@@ -1,10 +1,45 @@
 # /etc/conf.d/vdr.graphlcd:
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/files/vdr.graphlcd,v 1.2 2003/11/09 09:39:59 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/files/vdr.graphlcd,v 1.3 2004/03/06 13:57:14 fow0ryl Exp $
 
 # Global config file for vdr rc-scripts
 
+
+#If you are running graphlcd 0.0.7 this is your part. 
+#
 #If the size of your LCD differs from the default,
 #or if you want to connect the LCD to another LPT port then LPT1,
 #then you have to specify these values here
 #eg: LPT2 and a 256x128 LCD"
 #_EXTRAOPTS="-x 256 -y 128"
+
+
+#If you are running graphlcd 0.0.9 this is you are right here
+#
+#You have to specify Your LCD-Controller and probably some
+#other options in the command line.
+#Possible options are:
+#  -c CTR,   --contr=CTR    LCD-Controller type
+#  -p IOP,   --port=IOP     IO port
+#  -d DEV,   --device=DEV   sets the parport device
+#  -x SZX,   --sizex=SZX    horizontal size in pixels
+#  -y SZY,   --sizey=SZY    vertical   size in pixels
+#
+#  -c: sets the LCD-Controller. Currently available are:
+#      simlcd  hd61830  t6963  ks0108  sed1520  sed1330
+#  -p: sets the port address of the parallel port. If this parameter
+#      is not given, 0x378 is used. To use this direct output, VDR
+#      has to be started with 'root' user.
+#      If possible this option should be never used.
+#  -d: instead of using the direct output via port address (see -p),
+#      You can use the parport device (/dev/parportX). The advantage
+#      over the direct output via port address is that this works for
+#      non-root users also. But it's a little bit slower.
+#      The modules ppdev.o, parport.o and parport_pc.o must be loaded
+#      or compiled into the kernel.
+#  -x: sets the horizontal size. If this parameter is not given,
+#      240 is used.
+#  -y: sets the vertical size. If this parameter is not given,
+#      128 is used.
+# Examples:
+#      _EXTRAOPTS="-c hd61830 -p 0x378 -x 240 -y 128"
+_EXTRAOPTS="-c ks0108 -d /dev/parport0 -x 128 -y 64"
