@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.27 -->
 
-<guide link = "/doc/en/gentoo-security.xml">
+<guide link = "/doc/de/gentoo-security.xml">
 <title>Gentoo Linux Sicherheitsleitfaden</title>
 
 <author title="Editor">
@@ -67,9 +67,9 @@ Umgebung einsetzen, oder das Gefühl haben mehr Sicherheit zu brauchen.
 </p>
 
 <note>
-Wenn Sie nach dem Lesen dieses Guides haben an noch mehr Sicherheit
+Wenn Sie nach dem Lesen dieses Guides an noch mehr Sicherheit
 interessiert sind, sollten Sie einen Blick auf das
-<uri link="http://www.gentoo.org/proj/en/hardened/">Hardened Gentoo Project</uri>
+<uri link="http://www.gentoo.org/proj/en/hardened/">Hardened Gentoo Projekt</uri>
 werfen
 </note>
 
@@ -115,7 +115,7 @@ Qualitätssicherungsgründen so gehandhabt.
 </chapter>
 
 <chapter>
-<title>Vor der Installation zu bedenken</title>
+<title>Was vor der Installation beachtet werden sollte</title>
 <section>
 <title>Physische Sicherheit</title>
 <body>
@@ -908,8 +908,8 @@ wenn Sie darauf bestehen <path>/var</path> in noexec Modus zu betreiben.
 
 <p>
 Die Kontrolle von Ressourcenbegrenzungen kann sehr effektiv sein, wenn es
-darum geht eine lokale DoS Attacke zu verhindern oder bei der Handhabung
-von maximal erlaubten Logins für eine Gruppe oder einen Benutzer.
+darum geht eine lokale DoS Attacke zu verhindern oder die maximal erlaubten
+Logins für eine Gruppe oder einen Benutzer zu handhaben.
 </p>
 
 <pre caption="/etc/security/limits.conf">
@@ -976,11 +976,10 @@ Beispiel tut es nicht!
 
 <p>
 Die Anwendung von Quotas auf einem Dateisystem verhindert, daß Anwender den
-Datenträger mit Ihren Daten überfüllen oder das diese überhaupt schreiben können.
+Datenträger mit Ihren Daten überfüllen oder überhaupt schreiben können.
 Die Kernel-Option wird bei der Kernelkonfiguration unter
-<c>File systems->Quota support</c> aktiviert. Nehmen Sie die folgende
-Einstellung vor, kompilieren Sie den Kernel neu und starten Sie mit diesem
-Ihren Computer neu.
+<c>File systems->Quota support</c> aktiviert. Nehmen Sie die Einstellung vor, 
+kompilieren Sie den Kernel neu und starten Sie mit diesem Ihren Computer neu.
 </p>
 
 <p>
@@ -1002,9 +1001,9 @@ proc /proc proc defaults 0 0
 </pre>
 
 <p>
-Auf jeder Partition auf der Sie Quotas aktiviert haben erstellen Sie nun die
-Quota-Dateien (quota.user und quota.group) und setzen Sie sie in die Wurzel
-der Partition
+Auf jeder Partition auf der Sie Quotas aktiviert haben, erstellen Sie nun die
+Quota-Dateien (quota.user und quota.group) und setzen diese in die Wurzel
+der Partition.
 </p>
 
 <pre caption="Erstellen der Quota-Dateien">
@@ -1070,8 +1069,8 @@ es einmal in der Woche ausgeführt wird : <c>0 3 * * 0 /sbin/quotacheck -avug</c
 <p>
 Nachdem Sie den Rechner neu gestartet haben, ist es an der Zeit, die Quotas 
 für die Benutzer und Gruppen festzulegen. <c>edquota -u kn</c> wird den in 
-$EDITOR festgelegten Editor starten (Standard ist nano) damit Sie die Quotas 
-des Benutzers kn bearbeiten können. -g wird genau das Selbe, allerdings für 
+$EDITOR festgelegten Editor starten (Standard ist nano), damit Sie die Quotas 
+des Benutzers kn bearbeiten können. -g wird genau dasselbe, allerdings für 
 Gruppen machen.
 </p>
 
@@ -1134,7 +1133,7 @@ dann können Sie sich aussperren wenn Sie nicht über root-Rechte verfügen.
 </impo>
 
 <note>
-Diese Einstellungen wirken sich nicht auf SSH aus, da SSH /bin/login 
+Diese Einstellungen wirken sich nicht auf SSH aus, da SSH <path>/bin/login</path>
 normalerweise nicht ausführt. Dies kann durch die Benutzung von "UseLogin yes" 
 in <path>/etc/ssh/sshd_config</path> ermöglicht werden. Das führt dazu, dass 
 SSH login benutzt und die Einstellungen benutzt werden.
