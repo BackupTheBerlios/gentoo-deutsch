@@ -5,6 +5,9 @@ S=${WORKDIR}/kvdr/
 DESCRIPTION="Kvdr the KDE GUI for VDR (VideoDiskRecorder)"
 SRC_URI="http://www.s.netic.de/gfiala/kvdr-${PV}.tgz"
 HOMEPAGE="http://www.s.netic.de/gfiala/"
+
+KEYWORDS="x86"
+SLOT="0"
 LICENSE="GPL-2"
 
 DEPEND=">=media-video/xawtv-3.73-r1

@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Henning Ryll; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/kvdr/ChangeLog,v 1.1 2003/02/25 17:05:10 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/kvdr/ChangeLog,v 1.2 2003/02/25 17:14:24 fow0ryl Exp $
+
+*kvdr-0.52 (25 Feb 2003)
+  25 Feb 2003; Henning Ryll <henning.ryll@web.de> Changelog:
+  
+  Keyword / Slot added
 
 *kvdr-0.52 (22 Feb 2003)
   22 Feb 2003; Henning Ryll <henning.ryll@web.de> Changelog:
