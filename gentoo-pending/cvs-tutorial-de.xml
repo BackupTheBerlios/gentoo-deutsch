@@ -324,8 +324,393 @@
 	</body>
 </section> 
 
+<section>
+	<title>CVS berücksichtigt Änderungen Anderer</title>
+	<body> 
+	<p> 
+	Wie Sie bereits gesehen haben, bringt "cvs update" Ihre Quellen auf den neuesten Stand. Aber was passiert mit Ihren Änderungen? 
+	Keine Sorge, diese gehen nicht verloren. Wenn ein anderer Entwickler eine Änderung an einer Datei vorgenommen hat, deren lokale
+	Version Sie nicht verändert haben, so wird CVS die Änderung einfach übernehmen. 
+	</p> 
+	<p> 
+	Wenn Sie die Zeilen 1-10 einer Datei geändert haben, ein zweiter Entwickler gleichzeitig die Zeilen 30-40 geändert hat, und diese
+	vor Ihnen ins CVS Repository eingereicht hat, so wird CVS diese Dateien intelligent in Ihre lokale Kopie einbinden. So verlieren
+	Sie Ihre eigenen Änderungen nicht. Durch dieses sogenannte "merging" können zwei oder mehr Entwickler gleichzeitig an einer Datei arbeiten. 
+	</p> 
+	</body> 
+</section> 
 
+<section> 
+	<title>Merging ist nicht perfekt!</title> 
+	<body>
+	<p> 
+	Haben nämlich zwei Entwickler gleichzeitig <i>die selbe Region</i> einer Datei geändert, so wird es etwas kompilizierter. 
+	CVS wird Sie dann über einen Konflikt informieren. Auch wenn natürlich keine Arbeit verloren geht, ist etwas manuelle Arbeit
+	erforderlich. CVS braucht jetzt Ihre Eingabe um zu entscheiden wie die Änderungen zu "mergen" sind. 
+	</p>
+	</body>
+</section> 
 
+<section> 
+	<title>"commit" - Übergeben - Oder, wie man seine Arbeit einreicht</title> 
+	<body> 
+	<p> 
+	Nun werden wir einen genauen Blick darauf werfen, wie die oben erwähnten Konflikte ausgeräumt werden können. Zunächst 
+	werden wir allerdings annehmen, dass keine Konflikte vorliegen, als Sie "cvs update -dP"  eingegeben haben. Wenn keine 
+	Konflikte durch Ihre lokalen Dateien auftreten und Ihre lokalen Dateien auf dem aktuellen Stand sind, sind Sie bereit 
+	Ihre Änderungen an das CVS zu übergeben. 
+	</p>
+	<pre>
+# <i>cvs commit</i> 
+	</pre>
+	</body>
+</section> 
+
+<section> 
+	<title>Was "commit" eigentlich macht</title> 
+	<body> 
+	<p> 
+	"cvs commit" reicht nicht <i>nur</i> Ihre Änderungen ein. Bevor die Änderungen eingereicht werden, wird Ihr	Editor gestartet.
+	Hier können Sie nun eine Beschreibung Ihrer Änderungen eingeben. Speichern Sie die Datei und verlassen Sie den Editor, werden 
+	Ihre Änderungen und die zugehörigen Kommentare den anderen Entwicklern zugänglich gemacht. 
+	</p> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Die Log-Datei ansehen</title> 
+	<body> 
+	<p> 
+	Es ist sehr einfach sich die komplette Änderungsgeschichte einer Datei sowie die entsprechenden Kommentare anzeigenzulassen.
+	Um diese Informationen zu sehen, geben Sie folgendes ein:
+	</p> 
+	<pre>
+# <i>cvs log meineDatei.c</i> 
+	</pre> 
+
+	<p> 
+	Der "cvs log" Befehl ist rekursiv. Möchten Sie also die gesamten Änderungen eines ganzen Verzeichnisses anzeigen lassen, so 
+	wechseln Sie in das entsprechende Verzeichnis, bevor Sie folgenden Befehl eingeben:
+	</p> 
+	<pre> 
+# <i>cvs log | less</i> 
+	</pre>
+	</body> 
+</section> 
+
+<section> 
+	<title>Optionen des "commit"-Befehls</title>
+	<body> 
+	<p> 
+	Sie möchten vielleicht einen bestimmten Editor verwenden, um Ihre Log-Einträge zu machen. Dazu können Sie einfach die 
+	"EDITOR"-Umgebungsvariable ändern. Es ist eine gute Idee diese Einstellung mittels Ihrer ~/.bashrc-Datei permanent einzurichten. 
+	</p> 
+	<pre> 
+	export EDITOR=jpico 
+	<pre> 
+	<p> 
+	Alternativ zum Verwenden eines Editors können Sie CVS den Log-Eintrag auch direkt über die Kommandozeile mitteilen. Verwenden Sie
+	hierzu die -m-Option. 
+	</p> 
+	<pre> 
+# <i>cvs commit -m 'Ein paar blöde Fehler beseitigt'</i> 
+	</pre> 
+	</body>
+</section> 
+
+<section> 
+	<title>Die .cvsrc Datei</title> 
+	<body> 
+	<p> 
+	Bevor wir uns einige weitere CVS-Befehle ansehen, empfehle ich Ihnen sich eine ~/.cvsrc-Datei anzulegen. Mittels dieser Datei 
+	können Sie CVS einige standard Befehlszeilenparameter mitteilen, so dass Sie diese nicht jedes Mal eingeben müssen. 
+	</p> 
+
+	<pre> 
+	cvs -q 
+	diff -u -b -B
+	checkout -P 
+	update -d -P 
+	</pre> 
+
+	</body> 
+</section> 
+
+<section> 
+	<title>Die .cvsrc Datei - Die Erklärung</title> 
+	<body> 
+	<p> 
+	Die erste Zeile der Datei bringt CVS in den "quiet"-(leise)-Modus. So wird die Ausgabe des "cvs update"-Befehls deutlich 
+	lesbarer. Außerdem können Sie sobald sie diese Datei eingerichtet haben, einfach "cvs update" anstatt "cvs update -dP" eingeben. 
+	</p> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Eine neue Datei in das Repository einfügen</title> 
+	<body> 
+	<p> 
+	Es ist sehr einfach eine neue Datei in CVS einzubinden. Zunächst erstellen Sie eine neue Datei wie üblich. Dann geben Sie diesen 
+	Befehl ein:
+	</p> 
+	<pre> 
+# <i>cvs add meineDatei.c</i> 
+cvs server: use 'cvs commit'to add this file permanently
+	</pre> 
+	<p> 
+	Die Datei wird beim nächsten Mal das Sie "cvs commit" ausführen, dem Repository hinzugefügt werden. Vorher werden andere Entwickler
+	diese Datei nicht sehen! 
+	</p> 
+	</body>
+</section> 
+
+<section> 
+	<title>Ein Verzeichnis in das Repository einfügen</title> 
+	<body> 
+	<p> 
+	Der Vorgang zum Einfügen eines Verzeichnises ist ähnlich: 
+	</p> 
+
+	<pre> 
+# <i>mkdir foo</i> 
+# <i>cvs add foo</i> 
+Directory /home/cvsroot/meinCode/foo added to the repository
+	</pre> 
+
+	<p> 
+	Anders als bei einer Datei, wird ein neues Verzeichnis sofort für andere Entwickler sichtbar. Es ist also kein "cvs commit"
+	erforderlich. Sobald Sie eine lokale Datei in das neue Verzeichnis speichern, werden Sie sehen, dass ein neues Unterverzeichnis
+	namens "CVS" eingerichtet wird. Dieses Verzeichnis dient als Aufbewahrungsort für die Daten, die notwendig sind, um die 
+	Dateien zu verwalten. So läßt sich leicht erkennen, ob sich ein bestimmtes Verzeichnis im CVS Repository befindet, indem man 
+	nach einem CVS-Unterverzeichnis sucht. 
+	</p> 
+	</body> 
+</section> 
+
+<section> 
+	<title>"cvs add" - Notizen</title> 
+	<body> 
+	<p> 
+	Wie Sie sich vielleicht gedacht haben, bevor eine Datei CVS hinzugefügt werden kann, müssen Sie sicherstellen, dass das Verzeichnis
+	im CVS Repository ist. Sonst werden Sie diesen Fehler zu sehen bekommen: 
+	</p> 
+
+	<pre> 
+# <i>cvs add meineDatei.c</i> 
+cvs add: cannot open CVS/Entries for reading: No such file or directory
+cvs [add aborted]: no repository
+	</pre>
+	</body> 
+</section> 
+
+<section> 
+	<title>Ein genauerer Blick auf "cvs update", Teil 1</title> 
+	<body> 
+	<p> 
+	Bevor wir uns genauer ansehen, wie Konflikte gelöst werden, sollten wir uns mit der Ausgabe des "cvs update"-Befehls 
+	vertraut machen. Wenn Sie eine ~/.cvsrc-Datei mit der Zeile "cvs -q" eingerichtet haben, wird die Ausgabe deutlich einfacher
+	zu lesen sein. "cvs update" informiert sie detailiert darüber was es gerade unternimmt, indem es einen Buchstaben ausgibt, gefolgt
+	von einem Leerzeichen und dem Namen einer Datei. 
+	Zum Beispiel: 
+	</p> 
+	<pre> 
+# <i>cvs update -dP</i> 
+? distfiles
+? packages
+? profiles
+	</pre> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Ein genauerer Blick auf "cvs update", Teil 2</title> 
+	<body> 
+	<p> 
+	"cvs update" verwendet das Fragezeichen, um Ihnen mitzuteilen, dass es nichts über diese Datei weiß. Diese Dateien und Verzeichnisse 
+	befinden sich nur in dem lokalen Stamm, und sind nicht Teil des offiziellen Repositories. Und sie wurden auch nicht mit dem "add"-Befehl 
+	hinzugefügt. 
+	Hier ist eine Liste mit weiteren Buchstaben und deren Bedeutung. 
+	</p> 
+	
+	<pre> 
+	U [Pfad] 
+	</pre> 
+	<p> 
+	Wird ausgegeben, wenn eine neue Datei oder ein neues Verzeichnis in ihrem lokalen Stamm erzeugt wird, oder wenn eine Datei, die Sie 
+	nicht geändert haben, aktualisiert (U wie Update) wird. 
+	</p> 
+
+	<pre> 
+	A [Pfad] 
+	<pre> 
+	<p> 
+	Diese Datei ist vorgsehen in das Repository eingefügt zu werden, und wird beim nächsten "cvs commit" beigefügt werden. 
+	</p> 
+	</body>
+</section> 
+
+<section> 
+	<title>Ein genauerer Blick auf "cvs update", Teil 3</title> 
+	<body> 
+	<pre> 
+	R [Pfad]
+	</pre> 
+	<p> 
+	Wie "A", sagt ein "R" aus, dass diese Datei für die Löschung vorgesehen ist. Also wird die Datei gelöscht, wenn Sie das nächste Mal 
+	"cvs commit" ausführen.
+	</p> 
+	<pre> 
+	M [Pfad]
+	</pre> 
+	<p> 
+	Das "M" bedeutet, dass diese Datei von Ihnen modifiziert worden ist. Außerdem kann es bedeuten, dass neue Änderungen 
+	vom Repository in die lokale Datei eingebunden wurden. 
+	</p> 
+	<pre> 
+	C [Pfad]
+	<pre> 
+	<p>
+	Der Buchstabe "C" bedeutet, dass ein Konflikt vorliegt. Manuelles einbinden der Änderungen wird nötig sein, bevor Sie 
+	"cvs commit" ausführen können. 
+	</p> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Konflikte auflösen</title> 
+	<body> 
+	<p> 
+	Nun werden wir uns ansehen wie man einen Konflikt ausräumt. Ich bin sehr in das Gentoo Linux Projekt eingebunden, dort
+	haben wir unsere eigenen CVS-Server unter cvs.gentoo.org. Wir Entwickler verbringen unsere Zeit hauptsächlich damit, die Quellen
+	zu hacken, die im "gentoo-x86"-Modul abgelegt sind. In diesem Modul haben wir eine Datei names "ChangeLog", die (wie Sie bereits 
+	erraten haben) eine Beschreibung der wichtigsten Änderungen beinhaltet. 
+	</p> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Ein Beispiel-Konflikt</title>
+	<body> 
+	<p> 
+	Da diese Datei fast jedes Mal geändert wird, wenn ein Entwickler eine Änderung vornimmt, ist sie eine der Hauptquellen
+	für Konflikte. Nehmen wir uns diesen Beispielkonflikt vor: Nehmen wir an, dass ich die folgenden Zeilen hinzugefügt habe.
+	</p> 
+	<pre> 
+	date 25 Feb 2001
+
+	This is the thing I added myself
+	</pre> 
+	<p>
+	Nehmen wir ferner an, dass bevor ich die Möglichkeit hatte "cvs commit" durchzuführen, jemand anders diese Änderung vorgenommen hat. 
+	</p> 
+	<pre> 
+	date 25 Feb 2001 
+
+	Thi sis the part added by another developer
+	</pre> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Ein Beispielkonflikt - Teil 2</title> 
+	<body> 
+	<p> 
+	Wenn ich nun "cvs update -dP" ausführe (was man immer tun sollte, vor einem "commit"), so erhalte ich eine Konfliktmeldung,
+	da CVS nicht in der Lage ist meine lokale Änderung selbstständig in das CVS Repository einzufügen. 
+	</p> 
+
+	<pre>
+	RCS file: /home/cvsroot/gentoo-x86/ChangeLog,v
+	retrieving revision 1.362
+	retrieving revision 1.363
+	Merging differences between 1.362 and 1.363 into ChangeLog
+	rcsmerge: warning: conflicts during merge
+	cvs server: conflicts found in ChangeLog
+	C ChangeLog
+	</pre> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Konfliktlösung</title> 
+	<body> 
+	<p> 
+	Argh, ein Konlikt! Zum Glück ist die Lösung einfach. Ich starte meinen Texteditor, und sehe den Text
+	am Anfang der Datei ChangeLog. 
+	</p> 
+	<pre> 
+	&lt;&lt;&lt;&lt;&lt;&lt;&lt; ChangeLog
+	date 25 Feb 2001
+ 
+	This is the thing I added myself
+ 
+	=======
+	date 25 Feb 2001
+ 
+	This is the part added by another developer
+ 
+	&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.363
+	</pre>
+	</body> 
+</section> 
+
+<section> 
+	<title>Konfliktlösung, Teil 2</title> 
+	<body> 
+	<p> 
+	Anstatt eine der beiden Versionen zu bevorzugen, hat CVS einfach beide Versionen zusammengefügt, und mittels 
+	eindeutiger Zeichen erkenntlich gemacht, wo der Konflikt liegt. Nun ist es an mir, die entsprechenden Regionen 
+	durch den Text zu ersetzen, der wirklich dort stehen sollte. In diesem Fall, ist der zu ersetzende Text weder der
+	eine noch der andere, beide sollen hintereinander in der Datei stehen. 
+	</p> 
+
+	<pre> 
+	date 25 Feb 2001
+
+	This is the thing I added myself
+
+	This is the part added by another developer	
+	</pre>
+	
+	<p>
+	Nun habe ich die Konfliktregion in der Datei mit dem entsprechenden Text ersetzt (und die "======" gelöscht). Jetzt 
+	kann ich die Änderung mittels "cvs commit" problemlos übertragen.
+	</p> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Einige Tips zur Konfliktlösung</title> 
+	<body> 
+	<p> 
+	Wann immer Sie eine Datei editieren in der Konflikte aufgetreten sind, gehen Sie die gesamte Datei nach den Konfliktzeichen 
+	durch, so dass Sie alle Konfliktregionen bearbeiten! Wenn Sie einen Konflikt übersehen, wird CVS Ihnen nicht erlauben, 
+	die Änderungen zu übertragen. Es ist daher offensichtlich sehr wichtig alle Konfliktzeichen ("=====") zu löschen. 
+	Falls Sie einen Fehler beim Editieren der Datei machen, und dann Ihre Änderung speichern, können Sie immernoch eine Originalversion 
+	Ihrer Datei finden. Diese trägt den Namen ".#Dateiname.Version". 
+	</p> 
+	</body>
+</section> 
+
+<section> 
+	<title>Eine Datei löschen</title> 
+	<body> 
+	<pre>
+# <i>rm meine_alte_datei.c</i> 
+# <i>cvs remove meine_alte_datei.c</i> 
+	</pre> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Eine Datei, weitergeführt</title> 
+	<body> 
+	<p> 
+	Die Datei wird durch den Befehl fürs Löschen vorgesehen, wenn Sie das nächste Mal ein "cvs commit" durchführen.
+
+	</p>
+	</body> 
+</section> 
 	
 </guide>
 		
