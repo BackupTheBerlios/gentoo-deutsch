@@ -49,7 +49,8 @@
 <xsl:template match="cgi:result_navigation">
   <div style="text-align: center">
     <![CDATA[<!--cgi: previous--> [ <!--cgi: navbar--> ] <!--cgi: next-->]]>
-    <br/><br/>  
+    <br/>
+    <br/>  
   </div>  
 </xsl:template>
 

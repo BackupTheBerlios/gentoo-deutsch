@@ -25,6 +25,7 @@
 <body>
 
   Ihre Suche ergab keine Ergebnisse. Sie können unten Ihre Suchanfrage für einen erneuten Versuch anpassen.
+  <br/><br/>
   
   <cgi:result_navigation/>
 
