@@ -1,0 +1,7 @@
+# ChangeLog for net-mail/exchange4linux
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/ChangeLog,v 1.1 2003/07/03 00:42:47 holler Exp $
+
+*exchange4linux-2.3.1 (02 Jul 2003)
+
+  2 Jul 2003; Alexander Holler
+  Initial release of this ebuild

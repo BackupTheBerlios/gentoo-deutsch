@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 2003 Alexander Holler
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/files/exchange4linux,v 1.1 2003/07/03 00:42:47 holler Exp $
+
+opts="${opts} admin"
+
+depend() {
+
+	need net postgresql omniORB
+	use dns logger
+
+}
+
+start() {
+
+	ebegin "Starting exchange4linux"
+        su - postgres -c 'cd /usr/share/exchange4linux/BILL-StorageServer ; ./server.sh 1>/dev/null 2>&1 &' 
+	eend $?
+
+}
+
+stop() {
+
+	ebegin "Stopping exchange4linux"
+	kill $(cat /var/run/exchange4linux/exchange4linux.pid)
+	eend $?
+
+}
+
+admin() {
+
+    su - postgres -c 'cd /usr/share/exchange4linux/BILL-StorageServer ; python pg_dbctl.pyc' 
+    eend 0
+
+}
