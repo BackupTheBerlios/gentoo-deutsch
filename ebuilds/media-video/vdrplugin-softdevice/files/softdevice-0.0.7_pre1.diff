@@ -1,0 +1,12 @@
+diff -Nru softdevice-0.0.7pre1.org/setup-softdevice.h softdevice-0.0.7pre1/setup-softdevice.h
+--- softdevice-0.0.7pre1.org/setup-softdevice.h	2004-07-10 17:06:47.000000000 +0200
++++ softdevice-0.0.7pre1/setup-softdevice.h	2004-08-06 15:03:01.000000000 +0200
+@@ -12,6 +12,8 @@
+ #ifdef XV_SUPPORT
+ #include "video-xv.h"
+ #endif //XV_SUPPORT
++#include "video.h"
++
+ 
+ 
+ /* ---------------------------------------------------------------------------
