@@ -754,27 +754,23 @@ Sie k&#xF6;nnen jetzt ein beliebiges "cron" Paket zur Installation ausw&#xE4;hle
 </section>
 </chapter>
 <chapter>
-<title>Final steps: install additional packages</title>
+<title>Letzte Schritte: Zus&#xE4;tzlich Pakete installieren</title>
 <section>
 <body>
 <p>
-You may need to install some additional packages in the Portage tree
-if you are using any optional features like XFS or LVM.  If you're
-using XFS, you should emerge the <c>xfsprogs</c> ebuild:
-</p>
+Wenn Sie optionale Features, wie XFS oder LVM (Logivcal Volume Manager) verwenden, ben&#xF6;tigen 
+Sie noch zus&#xE4;tzliche Pakete. Wenn Sie XFS verwenden, sollte Sie das Paket <c>xfsprogs</c> 
+installieren:</p>
 <pre>
 # <i>emerge sys-apps/xfsprogs</i>
 </pre>
-<p>
-If you're using LVM, you should emerge the <c>lvm-user</c> ebuild:
-</p>
+<p>Das Paket <c>lvm-user</c> wird ben&#xF6;tigt, wenn Sie LVM benutzen:</p>
 <pre>
 # <i>emerge --usepkg sys-apps/lvm-user</i>
 </pre>
-<p>
-If you're a laptop user and wish to use your pcmcia slots on your first
-real reboot, you'll want to make sure you install the pcmcia-cs package.
-</p>
+<p>Wenn Sie die PCMCIA Slots eines Laptops oder Notebooks nach dem ersten Booten
+verwenden wollen, stellen Sie sicher, dass das Paket <c>pcmcia-cs</c> installiert
+ist:</p>
 <pre>
 # <i>emerge sys-apps/pcmcia-cs</i>
 </pre>
@@ -782,29 +778,37 @@ real reboot, you'll want to make sure you install the pcmcia-cs package.
 </section>
 </chapter>
 <chapter>
-<title>Final steps: /etc/fstab</title>
+<title>Letzte Schritte: /etc/fstab</title>
 <section>
 <body>
-<p>Your Gentoo Linux system is almost ready for use.  All we need to do now is configure
-a few important system files and install the GRUB boot loader. 
-The first file we need to
-configure is <path>/etc/fstab</path>.  Remember that you should use
-the <c>notail</c> option for your boot partition if you chose to create a ReiserFS filesystem on it.
-Remember to specify <c>ext2</c>, <c>ext3</c> or <c>reiserfs</c> filesystem types as appropriate.</p>
-<p>Use something like the <path>/etc/fstab</path> listed below, but of course be sure to replace "BOOT",
-"ROOT" and "SWAP" with the actual block devices you are using (such as <c>hda1</c>, etc.)</p>
+<p>Ihr Gentoo Linux System ist fast gebrauchsfertig. Sie m&#xFC;ssen nur noch einige wichtige
+Systemdateien anpassen und den GRUB Bootmanager installieren.
+Die erste Datei, die Sie anpassen sollten ist <path>/etc/fstab</path>. Denken Sie bitte an
+die <c>notail</c> Option, falls Ihre Bootpartition ein ReiserFS Dateisystem enth&#xE4;lt.
+Achten auch Sie darauf, die Dateisystemtypen <c>ext2</c>, <c>ext3</c> oder <c>reiserfs</c>,
+Ihrer Konfiguration entsprechend einzutragen. Sie k&#xF6;nnen das unten stehende Beispiel einer 
+<path>/etc/fstab</path> verwenden, m&#xFC;ssen aber darauf achten, f&#xFC;r "ROOT" und "SWAP" 
+die entsprechenden Ger&#xE4;te einzutragen (z.B.: <c>hda1</c>, usw..).</p>
 <pre>
 <comment>
 # /etc/fstab: static file system information.
 #
-# noatime turns of atimes for increased performance (atimes normally aren't
-# needed; notail increases performance of ReiserFS (at the expense of storage
-# efficiency).  It's safe to drop the noatime options if you want and to 
-# switch between notail and tail freely.
+# "noatime" schaltet "atimes" (man mount) ab und erh&#xF6;ht so die Performance ("atimes"
+# wird normalerweise nicht ben&#xF6;tigt und "notail" erh&#xF6;ht die Leistung eines ReiserFS
+# Dateisystems, allerdings auf Kosten der Speicherausnutzung). Wenn Sie frei zwischen
+# "tail" oder "notail" w&#xE4;hlen wollen, lassen Sie die "noatime" Option sicherheitshalber
+# weg.
+<!-- Stimmt das, oder hab ich hier was missverstanden? Bitte pruefen (MG) 
+
+Orginaltext der letzten Zeile: 
+# It's safe to drop the noatime options if you want and to switch between notail and 
+# tail freely.
+
+-->
 
 # &lt;fs&gt;           &lt;mountpoint&gt;   &lt;type&gt;   &lt;opts&gt;          &lt;dump/pass&gt;
 
-# NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
+# WICHTIG: Wenn Ihre BOOT Partition ein ReiserFS enth&#xE4;lt, h&#xE4;ngen Sie die "notail" Option an.
 </comment>
 /dev/BOOT           /boot       ext2	 noauto,noatime	 1 2
 /dev/ROOT           /           ext3	 noatime         0 1
@@ -816,198 +820,224 @@ proc                /proc       proc	 defaults        0 0
 </body>
 </section>
 <section>
-<title>Final steps: set the root password</title>
+<title>Letzte Schritte: Das Passwort f&#xFC;r "root" setzten:</title>
 <body>
-<p>Before you forget, set the root password by typing:</p>
+<p>Bevor Sie es vergessen. Das "root" Passwort setzten Sie durch eingeben von:</p>
 <pre>
 # <i>passwd</i>
 </pre>
 </body>
 </section>
 <section>
-<title>Final steps: /etc/hostname</title>
+<title>Letzte Schritte: /etc/hostname</title>
 <body>
-<p>Edit this file so that it contains your fully-qualified domain name on a single line, i.e. <c>mymachine.mydomain.com</c>.
+<p>Tragen Sie in diese Datei den kompletten Namen (Hostname + Domain) Ihres Rechners, 
+in einer einzelnen Zeile, ein (<c>mymachine.mydomain.com</c>). 
+
 </p>
 </body>
 </section>
 
 <section>
-<title>Final steps: /etc/hosts</title>
+<title>Letzte Schritte: /etc/hosts</title>
 <body>
-<p>This file contains a list of ip addresses and their associated hostnames.  It's used by the system to resolve the IP addresses
-of any hostnames that may not be in your nameservers.  Here's a template for this file:
-</p><pre>
+<p>Diese Datei enth&#xE4;lt eine Liste von IP Adressen, mit den dazu geh&#xF6;rigen Rechnernamen.
+Das System verwendet diese Daten um einem Rechnernamen die IP Adresse zuordnen zu k&#xF6;nnen,
+falls Ihr Nameserver das nicht tut. Hier ein Beispiel:</p>
+<pre>
 127.0.0.1      localhost
-<comment># the next line contains your IP for your local LAN, and your associated machine name</comment>
+<comment># die folgende Zeile enth&#xE4;lt die IP des Rechners im LAN und den dazu geh&#xF6;rigen Rechnernamen.</comment>
 192.168.1.1    mymachine.mydomain.com	mymachine
 </pre>
 </body>
 </section>
 
 <section>
-<title>Final network configuration</title>
+<title>Abschlie&#xDF;ende Netzwerkkonfiguration</title>
 <body>
 <p>
-Add the names of any modules that are necessary for the proper functioning of your system to 
-<path>/etc/modules.autoload</path> file (you can also add any options you
-need to the same line.) When Gentoo Linux boots, these modules will be automatically
-loaded.  Of particular importance is your ethernet card module, if you happened to compile
-it as a module:
+Tragen Sie die Namen aller Module, die f&#xFC;r den Betrieb Ihres Systems erforderlich sind, 
+in die Datei <path>/etc/modules.autoload</path> ein (h&#xE4;ngen Sie die n&#xF6;tigen Optionen
+einfach an den Modulnamen an). Gentoo Linux wird diese Module dann w&#xE4;hrend des Bootvorgangs
+automatisch laden. Von besonderer Bedeutung ist das Modul Ihrer Netzwerkkarte (falls
+es als Modul kompiliert wurde):
 </p>
 <pre caption="/etc/modules.autoload">
 3c59x
 </pre>
-<p>Edit the <path>/etc/conf.d/net</path> script to get your network configured for your
-first boot:
-</p>
+<p>Passen Sie die Eintr&#xE4;ge in dem Script <path>/etc/conf.d/net</path> an Ihre Gegebenheiten
+an, bevor Sie das erste mal booten:</p>
 <pre>
 # <i>nano -w /etc/conf.d/net</i>
 # <i>rc-update add net.eth0 default</i>
 </pre>
 <p>
-If you have multiple network cards you need to create additional <path>net.eth<comment>x</comment></path>
-scripts for each one (<comment>x</comment> = 1, 2, ...):
+Sollten Sie mehrere Netzwerkkarten verwenden, m&#xFC;ssen Sie f&#xFC;r jede ein eigenes
+<path>net.eth<comment>x</comment></path> Script erstellen (<comment>x</comment> = 1, 2, ...):
 </p>
-<pre caption="Multiple network interfaces">
+<pre caption="Mehrere Netzwerkverbindungen">
 # <i>cd /etc/init.d</i>
 # <i>cp net.eth0 net.eth<comment>x</comment></i>
 # <i>rc-update add net.eth<comment>x</comment> default</i>
 </pre>
 <p>
-If you have a PCMCIA card installed, have a quick look into 
-/etc/init.d/pcmcia to verify that things seem all right for your setup,
-then add 
+Wenn Sie eine PCMCIA Karte installiert haben, pr&#xFC;fen Sie ob die Einstellungen in
+der Datei /etc/init.d/pcmcia Ihrer Konfiguration entsprechen und f&#xFC;gen dann
 <pre>
 depend() {
 	need pcmcia
 }
 </pre>
-on top of your <path>/etc/init.d/net.eth<comment>x</comment></path> file, 
-for the pcmcia drivers to be autoloaded whenever your network is loaded.
+am Kopf der Datei <path>/etc/init.d/net.eth<comment>x</comment></path> ein,
+damit die PCMCIA Treiber automatisch geladen werden, wenn die Netzwerkverbindung
+aufgebaut wird.
 </p>
 </body>
 </section>
 
 <section>
-<title>Final steps: configure basic settings (including the international keymap setting)</title>
+<title>Letzte Schritte: Grundlegende Einstellungen (einschlie&#xDF;lich des Tastaturlayouts)</title>
 <body>
-<pre caption="basic configuration">
+<pre caption="Grundlegende Einstellungen">
 # <i>nano -w /etc/rc.conf</i>
 </pre>
 <p>
-Follow the directions in the file to configure the basic settings.  
-All users will want to make sure that <c>CLOCK</c> is set to his/her
-liking.  International keyboard users will want to set the <c>KEYMAP</c>
-variable (browse <path>/usr/share/keymaps</path> to see the various
-possibilities).
+Folgen Sie den Anleitungen in der Datei um die Einstellungen anzupassen.
+Jeder Anwender sollte sicherstellen, das der <c>CLOCK</c> Eintrag, 
+entsprechend der pers&#xF6;nlichen Vorlieben eingestellt ist. Das 
+Tastaturlayout kann &#xFC;ber die <c>KEYMAP</c> Variable angepasst werden
+(in <path>/usr/share/keymaps</path> finden Sie verschiedene M&#xF6;glichkeiten).
 </p>
 </body>
 </section>
 
 <section>
-<title>Final steps: configure GRUB</title>
+<title>Letzte Schritte: GRUB konfigurieren</title>
 <body>
 <p>
-The most critical part of understanding GRUB is getting comfortable with how GRUB refers to hard drives and partitions.
-Your Linux partition <path>/dev/hda1</path> is called <path>(hd0,0)</path> under GRUB.  Notice the parenthesis around the hd0,0 - they are required.  
-Hard drives count from zero rather than "a", and partitions start at zero rather than one.  So, <path>/dev/hdb3</path> gets translated to <path>(hd1,2)</path>, and <path>/dev/hdd7</path> gets translated to <path>(hd3,6)</path>.  After you've gotten the feel for that, convert your boot and root partition names to the GRUB format and write them down.  Now, it's time to install GRUB.
+Ein kritischer Punkt im Umgang mit GRUB, ist zu verstehen, wie GRUB Festplatten 
+und Partition referenziert. Ihre Linux Partition <path>/dev/hda1</path> wird
+von GRUB als <path>(hd0,0)</path> angesprochen. Beachten Sie bitte die Klammer um 
+hd0,0 - sie ist <i>wichtig</i>. Festplatten werden mit 0 anstatt mit "a" beginnend 
+hochgez&#xE4;hlt und auch die Partitionen starten mit 0 und nicht mit 1.
+So wird aus <path>/dev/hdb3</path> <path>(hd1,2)</path> und aus <path>/dev/hdd7</path>
+wird <path>(hd3,6)</path>. Nachdem Sie ein Gef&#xFC;hl daf&#xFC;r bekommen haben, notieren
+Sie sich die Ger&#xE4;tenamen der "root" und "boot" Partitionen im GRUB Format.
+Jetzt k&#xF6;nnen Sie GRUB installieren.
+</p>
+<p>
+Der einfachste Weg GRUB zu installieren ist, <c>grub</c> am Prompt Ihrer "chrooted" Shell 
+einzutippen:</p>
+<pre>
+# <i>grub</i>
+</pre>
+<p>
+Sie werden nun vom <c>grub&gt;</c> Prompt und der GRUB Kommandozeile begr&#xFC;&#xDF;t.
+Sie m&#xFC;ssen nun die passenden Kommandos eingeben um den GRUB "Bootloader"
+auf Ihrer Festplatte zu installieren. In der Beispielkonfiguration wird GRUB
+im "Master Boot Record (MBR)" der Festplatte installiert. In diesem Fall
+geben Sie folgende Kommandos am GRUB Prompt ein:
 </p>
 
-<p>The easiest way to install grub is to simply type <c>grub</c> at your chrooted shell prompt:
-</p><pre>
-# <i>grub</i>
-</pre><p>You'll be presented with the <c>grub&gt;</c> grub command-line prompt.  Now, you need to type in the
-right commands to install the GRUB boot record onto your hard drive.  In my example configuration,
-I want to install the GRUB boot record on my hard drive's MBR (master boot record), so that 
-the first thing I see when I turn on the computer is the GRUB prompt.  In my case, the commands
-I want to type are:</p>
 <pre>grub&gt; <i>root (hd0,0)</i>
 grub&gt; <i>setup (hd0)</i>
 grub&gt; <i>quit</i>
 </pre>
 
-<p>Here's how the two commands work.  The first <c>root ( )</c> command tells GRUB
-the location of your boot partition (in our example, <path>/dev/hda1</path> or 
-<path>(hd0,0)</path> in GRUB terminology.  Then, the second <c>setup ( )</c> command tells GRUB where to install the
-boot record - it will be configure to look for its special files at the <c>root
-( )</c> location that you specified.  In my case, I want the boot record on the
-MBR of the hard drive, so I simply specify <path>/dev/hda</path> (also known as <path>(hd0)</path>).  If I were using
-another boot loader and wanted to set up GRUB as a secondary boot-loader, I
-could install GRUB to the boot record of a particular partition.  In that case,
-I'd specify a particular partition rather than the entire disk.  Once the GRUB
-boot record has been 
-successfully installed, you can type <c>quit</c> to quit GRUB.  Gentoo Linux is
-installed, but we need to create the <path>/boot/grub/menu.lst</path> file so that
-we get a nice GRUB boot menu when the system reboots.  Here's how to do it.</p>
-
-<p>Now, create the menu.lst file (<c>nano -w /boot/grub/menu.lst</c>), and add the following to it:</p>
+<p>Was genau tun die zwei Befehle? Mit dem <c>root ( )</c> Kommando bekommt
+GRUB die Position Ihrer Bootpartition mitgeteilt (in diesem Beispiel <path>/dev/hda1</path>
+oder besser <path>(hd0,0)</path>, um bei der GRUB Terminologie zu bleiben).
+Der zweite Befehl <c>setup ( )</c>, bestimmt wohin GRUB den Bootloader schreiben soll 
+- dieser wird dann so konfiguriert, dass er seine speziellen Dateien auf der mit dem  
+<c>root ( )</c> Kommando vorgegeben, Partition sucht. In diesem Beispiel soll der 
+Bootloader im MBR (Master Boot Record) der Festplatte installiert werden. In diesem Fall 
+kann einfach<path>/dev/hda</path> oder besser <path>(hd0)</path> als Position angegeben werden.
+Soll GRUB als sekund&#xE4;rer Bootloader installiert werden, wird er einfach in den
+Bootrecord der entsprechen Partition geschrieben. 
+Wenn GRUB den Bootrecord erzeugt hat, k&#xF6;nnen Sie GRUB durch eingeben des Befehls
+<c>quit</c> beenden. Jetzt ist Gentoo Linux installiert. Es muss nur noch die
+Datei <path>/boot/grub/menu.lst</path> so angepasst werden, das GRUB beim Booten
+ein nettes Bootmen&#xFC; anzeigt.</p>
+ 
+<p>Erzeugen Sie die Datei <path>/boot/grub/menu.lst</path> (<c>nano -w /boot/grub/menu.lst</c>), und
+tragen Sie folgendes ein:</p>
 <pre>
 default 0
 timeout 30
 splashimage=(hd0,0)/boot/grub/splash.xpm.gz
 
-title=My example Gentoo Linux
+title=Gentoo Linux
 root (hd0,0) 
 kernel /boot/bzImage root=/dev/hda3 
 
-<comment># Below needed only for people who dual-boot</comment>
+<comment># Der folgende Eintrag wird nur bei Dual-Boot ben&#xF6;tigt</comment>
 title=Windows NT Workstation
 root (hd0,5) 
 chainloader +1
 </pre>
 <note>
-The <path>menu.lst</path> file should end in "lst" as in "list", not "1st" as in "first".  Also, (hd0,0) should be 
-written without any spaces inside the parentheses.
+Die Dateiendung von <path>menu.lst</path> mu&#xDF; "lst" ("list") lauten nicht "1st" ("first").
+Au&#xDF;erdem d&#xFC;rfen innerhalb der (hd0,0) Klammer keine Leerzeichen sein.
 </note>
-<p>After saving this file, Gentoo Linux installation is complete.  Selecting the first option will
-tell GRUB to boot Gentoo Linux without a fuss.  The second part of the menu.lst file is optional, and shows you how to
-use GRUB to boot a bootable Windows partition.</p>
 
-<note>Above, <path>(hd0,0)</path> should point to your "boot" partition
-(<path>/dev/hda1</path> in our example config) and <path>/dev/hda3</path> should point to
-your root filesystem.  <path>(hd0,5)</path> contains the NT boot
-loader.</note> <p>Also, if you need to pass any options to the kernel, simply
-add them to the end of the <c>kernel</c> command.  We're already passing one option
-(<c>root=/dev/hda3</c>), but you can pass others as well.  In particular, you can
-turn off devfs by default (not recommended unless you know what you're doing) by
-adding the <c>gentoo=nodevfs</c> option to the <c>kernel</c> command.
+<p>Wenn Sie die Datei gespeichert haben, sind Sie mit der Gentoo Linux Installation fertig.
+Die erste Option wird GRUB dazu veranlassen Gentoo Linux booten. Der zweite Eintrag ist
+optional und bootet eine bootf&#xE4;hige Windows Partition.</p> 
 
-<note>Unlike in earlier versions of Gentoo Linux, you no longer have to add 
-<c>devfs=mount</c> to the end of the <c>kernel</c> line to enable devfs.  In rc6
-devfs is enabled by default.
+<note>
+In dem obigen Beispiel zeigt <path>(hd0,0)</path> auf die "boot" Partition
+(also <path>/dev/hda1</path>) und <path>/dev/hda3</path> ist die "root" Partition.
+Die Partition <path>(hd0,5)</path> enth&#xE4;lt den Windows NT Bootloader.
 </note>
+
+<p>Wenn Sie den Kernel mit zus&#xE4;tzlichen Optionen laden wollen, k&#xF6;nnen diese
+einfach durch Anh&#xE4;ngen an das <c>kernel</c> Kommando &#xFC;bergeben werden.
+Momentan wird bereits eine Option (<c>root=/dev/hda3</c>) &#xFC;bergeben,
+aber es k&#xF6;nnen durchaus weitere angeh&#xE4;ngt werden. Insbesondere k&#xF6;nnen Sie
+devfs abschalten (nicht zu empfehlen, au&#xDF;er Sie wissen genau was Sie tun)
+in dem Sie die Option <c>gentoo=nodevfs</c> and das <c>kernel</c> Kommando
+h&#xE4;ngen.
+
+<note>Anders als in fr&#xFC;heren Versionen von Gentoo Linux, muss die Option
+<c>devfs=mount</c> nicht mehr &#xFC;bergeben werden um devfs zu aktivieren. Seit 
+-rc6 wird devfs automatisch gemountet.</note>
 </p>
 
 </body>
 </section>
 </chapter>
 <chapter>
-<title>Installation complete!</title>
+<title>Installation abgeschlossen!</title>
 <section>
 <body>
-<p>Now, Gentoo Linux is installed.  The only remaining step is to exit the chrooted shell, safely unmount your partitions
-and reboot the system:</p>
+<p>Gentoo Linux ist installiert. Der letzte verbleibende Schritt ist, die "chroot" Umgebung 
+zu verlassen und alle Partitionen vor einem Reboot sauber herunterzufahren:</p>
 <pre>
 # <i>exit</i> 
-<codenote>This exits the chrooted shell; you can also type <c>^D</c></codenote>
+<codenote>Dies beendet die "chrootet" Shell. Sie k&#xF6;nnen auch <c>^D</c> eingeben.</codenote>
 # <i>cd / </i>
 # <i>umount /mnt/gentoo/boot</i>
 # <i>umount /mnt/gentoo/proc</i>
 # <i>umount /mnt/gentoo</i>
 # <i>reboot</i>
 </pre>
+
 <note>
-After rebooting, it is a good idea to run the <c>update-modules</c> command to create
-the <path>/etc/modules.conf</path> file.  Instead of modifying this file directly, you should
-generally make changes to the files in <path>/etc/modules.d</path>.
+Nach dem ersten Reboot ist es eine gute Idee ein <c>update-modules</c> laufen zu lassen,
+um die Datei <path>/etc/modules.conf</path> zu erzeugen. Anstatt diese Datei direkt
+zu bearbeiten, sollten Sie &#xC4;nderungen nur an den Dateien in <path>/etc/modules.d</path>
+vornehmen.
 </note>
-<p>If you have any questions or would like to get involved with Gentoo Linux development, 
-consider joining our gentoo-user and gentoo-dev mailing lists
-(there's a "click to subscribe" link on our <uri link="http://www.gentoo.org">main page</uri>).
-We also have a handy <uri link="/doc/desktop.html">Desktop configuration guide</uri> that will
-help you to continue configuring your new Gentoo Linux system, and a useful <uri link="/doc/portage-user.html">Portage user guide</uri>
-to help familiarize you with Portage basics.  Enjoy and welcome to Gentoo Linux!</p>
+
+<p>Wenn die Fragen zum Thema Gentoo Linux haben, oder bei Entwicklung von Gentoo Linux 
+mithelfen m&#xF6;chten, tragen Sie sich doch in die Mailing Listen "gentoo-user" und 
+"gentoo-dev" ein. (Es gibt einen "click to subscribe" Link auf der 
+<uri link="http://www.gentoo.org">Gentoo Linux Homepage</uri>). Zus&#xE4;tzlich haben wir
+noch eine <uri link="/doc/desktop.html">Desktop Konfigurationsanleitung</uri>, die
+Sie bei der weitergehenden Konfiguration von Gentoo Linux unterst&#xFC;tzt und ein
+n&#xFC;tzliches  <uri link="/doc/portage-user.html">Portage Handbuch</uri>, das mit den
+Grundlagen von Portage vertraut macht.   Herzlich Willkommen und viel Spa&#xDF; mit Gentoo Linux!</p>
+
 </body>
 </section>
 </chapter>
