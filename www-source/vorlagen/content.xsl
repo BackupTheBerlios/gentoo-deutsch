@@ -5,8 +5,6 @@
 <!--
   Part of the Gentoo WebSite:
   Document Version: 0.9
-
-
 -->
 
 <xsl:include href="../temp/config.xsl"/>
