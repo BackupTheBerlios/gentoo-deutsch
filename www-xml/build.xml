@@ -70,7 +70,7 @@ hier die ben&#xF6;tigten Schritte:
 
 
 <table>
-<tr><th>stage Archiv</th><th>Installationsanforderungen</th></tr>
+<tr><th>stage</th><th>Installationsanforderungen</th></tr>
 <tr><ti>1</ti><ti>Einrichten von Partition und Dateisystem, emerge rsync, bootstrap, emerge system, emerge linux sources, abschliessende Konfiguration</ti></tr>
 <tr><ti>2</ti><ti>Einrichten von Partition und Dateisystem, emerge rsync, emerge system, emerge linux sources, abschliessende Konfiguration</ti></tr>
 <tr><ti>3</ti><ti>Einrichten von Partition und Dateisystem, emerge rsync (optional), abschliessende Konfiguration</ti></tr>
@@ -123,7 +123,7 @@ Um ein bestimmtes Modul zu laden, tippen Sie: </p>
 </pre>
 
 <p>Wenn Sie nun auch noch auf SCSI Hardware zugreifen m&#xF6;chten, die nicht automatisch
-erkannt wurde, m&#xFC;ssen Sie das passende Modul aus /lib/modules laden. 
+erkannt wurde, m&#xFC;ssen Sie das passende Modul aus <path>/lib/modules</path> laden. 
 Verwenden Sie dazu <c>modprobe</c>:</p>
 
 
@@ -140,8 +140,8 @@ sichergestellt, das die Unterst&#xFC;tzung f&#xFC;r SCSI CD-ROMS (<c>sr_mod</c>)
 <note>Version -r10 des ISO Images enth&#xE4;lt jetzt auch <c>hdparm</c>. Wenn eine Ihrer Festplatten
 optimiert werden muss, ist nun der richtige Zeitpunkt daf&#xFC;r. Auf einigerma&#xDF;en moderner Hardware,
 sollte der Befehl <c>hdparm -d 1 /dev/hdx</c> problemlos anzuwenden sein. Mit dem Befehl
-<c>hdparm -v /dev/hdx</c>, k&#xF6;nnen Sie die aktuellen Einstellungen Ihrer Festplatte pr&#xFC;fen.
-Und mit <c>hdparm -t /dev/hdx</c>, testen Sie die Performance Ihrer Festplatte.</note>
+<c>hdparm -v /dev/hdx</c>, k&#xF6;nnen Sie die aktuellen Einstellungen Ihrer Festplatte pr&#xFC;fen 
+und mit <c>hdparm -t /dev/hdx</c>, testen Sie die Performance Ihrer Festplatte.</note>
 </body>
 </section>
 </chapter>
@@ -159,9 +159,9 @@ zus&#xE4;tzlichen Dreh anwenden.</p> <!--- gibts fuer Dreh noch ein besseres Wor
 # <i>cardmgr -f</i>
 </pre>
 
-<p>W&#xE4;hrend cardmgr &#xFC;berpr&#xFC;ft, welche Hardware vorhanden ist, sollten aus Ihrem
+<p>W&#xE4;hrend <c>cardmgr</c> &#xFC;berpr&#xFC;ft, welche Hardware vorhanden ist, sollten aus Ihrem
 Lautsprecher einige Piepser ert&#xF6;nen und die PCMCIA Netzwerkkarte ihre Arbeit
-aufnehmen. Sie k&#xF6;nnen nat&#xFC;rlich die PCMCIA Karte auch nach dem Laden des cardmgr
+aufnehmen. Sie k&#xF6;nnen nat&#xFC;rlich die PCMCIA Karte auch nach dem Laden des <c>cardmgr</c>
 einstecken (Technisch gesehen m&#xFC;ssen Sie <i>cardmgr</i> nicht starten wenn Sie
 genau wissen welche Module Ihre PCMCIA Karte ben&#xF6;tigt. Aber wenn nicht, versuchen
 Sie nicht alle Module zu laden um zu sehen, welches passt. Das wird nicht
@@ -201,7 +201,7 @@ Einige Provider erwarten, dass Sie einen Hostnamen &#xFC;bergeben. Um dies zu tu
 Option <c>-h meinhostname</c> an das oben stehende Kommando.</note>
 
 <p>Wenn Sie <i>dhcpConfig</i> Warnungen bekommen, keine Panik. Die meisten Meldungen sind 
-harmlos. Weiter geht es unten mit dem Test der Netzwerkanbindung.</p>
+harmlos. Jetzt geht es f&#xFC;r Sie unten, mit dem Test der Netzwerkanbindung, weiter.</p>
 
 </body>
 </section>
@@ -221,13 +221,13 @@ Ihres "default Gateway".</p>
 # <i>/sbin/route add -net default gw $GTWAY netmask 0.0.0.0 metric 1</i>
 </pre>
 <p>Jetzt m&#xFC;ssen Sie die Datei <path>/etc/resolv.conf</path> erstellen, damit die Namensaufl&#xF6;sung 
-(Web/FTP Server durch Namen anstatt der IP Adresse finden) funktioniert.</p>
+(Web/FTP Server durch den Namen, anstatt der IP Adresse finden) funktioniert.</p>
 
 <note>Im Moment ist nur <c>nano</c>, ein kleiner, leicht zu bedienender Editor installiert.
 Verwenden Sie <c>nano</c> mit der Option <c>-w</c>, um den automatischen Zeilenumbruch
 abzuschalten.</note>
 
-<p>Hier ein Beispiel der Datei /etc/resolv.conf:</p>
+<p>Hier ein Beispiel der Datei <path>/etc/resolv.conf</path>:</p>
 
 <pre caption="/etc/resolv.conf Vorlage">
 domain mydomain.com
@@ -307,7 +307,7 @@ Ext2 ist ein erprobtes Linux Dateisystem, unterst&#xFC;tzt aber kein Journaling.
 Das Dateisystem ext3 ist eine Weiterentwicklung von ext2 und unterst&#xFC;tzt
 Metadaten Journaling sowie geordnete Schreibzugriffe <!-- war vorher: ordered data writes (JS) -->
 und ein effektives Daten Journaling. ReiserFS ist ein B*-tree basiertes 
-Dateisystem das eine sehr gute Performance bei der Handhabung kleiner Dateien
+Dateisystem, das eine sehr gute Performance bei der Handhabung kleiner Dateien
 verspricht und deutlich performanter (10x-15x) als ext2 und ext3 ist, wenn kleine 
 Dateien (kleiner 4k) im Spiel sind. Wie auch immer, momentan empfehlen wir die
 Verwendung von ReiserFS, wegen wiederholtem Auftreten von Dateisystemfehlern in 
@@ -318,7 +318,7 @@ Journaling und wird voll von Gentoo Linux unterst&#xFC;tzt.</p>
 
 <p>
 Wenn Sie ein Standard Dateisystem suchen, nehmen Sie ext2. Wenn Sie ein robustes Journaling 
-Dateisystem brauchen, nehmen Sie ext3. Wenn Sie jedoch ein "high performance" Dateisystem ben,&#xF6;tigen,
+Dateisystem brauchen, nehmen Sie ext3. Wenn Sie jedoch ein "high performance" Dateisystem ben&#xF6;tigen,
 dass auch Journaling unterst&#xFC;tzt, nehmen Sie XFS. Beide, ext3 und XFS sind bereits ausgreift. 
 Alle Dateisysteme (bis auf ReiserFS) sind f&#xFC;r den Produktionsbetrieb geeignet.
 Wir empfehlen folgende Dateisystemgr&#xF6;&#xDF;en und -arten:</p>
@@ -390,8 +390,9 @@ Versuche die Partition zu mounten fehlschlagen, wenn Sie das Dateisystem nicht e
 </pre>
 
 <warn>
-Um Sie noch einmal darauf hinzuweisen, momentan raten wir von ReiserFS ab. Obwohl ReiserFS bei vielen Benutzern fehlerfrei arbeitet, gibt es ein allgemeines Problem mit Dateisystemkorruption bei ReiserFS in Verbindung
-mit den Kernel der Serie 2.4.x.</warn>
+Um Sie noch einmal darauf hinzuweisen, momentan raten wir von ReiserFS ab. Obwohl ReiserFS bei 
+vielen Benutzern fehlerfrei arbeitet, gibt es ein allgemeines Problem mit Dateisystemkorruption 
+bei ReiserFS in Verbindung mit einem Serie 2.4.x. Kernel</warn>
 
 <note>Mehr Informationen zum Thema ext3 unter Linux 2.4 finden Sie hier: <uri>http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html</uri>.</note>
 </body>
@@ -419,10 +420,10 @@ installieren, m&#xFC;ssen diese dann an die entsprechenden Verzeichnisse gemount
 (<path>/mnt/gentoo/usr</path> und <path>/mnt/gentoo/var</path>).</p>
    
 <impo>Wenn Ihre <e>boot</e> Partition, dort wo der Kernel unterbracht ist, eine ReiserFS 
-Partition ist, achten Sie darauf, das diese mit der <c>-o notail</c> Option gemountet wird,
+Partition ist, achten Sie darauf, dass diese mit der <c>-o notail</c> Option gemountet wird,
 sonst wird GRUB nicht richtig installiert. Stellen Sie auch sicher, dass die Option 
-<c>notail</c> auch mit in die <path>/etc/fstab</path> mit eingetragen wird. 
-Dazu kommen wir gleich.</impo>
+<c>notail</c> auch mit in die <path>/etc/fstab</path> mit eingetragen wird, doch 
+dazu kommen wir gleich noch.</impo>
 </body>
 </section>
 </chapter>
@@ -431,8 +432,8 @@ Dazu kommen wir gleich.</impo>
 <title>Die CD-ROM mounten</title>
 <section>
 <body>
-<p>Auch wenn Sie von der CD-ROM gebootet haben, ist diese in der minimalen Linux Umgebung nicht
-gemountet. Sie m&#xFC;ssen die CD-ROM erst mounten damit Sie auf die komprimierten Installationsarchive
+<p>Auch wenn Sie von der CD-ROM gebootet haben, ist diese, in der minimalen Linux Umgebung, nicht
+gemountet. Sie m&#xFC;ssen die CD-ROM erst mounten, damit Sie auf die komprimierten Installationsarchive
 zugreifen zu k&#xF6;nnen. Um die CD-ROM zu mounten, tippt man gew&#xF6;hnlich:</p>
 <pre>
 # <i>mount /dev/cdroms/cdrom0 /mnt/cdrom -o ro -t iso9660</i>
@@ -449,13 +450,13 @@ sein, die <c>stage???.tbz2</c> Dateien zu sehen.</p>
 <body>
 
 <p>Nun wird es Zeit, das ausgew&#xE4;hlte, komprimierte Archiv nach <path>/mnt/gentoo</path> zu entpacken.
-Danach wechseln Sie mit <c>chroot</c> hin&#xFC;ber in die neue Gentoo Linux Installation,</p>
+Danach wechseln Sie mit <c>chroot</c> hin&#xFC;ber in die neue Gentoo Linux Installation.</p>
 
-<impo>Achten Sie darauf, dass Sie das Archiv mit der Option <c>p</c>  entpacken.
+<impo>Achten Sie darauf, dass Sie das Archiv mit der Option <c>"p"</c>  entpacken.
 Wenn Sie dies vergessen, werden die Rechte einiger Dateien nicht stimmen.</impo>
 
 <impo>Wenn Sie die "bau alles von Grund auf neu" (stage1) Installation gew&#xE4;hlt haben, 
-werden Sie das <path>stage1-ix86-1.2.tbz2</path> Archiv verwenden wollen.
+verwenden Sie das <path>stage1-ix86-1.2.tbz2</path> Archiv.
 Wenn Sie eine der gr&#xF6;&#xDF;eren CDs verwenden, haben Sie die Wahl zwischen dem
 "stage2" und dem "stage3" Archiv. Diese Archive sparen Ihnen eventuell Zeit, das aber
 auf Kosten der Flexibilit&#xE4;t (wir haben die Compiler Optimierung und USE Variablen
@@ -503,8 +504,8 @@ sich mit rsync.gentoo.org zu verbinden und die aktuellste Version des Portage Ve
 <p>Das Portage Datenverzeichnis, dass heruntergeladen wird, ist ca. 10MB gro&#xDF;.</p>
 
 <impo>Die aktuelle Adresse des "rsync" Servers ist momentan: rsync://rsync.gentoo.org/gentoo-portage. 
-Wenn Sie Schwierigkeiten haben, den Server zu erreichen, stellen Sie sicher, dass Sie 
-auch diesen Server verwenden, in dem Sie die SYNC Variable in Ihrer /etc/make.conf entsprechend
+Sollten Sie Schwierigkeiten haben den Server zu erreichen, uberpr&#xFC;fen Sie bitte, ob die <i>SYNC</i>
+Variable in Ihrer <path>/etc/make.conf</path> auch auf diesen Server konfiguriert ist.
 setzen.</impo>
 
 <note>Sie k&#xF6;nnen <c>rsync</c> so konfigurieren, das es einen HTTP Proxy verwendet.
@@ -523,7 +524,7 @@ konfigurieren, tragen Sie die Variable <i>RSYNC_PROXY="hostname:port"</i> in die
 
 <impo>Wenn Sie ein "stage2" oder "stage3" Archiv verwenden, dann haben wir 
 den <c>bootstrap</c> Prozess bereits f&#xFC;r Sie durchgef&#xFC;hrt. Es ist nicht 
-n&#xF6;tig, dies noch einmal zu tun, au&#xDF;er Sie hatten sich entschieden  ein 
+n&#xF6;tig, dies noch einmal zu tun, au&#xDF;er Sie hatten sich dazu entschieden, ein 
 <c>emerge rsync</c> durchzuf&#xFC;hren, um sicherzustellen, ein aktuelles 
 Gentoo Linux System zu haben. Die meisten Anwender, die sich f&#xFC;r ein
 "stage2" oder "stage3" Archiv entschieden haben, werden <i>nicht</i> noch
@@ -534,14 +535,14 @@ sehr schnellen Rechnern bis zu einer Stunde dauern kann.</impo>
 <p>Da Sie nun eine funktionierende Kopie des Portage Verzeichnisses haben,
 m&#xFC;ssen Sie nun den Gentoo Linux "bootstrap" Prozess durchlaufen. Dazu gehen
 Sie folgenderma&#xDF;en vor: Zuerst editieren Sie die Datei <path>/etc/make.conf</path>.
-In dieser Datei k&#xF6;nnen Sie die USE Variable an Ihre Gegebenheiten anpassen.
-&#xDC;ber die USE Variable k&#xF6;nnen Sie steuern, welche optionale Funktionalit&#xE4;t Sie
+In dieser Datei k&#xF6;nnen Sie die <c>USE</c> Variable an Ihre Gegebenheiten anpassen.
+&#xDC;ber die <c>USE</c> Variable k&#xF6;nnen Sie steuern, welche optionale Funktionalit&#xE4;t Sie
 in die Pakete eingebaut haben m&#xF6;chten. Normalerweise ist die vorgegebene Einstellung,
-eine <e>leere</e> oder ungesetzte USE Variable, ausreichend. Wichtig ist, dass Sie 
+eine <e>leere</e> oder ungesetzte <c>USE</c> Variable, ausreichend. Wichtig ist, dass Sie 
 die passenden Werte f&#xFC;r die <c>CHOST</c>, <c>CFLAGS</c> und <c>CXXFLAGS</c> f&#xFC;r
-Ihr System eintragen. (Kommentierte Beispiele sind weiter unten in der Datei
-vorhanden). Falls Sie sich hinter einer Firewall befinden, sollte dort auch ein Proxy 
-eingetragen werden.</p>
+Ihr System eintragen. (Kommentierte Beispiele befinden sich weiter unten in der Datei). 
+Falls Sie sich hinter einer Firewall befinden, sollten Sie dort auch ein Proxy 
+eingetragen.</p>
 
 <pre>
 # <i>nano -w /etc/make.conf</i> <comment>(Passen Sie die Eintr&#xE4;ge an)</comment>
@@ -552,11 +553,11 @@ Blick in die Datei <path>/etc/make.globals</path> werfen. Diese Datei umfasst al
 Gentoo Linux Vorgaben und sollte nicht ver&#xE4;ndert werden. Wem diese Vorgaben nicht
 gen&#xFC;gen, sollte seine &#xC4;nderungen in die Datei <path>/etc/make.conf</path> eintragen,
 da Eintr&#xE4;ge in der <path>make.conf</path> die vorgegebenen Werte der 
-<path>make.globals</path> &#xFC;berschreiben. Wenn Sie die USE Einstellungen tunen 
+<path>make.globals</path> &#xFC;berschreiben. Wenn Sie die <c>USE</c> Einstellungen tunen 
 wollen, schauen Sie sich die Datei <path>/etc/make.profile/make.defaults</path> 
 genauer an. Wenn Sie beispielsweise eine der vorhanden Einstellungen deaktivieren
 wollen, setzen Sie den entsprechenden <c>USE="-foo"</c> Eintrag in der /etc/make.conf.
-(Dies w&#xFC;rde das USE Flag <c>foo</c> abschalten) </note>
+(Dies w&#xFC;rde das <c>USE</c> Flag <c>foo</c> abschalten) </note>
 
 <p>Jetzt k&#xF6;nnen Sie den "bootstrap" Prozess starten. Das dauert 1-2 Stunden; abh&#xE4;ngig davon,
 wie flott Ihr Rechner ist. Auf einem 900Mhz AMD Athlon System dauert der Prozess ca. 1 Stunde.
@@ -574,16 +575,16 @@ Normalerweise verwendet Portage <c>/var/tmp</c> w&#xE4;hrend des kompilierens de
 Dabei kann es sein, dass mehrere hundert Megabyte des tempor&#xE4;ren Speichers verwendet 
 werden. Wenn Sie den Ort, wo Portage die tempor&#xE4;ren Dateien ablegt, &#xE4;ndern m&#xF6;chten,
 k&#xF6;nnen Sie dies <e>vor</e> dem Starten des "bootstrap" Prozesses durch setzen der 
-PORTAGE_TMPDIR Variable tun:</note>
+<c>PORTAGE_TMPDIR</c> Variable tun:</note>
 <pre>
 # <i>export PORTAGE_TMPDIR="/otherdir/tmp"</i>
 </pre>
 
 <p>
 Das Skript <c>bootstrap.sh</c> baut nun <c>binutils</c>, <c>gcc</c>, <c>gettext</c> und
-<c>glibc</c>.Danach werden <c>binutils</c>, <c>gcc</c> sowie <c>gettext</c> mit der neuen
+<c>glibc</c>. Danach werden <c>binutils</c>, <c>gcc</c> sowie <c>gettext</c> mit der neuen
 <c>glibc</c> erneut gebaut. Es muss nicht gesagt werden, dass dieser Prozess seine Zeit braucht.
-Machen Sie ein kleines Nickerchen. Wenn der Prozess dann durchgelaufen ist, haben Sie den Stand 
+Machen Sie ein kleines Nickerchen und wenn der Prozess dann durchgelaufen ist, haben Sie den Stand 
 des "stage2" Archivs erreicht.</p>
 </body>
 </section>
@@ -611,7 +612,7 @@ Scripte (aus dem Paket <path>sys-apps/baselayout</path>) auch &#xFC;berschreiben
 k&#xF6;nnen. Dazu wird Portages neuer Mechanismus zum Schutz von Konfigurationsdateien
 umgangen. Genaueres erfahren Sie, wenn Sie <c>emerge --help config</c> aufrufen.</note>
  
-<p>Es dauert seine Zeit, das ganze Basissystem zu bauen. Ihr Lohn ist, das es
+<p>Es dauert seine Zeit, das ganze Basissystem zu bauen. Ihr Lohn ist, dass es
 g&#xE4;nzlich auf Ihren Rechner optimiert ist. Leider m&#xFC;ssen Sie einen Weg finden,
 sich bis zu diesem Zeitpunkt zu besch&#xE4;ftigen. Der Autor empfiehlt "Star
 Wars - Super Bombad Racing" f&#xFC;r die PS2. Wenn <c>emerge system</c> fertig ist,
@@ -630,7 +631,7 @@ sind Sie auf dem Stand des "stage3" Archivs.</p>
 Sie beginnen mit dem Einstellen der Zeitzone. Durch setzen der Zeitzone, bevor der Kernel
 gebaut wird, stellen Sie sicher, das Sie eine sinnvolle <c>uname -a</c> Ausgabe bekommen.</p>
 
-<p>Sie finden die Zeitzonendateien (oder GMT, wenn Sie Greenwich Mean Time einstellen wollen)
+<p>Sie finden die Zeitzonendateien (oder GMT, wenn Sie "Greenwich Mean Time" einstellen wollen)
 in <path>/usr/share/zoneinfo</path>. Erstellen Sie nun einen symbolischen Link:</p>
 
 <pre>
@@ -675,19 +676,19 @@ Zur Zeit bieten wir folgende Pakete (ebuilds) an:</p>
 </pre>
 <warn>
 Damit Ihr Kernel fehlerfrei funktioniert, m&#xFC;ssen Sie sicherstellen, dass einige wichtige
-Optionen <i>aktiviert sind und nicht als Modul kompiliert</i> werden. Sie m&#xFC;ssen die
+Optionen <i>aktiviert</i> sind und <i>nicht</i> als Modul kompiliert werden. Sie m&#xFC;ssen die
 Option <i>"Code maturity level options --> Prompt for development and/or incomplete code/drivers"</i>
 aktivieren, damit alle n&#xF6;tigen Optionen verf&#xFC;gbar sind.
 Im Men&#xFC; "File systems" aktivieren Sie den Punkt <i>"Device File System"</i> (beachten Sie, dass
 Sie die "/dev/pts file system support" Option <e>nicht</e> aktivieren m&#xFC;ssen). Sie m&#xFC;ssen
 au&#xDF;erdem noch den Punkt <i>"Virtual Memory Filesystem"</i> aktivieren. Entsprechend der 
 Dateisysteme, die Sie verwenden wollen, aktivieren Sie die Unterst&#xFC;tzung f&#xFC;r ReiserFS 
-("Reiserfs support"), Ext3 ("Ext3 journalling file system support") oder 
-XFS ("SGI XFS filesystem support"). Es ist immer eine gute Idee, auch die Unterst&#xFC;tzung 
-Ext2 ("Second extended fs support") einzubinden, auch wenn Sie es nicht verwenden.
-Wenn Sie IDE Festplatten verwenden, sollten Sie zus&#xE4;tzlich die Option "USE DMA by default" aktivieren,
+(<i>"Reiserfs support"</i>), Ext3 (<i>"Ext3 journalling file system support"</i>) oder 
+XFS (<i>"SGI XFS filesystem support"</i>). Es ist immer eine gute Idee, auch die Ext2 Unterst&#xFC;tzung 
+(<i>"Second extended fs support"</i>) einzubinden, auch wenn Sie es nicht verwenden.
+Wenn Sie IDE Festplatten verwenden, sollten Sie zus&#xE4;tzlich die Option <i>"USE DMA by default"</i> aktivieren,
 da die Festplatten sonst sehr langsam sind. Nat&#xFC;rlich muss dazu die Unterst&#xFC;tzung f&#xFC;r IDE Festplatten 
-("IDE disk support") mitkompiliert werden, da der Kernel diese Platten sonst nicht sieht.</warn>
+(<i>"IDE disk support"</i>) mit einkompiliert werden, da der Kernel diese Platten sonst nicht sieht.</warn>
 
 <!-- 
 
@@ -704,10 +705,10 @@ Ich plane gerade mit fghellar sowieso ein Gentoo-Kernel HOWTO, da kommen solche 
 
 
 <impo>
-Wenn Sie einen IDE CD Brenner verwenden, m&#xFC;ssen Die die SCSI Emulation f&#xFC;r IDE Ger&#xE4;te des Kernels
-aktivieren. Aktivieren dazu Sie die Optionen "ATA/IDE/MFM/RLL support" ---> "IDE, ATA and ATAPI Block 
-devices" ---> "SCSI emulation support" (wenn Sie ea vorziehen, auch als Modul). Zus&#xE4;tzlich m&#xFC;ssen
-"SCSI support" sowie "SCSI CD-ROM support" und "SCSI generic support" (wenn gew&#xFC;nscht auch als 
+Wenn Sie einen IDE CD Brenner verwenden, m&#xFC;ssen Sie die "SCSI Emulation" f&#xFC;r IDE Ger&#xE4;te 
+des Kernels aktivieren. Aktivieren dazu Sie die Optionen <i>"ATA/IDE/MFM/RLL support" ---> "IDE, ATA and ATAPI Block 
+devices" ---> "SCSI emulation support"</i> (wenn Sie es vorziehen, auch als Modul). Zus&#xE4;tzlich m&#xFC;ssen
+<i>"SCSI support"</i> sowie <i>"SCSI CD-ROM support"</i> und <i>"SCSI generic support"</i> (wenn gew&#xFC;nscht auch als 
 Module) im Kernel aktiviert sein. Wenn Sie sich f&#xFC;r Module entschieden haben, tragen Sie
 in die diese noch mit dem Befehl: <c>echo -e "ide-scsi\nsg\nsr_mod"  >> /etc/modules.autoload</c>
 in die Datei <path> /etc/modules.autoload</path> ein, damit die Module auch automatisch geladen werden, 
@@ -716,8 +717,8 @@ wenn der Rechner bootet.
 
 <note>
 Wenn Sie einen Kernel der 2.2er Serie vorziehen, ist es nun m&#xF6;glich, einen solchen 
-zu installieren. Die Stabilit&#xE4;t, die ein solcher Kernel bietet hat aber ihren Preis:
-Sie verlieren viele der neuen F&#xE4;higkeiten die ein 2.4er Kernel bietet (z.B.: XFS und
+zu installieren. Die Stabilit&#xE4;t, die ein solcher Kernel bietet, hat aber ihren Preis:
+Sie verlieren viele der neuen F&#xE4;higkeiten, die ein 2.4er Kernel bietet (z.B.: die XFS und
 tmpfs Dateisysteme, iptables, uvm.); aber es gibt Patches, damit ReiserFS und devfs
 auch von einem 2.2er Kernel unterst&#xFC;tzt werden.
 Die Gentoo Linux Boot Scripte ben&#xF6;tigen entweder "tmpfs" oder "ramdisk" Support im
@@ -730,7 +731,7 @@ tragen Sie dort stattdessen <e>gentoo=notmpfs,nodevfs</e> ein.
 </note>
 
 <p>Ihr eigener Kernel (und die Module) sind jetzt installiert. Als n&#xE4;chstes sollten
-Sie das Logsystem installieren. Wir bieten <c>sysklogd</c>, das &#xFC;bliche Set von 
+Sie das Logsystem installieren. Wir bieten mit <c>sysklogd</c> das &#xFC;bliche Set von 
 "logging daemons". Au&#xDF;erdem stehen noch <c>syslog-ng</c> und <c>metalog</c> zur
 Verf&#xFC;gung.Power User scheinen sich von sysklogd (schlechte Performance) abzuwenden und
 sich f&#xFC;r syslog-ng oder metalog zu entscheiden. Wenn Sie sich nicht sicher sind, 
@@ -925,8 +926,8 @@ aufgebaut wird.
 <title> Letzte Schritte: Tunen der Festplatten (hdparm)</title>
 <body>
 <p>
-Dummerweise, gehen die Einstellungen, die Sie mit <c>hdparm</c> am Anfang der 
-Installation vorgenommen haben, durch einen Reboot verloren. Um die
+Dummerweise gehen die Einstellungen, die Sie mit <c>hdparm</c> am Anfang der 
+Installation vorgenommen haben, bei einen Reboot verloren. Um die
 Festplatten bei bei jedem Bootvorgang neu zu optimieren, schreiben Sie die
 <c>hdparm</c> Kommandos einfach in die <path>/etc/conf.d/local.start</path>:
 </p>
@@ -937,7 +938,7 @@ Festplatten bei bei jedem Bootvorgang neu zu optimieren, schreiben Sie die
 # This is a good place to load any misc.    
 # programs on startup ( 1>&amp;2 )        
 
-# Um DMA bei den Festplatten <e>hda</e> und <e>hdb</e> zu aktivieren  
+# Um DMA bei den Festplatten hda und hdb zu aktivieren  
 hdparm -d 1 /dev/hda    
 hdparm -d 1 /dev/hdb    
 </pre>
@@ -1031,7 +1032,7 @@ Au&#xDF;erdem d&#xFC;rfen innerhalb der (hd0,0) Klammer keine Leerzeichen sein.
 
 <impo>Wenn Sie beim Konfigurieren des Kernels, die SCSI Emulation aktiviert haben, m&#xFC;ssen Sie
 zus&#xE4;tzlich noch die Option "hdx=ide-scsi" ("hdx" steht dabei f&#xFC;r das Ger&#xE4;t Ihres CD Brenners)
-an das <c>kernel</c> Kommand anh&#xE4;ngen.</impo>
+an das <c>kernel</c> Kommando anh&#xE4;ngen.</impo>
 
 <p>Wenn Sie die Datei gespeichert haben, sind Sie mit der Gentoo Linux Installation fertig.
 Die erste Option wird GRUB dazu veranlassen, Gentoo Linux zu booten. Der zweite Eintrag ist
