@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-vcd/vdrplugin-vcd-0.0.6c.ebuild,v 1.1 2003/12/11 18:48:40 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.4i.ebuild,v 1.1 2003/05/12 18:01:14 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-vcd/vdrplugin-vcd-0.0.6c.ebuild,v 1.2 2004/06/03 20:34:26 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.4i.ebuild,v 1.1 2003/05/12 18:01:14 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="vcd"
@@ -17,6 +17,13 @@ DEPEND=">=media-video/vdr-1.2.6"
 
 src_unpack() {
 	unpack ${A}
+	if has_version ">=media-video/vdr-1.3.7" ;
+	then
+		einfo "Applying ${VDRPLUGIN}-${PV}-1.3.7 patch"
+		cd ${S}
+		patch -R < ${FILESDIR}/${VDRPLUGIN}-${PV}-1.3.7.diff
+
+	fi
 }
 
 src_compile() {
@@ -24,7 +31,7 @@ src_compile() {
 	sed -i "s/^DVBDIR.*$/DVBDIR = \/usr\/include\/dvb/" Makefile
 	sed -i "s/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/" Makefile
 	sed -i "s/^LIBDIR.*$/LIBDIR = \/usr\/lib\/vdr/" Makefile
-	epatch ${FILESDIR}/${VDRPLUGIN}-${PV}-ul.diff.gz
+#	epatch ${FILESDIR}/${VDRPLUGIN}-${PV}-ul.diff.gz
 	make all|| die "compile problem"
 }
 
