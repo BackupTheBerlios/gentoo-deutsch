@@ -81,7 +81,7 @@
 </xsl:template>
 
 <xsl:template match="cgi:*">
-  <![CDATA[<!--cgi: ]]><xsl:value-of select="name()"/><![CDATA[-->]]>
+  <![CDATA[<!--]]><xsl:value-of select="name()"/><![CDATA[-->]]>
 
   <!--
     query_str 		= Suchstring
