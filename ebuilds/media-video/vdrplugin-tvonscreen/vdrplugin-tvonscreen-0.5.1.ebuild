@@ -1,6 +1,6 @@
 # Copyright 2003 Frederik Kunz <frederik.kunz@web.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvonscreen/vdrplugin-tvonscreen-0.5.1.ebuild,v 1.1 2004/03/23 16:07:54 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvonscreen/vdrplugin-tvonscreen-0.5.1.ebuild,v 1.2 2004/07/04 15:04:17 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="tvonscreen"
@@ -8,7 +8,8 @@ VDRPLUGIN="tvonscreen"
 S=${WORKDIR}/${VDRPLUGIN}-${PV}
 DESCRIPTION="Video Disk Recorder TvOnScreen PlugIn"
 HOMEPAGE="http://www.js-home.org/vdr/tvonscreen"
-SRC_URI="http://www.js-home.org/vdr/tvonscreen/vdr-tvonscreen-${PV}.tar.gz"
+SRC_URI="http://www.js-home.org/vdr/tvonscreen/vdr-tvonscreen-${PV}.tar.gz
+         http://www.js-home.org/vdr/tvonscreen/vdr-tvonscreen-${PV}-to-0.5.2-update.diff"
 KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
@@ -17,6 +18,10 @@ DEPEND=">=media-video/vdr-1.2.6"
 
 src_unpack() {
 	unpack ${A}
+	if has_version ">=media-video/vdr-1.3.7" ;
+	then
+		epatch ${DISTDIR}/vdr-tvonscreen-${PV}-to-0.5.2-update.diff
+	fi
 }
 
 src_compile() {
