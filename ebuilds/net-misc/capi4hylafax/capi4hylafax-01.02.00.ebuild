@@ -1,9 +1,9 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/capi4hylafax/Attic/capi4hylafax-01.02.00.ebuild,v 1.2 2002/07/22 14:54:17 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/capi4hylafax/Attic/capi4hylafax-01.02.00.ebuild,v 1.3 2002/07/25 00:04:57 holler Exp $
 
 S=${WORKDIR}/${P}
-DESCRIPTION="CAPI4HylaFAX - CAPI driver for HylaFAX"
+DESCRIPTION="CAPI4HylaFAX - CAPI driver for HylaFAX (currently without any special Hylafax-support, but standalone fax receiving works fine)"
 SRC_URI="ftp://ftp.avm.de/cardware/fritzcrd.pci/linux/${P}.tar.gz"
 HOMEPAGE="http://www.avm.de/"
 SLOT="1"
@@ -12,8 +12,7 @@ KEYWORDS="x86"
 
 # USE-flags:
 #
-#	faxrcv  - standalone mode (without hylafax, metamail and ghostscript needed)
-#	hylafax - operation with hylafax
+#	hylafax - operation with hylafax (needs to be done and tested)
 #
 
 RDEPEND="virtual/glibc
