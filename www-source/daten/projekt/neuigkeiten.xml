@@ -22,6 +22,27 @@
 <title>Aktuelles</title>
 
 <section>
+<title>[25. Juni 2003] Gentoo-Linux... auf dem Weg in die Zukunft</title>
+<body>
+	<p>
+	<b>Das außergewöhnlich steigende Popularität von Gentoo-Linux (bewiesen durch eine Umfrage von <uri link="http://www.novell.com/linux">Novell.com</uri>, laut der
+	Gentoo die zweithöchste Popularität nach RedHat genießt) hat sicherlich einige Herausforderungen für uns aufgestellt.</b>
+	</p>
+	<p>
+	Um uns diesen Herausforderungen zu stellen, muß Gentoo organisiert werden. Aus diesem Grund wurde eine neue Management-Struktur erdacht
+	(als <b>Entwurf</b>) und kann <uri link="http://www.gentoo.org/doc/en/management-structure.xml">online von jedem eingesehen</uri> werden.
+	Diese neue Managementstruktur - sobald sie formal wird - wird es Gentoo erlauben, die Herausforderungen des fortschreitenden Wachstums
+	anzunehmen und gleichzeitig bessere Zugänglichkeit für und Kommunikation mit seinen einzelnen Anwendergruppen zu ermöglichen.
+	</p>
+	<p>
+	Es wird gebeten, auch diese <uri link="http://article.gmane.org/gmane.linux.gentoo.devel/9539">Nachricht der gentoo-dev Mailingliste</uri>
+	zu lesen, da sie vielleicht helfen wird einige offene Fragen bezüglich dieser angedachten Managementstruktur zu beantworten.
+	</p>
+</body>
+</section>
+
+
+<section>
 <title>[23. Juni 2003] Gentoo-Newsletter</title>
 <body>
 <p>
