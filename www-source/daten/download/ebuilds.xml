@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <info>
-<title>Aktuelle Neuzugänge im Portage Baum</title>
+<title>Aktuelle NeuzugÃ¤nge im Portage Baum</title>
 
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 
@@ -11,9 +11,9 @@
   <block>
     <title>Information:</title>
     <p>
-Diese Liste enthält die aktuellsten Zugänge im internationalen öffentlichen Portage-Verzeichnis.
-Hier gewinnen Sie eine Übersicht, was sich aktuell im Portage-Baum ändert und können leichter
-die Entscheidung treffen, ob sich ein Update lohnen könnte.
+		Diese Liste enthÃ¤lt die aktuellsten ZugÃ¤nge im internationalen Ã¶ffentlichen Portage-Verzeichnis.
+		Hier gewinnen Sie eine Ãœbersicht, was sich aktuell im Portage-Baum Ã¤ndert und kÃ¶nnen leichter
+		die Entscheidung treffen, ob sich ein Update lohnen kÃ¶nnte.
     </p>
   </block>
 </box>
@@ -25,7 +25,7 @@ die Entscheidung treffen, ob sich ein Update lohnen könnte.
 
 <body>
   <title>Neue Ebuilds im globalen Portage-Baum</title>
-  <pkglist_new_org/>
+  <pkglist_gentoo_org/>
 </body>
 
 </section>
