@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-console/vdrplugin-console-0.5.1.ebuild,v 1.1 2003/06/21 11:01:56 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-console/vdrplugin-console-0.5.1.ebuild,v 1.2 2003/09/22 21:56:42 martini Exp $
 
 IUSE=""
 VDRPLUGIN="console"
@@ -8,7 +8,8 @@ VDRPLUGIN="console"
 S=${WORKDIR}/${VDRPLUGIN}-${PV}
 DESCRIPTION="Video Disk Recorder - Console PlugIn"
 HOMEPAGE="http://ricomp.de/vdr/"
-SRC_URI="http://ricomp.de/vdr/vdr-${VDRPLUGIN}-${PV}.tgz"
+SRC_URI="http://ricomp.de/vdr/vdr-${VDRPLUGIN}-${PV}.tgz
+	 http://www.akool.de/download/plugins/${VDRPLUGIN}-${PV}.patch.bz2"
 KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
@@ -17,6 +18,8 @@ DEPEND=">=media-video/vdr-1.2.0"
 
 src_unpack() {
 	unpack ${A}
+	cd ${S}
+	patch < ${WORKDIR}/${VDRPLUGIN}-${PV}.patch
 }
 
 src_compile() {
