@@ -6,7 +6,6 @@
   <templates>vorlagen</templates>
   <data>daten</data>
   <bin>programme</bin>
-  <media>media</media>
 </source>
 
 <public value="/home/groups/gentoo-deutsch/htdocs/neu" short="pub">
