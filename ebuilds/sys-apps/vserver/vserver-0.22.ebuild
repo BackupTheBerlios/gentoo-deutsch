@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/vserver/Attic/vserver-0.22.ebuild,v 1.1 2003/08/22 06:08:47 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/vserver/Attic/vserver-0.22.ebuild,v 1.2 2003/08/22 12:10:17 mad Exp $
 
 IUSE=""
 
@@ -23,6 +23,7 @@ src_compile() {
 }
 
 src_install() {
+	sed -i "/\.sysv.*v_/d" Makefile
 	make install -e RPM_BUILD_ROOT=${D}
 }
 
