@@ -7,7 +7,7 @@
 # to stop watchdog temporarily touch /tmp/nowatchdog
 #
 #
-while sleep 10; do
+while sleep 8; do
 
 	[ -f /tmp/nowatchdog ] && continue
 
@@ -15,9 +15,10 @@ while sleep 10; do
 
 	if [ -z $RUN ]; then
 		 logger -i -t vdrwatchdog -p local0.info "initializing full VDR restart"
+		/etc/init.d/vdr stop 2>&1 >/dev/null
 		/etc/init.d/vdr zap 2>&1 >/dev/null
 		/etc/init.d/dvb stop 2>&1 >/dev/null
-		sleep 1
+		sleep 2
 		/etc/init.d/dvb start 2>&1 >/dev/null
 		/etc/init.d/vdr start 2>&1 >/dev/null
 		fi
