@@ -9,7 +9,7 @@ SRC_URI="http://www.kdelook.org/content/files/6986-${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 DEPEND="kde-base/kdebase"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 ~ppc ~sparc ~alpha"
 
 src_compile(){
         ./configure --prefix=$KDEDIR||die
