@@ -2,9 +2,9 @@ inherit kde-base || die "Can't inherit kde-base!"
 need-kde 3.1.2
 
 S=${WORKDIR}/${P}
-DESCRIPTION="A neat KDE 3.1 style based on Keramik"
-HOMEPAGE="http://www.kdelook.org/content/show.php?content=6986"
-SRC_URI="http://www.kdelook.org/content/files/6986-${P}.tar.bz2"
+DESCRIPTION="Plastik is a widget style for KDE 3.x."
+HOMEPAGE="http://www.kdelook.org/content/show.php?content=7559"
+SRC_URI="http://www.kdelook.org/content/files/7559-${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,6 +18,7 @@ src_compile(){
 
 src_install(){
         emake DESTDIR=${D} install || die "emake install failed"
+	dodoc ChangeLog INSTALL README TODO AUTHORS
 }
 
 pkg_postinst(){
