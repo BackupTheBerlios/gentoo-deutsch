@@ -2070,10 +2070,10 @@ Dokumentation gibt es auf der Seite des <uri link="http://www.isc.org/products/B
 <body>
 
 <p>
-There is really not much to say about djbdns except that the author is willing to bet
-<uri link="http://cr.yp.to/djbdns/guarantee.html">money</uri> on how secure it is.
-So go and try it: <uri>http://www.djbdns.org/</uri> it is very different from the
-way Bind v.9 works but you will get the hang of it.
+Über dkbdns gibt es nicht viel zu sagen - ausser das der Autor bereit ist
+<uri link="http://cr.yp.to/djbdns/guarantee.html">Geld</uri> darauf zu
+verwetten dass es sicher ist. Also versuchen Sie es : <uri>http://www.djbdns.org/</uri>.
+Es arbeitet anders als Bind v.9 aber Sie werden einen Einstieg finden.
 </p>
 
 </body>
@@ -2087,71 +2087,85 @@ way Bind v.9 works but you will get the hang of it.
 <body>
 
 <p>
-Samba is a protocol to share files with Microsoft/Novell networks and it should __not__ be used over the Internet. But nevertheless it needs securing.
+Samba ist ein Protokoll für Dateiaustausch mit Microsoft/Novell-Netzwerken und es sollte <b>nicht</b>
+über das INternet benutzt werden. Nichtsdestotrotz benötigt es Absicherung.
 </p>
 
 <pre caption="/etc/samba/smb.conf">
 [global]
-  #Bind to an interface
+  #An ein Interface binden
   interfaces = eth0 10.0.0.1/32
 
-  #Make sure to use encrypted password
+  #Sicherstellen, dass die Passwörter verschlüsselt werden
   encrypt passwords = yes
   directory security mask = 0700
 
-  #allow traffic from 10.0.0.*
+  #Kommunikation von 10.0.0.* erlauben
   hosts allow = 10.0.0.
 
-  #Enables user authentication 
-  #(don't use the share mode)
+  #Benutzerauthentifizierung aktivieren
+  #(Also nicht den "Share-Mode" benutzen)
   security = user
-  
-  #Disallow privileged accounts
+
+  #Priviligierte Accounts verbieten
   invalid users = root @wheel
 
-  #Add a max size of usage in kilobytes
+  #Maximale Größenauslastung in Kilobytes festlegen
   max disk size = 102400
 
-  #Uphold the password policy
+  #Richtlinie für Passwörter
   min password length = 8
   null passwords = no
 
-  #Use PAM (if added support)
+  #Wenn möglich PAM benutzen
   obey pam restrictions = yes
   pam password change = yes
 </pre>
 
 <p>
-Make sure that permissions are set correct on every share and remember to read the <uri link="http://www.samba.org">documentation</uri>
+Stellen Sie sicher, dass die Berechtigungen für jede Share richtig eingestellt sind
+und denken Sie daran die <uri link="http://www.samba.org">Dokumentation</uri> zu lesen.
 </p>
 
 <p>
-Now restart the server and add the users who should have access to this service. This is done though the <path>/usr/bin/smbpasswd</path> with the parameter -a
+Starten Sie nun den Server neu und fügen Sie die Benutzer hinzu, die Zugriff auf diesen Server haben sollen.
+Dies wird über das Aufrufen von <path>/usr/bin/smbpasswd</path> mit dem Parameter -a ermöglicht.
 </p>
 
 </body>
 </section>
 
 <section>
-<title>Chroot or virtual servers.</title>
+<title>Chroot oder Virtuelle Server.</title>
 <body>
 <p>
-Chrooting a service is a way of limiting a service (or user) environment to only accessing what it should and not gaining access (or information) that could lead to root access. By running the service as another user than root (nobody, apache, named) an attacker can only access files with the permissions of this user. This means that an attacker cannot gain root access even if the services has a security flaw.
+Einen Dienst zu chrooten stellt eine Möglichkeit dar einen Dienst (oder Benutzer) auf für ihn vorgesehene
+Ressourcen zu beschränken und zu verhindern, daß er Zugang zu Bereichen (oder Informationen) erlangt, die
+zu einem unberechtigten Besitz von root-Rechten führen könnte. Indem man einen Dienst als ein anderer Benutzer
+als root laufen lässt (nobody, apache, named) kann ein Angreifer nur Zugriff auf die Ressourcen des entsprechenden
+Accounts bekommen. Dies bedeutet, dass ein Angreifer nie root-Rechte erlangen kann, selbst wenn der entsprechende
+Dienst eine Sicherheitslücke hätte.
 </p>
 
 <p>
-Some services like pure-ftpd and bind has features for chrooting, and other services has not. If the service supports it, use it, otherwise you have to figure out how to create your own. Lets see how to create a chroot, for a basic understanding of how chroots work, we will test it with bash (easy way of learning).
+Einige Dienste wie zum Beispiel pure-ftpd und bind haben eingebaute Fähigkeiten für "chrooting" und
+andere Dienste bieten dies nicht. Wenn der Dienst es anbietet, dann benutzen Sie es, andernfalls müssen
+Sie in die Materie einsteigen und einen eigenen Benutzer erstellen. Lassen Sie es uns nun veruschen und
+eine eigene chroot-Umgebung aufbauen. Um einen Einstieg zu finden und zu sehen wie chroot arbeitet versuchen
+wir es zuerst mit bash (als einfachen Einstieg ins Lernen).
 </p>
 
 <p>
-Create a directory in <path>/</path> called chroot (<c>mkdir chroot</c>). And find what dynamic libraries that bash is compiled with (if it is compiled with -static this step is not necessary):
+Erstellen Sie ein Verzeichnis namens chroot in <path>/</path> (<c>mkdir chroot</c>). Nun müssen wir
+herausfinden, mit welche dynamischen Bibliotheken bash benötigt (wenn bash mit -static kompiliert wurde,
+dann ist dieser Schritt nicht nötig).
 </p>
 
 <p>
-The following command will create a list of libraries used by bash. 
+Das folgende Kommando wird eine Liste der von bash benutzten Bibliotheken ausgeben.
 </p>
 
-<pre caption="Get listing of used libraries">
+<pre caption="Benutzte Bibliotheken auflisten">
 # <i>ldd /bin/bash</i>
   libncurses.so.5 => /lib/libncurses.so.5 (0x4001b000)
   libdl.so.2 => /lib/libdl.so.2 (0x40060000)
@@ -2160,29 +2174,46 @@ The following command will create a list of libraries used by bash.
 </pre>
 
 <p>
-Now lets create the environment for bash.
+Nun erstellen wir die Umgebung für bash
 </p>
 
-<pre caption="Create chroot-environment for bash">
+<pre caption="chroot-Umgebung für bash erstellen">
 # <i>mkdir /chroot/bash</i>
 # <i>mkdir /chroot/bash/bin</i>
 # <i>mkdir /chroot/bash/lib</i>
 </pre>
 
 <p>
-Next copy the files used by bash (<path>/lib</path>) to the chrooted lib and copy the bash command to the chrooted bin directory. This will create the excact same environment, just with less functionality. After copying try it out: <c>chroot /chroot/bash</c>. If you get an prompt saying <c>/</c> it works!. Otherwise it will properly tell you what a file is missing. Some shared libraries depend on each other.
+Nun kopieren wir die von bash benutzten Bibliotheken (<path>/lib</path>) in das chroot und
+kopieren das Kommando bash in das Verzeichnis /bin im chroot. Dies wird die originale
+Umgebung herstellen - nur eben mit weniger Funktionalität. Nachdem das Kopieren abgeschlossen wurde
+versuchen Sie ein <c>chroot /chroot/bash</c>. Wenn Sie ein Prompt bekommen, dass als aktuelles Verzeichnis
+<c>/</c> angibt, dann hat alles funktioniert. Wenn nicht, dann werden Sie unter Umständen eine Fehlermeldung
+bekommen, die die fehlende Datei angibt. Manche dynamische Bibliotheken bauen aufeinander auf.
 </p>
 
 <p>
-You will notice that inside the chroot nothing works except echo. This is because we have no other commands in out chroot environment that bash and "echo" is a build-in functionality.
+Sie werden feststellen, dass innerhalb der chroot-Umgebung nichts Anderes als echo funktioniert. Dies
+ist deshalb so, weil es keine anderen Kommandos in unserer chroot-Umgebung haben und echo ein in bash
+eingebauter Befehl ist.
 </p>
 
 <p>
-This is basically the same way you would create a chrooted service. The only difference is that services sometimes rely on devices and configuration files in <path>/etc</path>. Simply copy them (devices can be copied with cp -a) to the chrooted environment, edit the init script to use chroot before executing. It can be difficult to find what devices and configuration files a services need. This is where the <c>strace</c> command becomes handy. Start the service with <path>/usr/bin/strace</path> bash and look for open, read, stat and maybe connect. This will give you a clue on what files to copy. But in most cases just copy the passwd file (edit the copy and remove users that has nothing to do with the service), <path>/dev/zero</path>, <path>/dev/log</path> and <path>/dev/random</path>.
+This is basically the same way you would create a chrooted service. The only difference is that
+services sometimes rely on devices and configuration files in <path>/etc</path>. Simply copy them
+(devices can be copied with cp -a) to the chrooted environment, edit the init script to use chroot
+before executing. It can be difficult to find what devices and configuration files a services need.
+This is where the <c>strace</c> command becomes handy. Start the service with <path>/usr/bin/strace</path>
+bash and look for open, read, stat and maybe connect. This will give you a clue on what files to copy.
+But in most cases just copy the passwd file (edit the copy and remove users that has nothing to do with
+the service), <path>/dev/zero</path>, <path>/dev/log</path> and <path>/dev/random</path>.
 </p>
 
 <p>
-Another way of creating a more secure environment is by using a virtual server environment. This will create a copy of the existing Linux and boots it in a virtual mode. This means that if the server is compromised its only the virtual server that has been compromised and not the real installation.
+Another way of creating a more secure environment is by using a virtual server environment.
+This will create a copy of the existing Linux and boots it in a virtual mode. This means
+that if the server is compromised its only the virtual server that has been compromised
+and not the real installation.
 </p>
 
 <p>
@@ -2192,7 +2223,8 @@ Examples of virtual servers:
 <ul>
 
 <li>
-<uri link="http://user-mode-linux.sourceforge.net">Usermode linux</uri> and an howto about <uri link="http://www.gentoo.org/doc/uml.html">user mode linux</uri>.
+<uri link="http://user-mode-linux.sourceforge.net">Usermode linux</uri> and an howto
+about <uri link="http://www.gentoo.org/doc/uml.html">user mode linux</uri>.
 </li>
 
 <li>
