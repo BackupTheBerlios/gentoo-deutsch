@@ -279,8 +279,12 @@
       <xsl:value-of select="position()"/>
     </xsl:variable>
 
+    <xsl:variable name="sectid">
+      doc_chap<xsl:value-of select="$cid"/>_sect<xsl:value-of select="$sid"/>
+    </xsl:variable>
+
     <xsl:if test="title">
-      <h2>
+      <h2 id="{$sectid}">
         <xsl:if test="/guide">
           <span class="nr"><xsl:value-of select="$cid"/><xsl:value-of select="$sid"/></span>
           <xsl:text> </xsl:text>
