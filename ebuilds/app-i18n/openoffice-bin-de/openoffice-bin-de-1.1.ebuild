@@ -1,19 +1,15 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/openoffice-bin-de-1.1.ebuild,v 1.1 2003/10/05 14:27:17 dertobi123 Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/openoffice-bin-de-1.1.ebuild,v 1.2 2003/10/17 12:29:08 elefantenfloh Exp $
 
 IUSE="kde gnome"
 
 inherit virtualx
 
-# NOTE:  There are two big issues that should be addressed.
-#
-#        1)  Language support and fonts should be addressed.
-
 LOC="/opt"
+OO_build="OpenOffice.org1.1-de"
 
-INSTDIR="${LOC}/OpenOffice.org1.1-de"
-#MY_PV="`echo ${PV} | gawk '{ print tolower($1) }'`"
+INSTDIR="${LOC}/${OO_build}"
 MY_PV="${PV}"
 if [ `use ppc` ]; then
 	MY_PV="${MY_PV/rc/RC}"
@@ -25,14 +21,24 @@ else
 fi;
 
 OO_DICT="de_DE.zip"
-OO_TH="OOo-Thesaurus-snapshot.zip"
+OO_TH="thes_de_DE.zip"
+OO_HYPH="hyph_de_DE.zip"
 
-DESCRIPTION="OpenOffice productivity suite"
+DESCRIPTION="OpenOffice productivity suite (german language version)"
 SRC_URI="x86? ( ftp://ftp-stud.fht-esslingen.de/pub/Mirrors/ftp.openoffice.org/localized/de/1.1.0/OOo_1.1.0_LinuxIntel_install_de.tar.gz
+		ftp://ftp.leo.org/pub/openoffice/localized/de/1.1.0/OOo_1.1.0_LinuxIntel_install_de.tar.gz
 		ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/contrib/dictionaries/$OO_DICT
-		http://thesaurus.kdenews.org/download/$OO_TH)"
+		ftp://ftp.leo.org/pub/openoffice/contrib/dictionaries/$OO_DICT
+		ftp://ftp.leo.org/pub/openoffice/contrib/dictionaries/$OO_TH
+		ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/OpenOffice/contrib/dictionaries/$OO_HYPH 
+		ftp://ftp.leo.org/pub/openoffice/contrib/dictionaries/$OO_HYPH )"
 
-HOMEPAGE="http://www.openoffice.org"
+HOMEPAGE="http://de.openoffice.org"
+
+LICENSE="LGPL-2 | SISSL-1.1"
+SLOT="0"
+KEYWORDS="~x86 -ppc -sparc"
+
 
 DEPEND="sys-apps/findutils
 	virtual/glibc
@@ -51,9 +57,6 @@ RDEPEND="virtual/glibc
 	|| ( >=virtual/jdk-1.3.1 >=virtual/jre-1.3.1 )
 	!app-office/openoffice"
 
-LICENSE="LGPL-2 | SISSL-1.1"
-SLOT="0"
-KEYWORDS="~x86 -ppc -sparc "
 
 src_install() {
 	# Sandbox issues; bug #8587
@@ -97,15 +100,19 @@ src_install() {
 	einfo "Installing OpenOffice.org into build root..."
 	dodir ${INSTDIR}
 	cd ${S}
+
 	# Setup virtualmake
 	export maketype="./setup"
+
 	# We need X to install...
 	virtualmake "-v -r:${T}/autoresponse"
 
 	echo
 	einfo "Removing build root from registry..."
+
 	# Remove totally useless stuff.
 	rm -f ${D}${INSTDIR}/program/{setup.log,sopatchlevel.sh}
+
 	# Remove build root from registry and co
 	egrep -rl "${D}" ${D}${INSTDIR}/* | \
 		xargs -i perl -pi -e "s|${D}||g" {} || :
@@ -134,22 +141,23 @@ src_install() {
 	sed -e "s|<pv>|${PV}|g" \
 		${FILESDIR}/${PV}/ooffice-wrapper-1.3 > ${T}/ooffice
 	doexe ${T}/ooffice
+
 	# Component symlinks
-	dosym /opt/OpenOffice.org1.1-de/program/scalc /usr/bin/oocalc
-        dosym /opt/OpenOffice.org1.1-de/program/sdraw /usr/bin/oodraw
-        dosym /opt/OpenOffice.org1.1-de/program/simpress /usr/bin/ooimpress
-        dosym /opt/OpenOffice.org1.1-de/program/smath /usr/bin/oomath
-        dosym /opt/OpenOffice.org1.1-de/program/swriter /usr/bin/oowriter
-        dosym /opt/OpenOffice.org1.1-de/program/sweb /usr/bin/ooweb
-        dosym /opt/OpenOffice.org1.1-de/setup /usr/bin/oosetup
-        dosym /opt/OpenOffice.org1.1-de/program/soffice /usr/bin/soffice
-        dosym /opt/OpenOffice.org1.1-de/program/soffice.bin /opt/OpenOffice.org1.1-de/program/ooffice.bin
-        dosym /opt/OpenOffice.org1.1-de/program/soffice.bin /opt/OpenOffice.org1.1-de/program/oooffice.bin
-        dosym /opt/OpenOffice.org1.1-de/program/spadmin.bin /opt/OpenOffice.org1.1-de/program/oopadmin.bin
-        dosym /opt/OpenOffice.org1.1-de/program/setup.bin /opt/OpenOffice.org1.1-de/setup.bin
-        dosym /opt/OpenOffice.org1.1-de/program/spadmin /usr/bin/oopadmin
-        dosym /opt/OpenOffice.org1.1-de/program/soffice /usr/bin/ooffice
-        dosym /opt/OpenOffice.org1.1-de/program/soffice /usr/bin/oooffice
+	dosym /opt/${OO_build}/program/scalc /usr/bin/oocalc
+        dosym /opt/${OO_build}/program/sdraw /usr/bin/oodraw
+        dosym /opt/${OO_build}/program/simpress /usr/bin/ooimpress
+        dosym /opt/${OO_build}/program/smath /usr/bin/oomath
+        dosym /opt/${OO_build}/program/swriter /usr/bin/oowriter
+        dosym /opt/${OO_build}/program/sweb /usr/bin/ooweb
+        dosym /opt/${OO_build}/setup /usr/bin/oosetup
+        dosym /opt/${OO_build}/program/soffice /usr/bin/soffice
+        dosym /opt/${OO_build}/program/soffice.bin /opt/${OO_build}/program/ooffice.bin
+        dosym /opt/${OO_build}/program/soffice.bin /opt/${OO_build}/program/oooffice.bin
+        dosym /opt/${OO_build}/program/spadmin.bin /opt/${OO_build}/program/oopadmin.bin
+        dosym /opt/${OO_build}/program/setup.bin /opt/${OO_build}/setup.bin
+        dosym /opt/${OO_build}/program/spadmin /usr/bin/oopadmin
+        dosym /opt/${OO_build}/program/soffice /usr/bin/ooffice
+        dosym /opt/${OO_build}/program/soffice /usr/bin/oooffice
 
 	einfo
 	einfo "Installiere Menü Shortcuts (benötigt \"gnome\" oder \"kde\" als USE-Flag)..."
@@ -198,13 +206,11 @@ src_install() {
 	fi
 
 	# Unneeded, as they get installed into /usr/share...
-#	rm -rf ${D}${INSTDIR}/share/{cde,gnome,kde}
 	rm -rf ${D}${INSTDIR}/share/cde
 
 	for f in ${D}/usr/share/gnome/apps/OpenOffice.org/* ; do
 		echo 'Categories=Application;Office;' >> ${f}
 	done
-
 
 	# Make sure these do not get nuked.
 	keepdir ${INSTDIR}/user/registry/res/en-us/org/openoffice/{Office,ucb}
@@ -216,20 +222,19 @@ src_install() {
 	einfo 
 
 	# Entpacke das Wörterbuch in share/dict/ooo
-	mkdir -p ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo/
-	cd ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo/
+	mkdir -p ${D}${LOC}/${OO_build}/share/dict/ooo/
+	cd ${D}${LOC}/${OO_build}/share/dict/ooo/
 	unzip -o ${DISTDIR}/${OO_DICT} || die "Konnte das deutsche Wörterbuch nicht entpacken !"
 
-
 	# Entpacke den Thesaurus in share/dict/ooo/
-	#cd ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo/
 	unzip -o ${DISTDIR}/${OO_TH} || die "Konnte den Thesaurus nicht entpacken !"
-	mv ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo/OOo-Thesaurus/* ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo
-	rm -r ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo/OOo-Thesaurus 
 
-	echo "DICT de DE de_DE" >> ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo/dictionary.lst
-	echo "HYPH de DE hyph_de_DE" >> ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo/dictionary.lst
-	echo "THES de DE th_de_DE" >> ${D}${LOC}/OpenOffice.org1.1-de/share/dict/ooo/dictionary.lst
+	# Entpacke Silbentrennungsregeln in share/dict/ooo/
+	unzip -o ${DISTDIR}/${OO_HYPH} || die "Konnte den Thesaurus nicht entpacken !"
+
+	echo "DICT de DE de_DE" >> ${D}${LOC}/${OO_build}/share/dict/ooo/dictionary.lst
+	echo "HYPH de DE hyph_de_DE" >> ${D}${LOC}/${OO_build}/share/dict/ooo/dictionary.lst
+	echo "THES de DE th_de_DE" >> ${D}${LOC}/${OO_build}/share/dict/ooo/dictionary.lst
         
 
 	#touch files to make portage uninstalling happy (#22593)

@@ -1,6 +1,13 @@
 # ChangeLog for app-office/openoffice-bin
 # Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/ChangeLog,v 1.4 2003/10/05 20:05:01 dertobi123 Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/ChangeLog,v 1.5 2003/10/17 12:29:08 elefantenfloh Exp $
+
+*openoffice-bin-de-1.1 (17 Oct 2003)
+
+    17 Oct 2003; H.Brandt <kontakt@hendrik-brandt.de> openoffice-bin-de-1.1
+    clean up ebuild, add german hyphenation
+    change thesarus source file
+    add some more source mirrors
 
 *openoffice-bin-de-1.1 (05 Oct 2003)
 
