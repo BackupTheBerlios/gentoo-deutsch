@@ -24,11 +24,12 @@
         </xsl:choose>
       </xsl:variable>
       
-      <table>
-        <tr>
+      <table class="ebuildlist"> 
+        <tr class="title">
           <td>Name</td>
           <td>Version</td>
           <td>Revision</td>
+          <td>Kategorie</td>
           <td>Datum</td>
         </tr>
 
@@ -37,9 +38,17 @@
           <xsl:sort select="name"/>
 
           <tr>
+            <xsl:attribute name="class">
+              <xsl:choose>
+                <xsl:when test="position() mod 2 = 0">low</xsl:when>
+                <xsl:otherwise>high</xsl:otherwise>
+              </xsl:choose>
+            </xsl:attribute>
+
             <td><xsl:value-of select="name"/></td>
             <td><xsl:value-of select="version"/></td>
             <td><xsl:value-of select="revision"/></td>
+            <td><xsl:value-of select="category"/></td>
             <td>
               <xsl:value-of select="date/@day"/>
               <xsl:text>.</xsl:text>
