@@ -20,9 +20,9 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 		<body><p>Stellen Sie sicher, dass in der /etc/make.conf der RSYNC_PROXY angegeben ist.
 		Erlaubt der Proxy nur Verbindungen &#xFC;ber die Ports 80, so sollte dies mit:
 		<pre>
-        	export http_proxy=123.123.123.123:8080
+        	export http_proxy=123.123.123.123:8080
 
-        	export ftp_proxy=123.123.123.123:8080
+        	export ftp_proxy=123.123.123.123:8080
 
 		</pre> eingestellt werden.
 		</p></body>
@@ -35,7 +35,7 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 			<uri link="http://download.nvidia.com/XFree86_40/nforce/1.0-0236/NVIDIA_nforce-1.0-0236.tar.gz">Webseite</uri>,
 			zu haben. Falls Sie keine externe Netzwerkkarte w&#228;hrend der Installation zur Hand haben, kopieren
 			Sie diesen Treiber einfach auf ein Medium und verfahren Sie wie bei einer Stage 3 Installation bis zu der Stelle,
-			nach dem Sie den KErnel kompiliert haben.
+			nach dem Sie den Kernel kompiliert haben.
 			Dann entpacken Sie das tar Archiv und wechseln Sie in das Unterverzeichnis nforce/nvnet/ und f&#xFC;hren
 			Sie folgendes aus:
 			<pre>
@@ -44,12 +44,12 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 			# make install
 			</pre>
 			Dies muss bei jeder Kernel Neukompilierung erneut ausgef&#xFC;hrt werden.
-			Dann sollte noch in die /etc/modules.conf um folgende Zeilen werweitert werden:
+			Dann sollte noch in die /etc/modules.conf um folgende Zeilen erweitert werden:
 			<pre>
 			alias eth0 nvnet
 			</pre>
 			Anschliessend sollte wie gewohnt nach der Installationsanleitung weiter verfahren werden.
-			<warning> ASUS Motherboards mit dem nforce Chipsatz besitzen ein modifizierten Netwerkontroller.
+			<warning> ASUS Motherboards mit dem nforce Chipsatz besitzen ein modifizierten Netwerkcontroller.
 			Der Realtek 8139TOO ist hier die richtige Wahl.
 			</warning>
 			</p>
@@ -61,9 +61,9 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 
 	<section>
 		<title>Wenn ich meinen Kernel aktualisiere, habe ich keinen Sound mehr. Ausserdem
-		bekomme ich Fehlermeldungen beim booten, dass die module der Soundkarte nicht gefunden werden.</title>
+		bekomme ich Fehlermeldungen beim booten, dass die Module der Soundkarte nicht gefunden werden.</title>
 		<body><p>Wenn ALSA Sound verwendet wird, muss nach jeder Kernel-Neukompilation auch die ALSA
-		treiber neu kompiliert werden. Stellen Sie sicher, dass /usr/src/linux auf die richtigen
+		Treiber neu kompiliert werden. Stellen Sie sicher, dass /usr/src/linux auf die richtigen
 		Quelldateien verweist und dann starten sie:
 		<pre>
 		# emerge alsa-driver
@@ -73,4 +73,24 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 	</section>
 
 </chapter>
+<chapter>
+        <title>Netzwerk</title>
+
+        <section>
+                <title>Das Mounten von NFS Verzeichnissen dauert sehr lange (teilweise bis zu f&#252;nf Minuten). Auch der 
+                Bootvorgang ist davon betroffen.</title>
+                <body>
+                <p>
+                F&#252;r das Mounten eines Verzeichnisses via NFS braucht das System bis zu f&#252;nf Minuten. Beim Einbinden 
+                der NFS Verzeichnisse aus der <path>/etc/fstab</path> beim Booten bleibt der Bootvorgang beim Punkt  
+                NFS Verzeichnisse stehen und wird, wenn &#252;berhaupt, erst nach Minuten fortgesetzt. Die Erkl&#228;rung ist 
+                simpel, zum Zeitpunkt des Mountens fehlt Portmap. Wenn Sie regelm&#228;&#223;ig mit NFS arbeiten, empfiehlt es sich, 
+                portmap zum standard Runlevel zu erg&#228;nzen:
+                <pre>
+                # rc-update add portmap default
+                </pre>
+                </p>
+                </body>
+        </section>
+        </chapter>
 </guide>
