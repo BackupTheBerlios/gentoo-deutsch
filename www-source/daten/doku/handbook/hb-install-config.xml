@@ -1,7 +1,7 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.10 -->
+<!-- English CVS Version: 1.12 -->
 
 <sections>
 <section>
@@ -212,6 +212,14 @@ benötigen Sie diesen Eintrag sehr wahrscheinlich nicht):
 
 <pre caption="Setzen des NIS-Domainnamens">
 # <i>echo nis.homenetwork &gt; /etc/nisdomainname</i>
+</pre>
+
+<p>
+Fügen Sie das <c>domainname</c> Script nun in den default Runlevel ein:
+</p>
+
+<pre caption="domainname in das default Runlevel einfügen">
+# <i>rc-update add domainname default</i>
 </pre>
 
 </body>
