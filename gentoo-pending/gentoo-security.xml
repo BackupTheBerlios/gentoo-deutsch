@@ -1,117 +1,96 @@
 <?xml version='1.0' encoding='UTF-8'?>
-
-
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
 <guide link = "/doc/en/gentoo-security.xml">
-<title>Gentoo Linux Security Guide</title>
-<author title="Author"><mail link="kn@insecurity.dk">Kim Nielsen</mail>
-</author>
+<title>Gentoo Linux Sicherheitsleitfaden</title>
 
-<author title="Editor"><mail link="zhen@gentoo.org">John P. Davis</mail>
-</author>
+<author title="Autor"><mail link="kn@insecurity.dk">Kim Nielsen</mail></author>
+<author title="Bearbeitung"><mail link="zhen@gentoo.org">John P. Davis</mail></author>
+<author title="Bearbeitung"><mail link="stocke2@gentoo.org">Eric R. Stockbridge</mail></author>
+<author title="Bearbeitung"><mail link="carl@gentoo.org">Carl Anderson</mail></author>
+<author title="Bearbeitung"><mail link="peesh@gentoo.org">Jorge Paulo</mail></author>
+<author title="Übersetzung"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
 
-<author title="Editor"><mail link="stocke2@gentoo.org">Eric R. Stockbridge</mail>
-</author>
-
-<author title="Editor"><mail link="carl@gentoo.org">Carl Anderson</mail>
-</author>
-
-<author title="Editor"><mail link="peesh@gentoo.org">Jorge Paulo</mail>
-</author>
-
-<abstract>
-This guide is step-by-step guide for hardening Gentoo Linux.
-</abstract>
+<abstract>Dieser Leitfaden ist eine Schritt-für-Schritt-Anleitung für das Absichern von Gentoo-Linux</abstract>
 
 <version>0.4</version>
-<date>4 May 2003</date>
+<date>4. Mai 2003</date>
 
 -- Introduction start --
 
 <chapter>
-<title>Introduction</title>
+<title>Einleitung</title>
+
 <section>
-<title>Who should read this guide?</title>
+<title>Wer sollte diesen Leitfaden lesen?</title>
 <body>
-
-<p>
-People who are using Gentoo Linux in a server based environment and/or feel the need for more or paranoid security.
-</p>
-
+	<p>
+		Leute, die Gentoo-Linux in einer serverbasierten Umgebung einsetzen, und/oder das Bedürfnis nach mehr oder übertriebener
+		Sicherheit verspüren.
+	</p>
 </body>
 </section>
 
 <section>
-<title>Credits</title>
+<title>Dank an</title>
 <body>
-
-<p>
-Kim Nielsen
-</p>
-
+	<p>
+		Kim Nielsen
+	</p>
 </body>
 </section>
 
 <section>
 <title>Special thanks</title>
 <body>
-
-<p>
-A special thanks goes to the following people for finding various bugs, spelling mistakes and sentence structure.
-</p>
-
-<p>
-Bjarke Sørensen, Justin Lambert, Andreas Waschbuesch, Duncan Lissett, Sherman Boyd, Sami Dalouche and Väinö Järvelä.
-</p>
-
+	<p>
+		Spezieller Dank geht an die folgenden Personen, weil sie verschiedene Fehler, Rechtschreib- und Satzbaufehler gefunden haben.
+	</p>
+	<p>
+		Bjarke Sørensen, Justin Lambert, Andreas Waschbuesch, Duncan Lissett, Sherman Boyd, Sami Dalouche and Väinö Järvelä.
+	</p>
 </body>
 </section>
 
 <section>
-<title>Enhancements for Next Release of this Guide:</title>
+<title>Erweiterungen für die nächste Ausgabe dieses Leitfadens:</title>
 <body>
+	<p>
+		In Version 0.6 (Backup)
+	</p>
+	<ul>
+		<li>Arpwatch</li>
+		<li>Komplettes Systembackup mit Hilfe von Systemimager</li>
+		<li>Partielles Backup mittels tar</li>
+		<li>Backups von PostgreSQL erstellen</li>
+	</ul>
+	<p>
+		In Version 0.8 (Penetrations Tests)
+	</p>
+	<ul>
+		<li>Remote Audits</li>
+		<li>Netzwerk Audits</li>
+		<li>Host Audits</li>
+		<li>Software Audits</li>
+	</ul>
+	<p>
+		In version 1.0 (Nach einem Kompromiss)
+	</p>
+	<ul>
+		<li>Wie meldet man einen Vorfall</li>
+		<li>Forensische Analyse</li>
+		<li>Erstellen von Systemimages ohne Beweise zu vernichten (mittels <c>dd</c>)</li>
+		<li>Fallen stellen und verfolgen (mit tcpdump)</li>
+		<li>.. Noch einiges mehr ..</li>
+		<li>System wieder herstellen</li>
+	</ul>
 
-<p>
-In version 0.6 (Backup)
-</p>
-<ul>
-<li>Arpwatch</li>
-<li>Full system backup using Systemimager</li>
-<li>Partial backup using tar</li>
-<li>Backing up postgres</li>
-</ul>
-
-
-<p>
-In version 0.8 (Penetration testing)
-</p>
-<ul>
-<li>Remote audits</li>
-<li>Network audits</li>
-<li>Host audits</li>
-<li>Software audits</li>
-</ul>
-
-<p>
-In version 1.0 (After a compromise)
-</p>
-<ul>
-<li>How to report an incident</li>
-<li>Forensics analysis</li>
-<li>Creating an image of the system without destroying evidence (Using dd)</li>
-<li>Trap and trace (Using tcpdump)</li>
-<li>.. More to come ..</li>
-<li>Restoring system</li>
-</ul>
-
-<note>
-Please note that each version concentrates on one subject at a time.  This is for
-quality assurance purposes.
-</note>
-
+	<note>
+		Bitte beachten Sie, dass sich jede Version jewils nur auf ein Thema bezieht. Dies wird aus
+		Qualitätssicherungsgründen so gehandhabt.
+	</note>
 </body>
 </section>
-
 </chapter>
 
 -- Introduction end --
@@ -119,55 +98,51 @@ quality assurance purposes.
 -- Considerations before installation start --
 
 <chapter>
-<title>Pre-Installation Concerns</title>
-<section>
-<title>Physical Security</title>
-<body>
+<title>Vor der Installation zu bedenken</title>
 
-<p>
-No matter how many safeguards you implement, it can all be easily circumvented if
-the attacker can gain physical access to your box.  Make sure your hardware is not
-casually accessible. For example, you may want to place your box
-in a locked server closet.  Locking cases is a good idea too.  For the highest level
-of security set your BIOS to restrict booting to your hard drive only.
-Disable booting from the floppy and CD-ROM drive.  For the paranoid, enabling the
-BIOS password is a good idea.  BIOS passwords are also a good idea for laptop users.
-</p>
+<section>
+<title>Physische Sicherheit</title>
+<body>
+	<p>
+		Egal wieviele Sicherheitsmassnahmen Sie integrieren, sie können leicht umgangen werden,
+		wenn der Hacker direkten Zugriff auf Ihre Maschine hat. Stellen Sie sicher, dass Ihre
+		Hardware nicht einfach so zugänglich ist. Zum Beispiel könnten Sie Ihre Maschine in einem
+		speziellen Serverraum einschliessen. Die Gehäuse zu versiegeln ist auch eine gute Idee.
+		Um das höchste Niveau an Sicherheit zu erreichen, können Sie Ihr BIOS so einstellen, dass
+		es nur von der Festplatte bootet. Deaktivieren Sie auch das Booten von Diskette und von
+		CD-ROM. Für den übervorsichtigen kann es auch sinnvoll sein, das BIOS-Passwort zu aktivieren.
+		BIOS-Passwörter sind auch eine gute Idee für Notebook-Benutzer.
+	</p>
 
 </body>
 </section>
 
 <section>
-<title>Daemon/Service Planning</title>
+<title>Dämon/Dienst Planung</title>
 <body>
-
-<p>
-Document what services the machine should run or is supposed to run. This will help
-you compose a better partition scheme for the system.  It can also make your
-intrusion detection strategy much easier.
-</p>
-
-<p>
-Of course you should not document this if you only have one or a few computers and
-you are the only one using them.
-</p>
-
-<p>
-Example:
-</p>
-
-<p>
-The Computer is supposed to act as a firewall. What services should it run?
-</p>
-
-<p>
-<e>none</e>, except maybe ssh.
-</p>
-
-<p>
-Document this and the current version of SSH - it will help you keep track of which system to upgrade in case someone finds a security hole in sshd. This will also aid in determining who should have access to the system.
-</p>
-
+	<p>
+		Dokumentieren Sie, welche Dienste die Maschine anbieten soll oder anbieten darf. Dies wird
+		Ihnen helfen ein besseres Partitionsschema für das System zu erstellen. Es kann auch das
+		Aufspüren von Eindringlingen erheblich erleichtern.
+	</p>
+	<p>
+		Natürlich brauchen Sie das nicht zu dokumentieren, wenn Sie einen oder ein paar Computer benutzen,
+		aber Sie auch der einzige Nutzer sind.
+	</p>
+	<p>
+		Beispiel:
+	</p>
+	<p>
+		Der Computer soll als eine Firewall laufen. Welche Dienste sollte er laufen lassen?
+	</p>
+	<p>
+		<e>keine</e>, u.U. höchstens ssh.
+	</p>
+	<p>
+		Dokumentieren Sie dies und die aktuelle Version von SSH - es wird Ihnen helfen, das zu aktualisierende
+		System wiederzufinden - für den Fall, dass jemand ein Sicherheitsloch in sshd findet. Dies wird Ihnen
+		auch dabei helfen festzulegen, wer Zugriff auf das System haben sollte.
+	</p>
 </body>
 </section>
 
