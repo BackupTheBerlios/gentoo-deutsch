@@ -26,7 +26,7 @@ Mailinglisten dienen dem einfachen Austausch von Informationen. Jeder angemeldet
 <title>Generell</title>
 <body>
 <p>
-Die vorhandenen deutschen Mailinglisten von gentoo.de findet man 
+Die vorhandenen deutschen Mailinglisten von gentoo.de findet man
 unter <uri link="http://developer.berlios.de/mail/?group_id=433">http://developer.berlios.de/mail/?group_id=433</uri>.
 </p>
 </body>
@@ -46,19 +46,32 @@ findet man auf der Seite über die Mailinglisten von gentoo.org (s.u.).
 
 </section>
 
-<section>                                                                                                                           
-                                                                                                                                    
-<title>CVS-Vorgänge</title>                                                                                                           
-                                                                                                                                    
-<body>                                                                                                                              
-<p>                                                                                                                                 
+<section>
+
+<title>CVS-Vorgänge</title>
+
+<body>
+<p>
 Schreiben Sie einfach eine Mail an: <mail link="gentoo-deutsch-cvs@lists.berlios.de">gentoo-deutsch-cvs@lists.berlios.de</mail> um alle eingetragenen Benutzer zu
 erreichen. An diese Maillingsliste gehen normalerweise nur automatische CVS-Logs. Bitte benutzen Sie für Mitteilungen an die Addressaten der Mailingliste die
 oben genannte Liste.
-</p>                                                                                                                                
-</body>                                                                                                                             
-                                                                                                                                    
+</p>
+</body>
+
 </section>
+
+<section>
+<title>Die deutschen Mailinglisten via Web ansehen</title>
+<body>
+	<p>
+		Die Mailinglisten von www.gentoo.de können auch via WWW eingesehen werden:
+		<ul>
+			<li><uri link="http://developer.berlios.de/mail/?group_id=433">Deutsche Maiinglisten</uri></li>
+		</ul>
+	</p>
+</body>
+</section>
+
 
 <section>
 
