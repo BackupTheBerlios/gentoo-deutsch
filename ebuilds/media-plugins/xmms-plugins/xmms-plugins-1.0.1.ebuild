@@ -50,7 +50,6 @@ DEPEND=">=media-sound/xmms-1.2.7
 		media-plugins/xmms-status-plugin
 		media-plugins/xmms-synaesthesia
 		media-plugins/xmms-volnorm
-		media-sound/xmmsctrl
 		media-video/smpeg-xmms
 		x11-themes/xmms-themes
 		"
