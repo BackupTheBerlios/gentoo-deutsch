@@ -75,23 +75,23 @@
 sys-apps/shadow
 <codenote>(Version 2.8 bis 2.11): Distcc hat folgende weitere Abhängigkeiten, wenn Sie gtk in Ihren USE-Flags gesetzt haben.</codenote>
 &gt;=x11-libs/gtk+-2.2.1
-				</pre>
-				<pre caption="DIstcc Abhängigkeiten (Version 2.11 und höher)">
-  	 &gt;=sys-apps/portage-2.0.49-r6
-  	 &gt;=sys-devel/gcc-config-1.3.1
-  	 sys-apps/shadow
-  	 <codenote>In dieser Revision können Sie zwischen einer Gnome und GTK GUI Überwachung auswählen, diese wiederum haben folgende Abhängigkeiten:</codenote>
-  	 <codenote>Für GTK:</codenote>
-  	 &gt;=x11-libs/gtk+-2.0.0
-  	 &gt;=gnome-base/libglade-2.0.0
-  	 x11-libs/pango
-  	 <codenote>Für Gnome:</codenote>
-  	 &gt;=x11-libs/gtk+-2.0.0
-  	 &gt;=gnome-base/libglade-2.0.0
-  	 x11-libs/pango
-  	 &gt;=gnome-base/libgnomeui-2.0.0.0
-  	 &gt;=gnome-base/libgnome-2.0.0
-  	 </pre>
+</pre>
+<pre caption="DIstcc Abhängigkeiten (Version 2.11 und höher)">
+&gt;=sys-apps/portage-2.0.49-r6
+&gt;=sys-devel/gcc-config-1.3.1
+sys-apps/shadow
+<codenote>In dieser Revision können Sie zwischen einer Gnome und GTK GUI Überwachung auswählen, diese wiederum haben folgende Abhängigkeiten:</codenote>
+<codenote>Für GTK:</codenote>
+&gt;=x11-libs/gtk+-2.0.0
+&gt;=gnome-base/libglade-2.0.0
+x11-libs/pango
+<codenote>Für Gnome:</codenote>
+&gt;=x11-libs/gtk+-2.0.0
+&gt;=gnome-base/libglade-2.0.0
+x11-libs/pango
+&gt;=gnome-base/libgnomeui-2.0.0.0
+&gt;=gnome-base/libgnome-2.0.0
+</pre>
   	                 </body>
   	         </section>
   	         <section>
@@ -114,8 +114,8 @@ sys-apps/shadow
 				möchten:</p>
 
 				<pre caption="Einrichten von Distcc und Portage">
-				# <i>emerge distcc</i>
-				# <i>nano -w /etc/make.conf</i>
+# <i>emerge distcc</i>
+# <i>nano -w /etc/make.conf</i>
 				</pre>
 				<impo>Sollten Sie distcc-2.11.1 oder höher unter  &gt;=portage-2.0.49-r6 verwenden, dann genügt es zur Einrichtung
 				die Zielrechner (siehe nächste Codezeile) einzutragen, die MAKEOPTS in <path>/etc/make.conf</path> anzupassen,
@@ -242,7 +242,7 @@ MAKEOPTS=-jN
 				<p>Den nächsten Schritt führen Sie in einer Chroot-Umgebung auf dem neuen Rechner aus.</p>
 
 				<pre caption="Distcc auf dem neuen Rechner">
-				# <i>USE='-*' emerge --nodeps distcc</i>
+# <i>USE='-*' emerge --nodeps distcc</i>
 				</pre>
 	 <note>
   	 Wie in <uri link="http://bugs.gentoo.org/show_bug.cgi?id=34262">Bug 34262</uri>
