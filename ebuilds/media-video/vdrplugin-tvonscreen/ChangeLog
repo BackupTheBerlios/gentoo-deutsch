@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdrplugin-tvonscreen
 # Copyright 2004 Christian Gmeiner; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvonscreen/ChangeLog,v 1.1 2004/03/22 00:04:30 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvonscreen/ChangeLog,v 1.2 2004/03/22 23:24:51 austriancoder Exp $
+
+*vdrplugin-tvonscreen-0.5.0 (23 Mar 2004)
+
+  23 Mar 2004; Christian Gmeiner <christian at visual-page.de>
+  some fixes
 
 *vdrplugin-tvonscreen-0.5.0 (22 Mar 2004)
 
