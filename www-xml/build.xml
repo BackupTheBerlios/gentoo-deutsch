@@ -389,68 +389,71 @@ mit Kernels der Serie 2.4.x.</warn>
 </section>
 </chapter>
 <chapter>
-<title>Mount partitions</title>
+<title>Partitionen mounten</title>
 <section>
 <body>
 <p>
-Now, we'll activate our new swap, since we may need the additional virtual memory that
-provides later:
-</p>
+Aktivieren Sie nun Ihre Swap Partition, denn k&#xF6;nnte sein, dass Sie den virtuellen Speicher
+sp&#xE4;ter noch ben&#xF6;tigen:</p>
 <pre>
 # <i>swapon /dev/hda2</i>
 </pre>
-<p>Next, we'll create the <path>/mnt/gentoo</path> and <path>/mnt/gentoo/boot</path> mountpoints,
-and we'll mount our filesystems to these mountpoints. 
-</p>
+<p>Als n&#xE4;chstes erstellen Sie die Verzeichnisse <path>/mnt/gentoo</path> und <path>/mnt/gentoo/boot</path>
+und mounten Ihre Partitionen:</p>
 <pre>
 # <i>mkdir /mnt/gentoo</i>
 # <i>mount /dev/hda3 /mnt/gentoo</i>
 # <i>mkdir /mnt/gentoo/boot</i>
 # <i>mount /dev/hda1 /mnt/gentoo/boot</i>
 </pre>
-<p>If you are setting up Gentoo
-   Linux with a separate <path>/usr</path> or <path>/var</path>, these would get mounted to
-   <path>/mnt/gentoo/usr</path> and <path>/mnt/gentoo/var</path>, respectively.
-</p>
-   <impo>If your <e>boot</e> partition (the one holding the kernel) is ReiserFS, be sure to mount it
-   with the <c>-o notail</c> option so GRUB gets properly installed.  Make sure 
-   that <c>notail</c> ends up in your new <path>/etc/fstab</path> boot partition entry, too.
-   We'll get to that in a bit.</impo>
+<p>Wenn Sie Gentoo Linux mit separaten <path>/usr</path> oder <path>/var</path> Partitionen 
+installieren, m&#xFC;ssen diese dann an die entsprechenden Verzeichnisse gemountet werden 
+(<path>/mnt/gentoo/usr</path> und <path>/mnt/gentoo/var</path>)</p>
+   
+<impo>Wenn Ihre <e>boot</e> Partition (dort wo der Kernel unterbracht ist) eine ReiserFS 
+Partition ist, achten Sie darauf das diese mit der <c>-o notail</c> Option gemountet wird.
+Sonst wird GRUB nicht richtig installiert. Stellen Sie auch sicher, dass die Option 
+<c>notail</c> auch mit in die <path>/etc/fstab</path> mit eingetragen wird. 
+Dazu kommen wir gleich.</impo>
 </body>
 </section>
 </chapter>
 
 <chapter>
-<title>Mounting the CD-ROM</title>
+<title>Die CD-ROM mounten</title>
 <section>
 <body>
-<p>Even though we've booted from the CD-ROM, the CD-ROM itself is not mounted under our minimal
-Linux boot CD environment.  We'll need to mount it so that we can access the compressed build image
-tarball contained on the CD-ROM.  To mount the CD-ROM, one typically types:
-</p>
+<p>Auch wenn Sie von der CD-ROM gebootet haben, ist diese in der minimalen Linux Umgebung nicht
+gemountet. Sie m&#xFC;ssen die CD-ROM erst mounten damit Sie auf die komprimierten Installationsarchive
+zugreifen zu k&#xF6;nnen. Um die CD-ROM zu mounten, tippt man gew&#xF6;hnlich:</p>
 <pre>
 # <i>mount /dev/cdroms/cdrom0 /mnt/cdrom -o ro -t iso9660</i>
 </pre>
-<p>With the CD-ROM mounted, you should be able to see the <c>stage???.tbz2</c> file(s) by typing
-<c>ls /mnt/cdrom</c>.</p>
+<p>Wenn die CD-ROM gemountet ist, sollten Sie mit dem Befehl: <c>ls /mnt/cdrom</c> in der Lage
+sein die <c>stage???.tbz2</c> Dateien zu sehen.</p>
 </body>
 </section>
 </chapter>
 
 <chapter>
-    <title>Unpack the stage you want to use</title>
+    <title>Entpacken des gew&#xFC;nschten <e>stage*.tbz2</e> Archivs</title>
 <section>
 <body>
 
-<p>Now it's time to extract the compressed stage tarball of your choice to <path>/mnt/gentoo</path>.  Then, we'll <c>chroot</c> over to the new Gentoo Linux build installation. 
-</p>
+<p>Nun wird es Zeit das ausgew&#xE4;hlte komprimierte Archiv nach <path>/mnt/gentoo</path> zu entpacken.
+Danach wechseln Sie mit <c>chroot</c> hin&#xFC;ber in die neue Gentoo Linux Installation,</p>
 
-<impo>Be sure to use the <c>p</c> option with <c>tar</c>.  Forgetting to do this will cause certain files to contain incorrect permissions.</impo>
+<impo>Achten Sie darauf, dass Sie das Archiv mit der Option <c>p</c>  entpacken.
+Wenn Sie dies vergessen, werden die Rechte einiger Dateien nicht stimmen.</impo>
 
-<impo>If you are using the "from scratch, build everything" install method, you will want to use the <path>stage1-ix86-1.2.tbz2</path> image.
-If you're using one of our bigger CDs, you'll also have a choice of a stage2 and stage3 image.  These images allow you to save time at the
-expense of configurability (we've already chosen compiler optimizations and default USE variables for you.)  The stage3 image now also includes complete linux sources and a Portage tree snapshot, eliminating the need to do an <c>emerge rsync</c> later.
-</impo>
+<impo>Wenn Sie die "bau alles von Grund auf neu" Installation gew&#xE4;hlt haben, 
+werden Sie das <path>stage1-ix86-1.2.tbz2</path> Archiv verwenden wollen.
+Wenn Sie die einer der gr&#xF6;&#xDF;eren CDs verwenden, haben Sie die Wahl zwischen dem
+"stage2" und dem "stage3" Archiv. Diese Archive sparen Ihnen eventuell Zeit aber
+auf Kosten der Flexibilit&#xE4;t (wir haben die Compiler Optimierung und USE Variablen
+f&#xFC;r Sie ausgew&#xE4;hlt). Das "stage3" Archiv enth&#xE4;lt zus&#xE4;tzlich noch die Quellen des
+Linux Kernels und eine Kopie des "Portage tree". Das vermeidet ein <c>emerge rsync</c>
+zu einem sp&#xE4;teren Zeitpunkt.</impo>
 
 <pre>
 # <i>cd /mnt/gentoo</i>
@@ -467,8 +470,8 @@ Regenerating /etc/ld.so.cache...
 # 
 </pre>
 
-<p>After you execute these commands, you'll be "inside" your new Gentoo Linux environment.
-</p>
+<p>Nachdem Sie diese Kommandos ausgef&#xFC;hrt haben, befinden Sie sich "innerhalb" der neuen
+Gentoo Linux Umgebung.</p>
 
 </body>
 </section>
