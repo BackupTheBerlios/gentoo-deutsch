@@ -21,6 +21,23 @@
 <title>Aktuelles</title>
 
 <section>
+<title>[30. April 2003] Bootsplash HowTo</title>
+<body>
+<p>
+Ein britischer User hat in den Foren ein (unserer Meinung nach) erstklassiges HowTo veröffentlicht.
+In diesem HowTo geht es um die nachträgliche Einrichtung des auf dem Framebuffer basierenden Bootsplashs.
+Gemeint ist hier mit die Textkonsole im Grafikmodus und mit Hintergrundbild, die seit Gentoo-Linux 1.4rc4
+Bestandteil der Live-CD ist, und schon länger von anderen Distributionen bekannt ist. Neben dem HowTo bietet
+er auch noch zwei Tools an, mit denen sich z.B. ein Screenshot der Framebufferkonsole machen lässt, bzw.
+ein Gimp-Plugin, mit dem man spielend einfach Hintergrundbilder für Grub machen kann. Momentan gibt es den Guide
+leider nur in Englischer Sprache und in einer Art Wiki-Form in den Foren.
+<uri link="http://forums.gentoo.org/viewtopic.php?t=49036">Hier</uri> könnt Ihr den Guide lesen.
+</p>
+</body>
+</section>
+
+
+<section>
 
 <title>[29. April 2003] Deutsche Übersetzung des Installationsguides von Gentoo-Linux 1.4rc4 fertig</title>
 
