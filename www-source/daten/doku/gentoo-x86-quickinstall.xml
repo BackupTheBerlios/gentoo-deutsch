@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<guide link="/doc/en/quickinstall.xml">
+<guide link="/doc/de/quickinstall.xml">
 
 <!-- English CVS Version 1.4 -->
 
@@ -26,6 +26,8 @@ Gentoo Linux haben.
 
 <chapter>
 <title>Kurzübersicht Installation (x86)</title>
+<!-- the gentoo.de xsl requires <section> -->
+<section>
 <body>
 
 <p>
@@ -238,5 +240,6 @@ Unmounten Sie nun alle Partitionen und rebooten Sie in Ihr neues System:
 </p>
     
 </body>
+</section>
 </chapter>
 </guide>
