@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
-<guide link="/doc/use-howto.xml">
+
+<guide>
 <title>Gentoo Anleitung zu den USE Flags</title>
 <author title="Author"><mail link="seemant@gentoo.org">
 	Seemant Kulleen</mail>

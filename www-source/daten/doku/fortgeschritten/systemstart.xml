@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-15"?>
 
-
-<guide link="/doc/rc-scripts.html">
+<guide>
 <title>Gentoo Linux Init System</title>
 <author title="Autor"><mail link="azarah@gentoo.org">Martin Schlemmer</mail></author>
 <author title="Korrektur-Leser"><mail link="seemant@gentoo.org">Seemant Kulleen</mail></author>

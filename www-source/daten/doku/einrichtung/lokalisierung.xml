@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
+
 <guide>
 <title>Gentoo Linux Anleitung zur deutschen Lokalisierung</title>
 <author><mail link="holler@ahsoftware.de">
@@ -164,6 +165,6 @@ eines Gentoo Linux behilflich sein.</abstract>
 
 </chapter>
 
-<version>$Revision: 1.1 $</version>
-<date>$Date: 2003/01/12 17:21:05 $</date>
+<version>$Revision: 1.2 $</version>
+<date>$Date: 2003/01/27 22:31:19 $</date>
 </guide>

@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
 
-
-<guide link="/doc/xml-guide.html">
+<guide>
 <title>Gentoo Linux Dokumentationsleitfaden</title>
 <author title="Chefarchitekt"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="&#220;bersetzung"><mail link="kontakt@hendrik-brandt.de">Hendrik Brandt</mail></author>

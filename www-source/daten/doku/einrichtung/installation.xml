@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
 
-
-
-<guide link="/doc/build.html">
+<guide>
 <title>Anleitung zur Gentoo Linux 1.2 Installation</title>
 <author title="Chief Architect"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Author">Chris Houser</author>
