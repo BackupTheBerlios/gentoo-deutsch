@@ -1,13 +1,12 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/openmosix-howto.xml,v 1.5 2003/12/10 13:43:50 dertobi123 Exp $ -->
-<guide link="/doc/de/openmosix-howto.xml">
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/openmosix-howto.xml,v 1.6 2003/12/21 17:54:41 dertobi123 Exp $ -->
 
 <!-- English CVS Version: 1.4 -->
-  
-<title>openMosix Cluster unter Gentoo</title>
 
+<guide link="/doc/de/openmosix-howto.xml">
+<title>openMosix Cluster unter Gentoo</title>
 <author title="Autor">
   <mail link="tantive@gentoo.org">Michael Imhof</mail>
 </author>
@@ -20,7 +19,7 @@
 <author title="Reviewer">
   <mail link="neysx@gentoo.org">Xavier Neys</mail>
 </author>
-<author title="Übersetzer">
+<author title="Translator">
   <mail link="schurke@users.berlios.de">Gregor Glashüttner</mail>
 </author>
 
@@ -31,7 +30,7 @@ Dieses HOWTO soll Ihnen helfen, einen openMosix-Cluster in Gentoo-Linux einzuric
 </abstract>
 
 <version>1.3</version>
-<date>20 November 2003</date>
+<date>20. November 2003</date>
 
 <chapter>
 <title>Einleitung</title>
@@ -40,20 +39,20 @@ Dieses HOWTO soll Ihnen helfen, einen openMosix-Cluster in Gentoo-Linux einzuric
 <body>
 
 <p>
-Dieses HOWTO soll Ihnen helfen, einen openMosix-Cluster einzurichten, der auf der 
-Gentoo-Linux Distribution basiert. Es ist unsere Absicht, dies so 
-benutzerfreundlich als möglich und hilfreich für den Linux-Neuling zu 
-gestalten. Während ein erfahrener Benutzer die HOWTOs, die über openMosix, 
-Disklose Rechner und Netzwerke verfügbar sind, leicht miteinander verbinden 
-könnte, hoffen wir, dass dieses HOWTO das Vorgehen für Benutzer mit weniger 
+Dieses HOWTO soll Ihnen helfen, einen openMosix-Cluster einzurichten, der auf
+der Gentoo-Linux Distribution basiert. Es ist unsere Absicht, dies so
+benutzerfreundlich wie möglich und hilfreich für den Linux-Neuling zu
+gestalten. Während ein erfahrener Benutzer die HOWTOs, die über openMosix,
+Laufwerklose Rechner und Netzwerke verfügbar sind, leicht miteinander verbinden
+könnte, hoffen wir, dass dieses HOWTO das Vorgehen für Benutzer mit weniger
 Erfahrung erleichtert.
 </p>
 
 <note>
-Falls Sie planen, den openMosix-Cluster mit disklosen Rechnern 
-aufzusetzen, sollten Sie als erstes den Abschnitt über den Kernel weiter unten 
-lesen, um zu lernen, wie Sie einen Kernel mit openMosix-Unterstützung 
-kompilieren, anschließend unser <uri link="diskless-howto.xml">diskless HOWTO</uri> 
+Falls Sie planen, den openMosix-Cluster mit laufwerklosen Rechnern
+aufzusetzen, sollten Sie als erstes den Abschnitt über den Kernel weiter unten
+lesen, um zu lernen, wie Sie einen Kernel mit openMosix-Unterstützung
+kompilieren, anschließend unser <uri link="/doc/en/diskless-howto.xml">diskless HOWTO</uri> 
 lesen und dann hierher zurückkommen, um mit der eigentlichen Cluster-Installation 
 fortzufahren.
 </note>
@@ -65,17 +64,19 @@ fortzufahren.
 <body>
 
 <p>
-openMosix ist eine Erweiterung für den Linux-Kernel, die es mehreren Rechnern erlaubt,
-als Abbild eines einzelnen Systemes zu agieren (Single System Image SSI). Das führt dazu,
-dass mehrere Rechner als ein einziger Multiprozessor-Rechner <e>erscheinen</e>. 
-Zum Zeitpunkt der Erstellung dieses HOWTOs ist die neueste Ausgabe des openMosix-Kernelpatches die 
-Version 2.4.22 und die openMosix-Benutzerprogramme haben die Versionsnummer 0.3.4. 
-Weitläufige Informationen über openMosix findest Du in englischer Sprache unter <uri>http://openmosix.sourceforge.net</uri>. 
-Es ist nicht leicht, verschiedene Versionen von abgeänderten Kernel-Quellen zu clustern 
-und es ist uns aufgefallen, dass die meisten Änderungen nicht abwärtskompatibel sind. 
-openMosix verteilt schwere Prozesse eindeutig, wenn a.out oder ELF Binärdateien ausgeführt 
-werden, oder wenn sich ein schwerer Prozess aufteilt. Es verteilt keine leichten Prozesse 
-wie p-threads, oder schwere Prozesse, die gemeinsamen Speicher nutzen. 
+openMosix ist eine Erweiterung für den Linux-Kernel, die es mehreren Rechnern
+erlaubt, als Abbild eines einzelnen Systemes zu agieren (Single System Image SSI).
+Das führt dazu, dass mehrere Rechner als ein einziger Multiprozessor-Rechner
+<e>erscheinen</e>. Zum Zeitpunkt der Erstellung dieses HOWTOs ist die neueste
+Ausgabe des openMosix-Kernelpatches die Version 2.4.22 und die
+openMosix-Benutzerprogramme haben die Versionsnummer 0.3.4. Weitläufige
+Informationen über openMosix finden Sie in englischer Sprache unter 
+<uri>http://openmosix.sourceforge.net</uri>. Es ist nicht leicht, verschiedene
+Versionen von abgeänderten Kernel-Quellen zu clustern und es ist uns aufgefallen,
+dass die meisten Änderungen nicht abwärtskompatibel sind. openMosix verteilt
+schwere Prozesse eindeutig, wenn a.out oder ELF Binärdateien ausgeführt
+werden, oder wenn sich ein schwerer Prozess aufteilt. Es verteilt keine leichten Prozesse
+wie p-threads, oder schwere Prozesse, die gemeinsamen Speicher nutzen.
 </p>
 
 <p>
@@ -90,10 +91,10 @@ link="http://openmosix.sourceforge.net">Homepage</uri> besuchen.
 <body>
 
 <p>
-Der Cluster wird aus einzelnen Computern bestehen (sogenannten Knoten), die 
-Rechenressourcen untereinander teilen, um die Rechenleistung aller Knoten zu 
-steigern. Es müssen nicht alle Knoten die gleiche Architektur aufweisen, 
-allerdings ist das Clustering viel leichter zu bewerkstelligen, wenn sie das 
+Der Cluster wird aus einzelnen Computern bestehen (sogenannten Knoten), die
+Rechenressourcen untereinander teilen, um die Rechenleistung aller Knoten zu
+steigern. Es müssen nicht alle Knoten die gleiche Architektur aufweisen,
+allerdings ist das Clustering viel leichter zu bewerkstelligen, wenn sie das
 doch tun.
 </p>
 
@@ -104,8 +105,8 @@ doch tun.
 <body>
 
 <p>
-Sie sollten Gentoo auf allen Rechnern installiert haben, die in den Cluster 
-eingebracht werden. Außerdem benötigen Sie die openMosix Kernelquellen, die zu 
+Sie sollten Gentoo auf allen Rechnern installiert haben, die in den Cluster
+eingebracht werden. Außerdem benötigen Sie die openMosix Kernelquellen, die zu
 Ihrem Komfort schon von Gentoo angepasst wurden.
 </p>
 
@@ -124,23 +125,23 @@ Um diese Quellen herunterzuladen, verwenden Sie einfach <c>emerge</c>:
 <chapter>
 <title>Konfiguration des Kernels</title>
 <section>
-<title>Über Kernel</title>
+<title>Über den Kernel</title>
 <body>
 
 <p>
-Der Kernel ist die Software, die zwischen der Hardware und allen anderen 
-Programmen sitzt, die Sie auf Ihrem Computer geladen haben, er ist das Herz 
-eines kernelbasierten Betriebssystems. Wenn der Computer startet, führt das 
-BIOS die Befehle aus, die es im reservierten Bootspace der Festplatte findet. 
-Diese Befehle sind üblicherweise ein Bootloader, der den Kernel lädt. 
-Nachdem der Kernel geladen wurde, werden alle weiteren Prozesse vom Kernel 
+Der Kernel ist die Software, die zwischen der Hardware und allen anderen
+Programmen sitzt, die Sie auf Ihrem Computer geladen haben, er ist das Herz
+eines kernelbasierten Betriebssystems. Wenn der Computer startet, führt das
+BIOS die Befehle aus, die es im reservierten Bootspace der Festplatte findet.
+Diese Befehle sind üblicherweise ein Bootloader, der den Kernel lädt.
+Nachdem der Kernel geladen wurde, werden alle weiteren Prozesse vom Kernel
 verwaltet.
 </p>
 
 <p>
-Für weitere Informationen über den Kernel und die Konfiguration eines Kernels 
-kann ein Blick in das <uri link="http://www.tldp.org/HOWTO/Kernel-HOWTO.html">Kernel
-HOWTO</uri> nicht schaden.
+Für weitere Informationen über den Kernel und die Konfiguration eines Kernels
+kann ein Blick in das <uri link="http://www.tldp.org/HOWTO/Kernel-HOWTO.html">
+Kernel HOWTO</uri> nicht schaden.
 </p>
 
 </body>
@@ -150,12 +151,13 @@ HOWTO</uri> nicht schaden.
 <body>
 
 <p>
-Der Kernel kann so groß sein, wie Sie es vorhaben und ganz nach Ihren Wünschen konfiguriert sein, 
-aber es gibt einige notwendige Kerneloptionen, die ausgewählt werden müssen.
+Der Kernel kann so groß sein, wie Sie es vorhaben und ganz nach Ihren Wünschen
+konfiguriert sein, aber es gibt einige notwendige Kerneloptionen, die
+ausgewählt werden müssen.
 </p>
 
 <impo>
-Es ist sehr wichtig, <path>/usr/src/linux</path> wie unten 
+Es ist sehr wichtig, <path>/usr/src/linux</path> wie unten
 gezeigt mit den openmosix-Quellen zu verknüpfen.
 </impo>
 
@@ -176,9 +178,9 @@ Dann wechseln Sie in die Kernelkonfiguration:
 
 <p>
 
-Sie sollten eine grau/blaue Benutzeroberfläche sehen, die eine sichere 
-Alternative zum manuellen Editieren von <path>/usr/src/linux/.config</path> bietet. Wenn 
-der Kernel zurzeit gut funktioniert, sollte die aktuelle 
+Sie sollten eine grau/blaue Benutzeroberfläche sehen, die eine sichere
+Alternative zum manuellen Editieren von <path>/usr/src/linux/.config</path>
+bietet. Wenn der Kernel zurzeit gut funktioniert, sollte die aktuelle
 Konfigurationsdatei eventuell vorher gesichert werden:
 </p>
 
@@ -186,11 +188,12 @@ Konfigurationsdatei eventuell vorher gesichert werden:
 # <i>cp .config .config_working</i>
 </pre>
 
-<p>Der oberste Menüpunkt sollte <c>openMosix ---&gt;</c>.  lauten. Wenn das nicht der Fall 
-ist, müssen Sie die Kernelquellen mit dem openMosix-Patch emergen (siehe <uri
-link="#doc_chap1_sect4">bevor Sie beginnen</uri>). Wechseln Sie in die folgenden Untermenüs 
-und stellen sicher, dass die folgenden Punkte als eingebaut gewählt sind. (<e>NICHT</e> als
-Module):
+<p>
+Der oberste Menüpunkt sollte <c>openMosix ---&gt;</c>.  lauten. Wenn das nicht
+der Fall ist, müssen Sie die Kernelquellen mit dem openMosix-Patch emergen (siehe
+<uri link="#doc_chap1_sect4">bevor Sie beginnen</uri>). Wechseln Sie in die
+folgenden Untermenüs und stellen sicher, dass die folgenden Punkte als aktiviert
+gewählt sind. (<e>NICHT</e> als Module):
 </p>
 
 <pre caption="Menuconfig Optionen">
@@ -229,21 +232,22 @@ Konfigurationsoptionen zu wählen und können diese Optionen nicht ersetzen.
 </note>
 
 <p>
-Nachdem Sie den Kernel neu konfiguriert haben, muss er neu übersetzt werden:
+Nachdem Sie den Kernel neu konfiguriert haben, muss er neu kompiliert werden:
 </p>
 
 <pre caption="Neukompilierung des Kernels und der Module">
 # <i>make dep</i>
 # <i>make clean bzImage modules modules_install</i>
-<comment>(Stell sicher, dass das Verzeichnis /boot eingehängt ist, bevor Du etwas dorthin kopierst)</comment>
+<comment>(Stellen Sie sicher, dass das Verzeichnis /boot eingehängt ist, bevor Sie etwas dorthin kopieren)</comment>
 # <i>cp arch/i386/boot/bzImage /boot/bzImage-openmosix</i>
 </pre>
 
 <p>
-Danach erstellen Sie einen Eintrag für diesen neuen Kernel in <path>lilo.conf</path> oder
-<path>grub.conf</path> (abhängig davon, welcher Bootloader verwendet wird) und wählt diesen
-Kernel als Standard aus. Nachdem das neue <path>bzImage</path> in das <path>/boot</path> Verzeichnis 
-kopiert wurde, müssen Sie nur noch das System neu starten.
+Danach erstellen Sie einen Eintrag für diesen neuen Kernel in <path>lilo.conf</path>
+oder <path>grub.conf</path> (abhängig davon, welcher Bootloader verwendet wird)
+und wählt diesen Kernel als Standard aus. Nachdem das neue <path>bzImage</path>
+in das <path>/boot</path> Verzeichnis kopiert wurde, müssen Sie nur noch das
+System neu starten.
 </p>
 
 </body>
@@ -253,7 +257,8 @@ kopiert wurde, müssen Sie nur noch das System neu starten.
 <body>
 
 <p>
-Falls Sie bestimmte Kernelkonfigurationsoptionen nicht finden, sollten folgende Punkte überprüft werden:
+Falls Sie bestimmte Kernelkonfigurationsoptionen nicht finden, sollten folgende
+Punkte überprüft werden:
 </p>
 
 <ul>
@@ -274,10 +279,11 @@ Falls Sie bestimmte Kernelkonfigurationsoptionen nicht finden, sollten folgende 
 <body>
 
 <p>
-Damit Prozesse im Cluster weitergegeben werden können, müssen einige Benutzerprogramme
-installiert werden. Außerdem muss ein openMosix-Serverprogramm gestartet werden, damit
-der Rechner am Cluster teilnehmen und die Möglichkeiten von openMosix voll ausschöpfen
-kann. Um diese Programme und Dateien zu installieren, verwenden Sie <c>emerge</c>:
+Damit Prozesse im Cluster weitergegeben werden können, müssen einige
+Benutzerprogramme installiert werden. Außerdem muss ein openMosix-Serverprogramm
+gestartet werden, damit der Rechner am Cluster teilnehmen und die Möglichkeiten
+von openMosix voll ausschöpfen kann. Um diese Programme und Dateien zu
+installieren, verwenden Sie <c>emerge</c>:
 </p>
 
 <pre caption="Installation der openMosix Benutzerprogramme">
@@ -291,15 +297,15 @@ kann. Um diese Programme und Dateien zu installieren, verwenden Sie <c>emerge</c
 <body>
 
 <p>
-Das Erstellen oder Bearbeiten einer <path>/etc/openmosix.map</path> ist nicht mehr notwendig.
-Die neueren Versionen der Benutzerprogramme besitzen einen Autodiscovery-Dämon, der automatisch 
-alle Rechner in Deinem Netzwerk erkennt.
+Das Erstellen oder Bearbeiten einer <path>/etc/openmosix.map</path> ist nicht
+mehr notwendig. Die neueren Versionen der Benutzerprogramme besitzen einen
+Autodiscovery-Dämon, der automatisch alle Rechner in Deinem Netzwerk erkennt.
 </p>
 
 <p>
-Erstellen Sie ein Verzeichnis <path>/mfs</path> auf jedem Rechner und hängen es ein, wenn Sie das
-openMosix-Dateisystem verwenden wollen, das es ermöglicht, auf alle Rechner zuzugreifen 
-(sehr empfohlen).
+Erstellen Sie ein Verzeichnis <path>/mfs</path> auf jedem Rechner und hängen
+es ein, wenn Sie das openMosix-Dateisystem verwenden wollen, das es ermöglicht,
+auf alle Rechner zuzugreifen (sehr empfohlen).
 </p>
 
 <pre caption="mkdir /mfs">
@@ -322,9 +328,9 @@ Es müssen nicht alle Rechner laufen, damit openMosix korrekt funktioniert.
 <body>
 
 <p>
-openMosix zu starten ist wirklich einfach. Der folgende Befehl wird die openMosix-Funktionen
-im Kernel aktivieren und den Autodiscovery-Dämon starten, der einen Überblick über alle
-verfügbaren Rechner behält.
+openMosix zu starten ist wirklich einfach. Der folgende Befehl wird die
+openMosix-Funktionen im Kernel aktivieren und den Autodiscovery-Dämon starten,
+der einen Überblick über alle verfügbaren Rechner behält.
 </p>
 
 <pre caption="openMosix starten">
@@ -347,11 +353,11 @@ openMosix-user installiert einige nützliche Werkzeuge im System. Um einige zu n
 
 <ul>
   <li>
-    <c>mosmon</c> - openMosix monitor. Er Ermöglicht es Ihnen, den Status aller Rechner 
-    inklusive CPU-Ausnützung, installiertem Speicher, genutztem Speicher etc. zu sehen.
+    <c>mosmon</c> - openMosix monitor. Er ermöglicht es Ihnen, den Status aller Rechner
+    inklusive CPU-Ausnutzung, installiertem Speicher, genutztem Speicher etc. zu sehen.
   </li>
   <li>
-    <c>mtop</c> - Erweiterte Version von top, welches Ihnen zeigt, auf welchem Rechner
+    <c>mtop</c> - Erweiterte Version von top, welche Ihnen zeigt, auf welchem Rechner
     ein Prozess tatsächlich läuft.
   </li>
   <li><c>mps</c> - Erweiterte Version von ps. Zeigt ebenfalls die Rechnernummer an.</li>
@@ -363,8 +369,9 @@ openMosix-user installiert einige nützliche Werkzeuge im System. Um einige zu n
 </ul>
 
 <p>
-Mit dem openMosix Stresstest kann untersucht werden, ob der Cluster so arbeitet, wie er soll und wie er sich
-unter schwerer Last verhält. Dieses Paket nennt sich <c>openmosixtest</c>:
+Mit dem openMosix Stresstest kann untersucht werden, ob der Cluster so arbeitet,
+wie er soll und wie er sich unter schwerer Last verhält. Dieses Paket nennt sich
+<c>openmosixtest</c>:
 </p>
 
 <pre caption="openmosixtest installieren">
