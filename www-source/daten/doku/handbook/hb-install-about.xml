@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.8 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-about.xml,v 1.2 2003/11/27 12:37:14 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-about.xml,v 1.3 2003/11/27 13:48:27 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -15,7 +15,7 @@
 <p>
 Zuerst, <e>willkommen</e> bei Gentoo. Sie sind dabei in die Welt der
 Auswahl und Performance einzusteigen. Bei Gentoo dreht sich vieles um Auswahl.
-Bei der Installation von Gentoo, das wird Ihnen mehrfach klargemacht -- so könnnen
+Bei der Installation von Gentoo, das wird Ihnen mehrfach klargemacht, könnnen
 Sie auswählen, ob Sie Gentoo selber kompilieren möchten, wie Sie Gentoo
 installieren möchten, welche Systemlogger Sie benutzen möchten und so weiter ...
 </p>
