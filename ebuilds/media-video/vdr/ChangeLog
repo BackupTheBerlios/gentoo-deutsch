@@ -1,8 +1,12 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.21 2003/06/26 17:49:07 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.22 2003/06/30 19:52:15 mad Exp $
 
 *vdr-1.2.1 (26 Jun 2003)
+  30 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
+  added gentoo patch, build a new Elchi patch (nothing new, only to
+  get rid of the hunks and rej), fixed wrong plugin filename
+
   26 Jun 2003; H.Ryll <henning.ryll@web.de>
   new version
 

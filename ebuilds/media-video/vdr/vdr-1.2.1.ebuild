@@ -1,12 +1,13 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.1.ebuild,v 1.3 2003/06/30 12:29:38 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.1.ebuild,v 1.4 2003/06/30 19:52:15 mad Exp $
 
 IUSE="lirc"
 ANALOGTV_VN="0.8.0"
 AC3_OVER_DVB="vdr-1.2.0-AC3overDVB-0.2.0"
 AKOOL_VN="1.2.1"
 AKOOLWOE_VN="1.2.0"
+ELCHI_VN="1.2.1"
 
 S=${WORKDIR}/vdr-${PV}
 DESCRIPTION="The Video Disk Recorder"
@@ -15,8 +16,8 @@ SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
 		http://www.akool.de/download/vdr-${AKOOL_VN}.patch.bz2
 		http://www.akool.de/download/vdr-${AKOOLWOE_VN}-without-Elchi.patch.bz2
-		http://akool.bei.t-online.de/vdr/download/vdr-analogtv-${ANALOGTV_VN}.tar.bz2
-		http://linvdr.org/download/VDR-AIO/ElchiAIO3a-1.2.0.diff.gz
+		http://akool.bei.t-online.de/vdr/analogtv/download/vdr-analogtv-${ANALOGTV_VN}.tar.bz2
+		http://www.fh-lippe.de/~mad/ElchiAIO3a-${ELCHI_VN}.diff.gz
 		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz
 		"
 
@@ -96,7 +97,7 @@ src_unpack() {
 		if ! vdr_opts akool; then
 		cd ${S}
 			einfo "Apply ElchiAOI3a patch ..."
-			patch < ../ElchiAIO3a-1.2.0.diff
+			patch < ../ElchiAIO3a-${ELCHI_VN}.diff
 			rm .dependencies # .deps file is in the DIFF ??
 		fi
 	fi
@@ -148,8 +149,8 @@ src_install() {
 		#cd ${i}
 		insinto /usr/lib/vdr
 		insopts -m0755
-		newins ${S}/PLUGINS/src/${i}/libvdr-${i}.so libvdr-${i}.so.1.2.0
-		dosym /usr/lib/vdr/libvdr-${i}.so.1.2.0 /usr/lib/vdr/libvdr-${i}.so
+		newins ${S}/PLUGINS/src/${i}/libvdr-${i}.so libvdr-${i}.so.${PV}
+		dosym /usr/lib/vdr/libvdr-${i}.so.${PV} /usr/lib/vdr/libvdr-${i}.so
 	done
 
 	insinto /usr/include/vdr
