@@ -1,0 +1,10 @@
+# ChangeLog for media-libs/libdvdnav
+# Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvdnav/Attic/ChangeLog,v 1.1 2003/02/19 21:00:59 mad Exp $
+
+*libdvdnav-0.1.4-pre1 (19 Feb 2003)
+
+  19 Feb 2003; Martin Hierling <mad@cc.fh-lippe.de> libdvdnav-0.1.4-pre1.ebuild:
+
+  Initial version. adapted from the original Gentoo Version which was 
+  not usable for vdr
