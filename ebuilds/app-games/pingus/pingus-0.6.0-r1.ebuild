@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 RDEPEND="=app-games/clanlib-0.6*
          >=dev-libs/libxml2-2.4.20
 	 >=media-libs/hermes-1.3.0
-	 nls? ( >=sys-devel/gettext )"
+	 nls? ( sys-devel/gettext )"
 
 DEPEND="${RDEPEND}"
 
