@@ -1,0 +1,328 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Linux Dokumentationsleitfaden</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux Dokumentationsleitfaden</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Grundlagen</option>
+<option value="#doc_chap2">2. Guide-XML</option>
+<option value="#doc_chap3">3. Quellenangaben</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Grundlagen</p>
+<p class="secthead"><a name="_sect1">Ziele des Gentoo-Guide-XML-Designs </a></p>
+
+<p> 
+Die Guide-XML-Syntax ist zugleich minimalistisch als auch ausdrucksstark, so dass sie schnell erlernbar ist, gleichzeitg aber alle notwendigen Eigenschaften bereitstellt, die wir für das Erstellen von Internet-Dokumenten brauchen.
+Die Anzahl der tags ist auf ein Minimum beschränkt -- nur die die wir brauchen.
+Dadurch wird es einfacher Dokumente in andere Formate, wie z.B. DocBook, XML/SGML oder HTML umzuwandeln.
+</p>
+
+<p>
+Das Ziel ist, dass <font class="emphasis">Erstellen</font> und <font class="emphasis">Umwandeln</font> von Guide-XML-Dokument zu vereinfachen.
+</p>
+
+<p class="secthead"><a name="_sect2">
+Gentoo's Guide-XML in HTML umwandeln
+ </a></p>
+<p>
+Ehe wir uns die Guide-Syntax selbst anschauen, ist es hilfreich zu wissen, wie man Guide-XML in HTML umwandelt. Dazu benötigen wir neben der Datei <font class="path">guide-main.xsl</font>, ein Kommandozeilen-XSLT-Processing-Tool (oft auch als &quot;engine&quot; bezeichnet). Die Datei <font class="path">guide-main.xsl</font> beschreibt exakt wie der Inhalt der XML-Dokument-Quelle in die HTML-Zieldatei umzuwandeln ist. Zwei beliebte XSLT-Programme sind <font class="code">sabcmd</font> (Teil des Pakets <font class="path">app-text/sablotron</font>) und <font class="code">xsltproc</font> (zu finden im Paket <font class="path">gnome-libs/libxslt</font>). Durch Erfahrung haben wir herausgefunden, dass <font class="code">xsltproc</font> das qualitativ bessere und funktionsreichere XSLT-Programm ist.
+</p>
+<p> 
+Sobald sie entweder <font class="code">xsltproc</font> oder <font class="code">sabcmd</font> installiert haben, sind sie bereit Guide-XML in webfähiges HTML umzuwandeln.
+Und so funktioniert's. Laden sie zunächst den neuesten Schnappschuss unserer Internet-Seite von <a href="http://www.gentoo.org/projects/xml.html">http://www.gentoo.org/projects/xml.html</a> herunter. Dieser ist in der Datei <a href="http://www.gentoo.org/projects/guide-xml-latest.tar.gz">xml-guide-latest.tar.gz</a> zu finden. Entpacken sie den Tarball. Dieses Archiv enthält die Verzeichnisse <font class="path">gentoo-src</font>, <font class="path">gentoo-src/xml</font> usw.. Jetzt suchen sie die Datei <font class="path">gentoo-src/xml/install.xml</font> (die neue Gentoo Installationsanleitung). Diese wird unser Quell-Guide-XML-Dokument sein. Der einfachste Weg die Umwandlung durchzuführen ist ein Wechsel in das Verzeichnis mit der Datei <font class="path">guide-main.xsl</font>. Hier führen sie <font class="code">xsltproc</font> wie folgt aus:
+</p>
+
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cd gentoo-web/xsl</font>
+# <font class="input">xsltproc guide-main.xsl ../xml/install.xml &gt; /tmp/install.html</font>
+</pre></td></tr>
+</table>
+
+<p> 
+Wenn alles funktioniert, sollten sie eine webfähige HTML-Datei von
+<font class="path">install.xml</font> in <font class="path">/tmp/install.html</font> erhalten.
+Damit dieses Dokument in ihrem Internet-Browser korrekt angezeigt wird, müssen sie einige Dateien von <font class="path">gentoo-web</font> nach <font class="path">/tmp</font> kopieren. Mindestens sollten dies <font class="path">css/main-new.css</font> und (sicherheitshalber) das gesamte Verzeichnis <font class="path">images</font> sein.
+</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Guide-XML</p>
+<p class="secthead"><a name="_sect1">Grundstruktur </a></p>
+
+<p>
+Jetzt, da sie wissen, wie man Guide-XML umwandelt, sind sie so weit, um die Guide-XML-Syntax zu erlernen.
+Wir beginnen mit den einleitenden tags, die in einem Guide-XML-Dokument verwendet werden:
+</p>
+
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2: Der einleitende Teil eines Guide-XML-Dokuments</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+&lt;?xml version='1.0'?&gt;
+&lt;guide&gt;
+&lt;title&gt;<font class="input">Gentoo Linux Dokumentationsleitfaden</font>&lt;/title&gt;
+&lt;author title=&quot;<font class="input">Chief Architect</font>&quot;&gt;&lt;mail link=&quot;<font class="input">drobbins@gentoo.org</font>&quot;&gt;
+	<font class="input">Daniel Robbins</font>&lt;/mail&gt;
+&lt;/author&gt;
+&lt;author title=&quot;<font class="input">Editor</font>&quot;&gt;&lt;mail link=&quot;<font class="input">thomasfl@gentoo.org</font>&quot;&gt;
+	<font class="input">Thomas Flavel</font>&lt;/mail&gt;
+&lt;/author&gt;
+&lt;author title=&quot;<font class="input">&amp;#252;bersetzung</font>&quot;&gt;&lt;mail link=&quot;<font class="input">kontakt@hendrik-brandt.de</font>&quot;&gt;
+	<font class="input">Hendrik Brandt</font>&lt;/mail&gt;
+&lt;/author&gt;
+
+&lt;abstract&gt;<font class="input">
+Dieser Leitfaden erkl&amp;#228;rt ihnen, wie sie Internet-Dokumente mit Hilfe der 
+neuen minimalitischen Gentoo's Guide-XML-Syntax erstellen k&amp;#246;nnen.
+Diese Syntax stellt das offizielle Format f&amp;#252;r Gentoo-Linux-Dokumente dar 
+- auch dieses Dokument wurde mit Hilfe der Gentoo's Guide-XML erstellt. 
+Dieser Leitfaden setzt Grundkenntnisse in XML und HTML voraus.
+</font> 
+&lt;/abstract&gt;
+
+&lt;version&gt;<font class="input">1.0</font>&lt;/version&gt;
+&lt;date&gt;<font class="input">29. M&amp;#228;rz 2001</font>&lt;/date&gt;
+</pre></td></tr>
+</table>
+
+<p>
+In der ersten Zeile sehen wir den notwendigen tag der festlegt, das das Dokument in XML beschrieben ist.
+Darauf folgt der tag <font class="code">&lt;guide&gt;</font> -- das gesamte Dokument ist von einem <font class="code">&lt;guide&gt; &lt;/guide&gt;</font>-Paar umschlossen.
+Schließlich gibt es noch den tag <font class="code">&lt;title&gt;</font>, mit dem der Titel für das Dokument festgelegt wird.
+</p>
+
+<p>
+Als nächstes kommen wir zu den <font class="code">&lt;author&gt;</font>-tags, welche Informationen über die unterschiedlichen Autoren eines Dokumentes enthalten.
+Jeder <font class="code">&lt;author&gt;</font>-tag besitzt ein optionales Element <font class="code">title=</font>. Dieses wird benutzt, um die Beziehungen der Autoren zum Dokument (Autor, Co-Autor, Bearbeiter, Übersetzer usw.) zu beschreiben.
+Im vorliegenden Beispiel sind die Namen der Autoren in einem weiteren tag eingeschlossen -- dem tag <font class="code">&lt;mail&gt;</font>. Mit diesem kann eine eMail-Adresse mit der betreffenden Person verbunden werden.
+Der tag <font class="code">&lt;mail&gt;</font> ist optional und kann weggelassen werden. Weiterhin wird nicht mehr als ein Element <font class="code">&lt;author&gt;</font> pro Dokument benötigt.
+</p>
+
+<p>
+Es folgen die tags <font class="code">&lt;abstract&gt;</font>, <font class="code">&lt;version&gt;</font> und
+<font class="code">&lt;date&gt;</font>, die benutzt werden, um die Überschrift, die gegenwärtige Versionsnummer und das gegenwärtige Versionsdatum (im Format TT MMM JJJJ) des Dokuments festzulegen.
+Damit sind alle tags, die zu Beginn des Dokuments stehen sollten genannt.
+Ebenso wie die tags <font class="code">&lt;title&gt;</font> und <font class="code">&lt;mail&gt;</font>, sollten diese nur direkt im tag <font class="code">&lt;guide&gt;</font> und nicht irgendwo anders stehen. Weiterhin wird empfohlen (aber nicht gefordert), dass diese tags vor dem eigentlichen Inhalt im Dokument stehen.
+</p>
+<p class="secthead"><a name="_sect2">Kapitel und Abschnitte </a></p>
+<p>
+Sobald sie die einleitenden tags spezifiziert haben, können sie damit beginnen, Strukturelemente des Dokuments hinzuzufügen.
+Guide-Dokumente sind unterteilt in Kapitel (chapter) und jedes Kapitel kann ein oder mehr Abschnitte (section) enthalten.
+Jedes Kapitel und jeder Abschnitt hat eine Überschrift.
+Hier ist ein Beispielkapitel mit einem Abschnitt, der einen Absatz enthält.
+Wenn sie dieses XML an das XML im <a href="#doc_pre2">vorherigen Auszug</a> anhängen und ein <font class="code">&lt;/guide&gt;</font> am Ende hinzufügen, haben sie ein (minimales) Guide-Dokument:
+</p>
+
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+&lt;chapter&gt;
+&lt;title&gt;<font class="input">Das ist mein Kapitel</font>&lt;/title&gt;
+&lt;section&gt;
+	&lt;title&gt;<font class="input">Hier ist Abschnitt eins in meinem Kapitel</font>&lt;/title&gt;
+	&lt;body&gt;
+		&lt;p&gt;<font class="input">Dies ist der eigentliche Textinhalt meines Abschnitts.</font>&lt;/p&gt;
+	&lt;/body&gt;
+&lt;/section&gt;
+&lt;/chapter&gt;
+</pre></td></tr>
+</table>
+
+<p>
+Wie sie sehen haben ich dem Kapitel durch das hinzufügen eines Kindelements <font class="code">&lt;title&gt;</font> in das Element <font class="code">&lt;chapter&gt;</font> eine Überschrift gegeben.
+Anschließend habe ich einen Abschnitt durch das hinzufügen des Elements <font class="code">&lt;section&gt;</font> erzeugt.
+Wenn sie sich das Element <font class="code">&lt;section&gt;</font> anschauen, werden sie zwei Kindelemente erkennen -- ein <font class="code">&lt;title&gt;</font> und ein <font class="code">&lt;body&gt;</font> Element.
+Da ihnen das Element <font class="code">&lt;title&gt;</font> bereits bekannt ist, sei hier das Element <font class="code">&lt;body&gt;</font> erläutert; dieses enthält den eigenlichen Inhalt des derzeitigen Abschnitts.
+Wir betrachten nun kurz die tags die innerhalb von <font class="code">&lt;body&gt;</font> erlaubt sind.
+</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Das Element <font class="code">&lt;guide&gt;</font> kann mehrere Elemente <font class="code">&lt;chapter&gt;</font>, und das Element <font class="code">&lt;chapter&gt;</font> kann mehrere Elemente <font class="code">&lt;section&gt;</font> enthalten.
+Allerdings kann das Element <font class="code">&lt;section&gt;</font> nur einmal das Element <font class="code">&lt;body&gt;</font> enthalten.
+</p></td></tr></table>
+<p class="secthead"><a name="_sect3">Ein Beispiel zu &lt;body&gt; </a></p>
+<p>
+Jetzt ist es an der Zeit zu lernen, wie man den eigentlichen Inhalt auszeichnet. Hier ist der XML-Code zu einem Beispiel-<font class="code">&lt;body&gt;</font>-Element:
+</p>
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+&lt;p&gt;
+Das ist ein Absatz.  &lt;path&gt;/etc/passwd&lt;/path&gt; ist eine Datei.
+&lt;uri&gt;http://www.gentoo.de&lt;/uri&gt; ist meine Lieblings-Web-Seite.
+Geben sie &lt;c&gt;ls&lt;/c&gt; ein - wenn sie wollen.  Ich sollte jetzt &lt;e&gt;wirklich&lt;/e&gt; schlafen gehen.
+&lt;/p&gt;
+
+&lt;pre&gt;
+Das ist Textausgabe oder Quelltext.
+# &lt;i&gt;das sind Benutzereingaben&lt;/i&gt;
+
+Um HTML/XML lesbacher zu machen, sollten sie verschiedene Hervorhebungen verwenden:
+&lt;foo&gt;&lt;i&gt;bla&lt;/i&gt;&lt;/foo&gt;
+
+&lt;codenote&gt;So wird eine Notiz in einen Quelltextabschnitt eingefügt&lt;/codenote&gt;
+&lt;/pre&gt;
+&lt;note&gt;Das ist eine Anmerkung.&lt;/note&gt;
+&lt;warn&gt;Das ist eine Warnung.&lt;/warn&gt;
+&lt;impo&gt;Das ist wichtig.&lt;/impo&gt;
+</pre></td></tr>
+</table>
+<p>Und so wird dieses <font class="code">&lt;body&gt;</font>-Element dargestellt:</p>
+
+<p>
+Das ist ein Absatz.  <font class="path">/etc/passwd</font> ist eine Datei.
+<a href="http://www.gentoo.de">http://www.gentoo.de</a> ist meine Lieblings-Web-Seite.
+Geben sie <font class="code">ls</font> ein - wenn sie wollen.  Ich sollte jetzt <font class="emphasis">wirklich</font> schlafen gehen.
+</p>
+
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Das ist Textausgabe oder Quelltext.
+# <font class="input">das sind Benutzereingaben</font>
+
+Um HTML/XML lesbacher zu machen, sollten sie verschiedene Hervorhebungen verwenden:
+<font class="input">bla</font>
+
+<font class="comment">// So wird eine Notiz in einen Quelltextabschnitt eingefügt</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Das ist eine Anmerkung.</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Das ist eine Warnung.</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Das ist wichtig.</p></td></tr></table>
+<p class="secthead"><a name="_sect4">Die tags &lt;body&gt; </a></p>
+
+<p> 
+Im vorherigen Abschnitt wurde eine Menge neuer tags eingeführt -- jetzt werden sie erläutert.
+Die tags <font class="code">&lt;p&gt;</font> (Absatz), <font class="code">&lt;pre&gt;</font> (Quelltextabschnitt), <font class="code">&lt;note&gt;</font> (Anmerkung), <font class="code">&lt;warn&gt;</font> (Warnung) und <font class="code">&lt;impo&gt;</font> (Wichtig), können alle ein oder mehrere Zeilen Text enthalten.
+Neben dem Element <font class="code">&lt;table&gt;</font> (auf das wir später eingehen), sollten das die einzigen tags, die innerhalb des Elements <font class="code">&lt;body&gt;</font> stehen, sein.
+Weiterhin sollten diese tags <font class="emphasis">nie</font> verschachtelt werden -- mit anderen Worten, sie sollten das Element <font class="code">&lt;note&gt;</font> nicht innerhalb des Elements <font class="code">&lt;p&gt;</font> verwenden!
+Wie sie vielleicht bemerken, gibt das Element <font class="code">&lt;pre&gt;</font> Leerzeichen und Zeilenumbrüche exakt wieder - dadurch empfiehlt es sich für Quelltextschnipzel.
+</p>
+
+<p class="secthead"><a name="_sect5">&lt;path&gt;, &lt;c&gt; und &lt;e&gt; </a></p>
+
+<p>
+Die Elemente <font class="code">&lt;path&gt;</font>, <font class="code">&lt;c&gt;</font> und <font class="code">&lt;e&gt;</font> können innerhalb jedes <font class="code">&lt;body&gt;</font>-Kindelements verwendet werden, ausgenommen ist <font class="code">&lt;pre&gt;</font>.
+</p>
+
+<p>
+Das Element <font class="code">&lt;path&gt;</font> wird verwendet um Text hervorzuheben, der auf eine <font class="emphasis">Datei auf der Festplatte</font> verweist -- genauso wie für einen <font class="emphasis">absoluten oder realtiven Pfad</font> oder einfach einen <font class="emphasis">Dateinamen</font>.
+Dieses Element wird normalerweise mit einer Maschinentextschrift dargestellt, um es vom Rest des Textes abzugrenzen.
+</p>
+
+<p>
+Das Element <font class="code">&lt;c&gt;</font> wird verwendet, um <font class="emphasis">Befehle</font> oder <font class="emphasis">Benutzereingaben</font> zu markieren.
+Sie sollten sich <font class="code">&lt;c&gt;</font> als eine Möglichkeit vorstellen, dem Leser mitzuteilen, dass er etwas eingeben kann, was zu irgendeiner Aktion führt.
+Zum Beispiel sind alle XML-tags in diesem Dokument von <font class="code">&lt;c&gt;</font> umschlossen, um zu zeigen, dass der Benutzer etwas anderes als einen Pfad eingeben kann.
+Indem sie das Element <font class="code">&lt;c&gt;</font> verwenden, erleichtern sie es ihren Lesern, Befehle die sie eingeben müssen schneller zu erkennen.
+Desweiteren ist es auf Grund dessen, dass <font class="code">&lt;c&gt;</font>-Elemente sich vom regulären Text abheben, <font class="emphasis">nicht zwingend notwendig, Benutzereingaben mit doppelten Anführungszeichen zu umgeben</font>.
+Verwenden sie zum Beispiel das Element &quot;<font class="code">&lt;c&gt;</font>&quot; nicht wie in diesem Satz.
+Vermeiden sie die Benutzung von nicht-notwendigen doppelten Anführungszeichen, um das Dokument leserlicher und ansprechender zu gestalten.
+</p>
+<p>
+<font class="code">&lt;e&gt;</font> wird benutzt, um Wörter oder Wortgruppen zu betonen; zum Beispiel: Ich sollte <font class="emphasis">wirklich</font> öfters Semikola verwenden.
+Wie sie sehen können, hebt sich dieser Text zur Betonung von der normalen Absatzschrift ab.
+Dadurch wird das von ihnen Gesagte <font class="emphasis">schlagkräftiger</font>!
+</p>
+
+<p class="secthead"><a name="_sect6">&lt;mail&gt; und &lt;uri&gt; </a></p>
+
+<p>
+Wir hatten uns den tag <font class="code">&lt;mail&gt;</font> schon vorhin angesehen; er wird benutzt, um einen Text mit einer speziellen eMail-Adresse zu verbinden; er hat die Form <font class="code">&lt;mail link=&quot;mm@bla.de&quot;&gt;Herr Martin Mustermann&lt;/mail&gt;</font>.
+</p>
+<p>
+Der tag <font class="code">&lt;uri&gt;</font> wird verwendet, um auf Dateien oder Seiten im Internet zu verweisen.
+Es gibt zwei Varianten. Bei der ersten wird die URI direkt im Text angezeigt, so wie dieser Link zu <a href="http://www.gentoo.de">http://www.gentoo.de</a>. Um diesen Link zu erzeugen, habe ich <font class="code">&lt;uri&gt;http://www.gentoo.de&lt;/uri&gt;</font> eingegeben.
+Die Alternative wird verwendet, wen sie eine URI mit einem abweichenden Text verknüpfen wollen -- z.B. <a href="http://www.gentoo.de">das deutschsprachige Gentoo Linux Portal</a>. Um <font class="emphasis">diesen</font> Link zu erzeugen, wurde <font class="code">&lt;uri link=&quot;http://www.gentoo.de&quot;&gt;das deutschsprachige Gentoo Linux Portal&lt;/uri&gt;</font> eingegeben.
+</p>
+<p class="secthead"><a name="_sect7">Grafiken </a></p>
+<p>
+Und so können sie Grafiken in ein Dokument einfügen: <font class="code">&lt;figure link=&quot;meinbild.png&quot; short=&quot;mein Bild&quot; caption=&quot;f&amp;#252;r immer mein Lieblingsbild&quot;/&gt;</font>.
+Das Attribut <font class="code">link=</font> verweist auf die gewünschte Grafikdatei, das Attribut <font class="code">short=</font> legt eine Kurzbeschreibung fest (wird derzeit für das Attribute <font class="code">alt= </font> im HTML-tag <font class="code">&lt;img&gt;</font> verwendet) und mit <font class="code">caption= </font> wird schließlich eine Bildunterschrift festgelegt -- alles in allem nicht allzu schwer :)
+Außerdem wird noch der tag &lt;img src=&quot;bla.gif&quot;/&gt; aus HTML unterstützt, um Grafiken ohne Unterschrift, Ränder u.a. einzufügen.
+</p>
+<p class="secthead"><a name="_sect8">Tabellen und Listen </a></p>
+
+<p>
+Guide stellt eine vereinfachte Tabellensyntax, vergleichbar mit der von HTML, bereit.
+Um eine Tabelle zu erzeugen, benutzen sie den tag <font class="code">&lt;table&gt;</font>.
+Eine Reihe wird mit <font class="code">&lt;tr&gt;</font> begonnen.
+Allerdings unterstützt Guide-XML <font class="emphasis">keinen</font> tag &lt;td&gt; wie in HTML, um die eigentlichen Tabelleninhalte einzufügen; verwenden sie stattdessen <font class="code">&lt;th&gt;</font> für den Tabellenkopf und <font class="code">&lt;ti&gt;</font> wenn sie normale Informationen einfügen wollen.
+Sie können <font class="code">&lt;th&gt;</font> überall da verwenden, wo sie auch <font class="code">&lt;ti&gt;</font> verwenden können -- es gibt also keinen Zwang <font class="code">&lt;th&gt;</font>-Elemente nur in der ersten Reihe zu verwenden. 
+Derzeit stellen diese tags noch keine Attribute bereit, allerdings werden bald welche hinzugefügt (wie z.B. ein Attribut <font class="code">caption=</font> für <font class="code">&lt;table&gt;</font>).
+</p>
+
+<p>
+Um eine sortierte oder unsortierte Liste zu erzeugen, verwenden sie einfach die gleichwertigen HTML-tags <font class="code">&lt;ol&gt;</font>, <font class="code">&lt;ul&gt;</font> und <font class="code">&lt;li&gt;</font>.
+Listen-tags sollten nur innerhalb von <font class="code">&lt;p&gt;</font>, <font class="code">&lt;ti&gt;</font>, <font class="code">&lt;note&gt;</font>, <font class="code">&lt;warn&gt;</font> und <font class="code">&lt;impo&gt;</font> verwendet werden.
+</p>
+
+<p class="secthead"><a name="_sect9">Verweise innerhalb des Dokuments </a></p>
+
+<p>
+In Guide ist es wirklich einfach, Verweise zu anderen Teilen des Dokuments mit Hilfe von Hyperlinks zu erstellen.
+Sie können einen Verweis zu <a href="#doc_chap1">Kapitel 1</a> durch das Eingeben von <font class="code">&lt;uri link=&quot;#doc_chap1&quot;&gt;Kapitel 1&lt;/uri&gt;</font> erzeugen.
+Um auf <a href="#doc_chap1_sect2">Abschnitt 2 in Kaiptel 1</a> zu verweisen, geben sie <font class="code">&lt;uri link=&quot;#doc_chap1_sect2&quot;&gt;Abschnitt 2 in Kapitel 1&lt;/uri&gt;</font> ein.
+Um auf Grafik 3 zu verweisen, geben sie <font class="code">&lt;uri link=&quot;doc_fig3&quot;&gt;Grafik 3&lt;/uri&gt;</font> ein; oder für einen Verweis auf <a href="#doc_pre2">Quelltextbeispiel 2</a> einfach <font class="code">&lt;uri link=&quot;doc_pre2&quot;&gt;Quelltextbeispiel 2&lt;/uri&gt;</font>.
+In Zukunft werden weitere Möglichkeiten, der automatischen Verknüpfung (wie z.B. Unterstützung von Tabellen) hinzukommen.
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Quellenangaben</p>
+<p class="secthead"><a name="_sect1">Mit dem Schreiben beginnen </a></p>
+<p>
+Guide wurde speziell dafür entwickelt, es Entwicklern zu ermöglichen, mehr Zeit mit dem Schreiben der Dokumentation und weniger mit dem Erlernen der eigentlichen XML-Syntax zu verbringen.
+Wir hoffen, dass dies den Entwicklern erlaubt, qualitativ hochwertige Gentoo-Linux-Dokumentation zu schreiben.
+Wenn sie uns helfen möchte (oder irgendeine Frage zu Guide haben), dann sende sie eine Nachricht an die <a href="mailto:gentoo-dev@gentoo.org">gentoo-dev mailing list</a> (in Englisch!).
+Wir wünschen viel Spaß!
+</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 07. März 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Chefarchitekt</i><br><br><b><a class="altlink" href="mailto:kontakt@hendrik-brandt.de">Hendrik Brandt</a></b><br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> 
+Dieser Leitfaden erklärt ihnen, wie sie Internet-Dokumente mit Hilfe der neuen minimalitischen Gentoo's Guide-XML-Syntax erstellen können.
+Diese Syntax stellt das offizielle Format für Gentoo-Linux-Dokumente dar - auch dieses Dokument wurde mit Hilfe der Gentoo's Guide-XML erstellt. Dieser Leitfaden setzt Grundkenntnisse in XML und HTML voraus.
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
