@@ -15,12 +15,23 @@
       Was gibt es aktuelles bei Gentoo Linux. Hier erfahren Sie es...
     </p>
   </block>
-
 </box>
 
 <chapter>
 
 <title>Aktuelles</title>
+
+<section>
+<title>[16. Juni 2003] Gentoo-Newsletter</title>
+<body>
+<p>
+Diese Woche gibt es Neuigkeiten über GLEPS (Gentoo Linux Enhancement Proposals), eine neue Anwendergeschichte
+und natürlich das Entwicklerportrait der Woche. Desweiteren wird berichtet, daß bugs.gentoo.org auf einen neuen
+Server umziehen wird. <uri link="http://www.gentoo.org/news/en/gwn/20030616-newsletter.xml">Viel Spass beim Lesen (momentan nur in Englisch)</uri>
+</p>
+</body>
+</section>
+
 
 <section>
 <title>[05. Juni 2003] Gentoo-Newsletter</title>
@@ -110,7 +121,7 @@ erschienene Meldungen ber Gentoo-Linux Revue passieren lassen.
 <body>
 <p>
 Der Gentoo Kernel Leitfaden wurde von uns übersetzt und ist nun auf Deutsch verfügbar.
-<uri link="http://www.gentoo.de/inhalte/doku/einrichtung/gentoo-kernel/">Hier könnt Ihr ihn lesen</uri>
+<uri link="http://www.gentoo.de/inhalte/doku/einrichtung/gentoo-kernel/">Hier knnt Ihr ihn lesen</uri>
 </p>
 </body>
 </section>
@@ -268,4 +279,5 @@ einer Final-Version zu verffentlichen wurde aus folgenden Grnden getroffen:
 </section>
 
 </chapter>
+
 </info>
