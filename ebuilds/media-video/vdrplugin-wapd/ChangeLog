@@ -1,9 +1,13 @@
 # ChangeLog for media-video/vdr-wapd
 # Copyright 2004 Thomas Heiligenmann; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-wapd/ChangeLog,v 1.3 2004/06/20 23:12:15 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-wapd/ChangeLog,v 1.4 2004/06/24 21:36:22 austriancoder Exp $
 
-*vdrplugin-wapd-0.0.6 (24 June 2004)
+*vdrplugin-wapd-0.0.6b (24 June 2004)
   24 June 2004; Christian Gmeiner <christian at visual-page.de>
+  version bump
+
+*vdrplugin-wapd-0.0.6 (20 June 2004)
+  20 June 2004; Christian Gmeiner <christian at visual-page.de>
   version bump
 
 *vdrplugin-wapd-0.0.5c (17 June 2004)
