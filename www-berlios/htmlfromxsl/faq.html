@@ -20,7 +20,7 @@
 <br><p class="dochead">Gentoo Linux Frequently Asked Questions</p>
 <form>
 <b>Inhalt</b>:
-	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Mit Gentoo &quot;anfangen&quot;</option>
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Einführung in Gentoo</option>
 <option value="#doc_chap2">2. Installation</option>
 <option value="#doc_chap3">3. Paket Verwaltung</option>
 <option value="#doc_chap4">4. Gentoo Linux benutzen</option>
@@ -29,7 +29,7 @@
 <option value="#doc_chap7">7. Resources</option></select>
 </form>
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap1">1.</a></font>Mit Gentoo &quot;anfangen&quot;</p>
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Einführung in Gentoo</p>
 <p class="secthead"><a name="_sect1">Wie wird Gentoo ausgesprochen, und was ist damit gemeint? </a></p>
 <p>Gentoo ist eine Art von kleinen schnellen Penguins, ausgesprochen &quot;jen-two&quot;.</p>
 <p class="secthead"><a name="_sect2">Was ist an Gentoo anders? </a></p>
@@ -37,28 +37,28 @@
 			Design -- in dieser Hinsicht kann Gentoo
 			<a href="http://www.slackware.com/">Slackware</a>,
 			<a href="http://www.linuxfromscratch.org">Linux From Scratch</a> oder
-            <a href="http://www.bsd.org">BSD</a> Usern gefallen. Anders als die meisten Linux
+            <a href="http://www.bsd.org">BSD</a> Benutzern gefallen. Anders als die meisten Linux
             Distributionen, hat Gentoo ein Paket System das an die BSD's &quot;Ports&quot; erinnert;
             wir meinen, Sie können sich immer sicher sein das sie die Letzten Versionen der Pakete haben.
         </p>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap2">2.</a></font>Installation</p>
-<p class="secthead"><a name="_sect1">Wo ist der Unterschied zwischen .iso und .tbz2 Datein? </a></p>
-<p>Die fertigen <font class="emphasis">.tbz2</font> Datein sind ein Mimimales Archiv von System Datein
+<p class="secthead"><a name="_sect1">Wo ist der Unterschied zwischen .iso und .tbz2 Dateien? </a></p>
+<p>Die fertigen <font class="emphasis">.tbz2</font> Dateien sind ein Minimal-Archiv von System Dateien
 		die den Usern den bootstrap und die Installation von Gentoo Linux erlauben.
-		Die Fertige <font class="emphasis">.iso</font> ist eine komplettes, bootbares CD Image das
+		Die Fertige <font class="emphasis">.iso</font> ist eine komplettes, bootfähiges CD Image das
 		einen System Kernel, einen zum Teil komplette Zusammenstellung von Kernel Modulen,
 		wichtigen System Hilfsprogrammen wie <font class="code">mkfs</font> und Netzwerk Unterstützung,
 		sowie das Minimal-System des <font class="emphasis">.tbz2</font> Archivs enthält. Die meisten User werden
 		Gentoo Linux von der .iso Datei auf eine CD brennen, von der CD booten,
 		und mit einer Minimalen Linux Umgebung von der Gentoo Boot CD Installieren.
 		Es ist für den Benutzer jedoch möglich Gentoo Linux direkt von einer
-		bereits vorhandenen Linux distribution zu Installieren.
+		bereits vorhandenen Linux Distribution zu Installieren.
 		Solche Benutzer müssen nur eine .tbz2 Datei downloaden,
 		den Inhalt auf eine Reserve Partitionen entpacken
 		(stellen Sie sicher das Sie das <font class="code">p</font> Argument benutzen wenn Sie das Archiv entpacken),
 		dann in das System einen chroot ausführen und über normale Art und Weise installieren.</p>
-        <p class="secthead"><a name="_sect2">Warum werden .iso und .tbz2 Datein mit Unterschiedlichen -r (Revisionen) erstellt/veröffentlicht? </a></p>
+        <p class="secthead"><a name="_sect2">Warum werden .iso und .tbz2 Dateien mit Unterschiedlichen -r (Revisionen) erstellt/veröffentlicht? </a></p>
 <p>
 		Das Minimal-System aus dem .tbz2 Archiv braucht nur erneuert zu werden, wenn signifikante Änderungen am Kern
 		von Gentoo Linux gemacht wurden (z. B. Änderungen am Basislayout oder ein neues Profil) - dadurch sind .tbz2
@@ -98,7 +98,7 @@ geben Sie oben <font class="code">gentoo</font> anstatt <font class="code">rescu
 		auch, um die jeweiligen Pakete noch testen zu können und sicherzustellen, dass sie nicht bis in
 		den Status des Vergessens optimiert wurden.</p>
 		<p class="secthead"><a name="_sect5">Wie lautet das Standard Root Passwort nach der Installation? </a></p>
-<p>Das standard Passwort ist leer, einfach Enter drücken.</p>
+<p>Das Standard Passwort ist leer, einfach Enter drücken.</p>
 <p class="secthead"><a name="_sect6">Wie kann ich bei root (oder einem anderen User) das Passwort ändern? </a></p>
 <p>Sie können <font class="code">passwd</font> benutzen, um das Passwort für den User mit dem sie eingelogt sind zu ändern.
 		Für zusätzliche Optionen und Einstellungen, schauen Sie sich bitte <font class="code">man passwd</font> an, nachdem sie Gentoo Linux
@@ -154,7 +154,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		um die Pfadangaben in <font class="path">/etc/devfsd.conf</font> erneut einzulesen.</p>
 		<p class="secthead"><a name="_sect12">Grub kann die stage x.y nicht finden? </a></p>
 <p>
-		Während der Installation hat grub die boot Datein
+		Während der Installation hat grub die boot Dateien
 		nach <font class="path">/boot/grub</font> (<font class="path">/boot/boot/grub</font> in Gentoo Linux 1.0_rc5 und 
 		älter) kopiert. Grub sucht automatisch das Verzeichnis <font class="path">/boot/grub</font> auf der Boot Partition ab.
 		(Wir empfehlen ihnen, eine ersatz nicht-auto boot Partition auf	<font class="path">/boot</font> gemountet haben,
@@ -172,7 +172,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <font class="chapnum"><a name="doc_chap3">3.</a></font>Paket Verwaltung</p>
 <p class="secthead"><a name="_sect1">In welchem Format werden die Pakete gespeichert? </a></p>
 <p>Die Pakete existieren in unserem Portage &quot;Baum/Stammbaum/Archiv&quot; als <font class="emphasis">ebuild</font> Autoerstell Skripte; Wir sind hauptsaechlich 
-		eine Port-Basierende Distribution, was wir meinen ist das wir Skripte (<font class="code">.ebuild</font> Datein) und ein 
+		eine Port-Basierende Distribution, was wir meinen ist das wir Skripte (<font class="code">.ebuild</font> Dateien) und ein
 		Spezieles System (Portage) damit man die Programme von den Quellcoden bauen kann. Wir erstellen normalerweise nur 
 		Binaere Pakete fuer Veroeffentlichung und &quot;snapshots&quot;. Die <a href="/doc/gentoo-howto.html">Development HOWTO
 		</a> erklaert den Inhalt von ebuild Skripten.  Fuer eine komplette Binaere ISO Veroeffentlichung, erstellen wir 
@@ -271,26 +271,22 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		</p>
 <p class="secthead"><a name="_sect9">Ich möchte den ./configure Schritt selber ausführen. Geht das? </a></p>
 <p>
-		
-		Yes, but it is not trivial.  First do <font class="code">man ebuild</font> followed by
-		<font class="code">ebuild foo-x.y.z.ebuild unpack</font>.  Then <font class="code">cd</font> to 
-		<font class="path">/var/tmp/portage/foo-x.y.z/work</font>.  You can manually perform
-		the <font class="code">./configure</font> and <font class="code">make</font> steps yourself (you'll have to do
-		both, since Portage does not separate the configure and build steps).  To
-		have Portage finish the installation (so that you can easily remove it later,
-		should you desire to do so, and it will be registered in Portage as a possible
-		dependency) you first need to <font class="code">touch /var/tmp/portage/foo-x.y.z/.compiled</font>
-		(tricking Portage into thinking that <font class="code">ebuild foo-x.y.z.ebuild compile</font> has
-		completed), followed by <font class="code">ebuild foo-x.y.z.ebuild merge</font>.
+		Ja, aber es ist nicht ganz einfach. Als erstes sollte <font class="code">man ebuild</font> gefolgt von einem
+		<font class="code">ebuild foo-x.y.z.ebuild unpack</font> ausführen. Mit <font class="code">cd</font> in das <font class="path">/var/tmp/portage/foo-x.y.z/work</font>
+		Verzeichnis wechseln. Dort können die Schritte für <font class="code">./configure</font> und <font class="code">make</font>
+		selbst eingegeben werden (mann muss beide ausführen, da Portage nicht zwischen den Konfigurations
+		und ebuild Schritten unterscheidet). Um mit Portage nun die restliche Installation durchzuführen
+		(es kann dann später ganz einfach, wenn gewünscht, wieder entfernt werden) wird mit <font class="code">touch /var/tmp/portage/foo-x.y.z/.compiled</font> Portage mitgeteilt, dass
+		das ebuild von <font class="code">ebuild foo-x.y.z.ebuild compile</font> schon abgeschlossen ist. Mit <font class="code">ebuild foo-x.y.z.ebuild merge</font>
+		wird dann das Paket noch in das Portage Verzeichnis aufgenommen (und wird darüber hinaus als mögliche
+		Abhängigkeit eingetragen).
 		</p>
 <p class="secthead"><a name="_sect10">Was, wenn rsync bei mir nicht funktioniert? </a></p>
 <p>
-		If you're behind a firewall that doesn't permit
-		rsync traffic, then you can instead download the daily
-		/usr/portage snapshot from 
-		<a href="http://cvs.gentoo.org/snapshots">http://cvs.gentoo.org/snapshots</a>.  Just unpack
-		the tarball (using <font class="code">tar xvjf portage-foo.tbz2</font>) in
-		the <font class="path">/usr</font> directory.
+		Wenn der Rechner sich hinter einem Firewall befindet, der die rsync Verbindungen blockiert, kann 
+		alternativ ein täglich aktualisierter Schnappschuss von /usr/portage unter <a href="http://cvs.gentoo.org/snapshots">http://cvs.gentoo.org/snapshots</a>
+		heruntergeladen werden. Dieses wird mit <font class="code">tar xvjf portage-foo.tbz2</font> in das <font class="path">/usr</font> Verzeichnis
+		entpackt.
 		</p>
 <p class="secthead"><a name="_sect11">Wie benutze ich emerge hinter einer Firewall? </a></p>
 <p>
@@ -301,43 +297,40 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <p class="secthead"><a name="_sect12">Kann ich von einem anderen Betriebssystem aus ein rsync machen? </a></p>
 <p>Es gibt ein Programm das unison heisst, das sowohl unter UNIX als auch unter Win32 läuft. Es ist verfügbar unter:
 		<a href="http://www.cis.upenn.edu/~bcpierce/unison/">http://www.cis.upenn.edu/~bcpierce/unison/</a>.</p>
-<p class="secthead"><a name="_sect13">Ich habe zuhause nur eine langsame Modem-Verbingund. Kann ich die Quellen woanders downloaded und dann zu meinem System hinzufügen? </a></p>
+<p class="secthead"><a name="_sect13">Ich habe zuhause nur eine langsame Modem-Verbindung. Kann ich die Quellen woanders herunterladen und dann zu meinem System hinzufügen? </a></p>
 <p>
-		Definitely. You can run <font class="code">emerge --pretend package</font> to see what programs
-		are going to be installed. Download sources and bring them on any media
-		home. Put the sources into <font class="path">/usr/portage/distfiles</font> and run
-		<font class="code">emerge package</font> to see it picking up the sources you just brought in!
+		Natürlich. Mit dem Befehl <font class="code">emerge --pretend package</font> kann man sehen, welche Pakete für die
+		Installation benötigt werden. Die heruntergeladen Quelldateien können nun über ein Medium nach
+		Hause genommen werden und werden in das <font class="path">/usr/portage/distfiles</font> Verzeichnis kopiert.
+		Anschliessend muss nur noch <font class="code">emerge package</font> ausgeführt werden, welches nun die mitgebrachten
+		Quelldateien verwendet.
 		</p>
-<p class="secthead"><a name="_sect14">.tar.gz sources for installed software are piling up in /usr/portage/distfiles/ using 
-		valuable space. Is it safe to delete these files? </a></p>
+<p class="secthead"><a name="_sect14">Die ganzen .tar.gz Quelldateien sammeln sich in /usr/portage/distfiles/ an und verbrauchen
+		wertvolle Plattenkapazitäten. Können diese Dateien gelöscht werden? </a></p>
 <p>
-		Yes, you can safely delete these files. But if you are on a slow
-		connection, such as a modem, you might want to keep the archives if
-		possible; often several ebuilds will be released for the same version of
-		a specific piece of software  - if you have deleted the archive and you
-		upgrade the software it will have to be downloaded from the internet
-		again.
+		Ja, das ist ohne Probleme möglich. Aber wenn Sie eine langsame Internetverbindung besitzen, sollten
+		die Archive möglichst behalten, da manchmal für ein einziges Stück Software mehrere verschiedene
+		Ebuilds existieren - bnach dem Löschen des Archives muss das Paket neu aus dem Internet geladen werden.
 		</p>
-<p class="secthead"><a name="_sect15">How can I manage my own ebuilds without destroying them by (r)sync? </a></p>
-		<p>The simplest method is to use anonymous CVS instead of rsync, and 
-		maintain your local
-		ebuilds in /usr/portage/local.  Here's how to do it:</p>
+<p class="secthead"><a name="_sect15">Wie kann ich meine eigenen ebuilds verwalten, ohne dass sie durch ein (r)sync überschrieben werden? </a></p>
+		<p>Am einfachsten geht dies mit Anonymous CVS und mit dem Aufbewahren der loaklen ebuilds in /usr/portage/local.
+		So wird es gemacht:</p>
 		<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 4</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
-# <font class="input">emerge cvs</font> <font class="comment">(if necessary)</font>
-# <font class="input">cd <font class="path">/usr</font></font>
-# <font class="input">cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs login</font> <font class="comment">(hit &lt;enter&gt;)</font>
-# <font class="input">cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs get gentoo-x86</font>
-# <font class="input">cp /usr/portage/distfiles/* gentoo-x86/distfiles/</font>
-# <font class="input">cp -a /usr/portage/packages/* gentoo-x86/packages/</font>
-# <font class="input">mv portage portage.old</font>
-# <font class="input">ln -s gentoo-x86 portage</font>
-# <font class="input">mkdir /usr/portage/local</font>
-# <font class="input">echo local &gt;&gt; /usr/portage/profiles/categories</font>
-# <font class="input">cp /etc/make.conf /etc/make.conf.orig</font>
-# <font class="input">sed -e 's/#SYNC=&quot;cvs/SYNC=&quot;cvs/' /etc/make.conf.orig &gt; /etc/make.conf</font>
+		# <font class="input">emerge cvs</font> <font class="comment">(wenn nicht bereits erfolgt)</font>
+		# <font class="input">cd <font class="path">/usr</font></font>
+		# <font class="input">cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs login</font> <font class="comment">( &lt;Enter&gt; drücken)</font>
+		# <font class="input">cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs get gentoo-x86</font>
+		# <font class="input">cp /usr/portage/distfiles/* gentoo-x86/distfiles/</font>
+		# <font class="input">cp -a /usr/portage/packages/* gentoo-x86/packages/</font>
+		# <font class="input">mv portage portage.old</font>
+		# <font class="input">ln -s gentoo-x86 portage</font>
+		# <font class="input">mkdir /usr/portage/local</font>
+		# <font class="input">echo local &gt;&gt; /usr/portage/profiles/categories</font>
+		# <font class="input">cp /etc/make.conf /etc/make.conf.orig</font>
+		# <font class="input">sed -e 's/#SYNC=&quot;cvs/SYNC=&quot;cvs/' /etc/make.conf.orig &gt; /etc/make.conf</font>
 		</pre></td></tr>
 </table>
 		<p class="chaphead">
@@ -382,94 +375,87 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 			Beispiel 8</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>#!/bin/sh --login</pre></td></tr>
 </table>
-		<p>Diese Änderung wurde in höcheren KDE Version eingebaut.</p>
+		<p>Diese Änderung wurde in neueren KDE Versionen bereits vorgenommen.</p>
 		<p class="chaphead">
 <font class="chapnum"><a name="doc_chap5">5.</a></font>Verwaltung</p>
-<p class="secthead"><a name="_sect1">ReiserFS and filesystem corruption issues -- how to fix'em, etc </a></p>
+<p class="secthead"><a name="_sect1">Probleme mit einem beschädigten Dateisystem unter ReiserFS -- wie behebe ich das? </a></p>
 		<p>
-		
-		ReiserFS has had serious problems with the 2.4-series kernels; we
-		highly recommend avoiding ReiserFS for the time being.  If your
-		ReiserFS partition is already corrupt, try booting the Gentoo 
-		Linux boot CD and run <font class="code">reiserfsck --rebuild-tree</font> on
-		the corrupted filesystem.  This should make the filesystem consistent
-		again, although you may have lost some files or directories due
-		to the corruption.
+		ReiserFS hat grosse Probleme in Verbindung mit den 2.4 Kernel Reihen. Wir raten zur Zeit nachdrücklich
+		von der Verwendung mit ReiserFS ab. Wenn die ReiserFS Partition bereits beschädigt ist, sollten Sie
+		mit der Gentoo Linux CD booten und <font class="code">reiserfsck --rebuild-tree</font> auf das beschädigte Dateisystem
+		ausführen. Dies sollte die Konsistenz des Dateisystems wieder herstellen, auch wenn einige Dateien
+		oder Verzeichnisse durch die Beschädigung verloren gegangen sein können.
 		</p>
 		<p class="chaphead">
 <font class="chapnum"><a name="doc_chap6">6.</a></font>Entwicklung</p>
 <p class="secthead"><a name="_sect1">Wie kann ich Fehler melden? </a></p>
-<p>För Bugs in einem Spezielen Programm, kontaktieren sie den Programm Ersteller. Otherwise, use our
-		Bugzilla bug tracker at <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a>.  You can also visit us in
-		<font class="code">#gentoo</font> on the <a href="http://www.openprojects.net">OpenProjects</a> IRC network.
+<p>För Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller. 
+		Alternativ können Sie unsere Bugzilla Fehlermeldung unter <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> verwenden.
+		Auch sind wir in im <a href="http://www.openprojects.net">OpenProjects</a> IRC Netzwerk unter 
+		<font class="code">#gentoo</font> zu erreichen.
 		</p>
-<p class="secthead"><a name="_sect2">How often are new releases made? </a></p>
-<p>New releases are announced on the <a href="http://lists.gentoo.org/mailman/listinfo/gentoo-announce">gentoo-announce</a> 
-		mailing list, In reality the packages themselves 
-		are updated shortly after the main authors release new code. As for when new Cd images etc
-		are released, that tends to be whenever there are any major updates to the base code, or when
-		new modules get added.</p>
-<p class="secthead"><a name="_sect3">I would like a package to be added to Portage; how would I go about this? </a></p>
-<p>Head over to <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> and submit a new bug of the type
-		&quot;ebuild&quot;.  Attach your ebuild to the bug report.</p>
-<p class="secthead"><a name="_sect4">How can I add a question or answer to this FAQ? </a></p>
-<p>Submit a new bug over at <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> and add it to the
-		&quot;Docs-user&quot; product.</p>
-<p class="secthead"><a name="_sect5">make -f Makefile.cvs on a KDE app produces &quot;invalid unused variable&quot; errors </a></p>
+<p class="secthead"><a name="_sect2">Wie oft gibt es Neuerscheinungen? </a></p>
+<p>Neuerscheinungen werden in der <a href="http://lists.gentoo.org/mailman/listinfo/gentoo-announce">gentoo-announce</a>
+		Mailliste angekündigt. Im Normalfall werden die Pakete aktualisiert,
+		wenn von den Autoren neuer Quellcode bereitgestellt wird. Neue CD Images werden in der Regel nur dann erstellt,
+		wenn grosse Veränderungen am Basissystem vorgenommen wurden, oder neue Module hinzugefügt werden.
+		</p>
+<p class="secthead"><a name="_sect3">Ich möchte ein neues Paket in Portage einbringen? Wie gehe ich vor? </a></p>
+<p>Unter <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> sollte einfach ein Bug von der Sorte
+		&quot;ebuild&quot; erstellt werden.  Das ebuild sollte dann an diese Meldung angehängt werden.</p>
+<p class="secthead"><a name="_sect4">Wie kann ich eine neue Frage zu diesem FAQ hinzufügen? </a></p>
+<p>Ebenfalls unter <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> einen neuen Bugreport erstellen und
+		in der Kategorie &quot;Docs-user&quot; einreichen. Dies gilt allerdings nur für die englischen Originaldokumente.
+		Für die deutschen übersetzungen genügt eine Mail an gentoo-deutsch-dev@lists.berlios.de
+		</p>
+<p class="secthead"><a name="_sect5">make -f Makefile.cvs für eine KDE Anwendung ergibt folgende Fehlermeldung: &quot;invalid unused variable&quot; </a></p>
 <p>
-		Export <font class="code">WANT_AUTOMAKE_1_4=1</font> for all KDE projects before running 
-		<font class="code">make -f Makefile.cvs</font>. Also, for KDE2 apps export <font class="code">WANT_AUTOCONF_2_1=1</font>, 
-		and for KDE3 apps export <font class="code">WANT_AUTOCONF_2_5=1</font>.
+		Für alle KDE Projekte sollte vorher <font class="code">WANT_AUTOMAKE_1_4=1</font> exportiert werden, bevor der Befehl
+		<font class="code">make -f Makefile.cvs</font>ausgeführt wird. Für KDE2 Anwendungen gilt analog: <font class="code">WANT_AUTOCONF_2_1=1</font>,
+		und für KDE3: <font class="code">WANT_AUTOCONF_2_5=1</font>.
 		</p>
-<p class="secthead"><a name="_sect6">My speaker beeps like crazy while compiling Mozilla. How do I disable console beeps?
+<p class="secthead"><a name="_sect6">Mein eingebauter Lautsprecher piept wie verrückt während der kompilierung von Mozilla. Wie kann ich Piepstöne
+		in der Konsole ausschalten?
     		 </a></p>
-        <p>
-            Console beeps can be turned off using setterm, like this ;
-
-        <a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<p>
+		Piepstöne in der Konsole können mit setterm geändert werden:
+		<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 9</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre># <font class="input">setterm -blength 0</font></pre></td></tr>
 </table>
-
-            If you would like to turn off the console beeps on boot
-            you need to put this command in  
-            <font class="path">/etc/conf.d/local.start</font>. However, this only
-            disables beeps for the current terminal. To disable
-            beeps for other terminals, pipe the command output to the 
-            target terminal, like this ;
-
-        <a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+		Sollen dies bei jedem Start ausgeführt  werden, so muss dieser Befehl in <font class="path">/etc/conf.d/local.start</font>
+		eingefügt werden. Dies deaktiviert allerdings nur das aktuelle Terminal. Wenn alle Terminals stumm geschaltet
+		werden sollen, sollte der Befehl auch auf die anderen Terminals geleitet werden:
+		<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 10</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre># <font class="input">setterm -blength 0 &gt;/dev/vc/1</font></pre></td></tr>
 </table>
-
-            You need to replace /dev/vc/1 with the terminal
-            you would like to disable console beeps for.
-        </p>
-    	<p class="chaphead">
+		Für /dev/vc/1 muss das gewünschte Terminal eingetragen werden.
+        	</p>
+<p class="chaphead">
 <font class="chapnum"><a name="doc_chap7">7.</a></font>Resources</p>
 <p class="secthead"><a name="_sect1">Wo kann ich mehr über supervise das bei Gentoo Linux 1.0_rc5 und früher benutzt wurde finden? </a></p>
 <p><a href="http://cr.yp.to/daemontools.html">http://cr.yp.to/daemontools.html</a></p>
 <p class="secthead"><a name="_sect2">Wo kann man mehr Informationen über Gentoo Linux finden? </a></p>
-<p>Die Offizelle Gentoo Dokumentation kann bei <a href="http://www.gentoo.org">http://www.gentoo.org</a> gefunden werden. Homepage vom Übersetzungsprojekt ins Deutsche <a href="http://gentoo-deutsch.berlios.de">http://gentoo-deutsch.berlios.de</a>. Standard Linux Information sind unter <a href="http://www.linuxdoc.org">http://www.linuxdoc.org</a> verfügbar.</p>
+<p>Die Offizelle Gentoo Dokumentation kann bei <a href="http://www.gentoo.org">http://www.gentoo.org</a> gefunden werden. 
+		Homepage vom Übersetzungsprojekt ins Deutsche <a href="http://gentoo-deutsch.berlios.de">http://gentoo-deutsch.berlios.de</a>. 
+		Standard Linux Information sind unter <a href="http://www.linuxdoc.org">http://www.linuxdoc.org</a> verfügbar.
+		</p>
 <p class="secthead"><a name="_sect3">Kann man CDs von Gentoo Linux kaufen? </a></p>
 <p>USA: Ja! Frische CDRs sind fuer $5 USD von <a href="http://www.cheapbytes.com">http://www.cheapbytes.com</a> kaufbar.
 		</p>
 		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's können fÜr 5 Euro bei <a href="http://www.lin24.de">http://www.lin24.de</a> und <a href="http://www.liniso.de">http://www.liniso.de</a> bezogen werden.
 		</p>
 <p class="secthead"><a name="_sect4">Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt? </a></p>
-		
-		<p>A good first step is to browse through the relevant doumentation at <a href="http://www.gentoo.org/index-docs.html">http://www.gentoo.org/index-docs.html</a>, 
-		failing that, the various Gentoo Linux mailing
-		lists listed on <a href="www.gentoo.org">www.gentoo.org</a>.  To search through the Gentoo mailling lists, Google
-		(<a href="www.google.com">www.google.com</a>) is a wonderful resource: just enter &quot;lists.gentoo.org foo&quot; to search the
-		Gentoo mailing lists for &quot;foo&quot;.  If all else fails, or you just want
-		to hang out with Gentoo folks, visit us on irc: <font class="code">#gentoo</font>
-		on <a href="irc.openprojects.net">irc.openprojects.net</a>.
+<p>Als erster Schritt sollten die Dokumente unter <a href="http://www.gentoo.org/index-docs.html">http://www.gentoo.org/index-docs.html</a> (in Deutsch:  <a href="http://www.gentoo.de">http://www.gentoo.de</a> )
+		durchforstet werden. Findet sich darin keine Lösung, kann man sich in die verschiedenen Maillisten unter <a href="www.gentoo.org">www.gentoo.org</a> eintragen. Um
+		die Archive der Maillisten zu durchsuchen, ist Google (<a href="www.google.com">www.google.com</a>) sehr praktisch. Einfach &quot;lists.gentoo.org foo&quot;
+		als Suchanfrage stellen. Alternativ kann auch ein Blick in das Forum (<a href="http://forums.gentoo.org/">http://forums.gentoo.org/</a>) helfen. Oder Sie stellen ihre
+		Frage im IRC unter <font class="code">#gentoo</font> bzw. <font class="code">#gentoo.de</font> von <a href="irc.openprojects.net">irc.openprojects.net</a>.
 		</p>
-		<br><br>
+<br><br>
 </td>
 <td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
@@ -477,11 +463,11 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 						letzte Änderung  Juli 2002</td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 <tr><td class="alttext">
-<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Leitender Architekt</i><br><br>Colin Morey<br><i>Reviewer</i><br><br><b><a class="altlink" href="mailto:marko@nexboard.de">Marko Kercmar</a></b><br><i>Übersetzter</i><br><br><b><a class="altlink" href="mailto:egbers@netzraum.com">Sebastian Egbers</a></b><br><i>Übersetuter</i><br><br><b><a class="altlink" href="mailto:js@ameds.de">Jens Schittenhelm</a></b><br><i>Übersetuter</i><br><br>
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Leitender Architekt</i><br><br>Colin Morey<br><i>Reviewer</i><br><br><b><a class="altlink" href="mailto:marko@nexboard.de">Marko Kercmar</a></b><br><i>Übersetzer</i><br><br><b><a class="altlink" href="mailto:egbers@netzraum.com">Sebastian Egbers</a></b><br><i>Übersetzer</i><br><br><b><a class="altlink" href="mailto:js@ameds.de">Jens Schittenhelm</a></b><br><i>Übersetzer</i><br><br>
 </td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 <tr><td class="alttext">
-<b>Zusammenfassung:</b> Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt in der gentoo-dev Mailingliste und aus dem IRC -- Wenn du andere Fragen (oder Antworten!) zum hinzufügen hast, bitte Kontaktier einen Author oder ein Mitglied vom Dokumentations Team.</td></tr>
+<b>Zusammenfassung:</b> Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt in der gentoo-dev Mailingliste und aus dem IRC -- Wenn du andere Fragen (oder Antworten!) zum hinzufügen hast, bitte kontaktiere einen Autor oder ein Mitglied vom Dokumentations Team.</td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 </table></td>
 </tr></table></td></tr>

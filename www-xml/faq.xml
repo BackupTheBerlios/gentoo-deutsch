@@ -6,16 +6,16 @@
 <title>Gentoo Linux Frequently Asked Questions</title>
 <author title="Leitender Architekt"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Reviewer">Colin Morey</author>
-<author title="&#xDC;bersetzter"><mail link="marko@nexboard.de">Marko Kercmar</mail></author>
-<author title="&#xDC;bersetuter"><mail link="egbers@netzraum.com">Sebastian Egbers</mail></author>
-<author title="&#xDC;bersetuter"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
-<abstract>Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt in der gentoo-dev Mailingliste und aus dem IRC -- Wenn du andere Fragen (oder Antworten!) zum hinzuf&#xFC;gen hast, bitte Kontaktier einen Author oder ein Mitglied vom Dokumentations Team.</abstract>
+<author title="&#xDC;bersetzer"><mail link="marko@nexboard.de">Marko Kercmar</mail></author>
+<author title="&#xDC;bersetzer"><mail link="egbers@netzraum.com">Sebastian Egbers</mail></author>
+<author title="&#xDC;bersetzer"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
+<abstract>Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt in der gentoo-dev Mailingliste und aus dem IRC -- Wenn du andere Fragen (oder Antworten!) zum hinzuf&#xFC;gen hast, bitte kontaktiere einen Autor oder ein Mitglied vom Dokumentations Team.</abstract>
 
 <version>1.1.1-de</version>
 <date> Juli 2002</date>
 
 <chapter>
-	<title>Mit Gentoo "anfangen"</title>
+	<title>Einf&#xFC;hrung in Gentoo</title>
 
 	<section>
 		<title>Wie wird Gentoo ausgesprochen, und was ist damit gemeint?</title>
@@ -29,7 +29,7 @@
 			Design -- in dieser Hinsicht kann Gentoo
 			<uri link="http://www.slackware.com/">Slackware</uri>,
 			<uri link="http://www.linuxfromscratch.org">Linux From Scratch</uri> oder
-            <uri link="http://www.bsd.org">BSD</uri> Usern gefallen. Anders als die meisten Linux
+            <uri link="http://www.bsd.org">BSD</uri> Benutzern gefallen. Anders als die meisten Linux
             Distributionen, hat Gentoo ein Paket System das an die BSD's "Ports" erinnert;
             wir meinen, Sie k&#xF6;nnen sich immer sicher sein das sie die Letzten Versionen der Pakete haben.
         </p></body> 	</section> </chapter>
@@ -38,17 +38,17 @@
 	<title>Installation</title>
 
 	<section>
-		<title>Wo ist der Unterschied zwischen .iso und .tbz2 Datein?</title>
-		<body><p>Die fertigen <e>.tbz2</e> Datein sind ein Mimimales Archiv von System Datein
+		<title>Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</title>
+		<body><p>Die fertigen <e>.tbz2</e> Dateien sind ein Minimal-Archiv von System Dateien
 		die den Usern den bootstrap und die Installation von Gentoo Linux erlauben.
-		Die Fertige <e>.iso</e> ist eine komplettes, bootbares CD Image das
+		Die Fertige <e>.iso</e> ist eine komplettes, bootf&#xE4;higes CD Image das
 		einen System Kernel, einen zum Teil komplette Zusammenstellung von Kernel Modulen,
 		wichtigen System Hilfsprogrammen wie <c>mkfs</c> und Netzwerk Unterst&#xFC;tzung,
 		sowie das Minimal-System des <e>.tbz2</e> Archivs enth&#xE4;lt. Die meisten User werden
 		Gentoo Linux von der .iso Datei auf eine CD brennen, von der CD booten,
 		und mit einer Minimalen Linux Umgebung von der Gentoo Boot CD Installieren.
 		Es ist f&#xFC;r den Benutzer jedoch m&#xF6;glich Gentoo Linux direkt von einer
-		bereits vorhandenen Linux distribution zu Installieren.
+		bereits vorhandenen Linux Distribution zu Installieren.
 		Solche Benutzer m&#xFC;ssen nur eine .tbz2 Datei downloaden,
 		den Inhalt auf eine Reserve Partitionen entpacken
 		(stellen Sie sicher das Sie das <c>p</c> Argument benutzen wenn Sie das Archiv entpacken),
@@ -57,7 +57,7 @@
 	</section>
 
 	<section>
-		<title>Warum werden .iso und .tbz2 Datein mit Unterschiedlichen -r (Revisionen) erstellt/ver&#xF6;ffentlicht?</title>
+		<title>Warum werden .iso und .tbz2 Dateien mit Unterschiedlichen -r (Revisionen) erstellt/ver&#xF6;ffentlicht?</title>
 		<body><p>
 		Das Minimal-System aus dem .tbz2 Archiv braucht nur erneuert zu werden, wenn signifikante &#xC4;nderungen am Kern
 		von Gentoo Linux gemacht wurden (z. B. &#xC4;nderungen am Basislayout oder ein neues Profil) - dadurch sind .tbz2
@@ -119,7 +119,7 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 
 	<section>
 		<title>Wie lautet das Standard Root Passwort nach der Installation?</title>
-		<body><p>Das standard Passwort ist leer, einfach Enter dr&#xFC;cken.</p></body>
+		<body><p>Das Standard Passwort ist leer, einfach Enter dr&#xFC;cken.</p></body>
 	</section>
 
 	<section>
@@ -194,7 +194,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<section>
 		<title>Grub kann die stage x.y nicht finden?</title>
 		<body><p>
-		W&#xE4;hrend der Installation hat grub die boot Datein
+		W&#xE4;hrend der Installation hat grub die boot Dateien
 		nach <path>/boot/grub</path> (<path>/boot/boot/grub</path> in Gentoo Linux 1.0_rc5 und 
 		&#xE4;lter) kopiert. Grub sucht automatisch das Verzeichnis <path>/boot/grub</path> auf der Boot Partition ab.
 		(Wir empfehlen ihnen, eine ersatz nicht-auto boot Partition auf	<path>/boot</path> gemountet haben,
@@ -218,7 +218,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<!-- war noch englisch (JS)-->
 		<title>In welchem Format werden die Pakete gespeichert?</title>
 		<body><p>Die Pakete existieren in unserem Portage "Baum/Stammbaum/Archiv" als <e>ebuild</e> Autoerstell Skripte; Wir sind hauptsaechlich 
-		eine Port-Basierende Distribution, was wir meinen ist das wir Skripte (<c>.ebuild</c> Datein) und ein 
+		eine Port-Basierende Distribution, was wir meinen ist das wir Skripte (<c>.ebuild</c> Dateien) und ein
 		Spezieles System (Portage) damit man die Programme von den Quellcoden bauen kann. Wir erstellen normalerweise nur 
 		Binaere Pakete fuer Veroeffentlichung und "snapshots". Die <uri link="/doc/gentoo-howto.html">Development HOWTO
 		</uri> erklaert den Inhalt von ebuild Skripten.  Fuer eine komplette Binaere ISO Veroeffentlichung, erstellen wir 
@@ -344,29 +344,25 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<section>
 		<title>Ich m&#xF6;chte den <c>./configure</c> Schritt selber ausf&#xFC;hren. Geht das?</title>
 		<body><p>
-		<!--noch nicht &#xFC;bersetzt (JS)-->
-		Yes, but it is not trivial.  First do <c>man ebuild</c> followed by
-		<c>ebuild foo-x.y.z.ebuild unpack</c>.  Then <c>cd</c> to 
-		<path>/var/tmp/portage/foo-x.y.z/work</path>.  You can manually perform
-		the <c>./configure</c> and <c>make</c> steps yourself (you'll have to do
-		both, since Portage does not separate the configure and build steps).  To
-		have Portage finish the installation (so that you can easily remove it later,
-		should you desire to do so, and it will be registered in Portage as a possible
-		dependency) you first need to <c>touch /var/tmp/portage/foo-x.y.z/.compiled</c>
-		(tricking Portage into thinking that <c>ebuild foo-x.y.z.ebuild compile</c> has
-		completed), followed by <c>ebuild foo-x.y.z.ebuild merge</c>.
+		Ja, aber es ist nicht ganz einfach. Als erstes sollte <c>man ebuild</c> gefolgt von einem
+		<c>ebuild foo-x.y.z.ebuild unpack</c> ausf&#xFC;hren. Mit <c>cd</c> in das <path>/var/tmp/portage/foo-x.y.z/work</path>
+		Verzeichnis wechseln. Dort k&#xF6;nnen die Schritte f&#xFC;r <c>./configure</c> und <c>make</c>
+		selbst eingegeben werden (mann muss beide ausf&#xFC;hren, da Portage nicht zwischen den Konfigurations
+		und ebuild Schritten unterscheidet). Um mit Portage nun die restliche Installation durchzuf&#xFC;hren
+		(es kann dann sp&#xE4;ter ganz einfach, wenn gew&#xFC;nscht, wieder entfernt werden) wird mit <c>touch /var/tmp/portage/foo-x.y.z/.compiled</c> Portage mitgeteilt, dass
+		das ebuild von <c>ebuild foo-x.y.z.ebuild compile</c> schon abgeschlossen ist. Mit <c>ebuild foo-x.y.z.ebuild merge</c>
+		wird dann das Paket noch in das Portage Verzeichnis aufgenommen (und wird dar&#xFC;ber hinaus als m&#xF6;gliche
+		Abh&#xE4;ngigkeit eingetragen).
 		</p></body>
 	</section>
 
 	<section>
 		<title>Was, wenn rsync bei mir nicht funktioniert?</title>
 		<body><p>
-		If you're behind a firewall that doesn't permit
-		rsync traffic, then you can instead download the daily
-		/usr/portage snapshot from 
-		<uri>http://cvs.gentoo.org/snapshots</uri>.  Just unpack
-		the tarball (using <c>tar xvjf portage-foo.tbz2</c>) in
-		the <path>/usr</path> directory.
+		Wenn der Rechner sich hinter einem Firewall befindet, der die rsync Verbindungen blockiert, kann 
+		alternativ ein t&#xE4;glich aktualisierter Schnappschuss von /usr/portage unter <uri>http://cvs.gentoo.org/snapshots</uri>
+		heruntergeladen werden. Dieses wird mit <c>tar xvjf portage-foo.tbz2</c> in das <path>/usr</path> Verzeichnis
+		entpackt.
 		</p></body>
 	</section>
 
@@ -386,49 +382,45 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>Ich habe zuhause nur eine langsame Modem-Verbingund. Kann ich die Quellen woanders downloaded und dann zu meinem System hinzuf&#xFC;gen?</title>
+		<title>Ich habe zuhause nur eine langsame Modem-Verbindung. Kann ich die Quellen woanders herunterladen und dann zu meinem System hinzuf&#xFC;gen?</title>
 		<body><p>
-		Definitely. You can run <c>emerge --pretend package</c> to see what programs
-		are going to be installed. Download sources and bring them on any media
-		home. Put the sources into <path>/usr/portage/distfiles</path> and run
-		<c>emerge package</c> to see it picking up the sources you just brought in!
+		Nat&#xFC;rlich. Mit dem Befehl <c>emerge --pretend package</c> kann man sehen, welche Pakete f&#xFC;r die
+		Installation ben&#xF6;tigt werden. Die heruntergeladen Quelldateien k&#xF6;nnen nun &#xFC;ber ein Medium nach
+		Hause genommen werden und werden in das <path>/usr/portage/distfiles</path> Verzeichnis kopiert.
+		Anschliessend muss nur noch <c>emerge package</c> ausgef&#xFC;hrt werden, welches nun die mitgebrachten
+		Quelldateien verwendet.
+		</p></body>
+	</section>
+
+	<section>
+		<title>Die ganzen .tar.gz Quelldateien sammeln sich in /usr/portage/distfiles/ an und verbrauchen
+		wertvolle Plattenkapazit&#xE4;ten. K&#xF6;nnen diese Dateien gel&#xF6;scht werden?</title>
+		<body><p>
+		Ja, das ist ohne Probleme m&#xF6;glich. Aber wenn Sie eine langsame Internetverbindung besitzen, sollten
+		die Archive m&#xF6;glichst behalten, da manchmal f&#xFC;r ein einziges St&#xFC;ck Software mehrere verschiedene
+		Ebuilds existieren - bnach dem L&#xF6;schen des Archives muss das Paket neu aus dem Internet geladen werden.
 		</p></body>
 	</section>
 
 	<section>
 		<!--noch nicht &#xFC;bersetzt (JS)-->
-		<title>.tar.gz sources for installed software are piling up in /usr/portage/distfiles/ using 
-		valuable space. Is it safe to delete these files?</title>
-		<body><p>
-		Yes, you can safely delete these files. But if you are on a slow
-		connection, such as a modem, you might want to keep the archives if
-		possible; often several ebuilds will be released for the same version of
-		a specific piece of software  - if you have deleted the archive and you
-		upgrade the software it will have to be downloaded from the internet
-		again.
-		</p></body>
-	</section>
-
-	<section>
-		<!--noch nicht &#xFC;bersetzt (JS)-->
-		<title>How can I manage my own ebuilds without destroying them by (r)sync?</title>
+		<title>Wie kann ich meine eigenen ebuilds verwalten, ohne dass sie durch ein (r)sync &#xFC;berschrieben werden?</title>
 		<body>
-		<p>The simplest method is to use anonymous CVS instead of rsync, and 
-		maintain your local
-		ebuilds in /usr/portage/local.  Here's how to do it:</p>
+		<p>Am einfachsten geht dies mit Anonymous CVS und mit dem Aufbewahren der loaklen ebuilds in /usr/portage/local.
+		So wird es gemacht:</p>
 		<pre>
-# <i>emerge cvs</i> <comment>(if necessary)</comment>
-# <i>cd <path>/usr</path></i>
-# <i>cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs login</i> <comment>(hit &lt;enter&gt;)</comment>
-# <i>cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs get gentoo-x86</i>
-# <i>cp /usr/portage/distfiles/* gentoo-x86/distfiles/</i>
-# <i>cp -a /usr/portage/packages/* gentoo-x86/packages/</i>
-# <i>mv portage portage.old</i>
-# <i>ln -s gentoo-x86 portage</i>
-# <i>mkdir /usr/portage/local</i>
-# <i>echo local &gt;&gt; /usr/portage/profiles/categories</i>
-# <i>cp /etc/make.conf /etc/make.conf.orig</i>
-# <i>sed -e 's/#SYNC="cvs/SYNC="cvs/' /etc/make.conf.orig &gt; /etc/make.conf</i>
+		# <i>emerge cvs</i> <comment>(wenn nicht bereits erfolgt)</comment>
+		# <i>cd <path>/usr</path></i>
+		# <i>cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs login</i> <comment>( &lt;Enter&gt; dr&#xFC;cken)</comment>
+		# <i>cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs get gentoo-x86</i>
+		# <i>cp /usr/portage/distfiles/* gentoo-x86/distfiles/</i>
+		# <i>cp -a /usr/portage/packages/* gentoo-x86/packages/</i>
+		# <i>mv portage portage.old</i>
+		# <i>ln -s gentoo-x86 portage</i>
+		# <i>mkdir /usr/portage/local</i>
+		# <i>echo local &gt;&gt; /usr/portage/profiles/categories</i>
+		# <i>cp /etc/make.conf /etc/make.conf.orig</i>
+		# <i>sed -e 's/#SYNC="cvs/SYNC="cvs/' /etc/make.conf.orig &gt; /etc/make.conf</i>
 		</pre>
 		</body>
 	</section>
@@ -477,7 +469,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<body><p>Man muss <c>--login</c> in der ersten Zeile in <path>/opt/kde2.1/bin/startkde
 		</path> hinzuf&#xFC;gen, damit es so aussieht:</p>
 		<pre>#!/bin/sh --login</pre>
-		<p>Diese &#xC4;nderung wurde in h&#xF6;cheren KDE Version eingebaut.</p>
+		<p>Diese &#xC4;nderung wurde in neueren KDE Versionen bereits vorgenommen.</p>
 		</body>
 	</section>
 </chapter>
@@ -485,22 +477,20 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <chapter>
 	<title>Verwaltung</title>
 	<section>
-		<title>ReiserFS and filesystem corruption issues -- how to fix'em, etc</title>
+		<title>Probleme mit einem besch&#xE4;digten Dateisystem unter ReiserFS -- wie behebe ich das?</title>
 		<body>
 		<p>
-		<!--noch nicht &#xFC;bersetzt (JS)-->
-		ReiserFS has had serious problems with the 2.4-series kernels; we
-		highly recommend avoiding ReiserFS for the time being.  If your
-		ReiserFS partition is already corrupt, try booting the Gentoo 
-		Linux boot CD and run <c>reiserfsck --rebuild-tree</c> on
-		the corrupted filesystem.  This should make the filesystem consistent
-		again, although you may have lost some files or directories due
-		to the corruption.
+		ReiserFS hat grosse Probleme in Verbindung mit den 2.4 Kernel Reihen. Wir raten zur Zeit nachdr&#xFC;cklich
+		von der Verwendung mit ReiserFS ab. Wenn die ReiserFS Partition bereits besch&#xE4;digt ist, sollten Sie
+		mit der Gentoo Linux CD booten und <c>reiserfsck --rebuild-tree</c> auf das besch&#xE4;digte Dateisystem
+		ausf&#xFC;hren. Dies sollte die Konsistenz des Dateisystems wieder herstellen, auch wenn einige Dateien
+		oder Verzeichnisse durch die Besch&#xE4;digung verloren gegangen sein k&#xF6;nnen.
 		</p>
 		</body>
 	</section>
 <!-- Wenn's nich wichtig is, warum is das drin?
      Also Raus Damit (MK)
+     Stimme Dir zu (JS)
      is this still relevant? -cpm
 	<section>
 		<title>How to I view the timestamps in /var/log/syslog.d, etc. on a pre-1.0_rc5 Gentoo 
@@ -528,65 +518,59 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<title>Entwicklung</title>
 	<section>
 		<title>Wie kann ich Fehler melden?</title>
-		<body><p>F&#xF6;r Bugs in einem Spezielen Programm, kontaktieren sie den Programm Ersteller. Otherwise, use our
-		Bugzilla bug tracker at <uri>http://bugs.gentoo.org</uri>.  You can also visit us in
-		<c>#gentoo</c> on the <uri link="http://www.openprojects.net">OpenProjects</uri> IRC network.
+		<body><p>F&#xF6;r Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller. 
+		Alternativ k&#xF6;nnen Sie unsere Bugzilla Fehlermeldung unter <uri>http://bugs.gentoo.org</uri> verwenden.
+		Auch sind wir in im <uri link="http://www.openprojects.net">OpenProjects</uri> IRC Netzwerk unter 
+		<c>#gentoo</c> zu erreichen.
 		</p></body>
 	</section>
 
 	<section>
-		<title>How often are new releases made?</title>
-		<body><p>New releases are announced on the <uri link="http://lists.gentoo.org/mailman/listinfo/gentoo-announce">gentoo-announce</uri> 
-		mailing list<!-- TODO: approximatley every X months -->, In reality the packages themselves 
-		are updated shortly after the main authors release new code. As for when new Cd images etc
-		are released, that tends to be whenever there are any major updates to the base code, or when
-		new modules get added.</p></body>
+		<title>Wie oft gibt es Neuerscheinungen?</title>
+		<body><p>Neuerscheinungen werden in der <uri link="http://lists.gentoo.org/mailman/listinfo/gentoo-announce">gentoo-announce</uri>
+		Mailliste angek&#xFC;ndigt.<!-- TODO: approximatley every X months --> Im Normalfall werden die Pakete aktualisiert,
+		wenn von den Autoren neuer Quellcode bereitgestellt wird. Neue CD Images werden in der Regel nur dann erstellt,
+		wenn grosse Ver&#xE4;nderungen am Basissystem vorgenommen wurden, oder neue Module hinzugef&#xFC;gt werden.
+		</p></body>
 	</section>
 
 	<section>
-		<title>I would like a package to be added to Portage; how would I go about this?</title>
-		<body><p>Head over to <uri>http://bugs.gentoo.org</uri> and submit a new bug of the type
-		"ebuild".  Attach your ebuild to the bug report.</p></body>
+		<title>Ich m&#xF6;chte ein neues Paket in Portage einbringen? Wie gehe ich vor?</title>
+		<body><p>Unter <uri>http://bugs.gentoo.org</uri> sollte einfach ein Bug von der Sorte
+		"ebuild" erstellt werden.  Das ebuild sollte dann an diese Meldung angeh&#xE4;ngt werden.</p></body>
 	</section>
 
 	<section>
-		<title>How can I add a question or answer to this FAQ?</title>
-		<body><p>Submit a new bug over at <uri>http://bugs.gentoo.org</uri> and add it to the
-		"Docs-user" product.</p></body>
+		<title>Wie kann ich eine neue Frage zu diesem FAQ hinzuf&#xFC;gen?</title>
+		<body><p>Ebenfalls unter <uri>http://bugs.gentoo.org</uri> einen neuen Bugreport erstellen und
+		in der Kategorie "Docs-user" einreichen. Dies gilt allerdings nur f&#xFC;r die englischen Originaldokumente.
+		F&#xFC;r die deutschen &#xFC;bersetzungen gen&#xFC;gt eine Mail an gentoo-deutsch-dev@lists.berlios.de
+		</p></body>
 	</section>
 
 	<section>
-		<title>make -f Makefile.cvs on a KDE app produces "invalid unused variable" errors</title>
+		<title>make -f Makefile.cvs f&#xFC;r eine KDE Anwendung ergibt folgende Fehlermeldung: "invalid unused variable"</title>
 		<body><p>
-		Export <c>WANT_AUTOMAKE_1_4=1</c> for all KDE projects before running 
-		<c>make -f Makefile.cvs</c>. Also, for KDE2 apps export <c>WANT_AUTOCONF_2_1=1</c>, 
-		and for KDE3 apps export <c>WANT_AUTOCONF_2_5=1</c>.
+		F&#xFC;r alle KDE Projekte sollte vorher <c>WANT_AUTOMAKE_1_4=1</c> exportiert werden, bevor der Befehl
+		<c>make -f Makefile.cvs</c>ausgef&#xFC;hrt wird. F&#xFC;r KDE2 Anwendungen gilt analog: <c>WANT_AUTOCONF_2_1=1</c>,
+		und f&#xFC;r KDE3: <c>WANT_AUTOCONF_2_5=1</c>.
 		</p></body>
 	</section>
 
 
 	<section>
-   		<title>My speaker beeps like crazy while compiling Mozilla. How do I disable console beeps?
+   		<title>Mein eingebauter Lautsprecher piept wie verr&#xFC;ckt w&#xE4;hrend der kompilierung von Mozilla. Wie kann ich Piepst&#xF6;ne
+		in der Konsole ausschalten?
     		</title>
-    	<body>
-        <p>
-            Console beeps can be turned off using setterm, like this ;
-
-        <pre># <i>setterm -blength 0</i></pre>
-
-            If you would like to turn off the console beeps on boot
-            you need to put this command in  
-            <path>/etc/conf.d/local.start</path>. However, this only
-            disables beeps for the current terminal. To disable
-            beeps for other terminals, pipe the command output to the 
-            target terminal, like this ;
-
-        <pre># <i>setterm -blength 0 >/dev/vc/1</i></pre>
-
-            You need to replace /dev/vc/1 with the terminal
-            you would like to disable console beeps for.
-        </p>
-    	</body>
+ 		<body><p>
+		Piepst&#xF6;ne in der Konsole k&#xF6;nnen mit setterm ge&#xE4;ndert werden:
+		<pre># <i>setterm -blength 0</i></pre>
+		Sollen dies bei jedem Start ausgef&#xFC;hrt  werden, so muss dieser Befehl in <path>/etc/conf.d/local.start</path>
+		eingef&#xFC;gt werden. Dies deaktiviert allerdings nur das aktuelle Terminal. Wenn alle Terminals stumm geschaltet
+		werden sollen, sollte der Befehl auch auf die anderen Terminals geleitet werden:
+		<pre># <i>setterm -blength 0 >/dev/vc/1</i></pre>
+		F&#xFC;r /dev/vc/1 muss das gew&#xFC;nschte Terminal eingetragen werden.
+        	</p></body>
 	</section>
 </chapter>
 
@@ -599,7 +583,10 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 
 	<section>
 		<title>Wo kann man mehr Informationen &#xFC;ber Gentoo Linux finden?</title>
-		<body><p>Die Offizelle Gentoo Dokumentation kann bei <uri>http://www.gentoo.org</uri> gefunden werden. Homepage vom &#xDC;bersetzungsprojekt ins Deutsche <uri>http://gentoo-deutsch.berlios.de</uri>. Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verf&#xFC;gbar.</p></body>
+		<body><p>Die Offizelle Gentoo Dokumentation kann bei <uri>http://www.gentoo.org</uri> gefunden werden. 
+		Homepage vom &#xDC;bersetzungsprojekt ins Deutsche <uri>http://gentoo-deutsch.berlios.de</uri>. 
+		Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verf&#xFC;gbar.
+		</p></body>
 	</section>
 
 	<section>
@@ -611,17 +598,12 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 	<section>
 		<title>Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt?</title>
-		<body>
-		<!--noch nicht &#xFC;bersetzt (JS)-->
-		<p>A good first step is to browse through the relevant doumentation at <uri>http://www.gentoo.org/index-docs.html</uri>, 
-		failing that, the various Gentoo Linux mailing
-		lists listed on <uri>www.gentoo.org</uri>.  To search through the Gentoo mailling lists, Google
-		(<uri>www.google.com</uri>) is a wonderful resource: just enter "lists.gentoo.org foo" to search the
-		Gentoo mailing lists for "foo".  If all else fails, or you just want
-		to hang out with Gentoo folks, visit us on irc: <c>#gentoo</c>
-		on <uri>irc.openprojects.net</uri>.
-		</p>
-		</body>
+		<body><p>Als erster Schritt sollten die Dokumente unter <uri>http://www.gentoo.org/index-docs.html</uri> (in Deutsch:  <uri>http://www.gentoo.de</uri> )
+		durchforstet werden. Findet sich darin keine L&#xF6;sung, kann man sich in die verschiedenen Maillisten unter <uri>www.gentoo.org</uri> eintragen. Um
+		die Archive der Maillisten zu durchsuchen, ist Google (<uri>www.google.com</uri>) sehr praktisch. Einfach "lists.gentoo.org foo"
+		als Suchanfrage stellen. Alternativ kann auch ein Blick in das Forum (<uri>http://forums.gentoo.org/</uri>) helfen. Oder Sie stellen ihre
+		Frage im IRC unter <c>#gentoo</c> bzw. <c>#gentoo.de</c> von <uri>irc.openprojects.net</uri>.
+		</p></body>
 	</section>
 </chapter>
 </guide>
