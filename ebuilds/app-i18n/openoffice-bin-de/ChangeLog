@@ -1,6 +1,10 @@
 # ChangeLog for app-office/openoffice-bin
 # Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/ChangeLog,v 1.3 2003/09/28 15:26:49 dertobi123 Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/ChangeLog,v 1.4 2003/10/05 20:05:01 dertobi123 Exp $
+
+*openoffice-bin-de-1.1 (05 Oct 2003)
+
+    05 Oct 2003; T.Scherbaum <tobias.alexander@scherbaum.info> openoffice-bin-de-1.1
 
 *openoffice-bin-de-1.1_rc5 (28 Sep 2003)
 
