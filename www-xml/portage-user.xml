@@ -8,8 +8,8 @@
 <author title="Editor"><mail link="thomasfl@gentoo.org">Thomas Flavel</mail></author>
 <author title="&#220;bersetzung"><mail link="sebastian@beneke-it.de">Sebastian Beneke</mail></author>
 
-<abstract>Diese Anleitung soll einen kurzen Ueberblick geben, wie Sie Ihre Pakete aktuell halten und
-das System pflegen koennen.</abstract>
+<abstract>Diese Anleitung soll einen kurzen &#220;berblick geben, wie Sie Ihre Pakete aktuell halten und
+das System pflegen k&#246nnen.</abstract>
 
 <version>1.2.1</version>
 <date>04 Jun 2002</date>
@@ -21,8 +21,8 @@ das System pflegen koennen.</abstract>
 <title>Downloaden des Portage tree</title>
 <body>
 
-<p>Nachdem Sie Gentoo Linux installiert und ein wenig mit ihm gespielt haben, ist es m&#246;glich, da&#223; Sie Fehler 
-in einigen Paketen finden oder Sie wollen einfach nur die neusten Gentoo Linux Software Pakete installieren bzw.
+<p>Nachdem Sie Gentoo Linux installiert und ein wenig mit ihm gearbeitet haben, ist es m&#246;glich, da&#223; Sie Fehler 
+in einigen Paketen entdecken oder Sie wollen einfach nur die neusten Gentoo Linux Software Pakete installieren bzw.
 Ihre momentanen Pakete updaten. Um dies durchf&#252;hren zu k&#246;nnen m&#252;ssen Sie unseren neuesten Portage Ports Tree
 downloaden. Hier beschreiben wir wie es geht.</p>
 
@@ -36,7 +36,7 @@ rsync-x.y.z.tbz2</c>. Danach synchronisieren Sie Ihr Portage Verzeichnis mittels
 
 <p>Sie sollten regelm&#228;&#223;ig folgenden Befehl ausf&#252;hren um alte ebuild Scripte zu entfernen</p>
 
-<warn>Bitte beachten Sie, dass<c>emerge --clean rsync </c> alle Ihre pers&#246;nlichen Ver&#228;nderungen und Erg&#228;nzungen im 
+<warn>Bitte beachten Sie, dass <c>emerge --clean rsync </c> alle Ihre pers&#246;nlichen Ver&#228;nderungen und Erg&#228;nzungen im 
 <path>/usr/portage </path>tree l&#246;scht. Bitte verwenden Sie diesen Befehl mit Vorsicht.</warn>
 
 <pre>
@@ -101,8 +101,8 @@ Calculating dependencies......... done!
 [ebuild N  ] net-irc/xchat-1.4.3 to /
 </pre>
 
-<p>In diesem bestimmten Fall werden wir <path>xchat</path> auf eine
-Maschiene ohne X mergen.  So hat <c>emerge --pretend</c>
+<p>In diesem bestimmten Fall werden wir <path>xchat</path> auf einer
+Maschine ohne X installieren.  So hat <c>emerge --pretend</c>
 richtig festgestellt, da&#223; zun&#228;chst etliche Abh&#228;ngigkeiten erf&#252;llt werden m&#252;ssen. 
 Besonders <path>sys-libs/zlib</path> und <path>dev-libs/glib</path> m&#252;ssen aktualisiert 
 werden (U) und dann m&#252;ssen noch einige ebuilds (nat&#252;rlich inklusive <path>x11-base/xfree</path>) eingespielt werden (N).</p>
@@ -159,13 +159,13 @@ Calculating dependencies............................ done!
 GNOME Unterst&#252;tzung beinhalten sollte. Damit diese optionale GNOME Unterst&#252;tzung 
 korrekt compiliert werden kann, muss nat&#252;rlich GNOME zuerst installiert werden. 
 <c>emerge</c> erkennt dies alles und erg&#228;nzt verschiedene Pakete, die zur GNOME Installation
-ben&#246;tig werden zur Liste der ebuilds, die installiert werden sollen. In einigen F&#228;llen 
+ben&#246;tig werden zur Liste der zu installierenden ebuilds. In einigen F&#228;llen 
 kann es vorkommen, dass Ihre USE Variable nicht richtig gesetzt ist. Dadurch kann es 
 passieren, dass <c>emerge</c> unerwartete optionale Erweiterungen aktiviert oder ausschliesst. 
 Deshalb empfehle ich, dass Sie vor dem eigentlichen <c>emerge</c> immer ein <c>emerge --pretend</c> 
 ausf&#252;hren. Dies gilt besonders f&#252;r neue oder ungew&#246;hnliche ebuilds. Dadurch wissen Sie, was Sie erwartet. :) 
 Sobald alles OK aussieht k&#246;nnen Sie mit dem eigentlich <c>emerge</c> durch weglassen der 
-<c>--pretend</c> Option:</p>
+<c>--pretend</c> Option fortfahren:</p>
 
 <pre>
 # <i>emerge xchat-1.4.3.ebuild</i>
@@ -186,7 +186,7 @@ Diese Datenbank enth&#228;lt die installierten Dateien und ihre md5-Checksummen.
 <section>
 <body>
 
-<p>Der Standardweg um Pakete unter Gentoo Linux zu aktualisieren besteht daraus zun&#228;chst 
+<p>Der Standardweg um Pakete unter Gentoo Linux zu aktualisieren besteht darin, zun&#228;chst 
 die neuen Pakete zu installieren und danach die alten Pakete zu deinstallieren. Dies ist 
 sicher (und auch recht lustig) durchf&#252;hrbar. Zun&#228;chst installieren Sie das neue Paket 
 wie oben beschrieben. Danach deinstallieren Sie das alte Paket mittels:</p>
@@ -201,7 +201,7 @@ Dateien. Wenn eine Datei &#252;berschrieben oder modifiziert wurde, bleibt es im
 Dateisystem erhalten (vorrausgesetzt, dass Sie eine neuere Version installiert 
 haben). Wenn Sie also eine alte Version von xchat nach der Installation einer neuen 
 Version l&#246;schen (unmergen), wird die ausf&#252;hrbare Datei von xchat nicht gel&#246;scht, solange 
-es einen neueren Zeitstempel bzw. eine andere md5-Checksumme haben. Dieses sichere 
+sie einen neueren Zeitstempel bzw. eine andere md5-Checksumme hat. Dieses sichere 
 L&#246;schen ist wirklich Gro&#223;artig, da es sicherstellt, dass jeder Zeit eine Version der 
 Anwendung verf&#252;gbar ist. Sollten Sie zuerst gel&#246;scht haben w&#252;rde xchat f&#252;r einige Minuten 
 nicht verf&#252;gbar sein bis die neue Version runtergeladen, compiliert und installiert w&#228;re.</p>
@@ -216,5 +216,7 @@ aktiviert. Um weiter Informationen dazu zu erhalten geben sie <c>emerge --help c
 </section>
 </chapter>
 </guide>
+
+
 
 
