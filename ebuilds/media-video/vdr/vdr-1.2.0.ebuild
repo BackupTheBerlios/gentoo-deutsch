@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.2 2003/06/04 11:26:13 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.3 2003/06/05 07:39:07 mad Exp $
 
 IUSE="lirc"
 
@@ -19,6 +19,7 @@ DEPEND="virtual/glibc
 		>=linuxtv-dvb-1.0.0_pre2-r20030524
 		media-libs/jpeg
 		sys-libs/ncurses
+		app-admin/sudo
 		lirc? ( app-misc/lirc )
 		"
 
@@ -80,8 +81,8 @@ src_install() {
 		#cd ${i}
 		insinto /usr/lib/vdr
 		insopts -m0755
-		newins ${S}/PLUGINS/src/${i}/libvdr-${i}.so libvdr-${i}.so
-		dosym /usr/lib/vdr/libvdr-${i}.so /usr/lib/vdr/libvdr-${i}.so.1.2.0
+		newins ${S}/PLUGINS/src/${i}/libvdr-${i}.so libvdr-${i}.so.1.2.0
+		dosym /usr/lib/vdr/libvdr-${i}.so.1.2.0 /usr/lib/vdr/libvdr-${i}.so
 	done
 		
 
@@ -104,6 +105,8 @@ src_install() {
 	insinto /etc/vdr
 	doins [a-z]*.conf*
 	fowners vdr /etc/vdr
+	insinto /etc/vdr/plugins/.keep
+	fowners vdr /etc/vdr/plugins
 }
 
 pkg_preinst(){
