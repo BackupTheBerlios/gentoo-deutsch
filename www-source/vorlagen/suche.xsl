@@ -4,6 +4,32 @@
 <xsl:output method="html" encoding="iso-8859-15" indent="no"/>
 
 <xsl:template match="cgi:result_list">
+  <table cellpadding="0" cellspacing="0" class="resultlist">
+    <![CDATA[<!--loop: results-->]]>
+    <tr>
+      <tr>
+        <td class="title" colspan="2">
+          <![CDATA[<a href="<!--item: url-->"><!--item: title--></a>]]>
+        </td> 
+      </tr>
+      
+      <tr>
+        <td>Beschreibung</td>
+        <td>Daten</td>        
+      </tr>
+    
+      <tr>
+        <td colspan="2">&#160;</td>
+      </tr>    
+    
+    </tr>
+    
+  
+    <![CDATA[<!--end: results-->]]>
+  </table>
+  
+  <br/><br/>
+
   <table class="resultlist" cellpadding="0" cellspacing="0" border="0">
   <![CDATA[<!--loop: results-->]]>
     <tr>
