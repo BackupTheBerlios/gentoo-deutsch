@@ -1,7 +1,10 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.32 2003/12/14 11:47:45 fow0ryl Exp $
-
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.33 2003/12/24 15:08:57 rootshell Exp $
+*vdr-1.2.6-r4
+  24 Dez 2003; F.Schilhabel <fernsehleo@gmx.net>
+  initial import of r4 with new logic w/o gentoo-patch(es)
+  
 *vdr-1.2.6-r3
   13 Dez 2003; H.Ryll <henning.ryll@web.de>
   Now including new Complete-Patch "B" with improved OSD
