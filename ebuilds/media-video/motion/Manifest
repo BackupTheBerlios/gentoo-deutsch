@@ -1,4 +1,6 @@
+MD5 6c3d10cd20459e4c4a7f2abc0c314a77 motion-3.1.14.ebuild 1966
 MD5 21148fee856b36e86153054d65c91c10 motion-3.1.12.ebuild 2198
-MD5 590a06c06b6a8d3e9265d8e6f5a02c2f motion-3.1.13.ebuild 1966
+MD5 6c3d10cd20459e4c4a7f2abc0c314a77 motion-3.1.13.ebuild 1966
 MD5 49ed5498b0a5621bf34741aec69903ec files/digest-motion-3.1.12 65
+MD5 d4ef263fe576074f7bcd121faf4eb468 files/digest-motion-3.1.14 65
 MD5 fcfa6fe2c3fdb9a9aff7d81e937a4bca files/digest-motion-3.1.13 65
