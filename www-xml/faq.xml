@@ -131,6 +131,7 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 	</section>
 	<section>
 		<!-- Habe mal user eingedeutscht ;-) wenn nicht ok, nehm ichs gerne wieder raus (JS)-->
+		<!-- Okay! (MK) -->
 		<title>Wie kann man einen normalen Benutzer hinzuf&#xFC;gen?</title>
 		<body>
 		<p>Jeder weiss wohl, das es nicht sehr empfehlenswert ist immer <e>root</e> zu benutzen.
@@ -257,6 +258,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 
 	<section>
 		<!-- kompilieren mit c oder k ?? (JS)-->
+		<!-- Deutsch: k (MK) -->
 		<title>Wie kann ich globale Einstellungen zum kompilieren der Pakete einstellen?</title>
 		<body><p><path>/etc/make.conf</path> kann editiert werden, um globale und profil-spezifische
 		Standardeinstellungen zu &#xFC;berschreiben, die beim kompilieren und einf&#xFC;hren der Pakete verwendet werden.
@@ -438,13 +440,12 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
     		<title>Ich habe openssh auf meiner Box installiert, aber ich kann mich nur als root und nicht als normaler Benutzer von aussen einloggen.</title>
     		<body>
 		<p>
-		<!--noch nicht &#xFC;bersetzt (JS)-->
-		This is most probably because your user account doesn't have a valid shell specified. Check
-		for your user entry in 
-		<path>/etc/passwd</path> and see if it ends in /bin/bash (or any other shell). If it doesn't,
-		you must set a shell for the user. This is done using the usermod command, like this ;
+		Dies kann passieren wenn der Benutzer Account nicht ein richtiges shell eingestellt hat.
+		&#xDC;berpr&#xFC;fen Sie den Benutzer Eintrag in
+		<path>/etc/passwd</path> und sehen sie nach ob die Zeile mit /bin/bash (oder einem anderen Shell) endet. Wenn dies nicht der Fall ist,
+		m&#xFC;ssen sie einen Shell f&#xFC;r den User einstellen. Dies ist mit dem usermod Befehl m&#xF6;glich, wie dieses ;
 		</p>
-		<pre># <i>usermod -s /bin/bash myuser</i></pre>
+		<pre># <i>usermod -s /bin/bash meinuser</i></pre>
 		</body>
 	</section>
 	
@@ -472,7 +473,6 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<!--noch nicht &#xFC;bersetzt (JS)-->
 		<title>Warum liesst KDE nicht <path>/etc/profile</path>?</title>
 		<body><p>Man muss <c>--login</c> in der ersten Zeile in <path>/opt/kde2.1/bin/startkde
 		</path> hinzuf&#xFC;gen, damit es so aussieht:</p>
@@ -499,7 +499,9 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		</p>
 		</body>
 	</section>
-<!-- is this still relevant? -cpm -->
+<!-- Wenn's nich wichtig is, warum is das drin?
+     Also Raus Damit (MK)
+     is this still relevant? -cpm
 	<section>
 		<title>How to I view the timestamps in /var/log/syslog.d, etc. on a pre-1.0_rc5 Gentoo 
 		system?</title>
@@ -519,13 +521,14 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 
 </body>
 	</section>
+-->
 </chapter>
 
 <chapter>
 	<title>Entwicklung</title>
 	<section>
-		<title>Where can I report bugs?</title>
-		<body><p>For bugs within a specific program, contact the program's author. Otherwise, use our
+		<title>Wie kann ich Fehler melden?</title>
+		<body><p>F&#xF6;r Bugs in einem Spezielen Programm, kontaktieren sie den Programm Ersteller. Otherwise, use our
 		Bugzilla bug tracker at <uri>http://bugs.gentoo.org</uri>.  You can also visit us in
 		<c>#gentoo</c> on the <uri link="http://www.openprojects.net">OpenProjects</uri> IRC network.
 		</p></body>
