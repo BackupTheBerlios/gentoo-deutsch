@@ -1,6 +1,14 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-www/vdradmind/ChangeLog,v 1.1 2003/05/26 20:04:33 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-www/vdradmind/ChangeLog,v 1.2 2003/06/19 17:42:58 mad Exp $
+
+*vdradmind-0.91 (19 Jun 2003)
+  19 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
+  new version
+
+*vdradmind-0.90 (15 Jun 2003)
+  15 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
+  new version
 
 *vdradmind-0.24-pre13 (25 May 2003)
   26 May 2003; M.Hierling <mad@cc.fh-lippe.de> vdradmind-0.24-pre13 .ebuild
