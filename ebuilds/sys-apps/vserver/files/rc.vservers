@@ -1,7 +1,4 @@
-#!/bin/sh
-# chkconfig: 345 98 10
-# description: The vservers service is used to start and stop all
-#              the virtual servers.
+#!/sbin/runscript
 
 USR_SBIN=/usr/sbin
 
