@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/MailScanner/MailScanner-4.30.3.2.ebuild,v 1.2 2004/05/22 14:16:58 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/MailScanner/MailScanner-4.30.3.2.ebuild,v 1.3 2004/05/24 17:20:45 mad Exp $
 
 PV=4.30.3
 SUBVERSION=2
@@ -43,7 +43,7 @@ src_compile() {
 		-e "s/^\(Run As Group =\)$/\1 mail/" \
 		-e "s/^PID file.*/PID file = \/var\/run\/MailScanner\/MailScanner.pid/" \
 		${S}/etc/MailScanner.conf
-    sed -i "s/^\$ConfFile.*/\$ConfFile \=\ \'\/etc\/MailScanner\/Mailscanner\.conf\' unless \$ConfFile;/" \
+    sed -i "s/^\$ConfFile.*/\$ConfFile \=\ \'\/etc\/MailScanner\/MailScanner\.conf\' unless \$ConfFile;/" \
 		${S}/bin/MailScanner
 }
 
