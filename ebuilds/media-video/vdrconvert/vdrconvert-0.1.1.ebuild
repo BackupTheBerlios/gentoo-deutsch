@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.1.1.ebuild,v 1.1 2004/07/27 15:58:10 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.1.1.ebuild,v 1.2 2004/07/30 22:20:39 martini Exp $
 
 IUSE=""
 SCRIPT="vdrconvert"
@@ -108,12 +108,26 @@ src_install() {
 	doins ./share/vdrconvert/pva/* 
 	insinto ${CONV_DIR}/share/pX
 	doins ./share/vdrconvert/pX/* 
-	dodoc README README.EN README.GR minihowto
+	dodir /var/run/vdrconvert
+	keepdir /var/run/vdrconvert
+	fowners vdr:video /var/run/vdrconvert
+	dodir /var/log/vdrconvert
+	keepdir /var/log/vdrconvert
+	fowners vdr:video /var/log/vdrconvert
+	dodir /var/spool/vdrconvert
+	keepdir /var/spool/vdrconvert
+	fowners vdr:video /var/spool/vdrconvert
+#	dodoc README README.EN README.GR minihowto
 }
 
 pkg_postinst() {
 	einfo "setting rights in vdrconvert dir"
-	chown vdr:video ${CONV_DIR}
+#	[ -d /var/run/vdrconvert ] || mkdir /var/run/vdrconvert && fowners vdr:video /var/run/vdrconvert
+#	[ -d /var/spool/vdrconvert ] || mkdir /var/spool/vdrconvert && fowners vdr:video /var/spool/vdrconvert
+#	[ -d /var/log/vdrconvert ] || mkdir /var/log/vdrconvert && fowners vdr:video /video
+
+	fowners vdr:video ${CONV_DIR}
+	fowners vdr:video /var/log/vdrconvert
 #	ln -s ${CONV_DIR} /etc/vdr/vdrconvert
 	[ -d $HOMEDIR/.vdrconvert ]  ||  mkdir $HOMEDIR/.vdrconvert
 	[ -f $HOMEDIR/.vdrconvert/vdrconvert.env ] && mv $HOMEDIR/.vdrconvert/vdrconvert.env $HOMEDIR/.vdrconvert/vdrconvert.env.bak
@@ -125,4 +139,4 @@ pkg_postinst() {
 	einfo "Please make sure, that the user vdr can write to the destination directory"
 	einfo "You should also run 'rc-update add /etc/init.d/vdrconvert default'"
 	einfo
-	}
+}
