@@ -195,7 +195,12 @@
         Bugs nicht Upstream (den originalen Autoren). Berichten Sie Bugs an
         Gentoo, wenn nötig leiten wir diese an die Autoren weiter.
       </warn>
-
+      
+      <p>
+    		Wir sind auch im <uri link="http://www.freenode.net">FreeNode</uri> IRC Netzwerk unter 
+    		<c>#gentoo-bugs</c> zu erreichen.
+  		</p>
+      
       </body>
     </section>
 
@@ -1023,11 +1028,15 @@ $ <i>echo clear &gt;&gt; ~/.bash_logout</i>
 		<title>Wie kann ich Fehler melden?</title>
 		<body>
       
+      <warn>
+        Berichten Sie alle Bugs an <uri>bugs.gentoo.org</uri>! Berichten Sie die
+        Bugs nicht Upstream (den originalen Autoren). Berichten Sie Bugs an
+        Gentoo, wenn nötig leiten wir diese an die Autoren weiter.
+      </warn>
+
       <p>
-        Für Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller.
-        Alternativ können Sie unsere Bugzilla Fehlermeldung unter <uri>http://bugs.gentoo.org</uri> verwenden.
-    		Auch sind wir im <uri link="http://www.freenode.net">FreeNode</uri> IRC Netzwerk unter 
-    		<c>#gentoo</c> zu erreichen.
+    		Wir sind auch im <uri link="http://www.freenode.net">FreeNode</uri> IRC Netzwerk unter 
+    		<c>#gentoo-bugs</c> zu erreichen.
   		</p>
       
     </body>
