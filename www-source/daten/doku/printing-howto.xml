@@ -2,7 +2,7 @@
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version 1.21 -->
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/printing-howto.xml,v 1.8 2003/12/08 19:55:21 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/printing-howto.xml,v 1.9 2003/12/08 19:57:13 dertobi123 Exp $ -->
 
 <guide link = "/doc/de/printing-howto.xml">
 
@@ -190,7 +190,7 @@ der Zeit, die notwendigen Module zu laden:
 </p>
 
 <pre caption = "Laden der Parallel-Port Module">
- # <i>modprobe lp</i> <comment>(Nur für Nutzer eines 2.6er Kernels)</comment>
+# <i>modprobe lp</i> <comment>(Nur für Nutzer eines 2.6er Kernels)</comment>
 # <i>modprobe parport</i>
 # <i>modprobe parport_pc</i>
 </pre>
