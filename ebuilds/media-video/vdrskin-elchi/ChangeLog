@@ -1,0 +1,7 @@
+# ChangeLog for media-video/vdrskin-elchi
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrskin-elchi/ChangeLog,v 1.1 2004/08/02 12:45:27 austriancoder Exp $
+
+*vdrskin-elchi-0.0.1 (2 Aug 2004)
+  2 Aug 2004: Christian Gmeiner <christian at visual-page dot de>
+  inital ebuild (thanks to thoand from vdr-portal.de)
