@@ -18,7 +18,7 @@ Dieser Leitfaden ist eine Schritt-f&#252;r-Schritt-Anleitung um Gentoo Linux sic
 <section>
 <title>Wer sollte diesen Leitfaden lesen?</title>
 <body>
-<p>Anwender, die Gentoo Linux in einer Sever-basierten Umgebung verwenden und/oder den Wunsch nach mehr Sicherheit haben.</p>
+<p>Anwender, die Gentoo Linux in einer Server-basierten Umgebung verwenden und/oder den Wunsch nach mehr Sicherheit haben.</p>
 </body>
 </section>
 <section>
@@ -30,12 +30,12 @@ Dieser Leitfaden ist eine Schritt-f&#252;r-Schritt-Anleitung um Gentoo Linux sic
 <section>
 <title>Besonderer Dank gilt...</title>
 <body>
-<p>Ein besonderes Dankesch&#246;n geht an die folgenden Leute, f&#252;r das finden vieler Fehler, auch in der Rechtschreibung, Grammatik und Satzstellung.</p>
+<p>Ein besonderes Dankesch&#246;n geht an die folgenden Leute, f&#252;r das finden vieler Fehler, auch in der Rechtschreibung, Grammatik und Satzbau.</p>
 <p>Bjarke S&#248;rensen, Justin Lambert, Andreas Waschbuesch, Duncan Lissett, Sherman Boyd und Sami Dalouche.</p>
 </body>
 </section>
 <section>
-<title>Was ist f&#252;r die kommenden Versionen dieses Leitfadens zu erwarten:</title>
+<title>Was f&#252;r die kommenden Versionen dieses Leitfadens zu erwarten ist:</title>
 <body>
 <p>Version 0.4 (Erkennung von Eindringlingen)
 <ul>
@@ -54,7 +54,7 @@ Dieser Leitfaden ist eine Schritt-f&#252;r-Schritt-Anleitung um Gentoo Linux sic
 <li>Remote Pr&#252;fung</li>
 <li>Network Pr&#252;fung</li>
 <li>Host Pr&#252;fung</li>
-<li>Software pr&#252;fen</li>
+<li>Software Pr&#252;fung</li>
 </ul></p>
 <p>Version 1.0 (Nach Diskussionen)
 <ul>
@@ -65,7 +65,7 @@ Dieser Leitfaden ist eine Schritt-f&#252;r-Schritt-Anleitung um Gentoo Linux sic
 <li>...weitere Dinge...</li>
 <li>Systemwiederherstellung</li>
 </ul></p>
-<note>Bitte beachten sie, dass jede Version nur ein bestimmtes Thema als Schwerpunkt hat. Dies dient der Qualit&#228;tssicherung.</note>
+<note>Bitte beachten Sie, dass jede Version nur ein bestimmtes Thema als Schwerpunkt hat. Dies dient der Qualit&#228;tssicherung.</note>
 </body>
 </section>
 </chapter>
@@ -75,19 +75,19 @@ Dieser Leitfaden ist eine Schritt-f&#252;r-Schritt-Anleitung um Gentoo Linux sic
 <section>
 <title>Physische Sicherheit</title>
 <body>
-<p>Es ist ganz egal wieviele Sicherheitsprogramme sie laufen lassen, solange diese auf einfache Art umgangen werden k&#246;nnen, indem der Angreifer physischen Zugriff zu ihrem Rechner hat. Stellen sie sicher, dass ihre Hardware nicht ohne weiteres zug&#228;nglich ist, z.B. durch den Einbau in einen absperrbaren Server-Raum. Abschlie&#223;bare Geh&#228;use und Server-Schr&#228;nke sind ebenfalls eine gute Idee!
-F&#252; die gr&#246;&#223;m&#246;gliche Sicherheit sollten sie ihr BIOS auf das booten nur von ihrer Festplatte setzen. Das booten von Diskette oder CD-ROM sollte auch ausgeschaltet sein. Schlie&#223;lich kann man noch ein BIOS-Passwort vergeben - dies empfiehlt sich vor allen Dingen f&#252;r Laptop-Besitzer.</p>
+<p>Es ist ganz egal, wie viele Sicherheitsprogramme Sie laufen lassen, solange diese auf einfache Art umgangen werden k&#246;nnen, indem der Angreifer physischen Zugriff zu Ihrem Rechner hat. Stellen Sie sicher, dass Ihre Hardware nicht ohne weiteres zug&#228;nglich ist, z. B. durch den Einbau in einen absperrbaren Server-Raum. Abschlie&#223;bare Geh&#228;use und Server-Schr&#228;nke sind ebenfalls eine gute Idee!
+F&#252;r die gr&#246;&#223;tm&#246;gliche Sicherheit sollten Sie Ihr BIOS auf das Booten nur von Ihrer Festplatte setzen. Das Booten von Diskette oder CD-ROM sollte auch ausgeschaltet sein. Schlie&#223;lich kann man noch ein BIOS-Passwort vergeben - dies empfiehlt sich vor allen Dingen f&#252;r Laptop-Besitzer.</p>
 </body>
 </section>
 <section>
 <title>Welche Services sollten laufen?</title>
 <body>
-<p>Schreiben sie auf, welche Services auf ihrem Rechner laufen m&#252;ssen und welche es sollten. Dies wird ihnen helfen, eine bessere Partitionierung ihres Systems zu erstellen. Es wird au&#223;erdem ihre Strategie zur Erkennung von Eindringlingen einfacher machen.</p>
-<p>Nat&#252;rlich brauchen sie es nicht aufzuschreiben, wenn sie nur einen oder ein paar Rechner haben und sie der einzige sind, der diese nutzt.</p>
+<p>Schreiben Sie auf, welche Services auf Ihrem Rechner laufen m&#252;ssen und welche es sollten. Dies wird Ihnen helfen, eine bessere Partitionierung Ihres Systems zu erstellen. Es wird au&#223;erdem Ihre Strategie zur Erkennung von Eindringlingen einfacher machen.</p>
+<p>Nat&#252;rlich brauchen Sie es nicht aufzuschreiben, wenn Sie nur einen oder ein paar Rechner haben und Sie der Einzige sind, der diese nutzt.</p>
 <p>Beispiel:</p>
 <p>Der Computer soll als Firewall fungieren. Welche Services sollten laufen?</p>
 <p><i>keiner</i>, ausgenommen vielleicht ssh.</p>
-<p>Schreiben sie sich dies und die aktuelle Version von SSH auf - es wird ihnen dabei helfen, welches System zu aktualisieren ist, wenn ein Sicherheitsloch in sshd gefunden wird. Desweiteren wird es helfen festzulegen, wer Zugang zum System haben soll.</p>
+<p>Schreiben Sie sich dies und die aktuelle Version von SSH auf - es wird Ihnen dabei helfen, welches System zu aktualisieren ist, wenn ein Sicherheitsloch in sshd gefunden wird. Des Weiteren wird es helfen festzulegen, wer Zugang zum System haben soll.</p>
 </body>
 </section>
 <section>
@@ -95,9 +95,9 @@ F&#252; die gr&#246;&#223;m&#246;gliche Sicherheit sollten sie ihr BIOS auf das 
 <body>
 <p>Goldene Regeln:
 <ul>
-<li>Jeder Verzeichnisbaum, auf den ein Nutzer Schreibzugriff hat (<path>/home</path> und <path>/tmp</path> <path>/var</path>), sollte in einer seperaten Partition liegen und sollte Speicherplatzzuordnung (disk quotas) verwenden. Portage benutzt <path>/var/tmp</path> um Dateien zu &#252;bersetzen, deshalb sollte diese Partition m&#246;glichst gro&#223; sein. Dies vermindert das Risiko, das Nutzer ihren "/" Mount-Point zum&#252;llen.</li>
-<li>Jedeer Verzeichnisbaum, in den sie distributionsfremde Software installieren wollen, sollte auf einer extra Partition liegen. In Einvernehmen mit dem <uri link="http://www.pathname.com/fhs/">File Hierarchy Standard</uri> w&#228;ren dies <path>/opt</path> und <path>/usr/local</path>. Wenn dies seperate Partitionen sind, werden sie nicht gel&#246;scht, falls sie das System neu installieren m&#252;ssen.</li>
-<li>Wenn m&#246;glich sollten sie statische Daten auf eine eigene Partition verschieben und diese dann als nur-lesen (read-only) mounten. Wenn sie wirklich paranoid sind, k&#246;nnen sie statische Daten auch auf ein Read-Only-Medium wie z.B. CD-ROMs verschieben.</li>
+<li>Jeder Verzeichnisbaum, auf den ein Nutzer Schreibzugriff hat (<path>/home</path>, <path>/tmp</path> und <path>/var</path>), sollte in einer separaten Partition liegen und sollte Speicherplatzzuordnung (disk quotas) verwenden. Portage benutzt <path>/var/tmp</path>, um Dateien zu &#252;bersetzen, deshalb sollte diese Partition m&#246;glichst gro&#223; sein. Dies vermindert das Risiko, dass Nutzer ihren "/" Mount-Point zum&#252;llen.</li>
+<li>Jeder Verzeichnisbaum, in den Sie distributionsfremde Software installieren wollen, sollte auf einer extra Partition liegen. Im Einvernehmen mit dem <uri link="http://www.pathname.com/fhs/">File Hierarchy Standard</uri> w&#228;ren dies <path>/opt</path> und <path>/usr/local</path>. Wenn dies separate Partitionen sind, werden sie nicht gel&#246;scht, falls Sie das System neu installieren m&#252;ssen.</li>
+<li>Wenn m&#246;glich sollten Sie statische Daten auf eine eigene Partition verschieben und diese dann als nur-lesen (read-only) mounten. Wenn Sie wirklich paranoid sind, k&#246;nnen Sie statische Daten auch auf ein Read-Only-Medium wie z. B. CD-ROMs verschieben.</li>
 </ul>
 </p>
 </body>
@@ -105,44 +105,44 @@ F&#252; die gr&#246;&#223;m&#246;gliche Sicherheit sollten sie ihr BIOS auf das 
 <section>
 <title>Der Benutzer 'root'</title>
 <body>
-<p>Der Benutzer 'root' ist der m&#228;chtigste Nutzer im System und sollte f&#252;r nichts verwendet werden, au&#223;er es ist wirklich notwendig! Wenn ein Angreifer root-Zugang erh&#228;lt ist ihr System nicht mehr sicher - sie sollten es neu installieren!</p>
+<p>Der Benutzer 'root' ist der m&#228;chtigste Nutzer im System und sollte f&#252;r nichts verwendet werden, au&#223;er es ist wirklich notwendig! Wenn ein Angreifer root-Zugang erh&#228;lt, ist Ihr System nicht mehr sicher - Sie sollten es neu installieren!</p>
 <p>
 Goldene Regeln f&#252;r 'root':
 <ul>
-<li>Erstellen sie immer einen Benutzer f&#252;r die allt&#228;gliche Arbeit und wenn dieser Benutzer root-Zugriff ben&#256;tigt, dann f&#252;gen sie ihn der Gruppe 'wheel' hinzu. Dadurch wird es normalen Nutzer m&#246;glich per <c>su</c> zeitweise root-Rechte zu bekommen.</li>
-<li>Starten sie niemals X oder irgendeine andere Nutzer-Anwendung als root!</li>
-<li>Benutzen sie immer absolute Pfadangaben, wenn sie als root angemeldet sind! Es ist durchaus m&#246;glich root so auszutricksen, dass eine andere Anwendung gestartet wird anstatt der beabsichtigten - ohne dass sie es merken. Wenn zum Beispiel jemand an der PATH-Variable rumspielt und sie sich als root anmelden ohne <c>su -</c> zu verwenden, wird root den Pfad des Benutzers verwenden.</li>
-<li>Wenn ein normaler Nutzer nur wenige Kommandos, statt aller root-Rechte ben&#246;tigt, sollten sie sudo verwenden. Aber seien sie dabei vorsichtig!</li>
-<li>Lassen sie ein Terminal nie unbeaufsichtigt, wenn sie als root angemeldet sind!</li>
+<li>Erstellen Sie immer einen Benutzer f&#252;r die allt&#228;gliche Arbeit und wenn dieser Benutzer root-Zugriff ben&#246;tigt, dann f&#252;gen Sie ihn der Gruppe 'wheel' hinzu. Dadurch wird es normalen Nutzer erm&#246;glicht, per <c>su</c> zeitweise root-Rechte zu bekommen.</li>
+<li>Starten Sie niemals X oder irgendeine andere Nutzer-Anwendung als root!</li>
+<li>Benutzen Sie immer absolute Pfadangaben, wenn Sie als root angemeldet sind! Es ist durchaus m&#246;glich root so auszutricksen, dass eine andere Anwendung gestartet wird anstatt der beabsichtigten - ohne dass Sie es merken. Wenn zum Beispiel jemand an der PATH-Variable rumspielt und Sie sich als root anmelden ohne <c>su -</c> zu verwenden, wird root den Pfad des Benutzers verwenden.</li>
+<li>Wenn ein normaler Nutzer nur wenige Kommandos statt aller root-Rechte ben&#246;tigt, sollten Sie sudo verwenden. Aber seien Sie dabei vorsichtig!</li>
+<li>Lassen Sie ein Terminal nie unbeaufsichtigt, wenn Sie als root angemeldet sind!</li>
 </ul>
 </p>
-<p>Gentoo Linux hat generell einen Schutz gegen Nutzer die ein <c>su</c> versuchen. Die Voreinstellung von PAM besagen, dass ein Benutzer Mitglied der Gruppe 'wheel' sein muss, um su ausf&#252;hren zu k&#246;nnen.</p>
+<p>Gentoo Linux hat generell einen Schutz gegen Nutzer, die ein <c>su</c> versuchen. Die Voreinstellung von PAM besagen, dass ein Benutzer Mitglied der Gruppe 'wheel' sein muss, um su ausf&#252;hren zu k&#246;nnen.</p>
 </body>
 </section>
 <section>
 <title>Policies (in etwa Regeln, Vereinbarungen)</title>
 <title>Warum sind Policies notwendig?</title>
 <body>
-<p>Es gibt verschiedene Gr&#252;nde weshalb Policies notwendig sind.
+<p>Es gibt verschiedene Gr&#252;nde, weshalb Policies notwendig sind.
 <ul>
-<li>Sie k&#246;nnen kein sicheres Netzwerk verlangen ohne festzulegen, was ihrer Meinung nach Sicherheit ist. </li>
-<li>Es ist nahezu unm&#246;glich, potenzielle Angreifer zu fangen, Netzwerkprobleme zu beseitigen oder &#220;berpr&#242;fungen durchzuf&#242;hren, ohne auf den Netzwerkverkehr zu achten oder in private Home-Verzeichnisse zu schauen. Au&#223;erdem ist es in den meisten L&#228;ndern illegal, pers&#246;nliche Daten ohne Zustimmung des Eigent&#242;mers einzusehen. Weil aber &#252;ber 60% aller Angriffe aus dem Inneren einer Organisation kommen, ist es wichtig, dass sie immer ein Auge (oder besser zwei) offen halten.</li>
-<li>Sie k&#246;nnen von ihren Benutzer nicht erwarten &#252;ber Sicherheit nachzudenken, ohne dass sie jemals erl&#228;utert haben, warum diese wichtig ist und wie sie sich selbst oder ihre Mitarbeiter sch&#252;tzen k&#246;nnen.</li>
-<li>Gute Leitf&#246;den und Netzwerkdokumentationen - ganz gleich welche - zahlen sich immer aus.</li>
-<li>Polizei und Gesetzgeber wird ihnen beim fangen der Angreifer nicht helfen k&#246;nnen, wenn diese nicht ihre Netzwerkkonfiguration oder die Dienste, die sie anbieten kennen.</li>
-<li>Was werden sie machen, wenn es zu einem Angriff gekommen ist? Sie m&#252;ssen festlegen was zu tun ist und wen sie dar&#252;ber informieren m&#252;ssen. Werden sie bei jedem Vorfall die Polizei verst&#246;ndigen? Man wird sie sicher nicht ernst nehmen!</li>
+<li>Sie k&#246;nnen kein sicheres Netzwerk verlangen ohne festzulegen, was Ihrer Meinung nach Sicherheit ist. </li>
+<li>Es ist nahezu unm&#246;glich, potenzielle Angreifer zu fangen, Netzwerkprobleme zu beseitigen oder &#220;berpr&#252;fungen durchzuf&#252;hren, ohne auf den Netzwerkverkehr zu achten oder in private Home-Verzeichnisse zu schauen. Au&#223;erdem ist es in den meisten L&#228;ndern illegal, pers&#246;nliche Daten ohne Zustimmung des Eigent&#252;mers einzusehen. Weil aber &#252;ber 60% aller Angriffe aus dem Inneren einer Organisation kommen, ist es wichtig, dass Sie immer ein Auge (oder besser zwei) offen halten.</li>
+<li>Sie k&#246;nnen von Ihren Benutzer nicht erwarten, &#252;ber Sicherheit nachzudenken, ohne dass Sie jemals erl&#228;utert haben, warum diese wichtig ist und wie Sie sich selbst oder Ihre Mitarbeiter sch&#252;tzen k&#246;nnen.</li>
+<li>Gute Leitf&#228;den und Netzwerkdokumentationen - ganz gleich welche - zahlen sich immer aus.</li>
+<li>Polizei und Gesetzgeber werden Ihnen beim Fangen der Angreifer nicht helfen k&#246;nnen, wenn diese nicht Ihre Netzwerkkonfiguration oder die Dienste, die Sie anbieten kennen.</li>
+<li>Was werden Sie machen, wenn es zu einem Angriff gekommen ist? Sie m&#252;ssen festlegen, was zu tun ist und wen Sie dar&#252;ber informieren m&#252;ssen. Werden Sie bei jedem Vorfall die Polizei verst&#228;ndigen? Man wird Sie sicher nicht ernst nehmen!</li>
 </ul>
 </p>
-<p>Die oben genannten Punkte sollten klarstellen, warum es auf Systemen mit mehr als einem Benutzer notwendig ist, Regeln festzulegen und weshalb es wichtig ist, die Benutzer &#252;ber Sicherheitsaspekte aufzukl&#228;ren</p>
-<p>Eine Policy sind ein oder mehrere Dokumente mit Antworten auf Fragen wie z.B. wer, wo, warum und was. Jeder Benutzer ihres Systems/Netzwerks sollte diese lesen, verstehen und unterschreiben. Es ist wichtig, dass sie sich Zeit nehmen den Benutzer zu helfen die Policy zu verstehen und warum es notwendig ist, diese zu unterschreiben und ihn au&#223;erdem die Folgen von Regelverst&#246;&#223;en zu erl&#228;utern (Die Policy sollte auch diese festlegen). Dies sollte mindestens einmal pro Jahr wiederholt werden - zum einen kann sich die Policy &#228;ndern, zum anderen als Erinnerung f&#252;r den Benutzer.</p>
-<note>Erstellen sie eine Policy die einfach zu lesen und zu verstehen ist, die aber auch jeden Fall genau abdeckt.</note>
+<p>Die oben genannten Punkte sollten klarstellen, warum es auf Systemen mit mehr als einem Benutzer notwendig ist, Regeln festzulegen und weshalb es wichtig ist, die Benutzer &#252;ber Sicherheitsaspekte aufzukl&#228;ren.</p>
+<p>Eine Policy ist ein oder mehrere Dokumente mit Antworten auf Fragen wie z. B. wer, wo, warum und was. Jeder Benutzer Ihres Systems/Netzwerks sollte diese lesen, verstehen und unterschreiben. Es ist wichtig, dass Sie sich Zeit nehmen, den Benutzern zu helfen, die Policy zu verstehen und warum es notwendig ist, diese zu unterschreiben und ihnen au&#223;erdem die Folgen von Regelverst&#246;&#223;en zu erl&#228;utern (Die Policy sollte auch diese festlegen). Dies sollte mindestens einmal pro Jahr wiederholt werden - zum einen kann sich die Policy &#228;ndern, zum anderen als Erinnerung f&#252;r den Benutzer.</p>
+<note>Erstellen Sie eine Policy, die einfach zu lesen und zu verstehen ist, die aber auch jeden Fall genau abdeckt.</note>
 <p>Die meisten Teile einer Policy k&#246;nnen direkt im Betriebssystem oder mit Hilfe einer Firewall festgelegt werden, andere wiederum nicht.</p>
 </body>
 </section>
 <section>
 <title>Security policies (Sicherheitsregeln)</title>
 <body>
-<p>Eine Security-Policy ist im Grunde genommen eine Sammlung von Regeln, die ihre Netzwerk/Host-Sicherheit sicherstellen. Es ist quasi ein gro&#223;es Dokument, das Informationen dar&#252;ber enth&#228;lt wie Computer, Netzwerke, Passw&#246;rter und EMails beschaffen oder nicht beschaffen sein sollten und nat&#252;rlich wie sich Benutzer verhalten oder nicht verhalten d&#252;rfen. Weiterhin sollte die Policy festlegen wie man sich bei Angriffen zu verhalten hat, wie Rechner (Workstations, Servers etc.) beschaffen sind, wie die Infrastruktur ist usw.</p>
+<p>Eine Security-Policy ist im Grunde genommen eine Sammlung von Regeln, die Ihre Netzwerk/Host-Sicherheit sicherstellen. Es ist quasi ein gro&#223;es Dokument, das Informationen dar&#252;ber enth&#228;lt, wie Computer, Netzwerke, Passw&#246;rter und EMails beschaffen oder nicht beschaffen sein sollten und nat&#252;rlich, wie sich Benutzer verhalten oder nicht verhalten d&#252;rfen. Weiterhin sollte die Policy festlegen, wie man sich bei Angriffen zu verhalten hat, wie Rechner (Workstations, Servers etc.) beschaffen sind, wie die Infrastruktur ist usw.</p>
 <p>Eine Security-Policy sollte mindestens die folgenden Punkte beinhalten:
 <ul>
 <li>Erlaubte Benutzung
@@ -157,35 +157,35 @@ Goldene Regeln f&#252;r 'root':
 </li>
 <li>Datenschutzrichtlinien
 <ul>
-<li>Aufr&#228;umen des Arbeitsplatzes und verschlie&#223;en sensitiver Daten</li>
+<li>Aufr&#228;umen des Arbeitsplatzes und Verschlie&#223;en sensitiver Daten</li>
 <li>Herunterfahren des Computers bevor man geht</li>
 <li>Nach M&#246;glichkeit Verschl&#252;sselung verwenden</li>
 <li>Umgang mit Schl&#252;sseln vertrauensw&#252;rdiger Mitarbeiter</li>
-<li>Umgang mit bestimmten Material beim Verreisen</li>
+<li>Umgang mit bestimmtem Material beim Verreisen</li>
 </ul>
 </li>
 <li>Umgang mit Computer-Zubeh&#246;r bei Reisen
 <ul>
-<li>Verwahren des Laptops w&#228;rend Reisen und Hotelaufenthalten</li>
+<li>Verwahren des Laptops w&#228;hrend Reisen und Hotelaufenthalten</li>
 </ul>
 </li>
 </ul>
 </p>
 <p>Die Policy f&#252;r die IT-Abteilung sollte sich etwas von der normaler Benutzer unterscheiden.</p>
-<p>Die Security-Policy kann sehr gro&#223; werden und neue/ver&#228;nderte Informationen k&#246;nnen schnell vergessen werden oder nicht auf alle Benutzer angewendet werden. Die Policy f&#252;r die IT-Abteilung kann auch Informationen enthalten, die f&#252;r normale Benutzer gelten, smoit ist es sinnvoll diese in mehrere kleine Policies aufzuteilen, wie z.B.: Policy f&#252;r erlaubte Handlungen, Passwort-Policy, EMail-Policy und eine Policy die den Zugang von au&#223;erhalb des Netzwerks regelt.</p>
-<p>Beispiele f&#252;r Policies gibt es bei dem <uri link="http://www.sans.org/newlook/resources/policies/policies.htm">The SANS Security Policy Project</uri>. Wenn sie nur ein kleines Netzwerk haben und glauben, dass diese Policies zu viel des Guten sind, sei ihnen ein Blick in das <uri link="http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2196.html">RFC 2196</uri> empfohlen. Dieses RFC ist ein Online-Sicherheitshandbuch.</p>
+<p>Die Security-Policy kann sehr gro&#223; werden und neue/ver&#228;nderte Informationen k&#246;nnen schnell vergessen werden oder nicht auf alle Benutzer angewendet werden. Die Policy f&#252;r die IT-Abteilung kann auch Informationen enthalten, die f&#252;r normale Benutzer gelten; somit ist es sinnvoll diese in mehrere kleine Policies aufzuteilen, wie z. B.: Policy f&#252;r erlaubte Handlungen, Passwort-Policy, EMail-Policy und eine Policy, die den Zugang von au&#223;erhalb des Netzwerks regelt.</p>
+<p>Beispiele f&#252;r Policies gibt es bei dem <uri link="http://www.sans.org/newlook/resources/policies/policies.htm">The SANS Security Policy Project</uri>. Wenn Sie nur ein kleines Netzwerk haben und glauben, dass diese Policies zu viel des Guten sind, sei Ihnen ein Blick in das <uri link="http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2196.html">RFC 2196</uri> empfohlen. Dieses RFC ist ein Online-Sicherheitshandbuch.</p>
 </body>
 </section>
 </chapter>
 
 <chapter>
-<title>Die Sicherheit w&#228;rend/nach der Installation anpassen</title>
+<title>Die Sicherheit w&#228;hrend/nach der Installation anpassen</title>
 <section>
 <title>/etc/make.conf</title>
 <body>
-<p>Die Datei make.conf beinhaltet alle Optionen und Zusatz-Bibliotheken, von der sie wollen, dass sie beim &#220;bersetzen der ebuilds einbezogen werden. In dieser Datei m&#252;ssen sie festlegen, ob ein in ebuilds die Unterst&#252;tzung von Sicherheitsbibliotheken wie z.B. PAM (Pluggable Authentication Modules), tcp wrappers oder SSL (Security Socket Layer) einbezogen werden soll. Ihre globalen USE-Variablen m&#252;ssen pam, tcpd und ssl beinhalten.</p>
+<p>Die Datei make.conf beinhaltet alle Optionen und Zusatz-Bibliotheken, von der Sie wollen, dass sie beim &#220;bersetzen der ebuilds einbezogen werden. In dieser Datei m&#252;ssen Sie festlegen, ob die in ebuilds angebotene Unterst&#252;tzung von Sicherheitsbibliotheken wie z.B. PAM (Pluggable Authentication Modules), tcp wrappers oder SSL (Security Socket Layer) einbezogen werden sollen. Ihre globalen USE-Variablen sollten pam, tcpd und ssl beinhalten.</p>
 <p>
-Deshalb d&#252;rfen sie <i>nie</i> etwas wie folgendes hinzuf&#252;gen:
+Deshalb d&#252;rfen Sie <i>nie</i> etwas wie folgendes hinzuf&#252;gen:
 <pre>
 USE="-tcpd -pam -ssl"
 </pre>
@@ -196,17 +196,17 @@ USE="-tcpd -pam -ssl"
 <title>GRUB/LILO Passwort</title>
 <title>GRUB</title>
 <body>
-<p>GRUB unterst&#252;tzt zwei verschiedene Arten einen Passwortschutz in die Konfigurationsdatei (<path>/boot/grub/menu.1st</path>) einzutragen. Zum einen als reinen Text und zum anderen als Passwort in md5+salt Verschl&#252;sselung.
+<p>GRUB unterst&#252;tzt zwei verschiedene Arten, einen Passwortschutz in die Konfigurationsdatei (<path>/boot/grub/menu.1st</path>) einzutragen. Zum einen als reinen Text und zum anderen als Passwort in md5+salt Verschl&#252;sselung.
 <pre caption="/boot/grub/menu.lst">
 timeout 5
 password changeme
 </pre>
 </p>
 <p>
-Dieser Weg f&#252;gt das Passwort "changeme" hinzu und wenn beim booten kein Passwort eingegeben wird, wird die Standard-Boot-Einstellung verwendet. 
+Dieser Weg f&#252;gt das Passwort "changeme" hinzu und wenn beim Booten kein Passwort eingegeben wird, wird die Standard-Boot-Einstellung verwendet. 
 </p>
 <p>
-Falls sie ein md5-Passwort verwenden wollen, m&#252;ssen sie dieses erst in das crypt-Format (<c>man crypt</c>) umwandeln, welches das gleiche Format hat, wie der shadow file. Zum Beispiel k&#246;nnte das Passwort "changeme" verschl&#252;sselt wie folgt aus sehen: $1$T7/dgdIJ$dJM.n2wZ8RG.oEiIOwJUs.
+Falls Sie ein md5-Passwort verwenden wollen, m&#252;ssen Sie dieses erst in das crypt-Format (<c>man crypt</c>) umwandeln, welches das gleiche Format hat, wie der shadow file. Zum Beispiel k&#246;nnte das Passwort "changeme" verschl&#252;sselt wie folgt aussehen: $1$T7/dgdIJ$dJM.n2wZ8RG.oEiIOwJUs.
 </p>
 <p>
 Oder auch dies:
@@ -216,19 +216,19 @@ password --md5 $1$T7/dgdIJ$dJM.n2wZ8RG.oEiIOwJUs.
 </pre>
 </p>
 <p>
-<warn>Wenn sie dies hier testen, dann vergessen sie nicht den timeout zu setzen! Andernfalls werden sie das System nicht booten k&#246;nnen, falls ihr Passwort falsch ist.</warn>
+<warn>Wenn Sie dies hier testen, dann vergessen Sie nicht den timeout zu setzen! Andernfalls werden Sie das System nicht booten k&#246;nnen, falls Ihr Passwort falsch ist.</warn>
 </p>
 <p>
-Der timeout von 5 Sekunden ist sehr praktisch, falls das System per remote l&#228;uft und es ohne Tastaturinteraktion neu starten soll. Mehr &#252;ber GRUB erfahren sie durch die Eingabe von <c>info grub</c>.
+Der timeout von 5 Sekunden ist sehr praktisch, falls das System per remote l&#228;uft und es ohne Tastaturinteraktion neu starten soll. Mehr &#252;ber GRUB erfahren Sie durch die Eingabe von <c>info grub</c>.
 </p>
 </body>
 </section>
 <section>
 <title>LILO</title>
 <body>
-<p>LILO unterst&#252;tzt ebenfalls zwei Wege mit Passw&#246;rtner umzugehen: global und per-image, beide als reiner Text.</p>
+<p>LILO unterst&#252;tzt ebenfalls zwei Wege, mit Passw&#246;rtern umzugehen: global und per-image, beide als reiner Text.</p>
 <p>
-Wenn sie global w&#228;hlen, muss dies am Anfang der Konfigurationsdatei stehen:
+Wenn Sie global w&#228;hlen, muss dies am Anfang der Konfigurationsdatei stehen:
 <pre caption="/etc/lilo.conf">
 password=changeme
 restricted
@@ -236,7 +236,7 @@ delay=3
 </pre>
 </p>
 <p>
-Andernfalls f&#252;gen sie es einfach einem Image hinzu:
+Andernfalls f&#252;gen Sie es einfach einem Image hinzu:
 <pre caption="/etc/lilo.conf">
 image=/boot/bzImage
       read-only
@@ -245,7 +245,7 @@ image=/boot/bzImage
 </pre>
 </p>
 <p>Wenn die Option <i>restricted</i> nicht angegeben wird, wird immer ein Passwort verlangt!</p>
-<p>Damit die neuen Einstellungen wirksam werden, m&#252;ssen sie <c>/sbin/lilo</c> ausf&#252;hren.</p>
+<p>Damit die neuen Einstellungen wirksam werden, m&#252;ssen Sie <c>/sbin/lilo</c> ausf&#252;hren.</p>
 </body>
 </section>
 
