@@ -1,0 +1,10 @@
+# ChangeLog for sys-app/checkinstall
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/checkinstall/ChangeLog,v 1.1 2002/07/05 23:09:11 holler Exp $
+
+*checkinstall-1.5.2 (06 Jul 2002)
+
+  06 Jul 2002; Alexander Holler <holler@ahsoftware.de>
+
+  Initial checkin of this package.
+
