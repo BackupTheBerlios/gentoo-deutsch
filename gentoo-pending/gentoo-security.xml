@@ -253,51 +253,53 @@
 			festzulegen und warum es wichtig ist, die Anwender zu erziehen.
 		</p>
 		<p>
-			A policy is a document (or several documents) with answers to questions like who, where, why and what.
-			Every user on your system/network should read, understand and sign it. It is important that you take the
-			time to help the users understand the policy and why the policy needs to be signed or what will happens
-			if they act directly against the policy (the policy should also state this). This should be repeated at
-			least once a year since the policy can change but also as a reminder to the user.
+			Eine Richtlinie ist ein Dokument (oder mehrere Dokumente) mit Antworten auf die Fragen "wer", "wo", "warum" und "was".
+			Jeder Anwender in Ihrem System/Netzwerk sollte es lesen, verstehen und unterschreiben. Es ist wichtig, daß Sie sich die
+			Zeit nehmen den Anwendern beim Verstehen der Richtlinie helfen: dem Grund, weshalb diese Richtlinie unterschrieben werden muß und
+			was passiert, wenn sie direkt gegen die Richtlinie verstossen (dies sollte in der Richtlinie aufgeführt sein). Dies
+			sollte mindestens einmal im Jahr wiederholt werden, da sich die Richtlinie ändern kann, aber auch um die Anwender immer
+			wieder aufs Neue daran zu erinnern.
 		</p>
 		<note>
-			Create policies that are easy to read and be very clear/specific on every subject.
+			Erstellen Sie Richtlinien, die einfach zu lesen sind und sich klar und direkt zu jedem Thema äußern.
 		</note>
 		<p>
-			Most parts of a policy can be enforced directly in the operating system or through firewalls and others cannot.
+			Manche Teile einer Richtlinie können direkt im Betriebssystem unterstützt werden, manche nicht.
 		</p>
 	</body>
 	</section>
 
 	<section>
-	<title>Security policies</title>
+	<title>Sicherheitsrichtlinien</title>
 	<body>
 		<p>
-			A security policy is basically a set of rules that will insure your network/host security. It is basically
-			a document containing information on how computer, network, password, email and even how users should or should
-			not behave, how to act then attacked, how machines (workstation/servers) are installed, infrastructure etc.
+			Eine Sicherheitsrichtlinie ist nichts anderes als ein Satz von Regeln der Ihre Netzwrk-/Rechnersicherheit sichern soll.
+			Es ist eigentlich ein Dokument mit Informationen darüber, wie Computer, Netzwerk, Passwort, E-Mail und sogar die Anwender
+			sich verhalten bzw. nicht verhalten sollen, was zu tun ist, wenn ein Angriff stattfand, wie die Maschinen (Arbeitsplatz/Server)
+			zu installieren sind, Infrastruktur, usw.
 		</p>
 		<p>
-			A security policy should at least contain the following subjects:
+			Eine Sicherheitsrichtlinie sollte mindestens die folgenden Punkte beinhalten:
 		</p>
 		<ul>
 			<li>
-				Acceptable use.
+				Akzeptable Anwendung
 			</li>
 			<ul>
   				<li>
-					Screen savers.
+					Bildschirmschoner
 				</li>
   				<li>
-					Password handling.
+					Behandlung von Kennwörtern
 				</li>
   				<li>
-					Download of software.
+					Herunterladen von Programmen
 				</li>
   				<li>
-					Knowledge of if they are being monitored.
+					Wissen darüber, ob diese überwacht werden
 				</li>
   				<li>
-					Use of anti-virus software.
+					Benutzung von Antiviren-Software
 				</li>
   				<li>
 					etc.
@@ -305,51 +307,51 @@
 			</ul>
 
 			<li>
-				Handling of sensitive information (any written form, paper or digital).
+				Behandlung von sensitiven Daten (jegliche Schriftliche Form, Papier oder digital)
 			</li>
 			<ul>
   				<li>
-					Clean desk and locked up classified information.
+					Sauberer Schreibtisch und verschlossene, vertrauliche Informationen
 				</li>
   				<li>
-					PC shutdown before leaving.
+					PC herunterfahren vorm Verlassen
 				</li>
   				<li>
-					Use of encryption.
+					Benutzung von Verschlüsselung
 				</li>
   				<li>
-					Handling of keys to trusted co-workers.
+					Behandlung von Schlüsseln für vertraute Mitarbeiter
 				</li>
   				<li>
-					Handling of classified material when traveling.
+					Behandlung von vertraulichem Material auf Reisen
 				</li>
 			</ul>
 
 			<li>
-				Handling of computer equipment when traveling.
+				Behandlung der Computerausstattung auf Reisen.
 			</li>
 			<ul>
     			<li>
-					Laptop handling during travels and hotel stays.
+					Behandlung des Laptops auf Reisen und bei Hotelaufenthalten.
 				</li>
 			</ul>
 		</ul>
 
 		<p>
-			The policy for the IT-staff might be a bit different then the normal users.
+			Die Richtlinie für die IT-Abteilung kann sich von der für die normalen Angestellten leicht unterscheiden.
 		</p>
 		<p>
-			The security policy can become huge, and vital information can easily be forgotten.
-			The IT-staff's policy could contain information that is classified for the ordinary
-			user, so it is wise to split it up into small policies; i.e. Acceptable Use Policy,
-			Password policy, Email policy and Remote Access policy.
+			Die Sicherheitsrichtlinie kann riesig werden und wichtige Informationen können leicht vergessen gehen.
+			Die Richtline für die IT-Abteilung kann Informationen enthalten, die gegenüber den normalen Benutzern
+			als vertraulich gelten. Somit ist es sinnvoll, sich in kleinen Richtlinien fort zu bewegen: Richtlinie
+			für akzeptable Bedienung, Richtlinie für Passwörter, für E-Mail und für Fernzugriff.
 		</p>
 		<p>
-			Examples of policies can be found at the
+			Beispiele für Richtlinien können beim
 			<uri link="http://www.sans.org/newlook/resources/policies/policies.htm">The SANS Security Policy Project</uri>.
-			If you have a small network and think these policies is to much you should look at
-			<uri link="http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2196.html">RFC2196</uri> which is a site
-			security handbook.
+			gefunden werden. Wenn Sie ein kleines Netzwerk haben und diese Richtlinie für zu gross halten, dann sollten sie einen
+			Blick auf das
+			<uri link="http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2196.html">RFC2196</uri> werfen, dass ein Sicherheitshandbuch darstellt
 		</p>
 	</body>
 	</section>
@@ -362,17 +364,20 @@
 -- Tightening the security after/during installation start --
 
 <chapter>
-<title>Tightening the security after/during installation</title>
+<title>Die Sicherheit nach/während der Installation anziehen</title>
 <section>
 <title>/etc/make.conf</title>
 <body>
 
 <p>
-The make.conf file contains all the options and extra libraries that you want to have support for when building ebuilds. In this file you must make sure that if the ebuild supports any security library like PAM (Pluggable Authentication Modules), tcp wrappers or SSL (Secure Socket Layer) it will add support for it. Your global USE variable should contain pam, tcpd and ssl.
+Die make.conf-Datei enthält alle Optionen und Extra-Bibliotheken die Sie während der Abarbeitung von
+Ebuilds benutzen möchten. In dieser Datei sollten Sie sicherstellen, daß das Ebuild jede nur erdenkliche
+Sicherheitsbibliothek wie z.B. PAM (Pluggable Authentication Module), TCP Wrapper oder SSL unterstützt, wenn es
+dies kann. Die globale USE-Variable sollte pam, tcpd und ssl enthalten.
 </p>
 
 <p>
-So add something like this:
+Also fügen Sie etwas Ähnliches zu dem hier ein:
 </p>
 
 <pre caption="USE settings to be added">
