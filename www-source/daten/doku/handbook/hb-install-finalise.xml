@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.8 -->
+<!-- English CVS Version: 1.9 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-finalise.xml,v 1.4 2003/11/22 22:45:39 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-finalise.xml,v 1.5 2003/11/28 10:13:50 jay Exp $ -->
 
 <sections>
 <section>
@@ -176,7 +176,7 @@ anderem ein vorkompiliertes KDE.
 </p>
 
 <pre caption="Installation von KDE">
-# <i>emerge -k kde</i>
+# <i>emerge --usepkg kde</i>
 </pre>
 
 <p>
@@ -184,8 +184,8 @@ Installieren Sie die Binärpakete zu diesem Zeitpunkt. Wenn Sie ein
 <c>emerge sync</c> ausführen, um Portage auf den aktuellsten Stand zu bringen
 (wir gehen später noch genauer darauf ein), können die vorkompilierten
 Binärpakete schon wieder älter sein, als die neuesten ebuilds in Portage. Um
-dieses Problem zu umgehen, können Sie alternativ <c>emerge -K</c> statt
-<c>emerge -k</c> ausgeführen.
+dieses Problem zu umgehen, können Sie alternativ <c>emerge --usepkgonly</c> statt
+<c>emerge --usepkg</c> ausgeführen.
 </p>
 
 <p>
