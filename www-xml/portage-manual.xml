@@ -247,7 +247,7 @@ Pflege von Paketen des Portage Systems.
 
 	<p>
 	Portage bestimmt, welche USE Einstellung ein- bzw. ausgeschaltet ist,
-	aufgrund einer &#252;berprüfung von bis zu vier verschiedenen Orten,
+	aufgrund einer &#252;berpr&#252;fung von bis zu vier verschiedenen Orten,
 	wo USE definiert sein kann. Diese Orte bewirken, das die USE
 	Einstellung, die in diesen Orten definiert sind, "aufgestapelt" wird.
 	Es durchforstet jeden Ort und merkt sich jedes USE Feature der
@@ -259,7 +259,7 @@ Pflege von Paketen des Portage Systems.
 	das Feature, trotz Abschaltens im fr&#252;heren Ort wieder eingeschaltet.
 	</p>
 	<p>
-	Portage &#252;berprüft die USE Einstellungs-Orte in der Reihenfolge und
+	Portage &#252;berpr&#252;ft die USE Einstellungs-Orte in der Reihenfolge und
 	Kalkulation, wie sie in der Variable <i>USE_ORDER</i> in
 	/etc/make.globals angegeben ist. M&#246;chten Sie einen Ort deaktivieren,
 	dann entfernen Sie einfach jenen in <i>USE_ORDER</i>.
