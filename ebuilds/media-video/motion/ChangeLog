@@ -1,0 +1,12 @@
+# ChangeLog for media-video/motion
+# Copyright 2004 Martin Mittelsdorf; Distributed under the GPL
+# $Header:
+
+*motion-3.1.15
+  19 Jul 2004; Martin Mittelsdorf <martini at vdr-portal.de>
+  Changed DEPEND to >=media-video/ffmpeg-0.4.8
+  Changed configure option from --with-libavcodec to --with-ffmpeg
+
+*motion-3.1.14
+  06 Jun 2004; Martin Mittelsdorf <martini at vdr-portal.de>
+  version bump
