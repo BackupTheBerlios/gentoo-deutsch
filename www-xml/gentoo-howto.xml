@@ -3,7 +3,7 @@
 
 
 <guide link="/doc/gentoo-howto.html">
-<title>Gentoo Linux Frequently Asked Questions</title>
+<title>Gentoo Linux Entwickler HOWTO</title>
 <author title="Autor"><mail link="woodchip@gentoo.org">Donny Davies</mail></author>
 <author title="Autor"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Autor"><mail link="pete@gentoo.org">Peter Gavin</mail></author>
@@ -38,7 +38,7 @@ keinen Fall vollst&#xE4;ndig. </abstract>
 		# cvs add -kb myphoto.png</pre>
 		Die -kb option teilt CVS mit, dass myphoto.png eine Bin&#xE4;rdatei ist und einer besonderen 
 		Behandlung bedarf. Zum Beispiel das Zusammenf&#xFC;hren von zwei verschiedenen Bin&#xE4;rdateien wird somit nicht erlaubt, 
-		was hier auch naheliegend ist. Wenn wir schon beim Zusammenf&#xFC;hren sind, alle Patches die dem Portage Verzeichnisbaum 
+		was hier auch naheliegend ist. Wenn wir schon beim Zusammenf&#xFC;hren sind, alle Patches die dem Portage Verzeichnisbaum
 		hinzugef&#xFC;gt werden, sollten nicht komprimiert sein. Dies erlaubt dann CVS Ver&#xE4;nderungen einzubringen und die Entwickler 
 		von dabei m&#xF6;glicherweise entstehenden Konfliken korrekt zu warnen.</p></body> 	
 	</section> 
@@ -96,61 +96,46 @@ keinen Fall vollst&#xE4;ndig. </abstract>
 
 	<impo>Wenn Sie mit dem Gedanken spielen, einen angeh&#xE4;ngten Buchstaben in Ihrer Versionsnummer zu verwenden,
 	sollten Sie dar&#xFC;ber im klaren sein, dass dieser Buchstabe <e>nicht</e> dazu verwendet werden sollte, einen
-	eventuellen Alpha oder Beta Status anzuzeigen, da alphas und betas als <e>prereleases</e> z&#xE4;en, angeh&#xE4;ngte 
+	eventuellen Alpha oder Beta Status anzuzeigen, da alphas und betas als <e>prereleases</e> z&#xE4;hlen, angeh&#xE4;ngte
 	Buchstaben jedoch als <e>neuere Versionen</e>. Das ist eine grosse Unterscheidung, da Portage die Versionsnummer eines
-	ebuilds dazu verwendet, herauszufinden, ob es neuer oder &#xE4;lter ist als ein Paket mit gleichem Namen aus derselben 
+	ebuilds dazu verwendet, herauszufinden, ob es neuer oder &#xE4;lter ist als ein Paket mit gleichem Namen aus derselben
 	Kategorie. Es ist sehr wichtig, dass Versionsnummern glaubw&#xFC;rdig die Version eines Paketes repr&#xE4;sentieren, damit
 	Portage seine Abh&#xE4;gikeits-Pr&#xFC;fungen korrekt ausf&#xFC;hrt..</impo>
 
-<p>The third (optional) section contains a special suffix; either
-<c>_alpha</c>, <c>_beta</c>, <c>_pre</c> or <c>_rc</c>. Any of these suffixes
-may be immediately followed my a number, e.g., <c>linux-2.4.0_pre10</c>;
-Assuming identical version parts, an <c>_alpha</c> package is older than
-<c>_beta</c>, <c>_beta</c> older than <c>_pre</c>, and <c>_pre</c> older than
-<c>_rc</c>.
-</p>
+	<p>Der dritte Abschnitt (optional) enthält eine spezielle Suffix, entweder <c>_alpha</c>, <c>_beta</c>, <c>_pre</c> oder 
+	<c>_rc</c>. Alle diese Suffixe werden durch eine Nummer ergänzt, zum Beispiel <c>linux-2.4.0_pre10</c>. Bei identischen
+	Versionsummern geht Portage davon aus, dass <c>_alpha</c> älter als <c>_beta</c> ist, <c>_beta</c> älter als <c>_pre</c>
+	und <c>_pre</c> äter als <c>_rc</c> ist.</p>
+	<note>Ein <c>_rc</c> Paket ist älter als ein Paket ohne vorausgehende  Suffixe mit Unterstrich (z.B. <c>linux-2.4.0</c>)
+	und <c>linux-2.4.0</c> ist älter als ein Paket mit einem Buchstaben Präfix, hier <c>linux-2.4.0b</c>. Nochmal: Diese 
+	Versionsinformationen sind wichtig, da Portage es zur Bestimmung heranzieht, ob ein Paket oder ebuild älter oder jünger ist,
+	als ein Paket aus der selben kategorie mit gleichem Namen.</note>
 
-<note>An <c>_rc</c> package is older than a package without an underscore
-prefix (i.e. <c>linux-2.4.0</c>), and <c>linux-2.4.0</c> is older than a
-package with a single letter prefix, i.e. <c>linux-2.4.0b</c>.  As you would
-expect, the <c>linux-2.4.0b</c> package is considered older than
-<c>linux-2.4.0c</c>.  Again this versioning information is important, as
-Portage uses it internally to determine whether one package or ebuild is newer
-than another with the same category and name.</note>
+	<p>Der vierte Abschnitt (ebenfalls optional) ist die Gentoo Linux spetzifische <e>Revisionsnummer</e>, welche durch <c>-r#</c>
+	angegeben wird, wobei <c>#</c> ein Integer (Zahlenwert) ist, als Beispiel: <c>package-4.5.3-r3</c>. Die Revisionsnummer ist
+	unabhängig von der Versionsnummer des Quellpaketes und kann dazu genutzt werden, die Benutzer davon in kennntnis zu setzen, 
+	dass es sich um ein neues bzw. erweiterte Revision eines ebuilds handelt.</p>
 
-<p>The fourth (optional) section of the package name is the Gentoo Linux-specific <e>revision</e> number,
-which is specified by <c>-r#</c>, where <c>#</c> is an integer,
-e.g. <c>package-4.5.3-r3</c>. This revision number is independent of
-the version of the source tarball and is used to inform people that
-a new and improved Gentoo Linux rev of a particular package is available.
-</p>
+	<p>Wenn grössere Veränderungen an einem bestehenden ebuild vorgenommen werden, sollte die Datei vorher kopiert und mit einer
+	um 1 erhöhten Revisionsnummer abgespeichert werden. Die ersten Fassungen besitzen normalerweise keine Revisionsnummer, z.B.
+	<path>package-4.5.3</path>, da sie von Portage so betrachtet werden, als ob sie eine Revisionsnummer von Null haben. Das 
+	bedeutet für die Zählweise: <c>1.0</c> (erste Version), <c>1.0-r1</c>, <c>1.0-r2</c>, und so weiter.</p>
 
-<p>
-If you make non-trivial improvements to an existing ebuild file, you should
-copy the ebuild file to a new file with the revision number incremented by 1.
-Initial releases normally have no revision number, e.g.
-<path>package-4.5.3</path> and are considered by Portage to have a a revision
-number of zero.  This means that counting goes as follows: <c>1.0</c> (initial
-version), <c>1.0-r1</c>, <c>1.0-r2</c>, etc.
-</p>
-
-<p>And I suppose that we actually have a <e>fifth</e> section of the ebuild name -- the
-<c>.ebuild</c> extension itself.
-</p>
-
-</body>
+	<p>Und natürlich gehen wir davon aus, dass der <e>fünfte</e> Abschnitt der ebuild Bezeichnung nicht vergessen wird,
+	es ist die <c>.ebuild</c> Endung.</p>
+	</body>
 </section>
 
 <section>
-<title>Contents of an ebuild File</title>
-<body><p>1. Variable Settings:</p>
-<p>The first part of every ebuild file is made up of a number of
-variable settings. The variables you can set are:</p>
-<table>
-<tr><ti><c>P</c></ti><ti>the name and version of the package; you should not need to set this, as it is determined from the name of the ebuild file</ti></tr>
-<tr><ti><c>A</c></ti><ti>the name (without the path) of the main archive file for your package</ti></tr>
-<tr><ti><c>S</c></ti><ti>the source directory for your package; normally ${WORKDIR}/${P}</ti></tr>
-<tr><ti><c>DESCRIPTION</c></ti><ti>a short, one line description of your package</ti></tr>
+	<title>Aufbau einer ebuild Datei</title>
+	<body><p>1. Setzen der Variablen:</p>
+	<p>Der Anfang jeder ebuild Datei besteht aus einigen Variablen, die wie folgt gesetzt werden können:</p>
+	<table>
+<tr><ti><c>P</c></ti><ti>Der Name und die Versionsnummer des Paketes, dies muss normalerweise nicht gesetzt werden, da es von Portage durch den Dateinamen bestimmt wird</ti></tr>
+<tr><ti><c>A</c></ti><ti>Der Name ohne Pfadangabe von dem Haupt-Quellcode des Paketes</ti></tr>
+<tr><ti><c>S</c></ti><ti>Das Quellcode-Verzeichnis für das Paket, im Normalfall${WORKDIR}/${P}</ti></tr>
+<tr><ti><c>DESCRIPTION</c></ti><ti>Eine kurze Beschreibung des Paketes in einem Satz</ti></tr>
+
 <tr><ti><c>SRC_URI</c></ti><ti>the URIs for every source file in your package, separated by whitespace; normally the first one is something like &quot;ftp://ftp.company.com/pub/somepackage/${A}&quot;</ti></tr>
 <tr><ti><c>HOMEPAGE</c></ti><ti>your package's homepage</ti></tr>
 <tr><ti><c>DEPEND</c></ti><ti>build dependencies; see the section <uri link="#dependencies">Package Dependencies</uri></ti></tr>
@@ -324,7 +309,7 @@ variable, and if so, then sets <c>myconf="${myconf} --enable-mysql"</c>.</p>
 <tr><ti>ggz</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r die Gnu Gaming Zone (http://ggz.sf.net) hinzu.</ti></tr>
 <tr><ti>gif</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r GIF Bilder hinzu.</ti></tr>
 <tr><ti>gnome</ti><ti>F&#xFC;gt GNOME Unterst&#xFC;tzung f&#xFC;r das jeweilige Paket hinzu.</ti></tr>
-<tr><ti>gphoto2</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r Digitalkameras.</ti></tr>
+<tr><ti>gphoto2</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r Digitalkameras hinzu.</ti></tr>
 <tr><ti>gpm</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r sys-libs/gpm (Maustreiber f&#xFC;r die Konsole)</ti></tr>
 <tr><ti>gtk</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r x11-libs/gtk+ (The GIMP Toolkit) hinzu.</ti></tr>
 <tr><ti>gtkhtml</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r gnome-extra/gtkhtml hinzu.</ti></tr>
