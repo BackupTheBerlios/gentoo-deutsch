@@ -1,0 +1,38 @@
+--- osdteletext-0.4/txtrecv.c.orig	2004-07-14 01:33:31.712894064 +0200
++++ osdteletext-0.4/txtrecv.c	2004-07-14 01:51:27.529124400 +0200
+@@ -285,7 +285,7 @@
+    getFilename(filename, sizeof(filename), page);
+    bool existed=exists(filename);
+    //first try
+-   StorageHandle fd=(StorageHandle)open(filename, O_WRONLY | O_CREAT | O_TRUNC);
++   StorageHandle fd=(StorageHandle)open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP);
+    if (fd) {
+       if (!existed)
+          registerFile(page);
+@@ -295,7 +295,7 @@
+    if (errno == ENOSPC)
+       freeSpace();
+    //second try
+-   fd=(StorageHandle)open(filename, O_WRONLY | O_CREAT | O_TRUNC);
++   fd=(StorageHandle)open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP);
+    if (!fd && !wroteError) {
+       //report error to syslog - once!
+       wroteError=true;
+@@ -395,7 +395,7 @@
+    char filename[PATH_MAX];
+    getFilename(filename, sizeof(filename), page);
+    //first try
+-   int desc=open(filename, O_RDWR | O_CREAT);
++   int desc=open(filename, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP);
+    if (desc != -1) {
+       if (!seekTo(page, desc, true)) {
+          ::close(desc);
+@@ -409,7 +409,7 @@
+    if (errno == ENOSPC)
+       freeSpace();
+    //second try
+-   desc=open(filename, O_RDWR | O_CREAT);
++   desc=open(filename, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP);
+    if (desc==-1 && !wroteError) {
+       //report error to syslog - once!
+       wroteError=true;
