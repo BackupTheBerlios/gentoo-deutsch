@@ -4,15 +4,16 @@
 
 <guide link="/doc/faq.html">
 <title>Gentoo Linux Frequently Asked Questions</title>
-<author title="Leitender Architekt"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
+<author title="Chief Architect"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Reviewer">Colin Morey</author>
+<author title="Editor"><mail link="zhen@gentoo.org">John P. Davis</mail></author>
 <author title="&#xDC;bersetzer"><mail link="marko@nexboard.de">Marko Kercmar</mail></author>
 <author title="&#xDC;bersetzer"><mail link="egbers@netzraum.com">Sebastian Egbers</mail></author>
 <author title="&#xDC;bersetzer"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
 <abstract>Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt in der gentoo-dev Mailingliste und aus dem IRC -- Wenn du andere Fragen (oder Antworten!) zum hinzuf&#xFC;gen hast, bitte kontaktiere einen Autor oder ein Mitglied vom Dokumentations Team.</abstract>
 
-<version>1.1.1-de</version>
-<date> Juli 2002</date>
+<version>1.1.2-de</version>
+<date>08 October 2002 (de: 26 Oktober 2002)</date>
 
 <chapter>
 	<title>Gentoo allgemein</title>
@@ -75,17 +76,7 @@
 	</body>
 	</section>
 
-<!--  Commenting out since this is really out of date now (can i remove this now? - Colin Morey)
 	<section>
-		<title>How do I install with no ISO image?</title>
-		<body><p>We are working out a solution for 1.0_rc6+ systems as we speak.  Stay tuned and visit the <uri
-link="/doc/build.html">Download/Install page</uri> for updates.</p> 
-	</body>
-	</section>
--->
-
-	<section>
-		<!-- Is des Deutsch "," + "und" danach -->
 		<title>Ich habe einen Sony Super-Slim VAIO Laptop, und die Gentoo Linux CD hat Probleme
 			beim erkennen meines PCMCIA ATAPI CD-ROM Laufwerkes.</title>
 		<body>
@@ -209,6 +200,16 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		</p>
                 </body>
 	</section>
+	
+	<section>
+		<title>Mein ASUS CUV4X-D will nicht booten und es friert bei manchen Prozessen des Kernel
+		ladens und der Hardware Suche ein.</title>
+		<body><p>Deaktivieren sie MPS 1.4 (multi-processor-system) im BIOS oder stellen sie diese
+		Funktion auf 1.1. Beim benutzen dieser Option ver&#xE4;ndern sie einfach die MPS Version. Das Multi-Processor-System
+		wird weiterhin richtig Arbeiten. Stellen sie sicher das Gentoo Linux mit der Boot Option "noapic" bootet.</p>
+		</body>
+	</section>
+	
 </chapter>
 
 <chapter>
@@ -476,14 +477,15 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <chapter>
 	<title>Verwaltung</title>
 	<section>
-		<title>Probleme mit einem besch&#xE4;digten Dateisystem unter ReiserFS -- wie behebe ich das?</title>
+		<title>ReiserFS und Dateisystem Fehler -- und wie man die behebt</title>
 		<body>
 		<p>
-		ReiserFS hat grosse Probleme in Verbindung mit den 2.4 Kernel Reihen. Wir raten zur Zeit nachdr&#xFC;cklich
-		von der Verwendung mit ReiserFS ab. Wenn die ReiserFS Partition bereits besch&#xE4;digt ist, sollten Sie
-		mit der Gentoo Linux CD booten und <c>reiserfsck --rebuild-tree</c> auf das besch&#xE4;digte Dateisystem
-		ausf&#xFC;hren. Dies sollte die Konsistenz des Dateisystems wieder herstellen, auch wenn einige Dateien
-		oder Verzeichnisse durch die Besch&#xE4;digung verloren gegangen sein k&#xF6;nnen.
+		Wenn deine
+		ReiserFS Parition fehlerhaft ist, versuchen sie die Gentoo
+		Linux Boot CD zu booten und starten Sie <c>reiserfsck --rebuild-tree</c> auf
+		dem Fehlerhaften Dateisystem.  Dies sollte das Dateisystem wieder stabil machen
+		, manchmal verliert man aber manche Datein und Verzeichnise durch
+		das fehlerhafte Dateisystem.
 		</p>
 		</body>
 	</section>
@@ -595,14 +597,49 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's k&#xF6;nnen f&#xFC;r 5 Euro bei <uri>http://www.lin24.de</uri> und <uri>http://www.liniso.de</uri> bezogen werden.
 		</p></body>
 	</section>
+
 	<section>
-		<title>Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt?</title>
-		<body><p>Als erster Schritt sollten die Dokumente unter <uri>http://www.gentoo.org/index-docs.html</uri> (in Deutsch:  <uri>http://www.gentoo.de</uri> )
-		durchforstet werden. Findet sich darin keine L&#xF6;sung, kann man sich in die verschiedenen Maillisten unter <uri>www.gentoo.org</uri> eintragen. Um
-		die Archive der Maillisten zu durchsuchen, ist Google (<uri>www.google.com</uri>) sehr praktisch. Einfach "lists.gentoo.org foo"
-		als Suchanfrage stellen. Alternativ kann auch ein Blick in das Forum (<uri>http://forums.gentoo.org/</uri>) helfen. Oder Sie stellen ihre
-		Frage im IRC unter <c>#gentoo</c> bzw. <c>#gentoo.de</c> von <uri>irc.openprojects.net</uri>.
-		</p></body>
+		<title>Why, when I hit reply to a post on a Gentoo mailing list, does my answer 
+		only go to the original poster and not the entire list?</title>
+		<body>
+		<p>The mailing list administrators have decided to go with minimal munging 
+		(altering of mail headers), which means that they have decided against  
+		altering headers to have replies go to the mailing list.  There are various 
+		reasons for this. For example, if a subscriber has a full mailbox, the 
+		entire list receives notice of this every time that something is posted.  
+		
+		Most GUI based mailers have a "reply to all" function. This will ensure that 
+		your reply goes to the mailing list as well as the original poster. Most 
+		users of text based emailers already know the methods to use, but if you 
+		don't, in Pine, there is a "reply to group" option.  Setting Mutt to reply to 
+		the list is covered in the unofficial documentation at
+		<uri link="http://forums.gentoo.org/viewtopic.php?t=1085">forums.gentoo.org</uri>.
+		
+		Some list members do not like this method, but it was very heavily 
+		discussed when it went into effect, with arguments on both sides.  
+		Eventually the list administrators decided to keep it this way. Discussing 
+		it on the mailing list will sometimes bring a polite explanation and other 
+		times a rather brusque comment to check the archives. Although the 
+		administrators regret the inconvenience that it may cause some users, it is 
+		felt that at present it is preferable to the alternative for several 
+		reasons, many of these covered
+		<uri link="http://www.unicom.com/pw/reply-to-harmful.html">here</uri>.  
+		
+		(There are other eloquent arguments in favor of munging, and yes, the list 
+		administrators have seen them.) </p>
+		</body>
+	</section>
+	
+	<section>
+		<title>This FAQ hasn't answered my question.  What do I do now?</title>
+		<body>
+		<p>A good first step is to browse through the relevant doumentation <uri link="http://www.gentoo.org/index-docs.html">here</uri>, 
+		failing that, the various Gentoo Linux mailing
+		lists listed on <uri link="http://www.google.com">Google</uri>.  To search through the Gentoo mailling lists, just enter "lists.gentoo.org foo" to search for "foo".  If all else fails, or you just want
+		to hang out with Gentoo folks, visit us on irc: <i>#gentoo</i>
+		on <i>irc.freenode.net</i>.
+		</p>
+		</body>
 	</section>
 </chapter>
 </guide>
