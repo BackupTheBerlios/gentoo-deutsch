@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.1 2003/12/04 15:46:51 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.2 2003/12/04 15:49:39 dertobi123 Exp $ -->
 
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
@@ -26,9 +26,9 @@
 <body>
 
 <p>
-Bevor Sie mit der Übersetzung anfangen sollten Sie die
+Bevor Sie mit der Übersetzung anfangen, sollten Sie die
 <uri link="/inhalte/projekt/translation">Informationen für Übersetzer</uri>, den
-<uri link="/inhalte/doku/guide-xml">Guide XML</uri> und je nach Vorkenntnissen
+<uri link="/inhalte/doku/guide-xml">Guide XML Guide</uri> und je nach Vorkenntnissen
 auch das
 <uri link="/inhalte/doku/cvs-howto">CVS Howto</uri> gelesen haben.
 </p>
@@ -41,7 +41,7 @@ ablaufen.
 
 <p>
 Bei Fragen oder zum Austausch mit anderen Übersetzern schauen Sie im
-<path>#gentoo-doc-de</path> Channel im FreeNode Netz vorbei.
+<e>#gentoo-doc-de</e> Channel im FreeNode Netz vorbei.
 </p>
 
 </body>
@@ -73,13 +73,13 @@ dass der Übersetzer eines Dokuments auch solange für die Pflege und
 Aktualisierung eines Dokuments zuständig ist, bis er das Dokument abgibt. Sollte
 der Betreuer eines Dokuments Hilfe oder Unterstützung benötigen, so kann er dies
 auf der Mailing Liste kundtun. Für bisher übersetzte, aber nicht mehr betreute
-Dokumente werden über die Mailing Liste an Übersetzer verteilt.
+Dokumente werden über die Mailing Liste Übersetzer gesucht.
 </p>
 
 <p>
 <e>3. Übersetzung von Dokumentation:</e> Bisher nicht übersetzte Dokumente
 wurden an Übersetzer verteilt. Eine Auflistung von an <uri
-link="/inhalte/projekt/trans-stauts">Übersetzer verteilter Dokumentation</uri>
+link="/inhalte/projekt/trans-status">Übersetzer verteilter Dokumentation</uri>
 und bisher <uri link="/inhalte/projekt/doc-unmaint">nicht verteilter
 Dokumentation</uri> dient als Überblick.
 </p>
