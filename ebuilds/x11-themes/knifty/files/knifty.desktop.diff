@@ -1,0 +1,9 @@
+--- client/knifty.desktop.orig	2003-08-04 22:40:22.000000000 +0200
++++ client/knifty.desktop	2003-08-04 22:40:51.000000000 +0200
+@@ -1,5 +1,5 @@
+ # KDE Desktop Entry
+ [Desktop Entry]
+ Encoding=UTF-8
+-Name=knifty
++Name=KNifty
+ X-KDE-Library=kwin_knifty
