@@ -1,0 +1,9 @@
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-misc/xnetload/Attic/ChangeLog,v 1.1 2002/10/11 11:15:39 shermann Exp $
+
+*xnetload-1.11.3 (11 Oct 2002)
+
+
+  11 Oct 2002; Stephan Hermann <sh@sourcecode.de> xnetload-1.11.3.ebuild: Initial
+  import. 
