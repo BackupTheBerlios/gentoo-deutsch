@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.5.ebuild,v 1.2 2003/09/23 17:45:08 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.5.ebuild,v 1.3 2003/09/23 18:22:20 martini Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
@@ -28,6 +28,7 @@ DEPEND="virtual/glibc
 		media-libs/jpeg
 		sys-libs/ncurses
 		app-admin/sudo
+		app-admin/fam-oss
 		lirc? ( app-misc/lirc )
 		"
 
