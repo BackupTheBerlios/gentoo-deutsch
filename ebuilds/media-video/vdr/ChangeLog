@@ -1,6 +1,10 @@
 # ChangeLog for media-video/vdr
 # Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.44 2004/03/18 10:25:12 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.45 2004/04/23 18:59:11 austriancoder Exp $
+
+*vdr-1.3.6-r1 (23 Apr 2004)
+  23. Apr 2004: Christian Gmeiner <christian at visual-page.de> vdr-1.3.6-r1.ebuild
+  Support for 2.6 kernels and other improvements
 
 *vdr-1.3.6 (18. March 2004)
   18. March 2004: Christian Gmeiner <christian at visual-page.de> vdr-1.3.6.ebuild:
