@@ -1,12 +1,12 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.10.ebuild,v 1.1 2004/06/10 18:33:48 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.10.ebuild,v 1.2 2004/06/12 17:07:11 fow0ryl Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.3.10-AC3overDVB-0.2.6"
 BEAUTY="vdr-1.3.10-beauty"
-#AKOOL="vdr-1.3.6.patch"
-#ELCHI="vdr-1.3.6-ElchiAIO4d"
+AIO="vdr-1.3.10-enAIO-1.2"
+
 
 S=${WORKDIR}/vdr-${PV}
 DESCRIPTION="The Video Disk Recorder"
@@ -16,6 +16,7 @@ SRC_URI="
 	http://www.muempf.de/downloads/vdr/${AC3_OVER_DVB}.diff.gz
 	http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz
 	http://www.muempf.de/down/${BEAUTY}.diff.gz
+	http://www.hut.fi/~rahrenbe/vdr/${AIO}.diff.gz
 	"
 
 
@@ -76,44 +77,26 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	# vanilla vdr-1.3.9
-	# patch to support newer gcc versions
-	/bin/sed -i PLUGINS/src/skincurses/skincurses.c \
-	    -e 's:void cCursesOsd\:\:DrawText(int x, int y, const char \*s, tColor ColorFg, tColor ColorBg, const cFont \*Font, int Width = 0, int Height = 0, int Alignment = taDefault):void cCursesOsd\:\:DrawText(int x, int y, const char \*s, tColor ColorFg, tColor ColorBg, const cFont \*Font, int Width, int Height, int Alignment):'
-#	    (int x, int y, const char *s, tColor ColorFg, tColor ColorBg, const cFont *Font, int Width, int Height, int Alignment):'
-	
 	# AC3 over DVB Patch
 	# needs app-admin/fam-oss
 	if vdr_opts ac3
 	then
-	#	if vdr_opts akool
-	#	then
-	#		ewarn "AC3 patch is already part of akool/complete patch ... skipping"
-	#	else
-			ewarn "Applying native AC3_OVER_DVB patch now"
-			epatch ../${AC3_OVER_DVB}.diff
-	#	fi
+		ewarn "Applying AC3_OVER_DVB patch now"
+		epatch ../${AC3_OVER_DVB}.diff
 	fi
 
-	# Replay Mode Beauty Patch
-	if vdr_opts elchi
+	if vdr_opts aio
 	then
-		ewarn "Applying native REPLAY BEAUTY patch now"
+		ewarn "Applying AIO patch now"
+		epatch ../${AIO}.diff
+	fi
+	
+	# Replay Mode Beauty Patch
+	if vdr_opts beauty
+	then
+		ewarn "Applying REPLAY BEAUTY patch now"
 		epatch ../${BEAUTY}.diff
 	fi
-
-	# Andreas Akools Komplett Patch
-	#if vdr_opts akool
-	#then
-	#	if use-disabled fam
-	#	then
-	#		ewarn "akool patch enabled but fam is disabaled"
-	#		ewarn "remove -fam from use flag"
-	#	else
-	#		ewarn "akool patch is somewhat buggy when using VDR 1.3.6"
-	#		patch  -p1 < ../${AKOOL}
-	#	fi
-	#fi
 
 	# here comes the linux 2.6 specific stuff (by fsteinel)
 	if [ "${KV:0:3}" == "2.6" ] ; then
@@ -216,16 +199,6 @@ src_install() {
 	insinto /etc/vdr/plugins/.keep
 	fowners vdr:video /etc/vdr/plugins
 
-	# changed to /usr/share/vdr -> see above... fs(12/23/2003)
-#	if vdr_opts elchi || vdr_opts akool
-#	then
-#		insinto /etc/vdr/logos
-#		doins ../logos/*.xpm
-#		fowners vdr:video /etc/vdr/logos
-#		insinto /etc/vdr/schemes
-#		doins ../schemes/*
-#		fowners vdr:video /etc/vdr/schemes
-#	fi
 }
 
 pkg_setup(){
