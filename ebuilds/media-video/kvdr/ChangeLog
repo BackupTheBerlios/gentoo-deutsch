@@ -1,6 +1,10 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Henning Ryll; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/kvdr/ChangeLog,v 1.3 2003/07/06 15:36:35 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/kvdr/ChangeLog,v 1.4 2003/08/30 14:38:39 fow0ryl Exp $
+
+*kvdr-0.61 (31 August 2003)
+  31 August 2003; <henning.ryll@web.de> Changelog:
+  new version of kvdr
 
 *kvdr-0.6 (6 July 2003)
   6 July 2003; <henning.ryll@web.de> Changelog:
