@@ -11,7 +11,8 @@
   <block>
     <title>Information:</title>
     <p>
-	Internet Relay Chat ist eine schnelle und unkomplizierte Möglichkeit sich mit anderen Gleichgesinnten online auszutauschen.
+	Internet Relay Chat ist eine schnelle und unkomplizierte Möglichkeit sich mit anderen
+        Gleichgesinnten online auszutauschen.
     </p>
   </block>
 </box>
@@ -55,7 +56,7 @@
 
 <body>
 <p>
-Der IRC-Channel #gentoo.de ist nun schon fast ein Jahr alt und hat sich schon oft
+Der IRC-Channel #gentoo.de ist nun schon mehr als ein Jahr alt und hat sich schon oft
 als letzte Rettung bei Problemen bewährt. Als der Channel gegründet wurde, gab es
 eine Stamm-Mannschaft von 5 Personen. Mit der steigenden Bekanntheit von Gentoo-Linux
 hat sich diese Zahl und auch die Zahl der Besucher im Allgemeinen drastisch erhöht.
@@ -64,6 +65,11 @@ hat sich diese Zahl und auch die Zahl der Besucher im Allgemeinen drastisch erhö
 Um diesem Wachstum Rechnung zu tragen, müssen wir einige Dinge klarstellen, die bitte
 nicht negativ zu sehen sind. Hierzu gelten folgende Regeln:
 </p>
+
+<note>
+In letzter Zeit steigt die Anzahl der UTF-8 Nutzer in #gentoo.de an. Solltet ihr zu dieser
+Gruppe gehören, schreibt die Umlaute aus; die anderen Nicht-UTF-8 Nutzer werden es euch danken.
+</note>
 
 <ul>
 	<li>
