@@ -1,6 +1,6 @@
 # Copyright 2003 Henning Ryll <henning.ryll@web.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-kernel/cdfs/cdfs-0.5c.ebuild,v 1.1 2003/03/05 21:46:46 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-kernel/cdfs/cdfs-0.5c.ebuild,v 1.2 2003/03/15 17:17:45 mad Exp $
 
 
 S=${WORKDIR}/cdfs-${PV}/
@@ -27,8 +27,8 @@ src_install() {
 	doins cdfs.o
 	
 	# Docs
-	dodoc -r ${S}/cdfs.html
-	dodoc -r ${S}/cdfs.png
+	dodoc ${S}/cdfs.html
+	dodoc ${S}/cdfs.png
 }
 
 pkg_postinst() {
