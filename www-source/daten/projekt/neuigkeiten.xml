@@ -398,7 +398,7 @@ und eine Warnung ber ein frühes Release von Tcl/Tk.
 
 <section>
 <body>
-<news date="20.04.2003" title="Planung des Usertreffens">
+<news sort="news" date="20.04.2003" title="Planung des Usertreffens">
 	Nachdem sich nun alle in die Liste für das Usertreffen eingetragen haben, stellt sich
 	nun die Frage, wo dieses stattfinden soll. Zu diesem Zwecke haben phoen][x und cybersystem
 	eine interaktive Karte eingerichtet, auf der Ihr Euch eintragen könnt. Die Karte sollte
@@ -414,7 +414,7 @@ und eine Warnung ber ein frühes Release von Tcl/Tk.
 <title>[14. April 2003] Gentoo-Linux-1.4rc4 verffentlicht</title>
 -->
 <body>
-<news date="14.04.2003" title="Gentoo-Linux-1.4rc4 veröffentlicht">
+<news sort="release" date="14.04.2003" title="Gentoo-Linux-1.4rc4 veröffentlicht">
 <p>
 Anfang der Woche wurde entschieden, daß die nächste Version von Gentoo-Linux 1.4 als
 Release-Candidate 4 an Stelle von Final veröffentlicht werden wrde. Die Verbesserungen
