@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
+
 <guide>
 <title>Informationen für zukünftige Übersetzer</title>
 <author title="Author">
@@ -149,6 +151,11 @@ englische Fassung beinhalten, um zukünftige Aktualisierungen zu vereinfachen.
 <pre caption="Verweis auf die Version der zugrundeliegenden englischen Fassung">
 &lt;!-- English CVS Version: 1.0 --&gt;
 </pre>
+
+<p>
+Bitte beachten Sie das Datum im &lt;date&gt; Tag nicht mit dem aktuellen
+Tagesdatum, sondern mit dem Datum aus dem Original zu ersetzen.
+</p>
 
 </body>
 </section>
