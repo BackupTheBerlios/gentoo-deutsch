@@ -1,0 +1,10 @@
+# /etc/conf.d/vdr.graphlcd:
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/files/vdr.graphlcd,v 1.1 2003/11/05 21:45:15 fow0ryl Exp $
+
+# Global config file for vdr rc-scripts
+
+#If the size of your LCD differs from the default (240x128),
+#or if you want to connect the LCD to another LPT port then LPT1,
+#then you have to specify these values here
+#eg: -p 0x278 -x 256 -y 128 for LPT2 and a 256x128 LCD"
+_EXTRAOPTS="-x 128 -y 64"
