@@ -16,7 +16,7 @@
       </tr>
       
       <tr>
-        <td class="description" style="width: 75%">
+        <td class="description" style="width: 65%">
           <![CDATA[<!--item: description-->]]>
         </td>
         <td class="details">
