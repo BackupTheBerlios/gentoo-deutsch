@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+
+  Last modification: 30.01.2003 
+  by Sebastian Werner <sebastian@werner-productions.de>
+
+-->
+
 <config>
 
   <language value="de_DE" short="lng">
