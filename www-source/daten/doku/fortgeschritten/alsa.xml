@@ -126,10 +126,10 @@ Konfiguration vermitteln.
 		<title>Gentoo USE Flags</title>
   	 	<body>
   	 
-  	 	<p>Um Programme mit ALSA-Unterstützung zu kompilieren sollten sie sicher stellen, 
+  	 	<p>Um Programme mit ALSA-Unterstützung zu kompilieren, sollten sie sicher stellen, 
 		dass Sie <e>alsa</e> zu Ihren USE-Variablen hinzugefügt haben.
 		Dennoch unterstützen zahlreiche Tools bisher kein ALSA, sondern benötigen
-		OSS. ALSA bietet eine OSS-Emulation wenn Sie <e>oss</e> vor dem Beginn
+		OSS. ALSA bietet eine OSS-Emulation, wenn Sie <e>oss</e> vor dem Beginn
 		zu Ihren USE-Variablen hinzufügen.</p>
   	 
 		</body>
@@ -209,7 +209,7 @@ Konfiguration vermitteln.
 		und Typ der Karte offenbaren:</p>
 		
 <pre>
-#<i>cat /proc/pci  | grep audio</i>
+# <i>cat /proc/pci  | grep audio</i>
 </pre>
 
 		<p>
@@ -506,7 +506,7 @@ REGISTER        snd/.*       PERMISSIONS root.audio 660
 		<title>Bekannte Bugs</title>
 		<body>
   	 
-  	 	<note>Diese Anleitung liegt hängt hinter der ALSA Entwicklung hinterher. Es besteht die
+  	 	<note>Diese Anleitung liegt hinter der ALSA Entwicklung her. Es besteht die
   	 	Möglichkeit, dass die Bugs schon gefixt sind, wenn Sie dies lesen.</note>
   	 
 		<ul>
