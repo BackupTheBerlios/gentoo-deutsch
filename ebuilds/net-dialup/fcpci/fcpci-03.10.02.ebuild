@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/fcpci/fcpci-03.10.02.ebuild,v 1.3 2003/04/06 22:19:57 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/fcpci/fcpci-03.10.02.ebuild,v 1.4 2003/05/07 17:40:09 holler Exp $
 
 DESCRIPTION="CAPI4Linux drivers for AVM Fritz!Card PCI"
 HOMEPAGE="http://www.avm.de/"
@@ -38,5 +38,19 @@ src_install () {
         dohtml install_passive*.html
         insinto /etc
         newins ${FILESDIR}/capi.conf capi.conf
+
+}
+
+pkg_postinst() {
+
+	einfo "**************************************"
+	einfo "* modify your /etc/init.d/capi to:   *"
+	einfo "*   start() {                        *"
+	einfo "*   ...                              *"
+	einfo "*   modprobe kernelcapi              *"
+	einfo "*   insmod -f fcpci 1>/dev/null 2>&1 *"
+	einfo "*   /sbin/capiinit start             *"
+	einfo "*   ...                              *"
+	einfo "**************************************"
 
 }
