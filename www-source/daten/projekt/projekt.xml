@@ -12,9 +12,13 @@
     <p>
 		<ul>
 			<li><uri link="/inhalte/projekt/translation/">Information für Übersetzer</uri></li>
-			<li><uri link="/inhalte/projekt/site/">Das Guide XML Projekt von Gentoo</uri></li>
+			<li><uri link="/inhalte/projekt/gtt/">Das Translation Team</uri></li>
 			<li><uri link="/inhalte/doku">Übersetzte Dokumentationen</uri></li>
+			<li><uri link="/inhalte/projekt/trans-status/">Projektstatus Übersetzungen</uri></li>
 			<li><uri link="/inhalte/projekt/hb-status/">Projektstatus Handbuch</uri></li>
+			<li><uri link="/inhalte/projekt/doc-umnaint/">Dokus ohne Maintainer</uri></li>
+			<li><uri link="http://dev.gentoo.org/~pylon/status-german-translations.de.html">Status auf gentoo.org</uri></li>
+			<li><uri link="/inhalte/projekt/site/">Das Guide XML Projekt von Gentoo</uri></li>
 	   		<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/">
         		Projektübersicht bei BerliOS </uri></li>
 			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das 
