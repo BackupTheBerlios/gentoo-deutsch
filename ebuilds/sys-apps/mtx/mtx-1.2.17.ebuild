@@ -1,10 +1,10 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/mtx/Attic/mtx-1.3.1.ebuild,v 1.1 2002/10/21 04:52:18 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/mtx/Attic/mtx-1.2.17.ebuild,v 1.1 2002/10/21 12:19:32 holler Exp $
 
-S=${WORKDIR}/${P}
+S=${WORKDIR}/${P}rel
 DESCRIPTION="SCSI Media Changer and Backup Device Control"
-SRC_URI="http://download.sourceforge.net/mtx/${P}.tar.gz"
+SRC_URI="http://download.sourceforge.net/mtx/${P}rel.tar.gz"
 HOMEPAGE="http://mtx.badtux.net/"
 
 SLOT="0"
