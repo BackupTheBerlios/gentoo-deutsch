@@ -53,8 +53,8 @@ Dieser Leitfaden ist eine Schritt-für-Schritt-Anleitung für das Absichern
 von Gentoo Linux
 </abstract>
 
-<version>0.4.7</version>
-<date>12. Oktober 2003</date>
+<version>0.4.9</version>
+<date>3. November 2003</date>
 
 <chapter>
 <title>Einleitung</title>
@@ -534,7 +534,7 @@ vc/1
 Zusätzliche Protokolle sollten hinzugefügt werden um Warnungen oder Fehler
 aufzuspüren, die vor einem momentanen oder bereits durchgeführten Angriff
 warnen könnten. Angreifer beobachten ein Netzwerk oder durchsuchen dies
-oft bevor sie angreifen.
+oft, bevor sie angreifen.
 </p>
 
 <p>
@@ -893,7 +893,7 @@ in read-only.
 Selbst wenn sie qmail nicht benutzen, braucht Gentoo trotzdem noch die
 Ausführberechtigung in <path>/var/tmp</path>, da dort ebuilds hergestellt
 werden. Jedoch kann hierfür ein alternativer Pfad eingerichtet werden,
-wenn Sie darauf bestehen <path>/var</path> in noexec Modus zu betreiben.
+wenn Sie darauf bestehen <path>/var</path> im <c>noexec</c> Modus zu betreiben.
 </note>
 
 </body>
@@ -1915,11 +1915,11 @@ command=/usr/X11R6/bin/X -nolisten tcp
 <p>
 FTP (File Transfer Protocol) ist im Allgemeinen eine schlechte Idee. Es 
 benutzt unverschlüsselte Daten, lauscht auf zwei Ports (normalerweise 20 
-und 21), unterstützt anonyme Anwender und ist etwas, nachdem Angreifer 
-gerne zuerst schauen (um Warez zu verteilen). Wenn möglich benutzen Sie 
-bitte sftpd oder http, denn das ftp-Protokoll enthält einige 
-Sicherheitslücken. Wenn dies nicht möglich sein sollte, dann sichern Sie 
-Ihre Dienste so gut wie nur möglich und bereiten Sie sich vor.
+und 21), und anonyme Logins sind das, wonach Angreifer 
+gerne suchen (um Warez zu verteilen). Da das ftp-Protokoll einige 
+Sicherheitslücken enthält, benutzen Sie bitte alternativ <c>sftpd</c> oder HTTP.
+Wenn dies nicht möglich sein sollte, dann sichern Sie 
+Ihre Dienste so gut wie nur möglich ab und bereiten Sie sich vor.
 </p>
 
 </body>
@@ -2289,7 +2289,7 @@ benötigt es Absicherung.
   #Priviligierte Accounts verbieten
   invalid users = root @wheel
 
-  #Maximale Größenauslastung in Kilobytes festlegen
+  #Maximale Größe die SMB für einen Share anzeigt (kein Limit)
   max disk size = 102400
 
   #Richtlinie für Passwörter
@@ -3824,7 +3824,7 @@ Ansonsten werden Sie niemals wissen was Aide berichtet.
 </note>
 
 <p>
-In diesem Fall läuft es einmal um 03Uhr. Dies geschieht dann, denn ich will 
+In diesem Fall läuft es einmal um 03 Uhr. Dies geschieht dann, denn ich will 
 die Benutzer beim Arbeiten nicht stören. Beachten Sie, dass ich die 
 <c>-u</c> (Update) Option benutzen statt <c>-C</c> (überprüfen). Denn 
 <c>-u</c> überprüft auch die Dateien und überschreibt nicht die 
