@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/noad/noad-0.4.1.ebuild,v 1.1 2004/03/30 18:32:47 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/noad/noad-0.4.1.ebuild,v 1.2 2004/03/30 18:40:17 austriancoder Exp $
 
 
 S=${WORKDIR}/${P}
@@ -52,6 +52,6 @@ pkg_postinst() {
 	einfo "More infos can be found on vdr.gentoo.de"
 	einfo
 	einfo "Note: You can use here all pararmeters for noad, please"
-	efino "look in the documentation of noad."
+	einfo "look in the documentation of noad."
 	einfo
 }
