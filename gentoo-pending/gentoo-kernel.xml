@@ -18,10 +18,13 @@
 <author title="Deutsche Übersetzung">
     <mail link="beejay@berlios.de">Benjamin Judas</mail>
 </author>
+<author title="Deutsche Übersetzung">
+    <mail link="stkn@berlios.de">Stefan Knoblich</mail>
+</author>
 
 <abstract>
 Dieses Dokument gibt Ihnen einen Überblick über die Kernelquellen die Gentoo
-mit Portage abietet
+mit Portage anbietet
 </abstract>
 
 <version>0.1</version>
@@ -35,7 +38,7 @@ mit Portage abietet
 <p>
 So wie bei Allem in Gentoo-Linux ist es auch das Ziel des Gentoo-Kernel-Teams
 Ihnen, dem Anwender, soviele Wahlmöglichkeiten wie möglich zu geben. Wenn man sich
-die Ausgabe von <c>emerge -s sources</c> ansieht, wird deutlich wie viele Kernels
+die Ausgabe von <c>emerge -s sources</c> ansieht, wird deutlich wie viele Kernel
 bei Gentoo zur Auswahl stehen. In diesem Dokument möchsten wir einen kurzen Überblick
 über die Ziele der einzelnen Patchsätze geben die wir entwerfen und ausserdem die
 anderen Kernelquellen erklären, die wir anbieten.
@@ -103,18 +106,18 @@ sind die <c>vanilla-sources</c>. Wie ich vorher schon kurz erwähnt habe, sind d
 die offiziellen Kernelquellen von <uri>http://www.kernel.org/</uri>. Diese Quellen werden
 (entgegen dem weitverbreiteteten Glauben) nicht von Linus Torvalds selbst, sondern von
 Marcelo Tosati verwaltet. Linus ist der "Chef" der aktiven Kernelentwicklung und da er eben
-nur eine Person ist, vergibt er die Verwaltungsaufgaben von stabilen Kernels an Personen,
-denen er das Vertrauen entgegen bringt, diese Kernels zu verwalten. So war zum Beispiel
-Alan Cox Verwalter der Kernel-Serie 2.2 und Marcelo Tosati wurde eben Verwalter der Kernel-Serie
-2.4. Dies ist exakt das, worauf alle Patchsätze der Serie 2.4 basieren. Marcelo hat hervorragende Arbeit
-bei der Verwaltung geleistet und man kann auf diesen Kernel in Sachen Stabilität, Aktualität (betrifft nicht
+nur eine Person ist, übergibt er die Verwaltung des stabilen Kernel-Zweigs an Personen,
+denen er dies zutraut. So ist zum Beispiel Alan Cox Verwalter der Kernel-Serie 2.2
+und Marcelo Tosati wurde eben Verwalter der Kernel-Serie 2.4. Dies ist exakt das, worauf
+alle Patchsätze der Serie 2.4 basieren. Marcelo hat bei der Verwaltung hervorragende Arbeit
+geleistet und man kann auf diesen Kernel in Sachen Stabilität, Aktualität (betrifft nicht
 noch in der Entwicklung befindliche Teile) und Hardwareunterstützung wirklich zählen.
 </p>
 
 <p>
 Die <c>vanilla-sources</c> sind möglicherweise die stabilsten aller verfügbaren
 Kernelquellen, da sie auch die am meisten getesteten sind und alle anderen Kernelquellen
-auf ihnen basieren. Wenn Sie keines der von den anderen Kernels mitgebrachten Extras brauchen,
+auf ihnen basieren. Wenn Sie keines der von den anderen Kernel mitgebrachten Extras brauchen,
 sollten Sie sich für die <c>vanilla-sources</c> entscheiden.
 </p>
 
@@ -130,13 +133,13 @@ haben wir die <c>gs-sources</c>. GS steht für Gentoo Stable (wie kreativ, gell)
 ist im Hinblick auf Unterstützung von neuester Hardware erweitert und getestet und stellt sicher,
 daß kritische Server verfügbar sind, wenn sie benötigt werden. Dieser Kernel lässt einige der
 überagressiven in den <c>gentoo-sources</c> verfügbaren Leistungs-Tuning-Patches aussen vor, aber die
-hervorragende Leistung die man von den Vanilla Kernels kennt und liebt sind immer noch enthalten.
+hervorragende Leistung die man von den Vanilla Kernel kennt und liebt sind immer noch enthalten.
 Dort wo es ohne Stabilitätseinbußen möglich ist, fügen wir serverbezogene Patches dem Kernel hinzu.
 </p>
 
 <p>
 Dieser Kernel bietet Unterstützung für das neueste ACPI Subsystem, EVMS,
-ECC (wird für Hochverfügbarkeitskernels benötigt), verschlüsselte Loopbackgeräte,
+ECC (wird für Hochverfügbarkeitskernel benötigt), verschlüsselte Loopbackgeräte,
 NTFS, Win4Lin und XFS. Er enthält ausserdem Aktualisierungen für IDE, ext3, diverse
 Netzwerkkarten und noch einige andere Patches.
 </p>
@@ -233,7 +236,7 @@ Die folgenden USE-Flags können zur Auswahl von optionalen Patches gesetzt werde
 </body>
 </section>
 <section>
-<title>Architektur-spezifische Kernels</title>
+<title>Architektur-spezifische Kernel</title>
 <body>
 
 <p>
@@ -328,7 +331,7 @@ den neuesten TUX-Webserver (ein im Kernel befindlicher Webserver).
 </p>
 
 <p>
-Wenn Sie bei anderen Kernels Probleme mit der Speicherverwaltung haben, dann
+Wenn Sie bei anderen Kernel Probleme mit der Speicherverwaltung haben, dann
 könnten die <c>aa-sources</c> die Lösung des Problems darstellen. Wenn Sie die
 Linux Speicherverwaltung für Ihr System optimieren wollen, dann sollten die <c>aa-sources</c>
 <e>auf jeden Fall</e> das sein, was Sie brauchen.
@@ -375,7 +378,7 @@ Die <c>ck-sources</c> sind Con Kolivas Kernelpatch-Satz. Dieser Kernel ist
 ein paar Fähigkeiten des Schedulers bei der Priorisierung von Anwendungen.
 Con Kolivas "benchmarkt" Kernel um die bestmögliche Kombination der einzelnen Features
 für die Benutzung auf Desktops zu finden. Besuchen Sie <uri>http://kernel.kolivas.org</uri> um
-mehr Informationen über Con und seine Patches zu finden.
+mehr Informationen über Con und seine Patches zu bekommen.
 </p>
 
 </body>
@@ -385,7 +388,7 @@ mehr Informationen über Con und seine Patches zu finden.
 <body>
 
 <p>
-Die <c>development-sources</c> sind die Kernels, des aktuellen Entwicklerzweiges. Dies
+Die <c>development-sources</c> sind die Kernel des aktuellen Entwicklerzweiges. Dies
 ist der Zweig des Linux-Kernels, den Linus Torvalds selbst verwaltet. Man kann sich
 diesen Kernel als einen Spielplatz vorstellen, wo alle Features für den nächsten stabilen
 Kernelzweig eingepasst, weiterentwickelt und getestet werden bevor sie an die übrigen
@@ -393,7 +396,7 @@ Linux-Anwender weitergegeben werden.
 </p>
 
 <p>
-Wenn Sie die neueste Unterstützung und das neueste experimentelle Kernsystem möchten,
+Wenn Sie die neuesten Treiber, Erweiterungen und das neueste experimentelle Kernsystem möchten,
 dann ist dieser Kernel das was Sie haben wollen. Bedenken Sie aber bitte, das diese Kernelquellen
 <e>äußerst</e> experimentell sind und es <e>nicht empfehlenswert</e> ist, sie auf einem unbedingt
 benötigten System einzusetzen.
@@ -401,7 +404,7 @@ benötigten System einzusetzen.
 
 <warn>
 Wir weisen Sie hiermit darauf hin, daß Gentoo-Linux keine Fähigkeiten der
-<c>development-sources</c> oder mit diesen verwandten unterstützt, da sich
+<c>development-sources</c> oder der darauf basierenden sources unterstützt, da sich
 diese Dinge zu oft ändern und evtl. Schäden anrichten können.
 </warn>
 
@@ -412,8 +415,8 @@ diese Dinge zu oft ändern und evtl. Schäden anrichten können.
 <body>
 
 <p>
-Die <c>gaming-sources</c> basieren auf den <c>ck-sources</c> sind folglich
-auf Höchstleistung getrimmt. Die enthalten ausserdem die neuesten Patches für
+Die <c>gaming-sources</c> basieren auf den <c>ck-sources</c> und sind folglich
+auf Höchstleistung getrimmt. Sie enthalten ausserdem die neuesten Patches für
 Multimedia-Hardware (Grafikkarten, Soundkarten, usw.).
 </p>
 
@@ -436,7 +439,7 @@ nicht-lineares Mapping-Verhalten, usw.
 
 <p>
 Wenn Sie sich wirklich auf Messers Schneide bewegen wollen und der
-Meinungs sind, dass die <c>development-sources</c> für Memmen sind,
+Meinung sind die <c>development-sources</c> wären nur etwas für Memmen,
 dann versuchen Sie die <c>mm-sources</c>.
 </p>
 
@@ -478,11 +481,11 @@ Die <c>openmosix-sources</c> sind für die Unterstützung von openMosix Systemen
 <body>
 
 <p>
-Die <c>redhat-sources</c> sind - wie man vom Namen her schon vermuten kann -
-der Erfolg für das RedHat Linux-Kernel. Dank der Vorteile von Open Source
-kann jeder die Blüten der Arbeit der RedHat-Ingenieure bewundern, die ihre
-Arbeit an den RedHat Kernels hervorgebracht haben. Wir von Gentoo bieten ein
-entsprechendes Ebuild, damit Sie auf möglichst einfachem Wege in den Genuß kommen.
+Die <c>redhat-sources</c> sind - wie der Name schon vermuten lässt -
+die Quellen des RedHat Kernels. Dank der Vorteile von Open Source
+kann jeder an den Früchte der Arbeit, die die RedHat-Ingenieure in
+ihren Kernel investieren teilhaben. Wir von Gentoo bieten ein entsprechendes
+Ebuild an, damit Sie auf möglichst einfachem Wege in den Genuß kommen.
 </p>
 
 </body>
@@ -494,7 +497,7 @@ entsprechendes Ebuild, damit Sie auf möglichst einfachem Wege in den Genuß kom
 <p>
 Die<c>rsbac-sources</c> enthalten die Patches von <uri>http://www.rsbac.org</uri>.
 RSBAC steht für <e>Rule Set Based Access Control</e>. Diese kernelpatches erlauben Ihnen,
-Benutzer anhand von Regeln anstatt Kombinationen von UID-/GID-Berechtigungen zu identifizieren.
+Benutzer anhand von Regeln anstatt Kombinationen von UID-/GID-Berechtigungen zu authorisieren.
 </p>
 
 </body>
@@ -517,8 +520,8 @@ Modules) und Flask Security Architecture.
 
 <p>
 Die <c>usermode-sources</c> sind die Quellen, die Sie für einen Usermode-Kernel brauchen.
-Dies ist ein spezieller Kernel, der speziell dafür entwickelt wurde um Linux innerhalb von
-Linux innerhalb von Linux innerhalb von Linux...auszuführen. User-Mode Linux ist zu Testzwecken
+Dies ist ein spezieller Kernel, der dafür entwickelt wurde um Linux innerhalb von Linux
+innerhalb von Linux innerhalb von Linux...auszuführen. User-Mode Linux ist zu Testzwecken
 und zur Unterstützung von virtuellen Servern vorgesehen. Für weitere Informationen über diese
 phantastische Hommage an die Skalierbarkeit von Linux, besuchen Sie bitte
 <uri>http://user-mode-linux.sourceforge.net</uri>.
@@ -537,8 +540,8 @@ Für weitere Informationen über UML und Gentoo, lesen Sie bitte
 
 <p>
 Die <c>win4lin-sources</c> sind zur Unterstützung der Win4Lin Werkzeuge speziell
-angepasst. Diese erlauben Linux-anwendern viele Anwendungen die eigentlich für Microsoft Windows
-entwickelt wurden mit der fast normalen Geschwindigkeit auszuführen. Weitere Informationen gib es unter
+angepasst. Diese erlauben Linux-Anwendern viele Anwendungen die eigentlich für Microsoft Windows
+entwickelt wurden mit fast normaler Geschwindigkeit auszuführen. Weitere Informationen gibt es unter
 <uri>http://www.netraverse.com/</uri>.
 </p>
 
@@ -551,7 +554,7 @@ entwickelt wurden mit der fast normalen Geschwindigkeit auszuführen. Weitere In
 <p>
 Die <c>wolk-sources</c> enthalten den <e>Working Overloaded Linux Kernel</e> von
 <uri>http://sourceforge.net/projects/wolk</uri>. Dieser Kernel enthält viele verschiedene
- Patches, die alle mit größter Vorsichet in den kernel eingepasst wurden. Dies erlaubt Ihnen als
+ Patches, die alle mit größter Vorsicht in den Kernel eingepasst wurden. Dies erlaubt Ihnen als
 Anwender fast jeden davon entweder bei der Kompilierung des Kernel zu berücksichtigen oder
 dies eben zu lassen - der Kernel selber wird bei fast jeder Kombination von einkompilierten Patches
 funktionieren.
