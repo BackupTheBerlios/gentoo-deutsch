@@ -1,11 +1,11 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-bitstreamout/vdrplugin-bitstreamout-0.46g.ebuild,v 1.2 2003/12/21 13:37:55 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-bitstreamout/vdrplugin-bitstreamout-0.49.ebuild,v 1.1 2003/12/21 13:37:55 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="bitstreamout"
 
-S=${WORKDIR}/${VDRPLUGIN}
+S=${WORKDIR}/${VDRPLUGIN}-${PV}
 DESCRIPTION="Video Disk Recorder - BitStreamOut"
 HOMEPAGE="http://bitstreamout.sourceforge.net"
 SRC_URI="http://osdn.dl.sourceforge.net/sourceforge/bitstreamout/vdr-${VDRPLUGIN}-${PV}.tar.bz2"
@@ -13,22 +13,27 @@ KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
 
-DEPEND=">=media-video/vdr-1.2.0
-	>=alsa-lib-0.9.2
-	>=alsa-utils-0.9.2
-	>=alsa-driver-0.9.2
+DEPEND=">=media-video/vdr-1.2.6
+	>=alsa-lib-0.9.8
+	>=alsa-utils-0.9.8
+	>=alsa-driver-0.9.8
+	>=media-sound/mad-0.14.2b-r2
 	"
 
 src_unpack() {
 	unpack ${A}
+
+	cd ${S}
+	sed -i "/cp.*LIBDIR/d" Makefile
+	sed -i "s/^DVBDIR.*$/DVBDIR = \/usr\/include\/dvb/" Makefile
+	sed -i "s/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/" Makefile
+	sed -i "s/^VIDEOLIB.*$/VIDEOLIB = \/usr\/lib\/vdr/" Makefile
+	sed -i "/@install.*$/d" Makefile
+	sed -i "/@-strip.*$/d" Makefile
 }
 
 src_compile() {
-	cd ${S}
-	sed -i "/cp.*LIBDIR/d" Makefile
-	sed -i "s/^DVBDIR.*$/DVBDIR = \/usr/" Makefile
-	sed -i "s/^VDRDIR.*$/VDRDIR = \/usr/" Makefile
-	make || die "compile problem"
+	emake
 }
 
 src_install() {
@@ -39,9 +44,9 @@ src_install() {
 	dodoc ChangeLog COPYING Description PROBLEMS
 	dodoc ${S}/doc/*
 
-	insinto /usr/bin
+	insinto /usr/lib/vdr
 	insopts -m0755
-	newins ${S}/mute.sh vdr_mute.sh
+	newins ${S}/mute/*
 
 	insinto /usr/lib/vdr
 	insopts -m0755
