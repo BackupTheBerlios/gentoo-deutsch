@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/eclasses-list.xml,v 1.1 2003/12/10 20:28:07 sirseoman Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/eclasses-list.xml,v 1.2 2003/12/10 21:39:41 sirseoman Exp $ -->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <!--
@@ -26,8 +26,8 @@ Diese Anleitung beschreibt die im Gentoo Portage enthaltenen Eclasses.
 <title>aspell-dict.eclass</title>
 <section>
 <body>
-Die aspell-dict.eclass wurde erstellt, um die Entwicklung von Ebuilds fÃÅr
-die neuen aspell WÃÂ¶rterbÃÅcher (von <uri>http://www.gnu.org/</uri>) zu
+Die aspell-dict.eclass wurde erstellt, um die Entwicklung von Ebuilds für
+die neuen aspell Wörterbücher (von <uri>http://www.gnu.org/</uri>) zu
 vereinheitlichen, welche die
 </body>
 </section>
@@ -37,15 +37,15 @@ vereinheitlichen, welche die
 <title>autotools.eclass</title>
 <section>
 <body>
-unterstÃÅtzen.
+unterstützen.
 Die autotools.eclass gestattet die Entwicklung von Programmen, die die
-neuesten Versionen von autconf/automake benÃÂ¶tigen.
+neuesten Versionen von autconf/automake benötigen.
 <note>
-   Dieses Eclass wurde erstellt, um InkompatibilitÃâ¬tsprobleme zwischen
+   Dieses Eclass wurde erstellt, um Inkompatibilitätsprobleme zwischen
    autoconf-2.13 und autoconf-2.5x auf der einen Seite und automake-1.4x
-   und automake-1.5x auf der anderen Seite zu ÃÅberbrÃÅcken. Die meisten
-   Pakete benÃÂ¶tigen autoconf-2.13 und automake-1.4x, kÃÂ¶nnen aber wegen
-   der InkompatibilitÃâ¬ten nicht mit den neuesten Versionen dieser Pakete
+   und automake-1.5x auf der anderen Seite zu überbrücken. Die meisten
+   Pakete benötigen autoconf-2.13 und automake-1.4x, können aber wegen
+   der Inkompatibilitäten nicht mit den neuesten Versionen dieser Pakete
    arbeiten. Folglich haben wir ein Prolem, wenn ein Paket die neuesten
    Versionen von automake und autoconf braucht.
 </note>
@@ -54,7 +54,7 @@ Kommentiertes Beispiel:
    # Copyright 1999-2002 Gentoo Technologies, Inc.
    # Distributed under the terms of the GNU General Public License, v2 or later
    # Maintainer:  John Doe &lt;john@foo.com&gt;
-   # $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/eclasses-list.xml,v 1.1 2003/12/10 20:28:07 sirseoman Exp $
+   # $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/eclasses-list.xml,v 1.2 2003/12/10 21:39:41 sirseoman Exp $
 #
    # Sollten Sie von hier abweichende Versionen setzen wollen, *muss* dies getan
    # werden, bevor inherit.eclass gesourced wird
@@ -76,14 +76,14 @@ Kommentiertes Beispiel:
 #
    HOMEPAGE="http://www.foo.com/"
 #
-   # Hier *mÃŒssen* Sie "$DEPEND" als AbhÃâ¬ngigkeit haben, um alle
-   # AbhÃâ¬ngigkeiten von automake und autoconf mit einzubeziehen.
+   # Hier *müssen* Sie "$DEPEND" als Abhängigkeit haben, um alle
+   # Abhängigkeiten von automake und autoconf mit einzubeziehen.
    DEPEND="${DEPEND}
            foo-libs/libfoo"
 #
    src_compile() {
 #
-       # Dies wird automake und autoconf in einem temporÃâ¬ren Verzeichnis
+       # Dies wird automake und autoconf in einem temporären Verzeichnis
 	   # installieren und die Umgebung einrichten. Vergessen Sie das nicht!!!!!!!
        install_autotools
 #
@@ -120,8 +120,8 @@ anderen erben von hier.
 <body>
 Die commonbox.eclass wurde dazu konstruiert, um einfachere Installationen
 von Box Window-Manager wie blackbox, fluxbox oder commonbox zu
-ermÃÂ¶glichen. Die Standard-Utilities dieser Window-Manager werden in der
-Commonbox-Utils AbhÃâ¬ngigkeit installiert und die Standardstile in der
+ermöglichen. Die Standard-Utilities dieser Window-Manager werden in der
+Commonbox-Utils Abhängigkeit installiert und die Standardstile in der
 Commonbox-Style Utility. Sie alle teilen sich nun das
 <path>/usr/share/commonbox</path> Verzeichnis.
 </body>
@@ -133,7 +133,7 @@ Commonbox-Style Utility. Sie alle teilen sich nun das
 <section>
 <body>
 Dieses Eclass stellt die allgemeinen CVS-Funktionen zum "Abholen" zur
-VerfÃÅgung.
+Verfügung.
 </body>
 </section>
 </chapter>
@@ -154,7 +154,7 @@ zu vereinfachen und "schlechte" USE-Flags von <c>CFLAGS</c> zu entfernen.
 <body>
 Das distutils.eclass wurde dazu konstruiert, um eine einfachere Installation von
 auf distutils-basierenden Python-Modulen und deren Eingliederung in das
-Gentoo Linux-System zu ermÃÂ¶glichen.
+Gentoo Linux-System zu ermöglichen.
 </body>
 </section>
 </chapter>
@@ -173,7 +173,7 @@ Ebooks zu installieren.
 <title>elisp.eclass</title>
 <section>
 <body>
-Dieses Eclass setzt das "site-lisp"-Verzeichnis fÃÅr Pakete, die mit dem
+Dieses Eclass setzt das "site-lisp"-Verzeichnis für Pakete, die mit dem
 Emacs-Paket verbunden sind.
 </body>
 </section>
@@ -183,7 +183,7 @@ Emacs-Paket verbunden sind.
 <title>eutils.eclass</title>
 <section>
 <body>
-Dieses Eclass ist fÃÅr allgemeine Funktionen, die die meisten Ebuilds zu
+Dieses Eclass ist für allgemeine Funktionen, die die meisten Ebuilds zu
 implementieren haben.
 </body>
 </section>
@@ -212,8 +212,8 @@ in app-games zu nutzen.
 <title>gcc.eclass</title>
 <section>
 <body>
-Dieses Eclass enthÃâ¬lt (oder sollte enthalten) Funktionen um allgemeine
-Informationen ÃÅber den gcc zu bekommen.
+Dieses Eclass enthält (oder sollte enthalten) Funktionen um allgemeine
+Informationen über den gcc zu bekommen.
 </body>
 </section>
 </chapter>
@@ -222,7 +222,7 @@ Informationen ÃÅber den gcc zu bekommen.
 <title>gnome.org.eclass</title>
 <section>
 <body>
-Gnome Eclass. HauptsÃâ¬chlich <c>SRC_URI</c> Einstellungen.
+Gnome Eclass. Hauptsächlich <c>SRC_URI</c> Einstellungen.
 </body>
 </section>
 </chapter>
@@ -241,7 +241,7 @@ Gnome Eclass. HauptsÃâ¬chlich <c>SRC_URI</c> Einstellungen.
 <body>
 Dieses Eclass updated config.guess und config.sub. Das ist hilfreich, falls
 das Konfigurieren wegen eines falschen kanonischen Systemnamens (<c>CHOST</c>)
-fehlschlÃâ¬gt.
+fehlschlägt.
 </body>
 </section>
 </chapter>
@@ -260,8 +260,8 @@ Das gtk-engines.eclass wird von allen gtk-engines-* Ebuilds geerbt.
 <section>
 <body>
 <note>
-Dieses Eclass muss existieren, da ohne es Ãâ¬ltere installierte Pakete, die
-die alte Vererbungsmethode nutzen, nicht mehr deinstalliert werden kÃÂ¶nnen.
+Dieses Eclass muss existieren, da ohne es ältere installierte Pakete, die
+die alte Vererbungsmethode nutzen, nicht mehr deinstalliert werden können.
 Wie dem auch sei, es muss keine Codezeilen enthalten :-)
 </note>
 </body>
@@ -280,7 +280,7 @@ Wie dem auch sei, es muss keine Codezeilen enthalten :-)
 <title>kde-base.eclass</title>
 <section>
 <body>
-Dies ist das Kde-Ebuild fÃÅr standard kde-abhÃâ¬ngige Programme, die
+Dies ist das Kde-Ebuild für standard kde-abhängige Programme, die
 <c>configure/make/make install</c> Prozeduren folgen und einige
 Standardkonfigurationsoptionen besitzen.
 </body>
@@ -291,11 +291,11 @@ Standardkonfigurationsoptionen besitzen.
 <title>kde-dist.eclass</title>
 <section>
 <body>
-Dies ist die kde-dist.eclass fÃÅr >=2.2.1 kde-basierende Pakete. Trotzdem nicht
-fÃÅr kdelibs nutzen :-)
+Dies ist die kde-dist.eclass für >=2.2.1 kde-basierende Pakete. Trotzdem nicht
+für kdelibs nutzen :-)
 <warn>
-Benutzen Sie sie nicht fÃÅr z.B. kdevelop oder koffice, wegen deren getrennten
-VersionsplÃâ¬nen.
+Benutzen Sie sie nicht für z.B. kdevelop oder koffice, wegen deren getrennten
+Versionsplänen.
 </warn>
 </body>
 </section>
@@ -305,8 +305,8 @@ VersionsplÃâ¬nen.
 <title>kde-functions.eclass</title>
 <section>
 <body>
-Dieses enthÃâ¬lt alles, bis auf Dinge, die Ebuild-Variablen oder -Funktionen
-Ãâ¬ndern (e.g. <c>$P</c>, <c>src_compile()</c> etc.).
+Dieses enthält alles, bis auf Dinge, die Ebuild-Variablen oder -Funktionen
+ändern (e.g. <c>$P</c>, <c>src_compile()</c> etc.).
 </body>
 </section>
 </chapter>
@@ -333,7 +333,7 @@ Ziel an.
 <title>kde-pre.eclass</title>
 <section>
 <body>
-Dies ist fÃÅr KDE-VorverÃÂ¶ffentlichungen (alpha, beta etc.), die einen
+Dies ist für KDE-Vorveröffentlichungen (alpha, beta etc.), die einen
 _(Unterstrich) in ihrem Portage Ebuild Namen haben, aber nicht in
 ihrem Quellverzeichnissen und - archiven. Wird vererbt, nachdem
 <c>SRC_URI</c> und <c>WORKDIR</c> gesetzt wurde.
@@ -345,13 +345,13 @@ ihrem Quellverzeichnissen und - archiven. Wird vererbt, nachdem
 <title>kde-source.eclass</title>
 <section>
 <body>
-Dieses ist fÃÅr kde-base cvs Ebuilds. Lesen Sie die Kommentare ÃÅber
+Dieses ist für kde-base cvs Ebuilds. Lesen Sie die Kommentare über
 Einstellungen. Es benutzt <c>$S</c> und setzt <c>$SRC_URI</c>,
-also "erben" Sie es so spÃâ¬t wie mÃÂ¶glich (auf jeden Fall nach jedem anderen
+also "erben" Sie es so spät wie möglich (auf jeden Fall nach jedem anderen
 Eclass). Schauen Sie unter
 <uri>http://www.gentoo.org/~danarmak/kde-cvs.html</uri>
-nach! Die wirkliche FunktonalitÃâ¬t liegt in <c>cvs.eclass</c>;
-Dieses hier fÃÅgt lediglich einige triviale kde-spezifische Dinge hinzu.
+nach! Die wirkliche Funktonalität liegt in <c>cvs.eclass</c>;
+Dieses hier fügt lediglich einige triviale kde-spezifische Dinge hinzu.
 </body>
 </section>
 </chapter>
@@ -370,7 +370,7 @@ erben direkt von hier.
 <title>kde.org.eclass</title>
 <section>
 <body>
-EnthÃâ¬lt die Seiten der <uri>ftp://ftp.kde.org/</uri> Pakete und deren Mirrors.
+Enthält die Seiten der <uri>ftp://ftp.kde.org/</uri> Pakete und deren Mirrors.
 </body>
 </section>
 </chapter>
@@ -379,8 +379,8 @@ EnthÃâ¬lt die Seiten der <uri>ftp://ftp.kde.org/</uri> Pakete und deren M
 <title>kernel.eclass</title>
 <section>
 <body>
-Dieses Eclass enthÃâ¬lt allgemeine Funktionen, die von allen auf lostlogic
-basierenden Kernel-Ebuilds benutzt werden kÃÂ¶nnen.
+Dieses Eclass enthält allgemeine Funktionen, die von allen auf lostlogic
+basierenden Kernel-Ebuilds benutzt werden können.
 </body>
 </section>
 </chapter>
@@ -410,12 +410,12 @@ Fast alle anderen erben von hier.
 Diese Eclass wurde zur einfachen Benutzung und Implementierung erstellt.
 Die weite Mehrheit von LaTeX Paketen muss nur <c>SRC_URI</c> (und
 manchmal <c>$S</c>) definieren, um erfolgreich installiert zu werden.
-Falls Fonts benÃÂ¶tigt werden, muss auch die Variable <c>SUPPLIER</c>
+Falls Fonts benötigt werden, muss auch die Variable <c>SUPPLIER</c>
 definiert werden.
 
-Wie dem auch sei, die Pakete, die Unterverzeichnisse enthalten, mÃÅssen jedes
+Wie dem auch sei, die Pakete, die Unterverzeichnisse enthalten, müssen jedes
 Unterverzeichnis separat bearbeiten. Z.B. ein Paket, welches die
-Verzeichnisse <path>DIR1</path> und <path>DIR2</path> enthÃâ¬lt, muss
+Verzeichnisse <path>DIR1</path> und <path>DIR2</path> enthält, muss
 <c>latex-package_src_compile()</c> und <c>latex-package_src_install()</c>
 in jedem Verzeichnis aufrufen, wie hier zu sehen:
 <pre>
@@ -437,19 +437,19 @@ src_install() {
    latex-package_src_install
 }
 </pre>
-Das Eclass ÃÅbernimmt nach einer Installation oder Deinstallation automatisch
-das Rehashing des Tex-Caches (ls-lR), genauso wie es die endgÃÅltige
+Das Eclass übernimmt nach einer Installation oder Deinstallation automatisch
+das Rehashing des Tex-Caches (ls-lR), genauso wie es die endgültige
 Dokumentation der Tex-Dateien erstellt, die mit dem Quelltext kommen.
 Beachten Sie bitte, dass wir Tex Layout-Standards nicht beachten, indem wir
 die Dokumentation in <path>/usr/share/doc/${PN}</path> speichern.
 
-FÃÅr Beispiele von einfachen Installationen, sehen Sie bitte unter
+Für Beispiele von einfachen Installationen, sehen Sie bitte unter
 <c>app-text/latex-aastex</c> und <c>app-text/latex-leaflet</c> nach.
 <note>
 Die CTAN "verzeichnis-greif" Funktion erstellt JEDES MAL Dateien mit
 verschiedenen MD5-Signaturen. Aus diesem Grund, falls Sie etwas von CTAN
-wollen, mÃÅssen Sie entweder jede Datei einzeln greifen oder einen Mirror finden,
-wo Sie ein Archiv erstellen kÃÂ¶nnen. (iBiblio)
+wollen, müssen Sie entweder jede Datei einzeln greifen oder einen Mirror finden,
+wo Sie ein Archiv erstellen können. (iBiblio)
 </note>
 </body>
 </section>
@@ -487,7 +487,7 @@ Kompilierung; dies soll den Verbrauch an Arbeitsspeicher verringern.
 <title>nsplugins.eclass</title>
 <section>
 <body>
-Nur einige wiederverwendbare Funktionen fÃÅr das Teilen von netscape/moz Plugins.
+Nur einige wiederverwendbare Funktionen für das Teilen von netscape/moz Plugins.
 </body>
 </section>
 </chapter>
@@ -498,7 +498,7 @@ Nur einige wiederverwendbare Funktionen fÃÅr das Teilen von netscape/moz P
 <body>
 Das perl-module.eclass wurde erstellt, um einfachere Installationen von
 Perl-Modulen und deren Integration in das Gentoo Linux-System zu
-ermÃÂ¶glichen.
+ermöglichen.
 </body>
 </section>
 </chapter>
@@ -530,9 +530,8 @@ integriert werden.
 <section>
 <body>
 Dieses Eclass kann von Paketen genutzt werden, die eine laufende X-Umgebung
-zum Erstellen benÃÂ¶tigen.
+zum Erstellen benötigen.
 </body>
 </section>
 </chapter>
-
 </guide>
