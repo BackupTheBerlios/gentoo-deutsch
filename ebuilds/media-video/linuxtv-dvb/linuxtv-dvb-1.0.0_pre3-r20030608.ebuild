@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/linuxtv-dvb/Attic/linuxtv-dvb-1.0.0_pre3-r20030608.ebuild,v 1.2 2003/06/20 12:03:09 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/linuxtv-dvb/Attic/linuxtv-dvb-1.0.0_pre3-r20030608.ebuild,v 1.3 2003/07/13 16:54:51 mad Exp $
 
 IUSE=""
 
@@ -106,9 +106,11 @@ src_install() {
 
 pkg_postinst() {
 	[ -x /sbin/update-modules ] && /sbin/update-modules
+	[ -x /usr/bin/pkill ] && /usr/bin/pkill -HUP ^devfsd
 }
 
 pkg_postrm() {
 	[ -x /sbin/update-modules ] && /sbin/update-modules
+	[ -x /usr/bin/pkill ] && /usr/bin/pkill -HUP ^devfsd
 }
 
