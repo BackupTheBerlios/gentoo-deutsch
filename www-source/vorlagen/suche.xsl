@@ -72,13 +72,10 @@
       
         <input type="text" name="q" value="<!--cgi: query_str-->" />
       
-        <input type="submit" value="Suchen" style="color/>
-      <br/>      
-      <br/>
+        <input type="submit" value="Suchen" style="color"/>
+        <br/>      
+        <br/>
       </xsl:if>
-
-      Mit <a href="http://www.google.com/search?num=10&amp;query=<!--cgi: query_str_escaped-->">Google</a>
-      nach '<!--cgi: query_str-->' suchen
     </form>
     ]]>
   </div>
