@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/vdrplugin.eclass,v 1.2 2004/08/11 12:56:31 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/vdrplugin.eclass,v 1.3 2004/08/12 18:19:32 austriancoder Exp $
 #
 # Matthias Schwarzott <zzam@gmx.de>
 
@@ -16,7 +16,7 @@ INHERITED="$INHERITED $ECLASS"
 ##
 ## # Copyright 1999-2004 Gentoo Technologies, Inc.
 ## # Distributed under the terms of the GNU General Public License v2
-## # $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/vdrplugin.eclass,v 1.2 2004/08/11 12:56:31 austriancoder Exp $
+## # $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/vdrplugin.eclass,v 1.3 2004/08/12 18:19:32 austriancoder Exp $
 ## 
 ## inherit vdrplugin
 ## 
@@ -151,7 +151,7 @@ vdrplugin_src_install() {
 	insopts -m0755
 	newins libvdr-${VDRPLUGIN}.so libvdr-${VDRPLUGIN}.so.${PV}
 
-	for f in README HISTORY TODO; do
+	for f in COPYING README HISTORY TODO; do
 		test -f "${f}" && dodoc "${f}"
 	done
 
