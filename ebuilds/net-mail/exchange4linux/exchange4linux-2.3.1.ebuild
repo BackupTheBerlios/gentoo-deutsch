@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.2 2003/07/03 16:09:48 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.3 2003/07/03 21:13:51 holler Exp $
 
 DESCRIPTION="exchange4linux - exchange4linux is a production/stable server solution to store/exchange workgroup data on Linux in a style simular to Exchange. Main goal is to provide Outlook users a free and open server alternative on Linux."
 HOMEPAGE="http://www.exchange4linux.org/"
@@ -42,6 +42,8 @@ src_compile() {
     -e 's:^exec python Server.pyc \$\* >/dev/null 2>/dev/null:#exec python Server.pyc \$\* >/dev/null 2>/dev/null\nERRTEST=139\nuntil [ \${ERRTEST} != 139 ]; do\n  python  Server.pyc \$\* 1>/dev/null 2>/dev/null\n  ERRTEST=\$\?\ndone:'
   rm server.sh.orig
   chmod +x server.sh
+  cd ../BILL-StorageMailer-${PV}
+  python /usr/lib/python2.2/compileall.py .
 
 }
 
@@ -62,6 +64,9 @@ src_install () {
   rm BILL-StorageServer-${PV}/README.TXT
   mkdir ${D}usr/share/exchange4linux
   mv BILL-StorageServer-${PV} ${D}usr/share/exchange4linux/BILL-StorageServer
+  mv BILL-StorageMailer-${PV} ${D}usr/share/exchange4linux/BILL-StorageMailer
+  exeinto /usr/sbin  
+  doexe ${FILESDIR}/exchange4linux-deliver
   mkdir ${D}var
   mkdir ${D}var/run
   mkdir ${D}var/run/exchange4linux/
