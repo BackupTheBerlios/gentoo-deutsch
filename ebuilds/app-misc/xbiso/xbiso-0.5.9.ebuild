@@ -9,6 +9,5 @@ KEYWORDS="~x86"
 replace-flags -Os -O2
 
 src_install() {
-	#exeinto /usr/bin; doexe ${WORKDIR}/${P}/${PN}
-	exeinto /usr/bin; doexe ${PN}
+	dobin ${PN}
 }

@@ -3,10 +3,7 @@ SRC_URI="http://www.wxftp.seul.org/download/axyftp-0.5.1.tar.gz"
 HOMEPAGE="http://www.wxftp.seul.org"
 
 LICENSE="Artistic LGPL"
-KEYWORDS="~x86"
-
-# Compilation will fail using -Os !
-replace-flags -Os -O2
+KEYWORDS="~x86 ~amd64"
 
 src_compile(){
 	econf || die "configure failed"
