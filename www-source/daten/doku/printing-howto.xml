@@ -2,7 +2,7 @@
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version 1.26 -->
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/printing-howto.xml,v 1.11 2003/12/26 15:13:14 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/printing-howto.xml,v 1.12 2003/12/26 15:21:01 dertobi123 Exp $ -->
 
 <guide link = "/doc/de/printing-howto.xml">
 
@@ -351,7 +351,7 @@ Vor der Ausführung von <c>foomatic-configure</c>, starten Sie bitte <i>cupsd</i
 Falls Sie mit Hilfe des Befehls grep den Befehl nicht finden, können Sie online
 auf <uri link="http://www.linuxprinting.org">LinuxPrinting.org</uri> suchen und
 überprüfen, welcher Treiber verwendet werden kann. Dann nehmen Sie diesen
-Treiber un installieren ihn:
+Treiber und installieren ihn:
 </p>
 
 <pre caption="Installation eines PPD-Treibers">
