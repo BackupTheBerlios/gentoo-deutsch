@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
   Last modification: 28.02.2003
@@ -24,7 +24,8 @@
   <menu value="gentoo.de">
     <item title="Projekt" href="projekt">
       <item href="neuigkeiten" title="Neuigkeiten"/>
-      <item href="praesentation" title="Präsentation"/>
+      <item href="praesentation" title="PrÃ¤sentation"/>
+      <item href="lt2k3" title="LinuxTag 2003"/>
     </item>
     <item title="Dokumentation" href="doku">
       <item href="einrichtung" title="Einrichtung">
@@ -39,7 +40,7 @@
       </item>
       <item href="antworten" title="Antworten">
         <item href="faq" title="FAQ"/>
-        <item href="faq_ergaenzung" title="FAQ Ergänzungen"/>
+        <item href="faq_ergaenzung" title="FAQ ErgÃ¤zungen"/>
       </item>
       <item href="anwendungen" title="Anwendungen">
         <item href="nano" title="Nano-Editor"/>
@@ -76,8 +77,8 @@
     </item>
     <item title="Download" href="download">
       <item href="mirrors" title="Mirrors"/>
-      <item href="ebuilds_de" title="Ergänzende Programme"/>
-      <item href="ebuilds" title="Aktuelles Programme"/>
+      <item href="ebuilds_de" title="ErgÃ¤zende Programme"/>
+      <!--<item href="ebuilds" title="Aktuelles Programme"/> !-->
       <item href="sonstiges" title="Sonstiges"/>
     </item>
   </menu>
