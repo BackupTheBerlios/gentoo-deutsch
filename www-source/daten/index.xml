@@ -64,10 +64,10 @@ Gentoo-Benutzer</uri>
   <block>
     <title>Partnerseiten:</title>
     <p>
-      <uri link="http://www.berlios.de"><figure link="http://www.gentoo.de/media/bilder/icons/berlios.png" short="Berlios" caption="www.berlios.de"/></uri>
+      <uri link="http://www.berlios.de"><img src="http://www.gentoo.de/media/bilder/icons/berlios.png" alt="www.berlios.de"/></uri>
       <br/>
 
-	  <uri link="http://www.gentooforum.de"><figure link="http://www.gentoo.de/media/bilder/icons/gentooforum.png" short="Gentooforum" caption="www.gentooforum.de"/></uri>
+	  <uri link="http://www.gentooforum.de"><img src="http://www.gentoo.de/media/bilder/icons/gentooforum.png" alt="www.gentooforum.de"/></uri>
       <br/>
     </p>
   </block>
