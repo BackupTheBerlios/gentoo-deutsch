@@ -1,3 +1,6 @@
-MD5 77a8d81e2c4819bf6f95df5a88630ff7 vdrplugin-sleeptimer-0.5.ebuild 1695
+MD5 f67110b0dcb740f0ae57e006b339add2 ChangeLog 573
+MD5 cd850d20e5b4755572e525ba23271d10 vdrplugin-sleeptimer-0.5.ebuild 1701
+MD5 7b42cf86be45054389d0b10b5e725dae vdrplugin-sleeptimer-0.6.ebuild 562
 MD5 54b14847866411fa6267ba49dc74de8d files/digest-vdrplugin-sleeptimer-0.5 65
 MD5 ec3820220c02fa8f83243c92a21d2281 files/sleeptimer-0.2.diff 387
+MD5 b0cec0360f141c20fe01367c4c5bc217 files/digest-vdrplugin-sleeptimer-0.6 65
