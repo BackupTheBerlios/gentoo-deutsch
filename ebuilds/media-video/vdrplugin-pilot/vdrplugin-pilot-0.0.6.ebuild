@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-pilot/vdrplugin-pilot-0.0.6.ebuild,v 1.1 2004/03/22 18:38:25 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-pilot/vdrplugin-pilot-0.0.6.ebuild,v 1.2 2004/06/03 19:26:47 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="pilot"
@@ -17,6 +17,10 @@ DEPEND=">=media-video/vdr-1.2.0"
 
 src_unpack() {
 	unpack ${A}
+	if has_version ">=media-video/vdr-1.3.7" ;
+	then
+		epatch ${FILESDIR}/${VDRPLUGIN}-${PV}-1.3.7.diff
+	fi
 }
 
 src_compile() {
