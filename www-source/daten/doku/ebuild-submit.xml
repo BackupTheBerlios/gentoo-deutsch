@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ebuild-submit.xml,v 1.2 2003/11/15 10:22:24 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ebuild-submit.xml,v 1.3 2003/11/15 10:26:01 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-<!-- English CVS Version 1.5 -->
+<!-- English CVS Version 1.6 -->
 
 <guide link="/inhalte/doku/entwickler/einreichen">
 <title>Ebuilds einreichen</title>
