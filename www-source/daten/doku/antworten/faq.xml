@@ -174,7 +174,7 @@
         <uri link="http://www.slackware.com/">Slackware</uri>,
         <uri link="http://www.linuxfromscratch.org">Linux From Scratch</uri> oder
         <uri link="http://www.bsd.org">BSD</uri> Benutzern gefallen.  Anders als
-        die meisten Linux Distributionen, hat Gentoo ein Paket System, das an
+        die meisten Linux Distributionen hat Gentoo ein Paket System, das an
         die "Ports" von BSD erinnert; damit können Sie sich sicher sein, dass
         Sie immer die aktuellsten Versionen der Pakete haben.
       </p>
@@ -185,8 +185,6 @@
 
 <chapter>
   <title>Installation</title>
-  <section>
-    <body>
 
       <warn>
         Berichten Sie alle Bugs an <uri>bugs.gentoo.org</uri>! Berichten Sie die
@@ -194,8 +192,6 @@
         Gentoo, wenn nötig leiten wir diese an die Autoren weiter.
       </warn>
 
-    </body>
-  </section>
   <section>
     <title>Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</title>
     <body>
@@ -207,12 +203,11 @@
         Image, das einen System Kernel, eine komplette Zusammenstellung von
         Kernel Modulen, wichtigen System Hilfsprogrammen wie <c>mkfs</c> und
         Netzwerk Unterstützung, sowie das Minimal-System des <e>.tbz2</e>
-        Archivs enthält. Die meisten Benutzer werden Gentoo Linux von der .iso
-        Datei auf eine CD brennen, von der CD booten, und mit einer minimalen
-        Linux Umgebung von der Gentoo Boot CD installieren.  Es ist für den
-        Benutzer jedoch möglich Gentoo Linux direkt von einer bereits
-        vorhandenen Linux Distribution zu installieren.  Solche Benutzer müssen
-        nur eine .tbz2 Datei downloaden, den Inhalt auf eine Reserve Partitionen
+        Archivs enthält. In den meisten Fällen werden Sie das .iso
+        Image auf eine CD brennen, von dieser CD booten und von der 
+	Gentoo Boot CD installieren. Sie können Gentoo jedoch auch direkt aus einer bereits
+        vorhandenen Linux Distribution zu installieren.  In diesem Fall müssen
+        Sie nur eine .tbz2 Datei downloaden, den Inhalt auf eine Reserve Partitionen
         entpacken (stellen Sie sicher, dass Sie das <c>p</c> Argument benutzen
         wenn Sie das Archiv entpacken), dann in das System einen chroot
         ausführen und über normale Art und Weise installieren.
@@ -538,365 +533,479 @@ RESUMECOMMAND="/usr/bin/wget --proxy-user=<comment>username</comment> --proxy-pa
 </chapter>
 
 <chapter>
-	<title>Paket Verwaltung</title>
-	<section>
-		<title>In welchem Format werden die Pakete gespeichert?</title>
-		<body><p>Die Pakete existieren in unserem Portage "Baum/Stammbaum/Archiv" als <e>ebuild</e>, den Installations Skripten. 
-		Wir sind hauptsaechlich eine Ports-basierende Distribution, darunter versteht man, dass wir Skripte (<c>.ebuild</c> Dateien) und ein
-		spezielles System (Portage) bereitstellen, damit man die Programme bequem aus dem Quellcode bauen kann. Wir erstellen normalerweise 
-		Binäre Pakete nur für spezielle Veroeffentlichungen und "snapshots". Die <uri link="/doc/gentoo-howto.html">Development HOWTO
-		</uri> erklärt den Inhalt von ebuild Skripten.  Fuer eine komplette Binäre ISO Veroeffentlichung, erstellen wir
-		eine komplette Umbegung in einer weiterentwickelten Version des <c>.tbz2</c> Datei Formates (<c>.tar.bz2</c> -
-		(kompatibel mit Meta-Information, die am Ende der Datei gespeichert sind)</p>
-		</body>
-	</section>
+  <title>Paket Verwaltung</title>
+	
+  <section>
+  	<title>In welchem Format werden die Pakete gespeichert?</title>
+    <body>
+  
+      <p>
+        Die Pakete existieren in unserem Portage "Baum/Stammbaum/Archiv" als <e>ebuild</e>, den Installations Skripten. 
+        Gentoo ist hauptsächlich eine Ports-basierende Distribution. Darunter versteht man, dass Gentoo Skripte (<c>.ebuild</c> Dateien) und ein
+        spezielles System (Portage) bereitstellt, um Programme bequem aus dem Quellcode bauen zu können. 
+        
+        <!-- Ich halte diesen Teil für überholt 
+        
+        Wir erstellen normalerweise 
+        Binäre Pakete nur für spezielle Veröffentlichungen und "snapshots". Die <uri link="/doc/gentoo-howto.html">Development HOWTO
+        </uri> erklärt den Inhalt von ebuild Skripten.  Fuer eine komplette Binäre ISO Veroeffentlichung, erstellen wir
+        eine komplette Umbegung in einer weiterentwickelten Version des <c>.tbz2</c> Datei Formates (<c>.tar.bz2</c> -
+        (kompatibel mit Meta-Information, die am Ende der Datei gespeichert sind)
 
-	<section>
-		<title>Warum ein neues Port System schreiben (Portage), wenn man die BSD Version verwenden könnte?</title>
-		<body>
-		<p>In einem Satz: Weil Portage in vielen Dingen viel besser ist. Eine der Entwicklungsphilosophien
-		von der <c>.ebuild</c> Syntax ist die Analogie zu dem, was Sie an der Kommandozeile eingeben würden,
-		um die Pakete von Hand zu installieren. Somit sollte Portage sehr einfach zu erlernen sein und auch
-		ohne grossen Aufwand an die eigenen Bedürfnisse angepasst werden können. Wir haben auch "gefälschte"
-		Installationen im OpenBSD-Stil, sicheres entfernen, Systemanpassungen, Paketmaskierung, ein echtes
-		System, welches Abhängigkeiten berücksichtigt und noch viele andere guten Sachen.</p>
-		</body>
-	</section>
+        Hier sollte statt dessen auf GRP hingewiesen werden.
+  
+        -->
+      </p>
 
+    </body>
+	</section>
+	<section>
+   	<title>Warum ein neues Port System schreiben (Portage), wenn man die BSD Version verwenden könnte?</title>
+    <body>
+		
+      <p>
+        In einem Satz: Weil Portage in vielen Dingen viel besser ist. Eine der Entwicklungsphilosophien
+    		von der <c>.ebuild</c> Syntax ist die Analogie zu dem, was Sie an der Kommandozeile eingeben würden,
+    		um die Pakete von Hand zu installieren. Somit sollte Portage sehr einfach zu erlernen sein und auch
+        ohne grossen Aufwand an die eigenen Bedürfnisse angepasst werden können. Wir haben auch "gefälschte"
+        Installationen im OpenBSD-Stil, sicheres entfernen, Systemanpassungen, Paketmaskierung, ein echtes
+        System, welches Abhängigkeiten berücksichtigt und noch viele andere guten Sachen.
+      </p>
+		
+    </body>
+	</section>
 	<section>
 		<title>Wo liegt der Unterschied zu Debian's apt oder den BSD Ports?</title>
-		<body><p>Portage enthält die besten Funktionen von apt und ports; zum Beispiel die
-		USE Optionen, ein komplettes Abhängigkeitssystem, sicheres installieren und
-		deinstallieren, eine wirkliche Paket-Datenbank. Stellen Sie sich Portage als das Beste
-		beider Welten vor; ein Ports-System das die sensibilität und sicherheit eines Linux
-		Paket Management Systems enthält.</p></body>
+		<body>
+    
+      <p>
+        Portage enthält die besten Funktionen von apt und Ports; zum Beispiel die
+    		USE Optionen, ein komplettes Abhängigkeitssystem, sicheres Installieren und
+    		Deinstallieren, eine Paket-Datenbank. Stellen Sie sich Portage als das Beste
+    		beider Welten vor; ein Ports-System das die Sensibilität und Sicherheit eines Linux
+    		Paket Management Systems enthält.
+      </p>
+      
+    </body>
 	</section>
-
 	<section>
-	        <title>Wie installiere und deinstalliere ich Pakete?</title>
-	        <body>
-		<p>Das <uri link="/inhalte/doku/anwendungen/portage/">Portage User Guide</uri> erklärt ausführlich, wie man 
-		Pakete installiert, deinstalliert und Portage aktualisiert.</p>
-	        </body>
+    <title>Wie installiere und deinstalliere ich Pakete?</title>
+    <body>
+		
+      <p>
+        Das <uri link="/inhalte/doku/anwendungen/portage/">Portage User Guide</uri> erklärt ausführlich, wie man 
+		    Pakete installiert, deinstalliert und Portage aktualisiert.
+      </p>
+      
+    </body>
 	</section>
-
 	<section>
-		<title>Wie kann ich globale Einstellungen zum kompilieren der Pakete einstellen?</title>
-		<body><p><path>/etc/make.conf</path> kann editiert werden, um globale und profil-spezifische
-		Standardeinstellungen zu überschreiben, die beim kompilieren und einführen der Pakete verwendet werden.
-		Die am meisten üblichen Befele sind folgende:</p>
-		<table>
-		<tr>
-			<th>Flag</th>
-			<th>Beschreibung</th>
-		</tr>
-		<tr>
-			<ti>CHOST</ti>
-			<ti>Dies setzt die HOST Variable für Compiler, z.B. <c>i686-pc-linux-gnu</c></ti>
-		</tr>
-		<tr>
-			<ti>CFLAGS</ti>
-			<ti>Die Optionen für den <c>gcc</c> zum kompilieren von Programmen, die in C (*.c Dateien) geschrieben sind</ti>
-		</tr>
-		<tr>
-			<ti>CXXFLAGS</ti>
-			<ti>Die Optionen für den <c>gcc</c> zum kompilieren von Programmen, die in C++ (*.c,*.cpp etc.
-			Dateien) geschrieben sind</ti>
-		</tr>
-		<tr>
-			<ti>USE</ti>
-			<ti>Dies Erlaubt das Setzen von gewünschten Komponenten, die mit hinein kompiliert
-			werden sollen, sofern diese vorhanden sind. Zum Besipiel, wenn Sie <c>gnome</c> innerhalb
-			der USE Zeile haben, und Sie <c>xchat</c> kompilieren, wird dies die Gnome Unterstützung
-			von xchat hinzufügen. Auch alle Paket-Abhängigkeiten machen von den Veränderungen in der
-			USE-Zeile Gebrauch.</ti>
-		</tr>
-		<tr>
-			<ti>GENTOO_MIRRORS</ti>
-			<ti>Durch Leerzeichen getrennte Liste von URIs die im zur Zeit Gentoo Pakete spiegeln. Portage
-			verucht zunächst von einem <c>GENTOO_MIRROR</c> herunter zu laden, bevor es die offizielle
-			<c>SRC_URI</c> ausprobieren. Um das &#xDC;berspringen von Mirrors zu erzwingen, kann diese Variable auf ""
-			gesetzt werden.</ti>
-		</tr>
-		</table>
-		</body>
-	</section>
+		<title>Wie kann ich globale Einstellungen zum Kompilieren der Pakete einstellen?</title>
+		<body>
+    
+      <p>
+        In der <path>/etc/make.conf</path> können Sie Globale und/oder Profil-Spezifische
+    		Standardeinstellungen anpassen, die beim Kompilieren und Installieren der Pakete verwendet werden.
+    		Mit den folgenden Optionen sollten Sie sich auf jeden Fall befassen:
+      </p>
+      
+  		<table>
+  		<tr>
+  			<th>Flag</th>
+  			<th>Beschreibung</th>
+  		</tr>
+  		<tr>
+  			<ti>CHOST</ti>
+  			<ti>Dies setzt die HOST Variable für Compiler, z.B. <c>i686-pc-linux-gnu</c></ti>
+  		</tr>
+  		<tr>
+  			<ti>CFLAGS</ti>
+  			<ti>Die Optionen für den <c>gcc</c> zum kompilieren von Programmen, die in C (*.c Dateien) geschrieben sind</ti>
+  		</tr>
+  		<tr>
+  			<ti>CXXFLAGS</ti>
+  			<ti>Die Optionen für den <c>gcc</c> zum kompilieren von Programmen, die in C++ (*.c,*.cpp etc.
+  			Dateien) geschrieben sind</ti>
+  		</tr>
+  		<tr>
+  			<ti>USE</ti>
+  			<ti>Dies Erlaubt das Setzen von gewünschten Komponenten, die mit hinein kompiliert
+  			werden sollen, sofern diese vorhanden sind. Zum Beispiel, wenn Sie <c>gnome</c> innerhalb
+  			der USE Zeile haben, und Sie <c>xchat</c> kompilieren, wird dies die Gnome Unterstützung
+  			von xchat hinzufügen. Auch alle Paket-Abhängigkeiten machen von den Veränderungen in der
+  			USE-Zeile Gebrauch.</ti>
+  		</tr>
+  		<tr>
+  			<ti>GENTOO_MIRRORS</ti>
+  			<ti>Durch Leerzeichen getrennte Liste von URIs die Gentoo Pakete spiegeln. Portage
+  			verucht zunächst von einem <c>GENTOO_MIRROR</c> herunter zu laden, bevor es die offizielle
+  			<c>SRC_URI</c> ausprobieren. Um das Überspringen von Mirrors zu erzwingen, kann diese Variable auf ""
+  			gesetzt werden.</ti>
+  		</tr>
+  		</table>
 	
-	<section>
+    </body>
+	</section>
+  <section>
 		<title>Was ist mit <path>/etc/make.defaults</path> passiert?</title>
 		<body>
-		<p>Seit Portage 1.5 und danach ist <path>/etc/make.defaults</path> veraltet;
-		wenn Sie portage-1.5-r1 oder neuer installiert haben, können Sie es ohne Probleme löschen.
-		Die Datei wurde ersetzt durch <path>/etc/make.profile/make.defaults</path>
-		(<path>/etc/make.profile</path> sollte aktuell ein Symbolischer-Link nach
-		<path>/usr/portage/profiles/default</path> sein),
-		welche System-Profil-Spezifische standard Einstellungen enthält. Die Prioritätsreihenfolge der unterschiedlichen Konfigurations-Datei ist folgende (höste zuerste):
-		<ol>
-			<li>Umgebungs-Variablen</li>
-			<li><path>/etc/make.conf</path>, für Ihre Verwednung</li>
-			<li><path>/etc/make.profile/make.defaults</path>, für Profil-Spezifische Standards</li>
-			<li><path>/etc/make.globals</path>, für globale Standards (Einstellungen die nicht speziell an irgend einer anderen Stelle gesetzt wurden, kommen von hier)</li>
-		</ol></p></body>
-	</section>
 		
+      <p>
+        Seit Portage 1.5 und danach ist <path>/etc/make.defaults</path> veraltet;
+    		wenn Sie portage-1.5-r1 oder neuer installiert haben, können Sie es ohne Probleme löschen.
+    		Die Datei wurde ersetzt durch <path>/etc/make.profile/make.defaults</path>
+    		(<path>/etc/make.profile</path> sollte aktuell ein Symbolischer-Link nach
+    		<path>/usr/portage/profiles/default</path> sein),
+    		welche System-Profil-Spezifische Standard Einstellungen enthält. Die Prioritätsreihenfolge 
+        der unterschiedlichen Konfigurations-Dateien sieht wie folgend aus: (höchste Priorität zuerst):
+
+        <ol>
+    			<li>Umgebungs-Variablen</li>
+    			<li><path>/etc/make.conf</path>, für Ihre Verwendung</li>
+    			<li><path>/etc/make.profile/make.defaults</path>, für Profil-Spezifische Standards</li>
+    			<li><path>/etc/make.globals</path>, für globale Standards (Einstellungen die nicht 
+          speziell an irgend einer anderen Stelle gesetzt wurden, kommen von hier)</li>
+		    </ol>
+      </p>
+
+    </body>
+	</section>
 	<section>
 		<title>Gibt es eine Möglichkeit alle installierten Pakete zu aktualisieren wie z. B.
 		<e>apt-get upgrade</e> oder <e>make World</e>?</title>
-		<body><p><b>JA!</b> Geben Sie <c>emerge --update</c> ein (erst mit <c>--pretend</c>
-		aufrufen), um die Kern-System-Pakete zu aktualisieren, und <c>emerge --update world</c>
-		(wieder erst mit <c>--pretend</c> aufrufen), um ein komplettes System Upgrade aller
-		installierten Pakete zu machen.
-		</p></body>
+		<body>
+    
+      <p>
+        <b>JA!</b> Geben Sie <c>emerge --update</c> ein (erst mit <c>--pretend</c>
+    		aufrufen), um die Kern-System-Pakete zu aktualisieren, und <c>emerge --update world</c>
+    		(wieder erst mit <c>--pretend</c> aufrufen), um ein komplettes System Upgrade aller
+    		installierten Pakete zu machen.
+  		</p>
+      
+    </body>
 	</section>
-	
 	<section>
-		<title>Wenn ich ein Paket mit <c>emerge</c> oder <c>ebuild</c> aktualisiere, wie kann ich 
+		<title>Wenn ich ein Paket mit <c>emerge</c> oder <c>ebuild</c> aktualisiere; wie kann ich 
 		verhindern, dass meine config Dateien sich anhäufen?</title>
-		<body><p>
-		Portage enthält standardmässig eine Unterstützung für config Dateien. <c>emerge --help config</c>
-		gibt darüber mehr Informationen. Eine einfacher Grund dafür ist, dass ein Paket namens <path>foo</path>
-		irgendeine config Datei unter <path>/etc</path> ablegt und eine config Datei eines anderen <path>foo</path>
-		Paketes bereits darin existiert, was zum &#xDC;berschreiben dieser Datei führen würde. Die neue config
-		Datei von <path>foo</path> wird deshalb als <path>._cfgxxxx_foo</path> in diesem Verzeichnis abgespeichert.
-		Ein sinnvolles Werkzeug zum Untersuchen und Aktualisieren von geschützten config Dateien ist <c>etc-update</c>,
-		das nun Teil von Portage ist.
-		</p></body>
+		<body>
+    
+      <p>
+    		Portage enthält standardmässig eine Unterstützung für config Dateien. <c>emerge --help config</c>
+    		gibt darüber mehr Informationen.  Grund dafür ist, dass ein Paket namens <path>foo</path>
+    		irgendeine config Datei unter <path>/etc</path> ablegt und eine config Datei eines anderen <path>foo</path>
+    		Paketes bereits darin existiert, was zum Überschreiben dieser Datei führen würde. Die neue config
+    		Datei von <path>foo</path> wird deshalb als <path>._cfgxxxx_foo</path> in diesem Verzeichnis abgespeichert.
+    		Ein sinnvolles Werkzeug zum Untersuchen und Aktualisieren von geschützten config Dateien ist <c>etc-update</c>,
+    		das nun Teil von Portage ist.
+      </p>
+      
+    </body>
 	</section>
-	
-
 	<section>
 		<title>Ich möchte den <c>./configure</c> Schritt selber ausführen. Geht das?</title>
-		<body><p>
-		Ja, aber es ist nicht ganz einfach. Als erstes sollte <c>man ebuild</c> gefolgt von einem
-		<c>ebuild foo-x.y.z.ebuild unpack</c> ausführen. Mit <c>cd</c> in das <path>/var/tmp/portage/foo-x.y.z/work</path>
-		Verzeichnis wechseln. Dort können die Schritte für <c>./configure</c> und <c>make</c>
-		selbst eingegeben werden (mann muss beide ausführen, da Portage nicht zwischen den Konfigurations
-		und ebuild Schritten unterscheidet). Um mit Portage nun die restliche Installation durchzuführen
-		(es kann dann später ganz einfach, wenn gewünscht, wieder entfernt werden) wird mit <c>touch /var/tmp/portage/foo-x.y.z/.compiled</c> Portage mitgeteilt, dass
-		das ebuild von <c>ebuild foo-x.y.z.ebuild compile</c> schon abgeschlossen ist. Mit <c>ebuild foo-x.y.z.ebuild merge</c>
-		wird dann das Paket noch in das Portage Verzeichnis aufgenommen (und wird darüber hinaus als mögliche
-		Abhängigkeit eingetragen).
-		</p></body>
-	</section>
-	
+		<body>
+    
+      <p>
+    		Ja, aber es ist nicht ganz einfach. Als erstes sollten Sie die Sourcen mittels
+    		<c>ebuild foo-x.y.z.ebuild unpack</c> entpacken. Mit <c>cd</c> in das <path>/var/tmp/portage/foo-x.y.z/work</path>
+    		Verzeichnis wechseln. Dort können die Schritte für <c>./configure</c> und <c>make</c>
+    		selbst eingegeben werden (mann muss beide ausführen, da Portage nicht zwischen den Konfigurations
+    		und ebuild Schritten unterscheidet). Um mit Portage nun die restliche Installation durchzuführen
+    		(es kann dann später ganz einfach, wenn gewünscht, wieder entfernt werden) wird mit 
+        <c>touch /var/tmp/portage/foo-x.y.z/.compiled</c> Portage mitgeteilt, dass
+    		das ebuild von <c>ebuild foo-x.y.z.ebuild compile</c> schon abgeschlossen ist. Mit <c>ebuild foo-x.y.z.ebuild merge</c>
+    		wird dann das Paket noch in das Portage Verzeichnis aufgenommen (und wird darüber hinaus als mögliche
+    		Abhängigkeit eingetragen).
+  		</p>
+      
+    </body>
+	</section>	
 	<section>
 		<title>Was, wenn rsync nicht für mich funktioniert?</title>
-		<body><p>
-		Wenn sich Ihre Maschine hinter einer Firewall befindet, die keinen rsync Verkehr
-		erlaubt, können Sie <c>emerge-webrsync</c> nutzen, dass einen Portage Snapshot
-		über normales HTTP herunterlädt und installiert.
-      <c>emerge-webrsync</c> benutzt <c>wget</c> zum herunterladen, Proxys können also benutzt werden.
-        <pre caption="Benutzung von emerge-webrsync">
-~# <c>emerge-webrsync</c></pre>
-		Wenn auchdies für Sie kein Weg ist, können Sie manuell einen Snapshot von
-		<uri>http://distro.ibiblio.org/pub/linux/distributions/gentoo/snapshots/</uri>
-		herunterladen.
-		Um diesen Snapshot korrekt zu installieren müssen Sie zunächst ihr aktuelles
-	   <path>/usr/portage</path> löschen, damit keine veraleten Ebuilds auf Ihrem System
-	   verbleiben. Sicherlich wollen Sie ihr Distfiles Verzeichnis 
-	   <path>/usr/portage/distfiles</path> sichern, um nicht alle bisher heruntergeladenen
-	   Sourcecodes zu verlieren.
-        <pre caption="Manuelle Installation eines Portage Snapshot">
+		<body>
+    
+      <p>
+    		Wenn sich Ihre Maschine hinter einer Firewall befindet, die keinen rsync Verkehr
+    		erlaubt, können Sie <c>emerge-webrsync</c> nutzen, dass einen Portage Snapshot
+    		über normales HTTP herunterlädt und installiert.
+        <c>emerge-webrsync</c> benutzt <c>wget</c> zum herunterladen, Proxys können also benutzt werden.
+  
+      <pre caption="Benutzung von emerge-webrsync">
+~# <c>emerge-webrsync</c>
+      </pre>
+      
+    		Wenn auchdies für Sie kein Weg ist, können Sie manuell einen Snapshot von
+    		<uri>http://distro.ibiblio.org/pub/linux/distributions/gentoo/snapshots/</uri>
+    		herunterladen.
+    		Um diesen Snapshot korrekt zu installieren müssen Sie zunächst ihr aktuelles
+        <path>/usr/portage</path> löschen, damit keine veraleten Ebuilds auf Ihrem System
+        verbleiben. Sicherlich wollen Sie ihr Distfiles Verzeichnis 
+        <path>/usr/portage/distfiles</path> sichern, um nicht alle bisher heruntergeladenen
+        Sourcecodes zu verlieren.
+        
+      <pre caption="Manuelle Installation eines Portage Snapshot">
 <codenote>(Zunächst laden Sie einen Snapshot herunter und schieben in nach /usr)</codenote>
 ~# <c>cd /usr</c>
 ~# <c>mv /usr/portage/distfiles /usr/distfiles-temp</c>
 ~# <c>rm -rf /usr/portage</c>
 ~# <c>tar xvjf portage-foo.tbz2</c>
-~# <c>mv /usr/distfiles-temp /usr/portage/distfiles</c></pre>
-		</p></body>
+~# <c>mv /usr/distfiles-temp /usr/portage/distfiles</c>
+      </pre>
+      
+		  </p>
+      
+    </body>
 	</section>
-
 	<section>
 		<title>Wie benutze ich <i>emerge</i> hinter einer Firewall?</title>
-		<body><p>
-		Verändern Sie die PROXY Einstellungen in <path>/etc/make.conf</path>. Wenn das nicht
-		funktioniert, bearbeiten Sie <path>/etc/wget/wgetrc</path> und passen Sie http_proxy und
-		ftp_proxy entsprächend an.
-		</p></body>
-	</section>
-	
+		<body>
+    
+      <p>
+    		Verändern Sie die PROXY Einstellungen in <path>/etc/make.conf</path>. Wenn das nicht
+    		funktioniert, bearbeiten Sie <path>/etc/wget/wgetrc</path> und passen Sie http_proxy und
+    		ftp_proxy entsprächend an.
+  		</p>
+      
+    </body>
+	</section>	
 	<section>
 		<title>Kann ich von einem anderen Betriebssystem aus ein rsync machen?</title>
-		<body><p>Es gibt ein Programm das unison heisst, das sowohl unter UNIX als auch unter Win32 läuft. Es ist verfügbar unter:
-		<uri>http://www.cis.upenn.edu/~bcpierce/unison/</uri>.</p></body>
+		<body>
+    
+      <p>
+        Es gibt ein Programm Namens unison, dass sowohl unter UNIX als auch unter Win32 läuft. Es ist verfügbar unter:
+    		<uri>http://www.cis.upenn.edu/~bcpierce/unison/</uri>.
+      </p>
+      
+    </body>
 	</section>
-	
 	<section>
 		<title>Ich habe zu Hause nur eine langsame Modem-Verbindung. Kann ich die Quellen woanders herunterladen und dann zu meinem System hinzufügen?</title>
-		<body><p>
-		Natürlich. Mit dem Befehl <c>emerge --pretend package</c> kann man sehen, welche Pakete für die
-		Installation benötigt werden. Die heruntergeladen Quelldateien können nun über ein Medium nach
-		Hause genommen werden und werden in das <path>/usr/portage/distfiles</path> Verzeichnis kopiert.
-		Anschliessend muss nur noch <c>emerge package</c> ausgeführt werden, welches nun die mitgebrachten
-		Quelldateien verwendet.
-		</p></body>
+		<body>
+    
+      <p>
+    		Natürlich. Mit dem Befehl <c>emerge --pretend package</c> kann man sehen, welche Pakete für die
+    		Installation benötigt werden. Die heruntergeladen Quelldateien können nun über ein Medium nach
+    		Hause genommen werden und werden in das <path>/usr/portage/distfiles</path> Verzeichnis kopiert.
+    		Anschliessend muss nur noch <c>emerge package</c> ausgeführt werden, welches nun die mitgebrachten
+    		Quelldateien verwendet.
+		  </p>
+      
+    </body>
 	</section>
-
 	<section>
 		<title>Die ganzen .tar.gz Quelldateien sammeln sich in /usr/portage/distfiles/ an und verbrauchen
 		wertvolle Plattenkapazitäten. Können diese Dateien gelöscht werden?</title>
-		<body><p>
-		Ja, das ist ohne Probleme möglich. Aber wenn Sie eine langsame Internetverbindung besitzen, sollten Sie
-		die Archive möglichst behalten, da manchmal für ein einziges Stück Software mehrere verschiedene
-		Ebuilds existieren -- nach dem Löschen des Archives muss das Paket neu aus dem Internet geladen werden.
-		</p></body>
+		<body>
+    
+      <p>
+    		Ja, das ist ohne Probleme möglich. Aber wenn Sie eine langsame Internetverbindung besitzen, sollten Sie
+    		die Archive möglichst behalten, da manchmal für ein einziges Stück Software mehrere verschiedene
+    		Ebuilds existieren -- nach dem Löschen des Archives muss das Paket neu aus dem Internet geladen werden.
+		  </p>
+      
+    </body>
 	</section>
-	
 	<section>
 		<title>Ich habe blackdown-jdk und blackdown-jre installiert, aber
-		<c>java-config --list-available-vms</c> zeigt nur blackdown-jre an.
-		OpenOffice.org lässt sich nicht installieren. Was soll ich tun?</title>
-
-		<body>
-		<p>Lösung: </p>
-		<pre caption = "Lösung">
+    <c>java-config --list-available-vms</c> zeigt nur blackdown-jre an.
+  	OpenOffice.org lässt sich nicht installieren. Was soll ich tun?</title>
+    <body>
+  
+      <p>
+        Lösung:
+      </p>
+      
+  		<pre caption = "Lösung">
 # <c>emerge unmerge blackdown-jre blackdown-jdk </c>  
 # <c>CONFIG_PROTECT="" emerge blackdown-jdk </c>
-		</pre>
+	  	</pre>
 		
 		</body>
 	</section>
-	<section>
+  <section>
 		<title>Was ist mit <path>/var/tmp/portage</path>? Ist es sicher die Dateien und Vezeichnisse in <path>/var/tmp/portage</path>?</title>
 		<body>
-		Während des Kompilation der Pakete speichert Gentoo die Sourcen der Pakete in <path>/var/tmp/portage</path>. Es ist sicher diese Dateien und Verzeichnisse zu löschen.
-		</body>
+		  
+      <p>
+        Während des Kompilation der Pakete speichert Gentoo die Sourcen der Pakete in <path>/var/tmp/portage</path>. 
+        Es ist sicher diese Dateien und Verzeichnisse zu löschen.
+      </p>
+
+    </body>
 	</section>
 </chapter>
 
 <chapter>
 	<title>Gentoo Linux benutzen</title>
 	<section>
-    		<title>Ich habe openssh auf meiner Box installiert, aber ich kann mich nur als root und nicht als normaler Benutzer von aussen einloggen.</title>
-    		<body>
-		<p>
-		Dies kann passieren wenn der Benutzer Account nicht ein richtiges shell eingestellt hat.
-		Überprüfen Sie den Benutzer Eintrag in
-		<path>/etc/passwd</path> und sehen sie nach ob die Zeile mit /bin/bash (oder einem anderen Shell) endet. Wenn dies nicht der Fall ist,
-		müssen sie einen Shell für den User einstellen. Dies ist mit dem usermod Befehl möglich, wie dieses ;
-		</p>
-		<pre># <i>usermod -s /bin/bash meinuser</i></pre>
+  	<title>Ich habe openssh auf meiner Box installiert, aber ich kann mich nur als root und nicht als normaler Benutzer von aussen einloggen.</title>
+  	<body>
+	  	<p>
+    		Dies kann passieren wenn der Benutzer Account nicht ein richtiges shell eingestellt hat.
+    		Überprüfen Sie den Benutzer Eintrag in
+    		<path>/etc/passwd</path> und sehen sie nach ob die Zeile mit /bin/bash (oder einem anderen Shell) endet. Wenn dies nicht der Fall ist,
+    		müssen sie einen Shell für den User einstellen. Dies ist mit dem usermod Befehl möglich, wie dieses ;
+		  </p>
+		  
+      <pre>
+# <i>usermod -s /bin/bash meinuser</i>
+      </pre>
+      
 		</body>
 	</section>
-		
 	<section>
 		<title>Ich kann X Anwendungen nur als root ausführen.</title>
-		<body><p>Ihr <path>/tmp</path> Verzeichnis hat die falschen Zugriffsrechte. Geben sie folgendes als root ein:</p>
-		<pre># <i>chmod 1777 /tmp</i></pre>
-		</body>
+		<body>
+      <p>
+        Ihr <path>/tmp</path> Verzeichnis hat die falschen Zugriffsrechte. Geben sie folgendes als root ein:
+      </p>
+		  
+      <pre>
+# <i>chmod 1777 /tmp</i>
+      </pre>
+
+    </body>
 	</section>
-	
 	<section>
 		<title>Wie stelle ich ein internationales Tastatur-Layout ein?</title>
-		<body><p>Passen Sie die <c>KEYMAP</c> Variable in <path>/etc/rc.conf</path> an. Entweder
-		booten Sie danach das System, oder starten Sie das Keymaps-Script neu:
-		<c>/etc/init.d/keymaps restart</c>.</p>
-		</body>
+		<body>
+      
+      <p>
+        Passen Sie die <c>KEYMAP</c> Variable in <path>/etc/rc.conf</path> an. Entweder
+    		booten Sie danach das System, oder starten Sie das Keymaps-Script neu:
+    		<c>/etc/init.d/keymaps restart</c>.
+      </p>
+
+    </body>
 	</section>
-	
 	<section>
-		<title>Die DNS Namens Auflösung funktioniert nur für root.</title>
-		<body><p><path>/etc/resolv.conf</path> hat die falschen Zugriffsrechte. <c>chmod</c> es zu folgendem:
-		</p>
-		<pre># <i>chmod 0644 /etc/resolv.conf</i></pre>
-		</body>
+		<title>Die DNS Namensauflösung funktioniert nur für root.</title>
+		<body>
+      <p>
+        <path>/etc/resolv.conf</path> hat die falschen Zugriffsrechte. <c>chmod</c> es zu folgendem:
+  		</p>
+	  
+      <pre>
+# <i>chmod 0644 /etc/resolv.conf</i>
+      </pre>
+
+    </body>
 	</section>
-	
 	<section>
 		<title>Warum liesst KDE nicht <path>/etc/profile</path>?</title>
-		<body><p>Man muss <c>--login</c> in der ersten Zeile in <path>/opt/kde2.1/bin/startkde
-		</path> hinzufügen, damit es so aussieht:</p>
-		<pre>#!/bin/sh --login</pre>
-		<p>Diese Änderung wurde in neueren KDE Versionen bereits vorgenommen.</p>
-		</body>
+		<body>
+    
+      <p>
+        Man muss <c>--login</c> in der ersten Zeile in <path>/opt/kde2.1/bin/startkde
+    		</path> hinzufügen, damit es so aussieht:
+      </p>
+  
+      <pre>
+#!/bin/sh --login
+      </pre>
+		  
+      <p>
+        Diese Änderung wurde in neueren KDE Versionen bereits vorgenommen.
+      </p>
+
+    </body>
 	</section>
-	
 	<section>
 		<title>Warum können Benutzer nicht ihre crontab benutzen?</title>
-		<body><p>Sie müssen die Benutzer der <i>cron</i> Gruppe hinzufügen.
-		</p>
-		</body>
-	</section>
+		<body>
+      
+      <p>
+        Sie müssen die Benutzer der <i>cron</i> Gruppe hinzufügen.
+		  </p>
 
-    <section>
-        <title>Wie starte ich den numlock beim booten?</title>
-        <body>
-        <p>
-        Wenn Sie sich grafisch einloggen oder den numlock aktivieren möchten, wenn sie 
+    </body>
+	</section>
+  <section>
+    <title>Wie starte ich den numlock beim booten?</title>
+    <body>
+      <p>
+        Wenn Sie sich Grafisch einloggen oder den numlock aktivieren möchten, wenn sie 
         <c>startx</c> ausführen, müssen Sie <c>numlockx</c> installieren und
         folgendes <c>/usr/X11R6/bin/numlockx</c> in die
         <path>/etc/X11/xinit/xinitrc</path> (für <c>startx</c>) oder 
         <path>/etc/X11/Sessions/</path> (für jeden grafischen Login-Manager) wie zum
         Beispiel <path>/etc/X11/Sessions/Gnome</path> für GDM.
-        </p>
-        <p>
-        Wenn Sie auf der Kommandozeile arbeiten brauchen Sie nur numlock
+      </p>
+
+      <p>
+        Wenn Sie auf der Kommandozeile arbeiten, brauchen Sie nur numlock
         dem Default Runlevel hinzufügen (<c>rc-update add 
         numlock default</c>) und numlock wird beim nächsten Neustart aktiviert.
-        </p>
-        </body>
-    </section>
-    <section>
-        <title>Wie lösche ich mein Terminal beim Logout?</title>
-        <body>
-        <p>
+      </p>
+      
+    </body>
+  </section>
+  <section>
+    <title>Wie lösche ich mein Terminal beim Logout?</title>
+    <body>
+      <p>
         Um das Terminal zu löschen fügen Sie <c>clear</c> zu Ihrem
         <path>~/.bash_logout</path> Script hinzu:
-        </p>
-        <pre caption = "Löschen des Terminals beim Logout">
-$ <i>echo clear &gt;&gt; ~/.bash_logout</i></pre>
-        <p>
+      </p>
+  
+      <pre caption = "Löschen des Terminals beim Logout">
+$ <i>echo clear &gt;&gt; ~/.bash_logout</i>
+      </pre>
+      
+      <p>
         Wenn Sie diese Funktion für jeden neu angelegten Benutzer wünschen,
         tun Sie dasselbe für die <path>/etc/skel/.bash_logout</path>:
-        </p>
-        <pre caption = "Löschen des Terminals beim Logout für neu angelegte Benutzer">
-# <i>echo clear &gt;&gt; /etc/skel/.bash_logout</i></pre>
-        </body>
-    </section>
-   
-
+      </p>
+      
+      <pre caption = "Löschen des Terminals beim Logout für neu angelegte Benutzer">
+# <i>echo clear &gt;&gt; /etc/skel/.bash_logout</i>
+      </pre>
+      
+    </body>
+  </section>
 </chapter>
 
 <chapter>
-	<title>Maintenance</title>
 	<title>Verwaltung</title>
 	<section>
 		<title>ReiserFS und Dateisystem Fehler -- und wie man die behebt</title>
 		<body>
-		<p>
-		Wenn Ihre
-		ReiserFS Parition fehlerhaft ist, versuchen sie die Gentoo
-		Linux Boot CD zu booten und starten Sie <c>reiserfsck --rebuild-tree</c> auf
-		dem fehlerhaften Dateisystem.  Dies sollte das Dateisystem wieder stabil machen
-		, manchmal verliert man aber manche Datein und Verzeichnise durch
-		das fehlerhafte Dateisystem.
-		</p>
-		</body>
+		  <p>
+    		Wenn Ihre
+    		ReiserFS Parition fehlerhaft ist, versuchen sie die Gentoo
+    		Linux Boot CD zu booten und starten Sie <c>reiserfsck --rebuild-tree</c> auf
+    		dem fehlerhaften Dateisystem.  Dies sollte das Dateisystem wieder stabil machen, 
+        manchmal verliert man aber manche Dateien und Verzeichnise durch
+    		das fehlerhafte Dateisystem.
+  		</p>
+	
+    </body>
 	</section>
-	  <section>
-  <title>Metalogd logt nicht in Echtzeit!</title>
-  <body>
+  <section>
+    <title>Metalogd logt nicht in Echtzeit!</title>
+    <body>
   
-<p>
-Metalog speichert die Ausgaben in Blöcken auf die Festplatte.
-Wenn Sie versuchen einen Daemon zu debuggen, ist diese Performance-Verbesserung
-nicht gerade hilfreich. Wenn Ihr Gentoo Linux 
-System gestartet ist und läuft, können Sie metalog ein USR1 Signal schicken, um die
-Zwischenspeicherung temporär abzuschalten (Mit <c>tail -f 
-<path>/var/log/everything/current</path></c> können Sie nun in Echtzeit auf die Logs zugreifen).
-Mit einem USR2 Signal schalten Sie die Zwischenspeicherung wieder an. Wenn Sie dieses Feature
-permanent deaktivieren wollen, können Sie in der <path>/etc/conf.d/metalog</path> METALOG_OPTS="-B" in 
-METALOG_OPTS="-B -s" ändern. 
-</p>
+      <p>
+        Metalog speichert die Ausgaben in Blöcken auf die Festplatte.
+        Wenn Sie versuchen einen Daemon zu debuggen, ist diese Performance-Verbesserung
+        nicht gerade hilfreich. Wenn Ihr Gentoo Linux 
+        System gestartet ist und läuft, können Sie metalog ein USR1 Signal schicken, um die
+        Zwischenspeicherung temporär abzuschalten (Mit <c>tail -f 
+        <path>/var/log/everything/current</path></c> können Sie nun in Echtzeit auf die Logs zugreifen).
+        Mit einem USR2 Signal schalten Sie die Zwischenspeicherung wieder an. Wenn Sie dieses Feature
+        permanent deaktivieren wollen, können Sie in der <path>/etc/conf.d/metalog</path> METALOG_OPTS="-B" in 
+        METALOG_OPTS="-B -s" ändern. 
+      </p>
 
-<pre caption="Zwischenspeicherung von Metalog an/ausschalten">
+      <pre caption="Zwischenspeicherung von Metalog an/ausschalten">
 <codenote>Um die Zwischenspeicherung auszuschalten:</codenote>
 # <i>killall -USR1 metalog</i>
 <codenote>Um die Zwischenspeicherung anzuschalten:</codenote>
 # <i>killall -USR2 metalog</i>
-</pre>
+      </pre>
 
-  </body>
+    </body>
   </section>
 </chapter>
 
@@ -904,96 +1013,148 @@ METALOG_OPTS="-B -s" ändern.
 	<title>Entwicklung</title>
 	<section>
 		<title>Wie kann ich Fehler melden?</title>
-		<body><p>Für Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller.
-		Alternativ können Sie unsere Bugzilla Fehlermeldung unter <uri>http://bugs.gentoo.org</uri> verwenden.
-		Auch sind wir im <uri link="http://www.freenode.net">FreeNode</uri> IRC Netzwerk unter 
-		<c>#gentoo</c> zu erreichen.
-		</p></body>
+		<body>
+      
+      <p>
+        Für Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller.
+        Alternativ können Sie unsere Bugzilla Fehlermeldung unter <uri>http://bugs.gentoo.org</uri> verwenden.
+    		Auch sind wir im <uri link="http://www.freenode.net">FreeNode</uri> IRC Netzwerk unter 
+    		<c>#gentoo</c> zu erreichen.
+  		</p>
+      
+    </body>
 	</section>
-
 	<section>
 		<title>Wie oft gibt es Neuerscheinungen?</title>
-		<body><p>Neuerscheinungen werden in der <uri link="http://lists.gentoo.org/mailman/listinfo/gentoo-announce">gentoo-announce</uri>
-		Mailliste angekündigt.<!-- TODO: approximatley every X months --> Im Normalfall werden die Pakete aktualisiert,
-		wenn von den Autoren neuer Quellcode bereitgestellt wird. Neue CD Images werden in der Regel nur dann erstellt,
-		wenn grosse Veränderungen am Basissystem vorgenommen wurden, oder neue Module hinzugefügt werden.
-		</p></body>
+		<body>
+      <p>
+        Neuerscheinungen werden in der <uri link="http://lists.gentoo.org/mailman/listinfo/gentoo-announce">gentoo-announce</uri>
+    		Mailliste angekündigt.<!-- TODO: approximatley every X months --> Im Normalfall werden die Pakete aktualisiert,
+    		wenn von den Autoren neuer Quellcode bereitgestellt wird. Neue CD Images werden in der Regel nur dann erstellt,
+    		wenn grosse Veränderungen am Basissystem vorgenommen wurden, oder neue Module hinzugefügt werden.
+		  </p>
+    </body>
 	</section>
-
 	<section>
 		<title>Ich möchte ein neues Paket in Portage einbringen? Wie gehe ich vor?</title>
-		<body><p>Unter <uri>http://bugs.gentoo.org</uri> sollte einfach ein Bug von der Sorte
-		"ebuild" erstellt werden.  Das ebuild sollte dann an diese Meldung angehängt werden.</p></body>
+		<body>
+      
+      <p>
+        Unter <uri>http://bugs.gentoo.org</uri> sollte einfach ein Bug von der Sorte
+    		"ebuild" erstellt werden.  Das ebuild sollte dann an diese Meldung angehängt werden.
+      </p>
+      
+    </body>
 	</section>
-
 	<section>
 		<title>Wie kann ich eine neue Frage zu diesem FAQ hinzufügen?</title>
-		<body><p>Ebenfalls unter <uri>http://bugs.gentoo.org</uri> einen neuen Bugreport erstellen und
-		in der Kategorie "Docs-user" einreichen. Dies gilt allerdings nur für die englischen Originaldokumente.
-		Für die deutschen übersetzungen genügt eine Mail an gentoo-deutsch-dev@lists.berlios.de
-		</p></body>
+		<body>
+      
+      <p>
+        Ebenfalls unter <uri>http://bugs.gentoo.org</uri> einen neuen Bugreport erstellen und
+    		in der Kategorie "Docs-user" einreichen. Dies gilt allerdings nur für die englischen Originaldokumente.
+    		Für die deutschen übersetzungen genügt eine Mail an gentoo-deutsch-dev@lists.berlios.de
+  		</p>
+      
+    </body>
 	</section>
-
 	<section>
 		<title>make -f Makefile.cvs für eine KDE Anwendung ergibt folgende Fehlermeldung: "invalid unused variable"</title>
-		<body><p>
-		Für alle KDE Projekte sollte vorher <c>WANT_AUTOMAKE_1_4=1</c> exportiert werden, bevor der Befehl
-		<c>make -f Makefile.cvs</c>ausgeführt wird. Für KDE2 Anwendungen gilt analog: <c>WANT_AUTOCONF_2_1=1</c>,
-		und für KDE3: <c>WANT_AUTOCONF_2_5=1</c>.
-		</p></body>
+		<body>
+    
+      <p>
+    		Für alle KDE Projekte sollte vorher <c>WANT_AUTOMAKE_1_4=1</c> exportiert werden, bevor der Befehl
+    		<c>make -f Makefile.cvs</c>ausgeführt wird. Für KDE2 Anwendungen gilt analog: <c>WANT_AUTOCONF_2_1=1</c>,
+    		und für KDE3: <c>WANT_AUTOCONF_2_5=1</c>.
+		  </p>
+      
+    </body>
 	</section>
-
-
 	<section>
-  		<title>Mein eingebauter Lautsprecher piept wie verrückt während der kompilierung von Mozilla. Wie kann ich Piepstöne
-		in der Konsole ausschalten?
-    		</title>
- 		<body><p>
-		Piepstöne in der Konsole können mit setterm geändert werden:
-		<pre># <i>setterm -blength 0</i></pre>
-		Soll dies bei jedem Start ausgeführt  werden, so muss dieser Befehl in <path>/etc/conf.d/local.start</path>
-		eingefügt werden. Dies deaktiviert allerdings nur das aktuelle Terminal. Wenn alle Terminals stumm geschaltet
-		werden sollen, sollte der Befehl auch auf die anderen Terminals geleitet werden:
-		<pre># <i>setterm -blength 0 >/dev/vc/1</i></pre>
-		Für /dev/vc/1 muss das gewünschte Terminal eingetragen werden.
-        	</p></body>
+    <title>Mein eingebauter Lautsprecher piept wie verrückt während der kompilierung von Mozilla. Wie kann ich Piepstöne
+		in der Konsole ausschalten?</title>
+ 		<body>
+      
+      <p>
+    		Piepstöne in der Konsole können mit setterm geändert werden:
+      </p>
+      
+      <pre>
+# <i>setterm -blength 0</i>
+      </pre>
+      
+      <p>
+        Soll dies bei jedem Start ausgeführt  werden, so muss dieser Befehl in <path>/etc/conf.d/local.start</path>
+    		eingefügt werden. Dies deaktiviert allerdings nur das aktuelle Terminal. Wenn alle Terminals stumm geschaltet
+    		werden sollen, sollte der Befehl auch auf die anderen Terminals geleitet werden:
+      </p>
+  
+      <pre>
+# <i>setterm -blength 0 >/dev/vc/1</i>
+      </pre>
+		  
+      <p>
+        Für /dev/vc/1 muss das gewünschte Terminal eingetragen werden.
+      </p>
+    </body>
 	</section>
 </chapter>
 
 <chapter>
 <title>Resourcen</title>
 	<section>
-		<title>Wo kann ich mehr über supervise das bei Gentoo Linux 1.0_rc5 und früher benutzt wurde finden?</title>
-		<body><p><!-- TODO: --><uri>http://cr.yp.to/daemontools.html</uri></p></body>
+		<title>Wo kann ich mehr über supervise, dass bei Gentoo Linux 1.0_rc5 und früher benutzt wurde, finden?</title>
+		<body>
+    
+      <p>
+        <uri>http://cr.yp.to/daemontools.html</uri>
+      </p>
+    
+    </body>
 	</section>
-
 	<section>
 		<title>Wo kann man mehr Informationen über Gentoo Linux finden?</title>
-		<body><p>Die Offizelle Gentoo Dokumentation kann bei <uri>http://www.gentoo.org</uri> gefunden werden. 
-		Die Webseite des Deutschen Übersetzungsteam finden Sie auf <uri>http://www.gentoo.de</uri>. 
-		Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verfügbar.
-		</p></body>
+		<body>
+      
+      <p>
+        Die Offizelle Gentoo Dokumentation kann bei <uri>http://www.gentoo.org</uri> gefunden werden. 
+    		Die Webseite des Deutschen Übersetzungsteam finden Sie auf <uri>http://www.gentoo.de</uri>. 
+    		Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verfügbar.
+		  </p>
+      
+    </body>
 	</section>
 
 	<section>
 		<title>Kann man CDs von Gentoo Linux kaufen?</title>
 		<body>
-		<p>In Deutschland kann man Gentoo Linux 1.4 CD's unteranderem unter <uri>http://www.lin24.de</uri> und <uri>http://www.liniso.de</uri> finden.
-		</p></body>
+		  <p>
+        In Deutschland kann man Gentoo Linux 1.4 CD's unteranderem unter <uri>http://www.lin24.de</uri> und 
+        <uri>http://www.liniso.de</uri> finden.
+		  </p>
+    </body>
 	</section>
-
 	<section>
 		<title>Diese FAQ beantwortet nicht meine Frage(n). Was kann ich nun tun?</title>
 		<body>
-		<p>Ein guter erster Schritt ist das durchschauen der wichtigen Dokumentationen - <uri link="http://www.gentoo.org/index-docs.html">hier</uri> (Aktuelle Deutsche Dokumentationen: <uri link="http://www.gentoo.de">gentoo.de</uri>), 
-		falls dies nichts bringt, durchsuchen sie das <uri link="http://forums.gentoo.org/viewforum.php?f=28">Forum</uri>, die vielen verschiedenen Gentoo Linux Mailinglisten
-		unter <uri link="http://www.google.com">Google</uri>. Zum durchsuchen der Gentoo Mailinglisten, geben Sie einfach "lists.gentoo.org foo" ein, um "foo" zu suchen.  Falls alles andere nicht funktioniert, oder einfach nur um
-		mit anderen Gentooists zu reden, besuchen Sie uns im irc: <i>#gentoo.de</i>
-		auf <i>irc.freenode.net</i>.
 		
-		Desweiteren finden Sie die Deutsche gentoo.de FAQ unter <uri link="http://www.gentoo.de">gentoo.de</uri>. Sie enthält Erweiterungen zu dieser FAQ.
-		</p>
-		</body>
+      <p>
+        Ein guter erster Schritt ist das durchschauen der wichtigen Dokumentationen - 
+        <uri link="http://www.gentoo.org/index-docs.html">hier</uri> (Aktuelle Deutsche Dokumentationen: 
+        <uri link="http://www.gentoo.de">gentoo.de</uri>), 
+		    falls dies nichts bringt, durchsuchen Sie das 
+        <uri link="http://forums.gentoo.org/viewforum.php?f=28">Forum</uri>, 
+        die vielen verschiedenen Gentoo Linux Mailinglisten unter 
+        <uri link="http://www.google.com">Google</uri>. Zum durchsuchen der Gentoo Mailinglisten, 
+        geben Sie einfach "lists.gentoo.org foo" ein, um "foo" zu suchen.  Falls alles andere 
+        nicht funktioniert, oder einfach nur um
+    		mit anderen Gentooists zu reden, besuchen Sie uns im irc: <i>#gentoo.de</i>
+    		auf <i>irc.freenode.net</i>.
+		    Desweiteren finden Sie die gentoo.de FAQ unter 
+        <uri link="http://www.gentoo.de">gentoo.de</uri>. Sie enthält Erweiterungen zu dieser FAQ.
+      </p>
+
+    </body>
 	</section>
 </chapter>
 </guide>
