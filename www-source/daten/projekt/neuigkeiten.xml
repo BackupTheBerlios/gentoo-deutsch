@@ -37,6 +37,18 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
 <chapter>
 
 <section>
+	<body>
+		<news type="news" date="22.12.2003" title="Gentoo-Newsletter">
+		<p>
+			In diesem GWN gibt es einen Vorgeschmack auf den nächsten GWN der dann sein 1jähriges Jubiläum feiern wird. Vorgestellt
+			wird Hanno Böck. Des weiteren werden Forums-Diskussionen zu ICC 8.0 und Love-Sources in Portage aufgegriffen.
+ 			<uri link="http://www.gentoo.org/news/en/gwn/20031222-newsletter.xml">Viel Spass beim Lesen</uri>.
+ 		</p>
+  		</news>
+  	</body>
+</section>
+
+<section>
     <body>
         <news type="news" date="21.12.2003" title="Mailing Listen down">
         <p>
