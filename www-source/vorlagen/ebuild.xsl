@@ -45,10 +45,18 @@
               </xsl:choose>
             </xsl:attribute>
 
-            <td><xsl:value-of select="name"/></td>
+            <td>
+              <a class="uri" href="{$baselink}/{category}/{name}">
+                <xsl:value-of select="name"/>
+              </a>
+            </td>
             <td><xsl:value-of select="version"/></td>
             <td><xsl:value-of select="revision"/></td>
-            <td><xsl:value-of select="category"/></td>
+            <td>
+              <a class="uri" href="{$baselink}/{category}">
+                <xsl:value-of select="category"/>
+              </a>
+            </td>
             <td>
               <xsl:value-of select="date/@day"/>
               <xsl:text>.</xsl:text>
