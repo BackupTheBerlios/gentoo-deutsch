@@ -1,12 +1,11 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
-<!--
-    English CVS Version: 1.6
--->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ipv6.xml,v 1.2 2003/12/12 09:56:26 dertobi123 Exp $ -->
+
+<!-- English CVS Version: 1.6 -->
 
 <guide link="/doc/de/ipv6.xml">
-
 <title>IPv6 Leitfaden</title>
 <author title="Autor">
     <mail link="latexer@gentoo.org">Peter Johanson</mail>
@@ -17,11 +16,9 @@
 <author title="Editor, Reviewer">
     <mail link="swift@gentoo.org">Sven Vermeulen</mail>
 </author>
-<author title="&#220;bersetzung">
+<author title="Übersetzung">
     <mail link="moixa@users.berlios.de">Tobias Sager</mail>
 </author>
-
-<license/>
 
 <abstract>
 Dieser Leitfaden erklärt wie man auf einem Gentoo System IPv6-Unterstützung
@@ -30,12 +27,13 @@ Broker, grundlegende DNS-Konfiguration und die Konfiguration von Clients zur
 Nutzung von IPv6-Adressen.
 </abstract>
 
+<license/>
+
 <version>1.0.2</version>
 <date>4. Oktober 2003</date>
 
 <chapter>
 <title>Kernel einrichten</title>
-
 <section>
 <title>Grundlegende Kernel-Konfiguration</title>
 <body>
@@ -74,7 +72,7 @@ auf den Kernel-Quellcode zeigt, den Sie benutzen wollen.
 </note>
 
 <note>
-Stellen Sie sicher, dass <path>Prompt for development and/or incomplete 
+Stellen Sie sicher, dass <path>Prompt for development and/or incomplete
 code/drivers</path> in der Kernel-Konfiguration aktiviert ist.
 </note>
 
@@ -96,7 +94,6 @@ Network device support ---&gt;
 
 </body>
 </section>
-
 <section>
 <title>IPv6-Unterstützung testen</title>
 <body>
@@ -110,7 +107,7 @@ anzeigen.
 
 <pre caption = "Die loopback-Schnittstelle überprüfen">
 # <i>ifconfig lo</i>
-lo    Protokoll:Lokale Schleife  
+lo    Protokoll:Lokale Schleife
       inet Adresse:127.0.0.1  Maske:255.0.0.0
       inet6 Adresse: ::1/128 Gültigkeitsbereich:Maschine
       <codenote>Die Linie oberhalb zeigt, dass es funktioniert</codenote>
@@ -120,6 +117,7 @@ lo    Protokoll:Lokale Schleife
       Kollisionen:0 Sendewarteschlangenlänge:0 
       RX bytes:200 (200.0 b)  TX bytes:200 (200.0 b)
 </pre>
+
 <p>
 Bevor wir nun weiterfahren, stellen Sie bitte sicher, dass Sie "ipv6" in Ihrer
 make.conf in die Liste von USE-Flags eingetragen haben. Zukünftige Pakete
@@ -132,7 +130,6 @@ werden dann bei der Installation IPv6-Unterstützung automatisch einbinden.
 
 <chapter>
 <title>Tunnel-Konfiguration</title>
-
 <section>
 <title>Grundlegende Konfiguration</title>
 <body>
@@ -162,7 +159,6 @@ nordamerikanischen Brokern, Hurricane Electric und Freenet6, einzurichen.
 
 </body>
 </section>
-
 <section>
 <title>Hurricane Electric</title>
 <body>
@@ -182,7 +178,7 @@ und Telefonnummer.
 
 <warn>
 Tunnel von HE brauchen 24 Stunden bis sie aktiviert sind. Dies wird gemacht,
-um Missbrauch des Angebotes zu verhindern.
+um einen Missbrauch des Angebotes zu verhindern.
 </warn>
 
 <p>
@@ -230,7 +226,6 @@ machen:
 
 </body>
 </section>
-
 <section>
 <title>Freenet6</title>
 <body>
@@ -239,7 +234,7 @@ machen:
 <uri link="http://www.freenet6.net">Freenet6</uri> ist ein anderer
 Gratis-Tunnel-Broker. Die Registration erfordert nur einen Benutzernamen und
 eine gültige eMail-Adresse. Freenet6 hat sich entschieden, das
-Tunnel-Management an eine Server/Client-Architektur zu delegieren und haben
+Tunnel-Management an eine Server/Client-Architektur zu delegieren und
 hierfür <c>tspc</c> entwickelt. Das Programm ist in Portage erhalten.
 Um es zu installieren, machen Sie folgendes:
 </p>
@@ -271,7 +266,6 @@ if_tunnel=sit3
 
 </body>
 </section>
-
 <section>
 <title>Ihre Verbindung testen</title>
 <body>
@@ -310,7 +304,6 @@ möchten und/oder mithelfen wollen, schreiben sie eine eMail an
 
 <chapter>
 <title>IPv6-Unterstützung in Applikationen</title>
-
 <section>
 <title>Pakete neu emergen</title>
 <body>
@@ -348,7 +341,6 @@ Danach führen Sie einfach folgendes aus:
 
 </body>
 </section>
-
 <section>
 <title>Spezielle IPv6-Pakete</title>
 <body>
@@ -380,7 +372,6 @@ meisten finden Sie in <path>/usr/portage/net-misc</path>.
 
 <chapter>
 <title>DNS einrichten</title>
-
 <section>
 <title>IPv6 und DNS</title>
 <body>
@@ -395,7 +386,6 @@ sehr verbreitet. Hier wird die Unterstützung für das INT-Format beschrieben.
 
 </body>
 </section>
-
 <section>
 <title>BIND Konfiguration</title>
 <body>
@@ -415,13 +405,13 @@ Als erstes müssen Sie Einträge für forward und reverse DNS-Zonen in
 
 <pre caption="named.conf Einträge">
 zone "ipv6-rules.com" IN {
-	type master;
-	file "pri/ipv6-rules.com";
+  type master;
+  file "pri/ipv6-rules.com";
 };
 <codenote>Dies erzeugt die forward DNS für die Domäne 'ipv6-rules.com'</codenote>
 zone "6.9.2.0.0.0.f.1.0.7.4.0.1.0.0.2.ip6.int" {
-	type master;
-	file "pri/rev-ipv6-rules.com.int";
+  type master;
+  file "pri/rev-ipv6-rules.com.int";
 };
 <codenote>Dieses Format für reverse DNS ist "bitweise". Es wird erzeugt, indem man den</codenote>
 <codenote>IPv6-Prefix nimmt, die Reihenfolge der Zahlen umkehrt und zwischen jede</codenote>
@@ -437,26 +427,26 @@ Hosts erzeugen.
 $TTL    2h
 @       IN      SOA     ipv6-rules.com. webmaster.ipv6-rules.com.  (
                                 2003052501 ; Seriennummer (serial)
-				28800      ; Erneuerung (refresh)
-				14400      ; Wiederholung (retry)
-				3600000    ; Ablauf (expire)
-				86400 )    ; Minimum (minimum)
-			NS      ns1.ipv6-rules.com
+        28800      ; Erneuerung (refresh)
+        14400      ; Wiederholung (retry)
+        3600000    ; Ablauf (expire)
+        86400 )    ; Minimum (minimum)
+      NS      ns1.ipv6-rules.com
 
-	IN	AAAA	2001:470:1f00:296::1 ; Adresse für ipv6-rules.com
-host1	IN	AAAA	2001:470:1f00:296::2 ; Adresse für host1.ipv6-rules.com
-host2	IN	AAAA	2001:470:1f00:296::3:3 ; Adresse für host2.ipv6-rules.com
+      IN  AAAA  2001:470:1f00:296::1 ; Adresse für ipv6-rules.com
+host1 IN  AAAA  2001:470:1f00:296::2 ; Adresse für host1.ipv6-rules.com
+host2 IN  AAAA  2001:470:1f00:296::3:3 ; Adresse für host2.ipv6-rules.com
 </pre>
 
 <pre caption="pri/rev-ipv6-rules.com.int">
 $TTL 3d ; Default TTL (bind 8 braucht dies, bind 9 ignoriert es)
 @       IN SOA ipv6-rules.com. webmaster.ipv6-rules.com. (
                         2003052501      ; Seriennummer (YYYYMMdd)
-			24h             ; Erneuerungsdauer
-			30m             ; Wiederholungsdauer
-			2d              ; Ablaufszeit
-			3d )            ; Default TTL
-	IN      NS     ns1.ipv6-rules.com.
+      24h             ; Erneuerungsdauer
+      30m             ; Wiederholungsdauer
+      2d              ; Ablaufszeit
+      3d )            ; Default TTL
+  IN      NS     ns1.ipv6-rules.com.
 ; IPv6 PTR Einträge 
 $ORIGIN 6.9.2.0.0.0.f.1.0.7.4.0.1.0.0.2.ip6.int.
 
@@ -467,7 +457,6 @@ $ORIGIN 6.9.2.0.0.0.f.1.0.7.4.0.1.0.0.2.ip6.int.
 
 </body>
 </section>
-
 <section>
 <title>DJBDNS Konfiguration</title>
 <body>
@@ -536,7 +525,6 @@ für die DNS-Daten genutzt wird.
 
 <chapter>
 <title>IPv6 Router</title>
-
 <section>
 <title>Das Routing konfigurieren</title>
 <body>
@@ -579,7 +567,7 @@ statuslose (stateless) und statusbezogene (stateful) IP-Zuweisung. Statuslose
 Zuweisung nutzt einen Methode namens "Router Bekanntmachung" (Router
 Advertisment) und erlaubt Clients, eine IP und eine Route durch simples
 Hochfahren einer Schnittstelle zu erhalten. Es wird "statuslos" genannt, weil
-über die vergebenen IP-Adressen und den zugeordneten Hosts kein Protokoll 
+über die vergebenen IP-Adressen und den zugeordneten Hosts kein Protokoll
 geführt wird. Statusbezogene Zuweisung wird von DHCPv6 betreut. Sie heisst
 "statusbezogen", weil der Server den Status der Clients, die eine IP
 bezogen haben, speichert.
@@ -587,7 +575,6 @@ bezogen haben, speichert.
 
 </body>
 </section>
-
 <section>
 <title>Statuslose (stateless) Konfiguration</title>
 <body>
@@ -614,14 +601,14 @@ interface eth0
 {
         AdvSendAdvert on;
 <codenote>Schicke Bekanntmachungen (advertisments) an andere hosts</codenote>
-	AdvLinkMTU 1280;
-	MaxRtrAdvInterval 300;
-	prefix 2001:470:1F00:296::/64
+  AdvLinkMTU 1280;
+  MaxRtrAdvInterval 300;
+  prefix 2001:470:1F00:296::/64
 <codenote>Die Gruppe von IPs, welche wir benutzen können.</codenote>
-	{
-		AdvOnLink on;
-		AdvAutonomous on;
-	};
+  {
+    AdvOnLink on;
+    AdvAutonomous on;
+  };
 };
 </pre>
 
@@ -637,7 +624,6 @@ nun radvd starten und ihn zusätzlich jeweils beim Booten starten lassen.
 
 </body>
 </section>
-
 <section>
 <title>Statusbezogene (stateful) Konfiguration</title>
 <body>
@@ -662,20 +648,20 @@ valid-life-time 20000;
 renew-time 5000;
 rebind-time 8000;
 interface eth1 {
-	link AAA {
-		allow unicast;
-		send unicast;
-		allow rapid-commit;
-		send server-preference 5;
-		renew-time 1000;
-		rebind-time 2400;
-		prefer-life-time 2000;
-		valid-life-time 3000;
+  link AAA {
+    allow unicast;
+    send unicast;
+    allow rapid-commit;
+    send server-preference 5;
+    renew-time 1000;
+    rebind-time 2400;
+    prefer-life-time 2000;
+    valid-life-time 3000;
                 pool{
                         range 2001:470:1f00:296::10 to 2001:470:1f00:296::110/64;
                         prefix 2001:470:1f00:296::/64;
                 };
-	};
+  };
 };
 </pre>
 
@@ -695,7 +681,6 @@ automatisch gestartet wird.
 
 <chapter>
 <title>IPv6 Clients</title>
-
 <section>
 <title>Mittels radvd</title>
 <body>
@@ -737,24 +722,22 @@ anpassen.
 
 <pre caption="Beispiel dhcp6c.conf">
 interface eth0 {
-	send rapid-commit;
-	request prefix-delegation;
-	request domain-name-servers;
-	request temp-address;
-	iaid 11111;
-	renew-time 11000;
-	rebind-time 21000;
+  send rapid-commit;
+  request prefix-delegation;
+  request domain-name-servers;
+  request temp-address;
+  iaid 11111;
+  renew-time 11000;
+  rebind-time 21000;
 };
 </pre>
 
 </body>
 </section>
-
 </chapter>
 
 <chapter>
 <title>6to4-Umwandlung benutzen</title>
-
 <section>
 <title>Funktionsweise</title>
 <body>
@@ -768,7 +751,6 @@ Computer, welcher IPv4/IPv6-Verbindungen zur Aussenwelt herstellt.
 
 </body>
 </section>
-
 <section>
 <title>DNS-Konfiguration</title>
 <body>
@@ -848,7 +830,6 @@ gestartet wird.
 
 </body>
 </section>
-
 <section>
 <title>Clients konfigurieren und testen</title>
 <body>
@@ -915,11 +896,11 @@ die Antwort sagt uns wenigstens, dass die Dinge richtig laufen.
 
 </body>
 </section>
-
 </chapter>
 
 <chapter>
 <title>Weitere Dokumentationen</title>
+<section>
 <body>
 
 <p>
@@ -944,7 +925,6 @@ unter <b>irc.ipv6.freenode.net</b> verbinden.
 </p>
 
 </body>
+</section>
 </chapter>
-
-
 </guide>
