@@ -20,13 +20,29 @@
 <chapter>
 
 <section>
+	<title>[28. Juli 2003] Gentoo-Newsletter</title>
+	<body>
+		<p>
+		In dieser Woche gibts die Lösung zu dem in letzter Woche oft erlebten Problem von blockenden Modulen beim anstehenden Update
+		von Perl - etwas worauf viele von Euch sicherlich schon gewartet haben ;). Desweiteren wird angekündigt, dass es am 2. August
+		einen Bug-Tag geben wird, an dem sich Entwickler und Anwender zusammensetzen sollen und versuchen, soviele Bugs wie nur möglich
+		zu schliessen; koordiniert wird das ganze über den IRC-Channel <c>#gentoo-bugs</c> - natürlich auf FreeNode. Und ausserdem
+		ist Gentoo-Linux 1.4 für PPC ab sofort im <uri link="http://store.gentoo.org">Gentoo-Store</uri> vorbestellbar. Und natürlich
+		stehen auch wieder die üblichen Rubriken zur Verfügung. Also :
+		<uri link="http://www.gentoo.org/news/en/gwn/20030728-newsletter.xml">viel Spass beim Lesen</uri>
+		</p>
+	</body>
+</section>
+
+
+<section>
 	<title>[21. Juli 2003] Gentoo-Newsletter</title>
 	<body>
 		<p>
 		In dieser Woche gibt es Nachrichten über Gentoo auf der kommenden Linux-World-Expo und das kurz bevorstehende Veröffentlichung
 		von Gentoo-Linux 1.4. Desweiteren stellen wir den Gentoo-Linux-Store vor und schreiben neue Stellen im Projekt aus.
 		Ausserdem wird eine Community-Site für Dokumentationen rund um Gentoo-Linux vorgestellt, wobei es sich dabei hauptsächlich
-		im Gentoo in Produktionsumgebungen dreht. Und ausserdem ihren die erste Hosting-Gesellschaft Ihren Kunden nun Gentoo an.
+		um Gentoo in Produktionsumgebungen dreht. Und ausserdem die erste Hosting-Gesellschaft Ihren Kunden nun Gentoo an.
 		<uri link="http://www.gentoo.org/news/en/gwn/20030721-newsletter.xml">Viel Spass beim Lesen</uri>
 		</p>
 	</body>
