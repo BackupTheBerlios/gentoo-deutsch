@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/fcpci/fcpci-03.10.02.ebuild,v 1.5 2003/06/06 08:09:32 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/fcpci/fcpci-03.10.02.ebuild,v 1.6 2003/06/18 22:51:17 ripclaw Exp $
 
 DESCRIPTION="CAPI4Linux drivers for AVM Fritz!Card PCI"
 HOMEPAGE="http://www.avm.de/"
@@ -53,7 +53,7 @@ pkg_postinst() {
 	einfo "*   ...                              *"
 	einfo "**************************************"
 	ewarn "**************************************"
-	ewarn "* Your machine will crash if SMP is  *
+	ewarn "* Your machine will crash if SMP is  *"
 	ewarn "* enabled in your kernel.            *"
 	ewarn "**************************************"
 }
