@@ -1,6 +1,6 @@
 body{
   font-family:Verdana,Arial,Helvetica,sans-serif;
-  font-size: 1.0em;
+  font-size: medium;
   margin:0px 0px 0px 0px;
   background-color:#FFFFFF
 }
@@ -52,10 +52,10 @@ div#gmenu{
   position: absolute;
   background-color: #F2F0F9;
   border-top: 1px solid #45347B;
-  border-bottom: 1px solid #45347B;  
+  border-bottom: 1px solid #45347B;
   left: 0px;
   top: 110px;
-  font-size:0.75em;  
+  font-size:medium;  
   padding: 0px;
   line-height: 2.0em;
   width: 100%;
