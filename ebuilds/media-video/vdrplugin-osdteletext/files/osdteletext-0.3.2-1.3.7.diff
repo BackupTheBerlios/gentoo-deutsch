@@ -1,0 +1,496 @@
+diff -Nru o/osdteletext-0.3.2/colormapping.h osdteletext/colormapping.h
+--- o/osdteletext-0.3.2/colormapping.h	2003-06-02 21:19:26.000000000 +0200
++++ osdteletext/colormapping.h	2004-05-16 21:02:14.706915576 +0200
+@@ -9,6 +9,8 @@
+ foreground color else would be the same as the mapped background color.
+ */
+ 
++#include <vdr/config.h>
++
+ //for Bpp==2. Adjust these twenty lines to your needs! 
+ 
+ //FIRST STEP: Pick four colors. (see osdbase.h for some more colors)
+@@ -36,8 +38,13 @@
+ #define COLORMAPPING_INVERTEDYELLOW_2    clrRed
+ #define COLORMAPPING_INVERTEDBLUE_2      clrCyan
+ #define COLORMAPPING_INVERTEDMAGENTA_2   clrYellow
++#if VDRVERSNUM >= 10307
++#define COLORMAPPING_INVERTEDCYAN_2      ((tColor)ttSetup.configuredClrBackground)
++#define COLORMAPPING_INVERTEDWHITE_2     ((tColor)ttSetup.configuredClrBackground)
++#else
+ #define COLORMAPPING_INVERTEDCYAN_2      ((eDvbColor)ttSetup.configuredClrBackground)
+ #define COLORMAPPING_INVERTEDWHITE_2     ((eDvbColor)ttSetup.configuredClrBackground)
++#endif
+ 
+ 
+ 
+@@ -47,7 +54,11 @@
+ 
+ //for Bpp==3. Not used currently. Forget it.
+ //Ignore anything below this line.
++#if VDRVERSNUM >= 10307
++#define COLORMAPPING_BLACK_3     clrGray50
++#else
+ #define COLORMAPPING_BLACK_3     clrBackground
++#endif
+ #define COLORMAPPING_RED_3       clrRed
+ #define COLORMAPPING_GREEN_3     clrGreen
+ #define COLORMAPPING_YELLOW_3    clrYellow
+diff -Nru o/osdteletext-0.3.2/display.c osdteletext/display.c
+--- o/osdteletext-0.3.2/display.c	2003-06-02 21:19:26.000000000 +0200
++++ osdteletext/display.c	2004-05-16 21:15:58.834629120 +0200
+@@ -26,16 +26,32 @@
+ 
+ static int width, height, bpp, messageWidth;
+ static DisplayMode displayMode;
++#if VDRVERSNUM >= 10307
++static tColor currentBackground=clrGray50;
++#else
+ static eDvbColor currentBackground=clrBackground;
++#endif
+ 
+ 
++#if VDRVERSNUM >= 10307
++static cOsd          *osd = NULL;
++#else
+ static cOsdBase      *osd = NULL;
+ static tWindowHandle  win = -1;
++#endif
+ 
++#if VDRVERSNUM >= 10307
++static tColor
++#else
+ static eDvbColor
++#endif
+ DisplayColor(Color col) {
+    switch (col) {
+-      case BGR: return (clrBackground);
++#if VDRVERSNUM >= 10307
++			case BGR: return (clrGray50);
++#else
++			case BGR: return (clrBackground);
++#endif
+       case RED: return (clrRed);
+       case GRN: return (clrGreen);
+       case BLU: return (clrBlue);
+@@ -59,8 +75,13 @@
+    //width   = 10*size;
+    //width=w;  //must be a product of 4
+    //height=h; 
++#if VDRVERSNUM >= 10307
++   height=ttSetup.OSDheight;
++   width=ttSetup.OSDwidth;
++#else
+    height=ttSetup.OSDheight * cOsd::LineHeight();
+    width=ttSetup.OSDwidth * cOsd::CellWidth();
++#endif
+    messageWidth=0;
+ 
+    int xpos, ypos;
+@@ -79,15 +100,28 @@
+       ypos += height;
+    }
+    
+-   osd = cOsd::OpenRaw(xpos, ypos);
++#if VDRVERSNUM >= 10307
++	 osd = cOsdProvider::NewOsd(xpos, ypos);
++#else
++	 osd = cOsd::OpenRaw(xpos, ypos);
++#endif
+    if (!osd) {
++#if VDRVERSNUM >= 10307
++			osd = cOsdProvider::NewOsd(xpos, ypos);
++#else
+       cOsd::Close();
+-      osd = cOsd::OpenRaw(xpos, ypos);
++			osd = cOsd::OpenRaw(xpos, ypos);
++#endif
+       if (!osd) {
+          return (-1);
+       }
+    }
+-   win = osd->Create(0, 0, width, height, Bpp);
++
++#if VDRVERSNUM >= 10307
++	 tArea win = { 0, 0, width-1, height-1, Bpp };
++	 osd->SetAreas(&win, 1);
++#else
++	 win = osd->Create(0, 0, width, height, Bpp);
+    
+    if (bpp == 2) {
+       //the 3+1 colors for large OSD. Must correspond with cTxtBitmap::TranslateColor
+@@ -110,6 +144,7 @@
+    
+    //osd->SetFont(fontFix);
+    osd->Show(win);
++#endif
+    osd->Flush();
+    
+    ////Make the last line, which is for messages, fully transparent
+@@ -123,9 +158,11 @@
+ int
+ DisplayClose(void) {
+    if (!osd) return (-1);
++#if VDRVERSNUM < 10307
+    osd->Clear(win);
+    osd->Hide(win);
+    osd->Flush();
++#endif
+    delete (osd);
+    osd = NULL;
+    return (0);
+@@ -165,7 +202,11 @@
+ int
+ DisplayCharWidth(char c) {
+    if (osd) {
+-      return (osd->Width(c));
++#if VDRVERSNUM >= 10307
++			return (cFont::GetFont(fontFix)->Width(c));
++#else
++			return (osd->Width(c));
++#endif
+    }
+    return (-1);
+ }
+@@ -173,7 +214,11 @@
+ int
+ DisplayStringWidth(const char *s) {
+    if (osd) {
+-      return (osd->Width(s));
++#if VDRVERSNUM >= 10307
++			return (cFont::GetFont(fontFix)->Width(s));
++#else
++			return (osd->Width(s));
++#endif
+    }
+    return (-1);
+ }
+@@ -181,7 +226,11 @@
+ void
+ DisplayPrintText(int x, int y, const char *txt) {
+    if (osd) {
+-      osd->Text(x, y, txt);
++#if VDRVERSNUM >= 10307
++			osd->DrawText(x, y, txt, clrWhite, clrGray50, cFont::GetFont(fontFix));
++#else
++			osd->Text(x, y, txt);
++#endif
+    }
+ }
+ 
+@@ -194,27 +243,47 @@
+    x2 = x*size+size;
+    y2 = y*size+size;
+    if (osd) {
+-      osd->Fill(x1, y1, x2, y2, DisplayColor(col), win);
++#if VDRVERSNUM >= 10307
++			osd->DrawRectangle(x1, y1, x2, y2, DisplayColor(col));
++#else
++			osd->Fill(x1, y1, x2, y2, DisplayColor(col), win);
++#endif
+    }
+ }
+ 
+ void DisplayDrawRect(int x1, int y1, int x2, int y2, Color col) {
+    if (osd) {
+-      osd->Fill(x1, y1, x2, y2, DisplayColor(col), win);
++#if VDRVERSNUM >= 10307
++			osd->DrawRectangle(x1, y1, x2, y2, DisplayColor(col));
++#else
++			osd->Fill(x1, y1, x2, y2, DisplayColor(col), win);
++#endif
+    }
+ }
+ 
+ //quick overloading
++#if VDRVERSNUM >= 10307
++void DisplayDrawRect(int x1, int y1, int x2, int y2, tColor col) {
++#else
+ void DisplayDrawRect(int x1, int y1, int x2, int y2, eDvbColor col) {
++#endif
+    if (osd) {
+-      osd->Fill(x1, y1, x2, y2, col, win);
++#if VDRVERSNUM >= 10307
++			osd->DrawRectangle(x1, y1, x2, y2, col);
++#else
++			osd->Fill(x1, y1, x2, y2, col, win);
++#endif
+    }
+ }
+ 
+ 
+ void DisplayDrawBitmap(int x, int y, const cBitmap &bitmap) {
+    if (osd) {
+-      osd->SetBitmap(x, y, bitmap, win);
++#if VDRVERSNUM >= 10307
++			osd->DrawBitmap(x, y, bitmap);
++#else
++			osd->SetBitmap(x, y, bitmap, win);
++#endif
+    }
+ }
+ 
+@@ -230,13 +299,22 @@
+          x = 0;      
+       //osd->Text(x, messageRgn, txt, clrWhite, DisplayColor(col));
+       */
++#if VDRVERSNUM >= 10307
++      messageWidth=cFont::GetFont(fontFix)->Width(txt);
++      osd->DrawText(0,0,txt, bpp==2 ? COLORMAPPING_WHITE_2 : COLORMAPPING_WHITE_3, bpp==2 ? COLORMAPPING_BLACK_2 : COLORMAPPING_BLACK_3, cFont::GetFont(fontFix));
++#else
+       messageWidth=osd->Width(txt);
+       osd->Text(0,0,txt, bpp==2 ? COLORMAPPING_WHITE_2 : COLORMAPPING_WHITE_3, bpp==2 ? COLORMAPPING_BLACK_2 : COLORMAPPING_BLACK_3);
++#endif
+    }
+ }
+ 
+ void DisplayClearMessage() {
+-   DisplayDrawRect(0, 0, messageWidth, cOsd::LineHeight(), bpp==2 ? COLORMAPPING_BLACK_2 : COLORMAPPING_BLACK_3);
++#if VDRVERSNUM >= 10300
++	 DisplayDrawRect(0, 0, messageWidth, cFont::GetFont(fontFix)->Height('X'), bpp==2 ? COLORMAPPING_BLACK_2 : COLORMAPPING_BLACK_3);
++#else
++	 DisplayDrawRect(0, 0, messageWidth, cOsd::LineHeight(), bpp==2 ? COLORMAPPING_BLACK_2 : COLORMAPPING_BLACK_3);
++#endif
+ }
+ 
+ void
+@@ -246,11 +324,19 @@
+    }
+ }
+ 
++#if VDRVERSNUM >= 10300
++tColor DisplayGetBackground() {
++#else
+ eDvbColor DisplayGetBackground() {
++#endif
+    return currentBackground;
+ }
+ 
++#if VDRVERSNUM >= 10300
++void DisplaySetBackground(tColor bg) {
++#else
+ void DisplaySetBackground(eDvbColor bg) {
++#endif
+    currentBackground=bg;
+ }
+ 
+diff -Nru o/osdteletext-0.3.2/display.h osdteletext/display.h
+--- o/osdteletext-0.3.2/display.h	2003-06-02 21:19:26.000000000 +0200
++++ osdteletext/display.h	2004-05-16 20:55:12.999024920 +0200
+@@ -36,8 +36,13 @@
+ int  DisplayFontHeight(void);
+ int  DisplayCharWidth(char c);
+ int  DisplayStringWidth(const char *s);
++#if VDRVERSNUM >= 10307
++tColor DisplayGetBackground();
++void DisplaySetBackground(tColor bg);
++#else
+ eDvbColor DisplayGetBackground();
+ void DisplaySetBackground(eDvbColor bg);
++#endif
+ void DisplayDrawBlock(int x, int y, Color col);
+ void DisplayDrawRect(int x1, int y1, int x2, int y2, Color col);
+ void DisplayDrawBitmap(int x, int y, const cBitmap &bitmap);
+diff -Nru o/osdteletext-0.3.2/menu.c osdteletext/menu.c
+--- o/osdteletext-0.3.2/menu.c	2003-10-05 19:41:28.000000000 +0200
++++ osdteletext/menu.c	2004-05-16 21:11:59.086076440 +0200
+@@ -69,7 +69,11 @@
+ }
+ 
+ void TeletextBrowser::Show(void) {
++#if VDRVERSNUM >= 10307
++   DisplaySetBackground((tColor)ttSetup.configuredClrBackground);
++#else
+    DisplaySetBackground((eDvbColor)ttSetup.configuredClrBackground);
++#endif
+    DisplayOpen(2, mode);
+    //channelNumber=cDevice::CurrentChannel();
+    ShowPage();
+@@ -266,7 +270,11 @@
+             case DarkScreen:
+                DisplayClose(); //necessary to change color
+                if (DisplayGetBackground() == clrBlack)
++#if VDRVERSNUM >= 10307
++                  DisplaySetBackground((tColor)ttSetup.configuredClrBackground);
++#else
+                   DisplaySetBackground((eDvbColor)ttSetup.configuredClrBackground);
++#endif
+                else
+                   DisplaySetBackground(clrBlack);
+                DisplayOpen(2, mode);
+@@ -775,7 +783,11 @@
+ TeletextSetup ttSetup;
+ 
+ TeletextSetup::TeletextSetup() {
+-   configuredClrBackground=clrBackground;
++#if VDRVERSNUM >= 10300
++	 configuredClrBackground=clrGray50;
++#else
++	 configuredClrBackground=clrBackground;
++#endif
+    
+    //init key bindings with default values
+    for (int i=0;i<10;i++)
+diff -Nru o/osdteletext-0.3.2/menu.h osdteletext/menu.h
+--- o/osdteletext-0.3.2/menu.h	2003-06-02 21:19:26.000000000 +0200
++++ osdteletext/menu.h	2004-05-16 20:57:17.902036776 +0200
+@@ -57,7 +57,11 @@
+    char page[40][24];
+    int cursorPos;
+    cTxtBitmap *txtbitmap;
++#if VDRVERSNUM >= 10307
++	 cOsd *osd;
++#else
+    cOsdBase *osd;
++#endif
+    eTeletextAction TranslateKey(eKeys Key);
+    bool pageFound;
+    bool selectingChannel;
+diff -Nru o/osdteletext-0.3.2/osdteletext.c osdteletext/osdteletext.c
+--- o/osdteletext-0.3.2/osdteletext.c	2003-11-18 18:13:03.000000000 +0100
++++ osdteletext/osdteletext.c	2004-05-16 20:58:24.986838336 +0200
+@@ -132,8 +132,13 @@
+    if (startReceiver)
+       txtStatus=new cTxtStatus();
+    channelStatus=new ChannelStatus();
++#if VDRVERSNUM >= 10307
++   if (ttSetup.OSDheight<=0)	ttSetup.OSDheight=Setup.OSDHeight;
++   if (ttSetup.OSDwidth<=0)	ttSetup.OSDwidth=Setup.OSDWidth;
++#else
+    if (ttSetup.OSDheight<=0)	ttSetup.OSDheight=Setup.OSDheight;
+    if (ttSetup.OSDwidth<=0)	ttSetup.OSDwidth=Setup.OSDwidth;
++#endif
+   
+    return true;
+ }
+diff -Nru o/osdteletext-0.3.2/txtbitmap.c osdteletext/txtbitmap.c
+--- o/osdteletext-0.3.2/txtbitmap.c	2003-06-02 21:19:26.000000000 +0200
++++ osdteletext/txtbitmap.c	2004-05-16 21:13:37.194161744 +0200
+@@ -19,8 +19,11 @@
+ cTxtBitmap::~cTxtBitmap() {
+ }
+ 
+-
++#if VDRVERSNUM >= 10307
++void cTxtBitmap::Display(DisplayMode mode, int Offset, tColor, tColor) {
++#else
+ void cTxtBitmap::Display(DisplayMode mode, int Offset, eDvbColor, eDvbColor) {
++#endif
+    //int width=DisplayWidth()*cOsd::CellWidth();
+    //int height=(DisplayHeight())*cOsd::LineHeight()-Offset;
+    int y0=0;
+@@ -115,7 +118,11 @@
+ }
+ 
+ 
++#if VDRVERSNUM >= 10300
++tColor cTxtBitmap::TranslateColor(int Color)
++#else
+ eDvbColor cTxtBitmap::TranslateColor(int Color)
++#endif
+ {
+    if (Bpp() == 2) { //4 colors
+  switch (Color) {                           //Original teletext color
+@@ -184,7 +191,11 @@
+ 
+ void cTxtBitmap::ExchangeColor(void)
+ {
++ #if VDRVERSNUM >= 10300
++ tColor Helpcolor;
++ #else
+  eDvbColor Helpcolor;
++ #endif
+  Helpcolor=fgColor;
+  fgColor=bgColor;
+  bgColor=Helpcolor;
+@@ -199,7 +210,11 @@
+ 
+  unsigned int used_zeich;
+  int multiplikator;
++ #if VDRVERSNUM >= 10300
++ tColor farbe;
++ #else
+  eDvbColor farbe;
++ #endif
+ 
+  used_zeich=LangChar(zeich);
+ 
+@@ -239,7 +254,11 @@
+       farbe=bgColor;
+ 
+     for (int i=0;i<multiplikator;i++) {
+-      SetPixel(txt_x_offset+(x*12)+xzeich,txt_y_offset+(y*10*2)+(yzeich*multiplikator)+i,farbe);
++#if VDRVERSNUM >= 10300
++			DrawPixel(txt_x_offset+(x*12)+xzeich,txt_y_offset+(y*10*2)+(yzeich*multiplikator)+i,farbe);
++#else
++			SetPixel(txt_x_offset+(x*12)+xzeich,txt_y_offset+(y*10*2)+(yzeich*multiplikator)+i,farbe);
++#endif
+      }
+    }
+  }
+@@ -253,9 +272,17 @@
+  int i=0;
+  unsigned int Ergebnis;
+  unsigned int myfont[10];
++#if VDRVERSNUM >= 10300
++ tColor color;
++#else
+  eDvbColor color;
++#endif
+ 
++#if VDRVERSNUM >= 10300
++ bitmap->Reset();
++#else
+  bitmap->Clear();
++#endif
+  IndexBitmap(bitmap, 1); 
+ 
+  // paste them into the bitmap
+@@ -274,8 +301,13 @@
+       else
+         color=COLORMAPPING_BLACK_2;
+         
+-      bitmap->SetPixel(xzeich+i*12,yzeich*2  ,color);
++#if VDRVERSNUM >= 10300
++			bitmap->DrawPixel(xzeich+i*12,yzeich*2  ,color);
++      bitmap->DrawPixel(xzeich+i*12,yzeich*2+1,color);
++#else
++			bitmap->SetPixel(xzeich+i*12,yzeich*2  ,color);
+       bitmap->SetPixel(xzeich+i*12,yzeich*2+1,color);
++#endif
+      }
+    }
+    i++;
+diff -Nru o/osdteletext-0.3.2/txtbitmap.h osdteletext/txtbitmap.h
+--- o/osdteletext-0.3.2/txtbitmap.h	2003-06-02 21:19:26.000000000 +0200
++++ osdteletext/txtbitmap.h	2004-05-16 20:56:33.586773720 +0200
+@@ -7,10 +7,16 @@
+ 
+ class cTxtBitmap : public cBitmap {
+  private:
++#if VDRVERSNUM >= 10307
++  tColor bgColor;
++  tColor fgColor;
++  tColor TranslateColor(int color);
++#else
+   eDvbColor bgColor;
+   eDvbColor fgColor;
+-  int origFg, origBg;
+   eDvbColor TranslateColor(int color);
++#endif
++  int origFg, origBg;
+   int Language;
+   unsigned char LangChar(unsigned char);
+   int osdWidth;
+@@ -27,7 +33,11 @@
+   void SetChar(int , int , unsigned char , bool , bool , bool );
+   void GenOsdBitmap(char * zeichen, cBitmap * bitmap);
+   void ExchangeColor(void);
++#if VDRVERSNUM >= 10307
++  virtual void Display(DisplayMode mode, int Offset = -1, tColor FgColor = clrWhite, tColor BgColor = clrGray50);
++#else
+   virtual void Display(DisplayMode mode, int Offset = -1, eDvbColor FgColor = clrWhite, eDvbColor BgColor = clrBackground);
++#endif
+   void DisplayClock(cBitmap *clockBitmap);
+   cBitmap *ScaleBitmap(cBitmap* oldBitmap, int depth, int x0, int y0, int walt, int halt, int wneu, int hneu);
+ };
