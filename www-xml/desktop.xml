@@ -20,23 +20,27 @@
 <date>17 May 2002</date>
 
 <chapter>
-<title>Preliminaries</title>
+<title>Voraussetzungen</title>
 <section>
 <body>
-<p>Needless to say, you first need to have Gentoo Linux installed
-(<uri>http://www.gentoo.org/doc/build.html</uri>).  Having finished
-that rather enjoyable process, you also need to download the <e>Portage</e>
-tree.  You really should read the Portage User Guide 
-(<uri>http://www.gentoo.org/doc/portage-user.html</uri>), but if you're
-in a hurry you just need to type:
-</p>
+<p>Sinnlos zu erw&#xE4;hnen, dass Sie Gentoo Linux erst installieren 
+sollten (<uri>build.html</uri>), bevor Sie es konfigurieren. 
+Wenn Sie mit dieser am&#xFC;santen Prozedur fertig sind, bringen Sie 
+als nächstes Ihr  <e>Portage</e> Verzeichnis auf einen aktuellen Stand.
+Dazu sollten Sie das Portage Handbuch gelesen haben
+(<uri>portage-user.html</uri>). Wenn Sie es aber eilig haben, 
+tippen Sie einfach: </p>
+
 <pre># <i>emerge rsync</i></pre>
-<p>A quick note is in order about the packages that I have chosen to 
-discuss here.  Gentoo Linux has a considerable wealth of window managers,
-mail transport agents, etcetera that can easily be installed.  The specific
-packages that I have chosen to cover are not preferred by Gentoo Linux, they
-are simply packages that the author likes and/or knows how to configure.
-In other words, they're the packages on the author's own desktop.</p>
+
+<p>Lassen Sie mich eine kurze Bemerkung, zu den Paketen, die in diesem
+Dokument besprochen werden, machen. Gentoo Linux umfasst eine 
+betr&#xE4;chtlich F&#xFC;lle von Window-Managern, Mail-Trasport-Agents, usw.,
+die alle recht einfach zu installieren sind. Die von mir ausgew&#xE4;hlten 
+Pakete werden nicht von Gentoo Linux bevorzugt, sondern sind einfach
+die Programmpakete, die der Autor mag und/oder konfigurieren 
+kann. Mit anderen Worten, sie entsprechen dem Desktop des Autors.</p>
+
 </body>
 </section>
 </chapter>
