@@ -25,7 +25,7 @@
       Es wurden <cgi:docs_total/> Dokumente durchsucht.
     </p>
     <p>
-      Folgende Wörter wurden ignoriert: <cgi:ignored_words/>.
+      Folgende Wörter wurden ignoriert: <cgi:ignored_terms/>.
     </p>
     <p>
       Sie Suche dauerte <cgi:search_time/>.
