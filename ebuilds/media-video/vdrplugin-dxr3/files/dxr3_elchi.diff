@@ -1,0 +1,18 @@
+--- dxr3-0.2.1/spuenc.c	2003-05-21 18:38:11.000000000 +0200
++++ dxr3-0.2.1/spuenc.c	2003-12-10 15:26:03.000000000 +0100
+@@ -445,12 +445,13 @@
+     for (int x = first,i = 0; x <= last; x++,i++)
+     {
+     	col = *pal;
++		if (col == clrBackground)
++			idx = BACKGROUND;
++		else
+ 	    switch (col)
+ 		{
+     		case clrTransparent:idx = TRANSPARENT;
+         					break;
+-			case clrBackground: idx = BACKGROUND;
+-        					break;
+   			case clrBlack:		idx = BLACK;
+         					break;
+   			case clrRed:		idx = RED;
