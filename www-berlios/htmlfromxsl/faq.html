@@ -22,8 +22,8 @@
 <b>Inhalt</b>:
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Mit Gentoo &quot;anfangen&quot;</option>
 <option value="#doc_chap2">2. Installation</option>
-<option value="#doc_chap3">3. Package Management</option>
-<option value="#doc_chap4">4. Usage</option>
+<option value="#doc_chap3">3. Paket Verwaltung</option>
+<option value="#doc_chap4">4. Gentoo Linux Benutzen</option>
 <option value="#doc_chap5">5. Maintenance</option>
 <option value="#doc_chap6">6. Development</option>
 <option value="#doc_chap7">7. Resources</option></select>
@@ -72,10 +72,10 @@
 		die nicht mit der .iso booten will. Seitdem Kernel Module und Updates
 		regelmaessig gemacht werden kann es kaum zu dieser Situation kommen.
 		</p>
-	<p class="secthead"><a name="_sect3">I have a Sony Super-Slim VAIO laptop, and the Gentoo Linux CD is having problems 
-			finding my PCMCIA ATAPI CD-ROM. </a></p>
-		<p>Make sure the second IDE port is set to CDROM (it unsets itself if the device isn't 
-			attached on boot) then do the following at the isolinux <font class="code">boot:</font> prompt:</p>
+	<p class="secthead"><a name="_sect3">Ich habe einen Sony Super-Slim VAIO Laptop, und die Gentoo Linux CD hat Probleme
+			mit dem finden meines PCMCIA ATAPI CD-ROM Laufwerkes. </a></p>
+		<p>Gehen sie sicher, das das zweite IDE Port fuer die CDROM Eingestellt ist (es setzt sich selbst zurueck wenn das Laufwerk nicht
+			beim Booten angeschlossen ist) und dann geben Sie folgendes bei Isolinux <font class="code">boot:</font> ein:</p>
 <a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 1</p></td></tr>
@@ -83,8 +83,8 @@
 boot: <font class="input">rescue ide2=0x180,0x386</font>
 </pre></td></tr>
 </table>
-<p>If you are using a 1.0_rc5 or earlier boot CD, apart from thinking about downloading the latest iso, 
-type <font class="code">gentoo</font> instead of <font class="code">rescue</font>, above.</p>
+<p>Wenn sie 1.0_rc5 oder eine aeltere Boot CD benutzen, abgesehen vom runterladen einer neuen ISO, 
+geben Sie oben <font class="code">gentoo</font> anstatt <font class="code">rescue</font> ein.</p>
 <p class="secthead"><a name="_sect4">I'm finding things to be really unstable and I'm using &quot;-O9 -ffast-math 
 		-fomit-frame-pointer&quot; optimizations.  What gives? </a></p>
 		<p>When you use any optimizations beyond <font class="code">-O3</font>, you're really taking the risk of 
@@ -117,15 +117,15 @@ type <font class="code">gentoo</font> instead of <font class="code">rescue</font
 			Beispiel 2</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre># <font class="input">usermod -G users,wheel username</font></pre></td></tr>
 </table>
-		<p class="secthead"><a name="_sect9">How do I enable devfs? </a></p>
+		<p class="secthead"><a name="_sect9">Wie kann ich devfs aktivieren? </a></p>
 		<p>
-		If you're using 1.0_rc5 or greater, you don't need to do anything special to get 
-		devfs working; it's already active (you did make sure that devfs was built into the
-		kernel, didn't you?).
-		However, if you are using a version of Gentoo Linux <font class="emphasis">prior</font> to version 1.0_rc5, add 
-		<font class="code">devfs=mount</font> to your <font class="code">GRUB</font> kernel boot options so that the line looks something 
-		like <font class="code">kernel /boot/boot/bzImage devfs=mount foo=bar</font>  The kernel will then mount the 
-		<font class="path">/dev</font> <font class="emphasis">devfs</font> filesystem automatically at boot-time.
+		Wenn Sie 1.0_rc5 oder neuer benutzen, muss man nichts machen um devfs
+		zu aktivieren: es ist schon aktiviert (Haben sie auch devfs in den Kernel eingebunden?).
+		Wieimmer
+		Wenn sie jedoch, eine Version von Gentoo Linux <font class="emphasis">vor</font> der Version 1.0_rc5 benutzen, fuegen sie biite
+		<font class="code">devfs=mount</font> zu Ihrer <font class="code">GRUB</font> Kernel Boot Option hinzu, so das die Zeile zum Teil so aussieht wie
+		<font class="code">kernel /boot/boot/bzImage devfs=mount foo=bar</font>  Der Kernel wird auf
+		<font class="path">/dev</font> das <font class="emphasis">devfs</font>  Dateisystem automatisch booten.
 		</p>
 		<p class="secthead"><a name="_sect10">Wie kann ich devfs deaktivieren? </a></p>
 		<p>Bei Gentoo Linux 1.0_rc6 und besser/neuer, kann man devfs deaktivieren durch das uebergeben des
@@ -168,7 +168,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<a href="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/0F1731DC664023B7862569D0005C44AF?OpenDocument">IBM developerWorks Grub tutorial</a>.
 		</p>
                 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap3">3.</a></font>Package Management</p>
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Paket Verwaltung</p>
 <p class="secthead"><a name="_sect1">In what format are the packages stored? </a></p>
 <p>They exist in our portage tree as <font class="emphasis">ebuild</font> autobuild scripts; we are primarily 
 		a ports-based distribution, meaning that we provide scripts (<font class="code">.ebuild</font> files) and a 
@@ -340,7 +340,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		</pre></td></tr>
 </table>
 		<p class="chaphead">
-<font class="chapnum"><a name="doc_chap4">4.</a></font>Usage</p>
+<font class="chapnum"><a name="doc_chap4">4.</a></font>Gentoo Linux Benutzen</p>
 <p class="secthead"><a name="_sect1">I have installed openssh on my box, but can only log in as root - my normal user
 		account doesn't work.  </a></p>
 		<p>
@@ -354,9 +354,8 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 			Beispiel 5</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre># <font class="input">usermod -s /bin/bash myuser</font></pre></td></tr>
 </table>
-		<p class="secthead"><a name="_sect2">I can start X applications as root only. </a></p>
-<p>Your <font class="path">/tmp</font> directory has the wrong permissions (it needs the sticky bit 
-		set). Type the following as root:</p>
+		<p class="secthead"><a name="_sect2">Ich kann X Anwendungen nur als root ausfuehren. </a></p>
+<p>Ihr <font class="path">/tmp</font> Verzeichnis hat die Falschen Zugriffsrechte. Geben sie folgendes als root ein:</p>
 		<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 6</p></td></tr>
@@ -366,9 +365,9 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <p>Edit the <font class="code">KEYMAP</font> variable in <font class="path">/etc/rc.conf</font>.
 		Then either reboot or restart the keymaps script:
 		<font class="code">/etc/init.d/keymaps restart</font>.</p>
-		<p class="secthead"><a name="_sect4">DNS name resolution works for root only. </a></p>
+		<p class="secthead"><a name="_sect4">Die DNS Namens Aufloesung funktioniert nur fuer root. </a></p>
 <p>
-<font class="path">/etc/resolv.conf</font> has the wrong permissions; <font class="code">chmod</font> it as follows:
+<font class="path">/etc/resolv.conf</font> hat die falschen Zugriffsrechte. <font class="code">chmod</font> es zu folgendem:
 		</p>
 		<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -473,12 +472,14 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
         </p>
     	<p class="chaphead">
 <font class="chapnum"><a name="doc_chap7">7.</a></font>Resources</p>
-<p class="secthead"><a name="_sect1">Where can I find more about supervise used by default in Gentoo Linux 1.0_rc5 and earlier? </a></p>
+<p class="secthead"><a name="_sect1">Wo kann ich mehr ueber supervise das bei Gentoo Linux 1.0_rc5 und frueher benutzt wurde finden? </a></p>
 <p><a href="http://cr.yp.to/daemontools.html">http://cr.yp.to/daemontools.html</a></p>
-<p class="secthead"><a name="_sect2">Where can I find more information about Gentoo Linux? </a></p>
-<p>The official Gentoo documentation can be found on <a href="http://www.gentoo.org">http://www.gentoo.org</a>; general Linux information is at <a href="http://www.linuxdoc.org">http://www.linuxdoc.org</a>.</p>
-<p class="secthead"><a name="_sect3">Can I buy a CD of Gentoo Linux? </a></p>
-<p>Yes!  Fresh CDRs are available for $5 USD apiece from <a href="http://www.cheapbytes.com">http://www.cheapbytes.com</a>.
+<p class="secthead"><a name="_sect2">Wo kann man mehr Informationen ueber Gentoo Linux finden? </a></p>
+<p>Die Offizelle Gentoo documentation kabn bei <a href="http://www.gentoo.org">http://www.gentoo.org</a> gefunden werden. Homepage vom Uebersetzungsprojekt ins Deutsche <a href="http://gentoo-deutsch.berlios.de">http://gentoo-deutsch.berlios.de</a>. Standard Linux Information sind unter <a href="http://www.linuxdoc.org">http://www.linuxdoc.org</a> verfuegbar.</p>
+<p class="secthead"><a name="_sect3">Kann man CDs von Gentoo Linux kaufen? </a></p>
+<p>USA: Ja! Frische CDRs sind fuer $5 USD von <a href="http://www.cheapbytes.com">http://www.cheapbytes.com</a> kaufbar.
+		</p>
+		<p>Europa/Deutschland: Keine Ahnung, sollte sich jemand finden der dies liesst und Gentoo Linux CDs Professionell (nicht grad privat) macht und verkauft kann sich mal bei <a href="mailto:marko@nexboard.de">mir</a> melden
 		</p>
 <p class="secthead"><a name="_sect4">This FAQ hasn't answered my question.  What do I do now? </a></p>
 		<p>A good first step is to browse through the relevant doumentation at <a href="http://www.gentoo.org/index-docs.html">http://www.gentoo.org/index-docs.html</a>, 
