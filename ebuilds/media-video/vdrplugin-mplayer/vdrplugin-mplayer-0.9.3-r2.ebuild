@@ -1,10 +1,11 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/vdrplugin-mplayer-0.9.3-r2.ebuild,v 1.1 2004/08/12 18:21:37 austriancoder Exp ${VDRPLUGIN}/vdrplugin-${VDRPLUGIN}-0.7.15.ebuild,v 1.1 2003/06/05 09:39:40 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/vdrplugin-mplayer-0.9.3-r2.ebuild,v 1.2 2004/08/12 18:34:38 austriancoder Exp ${VDRPLUGIN}/vdrplugin-${VDRPLUGIN}-0.7.15.ebuild,v 1.1 2003/06/05 09:39:40 mad Exp $
 
 IUSE=""
 inherit vdrplugin eutils
 
+S=${WORKDIR}/mp3-${PV}
 DESCRIPTION="Video Disk Recorder Mplayer Plugin"
 HOMEPAGE="http://www.muempf.de/"
 SRC_URI="http://www.muempf.de/down/vdr-mp3-${PV}.tar.gz
