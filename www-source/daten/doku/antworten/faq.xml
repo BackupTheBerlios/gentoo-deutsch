@@ -247,7 +247,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<section>
 	        <title>Wie installiere und deinstalliere ich Pakete?</title>
 	        <body>
-		<p>Das <uri link="/doc/portage-user.html">Portage User Guide</uri> erkl&#xE4;rt ausf&#xFC;hrlich, wie man 
+		<p>Das <uri link="/inhalte/doku/anwendungen/portage/">Portage User Guide</uri> erkl&#xE4;rt ausf&#xFC;hrlich, wie man 
 		Pakete installiert, deinstalliert und Portage aktualisiert.</p>
 	        </body>
 	</section>
