@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-libs/qt/Attic/qt-3.1.1-r2.ebuild,v 1.2 2003/02/01 14:26:46 wpbasti Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-libs/qt/Attic/qt-3.1.1-r2.ebuild,v 1.3 2003/02/01 14:32:43 wpbasti Exp $
 
 inherit eutils
 
@@ -28,7 +28,6 @@ DEPEND="virtual/x11
 	mysql? ( >=dev-db/mysql-3.2.10 )
 	opengl? ( virtual/opengl virtual/glu )
 	postgres? ( >=dev-db/postgresql-7.2 )"
-	
 
 QTBASE=/usr/qt/3
 export QTDIR=${S}
