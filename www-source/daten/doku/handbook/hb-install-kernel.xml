@@ -1,7 +1,7 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-kernel.xml,v 1.4 2003/12/14 11:10:03 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-kernel.xml,v 1.5 2003/12/14 15:48:51 schnitz Exp $ -->
 
 <!-- English CVS Version 1.19 -->
 
@@ -45,7 +45,7 @@ Standardkernelquelle wie entwickelt von den Linux-Kernel Entwicklern) und die
 </p>
 
 <p>
-Bei anderen Architekturen sollten die Kernelquelle benutzen, die spezifisch
+Bei anderen Architekturen sollten Sie die Kernelquelle benutzen, die spezifisch
 für ihre Architektur optimiert ist: <c>hppa-sources</c> (HPPA) und
 <c>ppc-sources</c> (PowerPC).
 </p>
