@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Einrichten einer PPPoE Verbindung während der Gentoo 1.4_rc1 Installation</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Einrichten einer PPPoE Verbindung während der Gentoo 1.4_rc1 Installation</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Kompilieren und Installieren von PPPoE</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Kompilieren und Installieren von PPPoE</p>
+<p class="secthead"><a name="_sect1">Paket Extraktion und Konfiguration </a></p>
+<p>Solange Sie unter Gentoo Linux noch keinen Zugriff auf den Portage Verzeichnisbaum oder dem
+Internet haben, sollten Sie sicherstellen, dass die Quellen für <a href="ftp://cs.anu.edu.au/pub/software/ppp/">
+PPP</a> und <a href="http://www.roaringpenguin.com/pppoe/">PPPoE</a> sich auf einer CD befinden.
+Sobald Sie diese Quellen haben, sollten Sie diese Dateien von der CD auf die neu erstellte Gentoo
+Partition kopieren. Es empfiehlt sich, diese im Verzeichnis <font class="path">/usr/local/pppoe</font> abzulegen.
+Sobald diese Daten auf der Platte befinden, ist es an Zeit, sie zu konfigurieren und einzurichten.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Es ist sehr wichtig, dass Sie sich zu diesem Zeitpunkt per chroot in die Gentoo Umgebung
+gewechselt haben. Dies ist im Gentoo <a href="http://www.gentoo.org/doc/build.html">Installations</a> 
+Dokument ausführlich beschrieben. </p></td></tr></table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>PPP und PPPoe muessen entweder als Modul gebaut oder direkt in den Kernel einkompiliert werden.
+Nichts wird funktionieren, wenn Sie nicht eine der beiden Möglichkeiten durchführen.</p></td></tr></table>
+
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1: Konfigurieren und Installieren von PPP</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<font class="code"># mknod /dev/ppp c 108 0 </font>
+<font class="code"># chmod 600 /dev/ppp </font>
+<font class="code"># cd /usr/local/pppoe/ </font>
+<font class="code"># tar -zvxf ppp-2.4.1.tar.gz </font>
+<font class="code"># cd ppp-2.4.1 </font>
+./configure --prefix=/usr --sysconfdir=/etc
+
+<font class="code"># make </font>
+<font class="code"># make install </font>
+</pre></td></tr>
+</table>
+
+<p> Nachdem die Einrichtung von PPP erfolgt ist, können wir uns dem PPPoE Modul zuwenden.</p>
+
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2: Konfigurieren und Installieren von PPPoE</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<font class="code"># tar -xvzf rp-pppoe-3.5.tar.gz </font>
+<font class="code"># cd rp-pppoe-3.5 </font>
+<font class="code">./go </font>
+<font class="comment">Folgen Sie jetzt einfach den Anweisungen des Installationsprogrammes.</font>
+</pre></td></tr>
+</table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Sie können auch den Befehl<font class="code">./go-gui</font> verwenden, um ein grafisches Setup Menue
+während der Installation zur Hand zu haben.</p></td></tr></table>
+
+<p class="secthead"><a name="_sect2">Abschliessende Schritte </a></p>
+<p>
+Nachdem Sie die obigen Schritte durchgeführt haben, können Sie Ihre ge&quot;chroot&quot;ete Umgebung wieder
+verlassen und mit <font class="code">ifconfig eth0 up</font> die Netzwerkkarte starten. Danach wechseln Sie mit
+chroot wieder in die Gentoo Umgebung und starten den Verbindungsaufbau zu Ihrem Provider mit
+<font class="code">adsl-start</font>. Kontrollieren Sie mit ping, ob der Verbindungsaufbau erfolgreich ist, bevor
+Sie mit der Gentoo Installation fortfahren.</p>
+
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 07 October 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:zhen@gentoo.org">John P. Davis</a></b><br><i>Author</i><br><br><b><a class="altlink" href="mailto:js@ameds.de">Jens Schittenhelm</a></b><br><i>Übersetzer</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Dieses Dokument zeigt, wie man für einen ADSL Zugang eine PPPoE Verbindung
+während der Installation von Gentoo Linux einrichtet.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
