@@ -1,7 +1,7 @@
 IUSE=""
 VDRPLUGIN="dvd"
 
-S=${WORKDIR}/${VDRPLUGIN}-${PV}-${JAU_VN}
+S=${WORKDIR}/${VDRPLUGIN}-${PV}01
 DESCRIPTION="Video Disk Recorder DVD-Player PlugIn"
 HOMEPAGE="http://www.jausoft.com"
 SRC_URI="http://www.jausoft.com/Files/vdr/vdr-dvd/vdr-dvd-0.3.5b01.tar.bz2"
@@ -20,6 +20,8 @@ src_unpack() {
 }
 
 src_compile() {
+
+einfo ${S}
 	sed -i "/cp.*LIBDIR/d" Makefile
 	sed -i "s/^DVBDIR.*$/DVBDIR = \/usr/" Makefile
 	sed -i "s/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/" Makefile
