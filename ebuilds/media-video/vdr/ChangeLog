@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr
 # Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.59 2004/07/26 22:51:23 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.60 2004/08/03 12:51:43 austriancoder Exp $
+
+*vdr-1.3.11-r4 (27 July 2004)
+  27. July 2004: Christian Gmeiner <christian at visual-page dot de>
+  added yaepg patch
+  added disbale-epg-scan patch
 
 *vdr-1.2.6-r6 (27 July 2004)
   27. July 2004: Christian Gmeiner <christian at visual-page dot de>
