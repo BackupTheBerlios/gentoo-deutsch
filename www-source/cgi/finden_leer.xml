@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<info>
+<info xmlns:cgi="http://www.sebastian-werner.net">
 <title>Suchen auf Gentoo.de</title>
+
+<box>
+  <block>
+    <title>Ihre Suche</title>
+    <p>
+      nach &#171;<cgi:query_str/>&#187; 
+      in <cgi:docs_total/> Dokumenten
+      ergab keine Treffer.
+      <br/>
+    </p>
+  </block>
+</box>
+
 
 <chapter>
 
-<title>Übersicht</title>
+<title>Ihr Suchergebnis</title>
 
 <section>
 
 <body>
 
-  <search>
-    <result_intro>
-      Ihre Suche nach:
-    </result_intro>  
-    <result_overview/>
-    <result_ignored_terms/>
-    <result_noentry/>
-    <result_navigation/>
-  </search>
+  <cgi:result_list/>
+  <cgi:result_navigation/>
 
 </body>
 
 </section>
 
 </chapter>
-
 </info>
