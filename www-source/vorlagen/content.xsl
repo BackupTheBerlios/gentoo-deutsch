@@ -119,12 +119,12 @@
       <p>
         <xsl:apply-templates select="author"/>
       </p>
-    
+
       <h4><xsl:value-of select="$lng_overview"/></h4>
       <p>
         <xsl:apply-templates select="abstract"/>
       </p>
-    
+
       <xsl:if test="count(//uri) &gt; 0">
       <![CDATA[<!-- keine-suche-start -->]]>
       <h4><xsl:value-of select="$lng_links"/></h4>
@@ -140,11 +140,11 @@
           <a href="{$uri}" onclick="window.open(this.href,'_blank');return false;">
             <xsl:if test="position() &lt; 10 and count(//uri) &gt; 9">
 	      <xsl:text>0</xsl:text>
-            </xsl:if>  
-          
+            </xsl:if>
+
             <xsl:value-of select="position()"/>
             <xsl:text>: </xsl:text>
-	
+
             <xsl:variable name="myurl">
               <xsl:choose>
                 <xsl:when test="contains($uri, '://')">
@@ -153,7 +153,7 @@
 	        <xsl:otherwise>
 	          <xsl:value-of select="$uri"/>
                 </xsl:otherwise>
-              </xsl:choose>  
+              </xsl:choose>
             </xsl:variable>
 	
             <xsl:value-of select="substring($myurl, 0, 20)"/>
@@ -167,10 +167,10 @@
     </xsl:if>
 
     <xsl:apply-templates select="/*/box/*"/>
-    
+
   </div>
-  
-  <![CDATA[<!-- keine-suche-stop -->]]>  
+
+  <![CDATA[<!-- keine-suche-stop -->]]>
 
   <div id="body">
     <a id="top"/>
@@ -185,8 +185,8 @@
         <form style="font-size: 0.7em" action="http://www.gentoo.de/">
           <p><select name="url" size="1" class="jumpbox"
             onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
-            <option value="---">[Bitte Kapitel auswÃ€hlen]</option>  
-        
+            <option value="---">[Bitte Kapitel auswählen]</option>
+
             <xsl:for-each select="chapter/title">
               <option value="header_{position()}"><xsl:value-of select="."/></option>
             </xsl:for-each>
@@ -195,9 +195,9 @@
       <![CDATA[<!-- keine-suche-stop -->]]>
     </xsl:if>
 
-    
+
     <xsl:apply-templates select="chapter"/>
-    
+
     <br/><br/>
     <p>
       <a href="http://validator.w3.org/check/referer">
@@ -215,12 +215,12 @@
         <img src="http://www.w3.org/Icons/valid-css.png" alt="Valid CSS 2.0!" height="31" width="88"/>
       </a>
       -->
-    </p>    
+    </p>
 
   </div>
-  
-  <script type="text/javascript" src="{$scripturl}corelib_start.js"></script>
-  
+
+  <!--<script type="text/javascript" src="{$scripturl}corelib_start.js"></script>!-->
+
   </body>
   </html>
 </xsl:template>
@@ -248,12 +248,12 @@
 <!-- Block inside Box -->
 <xsl:template match="block">
   <h4><xsl:value-of select="title"/></h4>
-  <xsl:apply-templates select="p"/>	
+  <xsl:apply-templates select="p"/>
 </xsl:template>
 
 <xsl:template match="chapter">
   <xsl:variable name="cid"><xsl:number/>.</xsl:variable>
-  
+
   <xsl:if test="title">
     <h1>
       <xsl:attribute name="id">
@@ -273,12 +273,12 @@
       <xsl:value-of select="title"/>
     </h1>
   </xsl:if>
-  
+
   <xsl:for-each select="section">
     <xsl:variable name="sid">
       <xsl:value-of select="position()"/>
     </xsl:variable>
-    
+
     <xsl:if test="title">
       <h2>
         <xsl:if test="/guide">
@@ -289,9 +289,9 @@
         <xsl:value-of select="title"/>
       </h2>
     </xsl:if>
-    
+
     <xsl:apply-templates select="body"/>
-  </xsl:for-each>  
+  </xsl:for-each>
 </xsl:template>
 
 <xsl:template match="body">
@@ -348,7 +348,7 @@
 
 
     </xsl:if>
-    <!-- XHTML erlaubt kein echtes Target mehr 
+    <!-- XHTML erlaubt kein echtes Target mehr
     <xsl:if test="@target">
       <xsl:attribute name="onclick">
         <xsl:text>window.open(this.href,'_blank');return false;</xsl:text>
@@ -364,8 +364,8 @@
     <xsl:attribute name="href">
       <xsl:text>mailto:</xsl:text>
       <xsl:choose>
-        <xsl:when test="@link">KEINSPAM-<xsl:value-of select="@link"/></xsl:when>                                                            
-        <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>   
+        <xsl:when test="@link">KEINSPAM-<xsl:value-of select="@link"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
     <xsl:apply-templates/>
