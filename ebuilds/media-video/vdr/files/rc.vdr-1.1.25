@@ -1,18 +1,17 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.8 2003/03/05 20:02:14 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.9 2003/03/12 18:15:29 mad Exp $
 
 opts="${opts} fullrestart"
 
 depend() {
-	need dvb
-	use lircd
+		need dvb
+		use lircd
 }
 
 start() {
 	ebegin "Starting $(vdr -V)"
-
 	#
 	# reading the default vdr options
 	#
@@ -26,19 +25,29 @@ start() {
 	[ -n "$RECORD" ] && vdropts="${vdropts} --record=${RECORD} "
 	[ -n "$PORT" ] && vdropts="${vdropts} --port=${PORT} "
 	[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIB} "
-
-	#
-	# building then options for the plugins
-	#
 	[ -n "$LIB" -a -n "$PLUGINS" ] && for i in ${PLUGINS}; do 
-		if  [ -f "/etc/conf.d/vdr.${i}" -a -n "$(grep "^[A-Z]" /etc/conf.d/vdr.${i} 2>/dev/null )" ]; then
+		#
+		# reading associated plugin config files and render the command options
+		#
+		if  [ -f "/etc/conf.d/vdr.${i}" -a -n "$(grep "^[A-Z_]" /etc/conf.d/vdr.${i} 2>/dev/null )" ]; then
 			unset pluginopts
+			#
+			# reading the values begining wiht [A-Z]
+			# 
 			for t in $(cat /etc/conf.d/vdr.$i | grep "^[A-Z]"); do
 				unset value option
 				value=$(echo $t| cut -d "=" -f 2 | tr -d "\"")
 				option=$(echo $t| cut -d "=" -f 1 | tr "[:upper:]" "[:lower:]")
 				pluginopts="${pluginopts} --$option=$value"
 			done
+			#
+			# An extra option field can be declared called _EXTRAOPTS containing
+			# some free formed options for this plugin
+			#
+			if [ $(grep _EXTRAOPTS /etc/conf.d/vdr.$i) ]; then
+				extraopts=$(grep _EXTRAOPTS /etc/conf.d/vdr.$i|cut -d "\"" -f 2)
+				pluginopts="${pluginopts} ${extraopts}"
+			fi
 			vdropts="${vdropts} --plugin='$i ${pluginopts}'"
 		else
 		vdropts="${vdropts} --plugin=$i"
@@ -57,6 +66,7 @@ start() {
 	#
 	# finaly start vdr
 	# 
+	#echo "/usr/bin/vdr --daemon ${vdropts}"
 	su -c "/usr/bin/vdr --daemon ${vdropts}"
 	eend $? "Failed to start vdr."
 }
@@ -69,10 +79,9 @@ stop() {
 
 fullrestart() {
 	ebegin "Fully restarting $(vdr -V) and DVB drivers"
-	/etc/init.d/vdr stop
+	/etc/init.d/vdr stop	
 	/etc/init.d/dvb stop
 	sleep 5
 	/etc/init.d/dvb start
 	/etc/init.d/vdr start
 }
-
