@@ -1,2 +1,5 @@
-MD5 a16989ef813249ef96b0a824a2b6ef80 vdrplugin-control-0.0.2.ebuild 1536
+MD5 ddff1d3adb00f778348769132cfbff60 ChangeLog 471
+MD5 96bf8ddf2e4ee265ac722838b03cacb7 vdrplugin-control-0.0.2.ebuild 1548
+MD5 79e9a8d1bf66ff693c1f90bc5a7a8b7a vdrplugin-control-0.0.2a.ebuild 514
 MD5 4b72d43680e87bb8f548accab2acc24e files/digest-vdrplugin-control-0.0.2 65
+MD5 305884a8bd1cb2499fc785621b1bd7b0 files/digest-vdrplugin-control-0.0.2a 66
