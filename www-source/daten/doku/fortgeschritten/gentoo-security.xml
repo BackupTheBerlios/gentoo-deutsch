@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <!-- English CVS Version: 1.11 -->
 
-<guide link = "http://www.gentoo.org/doc/en/gentoo-security.xml">
+<guide link = "/doc/en/gentoo-security.xml">
 
 <title>Gentoo Linux Sicherheitsleitfaden</title>
 
