@@ -185,14 +185,14 @@
 
 <chapter>
   <title>Installation</title>
-
+    <section>
+    
       <warn>
         Berichten Sie alle Bugs an <uri>bugs.gentoo.org</uri>! Berichten Sie die
         Bugs nicht Upstream (den originalen Autoren). Berichten Sie Bugs an
         Gentoo, wenn nötig leiten wir diese an die Autoren weiter.
       </warn>
 
-  <section>
     <title>Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</title>
     <body>
 
