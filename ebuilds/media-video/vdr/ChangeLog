@@ -1,6 +1,14 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.5 2003/03/14 17:56:09 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.6 2003/03/15 22:23:06 mad Exp $
+
+*vdr-1.1.25-r3 (15 Mar 2003)
+  15 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25-r3.ebuild
+  added use variable for VFAT (USE="vdr_vfat")
+  added use variable for Elchi AIO (USE="vdr_elchi")
+  The supplied Elchi 1.1.25 patch is nothing new, it is the
+  1.1.20 patch but packed new to be applied without the nasty
+  ofset warnings
 
 *vdr-1.1.25-r2 (14 Mar 2003)
   14 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25-r2.ebuild
