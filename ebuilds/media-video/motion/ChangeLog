@@ -3,6 +3,10 @@
 # $Header:
 
 *motion-*
+  01 Aug 2004; Martin Mittelsdorf <martini at vdr-portal.de>
+  changed (use logger) to (use mysql) in motion init script
+
+*motion-*
   28 Jul 2004; Martin Mittelsdorf <martini at vdr-portal.de>
   added init script
   changed all ebuilds to install init script

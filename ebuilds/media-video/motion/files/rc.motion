@@ -4,7 +4,7 @@
 # $Header:
 
 depend() {
-	use logger
+	use mysql
 }
 
 PIDFILE="/var/run/motion.pid"
