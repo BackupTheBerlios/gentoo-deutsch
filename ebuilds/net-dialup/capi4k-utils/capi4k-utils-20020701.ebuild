@@ -1,12 +1,12 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/capi4k-utils/Attic/capi4k-utils-20020701.ebuild,v 1.5 2002/07/26 18:54:00 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/capi4k-utils/Attic/capi4k-utils-20020701.ebuild,v 1.6 2002/08/06 12:23:55 holler Exp $
 
 MY_P=capi4k-utils-2002-07-01
 S=${WORKDIR}/${PN}
 DESCRIPTION="Capi4Linux Utils"
 SRC_URI="ftp://ftp.in-berlin.de/pub/capi4linux/${MY_P}.tar.gz"
-HOMEPAGE="ftp://ftp-in-berlin.de/pub/capi4linux.de/"
+HOMEPAGE="ftp://ftp.in-berlin.de/pub/capi4linux.de/"
 SLOT="1"
 LICENSE="GPL-2"
 KEYWORDS="x86"
