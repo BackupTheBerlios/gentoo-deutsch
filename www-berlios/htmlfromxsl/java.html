@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Java Anleitung</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Java Anleitung</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Installation eines JDK/JRE</option>
+<option value="#doc_chap2">2. Konfiguration des JDK/JRE</option>
+<option value="#doc_chap3">3. Weiterführende Quellen</option>
+<option value="#doc_chap4">4. Besonderheiten</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Installation eines JDK/JRE</p>
+<p class="secthead"><a name="_sect1">Überblick </a></p>
+<p>Gentoo Linux unterstüzt verschiedene JDKs und JREs. Als Standard ist das Blackdown JDK/JRE installiert, da es frei verfügbar ist und sie keinem Registrierungszwang unterliegen.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>As kaffe becomes a JRE/JDK drop-in replacement, that will most likely become our default.</p></td></tr></table>
+
+<p>Allgemein sind die JDKs/JREs von Sun oder IBM schneller, allerdings bedeutet es etwas mehr Arbeit an sie heran zukommen, da es notwendig ist, vor dem Herunterladen die Lizenzbestimmungen zu lesen und zu akzeptieren. IBM verlangt desweiteren eine Registrierung des Nutzers.</p>
+<p>Die ebuilds für die Sun und IBM JDKs/JREs werden sie darauf hinweisen, von wo sie die entsprechenden Pakete herunterladen können.</p>
+<p class="secthead"><a name="_sect2">Installation des Sun/IBM JDKs/JREs </a></p>
+<p>Wenn sie <font class="code">emerge dev-java/sun-jdk-1.3.1</font> oder <font class="code">emerge dev-java/ibm-jdk-1.3.1</font> ausführen, werden sie darauf hingewiesen, dass sie die entsprechenden TAR-Archive selbst herunterladen müssen. Dies ist auf Grund der Lizenzbestimmungen von Sun bzw. des Registrierungszwangs beim IBM JDK/JRE notwending.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Es gibt auch ein dev-java/sun-jdk-1.4.0 ebuild, allerdings laufen nicht alle Programme fehlerfrei mit Java 1.4. Somit liegt es an ihnen, ob sie Java 1.4 verwenden wollen.</p></td></tr></table>
+<p>
+Sie müssen die notwendingen Dateien in das Verzeichnis <font class="path">/usr/portage/distfiles</font> herunterladen. Sobald dies getan ist, müssen sie erneut emerge ausführen und das JDK/JRE wird nach <font class="path">/opt</font> installiert.
+</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Konfiguration des JDK/JRE</p>
+<p class="secthead"><a name="_sect1">Überblick </a></p>
+<p>Gentoo Linux bietet die Möglichkeit verschiedene JDKs und JREs parallel installiert zu haben, ohne das diese in Konflikt miteinander kommen. Es gibt einige Besonderheiten, die weiter unten erläutert werden.</p>
+<p>Mit Hilfe von <font class="code">java-config</font> können sie als root die systemweiten Java-Vorgaben festlegen. Außerdem hat jeder Nutzer die Möglichkeit durch <font class="code">java-config</font> seine eigenen Vorgaben einzustellen, wenn diese sich von den systemweiten unterscheiden.</p>
+<p class="secthead"><a name="_sect2">Ein Standard-JDK/JRE festlegen </a></p>
+<p>Durch das Kommando <font class="code">java-config --list-available-vms</font> wird eine Liste der auf ihrem System verfügbaren JDKs/JREs ausgegeben:</p>
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+[%1 ~] java-config --list-available-vms
+[blackdown-jdk-1.3.1] Blackdown JDK 1.3.1 (/etc/env.d/java/20blackdown-jdk-1.3.1)
+[blackdown-jre-1.3.1] Blackdown JRE 1.3.1 (/etc/env.d/java/20blackdown-jre-1.3.1)
+[ibm-jdk-1.3.0] IBM JDK 1.3.0 (/etc/env.d/java/20ibm-jdk-1.3.0)
+[ibm-jdk-1.3.1] IBM JDK 1.3.1 (/etc/env.d/java/20ibm-jdk-1.3.1)
+[ibm-jre-1.3.1] IBM JRE 1.3.1 (/etc/env.d/java/20ibm-jre-1.3.1)
+[sun-jdk-1.4.0] Sun JDK 1.4.0 (/etc/env.d/java/20sun-jdk-1.4.0)
+</pre></td></tr>
+</table>
+<p>Der Text in eckigen Klammern &quot;[]&quot; ist der Name oder die ID für die jeweilige VM (Virtual Machine). Sie müssen diese ID mit <font class="code">java-config --set-system-vm</font> wie folgt verwenden:</p>
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+[#1 ~] java-config --set-system-vm=ibm-jdk-1.3.1
+Now using IBM JDK 1.3.1 (/etc/env.d/java/20ibm-jdk-1.3.1)
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Sie müssen root sein, um --set-system-vm auszuführen</p></td></tr></table>
+<p>Sobald sie <font class="code">java-config --set-system-vm</font> mit einer entsprechenden VM ID ausgeführt haben, müssen sie ihre <font class="path">/etc/profile.env</font> aktualisieren:</p>
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+[#1 ~] env-update
+</pre></td></tr>
+</table>
+<p>Anschließend müssen sie sich neu am System anmelden oder ihre <font class="path">/etc/profile</font> erneut in die Umgebung einbinden (<font class="code">source /etc/profile</font>).</p>
+<p>Als normaler Nutzer können sie <font class="code">java-config --set-user-vm</font> anwenden, um ein eignes JDK/JRE festzulegen. Dabei wird die Datei <font class="path">$HOME/.gentoo/java-env</font> mit allen notwendigen Umgebungsvariablen angelegt. Für gewöhnlich wird dies in den Start-Skript der Shell eingebunden (z.B. <font class="path">$HOME/.zshenv</font>)</p>
+<p class="secthead"><a name="_sect3">Einen Standard CLASSPATH setzen </a></p>
+<p>
+<font class="code">java-config</font> kann (und sollte) desweiteren dazu verwendet werden, sowohl einen systemweiten Standard CLASSPATH (Klassenpfad), als auch einen Nutzerspezifischen CLASSPATH zu setzen.</p>
+<p>Zunächst sollte man sich eine Liste mit allen verfügbaren Bibliotheken ausgeben lassen:</p>
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+[%1 ~] java-config --list-available-packages
+[ant] No description (/usr/share/ant/classpath.env)
+[java-gnome] No description (/usr/share/java-gnome/classpath.env)
+[java-gtk] No description (/usr/share/java-gtk/classpath.env)
+[log4j] &quot;&quot; (/usr/share/log4j/package.env)
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Derzeit hat keines der Pakete eine passende Beschreibung, dies wird jedoch in naher Zukunft implementiert.</p></td></tr></table>
+<p>Nochmal sei darauf hingewiesen, dass der Text in eckigen Klammern &quot;[]&quot;, die IDs sind, die an <font class="code">java-config --set-system-classpath</font> übergeben werden müssen:</p>
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+java-config --set-system-classpath=log4j,java-gtk,java-gnome
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Das aktuelle Verzeichnis (.) wird kein Teil des Systemweiten Klassenpfades sein. Es sollte in das Login-Profil von root eingetragen werden.</p></td></tr></table>
+<p>Erneut müssen sie <font class="code">env-update</font> ausführen, um die Systemumgebung zu aktualisieren. Außerdem müssen sie sich neu anmelden oder <font class="path">/etc/profile</font> neu einbinden (<font class="code">source /etc/profile</font>).</p>
+<p>Für normale Nutzer erzeugt <font class="code">java-config --set-user-classpath</font> die Datei <font class="path">$HOME/.gentoo/java-env-classpath</font>, welche automatisch von <font class="path">$HOME/.gentoo/java-env</font> eingebunden wird</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Weiterführende Quellen</p>
+<p class="secthead"><a name="_sect1">Offline Quellen </a></p>
+<ul>
+<li>java-config man page</li>
+<li><font class="code">java-config --help</font></li>
+<li>Das <font class="path">/usr/bin/java-config</font> Skript selbst</li>
+</ul>
+<p class="secthead"><a name="_sect2">Online Quellen </a></p>
+<ul>
+<li>Die Archive der <a href="http://lists.gentoo.org/pipermail/gentoo-dev/">gentoo-dev</a> und <a href="http://lists.gentoo.org/pipermail/gentoo-user/">gentoo-user</a> Mailing-Listen</li>
+<li>#gentoo unter irc.openprojects.net</li>
+</ul>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap4">4.</a></font>Besonderheiten</p>
+<p class="secthead"><a name="_sect1">Allgemein </a></p>
+<p>Wenn sie eine JRE als ihren vorgegeben Java-Interpreter (Java-VM) eingestellt haben, steht ihnen der Java-Compiler <font class="code">javac</font> nicht zur Verfügung, es sei denn sie setzen selbst einen Link auf die Datei javac.</p>
+<p>Sobald es verfügbar ist wird Jikes verwendet, um einge der größeren Pakete zu übersetzen. Mit der Zeit wird es hoffentlich möglich werden alle Java-abhängigen Pakete mit Jikes zu übersetzen, so dass einige Abhängigkeiten vom JDK zu Abhängigkeiten vom JRE überführt werden können.</p>
+<p>Bei einigen Versionen von Portage führt ein <font class="code">emerge --world update</font> dazu, dass ein JDK installiert wird, ohne Rücksicht darauf, ob sie bereits vorher installiert hatten oder nicht. Dies ist ein bekannter Fehler in Portage und wird in einer zukünftigen Version behoben.</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 25. Juni 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:karltk@gentoo.org">Karl Trygve Kalleberg</a></b><br><i>Gentoo Doc Editor</i><br><br><b><a class="altlink" href="mailto:kontakt@hendrik-brandt.de">Hendrik Brandt</a></b><br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> 
+Anleitung für Benutzer und Entwickler von Java unter Gentoo Linux
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
