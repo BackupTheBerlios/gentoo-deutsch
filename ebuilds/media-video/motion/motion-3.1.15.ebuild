@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/motion/motion-3.1.15.ebuild,v 1.1 2004/07/19 17:53:51 martini Exp $ 
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/motion/motion-3.1.15.ebuild,v 1.2 2004/07/20 18:09:46 martini Exp $ 
 
 DESCRIPTION="A software motion detector. It grabs images from video4linux devices and/or webcams"
 HOMEPAGE="http://motion.sf.net"
@@ -15,13 +15,16 @@ DEPEND="mysql? ( dev-db/mysql )
 		media-libs/jpeg
 		>=dev-libs/xmlrpc-c-0.9.10
 		sys-apps/sed"
-#Note that sed is only a dependancy because of its use in src_compile()
-
 RDEPEND=""
+
+inherit eutils
 
 src_unpack() {
     unpack ${A}
     cd ${S}
+
+# Patch to fix wrong file_type for snapshots with mysql
+	epatch ${FILESDIR}/${P}_sqlfiletype.patch || die "patch problem !"
 }
 
 src_compile() {

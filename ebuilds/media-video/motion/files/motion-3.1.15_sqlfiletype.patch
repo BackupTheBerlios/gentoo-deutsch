@@ -1,0 +1,12 @@
+diff -Nur motion-3.1.15/event.c motion-3.1.15_patched/event.c
+--- motion-3.1.15/event.c	2004-07-17 16:41:57.000000000 +0200
++++ motion-3.1.15_patched/event.c	2004-07-20 19:45:46.993442320 +0200
+@@ -133,7 +133,7 @@
+ 		sprintf(sqlquery,
+ 		    "insert into security(camera, filename, frame, file_type, time_stamp %s) values('%d', '%s', '%d', '%d', '%s' %s%s%s)",
+ 		    cnt->conf.text_left ? ", text_left" : "" ,
+-		    cnt->threadnr, filename, cnt->shots, type,  timestr,
++		    cnt->threadnr, filename, cnt->shots, sqltype,  timestr,
+ 		    cnt->conf.text_left ? ", '" : "" ,
+ 		    cnt->conf.text_left ? cnt->conf.text_left : "" ,
+ 		    cnt->conf.text_left ? "'" : ""
