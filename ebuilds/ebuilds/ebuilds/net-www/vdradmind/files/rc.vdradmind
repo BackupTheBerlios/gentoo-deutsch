@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/net-www/vdradmind/files/Attic/rc.vdradmind,v 1.1 2003/08/22 15:27:29 fow0ryl Exp $
+
+depend() {
+	need vdr
+}
+
+start() {
+	ebegin "Starting vdradmind"
+	/usr/bin/vdradmind.pl
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping vdradmind"
+	start-stop-daemon --stop --quiet --pidfile /var/run/vdradmind.pid
+	eend $?
+}

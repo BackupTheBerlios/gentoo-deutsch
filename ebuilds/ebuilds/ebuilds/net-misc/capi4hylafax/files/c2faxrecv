@@ -1,0 +1,38 @@
+#!/sbin/runscript
+# Copyright 2002 Alexander Holler
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/net-misc/capi4hylafax/files/Attic/c2faxrecv,v 1.1 2003/08/22 15:27:33 fow0ryl Exp $
+
+
+depend() {
+	need capi
+}
+
+checkconfig() {
+	if [ ! -e /etc/c2faxrecv/c2faxrecv.conf ]; then
+		errmsg="You need /etc/c2faxrecv/c2faxrecv.conf"
+		return 1
+	fi
+	if [ ! -x /etc/c2faxrecv/faxrcvd ]; then
+		errmsg="You need /etc/c2faxrecv/faxrcvd"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	ebegin "Starting c2faxrecv"
+	if ! checkconfig
+	then
+		eend 1 $errmsg
+	else
+		start-stop-daemon --start --quiet --background --make-pidfile --pidfile /var/run/c2faxrecv.pid --exec /usr/bin/c2faxrecv -- -f TIFF -q /var/spool/c2faxrecv -C /etc/c2faxrecv/c2faxrecv.conf
+		eend $?
+	fi
+}
+
+stop() {
+	ebegin "Stopping c2faxrecv"
+        start-stop-daemon --stop --quiet --pidfile /var/run/c2faxrecv.pid
+        eend $?
+}

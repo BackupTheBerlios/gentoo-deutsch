@@ -1,0 +1,12 @@
+--- build.py    2002-08-21 19:08:38.000000000 +0100
++++ build.py.new        2002-08-23 13:00:29.000000000 +0100
+@@ -598,7 +598,7 @@
+
+
+ def checkThreading ():
+-        qtmodlib = modDir + '/libqtcmodule.so'
++        qtmodlib = sipModuleDir + '/libqtcmodule.so'
+         os.system ('ldd ' + qtmodlib + ' > lddtmp')
+         f = open ('lddtmp', 'r')
+         buff = f.read ()
+

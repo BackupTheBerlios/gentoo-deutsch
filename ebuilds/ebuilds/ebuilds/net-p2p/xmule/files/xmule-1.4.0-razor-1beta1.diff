@@ -1,0 +1,2626 @@
+diff -Nur xmule-1.4.0/README.razor xmule-1.4.0-razor/README.razor
+--- xmule-1.4.0/README.razor	1970-01-01 01:00:00.000000000 +0100
++++ xmule-1.4.0-razor/README.razor	2003-06-04 09:54:03.000000000 +0200
+@@ -0,0 +1,10 @@
++How to patch xMule 1.4.0 sources to Razor 1a beta 1 ?
++
++1) Download the file Razor_v1a_beta1_patch.tar.gz
++2) Copy the Razor_v1a_beta1_patch.tar.gz file into your xmule 1.4.0 sources directory
++3) Untar the file by typing the command :
++tar xvzf Razor_v1a_beta1_patch.tar.gz
++4) Now just configure and make xmule as usual :-)
++
++MikaelB
++
+diff -Nur xmule-1.4.0/RAZOR.ChangeLog xmule-1.4.0-razor/RAZOR.ChangeLog
+--- xmule-1.4.0/RAZOR.ChangeLog	1970-01-01 01:00:00.000000000 +0100
++++ xmule-1.4.0-razor/RAZOR.ChangeLog	2003-06-04 09:46:24.000000000 +0200
+@@ -0,0 +1,18 @@
++Version 1a beta 1
++-------------------
++2003-06-03
++
++MikaelB's contributions: ( thanks to eMule Sivka mod )
++   * Added support for 'Swap every A4AF to this file now'
++   * Added support for 'Swap every A4AF to this file AUTO'
++   * Added support for 'Swap every A4AF to any other file now'
++   * Added support for 'Drop No Needed Sources now'
++   * Added support for 'Drop Full Queue Sources now'
++   * Added support for 'Drop High Queue Rating Sources now' ( Note : QR limit is set to 1200 in this beta version )
++   * Added support for 'Clean Up Sources now ( Drop NNS, FQS and HQRS now)'
++   * Added a Razor Preferences window
++   * FIXED : Bug on the main toolbar in the french language ( some buttons disappeared when connected )
++   * FIXED : save main window position and size
++   * NOTE : Some BUGFIX in the xMule original code
++   * Initial support for Auto Drop NNS, FQS and HQRS (not functional yet)
++   * Initial support for Dynamic Upload (not functional yet)
+\ Kein Zeilenumbruch am Dateiende.
+diff -Nur xmule-1.4.0/src/BaseClient.cpp xmule-1.4.0-razor/src/BaseClient.cpp
+--- xmule-1.4.0/src/BaseClient.cpp	2003-05-14 23:57:22.000000000 +0200
++++ xmule-1.4.0-razor/src/BaseClient.cpp	2003-06-04 09:47:15.000000000 +0200
+@@ -162,6 +162,14 @@
+ CUpDownClient::~CUpDownClient(){
+ 	//Beep(400,5);
+ 
++  /* Razor 1a - Modif by MikaelB */
++  
++  if(reqfile != NULL){
++		reqfile->RemoveDownloadingSource(this); 
++	}
++
++  /* End modif */
++
+ 	theApp.clientlist->RemoveClient(this);
+ 	if (m_Friend){
+ 		m_Friend->m_LinkedClient = NULL;
+diff -Nur xmule-1.4.0/src/DownloadClient.cpp xmule-1.4.0-razor/src/DownloadClient.cpp
+--- xmule-1.4.0/src/DownloadClient.cpp	2003-03-19 12:05:05.000000000 +0100
++++ xmule-1.4.0-razor/src/DownloadClient.cpp	2003-06-04 09:47:27.000000000 +0200
+@@ -270,11 +270,27 @@
+ 			return false;
+ 	}
+ 	m_OtherRequests_list.AddTail(file);
++
++
++  file->A4AFSourcesList.AddTail(this); /* Razor 1a - Modif by MikaelB */
++  
+ 	return true;
+ }
+ 
+ void CUpDownClient::SetDownloadState(uint8 byNewState){
+ 	if (m_nDownloadState != byNewState){
++
++    /* Razor 1a - Modif by MikaelB */
++
++    if(byNewState == DS_DOWNLOADING){
++			reqfile->AddDownloadingSource(this);
++		}
++		else if(m_nDownloadState == DS_DOWNLOADING){
++			reqfile->RemoveDownloadingSource(this);
++		}
++
++    /* End modif */
++    
+ 		if (m_nDownloadState == DS_DOWNLOADING ){
+ 			m_nDownloadState = byNewState;
+ 			for (POSITION pos = m_DownloadBlocks_list.GetHeadPosition();pos != 0;m_DownloadBlocks_list.GetNext(pos)){
+@@ -703,7 +719,7 @@
+ 	theApp.xmuledlg->transferwnd->downloadlistctrl->UpdateItem(this);
+ }
+ 
+-
++/*
+ bool CUpDownClient::SwapToAnotherFile(bool bIgnoreNoNeeded){
+ 	if (GetDownloadState() == DS_DOWNLOADING)
+ 		return false;
+@@ -745,7 +761,7 @@
+ 	else
+ 		return false;
+ 
+-}
++} */
+ 
+ void CUpDownClient::UDPReaskACK(uint16 nNewQR){
+ 	m_bUDPPending = false;
+@@ -812,3 +828,211 @@
+         m_lastRefreshedDLDisplay = curTick;
+     }
+ }
++
++
++/* Razor 1a - Modif by MikaelB
++   SwapToThisFile function */
++
++void CUpDownClient::SwapToThisFile(CPartFile* file)
++{
++  // Get the position of the file in other requests' list
++  POSITION position = this->m_OtherRequests_list.Find(file);
++  // If position isn't null
++  if(position)
++  {
++    // Remove file at position in other requests' list
++    this->m_OtherRequests_list.RemoveAt(position);
++    // Add file at the head of other requests' list
++    this->m_OtherRequests_list.AddHead(file);
++
++    // Some files
++    CPartFile *SwapFile, *TempFile, *RequestedFile;
++    TempFile = this->m_OtherRequests_list.GetHead();
++    RequestedFile = this->reqfile;
++
++    // If the file at the head of other requests' list isn't the requested file
++    // and isn't a file of download queue list
++    // and either file state is ready or empty...
++    if((TempFile != RequestedFile) &&
++       (theApp.downloadqueue->IsPartFile(TempFile)) &&
++       ((TempFile->GetStatus(false) == PS_READY) ||
++        (TempFile->GetStatus(false) == PS_EMPTY)))
++    {
++      // Then we can remove head file in other requests' list and save it into SwapFile
++      SwapFile = this->m_OtherRequests_list.RemoveHead();
++    }
++
++    // If we've found a file to swap
++    // and requested file's state is ready or empty ...
++    if((SwapFile) &&
++       ((RequestedFile->GetStatus(false) == PS_READY) ||
++        (RequestedFile->GetStatus(false) == PS_EMPTY)))
++    {
++      // Remove source from client in the download list
++      theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(this,SwapFile);
++      // Get position of this client in the sources list of requested file
++      position = RequestedFile->srclists[this->sourcesslot].Find(this);
++
++      // if position isn't null...
++      if(position)
++      {
++        // Remove source at position from the sources list of requested file
++        RequestedFile->srclists[this->sourcesslot].RemoveAt(position);
++        // Remove source of this client from requested file in the download list
++        theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(this,RequestedFile);
++
++        // Add this source in the A4AF sources list of the requested file
++        RequestedFile->A4AFSourcesList.AddTail(this);
++        // Add the requested file in the other requests' list
++        this->m_OtherRequests_list.AddTail(RequestedFile);
++        // Add source of requested file from this client in the download list
++        theApp.xmuledlg->transferwnd->downloadlistctrl->AddSource(RequestedFile,this,true);
++
++        // Update requested file's sources infos
++        RequestedFile->NewSrcPartsInfo();
++        // Update requested file's parts counts
++        RequestedFile->UpdateAvailablePartsCount();
++        // Set download state of this client to no
++        this->SetDownloadState(DS_NONE);
++        // Set requested file to 0
++        RequestedFile = 0;
++        // Set remote queue rank to 0
++        this->m_nRemoteQueueRank = 0;
++        // If  abyPartStatus isn't null
++        if(this->m_abyPartStatus)
++        {
++          // Delete abyPartStatus
++          delete[] this->m_abyPartStatus;
++          // Set it to null
++          this->m_abyPartStatus = 0;
++        }
++        // Set part count to
++        this->m_nPartCount = 0;
++        // Set last asked time to 0
++        this->m_dwLastAskedTime = 0;
++        // set irate to 0
++        this->m_iRate = 0;
++        // Set comment to ""
++        this->m_strComment = "";
++        // If pszClientFilename isn't null
++        if(this->m_pszClientFilename)
++        {
++          // Delete pszClientFilename
++          delete this->m_pszClientFilename;
++          // Set it to 0
++          this->m_pszClientFilename = 0;
++        }
++        // Set requested file to swapped file
++        this->reqfile = SwapFile;
++        // Add this source in the sources list of swapped file
++        SwapFile->srclists[this->sourcesslot].AddTail(this);
++        // Add source of swapped file from this client to download list
++        theApp.xmuledlg->transferwnd->downloadlistctrl->AddSource(SwapFile,this,false);
++      }
++    }
++    // Else if swapped file isn't null...
++    else if(SwapFile)
++    {
++      // Add it to other requests' list
++      this->m_OtherRequests_list.AddHead(SwapFile);
++      // Add this source to A4AF sources list of swapped file
++      this->m_OtherRequests_list.GetHead()->A4AFSourcesList.AddHead(this);
++    }
++    // Else...
++    else
++      // Add this source to A4AF sources list of swapped file
++      this->m_OtherRequests_list.GetHead()->A4AFSourcesList.AddHead(this);
++  }
++  // Else...
++  else
++    // Add this source to A4AF sources lisy of file
++    file->A4AFSourcesList.AddHead(this);
++}
++
++/* Razor 1a - Modif by MikaelB
++   Made some changes in SwapToAnoterFile function */
++bool CUpDownClient::SwapToAnotherFile()
++{
++	if (this->GetDownloadState() == DS_DOWNLOADING)
++		return false;
++
++	if(!this->m_OtherRequests_list.IsEmpty())
++	{
++		CPartFile* SwapTo = NULL;
++
++		POSITION pos, pos1, pos2;
++		for (pos1 = this->m_OtherRequests_list.GetHeadPosition();(pos2=pos1)!=NULL;)
++		{
++			this->m_OtherRequests_list.GetNext(pos1);
++			CPartFile* cur_file = this->m_OtherRequests_list.GetAt(pos2);
++			if (cur_file != this->reqfile
++			&& theApp.downloadqueue->IsPartFile(cur_file)
++			&& (cur_file->GetStatus(false) == PS_READY || cur_file->GetStatus(false) == PS_EMPTY))
++			{
++				SwapTo = cur_file;
++				this->m_OtherRequests_list.RemoveAt(pos2);
++				break;
++			}
++		}
++
++		if(SwapTo)
++		{
++			pos = SwapTo->A4AFSourcesList.Find(this);
++			if(pos)
++			{
++				SwapTo->A4AFSourcesList.RemoveAt(pos);
++				theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(this,SwapTo);
++
++				pos = this->reqfile->srclists[this->sourcesslot].Find(this);
++				if(pos)
++				{
++					this->reqfile->srclists[this->sourcesslot].RemoveAt(pos);
++					this->reqfile->RemoveDownloadingSource(this);
++					theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(this,this->reqfile);
++
++					if(this->reqfile->GetStatus(false) == PS_READY || this->reqfile->GetStatus(false) == PS_EMPTY)
++					{
++						this->reqfile->A4AFSourcesList.AddTail(this);
++						this->m_OtherRequests_list.AddTail(this->reqfile);
++						theApp.xmuledlg->transferwnd->downloadlistctrl->AddSource(this->reqfile,this,true);
++					}
++
++					this->reqfile->NewSrcPartsInfo();
++					this->reqfile->UpdateAvailablePartsCount();
++					this->SetDownloadState(DS_NONE);
++					this->reqfile = 0;
++
++					this->m_nRemoteQueueRank = 0;
++					if (this->m_abyPartStatus)
++					{
++						delete[] this->m_abyPartStatus;
++						this->m_abyPartStatus = 0;
++					}
++
++					this->m_nPartCount = 0; 
++					this->m_dwLastAskedTime = 0;
++					this->m_iRate=0;
++					this->m_strComment="";
++
++					if (this->m_pszClientFilename)
++					{
++						delete this->m_pszClientFilename;
++						this->m_pszClientFilename = 0;
++					}
++
++					this->reqfile = SwapTo;
++
++					SwapTo->srclists[this->sourcesslot].AddTail(this);
++					theApp.xmuledlg->transferwnd->downloadlistctrl->AddSource(SwapTo,this,false);
++
++					return true;
++				}
++			}
++		}
++		else if(SwapTo)
++			this->m_OtherRequests_list.AddHead(SwapTo);
++	}
++	return false;
++}
++
++/* End modif */
+\ Kein Zeilenumbruch am Dateiende.
+diff -Nur xmule-1.4.0/src/DownloadListCtrl.cpp xmule-1.4.0-razor/src/DownloadListCtrl.cpp
+--- xmule-1.4.0/src/DownloadListCtrl.cpp	2003-05-15 02:31:24.000000000 +0200
++++ xmule-1.4.0-razor/src/DownloadListCtrl.cpp	2003-06-04 09:47:36.000000000 +0200
+@@ -323,6 +323,29 @@
+ 	menu->Append(MP_PAUSE,GetResString(IDS_DL_PAUSE));
+ 	menu->Append(MP_RESUME,GetResString(IDS_DL_RESUME));
+ 	menu->AppendSeparator();
++
++    /* Razor 1a - Modif by MikaelB
++     Menu items for :
++      - Drop No Needed Sources now
++      - Drop Full Queue Sources now
++      - Drop High Queue Rating Sources now
++      - Clean Up Sources now ( drop NNS, FQS and HQRS )
++      - Swap every A4AF to this file now
++      - Swap every A4AF to this file ( AUTO )
++      - Swap every A4AF to any other file now   */
++
++       menu->Append(MP_DROP_NO_NEEDED_SOURCES, GetResString(IDS_DROP_NO_NEEDED_SOURCES));
++       menu->Append(MP_DROP_FULL_QUEUE_SOURCES, GetResString(IDS_DROP_FULL_QUEUE_SOURCES));
++       menu->Append(MP_DROP_HIGH_QUEUE_RATING_SOURCES, GetResString(IDS_DROP_HIGH_QUEUE_RATING_SOURCES));
++       menu->Append(MP_CLEAN_UP_SOURCES, GetResString(IDS_CLEAN_UP_SOURCES));
++       menu->AppendSeparator();
++       menu->Append(MP_SWAP_A4AF_TO_THIS, GetResString(IDS_SWAP_A4AF_TO_THIS));
++       menu->AppendCheckItem(MP_SWAP_A4AF_TO_THIS_AUTO, GetResString(IDS_SWAP_A4AF_TO_THIS_AUTO));
++       menu->Append(MP_SWAP_A4AF_TO_ANY_OTHER, GetResString(IDS_SWAP_A4AF_TO_ANY_OTHER));
++       menu->AppendSeparator();
++
++  /* End Modif */
++  
+ 	menu->Append(MP_OPEN,GetResString(IDS_DL_OPEN));
+ 	menu->Append(MP_PREVIEW,GetResString(IDS_DL_PREVIEW));
+ 	menu->Append(MP_METINFO,GetResString(IDS_DL_INFO));
+@@ -341,6 +364,26 @@
+       menu->Enable(MP_RESUME,((file->GetStatus() == PS_PAUSED) ? MF_ENABLED:MF_GRAYED));
+       menu->Enable(MP_OPEN,((file->GetStatus() == PS_COMPLETE) ? MF_ENABLED:MF_GRAYED)); //<<--9/21/02
+       menu->Enable(MP_PREVIEW,((file->PreviewAvailable()) ? MF_ENABLED:MF_GRAYED));
++
++      /* Razor 1a - Modif by MikaelB
++         Set menu items' state for :
++            - Drop No Needed Sources now
++            - Drop Full Queue Sources now
++            - Drop High Queue Rating Sources now
++            - Clean Up Sources now ( drop NNS, FQS and HQRS )
++            - Swap every A4AF to this file now
++            - Swap every A4AF to this file ( AUTO )
++            - Swap every A4AF to any other file now   */
++
++            menu->Enable(MP_DROP_NO_NEEDED_SOURCES, ((file->GetStatus() != PS_PAUSED && file->GetStatus() != PS_ERROR) ? MF_ENABLED:MF_GRAYED));
++            menu->Enable(MP_DROP_FULL_QUEUE_SOURCES, ((file->GetStatus() != PS_PAUSED && file->GetStatus() != PS_ERROR) ? MF_ENABLED:MF_GRAYED));
++            menu->Enable(MP_DROP_HIGH_QUEUE_RATING_SOURCES, ((file->GetStatus() != PS_PAUSED && file->GetStatus() != PS_ERROR) ? MF_ENABLED:MF_GRAYED));
++            menu->Enable(MP_CLEAN_UP_SOURCES, ((file->GetStatus() != PS_PAUSED && file->GetStatus() != PS_ERROR) ? MF_ENABLED:MF_GRAYED));
++            menu->Enable(MP_SWAP_A4AF_TO_THIS_AUTO, ((file->GetStatus() != PS_PAUSED && file->GetStatus() != PS_ERROR) ? MF_ENABLED:MF_GRAYED));
++            menu->Check(MP_SWAP_A4AF_TO_THIS_AUTO, file->IsA4AFAuto()? MF_CHECKED: MF_UNCHECKED);
++            menu->Enable(MP_SWAP_A4AF_TO_ANY_OTHER, ((file->GetStatus() != PS_PAUSED && file->GetStatus() != PS_ERROR) ? MF_ENABLED:MF_GRAYED));
++
++      /* End modif */
+       
+       menu->Enable(MP_CANCEL,MF_ENABLED);
+       
+@@ -1434,6 +1477,186 @@
+       
+       switch (event.GetId())
+ 	{
++      /* Razor 1a - Modif by MikaelB
++         Event for Drop No Needed Sources */
++
++            case MP_DROP_NO_NEEDED_SOURCES:
++            {
++              // While selected items aren't empty
++              while(!selectedList.IsEmpty())
++              {
++                // Remove No Needed sources from the current selected item
++                selectedList.GetHead()->RemoveNoNeededSources();
++                // Remove this item from the selected items list
++                selectedList.RemoveHead();
++              }
++              break;
++            }
++
++      /* End modif */
++
++      /* Razor 1a - Modif by MikaelB
++         Event for Drop Full Queue Sources */
++
++            case MP_DROP_FULL_QUEUE_SOURCES:
++            {
++              // While selected items aren't empty
++              while(!selectedList.IsEmpty())
++              {
++                // Remove Full Queue sources from the current selected item
++                selectedList.GetHead()->RemoveFullQueueSources();
++                // Remove this item from the selected items list
++                selectedList.RemoveHead();
++              }
++              break;
++            }
++
++      /* End modif */
++
++      /* Razor 1a - Modif by MikaelB
++         Event for Drop High Queue Rating Sources */
++
++            case MP_DROP_HIGH_QUEUE_RATING_SOURCES:
++            {
++              // While selected items aren't empty
++              while(!selectedList.IsEmpty())
++              {
++                // Remove High Queue Rating sources from the current selected item
++                selectedList.GetHead()->RemoveHighQueueRatingSources();
++                // Remove this item from the selected items list
++                selectedList.RemoveHead();
++              }
++              break;
++            }
++
++      /* End modif */
++
++      /* Razor 1a - Modif by MikaelB
++         Event for Clean Up Sources */
++
++            case MP_CLEAN_UP_SOURCES:
++            {
++              // While selected items aren't empty
++              while(!selectedList.IsEmpty())
++              {
++                // Clean up sources from the current selected item
++                selectedList.GetHead()->CleanUpSources();
++                // Remove this item from the selected items list
++                selectedList.RemoveHead();
++              }
++              break;
++            }
++
++      /* End modif */
++
++      /* Razor 1a - Modif by MikaelB
++         Event for Swap every A4AF to this file now */
++
++            case MP_SWAP_A4AF_TO_THIS:
++            {
++              // If you have selected only one item and
++              // either file status is ready or empty...
++              if((selectedCount == 1) &&
++                 ((file->GetStatus(false) == PS_READY) ||
++                  (file->GetStatus(false) == PS_EMPTY)))
++              {
++                // Disable any A4AF auto in download queue
++                theApp.downloadqueue->DisableAnyA4AFAuto();
++                // Some positions
++                POSITION position, temp_position;
++                // For all A4AF sources of current file...
++                for(position = file->A4AFSourcesList.GetHeadPosition();
++                    (temp_position = position) != NULL;
++                    )
++                {
++                  // Get next position in position
++                  file->A4AFSourcesList.GetNext(position);
++                  // Get client at temp_position in A4AF sources list
++                  CUpDownClient* A4AFclient = file->A4AFSourcesList.GetAt(temp_position);
++                  // If this client download status isn't downloading
++                  if(A4AFclient->GetDownloadState() != DS_DOWNLOADING)
++                  {
++                    // Remove source at temp_position in A4AF sources list
++                    file->A4AFSourcesList.RemoveAt(temp_position);
++                    // Swap every source of this file to client
++                    A4AFclient->SwapToThisFile(file);
++                  }
++                }
++              }
++              // Update item in download list window
++              this->UpdateItem(file);
++              break;
++            }
++
++      /* End modif */
++
++      /* Razor 1a - Modif by MikaelB
++         Event for Swap every A4AF to this file AUTO */
++
++            case MP_SWAP_A4AF_TO_THIS_AUTO:
++            {
++              // If file is already in A4AF Auto mode...
++              if(file->IsA4AFAuto())
++              {
++                // Then disable it
++                file->SetA4AFAuto(false);
++              }
++              // Else...
++              else
++              {
++                // Disable any A4AF in the download queue
++                theApp.downloadqueue->DisableAnyA4AFAuto();
++                // Enable A4AF Auto mode for this file
++                file->SetA4AFAuto(true);
++              }
++              break;
++            }
++
++      /* End modif */
++
++      /* Razor 1a - Modif by MikaelB
++         Event for Swap every A4AF to any other file now */
++
++            case MP_SWAP_A4AF_TO_ANY_OTHER:
++            {
++              // If you have selected only one item and
++              // either file status is ready or empty...
++              if((selectedCount == 1) &&
++                 ((file->GetStatus(false) == PS_READY) ||
++                  (file->GetStatus(false) == PS_EMPTY)))
++              {
++                // Disable any A4AF Auto in download queue
++                theApp.downloadqueue->DisableAnyA4AFAuto();
++                // For all sources slots of this file...
++                for(int slot = 0;
++                    slot < SOURCESSLOTS;
++                    slot++)
++                {
++                  // If current slot isn't empty...
++                  if(! file->srclists[slot].IsEmpty())
++                  {
++                    // Some positions
++                    POSITION position, temp_position;
++                    // For all position in the file sources list...
++                    for(position = file->srclists[slot].GetHeadPosition();
++                        (temp_position = position) != NULL;
++                        )
++                    {
++                      // Get next position in position
++                      file->srclists[slot].GetNext(position);
++                      // Swap every sources of source at temp_position to another file
++                      file->srclists[slot].GetAt(temp_position)->SwapToAnotherFile();
++                    }
++                  }
++                }
++              }
++              // Update item in download list window
++              this->UpdateItem(file);
++              break;
++            }
++
++      /* End modif */
++    
+ 	case MP_CANCEL:
+ 	  {
+ 	    //for multiple selections 
+diff -Nur xmule-1.4.0/src/DownloadQueue.cpp xmule-1.4.0-razor/src/DownloadQueue.cpp
+--- xmule-1.4.0/src/DownloadQueue.cpp	2003-05-26 16:30:54.000000000 +0200
++++ xmule-1.4.0-razor/src/DownloadQueue.cpp	2003-06-04 09:47:44.000000000 +0200
+@@ -412,15 +412,44 @@
+ 	bool removed = false;
+ 	for (POSITION pos = filelist.GetHeadPosition();pos != 0;filelist.GetNext(pos)){
+ 		CPartFile* cur_file = filelist.GetAt(pos);
+-		for (int sl=0;sl<SOURCESSLOTS;sl++) if (!cur_file->srclists[sl].IsEmpty())
+-		for (POSITION pos2 = cur_file->srclists[sl].GetHeadPosition();pos2 != 0; cur_file->srclists[sl].GetNext(pos2)){
+-			if (toremove == cur_file->srclists[sl].GetAt(pos2)){
+-				cur_file->srclists[sl].RemoveAt(pos2);
+-				cur_file->NewSrcPartsInfo();
+-				removed = true;
+-				break;
+-			}
+-		}
++		for (int sl=0;sl<SOURCESSLOTS;sl++)
++      if (!cur_file->srclists[sl].IsEmpty())
++		    for (POSITION pos2 = cur_file->srclists[sl].GetHeadPosition();pos2 != 0; cur_file->srclists[sl].GetNext(pos2)){
++			    if (toremove == cur_file->srclists[sl].GetAt(pos2)){
++				    cur_file->srclists[sl].RemoveAt(pos2);
++				    cur_file->NewSrcPartsInfo();
++				    removed = true;
++
++            /* Razor 1a - Modif by MikaelB */
++            if(!toremove->m_OtherRequests_list.IsEmpty()) 
++						{
++							POSITION pos3, pos4;
++							for(pos3=toremove->m_OtherRequests_list.GetHeadPosition();(pos4=pos3)!=NULL;)
++							{
++								toremove->m_OtherRequests_list.GetNext(pos3);
++
++								POSITION pos5 = toremove->m_OtherRequests_list.GetAt(pos4)->A4AFSourcesList.Find(toremove);
++								if(pos5)
++								{
++									toremove->m_OtherRequests_list.GetAt(pos4)->A4AFSourcesList.RemoveAt(pos5);
++									theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(toremove,toremove->m_OtherRequests_list.GetAt(pos4));
++									toremove->m_OtherRequests_list.RemoveAt(pos4);
++								}
++							}
++						}
++						cur_file->RemoveDownloadingSource(toremove);
++						if (updatewindow)
++						{
++							toremove->SetDownloadState(DS_NONE);
++							theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(toremove, cur_file);
++						}
++						toremove->reqfile = NULL;
++
++            /* End modif */
++            
++				    break;
++			    }
++		    }
+ 		cur_file->UpdateAvailablePartsCount();
+ 	}
+ 	if (updatewindow){
+@@ -450,6 +479,7 @@
+ 		// Don't worry about deleting the blocks, that gets handled 
+ 		// when CUpDownClient is deleted in CClientList::DeleteAll()
+ 		cur_file->RemoveAllRequestedBlocks();
++    cur_file->A4AFSourcesList.RemoveAll();
+ 	}
+ }
+ 
+@@ -552,3 +582,81 @@
+ 	}
+ 	return NULL;
+ }
++
++/* Razor 1a - Modif by MikaelB
++   RemoveSourceFromPartFile function */
++   
++void CDownloadQueue::RemoveSourceFromPartFile(CPartFile* file, CUpDownClient* client, POSITION position)
++{
++  // Remove source at position in sources list of file
++  file->srclists[client->sourcesslot].RemoveAt(position);
++  // Update infos of file
++  file->NewSrcPartsInfo();
++  file->UpdateAvailablePartsCount();
++  // Set client download state to none
++  client->SetDownloadState(DS_NONE);
++  // Set client valid source to false
++  client->SetValidSource(false);
++  // Remove downloading source of client
++  file->RemoveDownloadingSource(client);
++  // Remove source of download list window
++  theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(client, file);
++  // Set requested file of client to 0
++  client->reqfile = 0;
++  // If other requests list of client isn't empty...
++  if(! client->m_OtherRequests_list.IsEmpty())
++  {
++    // Some positions
++    POSITION position, temp_position;
++    // For every position in other requests list of client...
++    for(position = client->m_OtherRequests_list.GetHeadPosition();
++        (temp_position = position) != NULL;
++       )
++    {
++      // Get next position in position
++      client->m_OtherRequests_list.GetNext(position);
++      // Get position of client in the A4AF sources list of file at current position in client's other requests list
++      POSITION position2 = client->m_OtherRequests_list.GetAt(temp_position)->A4AFSourcesList.Find(client);
++      // If such a position have been found
++      if(position2)
++      {
++        // Remove this position of the A4AF sources list of file at current position in client's other requests list
++        client->m_OtherRequests_list.GetAt(temp_position)->A4AFSourcesList.RemoveAt(position2);
++        // Remove current position from the download list window
++        theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(client, client->m_OtherRequests_list.GetAt(temp_position));  
++        // Remove current position from client's other requests list
++        client->m_OtherRequests_list.RemoveAt(temp_position);
++      }
++    }
++  }
++  // If client's upload status id none
++  if(client->GetUploadState() == US_NONE)
++  {
++    // Disconnect client
++    client->Disconnected();
++  }
++}
++
++/* End modif */
++
++/* Razor 1a - Modif by MikaelB
++   DisableAnyA4AFAuto function */
++   
++void CDownloadQueue::DisableAnyA4AFAuto(void)
++{
++  // For all position in filelist...
++  for(POSITION position = filelist.GetHeadPosition();
++      position != NULL;
++      filelist.GetNext(position))
++  {
++    // Get file at position in filelist
++    CPartFile* file = (CPartFile*) filelist.GetAt(position);
++    // If file has been found...
++    if(file != NULL)
++      // Disable A4AF Auto 
++      file->SetA4AFAuto(false);
++  }
++}
++
++/* End modif */
++
+diff -Nur xmule-1.4.0/src/DownloadQueue.h xmule-1.4.0-razor/src/DownloadQueue.h
+--- xmule-1.4.0/src/DownloadQueue.h	2003-05-01 13:18:36.000000000 +0200
++++ xmule-1.4.0-razor/src/DownloadQueue.h	2003-06-04 09:47:46.000000000 +0200
+@@ -105,7 +105,21 @@
+ 	uint64		m_nDownDataOverheadOtherPackets;
+ 	CList<int,int>	m_AvarageDDRO_list;
+ 
+-    DWORD m_lastRefreshedDLDisplay;
++  DWORD m_lastRefreshedDLDisplay;
++
++ /* Razor 1a - Modif by MikaelB */
++
++      public:
++
++            /* RemoveSourceFromPartFile function */
++            void  RemoveSourceFromPartFile(CPartFile* file, CUpDownClient* client, POSITION position);
++
++            /* DisableAnyA4AFAuto function */
++            void  DisableAnyA4AFAuto(void); 
++
++ /* End Modif */
++
++      
+ };
+ 
+ 
+diff -Nur xmule-1.4.0/src/ListenSocket.cpp xmule-1.4.0-razor/src/ListenSocket.cpp
+--- xmule-1.4.0/src/ListenSocket.cpp	2003-05-14 23:57:22.000000000 +0200
++++ xmule-1.4.0-razor/src/ListenSocket.cpp	2003-06-04 09:47:55.000000000 +0200
+@@ -241,12 +241,13 @@
+ 	  
+ 	  // we try to swap to another file ignoring no needed parts files
+ 	  if (client) switch (client->GetDownloadState()) {
+-	  case DS_ONQUEUE:
++    case DS_ONQUEUE:
+ 	  case DS_NONEEDEDPARTS:
+-	    if (!client->SwapToAnotherFile(false)) {
++	    if (!client->SwapToAnotherFile()) {
+ 	      theApp.downloadqueue->RemoveSource(client, true);
+ 	    }
+-	    break;
++	    break;  
++      
+ 	  }
+ 	  break;
+ 	}
+diff -Nur xmule-1.4.0/src/Makefile.am xmule-1.4.0-razor/src/Makefile.am
+--- xmule-1.4.0/src/Makefile.am	2003-05-27 04:21:07.000000000 +0200
++++ xmule-1.4.0-razor/src/Makefile.am	2003-06-04 09:49:33.000000000 +0200
+@@ -65,6 +65,8 @@
+ 	PreferencesDlg.cpp \
+ 	Preview.cpp \
+ 	QueueListCtrl.cpp \
++  RazorPreferencesDlg_wdr.cpp \
++  RazorPreferencesDlg.cpp \
+ 	resource.cpp \
+ 	SafeFile.cpp \
+ 	SearchDlg.cpp \
+diff -Nur xmule-1.4.0/src/Makefile.in xmule-1.4.0-razor/src/Makefile.in
+--- xmule-1.4.0/src/Makefile.in	2003-05-27 04:22:01.000000000 +0200
++++ xmule-1.4.0-razor/src/Makefile.in	2003-06-04 09:49:38.000000000 +0200
+@@ -225,7 +225,9 @@
+ 	PreferencesDlg.cpp \
+ 	Preview.cpp \
+ 	QueueListCtrl.cpp \
+-	resource.cpp \
++  RazorPreferencesDlg_wdr.cpp \
++  RazorPreferencesDlgcpp \
++  resource.cpp \
+ 	SafeFile.cpp \
+ 	SearchDlg.cpp \
+ 	SearchList.cpp \
+@@ -292,7 +294,9 @@
+ 	PPgNotify.$(OBJEXT) PPgServer.$(OBJEXT) PPgStats.$(OBJEXT) \
+ 	PPgTweaks.$(OBJEXT) Preferences.$(OBJEXT) \
+ 	PreferencesDlg.$(OBJEXT) Preview.$(OBJEXT) \
+-	QueueListCtrl.$(OBJEXT) resource.$(OBJEXT) SafeFile.$(OBJEXT) \
++	QueueListCtrl.$(OBJEXT) resource.$(OBJEXT) \
++  RazorPreferencesDlg_wdr.$(OBJEXT) RazorPreferencesDlg.$(OBJEXT) \
++  SafeFile.$(OBJEXT) \
+ 	SearchDlg.$(OBJEXT) SearchList.$(OBJEXT) \
+ 	SearchListCtrl.$(OBJEXT) server.$(OBJEXT) ServerList.$(OBJEXT) \
+ 	ServerListCtrl.$(OBJEXT) ServerSocket.$(OBJEXT) \
+diff -Nur xmule-1.4.0/src/mmMultiButton.cpp xmule-1.4.0-razor/src/mmMultiButton.cpp
+--- xmule-1.4.0/src/mmMultiButton.cpp	2003-02-07 02:09:59.000000000 +0100
++++ xmule-1.4.0-razor/src/mmMultiButton.cpp	2003-06-04 09:48:31.000000000 +0200
+@@ -542,6 +542,7 @@
+   if (mStyle & mmMB_DROPDOWN)
+     w -= gDownBM.GetWidth();
+ 
++
+   if (mStyle & wxSIMPLE_BORDER)
+   {
+     dc.SetPen(*wxThePenList->FindOrCreatePen(*wxBLACK, 1,wxSOLID));
+@@ -668,6 +669,7 @@
+   Refresh();
+ } // SetStyle
+ 
++
+ void mmMultiButton::SetFocus(const bool hasFocus)
+ // Update button state.
+ {
+diff -Nur xmule-1.4.0/src/muuli_wdr.cpp xmule-1.4.0-razor/src/muuli_wdr.cpp
+--- xmule-1.4.0/src/muuli_wdr.cpp	2003-05-27 04:18:03.000000000 +0200
++++ xmule-1.4.0-razor/src/muuli_wdr.cpp	2003-06-04 09:48:41.000000000 +0200
+@@ -854,7 +854,7 @@
+             item0->Fit( parent );
+             item0->SetSizeHints( parent );
+         }
+-    }
++    }    
+     
+     return item0;
+ }
+@@ -863,7 +863,7 @@
+ {
+     wxBoxSizer *item0 = new wxBoxSizer( wxVERTICAL );
+ 
+-    wxBoxSizer *item1 = new wxBoxSizer( wxHORIZONTAL );
++  /*  wxBoxSizer *item1 = new wxBoxSizer( wxHORIZONTAL );
+ 
+     wxCheckBox *item2 = new wxCheckBox( parent, ID_CHECKBOX, _("Remove dead server after"), wxDefaultPosition, wxDefaultSize, 0 );
+     item2->SetName( "removeDead" );
+@@ -915,7 +915,7 @@
+             item0->Fit( parent );
+             item0->SetSizeHints( parent );
+         }
+-    }
++    }   */
+     
+     return item0;
+ }
+@@ -3979,6 +3979,146 @@
+         wxBitmap bitmap( image );
+         return bitmap;
+     }
++
++    /* Razor 1a - Modif by MikaelB
++       Add Razor button data */
++   
++    if (index == 24)
++    {
++        static const unsigned char data[] =
++        {
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,0,0,
++            0,0,0,0,18,18,18,0,0,0,13,13,13,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,13,13,13,90,90,90,38,38,38,
++            22,22,22,48,48,48,38,38,38,0,0,0,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,5,5,5,22,22,22,5,5,5,17,17,17,15,15,15,57,
++            57,57,48,48,48,13,13,13,13,13,13,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,4,4,4,27,27,27,5,5,5,5,5,5,15,15,15,61,61,61,42,42,
++            42,4,4,4,14,14,14,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,44,44,44,222,222,222,89,89,89,6,6,6,224,224,224,206,206,206,97,97,97,5,5,5,
++            9,9,9,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,144,145,148,
++            66,79,76,99,88,86,35,33,24,144,145,148,47,49,63,217,224,211,5,6,5,10,10,11,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,44,44,44,74,50,9,224,
++            182,35,204,175,39,177,163,56,56,36,12,202,191,186,5,3,8,7,7,8,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,89,89,89,89,89,89,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,94,66,28,222,162,21,244,187,24,243,214,
++            49,251,219,31,246,213,46,190,167,78,10,8,8,4,5,6,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,182,179,169,89,89,89,230,231,
++            230,230,231,230,230,231,230,230,231,230,116,88,26,235,179,21,237,198,23,243,211,43,228,183,35,
++            199,151,9,166,131,59,10,10,9,10,11,12,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,89,89,89,230,231,230,230,231,230,230,231,230,89,89,89,89,89,89,230,231,230,230,231,230,
++            230,231,230,230,231,230,69,57,53,149,119,45,196,150,26,208,142,19,182,143,34,196,168,116,200,
++            187,186,18,14,4,0,0,0,0,0,0,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,
++            89,89,89,230,231,230,89,89,89,182,179,169,89,89,89,230,231,230,230,231,230,230,231,230,230,
++            231,230,22,11,6,202,197,176,168,150,105,173,144,89,201,181,162,215,209,207,238,234,236,186,186,
++            186,0,0,0,52,112,153,52,112,153,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,182,179,169,89,
++            89,89,182,179,169,182,179,169,89,89,89,230,231,230,230,231,230,230,231,230,52,112,153,163,163,
++            163,247,246,249,234,239,240,234,239,240,247,246,249,247,246,249,247,246,249,235,230,227,51,132,178,
++            51,126,170,52,112,153,0,0,0,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,182,179,169,229,228,
++            227,89,89,89,230,231,230,230,231,230,230,231,230,0,0,0,51,145,194,52,112,153,235,230,227,
++            247,246,249,255,255,255,255,255,255,255,255,255,247,246,249,52,112,153,51,140,188,52,112,153,0,
++            0,0,0,0,0,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,182,179,169,89,89,89,
++            230,231,230,230,231,230,230,231,230,0,0,0,51,145,194,52,112,153,235,230,227,255,255,255,255,
++            255,255,255,255,255,255,255,255,247,246,249,52,112,153,51,144,193,0,0,0,0,0,0,0,0,
++            0,0,0,0,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,229,228,227,89,89,89,230,231,230,230,
++            231,230,0,0,0,0,0,0,52,112,153,51,145,194,211,205,200,247,246,249,255,255,255,255,255,
++            255,255,255,255,235,230,227,51,144,193,52,112,153,0,0,0,0,0,0,0,0,0,0,0,0,
++            0,0,0,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,89,89,89,229,228,227,89,89,89,0,0,0,0,0,0,0,0,
++            0,52,112,153,52,112,153,51,145,194,211,205,200,235,230,227,235,230,227,235,230,227,235,230,227,
++            182,179,169,51,144,193,52,112,153,52,112,153,0,0,0,0,0,0,0,0,0,0,0,0,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,0,0,0,0,0,0,182,179,169,89,89,89,0,0,0,0,0,0,0,0,0,51,144,193,
++            52,112,153,51,144,193,61,59,56,52,112,153,52,112,153,52,112,153,52,112,153,52,112,153,51,
++            144,193,52,112,153,51,144,193,51,129,174,0,0,0,0,0,0,0,0,0,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,0,0,0,
++            0,0,0,0,0,0,89,89,89,0,0,0,0,0,0,52,112,153,51,144,193,52,112,153,235,
++            230,227,52,112,153,51,144,193,51,144,193,51,144,193,51,144,193,52,112,153,235,230,227,52,112,
++            153,51,144,193,51,144,193,20,45,58,0,0,0,0,0,0,0,0,0,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,0,0,0,0,0,0,0,
++            0,0,89,89,89,0,0,0,0,0,0,52,112,153,51,144,193,51,144,193,52,112,153,51,144,
++            193,51,144,193,51,144,193,51,144,193,51,144,193,51,144,193,52,112,153,51,144,193,51,144,193,
++            51,141,189,52,112,153,0,0,0,0,0,0,0,0,0,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,0,0,0,182,179,169,89,89,
++            89,230,231,230,230,231,230,52,112,153,51,144,193,51,144,193,52,112,153,52,112,153,52,112,153,
++            52,112,153,52,112,153,52,112,153,52,112,153,52,112,153,51,144,193,51,143,192,51,137,185,52,
++            112,153,0,0,0,0,0,0,0,0,0,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,229,228,227,89,89,89,230,231,230,
++            230,231,230,52,112,153,51,144,193,51,144,193,52,112,153,51,144,193,51,144,193,51,144,193,51,
++            144,193,51,144,193,51,144,193,52,112,153,51,144,193,51,140,188,51,129,174,20,45,58,0,0,
++            0,0,0,0,0,0,0,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,89,89,89,229,228,227,89,89,89,230,231,230,230,231,230,52,
++            112,153,51,144,193,51,144,193,52,112,153,51,138,185,51,138,185,51,138,185,51,138,185,51,138,
++            185,51,138,185,52,112,153,51,142,190,51,136,183,20,45,58,0,0,0,0,0,0,0,0,0,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,89,89,89,182,179,169,89,89,89,230,231,230,230,231,230,52,112,153,51,144,
++            193,51,144,193,52,112,153,51,131,177,51,131,177,51,131,177,51,131,177,51,131,177,51,131,177,
++            52,112,153,51,138,186,51,132,178,0,0,0,0,0,0,0,0,0,0,0,0,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,89,89,89,229,228,227,182,179,169,89,89,89,230,231,230,52,112,153,51,144,193,51,144,193,
++            52,112,153,51,125,169,51,125,169,51,125,169,51,125,169,51,125,169,51,125,169,52,112,153,51,
++            134,181,51,129,174,52,112,153,0,0,0,0,0,0,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,182,179,169,
++            182,179,169,89,89,89,182,179,169,89,89,89,52,112,153,51,144,193,51,144,193,52,112,153,52,
++            112,153,52,112,153,52,112,153,52,112,153,52,112,153,52,112,153,52,112,153,51,131,176,51,125,
++            169,52,112,153,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,89,89,89,182,179,169,89,89,89,230,
++            231,230,89,89,89,89,89,89,230,231,230,52,112,153,51,140,188,51,140,188,51,140,188,51,140,
++            188,51,140,188,51,140,188,51,140,188,51,136,184,51,132,178,51,128,173,51,123,167,52,112,153,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,89,89,89,89,89,89,230,231,230,230,231,230,230,231,
++            230,89,89,89,230,231,230,52,112,153,51,125,170,51,125,170,51,125,170,51,125,170,51,125,170,
++            51,125,170,51,125,170,51,125,170,51,125,170,51,125,170,52,112,153,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,89,89,89,182,179,169,89,89,89,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,52,112,153,51,120,163,51,120,163,51,120,163,52,112,153,52,112,153,52,
++            112,153,51,120,163,51,120,163,51,120,163,52,112,153,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,89,89,89,89,89,89,89,89,89,230,231,230,230,231,230,230,231,230,230,
++            231,230,222,162,21,52,112,153,52,112,153,222,162,21,230,231,230,230,231,230,230,231,230,222,162,
++            21,52,112,153,52,112,153,222,162,21,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,222,162,21,222,162,21,222,162,21,222,162,21,234,199,
++            106,252,218,123,245,199,86,230,180,57,222,162,21,230,231,230,222,162,21,230,180,57,245,199,86,
++            252,218,123,234,199,106,222,162,21,222,162,21,222,162,21,222,162,21,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,
++            230,230,231,230,222,162,21,222,162,21,252,218,123,252,215,105,252,218,123,222,162,21,222,162,21,
++            222,162,21,222,162,21,230,231,230,230,231,230,230,231,230,222,162,21,222,162,21,222,162,21,222,
++            162,21,252,218,123,252,215,105,252,218,123,222,162,21,222,162,21,230,231,230,230,231,230,230,231,
++            230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,
++            230,231,230,230,231,230,222,162,21,222,162,21,222,162,21,230,231,230,230,231,230,230,231,230,230,
++            231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230,222,162,
++            21,222,162,21,222,162,21,230,231,230,230,231,230,230,231,230,230,231,230,230,231,230
++        };
++        wxImage image( 32, 32, (unsigned char*)data, TRUE );
++        image.SetMaskColour( 230, 231, 230);
++        wxBitmap bitmap( image );
++        return bitmap;
++    }
++
++    /* End modif */
++    
+     return wxNullBitmap;
+ }
+ 
+diff -Nur xmule-1.4.0/src/muuli_wdr.h xmule-1.4.0-razor/src/muuli_wdr.h
+--- xmule-1.4.0/src/muuli_wdr.h	2003-05-25 16:26:18.000000000 +0200
++++ xmule-1.4.0-razor/src/muuli_wdr.h	2003-06-04 09:48:44.000000000 +0200
+@@ -204,6 +204,14 @@
+ #define ID_BUTTONIRC 10115
+ #define ID_BUTTONSTATISTICS 10116
+ #define ID_BUTTONPREFERENCES 10117
++
++/* Razor 1a - Modif by MikaelB
++   Add Razor button ID */
++   
++    #define ID_BUTTONRAZORPREFS 10118
++
++/* End modif */
++
+ void muleToolbar( wxToolBar *parent );
+ 
+ // Declare bitmap functions
+diff -Nur xmule-1.4.0/src/opcodes.h xmule-1.4.0-razor/src/opcodes.h
+--- xmule-1.4.0/src/opcodes.h	2003-04-30 19:30:42.000000000 +0200
++++ xmule-1.4.0-razor/src/opcodes.h	2003-06-04 09:48:50.000000000 +0200
+@@ -335,4 +335,25 @@
+ #define MP_LISTCOL_13			10613
+ #define MP_LISTCOL_14			10614
+ #define MP_LISTCOL_15			10615
++
++  /* Razor 1a - Modif by MikaelB
++     Opcodes for :
++      - Drop No Needed Sources now
++      - Drop Full Queue Sources now
++      - Drop High Queue Rating Sources now
++      - Clean Up Sources now ( drop NNS, FQS and HQRS )
++      - Swap every A4AF to this file now
++      - Swap every A4AF to this file ( AUTO )
++      - Swap every A4AF to any other file now   */
++
++      #define MP_DROP_NO_NEEDED_SOURCES           57841
++      #define MP_DROP_FULL_QUEUE_SOURCES          57842
++      #define MP_DROP_HIGH_QUEUE_RATING_SOURCES   57843
++      #define MP_CLEAN_UP_SOURCES                 57844
++      #define MP_SWAP_A4AF_TO_THIS                57845
++      #define MP_SWAP_A4AF_TO_THIS_AUTO           57846
++      #define MP_SWAP_A4AF_TO_ANY_OTHER           57847
++
++  /* End Modif */
++  
+ #endif
+diff -Nur xmule-1.4.0/src/PartFile.cpp xmule-1.4.0-razor/src/PartFile.cpp
+--- xmule-1.4.0/src/PartFile.cpp	2003-05-25 00:45:17.000000000 +0200
++++ xmule-1.4.0-razor/src/PartFile.cpp	2003-06-04 09:48:05.000000000 +0200
+@@ -174,6 +174,8 @@
+ 	m_nSavedReduceDownload = 0;
+ 	hasRating = false;
+ 	hasComment = false;
++
++  m_IsA4AFAuto = false;  /* Razor 1a - Modif by MikaelB */
+ }
+ 
+ CPartFile::~CPartFile(){
+@@ -1081,6 +1083,7 @@
+ 						else {
+ 							cur_src->socket->DisableDownloadLimit();
+ 						}
++            cur_src->SetValidSource(true);
+ 						break;
+ 					}
+ 					case DS_BANNED:
+@@ -1095,9 +1098,15 @@
+ 						if (theApp.serverconnect->IsLowID())
+ 							break;
+ 					case DS_NONEEDEDPARTS:
+-					{ 
+-						if( ((dwCurTick - lastpurgetime) > 40000) && (this->GetSourceCount() >= (theApp.glob_prefs->GetMaxSourcePerFile()*.8 )) )
+-							if( !cur_src->SwapToAnotherFile( cur_src ) ){
++					{
++            /* Razor 1a - Modif by MikaelB */
++            
++            cur_src->SetValidSource(false);
++
++            /* End modif */
++            
++            if( ((dwCurTick - lastpurgetime) > 40000) && (this->GetSourceCount() >= (theApp.glob_prefs->GetMaxSourcePerFile()*.8 )) )
++							if( !cur_src->SwapToAnotherFile(  ) ){
+ 								theApp.downloadqueue->RemoveSource( cur_src );
+ 								lastpurgetime = dwCurTick;
+ 								break; //Johnny-B - nothing more to do here (good eye!)
+@@ -1108,12 +1117,20 @@
+ 					}
+ 					case DS_ONQUEUE:
+ 					{
+-						if( cur_src->IsRemoteQueueFull() )
++            /* Razor 1a - Modif by MikaelB */
++
++            cur_src->SetValidSource(true);
++
++            /* End modif */
++            
++						if( cur_src->IsRemoteQueueFull() ) {
++              cur_src->SetValidSource(false);
+ 							if( ((dwCurTick - lastpurgetime) > 60000) && (this->GetSourceCount() >= (theApp.glob_prefs->GetMaxSourcePerFile()*.8 )) ){
+ 								theApp.downloadqueue->RemoveSource( cur_src );
+ 								lastpurgetime = dwCurTick;
+ 								break; //Johnny-B - nothing more to do here (good eye!)
+ 							}
++            }
+ 						if (theApp.serverconnect->IsConnected() && ((!cur_src->GetLastAskedTime()) || (dwCurTick - cur_src->GetLastAskedTime()) > FILEREASKTIME-20000))
+ 							cur_src->UDPReaskForDownload();
+ 					}
+@@ -1141,7 +1158,10 @@
+ 	if (((!m_LastNoNeededCheck) || (dwCurTick - m_LastNoNeededCheck) > 10000))
+ 	{
+ 		m_LastNoNeededCheck = dwCurTick;
+-		POSITION pos1, pos2;
++
++    /* Razor 1a - Modif by MikaelB */
++    
++		/*  POSITION pos1, pos2;
+ 		for (int sl = 0; sl < SOURCESSLOTS; sl++)
+ 			if (!srclists[sl].IsEmpty())
+ 				for (pos1 = srclists[sl].GetHeadPosition();( pos2 = pos1 ) != NULL;)
+@@ -1150,7 +1170,25 @@
+ 					CUpDownClient* cur_src = srclists[sl].GetAt(pos2);
+ 					if (cur_src->GetDownloadState() == DS_NONEEDEDPARTS)
+ 						cur_src->SwapToAnotherFile(false);
++				}  */
++
++    if (this->IsA4AFAuto())
++		{
++			POSITION pos1, pos2;
++			for (pos1 = this->A4AFSourcesList.GetHeadPosition();(pos2=pos1)!=NULL;)
++			{
++				this->A4AFSourcesList.GetNext(pos1);
++				CUpDownClient *cur_source = this->A4AFSourcesList.GetAt(pos2);
++				if(!(cur_source->GetDownloadState() == DS_DOWNLOADING))
++				{
++					this->A4AFSourcesList.RemoveAt(pos2);
++					cur_source->SwapToThisFile(this);
+ 				}
++			}
++		}
++
++    /* End modif */
++    
+ 	}
+ 
+ 	// calculate datarate, set limit etc.
+@@ -1552,12 +1590,34 @@
+ 	for( pos1 = srclists[sl].GetHeadPosition(); ( pos2 = pos1 ) != NULL; ){
+ 		srclists[sl].GetNext(pos1);
+ 		if (bTryToSwap){
+-			if (!srclists[sl].GetAt(pos2)->SwapToAnotherFile(true))
+-				theApp.downloadqueue->RemoveSource(srclists[sl].GetAt(pos2));
++			if (!srclists[sl].GetAt(pos2)->SwapToAnotherFile())
++				theApp.downloadqueue->RemoveSourceFromPartFile(this,srclists[sl].GetAt(pos2),pos2);
+ 		}
+ 		else
+-			theApp.downloadqueue->RemoveSource(srclists[sl].GetAt(pos2));
++			theApp.downloadqueue->RemoveSourceFromPartFile(this,srclists[sl].GetAt(pos2),pos2);
+ 	}
++
++  /* Razor 1a - Modif by MikaelB */
++  
++  if(!this->A4AFSourcesList.IsEmpty())
++	{
++		POSITION pos1, pos2;
++		for(pos1=this->A4AFSourcesList.GetHeadPosition();(pos2=pos1)!=NULL;)
++		{
++			this->A4AFSourcesList.GetNext(pos1);
++
++			POSITION pos3 = this->A4AFSourcesList.GetAt(pos2)->m_OtherRequests_list.Find(this);
++			if(pos3)
++			{
++				this->A4AFSourcesList.GetAt(pos2)->m_OtherRequests_list.RemoveAt(pos3);
++				theApp.xmuledlg->transferwnd->downloadlistctrl->RemoveSource(this->A4AFSourcesList.GetAt(pos2),this);
++				this->A4AFSourcesList.RemoveAt(pos2);
++			}
++		}
++	}
++
++  /* End modif */
++  
+ 	UpdateFileRatingCommentAvail();
+ }
+ 
+@@ -2369,4 +2429,220 @@
+   for (uint32 i=start;i<=end;i++)
+     buffer->SetChar(i,color);
+ }
+- 
++
++
++/* Razor 1a - Modif by MikaelB
++   RemoveNoNeededSources function */
++   
++void CPartFile::RemoveNoNeededSources()
++{
++  // Somes positions
++  POSITION position, temp_position;
++
++  // For every sources slots of this file...
++  for(int slot = 0;
++      slot < SOURCESSLOTS;
++      slot++)
++  {
++    // If the source at this slot isn't empty...
++    if(! srclists[slot].IsEmpty())
++    {
++      // Get the head position of this source
++      position = srclists[slot].GetHeadPosition();
++      // While position isn't null...
++      while(position != NULL)
++      {
++        // Save current position in temp_position
++        temp_position = position;
++        // Get next position in position
++        srclists[slot].GetNext(position);
++        // Get client at current position
++        CUpDownClient* client = srclists[slot].GetAt(temp_position);
++        // If download status from this client is "no needed parts"
++        if(client->GetDownloadState() == DS_NONEEDEDPARTS)
++        {  
++          // Try to swap this source to another file, and if not possible...
++          if(! client->SwapToAnotherFile())
++          {
++            // Then simply remove source from this file
++            theApp.downloadqueue->RemoveSourceFromPartFile(this, client, temp_position);
++          }
++        }
++      }
++    }
++  }
++}
++
++/* End modif */
++
++/* Razor 1a - Modif by MikaelB
++   RemoveFullQueueSources function */
++
++void CPartFile::RemoveFullQueueSources()
++{
++  // Somes positions
++  POSITION position, temp_position;
++
++  // For every sources slots of this file...
++  for(int slot = 0;
++      slot < SOURCESSLOTS;
++      slot++)
++  {
++    // If the source at this slot isn't empty...
++    if(! srclists[slot].IsEmpty())
++    {
++      // Get the head position of this source
++      position = srclists[slot].GetHeadPosition();
++      // While position isn't null...
++      while(position != NULL)
++      {
++        // Save current position in temp_position
++        temp_position = position;
++        // Get next position in position
++        srclists[slot].GetNext(position);
++        // Get client at current position
++        CUpDownClient* client = srclists[slot].GetAt(temp_position);
++        // If download status from this client is "On Queue" and is on Full queue
++        if((client->GetDownloadState() == DS_ONQUEUE) &&
++           (client->IsRemoteQueueFull()))
++        {
++          // Then simply remove source from this file
++          theApp.downloadqueue->RemoveSourceFromPartFile(this, client, temp_position);
++        }
++      }
++    }
++  }
++}
++
++/* End modif */
++
++/* Razor 1a - Modif by MikaelB
++   RemoveHighQueueRatingSources function */
++
++void CPartFile::RemoveHighQueueRatingSources()
++{
++  // Somes positions
++  POSITION position, temp_position;
++
++  // For every sources slots of this file...
++  for(int slot = 0;
++      slot < SOURCESSLOTS;
++      slot++)
++  {
++    // If the source at this slot isn't empty...
++    if(! srclists[slot].IsEmpty())
++    {
++      // Get the head position of this source
++      position = srclists[slot].GetHeadPosition();
++      // While position isn't null...
++      while(position != NULL)
++      {
++        // Save current position in temp_position
++        temp_position = position;
++        // Get next position in position
++        srclists[slot].GetNext(position);
++        // Get client at current position
++        CUpDownClient* client = srclists[slot].GetAt(temp_position);
++        // If download status from this client is "On Queue" and queue rank is greater than 1200...
++        if((client->GetDownloadState() == DS_ONQUEUE) &&
++           (client->GetRemoteQueueRank() > 1200))
++        {
++          // Then simply remove source from this file
++          theApp.downloadqueue->RemoveSourceFromPartFile(this, client, temp_position);
++        }
++      }
++    }
++  }
++}
++
++/* End modif */
++
++/* Razor 1a - Modif by MikaelB
++   CleanUpSources function */
++
++void CPartFile::CleanUpSources()
++{
++  // Somes positions
++  POSITION position, temp_position;
++
++  // For every sources slots of this file...
++  for(int slot = 0;
++      slot < SOURCESSLOTS;
++      slot++)
++  {
++    // If the source at this slot isn't empty...
++    if(! srclists[slot].IsEmpty())
++    {
++      // Get the head position of this source
++      position = srclists[slot].GetHeadPosition();
++      // While position isn't null...
++      while(position != NULL)
++      {
++        // Save current position in temp_position
++        temp_position = position;
++        // Get next position in position
++        srclists[slot].GetNext(position);
++        // Get client at current position
++        CUpDownClient* client = srclists[slot].GetAt(temp_position);
++        // If download status from this client is "no needed parts"
++        if(client->GetDownloadState() == DS_NONEEDEDPARTS)
++        {
++          // Try to swap this source to another file, and if not possible...
++          if(! client->SwapToAnotherFile())
++          {
++            // Then simply remove source from this file
++            theApp.downloadqueue->RemoveSourceFromPartFile(this, client, temp_position);
++          }
++        }
++        // Else if download status from this client is "On Queue" and is on Full queue
++        if((client->GetDownloadState() == DS_ONQUEUE) &&
++           (client->IsRemoteQueueFull()))
++        {
++          // Then simply remove source from this file
++          theApp.downloadqueue->RemoveSourceFromPartFile(this, client, temp_position);
++        }
++        // Else if download status from this client is "On Queue" and queue rank is greater than 1200...
++        else if((client->GetDownloadState() == DS_ONQUEUE) &&
++           (client->GetRemoteQueueRank() > 1200))
++        {
++          // Then simply remove source from this file
++          theApp.downloadqueue->RemoveSourceFromPartFile(this, client, temp_position);
++        }
++      }
++    }
++  }
++}
++
++/* End modif */
++
++/* Razor 1a - Modif by MikaelB
++   AddDownloadingSource function */
++
++void CPartFile::AddDownloadingSource(CUpDownClient* client){
++  // Get client position in downloading list
++  POSITION position = m_downloadingSourcesList.Find(client);
++  // If position wasn't found ( client isn't in downloading list )...
++  if(position == NULL)
++  {
++    // Add client to downloading list
++    m_downloadingSourcesList.AddTail(client);
++  }
++}
++
++/* End modif */
++
++/* Razor 1a - Modif by MikaelB
++   RemoveDownloadingSource function */
++
++void CPartFile::RemoveDownloadingSource(CUpDownClient* client){
++  // Get client position in downloading list
++  POSITION position = m_downloadingSourcesList.Find(client); 
++  // If position was found ( client is in downloading list )...
++  if(position != NULL)
++  {
++    // Remove it from downloading list
++    m_downloadingSourcesList.RemoveAt(position);
++  }
++}
++
++/* End modif */
+diff -Nur xmule-1.4.0/src/PartFile.h xmule-1.4.0-razor/src/PartFile.h
+--- xmule-1.4.0/src/PartFile.h	2003-05-01 13:18:36.000000000 +0200
++++ xmule-1.4.0-razor/src/PartFile.h	2003-06-04 09:48:08.000000000 +0200
+@@ -227,6 +227,55 @@
+ 	bool	srcarevisible; // used for downloadlistctrl
+ 	bool	hashsetneeded;
+ 	uint32  GetCompletedSize()   {return completedsize;}
++
++/* Razor 1a - Modif by MikaelB */
++
++      public: 
++
++          /* RemoveNoNeededSources function */
++          void	RemoveNoNeededSources();
++
++          /* RemoveFullQueueSources function */
++          void	RemoveFullQueueSources();
++
++          /* RemoveHighQueueRatingSources function */
++          void	RemoveHighQueueRatingSources();
++
++          /* CleanUpSources function */
++          void	CleanUpSources();
++
++          /* AddDownloadingSource function */
++          void AddDownloadingSource(CUpDownClient* client);
++          
++          /* RemoveDownloadingSource function */
++          void RemoveDownloadingSource(CUpDownClient* client);
++
++          /* A4AF sources list */
++          CTypedPtrList<CPtrList, CUpDownClient*> A4AFSourcesList;
++
++          /* SetA4AFAuto function */
++          void SetA4AFAuto(bool A4AFauto)
++          {
++            this->m_IsA4AFAuto = A4AFauto;
++          }
++
++          /* IsA4AFAuto function */
++          bool IsA4AFAuto()
++          {
++            return this->m_IsA4AFAuto;
++          }
++
++      private:
++
++          /* downloading sources list */
++          CTypedPtrList<CPtrList, CUpDownClient*> m_downloadingSourcesList;
++
++          /* A4AF Auto attribute */
++          bool m_IsA4AFAuto;
++
++/* End modif */
++  
++  
+ };
+ 
+ 
+diff -Nur xmule-1.4.0/src/RazorPreferencesDlg.cpp xmule-1.4.0-razor/src/RazorPreferencesDlg.cpp
+--- xmule-1.4.0/src/RazorPreferencesDlg.cpp	1970-01-01 01:00:00.000000000 +0100
++++ xmule-1.4.0-razor/src/RazorPreferencesDlg.cpp	2003-06-04 09:50:08.000000000 +0200
+@@ -0,0 +1,166 @@
++/* Razor 1a - Modif by MikaelB
++   Razor Preferences dialog */
++
++
++#include "RazorPreferencesDlg.h"
++#include <math.h>
++
++ /* Events */
++BEGIN_EVENT_TABLE(RazorPrefs, wxFrame)
++
++  EVT_BUTTON(ID_SAVE_BUTTON,RazorPrefs::OnSave)
++  EVT_BUTTON(ID_QUIT_BUTTON,RazorPrefs::OnQuit)
++
++END_EVENT_TABLE()
++
++/* Constructor */
++RazorPrefs::RazorPrefs(wxFrame* parent)
++   : wxFrame(parent/*(wxFrame *) NULL*/, -1, _T("Razor Preferences Dialog"))
++{
++  // Add the Razor Preferences dialog
++  wxSizer *item = RazorPreferences(this, true, true);
++
++  // Init items
++  parent_frm = parent;
++  nnsCheckBox = (wxCheckBox*) FindWindow(ID_ENABLE_AUTO_NNS);
++  fqsCheckBox = (wxCheckBox*) FindWindow(ID_ENABLE_AUTO_FQS);
++  hqrsCheckBox = (wxCheckBox*) FindWindow(ID_ENABLE_AUTO_HQRS);
++  nnsTimer = (wxTextCtrl*) FindWindow(ID_AUTO_NNS_TIMER);
++  fqsTimer = (wxTextCtrl*) FindWindow(ID_AUTO_FQS_TIMER);
++  hqrsTimer = (wxTextCtrl*) FindWindow(ID_AUTO_HQRS_TIMER);
++  hqrLimit = (wxTextCtrl*) FindWindow(ID_AUTO_HQRS_HQR);
++  dynUpCheckBox = (wxCheckBox*) FindWindow(ID_ENABLE_DYNUPLOAD);
++  dynUpPingUrl = (wxTextCtrl*) FindWindow(ID_PING_URL);
++  dynUpResponse = (wxTextCtrl*) FindWindow(ID_RESPONSE_VALUE);
++  dynUpPingType = (wxRadioBox*) FindWindow(ID_PING_RADIO);     
++
++  // Load prefs
++  OnLoad();
++  
++  // Show frame
++  Show(true);
++}
++
++/* Destructor */
++RazorPrefs::~RazorPrefs()
++{
++  // Create a config base for saving razor preferences
++  wxConfigBase *config = wxConfigBase::Get();
++  // If config haven't been created
++  if (config == NULL)
++    // exit without saving
++    return;
++
++  // The section where to save in in file
++  CString section = "/Razor_Preferences/";
++
++  // Razor window location and size
++  int x1,y1,x2,y2;
++  GetPosition(&x1, &y1);
++  GetSize(&x2,&y2);
++
++  // Saving window size and position
++  config->Write(_T(section+"RAZOR_X_POS"), (long) x1);
++  config->Write(_T(section+"RAZOR_Y_POS"), (long) y1);
++  config->Write(_T(section+"RAZOR_X_SIZE"), (long) x2);
++  config->Write(_T(section+"RAZOR_Y_SIZE"), (long) y2);
++
++  config->Flush(true); 
++}
++
++/* When quit */
++void RazorPrefs::OnQuit(wxCommandEvent& event)
++{
++  // Close frame
++  Close(true);
++}
++
++/* When Save */
++void RazorPrefs::OnSave(wxCommandEvent& event)
++{
++  // Create a config base for saving razor preferences
++  wxConfigBase *config = wxConfigBase::Get();
++  // If config haven't been created
++  if (config == NULL)
++    // exit without saving
++    return;
++
++  // The section where to save in in file
++  CString section = "/Razor_Preferences/";
++
++  // Verify text control values are ok  and save
++  wxString temp;
++  temp = nnsTimer->GetValue();
++  long entier;
++
++  config->Write(_T(section+"AutoRemoveNNS"), nnsCheckBox->GetValue());
++  if((temp.ToLong(&entier, 10)) && (entier >= 60) && (entier <= 1800))
++    config->Write(_T(section+"AutoNNSTimer"), temp);
++  config->Write(_T(section+"AutoRemoveFQS"), fqsCheckBox->GetValue());
++  temp = fqsTimer->GetValue();
++  if((temp.ToLong(&entier, 10)) && (entier >= 60) && (entier <= 1800))
++    config->Write(_T(section+"AutoFQSTimer"), temp);
++  config->Write(_T(section+"AutoRemoveHQRS"), hqrsCheckBox->GetValue());
++  temp = hqrsTimer->GetValue();
++  if((temp.ToLong(&entier, 10)) && (entier >= 60) && (entier <= 1800))
++    config->Write(_T(section+"AutoHQRSTimer"), temp);
++  temp = hqrLimit->GetValue();  
++  if((temp.ToLong(&entier, 10)) && (entier >= 300) && (entier <= 3000))
++    config->Write(_T(section+"HQRValue"), temp);
++  config->Write(_T(section+"DynamicUpload"), dynUpCheckBox->GetValue());
++  config->Write(_T(section+"PingURL"), dynUpPingUrl->GetValue());
++  temp = dynUpResponse->GetValue();
++  if((temp.ToLong(&entier, 10)) && (entier >= 1) && (entier <= 20))
++    config->Write(_T(section+"PingResponse"), temp);
++  config->Write(_T(section+"PingType"), dynUpPingType->GetSelection());  
++
++    
++  config->Flush(true);
++
++  wxMessageDialog *d = new wxMessageDialog(this, "All theses options aren't functional yet", "No functional",wxOK, wxDefaultPosition);
++  d->ShowModal();                  
++}
++
++/* When Load */
++void RazorPrefs::OnLoad()
++{
++  // Create a config base for saving razor preferences
++  wxConfigBase *config = wxConfigBase::Get();
++  // If config haven't been created
++  if (config == NULL)
++    // exit without saving
++    return;
++
++  // The section where to save in in file
++  CString section = "/Razor_Preferences/";
++
++  // Load !
++  nnsCheckBox->SetValue(config->Read(_T(section+"AutoRemoveNNS"), 0l));
++  nnsTimer->SetValue(config->Read(_T(section+"AutoNNSTimer"), _T("180")));
++  fqsCheckBox->SetValue(config->Read(_T(section+"AutoRemoveFQS"), 0l));
++  fqsTimer->SetValue(config->Read(_T(section+"AutoFQSTimer"), _T("180")));
++  hqrsCheckBox->SetValue(config->Read(_T(section+"AutoRemoveHQRS"), 0l));
++  hqrsTimer->SetValue(config->Read(_T(section+"AutoHQRSTimer"), _T("180")));
++  hqrLimit->SetValue(config->Read(_T(section+"HQRValue"), _T("1200")));
++  dynUpCheckBox->SetValue(config->Read(_T(section+"DynamicUpload"), 0l));
++  dynUpPingUrl->SetValue(config->Read(_T(section+"PingURL"), _T("")));
++  dynUpResponse->SetValue(config->Read(_T(section+"PingResponse"), _T("20")));
++  dynUpPingType->SetSelection(config->Read(_T(section+"PingType"), 0l)); 
++
++  int x1,y1,x2,y2;
++  x1 = config->Read(_T(section+"RAZOR_X_POS"), 0l);
++  y1 = config->Read(_T(section+"RAZOR_Y_POS"), 0l);
++  x2 = config->Read(_T(section+"RAZOR_X_SIZE"), 0l);
++  y2 = config->Read(_T(section+"RAZOR_Y_SIZE"), 0l);
++
++  // If x1 and y1 != 0
++  if((x1 != 0) && (y1 != 0))
++    // Redefine location
++    Move(x1,y1);
++
++  // If x2 and y2 != 0
++  if((x2 != 0) && (y2 != 0))
++    // Redefine size
++    SetClientSize(x2,y2);
++}
++
+diff -Nur xmule-1.4.0/src/RazorPreferencesDlg.h xmule-1.4.0-razor/src/RazorPreferencesDlg.h
+--- xmule-1.4.0/src/RazorPreferencesDlg.h	1970-01-01 01:00:00.000000000 +0100
++++ xmule-1.4.0-razor/src/RazorPreferencesDlg.h	2003-06-04 09:50:10.000000000 +0200
+@@ -0,0 +1,63 @@
++/* Razor 1a - Modif by MikaelB
++   Razor Preferences dialog */
++
++
++#ifndef RAZORPREFERENCESDLG_H
++#define RAZORPREFERENCESDLG_H
++
++#include "wx/wxprec.h"
++
++#ifndef  WX_PRECOMP
++  #include "wx/wx.h"
++#endif //precompiled headers
++
++#include "wx/log.h"
++#include "wx/config.h" 
++#include "wintypes.h"
++#include "ini2.h"
++#include "RazorPreferencesDlg_wdr.h"
++
++// Razor Prefs class
++class RazorPrefs: public wxFrame
++{
++
++  public:
++
++    /* Constructor */
++    RazorPrefs(wxFrame* parent);
++
++    /* Destructor */
++    virtual ~RazorPrefs();
++
++    DECLARE_EVENT_TABLE()
++
++  protected:
++    
++    /* When quit */
++    void OnQuit(wxCommandEvent& event);
++
++    /* When Save */
++    void OnSave(wxCommandEvent& event);
++
++    /* When load */
++    void OnLoad();    
++
++  private:
++
++    /* The wx items */
++    wxFrame* parent_frm;
++    wxCheckBox* nnsCheckBox;
++    wxTextCtrl* nnsTimer;      
++    wxCheckBox* fqsCheckBox;
++    wxTextCtrl* fqsTimer;
++    wxCheckBox* hqrsCheckBox;
++    wxTextCtrl* hqrsTimer;
++    wxTextCtrl* hqrLimit;
++    wxCheckBox* dynUpCheckBox;
++    wxTextCtrl* dynUpPingUrl;
++    wxTextCtrl* dynUpResponse;
++    wxRadioBox* dynUpPingType;
++
++};
++
++#endif
+diff -Nur xmule-1.4.0/src/RazorPreferencesDlg_wdr.cpp xmule-1.4.0-razor/src/RazorPreferencesDlg_wdr.cpp
+--- xmule-1.4.0/src/RazorPreferencesDlg_wdr.cpp	1970-01-01 01:00:00.000000000 +0100
++++ xmule-1.4.0-razor/src/RazorPreferencesDlg_wdr.cpp	2003-06-04 09:49:48.000000000 +0200
+@@ -0,0 +1,335 @@
++//------------------------------------------------------------------------------
++// Source code generated by wxDesigner from file: RazorPreferencesDlg.wdr
++// Do not modify this file, all changes will be lost!
++//------------------------------------------------------------------------------
++
++#ifdef __GNUG__
++    #pragma implementation "RazorPreferencesDlg_wdr.h"
++#endif
++
++// For compilers that support precompilation
++#include "wx/wxprec.h"
++
++#ifdef __BORLANDC__
++    #pragma hdrstop
++#endif
++
++// Include private header
++#include "RazorPreferencesDlg_wdr.h"
++
++#include <wx/intl.h>
++
++// Implement window functions
++
++wxSizer *RazorSourcesTab( wxWindow *parent, bool call_fit, bool set_sizer )
++{
++    wxBoxSizer *item0 = new wxBoxSizer( wxVERTICAL );
++
++    wxBoxSizer *item1 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticBox *item3 = new wxStaticBox( parent, -1, _("No Needed Sources") );
++    wxStaticBoxSizer *item2 = new wxStaticBoxSizer( item3, wxVERTICAL );
++
++    wxFlexGridSizer *item4 = new wxFlexGridSizer( 2, 0, 0, 0 );
++    item4->AddGrowableRow( 1 );
++
++    wxCheckBox *item5 = new wxCheckBox( parent, ID_ENABLE_AUTO_NNS, _("Enable Auto Drop No Needed Sources"), wxDefaultPosition, wxDefaultSize, 0 );
++    item4->Add( item5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxBoxSizer *item6 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticText *item7 = new wxStaticText( parent, ID_AUTO_NNS_TIMER_TEXT, _("Timer :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item6->Add( item7, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxTextCtrl *item8 = new wxTextCtrl( parent, ID_AUTO_NNS_TIMER, _("180"), wxDefaultPosition, wxSize(40,-1), 0 );
++    item6->Add( item8, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxStaticText *item9 = new wxStaticText( parent, ID_AUTO_NNS_TIMER_HELP, _("( 60 .. 1800sec )"), wxDefaultPosition, wxDefaultSize, 0 );
++    item6->Add( item9, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    item4->Add( item6, 0, wxALL, 5 );
++
++    item2->Add( item4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item1->Add( item2, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
++
++    item0->Add( item1, 0, wxALIGN_CENTER_VERTICAL, 0 );
++
++    wxBoxSizer *item10 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticBox *item12 = new wxStaticBox( parent, -1, _("Full Queue Sources") );
++    wxStaticBoxSizer *item11 = new wxStaticBoxSizer( item12, wxVERTICAL );
++
++    wxFlexGridSizer *item13 = new wxFlexGridSizer( 1, 0, 0 );
++
++    wxCheckBox *item14 = new wxCheckBox( parent, ID_ENABLE_AUTO_FQS, _("Enable Auto Drop Full Queue Sources"), wxDefaultPosition, wxDefaultSize, 0 );
++    item13->Add( item14, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxBoxSizer *item15 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticText *item16 = new wxStaticText( parent, ID_AUTO_FQS_TIMER_TEXT, _("Timer :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item15->Add( item16, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxTextCtrl *item17 = new wxTextCtrl( parent, ID_AUTO_FQS_TIMER, _("180"), wxDefaultPosition, wxSize(40,-1), 0 );
++    item15->Add( item17, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxStaticText *item18 = new wxStaticText( parent, AUTO_FQS_TIMER_HELP, _("( 60 .. 1800sec )"), wxDefaultPosition, wxDefaultSize, 0 );
++    item15->Add( item18, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    item13->Add( item15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item11->Add( item13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item10->Add( item11, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
++
++    item0->Add( item10, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxBoxSizer *item19 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticBox *item21 = new wxStaticBox( parent, -1, _("High Queue Rating Sources") );
++    wxStaticBoxSizer *item20 = new wxStaticBoxSizer( item21, wxVERTICAL );
++
++    wxFlexGridSizer *item22 = new wxFlexGridSizer( 1, 0, 0 );
++
++    wxCheckBox *item23 = new wxCheckBox( parent, ID_ENABLE_AUTO_HQRS, _("Enable Auto Drop High Queue Rating Sources"), wxDefaultPosition, wxDefaultSize, 0 );
++    item22->Add( item23, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxFlexGridSizer *item24 = new wxFlexGridSizer( 3, 0, 0 );
++
++    wxStaticText *item25 = new wxStaticText( parent, ID_AUTO_HQRS_TIMER_TEXT, _("Timer :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item24->Add( item25, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxTextCtrl *item26 = new wxTextCtrl( parent, ID_AUTO_HQRS_TIMER, _("180"), wxDefaultPosition, wxSize(40,-1), 0 );
++    item24->Add( item26, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxStaticText *item27 = new wxStaticText( parent, ID_AUTO_HQRS_TIMER_HELP, _("( 60 .. 1800sec )"), wxDefaultPosition, wxDefaultSize, 0 );
++    item24->Add( item27, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxStaticText *item28 = new wxStaticText( parent, ID_AUTO_HQRS_HQR_TEXT, _("HQR Value :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item24->Add( item28, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxTextCtrl *item29 = new wxTextCtrl( parent, ID_AUTO_HQRS_HQR, _("1200"), wxDefaultPosition, wxSize(40,-1), 0 );
++    item24->Add( item29, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxStaticText *item30 = new wxStaticText( parent, ID_AUTO_HQRS_HQR_HELP, 
++        _("( 400 for 12h online,\n"
++        "  1200 for 24h online...\n"
++        "must be between 300 & 3000 )"),
++        wxDefaultPosition, wxDefaultSize, 0 );
++    item24->Add( item30, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item22->Add( item24, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item20->Add( item22, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item19->Add( item20, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
++
++    item0->Add( item19, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    if (set_sizer)
++    {
++        parent->SetAutoLayout( TRUE );
++        parent->SetSizer( item0 );
++        if (call_fit)
++        {
++            item0->Fit( parent );
++            item0->SetSizeHints( parent );
++        }
++    }
++    
++    return item0;
++}
++
++wxSizer *RazorPreferences( wxWindow *parent, bool call_fit, bool set_sizer )
++{
++    wxBoxSizer *item0 = new wxBoxSizer( wxVERTICAL );
++
++    wxNotebook *item2 = new wxNotebook( parent, ID_RAZOR_NOTEBOOK, wxDefaultPosition, wxDefaultSize, 0 );
++    wxNotebookSizer *item1 = new wxNotebookSizer( item2 );
++
++    wxPanel *item3 = new wxPanel( item2, -1 );
++    RazorSourcesTab( item3, FALSE );
++    item2->AddPage( item3, _("Razor Sources") );
++
++    wxPanel *item4 = new wxPanel( item2, -1 );
++    DynUploadTab( item4, FALSE );
++    item2->AddPage( item4, _("Dynamic Upload") );
++
++    wxPanel *item5 = new wxPanel( item2, -1 );
++    AboutTab( item5, FALSE );
++    item2->AddPage( item5, _("About") );
++
++    item0->Add( item1, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxBoxSizer *item6 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxButton *item7 = new wxButton( parent, ID_SAVE_BUTTON, _("Save"), wxDefaultPosition, wxDefaultSize, 0 );
++    item6->Add( item7, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxButton *item8 = new wxButton( parent, ID_QUIT_BUTTON, _("Quit"), wxDefaultPosition, wxDefaultSize, 0 );
++    item6->Add( item8, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    item0->Add( item6, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    if (set_sizer)
++    {
++        parent->SetAutoLayout( TRUE );
++        parent->SetSizer( item0 );
++        if (call_fit)
++        {
++            item0->Fit( parent );
++            item0->SetSizeHints( parent );
++        }
++    }
++    
++    return item0;
++}
++
++wxSizer *AboutTab( wxWindow *parent, bool call_fit, bool set_sizer )
++{
++    wxStaticBox *item1 = new wxStaticBox( parent, -1, _("About Razor") );
++    wxStaticBoxSizer *item0 = new wxStaticBoxSizer( item1, wxVERTICAL );
++
++    wxStaticText *item2 = new wxStaticText( parent, ID_TEXT, _("Razor Version 1a beta 1"), wxDefaultPosition, wxDefaultSize, 0 );
++    item2->SetForegroundColour( *wxRED );
++    item0->Add( item2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item0->Add( 20, 20, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxStaticText *item3 = new wxStaticText( parent, ID_TEXT, 
++        _("Based on xMule 1.4.0\n"
++        "This application is still beta version, so use it at  your\n"
++        "own risk. \n"
++        "Razor is a modification of the original xMule 1.4.0 \n"
++        "and offers new functionnality. Please feel free to tell us\n"
++        "what you think about it. "),
++        wxDefaultPosition, wxDefaultSize, 0 );
++    item0->Add( item3, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item0->Add( 20, 20, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxStaticText *item4 = new wxStaticText( parent, ID_TEXT, _("The Razor Team :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item0->Add( item4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxStaticText *item5 = new wxStaticText( parent, ID_TEXT, 
++        _("MikaelB\n"
++        "Tuxella"),
++        wxDefaultPosition, wxDefaultSize, 0 );
++    item5->SetForegroundColour( *wxBLUE );
++    item0->Add( item5, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxStaticText *item6 = new wxStaticText( parent, ID_TEXT, _("See you on the Razor official IRC chan :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item0->Add( item6, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxStaticText *item7 = new wxStaticText( parent, ID_TEXT, _("#mod-razor @ random.irc.kewl.org"), wxDefaultPosition, wxDefaultSize, 0 );
++    item7->SetForegroundColour( *wxBLUE );
++    item0->Add( item7, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    if (set_sizer)
++    {
++        parent->SetAutoLayout( TRUE );
++        parent->SetSizer( item0 );
++        if (call_fit)
++        {
++            item0->Fit( parent );
++            item0->SetSizeHints( parent );
++        }
++    }
++    
++    return item0;
++}
++
++wxSizer *DynUploadTab( wxWindow *parent, bool call_fit, bool set_sizer )
++{
++    wxBoxSizer *item0 = new wxBoxSizer( wxVERTICAL );
++
++    wxBoxSizer *item1 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticBox *item3 = new wxStaticBox( parent, -1, _("Dynamic Upload") );
++    wxStaticBoxSizer *item2 = new wxStaticBoxSizer( item3, wxVERTICAL );
++
++    wxFlexGridSizer *item4 = new wxFlexGridSizer( 1, 0, 0 );
++
++    wxCheckBox *item5 = new wxCheckBox( parent, ID_ENABLE_DYNUPLOAD, _("Enable Dynamic Upload "), wxDefaultPosition, wxDefaultSize, 0 );
++    item4->Add( item5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxStaticBox *item7 = new wxStaticBox( parent, -1, _("Setup Dynamic Upload") );
++    wxStaticBoxSizer *item6 = new wxStaticBoxSizer( item7, wxVERTICAL );
++
++    wxFlexGridSizer *item8 = new wxFlexGridSizer( 1, 0, 0 );
++
++    wxBoxSizer *item9 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticText *item10 = new wxStaticText( parent, ID_TEXT, _("Ping URL :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item9->Add( item10, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxTextCtrl *item11 = new wxTextCtrl( parent, ID_PING_URL, wxT(""), wxDefaultPosition, wxSize(200,-1), 0 );
++    item9->Add( item11, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    item8->Add( item9, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxBoxSizer *item12 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticText *item13 = new wxStaticText( parent, ID_TEXT, _("Response :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item12->Add( item13, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxTextCtrl *item14 = new wxTextCtrl( parent, ID_RESPONSE_VALUE, wxT(""), wxDefaultPosition, wxSize(30,-1), 0 );
++    item12->Add( item14, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    wxStaticText *item15 = new wxStaticText( parent, ID_TEXT, _("(1 [fast] to 20 [slow])"), wxDefaultPosition, wxDefaultSize, 0 );
++    item12->Add( item15, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    item8->Add( item12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    wxBoxSizer *item16 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxStaticText *item17 = new wxStaticText( parent, ID_TEXT, _("Ping :"), wxDefaultPosition, wxDefaultSize, 0 );
++    item16->Add( item17, 0, wxALIGN_BOTTOM|wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
++
++    item8->Add( item16, 0, wxALIGN_BOTTOM|wxALL, 5 );
++
++    wxBoxSizer *item18 = new wxBoxSizer( wxHORIZONTAL );
++
++    wxString strs19[] = 
++    {
++        _("Low"), 
++        _("Medium"), 
++        _("High")
++    };
++    wxRadioBox *item19 = new wxRadioBox( parent, ID_PING_RADIO, wxT(""), wxDefaultPosition, wxDefaultSize, 3, strs19, 3, wxNO_BORDER|wxRA_SPECIFY_COLS );
++    item18->Add( item19, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
++
++    item8->Add( item18, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
++
++    item6->Add( item8, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
++
++    item4->Add( item6, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    item2->Add( item4, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    item1->Add( item2, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    item0->Add( item1, 0, wxALIGN_CENTRE|wxALL, 5 );
++
++    if (set_sizer)
++    {
++        parent->SetAutoLayout( TRUE );
++        parent->SetSizer( item0 );
++        if (call_fit)
++        {
++            item0->Fit( parent );
++            item0->SetSizeHints( parent );
++        }
++    }
++    
++    return item0;
++}
++
++// Implement menubar functions
++
++// Implement toolbar functions
++
++// Implement bitmap functions
++
++
++// End of generated file
+diff -Nur xmule-1.4.0/src/RazorPreferencesDlg_wdr.h xmule-1.4.0-razor/src/RazorPreferencesDlg_wdr.h
+--- xmule-1.4.0/src/RazorPreferencesDlg_wdr.h	1970-01-01 01:00:00.000000000 +0100
++++ xmule-1.4.0-razor/src/RazorPreferencesDlg_wdr.h	2003-06-04 09:48:23.000000000 +0200
+@@ -0,0 +1,70 @@
++//------------------------------------------------------------------------------
++// Header generated by wxDesigner from file: RazorPreferencesDlg.wdr
++// Do not modify this file, all changes will be lost!
++//------------------------------------------------------------------------------
++
++#ifndef __WDR_RazorPreferencesDlg_H__
++#define __WDR_RazorPreferencesDlg_H__
++
++#ifdef __GNUG__
++    #pragma interface "RazorPreferencesDlg_wdr.h"
++#endif
++
++// Include wxWindows' headers
++
++#ifndef WX_PRECOMP
++    #include <wx/wx.h>
++#endif
++
++#include <wx/image.h>
++#include <wx/statline.h>
++#include <wx/spinbutt.h>
++#include <wx/spinctrl.h>
++#include <wx/splitter.h>
++#include <wx/listctrl.h>
++#include <wx/treectrl.h>
++#include <wx/notebook.h>
++#include <wx/grid.h>
++
++// Declare window functions
++
++#define ID_ENABLE_AUTO_NNS 12745
++#define ID_AUTO_NNS_TIMER_TEXT 12746
++#define ID_AUTO_NNS_TIMER 12747
++#define ID_AUTO_NNS_TIMER_HELP 12748
++#define ID_ENABLE_AUTO_FQS 12749
++#define ID_AUTO_FQS_TIMER_TEXT 12750
++#define ID_AUTO_FQS_TIMER 12751
++#define AUTO_FQS_TIMER_HELP 12752
++#define ID_ENABLE_AUTO_HQRS 12753
++#define ID_AUTO_HQRS_TIMER_TEXT 12754
++#define ID_AUTO_HQRS_TIMER 12755
++#define ID_AUTO_HQRS_TIMER_HELP 12756
++#define ID_AUTO_HQRS_HQR_TEXT 12757
++#define ID_AUTO_HQRS_HQR 12758
++#define ID_AUTO_HQRS_HQR_HELP 12759
++wxSizer *RazorSourcesTab( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
++
++#define ID_RAZOR_NOTEBOOK 10000
++#define ID_SAVE_BUTTON 5147
++#define ID_QUIT_BUTTON 5148
++wxSizer *RazorPreferences( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
++
++#define ID_TEXT 10001
++wxSizer *AboutTab( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
++
++#define ID_ENABLE_DYNUPLOAD 10002
++#define ID_PING_URL 10003
++#define ID_RESPONSE_VALUE 10004
++#define ID_PING_RADIO 10005
++wxSizer *DynUploadTab( wxWindow *parent, bool call_fit = TRUE, bool set_sizer = TRUE );
++
++// Declare menubar functions
++
++// Declare toolbar functions
++
++// Declare bitmap functions
++
++#endif
++
++// End of generated file
+diff -Nur xmule-1.4.0/src/resource.h xmule-1.4.0-razor/src/resource.h
+--- xmule-1.4.0/src/resource.h	2003-05-01 00:16:50.000000000 +0200
++++ xmule-1.4.0-razor/src/resource.h	2003-06-04 09:49:10.000000000 +0200
+@@ -1719,6 +1719,26 @@
+ #define IDC_STATIC_FILTER               2445
+ #define IDC_LAST_SEEN_LABEL             2446
+ 
++  /* Razor 1a - Modif by MikaelB
++     IDS codes for :
++      - Drop No Needed Sources now
++      - Drop Full Queue Sources now
++      - Drop High Queue Rating Sources now
++      - Clean Up Sources now ( drop NNS, FQS and HQRS )
++      - Swap every A4AF to this file now
++      - Swap every A4AF to this file ( AUTO )
++      - Swap every A4AF to any other file now   */
++
++      #define IDS_DROP_NO_NEEDED_SOURCES           5721
++      #define IDS_DROP_FULL_QUEUE_SOURCES          5722
++      #define IDS_DROP_HIGH_QUEUE_RATING_SOURCES   5723
++      #define IDS_CLEAN_UP_SOURCES                 5724
++      #define IDS_SWAP_A4AF_TO_THIS                5725
++      #define IDS_SWAP_A4AF_TO_THIS_AUTO           5726
++      #define IDS_SWAP_A4AF_TO_ANY_OTHER           5727
++
++  /* End modif */
++
+ // Next default values for new objects
+ // 
+ #ifdef APSTUDIO_INVOKED
+diff -Nur xmule-1.4.0/src/strings.en xmule-1.4.0-razor/src/strings.en
+--- xmule-1.4.0/src/strings.en	2003-05-15 00:40:00.000000000 +0200
++++ xmule-1.4.0-razor/src/strings.en	2003-06-04 09:49:18.000000000 +0200
+@@ -909,5 +909,26 @@
+ {IDS_SOFTFILES,           "Soft File Limit"},
+ {IDS_HARDFILES,           "Hard File Limit"},
+ {IDS_FILTER,              "Filter"},
++
++  /* Razor 1a - Modif by MikaelB
++     String definitions ( english ) for :
++      - Drop No Needed Sources now
++      - Drop Full Queue Sources now
++      - Drop High Queue Rating Sources now
++      - Clean Up Sources now ( drop NNS, FQS and HQRS )
++      - Swap every A4AF to this file now
++      - Swap every A4AF to this file ( AUTO )
++      - Swap every A4AF to any other file now   */
++
++      {IDS_DROP_NO_NEEDED_SOURCES,           "Drop No Needed Sources now"},
++      {IDS_DROP_FULL_QUEUE_SOURCES,          "Drop Full Queue Sources now"},
++      {IDS_DROP_HIGH_QUEUE_RATING_SOURCES,   "Drop High Queue Rating Sources now"},
++      {IDS_CLEAN_UP_SOURCES,                 "Clean Up Sources now (NNS, FQS and HQRS)"},
++      {IDS_SWAP_A4AF_TO_THIS,                "Swap every A4AF to this file now"},
++      {IDS_SWAP_A4AF_TO_THIS_AUTO,           "Swap every A4AF to this file (AUTO)"},
++      {IDS_SWAP_A4AF_TO_ANY_OTHER,           "Swap every A4AF to any other file now"},
++
++  /* End modif */
++  
+ };
+ 
+diff -Nur xmule-1.4.0/src/updownclient.h xmule-1.4.0-razor/src/updownclient.h
+--- xmule-1.4.0/src/updownclient.h	2003-05-25 18:27:59.000000000 +0200
++++ xmule-1.4.0-razor/src/updownclient.h	2003-06-04 09:49:24.000000000 +0200
+@@ -213,7 +213,7 @@
+ 	void			ProcessBlockPacket(char* packet, uint32 size, bool packed = false);
+ 	uint32			CalculateDownloadRate();
+ 	uint16			GetAvailablePartCount();
+-	bool			SwapToAnotherFile(bool bIgnoreNoNeeded = false);
++	//			SwapToAnotherFile(bool bIgnoreNoNeeded = false);   Razor 1a - Modif by MikaelB 
+ 	void			UDPReaskACK(uint16 nNewQR);
+ 	void			UDPReaskFNF();
+ 	void			UDPReaskForDownload();
+@@ -328,15 +328,54 @@
+ 
+ 	CList<int,int>									 m_AvarageDDR_list;
+ 	CTypedPtrList<CPtrList, Pending_Block_Struct*>	 m_PendingBlocks_list;
++ // CTypedPtrList<CPtrList, CPartFile*>	 m_OtherRequests_list;    ---> See Razor 1a modif  : becomes public
+ 	CTypedPtrList<CPtrList, Requested_Block_Struct*> m_DownloadBlocks_list;
+-	CTypedPtrList<CPtrList, CPartFile*>				 m_OtherRequests_list;
+ 	CTypedPtrList<CPtrList, CPartFile*>				 m_OtherNoNeeded_list;
+ 
+ 	static CBarShader s_StatusBar;
+ 	// chat
+ 	uint8 m_byChatstate;
+ 	CString m_strComment;
+-	int8 m_iRate; 
++	int8 m_iRate;
++
++  /* Razor 1a - Modif by MikaelB */
++  
++      public:
++
++          /* m_OtherRequests_list --> public instead of private */
++          CTypedPtrList<CPtrList, CPartFile*>	 m_OtherRequests_list;
++
++          /* IsValidSource function
++           * @return true id it's valid source
++           */
++          bool IsValidSource() const
++          {
++            return m_ValidSource;
++          };
++
++          /* SetValidSource function
++           * @param boolean - set valid source
++           */
++          void SetValidSource(bool in)
++          {
++            m_ValidSource = in;
++          };
++
++          /* SwapToThisFile function
++           * @param CPartFile* - the file
++           */
++          void SwapToThisFile(CPartFile* file);
++
++          /* SwapToAnotherFile function */
++          bool SwapToAnotherFile();
++
++      private:
++      
++          /* valid source attribute */
++          bool m_ValidSource;
++
++  /* End modif */
++  
+ };
+ 
+ #endif
+diff -Nur xmule-1.4.0/src/xmuleDlg.cpp xmule-1.4.0-razor/src/xmuleDlg.cpp
+--- xmule-1.4.0/src/xmuleDlg.cpp	2003-05-26 23:57:25.000000000 +0200
++++ xmule-1.4.0-razor/src/xmuleDlg.cpp	2003-06-04 09:50:16.000000000 +0200
+@@ -40,6 +40,7 @@
+ 
+ #include "mmMultiButton.h"
+ #include "muuli_wdr.h"
++#include "RazorPreferencesDlg.h"
+ #include <wx/splash.h>
+ #include <wx/toolbar.h>
+ 
+@@ -72,6 +73,14 @@
+   EVT_TOOL(ID_BUTTONSEARCH,CxmuleDlg::btnSearch)
+   EVT_TOOL(ID_BUTTONTRANSFER,CxmuleDlg::btnTransfer)
+   EVT_TOOL(ID_BUTTONPREFERENCES,CxmuleDlg::btnPreferences)
++
++  /* Razor 1a - Modif by MikaelB
++     Razor button Event */
++     
++      EVT_TOOL(ID_BUTTONRAZORPREFS,CxmuleDlg::btnRazorPrefs)
++
++  /* End modif */
++
+   EVT_TOOL(ID_BUTTONCONNECT,CxmuleDlg::OnBnConnect)
+   EVT_TOOL(ID_BUTTONSHARED,CxmuleDlg::OnBnShared)
+   EVT_TOOL(ID_BUTTONSTATISTICS,CxmuleDlg::OnBnStats)
+@@ -84,6 +93,20 @@
+   EVT_CLOSE(CxmuleDlg::OnClose)
+ END_EVENT_TABLE()
+ 
++/* Razor 1a - Modif by MikaelB
++   Bar size definition, to avoid bar dispaying's bug */
++
++#define STATE_CONNECTED 1
++#define STATE_NORMAL    0
++   
++ int bar_x1;
++ int bar_y1;
++ int bar_x2;
++ int bar_y2;
++ int state;
++
++/* End modif */
++
+ 
+ void CxmuleDlg::OnDnsDone(wxCommandEvent& evt)
+ {
+@@ -110,11 +133,14 @@
+   return;
+ }
+ 
++/* Razor 1a - Modif by MikaelB */
++
+ void muleDefaultToolbar( wxToolBar *parent )
+ {
+     parent->SetMargins( 2, 2 );
+-    
+-    parent->AddTool( ID_BUTTONCONNECT, _("Connect"),connButImg( 0 ), _("Connect to server") );
++
++    // First of all, create bar with the Disconnect button
++    parent->AddTool( ID_BUTTONCONNECT, _("Disconnect"),connButImg( 0 ), _("Connect to server") );
+     parent->AddSeparator();
+     parent->AddCheckTool( ID_BUTTONSERVERS, _("Servers"),xmuleDlgImages( 3 ), wxNullBitmap,  _("Server list") );
+     parent->AddCheckTool( ID_BUTTONTRANSFER, _("Transfer"),xmuleDlgImages( 1 ), wxNullBitmap, _("File transfer") );
+@@ -124,11 +150,26 @@
+     parent->AddCheckTool( ID_BUTTONIRC, _("IRC"),xmuleDlgImages( 19 ), wxNullBitmap, _("Internet Relay Chat")); 
+     parent->AddCheckTool( ID_BUTTONSTATISTICS, _("Statistics"),xmuleDlgImages( 4 ), wxNullBitmap, _("Show current statistics"));
+     parent->AddSeparator();
++    parent->AddTool( ID_BUTTONRAZORPREFS, _("Razor Prefs"),xmuleDlgImages( 24 ), _("Modify Razor preferences") );
+     parent->AddTool( ID_BUTTONPREFERENCES, _("Preferences"),xmuleDlgImages( 5 ), _("Modify preferences") );
+-    
+     parent->Realize();
++
++    // Save this bar size
++    parent->GetSize(&bar_x2, &bar_y2);
++    state = STATE_CONNECTED;
++
++    // Then delete the disconnect button and add at its place the connect button
++    parent->DeleteTool(ID_BUTTONCONNECT);
++    parent->InsertTool(0,ID_BUTTONCONNECT,GetResString(IDS_MAIN_BTN_CONNECT),connButImg(0), GetResString(IDS_CONNECTTOANYSERVER));
++    parent->Realize();
++
++    // Save this new bar size
++    parent->GetSize(&bar_x1, &bar_y1);
++    state = STATE_NORMAL;
+ }
+ 
++/* End modif */
++
+ // CxmuleDlg Dialog
+ #include <signal.h>
+ 
+@@ -138,8 +179,18 @@
+ #define CLOSEBOX 0
+ #endif
+ 
++#define RAZOR_TITLE "Razor 1a beta (based on xMule 1.4.0)"
++#define RAZOR_SMALL_TITLE "Razor 1a beta 1"
++
++
+ CxmuleDlg::CxmuleDlg(wxWindow* pParent, wxString title) 
+-  : wxFrame(pParent,CxmuleDlg::IDD,title,wxDefaultPosition,wxSize(800,520),
++  : wxFrame(pParent,CxmuleDlg::IDD,
++
++           /* Razor 1a - Modif by MikaelB
++              Set main window title */
++                 RAZOR_TITLE,
++              
++      wxDefaultPosition,wxSize(800,520),
+ 	    wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxDIALOG_NO_PARENT|wxTHICK_FRAME|wxMINIMIZE_BOX|wxMAXIMIZE_BOX|CLOSEBOX)
+ {
+   m_app_state=APP_STATE_STARTING;
+@@ -222,7 +273,7 @@
+ 					    wxSize(70,70),mmMB_AUTODRAW);
+   buttonToolbar->Add(tikutest,0,wxALIGN_RIGHT|wxALL,5);
+ #endif
+-  wxToolBar* newbar=new wxToolBar(this,-1,wxDefaultPosition,wxDefaultSize,wxTB_HORIZONTAL|wxNO_BORDER|wxTB_TEXT);
++  wxToolBar* newbar=new wxToolBar(this,-1,wxDefaultPosition,wxDefaultSize,wxTB_DOCKABLE|wxTB_HORIZONTAL|wxNO_BORDER|wxTB_TEXT);
+   muleDefaultToolbar(newbar);
+   buttonToolbar->Add(newbar,0,wxGROW|wxALL,5);
+   buttonToolbar->Layout();
+@@ -277,6 +328,42 @@
+ 	sourceTrayIconGrey= (HICON)LoadImage(AfxGetInstanceHandle() ,MAKEINTRESOURCE(IDR_TRAYICON_GREY),IMAGE_ICON,16,16,LR_DEFAULTCOLOR);
+ 	usericon = (HICON)::LoadImage(AfxGetInstanceHandle(),MAKEINTRESOURCE(IDI_USER),IMAGE_ICON,16,16,0);
+ #endif
++
++/* Razor 1a - Modif by MikaelB
++   Set client size and position */
++
++  // Create a config base for saving razor preferences
++  wxConfigBase *config = wxConfigBase::Get();
++  // If config haven't been created
++  if (config == NULL)
++    // exit without saving
++    return;
++
++  // The section where to save in in file
++  CString section = "/Razor_Preferences/";
++
++  // Main window location and size
++  int x1,y1,x2,y2;
++
++
++  // Saving window size and position
++  x1 = config->Read(_T(section+"MAIN_X_POS"), 0l);
++  y1 = config->Read(_T(section+"MAIN_Y_POS"), 0l);
++  x2 = config->Read(_T(section+"MAIN_X_SIZE"), 0l);
++  y2 = config->Read(_T(section+"MAIN_Y_SIZE"), 0l);
++
++  // If x1 and y1 != 0
++  if((x1 != 0) && (y1 != 0))
++    // Redefine location
++    Move(x1,y1);
++   
++  // If x2 and y2 != 0
++  if((x2 != 0) && (y2 != 0))
++    // Redefine size
++    SetClientSize(x2,y2);
++
++/* End modif */     
++
+ }
+ 
+ class QueryDlg : public wxDialog {
+@@ -359,6 +446,7 @@
+       lastbutton=ID_BUTTONSTATISTICS;
+       SetActiveDialog(statisticswnd);
+     }
++    UpdateBar();
+ }
+ 
+ void CxmuleDlg::OnBnShared(wxEvent& ev)
+@@ -374,6 +462,7 @@
+       lastbutton=ID_BUTTONSHARED;
+       SetActiveDialog(sharedfileswnd);
+     }
++    UpdateBar();
+ }
+ 
+ void CxmuleDlg::btnServers(wxEvent& ev)
+@@ -389,6 +478,7 @@
+       lastbutton=ID_BUTTONSERVERS;
+       SetActiveDialog(serverwnd);
+     }
++    UpdateBar();
+ }
+ 
+ void CxmuleDlg::btnSearch(wxEvent& ev)
+@@ -404,6 +494,7 @@
+       lastbutton=ID_BUTTONSEARCH;
+       SetActiveDialog(searchwnd);
+     }
++    UpdateBar();
+ 
+ }
+ 
+@@ -420,6 +511,7 @@
+       lastbutton=ID_BUTTONTRANSFER;
+       SetActiveDialog(transferwnd);
+     }
++    UpdateBar();
+ }
+ 
+ void CxmuleDlg::OnBnMessages(wxEvent& ev)
+@@ -435,14 +527,27 @@
+       lastbutton=ID_BUTTONMESSAGES;
+       SetActiveDialog(chatwnd);
+     }
++    UpdateBar();
+ }
+ 
+ void CxmuleDlg::btnPreferences(wxEvent& ev)
+ {
+   // do preferences
+   preferenceswnd->ShowModal();
++  UpdateBar();
++}
++
++/* Razor 1a - Modif by MikaelB
++   Razor prefs button event definition */
++   
++void CxmuleDlg::btnRazorPrefs(wxEvent& ev)
++{
++  RazorPrefs* razorprefswnd = new RazorPrefs(this);
++  UpdateBar();
+ }
+ 
++/* End modif */
++
+ #include "UDPSocket.h"
+ #include <errno.h>
+ void CxmuleDlg::socketHandler(wxSocketEvent& event)
+@@ -558,6 +663,34 @@
+ 	::DestroyIcon(usericon);
+ #endif
+ 
++/* Razor 1a - Modif by MikaelB
++   Save client size and position */
++
++  // Create a config base for saving razor preferences
++  wxConfigBase *config = wxConfigBase::Get();
++  // If config haven't been created
++  if (config == NULL)
++    // exit without saving
++    return;
++
++  // The section where to save in in file
++  CString section = "/Razor_Preferences/";
++
++  // Main window location and size
++  int x1,y1,x2,y2;
++  GetPosition(&x1, &y1);
++  GetSize(&x2,&y2);
++  
++  // Saving window size and position
++  config->Write(_T(section+"MAIN_X_POS"), (long) x1);
++  config->Write(_T(section+"MAIN_Y_POS"), (long) y1);
++  config->Write(_T(section+"MAIN_X_SIZE"), (long) x2);
++  config->Write(_T(section+"MAIN_Y_SIZE"), (long) y2);
++
++  config->Flush(true);
++
++/* End modif */    
++  
+ }
+ #if 0
+ void CxmuleDlg::DoDataExchange(CDataExchange* pDX){
+@@ -636,7 +769,7 @@
+ 
+ 	//set title
+ 	char buffer[50];
+-	sprintf(buffer,"xMule v%s",VERSION);
++	sprintf(buffer,RAZOR_TITLE,VERSION);    /* Changed title */
+ 	SetWindowText(buffer);
+ 
+ 	//START - enkeyDEV(kei-kun) -TaskbarNotifier-
+@@ -787,6 +920,8 @@
+   else
+     //disconnect if currently connected
+     CloseConnection();
++
++  UpdateBar();  
+ }
+ 
+ void CxmuleDlg::ResetLog(){
+@@ -923,9 +1058,16 @@
+     //butn->SetDefaultBitmap(connButImg(1));
+     // we can't modify existing button. so we delete the old and create a new one
+     if(changed) {
+-      m_wndToolbar->DeleteTool(ID_BUTTONCONNECT);
++
++       /* Razor 1a - Modif by MikaelB */
++       
++      m_wndToolbar->DeleteTool(ID_BUTTONCONNECT);         
+       m_wndToolbar->InsertTool(0,ID_BUTTONCONNECT,GetResString(IDS_MAIN_BTN_DISCONNECT),connButImg(1),GetResString(IDS_MAIN_BTN_DISCONNECT_TOOLTIP));
++      state = STATE_CONNECTED;
+       m_wndToolbar->Realize();
++      UpdateBar();
++
++      /* End modif */
+     }
+ 
+     /*
+@@ -981,7 +1123,16 @@
+ 	m_wndToolbar->DeleteTool(ID_BUTTONCONNECT);
+ 	m_wndToolbar->InsertTool(0,ID_BUTTONCONNECT,GetResString(IDS_MAIN_BTN_CONNECT),connButImg(0),
+ 				 GetResString(IDS_CONNECTTOANYSERVER));
+-	m_wndToolbar->Realize();
++
++  /* Razor 1a - Modif by MikaelB
++      Toolbar gets its original size */
++  
++      state = STATE_NORMAL;      
++      m_wndToolbar->Realize();
++      UpdateBar();
++      
++  /* End modif */
++            
+ 	__oldstatus=STAT_NOTCONNECTED;
+       }
+       /*
+@@ -1037,9 +1188,9 @@
+ 	UpdateTrayIcon(DownRateProcent);
+ 
+ 	if (theApp.serverconnect->IsConnected()) 
+-		sprintf(buffer2,wxString(_("xMule (%s | ")+GetResString(IDS_CONNECTED)+")").GetData(),buffer);
++		sprintf(buffer2,wxString(_("Razor (%s | ")+GetResString(IDS_CONNECTED)+")").GetData(),buffer);    /* Changed title */
+ 	else
+-		sprintf(buffer2,wxString(_("xMule (%s | ")+GetResString(IDS_DISCONNECTED)+")").GetData(),buffer);
++		sprintf(buffer2,wxString(_("Razor (%s | ")+GetResString(IDS_DISCONNECTED)+")").GetData(),buffer);   /* Changed title */
+ 
+ 	m_wndTaskbarNotifier->TraySetToolTip(buffer2);
+ 
+@@ -1239,7 +1390,7 @@
+ 		flagsC=MF_STRING || MF_DISABLED; flagsD=MF_STRING;
+ 	}
+ 
+-	trayPopup.AddMenuTitle((CString)"xMule v"+(CString)VERSION);
++	trayPopup.AddMenuTitle((CString)"xMule v"+(CString)VERSION+RAZOR_SMALL_TITLE);   /* Changed title */
+ 
+ 	trayPopup.AppendMenu(	MF_STRING ,MP_RESTORE, GetResString(IDS_MAIN_POPUP_RESTORE) ); 
+ 	trayPopup.SetDefaultItem(MP_RESTORE);
+@@ -1455,3 +1606,14 @@
+     return;
+   CQueueListCtrl::QueueUpdateTimer();
+ }
++
++/* Razor */
++void CxmuleDlg::UpdateBar()
++{
++    int x,y;
++    GetSize(&x,&y);
++    if((state == STATE_NORMAL) && ((x != bar_x1) || (y != bar_y1)))
++      m_wndToolbar->SetSize(bar_x1,bar_y1);
++    else if((state == STATE_CONNECTED) && ((x != bar_x2) || (y != bar_y2)))
++      m_wndToolbar->SetSize(bar_x2,bar_y2);
++}  
+diff -Nur xmule-1.4.0/src/xmuleDlg.h xmule-1.4.0-razor/src/xmuleDlg.h
+--- xmule-1.4.0/src/xmuleDlg.h	2003-05-27 00:00:07.000000000 +0200
++++ xmule-1.4.0-razor/src/xmuleDlg.h	2003-06-04 09:49:59.000000000 +0200
+@@ -93,6 +93,7 @@
+ 	CTransferWnd*	transferwnd;
+ 	CServerWnd*		serverwnd;
+ 	CPreferencesDlg* preferenceswnd;
++  
+ 	//CPreferencesDlg	preferenceswnd;
+ 	CSharedFilesWnd*	sharedfileswnd;
+ 	CSearchDlg*		searchwnd;
+@@ -121,6 +122,14 @@
+ 	void btnSearch(wxEvent& ev);
+ 	void btnTransfer(wxEvent& ev);
+ 	void btnPreferences(wxEvent& ev);
++
++  /* Razor 1a - Modif by MikaelB
++   Razor prefs button event */
++
++      void btnRazorPrefs(wxEvent& ev);
++
++  /* End modif */
++  
+ 	void OnBnShared(wxEvent& ev);
+ 	void OnBnStats(wxEvent& ev);
+ 	void OnBnMessages(wxEvent& ev);
+@@ -198,6 +207,8 @@
+ 	void CloseConnection();
+ 	void RestoreWindow();
+ 	void UpdateTrayIcon(int procent);
++  void UpdateBar();
++
+ };
+ 
+ 

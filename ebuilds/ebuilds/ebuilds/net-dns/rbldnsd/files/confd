@@ -1,0 +1,8 @@
+#
+# options for rbldnsd
+#
+#OPTIONS="-u named -r /var/dnsbl/njabl -t 21600 -c 60 -P 530\
+#	-l querylog -p /var/run/rbldnsd.pid \
+#	dnsbl.njabl.org:ip4set:dnsbl.njabl.org.auto \
+#	dnsbl.njabl.org:generic:dnsbl.njabl.org.generic \
+#	dnsbl.njabl.org:ip4set:dnsbl.njabl.org.data"

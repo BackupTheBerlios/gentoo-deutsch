@@ -1,0 +1,7 @@
+MD5 e0b3e14818ac39e1a23cb63e63ccb07e Manifest~ 358
+MD5 1ab63d5cc311422e85a89c48be9c16e4 nvidia-kernel-1.0.4363-r4.ebuild 4031
+MD5 e5c6423a145ac2234bc834f3817ec450 ChangeLog~ 8723
+MD5 b1a90ce2f62741ea3f6e3e20fa2e3892 ChangeLog 9077
+MD5 cf7fb129870a8ddffe73c19fb0635aee files/nvidia-4363-suspendhack.diff 407
+MD5 56ebaa3ba92e9db848baea746a6aef1a files/digest-nvidia-kernel-1.0.4363-r3 74
+MD5 56ebaa3ba92e9db848baea746a6aef1a files/digest-nvidia-kernel-1.0.4363-r4 74

@@ -1,0 +1,20 @@
+# /etc/conf.d/vdr.mplayer:
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/media-video/vdrplugin-mplayer/files/Attic/vdr.mplayer,v 1.1 2003/08/22 15:27:34 fow0ryl Exp $
+
+# Global config file for vdr rc-scripts
+
+# MPlayer is called through a skript called "mplayer.sh" with the filename to
+# play as first argument and the phrase SLAVE as second argument if SlaveMode 
+# is enabled.
+# The skript has to call MPlayer with all the necessary options.
+#MPLAYER="/usr/bin/mplayer.sh"
+
+# The default mount script is "mount.sh". This script is called from the
+# plugin with 2 options on commandline. The first is
+# one of mount/unmount/eject/status and gives the action to perform. The
+# second one is the base directory as defined in "mplayersources.conf".
+# The script must return the exit code 0 if the action was
+# successfull and 1 if the action failed (see the comments in the example
+# "mount.sh" script which comes with the archive).
+#MOUNT="/usr/bin/mount.sh"
+

@@ -1,0 +1,14 @@
+# ChangeLog for net-misc/proxy
+# Copyright 2002 Alexander Holler
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/net-misc/proxy/Attic/ChangeLog,v 1.1 2003/08/22 15:27:33 fow0ryl Exp $
+
+*proxy-2.2.4 (17 Jul 2002)
+
+  18 Feb 2003; Alexander Holler <holler@ahsoftware.de>
+  
+  Changed Slot to 0.
+  Added Keywords.
+
+  17 Jul 2002; Alexander Holler <holler@ahsoftware.de>
+
+  Initial checkin of this package.

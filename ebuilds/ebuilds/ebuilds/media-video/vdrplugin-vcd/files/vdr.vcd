@@ -1,0 +1,10 @@
+# /etc/conf.d/vdr.vcd:
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/media-video/vdrplugin-vcd/files/Attic/vdr.vcd,v 1.1 2003/08/22 15:27:34 fow0ryl Exp $
+
+# Global config file for vdr rc-scripts
+
+# A command line option "vcd" has been introduced to select another drive
+# than the default '/dev/cdrom' for VideoCD replay; e.g. to select your DVD
+# device '/dev/dvd' use VCD="/dev/dvd"
+#VCD="/dev/hdd"
+

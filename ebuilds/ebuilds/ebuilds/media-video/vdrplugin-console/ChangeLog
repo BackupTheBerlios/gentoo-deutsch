@@ -1,0 +1,8 @@
+# ChangeLog for media-video/vdr-clock
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/media-video/vdrplugin-console/Attic/ChangeLog,v 1.1 2003/08/22 15:27:35 fow0ryl Exp $
+
+*vdrplugin-console-0.5.1 (24 Feb 2003)
+
+  15 Jun 2003; H.Ryll <henning.ryll@web.de>
+  moved to vdr 1.2.0, new lib path

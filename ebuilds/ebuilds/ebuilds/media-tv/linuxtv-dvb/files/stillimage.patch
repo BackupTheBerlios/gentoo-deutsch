@@ -1,0 +1,59 @@
+--- test_stillimage.c.org	Sun May 11 03:33:00 2003
++++ test_stillimage.c	Sun May 11 03:24:40 2003
+@@ -1,4 +1,5 @@
+ /* display single iframes as stillimages
++ * okx(at)gmx(dot)de added time argument and more help  May/2003 
+  * iframes can be created with the 'convert' tool from imagemagick
+  * and mpeg2encode from ftp.mpeg.org, and must have a supported
+  * size, e.g. 702x576:
+@@ -19,7 +20,7 @@
+ 
+ 
+ static
+-const char *usage_string = "\n\tusage: %s <still.mpg>\n\n";
++const char *usage_string = "\n\tusage: %s <still.mpg> <display time (s)>\n\n\n\t if you want another videodev than the first, set the enviroment variable VIDEODEV\n\t  e.g.[user@linux]# export VIDEODEV=\"/dev/dvb/adapter1/video1\" \n\n";
+ 
+ 
+ int main (int argc, char **argv)
+@@ -29,12 +30,18 @@
+ 	struct stat st;
+ 	struct video_still_picture sp;
+ 	char *videodev = "/dev/dvb/adapter0/video0";
+-
+-	if (argc < 2) {
++        int tsec = 10;	
++	
++	char *var_time = (argv[2]);
++	
++	if (argc < 3) {
+ 		fprintf (stderr, usage_string, argv[0]);
+ 		return -1;
+ 	}
+-
++	
++	
++	tsec = atoi(var_time);
++	
+ 	if ((filefd = open(argv[1], O_RDONLY)) < 0) {
+ 		perror(argv[1]);
+ 		return -1;
+@@ -42,7 +49,7 @@
+ 
+ 	if (getenv ("VIDEODEV"))
+ 		videodev = getenv("VIDEODEV");
+-
++	
+ 	if ((fd = open(videodev, O_RDWR)) < 0) {
+ 		perror(videodev);
+ 		return -1;
+@@ -66,8 +73,8 @@
+ 		return -1;
+ 	}
+ 
+-	printf("Display image 10 seconds ...\n");
+-	sleep(10);
++	printf("Display image %d seconds ...\n",tsec);
++	sleep(tsec);
+ 	printf("Done.\n");
+ 
+ 	return 0;

@@ -1,0 +1,16 @@
+# ChangeLog for media-video/vdr
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/media-video/vdr-nessy/Attic/ChangeLog,v 1.1 2003/08/22 15:27:34 fow0ryl Exp $
+
+*vdr-nessy-1.1.17 (22 Apr 2003)
+  22 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-nessy-1.1.17.ebuild
+  vdr-nessy added, it is similar to AIO, but no patch instead a full 
+  portion of source code, and because of much changes in vdr source
+  the version hangs a little bit behind ...
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that
+  the comments should well explained and written in clean English. The
+  details about writing correct changelogs are explained in the
+  skel.ChangeLog file which you can find in the root directory of the
+  portage repository.

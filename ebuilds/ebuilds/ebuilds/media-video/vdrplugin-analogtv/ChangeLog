@@ -1,0 +1,17 @@
+# ChangeLog for media-video/vdr-clock
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/media-video/vdrplugin-analogtv/Attic/ChangeLog,v 1.1 2003/08/22 15:27:35 fow0ryl Exp $
+
+*vdrplugin-analogtv-0.9.10 (18 Aug 2003)
+  18 Aug 2003; P.Frank <pfrank@gmx.de>
+  Moved to version 0.9.10
+  No update to vdr-1.2.2.ebuild necessary - no change in patch for vdr
+
+*vdrplugin-analogtv-0.9.8 (18 Aug 2003)
+  18 Aug 2003; P.Frank <pfrank@gmx.de>
+  Moved to version 0.9.8
+
+*vdrplugin-analogtv-0.7.0 (24 Feb 2003)
+
+  15 Jun 2003; H.Ryll <henning.ryll@web.de>
+  moved to vdr 1.2.0, new lib path

@@ -1,0 +1,17 @@
+# /etc/conf.d/vdr.dvd:
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/media-video/vdrplugin-dvd/files/Attic/vdr.dvd,v 1.1 2003/08/22 15:27:34 fow0ryl Exp $
+
+# Global config file for vdr rc-scripts
+
+# The plugin uses libdvdcss to access CSS protected DVDs. The library
+# provides three methods to decrypt the title keys. It is strongly
+# recommended to use the "key" methode, as it will yield the best stability
+# and speed results (Note: doing so might be illegal in some countries).
+# The decryption method can be selected by setting an environment
+# variable before starting vdr:
+#export DVDCSS_METHOD=key
+
+# If your DVD isn't at the default place /dev/dvd
+# please set the current device here
+_EXTRAOPTS="-C/dev/cdrom"
+

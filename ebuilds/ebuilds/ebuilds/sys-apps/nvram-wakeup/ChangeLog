@@ -1,0 +1,17 @@
+# ChangeLog for sys-apps/nvram-wakeup
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/sys-apps/nvram-wakeup/Attic/ChangeLog,v 1.1 2003/08/22 15:27:29 fow0ryl Exp $
+
+*nvram-wakeup-0.90 (04 Mar 2003)
+
+  04 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> nvram-wakeup-0.90.ebuild
+  initial 
+
+  04 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> ChangeLog :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that
+  the comments should well explained and written in clean English. The
+  details about writing correct changelogs are explained in the
+  skel.ChangeLog file which you can find in the root directory of the
+  portage repository.

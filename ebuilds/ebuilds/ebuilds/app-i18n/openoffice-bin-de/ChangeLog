@@ -1,0 +1,8 @@
+# ChangeLog for app-office/openoffice-bin
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/app-i18n/openoffice-bin-de/Attic/ChangeLog,v 1.1 2003/08/22 15:27:26 fow0ryl Exp $
+
+*openoffice-bin-de-1.0.0-r1 (11 Jul 2002)
+
+    11 Jul 2002; C.Rietzschel <cr@daRav.de> openoffice-bin-de-1.0.0-r1.ebuild :
+    only changed everything to take german OO and german spell

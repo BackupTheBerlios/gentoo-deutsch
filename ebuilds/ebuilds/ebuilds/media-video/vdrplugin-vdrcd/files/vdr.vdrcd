@@ -1,0 +1,8 @@
+# /etc/conf.d/vdr.vdrcd:
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/media-video/vdrplugin-vdrcd/files/Attic/vdr.vdrcd,v 1.1 2003/08/22 15:27:34 fow0ryl Exp $
+
+# Global config file for vdr rc-scripts
+
+# The PlugIn has the commandline parameter -c (or --cdDir) see README
+# To use this parm you have to specify an option like this one
+#_EXTRAOPTS="--cdDir /mnt/cdrom --cdDir /mnt/cdrw"

@@ -1,0 +1,6 @@
+MD5 2e848ed07b092f08f3b25730df9c00c1 vdrplugin-mplayer-0.8.0.ebuild 1442
+MD5 c13da6217bb462b6ad14be07c4f59beb vdrplugin-mplayer-0.7.15.ebuild 1404
+MD5 740856ff9cfebd98cf151a951b9a2dbd ChangeLog 348
+MD5 19a3b8d5782fa3f2a1337080178da05c files/vdr.mplayer 947
+MD5 54febb6fdfb0c5ce2d93b8f7bca7d748 files/digest-vdrplugin-mplayer-0.7.15 65
+MD5 d9628cf98ac5867511585a145db1a587 files/digest-vdrplugin-mplayer-0.8.0 64

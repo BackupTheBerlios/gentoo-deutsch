@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 2002 Alexander Holler.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/net-misc/proxy/files/Attic/gentoo_init.d_vncproxy_example,v 1.1 2003/08/22 15:27:33 fow0ryl Exp $
+
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting VNC-Client-Proxy"
+	start-stop-daemon --start --quiet --background --make-pidfile --pidfile /var/run/vncproxy.pid --exec /usr/bin/proxy -- --nodaemon -s 5500 -d 5500 -D destinationHost
+#	start-stop-daemon --start --quiet --background --make-pidfile --pidfile /var/run/vncproxy.pid --exec /usr/bin/proxy --startas /bin/su -- localNobodyUser -c "/usr/bin/proxy --nodaemon -s 5500 -d 5500 -D destinationHost"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping VNC-Client-Proxy"
+        start-stop-daemon --stop --quiet --pidfile /var/run/vncproxy.pid
+        eend $?
+}
