@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-launcher/ChangeLog,v 1.1 2004/06/26 08:48:29 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-launcher/ChangeLog,v 1.2 2004/07/24 22:59:24 austriancoder Exp $
+
+*vdrplugin-launcher-0.0.2a-r1 (25 July 2004)
+
+  25 July 2004; Christian Gmeiner <christian at visual-page dot de>
+  added support for 2.6 kernels
 
 *vdrplugin-launcher-0.0.2a (24 June 2004)
 
