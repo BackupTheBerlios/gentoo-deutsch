@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/Attic/vdrplugin-mplayer-0.8.0.ebuild,v 1.2 2003/06/20 12:03:56 mad Exp ${VDRPLUGIN}/vdrplugin-${VDRPLUGIN}-0.7.15.ebuild,v 1.1 2003/06/05 09:39:40 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/Attic/vdrplugin-mplayer-0.8.0.ebuild,v 1.3 2003/07/07 20:40:09 mad Exp ${VDRPLUGIN}/vdrplugin-${VDRPLUGIN}-0.7.15.ebuild,v 1.1 2003/06/05 09:39:40 mad Exp $
 
 IUSE=""
 VDRPLUGIN="mplayer"
@@ -46,11 +46,17 @@ src_install() {
 	cd ${D}/usr/lib/vdr/
 	ln -s libvdr-${VDRPLUGIN}.so.${PV} libvdr-${VDRPLUGIN}.so
 	ln -s libvdr-mp3.so.${PV} libvdr-mp3.so
+
+	mkdir -p ${D}etc/vdr/plugins/
+	echo "/tmp/;TMP;0" > ${D}etc/vdr/plugins/mplayersources.conf
+	echo "/tmp/;TMP;0" > ${D}etc/vdr/plugins/mp3sources.conf
 }
 
 pkg_postinst() {
 	einfo
 	einfo "you need to add the module to /etc/conf.d/vdr"
-	einfo "and restart vdr to activate it."
+	einfo "(PLUGIN) and restart vdr to activate it."
+	einfo "Don´t forget to edit the *sources.conf files"
+	einfo "in /etc/vdr/plugins/ "
 	einfo
 }

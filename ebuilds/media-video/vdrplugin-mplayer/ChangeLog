@@ -1,6 +1,15 @@
 # ChangeLog for media-video/vdr-mplayer
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.1 2003/06/05 09:39:40 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.2 2003/07/07 20:40:09 mad Exp $
+
+*vdrplugin-mplayer-0.8  
+  07 Jul 2003;M.Hierling <mad@cc.fh-lippe.de>
+  added empty source files for the plugins because they
+  are the main reason why users have problems with the plugins
+  (because the do NOT read the fine manual)
+
+  Henning made a new version but without editing the Changelog
+  that is a D-
 
 *vdrplugin-mplayer-0.7.15 (05 Jun 2003) 
   05 Jun 2003;M.Hierling <mad@cc.fh-lippe.de>
