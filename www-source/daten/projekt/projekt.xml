@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<info>
+
+<title>Willkommen</title>
+<author title="Author"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
+<date>20. November 2003</date>
+
+<box>
+  <block>
+	<title>Projekt:</title>
+    <p>
+		<ul>
+			<li><uri link="http://www.gentoo.org/main/de/about.xml">Über Gentoo-Linux</uri></li>
+			<li><uri link="/inhalte/projekt/site/">Das Guide XML Projekt von Gentoo</uri></li>
+			<li><uri link="/inhalte/projekt/translation/">Information für Übersetzer</uri></li>
+			<li><uri link="/inhalte/doku">Übersetzte Dokumentationen</uri></li>
+	   		<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/">
+        		Projektübersicht bei BerliOS </uri></li>
+			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das 
+			       gentoo.de Team</uri></li>
+			<li><uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/">Unser CVS Tree</uri></li>
+		</ul>
+    </p>
+  </block>
+
+  <block>
+    <title>Community:</title>
+    <p>
+
+		<ul>
+			<li><uri link="/inhalte/community/mailinglisten">Mailinglisten</uri></li>
+			<li><uri link="/inhalte/community/archiv">Mail-Archiv</uri></li>
+			<li><uri link="/inhalte/community/irc">IRC-Channels</uri></li>
+			<li><uri link="/inhalte/community/foren">Foren</uri></li>
+			<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
+		</ul>
+    </p>
+  </block>
+</box>
+
+<chapter>
+
+<title>Gentoo Deutsch</title>
+
+<section>
+	<title>Das Projekt</title>
+	<body>
+
+  	<p>
+   		Das Projekt gentoo-deutsch soll als Sammelstelle für Anpassungen von Gentoo Linux an deutsche Gegebenheiten dienen.
+  	</p>
+
+  	<p>
+		Es sollte in erster Linie dazu dienen, daß nicht jede Dokumentation 4 mal übersetzt wird, bevor sie auf Gentoo.org
+		veröffentlicht wird. Durch die langen Antwortzeiten auf Bugs und neue Ebuilds im bugzilla bei <uri link="http://www.gentoo.org" target="_blank">
+		Gentoo.org</uri>, bietet es sich
+		aber auch an, neue Ebuilds hier zwischenzulagern. Per CVS sind diese leichter wartbar, und andere können besser von den
+		neuen Ebuilds profitieren. Sind sie dann in den Portage-Tree aufgenommen, kann man die Ebuilds natürlich wieder aus dem cvs
+		hier entfernen, was aber wohl nur Sinn macht, wenn man Entwicklerstatus bei gentoo.org erreicht hat, um seine Ebuilds
+		sinnvoll per cvs zu warten.
+    	<br/>
+		Desweiteren ist hier natürlich Platz für andere Kleinigkeiten deren Urheber evtl. nicht der Meinung sind, daß sie es wert
+		sind auf gentoo.org verffentlicht zu werden (oder einfach den Aufwand dazu scheuen).
+  	</p>
+
+  	<p>
+		Und nicht zuletzt gibt der CVS-Service von berliOS uns die Möglichkeit gemeinsam Tippfehler und sonstige Verbesserungen /
+		Korrekturen an den deutschen Dokumentationen vorzunehmen, ohne daß alle Beteiligten Developer-Status bei gentoo.org haben
+		müssen. Hier gibt es diesen Status wesentlich schneller ;)
+  	</p>
+
+  	<p>
+		Wer mitarbeiten will, einfach <uri link="http://developer.berlios.de/account/register.php" target="_blank">bei berliOS registrieren</uri> und auf der
+		<uri link="http://developer.berlios.de/projects/gentoo-deutsch" target="_blank">Projektübersicht</uri> einem der Admins eine Nachricht mit dem
+		Benutzernamen bei berliOS schicken. Der Developer-Status den man daraufhin erhält, bringt Schreibzugriff auf das
+		CVS-Repository mit sich, d.h. man kann Neues einchecken und Altes verbessern.
+	</p>
+	
+	</body>
+</section>
+
+<section>
+	<title>Mitarbeiten</title>
+	<body>
+
+	<p>
+	Um bei Gentoo Deutsch mitwirken zu können, kann sich in einem der drei folgenden Punkten engagieren:
+	</p>
+
+	<ul>
+		<li>Ebuilds schreiben</li>
+		<li>Dokumentation uebersetzen, schreiben</li>
+		<li>Mitarbeit an der Webseite</li>
+	</ul>
+
+	<p>
+	Vor dem Schreiben von Ebuilds sollte geprüft werden, ob sich das gewünschte Programm nicht bereits im <uri link="http://packages.gentoo.org/">
+	offiziellen Portage</uri> Verzeichnisbaum befindet. Ebenso gibt es eine Übersicht über die <uri link="http://www.gentoo.de/inhalte/download/ebuilds_de/">
+	Ebuilds bei gentoo.de</uri>. Hilfreich ist sicher die Anleitung zum <uri link="http://www.gentoo.de/inhalte/doku/gentoo-howto/">Schreiben von Ebuilds</uri>.
+	Die Erstellung von Ebuilds sollte sich wenn immer möglich an den <uri link="http://www.gentoo.org/doc/en/policy.xml">Gentoo Linux
+	Development Policy</uri> orientieren. 
+	</p>
+
+	<p>Erste Anlaufstelle für das Übersetzen von englischen Dokumentationen sind sicher die <uri link="http://www.gentoo.de/inhalte/projekt/translation/">
+	Informationen für deutsche Übersetzer</uri>. Des weiteren sollte man sich einen kleine Übersicht über das <uri link="/inhalte/projekt/site/">Guide XML 
+	Projekt von Gentoo</uri> verschaffen und sich wenn immer möglich an den <uri link="http://www.gentoo.org/doc/en/doc-policy.xml">Gentoo Linux
+	Documentation Policy</uri> orientieren. Wer mit <uri link="http://cvsbook.red-bean.com/translations/german/">CVS nichts am Hut</uri> hat, findet sicher
+	jemanden der einem bei der Bedienung behilflich ist. ;)
+  	</p>
+
+	<p>
+	Bei der <b>Mitarbeit an der Webseite</b> werden vor allem die <uri link="http://www.gentoo.de/inhalte/projekt/neuigkeiten/">Neuigkeiten</uri>
+	eingepflegt, der wöchentliche <uri link="http://www.gentoo.org/news/de/gwn/gwn.xml">Gentoo Newsletter</uri> mitübersetzt und die Seiten
+	auf gentoo.de verwaltet.
+	</p>
+
+	<p>
+	Des weiteren sind wir auf Veranstaltungen präsent, um Gentoo der Allgemeinheit bekannt zu machen. Ein Beispiel hierfür ist der 
+	<uri link="/inhalte/projekt/	lt2k3">LinuxTag 2003</uri>.
+	</p>
+
+	</body>
+</section>
+
+<section>
+	<title>Projektübersicht</title>
+	<body>
+
+	<p>
+	<b>German Lead Translator:</b> dertobi123
+	</p>
+
+	<p>
+	<b>Übersetzung Gentoo Weekly Newsletter:</b> lordvan, dertobi123
+	</p>
+
+	<p>
+	<b>Moderation deutschsprachiges Forum:</b> ian!, beejay
+	</p>
+
+	<p>
+	<b>Maintainer Installationshilfen</b>: Noch nicht besetzt
+	<br/>
+	<b>Maintainer Dokumentation zu Gentoo Entwicklungen</b>: Noch nicht besetzt
+	<br/>
+	<b>Maintainer Dokumentation zur Systemadministration</b>: Noch nicht besetzt
+	<br/>
+	<b>Maintainer Dokumentation für einen Arbeitsplatzrechner</b>: Noch nicht besetzt
+	<br/>
+	<b>Maintainer Dokumentation für Gentoo Entwickler</b>: Noch nicht besetzt
+	<br/>
+	<b>Maintainer Andere Dokumentation</b>: Noch nicht besetzt
+	</p>
+
+	<p>
+	<b>Leute, die sich um gentoo.de verdient gemacht haben:</b> aholler, beejay
+	</p>
+</body>
+</section>
+</chapter>
+
+</info>
+
