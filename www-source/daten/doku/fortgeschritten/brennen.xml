@@ -249,11 +249,6 @@ Benutzer des 2.4. Kernels, die statt der IDE-SCSI Emulation direkt auf das CDROM
 zugreifen wollen, müssen den Bus explizit angeben mittels <i>cdrecord -dev=ATAPI -scanbus</i>. 
 Benutzer der 2.6. Kernel Serie können das Gerät direkt mit <i>cdrecord -dev=/dev/hdc</i> ansprechen. 
 </p>
-<p>Nun sollte man das CD-Brogramm seiner Wahl installieren. Für KDE-User empfiehlt sich k3b, welches
-inzwischen auch DVDs rippen kann. GNOME-Fans benutzen das Nautilus-Plugin nautilus-cd-burner oder
-xcdroast, welches dank GTK auch Drag'n drop unterstützt. Puristen an der Kommandozeile können
-mkisofs und cdrecord verwenden. Die Manpages erläutern hier alle möglichen Optionen.
-</p>
 </body>
 </section>
 <section> 
@@ -546,6 +541,58 @@ empfehle ich die jeweiligen Manpages. Viel Spass mit Ihrem System!
 </p>
 </body>
 </section>
+</chapter>
+
+<chapter> 
+<title>Grafische Frontends zum Brennen</title> 
+<section> 
+	<title>Kurzübersicht</title> 
+<body>
+<p>Nun sollte man das CD-Brogramm seiner Wahl installieren. Für KDE-User empfiehlt sich k3b, welches
+inzwischen auch DVDs rippen kann. GNOME-Fans benutzen das Nautilus-Plugin nautilus-cd-burner oder
+xcdroast, welches dank GTK auch Drag'n drop unterstützt.
+</p>
+</body>
+</section>
+</chapter>
+
+<chapter>
+	<title>Problembehebung</title>
+<section>
+	<title>Fragen und Antworten</title>
+<body>
+<p><b>Meine CD-Brennsoftware erkennt mein normales CD Laufwerk nicht. Stattdessen wird der Brenner sowohl zum Lesen als auch 
+zum Schreiben verwendet.</b>
+</p>
+<p>
+Nicht alle CD-Brennersoftware machen von den cdrecord ATAPI Funktionen Gebrauch. In diesem Fall sollten Sie entweder das CDROM
+auch als SCSI Gerät emulieren oder ein anderes Programm verwenden.
+</p>
+<p><b>Wenn ich K3b als Benutzer verwende, erhalte ich immer die Meldung, dass ich keinen Zugriff auf cdrecord und cdrdao habe, obwohl
+ich k3b-setup als root ausgeführt habe.</b>
+</p>
+<p>Zum Brennen erstellt k3b-setup standardmässig die Gruppe <i>cdrecord</i>. In Gentoo Linux ist diese allerdings <i>cdrw</i>. Auch
+sollte sichergestellt werden, dass der Benutzer dieser Gruppe zugehörig ist.
+</p>
+<p><b>Beim Auführen von cdrecord erhalte ich immer folgende Mitteilung:
+<pre># cdrecord -scanbus
+Cdrecord 2.01a14 (i686-pc-linux-gnu) Copyright (C) 1995-2003 Jörg Schilling
+cdrecord: No such file or directory. Cannot open '/dev/pg*'. Cannot open SCSI driver.
+cdrecord: For possible targets try 'cdrecord -scanbus'. Make sure you are root.
+cdrecord: For possible transport specifiers try 'cdrecord dev=help'. </pre></b>
+</p>
+<p>
+Mögliche Ursache: Das Gerät wird als ATAPI-IDE vom Kernel erkannt. Versuchen Sie stattdessen <i>cdrecord dev=ATAPI:0,0,0 -scanbus</i>.
+Ist die IDE-SCSI emulation wirklich korrekt aufgesetzt worden?
+</p>
+<p><b>In meiner Anwendung wird mein Brenner 5 oder 6x angezeigt, obwohl ich nur einen einzigen ATAPI-IDE Brenner mit SCSI emulation
+betreibe</b></p>
+<p>Wahrscheinlich haben Sie die Option "Check All LUNS" im Kernel für den SCSI Treiber aktiviert. Dabei wird der SCSI Bus auf angeschlossene
+Geräte untersucht. Da das ATAPI-IDE Gerät keine Ahnung über Logical Unit Numbers hat, antwortet es jedesmal, für jede der sieben Anschlussmöglichkeiten
+des SCSI Bus.</p>
+</body>
+</section>
+
 <section>
 	<title>Weiterführende Dokumentation</title> 
 <body>
