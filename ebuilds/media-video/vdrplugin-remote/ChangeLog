@@ -1,6 +1,7 @@
 # ChangeLog for media-video/vdr-remote
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-remote/ChangeLog,v 1.1 2003/10/28 22:47:08 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-remote/ChangeLog,v 1.2 2003/10/28 22:50:22 martini Exp $
 
-*vdrplugin-remote-0.2.0 (13 Sept 2003)
-  
+  28 Oct 2003; Martin Mittelsdorf <martini@vdr-portal.de>
+  initial ebuild version for the remote plugin
+  (Thx to moto125)
