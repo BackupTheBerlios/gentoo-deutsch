@@ -21,7 +21,7 @@ verschiedene Installationsarten, ganz davon abhängig, inwieweit das System
 von Grund auf gebaut werden soll.</abstract>
 
 <version>1.0</version>
-<date>17. Februar 2003</date>
+<date>17 February 2003</date>
 
 <chapter>
 <title>Über die Installation</title>
@@ -74,7 +74,7 @@ die folgende Schritte benötigt:</p>
 <body>
 
 <p>Haben Sie sich für eine CD entschieden, booten Sie diese indem Sie
-entweder die 'C'-Taste während des Startens gedrückt halten oder bei
+entweder die 'C'-Taste während des Starten gedrückt halten oder bei
 OldWorld-Maschinen das Installationsprogramm aufrufen und dann BootX starten.
 Sie werden mit jeder Menge Text und einem <c>boot:</c>-Prompt am Ende des
 Bildschirms begrüßt.  Drücken Sie dort Enter und Linux wird von
@@ -104,7 +104,7 @@ werden.</p>
 <body>
 
 <p>Nun können Sie nahezu mit der Installation von Gentoo Linux beginnen,
-denn der Gentoo PPC ISO Kernel behinhaltet jegliche Treiber für die
+denn der Gentoo PPC ISO Kernel beinhaltet jegliche Treiber für die
 meistens Standard-Macs.  Für einige zusätzliche Geräte haben wir
 weitere Module bereitgestellt.  Sie können sich im Verzeichnis
 <path>/lib/modules/&lt;kernel-version&gt;/kernel/drivers/</path> einen Überblick
@@ -126,7 +126,7 @@ weitere Module bereitgestellt.  Sie können sich im Verzeichnis
 
 <p>Die neue Boot-CD erlaubt Ihnen das Netzwerk zu konfigurieren und Programme
 wie <c>ssh</c>, <c>scp</c> oder <c>wget</c> selbst vor dem Installationsbeginn
-zu benutzen.  Wenn Sie jetzt keine dieser Programme benötigen, können
+zu benutzen.  Wenn Sie jetzt keine dieser Programme benötigen, sollten
 Sie dennoch schon das Netzwerk konfigurieren.  Sobald es einmal eingestellt ist
 kann Portage während des Installationsprozesses in der
 <c>chroot</c>-Umgebung darauf zugreifen (wird für die Installation von
@@ -196,7 +196,7 @@ nameserver 10.0.0.2
 </pre>
 
 <p>Ersetzen Sie <c>10.0.0.1</c> und <c>10.0.0.2</c> durch die IP-Adressen Ihres
-primären und sekundären Direct-Name-Servers (DNS).</p>
+primären und sekundären Domain-Name-Servers (DNS).</p>
 
 </body>
 </section>
@@ -206,14 +206,14 @@ primären und sekundären Direct-Name-Servers (DNS).</p>
 <body>
 
 <p>Da Ihre Netzwerkkonfiguration jetzt durchgeführt ist, sollte der Befehl
-<c>/sbin/ficonfig -a</c> ausgeben, dass Ihre Netzwerkkarte (hoffentlich)
+<c>/sbin/ifconfig -a</c> ausgeben, dass Ihre Netzwerkkarte (hoffentlich)
 funktioniert (achten Sie auf <e>UP</e> und <e>RUNNING</e> in der Ausgabe!).</p>
 
 <pre caption="/sbin/ifconfig bei einer funktionierenden Netzwerkkonfiguration">
 eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
           inet addr:192.168.0.2  Bcast:192.168.0.255  Mask:255.255.255.0
           inet6 addr: fe80::50:ba8f:617a/10 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          <comment>UP</comment> BROADCAST <comment>RUNNING</comment> MULTICAST  MTU:1500  Metric:1
           RX packets:1498792 errors:0 dropped:0 overruns:0 frame:0
           TX packets:1284980 errors:0 dropped:0 overruns:0 carrier:0
           collisions:1984 txqueuelen:100
@@ -246,7 +246,7 @@ Ihrem LAN oder im Internet zu verbinden.</p>
 <section>
 <body>
 
-<p>Da nun das Netzwerk und der Festplatten-Controler angesprochen werden
+<p>Da nun das Netzwerk und der Festplatten-Controller angesprochen werden
 können, ist es an der Zeit die Festplatte für Gentoo Linux zu
 partitionieren.</p>
 
@@ -260,7 +260,7 @@ Bootstrap Partition nicht, da ihr System zuerst MacOS booten wird, um dann mit
 BootX den Linux-Kernel und die Startskripte zu initiieren.</p>
 
 <p>Nun zu den diversen Dateisystemen.  Momentan haben Sie vier Dateisysteme zur
-Wahl: XFS, ext2, ext3 (Journaling) und ReiserFS.  ext2 ist ein erptrobtes und
+Wahl: XFS, ext2, ext3 (Journaling) und ReiserFS.  ext2 ist ein erprobtes und
 das "wahre" Linux Dateisystem, jedoch unterstützt es kein Journaling.  ext3
 ist die neue Version von ext2, sowohl mit Metadaten Journaling als auch
 geordnete Schreibzugriffe und einem effektiven Daten-Journaling.  Eines der
@@ -275,7 +275,7 @@ deutschsprachige Informationen zur Partitionierung gibt es z.B. unter
 <uri>http://jules.killall5.de/writings/pismo/</uri>.</impo>
 
 <warn>Machen Sie vor dem Partitionieren ein Backup Ihrer auf der Festplatte
-gespeicherten Daten!  Durch das Partitionieren können diese unwiederruflich
+gespeicherten Daten!  Durch das Partitionieren können diese unwiderruflich
 gelöscht werden.</warn>
 
 <note>Erstellen Sie nun Ihre Partitionen mit dem Programm mac-fdisk, indem Sie
@@ -377,7 +377,7 @@ http://www.ibiblio.org/pub/Linux/distributions/gentoo/releases/build/1.2/stage1-
 
 <p>Nun ist es an der Zeit das gewünschte, gepackte Installations-Archiv
 nach <path>/mnt/gentoo</path> zu entpacken.  Dann wechseln Sie mit <c>chroot</c>
-in die neue Gentoo Linux Installtion.</p>
+in die neue Gentoo Linux Installation.</p>
 
 <impo>Achten Sie darauf, dass Sie das Archiv mit der Option <c>p</c> des
 Programms <c>tar</c> entpacken.  Andernfalls werden die Rechte einiger Dateien
@@ -463,9 +463,9 @@ Lektüre dieses Kapitels und die Einstellungen in der Datei
 müssen Sie nun den Gentoo Linux bootstrap-Prozess durchlaufen.  Dazu
 editieren zuerst die Datei <path>/etc/make.conf</path>.  In dieser Datei sollten
 Sie die <c>USE</c> Flags (mehr dazu in der <uri
-link="/doc/de/use-howto.xml">Gentoo Anleitung zu den USE Flags</uri>) an Ihr
-System und Ihre Wünsche anpassen.  Über die <c>USE</c> Flags
-können Sie steuern, welche optionale Funktionalität Sie in die Pakete
+link="http://www.gentoo.org/doc/de/use-howto.xml">Gentoo Anleitung zu den USE
+Flags</uri>) an Ihr System und Ihre Wünsche anpassen.  Über die <c>USE</c>
+Flags können Sie steuern, welche optionale Funktionalität Sie in die Pakete
 eingebaut haben möchten.  Normalerweise ist die vorgegebene Einstellung,
 <e>leere</e> oder ungesetzte <c>USE</c> Flags, ausreichend.  Wichtig sind die
 für Ihr System passenden Einstellungen für <c>CHOST</c>, <c>CFLAGS</c>
@@ -477,8 +477,8 @@ eintragen.</p>
 # <e>nano -w /etc/make.conf</e> <comment>(Passen Sie die Einträge an)</comment>
 </pre>
 
-<note>Anwender, die irh System wesentlich optimieren wollen oder müssen,
-sollten einen Blick in die Date <path>/etc/make.globals</path> werfen.  Diese
+<note>Anwender, die ihr System wesentlich optimieren wollen oder müssen,
+sollten einen Blick in die Datei <path>/etc/make.globals</path> werfen.  Diese
 Datei beinhaltet alle Gentoo Linux Standardeinstellungen und sollte niemals
 verändert werden.  Falls die Standardeinstellungen nicht ausreichend sind,
 können Sie neue Variablen in <path>/etc/make.conf</path> setzen, da
@@ -492,8 +492,8 @@ würde das Flag <c>foo</c> abschalten).</note>
 
 <p>Jetzt können Sie den bootstrap-Prozess starten.  Dieser benötigt
 etwa ein bis vier Stunden, ganz davon abhängig, wie fix Ihr Rechner ist.
-Dabei wird das entpackte Installationsarchiv dazu vorbereitet, den Rest des
-Systems zu kompiliren.  Die GNU Compiler Suite sowie die GNU C Bibliothek werden
+Dabei wird das entpackte Installations-Archiv dazu vorbereitet, den Rest des
+Systems zu kompilieren.  Die GNU Compiler Suite sowie die GNU C Bibliothek werden
 gebaut.  Dieses sind zeitaufwändige Vorgänge, die den Hauptteil des
 bootstrap-Prozesses ausmachen:</p>
 
@@ -505,7 +505,7 @@ bootstrap-Prozesses ausmachen:</p>
 <p>Der bootstrap-Prozess startet nun.</p>
 
 <note>Portage verwendet normalerweise <path>/var/tmp</path> während des
-Kompilieren der Pakete, das mehrere hundert MegaByte an temporärem Speicher
+Kompilieren der Pakete, das mehrere hundert Megabyte an temporärem Speicher
 benötigt.  Wenn Sie das Verzeichnis, in das Portage diese temporären
 Dateien ablegt, ändern möchten, können Sie dieses <e>vor</e> dem
 Starten des bootstrap-Prozesses durch Setzen der Umgebungsvariable
@@ -557,7 +557,7 @@ Schutz von Konfigurationsdateien umgangen.  Genaueres erfahren Sie, wenn Sie
 <p>Es dauert seine Zeit das ganze Basissystem zu installieren.  Ihr Lohn ist es,
 dass es gänzlich auf Ihren Rechner optimiert ist.  Leider müssen Sie
 einen Weg finden, sich bis zu diesem Zeitpunkt zu beschäftigen.  Der Autor
-empfielt "Star Wars - Super Bombad Racing" für die PS2.  Wenn <c>emerge
+empfiehlt "Star Wars - Super Bombad Racing" für die PS2.  Wenn <c>emerge
 system</c> abgeschlossen ist, besitzen Sie ein stage3 Gentoo Linux System.</p>
 
 </body>
@@ -620,7 +620,7 @@ code/drivers"</e>, damit alle nötigen Optionen verfügbar sind.  In der
 (beachten Sie, dass Sie die <e>"/dev/pts file system support"</e> Option
 <e>nicht</e> aktivieren müssen).  Außerdem müssen Sie das
 <e>"Virtual Memory File system"</e> einschalten.  Dann noch unter <e>"Macintosh
-Device Drivers"</e> den <e>"Support for ADB row keycodes"</e> abschalten.
+Device Drivers"</e> den <e>"Support for ADB raw keycodes"</e> abschalten.
 Ebenso deaktivieren Sie die <e>"Enhanced RTC"</e> Option (in <e>"Character
 devices"</e>), da es keine PPC-freundliche ATM ist.  Aber schalten Sie den
 <e>"Support for /dev/rtc"</e> unter <e>"General setup"</e> ein.  Außerdem
@@ -630,7 +630,7 @@ den kompilierten Kernel auf die MacOS-Partition zu kopieren.</warn>
 
 <impo>Wenn Sie einen ATAPI CD-Brenner benutzen, sollten Sie die SCSI-Emulation
 im Kernel aktivieren.  Die neuen cdrtools können zwar direkt auf
-ATAPI-Geräate ohne die SCSI-Simulation zugreifen, jedoch ist dieses noch
+ATAPI-Geräte ohne die SCSI-Simulation zugreifen, jedoch ist dieses noch
 als "unstable" eingestuft.  Also, zur Aktivierung der SCSI-Emulation schalten
 Sie <e>"ATA/IDE/MFM/RLL support" --> "IDE, ATA and ATAPI Block devices" -->
 "SCSI emulation support" (ruhig als Modul)</e> ein; dann unter <e>"SCSI support"
@@ -675,11 +675,11 @@ beim deinstallieren Ausschau).  Nun können Sie metalog mit <c>emerge
 metalog</c> installieren und durch <c>rc-update add metalog default</c>
 automatisch beim Booten starten.</warn>
 
-<impo>metalog schreibt seine Daten blocksweise auf die Festplatte, weshalb
+<impo>metalog schreibt seine Daten blockweise auf die Festplatte, weshalb
 Nachrichten nicht direkt in den Logdateien auftauchen.  Falls Sie einen Daemon
 debuggen möchten, ist dieses Verhalten weniger sinnvoll.  Während Ihr
 Gentoo Linux System läuft, können Sie metalog ein USR1-Signal senden,
-um vorrübergehend die Pufferung von Nachrichten abzuschalten (sprich,
+um vorübergehend die Pufferung von Nachrichten abzuschalten (sprich,
 <c>tail -f /var/log/everything/current</c> arbeitet nun wie erwartet in
 Realzeit); ein USR2-Signal schaltet die Pufferung wieder ein.</impo>
 
@@ -780,7 +780,7 @@ mittels: </p>
 <body>
 
 <p>Tragen Sie in dieser Datei den kompletten Namen (Rechnername und Domainname)
-für Ihren Rechner in iener einzigen Zeile ein, z.B.
+für Ihren Rechner in einer einzigen Zeile ein, z.B.
 <c>rechnername.domainname.lan</c>.</p>
 
 </body>
@@ -813,7 +813,7 @@ Hier ist ein Beispiel der Datei:</p>
 
 <p>Fügen Sie die Namen aller Module, die für den Betrieb Ihres System
 benötigt werden, in die Datei <path>/etc/modules.autoload</path> ein
-(Optionen können Sie in derselben Zeile an den Modulnamen anhänten).
+(Optionen können Sie in derselben Zeile an den Modulnamen anhängen).
 Wenn Gentoo Linux bootet, werden diese Module automatisch geladen.  Vor allem
 sollten Sie dort das Modul der Netzwerkkarte eintragen, falls Sie es als Modul
 kompiliert haben: </p>
@@ -855,7 +855,7 @@ geladen werden.</p>
 <p>Wechseln Sie öfter zwischen diversen Netzen (wenn Sie z.B. Ihren Laptop
 daheim und auf der Arbeit verwenden), wird Ihnen sicherlich das Programm
 <c>quickswitch</c> gefallen.  Dort können Sie diverse Umgebungen anlegen
-und schnell zwischen diesen wechseln, ohne jedesmal die Konfigurationsdateien
+und schnell zwischen diesen wechseln, ohne jedes mal die Konfigurationsdateien
 anzupassen.</p>
 
 </body>
@@ -886,12 +886,12 @@ können Sie folgendes einstellen:</p>
 
 
 <chapter>
-<title>Letze Schritte: Konfiguration des Bootmanagers</title>
+<title>Letzte Schritte: Konfiguration des Bootmanagers</title>
 
 <section>
 <body>
 <p>Der größte Unterschied von Linux auf x86-Maschinen ist der
-Bootloader.  NewWorld-Mschinen benutzen <c>yaboot</c>.  OldWorld-Maschinen
+Bootloader.  NewWorld-Maschinen benutzen <c>yaboot</c>.  OldWorld-Maschinen
 verwenden BootX.</p>
 
 </body>
@@ -905,9 +905,9 @@ verwenden BootX.</p>
 verwenden, das bei <c>yaboot-1.3.8-r1</c> und neueren Versionen beiliegt, um
 automatisch <c>yaboot</c> zu Konfigurieren.  <c>yabootconfig</c> wird die
 diversen Partitionen Ihres Rechners finden und eine Möglichkeit des Dual-
-oder Triple-Boot mit Linux, Mac OS und Mac OS X bereitstellen.</p>
+oder Tripel-Boot mit Linux, Mac OS und Mac OS X bereitstellen.</p>
 
-<p>Um <c>yabootconfig</c> zu verwenden, muss Ihre Festplatte ine bootstrap
+<p>Um <c>yabootconfig</c> zu verwenden, muss Ihre Festplatte eine bootstrap
 Partition besitzen und die Datei <path>/etc/fstab</path> entsprechend Ihrer
 Linux Partitionen konfiguriert sein.  Das sollten Sie aber schon in den
 vorangegangenen Schritten erledigt haben.  Bevor Sie starten, installieren Sie
@@ -927,7 +927,7 @@ verwendet).</p>
 
 <p>Sie sollten die Datei <path>/etc/yaboot.conf</path> auf Korrektheit
 überprüfen.  Wenn Sie Änderungen an <path>/etc/yaboot.conf</path>
-vorgenommen haben (wie z.B. Änern des automatisch zu bootenden
+vorgenommen haben (wie z.B. Ändern des automatisch zu bootenden
 Betriebssystems), führen Sie darauf <c>ybin -v</c> aus, um Ihre bootstrap
 Partition zu erneuern.</p>
 
@@ -1040,7 +1040,7 @@ weitere Informationen.</p>
 
 <p>Gentoo Linux ist installiert.  Der letzte verbleibende Schritt ist die
 chroot-Umgebung zu verlassen, die Partitionen sicher zu unmounten und den
-Rechner zu reboooten:</p>
+Rechner zu rebooten:</p>
 
 <pre>
 # <e>exit</e>  <comment>Dieses beendet die chroot Umgebung; Sie können auch <c>^D</c> eingeben</comment>
@@ -1061,7 +1061,7 @@ editieren, sollten Sie Änderungen in <path>/etc/modules.d</path> vornehmen.</no
 <chapter>
 <title>Extras</title>
 <section>
-<title>Emulierung von meheren Maustasten</title>
+<title>Emulieren von mehreren Maustasten</title>
 <body>
 
 <p>Sie können die folgenden Zeilen der Datei <path>/etc/sysctl.conf</path>
@@ -1089,17 +1089,17 @@ dev.mac_hid.mouse_button3_keycode = 88
 Entwicklern einen Überblick der Gentoo-Benutzer zu verschaffen.  Es sammelt
 Informationen über die Verbreitung von Gentoo Linux und hilft,
 Prioritäten bei den Entwicklern zu setzten.  Die Installation ist
-freiwillig, jedoch wäre es willkommen, wenn Sie daran beteiligen
-würden.  Generierte Stastiken können Sie sich unter
+freiwillig, jedoch wäre es willkommen, wenn Sie sich daran beteiligen würden.
+Generierte Statistiken können Sie sich unter
 <uri>http://stats.gentoo.org/</uri> ansehen.</p>
 
 <p>Der gentoo-stats Server wird Ihrem System eine eindeutige ID vergeben.  Diese
-ID wird dafür benötigt, dass jedes System nur einmal gezält wird.
+ID wird dafür benötigt, dass jedes System nur einmal gezählt wird.
 Diese ID wird weder dafür verwendet, um ihr System individuell zu
-identifiziern, noch wird sie mit der IP-Adresse oder anderen persönlichen
-Informationen abgeglichen.  Alle Vorkehrungen wurde getroffen, um Ihre
-Privatssphäre in der Entwicklung dieses Systems zu wahren.  Nachfolgend
-sind die Informationen geliestet, die das <c>gentoo-stats</c> Programm
+identifizieren, noch wird sie mit der IP-Adresse oder anderen persönlichen
+Informationen abgeglichen.  Alle Vorkehrungen wurden getroffen, um Ihre
+Privatsphäre in der Entwicklung dieses Systems zu wahren.  Nachfolgend
+sind die Informationen gelistet, die das <c>gentoo-stats</c> Programm
 überwachen wird:</p>
 
 <ul>
@@ -1125,10 +1125,10 @@ Lieblingsfilm, ... übertragen</li>
 defaultmäßig ausgeschaltet.</li>
 <li>Die IP-Adresse von der Ihre Datenübertragung stammt wird niemals
 in der Art gespeichert, dass wir Sie identifizieren können.  Es gibt keine
-Zusammenänge zwischen der IP-Adresse und der System-ID.</li>
+Zusammenhänge zwischen der IP-Adresse und der System-ID.</li>
 </ul>
 
-<p>Die Installation ist einfach -- fürhen Sie die folgenden Befehle
+<p>Die Installation ist einfach -- führen Sie die folgenden Befehle
 aus:</p>
 
 <pre caption="gentoo-stats installieren">
@@ -1141,14 +1141,14 @@ aus:</p>
 diese Datei anschauen, um zusätzliche Konfigurationsparameter zu sehen.</p>
 
 <p>Sie sollten das Programm regelmäßig laufen lassen (gentoo-stats
-benötig keine Superuser Rechte).  Fügen Sie folgende Zeile in Ihre
+benötigt keine Superuser Rechte).  Fügen Sie folgende Zeile in Ihre
 <path>crontab</path> ein:</p>
 
 <pre caption="gentoo-stats mit cron updaten">
 <c>0 0 * * 0,4 /usr/sbin/gentoo-stats --update > /dev/null</c>
 </pre>
 
-<p>Das <c>gentoo-stats</c> Programm ist ein einfaches Perl-Script, dass Sie sich
+<p>Das <c>gentoo-stats</c> Programm ist ein einfaches Perl-Script, das Sie sich
 mit Ihrem bevorzugten Textbetrachter oder Editor anschauen können:
 <path>/usr/sbin/gentoo-stats</path>.</p>
 
@@ -1160,19 +1160,22 @@ mit Ihrem bevorzugten Textbetrachter oder Editor anschauen können:
 <body>
 
 <p>Wenn Sie Fragen haben oder bei der Entwicklung von Gentoo Linux mithelfen
-möchten, tragen Sie sich auf der gentooppc-user und gentooppc-dev
+möchten, tragen Sie sich auf der gentoo-ppc-user und gentoo-ppc-dev
 Mailing-Liste ein (es gibt Links dazu auf unserer <uri
-link="/main/en/lists.xml">Mailinglisten-Seite</uri> (bisher nur in Englisch).</p>
+link="http://www.gentoo.org/main/en/lists.xml">Mailinglisten-Seite</uri>
+(bisher nur in Englisch).</p>
 
-<p>Außerdem gibt es eine <uri link="/doc/de/desktop.xml">Anleitung zur
-Gentoo Linux Desktop Konfiguration</uri>, die Ihnen bei folgenden Konfiguration
-Ihres neuen Gentoo Linux Systems weiterhelfen wird.  Weiterhin ist der <uri
-link="/doc/de/portage-user.xml">Portage Benutzer Leitfaden</uri> für eine
-Einführung in Portage empfehlenswert.</p>
+<p>Außerdem gibt es eine <uri
+link="http://www.gentoo.org/doc/de/desktop.xml">Anleitung zur Gentoo Linux
+Desktop Konfiguration</uri>, die Ihnen bei folgenden Konfiguration Ihres neuen
+Gentoo Linux Systems weiterhelfen wird.  Weiterhin ist der <uri
+link="http://www.gentoo.org/doc/de/portage-user.xml">Portage Benutzer
+Leitfaden</uri> für eine Einführung in Portage empfehlenswert.</p>
 
-<p>Die <uri link="/doc/en/gentoo-ppc-faq.xml">Gentoo Linux/PowerPC FAQ</uri>
-(derzeit nur in Englisch) behandelt oft gestellte Fragen zum Betrieb von Gentoo
-Linux/PPC.  Die allgemeine <uri link="/doc/de/faq.xml">Gentoo Linux FAQ</uri>
+<p>Die <uri link="http://www.gentoo.org/doc/en/gentoo-ppc-faq.xml">Gentoo
+Linux/PowerPC FAQ</uri> (derzeit nur in Englisch) behandelt oft gestellte
+Fragen zum Betrieb von Gentoo Linux/PPC.  Die allgemeine <uri
+link="http://www.gentoo.org/doc/de/faq.xml">Gentoo Linux FAQ</uri>
 wird Ihnen vielleicht auch weiterhelfen, obwohl sie sich hauptsächlich an
 Benutzer von x86-Architekturen richtet.  <uri
 link="http://forums.gentoo.org/viewforum.php?f=24">Gentoo on PPC</uri> (auf
