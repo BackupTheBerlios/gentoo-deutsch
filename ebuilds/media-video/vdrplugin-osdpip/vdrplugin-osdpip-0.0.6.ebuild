@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/vdrplugin-osdpip-0.0.6.ebuild,v 1.1 2004/08/01 16:02:02 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/vdrplugin-osdpip-0.0.6.ebuild,v 1.2 2004/08/03 18:48:59 martini Exp $
 
 IUSE=""
 VDRPLUGIN="osdpip"
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 
 DEPEND=">=media-video/vdr-1.3.7
 	>=media-libs/libmpeg2-0.4.0
-	>=media-video/ffmpeg-0.4.8
+	=media-video/ffmpeg-0.4.8*
 	"
 
 src_unpack() {

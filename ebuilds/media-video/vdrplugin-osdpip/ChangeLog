@@ -1,6 +1,10 @@
 # ChangeLog for media-video/vdr-osdpip
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/ChangeLog,v 1.6 2004/08/01 16:02:02 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/ChangeLog,v 1.7 2004/08/03 18:48:59 martini Exp $
+
+*vdrplugin-osdpip-0.0.6 (3 Aug 2004)
+  3. Aug 2004; Martin Mittelsdorf <martini at vdr-portal dot de>
+  changed depends for media-video/ffmpeg
 
 *vdrplugin-osdpip-0.0.6 (1 Aug 2004)
   1. Aug 2004; Christian Gmeiner <christian at visual-page dot de>
