@@ -86,16 +86,17 @@ link="/doc/build.html">Download/Install page</uri> for updates.</p>
 -->
 
 	<section>
-		<title>I have a Sony Super-Slim VAIO laptop, and the Gentoo Linux CD is having problems 
-			finding my PCMCIA ATAPI CD-ROM.</title>
+		<!-- Is des Deutsch "," + "und" danach -->
+		<title>Ich habe einen Sony Super-Slim VAIO Laptop, und die Gentoo Linux CD hat Probleme
+			mit dem finden meines PCMCIA ATAPI CD-ROM Laufwerkes.</title>
 		<body>
-		<p>Make sure the second IDE port is set to CDROM (it unsets itself if the device isn't 
-			attached on boot) then do the following at the isolinux <c>boot:</c> prompt:</p>
+		<p>Gehen sie sicher, das das zweite IDE Port fuer die CDROM Eingestellt ist (es setzt sich selbst zurueck wenn das Laufwerk nicht
+			beim Booten angeschlossen ist) und dann geben Sie folgendes bei Isolinux <c>boot:</c> ein:</p>
 <pre>
 boot: <i>rescue ide2=0x180,0x386</i>
 </pre>
-<p>If you are using a 1.0_rc5 or earlier boot CD, apart from thinking about downloading the latest iso, 
-type <c>gentoo</c> instead of <c>rescue</c>, above.</p>
+<p>Wenn sie 1.0_rc5 oder eine aeltere Boot CD benutzen, abgesehen vom runterladen einer neuen ISO, 
+geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 </body>
 
 </section>
@@ -145,16 +146,16 @@ type <c>gentoo</c> instead of <c>rescue</c>, above.</p>
 		</body>
 	</section>
 	<section>
-		<title>How do I enable devfs?</title>
+		<title>Wie kann ich devfs aktivieren?</title>
 		<body>
 		<p>
-		If you're using 1.0_rc5 or greater, you don't need to do anything special to get 
-		devfs working; it's already active (you did make sure that devfs was built into the
-		kernel, didn't you?).
-		However, if you are using a version of Gentoo Linux <e>prior</e> to version 1.0_rc5, add 
-		<c>devfs=mount</c> to your <c>GRUB</c> kernel boot options so that the line looks something 
-		like <c>kernel /boot/boot/bzImage devfs=mount foo=bar</c>  The kernel will then mount the 
-		<path>/dev</path> <e>devfs</e> filesystem automatically at boot-time.
+		Wenn Sie 1.0_rc5 oder neuer benutzen, muss man nichts machen um devfs
+		zu aktivieren: es ist schon aktiviert (Haben sie auch devfs in den Kernel eingebunden?).
+		Wieimmer
+		Wenn sie jedoch, eine Version von Gentoo Linux <e>vor</e> der Version 1.0_rc5 benutzen, fuegen sie biite
+		<c>devfs=mount</c> zu Ihrer <c>GRUB</c> Kernel Boot Option hinzu, so das die Zeile zum Teil so aussieht wie
+		<c>kernel /boot/boot/bzImage devfs=mount foo=bar</c>  Der Kernel wird auf
+		<path>/dev</path> das <e>devfs</e>  Dateisystem automatisch booten.
 		</p>
 		</body>
 	</section>
@@ -208,7 +209,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 </chapter>
 
 <chapter>
-	<title>Package Management</title>
+	<title>Paket Verwaltung</title>
 	<section>
 		<title>In what format are the packages stored?</title>
 		<body><p>They exist in our portage tree as <e>ebuild</e> autobuild scripts; we are primarily 
@@ -424,7 +425,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 </chapter>
 
 <chapter>
-	<title>Usage</title>
+	<title>Gentoo Linux Benutzen</title>
 	<section>
     		<title>I have installed openssh on my box, but can only log in as root - my normal user
 		account doesn't work. </title>
@@ -440,9 +441,8 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 	
 	<section>
-		<title>I can start X applications as root only.</title>
-		<body><p>Your <path>/tmp</path> directory has the wrong permissions (it needs the sticky bit 
-		set). Type the following as root:</p>
+		<title>Ich kann X Anwendungen nur als root ausfuehren.</title>
+		<body><p>Ihr <path>/tmp</path> Verzeichnis hat die Falschen Zugriffsrechte. Geben sie folgendes als root ein:</p>
 		<pre># <i>chmod 1777 /tmp</i></pre>
 		</body>
 	</section>
@@ -456,8 +456,8 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>DNS name resolution works for root only.</title>
-		<body><p><path>/etc/resolv.conf</path> has the wrong permissions; <c>chmod</c> it as follows:
+		<title>Die DNS Namens Aufloesung funktioniert nur fuer root.</title>
+		<body><p><path>/etc/resolv.conf</path> hat die falschen Zugriffsrechte. <c>chmod</c> es zu folgendem:
 		</p>
 		<pre># <i>chmod 0644 /etc/resolv.conf</i></pre>
 		</body>
@@ -580,18 +580,20 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <chapter>
 <title>Resources</title>
 	<section>
-		<title>Where can I find more about supervise used by default in Gentoo Linux 1.0_rc5 and earlier?</title>
+		<title>Wo kann ich mehr ueber supervise das bei Gentoo Linux 1.0_rc5 und frueher benutzt wurde finden?</title>
 		<body><p><!-- TODO: --><uri>http://cr.yp.to/daemontools.html</uri></p></body>
 	</section>
 
 	<section>
-		<title>Where can I find more information about Gentoo Linux?</title>
-		<body><p>The official Gentoo documentation can be found on <uri>http://www.gentoo.org</uri>; general Linux information is at <uri>http://www.linuxdoc.org</uri>.</p></body>
+		<title>Wo kann man mehr Informationen ueber Gentoo Linux finden?</title>
+		<body><p>Die Offizelle Gentoo documentation kabn bei <uri>http://www.gentoo.org</uri> gefunden werden. Homepage vom Uebersetzungsprojekt ins Deutsche <uri>http://gentoo-deutsch.berlios.de</uri>. Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verfuegbar.</p></body>
 	</section>
 
 	<section>
-		<title>Can I buy a CD of Gentoo Linux?</title>
-		<body><p>Yes!  Fresh CDRs are available for $5 USD apiece from <uri>http://www.cheapbytes.com</uri>.
+		<title>Kann man CDs von Gentoo Linux kaufen?</title>
+		<body><p>USA: Ja! Frische CDRs sind fuer $5 USD von <uri>http://www.cheapbytes.com</uri> kaufbar.
+		</p>
+		<p>Europa/Deutschland: Keine Ahnung, sollte sich jemand finden der dies liesst und Gentoo Linux CDs Professionell (nicht grad privat) macht und verkauft kann sich mal bei <mail link="marko@nexboard.de">mir</mail> melden
 		</p></body>
 	</section>
 	<section>
