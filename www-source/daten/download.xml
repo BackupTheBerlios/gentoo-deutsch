@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Downloaden von Arbeiten der Mitglieder von Gentoo.de</title>
+
+<chapter>
+<title>Übersicht</title>
+
+<section>
+
+<body>
+<p>
+<uri link="mirrors/index.html">Mirrors</uri><br/>
+<uri link="ebuilds/index.html">Ebuilds</uri><br/>          
+</p>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

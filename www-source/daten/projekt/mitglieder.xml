@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Unsere fleißigen Mitglieder</title>
+
+<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+
+<date>18. Oktober 2002</date>
+
+<box>
+  <block>
+    <title>Aktuelles:</title>
+    <p>
+      Die Leute die diese Seite/Arbeiten realisiert haben.
+    </p>
+  </block>
+
+</box>
+
+<chapter>
+<title>Mitglieder</title>
+
+<section>
+
+<title>Projektleiter</title>
+
+<body>
+  <ul sort="yes">
+    <li>Alexander Holler</li>
+    <li>Rainer Groesslinger (scandium)</li>
+  </ul>
+</body>
+
+</section>
+
+
+<section>
+
+<title>Webseiten-Erstellung</title>
+
+<body>
+  <ul sort="yes">
+    <li>Sebastian Werner</li>
+  </ul>
+</body>
+
+</section>
+
+
+<section>
+
+<title>Dokumentation/ -Übersetzung</title>
+
+<body>
+  <ul sort="yes">
+    <li>Sebastian Beneke</li>
+    <li>Hendrik Richter</li>
+    <li>Ralf Geschke</li>
+    <li>Hendrik Brandt</li>
+  </ul>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

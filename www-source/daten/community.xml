@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Die Community um Gentoo.de</title>
+
+<chapter>
+<title>Übersicht</title>
+
+<section>
+
+<body>
+<p>
+<uri link="mailinglisten/index.html">Mailinglisten Managment</uri><br/>
+<uri link="archiv/index.html">Mailinglisten Archiv</uri><br/>          
+<uri link="irc/index.html">IRC</uri><br/>
+<uri link="foren/index.html">Foren</uri><br/>
+</p>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

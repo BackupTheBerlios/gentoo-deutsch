@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<info>
+<title>Mirror für Gentoo</title>
+
+<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+
+<date>18. Oktober 2002</date>
+
+<box>
+  <block>
+    <title>Information:</title>
+    <p>
+      Hier eine Übersicht der Download-Mirrors. Sprich Quellen woher Sie Gentoo-Linux beziehen können. 
+      <br/>
+
+
+    </p>
+  </block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</box>
+
+<chapter>
+<title>Download-Mirrors</title>
+
+<section>
+
+<body>
+<p>
+   <uri link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/releases/build/">Original-Server Gentoo.org</uri>
+   <br/>
+   <uri link="ftp://ftp.berlios.de/pub/gentoo-deutsch/">FTP-Verzeichnis Gentoo-Deutsch</uri>
+
+</p>
+</body>
+
+</section>
+
+</chapter>
+
+</info>

@@ -1,0 +1,74 @@
+<ebuilds>
+  <app-backup>
+    <entry name="mirrordir" ebuild="mirrordir-0.10.49.ebuild" desc="Mirroring tool"/>
+  </app-backup>
+  <app-i18n>
+    <entry name="aspell-de" ebuild="aspell-de-20001109.ebuild" desc="A german dictionary for ispell"/>
+    <entry name="openoffice-bin-de" ebuild="openoffice-bin-de-1.0.0-r1.ebuild" desc="OpenOffice productivity suite"/>
+    <entry name="openoffice-de" ebuild="openoffice-de-1.0.0-r1.ebuild" desc="OpenOffice productivity suite"/>
+  </app-i18n>
+  <dev-libs>
+    <entry name="cyrus-imap-dev" ebuild="cyrus-imap-dev-2.1.4.ebuild" desc="Developer support for the Cyrus IMAP Server"/>
+    <entry name="cyrus-imap-dev" ebuild="cyrus-imap-dev-2.1.9.ebuild" desc="Developer support for the Cyrus IMAP Server"/>
+    <entry name="cyrus-sasl" ebuild="cyrus-sasl-2.1.2.ebuild" desc="The Cyrus SASL (Simple Authentication and Security Layer)"/>
+    <entry name="cyrus-sasl" ebuild="cyrus-sasl-2.1.7-r3.ebuild" desc="The Cyrus SASL (Simple Authentication and Security Layer)"/>
+  </dev-libs>
+  <dev-perl>
+    <entry name="Archive-Tar" ebuild="Archive-Tar-0.22.ebuild" desc="Archive::Tar, the Perl module for creation and manipulation of tar files"/>
+    <entry name="Archive-Zip" ebuild="Archive-Zip-1.01.ebuild" desc="The Archive::Zip module allows a Perl program to create, manipulate, read, and write Zip archive files"/>
+    <entry name="Bit-Vector" ebuild="Bit-Vector-6.3.ebuild" desc="Bit::Vector is an efficient C library which allows you to handle bit vectors, sets (of integers), 'big integer arithmetic' and boolean matrices, all of arbitrary sizes."/>
+    <entry name="Convert-TNEF" ebuild="Convert-TNEF-0.17.ebuild" desc="Convert::TNEF - Perl module to read TNEF files"/>
+    <entry name="Convert-UUlib" ebuild="Convert-UUlib-0.213.ebuild" desc="Convert::UUlib - Perl interface to the uulib library"/>
+    <entry name="IO-stringy" ebuild="IO-stringy-2.108.ebuild" desc="Perl modules for I/O on in-core objects like strings and arrays"/>
+    <entry name="MIME-tools" ebuild="MIME-tools-5.411a.ebuild" desc="Perl modules for parsing (and creating!) MIME entities"/>
+    <entry name="Unix-Syslog" ebuild="Unix-Syslog-0.99.ebuild" desc="Unix::Syslog - Perl interface to the UNIX system logger"/>
+  </dev-perl>
+  <dev-python>
+    <entry name="PyKDE" ebuild="PyKDE-3.3.2.ebuild" desc="PyKDE is a set of Python bindings for the KDE libs (VERSION 3.x ONLY!!)."/>
+  </dev-python>
+  <media-gfx>
+    <entry name="gimp" ebuild="gimp-1.3.8.ebuild" desc="Development series of Gimp"/>
+    <entry name="gimp" ebuild="gimp-1.3.9.ebuild" desc="Development series of Gimp"/>
+  </media-gfx>
+  <media-libs>
+    <entry name="libgd-gif" ebuild="libgd-gif-1.8.4.ebuild" desc="A graphics library for fast image creation"/>
+  </media-libs>
+  <media-sound>
+    <entry name="xmms-kjofol" ebuild="xmms-kjofol-0.95.ebuild" desc="A xmms remote that allows users to use K-Jofol skins"/>
+  </media-sound>
+  <net-irc>
+    <entry name="kmyirc" ebuild="kmyirc-0.2.5.ebuild" desc="${PV} - KDE3 irc client"/>
+    <entry name="kmyirc" ebuild="kmyirc-0.2.6.ebuild" desc="${PV} - KDE3 irc client"/>
+    <entry name="kmyirc" ebuild="kmyirc-0.2.7.ebuild" desc="${PV} - KDE3 irc client"/>
+  </net-irc>
+  <net-mail>
+    <entry name="amavis-perl" ebuild="amavis-perl-11.ebuild" desc="AMaViS-Perl - A Mail Virus Scanner"/>
+    <entry name="cyrus-imap-admin" ebuild="cyrus-imap-admin-2.1.4.ebuild" desc="Utilities to administer a Cyrus IMAP Server (includes Perl modules)"/>
+    <entry name="cyrus-imap-admin" ebuild="cyrus-imap-admin-2.1.9.ebuild" desc="Utilities to administer a Cyrus IMAP Server (includes Perl modules)"/>
+    <entry name="cyrus-imapd" ebuild="cyrus-imapd-2.1.4.ebuild" desc="The Cyrus IMAP Server"/>
+    <entry name="cyrus-imapd" ebuild="cyrus-imapd-2.1.9-r3.ebuild" desc="The Cyrus IMAP Server"/>
+    <entry name="postfix" ebuild="postfix-1.1.11.ebuild" desc="A fast and secure drop-in replacement for sendmail"/>
+    <entry name="tpop3d" ebuild="tpop3d-1.4.2.ebuild" desc="An extensible POP3 server with vmail-sql/MySQL support."/>
+  </net-mail>
+  <net-misc>
+    <entry name="capi4hylafax" ebuild="capi4hylafax-01.02.00.ebuild" desc="CAPI4HylaFAX - CAPI driver for HylaFAX (currently without any special Hylafax-support, but standalone fax receiving works fine)"/>
+    <entry name="proxy" ebuild="proxy-2.2.4.ebuild" desc="Proxy - Simple port redirector (nice for port forwarding without iptables)"/>
+    <entry name="tlsproxyd" ebuild="tlsproxyd-0.0.2.ebuild" desc="An TLS Tunneling Tool."/>
+  </net-misc>
+  <sys-apps>
+    <entry name="checkinstall" ebuild="checkinstall-1.5.2.ebuild" desc="CheckInstall installations tracker"/>
+    <entry name="mtx" ebuild="mtx-1.2.17.ebuild" desc="SCSI Media Changer and Backup Device Control"/>
+  </sys-apps>
+  <sys-kernel>
+    <entry name="supermount-sources" ebuild="supermount-sources-2.4.18.ebuild" desc="Supermount Patch applied sources for the Gentoo Linux kernel"/>
+  </sys-kernel>
+  <x11-misc>
+    <entry name="wmjiface" ebuild="wmjiface-1.7.ebuild" desc="A WindowMaker dock app showing network usage"/>
+    <entry name="wmmemmon" ebuild="wmmemmon-0.7.0.ebuild" desc="A dock app showing memory and cpu usage"/>
+    <entry name="wmnetload" ebuild="wmnetload-1.0.ebuild" desc="A WindowMaker dock app showing network usage"/>
+    <entry name="xnetload" ebuild="xnetload-1.11.3.ebuild" desc="This little tool displays a count and a graph of the traffic over a specified network connection."/>
+  </x11-misc>
+  <x11-wm>
+    <entry name="fvwm" ebuild="fvwm-2.5.3.ebuild" desc="an extremely powerful ICCCM-compliant multiple virtual desktop window manager"/>
+</x11-wm>
+</ebuilds>
