@@ -16,8 +16,10 @@
     </result_intro>  
     <result_overview/>
     <result_ignored_terms/>
-    <result_noentry/>
-    <result_navigation/>
+    <result_list/>
+    <result_navigation>
+      <retry/>
+    </result_navigation>  
   </search>
 
 </body>
@@ -25,4 +27,5 @@
 </section>
 
 </chapter>
+
 </info>
