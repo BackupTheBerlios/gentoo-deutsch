@@ -12,8 +12,8 @@
 	Gnome 2.4 zu beachten ist. Ausserdem werden bisher in den Gentoo Foren aufgetauchte
 	Fragen rund um das Upgrade und mögliche Probleme thematisiert.</abstract>
 
-	<version>1.2</version>
-	<date>06.10.2003</date>
+	<version>1.3</version>
+	<date>18.10.2003</date>
 	
 	<chapter>
 		<title>Grundlegendes</title>
@@ -49,11 +49,8 @@
 					<pre caption="Portage aktualisieren"># <c>emerge sync</c></pre>
 					<p>Als nächstes schauen wir uns an, welche Pakete Gnome upgraden möchte.</p>
 					<pre caption="Blockende Abhängigkeiten"># <c>emerge -p gnome</c></pre>
-					<p>Wie Sie sehen, blockt das Paket <c>bonobo-activation</c> das Upgrade. 
-					Dieses Paket können Sie vor dem Upgrade bedenkenlos unmergen; 
-					<c>bonobo-activation</c> ist ab Gnome 2.4 Teil von <c>libbonobo</c>.</p>
-					<pre caption="Entfernen des blockenden Paketes"># <c>emerge -C bonobo-activation</c></pre>
-			
+					<p>Wie Sie sehen, blockt das Paket <c>bonobo-activation</c> das Upgrade.</p> 
+					 			
 				</body>
 			</section>
 		
@@ -66,10 +63,14 @@
 				<title>Gnome aktualisieren.</title>
 				<body>
 				
-				<p>Nachdem Sie das Abhängigkeitsproblem beseitigt haben können Sie das Upgrade anstossen, wenn alles glatt läuft, 
-				dauert das ein Weilchen ;)</p>
-				<pre caption="Gnome upgraden"># <c>emerge -u gnome</c></pre>
-			
+				<p>Die beste Methode, dass Problem bezüglich bonobo-activation händeln Sie am besten wie folgt: Aktualisieren Sie
+				Ihr System mit <c>emerge -u gnome</c> so weit, bis das Upgrade an bonobo-activation abbricht.
+				Entfernen Sie nun <c>emerge -C bonobo-activation</c> und daran anschliessend wieder <c>emerge -u gnome</c>
+				um das Upgrade fortzuführen.</p>
+				
+				<p>Sie können eventuell das gleiche Problem bei gnome-utils und gucharmap durchlaufen, führen Sie an dem Punkt
+				an dem das Upgrade abbricht ein <c>emerge -u gnome-utils</c> aus.</p>
+				
 			</body>
 		</section>
 
