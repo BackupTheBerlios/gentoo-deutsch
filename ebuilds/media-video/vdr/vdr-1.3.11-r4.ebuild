@@ -1,11 +1,11 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.11-r4.ebuild,v 1.1 2004/07/21 00:28:37 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.11-r4.ebuild,v 1.2 2004/07/26 17:53:45 martini Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.3.10-AC3overDVB-0.2.6"
 BEAUTY="vdr-1.3.10-beauty"
-AIO="vdr-1.3.11-enAIO-1.3"
+AIO="vdr-1.3.12-enAIO-1.3"
 SUBMENU="cmd_submenu.patch"
 JUMPPLAY="jumpplay-0.4-1.3.11.diff"
 DOUBLEEPG="disableDoubleEpgEntrys_0.6b_vdr1.3.6.diff"
