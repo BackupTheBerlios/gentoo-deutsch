@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/vdrplugin-mplayer-0.8.3.ebuild,v 1.1 2004/03/22 18:35:06 fow0ryl Exp ${VDRPLUGIN}/vdrplugin-${VDRPLUGIN}-0.7.15.ebuild,v 1.1 2003/06/05 09:39:40 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/vdrplugin-mplayer-0.8.3.ebuild,v 1.2 2004/05/09 14:14:15 fow0ryl Exp ${VDRPLUGIN}/vdrplugin-${VDRPLUGIN}-0.7.15.ebuild,v 1.1 2003/06/05 09:39:40 mad Exp $
 
 IUSE=""
 VDRPLUGIN="mplayer"
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 
 DEPEND=">=media-video/vdr-1.2.6
 	>=media-video/${VDRPLUGIN}-0.90_rc4
-	media-sound/mad
+	>=media-sound/madplay
 	sys-libs/zlib
 	>=media-libs/libmad-0.15.0b
 	>=media-libs/libsndfile-1.0.5"
