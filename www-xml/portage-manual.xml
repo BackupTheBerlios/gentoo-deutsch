@@ -694,7 +694,7 @@ emerge rsync
 </section>
 
 <section>
-<title>Pakete installieren</title>
+<title>Pakete installieren (mergen)</title>
 <body>
 	<p>
         Der Vorgang des Kompilierens und Installierens eines Paketes durch Portage wird 
@@ -796,22 +796,22 @@ Calculating dependencies ...done!
         sind, Sie jene aber nicht durch neue ersetzen wollen, hilft Ihnen diese Option weiter.
 	</p>
 	<p><i>--usepkg</i> : Anstatt das angegebene Paket zu kompilieren, versucht Portage
-        mit dieser Option ein vorkompiliertes tbz2 Paket zu installieren von einem angegebenen
-        Platz. Jener Platz ist in der PKGDIR Shellumgebungsvariable anzugeben.
+        mit dieser Option ein vorkompiliertes tbz2 Paket von einem angegebenen Platz zu 
+        installieren . Jener Platz ist in der PKGDIR Shellumgebungsvariable anzugeben.
         </p>
 	<p><i>--debug</i> : Um eine noch detailiertere Ausgabe zu bekommen, was w&#228;hrend
         der Aktion mit Portage passiert, benutzen Sie diese Option. Normalerweise werden Ausgaben
         "menschlich lesbarer" dargestellt. So haben Sie zum Beispiel als Entwickler die
-        M&#246;glichkeit, syntaktische Fehler in Bash Script basierte ebuild Dateien zu
+        M&#246;glichkeit, syntaktische Fehler in Bash Script basierten ebuild Dateien zu
         erruieren.
 	</p>
-	<p><i>--autoclean</i> : Zwingt <i>emerge</i> zum totalen bereinigen von
-        spezifischen Tempor&#228;rverzeichnisse f&#252;r Kompiliervorg&#228;nge, bevor das
+	<p><i>--autoclean</i> : Zwingt <i>emerge</i> zum totalen Bereinigen von
+        spezifischen Tempor&#228;rverzeichnissen f&#252;r Kompiliervorg&#228;nge, bevor das
         Paket kompiliert wird. Portage erledigt dies bei standard Konfiguration von
         selbst, dadurch ist diese Option nur f&#252;r Entwickler interessant, die dieses
         Verhalten abgeschaltet haben.
 	</p>
-	<p><i>--verbose</i> : Sagt <i>emerge</i>, das es im ausf&#252;hrlichen Modus
+	<p><i>--verbose</i> : Sagt <i>emerge</i>, dass es im ausf&#252;hrlichen Modus
         laufen soll. Derzeit verursacht diese Option nur GNU Info Fehler-Meldungen.
         Diese k&#246;nnen jedoch von Benutzer ohne Weiteres ignoriert werden.
 	</p>
@@ -819,14 +819,12 @@ Calculating dependencies ...done!
 </section>
 
 <section>
-<title>"Unmergen" von Paketen</title>
+<title>"Unmergen" (Deinstallieren) von Paketen</title>
 <body>
 	<p> Der Vorgang des "unmergens" ist, das die Dateien, die mit einem
         installierten Paket verbunden sind, gel&#246;scht werden. Damit ist
         die Software vom System entfernt und kann nicht mehr benutzt werden,
-        bis Sie jenes Paket wieder "mergen". <!-- Wuerd so gern "installieren"
-        statt "mergen" benutzen, aber das ist nunmal das Fachjargon von
-        Gentoo GNU/Linux, ne? :-) (EH) -->
+        bis Sie jenes Paket wieder "mergen".
 	</p>
 	<p>Pakete werden mittels des <i>emerge</i> Befehls und dem Parameter
         <i>unmerge</i>, gefolgt vom Namen des Paketes entfernt. Das folgende
@@ -848,19 +846,6 @@ emerge unmerge dev-util/ltrace
         <i>&gt;=</i> (gr&#246;sser als oder gleich) dargestellt.
         Das folgende Beispiel w&#252;rde alle Versionen, die gleich und &#228;lter
         des Paketes ltrace in der Version 0.3.15 sind, "unmergen".
-
-        <!-- Da bin ich mir unsicher, obs gut formuliert wurde.
-
-                Hier der Originaltext: (EH)
-
-        Portage also allows for a specific versions of packages
-	to be unmerged. Ranges are specified using <i>=</i> (exact version),
-	<i>&lt;</i> (less then), <i>&gt;</i> (greater then), <i>&lt;=</i>
-	(less then or equal to), and <i>&gt;=</i> (greater then or equal to).
-	The following would unmerge all versions of ltrace equal to
-	version 0.3.15 and older:
-
-        -->
 	</p>
 
 <pre>
@@ -879,18 +864,9 @@ emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
 
 	<warn>Das "unmergen" von Paketen kann gef&#228;hrlich sein.
         Wenn Sie ein Paket des Grundsystems entfernen, verliert Ihr
-        System an Funktionalit&#228;t und bei entfernten Libraries
+        System an Funktionalit&#228;t und bei entfernten Bibliotheken
         droht funktionsunt&#252;chtige Software.
-        <!-- pffff, gut ausgedrueckt die letzten zwei Saetze?
-
-        Hier der Originaltext:
-
-        Unmerging packages can be dangerous.  If you remove any
-	core packages your system may cease to function and
-	the removal of various libraries may cause software to fail.
-
-        -->
-
+        
 	<b>Portage warnt Sie nicht, wenn Sie Pakete des Grundsystems
         oder gar Abh&#228;ngigkeiten anderer Pakete entfernen.</b>
 	</warn>
@@ -910,19 +886,6 @@ emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
         weshalb einige Dateien nicht entfernt worden sind, als das
         Paket "unmerged" wurde.
 
-        <!-- Bin mir etwas unsicher. (EH)
-
-        Hier der Originaltext:
-
-        Once the unmerge begins you will see a long list of filenames
-	belonging to the package displayed.  Some of these filenames
-	will have a flag displayed to the left of the filename.
-	The flags <i>!mtime</i>, <i>!empty</i>, and <i>cfg</i> specify
-	reasons why certain files were not removed when this package
-	was unmerged.
-
-        -->
-
         Dateien ohne jegliche Merkmale wurden erfolgreich vom System
         entfernt.
 	</p>
@@ -930,15 +893,8 @@ emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
         worden ist, nachdem das Paket installiert wurde. Das bedeutet, dass
         Jemand diese Datei bearbeitet hat nach dem "mergen" des Paketes oder
         andere Pakete es &#252;berschrieben haben zu einem sp&#228;teren
-        Zeitpunkt.
-
-        <!-- aehmm.. bitte uebersetzen *g* (EH)
-
-        This allows for packages to be
-	updated to newer versions without fear that unmerging the older
-	installed version will remove vital files.
-
-        -->
+        Zeitpunkt. Dies erlaubt es, dass Pakete aktualisiert werden k&#246;nnen, 
+        ohne die Gefahr, dass wichtige Dateien entfernt werden.
 	</p>
 	<p>Das Merkmal <i>!empty</i> weist auf Verzeichnisse hin, welche
         Portage verbietet, diese zu entfernen, die nicht leer sind
@@ -951,33 +907,15 @@ emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
         Paket, was installiert werden w&#246;rde, &#252;bernimmt den Besitz
         jener Konfigurationsdateien und Portage verweigert die Entfernung
         dieser Dateien.
-
-        <!-- Gut so? (EH)
-
-                Hier der Originaltext:
-
-        Configuration File
-	protection kicks in when you see the <i>cfg</i> flag.  This means
-	a newer installed package is claiming ownership of this particular
-	configuration file and Portage refuses to remove it.
-
-        -->
 	</p>
 	<warn>
-
-
-        Files are considered owned by the last package installed.
-        <!-- Bitte uebersetzen, bin schon etwas muede. (EH) -->
-
+        Dateien werden immer dem letzten installierten Paket zugeordnet.
         Dies ist abh&#228;ngig von der Reihenfolge der Installation und
         unabh&#228;ngig von der aktuellen Versions- oder Revisionsnummer
-        der Pakete, die installiert sind.
-
-        Removing the newest installed package that claims a certain
-	file will always remove the file even if older packages installed
-	versions of the same file in the past (assuming the user did not
-	manually modify the file).
-        <!-- pfff =) Das auch bitte..danke! (EH) -->
+        der Pakete, die installiert sind. Wenn ein Paket eine Datei besitzt, 
+        wird diese immer mit deinstalliert, auch wenn eine &#228;ltere Version eines 
+        Paketes diese Datei installiert hat, solange der Nutzer diese Datei 
+        nicht manuell ge&#228;ndert hat.
         </warn>
 
 </body>
