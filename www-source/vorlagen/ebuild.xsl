@@ -37,12 +37,7 @@
           <xsl:for-each select="../pkg[category = $cname]">
             <xsl:variable name="pname" select="name"/>
             
-            <xsl:for-each select="../pkg[name = $pname]">
-              <xsl:if test="position() = 1">
-                <xsl:value-of select="$name"/>
-              </xsl:if>            
-            
-            </xsl:for-each>
+
             
             <xsl:value-of select="name"/>
             <xsl:text>, </xsl:text>
