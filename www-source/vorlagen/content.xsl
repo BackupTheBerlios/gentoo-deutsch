@@ -475,7 +475,7 @@
 </xsl:template>
 
 <xsl:template match="uriimg">
-	<p style="text-align:center;">
+	<p style="align:center;">
 	<a>
 		<xsl:attribute name="href">
 			<xsl:value-of select="@uri"/>
