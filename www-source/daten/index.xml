@@ -59,11 +59,11 @@
   <block>
     <title>Partnerseiten:</title>
     <p>
-	  <uriimg uri="http://www.gentoo.org" picuri="http://www.gentoo.de/media/bilder/icons/gentooorg.gif" align="center"/>
+	  <uriimg uri="http://www.gentoo.org" picuri="http://www.gentoo.de/media/bilder/icons/gentooorg.gif" align="left"/>
 
-	  <uriimg uri="http://www.berlios.de" picuri="http://www.gentoo.de/media/bilder/icons/berlios.gif" align="center"/>
+	  <uriimg uri="http://www.berlios.de" picuri="http://www.gentoo.de/media/bilder/icons/berlios.gif" align="left"/>
 
-	  <uriimg uri="http://www.gentooforum.de" picuri="http://www.gentoo.de/media/bilder/icons/gentooforum.gif" align="center"/>
+	  <uriimg uri="http://www.gentooforum.de" picuri="http://www.gentoo.de/media/bilder/icons/gentooforum.gif" align="left"/>
 	</p>
   </block>
 </box>
@@ -80,7 +80,7 @@
 		Gentoo-Version ist es nun endlich so weit - <b>Gentoo-Linux 1.4 ist da !</b>
 	</p>
 	<p>
-		<uriimg uri="http://www.gentoo.org/doc/en/gentoo-x86-install.xml" picuri="http://www.gentoo.de/media/bilder/icons/14final.jpg"/>
+		<uriimg uri="http://www.gentoo.org/doc/en/gentoo-x86-install.xml" picuri="http://www.gentoo.de/media/bilder/icons/14final.jpg" align="center"/>
 	</p>
 	<p>
 		Es wird empfohlen, sich vor der Installation die <uri link="http://www.gentoo.org/doc/en/gentoo-x86-install.xml">
