@@ -9,7 +9,7 @@ KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
 
-DEPEND=">=media-video/vdr-1.3.8
+DEPEND=">=media-video/vdr-1.3.11
 	>=media-libs/libdvdcss-1.2.8
 	>=media-libs/libdvdnav-0.1.9
 	>=media-libs/libdvdread-0.9.4
