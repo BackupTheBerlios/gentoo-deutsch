@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6-r1.ebuild,v 1.3 2004/04/29 20:11:10 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6-r1.ebuild,v 1.4 2004/05/12 15:23:04 fow0ryl Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.3.6-AC3overDVB-0.2.4"
@@ -31,7 +31,7 @@ then
 		media-libs/jpeg
 		sys-libs/ncurses
 		app-admin/sudo
-		fam? ( app-admin/fam )
+		fam? ( app-admin/famd )
 		lirc? ( app-misc/lirc )
 		app-portage/gentoolkit
 		"
@@ -46,7 +46,7 @@ then
 		media-libs/jpeg
 		sys-libs/ncurses
 		app-admin/sudo
-		fam? ( app-admin/fam )
+		fam? ( app-admin/famd )
 		lirc? ( app-misc/lirc )
 		app-portage/gentoolkit
 		"
