@@ -54,8 +54,10 @@
                   </xsl:choose>
                 </xsl:attribute>              
               
-                <td>
-                  <xsl:value-of select="name"/>
+                <td style="vertical-align:top">
+                  <b><xsl:value-of select="name"/></b>
+                  <br/><br/>
+                  <xsl:value-of select="description"/>
                 </td>
                 <td>
                   <b>Letzte Änderung:</b>
