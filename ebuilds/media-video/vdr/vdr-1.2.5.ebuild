@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.5.ebuild,v 1.3 2003/09/23 18:22:20 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.5.ebuild,v 1.4 2003/10/17 18:07:26 martini Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
@@ -121,6 +121,7 @@ src_install() {
 	insinto /etc/init.d
 	insopts -m0755
 	newins ${FILESDIR}/rc.vdr vdr
+	newins ${FILESDIR}/rc.vdrwatchdog vdrwatchdog
 
 	dodoc CONTRIBUTORS COPYING README* INSTALL MANUAL HISTORY* UPDATE-1.2.0
 	dodoc ${FILESDIR}/vdrshutdown.sh
@@ -153,7 +154,8 @@ src_install() {
 	exeinto /usr/bin
 	doexe vdr
 	doexe svdrpsend.pl
-
+	doexe ${FILESDIR}/vdrwatchdog.sh
+	
 	rm Make.config.template
 	insopts -m0644 -ovdr -gvideo
 	insinto /etc/vdr
