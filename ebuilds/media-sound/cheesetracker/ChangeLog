@@ -1,9 +1,10 @@
 # ChangeLog for <CATEGORY>/<PACKAGE_NAME>
 # Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-sound/cheesetracker/ChangeLog,v 1.1 2003/12/12 12:32:33 rootshell Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-sound/cheesetracker/ChangeLog,v 1.2 2003/12/12 17:55:21 rootshell Exp $
 
 *cheesetracker-9.1 (11 Dec 2003)
   11 Dec 2003: Florian Schilhabel <fernsehleo@gmx.net>
   initial ebuild
+  updated dependency for libc++-1.2.5 minimum
   <rootshell>
  
