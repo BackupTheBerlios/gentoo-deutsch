@@ -22,6 +22,20 @@
 
 <section>
 	<body>
+	<news type="news" date="23.09.2003" title="Gentoo-Newsletter">
+		<p>
+			Im aktuellen <uri link="http://www.gentoo.org/news/de/gwn/20030922-newsletter.xml">Newsletter</uri> 
+			wird die Verfügbarkeit von neuen LiveCDs angekündigt, in denen zahlreiche Bugs gefixt sind.
+			Auuserdem erfahrt ihr neues über den Stand der Portierung von Gentoo auf IA/64 
+			und die Gentoo-Woche im Oktober mit Usertreffen in Oberhausen und Bonn, 
+			sowie dem Practical Linux Tag in Giessen.
+		</p>
+	</news>
+	</body>
+</section>
+
+<section>
+	<body>
 	<news type="release" date="11.09.2003" title="Gentoo für Playstation 2">
 		<p>
 			Gute Nachrichten für alle Freunde der Playstation 2 und Genoo Linux! Nach dem XBox Port
