@@ -1,0 +1,176 @@
+diff -u vbox-0.5.0.orig/Makefile vbox-0.5.0/Makefile
+--- vbox-0.5.0.orig/Makefile	2003-07-06 19:24:47.000000000 +0200
++++ vbox-0.5.0/Makefile	2004-06-09 12:35:16.807609408 +0200
+@@ -42,7 +42,7 @@
+ 
+ INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
+ 
+-DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
++DEFINES += -D_GNU_SOURCE -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ 
+ #uncomment for debug output
+ #DEFINES += -DDEBUG
+diff -u vbox-0.5.0.orig/debug.h vbox-0.5.0/debug.h
+--- vbox-0.5.0.orig/debug.h	2003-07-06 19:24:47.000000000 +0200
++++ vbox-0.5.0/debug.h	2004-06-09 13:24:34.851918320 +0200
+@@ -14,4 +14,4 @@
+ #define d(x) ; 
+ #endif
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff -u vbox-0.5.0.orig/menu-vbox.c vbox-0.5.0/menu-vbox.c
+--- vbox-0.5.0.orig/menu-vbox.c	2003-07-06 19:24:47.000000000 +0200
++++ vbox-0.5.0/menu-vbox.c	2004-06-09 12:39:06.595676312 +0200
+@@ -1,4 +1,5 @@
+ 
++#include <vdr/interface.h>
+ #include <vdr/menuitems.h>
+ #include <vdr/i18n.h>
+ #include "menu-vbox.h"
+@@ -39,7 +40,6 @@
+ 	if(Key == kOk)
+ 	{
+ 		eOSState state = OnOk();
+-		Display();
+ 		return state;
+ 	}
+ 	return osUnknown;
+@@ -81,7 +81,6 @@
+ 	asprintf(&buffer,("%s\t: %s"),m_szText,(iStatus == 1 ? tr("On"):tr("Off")));
+ 
+ 	SetText(buffer,false);
+-	Display();
+ }
+ eOSState cCtrlItem::OnOk()
+ {
+@@ -162,8 +161,7 @@
+ {
+   m_pVBOXUser = pVBOXUser;
+ 
+-  Interface->Status(tr("Connecting to vbox ..."));
+-  Interface->Flush();
++  Skins.Message(mtStatus, tr("Connecting to vbox ..."));
+ 
+   if(m_pVBOXUser->GetVBOX()->Connect() == cVBOXClient::vboxSuccess)
+   {
+@@ -171,7 +169,7 @@
+   }
+   else
+   {
+-    Interface->Error(tr("Error to connect to vbox!"));
++    Skins.Message(mtError, tr("Error to connect to vbox!"));
+   }
+ }
+ cMenuCtrlVBOX::~cMenuCtrlVBOX(void)
+@@ -345,15 +343,14 @@
+ 	if(bDeleteMarkedMessages)
+ 		DeleteMarkedMessages(false);
+ 	cOsdMenu::Clear();
+-	Interface->Status(tr("Retrieving list of calls ..."));
+-	Interface->Flush();
++	Skins.Message(mtStatus, tr("Retrieving list of calls ..."));
+ 	if(m_pVBOX->TransferMsgList() == cVBOXClient::vboxSuccess)
+ 	{
+ 		DisplayMsgList();
+ 	}
+ 	else
+ 	{
+-		Interface->Error(tr("Retrieving list of calls failed!"));	
++		Skins.Message(mtError, tr("Retrieving list of calls failed!"));
+ 	}	
+ }
+ void cMenuListVBOX::SetHelpTexts()
+@@ -421,7 +418,7 @@
+ 				{
+ 					if(m_pVBOX->CreateAuFileFromMsg(mi->GetNumber(),szVBOXAuFilename) != cVBOXClient::vboxSuccess)
+ 					{
+-						Interface->Error(tr("Retrieving calldata failed, cannot play!"));	
++						Skins.Message(mtError, tr("Retrieving calldata failed, cannot play!"));
+ 					}
+ 					else
+ 					{
+@@ -436,8 +433,7 @@
+ 						cControl::Launch(new cVBOXSndPlayerControl(szVBOXAuFilename));
+ 						m_bIsPlaying = true;
+ 						SetHelpTexts();
+-						Interface->Status(tr("Playing call ..."));
+-						Interface->Flush();
++						Skins.Message(mtStatus, tr("Playing call ..."));
+ 					}
+ 				}
+ 				return osContinue;
+@@ -449,7 +445,6 @@
+ 			if(mi)
+ 			{
+ 				mi->ToggleNew();
+-				mi->Display();
+ 			}
+ 			return osContinue;
+ 			break;
+@@ -559,4 +554,4 @@
+ cMenuVBOXUser::~cMenuVBOXUser()
+ {
+ 
+-}
+\ No newline at end of file
++}
+diff -u vbox-0.5.0.orig/setup.h vbox-0.5.0/setup.h
+--- vbox-0.5.0.orig/setup.h	2003-07-06 19:24:47.000000000 +0200
++++ vbox-0.5.0/setup.h	2004-06-09 13:23:55.679873376 +0200
+@@ -89,4 +89,4 @@
+ 
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff -u vbox-0.5.0.orig/sndplayer.c vbox-0.5.0/sndplayer.c
+--- vbox-0.5.0.orig/sndplayer.c	2003-07-06 19:24:47.000000000 +0200
++++ vbox-0.5.0/sndplayer.c	2004-06-09 12:39:56.983016272 +0200
+@@ -747,7 +747,7 @@
+ {
+   if(!Active()) 
+   {
+-	  Interface->Status(NULL); // clear status message, if any.
++          // Interface->Status(NULL); // clear status message, if any.
+ 	  // instead of returning osEnd,
+ 	  // we shutdown ourself (else vdr thinks we are still replaying) and return osContinue, this way our menu stays alive
+ 	  
+diff -u vbox-0.5.0.orig/vbox.c vbox-0.5.0/vbox.c
+--- vbox-0.5.0.orig/vbox.c	2003-07-06 19:24:47.000000000 +0200
++++ vbox-0.5.0/vbox.c	2004-06-09 13:27:50.119233176 +0200
+@@ -7,8 +7,10 @@
+  */
+ 
+ #include <getopt.h>
++#include <vdr/interface.h>
+ #include <vdr/plugin.h>
+ #include <vdr/osd.h>
++#include <vdr/skins.h>
+ #include <vdr/status.h>
+ #include "menu-vbox.h"
+ #include "setup.h"
+@@ -100,9 +102,9 @@
+ 	if(g_VBOXSetup.m_bNotifyAboutNewCalls)
+ 	{
+ 		_CheckForNewMessages();
+-		if(Interface && _GetNotificationText())
++		if(_GetNotificationText())
+ 		{
+-			Interface->Info(_GetNotificationText());
++			Skins.Message(mtInfo, tr(_GetNotificationText()));
+ 		}
+ 	}
+ }
+@@ -117,8 +119,7 @@
+   // Perform the action when selected from the main VDR menu.
+  if(m_VBOXUserlist.Count() == 0)
+  {
+-	 if (Interface)
+-		Interface->Error(tr("No VBOX users configured!"));
++	Skins.Message(mtError, tr("No VBOX users configured!"));
+ 
+   return NULL;
+  }	

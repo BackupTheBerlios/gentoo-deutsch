@@ -1,6 +1,12 @@
 # ChangeLog for media-video/vdr-tvtv
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-vbox/ChangeLog,v 1.1 2003/07/20 19:58:19 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-vbox/ChangeLog,v 1.2 2004/07/22 21:20:07 austriancoder Exp $
+
+*vdrplugin-vdrbox-0.5.0-r1 (22 July 2004)
+
+  22 July 2004; Lars Altenhain <lars at altenhain dot de>
+  added support for vdr > 1.3.6
+  added support for 2.6 kernels
 
 *vdrplugin-vdrbox-0.5.0 (20 July 2003)
 
