@@ -146,7 +146,7 @@ Pflege von Paketen des Portage Systems.
 	<p>
         Der gesamte Aufwand, welcher bei der Entwicklung von Gentoo Linux betrieben wurde 
         resultiert in einer Sammlung von <i>ebuilds</i> und einem Profil. Dieses Profil 
-        beschreibt welche Pakete als Kernpakete f&#252;r den Betrieb des Systems wichtig sind. 
+        beschreibt welche Pakete als Kernpakete f&#252;r den Betrieb des Systems wichtig sind.
         Das Profil erlaubt dar&#252;ber hinaus den Entwicklern bestimmte Pakete zu blockieren bzw.
         freizuschalten. Dies ist auch n&#252;tzlich um defekte Pakete zwischenzeitlich zu deaktivieren.
         Die <i>ebuild</i> Dateien definieren einfach nur wie bestimmte Pakete von Portage 
@@ -251,7 +251,7 @@ Pflege von Paketen des Portage Systems.
 	</p>
 
         <!-- Habe Ort mit Stelle ersetzt und einige Formulierungen angepasst, liesst sich afaik fluessiger [SB] --> 
- 
+
 	<p>
 	Portage &#252;berpr&#252;ft die Stellen in denen USE Einstellungs definiert werden 
         in der Reihenfolge, wie sie in der Variable <i>USE_ORDER</i> in
@@ -356,7 +356,7 @@ emerge net-im/gaim
         Compiler Einstellungen an w&#228;hrend C bzw. C++ kompiliert wird.
 	</p>
 	<p>
-        Es werden Ihnen einige kommentierte Standard Einstellungen f&#252;r unterschiedliche 
+        Es werden Ihnen einige kommentierte Standard Einstellungen f&#252;r unterschiedliche
         Plattformen angeboten. Diese Einstellungen k&#246;nnen als getestet und stabil angesehen 
         werden. Diese zu &#228;ndern, k&#246;nnte zu Fehlern in der Software und dem Compiler 
         f&#252;hren. Bitte seien Sie beim &#228;ndern der Standard Einstellung vorsichtig, da Sie 
@@ -531,15 +531,15 @@ mv gentoo-x86 portage
 
 	<p>
         Entwickler mit vollem Zugang zum CVS k&#246;nnen auch <i>emerge</i> den lokalen
-        Tree mit dem CVS abgleichen lassen, welches sie mittels RSH oder SSH erreichen 
+        Tree mit dem CVS abgleichen lassen, welches sie mittels RSH oder SSH erreichen
         k&#246;nnen.
 	</p>
 	<p>
-	Laden Sie einfach den CVS Tree mittels Ihres Accounts herunter ("checkout"), 
+	Laden Sie einfach den CVS Tree mittels Ihres Accounts herunter ("checkout"),
         verschieben Sie jenen nach /usr/portage und benutzen
 	Sie folgende <i>SYNC</i> Option:
 	</p>
-	
+
 <pre>
 SYNC="cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot"
 </pre>
@@ -553,7 +553,7 @@ SYNC="cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot"
 	<p>
         Das Gentoo Projekt beinhaltet eine lokale Spiegelung von allen
 	Archivdateien, die als Ebuild im Portage Tree vorliegen. Meistens
-	werden Source Tarballs usw. auf langsamen Servern gespeichert, die 
+	werden Source Tarballs usw. auf langsamen Servern gespeichert, die
         ziemlich oft ausfallen k&#246;nnen. Auch Entwickler entfernen
 	regelm&#228;ssig alte Versionen Ihrer Software von FTP-Seiten,
 	wenn neue Releases gemacht wurden. Um das Leben von Benutzer, die
@@ -565,7 +565,7 @@ SYNC="cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot"
 	<p>
 	Wann auch immer Sie vorhaben, ein Paket herunterzuladen, indem Sie es
 	"mergen", versucht Portage zu aller erst unseren Spiegelungsserver
-	f&#252;r die angeforderten Archive zu erreichen . Wenn sich auf jenem 
+	f&#252;r die angeforderten Archive zu erreichen . Wenn sich auf jenem
 	Server die ben&#246;tigten Dateien nicht befinden, versucht Portage
 	den jeweiligen HTTP oder FTP Server, der im Ebuild Paket
 	angegeben ist.
@@ -573,7 +573,7 @@ SYNC="cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot"
 	<p>
 	Die Angabe des Spiegelungsserver, welchen Portage benutzt, erfolgt
 	in der <i>GENTOO_MIRRORS</i> Option, die sich in der Datei /etc/make.conf
-	befindet. 
+	befindet.
 
 	Das Folgende ist die standard Einstellung:
 	</p>
@@ -741,7 +741,7 @@ emerge /usr/portage/net-www/galeon/galeon-1.2.0-r3.ebuild
 	</p>
 
 <pre>
-root@kodiak blocke # emerge --pretend kdevelop             
+root@kodiak blocke # emerge --pretend kdevelop
 
 These are the packages that I would merge, in order.
 
@@ -767,7 +767,7 @@ Calculating dependencies ...done!
 	Pakete handelt) und werden durch diese Aktion aktualisiert.
 	</p>
 	<p>
-	Folgende Parameter sind ausserdem Verf&#252;gbar:	
+	Folgende Parameter sind ausserdem Verf&#252;gbar:
 	</p>
 	<p>
 	<i>--fetchonly</i> : Ladet alle ben&#246;tigten Dateien herunter, die
@@ -776,133 +776,210 @@ Calculating dependencies ...done!
 	</p>
 	<p>
 	<i>--emptytree</i> : Diese Option l&#228;sst Portage vort&#228;uschen,
-	dass keine der Abh&#228;ngigkeiten oder Pakete auf denen das zu installierende 
-        Paket beruht installiert sind. 
+	dass keine der Abh&#228;ngigkeiten oder Pakete auf denen das zu installierende
+        Paket beruht installiert sind.
 
 	Dies l&#228;sst sich sehr gut Option <i>--pretend</i> verbinden, um eine komplette
 	Liste der Abh&#228;ngigkeiten f&#252;r jedes einzelne Paket anzeigen
 	zu lassen. Alle Abh&#228;ngigkeiten mit Ausnahme von Glibc werden dargestellt.
 	</p>
 
-	<p><i>--nodeps</i> : Portage attempts to merge only the specified
-	packages and ignores any dependencies.  If you do not have the 
-	appropriate dependencies already installed then compilation may
-	fail.
-	</p>
-	<p><i>--onlydeps</i> : Only dependencies for a given package are
-	merged.  The specified package is <u>not</u> merged.
+	<p><i>--nodeps</i> : Mit dieser Option versucht Portage nur die angegebene Pakete
+        zu "mergen" und ignoriert s&#228;mtliche Abh&#228;ngigkeiten. Bitte beachten Sie,
+        dass diese Option zu Problemen f&#252;hren kann, wenn Sie die Pakete, von welche
+        das jeweilige Paket abh&#228;ngig ist, nicht bereits installiert haben.
         </p>
-	<p><i>--noreplace</i> : Skips the merge of specified packages if they
-	are already installed
+	<p><i>--onlydeps</i> : Mit dieser Option ist es m&#246;glich, nur die Abh&#228;ngigkeiten
+        des jeweiligen Paketes zu "mergen", jedoch <u>nicht</u> das ausgew&#228;hlte Paket selbst.
+        </p>
+	<p><i>--noreplace</i> : Wenn Sie Pakete zum "mergen" angeben, die bereits installiert
+        sind, Sie jene aber nicht durch neue ersetzen wollen, hilft Ihnen diese Option weiter.
 	</p>
-	<p><i>--usepkg</i> : Instead of compiling the specified packages
-	Portage will attempt to use pre-compiled tbz2 packages from a specified
-	location.  The location is specified by the <i>PKGDIR</i> shell
-	environment variable.
+	<p><i>--usepkg</i> : Anstatt das angegebene Paket zu kompilieren, versucht Portage
+        mit dieser Option ein vorkompiliertes tbz2 Paket zu installieren von einem angegebenen
+        Platz. Jener Platz ist in der PKGDIR Shellumgebungsvariable anzugeben.
+        </p>
+	<p><i>--debug</i> : Um eine noch detailiertere Ausgabe zu bekommen, was w&#228;hrend
+        der Aktion mit Portage passiert, benutzen Sie diese Option. Normalerweise werden Ausgaben
+        "menschlich lesbarer" dargestellt. So haben Sie zum Beispiel als Entwickler die
+        M&#246;glichkeit, syntaktische Fehler in Bash Script basierte ebuild Dateien zu
+        erruieren.
 	</p>
-	<p><i>--debug</i> : The ebuild environment is instructed to become 
-	much more verbal.  This is useful for developers trying to track 
-	down syntax errors in bash script based ebuild files.
+	<p><i>--autoclean</i> : Zwingt <i>emerge</i> zum totalen bereinigen von
+        spezifischen Tempor&#228;rverzeichnisse f&#252;r Kompiliervorg&#228;nge, bevor das
+        Paket kompiliert wird. Portage erledigt dies bei standard Konfiguration von
+        selbst, dadurch ist diese Option nur f&#252;r Entwickler interessant, die dieses
+        Verhalten abgeschaltet haben.
 	</p>
-	<p><i>--autoclean</i> : Forces <i>emerge</i> to clean out
-	package-specific temporary build directories before it starts
-	to build a package.  Portage does this by default so this option
-	is only useful to developers who disabled this default behavior.
-	</p>
-	<p><i>--verbose</i> : Tells <i>emerge</i> to run in verbose mode.
-	Currently, this only causes GNU info errors to be displayed.  These
-	errors can be safely ignored by users.
+	<p><i>--verbose</i> : Sagt <i>emerge</i>, das es im ausf&#252;hrlichen Modus
+        laufen soll. Derzeit verursacht diese Option nur GNU Info Fehler-Meldungen.
+        Diese k&#246;nnen jedoch von Benutzer ohne Weiteres ignoriert werden.
 	</p>
 </body>
 </section>
 
 <section>
-<title>Unmerging Packages</title>
+<title>"Unmergen" von Paketen</title>
 <body>
-	<p>The act of "unmerging" is to remove the files associated with
-	an installed package from the filesystem.  The software in the package
-	is removed from the system and can no longer be used until it is 
-	remerged.
+	<p> Der Vorgang des "unmergens" ist, das die Dateien, die mit einem
+        installierten Paket verbunden sind, gel&#246;scht werden. Damit ist
+        die Software vom System entfernt und kann nicht mehr benutzt werden,
+        bis Sie jenes Paket wieder "mergen". <!-- Wuerd so gern "installieren"
+        statt "mergen" benutzen, aber das ist nunmal das Fachjargon von
+        Gentoo GNU/Linux, ne? :-) (EH) -->
 	</p>
-	<p>Packages are removed by invoking the <i>emerge</i> command and
-	specifying the <i>unmerge</i> argument followed by the name of the
-	package to be removed.  The following example would unmerge all
-	installed versions of the <i>ltrace</i> package:
+	<p>Pakete werden mittels des <i>emerge</i> Befehls und dem Parameter
+        <i>unmerge</i>, gefolgt vom Namen des Paketes entfernt. Das folgende
+        Beispiel beseitigt alle installierten Versionen vom <i>ltrace</i>
+        Paket.
 	</p>
 
 <pre>
 emerge unmerge ltrace
 
-or
+oder
 
 emerge unmerge dev-util/ltrace
 </pre>
-	<p>Portage also allows for a specific versions of packages
+	<p>Portage erlaubt ausserdem das "unmergen" von ganz spezifischen
+        Versionen eines Paketes. Regul&#228;re Ausdr&#252;cke werden durch
+        <i>=</i> (exakte version), <i>&lt;</i> (kleiner als), <i>&gt;</i>
+        (gr&#246;sser als), <i>&lt;=</i>(kleiner als oder gleich), und
+        <i>&gt;=</i> (gr&#246;sser als oder gleich) dargestellt.
+        Das folgende Beispiel w&#252;rde alle Versionen, die gleich und &#228;lter
+        des Paketes ltrace in der Version 0.3.15 sind, "unmergen".
+
+        <!-- Da bin ich mir unsicher, obs gut formuliert wurde.
+
+                Hier der Originaltext: (EH)
+
+        Portage also allows for a specific versions of packages
 	to be unmerged. Ranges are specified using <i>=</i> (exact version),
-	<i>&lt;</i> (less then), <i>&gt;</i> (greater then), <i>&lt;=</i> 
+	<i>&lt;</i> (less then), <i>&gt;</i> (greater then), <i>&lt;=</i>
 	(less then or equal to), and <i>&gt;=</i> (greater then or equal to).
-	The following would unmerge all versions of ltrace equal to 
+	The following would unmerge all versions of ltrace equal to
 	version 0.3.15 and older:
+
+        -->
 	</p>
 
 <pre>
 emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
 </pre>
 
-	<p>When specifying package ranges it is important to escape <i>&gt;</i>
-	and <i>&lt;</i> characters so your shell does not interpret them.
-	Also you will need to specify the category in the package name as 
-	shown in the example.  For another example of how package
-	range specifications work see the <i>emerge --help</i> command.
+	<p>Wenn Sie regul&#228;re Ausdr&#252;cke f&#252;r Pakete
+        benutzen, so stellen Sie sicher, das Sie jeweils f&#252;r die
+        Zeichen <i>&gt;</i> und <i>&lt;</i> ein Backslash davorsetzen,
+        so das Ihre Shell in diesem Fall dies nicht falsch interpretiert.
+        Ausserdem ist es von N&#246;ten, die Kategorie des Paketes,
+        wie im Beispiel gezeigt, anzugeben. F&#252;r andere regul&#228;re
+        Ausdrucksbeispiele, f&#252;hren Sie den Befehl <i>emerge --help</i>
+        aus.
 	</p>
 
-	<warn>Unmerging packages can be dangerous.  If you remove any
-	core packages your system may cease to function and 
+	<warn>Das "unmergen" von Paketen kann gef&#228;hrlich sein.
+        Wenn Sie ein Paket des Grundsystems entfernen, verliert Ihr
+        System an Funktionalit&#228;t und bei entfernten Libraries
+        droht funktionsunt&#252;chtige Software.
+        <!-- pffff, gut ausgedrueckt die letzten zwei Saetze?
+
+        Hier der Originaltext:
+
+        Unmerging packages can be dangerous.  If you remove any
+	core packages your system may cease to function and
 	the removal of various libraries may cause software to fail.
-	<b>Portage does not warn you if you are removing core packages
-	or dependencies for other packages.</b>
+
+        -->
+
+	<b>Portage warnt Sie nicht, wenn Sie Pakete des Grundsystems
+        oder gar Abh&#228;ngigkeiten anderer Pakete entfernen.</b>
 	</warn>
 
-	<p>If the package to be removed is in fact installed the emerge
-	program will display exactly what packages are to be removed and
-	will wait a specified number of seconds to give the user time to
-	cancel.  During this waiting period the user may press Control-C
-	to cancel before the unmerge beings.
+	<p>Wenn das zu entfernende Paket tats&#228;chlich installiert
+        ist, wird das Programm emerge exakt anzeigen, welche Pakete
+        entfernt werden und wartet eine gewisse Anzahl an Sekunden ab,
+        um den Benutzer die M&#246;glichkeit zu geben, den Vorgang
+        mittels der Tastenkombination Control-C abbzubrechen.
 	</p>
 	<p>
-	Once the unmerge begins you will see a long list of filenames 
+        Beginnt erstmal der Vorgang des "unmergens", sehen Sie eine
+        lange Liste von Dateinamen, die mit dem Paket verbunden sind.
+        Manche dieser Dateinamen haben ein Merkmal (flag), das an
+        der linken Seite der Datei angezeigt wird. Die Merkmale
+        <i>!mtime</i>, <i>!empty</i>, und <i>cfg</i> verdeutlichen,
+        weshalb einige Dateien nicht entfernt worden sind, als das
+        Paket "unmerged" wurde.
+
+        <!-- Bin mir etwas unsicher. (EH)
+
+        Hier der Originaltext:
+
+        Once the unmerge begins you will see a long list of filenames
 	belonging to the package displayed.  Some of these filenames
 	will have a flag displayed to the left of the filename.
 	The flags <i>!mtime</i>, <i>!empty</i>, and <i>cfg</i> specify
 	reasons why certain files were not removed when this package
-	was unmerged.  Files listed without any of these three flags
-	were removed from the filesystem successfully.
+	was unmerged.
+
+        -->
+
+        Dateien ohne jegliche Merkmale wurden erfolgreich vom System
+        entfernt.
 	</p>
-	<p>
-	The <i>!mtime</i> flag means the file was modified after this specific 
-	version of the package was installed.  This means that someone
-	edited this file after the package was installed or some other package
-	overwrote the file at a later time.  This allows for packages to be
+	<p>Das Merkmal <i>!mtime</i> sagt aus, dass die Datei ge&#228;ndert
+        worden ist, nachdem das Paket installiert wurde. Das bedeutet, dass
+        Jemand diese Datei bearbeitet hat nach dem "mergen" des Paketes oder
+        andere Pakete es &#252;berschrieben haben zu einem sp&#228;teren
+        Zeitpunkt.
+
+        <!-- aehmm.. bitte uebersetzen *g* (EH)
+
+        This allows for packages to be
 	updated to newer versions without fear that unmerging the older
-	installed version will remove vital files.  
+	installed version will remove vital files.
+
+        -->
 	</p>
-	<p>
-	The <i>!empty</i> flag refers to directories which Portage refuses 
-	to remove due to the directory not being empty (multiple packages 
-	often claim ownership to the same directories).  Configuration File 
-	protection kicks in when you see the <i>cfg</i> flag.  This means 
+	<p>Das Merkmal <i>!empty</i> weist auf Verzeichnisse hin, welche
+        Portage verbietet, diese zu entfernen, die nicht leer sind
+        (Mehrere Pakete &#252;bernehmen oft den Besitz des selben
+        Verzeichnisses, welches das Paket, was "unmerged" wird, entweder
+        selbst angeh&#246;rt oder ebenfalls benutzt).
+
+        Der Konfigurationsdatei Schutz-Mechanismus tritt dann ein, wenn
+        Sie das <i>cfg</i> Merkmal sehen. Das bedeutet, ein neueres
+        Paket, was installiert werden w&#246;rde, &#252;bernimmt den Besitz
+        jener Konfigurationsdateien und Portage verweigert die Entfernung
+        dieser Dateien.
+
+        <!-- Gut so? (EH)
+
+                Hier der Originaltext:
+
+        Configuration File
+	protection kicks in when you see the <i>cfg</i> flag.  This means
 	a newer installed package is claiming ownership of this particular
 	configuration file and Portage refuses to remove it.
+
+        -->
 	</p>
-	<warn>Files are considered owned by the last package installed.
-	This is dependent on the order of installation and is independent
-	of the actual version number or revision number of the packages
-	installed.  Removing the newest installed package that claims a certain
+	<warn>
+
+
+        Files are considered owned by the last package installed.
+        <!-- Bitte uebersetzen, bin schon etwas muede. (EH) -->
+
+        Dies ist abh&#228;ngig von der Reihenfolge der Installation und
+        unabh&#228;ngig von der aktuellen Versions- oder Revisionsnummer
+        der Pakete, die installiert sind.
+
+        Removing the newest installed package that claims a certain
 	file will always remove the file even if older packages installed
-	versions of the same file in the past (assuming the user did not 
+	versions of the same file in the past (assuming the user did not
 	manually modify the file).
-	</warn>
-	
+        <!-- pfff =) Das auch bitte..danke! (EH) -->
+        </warn>
+
 </body>
 </section>
 
@@ -915,7 +992,7 @@ emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
 	by Gentoo core developers as being important to the operation
 	of any Gentoo Linux system.  A system update does not update
 	nonessential packages, only those packages defined in the Portage
-	profile as being essential for the operation and maintaince of 
+	profile as being essential for the operation and maintaince of
 	a system.
 	</p>
 	<p>
