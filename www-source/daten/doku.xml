@@ -20,9 +20,11 @@
 	<mail link="pylon@gentoo.org">Lars Weiler</mail>
 </author>
 <author title="Übersetzer/Bearbeiter">
-	<mail link="dertobi123@gentoo.org">Tobias</mail>
+	<mail link="dertobi123@gentoo.org">Tobias Scheerbaum</mail>
 </author>
-	
+<author title="Übersetzer/Bearbeiter">
+	<mail link="js@ameds.de">Jens Schittenhelm</mail>
+</author>	
 
 
 <abstract>
@@ -400,11 +402,11 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 				<p>Das <b><uri link="gnome-guide">Gnome 2.4 Upgrade Howto und FAQ</uri></b> leitet
 				Sie durch den Upgradeprozesse auf Gnome 2.4</p>
 
-<!--
+
         <p>Das <b><uri link="dri-howto">Direct Rendering Handbuch</uri></b>
         erläutert, wie Sie funktionierende 3D-Beschleunigung mit Hilfe von
         XFree-DRM erhalten.</p>
-
+<!--
         <p>Die <b><uri link="ati-faq">ATI FAQ</uri></b> beantwortet häufig
         gestellte Fragen zu ATI Grafikkarten.</p>
 -->
