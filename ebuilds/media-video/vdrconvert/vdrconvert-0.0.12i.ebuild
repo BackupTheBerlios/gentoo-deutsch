@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.0.12i.ebuild,v 1.2 2003/11/12 16:04:13 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.0.12i.ebuild,v 1.3 2003/11/16 11:44:06 fow0ryl Exp $
 
 IUSE=""
 SCRIPT="vdrconvert"
@@ -36,7 +36,7 @@ DEPEND=">=media-video/vdr-1.2.0
 	>=mpg123-0.59r-r3
 	>=netpbm-9.12-r4
 	>=freetype-2.1.4
-	>=tosvcd-0.9
+	>=tosvcd-0.9-r2
 "
 	
 
