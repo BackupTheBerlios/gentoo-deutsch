@@ -6,6 +6,7 @@ S="${WORKDIR}/${P}"
 DESCRIPTION="Mirroring tool"
 SRC_URI="http://mirrordir.sourceforge.net/${P}.tar.gz"
 HOMEPAGE="http://mirrordir.sf.net"
+
 DEPEND="virtual/glibc
         sys-libs/zlib"
 REDEPEND="virtual/glibc"
