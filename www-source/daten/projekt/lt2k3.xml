@@ -33,7 +33,26 @@
 <title></title>
 	<body>
 	<p>
-
+		Wir haben 120 CDs in circa 4 Stunden vergeben. Ich denke, wir hätten wesentlich mehr weggeben können; aber
+		da wir auch noch welche für die Besucher an den folgenden Tagen brauchen, müssen wir etwas sparsamer sein
+	</p>
+	<p>
+		Die Leute hören nicht auf, Fragen zu stellen. Die am häufigsten gestellten sind:
+		<ul>
+			<li>Wird Gentoo Sicherheitsupdates wie andere Distributionen anbieten</li>
+			<li>Warum sind so viele ebuilds als unstable ausgewiesen</li>
+			<li>Manche haben Angst davor, dass Gentoo wieder schnell von der Bildfläche
+				verschwunden sein könnte - schließlich ist es ja eine relativ junge
+				Distribution. Es gibt auch bedenken bezüglich der Organisation von Gentoo.
+				Aus diesem Grunde machen sie auch nicht öffentlich bekannt, daß sie Gentoo
+				benutzen</li>
+			<li>Einige Firmen haben Bedenken: Sie können zwar automatische Updates von vielen
+				Paketen auf einmal machen, müssen danach aber auf jedem aktualisierten Rechner
+				<c>etc-update</c> laufen lassen</li>
+			<li>Verschiedene Leute fragten nach dem Fortkommen der Gentoo AMD64-Portierung.
+				Sie würden wirklich Gentoo anstelle einer anderen Distribution für den AMD64
+				benutzen.</li>
+		</ul>
 	</p>
 </body>
 </section>
