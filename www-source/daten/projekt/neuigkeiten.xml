@@ -22,6 +22,20 @@
 
 <section>
 	<body>
+	<news type="other" date="29.10.2003" title="Neue Dokumantationen">
+		<p>
+			In den letzten Tagen hat sich auf gentoo.de einiges getan. Die 
+			<uri link="http://www.gentoo.de/inhalte/doku/">Übersichtsseite</uri> für die Dokumentationen wurde
+			an das Format bei gentoo.org angepasst. Gleichzeitig haben wir viele Dokumente auf den neuesten
+			Stand gebracht, sowie eine bislang nur in Deutsch erhältliche Dokumentation zum 
+			<uri link="http://www.gentoo.de/inhalte/doku/burn-guide/">Brennen</uri> eingestellt. Feedback
+			ist willkommen.
+		</p>
+	</news>
+	</body>
+</section>
+<section>
+	<body>
 	<news type="news" date="20.10.2003" title="Gentoo-Newsletter">
 		<p>
 			Diesmal gibts Neuigkeiten über einige GLEPS, die seit der Einführung der GLEPS verwirklicht wurden, viele
