@@ -55,12 +55,14 @@
   </block>
 
   <block>
-    <title>Partnerseiten:</title>
+    <title>artnerseiten:</title>
     <p>
+	  <uriimg uri="http://www.gentoo.org" picuri="http://www.gentoo.de/media/bilder/icons/gentooorg.png"/>
+
 	  <uriimg uri="http://www.berlios.de" picuri="http://www.gentoo.de/media/bilder/icons/berlios.gif"/>
 
 	  <uriimg uri="http://www.gentooforum.de" picuri="http://www.gentoo.de/media/bilder/icons/gentooforum.gif"/>
-    </p>
+	</p>
   </block>
 </box>
 
