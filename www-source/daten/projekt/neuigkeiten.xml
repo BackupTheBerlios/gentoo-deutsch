@@ -12,8 +12,11 @@
 <author title="Author">
   <mail link="stkn@berlios.de">Stefan Knoblich</mail>
 </author>
+<author title="Author">
+  <mail link="cybersystem@gentoo.org">Sascha Schwabbauer</mail>
+</author>
 
-<date>2. Dezember 2003</date>
+<date>21. Dezember 2003</date>
 
 <box>
 <block>
@@ -32,6 +35,19 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
 </box>
 
 <chapter>
+
+<section>
+    <body>
+        <news type="news" date="21.12.2003" title="Mailing Listen down">
+        <p>
+            Die offiziellen @gentoo.org Mailing Listen sind seit ca. 23 Uhr gestern Abend nicht zu erreichen.
+            Leider wird der Server wohl nicht vor Montag wieder online sein.
+            Das bedeutet das alle gentoo-*@gentoo.org Adressen nicht funktionieren. Alle anderen @gentoo.org Adressen, wie z.B. www@gentoo.org oder auch Developer Emailadressen funktionieren weiterhin. 
+            Alle Mails die an die Listen geschickt werden, kommen allerdings in die Warteschleife, somit sollten keine Mails verloren gehen.
+        </p>
+        </news>
+    </body>
+</section>
 
 <section>
 	<body>
