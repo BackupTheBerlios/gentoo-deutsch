@@ -1,0 +1,9 @@
+In diesem Verzeichnis finden sich XML-Vorlagen die gemaess dem 
+Gentoo-XML-Guide (http://www.gentoo.org/doc/xml-guide.html) erstellt
+wurden.
+
+Sooweit ich gesehen habe ist auf berlios das Perl-Moodul XSL-Parser
+verfuegbar. Evtl. kann man damit die Seiten beim einchecken gleich
+in html umwandeln und ins htdoc-Verzeichnis kopieren. Wer Interesse
+hat, soll sich einfach mal das copywww.sh und das commitinfo im 
+CVSROOT anschauen. 

@@ -1,7 +1,6 @@
-
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-sasl/cyrus-sasl-2.1.2.ebuild,v 1.1 2002/07/05 20:12:30 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-sasl/cyrus-sasl-2.1.2.ebuild,v 1.2 2002/07/06 19:29:34 holler Exp $
 
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)"
 HOMEPAGE="http://asg.web.cmu.edu/cyrus/"
