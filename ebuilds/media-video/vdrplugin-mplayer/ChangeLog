@@ -1,11 +1,14 @@
 # ChangeLog for media-video/vdr-mplayer
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.8 2004/06/10 18:50:15 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.9 2004/08/01 16:38:25 austriancoder Exp $
+
+*vdrplugin-mplayer-0.9.3-r1
+  1. Aug 2004; Christian Gmeiner <christian at visual-page dot de>
+  added audiostreamid patch (thanks to thoand from vdr-portal.de)
 
 *vdrplugin-mplayer-0.9.1
   10. June 2004; H.Ryll <henning.ryll@web.de>
   moved to plugin version 0.9.1
-
 
 *vdrplugin-mplayer-0.9.0
   27 Mai 2004; J.Bornkesse <hd.brummy@web.de>
