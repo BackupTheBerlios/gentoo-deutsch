@@ -1,19 +1,21 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
-<!-- Original English CVS version: 1.4 -->
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<!-- English CVS version: 1.4 -->
+
 <guide link="/doc/de/ltsp.xml">
 
 <title>Gentoo - LTSP-Anleitung</title>
-<author title="Autor">
+<author title="Author">
   <mail link="lanius@gentoo.org">Heinrich Wendel</mail>
 </author>
-<author title="Autor">
+<author title="Author">
   <mail link="josiah@ritchietribe.net">Josiah Ritchie</mail>
 </author>
 <author title="Editor">
   <mail link="swift@gentoo.org">Sven Vermeulen</mail>
 </author>
-<author title="Übersetzer">
+<author title="Translator">
   <mail link="gero.kunter@gmx.de">Gero Kunter</mail>
 </author>
 
@@ -43,6 +45,7 @@ reduziert, besonders in Situationen wie in Schulen oder Firmen, wo es wichtig
 ist, dass jeder zum Login verwendete Computer eine einheitliche Arbeitsumgebung
 bereit stellt.
 </p>
+
 </body>
 </section>
 </chapter>
@@ -58,9 +61,9 @@ Alle Beispiele in dieser Anleitung gehen davon aus, dass die IP-Adresse Ihres
 Servers 192.168.0.254 lautet, Ihre Domain yourdomain.com heißt und dass Ihr
 Netzwerk im Adressraum 192.168.0.0/24 liegt.
 </p>
+
 </body>
 </section>
-
 <section>
 <title>Installation</title>
 <body>
@@ -68,7 +71,7 @@ Netzwerk im Adressraum 192.168.0.0/24 liegt.
 <p>
 Zunächst benötigen Sie ein funktionsfähiges Gentoo-System. Lesen Sie dazu bitte
 die Gentoo-Installationsanleitung auf der
-<uri link="http://www.gentoo.de/inhalte/doku/">Gentoo-Dokumentationswebseite</uri>.
+<uri link="http://www.gentoo.org/doc/de/index.xml/">Gentoo Dokumentationswebseite</uri>.
 </p>
 
 <p>
@@ -81,23 +84,33 @@ LTSP-Kernsystems:
 </pre>
 
 <p>
-Dies wird die folgenden, von LTSP abhängigen Packages installieren:
+Dies wird die folgenden, von LTSP abhängigen Pakete, installieren:
 </p>
 
 <ul>
-  <li><b>xfree</b>: Die Workstations werden nicht ohne Grund als "XTerminals"
-  bezeichnet!</li>
-  <li><b>dhcp</b>: DHCP ist ein Protokoll zur Automatisierung der
-  TCP/IP-Konfiguration von vernetzten Computern. LTSP benutzt es, um den
-  Workstations IP-Adressen zuzuweisen.</li>
-  <li><b>nfs</b>: NFS ist ein Protokoll, das den Zugriff auf Festplatten über
-  das Netzwerk ermöglicht. Es wird von LTSP verwendet, um das Grundsystem für
-  die Workstations zu mounten.</li>
-  <li><b>tftp</b>: TFTP ist ein einfaches Protokoll zur Dateiübertragung, das
-  von LTSP verwendet wird, um den Kernel zu den Workstations zu übertragen.</li>
-  <li><b>xinetd</b>: xinetd ist ein leistungsfähiger, über erweiterte
-  Fähigkeiten verfügender Ersatz für inetd, der von LTSP verwendet wird, um TFTP
-  zu starten.</li>
+  <li>
+    <b>xfree</b>: Die Workstations werden nicht ohne Grund als "XTerminals"
+    bezeichnet!
+  </li>
+  <li>
+    <b>dhcp</b>: DHCP ist ein Protokoll zur Automatisierung der
+    TCP/IP-Konfiguration von vernetzten Computern. LTSP benutzt es, um den
+    Workstations IP-Adressen zuzuweisen.
+  </li>
+  <li>
+    <b>nfs</b>: NFS ist ein Protokoll, das den Zugriff auf Festplatten über
+    das Netzwerk ermöglicht. Es wird von LTSP verwendet, um das Grundsystem für
+    die Workstations zu mounten.
+  </li>
+  <li>
+    <b>tftp</b>: TFTP ist ein einfaches Protokoll zur Dateiübertragung, das
+    von LTSP verwendet wird, um den Kernel zu den Workstations zu übertragen.
+  </li>
+  <li>
+    <b>xinetd</b>: xinetd ist ein leistungsfähiger, über erweiterte
+    Fähigkeiten verfügender Ersatz für inetd, der von LTSP verwendet wird, um TFTP
+    zu starten.
+  </li>
 </ul>
 
 <note>
@@ -115,7 +128,7 @@ wird zusätzlich ein vollständiges KDE- oder GNOME-System installiert.
 <body>
 
 <p>
-Nachdem der emerge-Prozess abgeschlossen ist, müssen alle Dienste konfiguriert
+Nachdem der emerge Prozess abgeschlossen ist, müssen alle Dienste konfiguriert
 werden:
 </p>
 
@@ -134,7 +147,6 @@ Dokumentation Ihres System-Loggers.
 
 </body>
 </section>
-
 <section>
 <title>NFS</title>
 <body>
@@ -151,7 +163,7 @@ zwei Zeilen enthalten:
 </pre>
 
 <note>
-Passen Sie den Adressraum und die Network-Maske so an, dass sie der
+Passen Sie den Adressraum und die Netzwerkmaske so an, dass sie der
 Konfiguration Ihres Netzwerkes entspricht.
 </note>
 
@@ -166,7 +178,6 @@ Starten Sie nun NFS.
 
 </body>
 </section>
-
 <section>
 <title>xinetd/tftp</title>
 <body>
@@ -184,13 +195,12 @@ Sie in <path>/etc/xinetd.d/tftp</path> den Eintrag <c>disable=yes</c> durch
 
 </body>
 </section>
-
 <section>
-<title>Zuweisen von Netzwerk-Namen</title>
+<title>Namensauflösung</title>
 <body>
 
 <p>
-Damit eine Workstation alle Netz-Resourcen erreichen kann, muss sichergestellt
+Damit eine Workstation alle Ressourcen im Netz erreichen kann, muss sichergestellt
 werden, dass ihr ein korrekter Name zugewiesen wird. Es existieren verschiedene
 Wege, dies zu gewährleisten. Eine Möglichkeit besteht darin, im lokalen Netzwerk
 einen DNS-Server einzurichten. Es ist daneben möglich (und einfacher), auf jedem
@@ -295,7 +305,6 @@ aktiviert sein.
 
 </body>
 </section>
-
 <section>
 <title>Konfiguration von LTSP</title>
 <body>
@@ -309,7 +318,6 @@ vollständig beschrieben sind.
 
 </body>
 </section>
-
 <section>
 <title>Displaymanager</title>
 <body>
@@ -351,13 +359,12 @@ zu KDM als Lösung.
 
 </body>
 </section>
-
 <section>
 <title>Eine Startdiskette erstellen</title>
 <body>
 
 <p>
-Falls Ihre Workstations keine Unterstützung für Booten per PXE haben, müssen Sie
+Falls Ihre Workstations keine Unterstützung für das Booten per PXE haben, müssen Sie
 zum Hochfahren Ihrer Workstations eine Startdiskette erstellen. Wählen Sie auf
 <uri>http://www.rom-o-matic.net/5.0.9/</uri> die verwendete Netzwerkkarte aus,
 drücken Sie <e>Get ROM</e> und schreiben Sie das Image auf eine Diskette:
@@ -383,14 +390,18 @@ Fehlersuche zurückgreifen können:
 </p>
 
 <ul>
-  <li>Die offizielle <uri link="http://www.ltsp.org/documentation/">
-  LTSP-Dokumentation</uri>, insbesondere der Abschnitt
-  "Fehlersuche"</li>
+  <li>
+    Die offizielle <uri link="http://www.ltsp.org/documentation/">
+    LTSP-Dokumentation</uri>, insbesondere der Abschnitt
+    "Fehlersuche"
+  </li>
   <li>Der englische Gentoo-IRC-Channel: irc.freenode.org #gentoo</li>
   <li>Der deutsche Gentoo-IRC-Channel: irc.freenode.org #gentoo.de</li>
   <li>Der LTSP-IRC-Channel: irc.freenode.org #ltsp</li>
-  <li>Die <uri link="http://ltsp.org/mailinglists.php">LTSP-Mailing-Listen
-  </uri> sind eine Fundgrube für wirklich hilfreiche Informationen.</li>
+  <li
+    >Die <uri link="http://ltsp.org/mailinglists.php">LTSP-Mailinglisten
+    </uri> sind eine Fundgrube für wirklich hilfreiche Informationen.
+  </li>
 </ul>
 </body>
 </section>
@@ -426,7 +437,7 @@ finden Sie einen guten Text zu diesem Thema.
 
 <p>
 <b>A:</b> Schauen Sie unter <uri>http://ltsp.org/documentation/eproms.txt</uri>
-und <uri>http://ltsp.org/documentation/pxe.howto.html</uri>.
+und <uri>http://ltsp.org/documentation/pxe.howto.html</uri> nach.
 </p>
 
 <p>
