@@ -243,9 +243,19 @@ table.resultlist tr{
 	vertical-align: top;
 }
 
+table.resultlist td.rank{
+	font-size: 1.3em;
+	font-weight: bold;
+        background-color:#45347B;  
+}
+
 table.resultlist td.title{
 	font-size: 1.1em;
 	font-weight: bold;
+        background-color:#45347B;  
+}
+
+table.resultlist td.info{
 	background-color:#F2F0F9;
 }
 

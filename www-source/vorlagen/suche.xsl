@@ -7,13 +7,13 @@
   <table class="resultlist">
   <![CDATA[<!--loop: results-->]]>
     <tr>
-      <td>
+      <td class="rank">
         <![CDATA[<!--item: rank-->]]>. 
       </td>
-      <td>
+      <td class="title">
         <![CDATA[<a href="<!--item: url-->"><!--item: title--></a>]]>
       </td>
-      <td rowspan="2">
+      <td rowspan="2" class="info">
         <p>
           Relevanz:
           <![CDATA[<!--item: score-->]]> &#160;
@@ -29,8 +29,8 @@
       </td> 
     </tr>
     <tr>
-      <td>&#160;</td>
-      <td>
+      <td class="rank">&#160;</td>
+      <td class="description">
         <![CDATA[<!--item: description-->]]>
       </td>
     </tr>
