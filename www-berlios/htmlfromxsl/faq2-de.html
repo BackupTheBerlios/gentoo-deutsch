@@ -21,7 +21,8 @@
 <form>
 <b>Inhalt</b>:
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Installation</option>
-<option value="#doc_chap2">2. Laufendes System</option></select>
+<option value="#doc_chap2">2. Laufendes System</option>
+<option value="#doc_chap3">3. Netzwerk</option></select>
 </form>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap1">1.</a></font>Installation</p>
@@ -32,9 +33,9 @@
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 1</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
-    	export http_proxy=123.123.123.123:8080
+        	export http_proxy=123.123.123.123:8080
 
-    	export ftp_proxy=123.123.123.123:8080
+        	export ftp_proxy=123.123.123.123:8080
 
 		</pre></td></tr>
 </table> eingestellt werden.
@@ -44,7 +45,7 @@
 			<a href="http://download.nvidia.com/XFree86_40/nforce/1.0-0236/NVIDIA_nforce-1.0-0236.tar.gz">Webseite</a>,
 			zu haben. Falls Sie keine externe Netzwerkkarte während der Installation zur Hand haben, kopieren
 			Sie diesen Treiber einfach auf ein Medium und verfahren Sie wie bei einer Stage 3 Installation bis zu der Stelle,
-			nach dem Sie den KErnel kompiliert haben.
+			nach dem Sie den Kernel kompiliert haben.
 			Dann entpacken Sie das tar Archiv und wechseln Sie in das Unterverzeichnis nforce/nvnet/ und führen
 			Sie folgendes aus:
 			<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -57,7 +58,7 @@
 			</pre></td></tr>
 </table>
 			Dies muss bei jeder Kernel Neukompilierung erneut ausgeführt werden.
-			Dann sollte noch in die /etc/modules.conf um folgende Zeilen werweitert werden:
+			Dann sollte noch in die /etc/modules.conf um folgende Zeilen erweitert werden:
 			<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 3</p></td></tr>
@@ -66,16 +67,16 @@
 			</pre></td></tr>
 </table>
 			Anschliessend sollte wie gewohnt nach der Installationsanleitung weiter verfahren werden.
-			 ASUS Motherboards mit dem nforce Chipsatz besitzen ein modifizierten Netwerkontroller.
+			 ASUS Motherboards mit dem nforce Chipsatz besitzen ein modifizierten Netwerkcontroller.
 			Der Realtek 8139TOO ist hier die richtige Wahl.
 			
 			</p>
         <p class="chaphead">
 <font class="chapnum"><a name="doc_chap2">2.</a></font>Laufendes System</p>
 <p class="secthead"><a name="_sect1">Wenn ich meinen Kernel aktualisiere, habe ich keinen Sound mehr. Ausserdem
-		bekomme ich Fehlermeldungen beim booten, dass die module der Soundkarte nicht gefunden werden. </a></p>
+		bekomme ich Fehlermeldungen beim booten, dass die Module der Soundkarte nicht gefunden werden. </a></p>
 <p>Wenn ALSA Sound verwendet wird, muss nach jeder Kernel-Neukompilation auch die ALSA
-		treiber neu kompiliert werden. Stellen Sie sicher, dass /usr/src/linux auf die richtigen
+		Treiber neu kompiliert werden. Stellen Sie sicher, dass /usr/src/linux auf die richtigen
 		Quelldateien verweist und dann starten sie:
 		<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -86,7 +87,25 @@
 </table>
 		Eine ausführliche ALSA-Installationsanleitung finden Sie im Desktop-Guide.
 		</p>
-<br><br>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Netzwerk</p>
+<p class="secthead"><a name="_sect1">Das Mounten von NFS Verzeichnissen dauert sehr lange (teilweise bis zu fünf Minuten). Auch der 
+                Bootvorgang ist davon betroffen. </a></p>
+                <p>
+                Für das Mounten eines Verzeichnisses via NFS braucht das System bis zu fünf Minuten. Beim Einbinden 
+                der NFS Verzeichnisse aus der <font class="path">/etc/fstab</font> beim Booten bleibt der Bootvorgang beim Punkt  
+                NFS Verzeichnisse stehen und wird, wenn überhaupt, erst nach Minuten fortgesetzt. Die Erklärung ist 
+                simpel, zum Zeitpunkt des Mountens fehlt Portmap. Wenn Sie regelmäßig mit NFS arbeiten, empfiehlt es sich, 
+                portmap zum standard Runlevel zu ergänzen:
+                <a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+                # rc-update add portmap default
+                </pre></td></tr>
+</table>
+                </p>
+                <br><br>
 </td>
 <td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
