@@ -174,9 +174,6 @@ richtet catering to beginners.</abstract>
 	</p>
 
 	<p>
-	You can also use <c>&lt;CTR&gt;F</c> and <c>&lt;CTR&gt;B</c> to move forwards and backwards a page at a time.
-	Modern versions of vi (like vim) will also allow you to use the PGUP and PGDOWN keys for this purpose.
-
 	Sie können auch <c>&lt;CTR&gt;F</c> und <c>&lt;CTR&gt;B</c> benutzen, um sich seitenweise vorwärts und rückwärts zu
 	bewegen. Moderne Versionen von vi (wie vim) erlauben es auch BildAuf und BildAb für diesen Zweck zu benutzen.
 	</p>
@@ -184,28 +181,34 @@ richtet catering to beginners.</abstract>
 </section>
 
 <section>
-<title>Word moves, part 1</title>
+<title>Wortbewegungen, Teil 1</title>
 <body>
-	<p>vi also allows you to move to the left or right by word increments.  To move to the <i>first</i> character of the
-		next word, press <c>w</c>.  To move to the <i>last</i> character of the next word, press <c>e</c>.  To move to the first character
-		of the <i>previous</i> word, press <c>b</c>.  Test 'em out.</p>
+	<p>
+	vi erlaubt es auch, den Cursor wortweise links oder rechts zu bewegen. Um zum <i>ersten</i> Zeichen des nächsten Wortes
+	zu gehen, drücken Sie <c>w</c>. Um zum <i>letzten</i> Zeichen des nächsten Wortes zu gehen, drücken Sie <c>e</c>. Um zum ersten
+	Buchstaben des <i>vorherigen</i> Wortes zu gelangen, drücken Sie <c>b</c>. Probieren Sie es aus!
+	</p>
 </body>
 </section>
 
 <section>
-<title>Word moves, part 2</title>
+<title>Wortbewegungen, Teil 2</title>
 <body>
-<p>After playing around with the word movement commands, you may have noticed that vi 
-considers words like "foo-bar-oni" as five separate words!  This is because by default,
-vi delimits words by spaces <i>or</i> punctuation.  foo-bar-oni is therefore considered
-five words: "foo","-","bar","-" and "oni".</p>
-<p>Sometimes, this is what you want, and sometimes it isn't.  Fortunately, vi also 
-	understands the concept of a "bigword".  vi delimits bigwords by <i>spaces or newlines only</i>.
-This means that while foo-bar-oni is considered five vi words, it's considered only one
-vi bigword.</p>
-
+	<p>
+	Nachdem Sie nun ein bisschen mit den Kommandos zur wortweisen Bewegung herumgespielt haben,
+	haben Sie vielleicht festgestellt, daß vi Wörter wie "foo-bar-oni" als fünf seperate Wörter
+	ansieht. Dies ist so, weil vi von Hause aus Wörter anhand von Leer- <i>oder</i> sog. Delimiterzeichen
+	trennt. Aus diesem Grund wird foo-bar-oni als fünf Wörter angesehen : "foo","-","bar","-" und "oni".
+	</p>
+	<p>
+	Manchmal ist es genau das, was man möchte, und manchmal kann man dieses Feature überhaupt nicht gebrauchen.
+	Glücklicherweise versteht vi auch das Konzept von "bigword". vi trennt bigwords anhand von <i>Leerzeichen oder
+	Zeilenumbrüchen</i>. Dies bedeutet, dass foo-bar-oni zwar als 5 Wörter angesehen wird aber nur als ein bigword.
+	</p>
 </body>
 </section>
+
+
 <section>
 <title>Word moves, part 3</title>
 <body>
