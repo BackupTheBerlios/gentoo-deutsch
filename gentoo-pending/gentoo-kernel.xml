@@ -15,6 +15,9 @@
 <author title="Bearbeitung">
     <mail link="peesh@gentoo.org">Jorge Paulo</mail>
 </author>
+<author title="Deutsche Übersetzung">
+    <mail link="beejay@berlios.de">Benjamin Judas</mail>
+</author>
 
 <abstract>
 Dieses Dokument gibt Ihnen einen Überblick über die Kernelquellen die Gentoo
@@ -382,24 +385,24 @@ mehr Informationen über Con und seine Patches zu finden.
 <body>
 
 <p>
-<c>development-sources</c> is the current unstable kernel branch.  This
-is the branch of the Linux kernel that Linus himself maintains.  This
-rapidly changing playground is where the features for the next stable
-branch are implemented, enhanced and tested before they are released
-to the vast majority of Linux users.
+Die <c>development-sources</c> sind die Kernels, des aktuellen Entwicklerzweiges. Dies
+ist der Zweig des Linux-Kernels, den Linus Torvalds selbst verwaltet. Man kann sich
+diesen Kernel als einen Spielplatz vorstellen, wo alle Features für den nächsten stabilen
+Kernelzweig eingepasst, weiterentwickelt und getestet werden bevor sie an die übrigen
+Linux-Anwender weitergegeben werden.
 </p>
 
 <p>
-If you want the latest, bleeding edge support and experimental core-system
-changes, this is what you want. Note however that these are <e>highly</e>
-experimental kernel sources and it is advised <e>not</e> to use them on mission
-critical or production systems.
+Wenn Sie die neueste Unterstützung und das neueste experimentelle Kernsystem möchten,
+dann ist dieser Kernel das was Sie haben wollen. Bedenken Sie aber bitte, das diese Kernelquellen
+<e>äußerst</e> experimentell sind und es <e>nicht empfehlenswert</e> ist, sie auf einem unbedingt
+benötigten System einzusetzen.
 </p>
 
 <warn>
-Do note that Gentoo Linux does not support issues with or related
-to the <c>development-sources</c> or derivatives as it changes too often
-and is known to break things occasionally.
+Wir weisen Sie hiermit darauf hin, daß Gentoo-Linux keine Fähigkeiten der
+<c>development-sources</c> oder mit diesen verwandten unterstützt, da sich
+diese Dinge zu oft ändern und evtl. Schäden anrichten können.
 </warn>
 
 </body>
@@ -409,13 +412,13 @@ and is known to break things occasionally.
 <body>
 
 <p>
-<c>gaming-sources</c> are based on <c>ck-sources</c> and are therefore
-tuned for high performance. They also contain patches for the latest
-game-related hardware (graphic cards, sound cards, and such).
+Die <c>gaming-sources</c> basieren auf den <c>ck-sources</c> sind folglich
+auf Höchstleistung getrimmt. Die enthalten ausserdem die neuesten Patches für
+Multimedia-Hardware (Grafikkarten, Soundkarten, usw.).
 </p>
 
 <p>
-If you are a hardcore gamer, this is your choice.
+Wenn Sie ein Hardcore-Gamer sind, dann ist dies der Kernel Ihrer Wahl.
 </p>
 
 </body>
@@ -425,17 +428,16 @@ If you are a hardcore gamer, this is your choice.
 <body>
 
 <p>
-The <c>mm-sources</c> are based on the <c>development-sources</c> and
-contain Andrew Morton's patch set. It assembles several other patches,
-like ext2/3 Extended Attributes and Access Control Lists, Page Table
-Sharing, the Orlov Allocator, non-linear mapping behaviour, etc into one
-patch set.
+Die <c>mm-sources</c> basieren auf den <c>development-sources</c> und enthalten
+Andrew Mortons Patchsatz. Dieser enthält einige andere Patches, wie z.B. erweiterte
+Attribute für ext2/3 und ACLs (Access Control Lists), Page Table Sharing, den Orlov Allocator,
+nicht-lineares Mapping-Verhalten, usw.
 </p>
 
 <p>
-If you really want to live on the edge and you think 
-<c>development-sources</c> are for wussies, then try out
-<c>mm-sources</c>.
+Wenn Sie sich wirklich auf Messers Schneide bewegen wollen und der
+Meinungs sind, dass die <c>development-sources</c> für Memmen sind,
+dann versuchen Sie die <c>mm-sources</c>.
 </p>
 
 </body>
@@ -445,11 +447,11 @@ If you really want to live on the edge and you think
 <body>
 
 <p>
-The <c>mosix-sources</c> are patched to support MOSIX operation for 
-clustered computing. A cluster is a set of nodes (PCs) with software 
-that enables them to handle tasks in a distributed manner. With 
-clusters, you don't need high-profile supercomputers to do lengthy 
-tasks. For more information see <uri>http://www.mosix.org</uri>.
+Die <c>mosix-sources</c> sind speziell für MOSIX-Operationen bei Clustern
+angepasst. Ein Cluster ist ein Satz von Knoten (=PCs) mit spezieller Software,
+die es Ihnen erlaubt Aufgaben verteilt zu erledigen. Mit Clustern entfällt die
+Notwendigkeit für Supercomputer um grössere Aufgaben zu erledigen. Wenn Sie weitere
+Informationen möchten, dann besuchen Sie bitte <uri>http://www.mosix.org</uri>.
 </p>
 
 </body>
@@ -459,8 +461,8 @@ tasks. For more information see <uri>http://www.mosix.org</uri>.
 <body>
 
 <p>
-The <c>openmosix-sources</c> are patched to support the openMosix system 
-(like MOSIX but Open Source).  For more information see 
+Die <c>openmosix-sources</c> sind für die Unterstützung von openMosix Systemen optimiert
+(dasselbe wie MOSIX, aber Open Source).  Für weitere Informationen besuchen Sie bitte
 <uri>http://www.openmosix.org</uri>.
 </p>
 
@@ -476,11 +478,11 @@ The <c>openmosix-sources</c> are patched to support the openMosix system
 <body>
 
 <p>
-The <c>redhat-sources</c> are, as the name suggests, the sources for the 
-RedHat Linux kernel.  Thanks to the wonders of Open Source, anyone can 
-take advantage of the work the RedHat engineers put into making their 
-kernels. We at Gentoo have provided an ebuild so that you can easily
-use this kernel with Gentoo.
+Die <c>redhat-sources</c> sind - wie man vom Namen her schon vermuten kann -
+der Erfolg für das RedHat Linux-Kernel. Dank der Vorteile von Open Source
+kann jeder die Blüten der Arbeit der RedHat-Ingenieure bewundern, die ihre
+Arbeit an den RedHat Kernels hervorgebracht haben. Wir von Gentoo bieten ein
+entsprechendes Ebuild, damit Sie auf möglichst einfachem Wege in den Genuß kommen.
 </p>
 
 </body>
@@ -490,10 +492,9 @@ use this kernel with Gentoo.
 <body>
 
 <p>
-<c>rsbac-sources</c> contain the patches from 
-<uri>http://www.rsbac.org</uri>.  RSBAC stands for <e>Rule Set Based 
-Access Control</e>. These kernel patches allow you to authorize users 
-based on rules instead of normal uid/gid permissions.
+Die<c>rsbac-sources</c> enthalten die Patches von <uri>http://www.rsbac.org</uri>.
+RSBAC steht für <e>Rule Set Based Access Control</e>. Diese kernelpatches erlauben Ihnen,
+Benutzer anhand von Regeln anstatt Kombinationen von UID-/GID-Berechtigungen zu identifizieren.
 </p>
 
 </body>
@@ -503,9 +504,9 @@ based on rules instead of normal uid/gid permissions.
 <body>
 
 <p>
-<c>selinux-sources</c> from <uri>http://www.nsa.gov/selinux</uri> are 
-patches for the security conscious to support the LSM (Linux Security 
-Modules) and the Flask Security Architecture.
+Die <c>selinux-sources</c> von <uri>http://www.nsa.gov/selinux</uri> sind
+Patches zur Unterstützung der LSM (Linux Security
+Modules) und Flask Security Architecture.
 </p>
 
 </body>
@@ -515,16 +516,17 @@ Modules) and the Flask Security Architecture.
 <body>
 
 <p>
-<c>usermode-sources</c> are the User Mode Linux kernel patches.  This 
-kernel is designed to allow Linux to run within Linux to run within Linux
-to ... User Mode Linux is intended for testing and virtual server support.
-For more information about this amazing tribute to the stability and 
-scalability of Linux, see <uri>http://user-mode-linux.sourceforge.net</uri>. 
+Die <c>usermode-sources</c> sind die Quellen, die Sie für einen Usermode-Kernel brauchen.
+Dies ist ein spezieller Kernel, der speziell dafür entwickelt wurde um Linux innerhalb von
+Linux innerhalb von Linux innerhalb von Linux...auszuführen. User-Mode Linux ist zu Testzwecken
+und zur Unterstützung von virtuellen Servern vorgesehen. Für weitere Informationen über diese
+phantastische Hommage an die Skalierbarkeit von Linux, besuchen Sie bitte
+<uri>http://user-mode-linux.sourceforge.net</uri>.
 </p>
 
 <p>
-For more information on UML and Gentoo, read the 
-<uri link="/doc/en/uml.xml">Gentoo UML Guide</uri>.
+Für weitere Informationen über UML und Gentoo, lesen Sie bitte
+<uri link="http://www.gentoo.org/doc/en/uml.xml">den Gentoo UML Guide</uri>.
 </p>
 
 </body>
@@ -534,10 +536,10 @@ For more information on UML and Gentoo, read the
 <body>
 
 <p>
-<c>win4lin-sources</c> are patched to support the userland win4lin tools 
-that allow Linux users to run many Microsoft Windows (TM) applications
-at almost native speeds.  See <uri>http://www.netraverse.com/</uri> for more 
-information.
+Die <c>win4lin-sources</c> sind zur Unterstützung der Win4Lin Werkzeuge speziell
+angepasst. Diese erlauben Linux-anwendern viele Anwendungen die eigentlich für Microsoft Windows
+entwickelt wurden mit der fast normalen Geschwindigkeit auszuführen. Weitere Informationen gib es unter
+<uri>http://www.netraverse.com/</uri>.
 </p>
 
 </body>
@@ -547,17 +549,17 @@ information.
 <body>
 
 <p>
-<c>wolk-sources</c> contains the <e>Working Overloaded Linux Kernel</e> from 
-<uri>http://sourceforge.net/projects/wolk</uri>. This kernel contains
-many patches of a wide variety, all combined into the kernel with
-extreme care. This allows you to configure nearly every one into and out
-of the kernel at compile time -- so the kernel will work with nearly any
-combination of the patches.
+Die <c>wolk-sources</c> enthalten den <e>Working Overloaded Linux Kernel</e> von
+<uri>http://sourceforge.net/projects/wolk</uri>. Dieser Kernel enthält viele verschiedene
+ Patches, die alle mit größter Vorsichet in den kernel eingepasst wurden. Dies erlaubt Ihnen als
+Anwender fast jeden davon entweder bei der Kompilierung des Kernel zu berücksichtigen oder
+dies eben zu lassen - der Kernel selber wird bei fast jeder Kombination von einkompilierten Patches
+funktionieren.
 </p>
 
 <p>
-If you need a certain combination of patches that you cannot find in other
-kernel sources, WOLK is definitely worth a shot.
+Wenn Sie eine bestimme Kombination von Patches brauchen, die Sie nicht in anderen Kernelquellen
+finden können, dann ist WOLK sicherlich einen Versuch wert.
 </p>
 
 </body>
