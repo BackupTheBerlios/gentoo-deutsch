@@ -1,0 +1,8 @@
+# ChangeLog for media-video/vdrskin-egalstry
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrskin-egalstry/ChangeLog,v 1.1 2004/07/25 01:05:26 austriancoder Exp $
+
+*vdrskin-egalstry-0.0.5a (25 July 2004)
+  25 July 2004: Christian Gmeiner <christian at visual-page dot de>
+  inital ebuild
+  thanks to Matthias Schwarzott <zzam at gmx.de> for ebuild ideas and basic stuff
