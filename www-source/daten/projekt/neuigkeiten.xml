@@ -22,6 +22,18 @@
 
 <section>
 	<body>
+	<news type="release" date="11.09.2003" title="Gentoo für Playstation 2">
+		<p>
+			Gute Nachrichten für alle Freunde der Playstation 2 und Genoo Linux! Nach dem XBox Port
+			gibt es nun endlich auch Gentoo für die Playstation 2. Wer Lust hat sich das ganze mal Live anzusehen,
+			findet <uri link="http://playstation2-linux.com/projects/gentoo-ps2/">hier</uri> alles was man braucht.
+		</p>
+	</news>
+	</body>
+</section>
+
+<section>
+	<body>
 	<news type="news" date="08.09.2003" title="Gentoo-Newsletter">
 		<p>
 			In diesem <uri link="http://www.gentoo.org/news/en/gwn/20030908-newsletter.xml">Newsletter</uri> gibt es Resultate
