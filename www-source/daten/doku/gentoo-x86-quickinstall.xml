@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-x86-quickinstall.xml,v 1.6 2003/12/06 22:42:26 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-x86-quickinstall.xml,v 1.7 2003/12/24 14:24:05 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-<!-- English CVS Version 1.6 -->
+<!-- English CVS Version 1.7 -->
 
 <guide link="/doc/de/quickinstall.xml">
 
@@ -31,7 +31,6 @@ Gentoo Linux haben.
 
 <chapter>
 <title>Kurzübersicht Installation (x86)</title>
-<!-- the gentoo.de xsl requires <section> -->
 <section>
 <body>
 
@@ -61,7 +60,7 @@ Anzeige erhalten.
 
 <p>
 Die empfohlene Partitionierung beinhaltet eine 64 MB große /boot Partition mit
-ext3, eine Swap Partition die doppelt so groß ist wie der Arbeitsspeicher, und
+ext2, eine Swap Partition die doppelt so groß ist, wie der Arbeitsspeicher, und
 den Rest als /-Partition mit ReiserFS.
 </p>
 

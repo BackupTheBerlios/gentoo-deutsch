@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/devfs-guide.xml,v 1.7 2003/12/20 20:54:03 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/devfs-guide.xml,v 1.8 2003/12/24 14:24:05 dertobi123 Exp $ -->
 
-<!-- English CVS Version: 1.4 -->
+<!-- English CVS Version: 1.5 -->
 
 <guide link="/doc/de/devfs-guide.xml">
 <title>Device File System Anleitung</title>
