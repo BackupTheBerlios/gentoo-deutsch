@@ -35,7 +35,8 @@
   <block>
     <title>QuickLinks:</title>
     <p>
-      <b><uri link="inhalte/projekt/neuigkeiten">Neuigkeiten immer aktuell</uri></b>
+		<br/>
+	  <b><uri link="inhalte/projekt/neuigkeiten">Neuigkeiten immer aktuell</uri></b>
       <br/>
 	  <br/>
 
@@ -65,10 +66,8 @@ Gentoo-Benutzer</uri>
     <title>Partnerseiten:</title>
     <p>
 	  <uriimg uri="http://www.berlios.de" picuri="http://www.gentoo.de/media/bilder/icons/berlios.png"/>
-      <br/>
 
 	  <uriimg uri="http://www.gentooforum.de" picuri="http://www.gentoo.de/media/bilder/icons/gentooforum.png"/>
-      <br/>
     </p>
   </block>
 
