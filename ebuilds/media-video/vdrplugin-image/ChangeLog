@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-image/ChangeLog,v 1.5 2004/07/08 11:14:40 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-image/ChangeLog,v 1.6 2004/08/01 16:06:34 austriancoder Exp $
+
+*vdrplugin-image-0.1.1 (1 Aug 2004)
+
+  1 Aug 2004; Christian Gmeiner <christian at viszual-page dot de>
+  version bump
 
 *vdrplugin-image-0.1.0-r1 (8 July 2004)
 

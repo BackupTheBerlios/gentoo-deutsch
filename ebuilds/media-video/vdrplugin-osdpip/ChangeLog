@@ -1,11 +1,14 @@
-# ChangeLog for media-video/vdr-clock
+# ChangeLog for media-video/vdr-osdpip
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/ChangeLog,v 1.5 2004/07/12 23:32:37 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/ChangeLog,v 1.6 2004/08/01 16:02:02 austriancoder Exp $
 
-*vdrplugin-osdpip-0.0.4-r1 (13 July 2004)
+*vdrplugin-osdpip-0.0.6 (1 Aug 2004)
+  1. Aug 2004; Christian Gmeiner <christian at visual-page dot de>
+  version bump
+
+*vdrplugin-osdpip-0.0.5-r1 (13 July 2004)
   13. July 2004; Christian Gmeiner <christian at visual-page dot de>
   added support for 2.6er kernels
-
 
 *vdrplugin-osdpip-0.0.5 (14 June 2004)
 
