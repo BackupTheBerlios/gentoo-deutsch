@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 2003 Markus Kuppe
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-p2p/mldonkey-cvs/mldonkey-cvs-20030508.ebuild,v 1.1 2003/05/08 14:11:54 lemmy Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-p2p/mldonkey-cvs/mldonkey-cvs-20030508.ebuild,v 1.2 2003/05/29 00:25:30 lemmy Exp $
 
 IUSE="gtk pango pthread multinet"
 
