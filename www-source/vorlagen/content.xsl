@@ -479,6 +479,11 @@
 		<xsl:attribute name="href">
 			<xsl:value-of select="@uri"/>
 		</xsl:attribute>
+
+		<xsl:attribute name="target">
+			_blank
+		</xsl:attribute>
+
 		<img>
 			<xsl:attribute name="src">
 				<xsl:value-of select="@picuri"/>
