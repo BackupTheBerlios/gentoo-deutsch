@@ -78,6 +78,9 @@
 	<body>
 	<news type="other" date="06.10.2003" title="Deutsche Gentoo-Woche">
 		<p>
+			<uriimg picuri="http://www.gentoo.de/media/bilder/icons/burger_gentoo_de.jpg" align="center"/>
+		</p>
+		<p>
 			In dieser Woche kann kein Deutscher Gentoo-Anwender sagen, er hätte nichts zu tun ;). Usertreffen jagt Usertreffen und wir Fragen uns,
 			ob dies nicht eine eigene Rubrik wert sei:
 			<ul>
