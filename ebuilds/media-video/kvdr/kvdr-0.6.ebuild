@@ -15,15 +15,13 @@ DEPEND=">=media-tv/xawtv-3.73-r1
 	>=media-video/vdr-1.2.0"
 
 src_unpack()  {
-
 	unpack kvdr-${PV}.tgz
 }
 
-
 src_compile() {
+	cd ${S}
         ./configure || die "configure failed"
         emake || die "emake failed"
-
 }
 
 src_install() {
