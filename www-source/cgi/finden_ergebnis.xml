@@ -7,18 +7,26 @@
   <block>
     <title>Ihre Suche</title>
     <p>
-      nach <cgi:query_str/>
-      <br/>  
-      auf <cgi:baseurl/>
+      nach &#171;<cgi:query_str/>&#187;
+      <br/>
+      ergab <cgi:results_num/> Treffer.
+      <br/>
     </p>
+  </block>
+  <block>
+    <title>Ihre Position</title>
     <p>
-      ergab<br/>
-      <cgi:results_num/>
-
+      Sie sehen die Ergebnisse
+      <br/>
+      von <cgi:first_number/> bis <cgi:last_number/>
     </p>
-
-  </block>  
-
+  </block>
+  <block>
+    <title>Weitere Daten</title>
+    <p>
+      Es wurden <cgi:docs_total/> durchsucht.
+    </p>
+  </block>
 
 </box>
 
