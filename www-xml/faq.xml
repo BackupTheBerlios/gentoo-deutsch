@@ -61,15 +61,17 @@
 	</section>
 
 	<section>
-		<title>Why do the build .iso and .tbz2 files sometimes have different -r (revision) numbers?</title>
+		<title>Warum werden .iso und .tbz2 Datein mit Unterschiedlichen -r (Revisionen) gebaut/veroeffentlicht?</title>
 		<body><p>
+		Das Minimal-System .tbz2 Archiv benoetigt nur
+		<!-- Blub.. Was fuer ein Satz.. Keine Ahnung, mal ueberlegen -->
 		The .tbz2 minimal-system tarball only needs to be revised when there have
 		been significant changes to the core Gentoo Linux system (such as baselayout
 		changes, or a new profile), and as such .tbz2 updates are relatively rare.
-		The .iso file tends to get updated whenever we discover that somebody has
-		hardware that won't boot from our .iso.  Since new kernel modules and
-		patches are constantly being generated, this situation probably won't
-		stabilise anytime soon.
+		<!-- Das kann ich wieder -->
+		Die .iso Datei muss nur geupdatet werden, wenn jemand andere Hardware hat
+		die nicht mit der .iso booten will. Seitdem Kernel Module und Updates
+		regelmaessig gemacht werden kann es kaum zu dieser Situation kommen.
 		</p>
 	</body>
 	</section>
@@ -127,17 +129,18 @@ type <c>gentoo</c> instead of <c>rescue</c>, above.</p>
 	</section>
 	<section>
 		<title>Wie kann man einen Normalen User hinzufuegen?</title>
-		<body><p>Jeder weiﬂ wohl, das es nicht sehr gut ist jeden Tag <e>root</e> zu benutzen,
-		Wie kann ich also andere User hinzufuegen?</p>
+		<body>
+		<p>Jeder weiss wohl, das es nicht sehr empfehlenswert ist immer <e>root</e> zu benutzen,
+		Wie kann man also andere User hinzufuegen?</p>
 		<p>Der Befehl <c>adduser gentoo</c> wuerde einen User mit dem Username gentoo erstellen. Der naechste Schritt ist es
 		diesem User ein Password zu geben und <c>passwd</c> tut genau das.</p>
 		</body>
 	</section>
 	<section>
-		<title>Why can't a user su to root?</title>
-		<body><p>For security reasons, users may only <c>su</c> to root if they belong to the 
-		<e>wheel</e> group. To add a <i>username</i> to the <e>wheel</e> group, issue the following 
-		command as root:</p>
+		<title>Warum kann ein User nicht mit su zu root werden?</title>
+		<body><p>Wegen Sicherheitsgruenden, koennen User nur mit <c>su</c> zu root werden wenn sie in der 
+		<e>wheel</e> Groupe sind. Um einen <i>Usernamen</i> zu der <e>wheel</e> Gruppe hinzufuegen, benutzen sie den 
+		folgenden Befehl als root:</p>
 		<pre># <i>usermod -G users,wheel username</i></pre>
 		</body>
 	</section>
@@ -156,10 +159,10 @@ type <c>gentoo</c> instead of <c>rescue</c>, above.</p>
 		</body>
 	</section>
 	<section>
-		<title>How to I disable devfs?</title>
+		<title>Wie kann ich devfs deaktivieren?</title>
 		<body>
-		<p>Under Gentoo Linux 1.0_rc6 and later, you can disable devfs by passing the 
-		<c>gentoo=nodevfs</c> to the kernel.</p>
+		<p>Bei Gentoo Linux 1.0_rc6 und besser/neuer, kann man devfs deaktivieren durch das uebergeben des
+		<c>gentoo=nodevfs</c> Argumentes zum Kernel.</p>
 		</body>
 	</section>
 	<section>
