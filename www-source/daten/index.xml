@@ -62,7 +62,7 @@
 	<li><uri link="/inhalte/download/sonstiges">Sonstiges</uri></li>
 </ul>
 </p>
- 
+
 </block>
 
  <block>
@@ -83,17 +83,48 @@
 <section>
 	<title>Warnung</title>
 <body>
-
 <p>
- <news type="other" date="3.12.2003" title="Security Alert: Linux Kernel Bug">
+<news type="other" date="3.12.2003" title="Security Alert: Linux Kernel Bug">
 Im Rahmen des Server-Einbruchs bei Debian wurde ein Bug im Linux Kernel gefunden. Ein Fehler im Systemaufruf do_brk() führt dazu, dass ein Programm Zugriff auf den vollen Adressraum des Kernels erhalten kann. Ein Angreifer kann so natürlich auch Root-Rechte erlangen. Um dies zu verhindern, empfehlen wir allen Nutzern die aktualisierten Kernel-Fassungen
 aufzuspielen. Um die aktuellen Pakete zu erhalten führen Sie ein <b>emerge sync</b> durch und emergen dann Ihre
 Kernel-Version oder updaten gleich auf 2.4.23.<br/>
- <uri link="http://isec.pl/vulnerabilities/isec-0012-do_brk.txt">Weitere Informationen über do_brk()</uri> 		 
+<uri link="http://isec.pl/vulnerabilities/isec-0012-do_brk.txt">Weitere Informationen über do_brk()</uri>
 </news>
 </p>
 </body>
+</section>
 
+<section>
+	<title>Weihnachtsgrüsse</title>
+	<body>
+		<p>
+			Ein ereignisreiches Jahr neigt sich nun langsam dem Ende zu und wie an so vielen Stellen ist es nun
+			auch hier an der Zeit, die Erlebnisse noch einmal Revue passieren zu lassen. Für Gentoo war dies ein
+			überaus erfolgreiches Jahr: Neben einem sehr grossen Zuwachs an Anwendern sowohl im privaten als auch
+			im Businessbereich konnte Gentoo bei vielen Gelegenheiten seine Vielseitigkeit demonstrieren. Spätestens
+			mit der Veröffentlichung der Final-Version von Gentoo-Linux 1.4 Anfang August wurde Gentoo-Linux neben SuSE,
+			Debian, Mandrake und RedHat zu den grossen Distributionen gezählt.</p>
+		<p>
+			Auch für Gentoo.de war dies ein ereignisreiches Jahr. Nach einem verlängerten Winterschlaf erwachte das Projekt
+			wieder zum Leben und festigte so seine Position als Portal für die Gemeinschaft der deutschen Anwenderschar.
+			Deutschland wird mittlerweile als die Gentoo-Hochburg nach den USA gewertet. Nirgendwo anders gibt es solch eine
+			starke Community, was sich auch durch diverse Usertreffen manifestierte. Gentoo.de ist mittlerweile der Lieferant
+			No. 1 für deutsche Übersetzungen, was sich jetzt und in Zukunft in einem erhöhten Verantwortungsbewusstsein für
+			alle Projektteilnehmer bemerkbar machen wird.</p>
+		<p>
+			Die Zusammenarbeit zwischen Gentoo.org und Gentoo.de wurde bei vielen Gelegenheiten demonstriert: Sei es bei der
+			bereits erwähnten Übersetzerarbeit oder bei diversen einschlägigen Veranstaltungen. So konnte ein Team von Teilnehmern
+			beider Projekte (Gentoo.org und Gentoo.de) im Sommer beim Linuxtag in Karlsruhe viele neue Anwender gewinnen und beim Practical-Linux-Tag
+			im Oktober in Giessen viele interessante Gespräche mit Anwendern aus vielen verschiedenen Fachgebieten führen.</p>
+		<p>
+			Auch im nächsten Jahr werden wir unsere Aufgabe nach bestem Wissen und Gewissen erfüllen und wir hoffen, daß wir weiterhin
+			für viele deutschsprachige Anwender die Anlaufstelle No. 1 bleiben und auch viele neue gewinnen können. Soviel sei schon einmal vorab
+			verraten: Im nächsten Jahr wird es viele Überraschungen für die deutsche Anwendergemeinschaft geben. Überraschungen, von denen jeder
+			Anwender profitieren kann - Vieles wird wesentlich einfacher werden.</p>
+		<p>
+			In diesem Sinne wünscht das Gentoo.de Team im Namen von allen Gentoo-Entwicklern rund um den Globus frohe und besinnliche Weihnachten
+			und einen guten Rutsch ins neue Jahr!</p>
+	</body>
 </section>
 
 <section>
@@ -103,19 +134,19 @@ Kernel-Version oder updaten gleich auf 2.4.23.<br/>
 
 <p>
 Gentoo Linux ist eine portbasierte Distribution für den erfahrenen Linux User. Sie eignet sich hervorragend für
-alle Personen, die maximale Kontrolle über ihr System erhalten wollen. Man kann mit Gentoo alles machen 
+alle Personen, die maximale Kontrolle über ihr System erhalten wollen. Man kann mit Gentoo alles machen
 - vom Server bis zum Desktop-System, vom Cluster bis zur einfachen Boot-CD.
 </p>
 
 <p>
 <warn>
-Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele 
-Dokumentationen zu lesen -- auch Englische. Es gibt keine grafischen Konfigurationshilfen, fast alles muss 
-von Hand konfiguriert werden. Sollten Sie bisher nur über KDE, Gnome oder irgend einer anderen grafischen 
-Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht gleich die richtige 
-Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer sein Ihrem Rechner ein 
-Speicherupgrade zu gönnen oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein, 
-aber der Status eines fortgeschrittenen Anwenders ist hilfreich - sonst könnte Ihr Ausflug ins Gentoo-Land 
+Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele
+Dokumentationen zu lesen -- auch Englische. Es gibt keine grafischen Konfigurationshilfen, fast alles muss
+von Hand konfiguriert werden. Sollten Sie bisher nur über KDE, Gnome oder irgend einer anderen grafischen
+Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht gleich die richtige
+Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer sein Ihrem Rechner ein
+Speicherupgrade zu gönnen oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein,
+aber der Status eines fortgeschrittenen Anwenders ist hilfreich - sonst könnte Ihr Ausflug ins Gentoo-Land
 recht bald einen herben Rückschlag erleiden.
 </warn>
 </p>
