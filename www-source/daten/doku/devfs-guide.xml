@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/devfs-guide.xml,v 1.1 2003/12/10 19:57:46 schnitz Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/devfs-guide.xml,v 1.2 2003/12/10 20:00:55 schnitz Exp $ -->
 
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
@@ -495,7 +495,7 @@ devfsd /dev
 <body>
 
 <p>
-Für mehr Informationen über devfs, hier noch ein paar Quellen.
+Für mehr Informationen über devfs, hier noch ein paar Quellen:
 </p>
 
 <p>
