@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/devfs-guide.xml,v 1.2 2003/12/10 20:00:55 schnitz Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/devfs-guide.xml,v 1.3 2003/12/10 20:05:35 schnitz Exp $ -->
 
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
@@ -376,7 +376,7 @@ die Berechtigungen einiger Gerätedateien überprüfen und möglicherweise ände
 
 <p>
 Das zweite Feld enthält die Berechtigungen, die für eine Gerätedatei gesetzt
-werden nach einem erfolgreichen Login. Wenn sich ein Benutzer am System einlogt
+werden, nach einem erfolgreichen Login. Wenn sich ein Benutzer am System einlogt
 und die Gerätedateien haben eine(n) standard Owner/Group ändert PAM die
 Berechtigungen und gibt dem Benutzer Owner Rechte. Auch werden die
 Zugriffsrechte entstprechend gesetzt, hier 0600 (Nur der aktuell angemeldete
@@ -442,9 +442,10 @@ Im fünften Feld stehen die Berechtigungen für die Gerätedatei.
 
 <p>
 Hier die normale Vorgehensweise bei Gentoo Installationen: Wenn sie mit
-<c>chown</c> (CHangeOWNer) und <c>chmod</c> einige Gerätedateien verändern
-speichert <c>devfsd</c> die Informationen wenn Sie das System herunterfahren.
-Das passiert weil <path>/etc/devfsd.conf</path> folgendes enthält:
+<c>chown</c> (CHangeOWNer) und <c>chmod</c> (CHange MODe) einige Gerätedateien
+verändern speichert <c>devfsd</c> die Informationen wenn Sie das System
+herunterfahren. Das passiert weil <path>/etc/devfsd.conf</path> folgendes
+enthält:
 </p>
 
 <pre caption = "/etc/devfsd.conf zum Speichern von Berechtigungen">
