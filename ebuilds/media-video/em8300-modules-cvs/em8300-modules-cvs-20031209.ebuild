@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/em8300-modules-cvs/em8300-modules-cvs-20031209.ebuild,v 1.1 2003/12/09 22:54:36 rootshell Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/em8300-modules-cvs/em8300-modules-cvs-20031209.ebuild,v 1.2 2004/03/10 21:30:35 austriancoder Exp $
 
 ECVS_SERVER="cvs.dxr3.sourceforge.net:/cvsroot/dxr3"
 ECVS_MODULE="em8300"
@@ -23,9 +23,9 @@ RDEPEND="${DEPEND} >=sys-apps/portage-1.9.10"
 src_compile() {
 cd ${S}
 	# NTSC default...
-	sed 	-e 's/PAL/NTSC/g' \
-		Makefile > Makefile.hacked
-	mv Makefile.hacked Makefile
+	#sed 	-e 's/PAL/NTSC/g' \
+	#	Makefile > Makefile.hacked
+	#mv Makefile.hacked Makefile
 	make clean all || die "problem compiling modules"
 }
 
