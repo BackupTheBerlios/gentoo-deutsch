@@ -1,0 +1,875 @@
+--- nautilus-2.2.3.1.orig/components/tree/nautilus-tree-view.c	2002-10-02 07:36:49.000000000 +0200
++++ nautilus-2.2.3.1/components/tree/nautilus-tree-view.c	2003-06-12 17:14:59.000000000 +0200
+@@ -48,151 +48,95 @@
+ #include <libnautilus-private/nautilus-global-preferences.h>
+ #include <libnautilus-private/nautilus-program-choosing.h>
+ #include <libnautilus-private/nautilus-tree-view-drag-dest.h>
++#include <src/nautilus-window-private.h>
+ 
+-#define NAUTILUS_PREFERENCES_TREE_VIEW_EXPANSION_STATE "tree-sidebar-panel/expansion_state"
++typedef struct NautilusTreeViewRoot NautilusTreeViewRoot;
++
++struct NautilusTreeViewRoot {
++	NautilusTreeViewRoot *next;
++
++	NautilusTreeView* view;
++
++	char *root_uri;
+ 
+-struct NautilusTreeViewDetails {
+ 	GtkWidget *scrolled_window;
+ 	GtkTreeView *tree_widget;
+ 	GtkTreeModelSort *sort_model;
+ 	NautilusTreeModel *child_model;
+ 
+ 	NautilusFile *activation_file;
+-	GHashTable   *expanded_uris;
+ 
+ 	NautilusTreeViewDragDest *drag_dest;
++
++	Nautilus_URI selection_location;
++	gboolean update_selection_once;
++
++	gboolean expanded_root;
++};
++
++struct NautilusTreeViewDetails {
++	NautilusTreeViewRoot *root;
++
++	GtkWidget *notebook;
++	char *selection_location;
+ };
+ 
+ typedef struct {
+ 	GList *uris;
+-	NautilusTreeView *view;
++	NautilusTreeViewRoot *root;
+ } PrependURIParameters;
+ 
+ BONOBO_CLASS_BOILERPLATE (NautilusTreeView, nautilus_tree_view,
+ 			  NautilusView, NAUTILUS_TYPE_VIEW)
+ 
+-/*
+- *   The expansion state storage is pretty broken
+- * conceptually we have a gconf key, but we can't
+- * listen on it, since we don't want to sync all
+- * tree views. We want to load the stored state per
+- * new tree view we instantiate, and keep a track of
+- * what nodes we are expanding.
+- *
+- *   We then arbitrarily serialize all the tree
+- * view's expansion state - and the last one to shut
+- * wins the GConf key value - it sucks, but it's what
+- * happened in Nautilus 1.0
+- *
+- * - Michael Meeks (23/5/2002)
+- */
+-
+-static void
+-populate_expansion_hash (const char *string,
+-			 gpointer callback_data)
+-{
+-	char *key = g_strdup (string);
+-
+-	g_hash_table_insert (callback_data, key, key);
+-}
+-
+ static void
+-load_expansion_state (NautilusTreeView *view)
++row_inserted_expand_node_callback (GtkTreeModel         *tree_model,
++				   GtkTreePath          *path,
++				   GtkTreeIter          *iter,
++				   NautilusTreeViewRoot *root)
+ {
+-	EelStringList *uris;
++	GtkTreeIter parent;
++	GtkTreePath *sort_path, *parent_path;
+ 
+-	uris = eel_preferences_get_string_list (
+-		NAUTILUS_PREFERENCES_TREE_VIEW_EXPANSION_STATE);
++	if (!root->expanded_root &&
++	    gtk_tree_model_iter_parent (tree_model, &parent, iter)) {
+ 
+-	eel_string_list_for_each (uris, populate_expansion_hash,
+-				  view->details->expanded_uris);
++		root->expanded_root = TRUE;
++		parent_path = gtk_tree_model_get_path (tree_model, &parent);
+ 
+-	eel_string_list_free (uris);
+-}
++		sort_path = gtk_tree_model_sort_convert_child_path_to_path
++			(root->sort_model, parent_path);
+ 
+-static void
+-expand_row_if_stored (NautilusTreeView *view,
+-		      GtkTreePath      *path,
+-		      const char       *uri)
+-{
+-	g_return_if_fail (NAUTILUS_IS_TREE_VIEW (view));
+-	g_return_if_fail (view->details != NULL);
++		gtk_tree_view_expand_row (root->tree_widget, sort_path, FALSE);
+ 
+-	if (g_hash_table_lookup (view->details->expanded_uris, uri)) {
+-		if (!gtk_tree_view_expand_row (
+-			view->details->tree_widget, path, FALSE)) {
+-			g_warning ("Error expanding row '%s' '%s'", uri,
+-				   gtk_tree_path_to_string (path));
+-		}
+-		g_hash_table_remove (view->details->expanded_uris, uri);
++		gtk_tree_path_free (sort_path);
+ 	}
+ }
+ 
+-static void
+-row_inserted_expand_node_callback (GtkTreeModel     *tree_model,
+-				   GtkTreePath      *path,
+-				   GtkTreeIter      *iter,
+-				   NautilusTreeView *view)
++static NautilusWindow *
++nautilus_tree_view_get_window (GtkWidget *view)
+ {
+-	char *uri;
+-	GtkTreeIter  parent;
+-	GtkTreePath *sort_path, *parent_path;
+-	NautilusFile *file;
+-
+-	file = nautilus_tree_model_iter_get_file (view->details->child_model, iter);
+-
+-	if (file) {
+-		/*
+-		 *   We can't expand a node as it's created,
+-		 * we need to wait for the dummy child to be
+-		 * made, so it has children, so 'expand_node'
+-		 * doesn't fail.
+-		 */
+-		nautilus_file_unref (file);
+-		return;
+-	}
+-
+-	if (!gtk_tree_model_iter_parent (tree_model, &parent, iter)) {
+-		g_warning ("Un-parented tree node");
+-		return;
+-	}
+-
+-	file = nautilus_tree_model_iter_get_file (view->details->child_model, &parent);
+-
+-	uri = nautilus_file_get_uri (file);
+-	g_return_if_fail (uri != NULL);
+-
+-	parent_path = gtk_tree_model_get_path (tree_model, &parent);
+-	sort_path = gtk_tree_model_sort_convert_child_path_to_path
+-		(view->details->sort_model, parent_path);
+-
+-	expand_row_if_stored (view, sort_path, uri);
+-
+-	gtk_tree_path_free (sort_path);
+-
+-	g_free (uri);
+-
+-	nautilus_file_unref (file);
++	return NAUTILUS_WINDOW (gtk_widget_get_ancestor (view, NAUTILUS_TYPE_WINDOW));
+ }
+ 
+ static NautilusFile *
+-sort_model_iter_to_file (NautilusTreeView *view, GtkTreeIter *iter)
++sort_model_iter_to_file (NautilusTreeViewRoot *root, GtkTreeIter *iter)
+ {
+ 	GtkTreeIter child_iter;
+ 
+-	gtk_tree_model_sort_convert_iter_to_child_iter (view->details->sort_model, &child_iter, iter);
+-	return nautilus_tree_model_iter_get_file (view->details->child_model, &child_iter);
++	gtk_tree_model_sort_convert_iter_to_child_iter (root->sort_model, &child_iter, iter);
++	return nautilus_tree_model_iter_get_file (root->child_model, &child_iter);
+ }
+ 
+ static NautilusFile *
+-sort_model_path_to_file (NautilusTreeView *view, GtkTreePath *path)
++sort_model_path_to_file (NautilusTreeViewRoot *root, GtkTreePath *path)
+ {
+ 	GtkTreeIter iter;
+ 
+-	if (!gtk_tree_model_get_iter (GTK_TREE_MODEL (view->details->sort_model), &iter, path)) {
++	if (!gtk_tree_model_get_iter (GTK_TREE_MODEL (root->sort_model), &iter, path)) {
+ 		return NULL;
+ 	}
+-	return sort_model_iter_to_file (view, &iter);
++	return sort_model_iter_to_file (root, &iter);
+ }
+ 
+ static void
+@@ -204,7 +148,7 @@
+ 	NautilusFile *file;
+ 
+ 	p = callback_data;
+-	file = sort_model_path_to_file (p->view, path);
++	file = sort_model_path_to_file (p->root, path);
+ 	if (file == NULL) {
+ 		return;
+ 	}
+@@ -213,36 +157,17 @@
+ }
+ 
+ static void
+-save_expansion_state_callback (GtkTreeView      *tree_widget,
+-			       NautilusTreeView *view)
+-{
+-	PrependURIParameters p;
+-        EelStringList *uris;
+-
+-	g_return_if_fail (NAUTILUS_IS_TREE_VIEW (view));
+-
+-	p.uris = NULL;
+-	p.view = view;
+-        gtk_tree_view_map_expanded_rows (tree_widget, prepend_one_uri, &p);
+-        p.uris = g_list_sort (p.uris, eel_strcmp_compare_func);
+-        uris = eel_string_list_new_from_g_list (p.uris, TRUE);
+-	eel_g_list_free_deep (p.uris);
+-        eel_preferences_set_string_list (NAUTILUS_PREFERENCES_TREE_VIEW_EXPANSION_STATE, uris);
+-        eel_string_list_free (uris);
+-}
+-
+-static void
+ got_activation_uri_callback (NautilusFile *file, gpointer callback_data)
+ {
+         char *uri, *file_uri;
+-        NautilusTreeView *view;
++        NautilusTreeViewRoot *root;
+ 	GdkScreen *screen;
+ 	
+-        view = NAUTILUS_TREE_VIEW (callback_data);
++        root = (NautilusTreeViewRoot*) (callback_data);
+ 
+-	screen = gtk_widget_get_screen (GTK_WIDGET (view->details->tree_widget));
++	screen = gtk_widget_get_screen (GTK_WIDGET (root->tree_widget));
+ 
+-        g_assert (file == view->details->activation_file);
++        g_assert (file == root->activation_file);
+ 
+ 	/* FIXME: reenable && !eel_uris_match_ignore_fragments (view->details->current_main_view_uri, uri) */
+ 
+@@ -269,57 +194,63 @@
+ 
+ 		/* Non-local executables don't get launched. They act like non-executables. */
+ 		if (file_uri == NULL) {
+-			nautilus_view_open_location_in_this_window (NAUTILUS_VIEW (view), uri);
++			nautilus_view_open_location_in_this_window (NAUTILUS_VIEW (root->view), uri);
+ 		} else {
+ 			nautilus_launch_application_from_command (screen, NULL, file_uri, NULL, FALSE);
+ 			g_free (file_uri);
+ 		}
+ 		   
+ 	} else if (uri != NULL) {	
+-		nautilus_view_open_location_in_this_window (NAUTILUS_VIEW (view), uri);
++		if (root->selection_location == NULL || strcmp (uri, root->selection_location) != 0) {
++			if (root->selection_location != NULL) {
++				g_free (root->selection_location);
++			}
++			root->selection_location = g_strdup (uri);
++			nautilus_view_open_location_in_this_window (NAUTILUS_VIEW (root->view), uri);
++		}
+ 	}
+ 
+ 	g_free (uri);
+-	nautilus_file_unref (view->details->activation_file);
+-	view->details->activation_file = NULL;
++	nautilus_file_unref (root->activation_file);
++	root->activation_file = NULL;
+ }
+ 
+ static void
+-cancel_activation (NautilusTreeView *view)
++cancel_activation (NautilusTreeViewRoot *root)
+ {
+-        if (view->details->activation_file == NULL) {
++        if (root->activation_file == NULL) {
+ 		return;
+ 	}
+ 	
+ 	nautilus_file_cancel_call_when_ready
+-		(view->details->activation_file,
+-		 got_activation_uri_callback, view);
+-	nautilus_file_unref (view->details->activation_file);
+-        view->details->activation_file = NULL;
++		(root->activation_file,
++		 got_activation_uri_callback, root);
++	nautilus_file_unref (root->activation_file);
++        root->activation_file = NULL;
+ }
+ 
+ static void
+ selection_changed_callback (GtkTreeSelection *selection,
+-			    NautilusTreeView *view)
++			    NautilusTreeViewRoot *root)
+ {
+-	GList *attrs;
++	GList *attributes;
+ 	GtkTreeIter iter;
+ 
+-        cancel_activation (view);
++        cancel_activation (root);
+ 
+ 	if (!gtk_tree_selection_get_selected (selection, NULL, &iter)) {
+ 		return;
+ 	}
+ 
+-	view->details->activation_file = sort_model_iter_to_file (view, &iter);
+-	if (view->details->activation_file == NULL) {
++	root->activation_file = sort_model_iter_to_file (root, &iter);
++	if (root->activation_file == NULL) {
+ 		return;
+ 	}
+-		
+-	attrs = g_list_prepend (NULL, NAUTILUS_FILE_ATTRIBUTE_ACTIVATION_URI);
+-	nautilus_file_call_when_ready (view->details->activation_file, attrs,
+-				       got_activation_uri_callback, view);
+-	g_list_free (attrs);
++	
++	attributes = NULL;
++	attributes = g_list_append (attributes,  NAUTILUS_FILE_ATTRIBUTE_ACTIVATION_URI);
++	nautilus_file_call_when_ready (root->activation_file, attributes,
++				       got_activation_uri_callback, root);
+ }
+ 
+ static int
+@@ -354,11 +285,11 @@
+ get_root_uri_callback (NautilusTreeViewDragDest *dest,
+ 		       gpointer user_data)
+ {
+-	NautilusTreeView *view;
+-	
+-	view = NAUTILUS_TREE_VIEW (user_data);
++	NautilusTreeViewRoot *root;
++
++	root = (NautilusTreeViewRoot*) (user_data);
+ 
+-	return g_strdup ("file:///");
++	return g_strdup (root->root_uri);
+ }
+ 
+ static NautilusFile *
+@@ -366,11 +297,11 @@
+ 			    GtkTreePath *path,
+ 			    gpointer user_data)
+ {
+-	NautilusTreeView *view;
+-	
+-	view = NAUTILUS_TREE_VIEW (user_data);
++	NautilusTreeViewRoot *root;
+ 
+-	return sort_model_path_to_file (view, path);
++	root = (NautilusTreeViewRoot*) (user_data);
++
++	return sort_model_path_to_file (root, path);
+ }
+ 
+ static void
+@@ -382,60 +313,57 @@
+ 			  int y,
+ 			  gpointer user_data)
+ {
+-	NautilusTreeView *view;
++	NautilusTreeViewRoot *root;
+ 
+-	view = NAUTILUS_TREE_VIEW (user_data);
++	root = (NautilusTreeViewRoot*) (user_data);
+ 
+ 	nautilus_file_operations_copy_move
+ 		(item_uris,
+ 		 NULL,
+ 		 target_uri,
+ 		 action,
+-		 GTK_WIDGET (view->details->tree_widget),
++		 GTK_WIDGET (root->tree_widget),
+ 		 NULL, NULL);
+ }
+ 
+ static void
+-create_tree (NautilusTreeView *view)
++create_tree (NautilusTreeViewRoot *root)
+ {
+ 	GtkCellRenderer *cell;
+ 	GtkTreeViewColumn *column;
+ 	
+-	view->details->child_model = nautilus_tree_model_new (NULL);
+-	view->details->sort_model = GTK_TREE_MODEL_SORT
+-		(gtk_tree_model_sort_new_with_model (GTK_TREE_MODEL (view->details->child_model)));
+-	view->details->tree_widget = GTK_TREE_VIEW
+-		(gtk_tree_view_new_with_model (GTK_TREE_MODEL (view->details->sort_model)));
+-	g_object_unref (view->details->sort_model);
+-	g_signal_connect_object
+-		(view->details->child_model, "row_inserted",
++	root->child_model = nautilus_tree_model_new (NULL);
++	root->sort_model = GTK_TREE_MODEL_SORT
++		(gtk_tree_model_sort_new_with_model (GTK_TREE_MODEL (root->child_model)));
++	root->tree_widget = GTK_TREE_VIEW
++		(gtk_tree_view_new_with_model (GTK_TREE_MODEL (root->sort_model)));
++	g_object_unref (root->sort_model);
++	g_signal_connect_after
++		(root->child_model, "row_inserted",
+ 		 G_CALLBACK (row_inserted_expand_node_callback),
+-		 view, G_CONNECT_AFTER);
+-	nautilus_tree_model_set_root_uri (view->details->child_model, "file:///");
+-	g_object_unref (view->details->child_model);
+-
+-	gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (view->details->sort_model),
+-						 compare_rows, view, NULL);
+-
+-	gtk_tree_view_set_headers_visible (view->details->tree_widget, FALSE);
+-
+-	g_signal_connect_object (view->details->tree_widget, "destroy",
+-				 G_CALLBACK (save_expansion_state_callback), view, 0);
+-
+-	view->details->drag_dest = 
+-		nautilus_tree_view_drag_dest_new (view->details->tree_widget);
+-	g_signal_connect_object (view->details->drag_dest, 
++		 root);
++	nautilus_tree_model_set_root_uri (root->child_model, root->root_uri);
++	g_object_unref (root->child_model);
++
++	gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (root->sort_model),
++						 compare_rows, root, NULL);
++
++	gtk_tree_view_set_headers_visible (root->tree_widget, FALSE);
++
++	root->drag_dest = 
++		nautilus_tree_view_drag_dest_new (root->tree_widget);
++	g_signal_connect_after (root->drag_dest, 
+ 				 "get_root_uri",
+ 				 G_CALLBACK (get_root_uri_callback),
+-				 view, 0);
+-	g_signal_connect_object (view->details->drag_dest, 
++				 root);
++	g_signal_connect_after (root->drag_dest, 
+ 				 "get_file_for_path",
+ 				 G_CALLBACK (get_file_for_path_callback),
+-				 view, 0);
+-	g_signal_connect_object (view->details->drag_dest,
++				 root);
++	g_signal_connect_after (root->drag_dest,
+ 				 "move_copy_items",
+ 				 G_CALLBACK (move_copy_items_callback),
+-				 view, 0);
++				 root);
+ 
+ 	/* Create column */
+ 	column = gtk_tree_view_column_new ();
+@@ -455,78 +383,348 @@
+ 					     "style", NAUTILUS_TREE_MODEL_FONT_STYLE_COLUMN,
+ 					     NULL);
+ 
+-	gtk_tree_view_append_column (view->details->tree_widget, column);
++	gtk_tree_view_append_column (root->tree_widget, column);
+ 
+-	gtk_widget_show (GTK_WIDGET (view->details->tree_widget));
++	gtk_widget_show (GTK_WIDGET (root->tree_widget));
+ 
+-	gtk_container_add (GTK_CONTAINER (view->details->scrolled_window),
+-			   GTK_WIDGET (view->details->tree_widget));
++	gtk_container_add (GTK_CONTAINER (root->scrolled_window),
++			   GTK_WIDGET (root->tree_widget));
+ 
+-	g_signal_connect_object (gtk_tree_view_get_selection (GTK_TREE_VIEW (view->details->tree_widget)), "changed",
+-				 G_CALLBACK (selection_changed_callback), view, 0);
++	g_signal_connect_after (gtk_tree_view_get_selection (GTK_TREE_VIEW (root->tree_widget)), "changed",
++				 G_CALLBACK (selection_changed_callback), root);
+ }
+ 
+ static void
+-update_filtering_from_preferences (NautilusTreeView *view)
++update_filtering_from_preferences (NautilusTreeViewRoot *root)
+ {
+-	if (view->details->child_model == NULL) {
++	if (root->child_model == NULL) {
+ 		return;
+ 	}
+ 
+ 	nautilus_tree_model_set_show_hidden_files
+-		(view->details->child_model,
++		(root->child_model,
+ 		 eel_preferences_get_boolean (NAUTILUS_PREFERENCES_SHOW_HIDDEN_FILES));
+ 	nautilus_tree_model_set_show_backup_files
+-		(view->details->child_model,
++		(root->child_model,
+ 		 eel_preferences_get_boolean (NAUTILUS_PREFERENCES_SHOW_BACKUP_FILES));
+ 	nautilus_tree_model_set_show_only_directories
+-		(view->details->child_model,
++		(root->child_model,
+ 		 eel_preferences_get_boolean (NAUTILUS_PREFERENCES_TREE_SHOW_ONLY_DIRECTORIES));
+ }
+ 
+ static void
++root_tree_activate_callback (BonoboControl *control, gboolean activating, gpointer user_data)
++{
++	NautilusTreeViewRoot *root;
++
++	root = (NautilusTreeViewRoot*) (user_data);
++
++	if (activating && root->tree_widget == NULL) {
++		create_tree (root);
++		update_filtering_from_preferences (root);
++	}
++}
++
++static void
+ tree_activate_callback (BonoboControl *control, gboolean activating, gpointer user_data)
+ {
+ 	NautilusTreeView *view;
++	NautilusTreeViewRoot *root;
+ 
+ 	view = NAUTILUS_TREE_VIEW (user_data);
+ 
+-	if (activating && view->details->tree_widget == NULL) {
+-		load_expansion_state (view);
+-		create_tree (view);
+-		update_filtering_from_preferences (view);
++	for (root = view->details->root; root != NULL; root = root->next) {
++		root_tree_activate_callback (control, activating, root);
+ 	}
+ }
+ 
+ static void
+ filtering_changed_callback (gpointer callback_data)
+ {
+-	update_filtering_from_preferences (NAUTILUS_TREE_VIEW (callback_data));
++	NautilusTreeView *view;
++	NautilusTreeViewRoot *root;
++
++	view = NAUTILUS_TREE_VIEW (callback_data);
++
++	for (root = view->details->root; root != NULL; root = root->next) {
++		update_filtering_from_preferences (root);
++	}
+ }
+ 
+-static void
+-nautilus_tree_view_instance_init (NautilusTreeView *view)
++static gint
++show_iter_for_file (NautilusTreeViewRoot *root, NautilusFile *file, GtkTreeIter *iter)
+ {
+-	BonoboControl *control;
++	GtkTreeModel *model;
++	NautilusFile *parentFile;
++	GtkTreeIter parentIter;
++	NautilusFile *tmpFile;
++	gboolean valid;
++	GtkTreePath *path;
++	GtkTreePath *sort_path;
++	gint retval;
++
++	model = GTK_TREE_MODEL (root->child_model);
++
++	if (!gtk_tree_model_get_iter_first (model, iter)) {
++		return 1;
++	}
++	tmpFile = nautilus_tree_model_iter_get_file (NAUTILUS_TREE_MODEL (model), iter);
++	if (tmpFile != NULL && strcmp(nautilus_file_get_uri (tmpFile),
++                                      nautilus_file_get_uri (file)) == 0) {
++		return 0;
++	}
++
++	parentFile = nautilus_file_get_parent (file);
++	if (parentFile == NULL) {
++		// there is no root node in this tree for this file 
++		return 2;
++	}
++	retval = show_iter_for_file (root, parentFile, &parentIter);
++	if (retval != 0) {
++		return retval;
++	}
++
++	if (gtk_tree_model_iter_has_child (model, &parentIter)) {
++		for (valid = gtk_tree_model_iter_nth_child (model, iter, &parentIter, 0);
++	             valid;
++        	     valid = gtk_tree_model_iter_next (model, iter)) {
++			tmpFile = nautilus_tree_model_iter_get_file (NAUTILUS_TREE_MODEL (model), iter);
++			if (tmpFile != NULL &&
++        	            strcmp(nautilus_file_get_uri (tmpFile),
++                                   nautilus_file_get_uri (file)) == 0) {
++				return 0;
++			}
++		}
++	}
+ 	
+-	view->details = g_new0 (NautilusTreeViewDetails, 1);
++	path = gtk_tree_model_get_path (model, &parentIter);
++	sort_path = gtk_tree_model_sort_convert_child_path_to_path
++		(root->sort_model, path);
++	gtk_tree_view_expand_row (root->tree_widget, sort_path, FALSE);
++
++	return 1;
++}
++
++static gboolean
++updating_selection_idle_callback (gpointer callback_data)
++{
++	NautilusTreeViewRoot *root, *croot;
++	NautilusFile *file;
++	GtkTreeIter iter;
++	GtkTreePath *path;
++	GtkTreePath *sort_path;
++	gint retval;
++	gint i;
++	
++	root = (NautilusTreeViewRoot *) (callback_data);
++
++	file = nautilus_file_get (root->selection_location);
++	if (!NAUTILUS_IS_FILE (file)) {
++		return FALSE;
++	}
++	if (!nautilus_file_is_directory (file)) {
++		file = nautilus_file_get_parent (file);
++	}
++	retval = show_iter_for_file (root, file, &iter);
++	if (retval == 1) {
++		return TRUE;
++	} else if (retval == 2) {
++		i = 0;
++		for (croot = root->view->details->root; croot != NULL; croot = croot->next) {
++			if (croot != root &&
++			    strlen (croot->root_uri) <= strlen (root->selection_location) &&
++			    strncmp (root->selection_location, croot->root_uri, strlen (croot->root_uri)) == 0) {
++			    	if (root->selection_location != NULL) {
++			    		g_free (root->selection_location);
++			    	}
++			    	root->selection_location = g_strdup (root->root_uri);
++			    	croot->update_selection_once = TRUE;
++				gtk_notebook_set_current_page (GTK_NOTEBOOK (root->view->details->notebook), i);
++				break;
++			}
++			i++;
++		}
++		return FALSE;
++	}
++	path = gtk_tree_model_get_path (GTK_TREE_MODEL (root->child_model), &iter); 
++	sort_path = gtk_tree_model_sort_convert_child_path_to_path
++		(root->sort_model, path);
++	gtk_tree_view_scroll_to_cell (root->tree_widget, sort_path, NULL, FALSE, 0, 0);
++	gtk_tree_view_set_cursor (root->tree_widget, sort_path, NULL, FALSE); 
++	gtk_tree_path_free (sort_path);
++
++	return FALSE;
++}
++
++static void
++root_history_changed_callback (NautilusTreeViewRoot   *root,
++			       const Nautilus_History *history,
++			       gpointer                callback_data)
++{
++	NautilusWindow *window;
++	window = nautilus_tree_view_get_window (root->scrolled_window);
++	if (window == NULL) {
++		return;
++	}
++
++	if (window->details->location == NULL) {
++		return;
++	}
++	if (root->selection_location != NULL &&
++            strcmp (root->selection_location, window->details->location) == 0) {
++		return;
++	}
++	if (root->selection_location != NULL) {
++		g_free (root->selection_location);
++	}
++	root->selection_location = g_strdup (window->details->location);
++
++	g_idle_add (updating_selection_idle_callback, root);
++}
++
++static void
++history_changed_callback (NautilusTreeView       *view,
++			  const Nautilus_History *history,
++			  gpointer                callback_data)
++{
++	g_assert (view == callback_data);
++
++	NautilusTreeViewRoot *root;
++	gint i, page_num;
++	page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (view->details->notebook));
++	i = 0;
++	for (root = view->details->root; root != NULL && i < page_num; root = root->next) {
++		i++;
++	}
++	g_assert (root != NULL);
++	root_history_changed_callback (root, history, callback_data);
++
++	if (view->details->selection_location != NULL) {
++		g_free (view->details->selection_location);
++	}
++	view->details->selection_location = g_strdup (root->selection_location);
++
++}
++
++static void
++nautilus_tree_view_add_root (NautilusTreeView *view, const char* root_uri, const char* icon_name)
++{
++	NautilusTreeViewRoot *root, *croot;
++	GdkPixbuf *pixbuf;
+ 	
+-	view->details->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+-	view->details->expanded_uris = g_hash_table_new_full
+-		(g_str_hash, g_str_equal, g_free, NULL);
++	root = g_new0 (NautilusTreeViewRoot, 1);
++	root->next = NULL;
++	root->view = view;
++	root->update_selection_once = FALSE;
++	root->expanded_root = FALSE;
++	root->root_uri = g_strdup (root_uri);
++
++	root->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+ 	
+-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view->details->scrolled_window), 
++	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (root->scrolled_window), 
+ 					GTK_POLICY_AUTOMATIC,
+ 					GTK_POLICY_AUTOMATIC);
+ 	
+-	gtk_widget_show (view->details->scrolled_window);
++	gtk_widget_show (root->scrolled_window);
++
++	if (view->details->root == NULL) {
++		view->details->root = root;
++	} else {
++		for (croot = view->details->root; croot->next != NULL; croot = croot->next);
++		croot->next = root;
++	}
++
++	pixbuf = nautilus_icon_factory_get_pixbuf_from_name (icon_name, NULL, NAUTILUS_ICON_SIZE_FOR_MENUS, NULL);
++	gtk_notebook_append_page (GTK_NOTEBOOK (view->details->notebook), root->scrolled_window,
++	                          gtk_image_new_from_pixbuf (pixbuf));
++
++	root->selection_location = NULL;
++}
++
++static void
++switch_page_callback (GtkNotebook *notebook,
++                      GtkNotebookPage *page,
++                      guint page_num,
++                      gpointer user_data)
++{
++	NautilusTreeView *view;
++	NautilusTreeViewRoot *root;
++	gint i;
++	gchar *location;
++
++	view = NAUTILUS_TREE_VIEW (user_data);
++
++	if (page_num == -1) {
++		return;
++	}
++	i = 0;
++	for (root = view->details->root; root != NULL && i < page_num; root = root->next) {
++		i++;
++	}
++	g_assert (root != NULL);
++	if (view->details->selection_location == NULL ||
++	    root->selection_location == NULL ||
++	    strcmp (view->details->selection_location, root->selection_location) != 0) {
++	    	if (view->details->selection_location == NULL ||
++		    !root->update_selection_once) {
++			if (root->selection_location != NULL) {
++				location = root->selection_location;
++			} else {
++				location = g_strdup (root->root_uri);
++			}
++			root->selection_location = g_strdup (view->details->selection_location);
++			nautilus_view_open_location_in_this_window (NAUTILUS_VIEW (view), location);
++		} else {
++			root->update_selection_once = FALSE;
++			if (root->selection_location != NULL &&
++		            strcmp (root->selection_location, view->details->selection_location) == 0) {
++				return;
++			}
++			if (root->selection_location != NULL) {
++				g_free (root->selection_location);
++			}
++			root->selection_location = g_strdup (view->details->selection_location);
++		
++			g_idle_add (updating_selection_idle_callback, root);
++		}
++	}
++}
++
++static void
++nautilus_tree_view_instance_init (NautilusTreeView *view)
++{
++	BonoboControl *control;
++	
++	view->details = g_new0 (NautilusTreeViewDetails, 1);
++
++	view->details->notebook = gtk_notebook_new ();
++
++	gtk_notebook_set_tab_pos (GTK_NOTEBOOK (view->details->notebook), GTK_POS_LEFT);
++
++	g_signal_connect_object (view->details->notebook, "switch-page",
++				 G_CALLBACK (switch_page_callback), view, 0);
++
++	gtk_widget_show (view->details->notebook);
++
++	control = bonobo_control_new (view->details->notebook);
+ 
+-	control = bonobo_control_new (view->details->scrolled_window);
+ 	g_signal_connect_object (control, "activate",
+ 				 G_CALLBACK (tree_activate_callback), view, 0);
+ 
++
++	view->details->root = NULL;
++	nautilus_tree_view_add_root (view, gnome_vfs_get_uri_from_local_path (g_get_home_dir ()), "gnome-home");
++	nautilus_tree_view_add_root (view, "file:///", "gnome-folder");
++	nautilus_tree_view_add_root (view, "smb:///", "gnome-fs-network");
++
++
+ 	nautilus_view_construct_from_bonobo_control (NAUTILUS_VIEW (view), control);
+ 
++	nautilus_view_set_listener_mask (NAUTILUS_VIEW (view),
++					 NAUTILUS_VIEW_LISTEN_HISTORY);
++	g_signal_connect_object (view, "history_changed",
++                                 G_CALLBACK (history_changed_callback), view, 0);
++ 
+ 	eel_preferences_add_callback (NAUTILUS_PREFERENCES_SHOW_HIDDEN_FILES,
+ 				      filtering_changed_callback, view);
+ 	eel_preferences_add_callback (NAUTILUS_PREFERENCES_SHOW_BACKUP_FILES,
+@@ -539,12 +737,15 @@
+ nautilus_tree_view_dispose (GObject *object)
+ {
+ 	NautilusTreeView *view;
++	NautilusTreeViewRoot *root;
+ 	
+ 	view = NAUTILUS_TREE_VIEW (object);
+ 	
+-	if (view->details->drag_dest) {
+-		g_object_unref (view->details->drag_dest);
+-		view->details->drag_dest = NULL;
++	for (root = view->details->root; root != NULL; root = root->next) {
++		if (root->drag_dest) {
++			g_object_unref (root->drag_dest);
++			root->drag_dest = NULL;
++		}
+ 	}
+ }
+ 
+@@ -552,6 +753,7 @@
+ nautilus_tree_view_finalize (GObject *object)
+ {
+ 	NautilusTreeView *view;
++	NautilusTreeViewRoot *root, *next_root;
+ 
+ 	view = NAUTILUS_TREE_VIEW (object);
+ 
+@@ -562,8 +764,16 @@
+ 	eel_preferences_remove_callback (NAUTILUS_PREFERENCES_TREE_SHOW_ONLY_DIRECTORIES,
+ 					 filtering_changed_callback, view);
+ 
+-	cancel_activation (view);
++	for (root = view->details->root; root != NULL; root = next_root) {
++		next_root = root->next;
++		cancel_activation (root);
++		g_free (root);
++	}
+ 
++	if (view->details->selection_location != NULL) {
++		g_free (view->details->selection_location);
++	}
++	
+ 	g_free (view->details);
+ 
+ 	G_OBJECT_CLASS (parent_class)->finalize (object);
