@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.1 2003/11/22 19:48:05 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.2 2003/11/22 22:45:52 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/hb-status/">
@@ -47,30 +47,42 @@ noch nicht, eine Lösung ist noch unbekannt.
   <tr>
   <th>Dokument (Kapitel)</th>
   <th>Übersetzer</th>
+  <th>D</th>
   <th>Korrektur</th>
+  <th>D</th>
   </tr>
   <tr>
   <ti>handbook.xml</ti>
   <ti>dertobi123</ti>
+  <ti>X</ti>
+  <ti></ti>
   <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-about.xml ( 1 )</ti>
   <ti>dertobi123</ti>
+  <ti>X</ti>
+  <ti></ti>
   <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-medium.xml ( 2 )</ti>
   <ti>dertobi123</ti>
   <ti></ti>
+  <ti></ti>
+  <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-network.xml ( 3 )</ti>
   <ti>parity</ti>
   <ti></ti>
+  <ti></ti>
+  <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-disk.xml ( 4 )</ti>
+  <ti></ti>
+  <ti></ti>
   <ti></ti>
   <ti></ti>
   </tr>
@@ -78,14 +90,20 @@ noch nicht, eine Lösung ist noch unbekannt.
   <ti>hb-install-stage.xml ( 5 )</ti>
   <ti>tove</ti>
   <ti></ti>
+  <ti></ti>
+  <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-system.xml ( 6 )</ti>
   <ti>mfrey</ti>
   <ti></ti>
+  <ti></ti>
+  <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-kernel.xml ( 7 )</ti>
+  <ti></ti>
+  <ti></ti>
   <ti></ti>
   <ti></ti>
   </tr>
@@ -93,9 +111,13 @@ noch nicht, eine Lösung ist noch unbekannt.
   <ti>hb-install-config.xml ( 8 )</ti>
   <ti></ti>
   <ti></ti>
+  <ti></ti>
+  <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-bootloader.xml ( 9 )</ti>
+  <ti></ti>
+  <ti></ti>
   <ti></ti>
   <ti></ti>
   </tr>
@@ -103,16 +125,22 @@ noch nicht, eine Lösung ist noch unbekannt.
   <ti>hb-install-tools.xml ( 10 )</ti>
   <ti>jay</ti>
   <ti></ti>
+  <ti></ti>
+  <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-finalise.xml ( 11 )</ti>
   <ti>jay</ti>
   <ti></ti>
+  <ti></ti>
+  <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-next.xml ( 12 )</ti>
   <ti>jay</ti>
-  <ti></ti>
+  <ti>X</ti>
+  <ti>dertobi123</ti>
+  <ti>X</ti>
   </tr>
 </table>
 
