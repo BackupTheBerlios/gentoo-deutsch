@@ -1,6 +1,11 @@
-# ChangeLog for media-video/vdr-clock
+# ChangeLog for media-video/vdr-streamdev
 # Copyright 2003 Martin Mittelsdorf; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-streamdev/ChangeLog,v 1.4 2004/07/19 21:13:22 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-streamdev/ChangeLog,v 1.5 2004/08/11 12:45:28 austriancoder Exp $
+
+*vdrplugin-streamdev-0.3.3_pre1 (11 Aug 2004)
+
+  11. Aug 2004; Dieter Edinger <dieter.edinger@web.de>
+  new version 0.3.3-pre1 
 
 *vdrplugin-streamdev-0.3.1-r2 (19 July 2004)
 
