@@ -1,6 +1,6 @@
 # Copyright 2003 Henning Ryll <henning.ryll@web.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdteletext/vdrplugin-osdteletext-0.3.1.ebuild,v 1.1 2003/06/05 21:18:35 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.3.1.ebuild,v 1.1 2003/05/13 09:39:19 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdteletext/vdrplugin-osdteletext-0.3.1.ebuild,v 1.2 2003/06/07 22:13:18 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.3.1.ebuild,v 1.1 2003/05/13 09:39:19 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="osdteletext"
@@ -62,5 +62,5 @@ pkg_postinst() {
 	einfo "and restart vdr to aktivate it."
 	einfo "If you got Problems with DVB drivers >= 01.06.2003"
 	einfo "try setting screen size to 17*48 in your teletext-setup"
-	echo
+	einfo
 }
