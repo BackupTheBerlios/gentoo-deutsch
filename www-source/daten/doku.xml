@@ -3,7 +3,27 @@
 <info>
 <title>Dokumentation für Gentoo Linux</title>
 
-<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+<author title="Autor">
+	<mail link="drobbins@gentoo.org">Daniel Robbins</mail>
+</author>
+<author title="Bearbeiter">
+	<mail link="zhen@gentoo.org">John P. Davis</mail>
+</author>
+<author title="Bearbeiter">Colin Morey</author>
+<author title="Bearbeiter">
+	<mail link="peesh@gentoo.org">Jorge Paulo</mail>
+</author>
+<author title="Bearbeiter">
+	<mail link="swift@gentoo.org">Sven Vermeulen</mail>
+</author>
+<author title="Übersetzer/Bearbeiter">
+	<mail link="pylon@gentoo.org">Lars Weiler</mail>
+</author>
+<author title="Übersetzer/Bearbeiter">
+	<mail link="dertobi123@gentoo.org">Tobias</mail>
+</author>
+	
+
 
 <abstract>
 Hier finden Sie eine Übersicht unserer Dokumentationen
@@ -28,7 +48,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
       <body>
 
         <ul>
-          <li><uri link="#header_1">Einführung</uri></li>
+          <li><uri link="#doc_chap1_sect2">Einführung</uri></li>
           <li><uri link="#header_2">Installationshilfen</uri></li>
           <li><uri link="#header_3">Dokumentation zu Gentoo Entwicklungen</uri></li>
           <li><uri link="#header_4">Dokumentation zur Systemadministration</uri></li>
@@ -46,11 +66,11 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 
         <p>Willkommen zur Gentoo Dokumentation.  Diese Seite wird Ihnen einen
         kurzen Überblick zur vorhandenen Gentoo Dokumentation liefern.</p>
-
+<!-->
         <p>Finden Sie Fehler in unserer Dokumentation oder haben Sie Vorschläge,
         schicken sie eine Mail an das <mail link="gentoo-deutsch-dev@lists.berlios.de">
         gentoo.de Team</mail>.</p>
-
+-->
       </body>
     </section>
     <section>
@@ -376,6 +396,9 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 				
 				<p>Das <b><uri link="fluxbox">Fluxbox Handbuch</uri></b> führt Sie
 				durch die Konfigurationsmöglichkeiten eines der beliebtesten Windowmanager.</p>
+				
+				<p>Das <b><uri link="gnome-guide">Gnome 2.4 Upgrade Howto und FAQ</uri></b> leitet
+				Sie durch den Upgradeprozesse auf Gnome 2.4</p>
 
 <!--
         <p>Das <b><uri link="dri-howto">Direct Rendering Handbuch</uri></b>
@@ -552,6 +575,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <tr><ti><uri link="burn-guide">CD-Brennen Howto</uri></ti></tr>
         <tr><ti><uri link="dsl-guide">DSL Anleitung</uri></ti></tr>
         <tr><ti><uri link="fluxbox">Fluxbox Handbuch</uri></ti></tr>
+        <tr><ti><uri link="gnome-guide">Gnome 2.4 Howto und FAQ</uri></ti></tr>
         <!--<tr><ti><uri link="ati-faq.xml">ATI FAQ</uri></ti></tr>-->
         <tr><ti><uri link="nano-basics-guide">Nano Basics Handbuch</uri></ti></tr>
         <tr><ti><uri link="vi-guide">Vi Handbuch</uri></ti></tr>
