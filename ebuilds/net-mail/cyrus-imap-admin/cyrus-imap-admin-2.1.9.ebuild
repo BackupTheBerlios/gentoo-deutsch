@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/cyrus-imap-admin/Attic/cyrus-imap-admin-2.1.9.ebuild,v 1.1 2002/10/08 11:09:00 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/cyrus-imap-admin/Attic/cyrus-imap-admin-2.1.9.ebuild,v 1.2 2002/10/08 11:53:27 holler Exp $
 
 inherit perl-module
 
@@ -75,6 +75,14 @@ src_compile() {
 
 src_install () {
 
+
+	einfo "******************************************************"
+	einfo "* NOTE: if installing fails with a sandbox violation *"
+	einfo "* try the following:                                 *"
+	einfo "*   emerge unmerge ExtUtils-MakeMaker                *"
+	einfo "*   emerge perl                                      *"
+	einfo "*   emerge cyrus-imap-admin                          *"
+	einfo "*****************************************************"
 	export DESTDIR=${D}
 	cd ${S}/perl
 	perl-module_src_install 
