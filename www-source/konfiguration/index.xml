@@ -83,12 +83,12 @@
   </menu>
 !-->
 	<menu value="gentoo.de">
-		<item href="../" title="Startseite"/>
+		<item href="projekt/praesentation/" title="Gentoo"/>
 		<item href="projekt/neuigkeiten" title="Neuigkeiten"/>
 		<item href="doku" title="Dokumentationen"/>
-		<item href="download/ebuilds_de" title="Unsere Ebuilds"/>
-		<item href="community/foren/" title="Forum"/>
+		<item href="community/foren/" title="Foren"/>
 		<item href="community/irc/" title="IRC"/>
-		<item href="community/mailinglisten/" title="Mailliste"/>
+		<item href="community/mailinglisten/" title="Mailingliste"/>
+		<item href="download/ebuilds_de" title="Unsere Ebuilds"/>
 	</menu>
 </config>
