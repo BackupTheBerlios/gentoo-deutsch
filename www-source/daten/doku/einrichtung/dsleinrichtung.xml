@@ -18,6 +18,7 @@ Diese Anleitung erklärt in kurzer Form, wie Sie DSL auf Ihrer Gentoo Maschine ei
 
 <ul>
 <li>emerge net-dialup/ppp</li>
+<li>Dateien dekomprimieren</li>
 <li>Datei 't-online' nach etc/ppp/peers kopieren.</li>
 <li>Datei 'net-ppp0' nach etc/init.d kopieren. Evtl. vorher ein Backup der vorhanden Datei erstellen.</li>
 <li>Passwort in etc/ppp/pap-secrets eintragen.</li>
@@ -26,6 +27,13 @@ Diese Anleitung erklärt in kurzer Form, wie Sie DSL auf Ihrer Gentoo Maschine ei
 <li>Ping irgendwohin (zum testen).</li>
 <li>Damit beim Starten des System Gentoo Online geht: 'rc-update add net.ppp0 default'.</li>
 </ul>
+
+<p>
+  <uri link="t-online.gz">Download 1: t-online.gz</uri>
+<br/>
+  <uri link="net.ppp0.gz">Download 2: net.ppp0.gz</uri>
+</p>
+
 
 <p>
   <b>Fertig.</b> Viel Spass...
