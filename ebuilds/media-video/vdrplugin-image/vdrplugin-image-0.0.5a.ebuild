@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-image/vdrplugin-image-0.0.5a.ebuild,v 1.1 2003/06/06 18:13:47 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.5a.ebuild,v 1.2 2003/04/15 08:17:08 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-image/vdrplugin-image-0.0.5a.ebuild,v 1.2 2003/06/07 15:32:42 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.5a.ebuild,v 1.2 2003/04/15 08:17:08 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="image"
@@ -41,10 +41,10 @@ src_install() {
 
 	insinto /usr/lib/vdr
 	insopts -m0755
-	newins libvdr-${VDRPLUGIN}.so libvdr-${VDRPLUGIN}.so.${PVERSION}
+	newins libvdr-${VDRPLUGIN}.so libvdr-${VDRPLUGIN}.so.${PV}
 	dodoc COPYING HISTORY README
 	cd ${D}/usr/lib/vdr/
-	ln -s libvdr-${VDRPLUGIN}.so.${PVERSION} libvdr-${VDRPLUGIN}.so
+	ln -s libvdr-${VDRPLUGIN}.so.${PV} libvdr-${VDRPLUGIN}.so
 }
 
 pkg_postinst() {
