@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author:  Alexander Holler <holler@ahsoftware.de>
+# 
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-berlios/sonstiges/pppoe-dsl/Attic/net.ppp0,v 1.1 2002/12/10 19:49:42 wpbasti Exp $
+
+# Name of file with options in /etc/ppp/peer
+PEER="t-online"
+
+# Do not change .. for determining name of interface
+DEVICE="${1##*.}"
+
+CMD_LINE=""
+FUNCT="${2}"
+
+depend() {
+	need net
+}
+
+start() {
+
+	ebegin "Starting pppd (${DEVICE})"
+	start-stop-daemon --start --quiet --background \
+		--pidfile /var/run/${DEVICE}.pid --exec /usr/sbin/pppd \
+		ipparam ${DEVICE} linkname ${DEVICE} call ${PEER}
+	eend ${?}
+}
+
+stop() {
+
+	ebegin "Stopping pppd (${DEVICE})"
+	start-stop-daemon --stop --quiet --pidfile /var/run/${DEVICE}.pid
+	eend ${?}
+
+}

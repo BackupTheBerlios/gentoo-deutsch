@@ -1,0 +1,37 @@
+PLEASE READ THIS CAREFULLY !!!
+
+GHS (Gentoo-Help-System) is still in development.
+Please install it only on Computers, where you have
+the ability to experiment with Apache and ht://dig.
+
+REQUIREMENTS
+
+Before installing the Gentoo-Help-System, please make
+sure, that you have
+	- Apache installed with CGI-support
+	- ht://dig installed
+
+If you already have it installed, then please backup your
+files. The install-script owerwrites the configuration
+files of ht://dig and ist databases.
+
+
+- Make sure, that the httpd-directory is /home/httpd (GHS is
+  using this Path at the moment)
+
+- Make sure, that the ht://dig configuration resides in
+  /etc/htdig (GHS is using this Path at the moment)
+
+If the last two points don't fit to you, then please
+adapt the installation-script install.sh
+
+Also take a look at this file, if you want to know, how
+GHS is initialized and where it puts its files; actually,
+GHS creates a Symlink to /usr/share/doc in Apaches htdocs-dir.
+
+
+
+
+Please send bugs or suggestions to
+	beejay@users.berlios.de
+
