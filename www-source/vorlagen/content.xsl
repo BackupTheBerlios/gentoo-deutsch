@@ -56,6 +56,8 @@
 
   <body onclick="menu.closeAll()">
 
+  <![CDATA[<!-- keine-suche-start -->]]>
+
   <xsl:call-template name="menu"/>
   
   <div id="logo_bg">&#160;</div>
@@ -90,6 +92,8 @@
     </tr>
     </table>
   </div>  
+
+  <![CDATA[<!-- keine-suche-stop -->]]>
 
   <div id="about">
     <a href="{$baseurl}" class="icon">
