@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.24,v 1.1 2003/02/17 20:51:26 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.24,v 1.2 2003/02/17 22:26:33 mad Exp $
 
 
 depend() {
@@ -23,7 +23,7 @@ start() {
 	[ -n "$VIDEO" ] && vdropts="${vdropts} --video=${VIDEO} "
 	[ -n "$RECORD" ] && vdropts="${vdropts} --record=${RECORD} "
 	[ -n "$PORT" ] && vdropts="${vdropts} --port=${PORT} "
-	[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIBS} "
+	[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIB} "
 	[ -n "$LIB" -a -n "$PLUGINS" ] && for i in ${PLUGINS}; do vdropts="${vdropts} --plugin=${i} "; done
 	fi
 
