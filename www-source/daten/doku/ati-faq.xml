@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ati-faq.xml,v 1.1 2003/12/04 17:26:22 schnitz Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ati-faq.xml,v 1.2 2003/12/04 18:08:05 schnitz Exp $ -->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <guide link="/doc/en/ati-faq.xml">
@@ -19,7 +19,7 @@
 
 <abstract>
 Diese FAQ soll Besitzern von ATI Grafikkarten helfen einige bekannte
-Probleme bei der Installation und Konfiguration, die mit DRI und xfree
+Probleme bei der Installation und Konfiguration, die mit DRI und XFree
 zusammenhängen, zu lösen.
 </abstract>
 
@@ -36,9 +36,9 @@ zusammenhängen, zu lösen.
 
 <p>
 Fast jede ATI Grafikkarte wird von <uri 
-link="http://www.xfree86.org">Xfree86</uri> unterstützt, zumindest die 2D 
+link="http://www.xfree86.org">XFree86</uri> unterstützt, zumindest die 2D 
 Beschleunigung.  Der 3D Support wird entweder vom <uri 
-link="http://dri.sf.net">DRI Projekt</uri>, welches schon in Xfree86
+link="http://dri.sf.net">DRI Projekt</uri>, welches schon in XFree86
 enthalten ist, oder von <uri 
 link="http://mirror.ati.com/support/drivers/linux/radeon-linux.html">
 Closed Source Treibern </uri> von ATI bereitgestellt.
@@ -53,22 +53,22 @@ Closed Source Treibern </uri> von ATI bereitgestellt.
 <tr>
   <ti>rage128</ti>
   <ti>Rage128</ti>
-  <ti>xfree DRI</ti>
+  <ti>XFree DRI</ti>
 </tr>
 <tr>
   <ti>r100</ti>
   <ti>Radeon7xxx, Radeon64</ti>
-  <ti>xfree DRI</ti>
+  <ti>XFree DRI</ti>
 </tr>
 <tr>
   <ti>r200,r250</ti>
   <ti>Radeon8500, Radeon9000</ti>
-  <ti>xfree DRI, ATI DRI</ti>
+  <ti>XFree DRI, ATI DRI</ti>
 </tr>
 <tr>
   <ti>r300, following</ti>
   <ti>Radeon9500, Radeon9800</ti>
-  <ti>xfree 2D, ATI DRI</ti>
+  <ti>XFree 2D, ATI DRI</ti>
 </tr>
 </table>
 
@@ -88,7 +88,7 @@ link="http://gatos.sf.net">GATOS Projekt</uri> bereitgestellt.
 
 <warn>
 Ati-Gatos ist momentan nicht auf dem neuesten Stand. Wir planen aber Gatos
-Support direkt in Xfree86 zu integrieren.
+Support direkt in XFree86 zu integrieren.
 </warn>
 
 </body>
@@ -100,11 +100,11 @@ zur Verfügung?
 <body>
 
 <p>
-Sie haben fast den selben Xfree Support auf PPC oder Alpha Rechnern,
+Sie haben fast den selben XFree Support auf PPC oder Alpha Rechnern,
 allerdings können Sie die Closed Source Treiber von ATI auf diesen Systemen
 nicht nutzen. Das bedeutet, dass Sie die r300 3D Beschleunigung nicht nutzen
 können. Falls Sie eine solche Grafikkarte besitzen und wollen, dass sie von
-Xfree unterstützt wird, wenden Sie sich an <uri
+XFree unterstützt wird, wenden Sie sich an <uri
 link="http://www.ati.com">ATI</uri> und bitten Sie darum, die Spezifikationen
 öffentlich zu machen.
 </p>
@@ -145,7 +145,7 @@ fest im Kernel enthalten sein.
 </impo>
 
 <pre caption="Installing drivers">
-<codenote>Wenn Sie die Rage128 Treiber und Xfree installiern wollen</codenote>
+<codenote>Wenn Sie die Rage128 Treiber und XFree installiern wollen</codenote>
 # <i>VIDEO_CARDS="rage128" emerge xfree-drm</i>
 <codenote>Wenn Sie nur Radeon Support benötigen</codenote>
 <codenote>(r100, r200, r250, noch kein Support für r300)</codenote>
@@ -153,7 +153,7 @@ fest im Kernel enthalten sein.
 <codenote>Wenn Sie die Closed Source Treiber von ATI wollen</codenote>
 <codenote>(r200,r250, nur r300)</codenote>
 # <i>emerge ati-drivers</i>
-<codenote>Wenn Sie nur Xfree, aber keine Kernel Module installiern wollen</codenote>
+<codenote>Wenn Sie nur XFree, aber keine Kernel Module installiern wollen</codenote>
 # <i>emerge xfree</i>
 </pre>
 
@@ -165,10 +165,10 @@ fest im Kernel enthalten sein.
 
 <p>
 Es wird empfohlen <c>xf86config</c>, <c>xf86cfg</c> oder gleich das
-automatische Konfigurationstool von Xfree86 zu verwenden.
+automatische Konfigurationstool von XFree86 zu verwenden.
 </p>
 
-<pre caption="Automatische Xfree Konfiguration">
+<pre caption="Automatische XFree Konfiguration">
 # <i>X -configure</i>
 </pre>
 
@@ -179,7 +179,7 @@ Konfiguration</uri>.
 </p>
 
 <note>
-Wenn sie die Treiber von ATI nutzen können Sie auch <c>fglrxconfig</c> verwenden.
+Wenn Sie die Treiber von ATI nutzen können Sie auch <c>fglrxconfig</c> verwenden.
 </note>
 
 <impo>
