@@ -25,7 +25,7 @@
       </xsl:variable>
       
       <table class="ebuildlist"> 
-        <tr class="title">
+        <tr class="header">
           <td>Name</td>
           <td>Version</td>
           <td>Revision</td>
