@@ -12,7 +12,7 @@
     <title>Quick Links:</title>
     <p>
 		<ul>
-			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 29.09.03)</uri></b></li>
+			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 06.10.03)</uri></b></li>
 			<li><uri link="http://tobias.scherbaum.info/gentoo/faq" target="_blank">Gentoo FAQ</uri></li>
 			<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
 	     		<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
@@ -72,6 +72,32 @@
 <chapter>
 
 <title>Gentoo Deutsch</title>
+
+
+<section>
+	<body>
+	<news type="other" date="06.10.2003" title="Deutsche Gentoo-Woche">
+		<p>
+			In dieser Woche kann kein Deutscher Gentoo-Anwender sagen, er hätte nichts zu tun ;). Usertreffen jagt Usertreffen und wir Fragen uns,
+			ob dies nicht eine eigene Rubrik wert sei:
+			<ul>
+				<li>
+					<b>Mittwoch, 08. Oktober 2003:</b> Gentoo-User-Treffen für den Bereich Ruhrgebiet. Treffen im CentrO in Oberhausen,
+					Brauhaus-Zeche Jakobi. Los gehts um 19:00 Uhr, Treffpunkt zwischen 18:45 Uhr und 19:00 Uhr an der Bushaltestelle
+					'Neue Mitte'
+				</li>
+				<li>
+					<b>Donnerstag, 09. Oktober 2003:</b> Gentoo-User-Treffen für die Köln/Bonner-Community. Treffen im
+					<uri link="http://www.netzladen.org/">Netzladen</uri> ab 18:00.
+				</li>
+				<li>
+					<b>Samstag, 11. Oktober 2003:</b> Practical Linux-Tag 2003 in Giessen Mittelhessen. Details siehe unten.
+				</li>
+			</ul>
+		</p>
+	</news>
+	</body>
+</section>
 
 <section>
 	<body>
