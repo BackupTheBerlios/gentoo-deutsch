@@ -22,7 +22,7 @@
 		<section>
 			<body>
 
-				<fig link="/media/bilder/poster.jpg"/>
+				<img uri="/media/bilder/poster.jpg"/>
 				<br/>
 
 			</body>
