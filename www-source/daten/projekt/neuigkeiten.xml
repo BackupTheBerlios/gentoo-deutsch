@@ -26,6 +26,26 @@
 
 <section>
   <body>
+  <news type="news" date="28.11.2003" title="LWN: Der Erfolg von Gentoo">
+   <p>
+   <e>In einem Bericht auf <uri link="http://lwn.net">lwn.net</uri>
+   wird der Erfolg von Gentoo analysiert.</e><br/>In einer Zeit, in der mehr und mehr
+   neue Linuxdistributionen um Aufmerksamkeit kämpfen, habe Gentoo es geschafft,
+   viele neue Benutzer anzusprechen. Als Gründe für den Erfolg werden die
+   hinter Gentoo stehende Idee einer Sourcenbasierten Distribution, die Ausdauer
+   in der Entwicklung sowie das Paketmanagementsystem <e>Portage</e> genannt. Die
+   Dokumentation sei sehr ausführlich, in einem leicht zu verstehen Stil
+   geschrieben und mit die beste Dokumentation zu einer Distribution. Besonders 
+   hervor gehoben wird auch die sehr aktive Community, die sich sowohl an zahlreichen
+   Mailinglisten als auch an einem sehr stark frequentierten Forum beteilige.
+   <br/><e>Quelle:</e> <uri link="http://lwn.net/Articles/59138/">lwn.net</uri>
+   </p>
+  </news>
+  </body>
+</section>
+
+<section>
+  <body>
   <news type="news" date="24.11.2003" title="Gentoo-Newsletter">
     <p>
 	  Der aktuelle Newsletter berichtet vom Managertreffen am  17.11.03, offenen Stellen bei Gentoo Linux, einem Ebuild für Freedesktop und
