@@ -4,7 +4,7 @@
 
 <!--
   Part of the Gentoo WebSite:
-  Document Version: 0.91
+  Document Version: 0.95
 -->
 
 <xsl:include href="../temp/config.xsl"/>
@@ -37,10 +37,10 @@
 />
 
 
-<xsl:variable name="baseurl"><xsl:value-of select="$def_online"/>/</xsl:variable>
-<xsl:variable name="styleurl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_style"/>/</xsl:variable>
-<xsl:variable name="scripturl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_script"/>/</xsl:variable>
-<xsl:variable name="imageurl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_images"/>/</xsl:variable>
+<xsl:variable name="baseurl">http://www.gentoo.de/neu/</xsl:variable>
+<xsl:variable name="styleurl"><xsl:value-of select="$baseurl"/>media/stile/</xsl:variable>
+<xsl:variable name="scripturl"><xsl:value-of select="$baseurl"/>media/skripte/</xsl:variable>
+<xsl:variable name="imageurl"><xsl:value-of select="$baseurl"/>media/bilder/</xsl:variable>
 
 <xsl:template match="guide|info">
   <html>
