@@ -17,10 +17,10 @@
 	  	mit Xine (und einem Xine-Binary-Installer für andere Distributionen).
     </p>
     <p>
-		Da es so aussieht, als wäre Geld mit unter ein Grund für den Linuxtag, haben die
-		Organisatoren für die freien Projekte WLAN vorgesehen. Gentoo teilt sich die
-		Infrastruktur mit etwa 10 anderen Projekten, darunter XBox-Linux, Rock-Linux, vrml,
-		x.org und KDE.
+		Da bei den Organisatoren das Geld etwas knapp bemessen ist, hat man sich
+		bei den freien Projekten für WLAN entschieden. Gentoo stellt seine Infrastruktur
+		etwa 10 anderen Projekten, darunter XBox-Linux, Rock-Linux, vrml,
+		x.org und KDE zur Verfügung.
 	</p>
   </block>
 
@@ -168,6 +168,67 @@ rtt min/avg/max/mdev = 302.780/399.218/645.602/128.856 ms
 		auch ein paar abschliessende Gedanken.
 	</p>
 	<figure link="http://www.gentoo.de/media/bilder/lt2k3/day2.jpg" short="cybersystem (gentoo.org) und stkn (gentoo.de) beim Einrichten eines Demo-Rechners" caption="cybersystem (gentoo.org) und stkn (gentoo.de) beim Einrichten eines Demo-Rechners"/>
+	</body>
+</section>
+
+<section>
+	<title>Sonntag</title>
+	<body>
+		<p>
+			<b>9:18 :</b> Das Netzwerk ist nun total durcheinander. Wenn Sie irgendwann
+			einmal solch eine Veranstaltung planen, dann benutzen Sie bitte Copper. Unser
+			WLAN-Uplink scheint nicht besonders stabil zu sein (verliert von Zeit zu Zeit
+			die Verbindung). Und wenn einmal eine Verbindung zum Knoten besteht, dann bewegt sich die
+			Qualität irgendwo zwischen akzeptabel und äußerst ärmlich. Man könnte fast meinen,
+			es hinge noch ein anderer Knoten auf dem selben Kanal.
+		</p>
+		<p>
+			<b>10:54 :</b> Es kommen uns noch mehr Ideen:
+			<ul>
+				<li>Eine DVD für den nächsten LinuxTag, die mindestens die kompletten Quellen für
+				eine Basisinstallation mit Gnome/Kde enthält, um so die Installation ohne Netz zu
+				erlauben</li>
+
+				<li>Aufstellen einer Compile-Farm und erstellen von mehr GRP-Paketen (vielleicht
+				sogar für alle ebuilds). Das würde für viele Anwender eine Zeitersparnis darstellen und
+				würde uns nur die Compile-Farm kosten, aber der Netzverkehr würde weiterhin gleich bleiben.</li>
+
+				<li>Wenn die Anwender komplett aus GRP-Paketen installieren könnten (und ihr System damit in
+				relativ kurzer Zeit installieren könnten), dann sollten wir einen Dämon implementieren der
+				auf GRP-Pakete überprüft (auf alte Pakete und Updates) und diese dann neu kompiliert, wenn die
+				CPU Leerlaufzeiten hat (meiner Meinung nach hört sich das großartig an). Die Leute könnten also
+				über eine spezielle Konfigurationsdatei den Dämon konfigurieren und ihm damit mitteilen, welche
+				Pakete automatisch aktualisiert werden sollen, und welche aussen vor gelassen werden sollen.
+				Hierbei könnte man nun auch ein besseres Interface für <c>etc-update</c> implementieren (ncurses
+				würde hierbei fürs erste seinen Zweck erfüllen). Ich denke, dass diese Maßnahmen vor Allem Firmen
+				helfen könnten, da sie somit viel Zeit sparen könnten.</li>
+
+				<li>Integration von SEREL - <uri link="http://www.fastboot.org">http://www.fastboot.org</uri> (paralleles
+				Ausführen von Initskripten um den Bootprozess zu beschleunigen. Das sollte recht einfach sein,
+				da Gentoo ja bereits Abhängigkeiten zwischen den Initskripten hat.</li>
+			</ul>
+		</p>
+		<p>
+			<b>11:54 :</b> Hanno springt über seinen Schatten und spricht mit den Leuten von <uri link="http://www.rocklinux.org">Rock-Linux</uri>.
+			Sie haben ein paar recht kreative Ideen. Momentan versuchen sie gerade herauszufinden, wie man ein Paket automatisch aus dem
+			Tarball kompiliert. Ausserdem versuchen sie die besten CFLAGS durch die Anwendung von ein paar Benchmarks herauszufinden.
+			Ihr Testpaket hat den Namen ccbench, Infos darüber gibt es unter <uri link="http://www.rocklinux.org/people/clifford/ccbench/">http://www.rocklinux.org/people/clifford/ccbench/</uri>.
+			Schaut es Euch an und seht, was diese Leute machen. Das nächste Schritt könnte darin bestehen, ihre Benchmarks zu verbessern oder
+			Funktionen von normalen Applikationen zu benutzen (wie es auch schon mit md5 gemacht wurde).<br/>
+			Ein Langzeitziel (oder ein alternativer Ansatz) könnte darin bestehen, Profiling dort einzusetzen, wo immer es möglich ist (das Problem
+			ist, dass man Testdaten braucht und diese Daten möglichst ähnlich zu den Daten sein müssen, die man im wahren Leben benutzt). Ich denke,
+			daß die Idee über die Automatische Erkennung riesig ist und den Entwicklern mehr Möglichkeiten gibt:
+			<ul>
+				<li>Die meisten Pakete könnten automatisch gebumped werden, da der komplette Vorgang automatisch abläuft</li>
+				<li>Bevor man herausfindet, wie man ein Paket mit afressiven Optimierungen kompiliert, könnte man zuerst überprüfen,
+				wie sich denn diese Optimierungen auf das fertige Paket auswirken und ob sie sich überhaupt lohnen</li>
+			</ul>
+		</p>
+		<p>
+			<b>13:36 :</b> Vorschlag für ein neues Portage-Feature: <c>emerge -pf</c> sollte eine Liste aller benötigten Dateien ausgeben (Am
+			besten wäre ein Dateiformato, daß man mit wget benutzen könnte ;) ). Dieses Feature sollte einfach zu implementieren sein, braucht keine
+			Extra-Optionen und ist eine große Hilfe für Leute mit langsamen Netzzugang.
+		</p>
 	</body>
 </section>
 
