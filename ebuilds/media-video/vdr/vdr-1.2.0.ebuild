@@ -1,16 +1,18 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.5 2003/06/05 21:09:19 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.6 2003/06/07 15:12:52 fow0ryl Exp $
 
 IUSE="lirc"
+ANALOGTV_VN="0.7.0"
 
-S=${WORKDIR}/${P}
+S=${WORKDIR}/vdr-${PV}
 DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
-SRC_URI="ftp://ftp.cadsoft.de/vdr/${P}.tar.bz2
-         http://www.akool.de/download/vdr-1.2.0.patch.bz2
-		 http://www.akool.de/download/vdr-1.2.0-without-Elchi.patch.bz2
-		 http://linvdr.org/download/VDR-AIO/ElchiAIO3a-1.2.0.diff.gz"
+SRC_URI="ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
+         http://www.akool.de/download/vdr-${PV}.patch.bz2
+	 http://www.akool.de/download/vdr-${PV}-without-Elchi.patch.bz2
+	 http://akool.bei.t-online.de/vdr/download/vdr-analogtv-${ANALOGTV_VN}.tar.bz2
+	 http://linvdr.org/download/VDR-AIO/ElchiAIO3a-1.2.0.diff.gz"
 
 KEYWORDS="~x86"
 SLOT="0"
@@ -26,8 +28,8 @@ DEPEND="virtual/glibc
 		"
 
 function vdr_opts {
-	#test -z $1 && return 1
 	echo ${VDR_OPTS} | grep --silent $1 && return 0
+	einfo "No optional $1 in VDR_OPTS"
 	return 1
 }
 
@@ -35,23 +37,44 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-
-	# Be AWARE that there is (at the moment) no logic to prevent
-	# double patches like akool (with Elchi included) and Elchi
-	# you will get a lot of errors !! Check VDR_OPTS
-	#
-
 	# needs app-admin/fam-oss
-	vdr_opts akool && epatch ../vdr-1.2.0.patch
-	vdr_opts akoolwoe && epatch ../vdr-1.2.0-without-Elchi.patch
-
-	# Elchi Patch
-	if [ "vdr_opts elchi" -a !"vdr_opts akool" -a !"vdr_opts akoolwoe" ] ; then
-		patch < ../ElchiAIO3a-1.2.0.diff
-		rm .dependencies # .deps file is in the DIFF ?? 
+	if [ -z "`vdr_opts akool`" ]; then
+		if [ -z "`vdr_opts akoolwoe`" ]; then
+			eerror "ups, akool & akoolwe patch will not work together"
+			die "incompatible VDR_OPTS"
+		fi
+		if [ -z "`vdr_opts elchi`" ]; then
+			ewarn "elchi patch is already part of akool patch ... skipping"
+		fi
+		einfo "Apply akool patch ..."
+		epatch ../vdr-1.2.0.patch
+	elif [ -z "`vdr_opts akoolwoe`" ]; then
+		if [ -z "`vdr_opts elchi`" ]; then
+			eerror "ups, akoolwoe is 'akool without elchi'"
+			eerror "please recheck your decision, but aware:"
+			eerror "elchi patches are not compatible with DXR3"
+			die "incompatible VDR_OPTS"
+		fi
+		einfo "Apply akoolwoe patch ..."
+		epatch ../vdr-1.2.0-without-Elchi.patch
 	fi
 
-	epatch ${FILESDIR}/${P}-gentoo.diff
+	# Elchi Patch
+	if [ -z "`vdr_opts elchi`" ]; then
+		if [ -n "`vdr_opts akool`" ]; then
+		cd ${S}
+			einfo "Apply ElchiAOI3a patch ..."
+			patch < ../ElchiAIO3a-1.2.0.diff
+			rm .dependencies # .deps file is in the DIFF ??
+		fi
+	fi
+
+	if [ -z "`vdr_opts analogtv`" ]; then
+		einfo "Apply AnalogTV patch ..."
+		cp ${WORKDIR}/analogtv-${ANALOGTV_VN}/3rd-party/vdr/remux.c .
+	fi
+
+	epatch ${FILESDIR}/vdr-${PV}-gentoo.diff
 }
 
 src_compile() {
@@ -66,7 +89,7 @@ src_compile() {
 		cd ${S}/PLUGINS/src/${i}
 		make all ||die "compile problem plugin: ${i}"
 	done
-		
+
 }
 
 src_install() {
@@ -76,12 +99,12 @@ src_install() {
 	insinto /etc/init.d
 	insopts -m0755
 	newins ${FILESDIR}/rc.vdr vdr
-	
+
 	# need new watchdog
 	#newins ${FILESDIR}/rc.vdrwatchdog vdrwatchdog
 	# not tested
-	#use lirc && newins ${FILESDIR}/rc.irexec irexec 
-	
+	#use lirc && newins ${FILESDIR}/rc.irexec irexec
+
 	dodoc CONTRIBUTORS COPYING README* INSTALL MANUAL HISTORY* UPDATE-1.2.0
 	dodoc ${FILESDIR}/vdrshutdown.sh
 	#dodoc ${FILESDIR}/sudo.txt
@@ -124,6 +147,7 @@ src_install() {
 	insinto /etc/vdr/plugins/.keep
 	fowners vdr /etc/vdr/plugins
 }
+
 pkg_setup(){
 	einfo "adding vdr user"
 	# temp userid 270 until got one from gentoo.org
