@@ -19,6 +19,19 @@
 
 <chapter>
 
+<section>
+	<title>[21. Juli 2003] Gentoo-Newsletter</title>
+	<body>
+		<p>
+		In dieser Woche gibt es Nachrichten über Gentoo auf der kommenden Linux-World-Expo und das kurz bevorstehende Veröffentlichung
+		von Gentoo-Linux 1.4. Desweiteren stellen wir den Gentoo-Linux-Store vor und schreiben neue Stellen im Projekt aus.
+		Ausserdem wird eine Community-Site für Dokumentationen rund um Gentoo-Linux vorgestellt, wobei es sich dabei hauptsächlich
+		im Gentoo in Produktionsumgebungen dreht. Und ausserdem ihren die erste Hosting-Gesellschaft Ihren Kunden nun Gentoo an.
+		<uri link="http://www.gentoo.org/news/en/gwn/20030721-newsletter.xml">Viel Spass beim Lesen</uri>
+		</p>
+	</body>
+</section>
+
 <title>Aktuelles</title>
 
 <section>
@@ -38,7 +51,7 @@
 		In dieser Woche geht es um Gentoo-Linux auf dem Linuxtag in Karlsruhe (siehe auch <uri link="../lt2k3/index.html">tantives Tagebuch</uri>,
 		Neuigkeiten über die kürzlich nicht erreichbaren CVS-Server, die Security-News, das Entwicklerportrait der Woche, und natürlich weitere
 		Interessante Artikel und die üblichen Rubriken.
-		<uri link="http://www.gentoo.org/news/en/gwn/20031407-newsletter.xml">Viel Spass beim Lesen</uri>
+		<uri link="http://www.gentoo.org/news/en/gwn/20030714-newsletter.xml">Viel Spass beim Lesen</uri>
 		</p>
 	</body>
 </section>
