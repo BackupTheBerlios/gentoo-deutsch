@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.3 2003/12/04 15:51:50 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.4 2003/12/05 12:55:53 dertobi123 Exp $ -->
 
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
@@ -28,7 +28,7 @@
 <p>
 Bevor Sie mit der Übersetzung anfangen, sollten Sie die
 <uri link="/inhalte/projekt/translation">Informationen für Übersetzer</uri>, den
-<uri link="/inhalte/doku/xml-guide">Guide XML Guide</uri> und je nach Vorkenntnissen
+<uri link="/inhalte/doku/xml-guide">XML Guide</uri> und je nach Vorkenntnissen
 auch das
 <uri link="/inhalte/doku/cvs-tutorial">CVS Tutorial</uri> gelesen haben.
 </p>
