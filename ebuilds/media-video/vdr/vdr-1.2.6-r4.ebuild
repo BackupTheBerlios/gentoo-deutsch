@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.3 2003/12/27 18:17:58 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.4 2003/12/27 20:09:37 fow0ryl Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -103,10 +103,9 @@ src_unpack() {
 		epatch ../KomplettPatch-1.2.6-E.diff
 		einfo "applying improved OSD 3a patch ..."
 		epatch ../improvedosd-3-3a.diff
-		#
-		# by mad because there is on patchfile ?!
-		#einfo "applying remove duplicate Symblol 59 patch ..."
-		#epatch ${FILESDIR}/KomplettPatch-1.2.6-E.diff
+
+		einfo "applying remove duplicate Symblol 59 patch ..."
+		epatch ${FILESDIR}/KomplettPatch-1.2.6-E.diff
 	fi
 
 	# here comes the gentoo specific stuff ( also called the "fun part")
