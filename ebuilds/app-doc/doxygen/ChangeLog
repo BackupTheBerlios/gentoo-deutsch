@@ -1,0 +1,76 @@
+# ChangeLog for app-doc/doxygen
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-doc/doxygen/Attic/ChangeLog,v 1.1 2003/07/11 16:40:35 longint Exp $
+
+*doxygen-1.3.2 (11 Jul 2003)
+
+  11 Jul 2003; Jan Schubert <Jan.Schubert@GMX.li> doxygen-1.3.2.ebuild:
+  Version bump.
+
+*doxygen-1.3 (15 Apr 2003)
+
+  15 Apr 2003; Jyrki Muukkonen <jyrki@kruu.org> doxygen-1.3.ebuild:
+  - Version bump, ~x86 ~ppc and ~sparc keywords.
+  - Updated description
+  - Added IUSE="doc qt". With "doc" it builds the HTML and PDF versions of
+    the manual, and hence depends on app-text/tetex. HTML version needs latex
+    for generating some bitmap formulas and PDF version uses pdftex. Tested
+    with tetex-1.0.7-r12 and tetex-2.0.2
+  - Change \setlength{\footrulewidth} to \renewcommand{\footrulewidth} in
+    doxygen_manual.tex to make it work with tetex-2.x also. Looks like it
+    works with tetex-1.x too.
+  - Simplified the tmake.conf sed(1) hack and ./configure options.
+  - Also made the actual compiling use emake instead of make.
+  - And applied by wmertens@gentoo.org, who also added a sandbox violation
+    fix for the docs.
+
+*doxygen-1.2.18 (13 Oct 2002)
+
+  06 Apr 2003; Jason Wever <weeve@gentoo.org> doxygen-1.2.18.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  19 Mar 2003; Jason Wever <weeve@gentoo.org> doxygen-1.2.18.ebuild:
+  Added ~sparc to keywords.
+
+  13 Oct 2002; Phil Bordelon <sunflare@gentoo.org> doxygen-1.2.18.ebuild :
+  Version bump, along with some added fixes provided by CJ Kucera
+  <pez@apocalyptech.com> in Bug 7353.
+
+*doxygen-1.2.16 (08 Jul 2002)
+
+  08 Jul 2002; Phil Bordelon <sunflare@gentoo.org> doxygen-1.2.15.ebuild doxygen-1.2.15-r1.ebuild doxygen-1.2.16.ebuild :
+  Did a version bump.  Also lintool'd and repoman'd the ebuild so that
+  it matches modern form.  Added KEYWORDs and SLOTs to the old ebuilds
+  as well.
+
+*doxygen-1.2.15-r1 (11 May 2002)
+
+  11 Jun 2002; Wout Mertens <wmertens@gentoo.org>:
+  Changed qt dependency syntax so Portage wouldn't get weird dependency
+  problems. Builds fine with qt3.
+
+  02 Jun 2002; Wout Mertens <wmertens@gentoo.org>:
+  Changed ebuild to depend on graphvis as per bug #3320.
+  While I was at it, changed it so lintool was happy. Therefore, the Author
+  field was removed, and copied to here:
+  Author Sean Mitchell <sean@arawak.on.ca>, updated Tom von Schwerdtner
+  <tvon@etria.org>
+
+  11 May 2002; pvdabeel <pvdabeel@gentoo.org> ChangeLog :
+  Doxygen compiles and runs perfectly with qt3 too. Both qt2 and qt3
+  are supported by the ebuild now
+
+*doxygen-1.2.15 (17 Apr 2002)
+
+  17 Apr 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  Copied 1.2.13.1 ebuild over for 1.2.15 (#1786)
+  
+*doxygen-1.2.13.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.
