@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6.ebuild,v 1.2 2004/03/14 23:40:16 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6.ebuild,v 1.3 2004/03/18 10:25:12 austriancoder Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -14,6 +14,7 @@ HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/Developer/vdr-${PV}.tar.bz2
 		http://linvdr.org/download/VDR-AIO/vdr-1.3.6/vdr-1.3.6-ElchiAIO4d.diff.gz
+		http://linvdr.org/download/VDR-AIO/logos/xpmlogos.tgz
 		"
 
 # vanilla :-)
@@ -143,9 +144,12 @@ src_unpack() {
 
 	# for osdbase.h in case, VDR_OPTS->256color
 	#where is vdr_opts 256 color if statement ?
-	#einfo "Applying 256 Color patch to OSD ..."
-	#/bin/sed -i osdbase.h \
-	#  -e 's:#define MAXNUMCOLORS 24:#define MAXNUMCOLORS 256:'
+	if  vdr_opts elchi
+	then
+		einfo "Applying 256 Color patch to OSD ..."
+		/bin/sed -i osdbase.h \
+		  -e 's:#define MAXNUMCOLORS 24:#define MAXNUMCOLORS 256:'
+	fi
 
 	# by mad because vanilla
 	# use patch from mailbox plugin, even if plugin is not used
@@ -223,11 +227,11 @@ src_install() {
 	fowners vdr:video /etc/vdr/plugins
 
 	# changed to /usr/share/vdr -> see above... fs(12/23/2003)
-	if  vdr_opts akool || vdr_opts iosd
+	if  vdr_opts elchi
 	then
-		insinto /usr/share/vdr/icons
-		doins ${S}/icons/*.logo
-		fowners vdr:video /usr/share/vdr/icons
+		insinto /etc/vdr/logos
+		doins ../logos/*.xpm
+		fowners vdr:video /etc/vdr/logos
 	fi
 }
 
