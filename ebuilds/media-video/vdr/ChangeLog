@@ -1,8 +1,11 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.8 2003/04/03 18:15:34 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.9 2003/04/03 20:32:04 fow0ryl Exp $
 
 *vdr-1.1.26 (19 Mar 2003)
+  03 Apr 2003; H.Ryll <henning.ryll@web.de> rc.vdr-1.1.26
+  handling of _EXTRAOPTS fixed
+  
   03 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26.ebuild
   added support for the irexec programm to restart vdr with a 
   userdefined key (edit /etc/vdr/irexec.conf and start irexec)
