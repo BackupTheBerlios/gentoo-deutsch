@@ -24,6 +24,27 @@
         </xsl:choose>
       </xsl:variable>
 
+      
+      <xsl:for-each select="pkg">
+        <xsl:sort select="category"/>
+        
+        <xsl:variable name="cname" select="name()"/>
+        
+        <xsl:if test="preceding-sibling::pkg/child::category != $cname">
+          <xsl:value-of select="$cname"/>
+          <xsl:text>: </xsl:text>
+        
+          <xsl:for-each select="../pkg">
+            <xsl:value-of select="name"/>
+            <xsl:text>, </xsl:text>
+          </xsl:for-each>
+        </xsl:if>  
+      
+      </xsl:for-each>
+
+      
+      <br/><br/>      
+      
       <table class="ebuildlist" cellspacing="0" cellpadding="0" border="0"> 
         <tr class="header">
           <td>Name</td>
@@ -77,6 +98,7 @@
         </xsl:for-each> 
 
       </table>
+      
     </xsl:element>
   </xsl:element>
 </xsl:template>
