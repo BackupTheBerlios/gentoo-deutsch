@@ -8,7 +8,7 @@
 		Dokumentation
 	
 -- 
-	Gentoo Linux 1.2 Installations Anleitung</title>
+	Anleitung zur Gentoo Linux 1.2 Installation</title>
 </head>
 <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
@@ -17,7 +17,7 @@
 </table></td></tr>
 <tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
 <td width="99%" class="content" valign="top" align="left">
-<br><p class="dochead">Gentoo Linux 1.2 Installations Anleitung</p>
+<br><p class="dochead">Anleitung zur Gentoo Linux 1.2 Installation</p>
 <form>
 <b>Inhalt</b>:
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Über die Installation</option>
@@ -43,7 +43,7 @@
 
 <p>Die neue Boot CD startet von fast jedem modernen IDE CD-ROM Laufwerk, sowie von vielen 
 SCSI CD-ROMs. Die CD-ROM unterstützt IDE Controller (eingebaut im Kernel) sowie alle 
-SCSI Geräte (vorhanden als Module). Zusätzlich stellen wir Module für 
+SCSI Geräte (vorhanden als Module). Zusätzlich stellt sie Module für
 buchstäblich jede Netzwerkkarte zur Verfügung die Linux unterstützt, 
 sowie Tools die es ermöglichen das Netzwerk zu konfigurieren und ausgehende 
 <font class="code">ssh</font> Verbindungen zum Dateidownload aufzubauen.</p>
@@ -56,15 +56,15 @@ CD ISO Images von <a href="http://www.ibiblio.org/gentoo/releases/build/">http:/
 haben wir zwei CDs verfügbar. Unsere erste CD ist 
 <a href="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">
 gentoo-ix86-1.2.iso</a>.Dieses Image ist recht klein (16Mb) und enthält ein minimales 
-&quot;chrootable&quot; 
-Image (<font class="path">stage1-ix86-1.2.tbz2</font>) -- alles was Sie benötigen um ein 
+&quot;chrootfähiges&quot; 
+Image (<font class="path">stage1-ix86-1.2.tbz2</font>) -- alles was Sie benötigen um ein
 Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei 
 automatisch aus dem Internet geladen.) Unsere zweite CD ist 
 <a href="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">
-gentoo-i686-1.2.iso</a>. Dieses Image ist etwas größer (100+Mb) -- Es 
+gentoo-i686-1.2.iso</a>. Dieses Image ist etwas größer (100+Mb) -- Es
 enthält das gleiche Material wie auf unserem 16Mb Image, <font class="emphasis">plus</font> einem 
 vorkompiliertem i686 Basissystem (<font class="path">stage3-i686-1.2.tbz2</font>) 
-sowie einem halb-fertigen  
+sowie einem zum Teil kompiliertem 
 i686 Basissystem (<font class="path">stage2-i686-1.2.tbz2</font>) in TAR-Archiven.
 Die beiden neuen TAR-Archive benötigen einen Pentium Pro oder besser (K6 geht nicht). 
 Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf kompilieren wollen, 
@@ -89,15 +89,15 @@ hier die benötigten Schritte:
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo">1</td>
-<td bgcolor="#ddddff" class="tableinfo">partition/filesystem setup, emerge rsync, bootstrap, emerge system, emerge linux sources, final configuration</td>
+<td bgcolor="#ddddff" class="tableinfo">Einrichten von Partition und Dateisystem, emerge rsync, bootstrap, emerge system, emerge linux sources, abschliessende Konfiguration</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo">2</td>
-<td bgcolor="#ddddff" class="tableinfo">partition/filesystem setup, emerge rsync, emerge system, emerge linux sources, final configuration</td>
+<td bgcolor="#ddddff" class="tableinfo">Einrichten von Partition und Dateisystem, emerge rsync, emerge system, emerge linux sources, abschliessende Konfiguration</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo">3</td>
-<td bgcolor="#ddddff" class="tableinfo">partition/filesystem setup, emerge rsync (optional), final configuration</td>
+<td bgcolor="#ddddff" class="tableinfo">Einrichten von Partition und Dateisystem, emerge rsync (optional), abschliessende Konfiguration</td>
 </tr>
 </table>
 
@@ -115,10 +115,10 @@ Boot-CD begrüßt. Dies beinhaltet <font class="code">nano</font> (einen Klon des 
 die Anleitung zur Netzwerkkonfiguration. Danach werden Sie nach Ihrem bevorzugtem
 Keyboard Layout befragt, gefolgt von der automatischen Erkennung der PCI Geräte. Während
 der Geräteerkennung werden alle passenden Kernelmodule für PCI SCSI Controller und
-Netzwerkkarten geladen. Wenn Sie danach <font class="emphasis">enter</font> drücken kommen Sie in eine
+Netzwerkkarten geladen. Wenn Sie danach <font class="emphasis">Enter</font> drücken kommen Sie in eine
 minimale Linux Umgebung. Sie sollten nun ein root Prompt (&quot;<font class="code">#</font>&quot;) auf der
-aktuellen Konsole haben. Durch drücken von alt-f2, alt-f3, usw. gefolgt von 
-einem <font class="emphasis">enter</font>  können Sie weitere Konsolen aktivieren.</p>
+aktuellen Konsole haben. Durch drücken von Alt-F2, Alt-F3, usw. gefolgt von
+einem <font class="emphasis">Enter</font>  können Sie weitere Konsolen aktivieren.</p>
 
 
 <p class="chaphead">
@@ -214,7 +214,7 @@ Einige Provider erwarten das Sie einen Hostnamen übergeben. Um dies zu tun hänge
 Option <font class="code">-h meinhostname</font> an das oben stehende Kommando.</p></td></tr></table>
 
 <p>Wenn Sie <font class="input">dhcpConfig</font> Warnungen bekommen, keine Panik. Die meisten Meldungen sind 
-harmlos. Weiter gehts unten mit dem Test der Netzwerkanbindung.</p>
+harmlos. Weiter geht es unten mit dem Test der Netzwerkanbindung.</p>
 
 <p class="secthead"><a name="_sect3">Statische Konfiguration </a></p>
 <p>
@@ -275,7 +275,7 @@ eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
 </pre></td></tr>
 </table>
 
-<p class="secthead"><a name="_sect5">Netzwerkanschluss ist online! </a></p>
+<p class="secthead"><a name="_sect5">Das Netzwerk ist jetzt online! </a></p>
 <p>Der Netzwerkanschluss sollte nun konfiguriert und nutzbar sein. Sie sind nun in der Lage sich via 
 <font class="code">ssh</font>, <font class="code">scp</font> und <font class="code">wget</font> mit anderen Rechnern in Ihrem LAN oder im Internet zu
 verbinden.</p>
@@ -1095,9 +1095,9 @@ to help familiarize you with Portage basics.  Enjoy and welcome to Gentoo Linux!
 </td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 <tr><td class="alttext">
-<b>Zusammenfassung:</b> Diese Anleitung führt Sie schrittweise durch den Gentoo Linux 1.2 Installationsprozess.
-Die Gentoo Linux Installation unterstützt verschiedene Installationsarten, abhängig davon
-wieviel des Systems von Grund auf installiert werden soll.
+<b>Zusammenfassung:</b> Diese Anleitung führt Sie schrittweise durch den Gentoo Linux 1.2 Installationsprozess 
+für die x86 Prozessorarchitektur (AMD, Intel). Die Gentoo Linux Installation unterstützt 
+verschiedene Installationsarten, abhängig davon wieviel des Systems von Grund auf installiert werden soll.
 </td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 </table></td>

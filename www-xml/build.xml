@@ -4,16 +4,16 @@
 
 
 <guide link="/doc/build.html">
-<title>Gentoo Linux 1.2 Installations Anleitung</title>
+<title>Anleitung zur Gentoo Linux 1.2 Installation</title>
 <author title="Chief Architect"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Author">Chris Houser</author>
 <author title="Author"><mail link="jerry@gentoo.org">Jerry Alexandratos</mail></author>
 <author title="Ghost"><mail link="g2boojum@gentoo.org">Grant Goodyear</mail></author>
 <author title="&#xDC;bersetzer"><mail link="mgreiner@berlios.de">Markus Greiner</mail></author>
 
-<abstract>Diese Anleitung f&#xFC;hrt Sie schrittweise durch den Gentoo Linux 1.2 Installationsprozess.
-Die Gentoo Linux Installation unterst&#xFC;tzt verschiedene Installationsarten, abh&#xE4;ngig davon
-wieviel des Systems von Grund auf installiert werden soll.
+<abstract>Diese Anleitung f&#xFC;hrt Sie schrittweise durch den Gentoo Linux 1.2 Installationsprozess 
+f&#xFC;r die x86 Prozessorarchitektur (AMD, Intel). Die Gentoo Linux Installation unterst&#xFC;tzt 
+verschiedene Installationsarten, abh&#xE4;ngig davon wieviel des Systems von Grund auf installiert werden soll.
 </abstract>
 
 <version>1.51</version>
@@ -26,7 +26,7 @@ wieviel des Systems von Grund auf installiert werden soll.
 
 <p>Die neue Boot CD startet von fast jedem modernen IDE CD-ROM Laufwerk, sowie von vielen 
 SCSI CD-ROMs. Die CD-ROM unterst&#xFC;tzt IDE Controller (eingebaut im Kernel) sowie alle 
-SCSI Ger&#xE4;te (vorhanden als Module). Zus&#xE4;tzlich stellen wir Module f&#xFC;r 
+SCSI Ger&#xE4;te (vorhanden als Module). Zus&#xE4;tzlich stellt sie Module f&#xFC;r
 buchst&#xE4;blich jede Netzwerkkarte zur Verf&#xFC;gung die Linux unterst&#xFC;tzt, 
 sowie Tools die es erm&#xF6;glichen das Netzwerk zu konfigurieren und ausgehende 
 <c>ssh</c> Verbindungen zum Dateidownload aufzubauen.</p>
@@ -39,15 +39,15 @@ CD ISO Images von <uri>http://www.ibiblio.org/gentoo/releases/build/</uri>. Im A
 haben wir zwei CDs verf&#xFC;gbar. Unsere erste CD ist 
 <uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">
 gentoo-ix86-1.2.iso</uri>.Dieses Image ist recht klein (16Mb) und enth&#xE4;lt ein minimales 
-"chrootable" <!-- Wenn jemand eine Uebersetzung kennt, immer her damit!! -->
-Image (<path>stage1-ix86-1.2.tbz2</path>) -- alles was Sie ben&#xF6;tigen um ein 
+"chrootf&#xE4;higes" <!-- Ich probier es mal damit (JS) -->
+Image (<path>stage1-ix86-1.2.tbz2</path>) -- alles was Sie ben&#xF6;tigen um ein
 Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei 
 automatisch aus dem Internet geladen.) Unsere zweite CD ist 
 <uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">
-gentoo-i686-1.2.iso</uri>. Dieses Image ist etwas gr&#xF6;&#xDF;er (100+Mb) -- Es 
+gentoo-i686-1.2.iso</uri>. Dieses Image ist etwas gr&#xF6;&#xDF;er (100+Mb) -- Es
 enth&#xE4;lt das gleiche Material wie auf unserem 16Mb Image, <e>plus</e> einem 
 vorkompiliertem i686 Basissystem (<path>stage3-i686-1.2.tbz2</path>) 
-sowie einem halb-fertigen <!-- nicht so gut. Alternativen?? --> 
+sowie einem zum Teil kompiliertem <!-- nicht so gut. Alternativen?? damit ?? (JS) -->
 i686 Basissystem (<path>stage2-i686-1.2.tbz2</path>) in TAR-Archiven.
 Die beiden neuen TAR-Archive ben&#xF6;tigen einen Pentium Pro oder besser (K6 geht nicht). 
 Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf kompilieren wollen, 
@@ -67,9 +67,9 @@ hier die ben&#xF6;tigten Schritte:
 
 <table>
 <tr><th>stage Archiv</th><th>Installationsanforderungen</th></tr>
-<tr><ti>1</ti><ti>partition/filesystem setup, emerge rsync, bootstrap, emerge system, emerge linux sources, final configuration</ti></tr>
-<tr><ti>2</ti><ti>partition/filesystem setup, emerge rsync, emerge system, emerge linux sources, final configuration</ti></tr>
-<tr><ti>3</ti><ti>partition/filesystem setup, emerge rsync (optional), final configuration</ti></tr>
+<tr><ti>1</ti><ti>Einrichten von Partition und Dateisystem, emerge rsync, bootstrap, emerge system, emerge linux sources, abschliessende Konfiguration</ti></tr>
+<tr><ti>2</ti><ti>Einrichten von Partition und Dateisystem, emerge rsync, emerge system, emerge linux sources, abschliessende Konfiguration</ti></tr>
+<tr><ti>3</ti><ti>Einrichten von Partition und Dateisystem, emerge rsync (optional), abschliessende Konfiguration</ti></tr>
 </table>
 
 </body>
@@ -91,10 +91,10 @@ Boot-CD begr&#xFC;&#xDF;t. Dies beinhaltet <c>nano</c> (einen Klon des Editors <
 die Anleitung zur Netzwerkkonfiguration. Danach werden Sie nach Ihrem bevorzugtem
 Keyboard Layout befragt, gefolgt von der automatischen Erkennung der PCI Ger&#xE4;te. W&#xE4;hrend
 der Ger&#xE4;teerkennung werden alle passenden Kernelmodule f&#xFC;r PCI SCSI Controller und
-Netzwerkkarten geladen. Wenn Sie danach <e>enter</e> dr&#xFC;cken kommen Sie in eine
+Netzwerkkarten geladen. Wenn Sie danach <e>Enter</e> dr&#xFC;cken kommen Sie in eine
 minimale Linux Umgebung. Sie sollten nun ein root Prompt ("<c>#</c>") auf der
-aktuellen Konsole haben. Durch dr&#xFC;cken von alt-f2, alt-f3, usw. gefolgt von 
-einem <e>enter</e>  k&#xF6;nnen Sie weitere Konsolen aktivieren.</p>
+aktuellen Konsole haben. Durch dr&#xFC;cken von Alt-F2, Alt-F3, usw. gefolgt von
+einem <e>Enter</e>  k&#xF6;nnen Sie weitere Konsolen aktivieren.</p>
 
 
 </body>
@@ -194,10 +194,10 @@ Einige Provider erwarten das Sie einen Hostnamen &#xFC;bergeben. Um dies zu tun 
 Option <c>-h meinhostname</c> an das oben stehende Kommando.</note>
 
 <p>Wenn Sie <i>dhcpConfig</i> Warnungen bekommen, keine Panik. Die meisten Meldungen sind 
-harmlos. Weiter gehts unten mit dem Test der Netzwerkanbindung.</p>
+harmlos. Weiter geht es unten mit dem Test der Netzwerkanbindung.</p>
 
 </body>
-</section>
+</section>partition/filesystem setup,
 <section>
 <title>Statische Konfiguration</title>
 <body>
@@ -252,19 +252,21 @@ eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
 <!--
 <note>
 If you have a static ppp link, you can !!! do this...!!!
+Sollen wir hier eigenmaechtig eine PPPoE Abschnitt einfuegen - In Deutschland ist das ja deutlich
+verbereiteter als in den USA (JS) ?
 </note>
 -->
 </body>
 </section>
 <section>
-<title>Netzwerkanschluss ist online!</title>
+<title>Das Netzwerk ist jetzt online!</title>
 <body>
 <p>Der Netzwerkanschluss sollte nun konfiguriert und nutzbar sein. Sie sind nun in der Lage sich via 
 <c>ssh</c>, <c>scp</c> und <c>wget</c> mit anderen Rechnern in Ihrem LAN oder im Internet zu
 verbinden.</p>
 </body>
 </section>
-<!-- So Pause :-> -->
+<!-- So Pause :->  (Gute Arbeit !!!! (JS) -->
 </chapter>
 <chapter>
 <title>Set up partitions</title>
