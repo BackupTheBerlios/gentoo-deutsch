@@ -4,12 +4,11 @@
 
 <!--
   Part of the Gentoo WebSite:
-  Document Version: 0.95
+  Document Version: 1.01
 -->
 
 <xsl:include href="../temp/config.xsl"/>
-<xsl:include href="../temp/ebuild_new_org.xsl"/>
-<xsl:include href="../temp/ebuild_all_de.xsl"/>
+<xsl:include href="../temp/ebuild.xsl"/>
 
 <xsl:include href="suche.xsl"/>
 
