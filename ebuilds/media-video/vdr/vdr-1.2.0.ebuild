@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.7 2003/06/10 19:41:15 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.8 2003/06/10 19:53:03 mad Exp $
 
 IUSE="lirc"
 ANALOGTV_VN="0.7.0"
@@ -38,16 +38,6 @@ function vdr_opts {
 
 
 src_unpack() {
-	#
-	# getting VDR_OPS from commandline or configfile
-	#
-	if [ -z "$VDR_OPTS" ]; then
-		VDR_OPTS=$(awk -F'"' '/^VDR_OPTS/ {print $2}' /etc/conf.d/vdr)
-		einfo
-		einfo "read VDR_OPTS from /etc/conf.d/vdr "
-		einfo
-	fi
-
 	einfo
 	einfo "VDR_OPTS: $VDR_OPTS"
 	einfo
