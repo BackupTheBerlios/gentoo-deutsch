@@ -1,10 +1,10 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.6-r3.ebuild,v 1.3 2003/12/14 11:47:45 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.6-r3.ebuild,v 1.4 2003/12/14 21:19:24 fow0ryl Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
-AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.3"
+AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
 AKOOL_VN="1.2.6"
 ELCHI_VN="1.2.6"
 
