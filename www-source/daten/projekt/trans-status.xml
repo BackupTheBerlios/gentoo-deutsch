@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/trans-status.xml,v 1.1 2003/12/03 22:57:55 dertobi123 Exp $-->
+<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
+
+<guide link="/inhalte/projekt/translation/hb-status/">
+
+<title>Statusübersicht</title>
+
+<author title="Autor">
+  <mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
+</author>
+
+<abstract>
+Statusübersicht über die Übersetzer der deutschen Dokumentation
+</abstract>
+
+<version>1.0</version>
+<date>03. Dezember 2003</date>
+
+<chapter>
+<title>Statusübersicht</title>
+<section>
+<body>
+
+<p>
+Eine aktuelle Auflistung des Status eines Dokuments, das heisst, welchen
+Versionen gerade aktuell sind, erhalten Sie auf der Statusübersicht auf <uri
+link="http://dev.gentoo.org/~pylon/status-german-translations.de.html">Pylons
+Entwicklerseite</uri>
+</p>
+
+<table>
+  <tr>
+  <th>Dokument</th>
+  <th>Übersetzer</th>
+  </tr>
+  <tr>
+  <ti>ati-faq.xml</ti>
+  <ti>Schnitz</ti>
+  </tr>
+  <tr>
+  <ti>doc-policy.xml</ti>
+  <ti>MadEagle</ti>
+  </tr>
+  <tr>
+  <ti>env.d-howto.xml</ti>
+  <ti>marrakesch</ti>
+  </tr>
+  <tr>
+  <ti>gentoo-pda.xml</ti>
+  <ti>archimedes</ti>
+  </tr>
+  <tr>
+  <ti>gentoolkit.xml</ti>
+  <ti>iceman</ti>
+  </tr>
+  <tr>
+  <ti>mutt.xml</ti>
+  <ti>permanentsolution</ti>
+  </tr>
+  <tr>
+  <ti>ipv6.xml</ti>
+  <ti>moixa</ti>
+  </tr>
+  <tr>
+  <ti>policy.xml</ti>
+  <ti>baka</ti>
+  </tr>
+  <tr>
+  <ti>printing.xml</ti>
+  <ti>SirSeoman</ti>
+  </tr>
+  <tr>
+  <ti>prelink.xml</ti>
+  <ti>hiroki</ti>
+  </tr>
+  <tr>
+  <ti>rsync</ti>
+  <ti>moixa</ti>
+  </tr>
+  <tr>
+  <ti>virtual-mailhost-guide.xml</ti>
+  <ti>noganex</ti>
+  </tr>
+</table>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Ressourcen</title>
+<section>
+<body>
+
+<p>
+<e>Mailingliste:</e> <mail link="gentoo-doc-de@gentoo.org">gentoo-doc-de@gentoo.org</mail>
+<br />
+<e>FAQ:</e> <uri link="/inhalte/projekt/translation">Übersetzer Guide</uri>
+</p>
+
+</body>
+</section>
+</chapter>
+</guide>
