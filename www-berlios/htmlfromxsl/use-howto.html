@@ -1,0 +1,398 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Anleitung zu den USE Flags</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Anleitung zu den USE Flags</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Einführung</option>
+<option value="#doc_chap2">2. Vorhandene USE Flags</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Einführung</p>
+<p class="secthead"><a name="_sect1">Was ist überhaupt der Sinn von USE flags? </a></p>
+<p>Das was mich am meisten als User zu Gentoo hingezogen hat war die 
+Tatsachen, dass es eine stark anpassbare Distribution ist. Da Gentoo eine 
+sourcenbasierte Distribution darstellt, hat der Benutzer die absolute Kontrolle 
+über alle Funktionen und Unterstüzungen, die in die installierten Anwendungen 
+einfließen. Darüber hinaus mag ich es nicht Dinge installieren zu müssen, die 
+ich <font class="emphasis">wirklich</font> nicht brauche.</p>
+
+<p>Und nun, wie genau setzt Gentoo dies um? Durch das Definieren von <font class="code">USE</font> 
+flags. Grundsätzlich sind dies Schlüsselwörter, die Optionen definieren welche 
+systemweit zur Konfiguration der Anwendungen während des Compilations Prozesses genutzt 
+werden.</p>
+
+<p class="secthead"><a name="_sect2">Standard USE Flags </a></p>
+<p>Natürlich definiert Gentoo für Sie bereits standardmäßig einige sichere 
+Flags. Diese finden Sie in Ihrer <font class="path">/etc/make.profile/make.defaults</font> 
+Datei.</p>
+
+
+<p>Bei Gentoo-1.2 sind diese <font class="code">USE</font> Flags wie folgt definiert:</p>
+
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>USE=&quot;3dnow apm arts avi berkdb crypt cups encode gdbm gif gpm gtk imlib ipv6 
+java jpeg kde libg++ libwww mikmod mmx motif mpeg ncurses nls oggvorbis opengl pam 
+pdflib png python qt qtmt quicktime readline sdl slang spell ssl svga tcpd truetype 
+X xml2 xmms xv&quot;</pre></td></tr>
+</table>
+
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Anstatt diese Datei zu bearbeiten, wie es leider einige machen, sollten Sie auf 
+jeden Fall die Datei <font class="path">/etc/make.conf</font> bearbeiten.
+
+In dieser Datei finden Sie:</p></td></tr></table>
+
+	<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>#USE=&quot;&quot;</pre></td></tr>
+</table>
+<p>Entfernen Sie einfach das Kommentarzeichen # und ergänzen Sie Ihre eigenen USE Flags 
+zwischen den Anführungszeichen.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Beachten Sie, dass <font class="code">-flag</font> ein Flag deaktiviert und <font class="code">flag</font> 
+das entsprechende Flag aktiviert. Wenn ein Flag nicht in <font class="path">/etc/make.profile/make.defaults</font> 
+noch in <font class="path">/etc/make.conf</font> zu finden ist, ist diese Funktion deaktiviert</p></td></tr></table>
+
+<p>Einfach das Kommentierungszeiche # entfernen. Dann die gewünschten Flags 
+ergänzen. &quot;Aber was ist wenn ich nun ein Flag aus der make.defaults Datei 
+entfernen möchte?&quot; Dies lässt sich ganz einfach durch ein Ergänzen von &quot;-flag&quot; 
+in <font class="path">/etc/make.conf</font> erreichen. Meine <font class="path"> make.conf</font> sieht z.B. so 
+aus:</p>
+
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>USE=&quot;-gnome -kde qt -arts -nls python perl oggvorbis opengl sdl
+     -postgres jpeg png truetype xml xml2 dvd avi aalib mpeg encode fbcon
+     mmx&quot;</pre></td></tr>
+</table>
+
+<p>Da Sie nun wissen wie man extra Flags aktiviert und existierende 
+Flags deaktiviert, schauen wir uns mal an was diese Flags 
+überhaupt machen.</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Vorhandene USE Flags</p>
+<p class="secthead"><a name="_sect1">HARDWARE FLAGS </a></p>
+<p>Für Ihren Prozessor gibt es drei Flags: <font class="code">mmx</font>, <font class="code">3dnow</font>, und
+<font class="code">sse</font>.
+<font class="code">3dnow</font> ist anwendbar auf bestimmte AMD K-6, Athlon und höhere CPUs.
+<font class="code">mmx</font> is anwendbar auf Pentium-MMX und höhere CPUs inklusive Athlons.
+<font class="code">sse</font> ist eine Funktion für höhere Pentiums. Wenn Sie einen Pentium4 mit SSE2 haben, 
+können Sie ebenfalls dieses Flag nutzen.</p>
+
+<p>Nun für Ihre Grafikkarte. 
+Wenn Sie eine 3dfx Karte haben, aktivieren Sie das <font class="code">3dfx</font> Flag. Sollten Sie 
+eine Voodoo3 Karte besitzen, können Sie das <font class="code">voodoo3</font> Flag aktivieren. 
+Bei einer Matrox Karte schalten Sie einfach das <font class="code">matrox</font> Flag ein.</p>
+
+<p>Laptopnutzer werden wohl die <font class="code">apm</font> und <font class="code">pcmcia</font> Flags aktivieren. Wenn 
+Sie keine Unterstützung für CardBus haben wollen, schalten sie <font class="code">nocardbus</font> 
+ein. die <font class="code">pnp</font> Unterstützung stellt PNP in pcmcia-cs zur Verfügung.</p>
+
+<p>Sollte Sie einen Palm Pilot oder anderen PDA haben, den Sie mit Ihrere Gentoo 
+Maschine verbinden möchten, sollten sie <font class="code">pda</font> nutzen.</p>
+
+<p>Wenn Sie vorhaben eine Digitalkamera zu nutzen, sollten Sie <font class="code">gphoto2</font> aktivieren. 
+Dies wird eine entsprechende Unterstützung in die relevanten Anwendungen compilieren.</p>
+
+<p>Wenn Sie einen Drucker nutzen möchten, können Sie mit <font class="code">cups</font> die CUPS Drucker 
+Unterstützung aktivieren. Mit <font class="code">slp</font> schalten Sie &quot;Service Locator Protocol&quot; Unterstützung 
+für CUPS ein.</p>
+
+<p class="secthead"><a name="_sect2">BILDSCHIRM FLAGS </a></p>
+<p>Wenn Sie das XFree86 System nutzen möchten, sollten Sie <font class="code">X</font> aktivieren. Mit X 
+können Sie zusätzlich auch <font class="code">dga</font> einschalten, um direkten Grafik Zugang (Direct 
+Grpahic Acces - DGA) zu erhalten. Das <font class="code">opengl</font> Flag aktiviert OpenGL Unterstützung 
+in vielen Anwendungen. Um die XVideo Erweiterung von XFree86 nutzen zu können, müssen 
+Sie <font class="code">xv</font> aktivieren. Nach einem Besucher im IRC Channel #gentoo bei openprojects.net 
+(|Nagash|) &quot;macht xv Mplayer gut&quot;</p>
+
+<p>Falls Sie auch Unterstützung für die Framebuffer Konsole (wie sie vom Kernel zur 
+Verfügung gestellt wird - Der Pinguin beim Booten ist ein Beispiel) wünschen, schalten 
+Sie das <font class="code">fbcon</font> Flag ein.</p>
+
+<p>Um bestimmte Anwendungen mit DirectFB zu nutzen, müssen Sie <font class="code">directfb</font> einschalten.</p>
+
+<p class="secthead"><a name="_sect3">DESKTOP EINSTELLUNGEN </a></p>
+<p>Sind Sie KDE Nutzer? Dann sind folgende Flags für Sie:</p>
+<p>
+<font class="code">kde</font> -- KDE Unterstützung aktivieren</p>
+<p>
+<font class="code">qt</font> -- Erlaubt das linken auf die Qt-Bibliotheken</p>
+<p>
+<font class="code">qtmt</font> -- Erlaubt das linken auf die &quot;multi-threaded&quot; Qt-Bibliotheken</p>
+<p>
+<font class="code">arts</font> -- Das KDE Sound System (artsd)</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Bitte beachten Sie, dass falls Sie keine KDE Unterstützung wünschen mindestens 
+<font class="code">kde</font> und <font class="code">arts</font> deaktiviert sind (-kde -arts).</p></td></tr></table>
+
+<p>Sie bevorzugen GNOME? Dann benutzen Sie:</p>
+<p>
+<font class="code">gnome</font> -- um Anwendungen mit GNOME Unterstützung zu erstellen</p>
+<p>
+<font class="code">gtk</font> -- um Anwendungen mit GTK+ Unterstützung zu erstellen</p>
+<p class="secthead"><a name="_sect4">GNOME EINSTELLUNGEN </a></p>
+<p>Es gibt viel mehr Flags für GNOME Nutzer.</p>
+<p>
+<font class="code">bonobo</font> -- Unterstützung für GNOMEs CORBA durch Bonobo</p>
+<p>
+<font class="code">evo</font> -- Unterstützung für Evolution (eine zu Outlook ähnliche Anwendung)</p>
+<p>
+<font class="code">gb</font> -- Unterstützung für Gnome Basic</p>
+<p>
+<font class="code">gtkhtml</font> -- Unterstüzung für die GTK-HTML Bibliothek</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Um GNOME Unterstützung zu deaktivieren, ergänzen Sie einfach <font class="code">-gnome</font> zu Ihrer USE Zeile in <font class="path">/etc/make.conf</font>
+</p></td></tr></table>
+
+<p class="secthead"><a name="_sect5">GRAFIK BIBLIOTHEKEN </a></p>
+<p>Es gibt viele Bibliotheken, die Multimedia Unterstützung liefern. Fangen wir also 
+mit den Grafik Bibliotheken an. Im vorigen Abschnitt haben wir bereits die GTK und Qt 
+Toolkit Bibliotheken gesehen. Andere mögliche Optionen sind:</p>
+
+<p>
+<font class="code">motif</font> -- für OpenMotif Unterstützung</p>
+<p>
+<font class="code">tcltk</font> -- für Tcl und/oder Tk Unterstützung</p>
+<p>
+<font class="code">aalib</font> -- Unterstützung für ASCII Grafiken</p>
+<p>
+<font class="code">imlib</font> -- Unterstützung für Imlib (image loading and rendering library)</p>
+<p>
+<font class="code">ncurses</font> -- Unterstützung für Ncurses Konsolen Darstellung - dies bieten eine menge Anwendungen</p>
+<p>
+<font class="code">readline</font> -- eine andere auf der Konsole basierende Bibliothek</p>
+<p>
+<font class="code">sdl</font> -- SDL (Simple Direct Layer media library) wird von vielen Spielen gebraucht</p>
+<p>
+<font class="code">svga</font> -- Einige Anwendungen bieten Unterstützung von SVGAlib. NICHT für PPC Benutzer!</p>
+<p>
+<font class="code">lcms</font> -- Bietet Farbmanagement Unterstützung für die Imagemagick Bibliothek</p>
+
+<p>Mit den folgenden Flags können Sie Unterstützung für folgende Gragikformate aktivieren:</p>
+
+<p>
+<font class="code">gif</font> -- Unterstützung für GIF Grafiken (libungif oder giflib)</p>
+<p>
+<font class="code">jpeg</font> -- Unterstützung für JPEG Grafiken (libjpeg)</p>
+<p>
+<font class="code">png</font> -- Unterstützung für PNG Grafiken</p>
+<p>
+<font class="code">tiff</font> -- Unterstützung für TIFF Grafiken</p>
+
+<p class="secthead"><a name="_sect6">VIDEO BIBLIOTHEKEN </a></p>
+<p>Sie schauen gerne Videos? Dann möchten Sie vielleicht einige der folgenden Flags 
+aktivieren:</p>
+
+<p>
+<font class="code">avi</font> -- Unterstützung für die avifile Bibliothek und optional der Win32 Codec Bibliothek</p>
+<p>
+<font class="code">mpeg</font> -- Unterstützung für die libmpeg3 Bibliothek</p>
+<p>
+<font class="code">quicktime</font> -- Unterstützung für Quicktime mittels OpenQuickTime und Quicktime4Linux</p>
+
+<p class="secthead"><a name="_sect7">SOUND BIBLIOTHEKEN </a></p>
+<p>Es gibt eine ganze menge Sound Bibliotheken. </p>
+<p>
+<font class="code">alsa</font> -- ALSA Soundtreiber (Advanced Linux Sound Architecture)</p>
+<p>
+<font class="code">esd</font> -- ESD Sounddaemon (Enlightened Sound Daemon)</p>
+<p>
+<font class="code">mikmod</font> -- Eine Bibliothek für MikMod Sound Module</p>
+<p>
+<font class="code">oss</font> -- Das Open Sound System</p>
+<p>
+<font class="code">nas</font> -- Network Audio Sound</p>
+
+<p class="secthead"><a name="_sect8">ANDERE MULTIMEDIA EINSTELLUNGEN </a></p>
+<p>
+<font class="code">ggi</font> -- Unterstützung für Nicht-X Video Treiber</p>
+<p>
+<font class="code">dvd</font> -- Unterstützung für das Abspielen und Entschlüsseln von DVD via libcss Bibliothek</p>
+<p>
+<font class="code">xmms</font> - Das X MultiMedia System</p>
+<p>
+<font class="code">oggvorbis</font> -- Unterstützung für das Ogg Vorbis Format</p>
+<p>
+<font class="code">flash</font> -- Unterstützung für das Erstellen von Flash Dateien mittels Ming</p>
+<p>
+<font class="code">encode</font> -- Zum encoden verschiedener Multimedia Formate</p>
+
+<p class="secthead"><a name="_sect9">NETZWERK EINSTELLUNGEN </a></p>
+<p>Natürlich möchten Sie Ihre Gentoo Box an ein Netzwerk anschliessen ;)</p>
+<p>
+<font class="code">ipv6</font> -- Unterstützung für IPv6</p>
+<p>
+<font class="code">snmp</font> -- Unterstützung für das Simple Network Management Protocol zum Betreuen von entfernten 
+Maschinen</p>
+
+<p class="secthead"><a name="_sect10">SICHERHEITS EINSTELLUNGEN </a></p>
+<p>Wenn Sicherheit für Sie ein Thema ist (was es sein sollte!), empfehlen wir das aktivieren 
+von PAM:</p>
+<p>
+<font class="code">pam</font> -- Pluggable Authentication Modules</p>
+<p>
+<font class="code">ssl</font> -- Secure Socket Layer -- wird von SSH benötigt. Apache und verschiedene Mailclients 
+unterstützen dies ebenfalls um sichere Verbindungen zu etablieren.</p>
+<p>
+<font class="code">crypt</font> -- Unterstützung von mcrypt, mhash und GPG Verschlüsselung</p>
+<p>
+<font class="code">socks5</font> -- Unterstützung für Socks5</p>
+
+<p class="secthead"><a name="_sect11">MAIL EINSTELLUNGEN </a></p>
+<p>
+<font class="code">imap</font> -- Unterstützung für IMAP</p>
+<p>
+<font class="code">ldap</font> -- LDAP-Unterstützung (Lightweight Directory Accesss Protocol)</p>
+<p>
+<font class="code">tcpd</font> -- Unterstützung für TCP Wrapper</p>
+<p>
+<font class="code">xface</font> -- Unterstützung für Xface, Sylpheed und Sylpheed-Claws</p>
+<p class="secthead"><a name="_sect12">MOZILLA EINSTELLUNGEN </a></p>
+<p>
+<font class="code">mozilla</font> -- Unterstützung für Mozilla einer Anwendungen</p>
+<p>Beim Einspielen von Mozilla via emerge sollten Sie sich auch folgendes anschauen:</p>
+<p>
+<font class="code">mozaccess-builtin</font> -- Ergänzt Zusatzpakete wie Text-zu-Sprache oder Braille Unterstützung</p>
+<p>
+<font class="code">mozctl</font> -- Ergänzt Pango ähnliche Module</p>
+<p>
+<font class="code">mozirc</font> -- Ergänzt einen IRC (Internet Relay Chat) Client zu Mozilla</p>
+<p>
+<font class="code">mozxmlterm</font> -- Ergänzt ein xterm-ähnliches Terminal mit XML Unterstützung zu Mozilla</p>
+
+<p class="secthead"><a name="_sect13">BÜRO-SPEZIFISCHE FLAGS </a></p>
+<p>
+<font class="code">spell</font> -- Unterstützung für Rechtschreibprüfung via ispell/aspell/pspell</p>
+<p>
+<font class="code">truetype</font> -- Unterstützung für FreeType und FreeType2 Schriftarten</p>
+<p>
+<font class="code">xml</font> -- Unterstützung für die XML Bibliothek (Version 1)</p>
+<p>
+<font class="code">xml2</font> -- Unterstützung für Gnomes XML Bibliothek (Version 2)</p>
+<p>
+<font class="code">pdflib</font> -- PDF (Adobes Portable Document Format) Unterstützung</p>
+<p>
+<font class="code">plotutils</font> -- Unterstützung fürs Plotten in gnuplot</p>
+<p>
+<font class="code">tetex</font> -- Unterstützung für TeTeX eines der besten Publishingtools</p>
+
+<p class="secthead"><a name="_sect14">SPRACHEN </a></p>
+<p>
+<font class="code">guile</font> -- Guile ist ein Interpreter für Scheme</p>
+<p><font class="code">java</font></p>
+<p><font class="code">perl</font></p>
+<p><font class="code">python</font></p>
+<p><font class="code">ruby</font></p>
+<p>
+<font class="code">slang</font> -- S-Lang ist eine leistungsstarke Sprache</p>
+<p>
+<font class="code">libwww</font> -- </p>
+<p>
+<font class="code">libg++</font> -- Ergänzt C++ Module</p>
+<p>
+<font class="code">atlas</font> --</p>
+<p>
+<font class="code">pic</font>--</p>
+<p class="secthead"><a name="_sect15">DATENBANK FLAGS </a></p>
+<p>Sie haben einige Datenbanktypen zur Auswahl für die Unterstützung möglich ist:</p>
+<p>
+<font class="code">berkdb</font> -- BerkleyDB für MySQL</p>
+<p>
+<font class="code">mysql</font> -- MySQL</p>
+<p>
+<font class="code">postgres</font> -- PostgreSQL</p>
+<p>
+<font class="code">odbc</font> -- Unterstützung für UnixODBC (Open Database Connectivity)</p>
+<p>
+<font class="code">innodb</font> -- Unterstützung für MySQL transaction</p>
+<p>
+<font class="code">gd</font> -- GNU database Bibliotheken</p>
+<p>
+<font class="code">gdbm</font> -- dito</p>
+
+<p class="secthead"><a name="_sect16">FILESYSTEM FLAGS </a></p>
+<p>
+<font class="code">acl</font> -- Unterstützung für die XFS Utilities von SGI</p>
+<p>
+<font class="code">afs</font> -- OpenAFS</p>
+<p>
+<font class="code">samba</font> -- Unterstützung für SAMBA</p>
+
+<p class="secthead"><a name="_sect17">WEITERE NÜTZLICHE FLAGS </a></p>
+<p>
+<font class="code">nls</font> -- Unterstützung für NLS (Native Language Support), verwendet die gettext Bibliotheken, 
+wenn Sie nur eine Sprache verwenden ist dies nicht nötig</p>
+<p>
+<font class="code">doc</font> -- Hierdurch wird weitere Dokumentation erstellt</p>
+<p>
+<font class="code">gpm</font> -- Ergänzt Mausunterstützung für die Konsole</p>
+
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 05 Jun 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:seemant@gentoo.org">
+	Seemant Kulleen</a></b>
+<br><i>Author</i><br><br><b><a class="altlink" href="mailto:meekrob@gentoo.org">
+	Sherman Boyd</a></b>
+<br><i>Editor</i><br><br><b><a class="altlink" href="mailto:sebastian@beneke-it.de">
+        Sebastian Beneke</a></b>
+<br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Diese Anleitung stellt Ihnen das ultimative Werkzeug zur Anpassung 
+der USE flags. Neben der reinen Aufzählung aller verfügbaren Flags 
+erfahren Sie hier welche USE Flags Sie brauchen.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Support our development efforts by donating via credit card!</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="drobbins@gentoo.org"><input type="hidden" name="item_name" value="Gentoo Linux Support"><input type="hidden" name="item_number" value="1000"><input type="hidden" name="image_url" value="http://www.gentoo.org/images/paypal.png"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="return" value="http://www.gentoo.org"><input type="hidden" name="cancel_return" value="http://www.gentoo.org"><input type="image" src="http://images.paypal.com/images/x-click-but21.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Purchase RAM using this link, and a percentage
+of your sale will go towards further Gentoo Linux development.</p>
+<a href="http://www.qksrv.net/click-477620-5032687" target="_top"><img src="http://www.qksrv.net/image-477620-5032687" width="125" height="125" alt="DDR Memory at Crucial.com" border="0"></a><p class="alttext">Why these guys?  Because <b>cvs.gentoo.org</b> and <b>inventor.gentoo.org</b> use high-quality Crucial RAM. We know that it's good stuff because we rely on it ourselves.</p>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Copyright 2001 Gentoo
+		Technologies, Inc.  Questions, Comments, Corrections?  Email <a class="highlight" href="mailto:gentoo-dev@gentoo.org">gentoo-dev@gentoo.org</a>.
+			</td></tr>
+</table></body>
+</html>
