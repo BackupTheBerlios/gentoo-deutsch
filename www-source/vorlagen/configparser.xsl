@@ -4,7 +4,6 @@
 
 <xsl:output method="xml" encoding="utf-8" indent="no"/>
 
-
 <xsl:template match="config">
   <xsl:element name="xsl:stylesheet">
     <xsl:attribute name="version">1.1</xsl:attribute>
