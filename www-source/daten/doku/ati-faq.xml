@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ati-faq.xml,v 1.2 2003/12/04 18:08:05 schnitz Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/ati-faq.xml,v 1.3 2003/12/04 18:17:07 schnitz Exp $ -->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <guide link="/doc/en/ati-faq.xml">
@@ -179,7 +179,7 @@ Konfiguration</uri>.
 </p>
 
 <note>
-Wenn Sie die Treiber von ATI nutzen können Sie auch <c>fglrxconfig</c> verwenden.
+Wenn Sie die Treiber von ATI nutzen, können Sie auch <c>fglrxconfig</c> verwenden.
 </note>
 
 <impo>
