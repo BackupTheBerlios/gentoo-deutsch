@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-scanner/Attic/vdrplugin-scanner-1.2.0.ebuild,v 1.1 2003/06/10 19:01:09 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-scanner/Attic/vdrplugin-scanner-1.2.0.ebuild,v 1.2 2003/06/10 19:50:31 mad Exp $
 
 IUSE=""
 VDRPLUGIN="scanner"
@@ -23,11 +23,14 @@ src_unpack() {
 }
 
 src_compile() {
-	sed -i "/cp.*LIBDIR/d" Makefile
-	sed -i "s/^DVBDIR.*$/DVBDIR = \/usr/" Makefile
-	sed -i "s/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/" Makefile
-	sed -i "s/^LIBDIR.*$/LIBDIR = \/usr\/lib\/vdr/" Makefile
-	sed -i "s/^LIBS.*$/LIBS = \/usr\/lib\/libdtv.a/" Makefile
+	sed -i \
+		-e "/cp.*LIBDIR/d" \
+		-e "s/^DVBDIR.*$/DVBDIR = \/usr/" \
+		-e "s/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/" \
+		-e "s/^LIBDIR.*$/LIBDIR = \/usr\/lib\/vdr/" \
+		-e "s/^LIBS.*$/LIBS = \/usr\/lib\/libdtv.a/" \
+			Makefile
+
 	make all|| die "compile problem"
 }
 
