@@ -1,0 +1,7 @@
+Da es anscheinend ewig dauert, bis neue ebuilds das "Bug"-Stadium verlassen, und 
+es in die "offizielle" Distribution schaffen, ist hier ein Platz für Vorweg-
+veröffentlichungen.
+
+Wenn die ebuilds hier es denn dann mal in das offizielle Portage geschafft haben,
+sollte sie evtl. geloescht werden.
+

@@ -1,0 +1,43 @@
+# ChangeLog for dev-libs/cyrus-sasl
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-sasl/ChangeLog,v 1.1 2002/07/05 20:12:30 holler Exp $
+
+*cyrus-sasl-2.1.2 (14 Jun 2002)
+
+  14 Jun 2002; Alexander Holler <holler@ahsoftware.de>
+
+  New library, incompatible but could coexist with v1.
+
+*cyrus-sasl-1.5.27-r4 (21 May 2002)
+
+  21 May 2002; Martin Schlemmer <azarah@gentoo.org>:
+
+  Update it to use automake-1.5, hopefully finally resolving
+  bug #2319 and co.
+
+*cyrus-sasl-1.5.27-r3 (5 May 2002)
+
+  5 May 2002; Martin Schlemmer <azarah@gentoo.org>:
+
+  Resolve bug #2319.
+
+*cyrus-sasl-1.5.27-r2 (3 May 2002)
+
+  3 May 2002; Donny Davies <woodchip@gentoo.org>:
+
+  Added LICENSE, SLOT, $Headers.
+
+*cyrus-sasl-1.5.27-r1 (23 Apr 2002)
+
+  23 Apr 2002; Martin Schlemmer <azarah@gentoo.org>:
+
+  Added a libtoolize && aclocal .. hopefully build issues is fixed now.
+
+*cyrus-sasl-1.5.27 (18 Feb 2002)
+
+  18 Feb 2002; Donny Davies <woodchip@gentoo.org>:
+  
+  Initial checkin of this package.  Postfix now compiles with this
+  library by default, and I have tested successfully with *outbound*
+  smtp authentication.  Should you discover a bug, or any issues with
+  *inbound* authentication, lemme know.

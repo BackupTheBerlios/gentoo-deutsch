@@ -1,0 +1,130 @@
+# ChangeLog for net-mail/postfix
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/postfix/ChangeLog,v 1.1 2002/07/05 20:12:31 holler Exp $
+
+*postfix-1.1.11 (14 Jun 2002)
+
+  14 Jun 2002; Alexander Holler <holler@ahsoftware.de> :
+
+  Latest postfix + tls patch.
+  When used with sasl and (only) saslv2 is installed, patches from 
+  postfix-1.1.11-20020602 for saslv2 are used.
+
+  20 May 2002; Daniel Robbins <drobbins@gentoo.org> postfix-1.1.8.ebuild:
+  made "sasl" a USE var (disabled by default) since this seems most appropriate
+  and since cyrus-sasl appears to be broken if you merge it on a fresh system.
+  Postfix should work again.
+
+*postfix-1.1.8 (13 May 2002)
+
+  13 May 2002; Donny Davies <woodchip@gentoo.org> :
+
+  Updated to latest postfix + tls patch.
+
+*postfix-1.1.7-r4 (3 May 2002)
+  
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  
+  Added LICENSE, SLOT, $Headers.
+
+*postfix-1.1.7-r3 (19 Apr 2002)
+
+  19 Apr 2002; Ryan Phillips <rphillips@gentoo.org> postfix-1.1.7-r3.ebuild,
+  files/digest-postfix-1.1.7-r3 :
+
+  Added INSTALL to dodoc statement.  Closes #1923
+  
+*postfix-1.1.7-r2 (15 Apr 2002)
+
+  15 Apr 2002; Seemant Kulleen <seemant@gentoo.org> postfix-1.1.7-r2.ebuild,
+  files/digest-postfix-1.1.7-r2 :
+
+  Changed the USE flags from mta-ldap, mta-tls, and mta-mysql to ldap, ssl, and
+  mysql respectively.  Also, changed the checks to the official use foo &&
+  syntax.  This has the added advantage of showing the USE flags being used 
+  during the emerge process.
+
+  11 Apr 2002; Seemant Kulleen <seemant@gentoo.org> files/digest-postfix-1.1.7-r1 :
+
+  digest contains the md5 sums for the postfix tarball and the alternate
+  tarball.
+
+*postfix-1.1.7-r1 (8 Apr 2002)
+
+  9 Apr 2002; Jon Nelson <jnelson@gentoo.org> postfix-1.1.7-r1.ebuild:  
+
+  Clean up some tabbing and use official form of 'if use foo' constructs
+
+*postfix-1.1.7 (8 Apr 2002)
+
+  9 Apr 2002; Jon Nelson <jnelson@gentoo.org> postfix-1.1.7.ebuild:  
+
+  Updated to postfix 1.1.7, and altered how the 'if use foo' constructs
+  are used. Closes #1612
+
+*postfix-1.1.6-r1 (1 Apr 2002)
+
+  1 Apr 2002; Grant Goodyear <g2boojum@gentoo.org>  :
+
+  Modified the ebuild to link in -lcrypt, -lpam (if pam is in USE),
+  and -ldl.  Thanks to Jon Nelson.
+
+*postfix-1.1.6 (30 Mar 2002)
+
+  30 Mar 2002; Seemant Kulleen <seemant@gentoo.org> postfix-1.1.6.ebuild :
+
+  Version bump, using previous ebuild, and adjusting the mta-tls filename to
+  fetch.
+
+*postfix-1.1.3-r3 (24 Mar 2002)
+
+  24 Mar 2002; Donny Davies <woodchip@gentoo.org> postfix-1.1.3-r3.ebuild :
+
+  Fix compile problem with USE mta-mysql.  Thanks to fkooman@zeelandnet.nl (F. Kooman)
+  for the report.  Closes #1328.
+
+  17 March 2002; Donny Davies <woodchip@gentoo.org> postfix-1.1.3-r2.ebuild :
+
+  Clarify the pkg_postinst() message about updating master.cf.  Cosmetic fix only.
+  Not bumping package revision.  Closes #1153.
+
+*postfix-1.1.3-r2 (20 Feb 2002)
+
+  20 Feb 2002; Donny Davies <woodchip@gentoo.org> postfix-1.1.3-r2.ebuild :
+
+  This update fixes the permissions and ownership on /usr/sbin/postdrop and
+  /usr/sbin/postqueue, which were not set correctly last time.  Moved the
+  postdrop group detection/creation into pkg_setup() to facilitate this.
+  *Really* fix the CCARGS and AUXLIBS getting nuked this time.  Hooray!
+
+*postfix-1.1.3-r1 (18 Feb 2002)
+
+  18 Feb 2002; Donny Davies <woodchip@gentoo.org> ChangeLog, postfix-1.1.3-r1.ebuild,
+  files/postfix.rc6 files/smtp.pam files/smtpd.conf:
+
+  Lots of changes, ok here we go:  First, we now compile with cyrus-sasl library
+  support, which gives us smtp authentication.  Next, there is support for the mta-tls
+  USE variable which gives you secure connection support.  There are sample files in
+  the files directory for smtp authentication.  This version fixes a glitch with the
+  maildrop directory (we now let postfix create it itself, which it will do when you
+  run 'postfix check' for the first time after installing this.  We create the postdrop
+  group now, in pkg_postinst() if its not already on the user's system.  Some small
+  cosmetic changes in the initscript, changing spaces for tabs.  The /var/spool/postfix
+  directory is dropped into the system permanently now, which is good.  Fixed a small
+  bug with CCARGS getting nuked.  Special thanks goto Ingo Luetkebohle
+  <gentoo@blank.pages.de> for an *excellent* bug report.  Thanks Ingo!
+
+  NB: I have successfully tested *outbound* authentication, and leave inbound
+  authentication to those using it.  If you find bugs, please report them.  Enjoy.
+
+*postfix-1.1.3 (3 Feb 2002)
+
+*postfix-1.1.2-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.
