@@ -25,7 +25,6 @@
 -->
 
 
-
 <xsl:output
   method="html"
   encoding="iso-8859-15"
@@ -125,6 +124,7 @@
       </p>
     
       <xsl:if test="count(//uri) &gt; 0">
+      <![CDATA[<!-- keine-suche-start -->]]>
       <h4><xsl:value-of select="$lng_links"/></h4>
       <p>
         <xsl:for-each select="//uri">
@@ -160,6 +160,7 @@
           <br/>
         </xsl:for-each>
       </p>
+      <![CDATA[<!-- keine-suche-stop -->]]>
       </xsl:if>
     </xsl:if>
 
@@ -176,16 +177,18 @@
     </h1>
 
     <xsl:if test="count(chapter/title) &gt; 1">
-    <form style="font-size: 0.7em">
-      <select name="url" size="1" class="jumpbox"
-        onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
-        <option value="---">[Bitte Kapitel auswählen]</option>  
+      <![CDATA[<!-- keine-suche-start -->]]>
+        <form style="font-size: 0.7em">
+          <select name="url" size="1" class="jumpbox"
+            onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
+            <option value="---">[Bitte Kapitel auswählen]</option>  
         
-        <xsl:for-each select="chapter/title">
-          <option value="header_{position()}"><xsl:value-of select="."/></option>
-        </xsl:for-each>
-      </select>
-    </form>
+            <xsl:for-each select="chapter/title">
+              <option value="header_{position()}"><xsl:value-of select="."/></option>
+            </xsl:for-each>
+          </select>
+        </form>
+      <![CDATA[<!-- keine-suche-stop -->]]>
     </xsl:if>
 
     
