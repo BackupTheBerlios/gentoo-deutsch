@@ -6,7 +6,7 @@
 <xsl:template match="cgi:result_list">
   <table>
   <![CDATA[<!--loop: results-->]]>
-    <tr style="vertical-align:top">
+    <tr>
       <td>
         <![CDATA[<!--item: rank-->]]>. 
       </td>
