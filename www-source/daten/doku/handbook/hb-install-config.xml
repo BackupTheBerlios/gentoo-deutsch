@@ -10,7 +10,8 @@
 
 <p>
 Zuerst muss man dem System sagen in welcher Zeitzone es sich befindet. Dazu sucht man sich unter
-<path>/usr/share/zoneinfo</path> die entsprechende Zeitzone aus und verlinkt sie mit <c>ln</c> nach <path>/etc/localtime</path>:
+<path>/usr/share/zoneinfo</path> die entsprechende Zeitzone aus und verlinkt sie mit <c>ln</c> nach
+ <path>/etc/localtime</path>:
 </p>
 
 <pre caption="Setzen der Zeitzone">
@@ -30,9 +31,9 @@ Zuerst muss man dem System sagen in welcher Zeitzone es sich befindet. Dazu such
 <p>
 Unter Linux müssen alle für das System notwendigen Partitionen in der Datei
 <path>/etc/fstab</path> aufgelistet sein. Die Datei beinhaltet Informationen darüber,
-an welcher Stelle jede Partition im Verzeichnisbaum eingehängt werden soll, um welches
-Dateisystem es sich handelt und weitere Optionen (automatisches Einhägen beim Systemstart
-oder nicht, Einhängen durch User erlauben für z.B. CD-Rom, Floppy, USB-Sticks usw.).
+an welcher Stelle jede Partition im Verzeichnisbaum eingehängt (gemountet) werden soll, um welches
+Dateisystem es sich handelt und weitere Optionen (automatisches Mounten beim Systemstart
+oder nicht, mounten durch User erlauben für z.B. CD-Rom, Floppy, USB-Sticks usw.).
 </p>
 
 </body>
@@ -51,20 +52,20 @@ die durch Leerzeichen oder Tabs getrennt sind. Jedes Feld hat eine bestimmte Bed
   Das erste Feld beschreibt die einzuhängende <b>Partition</b> (also den Pfad zur Geräte-Datei)
 </li>
 <li>
-  Das zweite Feld gibt den <b>Mountpoint</b> im Verzeichnisbaum für die Partition
+  Das zweite Feld gibt den <b>Mountpoint</b> im Verzeichnisbaum für die Partition an.
 </li>
 <li>
   Das dritte Feld gibt den Typ des <b>Dateisystems</b> der Partition an. 
 </li>
 <li>
   Das vierte Feld gibt die <b>Mount Optionen</b> an, die beim Ausführen von <c>mount</c>
-  benutzt werden. Da es für jedes Dateisystem verschiedene Mount Optionen gibt, ist es
-  empfehlenswert die Liste der Optionen in den Manual Seiten (<c>man mount</c>) nachzulesen.
-  Mehrere Optionen werden mit einem Komma getrennt.
+  benutzt werden. Da es für jedes Dateisystem verschiedene Mountoptionen gibt, ist es
+  empfehlenswert die Liste der Optionen in der man-page (<c>man mount</c>) nachzulesen.
+  Mehrere Optionen werden durch Komma getrennt.
 </li>
 <li>
   Das fünfte Feld wird von <c>dump</c> benutzt um festzustellen, ob die Partition 
-  gesichert werden soll oder nicht. Normalerweise lässt man diesen Wert auf <c>0</c> (Null).
+  gesichert werden soll oder nicht. Normalerweise läßt man diesen Wert auf <c>0</c> (Null).
 </li>
 <li>
   Das sechste Feld wird von <c>fsck</c> ausgelesen um festzustellen, ob es nach unsauberem 
@@ -84,50 +85,52 @@ Starten Sie <c>nano</c> (oder den Editor Ihrer Wahl) um die Datei
 </pre>
 
 <p>
-Lets take a look at how we write down the options for the <path>/boot</path>
-partition. This is just an example, so if your architecture doesn't require a
-<path>/boot</path> partition, don't copy it verbatim.
+Schauen wir uns einmal die Optionen für die <path>/boot</path> Partition an.
+Das ist nur ein Beispiel, falls Ihr System keine <path>/boot</path> Partition 
+benötigt, übernehmen Sie den Eintrag einfach nicht.
 </p>
 
 <p>
-In our default x86 partitioning example <path>/boot</path> is the
-<path>/dev/hda1</path> partition, with <c>ext2</c> as filesystem. It shouldn't
-be mounted automatically (<c>noauto</c>) but does need to be checked. So we
-would write down:
+In diesem Beispiel ist die <path>/boot</path> Partion auf <path>/dev/hda1</path> und mit dem
+<c>ext2</c> Dateisystem formatiert. Die Partition sollte nicht automatisch gemountet werden
+(<c>noauto</c>) aber ggf. beim Systemstart geprüft werden. Also muß der Eintrag folgendermaßen
+ aussehen:
 </p>
 
-<pre caption="An example /boot line for /etc/fstab">
+<pre caption="Beispiel: /boot Partition in /etc/fstab">
 /dev/hda1   /boot     ext2    noauto        1 2
 </pre>
 
 <p>
-Now, to improve performance, most users would want to add the <c>noatime</c>
-option as mountoption, which results in a faster system since access times
-aren't registered (you don't need those generally anyway):
+Um die Zugriffsgeschwindigkeit zu erhöhen, werden manche Administratoren <c>noatime</c>
+als Mountoption hinzufügen. Dadurch wird beim Lesen die Inode-Accesstime nicht
+auf das Dateisystem geschrieben und das System kann eventuell schneller laufen
+(In den meisten Fällen braucht diese Informationen sowieso nicht).
 </p>
 
-<pre caption="An improved /boot line for /etc/fstab">
+<pre caption="/boot Partiton mit noatime in /etc/fstab">
 /dev/hda1   /boot     ext2    noauto,noatime    1 2
 </pre>
 
 <p>
-If we continue with this, we would end up with the following three lines (for
-<path>/boot</path>, <path>/</path> and the swap partition):
+Wenn wir das Beispiel auf die Partitionen <path>/boot</path>,<path>/</path> und
+die Swap-Partiton übertragen, erhalten wir folgende 3 Zeilen in der fstab:
 </p>
 
-<pre caption="Three /etc/fstab lines">
+<pre caption="3 Zeilen in /etc/fstab">
 /dev/hda1   /boot     ext2    noauto,noatime    1 2
 /dev/hda2   none      swap    sw                0 0
 /dev/hda3   /         ext3    noatime           0 1
 </pre>
 
 <p>
-To finish up, you should add a rule for <path>/proc</path>, <c>tmpfs</c>
-(required) and for your CD-ROM drive (and of course, if you have other 
-partitions or drives, for those too):
+Um die <path>/etc/fstab</path> zu vervollständigen fehlen noch Einträge für
+<path>/proc</path>,<c>tmpfs</c> (notwendig) und  für das CD-ROM. Falls Sie 
+weitere Partitionen oder ein Diskettenlaufwerk haben, sollten Sie diese 
+natürlich auch eintragen: 
 </p>
 
-<pre caption="A full /etc/fstab example">
+<pre caption="Beispiel: Vollständige /etc/fstab">
 /dev/hda1   /boot     ext2    noauto,noatime    1 2
 /dev/hda2   none      swap    sw                0 0
 /dev/hda3   /         ext3    noatime           0 1
@@ -139,168 +142,172 @@ none        /dev/shm  tmpfs   defaults          0 0
 </pre>
 
 <p>
-<c>auto</c> makes <c>mount</c> guess for the filesystem (recommended for 
-removable media as they can be created with one of many filesystems) and 
-<c>user</c> makes it possible for non-root users to mount the CD.
+Die Option <c>auto</c> veranlaßt <c>mount</c> das Dateisystem automatisch 
+zu erkennen (empfehlenswert für austauschbare Medien, da diese verschiedene
+Dateisysteme enthalten können, z.B. CD-ROM). Die Option <c>user</c> erlaubt es
+Usern das CD-ROM zu mounten.
 </p>
 
 <p>
-Now use the above example to create your <path>/etc/fstab</path>. If you are a
-SPARC-user, you should add the following line to your <path>/etc/fstab</path>
-too:
+Erstellen Sie nun anhand des Beispiel Ihre <path>/etc/fstab</path>. Falls Sie 
+Gentoo auf einer Sparc-Architektur installieren, sollten Sie noch folgende Zeile 
+hinzufügen:
 </p>
 
-<pre caption="Adding openprom filesystem to /etc/fstab">
+<pre caption="openprom Dateisystem in /etc/fstab">
 none        /proc/openprom  openpromfs    defaults      0 0
 </pre>
 
 <p>
-If you need <c>usbfs</c>, add the following line to <path>/etc/fstab</path>:
+Falls Sie <c>usbfs</c> benötigen, fügen Sie folgende Zeile hinzu:
 </p>
 
-<pre caption="Adding usbfs filesystem to /etc/fstab">
+<pre caption="usbfs Dateisystem in /etc/fstab">
 none        /proc/bus/usb   usbfs         defaults      0 0
 </pre>
 
 <p>
-Reread your <path>/etc/fstab</path>, save and quit to continue.
+Überprüfen Sie nochmal jeden Eintrag, da bei Tippfehlern Ihr System möglicherweise
+nicht bootet, speichern Sie die Datei ab und beenden Sie den Editor.  
 </p>
 
 </body>
 </subsection>
 </section>
 <section>
-<title>Networking Information</title>
+<title>Netzwerk Konfiguration</title>
 <subsection>
-<title>Hostname, Domainname etc.</title>
+<title>Hostname, Domainname usw.</title>
 <body>
 
 <p>
-One of the choices the user has to make is name his PC. This seems to be quite
-easy, but <e>lots</e> of users are having difficulties finding the appropriate
-name for their Linux-pc. To speed things up, know that any name you choose can
-be changed afterwards. For all we care, you can just call your system
-<c>tux</c> and domain <c>homenetwork</c>. 
+Jetzt müssen Sie Ihrem Computer einen Namen geben, den sogenannten Hostnamen. Das ist
+eigentlich keine Kunst,aber <e>einige</e> Administratoren haben Schwierigkeiten einen
+angemessenen Namen für Ihr System zu finden. Sie sollten jetzt keine großen Gedanken
+damit verschwenden, da Sie den Namen später noch ändern können. Im folgendem Beispiel
+nennen wir unser System <c>tux</c> und die Domain <c>homenetwork</c>.
 </p>
 
 <p>
-We use these values in the next examples. First we set the hostname:
+Zuerst tragen Sie den Hostnamen in die Datei <path>/etc/hostname</path> ein:
 </p>
 
-<pre caption="Setting the hostname">
+<pre caption="Setzen des Hostnamens">
 # <i>echo tux &gt; /etc/hostname</i>
 </pre>
 
 <p>
-Second we set the domainname:
+Danach wird der Domainname in <path>/etc/dnsdomainame</path> eingetragen:
 </p>
 
-<pre caption="Setting the domainname">
+<pre caption="Setzen des Domainnamens">
 # <i>echo homenetwork &gt; /etc/dnsdomainname</i>
 </pre>
 
 <p>
-If you have a NIS domain (if you don't know what that is, then you don't have
-one), you need to define that one too:
+Falls Ihr Rechner Mitglied einer NIS-Domain ist, müssen Sie diesen in
+<path>/etc/nisdomainname</path> eintragen (Falls Sie nicht wissen, was NIS ist,
+benötigen Sie diesen Eintrag sehr wahrscheinlich nicht):
 </p>
 
-<pre caption="Setting the NIS domainname">
+<pre caption="Setzen des NIS-Domainnamens">
 # <i>echo nis.homenetwork &gt; /etc/nisdomainname</i>
 </pre>
 
 </body>
 </subsection>
 <subsection>
-<title>Configuring your Network</title>
+<title>Konfiguration des Netzwerks</title>
 <body>
 
 <p>
-Before you get that "Hey, we've had that already"-feeling, you should remember
-that the networking you set up in the beginning of the gentoo installation was 
-just for the installation. Right now you are going to configure networking for 
-your Gentoo system permanently.
+Bevor Sie jetzt denken: "Hey, das habe ich doch schon gemacht!", sollten Sie sich
+daran erinnern, daß wir am Anfang der Gentoo-Installation das Netzwerk nur manuell
+konfiguriert haben und diese Einstellungen beim nächsten Reboot nicht mehr gültig sind.
+Deswegen konfigurieren wir jetzt das Netzwerk, so daß es beim Systemstart automatisch
+konfiguriert wird.
 </p>
 
 <p>
-All networking information is gathered in <path>/etc/conf.d/net</path>. It uses
-a straightforward yet not intuitive syntax if you don't know how to setup
-networking manually. But don't fear, we'll explain everything :)
+Die Netzwerkkonfiguration wird bei einem Gentoo-System unter <path>/etc/conf.d/net</path>
+abgespeichert. Die Syntax der Datei ist nicht unbedingt intuitiv, wenn Sie so etwas noch
+nie manuell konfiguriert haben, aber keine Panik, es wird in folgendem Abschnitt genau erklärt :) 
 </p>
 
 <p>
-First open <path>/etc/conf.d/net</path> with your favorite editor (<c>nano</c>
-is used in this example):
+Öffnen Sie die Datei  <path>/etc/conf.d/net</path> mit dem Editor Ihrer Wahl (in diesem Beispiel
+benutzen wir <c>nano</c>):
 </p>
 
-<pre caption="Opening /etc/conf.d/net for editing">
+<pre caption="Öffnen der Datei /etc/conf.d/net">
 # <i>nano -w /etc/conf.d/net</i>
 </pre>
 
 <p>
-The first variable you'll find is <c>iface_eth0</c>. It uses the following
-syntax:
+Die erste Variable ist  <c>iface_eth0</c> und beschreibt die Einstellungen des Netzwerkinterfaces eth0.
+Folgende Syntax wird benutzt:
 </p>
 
-<pre caption="iface_eth0 syntaxis">
-iface_eth0="<i>&lt;your ip address&gt;</i> broadcast <i>&lt;your broadcast address&gt;</i> netmask <i>&lt;your netmask&gt;</i>"
+<pre caption="iface_eth0 Syntax">
+iface_eth0="<i>&lt;ihre IP-Adresse&gt;</i> broadcast <i>&lt;Ihre Broadcast-Address&gt;</i> netmask <i>&lt;Ihre Netzmaske&gt;</i>"
 </pre>
 
 <p>
-If you use DHCP (automatic IP retrieval), you should just set <c>iface_eth0</c>
-to <c>dhcp</c>. However, if you need to setup your network manually and you're
-not familiar with all the above terms, please read the section on <uri
-link="?part=1&amp;chap=3#doc_chap4_sect3">Understanding Network
-Terminology</uri> if you haven't done so already.
+Falls Ihr System die IP-Adresse von einem DHCP-Server beziehen soll, müssen Sie <c>iface_eth0</c>
+auf <c>dhcp</c> setzen. 
+Falls Sie mit den Begriffen, die hier erwähnt werden, noch nicht vertraut sind, sollten Sie sich
+den Abschnitt <uri link="?part=1&amp;chap=3#doc_chap4_sect3">Netzwerk Terminologie</uri>
+noch einmal genau durchlesen.
 </p>
 
 <p>
-So lets give two examples; the first one uses DHCP, the second one a static IP
-(192.168.0.2) with netmask 255.255.255.0, broadcast 192.168.0.255 and gateway
-192.168.0.1:
+Hier 2 Beispiele; das Erste benutzt DHCP, im Zweiten weisen wir unserem System eine statische IP
+(192.168.0.2) mit der Netzmaske 255.255.255.0 und der Broadcast-Adresse 192.168.0.255 zu. Der Gateway 
+soll im letzten Fall 192.168.0.1 sein:
 </p>
 
-<pre caption="Examples for /etc/conf.d/net">
-<comment>(For DHCP:)</comment>
+<pre caption="Beispiele für  /etc/conf.d/net">
+<comment>(Für DHCP:)</comment>
 iface_eth0="dhcp"
 
-<comment>(For static IP:)</comment>
+<comment>(Für eine statische IP:)</comment>
 iface_eth0="192.168.0.2 broadcast 192.168.0.255 netmask 255.255.255.0"
 gateway="eth0/192.168.0.1"
 </pre>
 
 <p>
-If you have several network interfaces, create extra <c>iface_eth</c> variables,
-like <c>iface_eth1</c>, <c>iface_eth2</c> etc. The <c>gateway</c> variable
-shouldn't be reproduced as you can only set one gateway per computer.
+Falls Sie mehrer Netzwerkkarten in Ihrem Comuter haben, legen Sie für jede eine neue
+<c>iface_eth</c> Variable an, also <c>iface_eth1</c>, <c>iface_eth2</c> usw.
+Die <c>gateway</c> Variable darf nur einmal verwendet werden, da es auf jedem System nur
+einen Default-Gateway geben darf.
 </p>
 
 <p>
-Now save the configuration and exit to continue.
+Speichern Sie nun die Konfiguration um fortzufahren.
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Automatically Start Networking at Boot</title>
+<title>Netzwerk beim Systemstart aktivieren</title>
 <body>
 
 <p>
-To have your network interfaces activated at boot, you need to add those to the
-default runlevel. If you have PCMCIA interfaces you should skip this action as
-the PCMCIA interfaces are started by the PCMCIA init script.
+Wenn Sie Ihre Netzwerkinterfaces beim Systemstart aktivieren wollen, müssen Sie diesse
+zu dem Default-Runlevel hinzufügen. Falls Sie eine PCMCIA-Netzwerkkarte haben, können Sie diese 
+Sektion überspringen, weil diese durch das PCMCIA-Initscript gestartet werden 
 </p>
 
-<pre caption="Adding net.eth0 to the default runlevel">
+<pre caption="net.eth0 zum Default-Runlevel hinzufügen">
 # <i>rc-update add net.eth0 default</i>
 </pre>
 
 <p>
-If you have several network interfaces, you need to create the appropriate
-<path>net.eth1</path>, <path>net.eth2</path> etc. initscripts for those. You can
-use <c>ln</c> to do this:
+Wenn Sie mehrere Netzwerk-Interfaces haben, müssen Sie für jedes ein entsprechendes 
+Initscript anlegen. Sie können einen Link mit <c>ln</c> auf das Script für eth0 setzen:
 </p>
 
-<pre caption="Creating extra initscripts">
+<pre caption="Anlegen von weiteren Initscripts">
 # <i>cd /etc/init.d</i>
 # <i>ln -s net.eth0 net.eth1</i>
 # <i>rc-update add net.eth1 default</i>
@@ -309,67 +316,66 @@ use <c>ln</c> to do this:
 </body>
 </subsection>
 <subsection>
-<title>Writing Down Network Information</title>
+<title>Einträge in /etc/hosts</title>
 <body>
 
 <p>
-You now need to inform Linux about your network. This is defined in
-<path>/etc/hosts</path> and helps in resolving hostnames to IP addresses
-for hosts that aren't resolved by your nameserver. For instance, if your 
-internal network consists of three PCs called <c>jenny</c> (192.168.0.5), 
-<c>benny</c> (192.168.0.6) and <c>tux</c> (this system) you would
-open <path>/etc/hosts</path> and fill in the values:
+Sie müssen jetzt noch Ihrem System Informationen über Ihr Netzwerk geben. Dazu
+müssen Sie die Datei <path>/etc/hosts</path> anpassen, damit Hostnamen zu IP-Adressen
+aufgelöst werden, wenn Sie keinen Nameserver haben. Wenn Ihr lokales Netzwerk aus 3 Rechnern
+<c>jenny</c> (192.168.0.5), <c>benny</c> (192.168.0.6) und <c>tux</c> (dieses System) besteht,
+müssen Sie in <path>/etc/hosts</path> folgendes Eintragen:
 </p>
 
-<pre caption="Opening /etc/hosts">
+<pre caption="Öffnen von /etc/hosts">
 # <i>nano -w /etc/hosts</i>
 </pre>
 
-<pre caption="Filling in the networking information">
+<pre caption="Eintragen von Netzwerkinformationen">
 127.0.0.1     tux.homenetwork localhost
 192.168.0.5   jenny
 192.168.0.56  benny
 </pre>
 
 <p>
-If your system is the only system (or the nameservers handle all name
-resolution) a single line is sufficient:
+Wenn Sie nur einen Rechner haben, oder alle anderen Rechner von einem Nameserver 
+aufgelöst werden können, genügt der folgende Eintrag:
 </p>
 
-<pre caption="/etc/hosts for lonely or fully integrated PCs">
+<pre caption="Minimale /etc/hosts Konfiguration">
 127.0.0.1     localhost   tux
 </pre>
 
 <p>
-Save and exit the editor to continue.
+Speichern Sie die Datei ab, um fortzufahren.
 </p>
 
 <p>
-If you don't have PCMCIA, you can now continue with <uri
-link="#doc_chap4">System Information</uri>. PCMCIA-users should read the
-following topic on PCMCIA.
+Falls Sie keine PCMCIA-Netzwerkkarte haben können Sie diesen Abschnitt überspringen und mit
+Kapitel <uri link="#doc_chap4">System Informationen</uri> fortfahren.
+PCMCIA-Benutzer sollten sich folgenden Abschnitt durchlesen.
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Optional: Get PCMCIA Working</title>
+<title>Optional: PCMCIA zum Laufen bekommen</title>
 <body>
 
 <p>
-PCMCIA-users should first install the <c>pcmcia-cs</c> package:
+Zuerst muß das <c>pcmcia-cs</c> Paket installiert werden:
 </p>
 
-<pre caption="Installing pcmcia-cs">
+<pre caption="Installation von pcmcia-cs">
 # <i>emerge --usepkg pcmcia-cs</i>
 </pre>
 
 <p>
-When <c>pcmcia-cs</c> is installed, add <c>pcmcia</c> to the <e>boot</e> 
-runlevel:
+Fügen Sie nach der Installation von <c>pcmcia-cs</c> <c>pcmcia</c> zu dem  
+<e>boot</e> Runlevel hinzu:
 </p>
 
-<pre caption="Adding pcmcia to the default runlevel">
+<pre caption="pcmcia zum boot-Runlevel hinzufügen:">
 # <i>rc-update add pcmcia boot</i>
 </pre>
 
@@ -377,23 +383,24 @@ runlevel:
 </subsection>
 </section>
 <section>
-<title>System Information</title>
+<title>System Informationen</title>
 <body>
 
 <p>
-Gentoo uses <path>/etc/rc.conf</path> for general, system-wide configuration.
-Open up <path>/etc/rc.conf</path> and enjoy all the comments in that file :)
+Gentoo benutzt die Datei <path>/etc/rc.conf</path> für systemweite
+Konfiguration. Öffnen Sie die Datei und lesen Sie sich vor dem Editieren
+die Kommentare durch.
 </p>
 
-<pre caption="Opening /etc/rc.conf">
+<pre caption="Öffnen der Datei /etc/rc.conf">
 # <i>nano -w /etc/rc.conf</i>
 </pre>
 
 <p>
-As you can see, this file is well commented to help you set up the necessary
-configuration variables. When you're finished configuring
-<path>/etc/rc.conf</path>, save and exit to continue.
+Die Datei ist gut kommentiert, deswegen werde ich die einzelnen Variablen nicht erläutern.
+Nachdem Sie Datei editiert haben, speichern Sie und schließen Sie den Editor, um fortzufahren.
 </p>
+
 
 </body>
 </section>
