@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="The Notebook for Tuxfreaks"
-SRC_URI="http://www.tifskom.de/tux/1.1/${P}.tar.gz"
+SRC_URI="http://www.tifskom.de/tux/${PV}/${P}.tar.gz"
 HOMEPAGE="http://www.tuxcards.de"
 
 KEYWORDS="~x86"
