@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-analyzer/flow-tools/files/rc.0.67,v 1.1 2004/07/14 18:17:48 mad Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting netflow"
+	flow-fanout 0/0/4444 0/0/4445 0/0/4446
+	flow-capture -S0 -w /var/netflows -E3G 0/0/4445
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping netflow"
+	killall flow-capture
+	killall flow-fanout
+	eend 0
+}
