@@ -1,6 +1,12 @@
 # ChangeLog for media-video/vdr-mplayer
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.4 2003/10/22 20:51:28 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.5 2003/11/19 18:54:02 fow0ryl Exp $
+
+*vdrplugin-mplayer-0.8.2
+  19. Nov 2003; H.Ryll <henning.ryll@web.de>
+  moved to plugin version 0.8.2
+  - Fixed quoting special shell characters when calling MPlayer.
+  - Now sending a "quit" to MPlayer when in slave mode rather than killing the process.
 
 *vdrplugin-mplayer-0.8.1-r1
   22 Oct 2003;Martin Mittelsdorf <martini@vdr-portal.de>

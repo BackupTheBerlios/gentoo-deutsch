@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-vcd/Attic/vdrplugin-vcd-0.0.6.ebuild,v 1.1 2003/11/18 13:03:58 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.4i.ebuild,v 1.1 2003/05/12 18:01:14 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-vcd/vdrplugin-vcd-0.0.6b.ebuild,v 1.1 2003/11/19 18:55:47 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.4i.ebuild,v 1.1 2003/05/12 18:01:14 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="vcd"
