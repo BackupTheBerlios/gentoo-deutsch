@@ -25,7 +25,7 @@
       </xsl:variable>
 
       
-      <table class="ebuildlist" cellspacing="20" cellpadding="0" border="0">
+      <table class="ebuildlist" cellspacing="0" cellpadding="2" border="0" style="width:100%">
       
       
       <xsl:for-each select="pkg">
@@ -62,12 +62,8 @@
             </xsl:if>
             
           </xsl:for-each>
-          
-          <br/><br/>
         </xsl:if>  
-      
       </xsl:for-each>
-      
       
       </table>
 
