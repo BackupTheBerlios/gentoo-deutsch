@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoolkit.xml,v 1.4 2003/12/10 17:35:28 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoolkit.xml,v 1.5 2003/12/10 18:04:57 jay Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version: 1.7 -->
@@ -37,13 +37,13 @@ aktuellen Gentoolkits ab.
 		<body>
 			<p>Gentoo ist eine einzigartige Distribution und hat einige Komplexitäten,
 				die in anderen Distributionen gar nicht vorhanden sind. Als Gentoo
-				Entwickler und Mitarbeiter ein paar dieser Komplexitäten entdeckten
+				Entwickler und Mitarbeiter ein paar dieser Komplexitäten entdeckten,
 				schrieben sie Werkzeuge um den Benutzern und Administratoren zu
 				helfen. Viele dieser Werkzeuge befinden sich im Gentoo Projekt
 				und sind im Paket <path>app-portage/gentoolkit</path>.
 			</p>
 
-			<p>Gentoolkit beinhaltet eine ganze Menge von nützlichen Werkzeugen um
+			<p>Gentoolkit beinhaltet eine ganze Menge von nützlichen Werkzeugen, um
 				Portage und die ebuild Architektur zu managen. Die meisten
 				Benutzer -- vor allem diejenigen die ihr System oft updaten --
 				werden einen Nutzen aus dem installierten Gentoolkit ziehen.</p>
@@ -72,7 +72,7 @@ aktuellen Gentoolkits ab.
 			<p>
 				Zur Zeit als dies geschrieben wurde, waren nicht alle Programme
 				in gentoolkit gut dokumentiert. Einige haben Man-Pages, aber nicht
-				alle. Die ganze Dokumentation die ein Programm haben kann befindet sich
+				alle. Die komplette Dokumentation, die ein Programm haben kann befindet sich
 				in <path>/usr/doc/gentoolkit-[Version]/[Programm-Name]/</path>.
 			</p>
 		</body>
@@ -85,11 +85,11 @@ aktuellen Gentoolkits ab.
 		<title>Einleitung</title>
 		<body>
 			<p><c>qpkg</c> ist ein flexibles Werkzeug um Informationen über ebuilds zu ermitteln,
-				ob sie installiert sind, oder auch nicht. Es kann informationen über Dateien,
-				und zu welchen ebuilds sie gehören enthalten. Sogar mehrere Versionen des selben
-				Pakets die installiert sind und was ein einzelnes ebuild tut.
+				ob sie installiert sind, oder auch nicht. Es kann Informationen über Dateien,
+				und zu welchen ebuilds sie gehören, anzeigen. Sogar mehrere Versionen des selben
+				Pakets, die installiert sind, und was ein einzelnes ebuild tut.
 			</p>
-			<p>Der Aufruf von <c>qpkg</c> ohne Argumenten schreibt eine liste aller ebuilds,
+			<p>Der Aufruf von <c>qpkg</c> ohne Argumenten schreibt eine Liste aller ebuilds,
 			mit Sternen
 				(*) neben den Paketen, welche auf dem System installiert sind.
 			</p>
@@ -101,7 +101,7 @@ aktuellen Gentoolkits ab.
 	<section>
 		<title>Abfrage von Paketinformationen</title>
 		<body>
-			<p>Eine der viel genutzten Funktionen von <c>qpkg</c> ist herauszufinden, was ein
+			<p>Eine der viel genutzten Funktionen von <c>qpkg</c> ist die Möglichkeit herauszufinden, was ein
 				gewisses Paket ist. Einmal, als ich <path>net-misc</path> durchschaute, sah
 				ich ein Paket, dass <path>neon</path> heisst, hatte aber keine Ahnung, was
 				es war, also startete ich qpkg.
@@ -121,14 +121,14 @@ net-misc/neon-0.21.1
        HTTP and WebDAV client library [ http://www.webdav.org/neon ] </i>
 			</pre>
 			<p>
-				<c>qpkg</c> las sich durch die ebuild Dateien für die ffüfnf <path>net-misc/neon</path>
+				<c>qpkg</c> las sich durch die ebuild Dateien für die fünf <path>net-misc/neon</path>
 				ebuilds und schrieb die Informationen DESCRIPTION und HOMEPAGE auf den Bildschirm.
 			</p>
 		</body>
 
 	</section>
 	<section>
-		<title>Dateien auflisten die zu einem ebuild gehören.</title>
+		<title>Dateien auflisten, die zu einem ebuild gehören.</title>
 		<body>
 			<p>
 				<c>qpkg</c> kann auch die Dateien auflisten, welche zu einem installierten
@@ -178,11 +178,11 @@ CONTENTS:
 		</body>
 	</section>
 	<section>
-		<title>Das Paket finden, woher eine Datei kommt</title>
+		<title>Das Paket finden, woher eine Datei stammt</title>
 		<body>
 
 			<p>
-				Um das Paket zu finden, von welchem eine Datei kommt, benutzt man den
+				Um das Paket zu finden, von welchem eine Datei stammt, benutzt man den
 				<c>-f</c> oder <c>--find-file</c> Parameter.
 			</p>
 			<pre>
@@ -225,13 +225,13 @@ x11-libs/qt </i>
 
 		<body>
 			<p>
-				Manchmal ist es hilfreich, die Integrität eines Pakets zu ürberprüefen, um
+				Manchmal ist es hilfreich, die Integrität eines Pakets zu überprüfen, um
 				zu wissen, dass Dateien nicht ersetzt wurden seit sie installiert wurden.
-				<c>qpkg</c> kann md5 Summen überprü,fen, genau wie Installationszeiten, um
-				herauszufinden, ob Dateien für ein Pakete wirklich nicht korrupt, ersetzt
+				<c>qpkg</c> kann md5 Summen überprüfen, genau wie Installationszeiten, um
+				herauszufinden, ob Dateien für ein Paket wirklich nicht korrupt, ersetzt
 				oder entfernt wurden.
 			</p>
-			<p>Um beiden - mtimes und md5 Summen zu überprüfen, benutze den <c>-c</c> Parameter.</p>
+			<p>Um beiden - mtimes und md5 Summen zu überprüfen, benutzen Sie den <c>-c</c> Parameter.</p>
 			<pre>
 
 hebron portage # <i>qpkg gnupg -c -v    
@@ -266,13 +266,13 @@ app-crypt/gnupg-1.0.7 *
 0/101 </i>
 			</pre>
 			<p>
-				Wie du sehen kannst, Habe ich mehr denn eine Version von GnuPG installiert.
-				<c>qpkg</c> meldet, dass viele der Dateien von der älteren Version geaädert
+				Wie Sie sehen können, habe ich mehr denn eine Version von GnuPG installiert.
+				<c>qpkg</c> meldet, dass viele der Dateien von der älteren Version geändert
 				wurden seit ich es installiert habe. Diese Pakete wurden sehr wahrscheinlich
 				abgeändert als ich von <path>gnupg-1.0.6</path> nach <path>gnupg-1.0.7</path>
-				geupdated habe. Merke, dass die letzten zwei Zeilen anzeigen, dass 0 von 101
+				geupdated habe. Merken Sie sich, dass die letzten zwei Zeilen anzeigen, dass 0 von 101
 				Dateien von <path>gnupg-1.0.7</path> geändert wurden seit ich es installierte.
-				Das ist gut. Wenn irgend eines davon geändert wurde, wwä reich verwundert.
+				Das ist gut. Wenn irgend eines davon verändert sein würde, wäre ich verwundert.
 			</p>
 
 		</body>
@@ -283,7 +283,7 @@ app-crypt/gnupg-1.0.7 *
 			<p>
 				<c>qpkg</c> kann gebraucht werden, um andere Abfragen zu machen, aber ich werde
 				hier nicht weiter darauf eingehen. Es gibt eine sehr komplette Man-Page für
-				<c>qpkg</c>. Lese dort für weitere Informationen.
+				<c>qpkg</c>. Schlagen Sie dort für weitere Informationen nach.
 			</p>
 
 		</body>
@@ -295,10 +295,10 @@ app-crypt/gnupg-1.0.7 *
 		<title>Einleitung</title>
 		<body>
 			<p>
-				<c>lintool</c> ist ein Programm dass ebuild Skripte nach Standard Konformen und
-				Voraussetzungen überprrütft. Es ist wichtig für ebuild Entwicker, <c>lintool</c>
-				zu benützen, um sicher zu sein, dass sie die Dinge richtig machen, und nicht
-				das Haupt-Team zu beanspruchen, die ohnehin viel zu tun haben, um die ebuilds
+				<c>lintool</c> ist ein Programm dass ebuild Skripte nach Standardkonformität und
+				Voraussetzungen überprüft. Es ist wichtig für ebuild Entwicker, <c>lintool</c>
+				zu benützen, um sicher zu stellen, dass sie die Dinge richtig machen und nicht
+				das Haupt-Team beanspruchen zu müssen, die ohnehin viel zu tun haben, um die ebuilds
 				richtig ins Gentoo Repository einzubinden.
 			</p>
 		</body>
@@ -308,8 +308,8 @@ app-crypt/gnupg-1.0.7 *
 
 		<body>
 			<p>
-				<c>lintool</c> produziert eine schön gestaltete Liste von Tests und Resultaten das es
-				ausführt.
+				<c>lintool</c> produziert eine schön gestaltete Liste von Tests und Resultaten nach
+				der Ausführung:
 			</p>
 			<pre> 
 hebron portage # <i>lintool app-crypt/gnupg/gnupg-1.0.7.ebuild 
@@ -334,13 +334,13 @@ app-crypt/gnupg/gnupg-1.0.7.ebuild                                     : Not OK
 			<p>
 				Die erste Zeile fasst zusammen, ob das ebuild OK ist oder nicht. Im Falle von
 				<c>gnupg-1.0.7.ebuild</c> ist es nicht OK. Wenn man sich durch die Liste der
-				checks liest, können wir sehen, dass eine Warnung für schlecht geformte headers
-				und einen Fehler bei einer Umgebungsvariable gab.
+				checks liest, können wir sehen, dass eine Warnung für schlecht geformte Headers
+				und einen Fehler bei einer Umgebungsvariable gibt.
 			</p>
 
 			<p>
 				Bei einem Blick auf das ebuild, sehe ich, dass ein paar benötigte
-				Umgebungsvariablen (LICENSE un RDEPEND) fehlen. Wenn man diese beiden
+				Umgebungsvariablen (LICENSE und RDEPEND) fehlen. Wenn man diese beiden
 				hinzufügt, ist der Fehler behoben. Aber es gibt immer noch zwei Warnungen --
 				eine für schlecht geformte Headers und eine für die Umgebungsvariablen
 				Um mir zu helfen kann ich <c>lintool</c> noch einmal mit <c>--show-details</c>
@@ -381,8 +381,8 @@ hebron gnupg # <i>lintool --show-details ./gnupg-1.0.7.ebuild
   Total number of ebuilds with errors                               : 0 (0%)
   Total number of ebuilds with warnings                             : 1 (100%)
 		</i>	</pre>
-			<p>Jetzt kann ich sehen, dass das Jahr im ebuild vielleicht falsch ist, und das
-			fehlt in der SLOT variable. Diesen richtig zu stellen eliminiert alle Warunungen.</p>
+			<p>Jetzt kann ich sehen, dass das Jahr im ebuild vielleicht falsch ist, und die
+			SLOT Variable fehlt. Nach einer Korrektur sollten alle Warnungen elimiert sein..</p>
 		</body>
 	</section>
 </chapter>
@@ -393,14 +393,14 @@ hebron gnupg # <i>lintool --show-details ./gnupg-1.0.7.ebuild
 		<title>Einleitung</title>
 		<body>
 			<p>
-				<c>epm</c> ist ein Paket managendes Werkzeug dass die Red Hat rpm Kommandos
+				<c>epm</c> ist ein Paket managendes Werkzeug, dass die Red Hat rpm Kommandos
 				klont. Im jetzigen Stand unterstützt es nicht alle Features von rpm, aber es
-				unterstützt einige der maähtigeren rpm Abfrageoptionen.
+				unterstützt einige der mächtigeren rpm Abfrageoptionen.
 			</p>
 
 			<p>
-				Es handled auch das Entfernen von Paketen, welches hier nicht beschrieben wird.
-				Benutze <c>epm --help</c> um mehr über das lLö chenvon Paketen mit <c>epm</c> zu
+				Es behandelt auch das Entfernen von Paketen, welches hier nicht beschrieben wird.
+				Benutzen Sie <c>epm --help</c> um mehr über das Löschenv on Paketen mit <c>epm</c> zu
 				erfahren.
 			</p>
 		</body>
@@ -461,7 +461,7 @@ hebron etc # <i>epm -ql ethereal
 			<p>
 				<c>epm</c> stellt einige erweiterte Abfrageoptionen zur Verfügung welche in
 				<c>qpkg</c> nicht vorhanden sind, als dieses Dokument geschrieben wurde. Auf jeden
-				Fall kann es auch nur für Konfigurations- oder Dokumentationsdateien suchen.
+				Fall kann es auch nur nach Konfigurations- oder Dokumentationsdateien suchen.
 			</p>
 			<pre>
 
@@ -492,8 +492,8 @@ hebron etc # epm -qd ethereal
 /usr/share/doc/ethereal-0.8.20/README.vmware.gz
 		</i>	</pre>
 			<note>
-				<c>emp --help</c> listet alle Optionen die epm <e>schliesslich</e> zur Verfügung
-				stellt. Jedoch sind Optionen mit Sternen (*) noch nicht implementiert.
+				<c>emp --help</c> listet alle Optionen auf, die von epm <e>schliesslich</e> zur Verfügung
+				gestellt werden. Jedoch sind Optionen, die mit Sternen (*) markiert sind, noch nicht implementiert.
 			</note>
 		</body>
 	</section>
@@ -509,26 +509,26 @@ hebron etc # epm -qd ethereal
 			- use it, so I can't really write much about it.
 			-->
 			<p>
-				<c>etc-update</c> bietet eine angenehme Alternativ zum updaten von Konfigurationsdateien
-				von Hand. Nachdem durchlaufen eines emerge welches Konfigurationsdateien ändert
-				kann man etc-update ausführen um zu helfen alle geaäderten Konfigurationsdateien
-				upzudaten.
+				<c>etc-update</c> bietet eine angenehme Alternative zum Updaten der Konfigurationsdateien
+				von Hand. Nach dem Durchlaufen eines emerge, welches Konfigurationsdateien ändert
+				kann man etc-update ausführen um schnell alle gänderten Konfigurationsdateien
+				aktualisieren.
 			</p>
 
 			<p>
-				Dies tut es durch eine Menu-basierte Benutzerschnittstelle und hält die MMölglichkeit
-				die Konfigurationsdateien anzuschauen und zusammenzuführen bereit - und dies vor
-				dem Entscheid, was zu tun ist.
+				Dies erfolgt durch eine Menu-basierte Benutzerschnittstelle und hält Möglichkeiten,
+				die Konfigurationsdateien anzuschauen und zusammenzuführen bereit - und lässt den
+				Benutzer selbst enscheiden, welche er aktualisieren möchte.
 			</p>
 		</body>
 	</section>
 	<section>
 		<title>gentool</title>
 		<body>
-			<p>gentool ist eine kollektiver Name für einige kleine Skripte die ebuild Statistiken
+			<p>gentool ist eine kollektiver Name für einige kleine Skripte, die ebuild Statistiken
 			analysieren.
 			Beispiel: gentoo-total-coverage schreibt eine Liste von E-Mail Adressen und die Anzahl
-			an ebuilds welche jede hat im Portage Verzeichnisbaum
+			an ebuilds im Portage Verzeichnisbaum aus.
 			</p>
 
 		</body>
@@ -549,8 +549,8 @@ net-analyzer/nmap-2.54_beta24-r1 897024 (876KB) </i>
 		<title>mkebuild</title>
 		<body>
 			<p><c>mkebuild</c> vereinfacht das Erstellen von neuen ebuilds und automatisiert so
-			viel wie möglich. Die Datei sollte irgend ein Pakeformat haben. Wenn es nicht funktioniert
-			gibt es Tipps zurck, was man machen müsste/kkönnnte damit es funktioniert.
+			viel wie möglich. Die Datei sollte irgend ein Paketformat haben. Wenn es nicht funktioniert
+			gibt es Tipps zurück, was man machen müsste/könnnte, um ein gültiges ebuild zu erhalten.
 			</p>
 
 		</body>
@@ -559,9 +559,9 @@ net-analyzer/nmap-2.54_beta24-r1 897024 (876KB) </i>
 		<title>emerge-webrsync</title>
 		<body>
 			<!-- Can't find any documentation on this anywhere... not even a comment in the
-code. -->
+			code. -->
 			<p>Downloaded einen täglichen Schnappschuss per HTTP mit wget und synchronisiert es
-			mit Portage, falls es erwünscht ist.
+			mit Portage, falls dies erwünscht ist.
 			</p>
 		</body>
 
