@@ -21,6 +21,18 @@
 <title>Aktuelles</title>
 
 <section>
+<title>[05. Mai 2003] Gentoo Newsletter</title>
+<body>
+<p>
+Der erste Mai-Newsletter enthält einige wichtige Verhaltensmassregeln zum Thema "emerge rsync" und und Neuigkeiten über
+kommende Features im nächsten 1.4 Release-Candidate. Diese Woche gibt es leider keinen Portage-Watch, man erholt sich vom
+Ausschau halten ;) <uri link="http://www.gentoo.org/news/en/gwn/20030505-newsletter.xml">Viel Spass beim Lesen! (momentan leider noch auf Englisch)</uri>
+</p>
+</body>
+</section>
+
+
+<section>
 <title>[03. Mai 2003] vi Guide nun auch auf Deutsch verfügbar</title>
 <body>
 <p>
