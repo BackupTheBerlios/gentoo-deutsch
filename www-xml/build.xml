@@ -16,8 +16,8 @@ f&#xFC;r die x86 Prozessorarchitektur (AMD, Intel). Die Gentoo Linux Installatio
 verschiedene Installationsarten, abh&#xE4;ngig davon wieviel des Systems von Grund auf installiert werden soll.
 </abstract>
 
-<version>1.51</version>
-<date>15 Juli 2002</date>
+<version>1.52</version>
+<date>19 Juli 2002</date>
 
 <chapter>
 <title>&#xDC;ber die Installation</title>
@@ -138,7 +138,10 @@ sichergestellt, das die Unterst&#xFC;tzung f&#xFC;r SCSI CD-ROMS (<c>sr_mod</c>)
 (<c>sd_mod</c>) aktiviert ist.</p>
 
 <note>Version -r10 des ISO Images enth&#xE4;lt jetzt auch <c>hdparm</c>. Wenn eine Ihrer Festplatten
-optimiert werden muss, ist nun der richtige Zeitpunkt daf&#xFC;r.</note>
+optimiert werden muss, ist nun der richtige Zeitpunkt daf&#xFC;r. Auf einigerma&#xDF;en moderner Hardware,
+sollte der Befehl <c>hdparm -d 1 /dev/hdx</c> problemlos anzuwenden sein. Mit dem Befehl
+<c>hdparm -v /dev/hdx</c>, k&#xF6;nnen Sie die aktuellen Einstellungen Ihrer Festplatte pr&#xFC;fen.
+Und mit <c>hdparm -t /dev/hdx</c>, testen Sie die Performance Ihrer Festplatte.</note>
 </body>
 </section>
 </chapter>
@@ -686,9 +689,28 @@ Wenn Sie IDE Festplatten verwenden, sollten Sie zus&#xE4;tzlich die Option "USE 
 da die Festplatten sonst sehr langsam sind. Nat&#xFC;rlich muss dazu die Unterst&#xFC;tzung f&#xFC;r IDE Festplatten 
 ("IDE disk support") mitkompiliert werden, da der Kernel diese Platten sonst nicht sieht.</warn>
 
-<!-- Wie waere es, wenn in der deutschen Anleitung auch die CONFIG-FLAGS neben den Optionen
+<!-- 
+
+Wie waere es, wenn in der deutschen Anleitung auch die CONFIG-FLAGS neben den Optionen
 hingeschrieben werden? Zum Beispiel: "CONFIG_DEVFS_FS=y". Waere doch ein nettes Feature, falls
-jemand die Optionen im ncurses Config-tool nicht findet. (EH) -->
+jemand die Optionen im ncurses Config-tool nicht findet. (EH) 
+
+Meinst Du wirklich? Ich glaube nicht das Gentoo eine "Distri" fuer "first time user" ist.
+Das Gros der Anwender wird schon mal einen Kernel konfiguriert haben. (MG) 
+
+-->
+
+
+<impo>
+Wenn Sie einen IDE CD Brenner verwenden, m&#xFC;ssen Die die SCSI Emulation f&#xFC;r IDE Ger&#xE4;te des Kernels
+aktivieren. Aktivieren dazu Sie die Optionen "ATA/IDE/MFM/RLL support" ---> "IDE, ATA and ATAPI Block 
+devices" ---> "SCSI emulation support" (wenn Sie ea vorziehen, auch als Modul). Zus&#xE4;tzlich m&#xFC;ssen
+"SCSI support" sowie "SCSI CD-ROM support" und "SCSI generic support" (wenn gew&#xFC;nscht auch als 
+Module) im Kernel aktiviert sein. Wenn Sie sich f&#xFC;r Module entschieden haben, tragen Sie
+in die diese noch mit dem Befehl: <c>echo -e "ide-scsi\nsg\nsr_mod"  >> /etc/modules.autoload</c> 
+in die Datei <path> /etc/modules.autoload</path> ein, damit die Module auch automatisch geladen werden, 
+wenn der Rechner bootet.
+</impo>
 
 <note>
 Wenn Sie einen Kernel der 2.2er Serie vorziehen, ist es nun m&#xF6;glich, einen solchen 
@@ -898,6 +920,29 @@ aufgebaut wird.
 </section>
 
 <section>
+<title> Letzte Schritte: Tunen der Festplatten (hdparm)</title>
+<body>
+<p>
+Dummerweise, gehen die Einstellungen, die Sie mit <c>hdparm</c> am Anfang der 
+Installation vorgenommen haben, durch einen Reboot verloren. Um die
+Festplatten bei bei jedem Bootvorgang neu zu optimieren, schreiben Sie die
+<c>hdpram</c> Kommandos einfach in die <path>/etc/conf.d/local.start</path>:
+</p>
+<pre>    
+# <i>nano -w /etc/conf.d/local.start</i>    
+</pre>    
+<pre caption="hdparm Optimierungen in der /etc/conf.d/local.start">    
+# This is a good place to load any misc.    
+# programs on startup ( 1>&amp;2 )        
+
+# Um DMA bei den Festplatten <e>hda</e> und <e>hdb</e> zu aktivieren  
+hdparm -d 1 /dev/hda    
+hdparm -d 1 /dev/hdb    
+</pre>
+</body>
+</section>
+
+<section>
 <title>Letzte Schritte: Grundlegende Einstellungen (einschlie&#xDF;lich des Tastaturlayouts)</title>
 <body>
 <pre caption="Grundlegende Einstellungen">
@@ -981,6 +1026,10 @@ chainloader +1
 Die Dateiendung von <path>menu.lst</path> mu&#xDF; "lst" ("list") lauten, nicht "1st" ("first").
 Au&#xDF;erdem d&#xFC;rfen innerhalb der (hd0,0) Klammer keine Leerzeichen sein.
 </note>
+
+<impo>Wenn Sie beim Konfigurieren des Kernels, die SCSI Emulation aktiviert haben, m&#xFC;ssen Sie
+zus&#xE4;tzlich noch die Option "hdx=ide-scsi" ("hdx" steht dabei f&#xFC;r das Ger&#xE4;t Ihres CD Brenners)
+an das <c>kernel</c> Kommand anh&#xE4;ngen.</impo>
 
 <p>Wenn Sie die Datei gespeichert haben, sind Sie mit der Gentoo Linux Installation fertig.
 Die erste Option wird GRUB dazu veranlassen, Gentoo Linux zu booten. Der zweite Eintrag ist
