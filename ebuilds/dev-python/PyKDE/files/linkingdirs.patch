@@ -1,0 +1,132 @@
+diff -u PyKDE-3.3.2/sip/kde30.orig/dcop.sip PyKDE-3.3.2/sip/kde30/dcop.sip
+--- PyKDE-3.3.2/sip/kde30.orig/dcop.sip	Tue Aug  6 23:59:32 2002
++++ PyKDE-3.3.2/sip/kde30/dcop.sip	Mon Aug 12 17:17:50 2002
+@@ -77,6 +77,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP
+
+diff -u PyKDE-3.3.2/sip/kde30.orig/kdecore.sip PyKDE-3.3.2/sip/kde30/kdecore.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kdecore.sip	Sat Aug 10 00:03:31 2002
++++ PyKDE-3.3.2/sip/kde30/kdecore.sip	Mon Aug 12 17:17:59 2002
+@@ -153,6 +153,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I /usr/X11R6/include
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkdecore -ldcopcmodule
+
+diff -u PyKDE-3.3.2/sip/kde30.orig/kdefx.sip PyKDE-3.3.2/sip/kde30/kdefx.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kdefx.sip	Tue Aug  6 23:59:32 2002
++++ PyKDE-3.3.2/sip/kde30/kdefx.sip	Mon Aug 12 17:18:30 2002
+@@ -78,6 +78,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@  -I ../dcop -I ../kdecore
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkdecore -lkdefx -ldcopcmodule
+ unix:LIBS += -lkdecorecmodule -lqtxmlcmodule
+diff -u PyKDE-3.3.2/sip/kde30.orig/kdeprint.sip PyKDE-3.3.2/sip/kde30/kdeprint.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kdeprint.sip	Tue Aug  6 23:59:32 2002
++++ PyKDE-3.3.2/sip/kde30/kdeprint.sip	Mon Aug 12 17:18:37 2002
+@@ -80,6 +80,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I @KDE_INCLUDEPATH@/kdeprint -I ../kdecore
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkdecore -lkdeprint -lkdecorecmodule
+ unix:LIBS += -ldcopcmodule -lkdeuicmodule -lkdeprint_management -lkdeui
+diff -u PyKDE-3.3.2/sip/kde30.orig/kdesu.sip PyKDE-3.3.2/sip/kde30/kdesu.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kdesu.sip	Tue Aug  6 23:59:32 2002
++++ PyKDE-3.3.2/sip/kde30/kdesu.sip	Mon Aug 12 17:18:43 2002
+@@ -77,6 +77,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I @KDE_INCLUDEPATH@/kdesu -I ../kdecore
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkdecore -lkdesu -lkdecorecmodule
+
+diff -u PyKDE-3.3.2/sip/kde30.orig/kdeui.sip PyKDE-3.3.2/sip/kde30/kdeui.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kdeui.sip	Wed Aug  7 02:19:38 2002
++++ PyKDE-3.3.2/sip/kde30/kdeui.sip	Mon Aug 12 17:18:49 2002
+@@ -183,6 +183,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I ../dcop -I ../kdecore
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lqtxmlcmodule -lDCOP -lkdecore -lkdeui -ldcopcmodule -lkdecorecmodule
+ unix:LIBS += -lkdefx -lkdefxcmodule
+diff -u PyKDE-3.3.2/sip/kde30.orig/kfilemod.sip PyKDE-3.3.2/sip/kde30/kfilemod.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kfilemod.sip	Wed Aug  7 00:26:08 2002
++++ PyKDE-3.3.2/sip/kde30/kfilemod.sip	Mon Aug 12 17:18:54 2002
+@@ -101,6 +101,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I @KDE_INCLUDEPATH@/kio -I ../kdecore -I ../kio
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkio -lkdeui -lkdecore
+ unix:LIBS += -ldcopcmodule -lkdecorecmodule -lkdeuicmodule -lkiocmodule
+diff -u PyKDE-3.3.2/sip/kde30.orig/khtml.sip PyKDE-3.3.2/sip/kde30/khtml.sip
+--- PyKDE-3.3.2/sip/kde30.orig/khtml.sip	Tue Aug  6 23:59:32 2002
++++ PyKDE-3.3.2/sip/kde30/khtml.sip	Mon Aug 12 17:18:59 2002
+@@ -107,6 +107,7 @@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I @KDE_INCLUDEPATH@/khtml -I @KDE_INCLUDEPATH@/dom -I @KDE_INCLUDEPATH@/kparts\
+   -I @KDE_INCLUDEPATH@/kio -I ../kdecore -I ../kio
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkdeui -lkhtml -lkparts -lkdecore -lkio
+ unix:LIBS += -lkdeuicmodule -lkdecorecmodule -lkiocmodule -lkpartscmodule
+diff -u PyKDE-3.3.2/sip/kde30.orig/kio.sip PyKDE-3.3.2/sip/kde30/kio.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kio.sip	Tue Aug  6 23:59:32 2002
++++ PyKDE-3.3.2/sip/kde30/kio.sip	Mon Aug 12 17:19:05 2002
+@@ -139,6 +139,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I @KDE_INCLUDEPATH@/kio -I ../kdecore
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkio -lkdeui -lkdecore
+ unix:LIBS += -ldcopcmodule -lkdecorecmodule -lkdeuicmodule
+diff -u PyKDE-3.3.2/sip/kde30.orig/kjsmod.sip PyKDE-3.3.2/sip/kde30/kjsmod.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kjsmod.sip	Tue Aug  6 23:59:32 2002
++++ PyKDE-3.3.2/sip/kde30/kjsmod.sip	Mon Aug 12 17:19:12 2002
+@@ -83,6 +83,7 @@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I @KDE_INCLUDEPATH@/kjs -I @KDE_INCLUDEPATH@/dom -I @KDE_INCLUDEPATH@/kio\
+    -I ../kdecore -I ../kio
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkjs -lkdeui -lkdecore -lkio -lkhtml
+ unix:LIBS += -lkdeuicmodule -lkdecorecmodule -lkhtmlcmodule -lkiocmodule
+diff -u PyKDE-3.3.2/sip/kde30.orig/kparts.sip PyKDE-3.3.2/sip/kde30/kparts.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kparts.sip	Tue Aug  6 23:59:32 2002
++++ PyKDE-3.3.2/sip/kde30/kparts.sip	Mon Aug 12 17:19:18 2002
+@@ -88,6 +88,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I @KDE_INCLUDEPATH@/kparts -I @KDE_INCLUDEPATH@/kio -I ../kdecore -I ../kio
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkparts -lkdeui -lkdecore -lkio
+ unix:LIBS += -lkdeuicmodule -lkdecorecmodule -lkiocmodule
+diff -u PyKDE-3.3.2/sip/kde30.orig/kspellmod.sip PyKDE-3.3.2/sip/kde30/kspellmod.sip
+--- PyKDE-3.3.2/sip/kde30.orig/kspellmod.sip	Wed Aug  7 00:30:29 2002
++++ PyKDE-3.3.2/sip/kde30/kspellmod.sip	Mon Aug 12 17:19:24 2002
+@@ -78,6 +78,7 @@
+ CONFIG += qt warn_off release dll @BL_THREAD@
+ INCLUDEPATH = -I ../extraH @BL_INCLUDEPATH@ -I ../kdecore -I @KDE_INCLUDEPATH@/kio
+ DEFINES = SIP_MAKE_MODULE_DLL @BL_DEFINES@
++QMAKE_LIBDIR+=../../../image/usr/lib/python2.2/site-packages
+
+ unix:LIBS += -L@BL_SIPMODDIR@ -L@BL_KDEDIR@ -lsip -lqtcmodule -lDCOP -lkspell -lkdeui -lkdecore -lkio
+ unix:LIBS += -lkdecorecmodule -lkdeuicmodule -lkfilecmodule
