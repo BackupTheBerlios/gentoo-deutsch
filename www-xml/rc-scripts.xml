@@ -38,7 +38,7 @@ zu verstehen .... lesen Sie den Quelltext ;-)
 <body>
 
 <p>Im Gegensatz zu anderen Init-Systemen, bestehen Gentoos Runlevel nicht aus festen Namen oder
-Nummern, sonder vielmehr aus eigenen Namen, die auf die standard Runlevel von init abgebildet
+Nummern, sondern vielmehr aus eigenen Namen, die auf die standard Runlevel von init abgebildet
 werden.
 
 <note>Standardm&#xE4;&#xDF;ig gibt es drei Runlevel, namentlich: <e>&quot;boot&quot;</e>,
@@ -48,14 +48,14 @@ werden.
 <p>Das &quot;boot&quot; Runlevel sollte der standard Typ f&#xFC;r die meisten Setups sein, und
 ist, wie der Name sagt, das erste Runlevel das nach dem booten ausgef&#xFC;hrt wird. Als
 n&#xE4;chstes kommt <e>&quot;default&quot;</e>, welches, wie der Name schon andeutet, das
-standard Runlevel welches nach dem booten gestartet wird. Zuletzt folgt <e>&quot;nonetwork&quot;</e>,
+standard Runlevel ist und nach dem booten gestartet wird. Zuletzt folgt <e>&quot;nonetwork&quot;</e>,
 welches ausschlie&#223;lich als Beispiel dient.</p>
 
 <p>Die Runlevels liegen in <path>/etc/runlevels</path>, in einem Unterverzeichnis das
 nach dem Namen des Runlevels benannt wurde; dieses Unterverzeichnis enth&#xE4;lt
 symbolische Links zu den Diensten, die in diesem Runlevel geladen werden sollen.
 
-<note>Der bevorzugte Weg um einen Service hinzuzuf&#xFC;gen oder zu l&#xF6;schen wird sp&#xE4;ter
+<note>Der bevorzugte Weg, um einen Service hinzuzuf&#xFC;gen oder zu l&#xF6;schen wird sp&#xE4;ter
 in dem Abschnitt &quot;&#xDC;ber rc-update&quot; behandelt.</note>
 </p>
 
@@ -89,7 +89,7 @@ Profile und Virtuelle Runlevel zu erstellen</p>
 <p>
 Zum Beispiel k&#246;nnte ein Laptop Benutzer zwei standard Runlevel haben, &quot;online&quot; 
 und &quot;offline&quot;. Das w&#252;rde erlauben ein aktives Runlevel zu benutzen, wenn die PCMCIA 
-Netzwerkkarte eingesteckt ist, und ein weiteres Runlevel zu haben, wenn sie es nicht ist. 
+Netzwerkkarte eingesteckt ist, und ein weiteres Runlevel, wenn sie es nicht ist. 
 Die PCMCIA Scripts k&#246;nnten dann so konfiguriert werden, dass sie <c>"/sbin/rc online"</c> 
 oder <c>"/sbin/rc offline"</c> aufrufen, um die richtigen Dienste zu starten oder zu stoppen, 
 jeweils abh&#228;ngig vom Status der PCMCIA Netzwerkkarte.
@@ -309,7 +309,7 @@ Sollte keine abh&#228;ngige Verbindung zwischen zwei Diensten bestehen, es aber 
 gew&#252;nscht sein, einen Dienst nach einem bestimmten anderen zu starten, k&#246;nnen die <e>AFTER</e> 
 und <e>BEFORE</e> Optionen genutzt werden.
 
-<note>Diese Beiden Typen sind nur w&#228;hrend dem Wechseln eines Runlevels g&#252;ltig.</note>
+<note>Diese beiden Typen sind nur w&#228;hrend dem Wechseln eines Runlevels g&#252;ltig.</note>
 </p>
 
 <p>Optional k&#246;nnen diese beiden Typen ein "*" Wildcard f&#252;r das integrieren aller anderen Dienste enthalten:
@@ -377,18 +377,18 @@ von Gentoo Linux die Auswahl aus vier verschiedenen. Alle Dienste, die einen Log
 nicht alle vier mittels <e>NEED</e> Option anfordern. Die <e>USE</e> option ist zu schwach.
 </p>
 
-<p>Dies ist der Punkt, an dem Virtuelle Dienste und der <e>PROVIDE</e> Typ ins Spiel kommen.
+<p>Dies ist der Punkt, an dem Virtuelle Dienste und die <e>PROVIDE</e> Option ins Spiel kommen.
 </p>
 
 </body>
 </section>
 
 <section>
-<title>Der PROVIDE Typ</title>
+<title>Die PROVIDE Option</title>
 <body>
 
 <p>
-Der <e>PROVIDE</e> Typ definiert einen virtuellen Dienst, welchen andere Dienste mittels <e>NEED</e> 
+Die <e>PROVIDE</e> Option definiert einen virtuellen Dienst, welche andere Dienste mittels <e>NEED</e> 
 und <e>USE</e> aufrufen k&#246;nnen.
 </p>
 
@@ -423,16 +423,18 @@ er nicht einen eindeutigen Dienst.
 </p>
 
 <p>
-<impo>Um den virtuellen <e>NET</e> Dienst zu unterst&#252;tzen, muss ein Dienst:
+<impo>Um den virtuellen Dienst <e>NET</e> zu unterst&#252;tzen, muss ein Dienst:
 <ul>
-<li>Zum aktuellen oder Boot Runlevel geh&#246;ren.</li>
-<li>Ein "net" vorangestellt haben.</li>
-<li>Der Teil nach "net" muss den Namen des eigentlichen Netzwerk Interfaces tragen (z.B. net.eth0 oder net.ppp1).</li>
+<li>zum aktuellen oder Boot Runlevel angeh&#246;ren.</li>
+<li>ein "net" vorangestellt haben.</li>
+<li>der Teil nach "net" muss den Namen des eigentlichen Netzwerk Interfaces tragen 
+(z.B. net.eth0 oder net.ppp1).</li>
 </ul>
 </impo>
 </p>
 
-<p>F&#252;r jeden g&#252;ltigen net.* Dienst, wird $IFACE auf den Namen des Netzwerk Interfaces gesetzt(z.B. "eth0" f&#252;r net.eth0).
+<p>F&#252;r jeden g&#252;ltigen net.* Dienst, wird $IFACE auf den Namen des 
+Netzwerk Interfaces gesetzt(z.B. "eth0" f&#252;r net.eth0).
 </p>
 
 </body>
@@ -446,7 +448,7 @@ er nicht einen eindeutigen Dienst.
 
 <p>
 Jeder Dienst kann mit einer der standard Optionen aufgerufen werden. All diese genannten sind bereits 
-definiert, mit Ausnahme von <e>START</e> und <e>STOP</e>, welche der Benutzer als Funktionen in seinem 
+definiert, mit Ausnahme von <e>START</e> und <e>STOP</e>, welche dem Benutzer als Funktionen in seinem 
 Rc-Script definieren sollte.
 
 <impo>Die <e>start()</e> Funktion <e>muss</e> definiert werden.</impo>
@@ -608,6 +610,7 @@ Rc-Script definiert werden, sondern in einer der drei m&#246;glichen Konfigurati
 
 <p>
 Eine, die speziell f&#252;r das Rc-Script da ist und zwei globale Konfigurations Dateien:
+<!-- Hab ich jetzt schon oefters gesehen.. Rc-Script? nicht? rc-script? (EH) -->
 </p>
 
 <pre caption="Konfigurations Dateien f&#252;r Rc-Scripte">
@@ -664,7 +667,7 @@ Um mehr Hilfe zu erhalten, rufen Sie einfach rc-update ohne weitere Argumente au
 
 <p>
 Um eine vollst&#228;ndige Dokumentation zu bieten, wird depscan.sh hier erw&#228;hnt. Es wird 
-genutzt um einen Abh&#228;ngigkeits Cache zu erstellen, dieser ist eigentlich eine Aufzeichnung 
+genutzt, um einen Abh&#228;ngigkeits Cache zu erstellen, dieser ist eigentlich eine Aufzeichnung 
 der Abh&#228;ngigkeiten zwischen den Diensten.
 </p>
 
