@@ -302,11 +302,11 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <p>Das <b><uri link="prelink-howto">Prelinking Handbuch</uri></b>
         erläutert, wie Sie Ihr System durch Verwendung von prelink verbessern
         können.  Durch prelinking starten große Applikationen schneller.</p>
-
+-->
         <p>Das <b><uri link="ipv6">IPv6-Handbuch</uri></b> zeigt, wie Sie
         IPv6 unter Gentoo Linux einrichten.  IPv6 ist das kommende Internet
         Protokoll und erfreut sich immer größerer Popularität.</p>
-
+<!--
         <p>Das <b><uri link="uml">User Mode Linux Handbuch</uri></b> führt
         Sie in die Verwendung von User-Mode Linux unter Gentoo Linux ein.  User
         Mode Linux (UML) bietet ein nettes Feature für Linux: Starten von Linux
@@ -335,10 +335,10 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <p>Das <b><uri link="distcc">Distcc Handbuch</uri></b> informiert Sie
         über die Benutzung von distcc für ein verteiltes Kompilieren mit Gentoo
         Linux.</p>
-<!--
+
         <p>Das <b><uri link="devfs-guide">DevFS Handbuch</uri></b>
         beschreibt wie DevFS funktioniert und wie es zu administrieren ist.</p>
--->
+
         <p>Das <b><uri link="printing-howto">Drucken Handbuch</uri></b> ist eine
         kompakte Einführung zum Drucken mit Gentoo.</p>
 <!--
@@ -483,6 +483,8 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         wie ebuilds erstellt werden, die OOP-ähnliche Vererbungs-Features zur
         Verfügung stellen.</p>
 -->
+        <p>In der <b><uri link="eclasses-list">Eclasses Liste</uri></b> sind
+        alle vorhandenen Eclasses und deren Funktion aufgelistet,</p>
 
         <p>Das <b><uri link="stage-building-guide">Stage Building
         Handbuch</uri></b> erklärt die Erstellung eines Stage Tar-Archiv.</p>
@@ -566,13 +568,13 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <tr><th>Dokumentation zur Systemadministration</th></tr>
         <tr><ti><uri link="gentoo-security">Gentoo Security Handuch</uri></ti></tr>
         <!--<tr><ti><uri link="prelink-howto">Prelinking Handbuch</uri></ti></tr>-->
-        <!--<tr><ti><uri link="ipv6">IPv6-Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="ipv6">IPv6-Handbuch</uri></ti></tr>
         <!--<tr><ti><uri link="uml">User Mode Linux Handbuch</uri></ti></tr>-->
         <!--<tr><ti><uri link="ldap-howto">LDAP Authentification Handbuch</uri></ti></tr>-->
         <!--<tr><ti><uri link="openmosix-howto">OpenMosix Handbuch</uri></ti></tr>-->
         <tr><ti><uri link="ltsp">LTSP Handbuch</uri></ti></tr>
         <tr><ti><uri link="distcc">DistCC Handbuch</uri></ti></tr>
-        <!--<tr><ti><uri link="devfs-guide">DevFS Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="devfs-guide">DevFS Handbuch</uri></ti></tr>
         <tr><ti><uri link="printing-howto">Drucken Handbuch</uri></ti></tr>
         <!--<tr><ti><uri link="openafs">OpenAFS Handbuch</uri></ti></tr>-->
         <!--<tr><ti><uri link="virt-mail-howto">Virtual/Mailhost Howto</uri></ti></tr>-->
@@ -581,7 +583,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <tr><ti><uri link="alsa-guide">ALSA Konfigurations Handbuch</uri></ti></tr>
         <tr><ti><uri link="java">Java Handbuch</uri></ti></tr>
         <tr><ti><uri link="guide-localization">Lokalisierungs Handbuch</uri></ti></tr>
-        <!--<tr><ti><uri link="dri-howto">Direct Rendering Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="dri-howto">Direct Rendering Handbuch</uri></ti></tr>
         <tr><ti><uri link="burn-guide">CD-Brennen Howto</uri></ti></tr>
         <tr><ti><uri link="dsl-guide">DSL Anleitung</uri></ti></tr>
         <tr><ti><uri link="fluxbox">Fluxbox Handbuch</uri></ti></tr>
@@ -597,6 +599,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <!--<tr><ti><uri link="doc-policy">Gentoo Linux Dokumentations Richtlinie</uri></ti></tr>-->
         <tr><ti><uri link="gentoo-howto">Ebuild Handbuch</uri></ti></tr>
         <!--<tr><ti><uri link="eclass-howto">Eclass Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="eclasses-list">Eclasses List</uri></ti></tr>
         <tr><ti><uri link="stage-building-guide">Stage Building Handbuch</uri></ti></tr>
         <tr><ti><uri link="ebuild-submit">Beisteuern von Ebuilds Handbuch</uri></ti></tr>
         <tr><ti><uri link="xml-guide">GuideXML Handbuch</uri></ti></tr>
