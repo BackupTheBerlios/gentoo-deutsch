@@ -1,0 +1,33 @@
+diff -ruN xmlrpc-c-0.9.10/examples/meerkat-app-list.cc xmlrpc-c-0.9.10-patch/examples/meerkat-app-list.cc
+--- xmlrpc-c-0.9.10/examples/meerkat-app-list.cc	2001-04-24 21:18:36.000000000 +0200
++++ xmlrpc-c-0.9.10-patch/examples/meerkat-app-list.cc	2004-04-15 19:44:01.331545376 +0200
+@@ -3,7 +3,7 @@
+ // http://www.oreillynet.com/pub/a/rss/2000/11/14/meerkat_xmlrpc.html */
+ 
+ #include <iostream.h>
+-#include <strstream.h>
++#include <strstream>
+ 
+ #include <XmlRpcCpp.h>
+ 
+diff -ruN xmlrpc-c-0.9.10/src/XmlRpcCpp.h xmlrpc-c-0.9.10-patch/src/XmlRpcCpp.h
+--- xmlrpc-c-0.9.10/src/XmlRpcCpp.h	2001-04-13 20:46:16.000000000 +0200
++++ xmlrpc-c-0.9.10-patch/src/XmlRpcCpp.h	2004-04-15 19:42:05.161205952 +0200
+@@ -25,6 +25,7 @@
+ // OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ // SUCH DAMAGE.
+ 
++using namespace std;
+ 
+ //=========================================================================
+ //  XML-RPC C++ API
+diff -ruN xmlrpc-c-0.9.10/tools/xml-rpc-api2cpp/DataType.cc xmlrpc-c-0.9.10-patch/tools/xml-rpc-api2cpp/DataType.cc
+--- xmlrpc-c-0.9.10/tools/xml-rpc-api2cpp/DataType.cc	2001-03-29 22:39:06.000000000 +0200
++++ xmlrpc-c-0.9.10-patch/tools/xml-rpc-api2cpp/DataType.cc	2004-04-15 19:42:43.612360488 +0200
+@@ -1,5 +1,5 @@
+ #include <iostream.h>
+-#include <strstream.h>
++#include <strstream>
+ #include <stdexcept>
+ 
+ #include <XmlRpcCpp.h>
