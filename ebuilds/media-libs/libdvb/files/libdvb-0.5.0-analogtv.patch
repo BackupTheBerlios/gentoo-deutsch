@@ -1,0 +1,12 @@
+diff -rub libdvb-0.5.0.orig/libdvbmpeg/transform.c libdvb-0.5.0/libdvbmpeg/transform.c
+--- libdvb-0.5.0.orig/libdvbmpeg/transform.c	2003-08-29 16:26:18.000000000 +0200
++++ libdvb-0.5.0/libdvbmpeg/transform.c	2003-10-27 15:43:26.000000000 +0100
+@@ -973,7 +973,7 @@
+ 
+ 
+ 
+-static void pes_in_ts(p2p *p)
++/* static */ void pes_in_ts(p2p *p)
+ {
+ 	int l, pes_start;
+ 	uint8_t obuf[TS_SIZE];
