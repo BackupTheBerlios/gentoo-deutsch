@@ -474,6 +474,7 @@
 </xsl:template>
 
 <xsl:template match="uriimg">
+	<p>
 	<a>
 		<xsl:attribute name="href">
 			<xsl:value-of select="@uri"/>
@@ -487,6 +488,7 @@
 			</xsl:attribute>
 		</img>
 	</a>
+	</p>
 </xsl:template>
 
 <xsl:template match="figure">
