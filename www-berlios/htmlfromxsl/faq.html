@@ -20,7 +20,7 @@
 <br><p class="dochead">Gentoo Linux Frequently Asked Questions</p>
 <form>
 <b>Inhalt</b>:
-	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Einführung in Gentoo</option>
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Gentoo allgemein</option>
 <option value="#doc_chap2">2. Installation</option>
 <option value="#doc_chap3">3. Paket Verwaltung</option>
 <option value="#doc_chap4">4. Gentoo Linux benutzen</option>
@@ -29,27 +29,27 @@
 <option value="#doc_chap7">7. Resources</option></select>
 </form>
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap1">1.</a></font>Einführung in Gentoo</p>
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Gentoo allgemein</p>
 <p class="secthead"><a name="_sect1">Wie wird Gentoo ausgesprochen, und was ist damit gemeint? </a></p>
-<p>Gentoo ist eine Art von kleinen schnellen Penguins, ausgesprochen &quot;jen-two&quot;.</p>
+<p>Gentoo ist eine Art von kleinen schnellen Pinguinen, ausgesprochen &quot;schen-tuu&quot;.</p>
 <p class="secthead"><a name="_sect2">Was ist an Gentoo anders? </a></p>
 			<p>Gentoo Linux ist eine schnelle, moderne Distribution mit einem sauberen und flexiblen
 			Design -- in dieser Hinsicht kann Gentoo
 			<a href="http://www.slackware.com/">Slackware</a>,
 			<a href="http://www.linuxfromscratch.org">Linux From Scratch</a> oder
             <a href="http://www.bsd.org">BSD</a> Benutzern gefallen. Anders als die meisten Linux
-            Distributionen, hat Gentoo ein Paket System das an die BSD's &quot;Ports&quot; erinnert;
-            wir meinen, Sie können sich immer sicher sein das sie die Letzten Versionen der Pakete haben.
+            Distributionen, hat Gentoo ein Paket System, das an die &quot;Ports&quot; von BSD erinnert;
+            wir meinen, Sie können sich immer sicher sein das Sie immer die aktuellsten Versionen der Pakete haben.
         </p>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap2">2.</a></font>Installation</p>
 <p class="secthead"><a name="_sect1">Wo ist der Unterschied zwischen .iso und .tbz2 Dateien? </a></p>
 <p>Die fertigen <font class="emphasis">.tbz2</font> Dateien sind ein Minimal-Archiv von System Dateien
-		die den Usern den bootstrap und die Installation von Gentoo Linux erlauben.
+		die den Benutzern den bootstrap und die Installation von Gentoo Linux erlauben.
 		Die Fertige <font class="emphasis">.iso</font> ist eine komplettes, bootfähiges CD Image das
 		einen System Kernel, einen zum Teil komplette Zusammenstellung von Kernel Modulen,
 		wichtigen System Hilfsprogrammen wie <font class="code">mkfs</font> und Netzwerk Unterstützung,
-		sowie das Minimal-System des <font class="emphasis">.tbz2</font> Archivs enthält. Die meisten User werden
+		sowie das Minimal-System des <font class="emphasis">.tbz2</font> Archivs enthält. Die meisten Benutzer werden
 		Gentoo Linux von der .iso Datei auf eine CD brennen, von der CD booten,
 		und mit einer Minimalen Linux Umgebung von der Gentoo Boot CD Installieren.
 		Es ist für den Benutzer jedoch möglich Gentoo Linux direkt von einer
@@ -67,9 +67,9 @@
 		
 		
 		
-		Die .iso Datei muss nur geupdatet werden, wenn jemand andere Hardware hat
-		die nicht mit der .iso booten will. Seitdem Kernel Module und Updates
-		regelmässig gemacht werden kann es kaum zu dieser Situation kommen.
+		Die .iso Datei muss nur aktualisiert werden, wenn jemand andere Hardware hat
+		die nicht mit der .iso booten will. Seitdem Aktualisierungen der Kernel Module und Updates
+		regelmässig gemacht werden kann es nur selten zu dieser Situation kommen.
 		</p>
 	<p class="secthead"><a name="_sect3">Ich habe einen Sony Super-Slim VAIO Laptop, und die Gentoo Linux CD hat Probleme
 			beim erkennen meines PCMCIA ATAPI CD-ROM Laufwerkes. </a></p>
@@ -100,14 +100,14 @@ geben Sie oben <font class="code">gentoo</font> anstatt <font class="code">rescu
 		<p class="secthead"><a name="_sect5">Wie lautet das Standard Root Passwort nach der Installation? </a></p>
 <p>Das Standard Passwort ist leer, einfach Enter drücken.</p>
 <p class="secthead"><a name="_sect6">Wie kann ich bei root (oder einem anderen User) das Passwort ändern? </a></p>
-<p>Sie können <font class="code">passwd</font> benutzen, um das Passwort für den User mit dem sie eingelogt sind zu ändern.
+<p>Sie können <font class="code">passwd</font> benutzen, um das Passwort für den User mit dem sie angemeldet sind zu ändern.
 		Für zusätzliche Optionen und Einstellungen, schauen Sie sich bitte <font class="code">man passwd</font> an, nachdem sie Gentoo Linux
 		fertig Installiert haben.
 		</p>
 <p class="secthead"><a name="_sect7">Wie kann man einen normalen Benutzer hinzufügen? </a></p>
 		<p>Jeder weiss wohl, das es nicht sehr empfehlenswert ist immer <font class="emphasis">root</font> zu benutzen.
 		Wie kann man also andere Benutzer hinzufügen?</p>
-		<p>Der Befehl <font class="code">adduser gentoo</font> würde einen User mit dem Username gentoo erstellen. Der nächste Schritt ist,
+		<p>Der Befehl <font class="code">adduser gentoo</font> würde einen Benutzer mit dem Usernamen gentoo erstellen. Der nächste Schritt ist,
 		diesem User ein Password zu geben und <font class="code">passwd</font> tut genau das.</p>
 		<p class="secthead"><a name="_sect8">Warum kann ein Benutzer nicht mit su zu root werden? </a></p>
 <p>Aus Sicherheitsgründen können Benutzer nur mit <font class="code">su</font> zu root werden, wenn sie in der
@@ -132,7 +132,7 @@ geben Sie oben <font class="code">gentoo</font> anstatt <font class="code">rescu
 		<p>Bei Gentoo Linux 1.0_rc6 und neuer, kann man devfs deaktivieren durch das übergeben des
 		<font class="code">gentoo=nodevfs</font> Argumentes zum Kernel.</p>
 		<p class="secthead"><a name="_sect11">Wie erhalte ich ein /dev/mouse  das nach dem Booten nicht
-		wieder verloren geht (bei benutzung von devfs)? </a></p>
+		wieder verloren geht (bei Benutzung von devfs)? </a></p>
 		<p>
 		Ab Version 1.0_rc6 oder später, es genügt einfach <font class="code">ln -s</font>
 		um einen gewohnten symbolischen link von <font class="path">/dev/mouse</font> zu
@@ -157,32 +157,31 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		Während der Installation hat grub die boot Dateien
 		nach <font class="path">/boot/grub</font> (<font class="path">/boot/boot/grub</font> in Gentoo Linux 1.0_rc5 und 
 		älter) kopiert. Grub sucht automatisch das Verzeichnis <font class="path">/boot/grub</font> auf der Boot Partition ab.
-		(Wir empfehlen ihnen, eine ersatz nicht-auto boot Partition auf	<font class="path">/boot</font> gemountet haben,
-		da es so schwieriger ist ausversehen den kernel oder die Boot-Informationen zu zerstören.
-		 Der obere Fehler kommt meistens vom nicht benutzen einer ersatzt Boot Partiton 
-		(b) Vergessen des mounten der Boot Partition auf <font class="path">/boot</font> bevor man das
-		Minimal-System Archiv entpackt hat oder
-		<font class="code">emerge --usepkg system</font>, oder (c) vergessen des
+		(Wir empfehlen zur Sicherheit die boot Partition auf <font class="path">/boot</font> nicht automatisch zu mounten,
+		da es so schwieriger ist aus Versehen den Kernel oder die Boot-Informationen zu zerstören ).
+		Der obige Fehler tritt deshalb meistens auf, wenn (a) /boot nicht auf einer separaten Partition installiert wird,
+		oder (b) durch Vergessen des mounten der Boot Partition auf <font class="path">/boot</font> bevor man das
+		Minimal-System Archiv entpackt hat oder <font class="code">emerge --usepkg system</font>, oder (c) vergessen des
 		<font class="code">notail</font> Argumentes when <font class="path">/boot</font> eine ReiserFS Partition ist.
-		Sie können mehr Informationen über Grub finden, in der Beigelegten Debug Anleitung
-		debug grub von dem Grub Terminal oder durch das lesen des 
+		Sie können mehr Informationen über Grub in der Debug Anleitung finden, die in der Standard
+		Installation vorhanden ist. Dazu geben Sie einfach <font class="input">debug grub</font> von dem Grub Terminal oder lesen Sie das
 		<a href="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/0F1731DC664023B7862569D0005C44AF?OpenDocument">IBM developerWorks Grub tutorial</a>.
 		</p>
                 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap3">3.</a></font>Paket Verwaltung</p>
 <p class="secthead"><a name="_sect1">In welchem Format werden die Pakete gespeichert? </a></p>
-<p>Die Pakete existieren in unserem Portage &quot;Baum/Stammbaum/Archiv&quot; als <font class="emphasis">ebuild</font> Autoerstell Skripte; Wir sind hauptsaechlich 
-		eine Port-Basierende Distribution, was wir meinen ist das wir Skripte (<font class="code">.ebuild</font> Dateien) und ein
-		Spezieles System (Portage) damit man die Programme von den Quellcoden bauen kann. Wir erstellen normalerweise nur 
-		Binaere Pakete fuer Veroeffentlichung und &quot;snapshots&quot;. Die <a href="/doc/gentoo-howto.html">Development HOWTO
-		</a> erklaert den Inhalt von ebuild Skripten.  Fuer eine komplette Binaere ISO Veroeffentlichung, erstellen wir 
-		eine komplete Umbegung in einer weiterentwickelten Version des <font class="code">.tbz2</font> Datei Formates (<font class="code">.tar.bz2</font> 
-		Kompitabel mit Meta-Information, die am Ende der Datei gespeichert sind)</p>
+<p>Die Pakete existieren in unserem Portage &quot;Baum/Stammbaum/Archiv&quot; als <font class="emphasis">ebuild</font>, den Installations Skripten. 
+		Wir sind hauptsaechlich eine Ports-basierende Distribution, darunter versteht man, dass wir Skripte (<font class="code">.ebuild</font> Dateien) und ein
+		spezielles System (Portage) bereitstellen, damit man die Programme bequem aus dem Quellcode bauen kann. Wir erstellen normalerweise 
+		Binäre Pakete nur für spezielle Veroeffentlichungen und &quot;snapshots&quot;. Die <a href="/doc/gentoo-howto.html">Development HOWTO
+		</a> erklärt den Inhalt von ebuild Skripten.  Fuer eine komplette Binäre ISO Veroeffentlichung, erstellen wir
+		eine komplette Umbegung in einer weiterentwickelten Version des <font class="code">.tbz2</font> Datei Formates (<font class="code">.tar.bz2</font> -
+		(kompatibel mit Meta-Information, die am Ende der Datei gespeichert sind)</p>
 		<p class="secthead"><a name="_sect2">Warum ein neues Port System schreiben (Portage), wenn man die BSD Version verwenden könnte? </a></p>
 		<p>In einem Satz: Weil Portage in vielen Dingen viel besser ist. Eine der Entwicklungsphilosophien
 		von der <font class="code">.ebuild</font> Syntax ist die Analogie zu dem, was Sie an der Kommandozeile eingeben würden,
 		um die Pakete von Hand zu installieren. Somit sollte Portage sehr einfach zu erlernen sein und auch
-		ohne grossen Aufwand an die eigenen Bedürfnisse angepasstw erden können. Wir haben auch &quot;gefälschte&quot;
+		ohne grossen Aufwand an die eigenen Bedürfnisse angepasst werden können. Wir haben auch &quot;gefälschte&quot;
 		Installationen im OpenBSD-Stil, sicheres entfernen, Systemanpassungen, Paketmaskierung, ein echtes
 		System, welches Abhängigkeiten berücksichtigt und noch viele andere guten Sachen.</p>
 		<p class="secthead"><a name="_sect3">Wo liegt der Unterschied zu Debian's apt oder den BSD Ports? </a></p>
@@ -192,7 +191,8 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		beider Welten vor; ein Ports-System das die sensibilität und sicherheit eines Linux
 		Paket Management Systems enthält.</p>
 <p class="secthead"><a name="_sect4">Wie installiere und deinstalliere ich Pakete? </a></p>
-		<p>Das <a href="/doc/portage-user.html">Portage User Guide</a> erklärt ausführlich, wie man Pakete installiert, deinstalliert und Portage updated.</p>
+		<p>Das <a href="/doc/portage-user.html">Portage User Guide</a> erklärt ausführlich, wie man 
+		Pakete installiert, deinstalliert und Portage aktualisiert.</p>
 	        <p class="secthead"><a name="_sect5">Wie kann ich globale Einstellungen zum kompilieren der Pakete einstellen? </a></p>
 <p>
 <font class="path">/etc/make.conf</font> kann editiert werden, um globale und profil-spezifische
@@ -266,7 +266,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		irgendeine config Datei unter <font class="path">/etc</font> ablegt und eine config Datei eines anderen <font class="path">foo</font>
 		Paketes bereits darin existiert, was zum Überschreiben dieser Datei führen würde. Die neue config
 		Datei von <font class="path">foo</font> wird deshalb als <font class="path">._cfgxxxx_foo</font> in diesem Verzeichnis abgespeichert.
-		Ein sinvolles Werkzeug zum Untersuchen unad Aktualisieren von geschützten config Dateien ist <font class="code">etc-update</font>,
+		Ein sinnvolles Werkzeug zum Untersuchen und Aktualisieren von geschützten config Dateien ist <font class="code">etc-update</font>,
 		welches durch ein <font class="code">emerge app-admin/gentoolkit</font> zu haben ist.
 		</p>
 <p class="secthead"><a name="_sect9">Ich möchte den ./configure Schritt selber ausführen. Geht das? </a></p>
@@ -297,7 +297,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <p class="secthead"><a name="_sect12">Kann ich von einem anderen Betriebssystem aus ein rsync machen? </a></p>
 <p>Es gibt ein Programm das unison heisst, das sowohl unter UNIX als auch unter Win32 läuft. Es ist verfügbar unter:
 		<a href="http://www.cis.upenn.edu/~bcpierce/unison/">http://www.cis.upenn.edu/~bcpierce/unison/</a>.</p>
-<p class="secthead"><a name="_sect13">Ich habe zuhause nur eine langsame Modem-Verbindung. Kann ich die Quellen woanders herunterladen und dann zu meinem System hinzufügen? </a></p>
+<p class="secthead"><a name="_sect13">Ich habe zu Hause nur eine langsame Modem-Verbindung. Kann ich die Quellen woanders herunterladen und dann zu meinem System hinzufügen? </a></p>
 <p>
 		Natürlich. Mit dem Befehl <font class="code">emerge --pretend package</font> kann man sehen, welche Pakete für die
 		Installation benötigt werden. Die heruntergeladen Quelldateien können nun über ein Medium nach
@@ -389,7 +389,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<p class="chaphead">
 <font class="chapnum"><a name="doc_chap6">6.</a></font>Entwicklung</p>
 <p class="secthead"><a name="_sect1">Wie kann ich Fehler melden? </a></p>
-<p>För Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller. 
+<p>Für Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller.
 		Alternativ können Sie unsere Bugzilla Fehlermeldung unter <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> verwenden.
 		Auch sind wir in im <a href="http://www.openprojects.net">OpenProjects</a> IRC Netzwerk unter 
 		<font class="code">#gentoo</font> zu erreichen.
@@ -444,9 +444,9 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		Standard Linux Information sind unter <a href="http://www.linuxdoc.org">http://www.linuxdoc.org</a> verfügbar.
 		</p>
 <p class="secthead"><a name="_sect3">Kann man CDs von Gentoo Linux kaufen? </a></p>
-<p>USA: Ja! Frische CDRs sind fuer $5 USD von <a href="http://www.cheapbytes.com">http://www.cheapbytes.com</a> kaufbar.
+<p>USA: Ja! Frische CDRs sind für $5 USD von <a href="http://www.cheapbytes.com">http://www.cheapbytes.com</a> kaufbar.
 		</p>
-		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's können fÜr 5 Euro bei <a href="http://www.lin24.de">http://www.lin24.de</a> und <a href="http://www.liniso.de">http://www.liniso.de</a> bezogen werden.
+		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's können für 5 Euro bei <a href="http://www.lin24.de">http://www.lin24.de</a> und <a href="http://www.liniso.de">http://www.liniso.de</a> bezogen werden.
 		</p>
 <p class="secthead"><a name="_sect4">Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt? </a></p>
 <p>Als erster Schritt sollten die Dokumente unter <a href="http://www.gentoo.org/index-docs.html">http://www.gentoo.org/index-docs.html</a> (in Deutsch:  <a href="http://www.gentoo.de">http://www.gentoo.de</a> )

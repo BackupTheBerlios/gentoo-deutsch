@@ -30,8 +30,8 @@
 			<uri link="http://www.slackware.com/">Slackware</uri>,
 			<uri link="http://www.linuxfromscratch.org">Linux From Scratch</uri> oder
             <uri link="http://www.bsd.org">BSD</uri> Benutzern gefallen. Anders als die meisten Linux
-            Distributionen, hat Gentoo ein Paket System das an die BSD's "Ports" erinnert;
-            wir meinen, Sie k&#xF6;nnen sich immer sicher sein das sie die Letzten Versionen der Pakete haben.
+            Distributionen, hat Gentoo ein Paket System, das an die "Ports" von BSD erinnert;
+            wir meinen, Sie k&#xF6;nnen sich immer sicher sein das Sie immer die aktuellsten Versionen der Pakete haben.
         </p></body> 	</section> </chapter>
 
 <chapter>
@@ -124,7 +124,7 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 
 	<section>
 		<title>Wie kann ich bei root (oder einem anderen User) das Passwort &#xE4;ndern?</title>
-		<body><p>Sie k&#xF6;nnen <c>passwd</c> benutzen, um das Passwort f&#xFC;r den User mit dem sie eingelogt sind zu &#xE4;ndern.
+		<body><p>Sie k&#xF6;nnen <c>passwd</c> benutzen, um das Passwort f&#xFC;r den User mit dem sie angemeldet sind zu &#xE4;ndern.
 		F&#xFC;r zus&#xE4;tzliche Optionen und Einstellungen, schauen Sie sich bitte <c>man passwd</c> an, nachdem sie Gentoo Linux
 		fertig Installiert haben.
 		</p></body>
@@ -136,7 +136,7 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 		<body>
 		<p>Jeder weiss wohl, das es nicht sehr empfehlenswert ist immer <e>root</e> zu benutzen.
 		Wie kann man also andere Benutzer hinzuf&#xFC;gen?</p>
-		<p>Der Befehl <c>adduser gentoo</c> w&#xFC;rde einen User mit dem Username gentoo erstellen. Der n&#xE4;chste Schritt ist,
+		<p>Der Befehl <c>adduser gentoo</c> w&#xFC;rde einen Benutzer mit dem Usernamen gentoo erstellen. Der n&#xE4;chste Schritt ist,
 		diesem User ein Password zu geben und <c>passwd</c> tut genau das.</p>
 		</body>
 	</section>
@@ -172,7 +172,7 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 	<section>
 		<!-- korrekt &#xFC;bersetzt? (JS)-->
 		<title>Wie erhalte ich ein <path>/dev/mouse </path> das nach dem Booten nicht
-		wieder verloren geht (bei benutzung von devfs)?</title>
+		wieder verloren geht (bei Benutzung von devfs)?</title>
 		<body>
 		<p>
 		Ab Version 1.0_rc6 oder sp&#xE4;ter, es gen&#xFC;gt einfach <c>ln -s</c>
@@ -197,15 +197,14 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		W&#xE4;hrend der Installation hat grub die boot Dateien
 		nach <path>/boot/grub</path> (<path>/boot/boot/grub</path> in Gentoo Linux 1.0_rc5 und 
 		&#xE4;lter) kopiert. Grub sucht automatisch das Verzeichnis <path>/boot/grub</path> auf der Boot Partition ab.
-		(Wir empfehlen ihnen, eine ersatz nicht-auto boot Partition auf	<path>/boot</path> gemountet haben,
-		da es so schwieriger ist ausversehen den kernel oder die Boot-Informationen zu zerst&#xF6;ren.
-		 Der obere Fehler kommt meistens vom nicht benutzen einer ersatzt Boot Partiton 
-		(b) Vergessen des mounten der Boot Partition auf <path>/boot</path> bevor man das
-		Minimal-System Archiv entpackt hat oder
-		<c>emerge --usepkg system</c>, oder (c) vergessen des
+		(Wir empfehlen zur Sicherheit die boot Partition auf <path>/boot</path> nicht automatisch zu mounten,
+		da es so schwieriger ist aus Versehen den Kernel oder die Boot-Informationen zu zerst&#xF6;ren ).
+		Der obige Fehler tritt deshalb meistens auf, wenn (a) /boot nicht auf einer separaten Partition installiert wird,
+		oder (b) durch Vergessen des mounten der Boot Partition auf <path>/boot</path> bevor man das
+		Minimal-System Archiv entpackt hat oder <c>emerge --usepkg system</c>, oder (c) vergessen des
 		<c>notail</c> Argumentes when <path>/boot</path> eine ReiserFS Partition ist.
-		Sie k&#xF6;nnen mehr Informationen &#xFC;ber Grub finden, in der Beigelegten Debug Anleitung
-		debug grub von dem Grub Terminal oder durch das lesen des 
+		Sie k&#xF6;nnen mehr Informationen &#xFC;ber Grub in der Debug Anleitung finden, die in der Standard
+		Installation vorhanden ist. Dazu geben Sie einfach <i>debug grub</i> von dem Grub Terminal oder lesen Sie das
 		<uri link="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/0F1731DC664023B7862569D0005C44AF?OpenDocument">IBM developerWorks Grub tutorial</uri>.
 		</p>
                 </body>
@@ -215,15 +214,14 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <chapter>
 	<title>Paket Verwaltung</title>
 	<section>
-		<!-- war noch englisch (JS)-->
 		<title>In welchem Format werden die Pakete gespeichert?</title>
-		<body><p>Die Pakete existieren in unserem Portage "Baum/Stammbaum/Archiv" als <e>ebuild</e> Autoerstell Skripte; Wir sind hauptsaechlich 
-		eine Port-Basierende Distribution, was wir meinen ist das wir Skripte (<c>.ebuild</c> Dateien) und ein
-		Spezieles System (Portage) damit man die Programme von den Quellcoden bauen kann. Wir erstellen normalerweise nur 
-		Binaere Pakete fuer Veroeffentlichung und "snapshots". Die <uri link="/doc/gentoo-howto.html">Development HOWTO
-		</uri> erklaert den Inhalt von ebuild Skripten.  Fuer eine komplette Binaere ISO Veroeffentlichung, erstellen wir 
-		eine komplete Umbegung in einer weiterentwickelten Version des <c>.tbz2</c> Datei Formates (<c>.tar.bz2</c> 
-		Kompitabel mit Meta-Information, die am Ende der Datei gespeichert sind)</p>
+		<body><p>Die Pakete existieren in unserem Portage "Baum/Stammbaum/Archiv" als <e>ebuild</e>, den Installations Skripten. 
+		Wir sind hauptsaechlich eine Ports-basierende Distribution, darunter versteht man, dass wir Skripte (<c>.ebuild</c> Dateien) und ein
+		spezielles System (Portage) bereitstellen, damit man die Programme bequem aus dem Quellcode bauen kann. Wir erstellen normalerweise 
+		Bin&#xE4;re Pakete nur f&#xFC;r spezielle Veroeffentlichungen und "snapshots". Die <uri link="/doc/gentoo-howto.html">Development HOWTO
+		</uri> erkl&#xE4;rt den Inhalt von ebuild Skripten.  Fuer eine komplette Bin&#xE4;re ISO Veroeffentlichung, erstellen wir
+		eine komplette Umbegung in einer weiterentwickelten Version des <c>.tbz2</c> Datei Formates (<c>.tar.bz2</c> -
+		(kompatibel mit Meta-Information, die am Ende der Datei gespeichert sind)</p>
 		</body>
 	</section>
 
@@ -234,7 +232,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<p>In einem Satz: Weil Portage in vielen Dingen viel besser ist. Eine der Entwicklungsphilosophien
 		von der <c>.ebuild</c> Syntax ist die Analogie zu dem, was Sie an der Kommandozeile eingeben w&#xFC;rden,
 		um die Pakete von Hand zu installieren. Somit sollte Portage sehr einfach zu erlernen sein und auch
-		ohne grossen Aufwand an die eigenen Bed&#xFC;rfnisse angepasstw erden k&#xF6;nnen. Wir haben auch "gef&#xE4;lschte"
+		ohne grossen Aufwand an die eigenen Bed&#xFC;rfnisse angepasst werden k&#xF6;nnen. Wir haben auch "gef&#xE4;lschte"
 		Installationen im OpenBSD-Stil, sicheres entfernen, Systemanpassungen, Paketmaskierung, ein echtes
 		System, welches Abh&#xE4;ngigkeiten ber&#xFC;cksichtigt und noch viele andere guten Sachen.</p>
 		</body>
@@ -252,7 +250,8 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<section>
 	        <title>Wie installiere und deinstalliere ich Pakete?</title>
 	        <body>
-		<p>Das <uri link="/doc/portage-user.html">Portage User Guide</uri> erkl&#xE4;rt ausf&#xFC;hrlich, wie man Pakete installiert, deinstalliert und Portage updated.</p>
+		<p>Das <uri link="/doc/portage-user.html">Portage User Guide</uri> erkl&#xE4;rt ausf&#xFC;hrlich, wie man 
+		Pakete installiert, deinstalliert und Portage aktualisiert.</p>
 	        </body>
 	</section>
 
@@ -336,7 +335,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		irgendeine config Datei unter <path>/etc</path> ablegt und eine config Datei eines anderen <path>foo</path>
 		Paketes bereits darin existiert, was zum &#xDC;berschreiben dieser Datei f&#xFC;hren w&#xFC;rde. Die neue config
 		Datei von <path>foo</path> wird deshalb als <path>._cfgxxxx_foo</path> in diesem Verzeichnis abgespeichert.
-		Ein sinvolles Werkzeug zum Untersuchen unad Aktualisieren von gesch&#xFC;tzten config Dateien ist <c>etc-update</c>,
+		Ein sinnvolles Werkzeug zum Untersuchen und Aktualisieren von gesch&#xFC;tzten config Dateien ist <c>etc-update</c>,
 		welches durch ein <c>emerge app-admin/gentoolkit</c> zu haben ist.
 		</p></body>
 	</section>
@@ -382,7 +381,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>Ich habe zuhause nur eine langsame Modem-Verbindung. Kann ich die Quellen woanders herunterladen und dann zu meinem System hinzuf&#xFC;gen?</title>
+		<title>Ich habe zu Hause nur eine langsame Modem-Verbindung. Kann ich die Quellen woanders herunterladen und dann zu meinem System hinzuf&#xFC;gen?</title>
 		<body><p>
 		Nat&#xFC;rlich. Mit dem Befehl <c>emerge --pretend package</c> kann man sehen, welche Pakete f&#xFC;r die
 		Installation ben&#xF6;tigt werden. Die heruntergeladen Quelldateien k&#xF6;nnen nun &#xFC;ber ein Medium nach
@@ -518,7 +517,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<title>Entwicklung</title>
 	<section>
 		<title>Wie kann ich Fehler melden?</title>
-		<body><p>F&#xF6;r Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller. 
+		<body><p>F&#xFC;r Bugs in einem speziellen Programm, kontaktieren sie den jeweiligen Programm Ersteller.
 		Alternativ k&#xF6;nnen Sie unsere Bugzilla Fehlermeldung unter <uri>http://bugs.gentoo.org</uri> verwenden.
 		Auch sind wir in im <uri link="http://www.openprojects.net">OpenProjects</uri> IRC Netzwerk unter 
 		<c>#gentoo</c> zu erreichen.
@@ -591,9 +590,9 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 
 	<section>
 		<title>Kann man CDs von Gentoo Linux kaufen?</title>
-		<body><p>USA: Ja! Frische CDRs sind fuer $5 USD von <uri>http://www.cheapbytes.com</uri> kaufbar.
+		<body><p>USA: Ja! Frische CDRs sind f&#xFC;r $5 USD von <uri>http://www.cheapbytes.com</uri> kaufbar.
 		</p>
-		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's k&#xF6;nnen f&#xDC;r 5 Euro bei <uri>http://www.lin24.de</uri> und <uri>http://www.liniso.de</uri> bezogen werden.
+		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's k&#xF6;nnen f&#xFC;r 5 Euro bei <uri>http://www.lin24.de</uri> und <uri>http://www.liniso.de</uri> bezogen werden.
 		</p></body>
 	</section>
 	<section>
