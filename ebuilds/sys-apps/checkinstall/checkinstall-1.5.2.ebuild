@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/checkinstall/checkinstall-1.5.2.ebuild,v 1.2 2002/07/06 19:29:34 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/checkinstall/checkinstall-1.5.2.ebuild,v 1.3 2003/01/19 16:59:21 holler Exp $
 
 DESCRIPTION="CheckInstall installations tracker"
 HOMEPAGE="http://checkinstall.izto.org/"
@@ -8,10 +8,12 @@ HOMEPAGE="http://checkinstall.izto.org/"
 S=${WORKDIR}/${P}
 SRC_URI="http://checkinstall.izto.org/files/source/${P}.tgz"
 LICENSE="GPL-2"
-SLOT="1"
+SLOT="0"
 
 RDEPEND="app-arch/rpm"
 DEPEND="virtual/glibc"
+
+KEYWORDS="~x86"
 
 src_compile() {
 
@@ -39,11 +41,4 @@ src_install () {
 
 	dodoc doc-pak/*
 	docinto installwatch-0.6.3; dodoc doc-pak/*
-}
-
-pkg_postinst () {
-	ewarn "*************************************"
-	ewarn "* WARNING: Remove the sgid-bit from *"
-	ewarn "* make or checkinstall won't work!  *"
-	ewarn "*************************************"
 }
