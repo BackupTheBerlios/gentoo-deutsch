@@ -1,0 +1,15 @@
+# ChangeLog for media-video/vdr
+# Copyright 2003 Henning Ryll; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/kvdr/ChangeLog,v 1.1 2003/02/25 17:05:10 fow0ryl Exp $
+
+*kvdr-0.52 (22 Feb 2003)
+  22 Feb 2003; Henning Ryll <henning.ryll@web.de> Changelog:
+ 
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that
+  the comments should well explained and written in clean English. The
+  details about writing correct changelogs are explained in the
+  skel.ChangeLog file which you can find in the root directory of the
+  portage repository.
+
+  This is my first ebuild script, so please be considerately with me. 
