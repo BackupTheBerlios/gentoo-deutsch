@@ -1,8 +1,11 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.23 2003/07/01 17:38:06 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.24 2003/07/03 05:49:48 mad Exp $
 
 *vdr-1.2.1 (26 Jun 2003)
+  03 Jul 2003; M.Hierling <mad@cc.fh-lippe.de>
+  renamed vdr_vfat to vfat 
+
   30 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
   added gentoo patch, build a new Elchi patch (nothing new, only to
   get rid of the hunks and rej), fixed wrong plugin filename
@@ -11,6 +14,9 @@
   new version
 
 *vdr-1.2.0 (04 Jun 2003)
+  03 Jul 2003; M.Hierling <mad@cc.fh-lippe.de>
+  renamed vdr_vfat to vfat 
+
   01 Jul 2003; M.Hierling <mad@cc.fh-lippe.de>
   fixed download location of akool patch
 

@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.10 2003/07/01 17:37:10 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.11 2003/07/03 05:49:48 mad Exp $
 
 IUSE="lirc"
 ANALOGTV_VN="0.7.0"
@@ -102,7 +102,7 @@ src_compile() {
 	local myconf
 	use lirc && myconf="${myconf} REMOTE=LIRC"
 	vdr_opts rcu && myconf="${myconf} REMOTE=RCU"
-	vdr_opts vdr_vfat && myconf="${myconf} VFAT=1"
+	vdr_opts vfat && myconf="${myconf} VFAT=1"
 
 	make ${myconf} || die "compile problem vdr"
 
