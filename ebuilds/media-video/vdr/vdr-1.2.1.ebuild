@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.1.ebuild,v 1.2 2003/06/30 12:07:24 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.1.ebuild,v 1.3 2003/06/30 12:29:38 fow0ryl Exp $
 
 IUSE="lirc"
 ANALOGTV_VN="0.8.0"
@@ -93,7 +93,7 @@ src_unpack() {
 
 	# Elchi Patch
 	if vdr_opts elchi; then
-		if !vdr_opts akool; then
+		if ! vdr_opts akool; then
 		cd ${S}
 			einfo "Apply ElchiAOI3a patch ..."
 			patch < ../ElchiAIO3a-1.2.0.diff
