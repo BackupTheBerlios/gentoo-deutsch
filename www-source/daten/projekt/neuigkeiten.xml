@@ -22,7 +22,7 @@
 
 <section>
 
-<title>Planung des Usertreffens</title>
+<title>[26. April 2003] Planung des Usertreffens</title>
 
 <body>
 <p>
@@ -36,9 +36,35 @@ weitestgehend selbsterklärend sein. Ihr findet die Karte <uri link="http://cyber
 </section>
 
 <section>
+<title>[14. April 2003] Gentoo-Linux-1.4rc4 veröffentlicht</title>
 
+<body>
+<p>
+Anfang der Woche wurde entschieden, daß die Nächste Version von Gentoo-Linux 1.4 als
+Release-Candidate 4 an Stelle von Final veröffentlicht werden würde. Die Verbesserungen
+enthalten wesentlich bessere Hardware-Erkennung auf der Live-CD sowie weitreichende Updates
+bei einigen Paketen im Portage-Tree. Die Entscheidung einen weiteren Release-Candidate anstelle
+einer Final-Version zu veröffentlichen wurde aus folgenden Gründen getroffen:
+<ul>
+	<li>
+	Es müssen noch Binärpakete die für die Referenz-Plattform benötigt werden erstellt oder getestet werden.
+	Solange dies noch nicht geschehen ist, kann 1.4-Final nicht veröffentlicht werden.
+	</li>
+	<li>Das momentan als Stable angesehene Baselayout basiert immernoch auf tmpfs. Von Anfang an war eines der Ziele von 1.4
+	war, diese Abhängigkeit zu eleminieren. Im Portage-Tree existiert eine maskierte Baselayout-Version, die dieses Problem löst,
+	allerdings wurde diese bisher noch nicht ausreichend getestet. (Jeder der diese Version gerade testet oder testen möchte wird
+	dazu aufgefordert, seine Erfahrungen auf <uri link="http://stable.gentoo.org">Gentoo Stable</uri> zu veröffentlichen)
+	</li>
+    	<li>
+	Automatischer Kernelbau wird bisher noch getestet und wird in der 1.4-final verfügbar sein
+	</li>
+</ul>
+</p>
+</body>
+</section>
+
+<section>
 <title>O'Reilly Artikel über Gentoo Linux 1.4</title>
-
 <body>
 <p>
 Ein neuer Artikel von Daniel Robbins über Gentoo-Linux ist ab heute auf der
