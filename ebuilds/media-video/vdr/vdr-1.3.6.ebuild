@@ -1,34 +1,23 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6.ebuild,v 1.4 2004/03/28 12:02:53 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6.ebuild,v 1.5 2004/04/12 15:00:07 fow0ryl Exp $
 
 IUSE="lirc"
-AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
-AKOOL_VN="1.2.6"
-ELCHI_VN="1.2.6"
-MAILBOX_VN="0.1.4"
+AC3_OVER_DVB="vdr-1.3.6-AC3overDVB-0.2.4"
+AKOOL="vdr-1.3.6.patch"
+ELCHI="vdr-1.3.6-ElchiAIO4d"
 
 S=${WORKDIR}/vdr-${PV}
 DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/Developer/vdr-${PV}.tar.bz2
-		http://linvdr.org/download/VDR-AIO/vdr-1.3.6/vdr-1.3.6-ElchiAIO4d.diff.gz
+		http://linvdr.org/download/VDR-AIO/vdr-1.3.6/${ELCHI}.diff.gz
 		http://www.fh-luh.de/~mad/vdr/xpmlogos.tar		
+		http://www.die-rylls.de/downloads/vdr/${AC3_OVER_DVB}.diff.gz
+		http://www.die-rylls.de/downloads/vdr/${AKOOL}.bz2
+		http://www.akool.de/download/schemes.tar.bz2
 		"
-
-# vanilla :-)
-#SRC_URI="
-#		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
-#		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz
-#		http://sites.inka.de/seca/vdr/vdr-mailbox-${MAILBOX_VN}.tgz
-#		http://www.vdr-portal.de/download/patches/KomplettPatch-1.2.6-E.diff.bz2
-#		http://linvdr.org/download/VDR-AIO/vdr-${ELCHI_VN}-ElchiAIO3c.diff.gz
-#		http://www.magoa.net/linux/files/improvedosd-3a.diff.gz
-#		http://www.magoa.net/linux/contrib/improvedosd-3-3a.diff.gz
-#		http://www.magoa.net/linux/files/iconscolored.tar.gz
-#		http://www.magoa.net/linux/files/icons.tar.gz
-#		"
 
 KEYWORDS="~x86"
 SLOT="0"
@@ -42,6 +31,7 @@ DEPEND="virtual/glibc
 		app-admin/sudo
 		app-admin/fam
 		lirc? ( app-misc/lirc )
+		app-portage/gentoolkit
 		"
 
 #
@@ -69,18 +59,18 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	# by mad because vanilla
 	# AC3 over DVB Patch
 	# needs app-admin/fam-oss
-	#if vdr_opts ac3
-	#then
-	#	if vdr_opts akool
-	#	then
-	#		ewarn "AC3 patch is already part of akool/complete patch ... skipping"
-	#	else
-	#		epatch ../${AC3_OVER_DVB}.diff
-	#	fi
-	#fi
+	if vdr_opts ac3
+	then
+		if vdr_opts akool
+		then
+			ewarn "AC3 patch is already part of akool/complete patch ... skipping"
+		else
+			ewarn "Applying native AC3_OVER_DVB patch now"
+			epatch ../${AC3_OVER_DVB}.diff
+		fi
+	fi
 
 	# Elchi Patch
 	if vdr_opts elchi
@@ -89,29 +79,18 @@ src_unpack() {
 		then
 			ewarn "Elchi patch is already part of akool/complete patch ... skipping"
 		else
+			ewarn "Applying native Elchi patch now"
 			cd ${S}
-			epatch ../vdr-1.3.6-ElchiAIO4d.diff
-			#if vdr_opts iosd
-			#then
-			#	epatch ../improvedosd-3a.diff
-			#	# link black & white logos to vdr dir
-			#	ln -s ${WORKDIR}/icons/ ${S}/icons
-			#	# now overwrite black & white logos with some colored ones
-			#	unpack iconscolored.tar.gz
-			#fi
+			epatch ../${ELCHI}.diff
 		fi
 	fi
 
-	# by mad because vanilla
-	# Dirk's Komplett Patch
-	#if vdr_opts akool
-	#then
-	#	epatch ../KomplettPatch-1.2.6-E.diff
-	#	epatch ../improvedosd-3-3a.diff
-	#
-	#	einfo "Applying remove duplicate Symblol 59 patch ..."
-	#	/bin/sed -i -e '782,811d' fontsym.c
-	#fi
+	# Andreas Akools Komplett Patch
+	if vdr_opts akool
+	then
+		ewarn "akool patch is somewhat buggy when using VDR 1.3.6"
+		patch  -p1 < ../${AKOOL}
+	fi
 
 	# here comes the gentoo specific stuff ( also called the "fun part")
 	# for Makefile...
@@ -133,27 +112,6 @@ src_unpack() {
 	  -e 's:#define SO_INDICATOR   ".so.":#define SO_INDICATOR   ".so":' \
 	  -e 's:\(asprintf.*\)%s/%s%s%s%s\(.*SO_INDICATOR.*\):\1%s/%s%s%s\2:' \
 	  -e 's:LIBVDR_PREFIX, s, SO_INDICATOR, VDRVERSION);:LIBVDR_PREFIX, s, SO_INDICATOR);:'
-
-	# for osdbase.c in case, VDR_OPTS->iosd || akool ?? is that ok ??
-	if vdr_opts akool || vdr_opts iosd
-	then
-		/bin/sed -i osdbase.c \
-		  -e 's:logofileS=MALLOC(char, strlen(ConfigDirectory):logofileS=MALLOC(char, strlen("/usr/share/vdr"):' \
-		  -e 's:strcpy(logofileS, ConfigDirectory):strcpy(logofileS, "/usr/share/vdr"):'
-	fi
-
-	# for osdbase.h in case, VDR_OPTS->256color
-	#where is vdr_opts 256 color if statement ?
-	if  vdr_opts elchi
-	then
-		einfo "Applying 256 Color patch to OSD ..."
-		/bin/sed -i osdbase.h \
-		  -e 's:#define MAXNUMCOLORS 24:#define MAXNUMCOLORS 256:'
-	fi
-
-	# by mad because vanilla
-	# use patch from mailbox plugin, even if plugin is not used
-	#epatch ../mailbox-${MAILBOX_VN}/patches/${P}-osdmenufix.diff
 }
 
 src_compile() {
@@ -171,7 +129,6 @@ src_compile() {
 		cd ${S}/PLUGINS/src/${i}
 		make all || die "compile problem plugin: ${i}"
 	done
-
 }
 
 src_install() {
@@ -188,13 +145,6 @@ src_install() {
 	dohtml PLUGINS.html
 	doman vdr.[15]
 
-	# they doesn´t exist anymore in 1.3.2
-	# exept libsi, so are they needed?? mad
-	#dolib.a libdtv/libdtv.a
-	#dolib.a libdtv/liblx/liblx.a
-	#dolib.a libdtv/libsi/libsi.a
-	#dolib.a libdtv/libvdr/libvdr.a
-
 	for i in $(ls ${S}/PLUGINS/src) ; do
 		insinto /usr/lib/vdr
 		insopts -m0755
@@ -204,14 +154,6 @@ src_install() {
 
 	insinto /usr/include/vdr
 	doins *.h
-	# they doesn´t exist anymore in 1.3.2
-	# mad
-	#doins libdtv/liblx/liblx.h
-	#doins libdtv/libsi/si_debug_services.h
-	#doins libdtv/libsi/include/libsi.h
-	#doins libdtv/libsi/include/si_tables.h
-	#doins libdtv/libvdr/libvdr.h
-	#doins libdtv/libdtv.h
 
 	exeinto /usr/bin
 	doexe vdr
@@ -227,11 +169,14 @@ src_install() {
 	fowners vdr:video /etc/vdr/plugins
 
 	# changed to /usr/share/vdr -> see above... fs(12/23/2003)
-	if  vdr_opts elchi
+	if vdr_opts elchi || vdr_opts akool
 	then
 		insinto /etc/vdr/logos
 		doins ../logos/*.xpm
 		fowners vdr:video /etc/vdr/logos
+		insinto /etc/vdr/schemes
+		doins ../schemes/*
+		fowners vdr:video /etc/vdr/schemes
 	fi
 }
 
@@ -268,15 +213,28 @@ pkg_postinst() {
 		einfo
 		einfo "here is a list:"
 		einfo
+		
+		#create script 
+		echo "#!/bin/sh" > /usr/local/bin/emerge-vdrplugs.sh
+		chmod 766 /usr/local/bin/emerge-vdrplugs.sh
+		
 		for i in ${INSTALLED_PLUGINS}
 			do
 			 einfo ${i}
+			 echo "ACCEPT_KEYWORDS=\"~x86\" /usr/bin/emerge ${i}" >> /usr/local/bin/emerge-vdrplugs.sh
 		done
+		
 		# doensnt work yet (mad)
 		if vdr_opts emergeplugs quiet ; then
 			einfo
 		 	ACCEPT_KEYWORDS="~x86" /usr/bin/emerge ${INSTALLED_PLUGINS}
 			einfo
 		 fi
+	
+		einfo
+		einfo "for your convenience you can use the script"
+		einfo "/usr/local/bin/emerge-vdrplugs.sh"
+		einfo "to (re)emerge all installed plugins"
+		einfo
 	fi
 }
