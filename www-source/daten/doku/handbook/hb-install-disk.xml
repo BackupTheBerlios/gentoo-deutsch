@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.21 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.7 2003/12/15 18:48:38 tove Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.8 2003/12/21 14:02:21 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -206,9 +206,9 @@ Für ppc:
 <tr>
   <ti><path>/dev/hda1</path></ti>
   <ti>(nicht benötigt)</ti>
-  <ti>ext2</ti>
-  <ti>32M</ti>
-  <ti>Bootstrap Partition</ti>
+  <ti>(bootstrap)</ti>
+  <ti>800k</ti>
+  <ti>Apple_Bootstrap</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda2</path></ti>
@@ -305,6 +305,10 @@ Ihrer Festplatte fort:
 </li>
 <li>
   <uri link="#doc_chap7">Benutzung von fdisk auf HPPA zur Partitionierung Ihrer
+  Festplatte</uri>
+</li>
+<li>
+  <uri link="#doc_chap8">Benutzung von fdisk auf MIPS zur Partitionierung Ihrer
   Festplatte</uri>
 </li>
 </ul>
@@ -415,6 +419,10 @@ Ihre Architektur als Beispiel zur Verfügung stehen:
 </li>
 <li>
   <uri link="#doc_chap7">Benutzung von fdisk auf HPPA zur Partitionierung Ihrer
+  Festplatte</uri>
+</li>
+<li>
+  <uri link="#doc_chap8">Benutzung von fdisk auf MIPS zur Partitionierung Ihrer
   Festplatte</uri>
 </li>
 </ul>
@@ -605,6 +613,14 @@ Device Boot    Start       End    Blocks   Id  System
 /dev/hda1          1        14    105808+  83  Linux
 </pre>
 
+
+<p>
+Sie müssen diese Partition bootbar machen. Drücken Sie <c>a</c> um das bootable
+Flag auf dieser Partition zu aktivieren. Wenn Sie wiederum <c>p</c> drücken,
+werden Sie feststellen, dass in der "Boot" Spalte ein <path>*</path> platziert
+ist.
+</p>
+
 </body>
 </subsection>
 <subsection>
@@ -634,7 +650,7 @@ Disk /dev/hda: 30.0 GB, 30005821440 bytes
 Units = cylinders of 15120 * 512 = 7741440 bytes
 
 Device Boot    Start       End    Blocks   Id  System
-/dev/hda1          1        14    105808+  83  Linux
+/dev/hda1 *        1        14    105808+  83  Linux
 /dev/hda2         15        81    506520   82  Linux swap
 </pre>
 
@@ -664,7 +680,7 @@ Disk /dev/hda: 30.0 GB, 30005821440 bytes
 Units = cylinders of 15120 * 512 = 7741440 bytes
 
 Device Boot    Start       End    Blocks   Id  System
-/dev/hda1          1        14    105808+  83  Linux
+/dev/hda1 *        1        14    105808+  83  Linux
 /dev/hda2         15        81    506520   82  Linux swap
 /dev/hda3         82      3876  28690200   83  Linux
 </pre>
@@ -687,9 +703,9 @@ Command (m for help): <i>w</i>
 
 <p>
 Nachdem Ihre Partitionen nun erstellt sind können Sie mit dem
-<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+<uri link="#filesystems">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
 Sie wollen LVM benutzen. In diesem Fall sollten Sie zuerst
-<uri link="#doc_chap8">Optional: LVM</uri> lesen.
+<uri link="#lvm">Optional: LVM</uri> lesen.
 </p>
 
 </body>
@@ -924,9 +940,9 @@ Command (m for help): <i>w</i>
 
 <p>
 Nachdem Ihre Slices nun erstellt sind, können Sie mit dem
-<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+<uri link="#filesystems">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
 Sie wollen LVM benutzen. In diesem Fall sollten Sie zuerst
-<uri link="#doc_chap8">Optional: LVM</uri> lesen.
+<uri link="#lvm">Optional: LVM</uri> lesen.
 </p>
 
 </body>
@@ -1221,8 +1237,8 @@ Command (m for help): <i>w</i>
 
 <p>
 Nachdem Ihre Partitionen nun erstellt sind, können Sie mit dem
-<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
-Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
+<uri link="#filesystems">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen <uri link="#lvm">Optional: LVM</uri> benutzen.
 </p>
 
 </body>
@@ -1278,8 +1294,8 @@ Abschliessend schreiben Sie die Partitionstabelle mit <c>w</c> und beenden
 
 <p>
 Nachdem Ihre Partitionen nun erstellt sind, können Sie mit dem
-<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
-Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
+<uri link="#filesystems">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen <uri link="#lvm">Optional: LVM</uri> benutzen.
 </p>
 
 </body>
@@ -1315,13 +1331,183 @@ Kernel hinter der 2GB Grenze lesen.
 
 <p>
 Nachdem Ihre Partitionen nun erstellt sind, können Sie mit dem
-<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
-Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
+<uri link="#filesystems">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen <uri link="#lvm">Optional: LVM</uri> benutzen.
 </p>
 
 </body>
 </section>
 <section>
+<title>Benutzen von fdisk auf MIPS zur Partitionierung Ihrer Festplattek</title>
+<!-- This entire section is copy/pasted from Kumba's original text. It should
+     probably be rewritten, but it seems a bit complicated.
+     Someone donate me a MIPS? :)
+
+       ~SwifT
+-->
+<subsection>
+<title>Erstellen eines SGI Disk Label</title>
+<body>
+
+<p>
+Alle Festplatten in einem SGI System benötigen ein <c>SGI Disk Label</c>, das
+eine ähnliche Funktion zu einem Sun &amp; MS-DOS Disklabel hat. Es speichert
+Informationen über die Partitionen einer Festplatte. Die Erstellung eines neuen
+SGI Disk Label erstellt zwei spezielle Partitionen auf der Festplatte:
+</p>
+
+<ul>
+  <li>
+    <e>SGI Volume Header</e> (Neunte Partition): Diese Partition ist wichtig.
+    Hier wird Ihr Kernel Image abgelegt. Um hier Kernel Images ablegen zu
+    können, müssen Sie das Tool <c>dvhtool</c> benutzen. Sie können Kernel von
+    dieser Partition dann via SGI PROM booten.
+  </li>
+  <li>
+    <e>SGI Volume</e> (Elfte Partition): Diese Partition hat den gleichen
+    Zweck wie die dritte Partition des Sun Disklabel, "Whole Disk". Diese
+    Partition umspannt die gesamte Festplatte und sollte nicht angefasst werden.
+    Sie hat keinen speziellen Zweck, ausser das PROM in etwas undokumentierter
+    Art und Weise zu unterstützen (oder es wird auf gewisse Weise von IRIX
+    verwendet).
+  </li>
+</ul>
+
+<warn>
+Der SGI Volume Header <e>muss</e> bei Zylinder 0 beginnen. Wenn dies fehlschlägt
+führt das dazu, dass Sie nicht von der Festplatte booten können.
+</warn>
+
+<p>
+Das Folgende ist ein beispielhafter Auszug aus einer <c>fdisk</c> Sitzung. Lesen
+Sie ihn, und passen ihn an Ihre Anforderungen an ...
+</p>
+
+<pre caption="Erstellen eines SGI Disklabel">
+# <i>fdisk /dev/sda</i>
+
+Command (m for help): <i>x</i>
+
+Expert command (m for help): <i>m</i>
+Command action
+   b   move beginning of data in a partition
+   c   change number of cylinders
+   d   print the raw data in the partition table
+   e   list extended partitions
+   f   fix partition order
+   g   create an IRIX (SGI) partition table
+   h   change number of heads
+   m   print this menu
+   p   print the partition table
+   q   quit without saving changes
+   r   return to main menu
+   s   change number of sectors/track
+   v   verify the partition table
+   w   write table to disk and exit
+
+Expert command (m for help): <i>g</i>
+Building a new SGI disklabel. Changes will remain in memory only,
+until you decide to write them. After that, of course, the previous
+content will be unrecoverably lost.
+
+Expert command (m for help): <i>r</i>
+
+Command (m for help): <i>p</i>
+
+Disk /dev/sda (SGI disk label): 64 heads, 32 sectors, 17482 cylinders
+Units = cylinders of 2048 * 512 bytes
+
+----- partitions -----
+Pt#     Device  Info     Start       End   Sectors  Id  System
+ 9:  /dev/sda1               0         4     10240   0  SGI volhdr
+11:  /dev/sda2               0     17481  35803136   6  SGI volume
+----- Bootinfo -----
+Bootfile: /unix
+----- Directory Entries -----
+
+Command (m for help):
+</pre>
+
+<note>
+Wenn Ihre Festplatte bereits ein SGI Disklabel hat, erlaubt fdisk nicht die
+Erstellung eines Neuen. Es gibt zwei Möglichkeiten dies zu umgehen: Eine ist ein
+Sun oder MS-DOS Disklabel zu erstellen, die Änderungen auf die Festplatte zu
+schreiben und fdisk neuzustarten. Die Zweite ist, die Partition mit dem
+folgendem Kommando mit Null Data zu beschreiben:
+<c>dd if=/dev/zero of=/dev/sda bs=512 count=1</c>.
+</note>
+
+</body>
+</subsection>
+<subsection>
+<title>Den SGI Volume Header an die richtige Größe anpassen</title>
+<body>
+
+<p>
+Nachdem Sie ein SGI Disklabel erstellt haben, können Sie Partitionen erstellen.
+Im obigen Beispiel sind bereits Partitionen erstellt worden. Dies sind die
+speziellen, vorhin angesprochenen Partitionen, welche im Normalfall nicht
+geändert werden sollten. Um Gentoo zu installieren müssen Sie Kernel Images
+direkt in den Volume Header laden, da es noch keinen unterstützten SGI Bootloader
+im Portage gibt. Der Volume Header selbst kann bis zu <e>acht</e> Images jeder
+Größe beinhalten, jedes Image darf einen bis zu acht Zeichen langen Namen
+tragen.
+</p>
+
+<p>
+Der Prozess zur Vergrößerung des Volume Header ist nicht unbedingt geradeaus, es
+gehört ein kleiner Trick dazu. Sie können den Volume Header auf Grund von fdisks
+Verhalten nicht einfach löschen und neu anlegen.. Im unten abgebildeten Beispiel
+erstellen wir einen 50MB großen Volume Header in Verbindung mit einer 50 MB
+großen /boot Partition. Das aktuelle Layout Ihrer Festplatte weicht möglicherweise
+ab, dies hier dient nur zu Illustrationszwecken.
+</p>
+
+<pre caption="Die Größe des SGI Volume Header richtig ändern">
+Command (m for help): <i>n</i>
+Partition number (1-16): <i>1</i>
+First cylinder (5-8682, default 5): <i>51</i>
+Last cylinder (51-8682, default 8682): <i>101</i>
+<comment>(Beachten Sie, dass fdisk nur die Wiedererstellung der Partition #1 bei einem minimalen Zylinder von 5 erlaubt)</comment>
+<comment>Wenn Sie versucht hätten den SGI Volume Header auf diesem Weg zu löschen &amp; neu zu erstellen,
+wäre Ihnen das gleiche Problem begegnet)</comment>
+<comment>(In unserem Beispiel möchten wir, dass /boot 50MB groß ist. Wir beginnen bei Zylinder 51 (der Volume Header muss bei
+Zylinder 0 anfangen) und setzen den Endzylinder auf 101, damit erreichen wir etwa 50 MB (+/- 1-5 MB))</comment>
+
+Command (m for help): <i>d</i>
+Partition number (1-16): <i>9</i>
+<comment>(Löschen der Partition #9 (SGI Volume Header))</comment>
+
+Command (m for help): <i>n</i>
+Partition number (1-16): <i>9</i>
+First cylinder (0-50, default 0): <i>0</i>
+Last cylinder (0-50, default 50): <i>50</i>
+<comment>(Wiedererstellen der Partition #9, diese endet direkt vor Partition #1)</comment>
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Abschliessendes Partitionslayout</title>
+<body>
+
+<p>
+Nachdem Sie dies getan haben, können Sie die restlichen Partitonen nach Ihren
+Wünschen anlegen. Wenn Sie alle Partitionen angelegt haben achten Sie darauf,
+die Partition ID Ihrer Swap Partition auf <c>82</c> zu setzen. Per Standard
+wird diese als <c>83</c>, Linux Native, gesetzt.
+</p>
+
+<p>
+Nachdem Ihre Partitionen nun erstellt sind, können Sie mit dem
+<uri link="#filesystems">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen <uri link="#lvm">Optional: LVM</uri> benutzen.
+</p>
+
+</body>
+</subsection>
+</section>
+<section id="lvm">
 <title>Optional: LVM</title>
 <subsection>
 <title>Partitionen initialisieren</title>
@@ -1406,7 +1592,7 @@ home     opt      swap     tmp     usr      var
 </body>
 </subsection>
 </section>
-<section>
+<section id="filesystems">
 <title>Erstellen der Dateisysteme</title>
 <subsection>
 <title>Einleitung</title>
@@ -1416,7 +1602,7 @@ home     opt      swap     tmp     usr      var
 Jetzt sind Ihre Partitionen (und logischen Volumes, wenn Sie LVM benutzen)
 erstellt, so dass es nun an der Zeit ist Dateisysteme anzulegen. Wenn Sie mit dem
 zufrieden sind, was wir Ihnen vorschlagen, dann fahren Sie mit
-<uri link="#doc_chap9_sect3">Dateisystem auf einer Partition anlegen</uri> fort.
+<uri link="#filesystems-apply">Dateisystem auf einer Partition anlegen</uri> fort.
 Wenn nicht, lesen Sie weiter, um ein wenig mehr über Dateisysteme zu lernen ...
 </p>
 
@@ -1429,7 +1615,9 @@ Wenn nicht, lesen Sie weiter, um ein wenig mehr über Dateisysteme zu lernen ...
 <p>
 Verschiedene Dateisysteme sind verfügbar. Einige von ihnen sind auf allen
 Architekturen stabil, andere nur auf einigen. Die folgende Tabelle listet die
-verfügbaren Dateisysteme und die Architekturen, auf denen diese arbeiten, auf:
+verfügbaren Dateisysteme und die Architekturen, auf denen diese arbeiten, auf.
+Wenn eine Architektur in "(...)" steht, dann sollte Dateisystem auf dieser
+Archtitektzr funktionieren, ist aber nicht getestet.
 </p>
 
 <table>
@@ -1451,17 +1639,17 @@ verfügbaren Dateisysteme und die Architekturen, auf denen diese arbeiten, auf:
 <tr>
   <ti>reiserfs</ti>
   <ti>ja</ti>
-  <ti>x86, hppa, alpha</ti>
+  <ti>x86, hppa, alpha, (mips), (ppc)</ti>
 </tr>
 <tr>
   <ti>xfs</ti>
   <ti>ja</ti>
-  <ti>x86, alpha</ti>
+  <ti>x86, alpha, (ppc)</ti> <!-- TODO when xfs is in mips-sources, add "(mips)" -->
 </tr>
 <tr>
   <ti>jfs</ti>
   <ti>ja</ti>
-  <ti>x86, alpha</ti>
+  <ti>x86, alpha, (mips)</ti>
 </tr>
 </table>
 
@@ -1518,7 +1706,7 @@ werden kann.
 
 </body>
 </subsection>
-<subsection>
+<subsection id="filesystems-apply">
 <title>Eine Partition mit einem Dateisystem formatieren</title>
 <body>
 
@@ -1635,12 +1823,11 @@ Wenn Sie Gentoo von einer LiveCD installieren, reicht es <c>proc</c> zu mounten:
 
 <p>
 Wenn Sie Gentoo nicht von einer Gentoo LiveCD installieren, müssen Sie
-<path>/proc</path> und <path>/dev</path> mit der Option bind mounten:
+<path>/proc</path>  mit der Option bind mounten:
 </p>
 
 <pre caption="proc und dev mit der Option bind mounten">
 # <i>mount -o bind /proc /mnt/gentoo/proc</i>
-# <i>mount -o bind /dev /mnt/gentoo/dev</i>
 </pre>
 
 <p>
