@@ -1,0 +1,9 @@
+# ChangeLog for net-dialup/fcpci
+# Copyright 2002 Alexander Holler
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/fcpci/ChangeLog,v 1.1 2002/07/18 18:30:48 holler Exp $
+
+*fcpci-03.09.10 (18 Jul 2002)
+
+  18 Jul 2002; Alexander Holler <holler@ahsoftware.de>
+
+  Initial checkin of this package.
