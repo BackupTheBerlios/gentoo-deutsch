@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.7 2003/12/27 22:26:06 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.8 2003/12/28 11:18:32 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -162,6 +162,7 @@ src_install() {
 	insinto /etc/init.d
 	insopts -m0755
 	newins ${FILESDIR}/rc.vdr vdr
+	newins ${FILESDIR}/rc.vdrwatchdog vdrwatchdog
 
 	dodoc CONTRIBUTORS COPYING README* INSTALL MANUAL HISTORY* UPDATE-1.2.0
 	dodoc ${FILESDIR}/vdrshutdown.sh
@@ -192,6 +193,7 @@ src_install() {
 	exeinto /usr/bin
 	doexe vdr
 	doexe svdrpsend.pl
+	doexe ${FILESDIR}/vdrwatchdog.sh
 
 	rm Make.config.template
 	insopts -m0644 -ovdr -gvideo
@@ -243,10 +245,10 @@ pkg_postinst() {
 	for i in ${INSTALLED_PLUGINS}
 		do
 		 einfo ${i}
-		 if vdr_opts emergeplugs quiet ; then
-			einfo
-		 	ACCEPT_KEYWORDS="~x86" /usr/bin/emerge ${i}
-			einfo
-		 fi
 	done
+	if vdr_opts emergeplugs quiet ; then
+		einfo
+	 	ACCEPT_KEYWORDS="~x86" /usr/bin/emerge ${INSTALLED_PLUGINS}
+		einfo
+	 fi
 }
