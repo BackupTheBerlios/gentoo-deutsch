@@ -1,7 +1,11 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-pilot/ChangeLog,v 1.5 2004/06/03 19:26:47 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-pilot/ChangeLog,v 1.6 2004/07/27 00:32:01 austriancoder Exp $
 
+*vdrplugin-pilot-0.0.6-r2 (27 July 2004)
+  27. July 2004: Christian Gmeiner <christian at visual-page dot de>
+  fixed ebuild to support epatch
+  added support for 2.6 kernels
 
 *vdrplugin-pilot-0.0.6-r1 (03 June 2004)
 
