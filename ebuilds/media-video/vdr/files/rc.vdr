@@ -1,13 +1,13 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.vdr,v 1.6 2003/08/05 17:15:31 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.vdr,v 1.7 2003/09/14 10:36:26 martini Exp $
 
 opts="${opts} fullrestart"
 
 depend() {
 		use lircd
-		before *
+		after checkroot
 }
 
 start() {
