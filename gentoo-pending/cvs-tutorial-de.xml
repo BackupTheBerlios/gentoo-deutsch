@@ -703,15 +703,107 @@ cvs [add aborted]: no repository
 </section> 
 
 <section> 
-	<title>Eine Datei, weitergeführt</title> 
+	<title>Eine Datei löschen, weitergeführt</title> 
 	<body> 
 	<p> 
 	Die Datei wird durch den Befehl fürs Löschen vorgesehen, wenn Sie das nächste Mal ein "cvs commit" durchführen.
-
+	Sobald Sie ein "commit" durchgeführt haben, wird die Datei offiziell vom CVS Repository gelöscht sein. CVS wird
+	die Datei jedoch nicht einfach "wegwerfen", sondern vielmehr alle Daten im Zusammenhang mit dieser Datei behalten. 
+	Sowohl Inhalt, als auch Geschichte der Änderungen. Dies ist wieder ein Beispiel, wie CVS Ihren wertvollen Quelltext
+	beschützt. 
 	</p>
+	<p>
+	"cvs remove" ist rekursiv. Das bedeutet, dass Sie mehrere Dateien gleichzeitig löschen können, und dann "cvs remove"
+	von einem Übergeordneten Verzeichnis aus aufrufen können, mit keinem weiteren Argument. Wenn Sie dies tun, werden alle
+	Dateien als "zu-löschen" gekennzeichnet, bis Sie das nächste Mal "cvs commit" aufrufen. Dann werden alle gelöscht. 
+	</p> 
 	</body> 
 </section> 
-	
+
+<section> 
+	<title>Ein Verzeichnis löschen</title> 
+	<body> 
+	<p> 
+	Wenn Sie ein gesamtes Verzeichnis löschen möchten, empfehle ich diese Vorgehensweise. 
+	Zunächst löschen Sie alle Dateien und entfernen Sie sich auch aus dem CVS Repository mittels "cvs remove", wie oben 
+	beschrieben. 
+	</p> 
+	<pre> 
+# <i> rm *.c</i> 
+# <i> cvs remove</i> 
+	</pre> 
+	</body>
+</section> 
+
+<section> 
+	<title>Ein Verzeichnis löschen, weitergeführt</title> 
+	<body> 
+	<p> 
+	Dann übergeben Sie Ihre Änderungen an das CVS Repository. 
+	</p> 
+	<pre>
+# <i>cvs commit</i> 
+	</pre>
+	<p> 
+	Nun folgt der Trick. Folgen Sie diesen Schritten, um das Verzeichnis wirklich zu löschen: 
+	</p> 
+	<pre>
+# <i>cd ..</i> 
+# <i>cvs remove mein_Verzeichnis</i> 
+# <i>rm -rf mein_Verzeichnis</i> 
+	</pre> 
+
+	<p>
+	Bemerken Sie, dass das Löschen des Verzeichnisses keinen weiteren Aufruf von "commit" benötigt. 
+	Verzeichnisse werden in Echtzeit dem Repository hinzugefügt beziehungsweise gelöscht. 
+	</p> 
+	</body>
+</section> 
+
+<section> 
+	<title>Das wars!</title> 
+	<body> 
+	<p> 
+	Das war Ihre Einführung in CVS. Ich hoffe, dass diese Tutorial Ihnen hilfreich war. Natürlich hat CVS 
+	eine Menge mehr Funktionen als die hier vorgestellten, aber dank der umfassenden Resourcen zum Thema 
+	CVS können Sie sich nach Bedarf weiter informieren. 
+	</p> 
+
+	<p>
+	<ul>
+		<li>
+			<uri>http://www.cvshome.org</uri> ist die Heimat der CVS Entwicklung. Dort finden Sie auch eine Menge
+			an Dokumentationen zum Thema CVS, wie etwa <uri link="http://www.cvshome.org/docs/manual/cvs.html">die offizielle
+			CVS-Online-Dokumentation</uri>
+		</li>
+		<li>
+			Die <uri link="http://www.durak.org/cvswebsites/">CVS VersionControl for Web Site Projects Seite</uri> beinhaltet gute Informationen
+			über CVS als Tool für die Entwicklung von Webprojekten. 
+		</li> 
+		<li> 
+			Karl Fogel hat ein Buch namens <uri link="http://cvsbook.red-bean.com/">Open Source Development with CVS</uri> geschrieben. Einige
+			Kapitel des Buches sind kostenlos online abrufbar. 
+		</li> 
+		<li> 
+			<uri link="http://stud.fh-heilbronn.de/~zeller/cgi/cvsweb.cgi/">cvsweb</uri> ist ein wirklich gutes CGI Skript, das ein Web-Interface
+			für Ihr CVS Repository zur Verfügung stellt. Sehr gut fürs Browsen. 
+		</li> 
+	</ul>
+	</p>
+	</body>
+</section>
+
+<section>
+	<body>
+	<note>
+	Dieses Tutorial wurde zuerst in <uri link="http://www.ibm.com/developerworks/linux">IBM developerWorks Linux Zone</uri>, getitelt 
+	<uri link="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/A5C4A0AF4296C66886256A0E005DE112?OpenDocument">
+	CVS for the developer or amateur</uri>.
+	Dieser Artikel ist Eigentum der Tenco Media Corporation. 
+	</note>
+	</body>
+</section>
+
 </guide>
 		
 		
