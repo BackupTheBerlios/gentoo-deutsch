@@ -23,7 +23,7 @@
 	</xsl:when>
         </xsl:choose>
       </xsl:variable>
-      
+
       <table class="ebuildlist" cellspacing="0" cellpadding="0" border="0"> 
         <tr class="header">
           <td>Name</td>
@@ -31,6 +31,7 @@
           <td>Revision</td>
           <td>Kategorie</td>
           <td>Download</td>           
+          <td>Veränderungen</td>
           <td>Datum</td>
         </tr>
 
@@ -61,6 +62,9 @@
             <td>
               <a href="{$baselink}/{category}/{name}/{name}.tar.gz?tarball=1">Download</a>
             </td>  
+            <td>
+              <a href="{$baselink}/{category}/{name}/ChangeLog?rev=HEAD&#38;content-type=text/plain">Veränderungen</a>
+            </td>
             <td>
               <xsl:value-of select="date/@day"/>
               <xsl:text>.</xsl:text>
