@@ -94,8 +94,7 @@ einem Guide-XML-Dokument verwendet werden:
   &lt;mail link="<i>thomasfl@gentoo.org</i>"&gt;<i>Thomas Flavel</i>&lt;/mail&gt;
 &lt;/author&gt;
 &lt;author title="<i>Übersetzung</i>"&gt;
-  &lt;mail link="<i>kontakt@hendrik-brandt.de</i>"&gt;
-	<i>Hendrik Brandt</i>&lt;/mail&gt;
+  &lt;mail link="<i>kontakt@hendrik-brandt.de</i>"&gt;<i>Hendrik Brandt</i>&lt;/mail&gt;
 &lt;/author&gt;
 
 &lt;abstract&gt;<i>
@@ -113,7 +112,7 @@ Dieser Leitfaden setzt Grundkenntnisse in XML und HTML voraus.</i>
 </pre>
 
 <p>
-In der ersten Zeile sehen wir den notwendigen tag der festlegt, dass das 
+In der ersten Zeile sehen wir den notwendigen Tag der festlegt, dass das 
 Dokument in XML beschrieben ist. Darauf folgt der Tag <c>&lt;guide&gt;</c> 
 -- das gesamte Dokument ist von einem <c>&lt;guide&gt; &lt;/guide&gt;</c>
 -Paar umschlossen. Schließlich gibt es noch den tag <c>&lt;title&gt;</c>, 
@@ -301,7 +300,7 @@ Quelltextschnipzel.
 Sie können auch das <c>&lt;pre&gt;</c> Tag benutzen:
 </p>
  	 
-<pre caption = "Named &lt;pre&gt;">
+<pre caption = "&lt;pre&gt;">
 &lt;pre caption = "Ausgabe von uptime"&gt;
 # &lt;i&gt;uptime&lt;/i&gt;
 16:50:47 up 164 days,  2:06,  5 users,  load average: 0.23, 0.20, 0.25
@@ -450,15 +449,15 @@ In Zukunft werden weitere Möglichkeiten, der automatischen Verknüpfung
 <chapter>
 <title>Coding Style</title>
 <section>
-<title>Introduction</title>
+<title>Einleitung</title>
 <body>
 
 <p>
 Da jede Gentoo Dokumentation eine große Anstregung ist und viele Leute
-die Dokumentation ändern ist ein Coding Style vonnöten.
+die Dokumentation ändern, ist ein Coding Style von Nöten.
 Ein Coding Style beinhaltet zwei Teile. Der erste (Interner Coding Style)
-erläutert wie die xml-Tags platziert werden sollen. Der zweite beschreibt
-den Inhalt, wie man die Leser nicht verwirrt.
+erläutert wie die xml-Tags platziert werden sollen, der zweite beschreibt
+den Inhalt; wie man die Leser nicht verwirrt.
 </p>
 
 <p>
@@ -483,9 +482,9 @@ Beide Teile werden jetzt erläutert.
 
 <p>
 <b>Leere Zeilen</b> müssen direkt nach <e>jedem</e>
-<c>&lt;body&gt;</c> (opening tag only) and before <e>every</e>
+<c>&lt;body&gt;</c> (nur öffnende Tags) und vor <e>jedem</e>
 <c>&lt;chapter&gt;</c>, <c>&lt;p&gt;</c>, <c>&lt;table&gt;</c>, 
-<c>&lt;author&gt;</c> (set), <c>&lt;pre&gt;</c>, <c>&lt;ul&gt;</c>, 
+<c>&lt;author&gt;</c> (Gruppe), <c>&lt;pre&gt;</c>, <c>&lt;ul&gt;</c>, 
 <c>&lt;ol&gt;</c>, <c>&lt;warn&gt;</c>, <c>&lt;note&gt;</c> and 
 <c>&lt;impo&gt;</c> (nur öffnende Tags) platziert werden.
 </p>
@@ -494,15 +493,15 @@ Beide Teile werden jetzt erläutert.
 Ein <b>Zeilenumbruch</b> muss nach 80 Zeilen angewandt werden, ausser im 
 <c>&lt;pre&gt;</c> Tag. Nur wenn es keine andere Wahl gibt kann von dieser
 Regel abgewichen werden (zum Beispiel wenn eine URL über das Maximum an Zeichen
-hinasusgeht). Der Editor muss dann beim nächsten Leerzeichen umbrechen.
+hinausgeht). Der Editor muss dann beim nächsten Leerzeichen umbrechen.
 </p>
 
 <p>
 <b>Einrücken</b> soll nich benutzt werden, ausser in XML Konstruktionen 
-bei denen die Parent Tags <c>&lt;tr&gt;</c> (from <c>&lt;table&gt;</c>),  
-<c>&lt;ul&gt;</c> und <c>&lt;ol&gt;</c> sind. Wenn Einrücken benutzt wird
+bei denen die Parent Tags <c>&lt;tr&gt;</c> (von <c>&lt;table&gt;</c>),  
+<c>&lt;ul&gt;</c> und <c>&lt;ol&gt;</c> sind. Wenn Einrücken benutzt wird,
 <e>müssen</e> zwei Leerzeichen für jede Einrückung benutzt werden. Das heisst, 
-das heisst <e>keine</e> Tabs und <e>nicht</e> mehr Leerzeichen.
+<e>keine</e> Tabs und <e>nicht</e> mehr Leerzeichen.
 </p>
 
 <p>
@@ -567,7 +566,7 @@ Großbuchstaben beginnen.
 <pre caption="Punkte und Großbuchstaben">
 &lt;ul&gt;
   &lt;li&gt;Kein Punkt&lt;/li&gt;
-  &lt;li&gt;Mit Punkt. Mehrere Sätzem, Sie erinnern Sich?&lt;/li&gt;
+  &lt;li&gt;Mit Punkt. Mehrere Sätze, Sie erinnern sich?&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 
@@ -576,14 +575,14 @@ Codelistings sollten <e>immer</e> eine <c>Beschreibung</c> haben.
 </p>
 
 <p>
-Benutzen Sie soweit möglich <c>&lt;uri&gt;</c> mit dem <c>link</c> Attribute.
+Benutzen Sie soweit möglich <c>&lt;uri&gt;</c> mit dem <c>link</c> Attribut.
 In anderen Worten,  <uri link="http://www.gentoo.org">Gentoo
 Website</uri> wird <uri>http://www.gentoo.org</uri> vorgezogen.
 </p>
 
 <p>
 Wenn Sie etwas innerhalb eines <c>&lt;pre&gt;</c> Konstruktes kommentieren 
-möchten benutzen Sie <c>&lt;codenote&gt;</c> wenn der Inhalt ein C or C++ 
+möchten, benutzen Sie <c>&lt;codenote&gt;</c> wenn der Inhalt ein C or C++ 
 Code Schnipsel ist. Andernfalls benutzen Sie <c>&lt;comment&gt;</c>. 
 Platzieren Sie den Kommentar <e>vor</e> dem Bezug des Kommentars.
 </p>
