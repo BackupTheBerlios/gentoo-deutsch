@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-games/ChangeLog,v 1.1 2003/06/21 11:02:11 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-games/ChangeLog,v 1.2 2003/09/13 17:28:23 fow0ryl Exp $
+
+*vdrplugin-games-0.6.0 (13 Sept 2003)
+
+  13 Sept 2003; H.Ryll <henning.ryll@web.de>
+  new version
 
 *vdrplugin-games-0.4.1 (24 Feb 2003)
 
