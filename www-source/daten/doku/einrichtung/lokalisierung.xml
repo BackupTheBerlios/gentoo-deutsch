@@ -122,8 +122,8 @@ eines Gentoo Linux behilflich sein.</abstract>
                 <p>Damit man in KDE seine gew&#252;nschte Sprache einstellen kann,
                 mu&#223; man das entsprechende Sprachpacket installieren.
 <pre>
-# <i>export LINGUAS="de"</i><br />
-# <i>touch /usr/portage/kde-base/kde-i18n/kde-i18n-3.1.4.ebuild</i><br />
+# <i>export LINGUAS="de"</i>
+# <i>touch /usr/portage/kde-base/kde-i18n/kde-i18n-3.1.4.ebuild</i>
 # <i>emerge kde-i18n</i>
 </pre>
 		</p>
@@ -198,7 +198,7 @@ eines Gentoo Linux behilflich sein.</abstract>
 
 </chapter>
 
-<version>$Revision: 1.9 $</version>
-<date>$Date: 2003/09/26 08:56:30 $</date>
+<version>$Revision: 1.10 $</version>
+<date>$Date: 2003/09/26 08:59:55 $</date>
 </guide>
  
