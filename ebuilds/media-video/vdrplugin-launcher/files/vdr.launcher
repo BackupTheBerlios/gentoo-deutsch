@@ -1,0 +1,9 @@
+# /etc/conf.d/vdr.osdteletext:
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-launcher/files/vdr.launcher,v 1.1 2004/06/26 08:48:30 fow0ryl Exp $
+
+# Global config file for vdr rc-scripts
+
+# If you want to disable some plugins in the laucher plugin,
+# please specify the command line option "-x plugin1 -x plugin2 ..."
+#_EXTRAOPTS="-x dvd"
+
