@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
+<!DOCTYPE guide SYSTEM "/datenhalde/misc/gentoo/gentoo/xml/htdocs/dtd/guide.dtd">
 
 <!-- English CVS Version: 1.11 -->
 
@@ -16,10 +17,9 @@
 	<date>13 Juni 2003</date>
 
 	<chapter>
-		<title>Über Gentoo Linux</title>
+			<title>Gentoo Linux... in einem Poster</title>
 
 		<section>
-			<title>Gentoo Linux... in einem Poster</title>
 			<body>
 
 				<fig link="http://www.ibiblio.org/web-gentoo/images/poster.jpg"/>
@@ -27,9 +27,11 @@
 
 			</body>
 		</section>
+	</chapter>
 
+	<chapter>
+		<title>Gentoo Linux in einem Absatz</title>
 		<section>
-			<title>Gentoo Linux in einem Absatz</title>
 			<body>
 
 				<p>Gentoo Linux, eine besondere Art von Linux, die automatisch für
@@ -47,9 +49,11 @@
 
 			</body>
 		</section>
+	</chapter>
 
+	<chapter>
+		<title>Was ist Portage?</title>
 		<section>
-			<title>Was ist Portage?</title>
 			<body>
 
 				<p><b>Portage</b> ist das Herz von Gentoo Linux und übt viele
@@ -76,9 +80,11 @@
 
 			</body>
 		</section>
+	</chapter>
 
+	<chapter>
+		<title>Gentoo Linux 1.4_rc4</title>
 		<section>
-			<title>Gentoo Linux 1.4_rc4</title>
 			<body>
 
 				<p>Portage hält auf Ihren Wunsch Ihr Gentoo Linux System "up-to-date".
@@ -98,17 +104,12 @@
 				<ul>
 					<li>Unterstützung für x86, PowerPC, UltraSparc und Alpha Prozessoren</li>
 					<li>LiveCD-basierte Installation für x86 und PowerPC</li>
-					<li>Die neuesten offiziellen Versionen von <uri
-					link="http://www.gentoo.org/dyn/pkgs/kde-base/kde.xml">KDE</uri> und
-					<uri link="http://www.gentoo.org/dyn/pkgs/gnome-base/gnome.xml">GNOME</uri></li>
+					<li>Die neuesten offiziellen Versionen von <uri link="http://www.gentoo.org/dyn/pkgs/kde-base/kde.xml">KDE</uri> und <uri link="http://www.gentoo.org/dyn/pkgs/gnome-base/gnome.xml">GNOME</uri></li>
 					<li>Verschiedene optimerte Linux Kernel (2.4.20, 2.4.21_pre)</li>
 					<li>Sehr moderne GNU Entwicklungsumgebung (glibc 2.3, gcc 3.2.2)</li>
-					<li>Hervorragende Dateisystemunterstützung: ReiserFS, XFS, ext3, EVMS,
-					LVM</li>
-					<li>Optimale Hardwareunterstützung: NVIDIA, Creative Labs Live! und
-					Audigy</li>
-					<li>Modulares OpenGL und Compiler Sub-System (unterstützt mehrere
-					nebeneinander existierende Versionen)</li>
+					<li>Hervorragende Dateisystemunterstützung: ReiserFS, XFS, ext3, EVMS, LVM</li>
+					<li>Optimale Hardwareunterstützung: NVIDIA, Creative Labs Live! und Audigy</li>
+					<li>Modulares OpenGL und Compiler Sub-System (unterstützt mehrere nebeneinander existierende Versionen)</li>
 					<li>Saubere, voneinander abhängige Skripte zur Initierung des Systems</li>
 					<li>Neue "hardened" Gentoo Security Initiative</li>
 					<li>4000+ Pakete mit der neuesten und besten Software</li>
