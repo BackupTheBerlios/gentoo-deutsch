@@ -33,23 +33,23 @@
 <title>Donnerstag</title>
 	<body>
 	<p>
-		Wir haben 120 CDs in circa 4 Stunden vergeben. Ich denke, wir hätten wesentlich mehr weggeben können; aber
+		Wir haben <b>120 CDs in circa 4 Stunden</b> vergeben. Ich denke, wir hätten wesentlich mehr weggeben können; aber
 		da wir auch noch welche für die Besucher an den folgenden Tagen brauchen, müssen wir etwas sparsamer sein
 	</p>
 	<p>
 		Die Leute hören nicht auf, Fragen zu stellen. Die am häufigsten gestellten sind:
 		<ul>
-			<li>Wird Gentoo Sicherheitsupdates wie andere Distributionen anbieten</li>
+			<li>Wird Gentoo <b>Sicherheitsupdates</b> wie andere Distributionen anbieten</li>
 			<li>Warum sind so viele ebuilds als unstable ausgewiesen</li>
 			<li>Manche haben Angst davor, dass Gentoo wieder schnell von der Bildfläche
 				verschwunden sein könnte - schließlich ist es ja eine relativ junge
-				Distribution. Es gibt auch bedenken bezüglich der Organisation von Gentoo.
+				Distribution. Es gibt auch bedenken bezüglich der <b>Organisation von Gentoo</b>.
 				Aus diesem Grunde machen sie auch nicht öffentlich bekannt, daß sie Gentoo
 				benutzen</li>
-			<li>Einige Firmen haben Bedenken: Sie können zwar automatische Updates von vielen
+			<li>Einige Firmen haben Bedenken: Sie können zwar <b>automatische Updates</b> von vielen
 				Paketen auf einmal machen, müssen danach aber auf jedem aktualisierten Rechner
 				<c>etc-update</c> laufen lassen</li>
-			<li>Verschiedene Leute fragten nach dem Fortkommen der Gentoo AMD64-Portierung.
+			<li>Verschiedene Leute fragten nach dem <b>Fortkommen der Gentoo AMD64-Portierung</b>.
 				Sie würden wirklich Gentoo anstelle einer anderen Distribution für den AMD64
 				benutzen.</li>
 		</ul>
@@ -67,36 +67,41 @@
 		vor, heute 240 CDs zu vergeben.
 	</p>
 	<p>
-		Um 12:30 treffen torbenh und phoen][x ein; der Platz wird immer weniger und scheint
+		<b>12:30 :</b> torbenh und phoen][x treffen ein; der Platz wird immer weniger und scheint
 		sich zu unserem größten Problem zu entwickeln. Ich zähle 12 aktive Gentoo/Xine-Entwickler
 		auf 15m². Die Menge vor unserem Stand, sie sich die Kurzfilme und Trailer ansehen, die Xine
 		zeigt, habe ich nicht mitgezählt.
 	</p>
 	<p>
-		12:45 : Bei Gesprächen mit mehreren Leuten entwickelt sich die Idee, ein DVD-Image mit
+		<b>12:45 :</b> Bei Gesprächen mit mehreren Leuten entwickelt sich die Idee, ein DVD-Image mit
 		allen Quellen etc. zu machen. So könnten auch Leute ohne Netzanschluss in den Genuss von
 		Gentoo kommen. Ich denke, wir sollten das im Auge behalten, damit wir es vielleicht zum
 		nächsten Linuxtag vorstellen können ;) Ich habe mit dem Sponsor unserer CDs gesprochen
 		und er sagte mir, daß sie uns nächstes Jahr wieder CDs spendieren werden.
 	</p>
 	<p>
-		15:25 : es kam die Frage auf, ob es ein allgemeines FAQ (mit vielleicht 5-10 Seiten) geben
+		<b>15:25 :</b> es kam die Frage auf, ob es ein allgemeines FAQ (mit vielleicht 5-10 Seiten) geben
 		würde, daß die Konzepte und am Meisten benutzten Kommandos für Installation und Administration
 		von Gentoo erklärt (wie <c>etcat</c>, <c>emerge</c>, Hinweise für gelegentliche Probleme und vielleicht
 		auch "Was ist zu tun, wenn....")
 	</p>
 	<p>
-		17:12 : "Platz" ist unser Wort des Tages. Zuletzt wurden 15 Computer/Laptops auf 15m² gezählt (die
+		<b>17:12 :</b> "Platz" ist unser Wort des Tages. Zuletzt wurden 15 Computer/Laptops auf 15m² gezählt (die
 		netten kleinen Zaurus und iPaq Geräte wurden hierbei nicht mitgezählt)
 	</p>
 	<p>
-		17:14 : Ein weiterer Vorschlag kam auf : In den Kernel-ebuilds sollten funktionierende .config-Dateien
+		<b>17:14 :</b> Ein weiterer Vorschlag kam auf : In den Kernel-ebuilds sollten funktionierende .config-Dateien
 		enthalten sein, oder diese sollten - wie bei anderen Distributionen - nach /boot kopiert werden. Der
 		Hintergrund hierfür ist, daß man dem Anwender so bessere und sicherere Einstellungen im Kernel geben kann,
 		als dies bei den Standard-Kernel-Einstellungen der Fall ist. Evtl. Könnten hierfür die .config-Dateien der
 		LiveCD benutzt werden.
 	</p>
-
+	<p>
+		<b>18:38 :</b> Der Tag ist zu Ende. Zwei Tage sind erledigt, zwei kommen noch.
+		Bisher hat mich Alles auf dem Linuxtag überrascht: Viele Entwickler und Anwender
+		haben uns aufgesucht, viele Fragen gestellt, Vorschläge gemacht und mit uns
+		diskutiert, in welche Richtung sich Gentoo bewegen sollte.
+	</p>
 
 </body>
 </section>
