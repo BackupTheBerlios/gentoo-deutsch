@@ -229,6 +229,78 @@ rtt min/avg/max/mdev = 302.780/399.218/645.602/128.856 ms
 			besten wäre ein Dateiformato, daß man mit wget benutzen könnte ;) ). Dieses Feature sollte einfach zu implementieren sein, braucht keine
 			Extra-Optionen und ist eine große Hilfe für Leute mit langsamen Netzzugang.
 		</p>
+		<p>
+			<b>15:33 :</b> Das nächste Mal brauchen wir unbedingt PPC-CDs. Pylon wurde von über
+			30 Personen gefragt, ob wir eine PPC-CD hätten.
+		</p>
+		<p>
+			<b>16:00 :</b> Das wars. Wir habens geschafft.
+		</p>
+	</body>
+</section>
+<section>
+	<title>Abschluss</title>
+	<body>
+		<p>
+			Eine kleine Zusammenfassung, was auf dem Linuxtag alles passierte:
+			<ul>
+				<li>wir hatten einen 15m² Stand mit</li>
+				<li>15 Computern</li>
+				<li>40 100MBit Switch-Ports, die dafür benutzt wurden uns und andere Projekte, die
+  					unsere Infrastruktur mitbenutzten (Gateway mit NAT/DHCP und Squit - natürlich auf
+  					Gentoo) online zu bringen</li>
+				<li>wir haben rund 5GB über den Uplink gejagt (Reeller Verkehr, da Squid seht gut lief)</li>
+				<li>die xine Leute mit Kurzfilmen auf einem DLD-Beamer, unterstützt von einem
+  					netten Creative 6.1 Lautsprechersystem mit einem Subwoofer der am anderen Ende der
+  					Halle zu hören gewesen sein muss.</li>
+			</ul>
+		</p>
+		<p>
+			Wir haben die Aufmerksamkeit von vielen Besuchern auf uns gezogen, von denen viele uns
+			fragten, was "Gentoo" bedeutet, was wir machen und haben im Gegenzug viel Feedback von
+			Anwendern bekommen, die schon Gentoo benutzen.
+		</p>
+		<p>
+			Viele Entwickler und Anwender besuchten uns - entweder als Standpersonal oder als normale
+			Besucher.<br/>
+			Ich möchte all den Leuten danken, die an unserem Stand tätig waren. Es war toll Euch alle
+			Fragen beantworten, CDs vergeben oder uns allen etwas zu essen oder zu trinken holen zu sehen.
+			Es hat sich gut angefühlt, soviel Unterstützung zu bekommen.
+		</p>
+		<p>
+			<b>Danke Euch Allen !</b>
+		</p>
+		<p>
+			Ich möchte mich auch bei unseren Standnachbarn bedanken, die sich nie über die Lautstärke unseres
+			Soundsystems beschwert haben...Auch Euch Danke!
+		</p>
+		<p>
+			Und nicht zu vergessen: Den Spass, den wir alle hatten. Man bedenke diese ständig wiederholten Filme
+			wie Matrix-XP (ich glaube, wir alle müssen diesen Film um die 50 Mal in vier Tagen gesehen haben).
+			Oder die Diskussionen, die wir mit einigen Anwendern führten (vor Allem die SuSE-Anwender, die fragten,
+			wie sie denn Ihren eigenen Kernel bauen könnten). Diese Leute waren überrascht, daß unsere CDs kostenlos
+			sind (schließlich wollen andere Distributoren Geld haben). Unsere Selbstorganisierte Schlüssel-Abzeichnungs-Party
+ 			(und die Diskussion, ob es sicher ist, den Fingerabdruck über IRC zu verteilen, wenn man 5m von den anderen
+			entfernt sitzt, sodaß man nicht aufstehen muß und die Identität zu überprüfen). Ach übrigens: Haben sie jemals
+			versucht, eine Visitenkarte zu lesen, die auf hebräisch verfasst ist?
+		</p>
+		<p>
+			Der Linuxtag war eine sehr positive Erfahrung für mich, da ich die Chance hatte, viele andere Projektteilnehmer
+			im wahren Leben zu treffen, und bis zum Linuxtag konnte ich mir nicht vorstellen, daß wirklich so viele Leute
+			an unserem Stand anhalten würden. Aber unser Stand war dann so überfüllt, daß man sich kaum noch bewegen konnte.
+			Und der Gang vor unserem Stand war undurchdringbar, wenn die Leute versuchten die Filme anzuschauen, die an unserem
+			Stand gezeigt wurden.
+		</p>
+		<p>
+			Um nun zum Ende zu kommen:<br/>
+			<br/>
+			Es hat wirklich Spass gemacht! Danke an Euch alle und hoffentlich sehen wir uns (und vielleicht noch
+			ein paar mehr Gentoo-Leute) im nächsten Jahr - am Linuxtag.
+		</p>
+		<p>
+			Auf wiedersehen<br/>
+			Michael "tantive" Imhof
+		</p>
 	</body>
 </section>
 
