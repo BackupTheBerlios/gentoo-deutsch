@@ -1,8 +1,12 @@
 # ChangeLog for media-video/vdrplugin-dxr3
 # Copyright 2003 Phillip Rothe <phil@alpha-centauri.org>; Distributed under the GPL
 
+*vdrplugin-dxr3-0.2.2-r1 (23 Apr 2004)
+  23 Apr 2004: Christian Gmeiner <christian at visual-page.de>
+  Patch for more stability
+
 *vdrplugin-dxr3-0.2.2 (10 Dec 2003)
-  19 Feb 2004; C. Gmeiner <christian@visual-page.de>
+  19 Feb 2004; C. Gmeiner <christian at visual-page.de>
   version bump
   
 *vdrplugin-dxr3-0.2.1 (10 Dec 2003)
