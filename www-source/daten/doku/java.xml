@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/java.xml,v 1.4 2003/12/14 13:48:22 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/java.xml,v 1.5 2003/12/14 13:55:15 jay Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version: 1.9 -->
@@ -19,7 +19,7 @@ Anleitung für Benutzer und Entwickler von Java unter Gentoo Linux
 <license/>
 
 <version>0.1.2</version>
-<date>14. Dezember 2003</date>
+<date>4. September 2002</date>
 
 <chapter>
 <title>Installation eines JDK/JRE</title>
