@@ -4,7 +4,7 @@
 
 <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
-<xsl:param name="listname" select="'gentoo_de'"/>
+<xsl:param name="listname" select="'gentoo_org'"/>
 
 <xsl:template match="list">
   <xsl:element name="xsl:stylesheet">
