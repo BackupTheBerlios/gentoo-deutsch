@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.6-r1.ebuild,v 1.1 2003/12/11 16:02:33 rootshell Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.6-r1.ebuild,v 1.2 2003/12/12 11:42:33 fow0ryl Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
@@ -13,8 +13,11 @@ DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
-		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz						http://www.vdr-portal.de/download/patches/Komplettpatch-1.2.6.diff.bz2
+		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz
+		http://www.vdr-portal.de/download/patches/Komplettpatch-1.2.6.diff.bz2
 		http://linvdr.org/download/VDR-AIO/vdr-${ELCHI_VN}-ElchiAIO3c.diff.gz
+		http://www.magoa.net/linux/files/improvedosd-1.diff.gz
+		http://www.magoa.net/linux/files/icons.tar.gz
 		"
 #		http://www.akool.de/download/vdr-${AKOOL_VN}.patch.bz2
 
@@ -73,16 +76,14 @@ src_unpack() {
 	if vdr_opts ac3; then
 		if vdr_opts akool; then
 			ewarn "ac3 patch is already part of akool patch ... skipping"
+		else
+			einfo "Apply AC3 patch ..."
+			epatch ../${AC3_OVER_DVB}.diff
 		fi
-		einfo "Apply AC3 patch ..."
-		epatch ../${AC3_OVER_DVB}.diff
 	fi
 
 	# Akool Patch
 	if vdr_opts akool; then
-		if vdr_opts elchi; then
-			ewarn "elchi patch is already part of akool patch ... skipping"
-		fi
 		einfo "Apply akool patch ..."
 		patch -p1 < ../Komplettpatch-1.2.6.diff
 		#epatch ../vdr-${AKOOL_VN}.patch
@@ -90,13 +91,14 @@ src_unpack() {
 
 	# Elchi Patch
 	if vdr_opts elchi; then
-		if ! vdr_opts akool; then
-		cd ${S}
+		if vdr_opts akool; then
+			ewarn "elchi patch is already part of akool patch ... skipping"
+		else
+			cd ${S}
 			einfo "Apply ElchiAOI3b patch ..."
 			patch < ../vdr-${ELCHI_VN}-ElchiAIO3c.diff
 		fi
 	fi
-
 
 #
 # by mad, no yet ready

@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6.ebuild,v 1.4 2003/11/24 16:23:04 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6.ebuild,v 1.5 2003/12/12 11:40:53 fow0ryl Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
@@ -63,9 +63,10 @@ src_unpack() {
 	if vdr_opts ac3; then
 		if vdr_opts akool; then
 			ewarn "ac3 patch is already part of akool patch ... skipping"
+		else
+			einfo "Apply AC3 patch ..."
+			epatch ../${AC3_OVER_DVB}.diff
 		fi
-		einfo "Apply AC3 patch ..."
-		epatch ../${AC3_OVER_DVB}.diff
 	fi
 
 	# Akool Patch
