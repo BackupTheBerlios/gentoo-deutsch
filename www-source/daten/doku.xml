@@ -30,8 +30,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 	<body>
   		<p>
 			<ul>
-				<li><uri link="einrichtung/installation">Installationsanleitung für Gentoo-Linux 1.2</uri></li>
-				<li><uri link="einrichtung/installation14rc4">Installationsanleitung für Gentoo-Linux 1.4rc4</uri></li>
+				<li><uri link="einrichtung/installation1.4">Installationsanleitung für Gentoo Linux 1.4</uri></li>
 				<li><uri link="einrichtung/installationppc">Installation PPC</uri></li>
 				<li><uri link="einrichtung/lokalisierung">Lokalisierung</uri></li>
 				<li><uri link="einrichtung/desktop">Desktop-Konfiguration</uri></li>
@@ -40,6 +39,14 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 				<li><uri link="einrichtung/gentoo-kernel">Kernel Leitfaden</uri></li>
 			</ul>
   		</p>
+			<p>Veraltete Dokumente, aber aus historischen und Gründen weiterhin
+			vorhanden:</p>
+			<p>
+				<ul>
+					<li><uri link="einrichtung/installation">Installationsanleitung für Gentoo-Linux 1.2</uri></li>
+					<li><uri link="einrichtung/installation14rc4">Installationsanleitung für Gentoo-Linux 1.4rc4</uri></li>
+				</ul>
+			</p>
 	</body>
 </section>
 
