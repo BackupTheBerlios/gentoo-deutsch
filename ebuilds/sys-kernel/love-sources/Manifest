@@ -4,8 +4,9 @@ MD5 b70495ee5aaf817128398641a5753ab4 love-sources-2.6.6-r4.ebuild 1422
 MD5 5690d790d7f98c99c3aa8e61170461a4 love-sources-2.6.7_rc1-r1.ebuild 1651
 MD5 1a9a2aebf0d66cc9d5209f2397ddab67 love-sources-2.6.7_rc3-r1.ebuild 1651
 MD5 e92bd8126ca15e4f23bdbdb2252fd8b8 love-sources-2.6.7_rc3-r2.ebuild 1780
-MD5 90016db972585baf917ba8ca8eeabb54 ChangeLog 467
-MD5 464a0e8debe038f34b55e2d00a2b9ad9 love-sources-2.6.8_rc1-r1.ebuild 1642
+MD5 2da9bec89f6cfd723b5d6c16a3ed1fa0 ChangeLog 601
+MD5 71b373a6cb865b937141bd97e4ff234d love-sources-2.6.8_rc1-r1.ebuild 1775
+MD5 8778d35c5f812ecc51322ff22f04ca82 love-sources-2.6.8_rc2-r1.ebuild 1795
 MD5 89fff60c4dbe945422b16307d4e4f1f4 files/digest-love-sources-2.6.6_rc3-r4 257
 MD5 668d09e4ef3eadf7709275cbeae2b949 files/digest-love-sources-2.6.6-r5 186
 MD5 41a64fba7285ed895455cb4b2616d632 files/digest-love-sources-2.6.6-r4 127
@@ -13,3 +14,4 @@ MD5 ff262147eeb1ac98f5a8f9f622e5c7c2 files/digest-love-sources-2.6.7_rc1-r1 257
 MD5 2408dfd247ea549064640a8fa6880f55 files/digest-love-sources-2.6.7_rc3-r1 258
 MD5 4f508ad44da5097369d39142a2a5d7bc files/digest-love-sources-2.6.7_rc3-r2 259
 MD5 71ef8771fc87aeecf6c00b7cdb538c69 files/digest-love-sources-2.6.8_rc1-r1 258
+MD5 8fc754ac871864b89577fd1e6d2dac67 files/digest-love-sources-2.6.8_rc2-r1 195
