@@ -279,12 +279,54 @@
 	<title>Ein genauerer Blick auf "cvs update", Teil 1</title>
 	<body>
 		<p>
-		
+		Wenn es neue Dateien gibt, gibt CVS für jede Datei "U [Pfad]" aus, während die Datei gespeichert wird.
+		Außerdem werden Sie einige Meldungen der Art "? [Pfad]" sehen, wenn Sie das Modul kompiliert haben. Dabei 
+		handelt es sich um Objekt-Dateien. CVS erkennt, dass diese Dateien nicht im entfernten CVS-Repository 
+		gespeichert sind. 
 		</p>
 	</body>
 </section>
 
+<section> 
+	<title>Ein genauerer Blick auf "cvs update", Teil 2</title>
+	<body>
+		<p>
+		Beachten Sie auch die beiden Befehlszeilenparameter, die wir verwendet haben. "-d" teilt CVS mit, dass neue 
+		Verzeichnisse angelegt werden sollen, wenn Sie auf dem entfernten Server eingerichtet worden sind. Dies würde
+		sonst nicht geschehen. "-P" veranlaßt CVS leere Verzeichnise, die auf dem Server gelöscht wurden, auch im 
+		lokalen System zu löschen. CVS neigt sonst dazu viele nicht mehr benutzte Verzeichnisse anzusammeln. 
+		</p>
+		<p>
+		Wenn Sie nur die neuesten Quelltexte herunterladen möchten, ist das eigentlich schon alles was Sie benötigen. 
+		Nun werden wir noch einen Blick darauf werfen, was Sie benötigen, wenn Sie mit CVS als Entwickler umgehen müssen. 
+		</p> 
+	</body> 
+</section> 
 
+</chapter>
+<chapter>
+<title>CVS für Entwickler</title>
+
+<section>
+	<title>Dateien modifizieren</title>
+	<body>
+	<p>
+	Als Entwickler werden Sie Dateien ändern wollen, die mittels CVS organisiert sind. Dazu müssen Sie nur wie gewohnt 
+	die lokale Datei auf ihrem System bearbeiten. Ihre Änderungen werden nicht auf dem Server geändert bis Sie CVS
+	ausdrücklich den "commit"-Befehl (commit - einreichen) erteilen. Wenn Sie alle Ihre Änderungen sorgfältig getestet haben,
+	und Sie sich sicher sind, dass alles ordentlich funktioniert, brauchen Sie nur diese beiden Schritte zu befolgen. 
+	Zunächst gehen Sie sicher, dass sie die aktuellsten Quelltexte auf Ihrem lokalen System besitzen. Dazu geben Sie folgenden
+	Befehl ein.
+	</p>
+	<pre>
+	# <i>cvs update -dP</i>
+	</pre>
+	</body>
+</section> 
+
+
+
+	
 </guide>
 		
 		
