@@ -238,6 +238,137 @@ abgelegt werden. Dieser wird mit dem <i>lndir</i> Befehl erzeugt.</p>
 verschiedene build Verzeichnisbäume zum kompilieren und testen der verschiedenen Optionen.</p>
 </body>
 </section>
+<section>
+<title>Anpassung der host.def Datei</title>
+<body>
+<p>Die Datei ~/DRI-CVS/build/xc/config/cf/host.def dient der Steuerung der XFree86 Kompilierung. Diese kann natürlich den eigenen Wünschen oder Systemkonfigurationen 
+angepasst werden. Standardmässig sieht die Datei etwa so aus:</p>
+<pre caption=" ~/DRI-CVS/build/xc/config/cf/host.def">
+            #define DefaultCCOptions -Wall
+// Für i386:
+            #define DefaultGcc2i386Opt -O2
+// Für Alpha:
+            #define DefaultGcc2AxpOpt -O2 -mcpu=ev6 (or similar)
+// Für alle anderen Architekturen
+            #define LibraryCDebugFlags -O2
+            #define BuildServersOnly YES
+            #define XF86CardDrivers vga tdfx mga ati i810
+            #define LinuxDistribution LinuxRedHat
+            #define DefaultCCOptions -ansi GccWarningOptions -pipe
+            #define BuildXF86DRI YES
+            /* Optionally turn these on for debugging */
+            /* #define GlxBuiltInTdfx YES */
+            /* #define GlxBuiltInMga YES */
+            /* #define GlxBuiltInR128 YES */
+            /* #define GlxBuiltInRadeon YES */
+            /* #define DoLoadableServer NO */
+            #define SharedLibFont NO
+</pre>
+<p>Mit der Variable ProjectRoot kann die Installation der XFree86 Dateien angepasst werden. Wir empehlen die Installation der DRI Dateien in die
+bestehende XFree86 Installation - dies ist in der regel sicherer und weniger störanfällig, auch wenn wir in anderen Richtlinien nicht so verfahren. </p>
+<p> Sollte XFree86 4.x nicht in  /usr/X11R6/ installiert sein, muss folgende Zeile zur host.def hinzugefügt werden:</p>
+<pre>
+#define ProjectRoot pathToYourXFree86installation
+// Note the XF86CardDrivers line to be sure your card's driver is listed.
+// Zur Verwendung von 3DNow! Optimierungen in Mesa und DRI Treibern:
+#define MesaUse3DNow YES
+// Für diese Option ist kein AMD Prozessor erforderlich.
+// Der DRI Treiber wird beim Start nach 3DNow! schauen, und bei Bedarf anwenden.
+</pre>
+<p>Für die Verwendung von SSE Optimierungen in Mesa und DRI muss mindestens ein 2.4.x Kernel vorhanden sein. Mesa überprüft selbstständig,
+ob SSE sowohl vom Prozessor als auch vom Betriebssystem unterstützt wird. Um Mesa in den DRI Treibern kompilieren zu können, müssen die 2.4.x
+Kernel Header in /usr/src/linux befinden. Sollten Sie SSE für eine ältere Kernelversion in /usr/src/linux aktivieren, wird die Kompilation von Mesa fehlschlagen.
+Sagen Sie nicht, wir hätten Sie gewarnt! Als 2.4.x Kernel Benutzer können Sie folgendes hinzufügen:</p>
+<pre>
+#define MesaUseKatmai YES
+</pre> 
+</body>
+</section>
+<section>
+<title>Kompilieren des XFree86/DRI Verzeichnisbaumes</title>
+<body>
+<p>Zum Kompilieren genügt folgendes:</p>
+<pre>
+# cd ~/DRI-CVS/build/xc/
+# make World >&amp; world.log
+</pre>
+<p>Manchmal scheint es notwendig zu sein, zusätzlich folgendes auszuführen:</p>
+<pre>
+# cd ~/DRI-CVS/build/xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel
+# make -f Makefile.linux radeon.o
+// Ersetzen Sie radeon.o durch Ihren eigenen Treiber
+</pre>
+<p>Es ist normal, dass während der Kompilierung Warnungen auftreten. Da dies eine Weile dauern wird, empfehlen wir solange das
+Lesen Ihrer Mails oder ein Besuch bei heise.</p>
+<warn>Die make Option -j sollte nicht verwendet werden. Dies funktioniert nicht unter XFree86/DRI</warn>
+<p>Mit Ihrem Text Editor können Sie die Log-Datei nach Fehlern durchsuchen, die in der Regel mit * * * beginnen.</p>
+</body>
+</section>
+<section>
+<title>Installation des Treibers</title>
+<body>
+<p>Überprüfen Sie, ob die DRI Kernelmodule erfolgreich erstellt wurden:</p>
+<pre>
+# cd ~/DRI-CVS/build/xc/programs/Xserver/hw/xfree86/os-support/linux/drm/kernel; ls
+</pre>
+<p>Für einen 3dfx Voodoo Treiber sollten Sie tdfx.o sehen. Für Matrox G200/G400 ist dies mga.o, für ATI Rage128 r128.o, für Intel i810 ein i810.o, für ATI Radeon ist dies radeon.o.
+Sollte die Kompilation der DRI Module fehlgeschlagen sein, sollten Sie die Linux Kernel Version überprüfen. Auch werden nicht immer die allerneuesten Kernel unterstützt.</p>
+<p>Nun kopieren wir alle Treiberdateien in die XFree86 Installation. Bei Bedarf können die zu überschreibenden Dateien vorher gesichert werden. In diesem Beispiel verwenden wir eine Radeon Karte.
+Für Ihre eigene Karte müssen Sie die entsprechenden Dateien kopieren. Ein Blick in das entsprechende Verzeichnis hilft hier oft weiter.</p>
+<pre>
+# cd ~/DRI-CVS/build/xc/exports/lib/modules/
+# cp dri/r200_dri.so /usr/X11R6/lib/modules/dri/
+# cp drivers/atimisc_drv.o /usr/X11R6/lib/modules/drivers/
+# cp drivers/radeon_drv.o /usr/X11R6/lib/modules/drivers/
+# cp extensions/libdri.a /usr/X11R6/lib/modules/extensions/
+# cp linux/libdrm.a /usr/X11R6/lib/modules/linux/
+</pre>
+<p>Dann folgen Sie den Anweisungen in Kapitel 3, Abschnitt "Konfiguration von XF86Config".</p>
+<p>um das entsprechende DRM Modul in den laufenden KErnel zu laden, sollte das KErnel modul nach /lib/modules/ kopiert werden und mit
+uname -r`/kernel/drivers/char/drm/ ausgeführt werden. Anschliessend <i>modules-update</i> und den X Server neu starten. Sollten Sie den Treiber nicht für den
+aktuell benutzten Kernel erstellt haben, muss uname -r an den zu verwendenden Kernel angepasst werden.</p>
+<warn>Stellen Sie sicher, dass ältere DRI Module vorher entladen werden. Manche DRM Module erwarten das apgart vorher geladen wird.</warn>
+</body>
+</section>
+</chapter>
+
+<chapter>
+	<title>Performance Tuning</title>
+<section>
+	<title>Das meiste aus Direct Rendering herausholen</title>
+<body>
+<p>
+Einige Optionen können die Performance um mehr als 30% steigern. Diese können in /etc/X11/XF86Config gesetzt werden:
+</p>
+<pre caption=" XF86Config">
+Section "Device"
+     Option     "AGPMode" "4"
+// Dies steigerte meine FPS von 609 zu 618.
+     Option     "AGPFastWrite" "True"
+// Dies hatte keinen messbaren Effekt, kann aber die Instabilität des Computers erhöhen.
+// Eventuell muss es im BIOS zusätzlich aktiviert werden.
+     Option     "EnablePageFlip" "True"
+// Dies steigerte FPS von 618 zu 702. Angeblich soll es riskant sein, aber wenige Leute hatten Probleme.
+     ...
+EndSection
+</pre>
+<p>Für weitere Tuning Optionen sollte die <uri link="http://dri.sourceforge.net/doc/dri_driver_features.phtml">DRI Infoseite</uri> konsultiert werden.</p>
+</body>
+</section>
+</chapter>
+<chapter>
+	<title>Referenzen</title>
+<section>
+<body>
+<p>
+   1.  http://forums.gentoo.org/viewtopic.php?t=46681
+   2. http://forums.gentoo.org/viewtopic.php?t=29264
+   3. http://dri.sourceforge.net/
+   4. http://www.retinalburn.net/linux/dri_status.html
+
+</p>
+</body>
+</section>
 </chapter>
 </guide>
  
