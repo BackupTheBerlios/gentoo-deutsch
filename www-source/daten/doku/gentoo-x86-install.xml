@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-x86-install.xml,v 1.6 2003/12/15 14:11:40 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-x86-install.xml,v 1.7 2003/12/17 22:39:44 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS version: 1.190 -->
@@ -2474,7 +2474,7 @@ Moduls.  In diesem Fall wäre es:</comment>
 
         <pre caption="Mehrere Netzwerkkarten">
 # <i>cd /etc/init.d</i>
-# <i>ln -s net.eht0 net.eth<comment>x</comment></i>
+# <i>ln -s net.eth0 net.eth<comment>x</comment></i>
         </pre>
 
         <p>Fügen Sie nun jedes erstellte Init-Skript zum default runlevel hinzu
