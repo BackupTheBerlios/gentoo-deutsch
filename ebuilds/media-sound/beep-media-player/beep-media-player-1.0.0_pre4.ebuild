@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-sound/beep-media-player/Attic/beep-media-player-1.0.0_pre4.ebuild,v 1.1 2003/11/01 21:27:21 dertobi123 Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-sound/beep-media-player/Attic/beep-media-player-1.0.0_pre4.ebuild,v 1.2 2003/11/01 21:56:51 dertobi123 Exp $
 
 IUSE="nls esd opengl mmx oggvorbis 3dnow mikmod ipv6"
 
@@ -85,7 +85,10 @@ src_install() {
 	insinto /usr/share/pixmaps 
 	doins beep/beep_logo.xpm beep/beep_mini.xpm
 
-	insinto /usr/share/gnome/apps/Multimedia
-	mv beep/beep.desktop.in beep/beep.desktop
-	doins beep/beep.desktop														
+	if [ -n "`use gnome`" ]
+	then
+		insinto /usr/share/gnome/apps/Multimedia
+		mv beep/beep.desktop.in beep/beep.desktop
+		doins beep/beep.desktop
+	fi
 }
