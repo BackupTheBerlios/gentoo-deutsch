@@ -69,23 +69,25 @@
 		Korrekturen an den deutschen Dokumentationen vorzunehmen, ohne daß alle Beteiligten Developer-Status bei gentoo.org haben
 		müssen. Hier gibt es diesen Status wesentlich schneller ;)
   	</p>
-
-  	<p>
-		Wer mitarbeiten will, einfach <uri link="http://developer.berlios.de/account/register.php" target="_blank">bei berliOS registrieren</uri> und auf der
-		<uri link="http://developer.berlios.de/projects/gentoo-deutsch" target="_blank">Projektübersicht</uri> einem der Admins eine Nachricht mit dem
-		Benutzernamen bei berliOS schicken. Der Developer-Status den man daraufhin erhält, bringt Schreibzugriff auf das
-		CVS-Repository mit sich, d.h. man kann Neues einchecken und Altes verbessern.
-	</p>
-	
-	</body>
+  
+  </body>
 </section>
 
 <section>
 	<title>Mitarbeiten</title>
 	<body>
 
+  <p>
+	Wer mitarbeiten will, registriert sich bei <uri
+  link="http://developer.berlios.de/account/register.php" target="_blank">berliOS</uri> und lässt einem der Admins auf der
+	<uri link="http://developer.berlios.de/projects/gentoo-deutsch" target="_blank">Projektübersicht</uri> eine Nachricht mit dem
+	Benutzernamen bei berliOS zukommen. Der Developer-Status, den man daraufhin erhält, bringt Schreibzugriff auf das
+	CVS-Repository mit sich, d.h. man kann Neues einchecken und Altes verbessern.
+	</p>
+
 	<p>
-	Um bei Gentoo Deutsch mitwirken zu können, kann sich in einem der drei folgenden Punkten engagieren:
+	Um bei Gentoo Deutsch mitwirken zu können, können Sie sich in einem der drei
+  folgenden Punkten engagieren:
 	</p>
 
 	<ul>
@@ -95,29 +97,29 @@
 	</ul>
 
 	<p>
-	Vor dem Schreiben von Ebuilds sollte geprüft werden, ob sich das gewünschte Programm nicht bereits im <uri link="http://packages.gentoo.org/">
-	offiziellen Portage</uri> Verzeichnisbaum befindet. Ebenso gibt es eine Übersicht über die <uri link="http://www.gentoo.de/inhalte/download/ebuilds_de/">
+	Vor dem <e>Schreiben von Ebuilds</e> sollten Sie prüfen, ob sich das gewünschte Programm nicht bereits im <uri link="http://packages.gentoo.org/">
+	offiziellen Portage</uri> Tree befindet. Ebenso gibt es eine Übersicht über die <uri link="http://www.gentoo.de/inhalte/download/ebuilds_de/">
 	Ebuilds bei gentoo.de</uri>. Hilfreich ist sicher die Anleitung zum <uri link="http://www.gentoo.de/inhalte/doku/gentoo-howto/">Schreiben von Ebuilds</uri>.
 	Die Erstellung von Ebuilds sollte sich wenn immer möglich an den <uri link="http://www.gentoo.org/doc/en/policy.xml">Gentoo Linux
 	Development Policy</uri> orientieren. 
 	</p>
 
-	<p>Erste Anlaufstelle für das Übersetzen von englischen Dokumentationen sind sicher die <uri link="http://www.gentoo.de/inhalte/projekt/translation/">
+	<p>Erste Anlaufstelle für das <e>Übersetzen von englischen Dokumentationen</e> sind sicher die <uri link="http://www.gentoo.de/inhalte/projekt/translation/">
 	Informationen für deutsche Übersetzer</uri>. Des weiteren sollte man sich einen kleine Übersicht über das <uri link="/inhalte/projekt/site/">Guide XML 
-	Projekt von Gentoo</uri> verschaffen und sich wenn immer möglich an den <uri link="http://www.gentoo.org/doc/en/doc-policy.xml">Gentoo Linux
+	Projekt von Gentoo</uri> verschaffen und sich wenn immer möglich an der <uri link="http://www.gentoo.org/doc/en/doc-policy.xml">Gentoo Linux
 	Documentation Policy</uri> orientieren. Wer mit <uri link="http://cvsbook.red-bean.com/translations/german/">CVS nichts am Hut</uri> hat, findet sicher
 	jemanden der einem bei der Bedienung behilflich ist. ;)
   	</p>
 
 	<p>
-	Bei der <b>Mitarbeit an der Webseite</b> werden vor allem die <uri link="http://www.gentoo.de/inhalte/projekt/neuigkeiten/">Neuigkeiten</uri>
-	eingepflegt, der wöchentliche <uri link="http://www.gentoo.org/news/de/gwn/gwn.xml">Gentoo Newsletter</uri> mitübersetzt und die Seiten
+	Bei der <e>Mitarbeit an der Webseite</e> werden vor allem die <uri link="http://www.gentoo.de/inhalte/projekt/neuigkeiten/">Neuigkeiten</uri>
+	eingepflegt <!--der wöchentliche <uri link="http://www.gentoo.org/news/de/gwn/gwn.xml">Gentoo Newsletter</uri> mitübersetzt --> und die Seiten
 	auf gentoo.de verwaltet.
 	</p>
 
 	<p>
 	Des weiteren sind wir auf Veranstaltungen präsent, um Gentoo der Allgemeinheit bekannt zu machen. Ein Beispiel hierfür ist der 
-	<uri link="/inhalte/projekt/	lt2k3">LinuxTag 2003</uri>.
+	<uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri>.
 	</p>
 
 	</body>
