@@ -102,26 +102,26 @@ keinen Fall vollst&#xE4;ndig. </abstract>
 	Kategorie. Es ist sehr wichtig, dass Versionsnummern glaubw&#xFC;rdig die Version eines Paketes repr&#xE4;sentieren, damit
 	Portage seine Abh&#xE4;gikeits-Pr&#xFC;fungen korrekt ausf&#xFC;hrt..</impo>
 
-	<p>Der dritte Abschnitt (optional) enthält eine spezielle Suffix, entweder <c>_alpha</c>, <c>_beta</c>, <c>_pre</c> oder 
-	<c>_rc</c>. Alle diese Suffixe werden durch eine Nummer ergänzt, zum Beispiel <c>linux-2.4.0_pre10</c>. Bei identischen
-	Versionsummern geht Portage davon aus, dass <c>_alpha</c> älter als <c>_beta</c> ist, <c>_beta</c> älter als <c>_pre</c>
-	und <c>_pre</c> äter als <c>_rc</c> ist.</p>
-	<note>Ein <c>_rc</c> Paket ist älter als ein Paket ohne vorausgehende  Suffixe mit Unterstrich (z.B. <c>linux-2.4.0</c>)
-	und <c>linux-2.4.0</c> ist älter als ein Paket mit einem Buchstaben Präfix, hier <c>linux-2.4.0b</c>. Nochmal: Diese 
-	Versionsinformationen sind wichtig, da Portage es zur Bestimmung heranzieht, ob ein Paket oder ebuild älter oder jünger ist,
+	<p>Der dritte Abschnitt (optional) enth&#xE4;lt eine spezielle Suffix, entweder <c>_alpha</c>, <c>_beta</c>, <c>_pre</c> oder 
+	<c>_rc</c>. Alle diese Suffixe werden durch eine Nummer erg&#xE4;nzt, zum Beispiel <c>linux-2.4.0_pre10</c>. Bei identischen
+	Versionsummern geht Portage davon aus, dass <c>_alpha</c> &#xE4;lter als <c>_beta</c> ist, <c>_beta</c> &#xE4;lter als <c>_pre</c>
+	und <c>_pre</c> &#xE4;ter als <c>_rc</c> ist.</p>
+	<note>Ein <c>_rc</c> Paket ist &#xE4;lter als ein Paket ohne vorausgehende  Suffixe mit Unterstrich (z.B. <c>linux-2.4.0</c>)
+	und <c>linux-2.4.0</c> ist &#xE4;lter als ein Paket mit einem Buchstaben Pr&#xE4;fix, hier <c>linux-2.4.0b</c>. Nochmal: Diese 
+	Versionsinformationen sind wichtig, da Portage es zur Bestimmung heranzieht, ob ein Paket oder ebuild &#xE4;lter oder j&#xFC;nger ist,
 	als ein Paket aus der selben kategorie mit gleichem Namen.</note>
 
 	<p>Der vierte Abschnitt (ebenfalls optional) ist die Gentoo Linux spetzifische <e>Revisionsnummer</e>, welche durch <c>-r#</c>
 	angegeben wird, wobei <c>#</c> ein Integer (Zahlenwert) ist, als Beispiel: <c>package-4.5.3-r3</c>. Die Revisionsnummer ist
-	unabhängig von der Versionsnummer des Quellpaketes und kann dazu genutzt werden, die Benutzer davon in kennntnis zu setzen, 
+	unabh&#xE4;ngig von der Versionsnummer des Quellpaketes und kann dazu genutzt werden, die Benutzer davon in kennntnis zu setzen, 
 	dass es sich um ein neues bzw. erweiterte Revision eines ebuilds handelt.</p>
 
-	<p>Wenn grössere Veränderungen an einem bestehenden ebuild vorgenommen werden, sollte die Datei vorher kopiert und mit einer
-	um 1 erhöhten Revisionsnummer abgespeichert werden. Die ersten Fassungen besitzen normalerweise keine Revisionsnummer, z.B.
+	<p>Wenn gr&#xF6;ssere Ver&#xE4;nderungen an einem bestehenden ebuild vorgenommen werden, sollte die Datei vorher kopiert und mit einer
+	um 1 erh&#xF6;hten Revisionsnummer abgespeichert werden. Die ersten Fassungen besitzen normalerweise keine Revisionsnummer, z.B.
 	<path>package-4.5.3</path>, da sie von Portage so betrachtet werden, als ob sie eine Revisionsnummer von Null haben. Das 
-	bedeutet für die Zählweise: <c>1.0</c> (erste Version), <c>1.0-r1</c>, <c>1.0-r2</c>, und so weiter.</p>
+	bedeutet f&#xFC;r die Z&#xE4;hlweise: <c>1.0</c> (erste Version), <c>1.0-r1</c>, <c>1.0-r2</c>, und so weiter.</p>
 
-	<p>Und natürlich gehen wir davon aus, dass der <e>fünfte</e> Abschnitt der ebuild Bezeichnung nicht vergessen wird,
+	<p>Und nat&#xFC;rlich gehen wir davon aus, dass der <e>f&#xFC;nfte</e> Abschnitt der ebuild Bezeichnung nicht vergessen wird,
 	es ist die <c>.ebuild</c> Endung.</p>
 	</body>
 </section>
@@ -129,11 +129,11 @@ keinen Fall vollst&#xE4;ndig. </abstract>
 <section>
 	<title>Aufbau einer ebuild Datei</title>
 	<body><p>1. Setzen der Variablen:</p>
-	<p>Der Anfang jeder ebuild Datei besteht aus einigen Variablen, die wie folgt gesetzt werden können:</p>
+	<p>Der Anfang jeder ebuild Datei besteht aus einigen Variablen, die wie folgt gesetzt werden k&#xF6;nnen:</p>
 	<table>
 <tr><ti><c>P</c></ti><ti>Der Name und die Versionsnummer des Paketes, dies muss normalerweise nicht gesetzt werden, da es von Portage durch den Dateinamen bestimmt wird</ti></tr>
 <tr><ti><c>A</c></ti><ti>Der Name ohne Pfadangabe von dem Haupt-Quellcode des Paketes</ti></tr>
-<tr><ti><c>S</c></ti><ti>Das Quellcode-Verzeichnis für das Paket, im Normalfall${WORKDIR}/${P}</ti></tr>
+<tr><ti><c>S</c></ti><ti>Das Quellcode-Verzeichnis f&#xFC;r das Paket, im Normalfall${WORKDIR}/${P}</ti></tr>
 <tr><ti><c>DESCRIPTION</c></ti><ti>Eine kurze Beschreibung des Paketes in einem Satz</ti></tr>
 
 <tr><ti><c>SRC_URI</c></ti><ti>the URIs for every source file in your package, separated by whitespace; normally the first one is something like &quot;ftp://ftp.company.com/pub/somepackage/${A}&quot;</ti></tr>

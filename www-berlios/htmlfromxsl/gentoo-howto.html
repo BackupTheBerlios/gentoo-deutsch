@@ -8,7 +8,7 @@
 		Dokumentation
 	
 -- 
-	Gentoo Linux Frequently Asked Questions</title>
+	Gentoo Linux Entwickler HOWTO</title>
 </head>
 <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
@@ -17,7 +17,7 @@
 </table></td></tr>
 <tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
 <td width="99%" class="content" valign="top" align="left">
-<br><p class="dochead">Gentoo Linux Frequently Asked Questions</p>
+<br><p class="dochead">Gentoo Linux Entwickler HOWTO</p>
 <form>
 <b>Inhalt</b>:
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Der Portage Verzeichnisbaum</option>
@@ -49,7 +49,7 @@
 </table>
 		Die -kb option teilt CVS mit, dass myphoto.png eine Binärdatei ist und einer besonderen 
 		Behandlung bedarf. Zum Beispiel das Zusammenführen von zwei verschiedenen Binärdateien wird somit nicht erlaubt, 
-		was hier auch naheliegend ist. Wenn wir schon beim Zusammenführen sind, alle Patches die dem Portage Verzeichnisbaum 
+		was hier auch naheliegend ist. Wenn wir schon beim Zusammenführen sind, alle Patches die dem Portage Verzeichnisbaum
 		hinzugefügt werden, sollten nicht komprimiert sein. Dies erlaubt dann CVS Veränderungen einzubringen und die Entwickler 
 		von dabei möglicherweise entstehenden Konfliken korrekt zu warnen.</p>
 <p class="secthead"><a name="_sect3">Das files Verzeichnis </a></p>
@@ -96,70 +96,55 @@
 	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
 <b>Wichtig: </b>Wenn Sie mit dem Gedanken spielen, einen angehängten Buchstaben in Ihrer Versionsnummer zu verwenden,
 	sollten Sie darüber im klaren sein, dass dieser Buchstabe <font class="emphasis">nicht</font> dazu verwendet werden sollte, einen
-	eventuellen Alpha oder Beta Status anzuzeigen, da alphas und betas als <font class="emphasis">prereleases</font> zäen, angehängte 
+	eventuellen Alpha oder Beta Status anzuzeigen, da alphas und betas als <font class="emphasis">prereleases</font> zählen, angehängte
 	Buchstaben jedoch als <font class="emphasis">neuere Versionen</font>. Das ist eine grosse Unterscheidung, da Portage die Versionsnummer eines
-	ebuilds dazu verwendet, herauszufinden, ob es neuer oder älter ist als ein Paket mit gleichem Namen aus derselben 
+	ebuilds dazu verwendet, herauszufinden, ob es neuer oder älter ist als ein Paket mit gleichem Namen aus derselben
 	Kategorie. Es ist sehr wichtig, dass Versionsnummern glaubwürdig die Version eines Paketes repräsentieren, damit
 	Portage seine Abhägikeits-Prüfungen korrekt ausführt..</p></td></tr></table>
 
-<p>The third (optional) section contains a special suffix; either
-<font class="code">_alpha</font>, <font class="code">_beta</font>, <font class="code">_pre</font> or <font class="code">_rc</font>. Any of these suffixes
-may be immediately followed my a number, e.g., <font class="code">linux-2.4.0_pre10</font>;
-Assuming identical version parts, an <font class="code">_alpha</font> package is older than
-<font class="code">_beta</font>, <font class="code">_beta</font> older than <font class="code">_pre</font>, and <font class="code">_pre</font> older than
-<font class="code">_rc</font>.
-</p>
+	<p>Der dritte Abschnitt (optional) enthält eine spezielle Suffix, entweder <font class="code">_alpha</font>, <font class="code">_beta</font>, <font class="code">_pre</font> oder 
+	<font class="code">_rc</font>. Alle diese Suffixe werden durch eine Nummer ergänzt, zum Beispiel <font class="code">linux-2.4.0_pre10</font>. Bei identischen
+	Versionsummern geht Portage davon aus, dass <font class="code">_alpha</font> älter als <font class="code">_beta</font> ist, <font class="code">_beta</font> älter als <font class="code">_pre</font>
+	und <font class="code">_pre</font> äter als <font class="code">_rc</font> ist.</p>
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Ein <font class="code">_rc</font> Paket ist älter als ein Paket ohne vorausgehende  Suffixe mit Unterstrich (z.B. <font class="code">linux-2.4.0</font>)
+	und <font class="code">linux-2.4.0</font> ist älter als ein Paket mit einem Buchstaben Präfix, hier <font class="code">linux-2.4.0b</font>. Nochmal: Diese 
+	Versionsinformationen sind wichtig, da Portage es zur Bestimmung heranzieht, ob ein Paket oder ebuild älter oder jünger ist,
+	als ein Paket aus der selben kategorie mit gleichem Namen.</p></td></tr></table>
 
-<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>An <font class="code">_rc</font> package is older than a package without an underscore
-prefix (i.e. <font class="code">linux-2.4.0</font>), and <font class="code">linux-2.4.0</font> is older than a
-package with a single letter prefix, i.e. <font class="code">linux-2.4.0b</font>.  As you would
-expect, the <font class="code">linux-2.4.0b</font> package is considered older than
-<font class="code">linux-2.4.0c</font>.  Again this versioning information is important, as
-Portage uses it internally to determine whether one package or ebuild is newer
-than another with the same category and name.</p></td></tr></table>
+	<p>Der vierte Abschnitt (ebenfalls optional) ist die Gentoo Linux spetzifische <font class="emphasis">Revisionsnummer</font>, welche durch <font class="code">-r#</font>
+	angegeben wird, wobei <font class="code">#</font> ein Integer (Zahlenwert) ist, als Beispiel: <font class="code">package-4.5.3-r3</font>. Die Revisionsnummer ist
+	unabhängig von der Versionsnummer des Quellpaketes und kann dazu genutzt werden, die Benutzer davon in kennntnis zu setzen, 
+	dass es sich um ein neues bzw. erweiterte Revision eines ebuilds handelt.</p>
 
-<p>The fourth (optional) section of the package name is the Gentoo Linux-specific <font class="emphasis">revision</font> number,
-which is specified by <font class="code">-r#</font>, where <font class="code">#</font> is an integer,
-e.g. <font class="code">package-4.5.3-r3</font>. This revision number is independent of
-the version of the source tarball and is used to inform people that
-a new and improved Gentoo Linux rev of a particular package is available.
-</p>
+	<p>Wenn grössere Veränderungen an einem bestehenden ebuild vorgenommen werden, sollte die Datei vorher kopiert und mit einer
+	um 1 erhöhten Revisionsnummer abgespeichert werden. Die ersten Fassungen besitzen normalerweise keine Revisionsnummer, z.B.
+	<font class="path">package-4.5.3</font>, da sie von Portage so betrachtet werden, als ob sie eine Revisionsnummer von Null haben. Das 
+	bedeutet für die Zählweise: <font class="code">1.0</font> (erste Version), <font class="code">1.0-r1</font>, <font class="code">1.0-r2</font>, und so weiter.</p>
 
-<p>
-If you make non-trivial improvements to an existing ebuild file, you should
-copy the ebuild file to a new file with the revision number incremented by 1.
-Initial releases normally have no revision number, e.g.
-<font class="path">package-4.5.3</font> and are considered by Portage to have a a revision
-number of zero.  This means that counting goes as follows: <font class="code">1.0</font> (initial
-version), <font class="code">1.0-r1</font>, <font class="code">1.0-r2</font>, etc.
-</p>
-
-<p>And I suppose that we actually have a <font class="emphasis">fifth</font> section of the ebuild name -- the
-<font class="code">.ebuild</font> extension itself.
-</p>
-
-<p class="secthead"><a name="_sect3">Contents of an ebuild File </a></p>
-<p>1. Variable Settings:</p>
-<p>The first part of every ebuild file is made up of a number of
-variable settings. The variables you can set are:</p>
-<table class="ntable">
+	<p>Und natürlich gehen wir davon aus, dass der <font class="emphasis">fünfte</font> Abschnitt der ebuild Bezeichnung nicht vergessen wird,
+	es ist die <font class="code">.ebuild</font> Endung.</p>
+	<p class="secthead"><a name="_sect3">Aufbau einer ebuild Datei </a></p>
+<p>1. Setzen der Variablen:</p>
+	<p>Der Anfang jeder ebuild Datei besteht aus einigen Variablen, die wie folgt gesetzt werden können:</p>
+	<table class="ntable">
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="code">P</font></td>
-<td bgcolor="#ddddff" class="tableinfo">the name and version of the package; you should not need to set this, as it is determined from the name of the ebuild file</td>
+<td bgcolor="#ddddff" class="tableinfo">Der Name und die Versionsnummer des Paketes, dies muss normalerweise nicht gesetzt werden, da es von Portage durch den Dateinamen bestimmt wird</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="code">A</font></td>
-<td bgcolor="#ddddff" class="tableinfo">the name (without the path) of the main archive file for your package</td>
+<td bgcolor="#ddddff" class="tableinfo">Der Name ohne Pfadangabe von dem Haupt-Quellcode des Paketes</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="code">S</font></td>
-<td bgcolor="#ddddff" class="tableinfo">the source directory for your package; normally ${WORKDIR}/${P}</td>
+<td bgcolor="#ddddff" class="tableinfo">Das Quellcode-Verzeichnis für das Paket, im Normalfall${WORKDIR}/${P}</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="code">DESCRIPTION</font></td>
-<td bgcolor="#ddddff" class="tableinfo">a short, one line description of your package</td>
+<td bgcolor="#ddddff" class="tableinfo">Eine kurze Beschreibung des Paketes in einem Satz</td>
 </tr>
+
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="code">SRC_URI</font></td>
 <td bgcolor="#ddddff" class="tableinfo">the URIs for every source file in your package, separated by whitespace; normally the first one is something like &quot;ftp://ftp.company.com/pub/somepackage/${A}&quot;</td>
@@ -478,7 +463,7 @@ variable, and if so, then sets <font class="code">myconf=&quot;${myconf} --enabl
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo">gphoto2</td>
-<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für Digitalkameras.</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für Digitalkameras hinzu.</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo">gpm</td>
