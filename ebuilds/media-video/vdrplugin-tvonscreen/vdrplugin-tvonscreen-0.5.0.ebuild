@@ -1,9 +1,9 @@
 # Copyright 2003 Frederik Kunz <frederik.kunz@web.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvonscreen/Attic/vdrplugin-tvonscreen-0.5.0.ebuild,v 1.1 2004/03/22 00:04:30 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvonscreen/Attic/vdrplugin-tvonscreen-0.5.0.ebuild,v 1.2 2004/03/22 00:15:30 austriancoder Exp $
 
 IUSE=""
-VDRPLUGIN="freecell"
+VDRPLUGIN="tvonscreen"
 
 S=${WORKDIR}/${VDRPLUGIN}-${PV}
 DESCRIPTION="Video Disk Recorder TvOnScreen PlugIn"
