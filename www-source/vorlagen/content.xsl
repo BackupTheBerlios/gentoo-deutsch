@@ -4,7 +4,7 @@
 
 <!--
   Part of the Gentoo WebSite:
-  Document Version: 0.92
+  Document Version: 0.91
 -->
 
 <xsl:include href="../temp/config.xsl"/>
