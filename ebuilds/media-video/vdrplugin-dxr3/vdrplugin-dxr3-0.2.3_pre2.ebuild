@@ -1,6 +1,6 @@
 # Copyright 2004 Christian Gmeiner
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dxr3/Attic/vdrplugin-dxr3-0.2.3_pre2.ebuild,v 1.3 2004/08/10 21:59:18 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dxr3/Attic/vdrplugin-dxr3-0.2.3_pre2.ebuild,v 1.4 2004/08/10 22:08:51 austriancoder Exp $
 
 IUSE=""
 
@@ -20,8 +20,8 @@ DEPEND="${DEPEND}
 
 src_unpack() {
 	vdrplugin_src_unpack
-
-	cd ${S}
+	
+	cd /var/tmp/portage/vdrplugin-dxr3-0.2.3_pre2/work/dxr3-0.2.3-pre2
 	/bin/sed -i Makefile \
 	  -e 's/^FFMDIR.*$/FFMDIR = \/usr\/include\/ffmpeg/'
 }
