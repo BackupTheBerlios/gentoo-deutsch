@@ -1,0 +1,7 @@
+# ChangeLog for media-video/vdrplugin-analogtv-cva
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-analogtv-cvs/ChangeLog,v 1.1 2003/10/28 15:31:38 martini Exp $
+
+*vdrplugin-analogtv-cvs-0.0.1-r1 (28 Oct 2003)
+  28 Oct 2003; Martin Mittelsdorf <martini@vdr-portal.de>
+  New Version with libdvb 0.5.0 in depends
