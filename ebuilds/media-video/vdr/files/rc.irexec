@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.irexec,v 1.1 2003/04/03 18:15:34 mad Exp $
+
+
+depend() {
+	need vdr lirc
+	after vdr
+}
+
+start() {
+	ebegin "Starting irexec"
+	/usr/bin/irexec -d /etc/vdr/irexec.conf
+	eend $? "Failed to start irexec."
+}
+
+stop() {
+	ebegin "Stopping irexec"
+	killall irexec
+	eend $? "Failed to stop irexec."
+}
+

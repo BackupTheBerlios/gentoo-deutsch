@@ -1,8 +1,12 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.7 2003/03/19 19:09:21 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.8 2003/04/03 18:15:34 mad Exp $
 
 *vdr-1.1.26 (19 Mar 2003)
+  03 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26.ebuild
+  added support for the irexec programm to restart vdr with a 
+  userdefined key (edit /etc/vdr/irexec.conf and start irexec)
+
   19 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26.ebuild
   new vdr version, some fixes to install all config files
   new download location (cadsoft instead of linuxtv)

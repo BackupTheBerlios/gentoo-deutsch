@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.1.26.ebuild,v 1.1 2003/03/19 19:09:21 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.1.26.ebuild,v 1.2 2003/04/03 18:15:34 mad Exp $
 
 IUSE="lirc rcu vdr_elchi vdr_vfat"
 
@@ -42,6 +42,7 @@ src_install() {
 	insopts -m755
 	newins ${FILESDIR}/rc.${P} vdr
 	newins ${FILESDIR}/rc.vdrwatchdog vdrwatchdog
+	use lirc && newins ${FILESDIR}/rc.irexec irexec 
 	
 	dodoc CONTRIBUTORS COPYING README INSTALL MANUAL HISTORY
 	dohtml PLUGINS.html
@@ -53,6 +54,7 @@ src_install() {
 	doexe ${FILESDIR}/vdrwatchdog.sh 
 	insinto /etc/vdr
 	doins [a-z]*.conf*
+	use lirc && doins ${FILESDIR}/irexec.conf
 }
 
 pkg_postinst() {
