@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
- <!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-security.xml,v 1.14 2003/12/07 17:39:39 dertobi123 Exp $ -->
+ <!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-security.xml,v 1.15 2003/12/20 20:31:12 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version: 1.36 -->
@@ -175,18 +175,18 @@ Goldene Regeln:
   sein. Dies reduziert das Risiko, daß ein Benutzer "/" komplett füllen kann.
 </li>
 <li>
-	Jedes Verzeichnis, in das nicht in der Distribution enthaltene Pakete 
+  Jedes Verzeichnis, in das nicht in der Distribution enthaltene Pakete 
   installiert werden sollen, sollten auf einer seperaten Partition liegen.
-	Nach dem <uri link="http://www.pathname.com/fhs/">Filesystem Hierarchy Standard</uri>
+  Nach dem <uri link="http://www.pathname.com/fhs/">Filesystem Hierarchy Standard</uri>
   ist dies <path>/opt</path> oder <path>/usr/local</path>. Wenn diese seperate 
   Partitionen sind, bleiben Sie bei einer eventuellen Neuinstallation des
   Systems bestehen.
 </li>
 <li>
-	Versuchen sie, statische Daten in eine eigene Partition verschieben und diese 
-  Partition nur lesbar einhängen. Wenn sie wirklich übervorsichtig sind, dann 
-  könnten Sie statische Daten auch auf einem nur lesbaren Medium speichern - 
-  zum Beispiel einer CD-ROM.
+  Versuchen sie, statische Daten in eine eigene Partition zu verschieben und
+  diese   Partition nur lesbar einzuhängen. Wenn sie wirklich übervorsichtig
+  sind, dann könnten Sie statische Daten auch auf einem nur lesbaren Medium
+  speichern - zum Beispiel einer CD-ROM.
 </li>
 </ul>
 
