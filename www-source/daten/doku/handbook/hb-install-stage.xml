@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.27 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.9 2004/01/02 15:59:24 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.10 2004/01/03 14:14:13 jay Exp $ -->
 
 <sections>
 <section>
@@ -361,6 +361,11 @@ die Programme übersetzt. Zur Auswahl steht:
   <ti> </ti>
   <ti>mips-unknown-linux-gnu</ti>
 </tr>
+<tr>
+ <ti>amd64</ti>
+ <ti></ti>
+  <ti>x86_64-pc-linux-gnu</ti>
+  </tr>
 </table>
 
 </body>
