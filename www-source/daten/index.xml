@@ -60,6 +60,18 @@ Gentoo-Benutzer</uri>
       <br/>
     </p>
   </block>
+
+  <block>
+    <title>Partnerseiten:</title>
+    <p>
+      <uri link="http://www.berlios.de"><figure link="http://www.gentoo.de/media/bilder/icons/berlios.png" short="Berlios" caption="www.berlios.de"/></uri>
+      <br/>
+
+	  <uri link="http://www.gentooforum.de"><figure link="http://www.gentoo.de/media/bilder/icons/gentooforum.png" short="Gentooforum" caption="www.gentooforum.de"/></uri>
+      <br/>
+    </p>
+  </block>
+
 </box>
 
 <chapter>
