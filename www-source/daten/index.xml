@@ -3,9 +3,8 @@
 <info>
 
 <title>Willkommen</title>
-<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
-<author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
-<date>13. November 2003</date>
+<author title="Author"><mail link="gentoo-deutsch-dev@lists.berlios.de">Das Gentoo.de Team</mail></author>
+<date>3. Dez. 2003</date>
 
 <box>
   <block>
@@ -16,51 +15,57 @@
       aktuell (letzte: 02.12.03)</uri></b></li>
 			<li><uri link="http://www.gentoo.de/inhalte/doku/#header_8">Die Dokus auf einen Blick</uri></li>
 			<li><uri link="http://gentoo.diefleissigen.de/faq" target="_blank">Gentoo FAQ</uri></li>
-			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das gentoo.de Team</uri></li>
 			<li><uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/">Unser CVS Tree</uri></li>
 		</ul>
     </p>
   </block>
 
-  <block>
+<block>
 	<title>Projekt:</title>
-    <p>
-		<ul>
-			<li><uri link="/inhalte/projekt/praesentation">Über Gentoo-Linux</uri></li>
-	   	        <li><uri link="/inhalte/projekt/projekt/">Projektübersicht gentoo.de</uri></li>
-	   	        <li><uri link="/inhalte/projekt/translation/">Info für Übersetzer</uri></li>
-			<li><uri link="/inhalte/projekt/site/">Gentoos Guide XML Projekt</uri></li>
-			<li><uri link="/inhalte/doku">Übersetzte Dokumentationen</uri></li>
-		</ul>
-    </p>
-  </block>
+    
+<p>
+<ul>
+	<li><uri link="/inhalte/projekt/praesentation">Über Gentoo-Linux</uri></li>
+	<li><uri link="/inhalte/projekt/projekt/">Projektübersicht gentoo.de</uri></li>
+	<li><uri link="/inhalte/projekt/translation/">Info für Übersetzer</uri></li>
+	<li><uri link="/inhalte/projekt/site/">Gentoos Guide XML Projekt</uri></li>
+	<li><uri link="/inhalte/doku">Übersetzte Dokumentationen</uri></li>
+	<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das gentoo.de Team</uri></li>
+</ul>
+</p>
 
-  <block>
+</block>
+
+<block>
     <title>Community:</title>
-    <p>
-		<ul>
-			<li><uri link="/inhalte/community/mailinglisten">Mailinglisten</uri></li>
-			<li><uri link="/inhalte/community/archiv">Mail-Archiv</uri></li>
-			<li><uri link="/inhalte/community/irc">IRC-Channels</uri></li>
-			<li><uri link="/inhalte/community/foren">Foren</uri></li>
-			<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
-		</ul>
-    </p>
-  </block>
 
-  <block>
+<p>
+<ul>
+	<li><uri link="/inhalte/community/mailinglisten">Mailinglisten</uri></li>
+	<li><uri link="/inhalte/community/archiv">Mail-Archiv</uri></li>
+	<li><uri link="/inhalte/community/irc">IRC-Channels</uri></li>
+	<li><uri link="/inhalte/community/foren">Foren</uri></li>
+	<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
+</ul>
+</p>
+
+</block>
+
+<block>
     <title>Download:</title>
-    <p>
-		<ul>
-			<li><uri link="http://www.gentoo.org/main/en/mirrors.xml">Mirrors</uri></li>
-			<li><uri link="/inhalte/download/ebuilds_de">Unsere Ebuilds</uri></li>
-			<li><uri link="http://packages.gentoo.org/">Offizielle Ebuilds</uri></li>
-			<li><uri link="/inhalte/download/sonstiges">Sonstiges</uri></li>
-		</ul>
-	</p>
-  </block>
 
-  <block>
+<p>
+<ul>
+	<li><uri link="http://www.gentoo.org/main/en/mirrors.xml">Mirrors</uri></li>
+	<li><uri link="/inhalte/download/ebuilds_de">Unsere Ebuilds</uri></li>
+	<li><uri link="http://packages.gentoo.org/">Offizielle Ebuilds</uri></li>
+	<li><uri link="/inhalte/download/sonstiges">Sonstiges</uri></li>
+</ul>
+</p>
+ 
+</block>
+
+ <block>
     <title>Partnerseiten:</title>
     <p>
 	  <uriimg uri="http://www.gentoo.org" picuri="http://www.gentoo.de/media/bilder/icons/gentooorg.gif" align="left"/>
@@ -73,67 +78,66 @@
 </box>
 
 <chapter>
-<title>Gentoo Deutsch</title>
+	<title>Gentoo Deutsch</title>
 <section>
 	<title>Information</title>
-	<body>
+<body>
 
-	<p>
-	Gentoo Linux ist eine portbasierte Distribution
-	für den erfahrenen Linuxer. Sie eignet sich hervorragend für
-	alle Personen die maximale Kontrolle über Ihr System erhalten
-	möchten. Man kann mit Gentoo alles machen - vom Server bis zum
-	Desktop-System, vom Cluster bis zur einfachen Boot-CD.
-	</p>
+<p>
+Gentoo Linux ist eine portbasierte Distribution für den erfahrenen Linux User. Sie eignet sich hervorragend für
+alle Personen, die maximale Kontrolle über ihr System erhalten wollen. Man kann mit Gentoo alles machen 
+- vom Server bis zum Desktop-System, vom Cluster bis zur einfachen Boot-CD.
+</p>
 
-	<p>
-	<warn>
-	Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele Dokumentationen
-	zu lesen -- auch Englische. Es gibt keine grafischen Konfigurationshilfen, fast alles muss von Hand konfiguriert werden. Sollten Sie bisher
-	nur über KDE, Gnome oder irgend einer anderen grafischen Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht die
-	richtige Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann
-  es ratsamer sein Ihrem Rechner ein Speicherupgrade zu gönnen
-	oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein, aber der Status eines fortgeschrittenen Anwenders
-	ist ratsam - sonst erleidet Ihr Ausflug ins Gentoo-Land bald einen herben Rückschlag.
-	</warn>
-	</p>
+<p>
+<warn>
+Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele 
+Dokumentationen zu lesen -- auch Englische. Es gibt keine grafischen Konfigurationshilfen, fast alles muss 
+von Hand konfiguriert werden. Sollten Sie bisher nur über KDE, Gnome oder irgend einer anderen grafischen 
+Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht gleich die richtige 
+Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer sein Ihrem Rechner ein 
+Speicherupgrade zu gönnen oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein, 
+aber der Status eines fortgeschrittenen Anwenders ist hilfreich - sonst könnte Ihr Ausflug ins Gentoo-Land 
+recht bald einen herben Rückschlag erleiden.
+</warn>
+</p>
 
-	</body>
+</body>
 </section>
+
 <section>
-	<title>Das Projekt</title>
-	<body>
+<title>Das Projekt</title>
+<body>
 
-  	<p>
-   	Das Projekt gentoo-deutsch soll als Sammelstelle für Anpassungen von Gentoo Linux an deutsche Gegebenheiten dienen.
-  	</p>
+<p>
+Das Projekt gentoo-deutsch soll als Sammelstelle für Anpassungen von Gentoo Linux an deutsche 
+Gegebenheiten dienen.
+ </p>
 
-  	<p>
-	An Mitarbeit interessierte Benutzer finden auf der <uri link="/inhalte/projekt/projekt/">Übersichtseite</uri> alle Informationen, um 
-	sich aktiv bei uns engagieren zu können.  Gentoo.de hat es sich neben der Erstellung von 
-	<uri link="http://www.gentoo.de/inhalte/download/ebuilds_de/">eigenen Ebuilds</uri> auch 
-	zur Hauptaufgabe gemacht, die Übersetzung der Gentoo.org-Dokumentationen ins Deutsche durchzuführen. 
-	<uri link="http://www.gentoo.de/inhalte/doku/">Hier</uri> sehen Sie einen Überblick über unsere bisherige Arbeit.
-	</p>
+ <p>
+An Mitarbeit interessierte Benutzer finden auf der <uri link="/inhalte/projekt/projekt/">Übersichtseite</uri> alle 
+Informationen, um sich aktiv bei uns engagieren zu können.  Gentoo.de hat es sich neben der Erstellung von 
+<uri link="http://www.gentoo.de/inhalte/download/ebuilds_de/">eigenen Ebuilds</uri> auch 
+zur Hauptaufgabe gemacht, die Übersetzung der Gentoo.org-Dokumentationen ins Deutsche durchzuführen. 
+<uri link="http://www.gentoo.de/inhalte/doku/">Hier</uri> sehen Sie einen Überblick über unsere bisherige Arbeit.
+</p>
 
-	<p>
-	Für die Community stellen wir <uri link="/inhalte/projekt/neuigkeiten/">aktuelle Neuigkeiten</uri> zur Verfügung. Weitergehende
-	Informationen bei Problemen bieten unsere <uri link="/inhalte/community/mailinglisten/">Mailinglisten</uri>. Häufig gestellte Fragen werden
-	in der <uri link="http://tobias.scherbaum.info/gentoo/faq" target="_blank">Gentoo FAQ</uri> abgehandelt. Bekannt für seine Hilfsbereitschaft
-	sind  unsere <uri link="/inhalte/community/foren/">Foren</uri>. Auch im <uri link="/inhalte/community/irc/">IRC</uri> sind wir vertreten.
-	</p>
+<p>
+Für die Community stellen wir <uri link="/inhalte/projekt/neuigkeiten/">aktuelle Neuigkeiten</uri> zur Verfügung. Weitergehende Informationen bei Problemen bieten unsere <uri link="/inhalte/community/mailinglisten/">
+Mailinglisten</uri>. Häufig gestellte Fragen werden in der <uri link="http://gentoo.diefleissigen.de/faq" target="_blank">Gentoo FAQ</uri> abgehandelt. Bekannt für seine Hilfsbereitschaft sind  unsere 
+<uri link="/inhalte/community/foren/">Foren</uri>. Auch im <uri link="/inhalte/community/irc/">
+IRC</uri> sind wir vertreten.
+</p>
 
-	<p>
-	Auch sonst ist die Gentoo Community sehr aktiv. Wer sich mit Gleichgesinnten in seiner Umgebung treffen möchte, kann sich bei den
-	<uri link="http://forums.gentoo.org/viewtopic.php?t=88917">User Treffen</uri> bemerkbar machen. Des weiteren sind wir häufiger auf
-	Veranstaltungen vertreten, um Gentoo Linux zu promoten. Ein Beispiel ist der <uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri>.         
-	</p>
+<p>
+Auch sonst ist die Gentoo Community sehr aktiv. Wer sich mit Gleichgesinnten in seiner Umgebung treffen 
+möchte, kann sich bei den <uri link="http://forums.gentoo.org/viewtopic.php?t=88917">User 
+Treffen</uri> bemerkbar machen. Des weiteren sind wir häufiger auf Veranstaltungen vertreten, um Gentoo 
+Linux zu promoten. Ein Beispiel ist der <uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri>.         
+</p>
 		
-	</body>
+</body>
 </section>
-
 
 </chapter>
-
 </info>
-
