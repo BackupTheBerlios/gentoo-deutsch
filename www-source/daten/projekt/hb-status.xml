@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.9 2003/12/09 01:50:11 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.10 2003/12/09 23:36:04 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/hb-status/">
@@ -105,7 +105,7 @@ noch nicht, eine Lösung ist noch unbekannt.
   <tr>
   <ti>hb-install-kernel.xml ( 7 )</ti>
   <ti>baka</ti>
-  <ti></ti>
+  <ti>X</ti>
   <ti></ti>
   <ti></ti>
   </tr>
@@ -119,7 +119,7 @@ noch nicht, eine Lösung ist noch unbekannt.
   <tr>
   <ti>hb-install-bootloader.xml ( 9 )</ti>
   <ti>baka</ti>
-  <ti></ti>
+  <ti>X</ti>
   <ti></ti>
   <ti></ti>
   </tr>
