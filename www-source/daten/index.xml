@@ -12,8 +12,8 @@
     <title>Quick Links:</title>
     <p>
 		<ul>
-			<li><b><uri link="projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 29.09.03)</uri></b></li>
-			<li><uri link="projekt/lt2k3">LinuxTag 2003</uri></li>
+			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 29.09.03)</uri></b></li>
+			<li><uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
 	     	<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
         		Zur Projektübersicht von BerliOS</uri></li>
 			<li><uri link="http://cybersystem.iq-computing.de/gentoo">Zeigt uns die Gentoo-Hochburg in Deutschland</uri></li>
@@ -26,8 +26,8 @@
 	<title>Projekt:</title>
     <p>
 		<ul>
-			<li><uri link="inhalte/projekt/praesentation">Über Gentoo-Linux</uri></li>
-			<li><uri link="inhalte/doku">Üersetzte Dokumentationen</uri></li>
+			<li><uri link="/inhalte/projekt/praesentation">Über Gentoo-Linux</uri></li>
+			<li><uri link="/inhalte/doku">Üersetzte Dokumentationen</uri></li>
 		</ul>
     </p>
   </block>
@@ -37,10 +37,10 @@
     <p>
 
 		<ul>
-			<li><uri link="inhalte/community/mailinglisten">Mailinglisten</uri></li>
-			<li><uri link="inhalte/community/archiv">Mail-Archiv</uri></li>
-			<li><uri link="inhalte/community/irc">IRC-Channels</uri></li>
-			<li><uri link="inhalte/community/foren">Foren</uri></li>
+			<li><uri link="/inhalte/community/mailinglisten">Mailinglisten</uri></li>
+			<li><uri link="/inhalte/community/archiv">Mail-Archiv</uri></li>
+			<li><uri link="/inhalte/community/irc">IRC-Channels</uri></li>
+			<li><uri link="/inhalte/community/foren">Foren</uri></li>
 		</ul>
     </p>
   </block>
@@ -49,9 +49,9 @@
     <title>Download:</title>
     <p>
 		<ul>
-			<li><uri link="inhalte/download/mirrors">Mirrors</uri></li>
-			<li><uri link="inhalte/download/ebuilds_de">Unsere Ebuilds</uri></li>
-			<li><uri link="inhalte/download/sonstiges">Sonstiges</uri></li>
+			<li><uri link="/inhalte/download/mirrors">Mirrors</uri></li>
+			<li><uri link="/inhalte/download/ebuilds_de">Unsere Ebuilds</uri></li>
+			<li><uri link="/inhalte/download/sonstiges">Sonstiges</uri></li>
 		</ul>
 	</p>
   </block>
