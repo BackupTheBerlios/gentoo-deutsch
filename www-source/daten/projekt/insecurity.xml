@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<!-- CVS Version 1.124 im Englischen Original -->
+
+<guide link="/doc/de/gentoo-x86-install.xml">
+	<title>Insecurity Meldungen</title>
+
+	<author title="Verwalter">
+		<mail link="beejay@berlios.de">Benjamin Judas</mail>
+	</author>
+
+
+	<abstract>Hier finden Sie alle Insecurity-Meldungen aufgeführt.</abstract>
+
+	<version>1.0</version>
+	<date>16. Juli 2003</date>
+
+	<chapter>
+	<title>Hoch</title>
+		<section>
+			<title>app-arch/unzip</title>
+			<body>
+				<p>
+					<b>unzip</b><br/>
+					Durch Einsetzen von ungültigen Zeichen zwischen ".." können Angreifer willkürlich Dateien überschreiben.<br/>
+					<ul>
+						<li>Schwere: Hoch - überschreiben von Dateien von Ferne</li>
+						<li>Betroffene Pakete : alle Versionen von <c>app-arch/unzip</c> vor unzip-5.50-r2</li>
+						<li><c>emerge sync</c>, <c>emerge unzip</c>, <c>emerge clean</c></li>
+					</ul>
+				</p>
+			</body>
+		</section>
+
+		<section>
+			<title>media-gfx/gtksee</title>
+			<body>
+				<p>
+					<b>gtksee</b><br/>
+					Ein entsprechend entworfenes PNG kann dazu benutzt werden um einen Pufferüberlauf in gtksee zu verursachen und willkürlich Code auf dem Zielrechner auszuführen<br/>
+					<ul>
+						<li>Schwere: Hoch - Ausführen von Code von Ferne</li>
+						<li>Betroffene Pakete : alle Versionen von <c>media-gfx/gtksee</c> vor gtksee-0-5.2</li>
+						<li><c>emerge sync</c>, <c>emerge gtksee</c>, <c>emerge clean</c></li>
+					</ul>
+				</p>
+			</body>
+		</section>
+	</chapter>
+</guide>
