@@ -1859,10 +1859,10 @@ ist einfach und hat nicht so viele Funktionen (wie z.B. virtuelle Benutzer) wie 
 anonymous_enable=NO
 local_enable=YES
 
-#read only
+#nur lesbar
 write_enable=NO
 
-#enable logging of transfers
+#Aufzeichnen von Übertragungen aktivieren
 xferlog_std_format=YES
 
 idle_session_timeout=20
@@ -1876,7 +1876,10 @@ ls_recurse_enable=NO
 </pre>
 
 <p>
-As you see there is no way for this service to have individual permissions and no default chroot action. But when it comes to anonymous settings it quite good. Sometimes it can be nice to have a anonymous ftp server (for sharing open source) and this server really applies for that.
+Wie Sie sehen können gibt es keine Möglichkeit für diesen Dienst individuelle Rechte und eine standardmässige
+chroot-Aktion zu haben. Aber wenn es um die anonymen Einstellungen geht, dann entwickelt sich dies zum Vorteil.
+Manchmal kann es gut sein einen anonymen FTP-Server z.B. zum Verteilen von Open-Source zu haben und dieser Server
+passt hierfür perfekt.
 </p>
 
 </body>
@@ -1890,11 +1893,14 @@ As you see there is no way for this service to have individual permissions and n
 <body>
 
 <p>
-Apache (1.3.26) comes with a pretty decent configuration file but again. We need to improve some things, like binding to one address and keep it from leaking information. These are the options that you should apply the configuration file:
+Apache (1.3.26) kommt mit einer recht gut eingestellten Konfigurationsdatei, aber auch hier müssen wir einige
+Dinge verbessern wie z.B. verbinden mit einer Adresse und Verhindern des Datenverlustes bei der Übertragung.
+Folgende Optionen sollten sie in der Konfigurationsdatei anpassen:
 </p>
 
 <p>
-If you have added ssl to your <path>/etc/make.conf</path> before installing apache, you should have access to a ssl enabled server. Just add the following line to enable it.
+Wenn Sie ssl in Ihrer <path>/etc/make.conf</path> vor der Installation von Apache gesetzt haben, dann sollten Sie
+Zugang zu einem SSL-fähigen Server haben. Fügen Sie folgende Zeile ein um dieses Feature zu aktivieren.
 </p>
 
 <pre caption="/etc/conf.d/apache">
@@ -1902,25 +1908,28 @@ HTTPD_OPTS="-D SSL"
 </pre>
 
 <pre caption="/etc/apache/conf/apache.conf">
-#Make it listen on your ip
+#Lassen Sie ihn auf die richtige IP hören
 Listen 127.0.0.1
 BindAddress 127.0.0.1
-#It is not a good idea to use nobody or nogroup - 
-#for every service not running as root 
-#(just add the user apache with group apache)
+#Es ist keine gute Idee nobody oder nogroup für
+#jeden Prozess der nicht als root läuft zu benutzen -
+#(erstellen Sie den Benutzer apache mit der Gruppe apache)
 User apache
 Group apache
-#Will keep apache from telling about the version
+#Wir halten Apache davon ab, die Serverversion auszuplaudern
 ServerSignature Off
 ServerTokens min
 </pre>
 
 <p>
-Apache is compiled with --enable-shared=max and --enable-module=all. This will per default enable all modules so you should out comment all modules in the LoadModule section (LoadModule and AddModule) that you do not use. Restart the service by executing <c>/etc/init.d/apache restart</c>.
+Apache wird kompiliert mit --enable-shared=max und --enable-module=all. Dies wird von Vorneherein alle
+Module aktivieren, sodass Sie alle Module in der LoadModule-Sektion (also LoadModule und AddModule)
+auskommentieren müssen, die Sie nicht benötigen. Starten Sie den Dienst neu, indem Sie <c>/etc/init.d/apache restart</c>
+ausführen.
 </p>
 
 <p>
-Documentation can be found at <uri>http://www.apache.org</uri>
+Die Dokumentation gibt es auf <uri>http://www.apache.org</uri>
 </p>
 
 </body>
@@ -1934,7 +1943,7 @@ Documentation can be found at <uri>http://www.apache.org</uri>
 <section>
 <title>Postfix</title>
 <body>
-TODO!
+Muss noch geschrieben werden
 </body>
 </section>
 
@@ -1942,7 +1951,9 @@ TODO!
 <title>Qmail</title>
 <body>
 <p>
-Qmail is considered to be the most secure mail server. It is written with security (and paranoia) in mind. It does not allow relaying per default and have not had a security hole since 1996. Simply <c>emerge qmail</c> and go configure!
+Qmail wird als der sicherste Mail-Server angesehen. Es wurde mit Sicherheit (und Paranoia) im Hinterkopf geschrieben.
+Es erlaubt von Haus aus kein Relaying und hatte seit 1996 kein Sicherheitsloch. Starten Sie einfach ein
+<c>emerge qmail</c> und konfigurieren Sie es danach.
 </p>
 </body>
 </section>
@@ -1954,7 +1965,7 @@ Qmail is considered to be the most secure mail server. It is written with securi
 <title>DNS</title>
 <body>
 <p>
-Gentoo supports two different dns servers, Bind and djbdns.
+Gentoo unterstützt zwei verschiedene DNS-Server : Bind und djbdns.
 </p>
 
 <section>
@@ -1962,7 +1973,11 @@ Gentoo supports two different dns servers, Bind and djbdns.
 <body>
 
 <p>
-Bind is known for its security history that should not be taken lightly. As with any other service it should __never__ run as root so please don't change the default configuration for this service. Per default Gentoo does not setup any configuration for this services so you have to add your own dns zones to <path>/etc/bind/named.conf</path>. But since the security lies not only within the domain server daemon but also in the protocol it should be properly configured.
+Bind is known for its security history that should not be taken lightly. As with any other service it should
+__never__ run as root so please don't change the default configuration for this service. Per default Gentoo
+does not setup any configuration for this services so you have to add your own dns zones to
+<path>/etc/bind/named.conf</path>. But since the security lies not only within the domain server daemon but
+also in the protocol it should be properly configured.
 </p>
 
 <p>
