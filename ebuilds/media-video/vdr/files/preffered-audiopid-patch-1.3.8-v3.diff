@@ -1,0 +1,395 @@
+diff -ruN vdr-1.3.8/channels.c vdr-1.3.8-preffered/channels.c
+--- vdr-1.3.8/channels.c	2004-04-03 15:42:06.000000000 +0200
++++ vdr-1.3.8-preffered/channels.c	2004-05-23 19:22:47.000000000 +0200
+@@ -178,6 +178,7 @@
+   modification = CHANNELMOD_NONE;
+   linkChannels = NULL;
+   refChannel   = NULL;
++  audiochannel = 0;
+ }
+ 
+ cChannel::cChannel(const cChannel &Channel)
+@@ -195,6 +196,7 @@
+   sid          = 0;
+   rid          = 0;
+   number       = 0;
++  audiochannel = 0;
+   groupSep     = false;
+   modification = CHANNELMOD_NONE;
+   linkChannels = NULL;
+@@ -406,6 +408,7 @@
+          dpids[i] = Dpids[i];
+          strn0cpy(dlangs[i], DLangs[i], 4);
+          }
++     SetPrefferedAlang(MAXAPIDS);
+      tpid = Tpid;
+      modification |= CHANNELMOD_PIDS;
+      Channels.SetModified();
+@@ -675,6 +678,7 @@
+                  p = NULL;
+                  }
+            apids[NumApids] = 0;
++           SetPrefferedAlang(NumApids);
+            if (dpidbuf) {
+               char *p = dpidbuf;
+               char *q;
+@@ -741,6 +745,31 @@
+ {
+   return fprintf(f, ToText()) > 0;
+ }
++void cChannel::SetPrefferedAlang(int count)
++{
++           bool found = false;
++           if(count>1){
++             for (int k = 0; k < I18nNumLanguages && Setup.EPGLanguages[k] >= 0; k++){
++              for(int j = 0;j<count;j++){
++               if(Setup.EPGLanguages[k]==I18nLanguageIndex(alangs[j])){
++                 PrefferedApid = &apids[j];
++                 if(apids[j+1]==apids[j]){
++                   audiochannel=1;
++                 }else if((j>0) && (apids[j-1]==apids[j])){
++                   audiochannel=2;
++                 }
++                 //isyslog("found preffered lang '%s' apid %d",alangs[j],*PrefferedApid);
++                 found = true;
++                 break;
++               }else if(j==count) found=true;
++              }//for
++               if (found) break;
++             }//for
++           }//if
++           else{
++                PrefferedApid=&apids[0];
++           }
++}
+ 
+ // -- cChannels --------------------------------------------------------------
+ 
+diff -ruN vdr-1.3.8/channels.h vdr-1.3.8-preffered/channels.h
+--- vdr-1.3.8/channels.h	2004-04-03 15:40:47.000000000 +0200
++++ vdr-1.3.8-preffered/channels.h	2004-05-23 17:36:08.000000000 +0200
+@@ -120,6 +120,7 @@
+   cChannel *refChannel;
+   const char *ParametersToString(void);
+   bool StringToParameters(const char *s);
++  int *PrefferedApid;
+ public:
+   cChannel(void);
+   cChannel(const cChannel &Channel);
+@@ -131,12 +132,13 @@
+   const char *Name(void) const { return name; }
+   int Frequency(void) const { return frequency; } ///< Returns the actual frequency, as given in 'channels.conf'
+   int Transponder(void) const;                    ///< Returns the transponder frequency in MHz, plus the polarization in case of sat
++  int audiochannel;
+   static int Transponder(int Frequency, char Polarization); ///< builds the transponder from the given Frequency and Polarization
+   int Source(void) const { return source; }
+   int Srate(void) const { return srate; }
+   int Vpid(void) const { return vpid; }
+   int Ppid(void) const { return ppid; }
+-  int Apid1(void) const { return apids[0]; }
++  int Apid1(void) const { return Setup.usePrefferedApid ? *PrefferedApid : apids[0]; }
+   int Apid2(void) const { return apids[1]; }
+   int Dpid1(void) const { return dpids[0]; }
+   int Dpid2(void) const { return dpids[1]; }
+@@ -147,6 +149,7 @@
+   int Sid(void) const { return sid; }
+   int Rid(void) const { return rid; }
+   int Number(void) const { return number; }
++  void SetPrefferedAlang(int count);
+   void SetNumber(int Number) { number = Number; }
+   bool GroupSep(void) const { return groupSep; }
+   char Polarization(void) const { return polarization; }
+diff -ruN vdr-1.3.8/config.c vdr-1.3.8-preffered/config.c
+--- vdr-1.3.8/config.c	2004-05-16 14:43:55.000000000 +0200
++++ vdr-1.3.8-preffered/config.c	2004-05-23 17:36:08.000000000 +0200
+@@ -275,6 +275,7 @@
+   PausePriority = 10;
+   PauseLifetime = 1;
+   UseSubtitle = 1;
++  usePrefferedApid = 0;
+   UseVps = 0;
+   VpsMargin = 120;
+   RecordingDirs = 1;
+@@ -428,6 +429,7 @@
+   else if (!strcasecmp(Name, "PausePriority"))       PausePriority      = atoi(Value);
+   else if (!strcasecmp(Name, "PauseLifetime"))       PauseLifetime      = atoi(Value);
+   else if (!strcasecmp(Name, "UseSubtitle"))         UseSubtitle        = atoi(Value);
++  else if (!strcasecmp(Name, "UsePrefferedApid"))    usePrefferedApid   = atoi(Value);
+   else if (!strcasecmp(Name, "UseVps"))              UseVps             = atoi(Value);
+   else if (!strcasecmp(Name, "VpsMargin"))           VpsMargin          = atoi(Value);
+   else if (!strcasecmp(Name, "RecordingDirs"))       RecordingDirs      = atoi(Value);
+@@ -488,6 +490,7 @@
+   Store("PausePriority",      PausePriority);
+   Store("PauseLifetime",      PauseLifetime);
+   Store("UseSubtitle",        UseSubtitle);
++  Store("UsePrefferedApid",   usePrefferedApid);
+   Store("UseVps",             UseVps);
+   Store("VpsMargin",          VpsMargin);
+   Store("RecordingDirs",      RecordingDirs);
+diff -ruN vdr-1.3.8/config.h vdr-1.3.8-preffered/config.h
+--- vdr-1.3.8/config.h	2004-05-22 13:29:52.000000000 +0200
++++ vdr-1.3.8-preffered/config.h	2004-05-23 17:36:08.000000000 +0200
+@@ -233,6 +233,7 @@
+   int DefaultPriority, DefaultLifetime;
+   int PausePriority, PauseLifetime;
+   int UseSubtitle;
++  int usePrefferedApid;
+   int UseVps;
+   int VpsMargin;
+   int RecordingDirs;
+diff -ruN vdr-1.3.8/device.c vdr-1.3.8-preffered/device.c
+--- vdr-1.3.8/device.c	2004-05-16 14:14:47.000000000 +0200
++++ vdr-1.3.8-preffered/device.c	2004-05-23 23:19:10.000000000 +0200
+@@ -49,7 +49,7 @@
+   patFilter = NULL;
+   sdtFilter = NULL;
+   nitFilter = NULL;
+-
++  currentaudiochannel = 0;
+   ciHandler = NULL;
+   player = NULL;
+ 
+@@ -388,14 +388,20 @@
+            dsyslog("skipped channel %d", first);
+         else if (d)
+            dsyslog("skipped channels %d..%d", first, n - sgn(d));
+-        if (PrimaryDevice()->SwitchChannel(channel, true))
++        if (PrimaryDevice()->SwitchChannel(channel, true)){
++	   PrimaryDevice()->SelectAudioChannel(channel->audiochannel);
+            result = true;
+-        }
++	   }
++	}
+      else if (n != first)
+         Skins.Message(mtError, tr("Channel not available!"));
+      }
+   return result;
+ }
++void cDevice::SelectAudioChannel(int achannel)
++{
++  SelectAudioChannelDevice(achannel);
++}
+ 
+ eSetChannelResult cDevice::SetChannel(const cChannel *Channel, bool LiveView)
+ {
+@@ -471,6 +477,8 @@
+ void cDevice::SetVolumeDevice(int Volume)
+ {
+ }
++void cDevice::SelectAudioChannelDevice(int achannel){
++}
+ 
+ int cDevice::NumAudioTracksDevice(void) const
+ {
+diff -ruN vdr-1.3.8/device.h vdr-1.3.8-preffered/device.h
+--- vdr-1.3.8/device.h	2004-05-23 12:10:08.000000000 +0200
++++ vdr-1.3.8-preffered/device.h	2004-05-23 22:55:38.000000000 +0200
+@@ -286,6 +286,7 @@
+   bool mute;
+   int volume;
+ protected:
++  int currentaudiochannel;
+   virtual void SetVolumeDevice(int Volume);
+        ///< Sets the audio volume on this device (Volume = 0...255).
+   virtual int NumAudioTracksDevice(void) const;
+@@ -309,6 +310,8 @@
+        ///< Sets the current audio track to the given value, which should be within the
+        ///< range of the list returned by a previous call to GetAudioTracksDevice()
+        ///< (otherwise nothing will happen).
++  virtual void SelectAudioChannelDevice(int achannel);
++       ///< selects an audiochannel stereo=0 left=1 right=2
+ public:
+   bool IsMute(void) const { return mute; }
+   bool ToggleMute(void);
+@@ -316,6 +319,7 @@
+   void SetVolume(int Volume, bool Absolute = false);
+        ///< Sets the volume to the given value, either absolutely or relative to
+        ///< the current volume.
++  void SelectAudioChannel(int achannel);
+   static int CurrentVolume(void) { return primaryDevice ? primaryDevice->volume : 0; }//XXX???
+   int NumAudioTracks(void) const;
+        ///< Returns the number of audio tracks that are currently available on this
+diff -ruN vdr-1.3.8/dvbdevice.c vdr-1.3.8-preffered/dvbdevice.c
+--- vdr-1.3.8/dvbdevice.c	2004-05-23 12:11:42.000000000 +0200
++++ vdr-1.3.8-preffered/dvbdevice.c	2004-05-23 23:02:12.000000000 +0200
+@@ -773,6 +773,16 @@
+   return true;
+ }
+ 
++void cDvbDevice::SelectAudioChannelDevice(int achannel)
++{
++  if(Setup.usePrefferedApid && currentaudiochannel!=achannel){
++     CHECK(ioctl(fd_audio, AUDIO_CHANNEL_SELECT,achannel));
++     currentaudiochannel = achannel;
++  }else if(currentaudiochannel!=0){
++     CHECK(ioctl(fd_audio, AUDIO_CHANNEL_SELECT,0));
++     currentaudiochannel = 0;
++  }
++}
+ bool cDvbDevice::HasLock(void)
+ {
+   return dvbTuner ? dvbTuner->Locked() : false;
+diff -ruN vdr-1.3.8/dvbdevice.h vdr-1.3.8-preffered/dvbdevice.h
+--- vdr-1.3.8/dvbdevice.h	2004-04-17 13:56:22.000000000 +0200
++++ vdr-1.3.8-preffered/dvbdevice.h	2004-05-23 23:21:03.000000000 +0200
+@@ -95,6 +95,7 @@
+ private:
+   int aPid1, aPid2;
+ protected:
++  virtual void SelectAudioChannelDevice(int achannel);
+   virtual void SetVolumeDevice(int Volume);
+   virtual int NumAudioTracksDevice(void) const;
+   virtual const char **GetAudioTracksDevice(int *CurrentTrack = NULL) const;
+diff -ruN vdr-1.3.8/libsi/descriptor.c vdr-1.3.8-preffered/libsi/descriptor.c
+--- vdr-1.3.8/libsi/descriptor.c	2004-03-26 16:25:28.000000000 +0100
++++ vdr-1.3.8-preffered/libsi/descriptor.c	2004-05-23 19:36:42.000000000 +0200
+@@ -652,11 +652,27 @@
+ 
+ void ISO639LanguageDescriptor::Parse() {
+    unsigned int offset=0;
+-   data.setPointerAndOffset<const descr_iso_639_language>(s, offset);
+-   languageCode[0]=s->lang_code1;
+-   languageCode[1]=s->lang_code2;
+-   languageCode[2]=s->lang_code3;
+-   languageCode[3]=0;
++   if (getLength()>6){
++     data.setPointerAndOffset<const descr_non_iso_639_language>(ns, offset);
++     languageCode[0]=ns->lang_code1;
++     languageCode[1]=ns->lang_code2;
++     languageCode[2]=ns->lang_code3;
++     languageCode[3]=0;
++     languageCode2[0]=ns->lang_code4;
++     languageCode2[1]=ns->lang_code5;
++     languageCode2[2]=ns->lang_code6;
++     languageCode2[3]=0;
++   }else {
++     data.setPointerAndOffset<const descr_iso_639_language>(s, offset);
++     languageCode[0]=s->lang_code1;
++     languageCode[1]=s->lang_code2;
++     languageCode[2]=s->lang_code3;
++     languageCode[3]=0;
++     languageCode2[0]='-';
++     languageCode2[1]='-';
++     languageCode2[2]='-';
++     languageCode2[3]=0;
++   }
+ }
+ 
+ void PDCDescriptor::Parse() {
+diff -ruN vdr-1.3.8/libsi/descriptor.h vdr-1.3.8-preffered/libsi/descriptor.h
+--- vdr-1.3.8/libsi/descriptor.h	2004-03-26 16:26:03.000000000 +0100
++++ vdr-1.3.8-preffered/libsi/descriptor.h	2004-05-23 17:36:08.000000000 +0200
+@@ -393,10 +393,12 @@
+ class ISO639LanguageDescriptor : public Descriptor {
+ public:
+    char languageCode[4];
++   char languageCode2[4];
+ protected:
+    virtual void Parse();
+ private:
+    const descr_iso_639_language *s;
++   const descr_non_iso_639_language *ns;
+ };
+ 
+ class PDCDescriptor : public Descriptor {
+diff -ruN vdr-1.3.8/libsi/headers.h vdr-1.3.8-preffered/libsi/headers.h
+--- vdr-1.3.8/libsi/headers.h	2004-02-22 12:12:46.000000000 +0100
++++ vdr-1.3.8-preffered/libsi/headers.h	2004-05-23 17:36:08.000000000 +0200
+@@ -825,6 +825,19 @@
+    u_char lang_code2                             :8;
+    u_char lang_code3                             :8;
+ };
++#define DESCR_NON_ISO_639_LANGUAGE_LEN 9
++struct descr_non_iso_639_language {
++   u_char descriptor_tag                         :8;
++   u_char descriptor_length                      :8;
++   u_char lang_code1                             :8;
++   u_char lang_code2                             :8;
++   u_char lang_code3                             :8;
++   u_char audio_type                             :8;
++   u_char lang_code4                             :8;
++   u_char lang_code5                             :8;
++   u_char lang_code6                             :8;
++};
++
+ 
+ /* 0x13 carousel_identifier_descriptor */
+ 
+diff -ruN vdr-1.3.8/menu.c vdr-1.3.8-preffered/menu.c
+--- vdr-1.3.8/menu.c	2004-05-23 13:21:06.000000000 +0200
++++ vdr-1.3.8-preffered/menu.c	2004-05-23 17:36:08.000000000 +0200
+@@ -1803,6 +1803,7 @@
+   Add(new cMenuEditIntItem( tr("Setup.EPG$EPG scan timeout (h)"),      &data.EPGScanTimeout));
+   Add(new cMenuEditIntItem( tr("Setup.EPG$EPG bugfix level"),          &data.EPGBugfixLevel, 0, MAXEPGBUGFIXLEVEL));
+   Add(new cMenuEditIntItem( tr("Setup.EPG$EPG linger time (min)"),     &data.EPGLinger, 0));
++  Add(new cMenuEditBoolItem(tr("Setup.EPG$Use preffered apid"),        &data.usePrefferedApid));
+   Add(new cMenuEditBoolItem(tr("Setup.EPG$Set system time"),           &data.SetSystemTime));
+   if (data.SetSystemTime)
+      Add(new cMenuEditTranItem(tr("Setup.EPG$Use time from transponder"), &data.TimeTransponder, &data.TimeSource));
+diff -ruN vdr-1.3.8/pat.c vdr-1.3.8-preffered/pat.c
+--- vdr-1.3.8/pat.c	2004-05-23 11:29:04.000000000 +0200
++++ vdr-1.3.8-preffered/pat.c	2004-05-23 19:38:12.000000000 +0200
+@@ -352,7 +352,13 @@
+                                     if (*ld->languageCode != '-') { // some use "---" to indicate "none"
+                                        strn0cpy(ALangs[NumApids], I18nNormalizeLanguageCode(ld->languageCode), 4);
+                                        ALangs[NumApids][4] = 0;
+-                                       }
++                                       if(*ld->languageCode2 != '-'){
++                                         NumApids++;
++                                         Apids[NumApids]=Apids[NumApids-1];
++                                         strn0cpy(ALangs[NumApids], I18nNormalizeLanguageCode(ld->languageCode2), 4);
++                                         ALangs[NumApids][4] =  0;  
++                                       } 
++                                      }
+                                     }
+                                     break;
+                                default: ;
+diff -ruN vdr-1.3.8/skinsttng.c vdr-1.3.8-preffered/skinsttng.c
+--- vdr-1.3.8/skinsttng.c	2004-05-22 15:05:07.000000000 +0200
++++ vdr-1.3.8-preffered/skinsttng.c	2004-05-23 22:39:46.000000000 +0200
+@@ -232,7 +232,7 @@
+      x -= bmDolbyDigital.Width() + d;
+      osd->DrawBitmap(x, y0 + (y1 - y0 - bmDolbyDigital.Height()) / 2, bmDolbyDigital, Theme.Color(Channel->Dpid1() ? clrChannelSymbolOn : clrChannelSymbolOff), frameColor);
+      x -= bmAudio.Width() + d;
+-     osd->DrawBitmap(x, y0 + (y1 - y0 - bmAudio.Height()) / 2, bmAudio, Theme.Color(Channel->Apid2() ? clrChannelSymbolOn : clrChannelSymbolOff), frameColor);
++     osd->DrawBitmap(x, y0 + (y1 - y0 - bmAudio.Height()) / 2, bmAudio, Theme.Color(!Channel->audiochannel ? clrChannelSymbolOn : clrChannelSymbolOff), frameColor);
+      if (Channel->Vpid()) {
+         x -= bmTeletext.Width() + d;
+         osd->DrawBitmap(x, y0 + (y1 - y0 - bmTeletext.Height()) / 2, bmTeletext, Theme.Color(Channel->Tpid() ? clrChannelSymbolOn : clrChannelSymbolOff), frameColor);
+diff -ruN vdr-1.3.8/symbols/audio.xpm vdr-1.3.8-preffered/symbols/audio.xpm
+--- vdr-1.3.8/symbols/audio.xpm	2004-04-25 17:02:15.000000000 +0200
++++ vdr-1.3.8-preffered/symbols/audio.xpm	2004-05-23 22:32:52.000000000 +0200
+@@ -5,19 +5,19 @@
+ "+	c #000000",
+ "...........................",
+ "...........................",
+-"..+++++++++++++++++++++++..",
+-"..+++++++++++++++++++++++..",
+-"..++...................++..",
+-"..++...................++..",
+-"..++...++++.....++++...++..",
+-"..++..++..++...++..++..++..",
+-"..++.++....++.++....++.++..",
+-"..++..++..++...++..++..++..",
+-"..++...++++.....++++...++..",
+-"..++...................++..",
+-"..++...................++..",
+-"..++...................++..",
+-"..+++++++++++++++++++++++..",
+-"..+++++++++++++++++++++++..",
++"....++.....++++....+++++...",
++"...++++...++++++..+++++++..",
++"..++..++....++....++.......",
++"..++........++....++.......",
++"..++........++....++.......",
++"..++........++....++.......",
++"...++++.....++....+++++....",
++"...++++.....++....+++++....",
++"......++....++....++.......",
++"......++....++....++.......",
++"......++....++....++.......",
++"..++..++....++....++.......",
++"...++++.....++....+++++++..",
++"....++......++....++++++...",
+ "...........................",
+ "..........................."};
