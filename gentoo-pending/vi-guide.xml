@@ -126,17 +126,16 @@ richtet catering to beginners.</abstract>
 </section>
 
 <section>
-<title>Inside vi</title>
+<title>vi intern</title>
 <body>
 	<p>
-	After vi loads, you should see a part of the text file you loaded on your screen.
-	Congratulations -- you're in vi!  Unlike many editors, when vi starts up, it is in
-	a special mode called "command mode".  This means that if you press "l" on the keyboard,
-	instead of inserting an "l" into the file at the current cursor position, the cursor
-	will move one character to the right instead.  In command mode, the
-	characters on your keyboard are used to send commands to vi rather than insert literal
-	characters into the text.  One of the most essential types of commands are movement commands;
-	let's take a look at some.
+	Nachdem vi geladen ist, sollten Sie einen teil der Textdatei auf dem Bildschirm sehen.
+	Herzlichen Glückwunsch! - Sie befinden sich nun in vi. Im Gegensatz zu anderen Editoren,
+	befindet sich vi nach dem Start in einem speziellen sog. "Command-Mode". Das heisst, dass wenn
+	Sie nun "l" auf Ihrer Tastatur drücken, sie den Cursor einen Zeichen nach rechts bewegen, anstatt
+	den Buchstaben "l" in den Text einzufügen. Im Command-Mode werden die Buchstaben auf Ihrer Tastatur
+	dazu benutzt, Kommandos an vi zu senden anstatt Buchstaben in den Text einzufügen. Die essentiellsten
+	aller Kommandos sind die zur Bewegung des Cursors. Lassen Sie uns einige ansehen
 	</p>
 </body>
 </section>
@@ -144,40 +143,46 @@ richtet catering to beginners.</abstract>
 
 
 <chapter>
-<title>Moving around</title>
+<title>Im Text bewegen</title>
 
 <section>
-<title>Moving in vi, part 1</title>
+<title>Mit vi im Text bewegen, Teil 1</title>
 <body>
-
-	<p>When in command mode, you can use the <c>h</c>,<c>j</c>,<c>k</c> and <c>l</c> keys to move the cursor left,
-down, up and right respectively.  If you're using a modern version of vi, you can also
-use the arrow keys for this purpose.  The <c>h</c>,<c>j</c>,<c>k</c> and <c>l</c> keys are handy because once
-you're comfortable with them, you'll be able to move around in the file without moving
-your fingers from the home keyboard row.  Try using <c>h</c>,<c>j</c>,<c>k</c> and <c>l</c> (and the arrow keys) to move
-around in the text file.  Try using <c>h</c> until you get to the beginning of a line.  Notice that
-vi doesn't allow you to "wrap around" to the previous line by hitting <c>h</c> while you're on the first
-character.  Likewise, you can't "wrap around" to the next line by hitting <c>l</c> at the end of a line.
-</p>
-
+	<p>
+	Im Command-Mode können Sie die <c>h</c>,<c>j</c>,<c>k</c> und <c>l</c> Tasten benutzen, um den Cursor nach
+	links, unten, oben und rechts zu bewegen. Wenn Sie eine moderne Version von vi benutzen, dann können Sie außerdem
+	auch die Pfeiltasten zu diesem Zweck benutzen. Die <c>h</c>,<c>j</c>,<c>k</c> und <c>l</c> sind recht nützlich,
+	denn wenn Sie sich an diese gewöhnt haben, dann können Sie sich innerhalb der Datei bewegen ohne Ihre Finger vom
+	Hauptfeld der Tastatur nehmen zu müssen. Veruschen Sie <c>h</c>,<c>j</c>,<c>k</c> und <c>l</c> (und die Pfeiltasten)
+	zu benutzen um sich innerhalb des Textes zu bewegen. Versuchen Sie <c>h</c> zu benutzen um an den Beginn einer Zeile
+	zu springen. Beachten Sie bitte, dass vi es nicht erlaubt, zum Ende der vorherigen Zeile zu springen, wenn Sie sich am
+	Beginn einer Zeile befinden und dann <c>h</c> drücken. Das selbe gilt für das Springen auf die nächste Zeile wenn Sie sich
+	am Ende einer Zeile befinden.
+	</p>
 </body>
 </section>
+
 <section>
-<title>Moving in vi, part 2</title>
+<title>Mit vi im Text bewegen, Teil 2</title>
 <body>
+	<p>
+	vi bietet spezielle Abkürzungen um zum Anfang oder Ende einer zeile zu springen. Sie können <c>0</c> (Null) drücken,
+	um zum ersten Zeichen in einer Zeile zu springen, und sie können <c>$</c> benutzen, um zum letzten Zeichen
+	in einer Zeile zu springen. Probieren Sie die Kommandos aus und sehen Sie was passiert. Da vi so viele nützliche
+	Bewegungs-Kommandos beherrscht, ist er der ideale "Pager" (wie "less" oder "more"). vi als Pager zu benutzen wird
+	Ihnen ausserdem helfen, die Bewegungs-Kommandos schneller zu lernen.
+	</p>
 
-<p>vi offers special shortcuts for jumping to the beginning or end of the current line.  You can 
-	press <c>0</c> (zero) to jump to the first character of a line, and <c>$</c> to jump to the last character of the line.
-Try 'em and see.  Since vi has so many handy movement commands, it makes a great "pager" (like the
-more or less commands.)  Using vi as a pager will also help you to learn all the movement
-commands very quickly.</p>
+	<p>
+	You can also use <c>&lt;CTR&gt;F</c> and <c>&lt;CTR&gt;B</c> to move forwards and backwards a page at a time.
+	Modern versions of vi (like vim) will also allow you to use the PGUP and PGDOWN keys for this purpose.
 
-<p>You can also use <c>&lt;CTR&gt;F</c> and <c>&lt;CTR&gt;B</c> to move forwards and backwards a page at a time.
-Modern versions of vi (like vim) will also allow you to use the PGUP and PGDOWN keys for this purpose.
-</p>
-
+	Sie können auch <c>&lt;CTR&gt;F</c> und <c>&lt;CTR&gt;B</c> benutzen, um sich seitenweise vorwärts und rückwärts zu
+	bewegen. Moderne Versionen von vi (wie vim) erlauben es auch BildAuf und BildAb für diesen Zweck zu benutzen.
+	</p>
 </body>
 </section>
+
 <section>
 <title>Word moves, part 1</title>
 <body>
