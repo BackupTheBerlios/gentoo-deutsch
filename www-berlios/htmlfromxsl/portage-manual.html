@@ -149,7 +149,7 @@
 <font class="chapnum"><a name="doc_chap2">2.</a></font>Portage konfigurieren</p>
 <p class="secthead"><a name="_sect1">Überblick </a></p>
 	<p>
-        Das folgende Kapitel soll verschiedene Aspekte von Portaga abdecken, die jeweils für 
+        Das folgende Kapitel soll verschiedene Aspekte von Portage abdecken, die jeweils für 
         Benutzer wie Entwickler wichtig sind. Portage ist ein sehr flexibles System und Sie
         müssen verstehen, wie man Portage richtig konfiguriert, um Ihr System genau auf Ihre
         Bedürfnisse abstimmen zu können.
@@ -159,93 +159,113 @@
         administrativen Rechten definiert. Um die Portage Konfiguration zu ändern und neue
         Pakete zu installieren bzw. zu entfernen benötigen Sie Root-Rechte.
 	</p>
-<p class="secthead"><a name="_sect2">Portage Configuration Files </a></p>
-	<p>Almost all of the configuration options discussed below can be
-	found in /etc/make.conf and /etc/make.global.  It is important to note
-	that any setting defined in /etc/make.conf will almost always
-	override any setting made in /etc/make.global.  Everything in 
-	/etc/make.conf and /etc/make.global can be considered a system-wide
-	global setting as far as Portage is concerned.
+<p class="secthead"><a name="_sect2">Portage Konfigurations Dateien </a></p>
+	<p>
+	Fast alle Konfigurations-Optionen, die weiter unten erklärt werden,
+	befinden sich in den Dateien /etc/make.conf und /etc/make.global.
+	Es ist wichtig zu wissen, das alle Einstellungen, die in /etc/make.conf
+	definiert sind, von den Einstellungen, die in /etc/make.global gemacht
+	wurden, fast immer überschrieben werden.
+	
+	Alle Einstellungen in /etc/make.conf und /etc/make.global können als
+	Global betrachtet werden, solang es Portage betrifft.
 	</p>
 	<p>
-	When checking to see where an option is already defined, it is 
-	recommended that you check in /etc/make.conf first and then 
-	check /etc/make.globals.  Unless specifically noted, options set 
-	in /etc/make.conf will override options set in /etc/make.globals.
+
+	Wenn Sie überprüfen wollen, ob eine Option bereits definiert
+	wurde, ist es zu empfehlen, dass Sie zuerst /etc/make.conf überprüfen
+	und erst dannach die /etc/make.global. Sofern nicht anders angegeben, werden
+	Optionen, die in /etc/make.globals definiert wurden, von den Optionen in
+	/etc/make.conf überschrieben.
+	
 	</p>
-<p class="secthead"><a name="_sect3">USE settings </a></p>
+<p class="secthead"><a name="_sect3">USE Einstellungen </a></p>
   	<p>
-	The USE settings system is a flexible way to enable or disable
-	various features at package build-time on a global level and for
-	individual packages.  This allows an administrator control over how 
-	packages are built in regards to the optional features which can be 
-	compiled into those packages.  For instance packages with optional
-	GNOME support can have this support disabled at compile time by 
-	disabling the <font class="input">gnome</font> USE setting.  Enabling the <font class="input">gnome</font>
-	USE setting would enable GNOME support in these same packages.
+	Das USE-System ist eine flexible Möglichkeit, um sämtliche
+	Features, die von Anfang an beim Kompilierprozess von Gentoo Linux
+	dabei oder erst hinzugekommen sind, ein- bzw. auszuschalten.
+	Dies erlaubt eine Administrierbarkeit, wie die Pakete in Verbindung
+	mit den angegebenen Features in der USE-Variable, kompiliert werden.
+	Zum Beispiel, wenn ein Paket GNOME Support hat, können Sie diesen
+	Support abschalten, indem Sie in der USE-Variable <font class="input">-gnome</font> an-
+	geben. Wenn Sie jedoch den Support für die Software, die GNOME
+	unterstützt, aktivieren wollen, dann setzen Sie in der USE-Variable
+	ein <font class="input">gnome</font> ein.
 	</p>
-	<p>
-	The effect of USE settings on packages is dependent on whether both
-	the software itself and the package ebuild supports the USE setting
-	as an optional feature.  If the software does not have support for
-	an optional feature then its corresponding USE setting will obviously
-	have no effect.  Also many package dependencies are not considered
-	optional by the software and thus USE settings will have no effect
-	on those mandatory dependencies.  A list of USE keywords used by
-	a particular package can be found by checking the <font class="input">DEPEND</font>
-	and <font class="input">RDEPEND</font> lines in any ebuild file.
+	<p>Der Effekt der USE Einstellungen auf Pakete ist abhängig davon,
+	ob die Software und das ebuild Paket selbst, das jeweils gesetzte USE
+	Feature optional unterstützt. Wenn dem nicht so ist, so wirkt auch
+	das jeweilige USE Feature nicht auf diese Software. Auch werden einige 
+        Paketabhängigkeiten bei mancher Software nicht als optional angesehen,  
+        dadurch haben gesetzte USE Einstellungen keine Auswirkungen auf diese 
+        vorgeschriebenen Abhängigkeiten. Eine Liste der USE Einstellungen, die von 
+        einem Paket benutzt werden, können in der entsprechenden Ebuild Datei in 
+        den Zeilen <font class="input">DEPEND</font> und <font class="input">RDEPEND</font> eingesehen werden.
+	</p>
+	<p>Eine Liste der USE Einstellungen, die von Gentoo Linux benutzt
+	werden, können Sie aus der Datei <font class="input">/usr/portage/profiles/use.desc</font>
+	beziehen. Jede USE Einstellung ist jeweils in einer Zeile mit einer
+	zusätzlichen Beschreibung deklariert und erklärt, was
+	Sie für ein Feature aktiviert.
 	</p>
 
-	<p>A list of the USE settings used by Gentoo Linux can be found
-	in <font class="input">/usr/portage/profiles/use.desc</font>.  Each USE setting
-	is listed one per line with a brief description of what the USE
-	setting enables.
+	<p>
+	Portage bestimmt, welche USE Einstellung ein- bzw. ausgeschaltet ist,
+	aufgrund einer überprüfung von bis zu vier verschiedenen Stellen,
+	wo USE definiert sein kann. Diese Stellen bewirken, dass die USE
+	Einstellungen, die an diesen Stellen definiert sind, &quot;aufgestapelt&quot; werden.
+	Es durchforstet jede einzelne Stelle und merkt sich jedes USE Feature der
+	früheren Stellen, ob Sie ein- bzw. ausgeschaltet sind und fügt
+	neu gefundene Features hinzu, so dass es eine lange USE Einstellung
+	ergibt.
+	Wird zum Beispiel ein Feature an einer früheren Stelle abgeschaltet
+	und am der aktuellen Stelle, die Portage durchforstet, eingeschaltet, so wird
+	das Feature trotz Abschaltens an der früheren Stelle wieder eingeschaltet.
 	</p>
 
+         
+ 
 	<p>
-	Portage determines if a USE setting is enabled or disabled by checking
-	up to four different locations.  These locations change USE settings
-	in a way that &quot;stacks&quot;.  Portage passes through each location and 
-	remembers if a previous location enabled or disabled a setting.
-	USE setting changes are cumulative during Portage's pass through
-	each location.
+	Portage überprüft die Stellen in denen USE Einstellungs definiert werden 
+        in der Reihenfolge, wie sie in der Variable <font class="input">USE_ORDER</font> in
+	/etc/make.globals angegeben ist. Möchten Sie eine Stelle ausschalten,
+	dann entfernen Sie einfach jene in <font class="input">USE_ORDER</font>.
 	</p>
 	<p>
-	The locations checked in USE setting calculation and the order in which
-	Portage checks them is set by <font class="input">USE_ORDER</font> in /etc/make.globals.
-	To disable a location you can simply remove it from <font class="input">USE_ORDER</font>.
-	</p>
-	<p>
-	The following is a description of each location listed in the order
-	defined by <font class="input">USE_ORDER</font> in Portage's default configuration.
+	Die folgenden Absätze beschreiben jeden Ort, der in <font class="input">USE_ORDER</font>
+	von der Portages Standard Konfiguration definiert wurde.
 	</p>
 	
 	
 	<p><b>Defaults</b></p>
-	<p>Portage profiles can define a set of default USE keywords.  This 
-	is defined in the make.defaults file in any Portage profile.  Since 
-	/etc/make.profile serves as a link to the currently used Portage 
-	profile, /etc/make.profile/make.defaults is the set of defaults in 
-	effect.  It is recommended that you do not edit this file as future
-	profile changes may overwrite your changes.</p>
+	<p>Portage Profile können einen Satz von standard USE Features
+	beinhalten. Diese standard Features sind bei jedem Profil dabei und
+	werden in der Datei make.defaults angegeben. Da /etc/make.profile
+        als eine Verknüpfung zum aktuell benutzten Portage Profil fungiert,
+	ist der Satz der standard USE Features des aktuellen Profils
+	die Datei /etc/make.profile/make.defaults. Es ist nicht zu empfehlen,
+	diese Datei zu bearbeiten aufgrund von zukünftige Profiländerungen,
+	die diese überschreiben würde.
+	</p>
 	
 	<p><b>Auto</b></p>
-	<p>These are defined in the use.defaults file in the Portage profile 
-	(/etc/make.profile/use.defaults).  Each entry consists of a USE
-	setting and a corresponding package.  If the package listed for
-	a USE keyword is currently installed, then that USE setting is
-	considered enabled.  Thus, for instance, if you installed
-	<font class="input">x11-base/xfree</font> and did not explicitly disable the X USE
-	setting in a later pass location then the X keyword is enabled
-	globally while that package is installed.  It is recommended that
-	you do not edit this file as future profile changes may overwrite
-	your changes.</p>
+	<p>Diese Pakete sind in der Datei use.defaults im Portage Profil
+	(/etc/make.profile/use.defaults) definiert. Jeder Eintrag beinhaltet
+	eine USE Feature Bezeichnung und das dazugehörende Paket.
+	Wenn jenes Paket als USE Feature angegeben wurde, was bereits installiert
+	ist, wird es als eingeschaltet betrachtet. Zum Beispiel Sie installierten
+	das Paket <font class="input">x11-base/xfree</font> und haben nicht explizit das USE Feature
+	X abgeschaltet, dann wird es global eingeschaltet, solange das Paket
+	installiert ist. Es ist nicht zu empfehlen, diese Datei zu bearbeiten
+	aufgrund von zukünftigen Profiländerungen, die diese überschreiben
+	würden.</p>
 
 	<p><b>Conf</b></p>
-	<p>If a <font class="input">USE</font> configuration option is defined in /etc/make.conf
-	the USE settings defined are included.  If there is no <font class="input">USE</font>
-	setting in make.conf then /etc/make.globals is checked.  This
-	entry could look something like the following:</p>
+	<p>Wenn eine <font class="input">USE</font> Option in /etc/make.conf definiert ist, werden
+	die USE Features, die in jener Option angegeben wurden, inkludiert.
+	Wenn es keine <font class="input">USE</font> Option in make.conf gibt, dann wird /etc/make.globals
+	überprüft. Solch ein Eintrag könnte wie folgt aussehen:
+	</p>
 
 	<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -261,22 +281,23 @@ USE=&quot;slang readline gpm berkdb gdbm tcpd pam libwww ssl gb tk
 </table>
 
 	<p>
-	USE settings are enabled by simply listing the setting name.  USE
-	settings are disabled by placing a <font class="input">-</font> character before the
-	setting name.  For instance, <font class="input">gnome</font> enables the GNOME keyword
-	while <font class="input">-motif</font> disabled the motif keyword.
+	USE Features werden eingeschaltet, indem Sie einfach in der USE-Variable
+	angegeben werden. USE Features können jedoch auch mittels einem davorsetzen 
+        eines <font class="input">-</font> Zeichens deaktiviert werden. Zum Beispiel, <font class="input">gnome</font>
+	schaltet GNOME Support ein während <font class="input">-motif</font> den MOTIF Support
+	abschaltet.
 	</p>
 	<p>
- 	The <font class="input">USE</font> setting in /etc/make.conf is the recommended place
-	in which to explicitly enable and disable keywords.  This file will
-	not be overwritten automatically by Portage.  It is recommended
-	that you specifically enable and disable USE keywords that you
-	do not want to be disabled or enabled by the previous two locations.
+	Die <font class="input">USE</font> Option in /etc/make.conf ist der empfohlene Ort, wo man
+	USE Features ein- bzw. ausschalten sollte. Diese Datei wird nicht
+	automatisch von Portage überschrieben. Es wird empfohlen, dass Sie hier 
+        die USE Einstellungen eintragen, die nicht von den vorangehenden Stellen ein bzw. 
+        ausgeschaltet werden sollen. 
 	</p>
 	
 	<p><b>Env</b></p>
-	<p>USE keyword settings can be overrode manually using a shell
-	environment setting.
+	<p>Die USE Features kann man von Hand aus mit seiner eigenen Shell
+	Umgebungseinstellung überschreiben.
 	</p>
 
 	<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -288,19 +309,21 @@ emerge net-im/gaim
 	</pre></td></tr>
 </table>
 
-	<p>This allows the use of a certain set of USE settings for the merging
-	of one or more specific packages.  Any invocation of emerge after
-	setting USE in the shell environment will be in effect as long as
-	emerge is run from that shell and USE is still set.
+	<p>Dies erlaubt über kurz oder lang, das man spezifische
+	Pakete ohne oder mit einem/mehrere USE Feature/s kompilieren kann.
+	Diese von Ihnen per Hand überschriebenen USE Features bleiben
+	bestehen, solange Sie in jener Shell Umgebung damit arbeiten.
+	Verlassen Sie Ihre Umgebung (&quot;exit&quot;), ist auch das USE Feature weg,
+	was Sie von Hand gesetzt haben. 
 	</p>
-	
 	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>While Portage currently records the set of USE settings used
-	when merging a package these USE settings are not persistent.  If
-	the package is remerged or upgraded in the future it will use
-	the USE keywords currently in effect and not the USE settings defined
-	when it was first merged.</p></td></tr></table>
-	
+<b>Anmerkung: </b>
+        Auch wenn Portage die aktuellen USE Einstellungen zum Zeitpunkt der 
+        Installation des Pakets speichert, so sind diese Einstellungen nicht 
+        dauerhaft gespeichert. Sollte dieses Paket in der Zukunft erneut installiert 
+        bzw. upgedated werden, wird nur die aktuell im System definierte USE Einstellung 
+        angewendet und keinesfalls die zum Zeitpunkt der Erstinstallation geltende.</p></td></tr></table>
+
   <p class="secthead"><a name="_sect4">Compiler Options </a></p>
 	<p>The compiler options used by Portage to compile packages can be set
 	in /etc/make.conf by editing <font class="input">CHOST</font>, <font class="input">CFLAGS</font>, and 
@@ -1169,6 +1192,8 @@ emerge --help
 <b><a class="altlink" href="mailto:blocke@shivan.org">Bruce A. Locke</a></b>
 <br><i>Author and Editor</i><br><br>
 <b><a class="altlink" href="mailto:sebastian@beneke-it.de">Sebastian Beneke</a></b>
+<br><i>Übersetzung</i><br><br>
+<b><a class="altlink" href="mailto:jazz_rabbit@berlios.de">Erwin Hengl</a></b>
 <br><i>Übersetzung</i><br><br>
 </td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
