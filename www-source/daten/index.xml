@@ -15,11 +15,11 @@
 			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 29.10.03)</uri></b></li>
 			<li><uri link="http://www.gentoo.de/inhalte/doku/#header_8">Die Dokus auf einen Blick</uri></li>
 			<li><uri link="http://tobias.scherbaum.info/gentoo/faq" target="_blank">Gentoo FAQ</uri></li>
-	   <li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
+	   <li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/">
         		Projektübersicht gentoo.de </uri></li>
-			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433" target="_blank">Das 
+			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das 
 			       gentoo.de Team</uri></li>
-			<li><uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/" target="_blank">Unser CVS Tree</uri></li>
+			<li><uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/">Unser CVS Tree</uri></li>
 		</ul>
     </p>
   </block>
