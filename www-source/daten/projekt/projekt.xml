@@ -16,7 +16,8 @@
 			<li><uri link="/inhalte/doku">Übersetzte Dokumentationen</uri></li>
 			<li><uri link="/inhalte/projekt/trans-status/">Projektstatus Übersetzungen</uri></li>
 			<li><uri link="/inhalte/projekt/hb-status/">Projektstatus Handbuch</uri></li>
-			<li><uri link="/inhalte/projekt/doc-umnaint/">Dokus ohne Maintainer</uri></li>
+			<li><uri link="/inhalte/projekt/doc-unmaint/">Dokus ohne Maintainer</uri></li>
+			<li><uri link="/inhalte/projekt/doc-maint/">Doku-Maintainer</uri></li>
 			<li><uri link="http://dev.gentoo.org/~pylon/status-german-translations.de.html">Status auf gentoo.org</uri></li>
 			<li><uri link="/inhalte/projekt/site/">Das Guide XML Projekt von Gentoo</uri></li>
 	   		<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/">
