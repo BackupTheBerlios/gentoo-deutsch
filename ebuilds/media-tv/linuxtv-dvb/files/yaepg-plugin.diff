@@ -1,0 +1,39 @@
+diff -ru dvb-kernel/linux/drivers/media/dvb/ttpci/av7110_hw.c dvb-kernel-epg/linux/drivers/media/dvb/ttpci/av7110_hw.c
+--- dvb-kernel/linux/drivers/media/dvb/ttpci/av7110_hw.c	2004-07-18 16:25:00.000000000 -0700
++++ dvb-kernel-epg/linux/drivers/media/dvb/ttpci/av7110_hw.c	2004-07-22 11:42:18.804294736 -0700
+@@ -1030,6 +1030,24 @@
+ 		MoveWindowAbs(av7110, av7110->osdwin, dc->x0, dc->y0);
+ 		SetColorBlend(av7110, av7110->osdwin);
+ 		return 0;
++	case OSD_OpenRaw:
++		if (dc->color < BITMAP1 || dc->color > CURSOR) {
++			return -EINVAL;
++		}
++		if (dc->color >= BITMAP1 && dc->color <= BITMAP8HR) {
++			av7110->osdbpp[av7110->osdwin] = 1<<(dc->color & 3);
++		}
++		else {
++			av7110->osdbpp[av7110->osdwin] = 0;
++		}
++		CreateOSDWindow(av7110, av7110->osdwin,
++				(enum av7110_window_display_type)dc->color,
++				dc->x1 - dc->x0 + 1, dc->y1 - dc->y0 + 1);
++		if (!dc->data) {
++			MoveWindowAbs(av7110, av7110->osdwin, dc->x0, dc->y0);
++			SetColorBlend(av7110, av7110->osdwin);
++		}
++		return 0;
+ 	default:
+ 		return -EINVAL;
+ 	}
+diff -ru dvb-kernel/linux/include/linux/dvb/osd.h dvb-kernel-epg/linux/include/linux/dvb/osd.h
+--- dvb-kernel/linux/include/linux/dvb/osd.h	2004-07-18 16:25:00.000000000 -0700
++++ dvb-kernel-epg/linux/include/linux/dvb/osd.h	2004-07-22 10:24:22.578189160 -0700
+@@ -92,6 +92,7 @@
+   OSD_Text,       // (x0,y0,size,color,text)
+   OSD_SetWindow, //  (x0) set window with number 0<x0<8 as current
+   OSD_MoveWindow, //  move current window to (x0, y0)  
++  OSD_OpenRaw,	// Open other types of OSD windows
+ } OSD_Command;
+ 
+ typedef struct osd_cmd_s {
