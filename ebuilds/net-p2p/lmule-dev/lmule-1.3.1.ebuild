@@ -1,8 +1,8 @@
 # Copyright 2003 Stefan Knoblich <stefan.knoblich@t-online.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-p2p/lmule/Attic/lmule-1.2.1.ebuild,v 1.2 2003/05/25 19:08:07 stkn Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-p2p/lmule-dev/lmule-1.3.1.ebuild,v 1.1 2003/05/25 19:08:07 stkn Exp $
 
-DESCRIPTION="Port of the Emule to Linux"
+DESCRIPTION="Port of the Emule to Linux (development version)"
 HOMEPAGE="http://lmule.sourceforge.net/"
 SRC_URI="mirror://sourceforge/lmule/lmule-${PV}.tar.gz"
 S=${WORKDIR}/${P}
