@@ -472,36 +472,31 @@ emerge --help config
 	<p><b>RSYNC</b></p>
 
 	<p>Es ist empfohlen, die rsync Methode zu benutzen, es sei denn Sie
-	planen, Ihre eigenen Ebuilds zu entwickeln, was die Last unserer
-	Server reduzieren w&#252;rde, wenn Sie anonymous CVS verwenden.
-	
-	<!-- Ich weiss nicht, ist das richtig uebersetzt? Hier der Originaltext: (EH)
-		
-	Users are recommended to use the rsync method unless they plan on 
-	developing their own ebuild files as it places much less of a load
-	on our servers then using anonymous CVS. 
-	
-	-->
-	
+	planen, Ihre eigenen Ebuilds zu entwickeln. Das w&#252;rde die Last unserer
+	Server deutlich reduzieren als wenn Sie anonymous CVS verwenden w&#252;rden.
 	In jenem Fall, rsync ist die standard Methode, welche in /etc/make.conf
 	angegeben wurde.
-	Sie k&#246;nnen sie folgendermaﬂen angeben:
+	Sie k&#246;nnen sie folgenderma&#223;en angeben:
 	</p>
 
 <pre>
 SYNC="rsync://cvs.gentoo.org/gentoo-x86-portage"
 </pre>
 
-	<note>The rsync method will blindly overwrite any changes you make
-	to your local copy of the Portage tree.  If you need to keep
-	local changes you will need to use the anonymous CVS method. </note>
+	<note>
+        Die Rsync Methode &#252;berschreibt blind alle Ver&#228;nderungen, die an Ihrem 
+        lokalen Portage Tree vorgenommen wurden. Falls Sie lokale &#196;nderungen 
+        behalten m&#246;chten, m&#252;ssen Sie die Anonymous CVS Methode w&#228;hlen.
+        </note>
 
 	<p><b>Anonymous CVS</b></p>
 
-	<p>Portage can sync the local Portage tree against a specified
-	anonymous CVS server.  This is useful for developers who do not wish
-	for their changes to be overwritten when Portage syncs with the
-	official tree.  This method can be set in the following way: </p>
+	<p>
+        Portage kann den lokalen Portage Tree mit einem bestimmen anonymen CVS 
+        Server abgleichen. Dies ist besonders f&#252;r Entwickler sinnvoll, die verhindern 
+        wollen, dass Ihre Ver&#228;nderungen am Portage Tree beim Abgleichen &#252;berschrieben 
+        werden. Diese Methode kann folgenderma&#223;en aktiviert werden:
+        </p>
 
 <pre>
 SYNC="cvs://:pserver:anonymous@gentoo.org:/home/anoncvs"
@@ -513,10 +508,10 @@ SYNC="cvs://:pserver:anonymous@gentoo.org:/home/anoncvs"
 	&#228;nderungen im lokalen Portage Tree vornehmen wollen.
 	</note>
 
-	<p>Bevor Sie beginnen, Anonymous CVS zu benutzen, um Ihre lokale
+	<p>Bevor Sie beginnen Anonymous CVS zu benutzen, um Ihre lokale
 	Kopie mit jenem offiziellen Portage Tree zu synchronisieren, m&#252;ssen
-	Sie zuerst den neuesten	Tree herunterladen ("checkout") mittels des
-	cvs tools mit folgender Vorgangsweise:
+	Sie zuerst den neuesten	Tree mittels des
+	cvs tools mit folgender Vorgangsweise herunterladen ("checkout"):
 	</p>
 <pre>
 # Sichern des alten Portage Trees
@@ -534,14 +529,14 @@ mv gentoo-x86 portage
 
 	<p><b>Entwickler CVS</b></p>
 
-	<!-- (EH) Bitte uebersetzen -->
-	<p>Developers with full access to the CVS tree can also have
-	<i>emerge</i> sync the local tree against a CVS repository that
-	they can access through RSH or SSH.
+	<p>
+        Entwickler mit vollem Zugang zum CVS k&#246;nnen auch <i>emerge</i> den lokalen
+        Tree mit dem CVS abgleichen lassen, welches sie mittels RSH oder SSH erreichen 
+        k&#246;nnen.
 	</p>
 	<p>
-	Laden Sie einfach den CVS Tree herunter ("chekout") mittels Ihres
-	Accounts, verschieben Sie jenen nach /usr/portage und benutzen
+	Laden Sie einfach den CVS Tree mittels Ihres Accounts herunter ("checkout"), 
+        verschieben Sie jenen nach /usr/portage und benutzen
 	Sie folgende <i>SYNC</i> Option:
 	</p>
 	
@@ -555,31 +550,17 @@ SYNC="cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot"
 <section>
 <title>Spiegelungen (Mirrors)</title>
 <body>
-	<p>Das Gentoo Projekt beinhaltet eine lokale Spiegelung von allen
+	<p>
+        Das Gentoo Projekt beinhaltet eine lokale Spiegelung von allen
 	Archivdateien, die als Ebuild im Portage Tree vorliegen. Meistens
-	werden raufzuladende source Tarballs usw. auf langsamen Server
-	gehalten, die ziemlich oft ausfallen. Auch Entwickler entfernen
+	werden Source Tarballs usw. auf langsamen Servern gespeichert, die 
+        ziemlich oft ausfallen k&#246;nnen. Auch Entwickler entfernen
 	regelm&#228;ssig alte Versionen Ihrer Software von FTP-Seiten,
 	wenn neue Releases gemacht wurden. Um das Leben von Benutzer, die
 	die Gentoo Distribution nutzen, zu erleichtern, spiegeln wir diese
 	Dateien. Das erlaubt ein schnelleres und sicheres Herunterladen
-	der Archivdateien von Spiegelungsserver, die n&#228;her zu Ihrem
-	Standort ist.
-
-	
-	<!-- Originaltext, bin etwas unsicher bei dieser Uebersetzung: (EH)
-
-		The Gentoo Project keeps a local mirror of all archive files
-		referenced in ebuilds in the Portage tree.  Often upstream source
-		tarballs, etc are kept on slow servers that may often be down.  Also
-		upstream developers will remove older versions of software from an 
-		ftp site when new releases of made.  To make life easier for people
-		using the Gentoo distribution (and reduce the upstream source site's 
-		bandwidth usage) we mirror these files.  This allows for faster and 
-		more reliable downloading of these archive files from one more many 
-		mirror sites close to your physical location. 
-	-->
-
+	der Archivdateien von Spiegelungsservern, die n&#228;her an Ihrem
+	Standort liegen.
 	</p>
 	<p>
 	Wann auch immer Sie vorhaben, ein Paket herunterzuladen, indem Sie es
@@ -590,7 +571,7 @@ SYNC="cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot"
 	angegeben ist.
 	</p>
 	<p>
-	Die Angabe des Spiegelungsserver, welcher Portage ben&#252;tzt, erfolgt
+	Die Angabe des Spiegelungsserver, welchen Portage benutzt, erfolgt
 	in der <i>GENTOO_MIRRORS</i> Option, die sich in der Datei /etc/make.conf
 	befindet. 
 
@@ -607,31 +588,37 @@ GENTOO_MIRRORS="http://www.ibiblio.org/gentoo"
 </section>
 
 <section>
-<title>Downloading Program</title>
+<title>Download-Programm</title>
 <body>
-	<p>The program which Portage uses to download archive files can
-	be specified by setting the <i>FETCHCOMMAND</i> and 
-	<i>RESUMECOMMAND</i> settings.  Several examples are shown
-	in /etc/make.conf and /etc/make.globals.  Portage uses <i>wget</i> by
-	default which should serve most users needs.
+	<p>
+        Das Programm, welches von Portage zum Download der ben&#246;tigten Dateien 
+        genutzt wird, kann durch die Optionen <i>FETCHCOMMAND</i> und 
+	<i>RESUMECOMMAND</i> angegeben werden. Einige Beispiele werden in 
+        /etc/make.conf und /etc/make.globals gezeigt. Als Standard Toll verwendet 
+        Portage wget, welches den meisten Anforderungen gen&#252;gen sollte.
 	</p>
 
-	<note>Portage passes HTTP and FTP proxy information to the downloading
-	program through use of the HTTP_PROXY and FTP_PROXY environment
-	variables.</note>
+	<note>
+        Portage gibt Informationen &#252;ber HTTP und FTP Proxies an das jeweilige 
+        Download-Programm weiter, die in den HTTP_PROXY und FTP_PROXY Optionen 
+        definiert sind.
+        </note>
 </body>
 </section>
 
 <section>
 <title>Proxies</title>
 <body>
-	<p>Portage can be instructed to use both HTTP and FTP proxies
-	when downloading files.  The proxies can be specified by setting 
-	<i>HTTP_PROXY</i> and <i>FTP_PROXY</i> in either /etc/make.conf
-	or /etc/make.globals.  If both HTTP and FTP are served from the
-	same proxy, you can set <i>PROXY</i> instead.</p>
+	<p>
+        Portage kann angewiesen werden, zum Download HTTP oder FTP Proxies zu nutzen 
+        Die Proxies k&#246;nnen bei den Optionen <i>HTTP_PROXY</i> und <i>FTP_PROXY</i> 
+        entweder in /etc/make.conf oder /etc/make.globals angegeben werden. Auch hier 
+        sollten die Einstellungen vorzugsweise in /etc/make.conf erfolgen. Wenn HTTP 
+        und FTP &#252;ber den gleichen Proxy erfolgen soll, k&#246;nnen Sie auch einfach die 
+        Option <i>PROXY</i> nutzen.
+        </p>
 	
-	<p>The following is an example:</p>
+	<p>Im Folgenden ein Beispiel:</p>
 
 <pre>
 HTTP_PROXY="http://192.168.1.1:8080"
@@ -642,35 +629,37 @@ or
 PROXY="http://192.168.1.1:8080"
 </pre>
 
-	<p>Portage can also be instructed to use an HTTP proxy for use
-	with RSYNC.  RSYNC proxy use can be configured by setting the
-	RSYNC_PROXY option in <i>/etc/make.conf</i> or by setting it as 
-	an environment variable.</p>
 	<p>
-	The following is an example:
+        Portage kann ebenfalls angewiesen werden einen HTTP Proxy zur Verwendung von 
+        Rsync zu nutzen. Dies kann durch die Option <i>RSYNC_PROXY</i> in 
+        /etc/make.conf oder als Umgebungsvariable aktiviert werden
+        </p>
+	<p>
+	Im Folgenden ein Beispiel:
 	</p>
 
 <pre>
 RSYNC_PROXY="192.168.1.1:8080"
 </pre>
 
-	<note>If you are firewalled from the outside world and rsync
-	seems unable to use your HTTP proxy, you can update your Portage
-	tree using a snapshot tarball.  A snapshot tarball is available
-	from <uri>http://www.ibiblio.org/gentoo/snapshots/</uri>.
+	<note>
+        Sollten Sie hinter einer Firewall sitzen und Rsync scheint Ihren HTTP 
+        Proxy nicht nutzen zu k&#246;nnen, k&#246;nnen Sie Ihren Portage Tree durch einen 
+        Snapshot Tarball updaten. Diesen k&#246;nnen Sie von <uri>http://www.ibiblio.org/gentoo/snapshots/</uri> 
+        herunterladen.
 	</note>
 
 </body>
 </section>
 
 <section>
-<title>Misc. Options</title>
+<title>Verschiedene Optionen</title>
 <body>
-	<p>The following are minor options which may be of use to users:</p>
+	<p>Die folgenden Optionen k&#246;nnen f&#252;r einige Nutzer sinnvoll sein:</p>
 
 	<ul>
-	<li><i>NOCOLOR</i> : Allows users to disable the use of colors in output from the emerge tool.</li>
-	<li><i>CLEAN_DELAY</i> : Portage delays unmerging of a package by a defined number of seconds to give users time to cancel.  This specifies the number of seconds to wait and can be disabled by setting it to "0".</li>
+	<li><i>NOCOLOR</i> : Erlaubt es dem Benutzer, das Verwenden von Farben bei Ausgaben von emerge zu deaktivieren.</li>
+	<li><i>CLEAN_DELAY</i> : Dadurch verz&#246;gert Portage das Entfernen von Paketen, um Nutzern die M&#246;glichkeit zum Abbruch zu geben. Diese Zeit kann hier angegeben werden. Um das Verz&#246;gern zu verhindern, sollte die Zeit auf "0" gestellt werden.</li>
 	</ul>
 
 </body>
@@ -679,75 +668,76 @@ RSYNC_PROXY="192.168.1.1:8080"
 </chapter>
 
 <chapter>
-<title>Package Management</title>
+<title>Paketmanagement</title>
 
 <section>
-<title>Updating The Portage Tree</title>
+<title>Updaten des Portage Trees</title>
 <body>
-	<p>The Portage tree, located within /usr/portage, contains the library
-	of build instructions for various packages (called <i>ebuilds</i>).
-	The tree also contains profile and package.mask information which
-	is vital for keeping your system up to date.  It is important to keep 
-	this tree updated and in sync with the official Portage tree in order
-	to have the newest versions of packages and bug fixes available to you.
-	You can update the Portage tree by issuing the following command:
+	<p>
+        Der Portage Tree, welcher in /usr/portage liegt, enth&#228;lt die Bibliothek der 
+        "Bauanleitungen" f&#252;r verschiedene Pakete (sogenannte <i>ebuild</i>). Dar&#252;ber 
+        hinaus enth&#228;lt der Tree auch noch Informationen aus dem Profil und der Datei 
+        package.mask, welche wichtig sind, um das System aktuell zu halten. Um 
+        immer die aktuellsten Versionen und neuesten Bugfixes zu haben, ist es wichtig 
+        den Tree regelm&#228;&#223;ig mit dem offiziellen Tree abzugleichen. Sie k&#246;nnen den 
+        Portage Tree mittels folgendem Kommando updaten:
 	</p>
 <pre>
 emerge rsync
 </pre>
-	<p>The method emerge uses to update the local Portage tree can be 
-	changed.  See <i>Portage SYNC settings</i> in the 
-	<i>Configuring Portage</i> chapter for more information.
+	<p>
+        Die Methode, welche von Portage genutzt wirds, kann ge&#228;ndert werden. Schauen Sie 
+        unter <i>Portage SYNC Einstellungen</i> im <i>Portage konfigurieren</i> Kapitel 
+        nach, um weitere Informationen zu erhalten.
 	</p>
 </body>
 </section>
 
 <section>
-<title>Merging Packages</title>
+<title>Pakete installieren</title>
 <body>
 	<p>
-	The act of compiling and installing a package through Portage
-	is referred to as <i>merging</i>.  Portage compiles packages
-	and temporarily installs them to an "image" directory where it 
-	records the files to be installed.  These files are then moved from
-	the image directory and merged with the real / filesystem. 
+        Der Vorgang des Kompilierens und Installierens eines Paketes durch Portage wird 
+        als <i>mergen</i> bezeichnet. Portage kompiliert Pakete und installiert diese 
+        kurzfristig in ein "Abbild-Verzeichnis", in dem es die zu installierenden Dateien 
+        aufzeichnet. Diese Dateien werden dann aus dem "Abbild-Verzeichnis" ins Root (/) 
+        Dateisystem integriert (gemerged).
 	</p>
 	<p>
-	The <i>emerge</i> command serves as the front-end of the Portage
-	system.  The installation and removal of packages is controlled
-	by using this command and its various command-line arguments.
+        Das <i>emerge</i> Kommando dient als Front-End des Portage Systems. Das Installieren 
+        und Entfernen von Paketen wird durch dieses Kommando und seine unz&#228;hligen Argumente 
+        kontrolliert.
 	</p>
 	<p>
-	To install the newest unmasked version of a given package simply
-	specify the package name like the following:
+        Um die neueste, unmaskierte Version eines Paketes zu installieren, geben Sie einfach 
+        den Paketnamen, wie folgt ein (Beispiel):
 	</p>
 <pre>
 emerge galeon
 </pre>
 	<p>
-	The command will compile and install any needed dependencies (taking 
-	into account any USE settings) and then compile and install the 
-	newest unmasked version of galeon.  Galeon could also have been
-	referred to using fully qualified name with category: <i>net-www/galeon</i>
+        Dieses Kommando wird zun&#228;chst alle ben&#246;tigten Abh&#228;ngigkeiten (bereits alle USE 
+        Einstellungen ber&#252;cksichtigt) und dann die neueste und unmaskierte Version von 
+        Galeon kompilieren und installieren. Galeon k&#246;nnte auch mit vollem qualifizierten 
+        Namen inklusive Kategorie angegeben werden: <i>net-www/galeon</i>
 	</p>
 	<p>
-	The <i>emerge</i> command also accepts references to actual ebuild 
-	files.  This allows users to merge older versions of a given package 
-	and to merge third party ebuild based packages.  The following is an
-	example:
+        Das <i>emerge</i> Kommando akzeptiert auch die Angabe von direkten Ebuild Dateien. 
+        Dies erlaubt dem Nutzer auch &#228;ltere Versionen einers bestimmten Paketes oder
+        Ebuilds einer dritten Partei zu installieren. Das Folgende ist ein Beispiel:
 	</p>
 <pre>
 emerge /usr/portage/net-www/galeon/galeon-1.2.0-r3.ebuild
 </pre>
 	<p>
-	In addition to specifying the package name or ebuild file to be merged,
-	<i>emerge</i> supports several very useful command line arguments.
-	Of these arguments <i>--pretend</i> is perhaps the most useful.  When
-	this argument is used the intended action is not performed.  Instead
-	Portage displays a list of packages that would have been installed
-	or updated while performing the action.  The following is an example
-	listing of what would have been merged during the installation
-	of the latest version of the kdevelop package:
+
+        Zus&#228;tzlich zum angeben eines Paketnamens oder einer Ebuild Datei, unterst&#252;tzt 
+        <i>emerge</i> verschiedene weitere Argumente. Eines dieser Argumente ist 
+        <i>--pretend</i>, vielleicht eines der n&#252;tzlichsten. Durch dieses Argument 
+        wird das geplante Vorgehen nicht durchgef&#252;hrt. Stattdessen gibt Portage eine 
+        Liste aller zu installierenden Pakete aus. Das Folgende zeigt eine Auflistung 
+        der Pakete, die w&#228;hrend der Installation der neuesten Version des 
+        Kdevelop Paketes installiert w&#252;rden:
 	</p>
 
 <pre>
