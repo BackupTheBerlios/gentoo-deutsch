@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding="iso-8859-15"?>
+<?xml version='1.0' encoding="utf-8"?>
 
 <guide>
 <title>Anleitung zur Konfiguration von DSL mit Gentoo Linux</title>
@@ -29,9 +29,9 @@ Diese Anleitung erklärt in kurzer Form, wie Sie DSL auf Ihrer Gentoo Maschine ei
 </ul>
 
 <p>
-  <uri link="t-online.gz">Download 1: t-online.gz</uri>
+  <uri link="ftp://ftp.berlios.de/pub/gentoo-deutsch/t-online.gz">Download 1: t-online.gz</uri>
 <br/>
-  <uri link="net.ppp0.gz">Download 2: net.ppp0.gz</uri>
+  <uri link="ftp://ftp.berlios.de/pub/gentoo-deutsch/net.ppp0.gz">Download 2: net.ppp0.gz</uri>
 </p>
 
 
