@@ -1,10 +1,10 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dvd/Attic/vdrplugin-dvd-0.3.3-r0.ebuild,v 1.1 2003/10/06 19:43:29 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dvd/Attic/vdrplugin-dvd-0.3.3-r0.ebuild,v 1.2 2003/10/09 17:18:45 martini Exp $
 
 IUSE=""
 VDRPLUGIN="dvd"
-JAU_VN=7
+JAU_VN=9
 
 S=${WORKDIR}/${VDRPLUGIN}-${PV}-jau-p${JAU_VN}
 DESCRIPTION="Video Disk Recorder DVD-Player PlugIn"
