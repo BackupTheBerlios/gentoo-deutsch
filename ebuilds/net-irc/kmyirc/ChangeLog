@@ -1,0 +1,11 @@
+# ChangeLog for net-irc/kmyirc
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-irc/kmyirc/ChangeLog,v 1.1 2002/09/16 07:58:25 shermann Exp $
+
+*kmyirc-0.2.6 (16 Sep 2002)
+
+  16 Sep 2002; Stephan Hermann <sh@sourcecode.de>: Second release of Gentoo ebuild script.
+
+*kmyirc-0.2.5 (13 Sep 2002)
+
+  13 Sep 2002; Stephan Hermann <sh@sourcecode.de>: Initial release of Gentoo ebuild script.
