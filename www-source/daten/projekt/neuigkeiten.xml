@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <info>
 <title>Willkommen</title>
@@ -20,6 +20,17 @@
 
 <chapter>
 <title>Aktuelles</title>
+
+<section>
+<title>[24. Mai 2003] Kernel Leitfaden</title>
+<body>
+<p>
+Der Gentoo Kernel Leitfaden wurde von uns übersetzt und ist nun auf Deutsch verfügbar.
+<uri link="http://www.gentoo.de/inhalte/doku/einrichtung/gentoo-kernel/">Hier könnt Ihr ihn lesen</uri>
+</p>
+</body>
+</section>
+
 
 <section>
 <title>[19. Mai 2003] Gentoo Newsletter</title>
