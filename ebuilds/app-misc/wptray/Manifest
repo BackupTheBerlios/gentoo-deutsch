@@ -1,4 +1,6 @@
+MD5 c8ed911d3160c4fc6ba999df210e590b wptray-0.4.2.ebuild 696
 MD5 240556bbc9e1ae55ae487adf8fe2a2ca wptray-0.4.1.ebuild 696
 MD5 199a98c4d964928097db6f0f2d7b8961 wptray-0.4.0.ebuild 696
 MD5 e1b1e4e78a5791a559d44e0bb64cf838 files/digest-wptray-0.4.0 65
 MD5 3f91a95a7d90979c6498f3a0c47cc215 files/digest-wptray-0.4.1 65
+MD5 c307165faef7e2d3ad0b06e8282ea0b4 files/digest-wptray-0.4.2 65
