@@ -474,8 +474,26 @@
   <li><xsl:apply-templates/></li>
 </xsl:template>
 
+<xsl:template match="news">
+  	<table cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td width="60">
+				<img src="inhalte/media/bilder/icons/news/{$sort}.jpg"/>
+			</td>
+			<td>
+				<p style="font-size:big;">
+					<xsl:value-of select="@title"/>
+				</p>
+				<p>
+					<xsl:value-of select="."/>
+				</p>
+			</td>
+		</tr>
+	</table>
+</xsl:template>
+
 <xsl:template match="uriimg">
-	<p style="align:center;">
+	<p style="text-align:center;">
 	<a>
 		<xsl:attribute name="href">
 			<xsl:value-of select="@uri"/>
