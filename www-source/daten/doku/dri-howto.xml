@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<guide link="/doc/dri-howto.xml">
+<!-- Original English Version from June 19, 2003 -->
+
+<title>Anleitung für Hardware 3D-Beschleunigung</title>
+
+<author title="Autor"><mail link="donnie.berkholz@richmond.edu">Donnie Berkholz</mail></author>
+<author title="Editor"><mail link="peesh@gentoo.org">Jorge Paulo</mail></author>
+<author title="Übersetzer"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
+
+<abstract>
+Dieses Dokument zeigt, wie man 3D Beschleunigung mit XFree-DRM und XFree86 in Gentoo Linux einrichtet.
+</abstract>
+
+<version>1.0</version>
+<date>28. Oktober 2003</date>
+
+<chapter>
+<title>Einführung</title>
+<section>
+<title>Was ist 3D Hardware-Beschleunigung und wofür brauche ich es?</title>
+<body>
+<p>Mit 3D Hardware-Beschleunigung wird dreidimensionales Rendern vom Prozessor der Grafikkarte übernommen, anstatt wertvolle Rechenleistung der CPU für das Darstellen von 3D Bildern
+abzuzweigen. Dies wird auch als "Hardware-Beschleunigung" bezeichnet, im Gegensatz zur "Software Beschleunigung", wo die CPU mit Hilfe der Mesa Software Bibliotheken das Zeichnen übernimmt. Während XFree in der Regel 2D Hardware-Beschleunigung unterstützt, gibt es bei der 3D-Beschleunigung einige Lücken. Spiele, 3D-CAD und Mdoellierungen kommen in der Regel nicht ohne 3D Hardware-Beschleunigung aus.</p>
+</body>
+</section>
+<section>
+<title>Wie erhalte ich 3D Hardware-Beschleunigung?</title>
+<body>
+<p>In den meisten Fällen existieren sowohl binäre als auch Open-Source Treiber. Letzteresind zu bevorzugen, da wir nun einmal Linux verwenden und Open Source eines unserer Hauptprinzipien
+ist. In machen Fällen sind binäre Treiber oft die einzige Möglichkeit, wie zum Beispiel mit den nVidia Karten. Weitere binäre Treiber sind media-video/mgavideo für Matrox und media-video/ati-drivers 
+für ATI Karten. Weitere Open-Source Projekte sind media-video/kyro-kernel für KyroII Karten und media-video/ati-gatos mit speziellen Augenmerk auf die Video-Möglichkeiten der ATI Grafikkarten.
+</p>
+</body>
+</section>
+<section>
+<title>Was ist DRI?</title>
+<body>
+<p>Die Direct Rendering Infrastructure (<uri link="http://dri.sourceforge.net">dri.sourceforge.net</uri>), besser bekannt unter dem Kürzel DRI ist eine effiziente Schnittstelle, die direkten und dennoch sicheren Zugang zur Grafikhardware ermöglicht. Sie beinhaltet Änderungen am X Server, verschiedenen Client-Bibliotheken und dem Kernel selbst. Hauptverwendeungszweck für DRI sind schnelle OpenGL Implementierungen.
+</p>
+</body>
+</section>
+<section>
+<title>Was ist XFree-DRM und was verbindet es mit dem normalen XFree86?</title>
+<body>
+<p>XFree-DRM ist eine <i>Erweiterung</i> zu XFree86, die 3D Hardware-Beschleunigung bereitstellt, die von XFree86 nicht unterstützt werden.
+</p>
+</body>
+</section>
+<section>
+<title>Zweck dieser Dokumentation?</title>
+<body>
+<p>Diese Dokumentation richtet sich an alle, die Direct Rendering in XFree zum Laufen bekommen wollen. XFree-DRM funktioniert für 3dfx, gamma, i8x0, matrox, rage128, radeon und sis Treiber.
+Die laufende Entwicklung für mach64 ist bereits im CVS Tree vorhanden -- weitere Infos <uri link="http://www.retinalburn.net/linux/dri_status.html">hier</uri> und im <uri link="http://www.retinalburn.net/linux/dri_HOWTO.html">HOWTO</uri>. Benutzer einer 2.4. Kernel Reihe benötigen das xfree-drm Paket, da der Direct Rendering Manager XFree 4.3 nicht unterstützt. Dagegen können 2.6. Kernel Nutzer dieses Dokument überspringen, da XFree 4.3 bereits unterstützt wird. Weitere Informationen erhält man auf der <uri link="http://dri.sourceforge.net">DRI Homepage</uri>. Weitere Vorschläge, Fragen
+oder Mails können an Donnie Berkholz gerichtet werden.
+</p>
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Installation von XFree86 und Kernel Konfiguration</title>
+<section>
+<title>Installation von XFree86</title>
+<body>
+<p><pre caption="Installation von XFree86"># emerge x11-base/xfree</pre></p>
+</body>
+</section>
+<section>
+<title>Kernel Konfiguration</title>
+<body>
+<p>Zunächst sollte der Chipsatz sondiert werden und die Unterstützung für diesen aktiviert werden</p>
+<pre caption="Prüfen des AGP Chipsatzes">
+[# emerge pciutils; lspci | grep AGP
+# 00:01.0 PCI bridge: Intel Corp. 440BX/ZX/DX - 82443BX/ZX/DX AGP bridge (rev 03)
+// Je nach entsprechender Hardware kann dies anders aussehen.
+</pre>
+<p>Dies sollte mit allen Kerneln funktionieren. In diesem Fall erfolgte die Konfiguration unter gentoo-sources-3.4.20-r5.</p>
+<pre>
+[# ls -l /usr/src/linux 
+lrwxrwxrwx    1 root     root           22 May 29 18:20 /usr/src/linux -> linux-2.4.20-gentoo-r5
+// Stellen Sie sicher, dass /usr/src/linux auf Ihren aktuellen Kernel zeigt!
+# cd /usr/src/linux
+# make menuconfig
+</pre>
+<pre caption="Optionen in make menuconfig">
+Processor type and features ---&lt;
+  &gt;*&lt; MTRR (Memory Type Range Register) support
+Character devices ---&lt;
+  &gt;*&lt; /dev/agpgart (AGP Support)
+  [*] Intel 440LX/BX/GX and I815/I820/I830M/I830MP/I840/I845/I850/I860 support
+// Natürlich sollten Sie die Auswahl an Ihren Chipsatz anpassen!
+  [ ] Direct Rendering Manager (XFree86 DRI support)
+</pre>
+<p>Stellen Sie sicher, dass die Unterstützung für DRM <i>abgeschaltet</i>ist. Das XFree-DRM Paket stellt seine eigene Kernel-Unterstützung bereit. Die Kernel-Version ist für
+XFree 4.2 gedacht.</p>
+</body>
+</section>
+<section>
+<title>Den Kernel kompilieren und installieren</title>
+<body>
+<p>
+<pre>
+# make dep &amp;&amp; make clean bzImage modules modules_install
+# mount /boot
+# cp arch/i386/boot/bzImage /boot
+</pre>
+</p>
+<p>Wenn der Kernel einen anderen Namen erhalten soll als bzImage, sollten Sie stattdessen nach /boot/neuer_name kopieren. Nicht vergessen grub.conf oder lilo.conf entsprechend anzupassen,
+und als LILO-Benutzer /sbin/lilo ausführen.
+</p>
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Installation von XFree-DRM und Konfiguration von Direct Rendering</title>
+<section>
+<title>Installation von XFree-DRM </title>
+<body>
+<pre>
+# ACCEPT_KEYWORDS="~x86" emerge xfree-drm
+</pre>
+</body>
+</section>
+<section>
+<title>Konfiguration von XF86Config</title>
+<body>
+<p> Öffnen Sie /etc/X11/XF86Config mit Ihrem Lieblingseditor und fügen Sie die Funktionen für DRI und GLX hinzu.</p>
+<pre caption="XF86Config">
+...
+Section "Module"
+     Load "dri"
+     Load "glx"
+     ...
+EndSection
+...
+Section "Device"
+     Driver "radeon"
+     ...
+EndSection
+...
+Section "DRI"
+     Mode 0666
+EndSection
+</pre>
+<p> Sollten Sie einen anderen Treiber verwenden, müssen Sie radeon durch den entsprechenden Treiber ersetzen</p>
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>3D Beschleunigung testen</title>
+<section>
+<title>Neustart mit dem neuen Kernel</title>
+<body>
+<p>Nachdem Sie ihren Computer neu gestartet haben, wollen wir schauen, ob Direct Rendering aktiviert wurde und wie gut es funktioniert.</p>
+<pre caption="Rendering testen">
+# startx
+// Es ist nicht notwendig den Treiber oder APGART zu laden, auch wenn sie als Modul kompiliert wurden.
+//Sie werden automatisch geladen 
+# glxinfo | grep rendering
+direct rendering: Yes
+// Kommt hier "No", dann ist die Installation von Direct Rendering fehlgeschlagen
+# glxgears
+// Prüft die Framerate pro Sekunde (FPS) im Standardfenster. Dies sollte dann durchgeführt werden, wenn die CPU nicht beschäftigt ist.
+</pre>
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Verwenden der CVS Sourcen</title>
+<section>
+<warn>Sollte die obige Anleitung erfolgreich gewesen sein, ist die Installation der CVS Sourcen nicht notwendig!</warn>
+<note>CVS Quellcode wechselt mit der Zeit. Ihre Konfiguration kann völlig anders aussehen, als hier beschrieben.</note>
+<title>Wird CVS benötigt?</title>
+<body>
+<p>Probieren Sie zuerst das xfree-drm Paket aus. Sollte es nicht funktionieren, und Sie haben eine sehr neue Grafikkarte, dann sind die CVS
+Sourcen ein  Versuch wert. Das xfree-drm Paket unterstützt auch dir Radeon 9000 Serie.</p>
+</body>
+</section>
+<section>
+<title>Wird Ihre Karte von den CVS Sourcen unterstützt?</title>
+<body>
+<p>Schauen Sie, ob Ihre Karte auf der <uri link="http://dri.sourceforge.net/dri_status.phtml">Liste</uri> der unsterstützten Karten steht. Sollte Ihre Karte
+nicht dabei sein, aber eine ähnliche Karte darunter sein, ist es ein Versuch wert.</p>
+<warn> Linux 2.4. unterstützt derrzeit kein AGP 8x. Versuchen Sie im BIOS auf AGP 4x herunterzuschalten. Sollte das nicht möglich sein, müssen
+Sie einen <uri link="http://www.ussg.iu.edu/hypermail/linux/kernel/0302.2/att-1618/01-agp3.diff.bz2">Patch</uri> auf den Vanilla Kernel anwenden.</warn>
+</body>
+</section>
+<section>
+<title>Installation der CVS Sourcen</title>
+<body>
+<p>Folgen Sie der Anleitung unter "Kompilieren und Installation des Kernels". Dann springen Sie zu Punkt 6 dieser Anleitung und folgen Sie bis zu Punkt 8.3.</p>
+</body>
+</section>
+<section>
+<title>Herunterladen der CVS Sourcen</title>
+<body>
+<p>Legen Sie ein Verzeichnis für die CVS Dateien an:</p>
+<pre>
+# cd ~
+# mkdir DRI-CVS
+</pre>
+<p>Nun werden die CVS Sourcen ausgecheckt:</p>
+<pre>
+# cd ~/DRI-CVS
+# cvs -d:pserver:anonymous@cvs.dri.sourceforge.net:/cvsroot/dri login
+// ( ENTER drücken, wenn ein Passwort verlangt wird)
+# cvs -z3 -d:pserver:anonymous@cvs.dri.sourceforge.net:/cvsroot/dri co xc
+// Mit der -z3 werden die Daten komprimiert, wass eine kürzere Downloadzeit zur Folge hat.
+</pre>
+</body>
+</section>
+<section>
+<title>Aktualisierung der CVS Sourcen</title>
+<body>
+<p>Um in Zukunft ab und zu den DRI Quellcode mit den neuesten Änderungen zu erhalten, muss ein Update ausgeführt werden:</p>
+<pre>
+# cd ~/DRI-CVS
+# cvs -z3 update -dA xc
+</pre>
+</body>
+</section>
+<section>
+<title>Erstellen eines build Verzeichnisbaumes</title>
+<body>
+<p>Anstatt Objektdateien und Bibliotheken direkt in den Quellcode-Verzeichnisbaum zu legen, können diese in einen parallelen <i>build</i> Verzeichnisbaum
+abgelegt werden. Dieser wird mit dem <i>lndir</i> Befehl erzeugt.</p>
+<pre>
+# cd ~/DRI-CVS
+# ln -s xc XFree40
+# mkdir build; cd build
+# lndir -silent -ignorelinks ../XFree40
+</pre>
+<p>Dadurch werden im build Verzeichnisbaum symbolische Links angelegt, welche auf den CVS  Verzeichnisbaum verweisen. Fortgeschrittene Benutzer haben oft
+verschiedene build Verzeichnisbäume zum kompilieren und testen der verschiedenen Optionen.</p>
+</body>
+</section>
+</chapter>
+</guide>
+ 
