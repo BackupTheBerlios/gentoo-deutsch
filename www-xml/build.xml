@@ -393,7 +393,7 @@ mit Kernels der Serie 2.4.x.</warn>
 <section>
 <body>
 <p>
-Aktivieren Sie nun Ihre Swap Partition, denn k&#xF6;nnte sein, dass Sie den virtuellen Speicher
+Aktivieren Sie nun Ihre Swap Partition, denn es k&#xF6;nnte sein, dass Sie den virtuellen Speicher
 sp&#xE4;ter noch ben&#xF6;tigen:</p>
 <pre>
 # <i>swapon /dev/hda2</i>
@@ -408,7 +408,7 @@ und mounten Ihre Partitionen:</p>
 </pre>
 <p>Wenn Sie Gentoo Linux mit separaten <path>/usr</path> oder <path>/var</path> Partitionen 
 installieren, m&#xFC;ssen diese dann an die entsprechenden Verzeichnisse gemountet werden 
-(<path>/mnt/gentoo/usr</path> und <path>/mnt/gentoo/var</path>)</p>
+(<path>/mnt/gentoo/usr</path> und <path>/mnt/gentoo/var</path>).</p>
    
 <impo>Wenn Ihre <e>boot</e> Partition (dort wo der Kernel unterbracht ist) eine ReiserFS 
 Partition ist, achten Sie darauf das diese mit der <c>-o notail</c> Option gemountet wird.
@@ -448,12 +448,12 @@ Wenn Sie dies vergessen, werden die Rechte einiger Dateien nicht stimmen.</impo>
 
 <impo>Wenn Sie die "bau alles von Grund auf neu" Installation gew&#xE4;hlt haben, 
 werden Sie das <path>stage1-ix86-1.2.tbz2</path> Archiv verwenden wollen.
-Wenn Sie die einer der gr&#xF6;&#xDF;eren CDs verwenden, haben Sie die Wahl zwischen dem
-"stage2" und dem "stage3" Archiv. Diese Archive sparen Ihnen eventuell Zeit aber
+Wenn Sie eine der gr&#xF6;&#xDF;eren CDs verwenden, haben Sie die Wahl zwischen dem
+"stage2" und dem "stage3" Archiv. Diese Archive sparen Ihnen eventuell Zeit, das aber
 auf Kosten der Flexibilit&#xE4;t (wir haben die Compiler Optimierung und USE Variablen
-f&#xFC;r Sie ausgew&#xE4;hlt). Das "stage3" Archiv enth&#xE4;lt zus&#xE4;tzlich noch die Quellen des
-Linux Kernels und eine Kopie des "Portage tree". Das vermeidet ein <c>emerge rsync</c>
-zu einem sp&#xE4;teren Zeitpunkt.</impo>
+f&#xFC;r Sie ausgew&#xE4;hlt). Das "stage3" Archiv enth&#xE4;lt zus&#xE4;tzlich noch 
+die Quellen des Linux Kernels und eine Kopie des "Portage tree" um ein
+ <c>emerge rsync</c> zu einem sp&#xE4;teren Zeitpunkt zu vermeiden.</impo>
 
 <pre>
 # <i>cd /mnt/gentoo</i>
