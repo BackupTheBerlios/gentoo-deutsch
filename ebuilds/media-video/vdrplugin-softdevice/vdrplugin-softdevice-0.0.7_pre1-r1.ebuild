@@ -26,7 +26,8 @@ function vdr_softdevice_opts {
             return 0
         fi
     done
-    [ -z $2 ] && einfo "No optional ${1} in VDR_SOFTDEVICE_OPTS - Fine :)"
+# cosmetic fix
+#    [ -z $2 ] && einfo "No optional ${1} in VDR_SOFTDEVICE_OPTS - Fine :)"
     return 1
 }
 
