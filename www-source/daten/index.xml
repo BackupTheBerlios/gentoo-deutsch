@@ -5,7 +5,7 @@
 <title>Willkommen</title>
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 <author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
-<date>05. November 2003</date>
+<date>13. November 2003</date>
 
 <box>
   <block>
@@ -15,7 +15,7 @@
 			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 10.11.03)</uri></b></li>
 			<li><uri link="http://www.gentoo.de/inhalte/doku/#header_8">Die Dokus auf einen Blick</uri></li>
 			<li><uri link="http://tobias.scherbaum.info/gentoo/faq" target="_blank">Gentoo FAQ</uri></li>
-	   		<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/">Projektübersicht gentoo.de </uri></li>
+	   	<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/">Projektübersicht gentoo.de </uri></li>
 			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das gentoo.de Team</uri></li>
 			<li><uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/">Unser CVS Tree</uri></li>
 		</ul>
@@ -81,27 +81,26 @@
 	<p>
 		Gentoo Linux ist eine portbasierte Distribution
 		für den erfahrenen Linuxer. Sie eignet sich hervorragend für
-		alle Personen die maximale Kontrolle ber Ihr System erhalten
+		alle Personen die maximale Kontrolle über Ihr System erhalten
 		möchten. Man kann mit Gentoo alles machen. Vom Server bis zum
-		Desktop-System, vom Cluster bis zur einfachen
-		Boot-CD.
+		Desktop-System, vom Cluster bis zur einfachen Boot-CD.
 	</p>
 	<p>
 		<warn>
-		Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn Sie sind dazu bereit viele Dokumentationen
-		zu lesen -- auch englische. Es gibt keine Konfigurationshilfen, fast alles muss von Hand nachkonfiguriert werden. Sollten Sie bisher
+		Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele Dokumentationen
+		zu lesen -- auch Englische. Es gibt keine Konfigurationshilfen, fast alles muss von Hand konfiguriert werden. Sollten Sie bisher
 		nur über KDE, Gnome oder irgend einer anderen graphischen Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht die
 		richtige Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer Ihrem Rechner ein Speicherupgrade zu gönnen
-		oder eben auch eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein, aber der Status eines fortgeschrittenen Anwenders
+		oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein, aber der Status eines fortgeschrittenen Anwenders
 		ist ratsam - sonst erleidet Ihr Ausflug ins Gentoo-Land bald einen herben Rückschlag.
 		</warn>
 	</p>
 	<news type="other" date="13.11.2003" title="Linux-Day Austria">
 		<uriimg uri="http://www.linuxday.at/" picuri="http://www.gentoo.de/media/bilder/icons/plat_logo.jpg" align="center"/>
-		Wieder einmal eine Veranstaltung auf der wir vertreten sind. Am <b>15. November</b> findet dieser an der <b>HTL Dornbirn, Vorarlberg</b>
-		statt. Neben Gentoo sind auch noch viele andere Projekte und Gruppen anwesend: Wenn Sie in der Nähe wohnt (auch im angrenzenden Ausland),
-		dann sind Sie selbstverständlich alle eingeladen die Gelegenheit zum Treffen mit anderen Gentooisten wahrzunehmen. Die LUG Vorarlberg und Gentoo
-		freut sich auf Ihr kommen. Klicken Sie auf das Bild um weitere Informationen zu erhalten.
+		Wieder einmal eine Veranstaltung auf der Gentoo vertreten ist. Am <b>15. November</b> findet diese an der <b>HTL Dornbirn, Vorarlberg</b>
+		statt. Neben Gentoo sind auch noch viele andere Projekte und Gruppen anwesend: Wenn Sie in der Nähe wohnen (auch im angrenzenden Ausland),
+		dann sind Sie selbstverständlich alle eingeladen die Gelegenheit zum Treffen mit anderen Gentooists wahrzunehmen. Die LUG Vorarlberg und Gentoo
+		freuen sich auf Ihr kommen. Klicken Sie auf das Bild um weitere Informationen zu erhalten.
 	</news>
 	</body>
 </section>
