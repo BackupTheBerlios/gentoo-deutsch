@@ -1,0 +1,1109 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Linux 1.2 Installations Anleitung</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux 1.2 Installations Anleitung</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Über die Installation</option>
+<option value="#doc_chap2">2. Booten</option>
+<option value="#doc_chap3">3. Laden der Kernel Module</option>
+<option value="#doc_chap4">4. PCMCIA Lernel Module laden</option>
+<option value="#doc_chap5">5. Konfiguration der Netzwerkanbindung</option>
+<option value="#doc_chap6">6. Set up partitions</option>
+<option value="#doc_chap7">7. Mount partitions</option>
+<option value="#doc_chap8">8. Mounting the CD-ROM</option>
+<option value="#doc_chap9">9. Unpack the stage you want to use</option>
+<option value="#doc_chap10">10. Rsync</option>
+<option value="#doc_chap11">11. Progressing from stage1 to stage2</option>
+<option value="#doc_chap12">12. Progressing from stage2 to stage3</option>
+<option value="#doc_chap13">13. Final steps: timezone</option>
+<option value="#doc_chap14">14. Final steps: kernel and system logger</option>
+<option value="#doc_chap15">15. Final steps: install additional packages</option>
+<option value="#doc_chap16">16. Final steps: /etc/fstab</option>
+<option value="#doc_chap17">17. Installation complete!</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Über die Installation</p>
+
+<p>Die neue Boot CD startet von fast jedem modernen IDE CD-ROM Laufwerk, sowie von vielen 
+SCSI CD-ROMs. Die CD-ROM unterstützt IDE Controller (eingebaut im Kernel) sowie alle 
+SCSI Geräte (vorhanden als Module). Zusätzlich stellen wir Module für 
+buchstäblich jede Netzwerkkarte zur Verfügung die Linux unterstützt, 
+sowie Tools die es ermöglichen das Netzwerk zu konfigurieren und ausgehende 
+<font class="code">ssh</font> Verbindungen zum Dateidownload aufzubauen.</p>
+
+<p> Um von der &quot;Build&quot; CD zu installieren, wird ein 486+ Prozessor benötigt und 
+idealerweise mindestens 64 Megabyte RAM. (Gentoo Linux konnte erfolgreich mit 
+64 MB RAM +  64 MB Swap installiert werden, aber die Installation unter diesen Bedingungen 
+war extrem langsam.) Um die Installation zu starten, laden Sie zuerst eines unserer 
+CD ISO Images von <a href="http://www.ibiblio.org/gentoo/releases/build/">http://www.ibiblio.org/gentoo/releases/build/</a>. Im Augenblick 
+haben wir zwei CDs verfügbar. Unsere erste CD ist 
+<a href="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">
+gentoo-ix86-1.2.iso</a>.Dieses Image ist recht klein (16Mb) und enthält ein minimales 
+&quot;chrootable&quot; 
+Image (<font class="path">stage1-ix86-1.2.tbz2</font>) -- alles was Sie benötigen um ein 
+Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei 
+automatisch aus dem Internet geladen.) Unsere zweite CD ist 
+<a href="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">
+gentoo-i686-1.2.iso</a>. Dieses Image ist etwas größer (100+Mb) -- Es 
+enthält es enthält das gleiche Material wie auf unserem 16Mb Image,
+<font class="emphasis">plus</font> einem vorkompiliertem i686 Basissystem (<font class="path">stage3-i686-1.2.tbz2</font>) 
+sowie einem halb-fertigen  
+i686 Basissystem (<font class="path">stage2-i686-1.2.tbz2</font>) in TAR-Archiven.
+Die beiden neuen TAR-Archive benötigen einen Pentium Pro oder besser (K6 geht nicht). 
+Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf kompilieren wollen, 
+können diese die Installation deutlich beschleunigen.
+</p>
+
+<p>Jetzt lassen Sie uns kurz den den Installationsprozess skizzieren. Sie erstellen die Partitionen,
+erzeugen die Dateisysteme und entpacken entweder das <font class="emphasis">stage1</font>, <font class="emphasis">stage2</font> oder <font class="emphasis">stage3</font> 
+Archiv. Wenn Sie das <font class="emphasis">stage2</font> oder <font class="emphasis">stage3</font> Archiv verwenden müssen Sie alle nötigen Schritte 
+unternehmen um Ihr System auf den Stand des <font class="emphasis">stage3</font> Archivs zu bringen. Wenn Sie <font class="emphasis">stage3</font>
+erreicht haben können Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
+installieren, usw.) und in ein voll funktionsfähiges Gentoo Linux booten.
+Abhängig von der gewählten  Installationsstufe von der Sie starten, 
+hier die benötigten Schritte:
+</p>
+
+
+<table class="ntable">
+<tr>
+<td bgcolor="#7a5ada" class="infohead"><b>stage Archiv</b></td>
+<td bgcolor="#7a5ada" class="infohead"><b>Installationsanforderungen</b></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">1</td>
+<td bgcolor="#ddddff" class="tableinfo">partition/filesystem setup, emerge rsync, bootstrap, emerge system, emerge linux sources, final configuration</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">2</td>
+<td bgcolor="#ddddff" class="tableinfo">partition/filesystem setup, emerge rsync, emerge system, emerge linux sources, final configuration</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">3</td>
+<td bgcolor="#ddddff" class="tableinfo">partition/filesystem setup, emerge rsync (optional), final configuration</td>
+</tr>
+</table>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Booten</p>
+
+<p>Wenn Sie sich für eine CD entschieden haben, booten Sie damit. Sie werden von
+einem Haufen Text und einem <font class="code">boot:</font> Prompt am unteren Bildschirmrand 
+begrüßt. Drücken Sie an diesem Prompt <font class="emphasis">enter</font> und Linux wird von der CD
+geladen.</p>
+
+
+<p>Als nächstes werden Sie mit einer kleinen Liste von verfügbaren Befehlen auf der 
+Boot-CD begrüßt. Dies beinhaltet <font class="code">nano</font> (einen Klon des Editors <font class="code">pico</font>) und
+die Anleitung zur Netzwerkkonfiguration. Danach werden Sie nach Ihrem bevorzugtem
+Keyboard Layout befragt, gefolgt von der automatischen Erkennung der PCI Geräte. Während
+der Geräteerkennung werden alle passenden Kernelmodule für PCI SCSI Controller und
+Netzwerkkarten geladen. Wenn Sie danach <font class="emphasis">enter</font> drücken kommen Sie in eine
+minimale Linux Umgebung. Sie sollten nun ein root Prompt (&quot;<font class="code">#</font>&quot;) auf der
+aktuellen Konsole haben. Durch drücken von alt-f2, alt-f3, usw. gefolgt von 
+einem <font class="emphasis">enter</font>  können Sie weitere Konsolen aktivieren.</p>
+
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Laden der Kernel Module</p>
+
+<p>Sie sind jetzt fast soweit, dass Sie mit der Installation anfangen können. 
+Sie müssen aber noch dafür sorgen, dass der Kernel auch die Netzwerkkarte 
+erkennt. Eventuell müssen auch noch SCSI Module geladen werden die nicht
+automatisch erkannt wurden. Um eine Liste aller verfügbaren Netzwerkkartenmodule
+anzuzeigen, geben Sie <font class="code">ls /lib/modules/*/kernel/drivers/net/*</font> ein.
+Um ein bestimmtes Modul zu laden, tippen Sie: </p>
+
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">modprobe pcnet32</font>
+	<font class="comment">(Ersetzen Sie pcnet32 durch das Modul Ihrer NIC)</font>
+</pre></td></tr>
+</table>
+
+<p>Wenn Sie nun auch noch auf SCSI Hardware zugreifen möchten die nicht automatisch
+erkannt wurde, müssen Sie das passende Modul aus /lib/modules laden. 
+Verwenden Sie dazu <font class="code">modprobe</font>:</p>
+
+
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">modprobe aic7xxx</font>
+# <font class="input">modprobe sr_mod</font>
+# <font class="input">modprobe sd_mod</font>
+</pre></td></tr>
+</table>
+
+<p>Mit den oben stehenden Befehlen haben Sie den SCSI Treiber <font class="code">aic7xxx</font> geladen und
+sichergestellt das die Unterstützung für SCSI CD-ROMS (<font class="code">sr_mod</font>) und Festplatten 
+(<font class="code">sd_mod</font>) aktiviert ist.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Version -r10 des ISO Images enthält jetzt auch <font class="code">hdparm</font>. Wenn eine Ihrer Festplatten
+optimiert werden muss, ist nun der richtige Zeitpunkt dafür.</p></td></tr></table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap4">4.</a></font>PCMCIA Lernel Module laden</p>
+<p>Wenn Sie eine PCMCIA Netzwerkkarte verwenden, müssen Sie noch einen
+zusätzlichen Dreh anwenden.</p>
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">insmod pcmcia_core</font>
+# <font class="input">insmod i82365</font>
+# <font class="input">insmod ds</font>
+# <font class="input">cardmgr -f</font>
+</pre></td></tr>
+</table>
+
+<p>Während cardmgr überprüft welche Hardware vorhanden ist, sollten aus Ihrem
+Lautsprecher einige Piepser ertönen und die PCMCIA Netzwerkkarte ihre Arbeit
+aufnehmen. Sie können natürlich die PCMCIA Karte auch nach dem Laden des cardmgr
+einstecken.(Technisch gesehen müssen Sie <font class="input">cardmgr</font> nicht starten wenn Sie
+genau wissen welche Module Ihre PCMCIA Karte benötigt. Aber wenn nicht, versuchen
+Sie nicht alle Module zu laden um zu sehen welches passt. Das wird nicht
+funktionieren da sich alle Module laden lassen und darauf warten, dass eine
+passende PCMCIA Karte eingesteckt wird. Außerdem entfernt <font class="code">cardmgr</font> die
+Module der Karte wieder wenn sie entnommen wird.)
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap5">5.</a></font>Konfiguration der Netzwerkanbindung</p>
+
+<p>Die neue -r11+ Boot CD erlaubt es nun ein Netzwerk zu konfigurieren damit <font class="code">ssh</font>, 
+<font class="code">scp</font> oder <font class="code">wget</font> schon vor der eigentlichen Installation verwendet werden können. Auch
+wenn Sie diese Programme jetzt nicht brauchen, sollten Sie nun das Netzwerk konfigurieren. Einmal
+konfiguriert kann Portage diese Netzwerkverbindung nutzen wenn Sie sich in der &quot;chroot&quot; Umgebung
+befinden. (Für die Gentoo Linux Installation erforderlich.)</p>
+
+<p class="secthead"><a name="_sect2">DHCP </a></p>
+<p>Mit DHCP ist die Netzwerkkonfiguration sehr einfach. Wenn Ihr Provider kein DHCP anbietet,
+geht es für Sie bei der statischen Netzwerkkonfiguration weiter.</p>
+
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4: Netzerk Konfiguration via DHCP</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">dhcpcd eth0</font> 
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Einige Provider erwarten das Sie einen Hostnamen übergeben. Um dies zu tun hängen Sie die 
+Option <font class="code">-h meinhostname</font> an das oben stehende Kommando.</p></td></tr></table>
+
+<p>Wenn Sie <font class="input">dhcpConfig</font> Warnungen bekommen, keine Panik. Die meisten Meldungen sind 
+harmlos. Weiter gehts unten mit dem Test der Netzwerkanbindung.</p>
+
+<p class="secthead"><a name="_sect3">Statische Konfiguration </a></p>
+<p>
+Sie müssen Ihre Netzwerkanbindung soweit konfigurieren, dass Sie die benötigten Quellen 
+herunterladen können. Außerdem wird das lokale (localhost) Interface benötigt. 
+Bitte geben Sie dazu folgende Befehle ein und ersetzen $IFACE mit Ihrem Netzwerkinterface 
+(typischerweise <font class="code">eth0</font>), $IPNUM mit Ihrer IP Adresse, $BCAST mit Ihrer Broadcast Adresse und 
+$NMASK mit Ihrer Netzwerkmaske. Bei dem <font class="code">route</font> Befehl ersetzen Sie $GTWAY durch die IP Adresse 
+Ihres &quot;default Gateway&quot;.</p>
+
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">/sbin/ifconfig $IFACE $IPNUM broadcast $BCAST netmask $NMASK</font>
+# <font class="input">/sbin/route add -net default gw $GTWAY netmask 0.0.0.0 metric 1</font>
+</pre></td></tr>
+</table>
+<p>Jetzt müssen Sie die Datei <font class="path">/etc/resolv.conf</font> erstellen damit die Namensauflösung 
+(Web/FTP Server durch Namen anstatt der IP Adresse finden) funktioniert.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Im Moment ist nur <font class="code">nano</font>, ein kleiner, leicht zu bedienender Editor installiert.
+Verwenden Sie <font class="code">nano</font> mit dem Schalter <font class="code">-w</font> um den automatischen Zeilenumbruch 
+abzuschalten.</p></td></tr></table>
+
+<p>Hier ein Beispiel der Datei /etc/resolv.conf:</p>
+
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6: /etc/resolv.conf Vorlage</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+domain mydomain.com
+nameserver 10.0.0.1
+nameserver 10.0.0.2
+</pre></td></tr>
+</table>
+<p>Ersetzten Sie <font class="code">10.0.0.1</font> und <font class="code">10.0.0.2</font> mit den IP Adressen Ihres primären und
+sekundären DNS Servers.</p>
+<p class="secthead"><a name="_sect4">Test der Netzwerkanbindung </a></p>
+<p>Da Ihre Netzwerkanbindung jetzt konfiguriert ist sollte das <font class="code">/sbin/ifconfig -a</font> Kommando ergeben,
+ das Ihre Netzwerkkarte (hoffentlich) arbeitet (achten Sie auf <font class="emphasis">UP</font> und <font class="emphasis">RUNNING</font> in der Ausgabe).
+</p>
+
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7: /sbin/ifconfig bei einer arbeitenden Netzwerkkarte</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
+          inet addr:192.168.0.2  Bcast:192.168.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::50:ba8f:617a/10 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1498792 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1284980 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:1984 txqueuelen:100
+          RX bytes:485691215 (463.1 Mb)  TX bytes:123951388 (118.2 Mb)
+          Interrupt:11
+</pre></td></tr>
+</table>
+
+<p class="secthead"><a name="_sect5">Netzwerkanschluss ist online! </a></p>
+<p>Der Netzwerkanschluss sollte nun konfiguriert und nutzbar sein. Sie sind nun in der Lage sich via 
+<font class="code">ssh</font>, <font class="code">scp</font> und <font class="code">wget</font> mit anderen Rechnern in Ihrem LAN oder im Internet zu
+verbinden.</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap6">6.</a></font>Set up partitions</p>
+
+<p>Now that the kernel can see our network card and disk controllers, it's time
+to set up disk partitions for Gentoo Linux.</p>
+
+<p>Here's a quick overview of the standard Gentoo Linux partition layout.
+We're going to create at least three partitions: a swap partition, a root
+partition (to hold the bulk of Gentoo Linux), and a special boot partition.
+The boot partition is designed to hold GRUB boot loader information as well as
+your Linux kernel(s).  The boot partition gives us a safe place to store
+everything related to booting Linux. During normal day-to-day Gentoo Linux use,
+your boot partition should remain <font class="emphasis">unmounted</font>.  This prevents your kernel
+from being made unavailable to GRUB (due to filesystem corruption) in the event
+of a system crash, preventing the chicken-and-egg problem where GRUB can't read
+your kernel (since your filesystem isn't consistent) but you can't bring your
+filesystem back to a consistent state (since you can't boot!)      </p>
+
+<p>Now, on to filesystem types.  Right now, you have four filesystem options:
+XFS, ext2, ext3 (journaling) and ReiserFS.  ext2 is the tried and true Linux
+filesystem but doesn't have metadata journaling.  ext3 is the new version of
+ext2 with both metadata journaling and ordered data writes, effectively
+providing data journaling as well.  ReiserFS is a B*-tree based filesystem
+that promises very good small file performance, and greatly outperforms both ext2 and
+ext3 when dealing with small files (files less than 4k), often by a factor of
+10x-15x.  However, we do <font class="emphasis">not</font> recommend ReiserFS at this time,
+due to repeated occurances of file-system corruption with the 2.4.x series
+kernels.  ReiserFS has metadata journaling, but no data journaling.  XFS
+is a high-performance enterprise-class filesystem with metadata journaling that
+is fully supported under Gentoo Linux.
+</p>
+<p>
+If
+you're looking for the most standard filesystem, use ext2.  If you're looking
+for the most rugged journalled filesystem, use ext3.  If you're looking for a
+high-performance filesystem with journaling support, use XFS;  both ext3 and XFS are 
+mature and refined.  All filesystems except ReiserFS are production-ready.  
+Here are our basic recommended filesystem
+sizes and types:</p>
+
+  <table class="ntable">
+  <tr>
+  	<td bgcolor="#7a5ada" class="infohead"><b>Partition</b></td>
+	<td bgcolor="#7a5ada" class="infohead"><b>Size</b></td>
+	<td bgcolor="#7a5ada" class="infohead"><b>Type</b></td>
+  	<td bgcolor="#7a5ada" class="infohead"><b>example device</b></td>
+  </tr>
+  <tr>
+  	<td bgcolor="#ddddff" class="tableinfo">boot partition, containing kernel(s) and boot information</td>
+	<td bgcolor="#ddddff" class="tableinfo">100 Megabytes</td>
+	<td bgcolor="#ddddff" class="tableinfo">ext2/3 highly recommended (easiest); if ReiserFS then mount with <font class="code">-o notail</font>
+</td>
+  	<td bgcolor="#ddddff" class="tableinfo">/dev/hda1</td>
+  </tr>
+   <tr>
+  	<td bgcolor="#ddddff" class="tableinfo">swap partition (no longer a 128 Megabyte limit)</td>
+	<td bgcolor="#ddddff" class="tableinfo">&gt;=2*Amount of RAM in this system is recommended but no longer (as of kernel 2.4.10) required</td>
+	<td bgcolor="#ddddff" class="tableinfo">Linux swap</td>
+  	<td bgcolor="#ddddff" class="tableinfo">/dev/hda2</td>
+  </tr>
+  <tr>
+  	<td bgcolor="#ddddff" class="tableinfo">root partition, containing main filesystem (/usr, /home, etc)</td>
+	<td bgcolor="#ddddff" class="tableinfo">&gt;=1.5 Gigabytes</td>
+	<td bgcolor="#ddddff" class="tableinfo">XFS, ext3 recommended; ext2 ok</td>
+  	<td bgcolor="#ddddff" class="tableinfo">/dev/hda3</td>
+  </tr>
+ </table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>At this point, create your partitions using fdisk.  Note that your partitions
+should be of type 82 if swap and 83 for regular filesystems (whether XFS, ReiserFS <font class="emphasis">or</font> ext2).
+</p></td></tr></table>
+
+<p>Once you've created your partitions using <font class="code">fdisk</font>, it's time to initialize
+the filesystems that will be used to house our data.  Initialize swap as follows:</p>
+<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mkswap /dev/hda2</font>
+</pre></td></tr>
+</table>
+<p>You can use the <font class="code">mke2fs</font> command to create ext2 filesystems:</p>
+<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 9</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mke2fs /dev/hda1</font>
+</pre></td></tr>
+</table>
+<p>To create an XFS filesystem, use the <font class="code">mkfs.xfs</font> command:</p>
+<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 10</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mkfs.xfs /dev/hda3</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+You may want to add a couple of additional flags to the <font class="code">mkfs.xfs</font> command: <font class="code">-d agcount=3 -l size=32m</font>. 
+The <font class="code">-d agcount=3</font> command will lower
+the number of allocation groups.  XFS will insist on using at least 1 allocation group per 4 GB of your partition,
+so, for example, if you hava a 20 GB partition you will need a minimum agcount of 5.  The <font class="code">-l size=32m</font> command
+increases the journal size to 32 Mb, increasing performance.
+</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>
+If you are installing an XFS partition over a previous ReiserFS partition, later attempts to mount may fail without
+an explicit <font class="code">mount -t xfs</font>.  The solution is to zero out the partition before creating the XFS filesystem:
+<font class="code">dd if=/dev/zero of=/dev/hd<font class="comment">x</font> bs=1k</font>. 
+</p></td></tr></table>
+<p>If you'd like to use ext3, you can create ext3 filesystems using <font class="code">mke2fs -j</font>:</p>
+<a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 11</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mke2fs -j /dev/hda3</font>
+</pre></td></tr>
+</table>
+<p>To create ReiserFS filesystems, use the <font class="code">mkreiserfs</font> command:</p>
+<a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 12</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mkreiserfs /dev/hda3</font>
+</pre></td></tr>
+</table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Again, we do not recommend ReiserFS at this time.  While ReiserFS has
+worked fine for many, filesystem corruption has been too common a problem with
+ReiserFS and the 2.4.x series kernels.</p></td></tr></table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>You can find out more about using ext3 under Linux 2.4 at <a href="http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html">http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html</a>.</p></td></tr></table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap7">7.</a></font>Mount partitions</p>
+<p>
+Now, we'll activate our new swap, since we may need the additional virtual memory that
+provides later:
+</p>
+<a name="doc_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 13</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">swapon /dev/hda2</font>
+</pre></td></tr>
+</table>
+<p>Next, we'll create the <font class="path">/mnt/gentoo</font> and <font class="path">/mnt/gentoo/boot</font> mountpoints,
+and we'll mount our filesystems to these mountpoints. 
+</p>
+<a name="doc_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 14</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mkdir /mnt/gentoo</font>
+# <font class="input">mount /dev/hda3 /mnt/gentoo</font>
+# <font class="input">mkdir /mnt/gentoo/boot</font>
+# <font class="input">mount /dev/hda1 /mnt/gentoo/boot</font>
+</pre></td></tr>
+</table>
+<p>If you are setting up Gentoo
+   Linux with a separate <font class="path">/usr</font> or <font class="path">/var</font>, these would get mounted to
+   <font class="path">/mnt/gentoo/usr</font> and <font class="path">/mnt/gentoo/var</font>, respectively.
+</p>
+   <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>If your <font class="emphasis">boot</font> partition (the one holding the kernel) is ReiserFS, be sure to mount it
+   with the <font class="code">-o notail</font> option so GRUB gets properly installed.  Make sure 
+   that <font class="code">notail</font> ends up in your new <font class="path">/etc/fstab</font> boot partition entry, too.
+   We'll get to that in a bit.</p></td></tr></table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap8">8.</a></font>Mounting the CD-ROM</p>
+<p>Even though we've booted from the CD-ROM, the CD-ROM itself is not mounted under our minimal
+Linux boot CD environment.  We'll need to mount it so that we can access the compressed build image
+tarball contained on the CD-ROM.  To mount the CD-ROM, one typically types:
+</p>
+<a name="doc_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 15</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">mount /dev/cdroms/cdrom0 /mnt/cdrom -o ro -t iso9660</font>
+</pre></td></tr>
+</table>
+<p>With the CD-ROM mounted, you should be able to see the <font class="code">stage???.tbz2</font> file(s) by typing
+<font class="code">ls /mnt/cdrom</font>.</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap9">9.</a></font>Unpack the stage you want to use</p>
+
+<p>Now it's time to extract the compressed stage tarball of your choice to <font class="path">/mnt/gentoo</font>.  Then, we'll <font class="code">chroot</font> over to the new Gentoo Linux build installation. 
+</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Be sure to use the <font class="code">p</font> option with <font class="code">tar</font>.  Forgetting to do this will cause certain files to contain incorrect permissions.</p></td></tr></table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>If you are using the &quot;from scratch, build everything&quot; install method, you will want to use the <font class="path">stage1-ix86-1.2.tbz2</font> image.
+If you're using one of our bigger CDs, you'll also have a choice of a stage2 and stage3 image.  These images allow you to save time at the
+expense of configurability (we've already chosen compiler optimizations and default USE variables for you.)  The stage3 image now also includes complete linux sources and a Portage tree snapshot, eliminating the need to do an <font class="code">emerge rsync</font> later.
+</p></td></tr></table>
+
+<a name="doc_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 16</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cd /mnt/gentoo</font>
+# <font class="input">tar -xvjpf /mnt/cdrom/stage?-*.tbz2</font>
+# <font class="input">mount -o bind /proc /mnt/gentoo/proc</font>
+# <font class="input">cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf</font>
+</pre></td></tr>
+</table>
+
+<a name="doc_pre17"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 17</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">chroot /mnt/gentoo /bin/bash</font>
+# <font class="input">env-update</font>
+Regenerating /etc/ld.so.cache...
+# <font class="input">source /etc/profile</font>
+# 
+</pre></td></tr>
+</table>
+
+<p>After you execute these commands, you'll be &quot;inside&quot; your new Gentoo Linux environment.
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap10">10.</a></font>Rsync</p>
+<p>Now, you'll need to run <font class="code">emerge rsync</font>.  If you're using the a Gentoo Linux 1.1+ stage3 tarball,
+<font class="code">emerge rsync</font> is now optional as we've included a snapshot of the Portage tree for your convenience. <font class="code">emerge rsync</font> will tell <font class="code">emerge</font> to
+connect to rsync.gentoo.org and download the latest version of our Portage ports tree:</p>
+
+<a name="doc_pre18"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 18</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge rsync</font>
+</pre></td></tr>
+</table>
+<p>The Portage tree will be downloaded; it's about 10Mb in size.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>The address for the rsync server is currently rsync://rsync.gentoo.org/gentoo-portage.
+  If you have trouble accessing Gentoo rsync, make sure you're
+using this address by setting it as the SYNC variable in your /etc/make.conf.
+</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>The rsync command can be configured to use an HTTP proxy if you
+are behind a firewall.  To configure this item set 
+<font class="input">RSYNC_PROXY=&quot;hostname:port&quot;</font> in <font class="input">/etc/make.conf</font> or set it as
+an environment variable.
+</p></td></tr></table>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap11">11.</a></font>Progressing from stage1 to stage2</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>If you are a stage2 or stage3 tarball, then we've already bootstrapped
+for you.  There is no reason for you to bootstrap again, unless you decided to
+do an <font class="code">emerge rsync</font> and want to ensure that you have an up-to-the-minute
+current Gentoo Linux system.  Most people using stage2 or stage3 tarballs will
+<font class="input">not</font> want to bootstrap again, since it can take up to an hour even on
+very fast machines.</p></td></tr></table>
+
+<p>Now that you have a working copy of the Portage tree, people using stage1 to
+install will need to bootstrap their Gentoo Linux system as follows.  First
+edit the file <font class="path">/etc/make.conf</font>.  In this file, you should set your
+<font class="code">USE</font> flags, which specify optional functionality that you would like to
+be built into packages; generally, the defaults (an <font class="emphasis">empty</font> or unset USE
+variable) are fine.  You also should set appropriate <font class="code">CHOST</font>, <font class="code">
+CFLAGS</font> and <font class="code">CXXFLAGS</font> settings for the kind of system that you are
+creating (commented examples can be found further down in the file.)  If
+necessary, you can also set proxy information here if you are behind a
+firewall.  </p>
+
+<a name="doc_pre19"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 19</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/make.conf</font> <font class="comment">(Adjust these settings)</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+People who need to substantially tweak the build process should take a look at
+the <font class="path">/etc/make.globals</font> file.  This file comprises gentoo defaults and
+should never be touched.  If the defaults do not suffice, then new values should
+be put in <font class="path">/etc/make.conf</font>, as entries in <font class="path">make.conf</font>
+<font class="comment">override</font> the entries in <font class="path">make.globals</font>.  If you're
+interested in tweaking USE settings, look in <font class="path">/etc/make.profile/make.defaults</font>.
+If you want to turn off any USE settings found here, add an appropriate <font class="code">USE=&quot;-foo&quot;</font>
+in /etc/make.conf (to turn off the <font class="code">foo</font> USE setting.)
+</p></td></tr></table>
+<p>Now, it's time to start the &quot;bootstrap&quot; process.  This process will last 1-2 hours depending on 
+how zippy your machine is; it takes about an hour on my 900Mhz AMD Athlon system.  During this
+time, the extracted build image will be prepped for compiling the rest of the system.  The GNU
+compiler suite will be built, as well as the GNU C library.  These are time consuming builds and
+make up the bulk of the bootstrap process:</p>
+<a name="doc_pre20"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 20</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cd /usr/portage</font>
+# <font class="input">scripts/bootstrap.sh</font>
+</pre></td></tr>
+</table>
+<p>The &quot;bootstrap&quot; process will now begin.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Portage by default uses <font class="code">/var/tmp</font> during package building, often
+using several hundred megabytes of temporary storage. If you would like to
+change where Portage stores these temporary files, set a new PORTAGE_TMPDIR <font class="emphasis">before</font>
+starting the bootstrap process, as follows:
+</p></td></tr></table>
+<a name="doc_pre21"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 21</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">export PORTAGE_TMPDIR=&quot;/otherdir/tmp&quot;</font>
+</pre></td></tr>
+</table>
+<p>
+The 
+<font class="code">bootstrap.sh</font> will build <font class="code">binutils</font>, <font class="code">gcc</font>, <font class="code">gettext</font>,
+and <font class="code">glibc</font>, rebuilding <font class="code">binutils</font>, <font class="code">gcc</font>, and <font class="code">gettext</font>
+after <font class="code">glibc</font> is built.  Needless to say, this process takes a while.
+Have a nice nap.  Once this process completes, your system will be in a &quot;stage2&quot; state.
+</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap12">12.</a></font>Progressing from stage2 to stage3</p>
+
+<p>Once your build image has been bootstrapped and you're at stage2 (again, if you're
+using a stage3 tarball than these steps are not required)
+it's time to build or install the rest of the base
+system as follows:</p>
+
+<a name="doc_pre22"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 22</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">export CONFIG_PROTECT=&quot;&quot;</font>
+# <font class="input">emerge --pretend system</font>
+	<font class="comment">[lists the packages to be installed]</font>
+# <font class="input">emerge system</font>
+</pre></td></tr>
+</table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>The <font class="code">export CONFIG_PROTECT=&quot;&quot;</font> line ensures that any new scripts
+installed to <font class="path">/etc</font> will overwrite the old scripts (stored in
+<font class="path">sys-apps/baselayout</font>), bypassing Portage's new config file
+management support.  Type <font class="code">emerge --help config</font> for more details.</p></td></tr></table>
+
+<p>It's going to take a while
+to finish building the entire base system.  Your reward is that it will be
+thoroughly optimized for your system.  The drawback is that you have to find a
+way to keep yourself occupied for some time to come.  The author suggests &quot;Star
+Wars - Super Bombad Racing&quot; for the PS2.  When <font class="code">emerge system</font> completes,
+you'll have a stage3 Gentoo Linux system.</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap13">13.</a></font>Final steps: timezone</p>
+
+<p>At this point, you should have a stage3 system that's ready for final configuration.  We'll start this process by setting the timezone.  By setting the timezone before building the kernel we ensure that
+users get reasonable <font class="code">uname -a</font> output.</p>
+<p>Look for your timezone (or GMT if you using Greenwich Mean Time) in <font class="path">/usr/share/zoneinfo</font>.  Then, make a symbolic link by typing:
+</p>
+<a name="doc_pre23"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 23</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">ln -sf /usr/share/zoneinfo/path/to/timezonefile /etc/localtime</font>
+</pre></td></tr>
+</table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap14">14.</a></font>Final steps: kernel and system logger</p>
+<p>
+If you're installing a Gentoo Linux 1.1+ stage3 tarball, we've made things convenient
+for you and included recent Linux sources in <font class="path">/usr/src/linux</font>.
+Otherwise, you'll need to merge Linux source ebuilds.  Here are the ones we currently
+offer:</p>
+<table class="ntable">
+<tr>
+<td bgcolor="#7a5ada" class="infohead"><b>ebuild</b></td>
+<td bgcolor="#7a5ada" class="infohead"><b>description</b></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="path">gentoo-sources</font></td>
+<td bgcolor="#ddddff" class="tableinfo">Our own performance and functionality-enhanced kernel based on -ac (doesn't include XFS support)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="path">xfs-sources</font></td>
+<td bgcolor="#ddddff" class="tableinfo">A snapshot of the SGI XFS CVS Linux source tree; this is the kernel to run if you're using the XFS filesystem</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="path">openmosix-sources</font></td>
+<td bgcolor="#ddddff" class="tableinfo">A stock Linux kernel source tree patched with support for the GPL <a href="http://www.openmosix.com">openMosix</a> load-balancing/clustering technology</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="path">usermode-sources</font></td>
+<td bgcolor="#ddddff" class="tableinfo">A stock Linux kernel source tree patched with support for User-Mode Linux.  (&quot;Linux inside Linux&quot; technology)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="path">vanilla-sources</font></td>
+<td bgcolor="#ddddff" class="tableinfo">A stock Linux kernel source tree, just like you'd get from kernel.org</td>
+</tr>
+</table>
+
+<p>Choose one and then merge as follows:</p>
+
+<a name="doc_pre24"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 24</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge sys-kernel/gentoo-sources</font>
+</pre></td></tr>
+</table>
+
+<p>Once you have a Linux kernel source tree available, it's time to compile your own custom kernel:
+</p>
+<a name="doc_pre25"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 25</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cd /usr/src/linux</font>
+# <font class="input">make menuconfig</font>
+# <font class="input">make dep &amp;&amp; make clean bzImage modules modules_install</font>
+# <font class="input">mv /boot/bzImage /boot/bzImage.orig</font> <font class="comment">[if bzImage already exists]</font>
+# <font class="input">cp /usr/src/linux/arch/i386/boot/bzImage /boot</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>For your kernel to function properly, there are several options that you will
+need to ensure are in the kernel proper -- that is, they should <font class="input">be enabled and not
+compiled as modules</font>.  You will need to enable the <font class="input">&quot;Code maturity
+level options --&gt; Prompt for development and/or incomplete code/drivers&quot;</font>
+option to see several of these selections.
+Under the &quot;File systems&quot; section, be sure to enable the <font class="input">&quot;Device File System&quot;</font> (note that
+you <font class="emphasis">don't</font> need to enable the &quot;/dev/pts file system support&quot; option). You'll also
+need to enable the <font class="input">&quot;Virtual Memory Filesystem&quot;</font>.  Be sure to enable &quot;ReiserFS&quot; if you have
+any ReiserFS partitions; the same goes for &quot;Ext3&quot;.  If you're using XFS, enable the 
+&quot;SGI XFS filesystem support&quot;
+option.  It's always a good idea to leave ext2
+enabled whether you are using it or not.    Also, most people using IDE hard drives will
+want to enable the &quot;USE DMA by default&quot; option; otherwise, your IDE drives may perform
+very poorly.  Of course, remember to enable &quot;IDE disk&quot; support as well -- otherwise your
+kernel won't be able to see your IDE disks.
+</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+For those who prefer it, 
+it is now possible to install Gentoo Linux with a 2.2 kernel.
+Such stability will come at a price: 
+you will lose many of the nifty features that
+are new to the 2.4 series kernels (such as XFS and tmpfs
+filesystems, iptables, and more), although the 2.2 kernel sources can be
+patched with Reiserfs and devfs support.  
+Gentoo linux bootscripts require either tmpfs or ramdisk support in the kernel, so 
+2.2 kernel users need to make sure that ramdisk support is compiled in (ie, not a module).
+It is <font class="comment">vital</font> that a <font class="emphasis">gentoo=notmpfs</font> flag be added to the kernel
+line in <font class="path">/boot/grub/menu.lst</font> for the 2.2 kernel so that a ramdisk is mounted
+for the bootscripts instead of tmpfs.  If you choose not to use devfs, then
+<font class="emphasis">gentoo=notmpfs,nodevfs</font> should be used instead.
+</p></td></tr></table>
+
+<p>
+Your new custom kernel (and modules) are now installed.  Now you need to choose a system
+logger that you would like to install.  We offer sysklogd, which is the traditional set
+of system logging daemons.  We also have syslog-ng as well as metalog.  Power users seem
+to gravitate away from sysklogd (not very good performance) and towards syslog-ng and 
+metalog.  If in doubt, you may want to try metalog, since it seems to be quite popular.
+To merge your logger of choice, type <font class="emphasis">one</font> of the next three lines:
+</p>
+
+<a name="doc_pre26"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 26</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge sys-apps/sysklogd</font>
+# <font class="input">rc-update add sysklogd default</font>
+<font class="comment">or</font>
+# <font class="input">emerge app-admin/syslog-ng</font>
+# <font class="input">rc-update add syslog-ng default</font>
+<font class="comment">or</font>
+# <font class="input">emerge app-admin/metalog</font>
+# <font class="input">rc-update add metalog default</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>
+In the case of syslog-ng you need to create 
+<font class="path">/etc/syslog-ng/syslog-ng.conf</font>.
+See <font class="path">/etc/syslog-ng</font> 
+for a sample configuration file.
+</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>
+Metalog flushes output to the disk in blocks, so messages aren't immediately recorded into
+the system logs.  If you are trying to debug a daemon, this performance-enhancing behavior is less than helpful.  When your
+Gentoo Linux system is up and running, you can send
+metalog a USR1 signal to temporarily turn off this message buffering (meaning that 
+<font class="input">tail -f <font class="path">/var/log/everything/current</font></font> will now work 
+in real time, as expected), 
+and a USR2 signal to turn buffering back on
+again. 
+</p></td></tr></table>
+<p>Now, you may optionally choose a cron package that you'd like to use.  Right now, we offer dcron, fcron and vcron.
+If you don't know which one to choose, you might as well grab vcron.  They can be installed as follows:</p>
+<a name="doc_pre27"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 27</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge sys-apps/dcron</font>
+# <font class="input">crontab /etc/crontab</font>
+<font class="comment">or</font>
+# <font class="input">emerge sys-apps/fcron</font>
+# <font class="input">crontab /etc/crontab</font>
+<font class="comment">or</font>
+# <font class="input">emerge sys-apps/vcron</font>
+</pre></td></tr>
+</table>
+<p>For more information how how cron works under Gentoo Linux, see <a href="http://lists.gentoo.org/pipermail/gentoo-announce/2002-April/000151.html">this announcement</a>.</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap15">15.</a></font>Final steps: install additional packages</p>
+<p>
+You may need to install some additional packages in the Portage tree
+if you are using any optional features like XFS or LVM.  If you're
+using XFS, you should emerge the <font class="code">xfsprogs</font> ebuild:
+</p>
+<a name="doc_pre28"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 28</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge sys-apps/xfsprogs</font>
+</pre></td></tr>
+</table>
+<p>
+If you're using LVM, you should emerge the <font class="code">lvm-user</font> ebuild:
+</p>
+<a name="doc_pre29"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 29</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge --usepkg sys-apps/lvm-user</font>
+</pre></td></tr>
+</table>
+<p>
+If you're a laptop user and wish to use your pcmcia slots on your first
+real reboot, you'll want to make sure you install the pcmcia-cs package.
+</p>
+<a name="doc_pre30"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 30</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge sys-apps/pcmcia-cs</font>
+</pre></td></tr>
+</table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap16">16.</a></font>Final steps: /etc/fstab</p>
+<p>Your Gentoo Linux system is almost ready for use.  All we need to do now is configure
+a few important system files and install the GRUB boot loader. 
+The first file we need to
+configure is <font class="path">/etc/fstab</font>.  Remember that you should use
+the <font class="code">notail</font> option for your boot partition if you chose to create a ReiserFS filesystem on it.
+Remember to specify <font class="code">ext2</font>, <font class="code">ext3</font> or <font class="code">reiserfs</font> filesystem types as appropriate.</p>
+<p>Use something like the <font class="path">/etc/fstab</font> listed below, but of course be sure to replace &quot;BOOT&quot;,
+&quot;ROOT&quot; and &quot;SWAP&quot; with the actual block devices you are using (such as <font class="code">hda1</font>, etc.)</p>
+<a name="doc_pre31"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 31</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<font class="comment">
+# /etc/fstab: static file system information.
+#
+# noatime turns of atimes for increased performance (atimes normally aren't
+# needed; notail increases performance of ReiserFS (at the expense of storage
+# efficiency).  It's safe to drop the noatime options if you want and to 
+# switch between notail and tail freely.
+
+# &lt;fs&gt;           &lt;mountpoint&gt;   &lt;type&gt;   &lt;opts&gt;          &lt;dump/pass&gt;
+
+# NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
+</font>
+/dev/BOOT           /boot       ext2	 noauto,noatime	 1 2
+/dev/ROOT           /           ext3	 noatime         0 1
+/dev/SWAP           none        swap	 sw              0 0
+/dev/cdroms/cdrom0  /mnt/cdrom  iso9660	 noauto,ro       0 0
+proc                /proc       proc	 defaults        0 0
+</pre></td></tr>
+</table>
+
+<p class="secthead"><a name="_sect2">Final steps: set the root password </a></p>
+<p>Before you forget, set the root password by typing:</p>
+<a name="doc_pre32"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 32</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">passwd</font>
+</pre></td></tr>
+</table>
+<p class="secthead"><a name="_sect3">Final steps: /etc/hostname </a></p>
+<p>Edit this file so that it contains your fully-qualified domain name on a single line, i.e. <font class="code">mymachine.mydomain.com</font>.
+</p>
+<p class="secthead"><a name="_sect4">Final steps: /etc/hosts </a></p>
+<p>This file contains a list of ip addresses and their associated hostnames.  It's used by the system to resolve the IP addresses
+of any hostnames that may not be in your nameservers.  Here's a template for this file:
+</p>
+<a name="doc_pre33"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 33</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+127.0.0.1      localhost
+<font class="comment"># the next line contains your IP for your local LAN, and your associated machine name</font>
+192.168.1.1    mymachine.mydomain.com	mymachine
+</pre></td></tr>
+</table>
+<p class="secthead"><a name="_sect5">Final network configuration </a></p>
+<p>
+Add the names of any modules that are necessary for the proper functioning of your system to 
+<font class="path">/etc/modules.autoload</font> file (you can also add any options you
+need to the same line.) When Gentoo Linux boots, these modules will be automatically
+loaded.  Of particular importance is your ethernet card module, if you happened to compile
+it as a module:
+</p>
+<a name="doc_pre34"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 34: /etc/modules.autoload</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+3c59x
+</pre></td></tr>
+</table>
+<p>Edit the <font class="path">/etc/conf.d/net</font> script to get your network configured for your
+first boot:
+</p>
+<a name="doc_pre35"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 35</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/conf.d/net</font>
+# <font class="input">rc-update add net.eth0 default</font>
+</pre></td></tr>
+</table>
+<p>
+If you have multiple network cards you need to create additional <font class="path">net.ethx</font>
+scripts for each one (<font class="comment">x</font> = 1, 2, ...):
+</p>
+<a name="doc_pre36"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 36: Multiple network interfaces</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cd /etc/init.d</font>
+# <font class="input">cp net.eth0 net.eth<font class="comment">x</font></font>
+# <font class="input">rc-update add net.eth<font class="comment">x</font> default</font>
+</pre></td></tr>
+</table>
+<p>
+If you have a PCMCIA card installed, have a quick look into 
+/etc/init.d/pcmcia to verify that things seem all right for your setup,
+then add 
+<a name="doc_pre37"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 37</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+depend() {
+	need pcmcia
+}
+</pre></td></tr>
+</table>
+on top of your <font class="path">/etc/init.d/net.ethx</font> file, 
+for the pcmcia drivers to be autoloaded whenever your network is loaded.
+</p>
+<p class="secthead"><a name="_sect6">Final steps: configure basic settings (including the international keymap setting) </a></p>
+<a name="doc_pre38"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 38: basic configuration</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/rc.conf</font>
+</pre></td></tr>
+</table>
+<p>
+Follow the directions in the file to configure the basic settings.  
+All users will want to make sure that <font class="code">CLOCK</font> is set to his/her
+liking.  International keyboard users will want to set the <font class="code">KEYMAP</font>
+variable (browse <font class="path">/usr/share/keymaps</font> to see the various
+possibilities).
+</p>
+<p class="secthead"><a name="_sect7">Final steps: configure GRUB </a></p>
+<p>
+The most critical part of understanding GRUB is getting comfortable with how GRUB refers to hard drives and partitions.
+Your Linux partition <font class="path">/dev/hda1</font> is called <font class="path">(hd0,0)</font> under GRUB.  Notice the parenthesis around the hd0,0 - they are required.  
+Hard drives count from zero rather than &quot;a&quot;, and partitions start at zero rather than one.  So, <font class="path">/dev/hdb3</font> gets translated to <font class="path">(hd1,2)</font>, and <font class="path">/dev/hdd7</font> gets translated to <font class="path">(hd3,6)</font>.  After you've gotten the feel for that, convert your boot and root partition names to the GRUB format and write them down.  Now, it's time to install GRUB.
+</p>
+
+<p>The easiest way to install grub is to simply type <font class="code">grub</font> at your chrooted shell prompt:
+</p>
+<a name="doc_pre39"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 39</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">grub</font>
+</pre></td></tr>
+</table>
+<p>You'll be presented with the <font class="code">grub&gt;</font> grub command-line prompt.  Now, you need to type in the
+right commands to install the GRUB boot record onto your hard drive.  In my example configuration,
+I want to install the GRUB boot record on my hard drive's MBR (master boot record), so that 
+the first thing I see when I turn on the computer is the GRUB prompt.  In my case, the commands
+I want to type are:</p>
+<a name="doc_pre40"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 40</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>grub&gt; <font class="input">root (hd0,0)</font>
+grub&gt; <font class="input">setup (hd0)</font>
+grub&gt; <font class="input">quit</font>
+</pre></td></tr>
+</table>
+
+<p>Here's how the two commands work.  The first <font class="code">root ( )</font> command tells GRUB
+the location of your boot partition (in our example, <font class="path">/dev/hda1</font> or 
+<font class="path">(hd0,0)</font> in GRUB terminology.  Then, the second <font class="code">setup ( )</font> command tells GRUB where to install the
+boot record - it will be configure to look for its special files at the <font class="code">root
+( )</font> location that you specified.  In my case, I want the boot record on the
+MBR of the hard drive, so I simply specify <font class="path">/dev/hda</font> (also known as <font class="path">(hd0)</font>).  If I were using
+another boot loader and wanted to set up GRUB as a secondary boot-loader, I
+could install GRUB to the boot record of a particular partition.  In that case,
+I'd specify a particular partition rather than the entire disk.  Once the GRUB
+boot record has been 
+successfully installed, you can type <font class="code">quit</font> to quit GRUB.  Gentoo Linux is
+installed, but we need to create the <font class="path">/boot/grub/menu.lst</font> file so that
+we get a nice GRUB boot menu when the system reboots.  Here's how to do it.</p>
+
+<p>Now, create the menu.lst file (<font class="code">nano -w /boot/grub/menu.lst</font>), and add the following to it:</p>
+<a name="doc_pre41"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 41</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+default 0
+timeout 30
+splashimage=(hd0,0)/boot/grub/splash.xpm.gz
+
+title=My example Gentoo Linux
+root (hd0,0) 
+kernel /boot/bzImage root=/dev/hda3 
+
+<font class="comment"># Below needed only for people who dual-boot</font>
+title=Windows NT Workstation
+root (hd0,5) 
+chainloader +1
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+The <font class="path">menu.lst</font> file should end in &quot;lst&quot; as in &quot;list&quot;, not &quot;1st&quot; as in &quot;first&quot;.  Also, (hd0,0) should be 
+written without any spaces inside the parentheses.
+</p></td></tr></table>
+<p>After saving this file, Gentoo Linux installation is complete.  Selecting the first option will
+tell GRUB to boot Gentoo Linux without a fuss.  The second part of the menu.lst file is optional, and shows you how to
+use GRUB to boot a bootable Windows partition.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Above, <font class="path">(hd0,0)</font> should point to your &quot;boot&quot; partition
+(<font class="path">/dev/hda1</font> in our example config) and <font class="path">/dev/hda3</font> should point to
+your root filesystem.  <font class="path">(hd0,5)</font> contains the NT boot
+loader.</p></td></tr></table> <p>Also, if you need to pass any options to the kernel, simply
+add them to the end of the <font class="code">kernel</font> command.  We're already passing one option
+(<font class="code">root=/dev/hda3</font>), but you can pass others as well.  In particular, you can
+turn off devfs by default (not recommended unless you know what you're doing) by
+adding the <font class="code">gentoo=nodevfs</font> option to the <font class="code">kernel</font> command.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Unlike in earlier versions of Gentoo Linux, you no longer have to add 
+<font class="code">devfs=mount</font> to the end of the <font class="code">kernel</font> line to enable devfs.  In rc6
+devfs is enabled by default.
+</p></td></tr></table>
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap17">17.</a></font>Installation complete!</p>
+<p>Now, Gentoo Linux is installed.  The only remaining step is to exit the chrooted shell, safely unmount your partitions
+and reboot the system:</p>
+<a name="doc_pre42"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 42</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">exit</font> 
+<font class="comment">// This exits the chrooted shell; you can also type ^D</font>
+# <font class="input">cd / </font>
+# <font class="input">umount /mnt/gentoo/boot</font>
+# <font class="input">umount /mnt/gentoo/proc</font>
+# <font class="input">umount /mnt/gentoo</font>
+# <font class="input">reboot</font>
+</pre></td></tr>
+</table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+After rebooting, it is a good idea to run the <font class="code">update-modules</font> command to create
+the <font class="path">/etc/modules.conf</font> file.  Instead of modifying this file directly, you should
+generally make changes to the files in <font class="path">/etc/modules.d</font>.
+</p></td></tr></table>
+<p>If you have any questions or would like to get involved with Gentoo Linux development, 
+consider joining our gentoo-user and gentoo-dev mailing lists
+(there's a &quot;click to subscribe&quot; link on our <a href="http://www.gentoo.org">main page</a>).
+We also have a handy <a href="/doc/desktop.html">Desktop configuration guide</a> that will
+help you to continue configuring your new Gentoo Linux system, and a useful <a href="/doc/portage-user.html">Portage user guide</a>
+to help familiarize you with Portage basics.  Enjoy and welcome to Gentoo Linux!</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 15 Juli 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Chief Architect</i><br><br>Chris Houser<br><i>Author</i><br><br><b><a class="altlink" href="mailto:jerry@gentoo.org">Jerry Alexandratos</a></b><br><i>Author</i><br><br><b><a class="altlink" href="mailto:g2boojum@gentoo.org">Grant Goodyear</a></b><br><i>Ghost</i><br><br><b><a class="altlink" href="mailto:mgreiner@berlios.de">Markus Greiner</a></b><br><i>Übersetzer</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Diese Anleitung führt Sie schrittweise durch den Gentoo Linux 1.2 Installationsprozess.
+Die Gentoo Linux Installation unterstützt verschiedene Installationsarten, abhängig davon
+wieviel des Systems von Grund auf installiert werden soll.
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>

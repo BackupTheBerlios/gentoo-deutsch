@@ -9,7 +9,7 @@
 <author title="Author">Chris Houser</author>
 <author title="Author"><mail link="jerry@gentoo.org">Jerry Alexandratos</mail></author>
 <author title="Ghost"><mail link="g2boojum@gentoo.org">Grant Goodyear</mail></author>
-<author title="&#xDC;bersetzung"><mail link="mgreiner@berlios.de">Markus Greiner</mail></author>
+<author title="&#xDC;bersetzer"><mail link="mgreiner@berlios.de">Markus Greiner</mail></author>
 
 <abstract>Diese Anleitung f&#xFC;hrt Sie schrittweise durch den Gentoo Linux 1.2 Installationsprozess.
 Die Gentoo Linux Installation unterst&#xFC;tzt verschiedene Installationsarten, abh&#xE4;ngig davon
@@ -25,15 +25,15 @@ wieviel des Systems von Grund auf installiert werden soll.
 <body>
 
 <p>Die neue Boot CD startet von fast jedem modernen IDE CD-ROM Laufwerk, sowie von vielen 
-SCSI CD-ROMs. Die CD-ROM unterst&#xFC;tzt IDE Kontroller (eingebaut im Kernel) sowie alle 
+SCSI CD-ROMs. Die CD-ROM unterst&#xFC;tzt IDE Controller (eingebaut im Kernel) sowie alle 
 SCSI Ger&#xE4;te (vorhanden als Module). Zus&#xE4;tzlich stellen wir Module f&#xFC;r 
-buchst&#xE4;blich jede Netzwerkkarte zur Verf&#xFC;gung die Linux unterst&#xFC;zt, 
+buchst&#xE4;blich jede Netzwerkkarte zur Verf&#xFC;gung die Linux unterst&#xFC;tzt, 
 sowie Tools die es erm&#xF6;glichen das Netzwerk zu konfigurieren und ausgehende 
 <c>ssh</c> Verbindungen zum Dateidownload aufzubauen.</p>
 
 <p> Um von der "Build" CD zu installieren, wird ein 486+ Prozessor ben&#xF6;tigt und 
-ideallerweise mindestens 64 Megabytes RAM. (Gentoo Linux konnte erfolgreich mit 
-64 MB Ram +  64 MB Swap installiert werden, aber die Installation unter diesen Bedingungen 
+idealerweise mindestens 64 Megabyte RAM. (Gentoo Linux konnte erfolgreich mit 
+64 MB RAM +  64 MB Swap installiert werden, aber die Installation unter diesen Bedingungen 
 war extrem langsam.) Um die Installation zu starten, laden Sie zuerst eines unserer 
 CD ISO Images von <uri>http://www.ibiblio.org/gentoo/releases/build/</uri>. Im Augenblick 
 haben wir zwei CDs verf&#xFC;gbar. Unsere erste CD ist 
@@ -66,7 +66,7 @@ hier die ben&#xF6;tigten Schritte:
 
 
 <table>
-<tr><th>stage tar-Archiv</th><th>Installationsanforderungen</th></tr>
+<tr><th>stage Archiv</th><th>Installationsanforderungen</th></tr>
 <tr><ti>1</ti><ti>partition/filesystem setup, emerge rsync, bootstrap, emerge system, emerge linux sources, final configuration</ti></tr>
 <tr><ti>2</ti><ti>partition/filesystem setup, emerge rsync, emerge system, emerge linux sources, final configuration</ti></tr>
 <tr><ti>3</ti><ti>partition/filesystem setup, emerge rsync (optional), final configuration</ti></tr>
@@ -89,7 +89,7 @@ geladen.</p>
 <p>Als n&#xE4;chstes werden Sie mit einer kleinen Liste von verf&#xFC;gbaren Befehlen auf der 
 Boot-CD begr&#xFC;&#xDF;t. Dies beinhaltet <c>nano</c> (einen Klon des Editors <c>pico</c>) und
 die Anleitung zur Netzwerkkonfiguration. Danach werden Sie nach Ihrem bevorzugtem
-Keyboardlayout befragt, gefolgt von der automatischen Erkennung der PCI Ger&#xE4;te. W&#xE4;hrend
+Keyboard Layout befragt, gefolgt von der automatischen Erkennung der PCI Ger&#xE4;te. W&#xE4;hrend
 der Ger&#xE4;teerkennung werden alle passenden Kernelmodule f&#xFC;r PCI SCSI Controller und
 Netzwerkkarten geladen. Wenn Sie danach <e>enter</e> dr&#xFC;cken kommen Sie in eine
 minimale Linux Umgebung. Sie sollten nun ein root Prompt ("<c>#</c>") auf der
@@ -106,24 +106,22 @@ einem <e>enter</e>  k&#xF6;nnen Sie weitere Konsolen aktivieren.</p>
 <section>
 <body>
 
-<p>Sie sind jetzt fast soweit, dass Sie mit der Installation anfangen k&#xF6;nnen.
+<p>Sie sind jetzt fast soweit, dass Sie mit der Installation anfangen k&#xF6;nnen. 
 Sie m&#xFC;ssen aber noch daf&#xFC;r sorgen, dass der Kernel auch die Netzwerkkarte 
 erkennt. Eventuell m&#xFC;ssen auch noch SCSI Module geladen werden die nicht
-automatisch erkannt wurden.Um eine Liste aller verf&#xFC;gbaren Metzwerkkartenmodule
+automatisch erkannt wurden. Um eine Liste aller verf&#xFC;gbaren Netzwerkkartenmodule
 anzuzeigen, geben Sie <c>ls /lib/modules/*/kernel/drivers/net/*</c> ein.
 Um ein bestimmtes Modul zu laden, tippen Sie: </p>
-
 
 <pre>
 # <i>modprobe pcnet32</i>
 	<comment>(Ersetzen Sie pcnet32 durch das Modul Ihrer NIC)</comment>
 </pre>
 
-<!-- Hier gehts demnaescht weiter --> 
+<p>Wenn Sie nun auch noch auf SCSI Hardware zugreifen m&#xF6;chten die nicht automatisch
+erkannt wurde, m&#xFC;ssen Sie das passende Modul aus /lib/modules laden. 
+Verwenden Sie dazu <c>modprobe</c>:</p>
 
-<p>Now, if you want to be able to access any SCSI hardware that wasn't detected
-during the PCI autodetection process, you'll need to load the appropriate
-modules from /lib/modules, again using <c>modprobe</c>:</p>
 
 <pre>
 # <i>modprobe aic7xxx</i>
@@ -131,110 +129,116 @@ modules from /lib/modules, again using <c>modprobe</c>:</p>
 # <i>modprobe sd_mod</i>
 </pre>
 
-<p>Above, we modprobe the <c>aic7xxx</c> SCSI driver and then make sure that SCSI CD-ROM (<c>sr_mod</c>)
-and disk (<c>sd_mod</c>) support is loaded.</p>
-<note><c>hdparm</c> is now included on -r10 and later of the iso.  If any of your drives require tweaking, now
-would be a good time to do so.</note>
+<p>Mit den oben stehenden Befehlen haben Sie den SCSI Treiber <c>aic7xxx</c> geladen und
+sichergestellt das die Unterst&#xFC;tzung f&#xFC;r SCSI CD-ROMS (<c>sr_mod</c>) und Festplatten 
+(<c>sd_mod</c>) aktiviert ist.</p>
+
+<note>Version -r10 des ISO Images enth&#xE4;lt jetzt auch <c>hdparm</c>. Wenn eine Ihrer Festplatten
+optimiert werden muss, ist nun der richtige Zeitpunkt daf&#xFC;r.</note>
 </body>
 </section>
 </chapter>
+
 <chapter>
-<title>Loading PCMCIA kernel modules</title>
+<title>PCMCIA Lernel Module laden</title>
 <section>
 <body>
-<p>If you have a PCMCIA network card, you will need to do some additional 
-trickery.</p>
+<p>Wenn Sie eine PCMCIA Netzwerkkarte verwenden, m&#xFC;ssen Sie noch einen
+zus&#xE4;tzlichen Dreh anwenden.</p>
 <pre>
 # <i>insmod pcmcia_core</i>
 # <i>insmod i82365</i>
 # <i>insmod ds</i>
 # <i>cardmgr -f</i>
 </pre>
-<p>As cardmgr detects which hardware is present, your speaker should emit a
-few reassuring beeps, and your PCMCIA network card should hum to life. You can
-of course insert the PCMCIA card after loading cardmgr too, if that's 
-preferrable. (Technically, you need not run 
-<i>cardmgr</i> if you know exactly which module your PCMCIA card requires. 
-But if you don't, loading all PCMCIA modules and see which sticks won't work,
-as all PCMCIA modules load obligingly and hang around for a PCMCIA card to 
-drop by. <i>cardmgr</i> will also unload the module(s) for any card when you
-remove it.)
+
+<p>W&#xE4;hrend cardmgr &#xFC;berpr&#xFC;ft welche Hardware vorhanden ist, sollten aus Ihrem
+Lautsprecher einige Piepser ert&#xF6;nen und die PCMCIA Netzwerkkarte ihre Arbeit
+aufnehmen. Sie k&#xF6;nnen nat&#xFC;rlich die PCMCIA Karte auch nach dem Laden des cardmgr
+einstecken.(Technisch gesehen m&#xFC;ssen Sie <i>cardmgr</i> nicht starten wenn Sie
+genau wissen welche Module Ihre PCMCIA Karte ben&#xF6;tigt. Aber wenn nicht, versuchen
+Sie nicht alle Module zu laden um zu sehen welches passt. Das wird nicht
+funktionieren da sich alle Module laden lassen und darauf warten, dass eine
+passende PCMCIA Karte eingesteckt wird. Au&#xDF;erdem entfernt <c>cardmgr</c> die
+Module der Karte wieder wenn sie entnommen wird.)
 </p>
+
 </body>
 </section>
 </chapter>
 <chapter>
-<title>Configure installation networking</title>
+<title>Konfiguration der Netzwerkanbindung</title>
 <section>
 <body>
 
-<p>The new -r11+ boot CDs allow you to configure a working network, allowing you to use <c>ssh</c>, <c>scp</c> or <c>wget</c>
-as needed before even beginning the installation process.  Even if you don't need to do these things now,
-you should go ahead and set up networking now.  Once set up, Portage will be able to use your configured network
-once you are inside the chroot environment (required for installing Gentoo Linux).</p>
+<p>Die neue -r11+ Boot CD erlaubt es nun ein Netzwerk zu konfigurieren damit <c>ssh</c>, 
+<c>scp</c> oder <c>wget</c> schon vor der eigentlichen Installation verwendet werden k&#xF6;nnen. Auch
+wenn Sie diese Programme jetzt nicht brauchen, sollten Sie nun das Netzwerk konfigurieren. Einmal
+konfiguriert kann Portage diese Netzwerkverbindung nutzen wenn Sie sich in der "chroot" Umgebung
+befinden. (F&#xFC;r die Gentoo Linux Installation erforderlich.)</p>
+
 </body>
 </section>
 
 <section>
 <title>DHCP</title>
 <body>
-<p>
-Network configuration is simple with DHCP; If your ISP is not using
-DHCP, skip down to the static configuration section below.  
-</p>
-<pre caption="Network configuration with DHCP">
+<p>Mit DHCP ist die Netzwerkkonfiguration sehr einfach. Wenn Ihr Provider kein DHCP anbietet,
+geht es f&#xFC;r Sie bei der statischen Netzwerkkonfiguration weiter.</p>
+
+<pre caption="Netzerk Konfiguration via DHCP">
 # <i>dhcpcd eth0</i> 
 </pre>
 <note>
-Some ISPs require you to provide a hostname.  To do that,
-add a <c>-h myhostname</c> flag to the dhcpcd command line above.
-</note>
-<p>If you receive <i>dhcpConfig</i> warnings, don't panic; the errors
-are most likely cosmetic.  Skip down to Network testing below.</p>
+Einige Provider erwarten das Sie einen Hostnamen &#xFC;bergeben. Um dies zu tun h&#xE4;ngen Sie die 
+Option <c>-h meinhostname</c> an das oben stehende Kommando.</note>
+
+<p>Wenn Sie <i>dhcpConfig</i> Warnungen bekommen, keine Panik. Die meisten Meldungen sind 
+harmlos. Weiter gehts unten mit dem Test der Netzwerkanbindung.</p>
+
 </body>
 </section>
 <section>
-<title>Static configuration</title>
+<title>Statische Konfiguration</title>
 <body>
 <p>
-We need to setup just enough networking so that we can download
-sources for the system build, as well as the required localhost interface.  Type in the following commands, replacing
-$IFACE with your network interface (typically <c>eth0</c>), $IPNUM
-with your IP address, $BCAST with your broadcast address, and $NMASK
-with your network mask.  For the <c>route</c> command, replace 
-$GTWAY with your default gateway.
-</p>
+Sie m&#xFC;ssen Ihre Netzwerkanbindung soweit konfigurieren, dass Sie die ben&#xF6;tigten Quellen 
+herunterladen k&#xF6;nnen. Au&#xDF;erdem wird das lokale (localhost) Interface ben&#xF6;tigt. 
+Bitte geben Sie dazu folgende Befehle ein und ersetzen $IFACE mit Ihrem Netzwerkinterface 
+(typischerweise <c>eth0</c>), $IPNUM mit Ihrer IP Adresse, $BCAST mit Ihrer Broadcast Adresse und 
+$NMASK mit Ihrer Netzwerkmaske. Bei dem <c>route</c> Befehl ersetzen Sie $GTWAY durch die IP Adresse 
+Ihres "default Gateway".</p>
+
 <pre>
 # <i>/sbin/ifconfig $IFACE $IPNUM broadcast $BCAST netmask $NMASK</i>
 # <i>/sbin/route add -net default gw $GTWAY netmask 0.0.0.0 metric 1</i>
 </pre>
-<p>Now, it's time to create the <path>/etc/resolv.conf</path>
-file so that name resolution (finding Web/FTP sites by name, rather than just by IP address) will work.</p>
+<p>Jetzt m&#xFC;ssen Sie die Datei <path>/etc/resolv.conf</path> erstellen damit die Namensaufl&#xF6;sung 
+(Web/FTP Server durch Namen anstatt der IP Adresse finden) funktioniert.</p>
 
-<note>At the moment the only editor installed by default is <c>nano</c>, a
-small and very easy-to-use visual editor.   Use <c>nano</c> with the <c>-w</c>
-option to turn off automatic line-wrapping.
-</note>
+<note>Im Moment ist nur <c>nano</c>, ein kleiner, leicht zu bedienender Editor installiert.
+Verwenden Sie <c>nano</c> mit dem Schalter <c>-w</c> um den automatischen Zeilenumbruch 
+abzuschalten.</note>
 
-<p>Here's a template to follow for creating your /etc/resolv.conf file:
-</p>
-<pre caption="/etc/resolv.conf template">
+<p>Hier ein Beispiel der Datei /etc/resolv.conf:</p>
+
+<pre caption="/etc/resolv.conf Vorlage">
 domain mydomain.com
 nameserver 10.0.0.1
 nameserver 10.0.0.2
 </pre>
-<p>Replace <c>10.0.0.1</c> and <c>10.0.0.2</c> with the IP addresses of your
-primary and secondary DNS servers respectively.</p>
+<p>Ersetzten Sie <c>10.0.0.1</c> und <c>10.0.0.2</c> mit den IP Adressen Ihres prim&#xE4;ren und
+sekund&#xE4;ren DNS Servers.</p>
 </body>
 </section>
 <section>
-<title>Network testing</title>
+<title>Test der Netzwerkanbindung</title>
 <body>
-<p>Now that your network has been configured, the <c>/sbin/ifconfig -a</c> command should show (hopefully!) 
-that your network card is working
-(look for <e>UP</e> and <e>RUNNING</e> in the output).
+<p>Da Ihre Netzwerkanbindung jetzt konfiguriert ist sollte das <c>/sbin/ifconfig -a</c> Kommando ergeben,
+ das Ihre Netzwerkkarte (hoffentlich) arbeitet (achten Sie auf <e>UP</e> und <e>RUNNING</e> in der Ausgabe).
 </p>
-<pre caption="/sbin/ifconfig for a working network card">
+
+<pre caption="/sbin/ifconfig bei einer arbeitenden Netzwerkkarte">
 eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
           inet addr:192.168.0.2  Bcast:192.168.0.255  Mask:255.255.255.0
           inet6 addr: fe80::50:ba8f:617a/10 Scope:Link
@@ -253,12 +257,14 @@ If you have a static ppp link, you can !!! do this...!!!
 </body>
 </section>
 <section>
-<title>Networking is go!</title>
+<title>Netzwerkanschluss ist online!</title>
 <body>
-<p>Networking should now be configured and useable.  You should be able to use the included
-<c>ssh</c>, <c>scp</c> and <c>wget</c> commands to connect to other machines on your LAN or the Internet.</p>
+<p>Der Netzwerkanschluss sollte nun konfiguriert und nutzbar sein. Sie sind nun in der Lage sich via 
+<c>ssh</c>, <c>scp</c> und <c>wget</c> mit anderen Rechnern in Ihrem LAN oder im Internet zu
+verbinden.</p>
 </body>
 </section>
+<!-- So Pause :-> -->
 </chapter>
 <chapter>
 <title>Set up partitions</title>
