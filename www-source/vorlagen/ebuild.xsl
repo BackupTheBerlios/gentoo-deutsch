@@ -56,6 +56,7 @@
               
                 <td style="vertical-align:top; border-bottom: 1px dotted #45347B">
                   <b>
+                    <xsl:value-of select="number()"/>
                     <a class="uri" href="{$baselink}/{category}/{name}">
                       <xsl:value-of select="name"/>
                     </a>
