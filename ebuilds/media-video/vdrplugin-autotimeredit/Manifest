@@ -1,3 +1,6 @@
 MD5 3a237e56cfddfe5e05925ec33c020a2f vdrplugin-autotimeredit-0.1.3_rc3.ebuild 1548
-MD5 dc937888a7f50fd4252a8bf3f0ac583f ChangeLog 159
+MD5 2ffe478b9e7fb8c553bee3c5ea582f65 ChangeLog 509
+MD5 4618e7219af7c5387e18bce459eaaa03 vdrplugin-autotimeredit-0.1.3_rc8.ebuild 1440
 MD5 087d8c4e5cb13f437aee67a0ed09212e files/digest-vdrplugin-autotimeredit-0.1.3_rc3 74
+MD5 b7995a299364a38827db4c95008be61c files/vdr.autotimeredit 76
+MD5 2afc0b90bc3afb378cbbb76fe31914e1 files/digest-vdrplugin-autotimeredit-0.1.3_rc8 74
