@@ -1,39 +1,5 @@
-Kleine Hilfestellung ;)
+Achtung!
 
-Damit die Webseiten auf berliOS immer aktuell sind (d.h. direkt aus dem cvs 
-kommen), hab ich einen kleinen Trick angewandt, der wie folgt funktioniert:
-
-Die nette CVS-Weboberflaeche von berliOS ermoeglicht es einem sich die 
-eingecheckten Dateien direkt anzuschauen (Browse CVS Repository). Wenn man 
-sich eine der eingecheckten Dateien darueber genauer ansieht, kommt man 
-irgendwann zum Knopf download. Drueckt man diesen, so wird z.B. bei 
-HTML-Seiten die entsprechende Seite sofort angezeigt. Schaut man sich
-die dazugehoerige URL genauer an, sieht man ein rev=n.n. Entfernt man
-dieses, bekommt man immer die aktuelle Version.
-
-D.h. die index.html im eigentlichen htdocs ist nichts weiter als eine
-Weiterleitung auf den enstprechenden "Download" der index.html ueber die
-CVS-Weboberflaeche. Das einzige was jetzt beim Erstellen von Webseiten zu
-beachten gilt, ist das man Links wie z.B. <a href="images/test.png"> so
-abaendert, das diese auch auf die entsprechende Seite aus der CVS-Webober-
-flaeche zeigen.
-
-Im Fall von "images/test.png" waere das also:
-
-"http://cvs.berlios.de/cgi-bin/cvsweb.cgi/~checkout~/www-berlios/images/test.png?content-type=image/png&cvsroot=gentoo-deutsch"
-
-Copy & Paste ist da sehr hilfreich, ich kann bei Gelegenheit auch mal
-versuchen ein kleines sed-script zu schreiben, das das automatisch macht.
-
-Eines gilt noch zu beachten: man sollte den content-type richtig angeben.
-
-Falls ich das evtl. zu kompliziert erklaert habe, die url fuer den richtigen
-Link bekommt man auch so: Das Bild bzw. die Webseite, auf welche der Link 
-verweisen soll, einchecken (falls noch nicht vorhanden), ueber berliOS durch
-das CVS browsen, bei der entsprechenden Datei auf Download druecken, und schon
-wird die fast richtige url im Browser angezeigt. Fehlt nur noch das rev=n.n 
-rauszunehmen.
-
-Ich hoffe das war verstaendlich.
-
-Alexander Holler
+Eingecheckte Dateien in diesem Verzeichnis werden sofort angezeigt.
+Daher vor dem einchecken bitte etwas Vorsicht walten lassen und die 
+Seiten nochmal pruefen.
