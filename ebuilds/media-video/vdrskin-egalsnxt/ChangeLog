@@ -1,7 +1,7 @@
-# ChangeLog for media-video/vdrskin-egalsnxt
+# ChangeLog for media-video/vdrskin-hightech16
 # Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrskin-egalsnxt/ChangeLog,v 1.1 2004/07/25 01:18:27 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrskin-egalsnxt/ChangeLog,v 1.2 2004/07/25 01:28:49 austriancoder Exp $
 
-*vdrskin-egalsnxt-0.0.0-pre4 (25 July 2004)
+*vdrskin-hightech16-0.0.1 (25 July 2004)
   25 July 2004: Christian Gmeiner <christian at visual-page dot de>
   inital ebuild
