@@ -185,7 +185,7 @@
         <form style="font-size: 0.7em" action="http://www.gentoo.de/">
           <p><select name="url" size="1" class="jumpbox"
             onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
-            <option value="---">[Bitte Kapitel ausw?len]</option>
+            <option value="---">[Bitte Kapitel auswählen]</option>
 
             <xsl:for-each select="chapter/title">
               <option value="header_{position()}"><xsl:value-of select="."/></option>
