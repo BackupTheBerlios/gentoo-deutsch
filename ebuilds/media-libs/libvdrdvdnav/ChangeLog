@@ -1,6 +1,9 @@
 # ChangeLog for media-libs/libdvdnav
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libvdrdvdnav/ChangeLog,v 1.1 2003/04/25 13:17:49 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libvdrdvdnav/ChangeLog,v 1.2 2003/04/28 20:22:10 mad Exp $
+
+*libvdrdvdnav-0.1.7_pre1 (28 Apr 2003)
+  new version, without as patch
 
 *libvdrdvdnav-0.1.4 (25 Apr 2003)
 
