@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.5 2003/07/05 18:48:15 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.6 2003/07/05 19:07:04 holler Exp $
 
 DESCRIPTION="exchange4linux - exchange4linux is a production/stable server solution to store/exchange workgroup data on Linux in a style simular to Exchange. Main goal is to provide Outlook users a free and open server alternative on Linux."
 HOMEPAGE="http://www.exchange4linux.org/"
@@ -16,11 +16,11 @@ KEYWORDS="~x86"
 
 RDEPEND="virtual/glibc
     dev-lang/python
-    dev-python/omniORBpy-2.1"
+    >=dev-python/omniORBpy-2.1"
 
 DEPEND="virtual/glibc
     dev-lang/python
-    dev-python/omniORBpy-2.1"
+    >=dev-python/omniORBpy-2.1"
 
 pkg_setup() {
 
