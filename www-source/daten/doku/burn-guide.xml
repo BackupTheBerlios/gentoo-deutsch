@@ -7,10 +7,10 @@
 </author>
 
  
-<abstract>Eine Kurzübersicht zur Einrichtung von ATAPI IDE Brennern unter Gentoo Linux. Dieses Dokument ist noch nicht vollständig.</abstract> 
+<abstract>Eine Kurzübersicht zur Einrichtung von CD und DVD Brennern unter Gentoo Linux. Dieses Dokument ist noch nicht vollständig.</abstract> 
  
-<version>1.2</version> 
-<date>21. Oktober 2003</date> 
+<version>1.3</version> 
+<date>11. November 2003</date> 
  
 <chapter> 
 <title>Brennen unter Linux</title> 
@@ -18,11 +18,11 @@
 	<title>Einführung</title> 
 <body> 
 <p>
-CDs brennen unter Linux gilt für viele immer noch als sehr komplizierte Sache. Dies liegt zum einen daran, dass
+CDs und DVDs brennen unter Linux gilt für viele immer noch als sehr komplizierte Sache. Dies liegt zum einen daran, dass
 viele Einstellungen distributionsspezifisch sind und somit oft unterschiedliche Vorgehensweisen dargestellt werden, 
 zum anderen auch daran, dass viele Dokumentationen auch veraltet sind. Mit dieser Anleitung sollte es für den 
 Grossteil aller Gentoo Nutzer kein Problem sein, ihren Brenner zum Laufen zu bekommen. Natürlich kann nicht auf
-alle möglichen Varianten eingegangen werden, wird dann aber sicherlich in die richtige Richtung weisen.
+alle möglichen Varianten eingegangen werden, sollte dann aber sicherlich den einen oder anderen in die richtige Richtung weisen.
 </p>
 </body>
 </section>
@@ -32,8 +32,10 @@ alle möglichen Varianten eingegangen werden, wird dann aber sicherlich in die r
 <p> 
 In der Vergangenheit war CD Brennen nur möglich, wenn man einen SCSI Brenner besass oder den ATAPI-IDE Brenner
 unter Linux als SCSI Gerät benutzte. Das führte natürlich zur häufig gestellten Frage, warum unter Linux
-keine Unterstützung für IDE bereitgestellt wurde. Dazu muss man klarstellen, dass es IDE Brenner eigentlich
-nicht gibt, da die IDE Schnittstelle keine solchen Funktionen bereitstellt. Funktionen wie das Auswerfen einer 
+keine Unterstützung für IDE bereitgestellt wurde. Hierzu muss klargestellt werden, dass es IDE Brenner eigentlich
+nicht gibt, da die IDE Schnittstelle keine solchen Funktionen bereitstellt.
+</p><p> 
+Funktionen wie das Auswerfen einer 
 CD oder das Brennen von Rohlingen kann nur mit SCSI Befehlen durchgeführt werden. Der ATAPI Standard (Attachment
 Adapter Packet Interface) stellt eine Möglichkeit dar, solche SCSI Befehle über die IDE Schnittstelle zu 
 verschicken. ATAPI-kompatible Geräte mit einer IDE Schnittstelle können also SCSI Befehle nativ verstehen und
@@ -43,10 +45,13 @@ verarbeiten.
 Da die IDE CD-ROM Treiber älterer Linux-Kernel keine Unterstützung für ATAPI anboten, behalf man sich mit einer
 Emulation, die dem Kernel die IDE CD-ROMS als SCSI Geräte bereitstellte, um so die SCSI-Befehle an die jeweiligen
 Geräte zu verschicken können. Alternativ entschied man sich gleich zum Kauf eines echten SCSI CD-ROMS, falls man ein
-entsprechendes System besass. In der 2.4. Kernel Serie wurde in den IDE-CD Treiber ein sogenanntes CDROM Packet Interface integriert, welches inzwischen auch von cdrecord unterstützt wird. Der Nachteil dieser Lösung ist eine
+entsprechendes System besass. 
+</p><p>
+In der 2.4. Kernel Serie wurde in den IDE-CD Treiber ein sogenanntes CDROM Packet Interface integriert, welches 
+inzwischen auch von cdrecord unterstützt wird. Der Nachteil dieser Lösung ist eine
 schlechtere Performance, da DMA (Direct Memory Access) nicht möglich ist. Seit der 2.5.45 Kernel Serie gibt
 es endlich native Unterstützung für ATAPI, die nun auch Brennen mit DMA ohne SCSI ermöglicht. Fast alle der heute
-erhältlichen CD oder DVD Brenner sind ATAPI kompatibel und besitzen eine IDE Schnittstelle.
+auf dem Markt erhältlichen CD oder DVD Brenner sind ATAPI kompatibel und besitzen eine IDE Schnittstelle.
 </p> 
 <note>Ohne DMA Unterstützung sind Brenngeschwindigkeiten von 16x oder höher nicht möglich.</note>
 <note>IDE/ATAPI Befehle kennen kein Disconnect/Reconnect. Um optimale Performance beim on-the-fly 
@@ -66,7 +71,7 @@ CD-ROM, CD-RW,  DVD-RW/-R, DVD+RW/+R, DVD+-RW oder DVD/CD-RW Combos macht den Ma
 übersichtlicher. Die meisten Geräte, egal ob sie CD oder DVDs brennen, sind derzeit mit einem IDE Anschluss
 ausgestattet.</p>
 <p>Die folgenden Schritte dieser Anleitung beziehen sich daher auf ein korrekt angeschlossenes und gejumpertes ATAPI-IDE Gerät.
-Im Anschluss daran werde ich die Eigenheiten von SCSI, USB und Firewire kurz anschneiden.
+Im Anschluss daran werde ich ab Punkt 2.5 die Eigenheiten von SCSI, USB und Firewire kurz anschneiden.
 </p>
 </body>
 </section>
@@ -202,6 +207,10 @@ In diesem Fall wurde der Brenner erfolgreich vom IDE-CDROM Treiber ignoriert und
 übergeben, welcher den Brenner als erstes Laufwerk am SCSI Bus (sg0) eingerichtet hat. Sollte die Ausgabe
 zu schnell vorbei laufen, hilft ein <i>dmesg</i> an der Kommandozeile weiter.
 </p>
+<p>
+Die folgenden Abschnitte gehen genauer auf SCSI, USB und Firewire Geräte ein. Sollte der ATAPI IDE Brenner
+bereits eingerichtet sein, können Sie gleich zu Punkt 3.0 weiterspringen.
+</p>
 </body> 
 </section>
 <section> 
@@ -210,14 +219,42 @@ zu schnell vorbei laufen, hilft ein <i>dmesg</i> an der Kommandozeile weiter.
 <p>Um einen echten SCSI Brenner in Linux einbinden zu können, muss statt der 
 Unterstützung für SCSI Emulation der passende Treiber für
 den SCSI Hostadapter geladen werden. Je nach Chipsatz wird der entsprechende
-SCSI Low-Level Treiber in den Kernel kompiliert.
-Ansonsten werden die SCSI Module wie gewohnt eingebunden:</p>
+SCSI Low-Level Treiber in den Kernel kompiliert. In meinem Beispiel ist dies
+ein Dawicontrol DC-2974 PCI SCSI Adadapter, für den der AM53/79C974 Treiber
+die richtige Wahl ist.</p>
+<p>
+Ansonsten werden die SCSI Module direkt in den Kernel eingebunden:</p>
 <pre caption="Kernel Konfiguration"> 
-SCSI support -&gt; &lt;M&gt; SCSI support
-SCSI support -&gt; &lt;M&gt; SCSI CDROM support
-SCSI support -&gt; &lt;M&gt; SCSI generic support
+SCSI support -&gt; &lt;*&gt; SCSI support
+SCSI support -&gt; &lt;*&gt; SCSI CDROM support
+SCSI support -&gt; &lt;*&gt; SCSI generic support
+SCSI low level drivers ---&gt;
+    &lt;*&gt;AM53/79C974 PCI SCSI support 
 </pre> 
 <p>
+Anschliessend muss wie bereits unter Punkt 2.3 beschrieben, <i>/etc/devfsd.conf</i>
+an die eigenen Bedürfnisse angepasst werden.
+</p>
+<p>
+Nach einem Neustart sollte der Treiber problemlos geladen werden und die Daten des 
+angeschlossene SCSI Gerätes ausgegeben werden. In meinem Fall ist dies 0,3,0. 
+Je nach Adapter-Terminierung und SCSI-Anschluss kann das ganz unterschiedlich
+aussehen.
+</p>
+<pre caption="Ausgabe von dmesg">
+SCSI subsystem driver Revision: 1.00
+PCI: Found IRQ 10 for device 00:0e.0
+scsi0 : AM53/79C974 PCscsi driver rev. 0.5; host I/O address: 0x7000; irq: 10
+  Vendor: TEAC      Model: CD-R55S           Rev: 1.0R
+  Type:   CD-ROM                             ANSI SCSI revision: 02
+scsi1 : SCSI host adapter emulation for IDE ATAPI devices
+Attached scsi CD-ROM sr0 at scsi0, channel 0, id 3, lun 0
+sr0: scsi-1 drive
+Uniform CD-ROM driver Revision: 3.12
+</pre>
+<p>
+Damit wäre das Gerät vollständig eingerichtet und wir können uns in Kapitel 3 der
+Software-Installation widmen.
 </p>
 </body>
 </section>
