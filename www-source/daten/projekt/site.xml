@@ -12,12 +12,12 @@
 </author>
 
 <abstract>
-Diese Seite enthält Informationen über das Gentoo "guide" XML Projekt, welches
+Diese Seite enthält Informationen über das Gentoo "Guide" XML Projekt, welches
 zur Dokumentation und der Gestaltung der Gentoo Webseite eingesetzt wird.
 </abstract>
 
 <version>1.3</version>
-<date>31 Oktober 2003</date>
+<date>31. Oktober 2003</date>
 
 <chapter>
 <title>Das Guide XML</title>
@@ -60,7 +60,7 @@ developerWorks</uri> Seite von Daniel Robbins lesen:
 <p>
 Wir haben auch eine deutsche Fassung des 
 <uri link="http://www.gentoo.de/inhalte/doku/xml-guide/">Gentoo Linux Dokumentationsleitfaden</uri> 
-in dem die Anwendung des <c>guide XML</c> Formates genau beschrieben wird.
+in dem die Anwendung des <c>Guide XML</c> Formates genau beschrieben wird.
 Laden Sie hierzu die aktuellste Version der <c>Guide XML</c> Tools herunter. 
 Diese Datei enthält einen kompletten CVS Schnappschuss aller Dateien, die zum 
 Erstellen der Webseite verwendet werden: 
