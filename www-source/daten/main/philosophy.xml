@@ -79,30 +79,28 @@ kommen.
 </p>
 
 <p>
-
-At around the time Gentoo was born, the thing that got in the way was
-the lack of an easy way to build packages from source, to a user's
-specifications. Currently, we've done that very well, but what we
-haven't done very well is support pre-built packages, even though
-Portage has supported building binary packages almost since its
-inception. So we are doing that now.
+Zur der Zeit als Gentoo geboren wurde, fehlte vor allem eine Möglichkeit,
+Quellcode-Pakete nach Benutzer-Vorstellungen einfach zu kompilieren.
+Zum jetzigen Zeitpunkt haben wir dieses Ziel erreicht. Was uns noch fehlt,
+ist die Unterstützung für vorkompilierte Pakete, obwohl Portage dies
+schon seit Anbeginn kann. Dies werden wir nun auch angehen.
 </p>
 
 <p>
- It's important that our tools
-support binary packages, because binary packages are widely used and
-widely in demand in the Linux community. If our tools don't support
-binary packages, then we can't claim that our tools are designed to
-allow a user to do anything he or she might want to do. If we purposely
-choose to exclude binary support, then we are attempting to interfere
-with how users might choose to approach particular problems, by instead
-imposing our own will or view of how they should approach a problem. And
-if we do not build binary packages, then we are not taking any steps to
-ensure that our tools actually work well with binary packages, nor are
-we taking steps to ensure that others can build binary packages, nor are
-we able to *demonstrate* that our tools work well with binary packages.
-Besides these philisophical reasons, there are many practical reasons to
-create binary packages.
+Es ist wichtig, dass unsere Werkzeuge auch binäre Pakete unterstützen,
+weil Binärpakete in der Linux-Welt weit verbreitet sind und auch eine
+große Nachfrage besteht. Sollten unsere Tools keine Binärpakete 
+unterstützen, dann können wir nicht von uns behaupten, dass unsere
+Tools dem Benutzer alle Möglichkeiten offen halten. Wenn wir aus 
+Absicht die Unterstützung für ein Binärpaket verweigern, dann 
+versuchen wir unsere Vorstellungen, wie ein Problem angegangen werden
+soll, dem Benutzer aufzuzwingen, anstatt ihm die Möglichkeit zu lassen,
+seine Vorstellungen zur Behebung eben dieses Problems durchzusetzen.
+Und wenn wir Binärpakete nicht unterstützen, dann stellen wir nicht sicher,
+dass weder unsere Pakete mit diesen Dateien umgehen können, noch
+können wir *demonstrieren*, dass unsere Tools damit umgehen können.
+Neben diesen philosophischen Gründen gibt es auch viele praktische
+Ursachen, warum wir ein Binärpaket unterstützen.
 </p>
 <p>
 The Gentoo philosophy, in a paragraph, is this. Every user has work they
