@@ -1,8 +1,12 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.28 2003/11/16 10:36:04 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.29 2003/12/11 16:08:33 rootshell Exp $
+*vdr-1.2.6-r1
+  11.Dec 2003; F.Schilhabel <fernsehleo@gmx.net>
+  fixed (hopefully) compilation with akool patch;
+  applied safer compiler flags
+  <rootshell>
 
-*vdr-1.2.6
   16 Nov 2003; H.Ryll <henning.ryll@web.de>
   first qick'n dirty version of 1.2.6
 
