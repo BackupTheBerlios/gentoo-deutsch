@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.4 2003/02/23 09:37:25 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.5 2003/02/23 15:17:22 mad Exp $
 
 #DEBUG=echo
 
@@ -15,40 +15,42 @@ start() {
 	#
 	# reading the default vdr options
 	#
-	if [ -e /etc/conf.d/vdr ]
-		then
-		source /etc/conf.d/vdr
-		[ -n "$AUDIO" ] && vdropts="${vdropts} --audio=${AUDIO} "
-		[ -n "$CONFIG" ] && vdropts="${vdropts} --config=${CONFIG} "
-		[ -n "$DEVICE" ] && for i in ${DEVICE}; do vdropts="${vdropts} --device=${i} "; done
-		[ -n "$SHUTDOWN" ] && vdropts="${vdropts} --shutdown=${SHUTDOWN} "
-		[ -n "$EPGFILE" ] && vdropts="${vdropts} --epgfile=${EPGFILE} "
-		[ -n "$LOG" ] && vdropts="${vdropts} --log=${LOG} "
-		[ -n "$VIDEO" ] && vdropts="${vdropts} --video=${VIDEO} "
-		[ -n "$RECORD" ] && vdropts="${vdropts} --record=${RECORD} "
-		[ -n "$PORT" ] && vdropts="${vdropts} --port=${PORT} "
-		[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIB} "
-		[ -n "$LIB" -a -n "$PLUGINS" ] && for i in ${PLUGINS}; do vdropts="${vdropts} --plugin=${i} "; done
-	fi
+	[ -n "$AUDIO" ] && vdropts="${vdropts} --audio=${AUDIO} "
+	[ -n "$CONFIG" ] && vdropts="${vdropts} --config=${CONFIG} "
+	[ -n "$DEVICE" ] && for i in ${DEVICE}; do vdropts="${vdropts} --device=${i} "; done
+	[ -n "$SHUTDOWN" ] && vdropts="${vdropts} --shutdown=${SHUTDOWN} "
+	[ -n "$EPGFILE" ] && vdropts="${vdropts} --epgfile=${EPGFILE} "
+	[ -n "$LOG" ] && vdropts="${vdropts} --log=${LOG} "
+	[ -n "$VIDEO" ] && vdropts="${vdropts} --video=${VIDEO} "
+	[ -n "$RECORD" ] && vdropts="${vdropts} --record=${RECORD} "
+	[ -n "$PORT" ] && vdropts="${vdropts} --port=${PORT} "
+	[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIB} "
+	[ -n "$LIB" -a -n "$PLUGINS" ] && for i in ${PLUGINS}; do 
+		vdropts="${vdropts} -P'${i}"
+		if  [ -f "/etc/conf.d/vdr.${i}" ]; then
+				for t in $(cat /etc/conf.d/vdr.$i | grep "^[A-Z]"); do
+					value=$(echo $t| cut -d "=" -f 2 | tr -d "\"")
+					option=$(echo $t| cut -d "=" -f 1 | tr [:upper:] [:lower:])
+					vdropts="${vdropts} --$option=$value"
+				done
+		fi
+		vdropts="${vdropts} '"
+	done
 
 	#
-	# this reads vdropts from pluginconfigs
+	# this reads envs from pluginconfigs
 	#
 	for t in $PLUGINS; do
 		if  [ -f "/etc/conf.d/vdr.$t" ]; then
 			source /etc/conf.d/vdr.$t
-			for i in $(cat /etc/conf.d/vdr.$t | grep "^[A-Z]"); do
-				option=$(echo $i| cut -d "=" -f 1 | tr [:upper:] [:lower:])
-				value=$(echo $i| cut -d "=" -f 2 | tr -d "\"")
-				vdropts="${vdropts} --${option}=${value} "
-			done
 		fi
 	done
 
 	#
 	# finaly start vdr
 	#
-	$DEBUG /usr/bin/vdr --daemon ${vdropts}
+	echo /usr/bin/vdr --daemon ${vdropts}
+	/usr/bin/vdr --daemon ${vdropts}
 	eend $? "Failed to start vdr."
 }
 
