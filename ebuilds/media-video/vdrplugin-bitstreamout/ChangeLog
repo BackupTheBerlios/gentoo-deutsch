@@ -1,6 +1,13 @@
 # ChangeLog for media-video/vdr-bitstreamout
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-bitstreamout/ChangeLog,v 1.5 2004/01/11 22:01:00 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-bitstreamout/ChangeLog,v 1.6 2004/07/19 21:22:27 austriancoder Exp $
+
+*vdrplugin-bitstreamout-0.61b (19 July 2004)
+
+  19. July 2004; Christian Gmeiner <christian at visual-page dot de>
+  version bump
+  added support for 2.6 kernels
+  thanks by Zzam form vdr-portal for this ebuild
 
 *vdrplugin-bitstreamout-0.50a (11 Jan 2004)
 
