@@ -9,7 +9,7 @@
 Hier finden Sie ien Übersicht unsere Dokumentationen
 </abstract>
 
-<date>17. November 2002</date>
+<date>24. September 2003</date>
 
 <chapter>
 <title>Übersicht</title>
@@ -24,6 +24,7 @@ Hier finden Sie ien Übersicht unsere Dokumentationen
 <uri link="howto/index.html">Erste Schritte - Das HowTo</uri><br/>
 <uri link="internet-seite/index.html">Pflege der Internet-Seite</uri><br/>
 <uri link="mirror/index.html">Einen Portage-Mirror einrichten</uri><br/>
+<uri link="cvs-tutorial/index.html">CVS Tutorial</uri>
 </p>
 </body>
 
