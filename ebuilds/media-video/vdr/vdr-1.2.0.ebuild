@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.9 2003/06/20 11:58:24 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.10 2003/07/01 17:37:10 mad Exp $
 
 IUSE="lirc"
 ANALOGTV_VN="0.7.0"
@@ -11,9 +11,9 @@ DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
-		http://www.akool.de/download/vdr-${PV}.patch.bz2
-		http://www.akool.de/download/vdr-${PV}-without-Elchi.patch.bz2
-		http://akool.bei.t-online.de/vdr/download/vdr-analogtv-${ANALOGTV_VN}.tar.bz2
+		http://www.fh-lippe.de/~mad/vdr/vdr-akool-${PV}.patch.bz2
+		http://www.fh-lippe.de/~mad/vdr/vdr-akool-${PV}-without-Elchi.patch.bz2
+		http://www.fh-lippe.de/~mad/vdr/vdr-analogtv-${ANALOGTV_VN}.tar.bz2
 		http://linvdr.org/download/VDR-AIO/ElchiAIO3a-1.2.0.diff.gz
 		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz
 		"
