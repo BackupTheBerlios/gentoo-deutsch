@@ -18,7 +18,7 @@
   </xsl:element>
 </xsl:template>
 
-<xsl:template match="public|source|online|portage|language">
+<xsl:template match="language">
   <xsl:element name="xsl:variable">
     <xsl:attribute name="name">
       <xsl:text>def_</xsl:text>
@@ -113,15 +113,9 @@
     <xsl:value-of select="../online/extension"/>
   </xsl:variable>
   
-  <xsl:variable name="href">
-    <xsl:value-of select="../online/@value"/>
-    <xsl:text>/</xsl:text>
-    <xsl:value-of select="../public/content"/>
-  </xsl:variable>
-  
   <xsl:call-template name="menurecurser">
     <xsl:with-param name="level"></xsl:with-param>  
-    <xsl:with-param name="href"><xsl:value-of select="$href"/></xsl:with-param>
+    <xsl:with-param name="href">inhalte/</xsl:with-param>
     <xsl:with-param name="filename"><xsl:value-of select="$filename"/></xsl:with-param>
   </xsl:call-template>
   
