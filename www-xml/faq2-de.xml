@@ -1,0 +1,76 @@
+<?xml version='1.0'?>
+
+<!DOCTYPE guide SYSTEM "../www-xsl/guide.dtd">
+
+<guide link="/doc/faq.html">
+<title>Gentoo Linux Frequently Asked Questions 2</title>
+<author title="Verfasser"><mail link="drobbins@gentoo.org">Das gentoo.de Team</mail></author>
+<abstract>Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt, die noch nicht
+in der offiziellen Gentoo FAQ auftauchen.</abstract>
+
+<version>1.1.1-de</version>
+<date> Juli 2002</date>
+
+
+<chapter>
+	<title>Installation</title>
+
+	<section>
+		<title>Installation mit Stage 1 &#xFC;ber ein Proxy funktioniert nicht.</title>
+		<body><p>Stellen Sie sicher, dass in der /etc/make.conf der RSYNC_PROXY angegeben ist.
+		Erlaubt der Proxy nur Verbindungen &#xFC;ber die Ports 80, so sollte dies mit:
+		<pre>
+        	export http_proxy=123.123.123.123:8080
+
+        	export ftp_proxy=123.123.123.123:8080
+
+		</pre> eingestellt werden.
+		</p></body>
+	</section>
+
+	<section>
+		<title>Wie installiere ich Gentoo auf einem Motherboard mit dem nforce Chipsatz?</title>
+		<body>
+			<p>F&#xFC;r den Onboard Netzwerkcontroller ist ein spezieller Treiber ist auf der nVidia
+			<uri link="http://download.nvidia.com/XFree86_40/nforce/1.0-0236/NVIDIA_nforce-1.0-0236.tar.gz">Webseite</uri>,
+			zu haben. Falls Sie keine externe Netzwerkkarte w&#228;hrend der Installation zur Hand haben, kopieren
+			Sie diesen Treiber einfach auf ein Medium und verfahren Sie wie bei einer Stage 3 Installation bis zu der Stelle,
+			nach dem Sie den KErnel kompiliert haben.
+			Dann entpacken Sie das tar Archiv und wechseln Sie in das Unterverzeichnis nforce/nvnet/ und f&#xFC;hren
+			Sie folgendes aus:
+			<pre>
+			# make clean
+			# make
+			# make install
+			</pre>
+			Dies muss bei jeder Kernel Neukompilierung erneut ausgef&#xFC;hrt werden.
+			Dann sollte noch in die /etc/modules.conf um folgende Zeilen werweitert werden:
+			<pre>
+			alias eth0 nvnet
+			</pre>
+			Anschliessend sollte wie gewohnt nach der Installationsanleitung weiter verfahren werden.
+			<warning> ASUS Motherboards mit dem nforce Chipsatz besitzen ein modifizierten Netwerkontroller.
+			Der Realtek 8139TOO ist hier die richtige Wahl.
+			</warning>
+			</p>
+        </body>
+	</section>
+</chapter>
+<chapter>
+	<title>Laufendes System</title>
+
+	<section>
+		<title>Wenn ich meinen Kernel aktualisiere, habe ich keinen Sound mehr. Ausserdem
+		bekomme ich Fehlermeldungen beim booten, dass die module der Soundkarte nicht gefunden werden.</title>
+		<body><p>Wenn ALSA Sound verwendet wird, muss nach jeder Kernel-Neukompilation auch die ALSA
+		treiber neu kompiliert werden. Stellen Sie sicher, dass /usr/src/linux auf die richtigen
+		Quelldateien verweist und dann starten sie:
+		<pre>
+		# emerge alsa-driver
+		</pre>
+		Eine ausf&#xFC;hrliche ALSA-Installationsanleitung finden Sie im Desktop-Guide.
+		</p></body>
+	</section>
+
+</chapter>
+</guide>
