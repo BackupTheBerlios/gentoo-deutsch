@@ -1,6 +1,10 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.4 2003/02/27 18:35:25 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.5 2003/03/14 17:56:09 mad Exp $
+
+*vdr-1.1.25-r2 (14 Mar 2003)
+  14 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25-r2.ebuild
+  added a watchdog daemon script and the appropriate init script
 
 *vdr-1.1.25-r1 (24 Feb 2003)
   27 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25-r1.ebuild
