@@ -1612,7 +1612,7 @@ ListenAddress 127.0.0.1
 </pre>
 
 <p>
-Jetzt ist das einzige was Ihre Benutzer mache müssen einen Schlüssel erstellen (auf ihrer Maschine von der sie sich einloggen wollen) mit folgendem Befehl:
+Jetzt ist das einzige was Ihre Benutzer mache müssen einen Schlüssel erstellen (auf der Maschine von der sie sich einloggen wollen) mit folgendem Befehl:
 </p>
 
 <pre caption="Erstellen eines RSA Schlüsselpaares">
@@ -2944,105 +2944,100 @@ um eine Firewall zu erstellen, aber es konzentriert sich auf Regeln und nicht au
 <body>
 
 <p>
-Squid is a very powerful proxy server and it can do filters, rejects allowed traffic based on: time,
-regular expression path/uri, source and destination address (IP), domain, browser, the authenticated
-username, mime-type and port (protocol). I probably forgot some features, but it can be hard to cover
-the entire feature list.
+Squid ist ein sehr leistungsstarker Proxy Server, er hat eingebaute Filter, lehnt Traffic auf Grund folgender Merkmale ab: Zeit, regelmäßiger Ausdruckspfad/URI, Quell- und Zieladresse (IP), Domäne, Browser, der authentifizierte Benutzername, Mime-Typ und Port (Protokoll). Wahrscheinlich habe ich einige Funktionen vergessen, aber es ist schwer jede Funktion der gesammten Funktionsliste abzudecken.
 </p>
 
 <p>
-In the following example I have added a banner filter instead of a filter based on porn sites. The
-reason for this is that Gentoo.org should <c>not</c> be listed as some porn site. And I do not want
-to waste my time trying to find some good sites for you.
+Im folgenden Beispiel habe ich einen Banner Filter hinzugefügt anstatt eines Filters basiernd auf pornographischen Seiten. Der Grund dafür ist, dass Gentoo.org <c>nicht</c> als eine pornographische Seite aufgelistet werden sollte. Ausserdem will ich meine Zeit nicht damit verbringen einige gute Seiten für Sie zu finden.
 </p>
 
 <p>
-In this case, my policy states:
+In diesen Fall diktiert meine Richtlinie:
 </p>
 
 <ul>
-  <li>Surfing (HTTP/HTTPS) is allowed during work hours (mon-fri 8-17 and sat 8-13) if they are here
-  late they should work, not surf</li>
-  <li>Download is not allowed (.exe, .com, .arj, .zip, .asf, .avi, .mpg, .mpeg etc.)</li>
-  <li>We don't like banners so they are filtered and replaced with a transparent gif (this is where you get creative!)</li>
-  <li>Every other connection to and from the Internet is not allowed</li>
+  <li>Surfen (HTTP/HTTPS)ist erlaubt während der Arbeitszeiten (MO-FR 8-16 und SA 8-13), wenn sie länger da sind, sollten sie arbeiten und nicht surfen.</li>
+  <li>Downloaden ist nicht erlaubt (.exe, .com, .arj, .zip, .asf, .avi, .mpg, .mpeg etc.)</li>
+  <li>Banner sind unerwünscht, daher werden sie herausgefiltert und mit einem transparenten GIF ersetzt (hier können Sie kreativ werden!)</li>
+  <li>Jede andere kommende oder gehende Verbidung mit dem Internet ist nicht erlaubt.</li>
 </ul>
 
 <p>
-This is implemented in 4 "easy" steps
+Dies wird in 4 "einfachen" Schritten implementiert 
 </p>
 
 <pre caption="/etc/squid/squid.conf">
-# Bind to a ip and port
+# Anbinden an eine IP und einen Port
 http_port 10.0.2.1:3128
 
-# Standard configuration
+# Standardkonfiguration
 hierarchy_stoplist cgi-bin ?
 acl QUERY urlpath_regex cgi-bin \?
 no_cache deny QUERY
 
-# Add basic access control lists
+# Hinzufügen von grundlegenden Listen der Zugriffskontrolle 
 acl all src 0.0.0.0/0.0.0.0
 acl manager proto cache_object
 acl localhost src 127.0.0.1/255.255.255.255
 
-# Add who can access this proxy server
+# Hinzufügen wer auf diesen Proxy Server zugreifen kann
 acl localnet src 10.0.0.0/255.255.0.0
 
-# And ports
+# Und welche Ports
 acl SSL_ports port 443
 acl Safe_ports port 80
 acl Safe_ports port 443
 acl purge method PURGE
 
-# Add access control list based on regular
-# expressions within urls
+# Hinzufügen von Listen zur Zugriffskontrolle basierend 
+# auf regelmäßigen Ausdrücken innerhalb von URLs
 acl archives urlpath_regex "/etc/squid/files.acl"
 acl url_ads url_regex "/etc/squid/banner-ads.acl"
 
-# Add access control list based on time and day
+# Hinzufügen von Listen zur Zugriffskontrolle basierend 
+# auf Datum und Uhrzeit
 acl restricted_weekdays time MTWHF 8:00-17:00
 acl restricted_weekends time A 8:00-13:00
 
 acl CONNECT method CONNECT
 
-#allow manager access from localhost
+# Erlauben von Managmentzugriff von Localhost
 http_access allow manager localhost
 http_access deny manager
 
-# Only allow purge requests from localhost
+# Nur Purge Anfragen von Localhost erlauben
 http_access allow purge localhost
 http_access deny purge
 
-# Deny requests to unknown ports
+# Verweigern von Anfragen an unbekannte Ports
 http_access deny !Safe_ports
 
-# Deny CONNECT to other than SSL ports
+# Verweigern von CONNECT an alle ausser SSL Ports
 http_access deny CONNECT !SSL_ports
 
-# My own rules
+# Meine eigenen Regeln
 
-# Add a page do be displayed when
-# a banner is removed
+
+# Hinzufügen einer Seite zur Darstellung,
+# wenn ein Banner entfernt wurde
 deny_info NOTE_ADS_FILTERED url_ads
 
-# Then deny them
+# Dann diese verweigern
 http_access deny url_ads
 
-# Deny all archives
+# Verweigern aller Archive
 http_access deny archives
 
-# Restrict access to work hours
+# Begrenzung des Zugriffs auf Arbeitszeiten
 http_access allow localnet restricted_weekdays
 http_access allow localnet restricted_weekends
 
-# Deny the rest
+# Verweigern von allem anderen
 http_access deny all
 </pre>
 
 <p>
-Next fill in the files you do not want your uses to download. I have added zip, viv, exe, mp3, rar, ace, avi, mov,
-mpg, mpeg, au, ra, arj, tar, gz and z files.
+Als nächstes fügen Sie alle Dateitypen ein, von denen sie wollen, dass ihre Benutzer sie nicht herunterladen können. Ich habe zip, viv, exe, mp3, rar, ace, avi, mov, mpg, mpeg, au, ra, arj, tar, gz und z Dateien gewählt. 
 </p>
 
 <pre caption="/etc/squid/files.acl">
@@ -3066,11 +3061,11 @@ mpg, mpeg, au, ra, arj, tar, gz and z files.
 </pre>
 
 <note>
-Please note the [] with upper and lowercase of every character. This is done so no one can fool it by accessing a file called AvI instead of avi
+Beachten Sie bitte die [] mit Gross- und Kleinbuchstaben fuer jeden Buchstaben. Dies dient dazu, dass niemand es umgehen kann indem er eine Datei mit AvI abruft anstatt avi
 </note>
 
 <p>
-Next we add the regular expressions for identifying banners. You will probably be a lot more creative than me:
+Als nächstes fügen wir die regelmäßigen Ausdrücke ein um Banner zu identifizieren. Sie werden wahrscheinlich viel kreativer sein als ich:
 </p>
 
 <pre caption="/etc/squid/banner-ads.acl">
@@ -3107,50 +3102,45 @@ _ad\..*cgi
 </pre>
 
 <p>
-And the last part. We want this file to be displayed when it removes a banner. It's basically a half
-html file with a 4x4 transparent gif image.
+Nun der letzte Teil: Wir wollen diese Datei anzeigen, wenn das Banner entfernt wird. Es ist grundlegend eine halbe HTML Datei mit einem 4x4 transparenten GIF Bild.
 </p>
 
 <pre caption="/etc/squid/errors/NOTE_ADS_FILTERED">
 &lt;HTML&gt;
 &lt;HEAD&gt;
 &lt;META HTTP-EQUIV="REFRESH" CONTENT="0; URL=http://www.insecurity.dk/images/4x4.gif"&gt;
-&lt;TITLE>ERROR: The requested URL could not be retrieved&lt;/TITLE&gt;
+&lt;TITLE>FEHLER: Die angeforderte URL konnte nicht angezeigt werden&lt;/TITLE&gt;
 &lt;/HEAD&gt;
 &lt;BODY&gt;
-&lt;H1&gt;Add filtered!&lt;/H1&gt;
+&lt;H1&gt;Anzeige gefiltert!&lt;/H1&gt;
 </pre>
 
 <note>
-Don't close the &lt;HTML&gt; &lt;BODY&gt; tags. This will be done by squid.
+Schliessen sie die &lt;HTML&gt; &lt;BODY&gt; Tags nicht. Dies wird von Squid erledigt.
 </note>
 
 <p>
-As you can see squid has a lot of possibilities and it is very effective in both filtering and proxying.
-It can even use alternative squid proxies to scale on very large networks. The config I have listed here
-is mostly suited for a small network with 1-20 users.
+Wie Sie sehen können hat Squid eine Vielzahl von Möglichkeiten und ist sehr effektiv zum Filtern und als Proxy.
+Es kann sogar alternative Squid Proxys benutzen um an sehr grosse Netzwerke angepasst zu werden. Die Konfiguration, die ich hier aufgelistet habe ist hauptsächlich fuer kleine Netzwerke mit 1-20 Benutzern geeignet.
 </p>
 
 <p>
-But combining the packet filter (iptables) and the application gateway (squid) is probably the best
-solution, even if squid is located somewhere safe and nobody could access it from the outside. We
-still need to be concerned on attack from the inside.
+Jedoch die Kombinierung von Paketfilterung (iptables) und dem Anwendungsgateway (squid) ist wahrscheinlich die beste Lösung, selbst wenn Squid selber an einem sicheren Ort stationiert ist und niemand von ausserhalb darauf zugreifen kann. Wir müssen uns weiterhin Gedanken machen um Angriffe von Innen.
 </p>
 
 <p>
-Now you have to add the proxy server into the settings of your clients browsers. The gateway will
-prevent the users from having any contact with the outside unless they use the proxy.
+Nun müssen Sie den Proxy Server in die Einstellungen des Browsers Ihrer Benutzers einbinden. Das Gateway verhindert, dass die Benutzer jeglichen Kontakt mit der Aussenwelt haben, solange sie nicht den Proxy benutzen.
 </p>
 <note>
-In Mozilla this is done in Edit->Preferences->Advanced->Proxies.
+In Mozilla geschieht dies in Bearbeiten->Einstellungen->Erweitert->Proxies (bzw. Edit->Preferences->Advanced->Proxies) .
 </note>
 
 <p>
-It can also be done transparently by using iptables to forward all traffic out to a squid proxy.
-This can be done by adding a forwarding/prerouting rule on the gateway:
+Es kann auch transparent geschehen, indem man iptables benutzt um den gesamten Traffic an einen Squid Proxy weiterzuleiten.
+Dies kann erreicht werden indem man eine Weiterleitungs/Prerouting Regel fürs Gateway hinzufügt:
 </p>
 
-<pre caption="Enable portforwarding to our proxyserver">
+<pre caption="Ermöglichen von Portweiterleitung an unseren Proxy Server">
 # <i>iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to proxyhost:3128</i>
 # <i>iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to proxyhost:3128</i>
 </pre>
@@ -3159,26 +3149,26 @@ This can be done by adding a forwarding/prerouting rule on the gateway:
 </section>
 
 <section>
-<title>Now what have we learned?</title>
+<title>Also was haben wir gelernt?</title>
 
 <body>
 
 <p>
-We have learned that:
+Wir lernten, dass:
 </p>
 
 <ol>
-  <li>A firewall can be a risk itself. A badly configured firewall is worse then not having one at all.</li>
-  <li>How to setup a basic gateway and a transparent proxy</li>
-  <li>The key to a good firewall is to know the protocol you want do allow</li>
-  <li>That IP traffic does not always contain legitimate data. For an example ICMP packets with payload</li>
-  <li>How to be prevent SYN attack</li>
-  <li>Filtering HTTP traffic by removing offensive pictures and downloads of viruses.</li>
-  <li>Combining packet filters and application gateways gives a better control</li>
+  <li>Eine Firewall selbst ein Risiko sein kann. Eine schlecht konfigurierte Firewall ist schlechter als überhaupt keine.</li>
+  <li>Wie man ein grundlegendes Gateway und einen transparenten Proxy erstellt</li>
+  <li>Der Schlüssel zu einer guten Firewall ist das Protokoll zu kennen, dass Sie zulassen wollen</li>
+  <li>Dass IP Traffic nicht immer legitime Daten beinhaltet, z.B. ein ICMP Paket mit zusätzlicher Nutzlast</li>
+  <li>Wie man SYN Angriffe vereitelt</li>
+  <li>Filtern von HTTP Traffic indem man anstössige Bilder und Downloaden von Viren entfernt.</li>
+  <li>Kombinieren von Paketfiltern und Anwendungsgateways geben eine bessere Kontrolle.</li>
 </ol>
 
 <p>
-Now, if you <b>really</b> need to, go create a firewall that matches your needs.
+Nun, wenn sie <b>wirklich</b> müssen, schaffen Sie sich eine Firewall die ihre Bedürfnisse deckt.
 </p>
 
 </body>
@@ -3189,83 +3179,81 @@ Now, if you <b>really</b> need to, go create a firewall that matches your needs.
 -- Intrusion detection start --
 
 <chapter>
-<title>Intrusion detection</title>
+<title>Auffinden von Eindringlingen</title>
 
 <section>
 <title>Aide (Advanced Intrusion Detection Environment)</title>
 <body>
 
 <p>
-Aide is a host based intrusion detection detection system (free alternative to Tripwire). And
-if you already know Tripwire you should have no difficulties learning the configuration file for Aide.
+Aide ist ein Host basierendes Eindringlingserkennungssystem (eine kostenlose Alternative zu Tripwire). Und wenn Sie bereits mit Tripwire vertraut sind, sollten sie keine Schwierigkeiten haben die Konfigurationsdateien für Aide zu erlernen. 
 </p>
 
 <p>
-The configuration file is based on regular expressions, macros and rules for files and directories.
-We have the following macros:
+Die Konfigurationsdatei basiert auf regelmäßigen Ausdrücken, Makros und Regeln für Dateien und Verzeichnisse. 
+Wir haben die folgenden Makros:
 </p>
 
 <table borlder="0">
   <tr>
-    <th>Macro</th><th>Description</th><th>Syntax</th>
+    <th>Makro</th><th>Beschreibung</th><th>Syntax</th>
   </tr>
   <tr>
-    <ti>ifdef</ti><ti>If definded</ti><ti>@@ifdef "name"</ti>
+    <ti>ifdef</ti><ti>wenn definiert</ti><ti>@@ifdef "name"</ti>
   </tr>
   <tr>
-    <ti>ifndef</ti><ti>If not defined</ti><ti>@@ifndef "name"</ti>
+    <ti>ifndef</ti><ti>wenn nicht definiert</ti><ti>@@ifndef "name"</ti>
   </tr>
   <tr>
-    <ti>define</ti><ti>Define a variable </ti><ti>@@define "name" "value"</ti>
+    <ti>define</ti><ti>definiert eine Variable</ti><ti>@@define "name" "value"</ti>
   </tr>
   <tr>
-    <ti>undef</ti><ti>Undefine a variable</ti><ti>@@undef "name"</ti>
+    <ti>undef</ti><ti>undefiniert eine Variable</ti><ti>@@undef "name"</ti>
   </tr>
   <tr>
-    <ti>ifhost</ti><ti>if "hostname"</ti><ti>@@ifhost "hostname"</ti>
+    <ti>ifhost</ti><ti>wenn "hostname"</ti><ti>@@ifhost "hostname"</ti>
   </tr>
   <tr>
-    <ti>ifnhost</ti><ti>if not "hostname"</ti><ti>@@ifnhost "hostname"</ti>
+    <ti>ifnhost</ti><ti>wenn "hostname" nicht</ti><ti>@@ifnhost "hostname"</ti>
   </tr>
   <tr>
-    <ti>endif</ti><ti>Endif must be used after any of the above macros except define and undef</ti><ti>@@endif</ti>
+    <ti>endif</ti><ti>Endif muss benutzt werden nach jedem der obrigen Makros ausser define und undef</ti><ti>@@endif</ti>
   </tr>
 </table>
 
 <p>
-These macros become very handy if you have more than one Gentoo box and want to use Aide on all of them.
-But not all machines run the same services or maybe even users.
+Diese Makros sind sehr praktisch, wenn sie mehr als ein Gentoo System haben und auf allen Aide benutzen wollen.
+Aber nicht alle Maschinen oder vielleicht sogar Benutzer benuten denselben Dienst.
 </p>
 
 <p>
-Next we have sets of flags to check for on files and directories. These are a combination  of permissions, file
-properties and cryptographic hashes/checksums.
+Als nächstes haben wir Gruppen von Flags um überprüfungen an Dateien und Ordnern durchzuführen. Diese sind eine Kombination aus Berechtigungen, Dateieigenschaften und kryptographischen Hashes/Checksummen.
 </p>
 
 <table border="0">
   <tr>
-    <th>Flag</th><th>Description</th>
+    <th>Flag</th><th>Beschreibung</th>
   </tr>
   <tr>
-    <ti>p</ti><ti>permissions</ti>
+    <ti>p</ti><ti>Berechtigungen</ti>
   </tr>
   <tr>
-    <ti>i</ti><ti>inode</ti>
+    <ti>i</ti><ti>Inode</ti>
   </tr>
   <tr>
-    <ti>n</ti><ti>number of links</ti>
+    <ti>n</ti><ti>Anzahl der Links</ti>
   </tr>
   <tr>
-    <ti>u</ti><ti>user</ti>
+    <ti>u</ti><ti>Benutzer</ti>
   </tr>
   <tr>
-    <ti>g</ti><ti>group</ti>
+    <ti>g</ti><ti>Gruppe</ti>
   </tr>
   <tr>
-    <ti>s</ti><ti>size</ti>
+    <ti>s</ti><ti>Grösse</ti>
   </tr>
   <tr>
-    <ti>b</ti><ti>block count</ti>
+    <ti>b</ti><ti>Blockzahl</ti>
   </tr>
   <tr>
     <ti>m</ti><ti>mtime</ti>
@@ -3277,19 +3265,19 @@ properties and cryptographic hashes/checksums.
     <ti>c</ti><ti>ctime</ti>
   </tr>
   <tr>
-    <ti>S</ti><ti>check for growing size</ti>
+    <ti>S</ti><ti>überprüfung ob die Grösse wächst</ti>
   </tr>
   <tr>
-    <ti>md5</ti><ti>md5 checksum</ti>
+    <ti>md5</ti><ti>MD5 Checksumme</ti>
   </tr>
   <tr>
-    <ti>sha1</ti><ti>sha1 checksum</ti>
+    <ti>sha1</ti><ti>SHA1 Checksumme</ti>
   </tr>
   <tr>
-    <ti>rmd160</ti><ti>rmd160 checksum</ti>
+    <ti>rmd160</ti><ti>RMD160 Checksumme</ti>
   </tr>
   <tr>
-    <ti>tiger</ti><ti>tiger checksum</ti>
+    <ti>tiger</ti><ti>Tiger Checksumme</ti>
   </tr>
   <tr>
     <ti>R</ti><ti>p+i+n+u+g+s+m+c+md5</ti>
@@ -3298,61 +3286,59 @@ properties and cryptographic hashes/checksums.
     <ti>L</ti><ti>p+i+n+u+g</ti>
   </tr>
   <tr>
-    <ti>E</ti><ti>Empty group</ti>
+    <ti>E</ti><ti>Leere Gruppe</ti>
   </tr>
   <tr>
-    <ti>&gt;</ti><ti>Growing logfile p+u+g+i+n+S</ti>
+    <ti>&gt;</ti><ti>Wachsende Protokolldatei p+u+g+i+n+S</ti>
   </tr>
 </table>
 
 <p>
-And if Aide is compiled with mhash support it does have a few other features:
+Und wenn Aide mit mhash Unterstützung kompiliert ist, hat es noch einige weitere Funktionen:
 </p>
 
 <table border="0">
   <tr>
-    <th>Flag</th><th>Description</th>
+    <th>Flag</th><th>Beschreibung</th>
   </tr>
   <tr>
-    <ti>haval</ti><ti>haval checksum</ti>
+    <ti>haval</ti><ti>HAVAL Checksumme</ti>
   </tr>
   <tr>
-    <ti>gost</ti><ti>gost checksum</ti>
+    <ti>gost</ti><ti>GOST Checksumme</ti>
   </tr>
   <tr>
-    <ti>crc32</ti><ti>crc32 checksum</ti>
+    <ti>crc32</ti><ti>CRC32 Checksumme</ti>
   </tr>
 </table>
 
 <p>
-Now you can create you own rules based on the above flags by combining them like:
+Nun können sie ihre eigenen Regeln kreieren basierend auf den oben genannten Flags indem Sie diese folgendermassen kombinieren:
 </p>
 
-<pre caption="Create a ruleset for AIDE">
+<pre caption="Erstellen eines Regelsatzes für AIDE">
 All=R+a+sha1+rmd160
 Norm=s+n+b+md5+sha1+rmd160
 </pre>
 
 <p>
-The last thing we need to create our own configuration file is to see how to add a rule to a file
-or directory. Basically you just type the file or dir name and the rule. Aide will add all files
-recursively unless you specify something else.
+Das letzte was wir tun müssen um unsere eigene Konfigurationsdatei zu erstellen ist zu schauen wie man diese Regeln einer Datei oder einem Verzeichnis hinzufügt. Grundlegend tippen sie einfach den Datei- oder Verzeichnisnamen und die Regel ein. Aide wird alle Dateien rekursiv hinzufügen, solange Sie nicht etwas anderes angeben.
 </p>
 
 <table border="0">
   <tr>
-    <th>Flag</th><th>Description</th>
+    <th>Flag</th><th>Beschreibung</th>
   </tr>
   <tr>
-    <ti>!</ti><ti>Don't add this file or directory.</ti>
+    <ti>!</ti><ti>Diese Datei oder dieses Veriechnis nicht hinzufügen. </ti>
   </tr>
   <tr>
-    <ti>=</ti><ti>Add this directory, but not recursive.</ti>
+    <ti>=</ti><ti>Dieses Verzeichnis hinzufügen, aber nicht rekursiv.</ti>
   </tr>
 </table>
 
 <p>
-So lets watch a full blown example
+Lassen sie uns also ein vollständiges Beispiel betrachten
 </p>
 
 <pre caption="/etc/aide/aide.conf">
@@ -3368,16 +3354,16 @@ So lets watch a full blown example
 @@define smbactive
 @@endif
 
-# The location of the database to be read.
+# Der Ort der Datenbank die gelesen werden soll.
 database=file:@@{AIDEDIR}/aide.db
 
-# The location of the database to be written.
+# Der Ort der Datenbank, die erstellt werden soll.
 database_out=file:aide.db.new
 
 verbose=20
 report_url=stdout
 
-# Rule definition
+# Regeldefinition
 All=R+a+sha1+rmd160
 Norm=s+n+b+md5+sha1+rmd160
 
@@ -3397,42 +3383,30 @@ Norm=s+n+b+md5+sha1+rmd160
 </pre>
 
 <p>
-In the above example we specify some macros with where the topdir starts and where the aide directory
-is. Aide checks the <path>/etc/aide/aide.db</path> file when checking for file integrity. But when
-updating or creating a new file it stores the information in <path>/etc/aide/aide.db.new</path>.
-This is done so it won't automatic overwrite the old db file. The option report_URL is a "to come"
-feature that really has no meaning yet. But the authors intention was that it should be able to
-email or maybe even execute script.
+Im obrigen Beispiel definieren wir einige Makros, die angeben wo das topdir startet und wo das Aide Verzeichnis ist. Aide überprüft die <path>/etc/aide/aide.db</path> Datei wenn die Intigrität einer Datei überprüft wird. Jedoch wenn eine Update vorgenommen wird oder eine neue Datei erstellt wird, speichert es die Informationen in <path>/etc/aide/aide.db.new</path>.
+Dies geschieht, damit die ursprünglich Datenbankdatei nicht automatisch überschrieben wird. Die Option report_URL ist eine "noch kommende" Funktion die wirklich noch keine Bedeutung hat. Die Absicht der Autoren war es, dass es möglich wäre eine Email zu senden oder vielleicht sogar ein Script auszuführen.
 </p>
 
 <p>
-After the configuration you should create your db file by executing aide -i and then copy the file
-<path>/etc/aide/aide.db.new</path> to <path>/etc/aide/aide.db</path> and add the check to cron by
-executing crontab -e as root.
+Nach der Konfiguration sollten Sie Ihre Datenbankdatei erstellen indem Sie aide -i ausführen und dann die Datei <path>/etc/aide/aide.db.new</path> nach <path>/etc/aide/aide.db</path> kopieren und den Check zu cron hinzufügen durch crontab -e als root.
 </p>
-<note>Depending on you cpu, disk access and the flags you have set on files, it can take some time</note>
+<note>Abhängig von ihren CPU, Festplattenzugriff und den benutzten Flags für Dateien, kann dies einige Zeit in Anspruch nehmen</note>
 
-<pre caption="Shedule aide as a cronjob">
+<pre caption="Aide als cronjob einrichten">
 0 3   * * * /usr/bin/aide -u
 </pre>
-<note>Remember to setup so you get roots mail. Otherwise you will never know what aide reports</note>
+<note> Denken sie daran es so einzustellen, dass sie die Post für root bekommen. Ansonsten werden Sie niemals wissen was Aide berichtet</note>
 
 <p>
-In this case it runs once at 3pm. This is done since I do not want to disturb the users when working.
-Note I'm using the -u (Update) option instead of the -C (Check). Since -u also checks the files and
-does not overwrite the original db file it saves some time since all you need to do is to copy a file
-when it detects some changes. Just check the changes to see if it was yourself that made the changes
-or some attacker before you copy it!
+In diesem Fall läuft es einmal um 03Uhr. Dies geschieht dann, denn ich will die Benutzer beim Arbeiten nicht stören. Beachten Sie, dass ich die -u (Update) Option benutze statt -C (überpruefen). Denn -u überprüft auch die Dateien und überschreibt nicht die Originaldatenbankdatei, was Zeit spart, denn so müssen sie nur eine Datei kopieren, wenn Veränderungen festgestellt werden. überprüfen sie einfach die Veränderungen um zu sehen, ob Sie es selbst waren oder ein Angreifer der die Veränderungen gemacht hat bevor sie diese kopieren!  
 </p>
 
 <p>
-Now there is some problems with storing the db files locally since the attacker will (If he knows that aide
-is installed) most certainly try to alter the db file, update the db file or modify <path>/usr/bin/aide</path>.
-So you should create a CD or other media and put a copy of the .db file and the aide binaries.
+Nun gibt es einige Probleme damit die Datenbankdateien lokal zu speichern, denn der Angreifer wird (Wenn er weiss, dass Aide installiert ist) höchstwahrscheinlich versuchen die Datenbankdatei zu verändern, ein Update bei der Datenbankdatei durchzuführen oder <path>/usr/bin/aide</path> zu verändern. Deswegen sollten sie eine CD erstellen oder anderes Medium auf das Sie eine Kopie der Datenbankdatei und der Aide Binärdateien ablegen.
 </p>
 
 <p>
-Weitere Informationen gibt es auf <uri link="http://www.cs.tut.fi/~rammer/aide.html">der Prohektseite von aide</uri>.
+Weitere Informationen gibt es auf <uri link="http://www.cs.tut.fi/~rammer/aide.html">der Projektseite von aide</uri>.
 </p>
 
 </body>
