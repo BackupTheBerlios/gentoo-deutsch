@@ -1,0 +1,8 @@
+# ChangeLog for media-video/vdr-osdteletext
+# Copyright 2003 Henning Ryll; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-prefermenu/ChangeLog,v 1.1 2003/06/05 08:45:33 mad Exp $
+
+*vdrplugin-prefermenu-0.5.3 (08 May 2003)
+  05 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
+  initial plugin for 1.2.0 series
+
