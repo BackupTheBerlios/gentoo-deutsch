@@ -2497,93 +2497,82 @@ wie folgt aufzubauen:
 <fig link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/synack.jpg" short="Drei-wege-Handschlag - Three-way handshake"/>
 
 <p>
-A SYN attack is when it only sends a SYN packet (header only contains SYN flag) and does not continue sending the last two
-packets to establish the connection. A SYN packets does not require a valid sender address (IP) because it does not need
-a reply. So the connection will hang until it times out. Now if the attacker sends a lot of SYN packets with a bogus sender
-IP, the computer waits for the response, which never comes. Depending on the timeout settings in your system, this connection
-could stay open for 30-60 seconds (or longer). When the connection limit table is completely occupied and unable to
-communicate with anyone.
+Ein SYN-Angriff geschieht, wenn nur ein SYN-Paket gesendet wird (der header enthält nur SYN-Flags) und die zwei weiteren Pakete nicht gesendet werden um die Verbindung zu etablieren. Ein SYN-Paket benötigt keine gültige Senderadresse (IP) weil es keine Antwort benötigt. Daher bleibt die Verbindung bis zu einer Zeitüberschreitung bestehen. Sendet der Angreifer nun eine große Anzahl von SYN-Paketen mit gefälschter Sender-IP wartet der Computer auf die Antwort, die niemals kommt. Abhängig von der Zeitüberschreitungseinstellung in ihrem System, könnte diese Vrebindung für 30-60 Sekunden (oder länger) offen bleiben. Wenn die Tabelle für Verbindungslimits komplett belegt ist und unfähig ist mit irgendjemandem zu kommunizieren.
 </p>
 
 <p>
-This is where the rate limit becomes handy. Its possible to limit the number of SYN packets from a single source
-but using the <c>-m limit --limit 1/s</c>. This will limit the SYN packets to one per source and therefor
-restricting the SYN flood on our resources.
+Hier wird das Ratenlimit besonders hilfreich. Es ist möglich die Anzahl von SYN-Pakten von einer bestimmten Quelle zu begrenzen, aber durch Gebrauch von <c>-m limit --limit 1/s</c> begrenzt dies das Limit der SYN-Pakete für eins pro Quelle und daher begrenzt die SYN-Flut auf unsere Ressourcen.</p>
+
+<p>
+Jetzt einiger praktischer Kram!
 </p>
 
 <p>
-Now! some practical stuff!
+Wheen iptables in den Kernel geladen wird, hat es 5 Aufhänger an die Sie ihre Regeln hängen können. Sie heissen INPUT,
+OUTPUT FORWARD, PREROUTING und POSTROUTING. Diese Listen nennt man Ketten, da sie per zugefügter Regel funktionieren und überprüfen die Regeln eine nach der anderen in der Reihenfolge wie sie hinzugefügt wurden. Wenn eine Regel ein Paket verweigert, wird es fallengelassen und wird die Kette nicht weiter hinunter wandern. 
 </p>
 
 <p>
-When iptables is loaded in the kernel it has 5 hooks where you can place your rules. They are called INPUT,
-OUTPUT FORWARD, PREROUTING and POSTROUTING. These lists are called chains because they work by added a rules
-and checks the rules one at the time as they where added. If one rule deny a packet it will be dropped and
-does not continue down the chain.
-</p>
-
-<p>
-You can place rules directly to the 5 main chains or create chains and add them to as a rule to an existing
-chain. Lets see how this is done
+Sie können Regeln direkt in die 5 Hauptketten setzen oder Ketten erstellen und diese als Regel zu einer existierenden Kette hinzufügen. Lassen Sie uns sehen wie das getan wird
 </p>
 
 <table border="0">
   <tr>
-    <th>Option:</th><th>Description:</th>
+    <th>Option:</th><th>Beschreibung:</th>
   </tr>
   <tr>
-    <ti>-A</ti><ti>Append</ti>
+    <ti>-A</ti><ti>Anhängen</ti>
   </tr>
   <tr>
-    <ti>-D</ti><ti>Delete</ti>
+    <ti>-D</ti><ti>Löschen</ti>
   </tr>
   <tr>
-    <ti>-I</ti><ti>Insert</ti>
+    <ti>-I</ti><ti>Einfügen</ti>
   </tr>
   <tr>
-    <ti>-R</ti><ti>Replace</ti>
+    <ti>-R</ti><ti>Ersetzen</ti>
   </tr>
   <tr>
-    <ti>-L</ti><ti>List</ti>
+    <ti>-L</ti><ti>Auflisten</ti>
   </tr>
   <tr>
-    <ti>-F</ti><ti>Delete all rules in  chain or all chains</ti>
+    <ti>-F</ti><ti>Löscht alle Regeln in der Kette oder in allen Ketten</ti>
   </tr>
   <tr>
-    <ti>-Z</ti><ti>Zero counters in chain or all chains</ti>
+    <ti>-Z</ti><ti>Keine Counter in der Kette oder in allen Ketten</ti>
   </tr>
   <tr>
-    <ti>-C</ti><ti>Test this packet on chain</ti>
+    <ti>-C</ti><ti>Teste dieses Paket an der Kette</ti>
   </tr>
   <tr>
-    <ti>-N</ti><ti>Create a new user-defined chain</ti>
+    <ti>-N</ti><ti>Erstellen einer neuen benutzerdefinierten Kette</ti>
   </tr>
   <tr>
-    <ti>-X</ti><ti>Delete a user-defined chain</ti>
+    <ti>-X</ti><ti>Löschen einer benutzerdefinierten Kette</ti>
   </tr>
   <tr>
-    <ti>-P</ti><ti>Change policy on chain to target</ti>
+    <ti>-P</ti><ti>Richtlinie der Kette bezüglich des Ziels ändern</ti>
   </tr>
   <tr>
-    <ti>-E</ti><ti>Change chain name</ti>
+    <ti>-E</ti><ti>Ändern des Kettennamens</ti>
   </tr>
   <tr>
-    <ti>-p</ti><ti>Protocol</ti>
+    <ti>-p</ti><ti>Protokoll</ti>
   </tr>
   <tr>
-    <ti>-s</ti><ti>Source address/mask</ti>
+    <ti>-s</ti><ti>Quelladresse/maske</ti>
   </tr>
   <tr>
-    <ti>-d</ti><ti>Destination address/mask</ti>
+    <ti>-d</ti><ti>Zieladresse/maske</ti>
   </tr>
   <tr>
-    <ti>-i</ti><ti>Input name (ethernet name)</ti>
+    <ti>-i</ti><ti>Eingabename (Ethernetname)</ti>
   <tr>
   </tr>
-    <ti>-o</ti><ti>Output name (ethernet name)</ti>
+    <ti>-o</ti><ti>Ausgabename (Ethernetname)</ti>
   </tr>
   <tr>
-    <ti>-j</ti><ti>Jump (target for rule)</ti>
+    <ti>-j</ti><ti>Jump (Ziel für Regel)</ti>
   </tr>
   <tr>
     <ti>-m</ti><ti>Extended match (might use extension)</ti>
