@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvb/Attic/libdvb-0.3.0.ebuild,v 1.1 2003/04/26 13:43:10 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvb/libdvb-0.4.1.ebuild,v 1.1 2003/07/13 16:34:42 mad Exp $
 
 IUSE=""
 
@@ -9,11 +9,12 @@ DESCRIPTION="LIBDVB - DVB library"
 HOMEPAGE="http://www.metzlerbros.org/dvb/"
 SRC_URI="http://www.metzlerbros.org/dvb/${P}.tar.gz"
 
-KEYWORDS="x86"
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
 
-DEPEND="media-video/linuxdvb virtual/linux-sources"
+DEPEND="media-video/linuxtv-dvb
+		virtual/linux-sources"
 	
 src_unpack() {
 	unpack ${A} || die "unpack failed"
