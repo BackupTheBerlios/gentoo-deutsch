@@ -28,10 +28,10 @@ Anleitung f&#252;r Benutzer und Entwickler von Java unter Gentoo Linux
 <section>
 <title>Installation des Sun/IBM JDKs/JREs</title>
 <body>
-<p>Wenn sie <c>emerge dev-java/sun-jdk-1.3.1</c> oder <c>emerge dev-java/ibm-jdk-1.3.1</c> ausf&#252;hren, werden sie darauf hingewiesen, dass sie die entsprechenden TAR-Archive selbst herunterladen m&#252;ssen. Dies ist auf Grund der Lizenzbestimmungen von Sun bzw. des Registrierungszwangs beim IBM JDK/JRE notwending.</p>
+<p>Wenn sie <c>emerge dev-java/sun-jdk-1.3.1</c> oder <c>emerge dev-java/ibm-jdk-1.3.1</c> ausf&#252;hren, werden sie darauf hingewiesen, dass sie die entsprechenden TAR-Archive selbst herunterladen m&#252;ssen. Dies ist auf Grund der Lizenzbestimmungen von Sun bzw. des Registrierungszwangs beim IBM JDK/JRE notwendig.</p>
 <note>Es gibt auch ein dev-java/sun-jdk-1.4.0 ebuild, allerdings laufen nicht alle Programme fehlerfrei mit Java 1.4. Somit liegt es an ihnen, ob sie Java 1.4 verwenden wollen.</note>
 <p>
-Sie m&#252;ssen die notwendingen Dateien in das Verzeichnis <path>/usr/portage/distfiles</path> herunterladen. Sobald dies getan ist, m&#252;ssen sie erneut emerge ausf&#252;hren und das JDK/JRE wird nach <path>/opt</path> installiert.
+Sie m&#252;ssen die notwendigen Dateien in das Verzeichnis <path>/usr/portage/distfiles</path> herunterladen. Sobald dies getan ist, m&#252;ssen sie erneut emerge ausf&#252;hren und somit wird das JDK/JRE nach <path>/opt</path> installiert.
 </p>
 </body>
 </section>
@@ -128,7 +128,7 @@ java-config --set-system-classpath=log4j,java-gtk,java-gnome
 <body>
 <p>Wenn sie eine JRE als ihren vorgegeben Java-Interpreter (Java-VM) eingestellt haben, steht ihnen der Java-Compiler <c>javac</c> nicht zur Verf&#252;gung, es sei denn sie setzen selbst einen Link auf die Datei javac.</p>
 <p>Sobald es verf&#252;gbar ist wird Jikes verwendet, um einge der gr&#246;&#223;eren Pakete zu &#252;bersetzen. Mit der Zeit wird es hoffentlich m&#246;glich werden alle Java-abh&#228;ngigen Pakete mit Jikes zu &#252;bersetzen, so dass einige Abh&#228;ngigkeiten vom JDK zu Abh&#228;ngigkeiten vom JRE &#252;berf&#252;hrt werden k&#246;nnen.</p>
-<p>Bei einigen Versionen von Portage f&#252;hrt ein <c>emerge --world update</c> dazu, dass ein JDK installiert wird, ohne R&#252;cksicht darauf, ob sie bereits vorher installiert hatten oder nicht. Dies ist ein bekannter Fehler in Portage und wird in einer zuk&#252;nftigen Version behoben.</p>
+<p>Bei einigen Versionen von Portage f&#252;hrt ein <c>emerge --world update</c> dazu, dass ein JDK installiert wird, ohne R&#252;cksicht darauf, ob sie es bereits vorher installiert hatten oder nicht. Dies ist ein bekannter Fehler in Portage und wird in einer zuk&#252;nftigen Version behoben.</p>
 </body>
 </section>
 </chapter>
