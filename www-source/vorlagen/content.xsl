@@ -475,21 +475,11 @@
 </xsl:template>
 
 <xsl:template match="news">
-  	<table cellspacing="0" cellpadding="0" border="0">
-		<tr>
-			<td width="60">
-				<img src="inhalte/media/bilder/icons/news/{$sort}.jpg"/>
-			</td>
-			<td>
-				<p style="font-size:big;">
-					<xsl:value-of select="@title"/>
-				</p>
-				<p>
-					<xsl:value-of select="."/>
-				</p>
-			</td>
-		</tr>
-	</table>
+	<span style="font-size:small;"><xsl:value-of select="@date"/></span><br/>
+	<span style="font-weight:bold;"><xsl:value-of select="@titel"/></span><br/>
+	<p>
+		<xsl:value-of select="."/>
+	</p>
 </xsl:template>
 
 <xsl:template match="uriimg">
