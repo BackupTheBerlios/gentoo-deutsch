@@ -1,0 +1,7 @@
+# ChangeLog for media-video/vdrplugin-yaepg
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-yaepg/ChangeLog,v 1.1 2004/07/27 20:33:46 austriancoder Exp $
+
+*vdrplugin-yaepg-0.0.1 (27 July 2004)
+  27 July 2004: Christian Gmeiner <christian at visual-page dot de>
+  inital ebuild
