@@ -23,7 +23,11 @@
 
 <body>
 <p>
-	<uri link="http://forums.gentoo.org/viewforum.php?f=28">Das Forum besuchen</uri>
+	Das offizielle Deutsche Gentoo-Forum von www.gentoo.de wurde in die allgemeinen Gentoo-Foren integriert.
+	Besuchen Sie die Foren hier:
+	<ul><li><uri link="http://forums.gentoo.org/">Die allgemeinen Gentoo-Foren</uri></li></ul>
+	Das Deutsche Forum von forums.gentoo.org befindet sich hier:
+	<ul><li><uri link="http://forums.gentoo.org/viewforum.php?f=28">Direkt zum Deutschen Forum</uri></li></ul>
 </p>
 </body>
 
