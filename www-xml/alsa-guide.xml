@@ -47,7 +47,8 @@ Wir zitieren von der Webseite des <uri>http://www.alsa-project.org</uri> folgend
     <li> Benutzerschnittstelle (alsa-lib) um das Programmieren von Anwendungen, die auf Ton beruhen, deutlich zu vereinfachen und verbesserte Funktionen bereitzustellen.</li>
     <li> Unterst&#252;tzung f&#252;r die &#228;ltere OSS (Open Sound System) Benutzerschnittstelle, welches die Abw&#228;rtskompatibilit&#228;t zu &#228;lteren OSS Programmen garantiert.</li>
 </ul>
-Dar&#252;berhinaus kann ALSA noch viel mehr, wie z.B. Full Duplex Aufnahme und Wiedergabe, Unterst&#252;tzung für mehrere Soundkarten, hardware mixing von streams, stark erweiterte Mischeigenschaften, um die vielen Features der neuen Soundkarten auch ausnutzen zu k&#246;nnen...     
+Dar&#252;berhinaus kann ALSA noch viel mehr, wie z.B. Full Duplex Aufnahme und Wiedergabe, Unterst&#252;tzung f&#252;r mehrere Soundkarten, 
+hardware mixing von streams, stark erweiterte Mischeigenschaften, um die vielen Features der neuen Soundkarten auch ausnutzen zu k&#246;nnen...     
 </p>
 </body>
 </section>
@@ -114,7 +115,7 @@ sich folgendes Vorgehen:
 # <c>make menuconfig</c>
 </pre>
 <p>
-Nun sollte <e>Sound Card Support</e> als Modul (M) ausgew&#228;hlt werden und alle anderen Soundkarten Treiber abgewählt werden.
+Nun sollte <e>Sound Card Support</e> als Modul (M) ausgew&#228;hlt werden und alle anderen Soundkarten Treiber abgew&#228;hlt werden.
 Nun menuconfig beenden und mit Y die Kernel Konfiguration abspeichern.
 Danach bauen wir die Module mit:
 </p>
@@ -211,7 +212,7 @@ Ihrem System angeben (im Normalfall ist dies nur eine einzige).
 <p>
 <pre caption="Am Anfang von of /etc/modules.d/alsa">
 # Alsa 0.9.X kernel modules' configuration file.
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-xml/Attic/alsa-guide.xml,v 1.2 2002/11/09 12:59:13 jay Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-xml/Attic/alsa-guide.xml,v 1.3 2002/11/10 08:10:58 jay Exp $
 
 # ALSA portion
 alias char-major-116 snd
