@@ -22,6 +22,24 @@
 
 <section>
 	<body>
+		<news type="other" date="21.08.2003" title="Gentoo Linux 1.4
+		Installationsanweisung in Deutsch">
+			<p>Wer des Englischen nicht allzu mächtig ist, kann nun endlich auf die
+			frisch erneuerten <uri
+			link="http://www.gentoo.de/inhalte/doku/einrichtung/installation14">Installationsanweisungen
+			für Gentoo Linux 1.4 in Deutsch</uri> zurückgreifen.</p>
+			<p>Die größten Änderungen zu 1.4_rc4 bestehen in der Verwendung der GRP
+			und genkernel.  Nebenher wurden etliche kleine vom Fehlerteufel
+			verursachte Vertipper entfernt.  Sollte es wider erwartens
+			Verständnisprobleme geben oder noch ein Fehler entweckt werden, bittet der
+			Übersetzer um einen Hinweis per <mail
+			link="pylon@gentoo.org">E-Mail</mail>.</p>
+		</news>
+	</body>
+</section>
+
+<section>
+	<body>
 	<news type="news" date="18.08.2003" title="Gentoo-Newsletter">
 		<p>
 		In dieser Woche beginnt der Newsletter mit Neuigkeiten über Gentoos Bestreben einen neueren, robusteren DNS
