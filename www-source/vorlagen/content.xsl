@@ -44,7 +44,10 @@
 <xsl:template match="guide|info">
   <html>
   <head>
-    <title>Gentoo Linux - Das deutschsprachige Portal</title>
+    <title>
+      <xsl:value-of select="title"/> 
+      <xsl:text> @ Gentoo Linux - Das deutschsprachige Portal</xsl:text>
+    </title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15"/>
     <link rel="stylesheet" type="text/css" href="{$styleurl}index.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="{$styleurl}print.css" media="print"/>    

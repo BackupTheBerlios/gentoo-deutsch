@@ -255,7 +255,7 @@ table.resultlist td.details{
         max-width: 70px; 
         border: 1px dotted #45347B;
         border-top: 0 none; 
-        border-right: 1px solid #45347B;
+        border-right: 3px solid #45347B;
 }
 
 table.resultlist td.title a{
@@ -274,6 +274,7 @@ table.resultlist td.info{
 
 table.resultlist td.description{
 	height: 100%;
+        padding: 3px 5px 3px 10px;
 }
 
 td{
