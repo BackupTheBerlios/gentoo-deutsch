@@ -2389,41 +2389,41 @@ Operiert auf der Transportebene und kann u.U. grundlegende Veränderungen in der
 
 <p>
 Der Gateway auf der Applikationsebene ist ein Proxy für eine Applikation, die Daten mit dem Remotesystem unter Verwendung seiner Clients
-austauschen. Es wird von der Öffentlichkeit hinter einer DMZ oder einer Firewall ohne Verbindung zur Aussenwelt gesichert. Der Filter basiert auf:
+austauscht. Er wird vor der Öffentlichkeit hinter einer DMZ oder einer Firewall ohne Verbindung zur Aussenwelt gesichert. Der Filter basiert auf:
 </p>
 
 <ul>
-<li>Allow or disallow based on source/destination</li>
-<li>Based on the packets content</li>
-<li>Can even alter the packet content on the fly</li>
-<li>Limiting file access based on file type or extension</li>
+<li>Erlauben oder verbieten basierend auf Herkunft/Ziel</li>
+<li>Entsprechend dem Paketinhalt</li>
+<li>Der Inhalt kann sogar in einem Durchgang geändert werden</li>
+<li>Dateizugriff abhängig von Dateityp oder -Erweiterung beschränken</li>
 </ul>
 
 <p>
-Advantages:
+Vorteile:
 </p>
 
 <ul>
-<li>Can cache files, increasing network performance</li>
-<li>Detailed logging of all connections</li>
-<li>Scales perfectly (some proxy servers can "share" the cached data)</li>
-<li>No direct access from the outside</li>
+<li>Dateien können zwischengespeichert werden - das erhöht die Netzwerkleitung</li>
+<li>Detailliertes aufzeichnen von Verbindungen</li>
+<li>Skaliert perfekt (manche Proxy-Server können die zwischengespeicherten Daten teilen)</li>
+<li>Kein direkter Zugriff von Aussen</li>
 </ul>
 
 <p>
-Weakness:
+Schwächen:
 </p>
 
 <ul>
-<li>The setup is complex</li>
+<li>Das einrichten ist sehr komplex</li>
 </ul>
 
 <p>
-Application gateways are considered to be the most secure solution since it does not have to run as root and is not public to the Internet.
+Applikationsgateways werden als die sicherste Lösung angesehen, da sie nicht als root laufen müssen und Richtung Internet nicht öffentlich sind.
 </p>
 
 <p>
-Example of a free application gateway:
+Beispiel eines freien Applikationsgateways:
 </p>
 
 <ul>
@@ -2438,49 +2438,77 @@ Example of a free application gateway:
 <body>
 
 <p>
-In order to get iptables working, it has to be enabled in the kernel. I have added them as modules (the iptables command will load them as they are needed) and recompiled my kernel. After you have compiled it (or while compiling the kernel) you have to add the iptables commands. Just <c>emerge iptables</c> and it should work.
+Um iptables zum Laufen zu kriegen, muss es im Kernel aktiviert werden. Ich habe sie als Module eingefügt (das Kommando iptables wird
+diese wenn benötigt laden) und das Kernel neu kompiliert. Nachdem Sie das Kernel neu kompiliert haben (oder noch während das Kernel
+kompiliert) müssen Sie die iptables-Kommandos hinzufügen. Führen Sie einfach nur <c>emerge iptables</c> aus und alles sollte funktionieren.
 </p>
 
 <p>
-Now test that it works by running <c>iptables -L</c>. If it fails something is wrong and you have to check you configuration once more.
+Nun probieren Sie bitte ob alles funktioniert, indem Sie <c>iptables -L</c> ausführen. Wenn irgendetwas nicht funktioniert, dann sollten
+Sie die Konfiguration nochmals überprüfen.
 </p>
 
 <p>
-Iptables is a stateful packet filter which means that it provides greater control and greater security than ipchains (Linux version 2.2) which is not stateful. You are properly asking yourself what is the stateful part ? and what is the difference?.
+Iptables ist eine sog. "stateful firewall". Dies bedeutet, dass es bessere Kontrolle und mehr Sicherheit als ipchains (Linux Version 2.2)
+bietet, dass wiederrum nicht "stateful" ist. Mit gutem Recht fragen Sie sich nun sicherlich "Was hat es mit stateful auf sich? Und was
+ist der Unterschied?"
 </p>
 
 <p>
-We all know that TCP are made up a series of packets. Each packet containing information about source address, the destination address and a sequence so the packets can be put back together. And we all know that TCP is connection-oriented and UDP is connectionless right? these are the states that it stores .. now you are probably asking yourself and so what ? Well I'm getting to that.
+Wir wissen alle, dass TCP als Serie von Paketen aufgebaut ist. Jedes Paket enthält Informationen über die Quelladresse,
+die Zieladresse und einen Zähler der das richtige Zusammensetzen der Daten ermöglicht. Und wir alle wissen auch, dass
+TCP verbindungsorientiert und UDP verbindungslos ist, oder? Dies sind die sogenannten Zustände - states eben - die gespeichert werden.
+Nun werden Sie sich sicherlich weiterfragen "Ja, und !?" - nun ich werde gleich darauf zurückkommen.
 </p>
 
 <p>
-Now imagine that you have a stateless firewall (ipchains) and do not want to allow external computers to originate a connection to your internal services but how can the firewall determine whether a packet is part of an ongoing connection or not? A stateless firewall cannot distinguish between an existing connection and one that is part of a new connection by looking at the SYN flag!. 
+Nun stellen Sie sich vor, Sie haben eine Firewall, die nicht mit Zuständen umgehen kann (ipchains) und Sie möchten
+Rechnern von Ausserhalb nicht erlauben, eine Verbindung zu einem rechner innerhalb Ihres Netzes aufzubauen. Wie kann
+man nun aber feststellen, ob ein Paket zu einer bestehenden Verbindung gehört oder nicht? Eine zustandslose Firewall
+kann nicht zwischen einer bestehenden Verbindung und einer neuen Verbindung durch Überprüfen des SYN-Flags unterscheiden!
 </p>
 
 <p>
-Lets say an attacker is sending hand crafted packets (a packet created by the attacker) where he alters the SYN flags or any other flags. This is quite often that attackers do. Send packets right through the firewall altering routing tables or compromising services running on the firewall but are supposed to be safe behind a filter. A stateful firewall will keep track of all connection and can easily detect if a packet is claiming to part of en existing connect or not. When a connection, claiming to be an existing connection but is found, its marted as invalid and its possible to discard it. This will also stop the possibility of "stealth scans" since the connection was invalid.
+Nehmen wir nun einmal ein, dass ein Angreifer handgemachte Pakete sendet (also ein Paket, dass der Angreifer nur speziell zu diesem
+Zweck zusammengebaut hat) in dem er die SYN-Flags oder irgendwelche anderen Flags geändert hat. Das wird oftmals von Angreifern gemacht.
+Pakete werden direkt durch die Firewall geschickt, ändern die Routingtabellen oder greifen Dienste an aber sind trotzdem mit Sicherheit hinter
+dem Filter. Eine zustandsgesteuerte Firewall wird über jede Verbindung Bescheid wissen und können so leicht herausfinden ob ein Paket nur
+so tut, als würde es zu einer bestehenden Vernindung gehören. Wenn solch eine gefälschte Verbindung entdeckt wird, wird diese sofort als
+ungültig markiert und somit zum Verwerfen freigegeben. Dies wird auch die Möglichkeit von Stealth-Scans verringern, da die
+Verbindung ungültig war.
 </p>
 
 <p>
-I could probably find a dozen other reasons but I think you got the picture .. simple rules means a smaller firewall configuration meaning that its easier to maintain.
+Ich könnte ein Dutzend weitere Möglichkeiten nennen, aber ich denke Sie haben verstanden was ich meine...einfache Regeln einer
+kleineren Firewall-Konfiguration bedeuten, dass die ganze Angelegenheit einfacher zu verwalten ist.
 </p>
 
 <p>
-Iptables provides several other features like rate limiting. This features is extremely useful when trying to prevent a certain DoS (Denial of Service) attacks like a SYN attack. Now what is a SYN attack?
+Iptables bietet einige weitere Möglichkeiten wie zum Beispiel Wiederholungsbegrenzung (rate limiting). Diese Fähigkeit ist
+extrem nützlich, wenn man einen sicheren DoS (Denial of Service)-Angriff verhindern wie auch einen SYN-Angriff verhindern will.
+Aber was ist ein SYN-Angriff ?
 </p>
 
 <p>
-Again .. when creating a connection with TCP it uses three-way handshake to establish the connection like this:
+Nochmal...wenn eine TCP-Verbindung erstellt wird, dann benutzt sie den sogenannten Drei-wege-Handschlag um die Verbindung
+wie folgt aufzubauen:
 </p>
 
-<fig link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/synack.jpg" short="Three-way handshake"/>
+<fig link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/synack.jpg" short="Drei-wege-Handschlag - Three-way handshake"/>
 
 <p>
-A SYN attack is when it only sends a SYN packet (header only contains SYN flag) and does not continue sending the last two packets to establish the connection. A SYN packets does not require a valid sender address (IP) because it does not need a reply. So the connection will hang until it times out. Now if the attacker sends a lot of SYN packets with a bogus sender IP, the computer waits for the response, which never comes. Depending on the timeout settings in your system, this connection could stay open for 30-60 seconds (or longer). When the connection limit table is completely occupied and unable to communicate with anyone.
+A SYN attack is when it only sends a SYN packet (header only contains SYN flag) and does not continue sending the last two
+packets to establish the connection. A SYN packets does not require a valid sender address (IP) because it does not need
+a reply. So the connection will hang until it times out. Now if the attacker sends a lot of SYN packets with a bogus sender
+IP, the computer waits for the response, which never comes. Depending on the timeout settings in your system, this connection
+could stay open for 30-60 seconds (or longer). When the connection limit table is completely occupied and unable to
+communicate with anyone.
 </p>
 
 <p>
-This is where the rate limit becomes handy. Its possible to limit the number of SYN packets from a single source but using the <c>-m limit --limit 1/s</c>. This will limit the SYN packets to one per source and therefor restricting the SYN flood on our resources.
+This is where the rate limit becomes handy. Its possible to limit the number of SYN packets from a single source
+but using the <c>-m limit --limit 1/s</c>. This will limit the SYN packets to one per source and therefor
+restricting the SYN flood on our resources.
 </p>
 
 <p>
@@ -2488,11 +2516,15 @@ Now! some practical stuff!
 </p>
 
 <p>
-When iptables is loaded in the kernel it has 5 hooks where you can place your rules. They are called INPUT, OUTPUT FORWARD, PREROUTING and POSTROUTING. These lists are called chains because they work by added a rules and checks the rules one at the time as they where added. If one rule deny a packet it will be dropped and does not continue down the chain.
+When iptables is loaded in the kernel it has 5 hooks where you can place your rules. They are called INPUT,
+OUTPUT FORWARD, PREROUTING and POSTROUTING. These lists are called chains because they work by added a rules
+and checks the rules one at the time as they where added. If one rule deny a packet it will be dropped and
+does not continue down the chain.
 </p>
 
 <p>
-You can place rules directly to the 5 main chains or create chains and add them to as a rule to an existing chain. Lets see how this is done
+You can place rules directly to the 5 main chains or create chains and add them to as a rule to an existing
+chain. Lets see how this is done
 </p>
 
 <table border="0">
@@ -2588,11 +2620,15 @@ First we will try to block all ICMP packages to our machine, just to get familia
 </pre>
 
 <p>
-First we specify the chain it should be appended to. Next to specify the protocol and then the rule. The rule can be a ACCEPT, DROP, REJECT, LOG, QUEUE, MASQUERADE, a loaded module or a user defined chain. In this case we use DROP which will drop the packet without responding to the client.
+First we specify the chain it should be appended to. Next to specify the protocol and then the rule. The
+rule can be a ACCEPT, DROP, REJECT, LOG, QUEUE, MASQUERADE, a loaded module or a user defined chain. In
+this case we use DROP which will drop the packet without responding to the client.
 </p>
 
 <p>
-Now try <c>ping localhost</c>. It will not be able to get any response since its blocking the entire ICMP protocol incoming to our machine. It will not be able to ping other machines either since its not allowed to get the ICMP packets returning from the host. Now flush the chain to get ICMP flowing again.
+Now try <c>ping localhost</c>. It will not be able to get any response since its blocking the entire
+ICMP protocol incoming to our machine. It will not be able to ping other machines either since its not
+allowed to get the ICMP packets returning from the host. Now flush the chain to get ICMP flowing again.
 </p>
 
 <pre caption="Flush all rules">
@@ -2600,7 +2636,8 @@ Now try <c>ping localhost</c>. It will not be able to get any response since its
 </pre>
 
 <p>
-Now lets look at the stateful part in iptables. If we wanted to have a stateful inspection of packets incoming on eth0 we could enable it by issuing:
+Now lets look at the stateful part in iptables. If we wanted to have a stateful inspection of packets
+incoming on eth0 we could enable it by issuing:
 </p>
 
 <pre caption="Accept packets that originate from an already established connection">
@@ -2608,7 +2645,11 @@ Now lets look at the stateful part in iptables. If we wanted to have a stateful 
 </pre>
 
 <p>
-This will accept any packet already established or related in the INPUT chain. And you could drop any packet that is not in the state table by issuing <c>iptables -A INPUT -i eth0 -m state --state INVALID -j DROP</c> just before. This enables the stateful part in iptables by loading the extension state. If you wanted connection from the outside to connect to you machine you could use the <c>--state NEW</c>. Iptables contain some modules for different purposes. Some of them are: 
+This will accept any packet already established or related in the INPUT chain. And you could drop any
+packet that is not in the state table by issuing <c>iptables -A INPUT -i eth0 -m state --state INVALID -j DROP</c>
+just before. This enables the stateful part in iptables by loading the extension state. If you wanted connection
+from the outside to connect to you machine you could use the <c>--state NEW</c>. Iptables contain some modules
+for different purposes. Some of them are:
 </p>
 
 <table border="0">
@@ -2649,7 +2690,8 @@ Lets try to create a user defined chain and apply it to one of the existing chai
 </pre>
 
 <p>
-By applying the rule to the input chain we get the policy: All is allowed out and only incoming is allowed, if its already established. This is general a bad idea. Default policies should be drop but this is just an example.
+By applying the rule to the input chain we get the policy: All is allowed out and only incoming is allowed, if its
+already established. This is general a bad idea. Default policies should be drop but this is just an example.
 </p>
 
 <p>
@@ -2705,7 +2747,7 @@ rules() {
   $IPTABLES -N allowed-connection
   $IPTABLES -F allowed-connection
   $IPTABLES -A allowed-connection -m state --state ESTABLISHED,RELATED -j ACCEPT
-  $IPTABLES -A allowed-connection -i $IINTERFACE -m limit -j LOG --log-prefix \ 
+  $IPTABLES -A allowed-connection -i $IINTERFACE -m limit -j LOG --log-prefix \
       "Bad packet from ${IINTERFACE}:"
   $IPTABLES -A allowed-connection -j DROP
 
@@ -2713,9 +2755,9 @@ rules() {
   einfo "Creating icmp chain"
   $IPTABLES -N icmp_allowed
   $IPTABLES -F icmp_allowed
-  $IPTABLES -A icmp_allowed -m state --state NEW -p icmp --icmp-type \ 
+  $IPTABLES -A icmp_allowed -m state --state NEW -p icmp --icmp-type \
       time-exceeded -j ACCEPT
-  $IPTABLES -A icmp_allowed -m state --state NEW -p icmp --icmp-type \ 
+  $IPTABLES -A icmp_allowed -m state --state NEW -p icmp --icmp-type \
       destination-unreachable -j ACCEPT
   $IPTABLES -A icmp_allowed -p icmp -j LOG --log-prefix "Bad ICMP traffic:"
   $IPTABLES -A icmp_allowed -p icmp -j DROP
@@ -2725,11 +2767,11 @@ rules() {
   $IPTABLES -N allow-ssh-traffic-in
   $IPTABLES -F allow-ssh-traffic-in
   #Flood protection
-  $IPTABLES -A allow-ssh-traffic-in -m limit --limit 1/second -p tcp --tcp-flags \ 
+  $IPTABLES -A allow-ssh-traffic-in -m limit --limit 1/second -p tcp --tcp-flags \
       ALL RST --dport ssh -j ACCEPT
-  $IPTABLES -A allow-ssh-traffic-in -m limit --limit 1/second -p tcp --tcp-flags \ 
+  $IPTABLES -A allow-ssh-traffic-in -m limit --limit 1/second -p tcp --tcp-flags \
       ALL FIN --dport ssh -j ACCEPT
-  $IPTABLES -A allow-ssh-traffic-in -m limit --limit 1/second -p tcp --tcp-flags \ 
+  $IPTABLES -A allow-ssh-traffic-in -m limit --limit 1/second -p tcp --tcp-flags \
       ALL SYN --dport ssh -j ACCEPT
   $IPTABLES -A allow-ssh-traffic-in -p tcp --dport ssh -j ACCEPT
 
@@ -2742,9 +2784,9 @@ rules() {
   einfo "Creating outgoing dns traffic chain"
   $IPTABLES -N allow-dns-traffic-out
   $IPTABLES -F allow-dns-traffic-out
-  $IPTABLES -A allow-dns-traffic-out -p udp -d $DNS1 --dport domain \ 
+  $IPTABLES -A allow-dns-traffic-out -p udp -d $DNS1 --dport domain \
       -j ACCEPT
-  $IPTABLES -A allow-dns-traffic-out -p udp -d $DNS2 --dport domain \ 
+  $IPTABLES -A allow-dns-traffic-out -p udp -d $DNS2 --dport domain \
      -j ACCEPT
 
   einfo "Creating outgoing http/https traffic chain"
@@ -2878,7 +2920,8 @@ showoptions() {
   echo "showstatus) Shows the status" 
 }
 </pre>
-<note>I backslashed some lines for readability issues. It might be a good idea to join this lines in an actual configuration. Get it <uri link="firewall.gz">here</uri>.</note>
+<note>I backslashed some lines for readability issues. It might be a good idea to join this lines in
+an actual configuration. Get it <uri link="firewall.gz">here</uri>.</note>
 
 <p>
 Free advice when creating a firewall:
@@ -2893,7 +2936,9 @@ Free advice when creating a firewall:
 </ol>
 
 <p>
-If you think that iptables is hard to understand or takes to long to setup a decent firewall you could use <uri link="http://www.shorewall.net">Shorewall</uri>. It basically uses iptables to generate firewall rules, but concentrates on rules and not specific protocols.
+If you think that iptables is hard to understand or takes to long to setup a decent firewall you could
+use <uri link="http://www.shorewall.net">Shorewall</uri>. It basically uses iptables to generate firewall
+rules, but concentrates on rules and not specific protocols.
 </p>
 
 </body>
@@ -2904,11 +2949,16 @@ If you think that iptables is hard to understand or takes to long to setup a dec
 <body>
 
 <p>
-Squid is a very powerful proxy server and it can do filters, rejects allowed traffic based on: time, regular expression path/uri, source and destination address (IP), domain, browser, the authenticated username, mime-type and port (protocol). I probably forgot some features, but it can be hard to cover the entire feature list.
+Squid is a very powerful proxy server and it can do filters, rejects allowed traffic based on: time,
+regular expression path/uri, source and destination address (IP), domain, browser, the authenticated
+username, mime-type and port (protocol). I probably forgot some features, but it can be hard to cover
+the entire feature list.
 </p> 
 
 <p>
-In the following example I have added a banner filter instead of a filter based on porn sites. The reason for this is that Gentoo.org should <c>not</c> be listed as some porn site. And I do not want to waste my time trying to find some good sites for you.
+In the following example I have added a banner filter instead of a filter based on porn sites. The
+reason for this is that Gentoo.org should <c>not</c> be listed as some porn site. And I do not want
+to waste my time trying to find some good sites for you.
 </p>
 
 <p>
@@ -2916,7 +2966,8 @@ In this case, my policy states:
 </p>
 
 <ul>
-  <li>Surfing (HTTP/HTTPS) is allowed during work hours (mon-fri 8-17 and sat 8-13) if they are here late they should work, not surf</li>
+  <li>Surfing (HTTP/HTTPS) is allowed during work hours (mon-fri 8-17 and sat 8-13) if they are here
+  late they should work, not surf</li>
   <li>Download is not allowed (.exe, .com, .arj, .zip, .asf, .avi, .mpg, .mpeg etc.)</li>
   <li>We don't like banners so they are filtered and replaced with a transparent gif (this is where you get creative!)</li>
   <li>Every other connection to and from the Internet is not allowed</li>
@@ -2995,7 +3046,8 @@ http_access deny all
 </pre>
 
 <p>
-Next fill in the files you do not want your uses to download. I have added zip, viv, exe, mp3, rar, ace, avi, mov, mpg, mpeg, au, ra, arj, tar, gz and z files.
+Next fill in the files you do not want your uses to download. I have added zip, viv, exe, mp3, rar, ace, avi, mov,
+mpg, mpeg, au, ra, arj, tar, gz and z files.
 </p>
 
 <pre caption="/etc/squid/files.acl">
@@ -3060,7 +3112,8 @@ _ad\..*cgi
 </pre>
 
 <p>
-And the last part. We want this file to be displayed when it removes a banner. It's basically a half html file with a 4x4 transparent gif image.
+And the last part. We want this file to be displayed when it removes a banner. It's basically a half
+html file with a 4x4 transparent gif image.
 </p>
 
 <pre caption="/etc/squid/errors/NOTE_ADS_FILTERED">
@@ -3078,22 +3131,28 @@ Don't close the &lt;HTML&gt; &lt;BODY&gt; tags. This will be done by squid.
 </note>
 
 <p>
-As you can see squid has a lot of possibilities and it is very effective in both filtering and proxying. It can even use alternative squid proxies to scale on very large networks. The config I have listed here is mostly suited for a small network with 1-20 users.
+As you can see squid has a lot of possibilities and it is very effective in both filtering and proxying.
+It can even use alternative squid proxies to scale on very large networks. The config I have listed here
+is mostly suited for a small network with 1-20 users.
 </p>
 
 <p>
-But combining the packet filter (iptables) and the application gateway (squid) is probably the best solution, even if squid is located somewhere safe and nobody could access it from the outside. We still need to be concerned on attack from the inside.
+But combining the packet filter (iptables) and the application gateway (squid) is probably the best
+solution, even if squid is located somewhere safe and nobody could access it from the outside. We
+still need to be concerned on attack from the inside.
 </p>
 
 <p>
-Now you have to add the proxy server into the settings of your clients browsers. The gateway will prevent the users from having any contact with the outside unless they use the proxy.
+Now you have to add the proxy server into the settings of your clients browsers. The gateway will
+prevent the users from having any contact with the outside unless they use the proxy.
 </p>
 <note>
 In Mozilla this is done in Edit->Preferences->Advanced->Proxies.
 </note>
 
 <p>
-It can also be done transparently by using iptables to forward all traffic out to a squid proxy. This can be done by adding a forwarding/prerouting rule on the gateway:
+It can also be done transparently by using iptables to forward all traffic out to a squid proxy.
+This can be done by adding a forwarding/prerouting rule on the gateway:
 </p>
 
 <pre caption="Enable portforwarding to our proxyserver">
@@ -3142,11 +3201,13 @@ Now, if you <b>really</b> need to, go create a firewall that matches your needs.
 <body>
 
 <p>
-Aide is a host based intrusion detection detection system (free alternative to Tripwire). And if you already know Tripwire you should have no difficulties learning the configuration file for Aide.
+Aide is a host based intrusion detection detection system (free alternative to Tripwire). And
+if you already know Tripwire you should have no difficulties learning the configuration file for Aide.
 </p>
 
 <p>
-The configuration file is based on regular expressions, macros and rules for files and directories. We have the following macros: 
+The configuration file is based on regular expressions, macros and rules for files and directories.
+We have the following macros:
 </p>
 
 <table borlder="0">
@@ -3177,7 +3238,8 @@ The configuration file is based on regular expressions, macros and rules for fil
 </table>
 
 <p>
-These macros become very handy if you have more than one Gentoo box and want to use Aide on all of them. But not all machines run the same services or maybe even users.
+These macros become very handy if you have more than one Gentoo box and want to use Aide on all of them.
+But not all machines run the same services or maybe even users.
 </p>
 
 <p>
@@ -3277,7 +3339,9 @@ Norm=s+n+b+md5+sha1+rmd160
 </pre>
 
 <p>
-The last thing we need to create our own configuration file is to see how to add a rule to a file or directory. Basically you just type the file or dir name and the rule. Aide will add all files recursively unless you specify something else.
+The last thing we need to create our own configuration file is to see how to add a rule to a file
+or directory. Basically you just type the file or dir name and the rule. Aide will add all files
+recursively unless you specify something else.
 </p>
 
 <table border="0">
@@ -3338,11 +3402,18 @@ Norm=s+n+b+md5+sha1+rmd160
 </pre>
 
 <p>
-In the above example we specify some macros with where the topdir starts and where the aide directory is. Aide checks the <path>/etc/aide/aide.db</path> file when checking for file integrity. But when updating or creating a new file it stores the information in <path>/etc/aide/aide.db.new</path>. This is done so it won't automatic overwrite the old db file. The option report_URL is a "to come" feature that really has no meaning yet. But the authors intention was that it should be able to email or maybe even execute script.
+In the above example we specify some macros with where the topdir starts and where the aide directory
+is. Aide checks the <path>/etc/aide/aide.db</path> file when checking for file integrity. But when
+updating or creating a new file it stores the information in <path>/etc/aide/aide.db.new</path>.
+This is done so it won't automatic overwrite the old db file. The option report_URL is a "to come"
+feature that really has no meaning yet. But the authors intention was that it should be able to
+email or maybe even execute script.
 </p>
 
 <p>
-After the configuration you should create your db file by executing aide -i and then copy the file <path>/etc/aide/aide.db.new</path> to <path>/etc/aide/aide.db</path> and add the check to cron by executing crontab -e as root.
+After the configuration you should create your db file by executing aide -i and then copy the file
+<path>/etc/aide/aide.db.new</path> to <path>/etc/aide/aide.db</path> and add the check to cron by
+executing crontab -e as root.
 </p>
 <note>Depending on you cpu, disk access and the flags you have set on files, it can take some time</note>
 
@@ -3352,7 +3423,11 @@ After the configuration you should create your db file by executing aide -i and 
 <note>Remember to setup so you get roots mail. Otherwise you will never know what aide reports</note>
 
 <p>
-In this case it runs once at 3pm. This is done since I do not want to disturb the users when working. Note I'm using the -u (Update) option instead of the -C (Check). Since -u also checks the files and does not overwrite the original db file it saves some time since all you need to do is to copy a file when it detects some changes. Just check the changes to see if it was yourself that made the changes or some attacker before you copy it!
+In this case it runs once at 3pm. This is done since I do not want to disturb the users when working.
+Note I'm using the -u (Update) option instead of the -C (Check). Since -u also checks the files and
+does not overwrite the original db file it saves some time since all you need to do is to copy a file
+when it detects some changes. Just check the changes to see if it was yourself that made the changes
+or some attacker before you copy it!
 </p>
 
 <p>
