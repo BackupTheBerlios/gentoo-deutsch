@@ -13,7 +13,7 @@
     <title>Quick Links:</title>
     <p>
 		<ul>
-			<li><b><uri link="inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 21.08.03)</uri></b></li>
+			<li><b><uri link="inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 25.08.03)</uri></b></li>
 			<li><uri link="inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
 	     	<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
         		Zur Projekütbersicht von BerliOS</uri></li>
@@ -83,7 +83,7 @@
 			<uriimg uri="http://www.gentoo.org/doc/en/gentoo-x86-install.xml" picuri="http://www.gentoo.de/media/bilder/icons/14final.jpg" align="center"/>
 		</p>
 		<p>
-			Es wird empfohlen, sich vor der Installation die <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/installation14">
+			Es wird empfohlen, sich vor der Installation die <uri link="http://www.gentoo.org/doc/en/gentoo-x86-install.xml">
 			Installationsdokumentation</uri> durchzulesen.
 			In dieser ist auch aufgeführt, wo Gentoo-Linux 1.4 heruntergeladen werden kann. Es wird
 			<b>dringendst</b> darum gebeten, auf die Mirror-Server auszuweichen damit sich die
