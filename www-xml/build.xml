@@ -38,29 +38,33 @@ war extrem langsam.) Um die Installation zu starten, laden Sie zuerst eines unse
 CD ISO Images von <uri>http://www.ibiblio.org/gentoo/releases/build/</uri>. Im Augenblick 
 haben wir zwei CDs verf&#xFC;gbar. Unsere erste CD ist 
 <uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">
-gentoo-ix86-1.2.iso</uri>.Dieses Image ist recht klein (16Mb) und enth&#xE4;lt ein minimales 
+gentoo-ix86-1.2.iso</uri>. Dieses Image ist recht klein (16Mb) und enth&#xE4;lt ein minimales 
 "chrootf&#xE4;higes" <!-- Ich probier es mal damit (JS) -->
+<!-- Naja, "laufaehiges" klingt kundenverstaendlicher.. aber darüber laesst sich streiten :-) (EH)-->
 Image (<path>stage1-ix86-1.2.tbz2</path>) -- alles was Sie ben&#xF6;tigen um ein
-Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei 
-automatisch aus dem Internet geladen.) Unsere zweite CD ist 
+Gentoo Linux System von Grund auf aufzubauen (Die Quelldateien werden dabei 
+automatisch aus dem Internet geladen). Unsere zweite CD ist 
 <uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">
 gentoo-i686-1.2.iso</uri>. Dieses Image ist etwas gr&#xF6;&#xDF;er (100+Mb) -- Es
 enth&#xE4;lt das gleiche Material wie auf unserem 16Mb Image, <e>plus</e> einem 
 vorkompiliertem i686 Basissystem (<path>stage3-i686-1.2.tbz2</path>) 
-sowie ein zum Teil kompiliertes <!-- nicht so gut. Alternativen?? damit ?? (JS) mit s ists ok :-) (MG)-->
+sowie ein teilweise kompiliertes <!-- nicht so gut. Alternativen?? damit ?? (JS) mit s ists ok :-) (MG)
+Habe hier "teilweise" eingebaut, klingt unkomplizierter. (EH) -->
 i686 Basissystem (<path>stage2-i686-1.2.tbz2</path>) in TAR-Archiven.
-Die beiden neuen TAR-Archive ben&#xF6;tigen einen Pentium Pro oder besser (K6 geht nicht). 
-Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf kompilieren wollen, 
-k&#xF6;nnen diese die Installation deutlich beschleunigen.
+Die beiden neuen TAR-Archive ben&#xF6;tigen einen Pentium Pro oder besser (auf einem K6-System und
+niedriger nicht m&#xF6;glich). <!-- Vielleicht etwas lang, aber klingt verstaendlicher (EH) -->
+Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf neu kompilieren wollen, 
+k&#xF6;nnen Sie damit die Installationsdauer von Gentoo Linux deutlich verkz&#xFC;en.<!-- Ist das ok?
+Hat wer bessere Vorschlaege? (EH) -->
 </p>
 
 <p>Jetzt lassen Sie uns kurz den den Installationsprozess skizzieren. Sie erstellen die Partitionen,
 erzeugen die Dateisysteme und entpacken entweder das <e>stage1</e>, <e>stage2</e> oder <e>stage3</e> 
-Archiv. Wenn Sie das <e>stage2</e> oder <e>stage3</e> Archiv verwenden m&#xFC;ssen Sie alle n&#xF6;tigen Schritte 
-unternehmen um Ihr System auf den Stand des <e>stage3</e> Archivs zu bringen. Wenn Sie <e>stage3</e>
-erreicht haben k&#xF6;nnen Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
+Archiv. Wenn Sie das <e>stage2</e> oder <e>stage3</e> Archiv verwenden, m&#xFC;ssen Sie alle n&#xF6;tigen Schritte 
+unternehmen, um Ihr System auf den Stand des <e>stage3</e> Archiv's zu bringen. Wenn Sie <e>stage3</e>
+erreicht haben, k&#xF6;nnen Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
 installieren, usw.) und in ein voll funktionsf&#xE4;higes Gentoo Linux booten.
-Abh&#xE4;ngig von der gew&#xE4;hlten  Installationsstufe von der Sie starten, 
+Abh&#xE4;ngig von der gew&#xE4;hlten Installationsstufe, von der Sie starten, 
 hier die ben&#xF6;tigten Schritte:
 </p>
 
@@ -82,7 +86,7 @@ hier die ben&#xF6;tigten Schritte:
 
 <p>Wenn Sie sich f&#xFC;r eine CD entschieden haben, booten Sie damit. Sie werden von
 einem Haufen Text und einem <c>boot:</c> Prompt am unteren Bildschirmrand 
-begr&#xFC;&#xDF;t. Dr&#xFC;cken Sie an diesem Prompt <e>enter</e> und Linux wird von der CD
+begr&#xFC;&#xDF;t. Dr&#xFC;cken Sie an diesem Prompt <e>Enter</e> und Linux wird von der CD
 geladen.</p>
 
 
@@ -91,9 +95,9 @@ Boot-CD begr&#xFC;&#xDF;t. Dies beinhaltet <c>nano</c> (einen Klon des Editors <
 die Anleitung zur Netzwerkkonfiguration. Danach werden Sie nach Ihrem bevorzugtem
 Keyboard Layout befragt, gefolgt von der automatischen Erkennung der PCI Ger&#xE4;te. W&#xE4;hrend
 der Ger&#xE4;teerkennung werden alle passenden Kernelmodule f&#xFC;r PCI SCSI Controller und
-Netzwerkkarten geladen. Wenn Sie danach <e>Enter</e> dr&#xFC;cken kommen Sie in eine
+Netzwerkkarten geladen. Wenn Sie danach <e>Enter</e> dr&#xFC;cken, kommen Sie in eine
 minimale Linux Umgebung. Sie sollten nun ein root Prompt ("<c>#</c>") auf der
-aktuellen Konsole haben. Durch dr&#xFC;cken von Alt-F2, Alt-F3, usw. gefolgt von
+aktuellen Konsole haben. Durch dr&#xFC;cken von Alt-F2, Alt-F3 usw.., gefolgt von
 einem <e>Enter</e>  k&#xF6;nnen Sie weitere Konsolen aktivieren.</p>
 
 
@@ -118,7 +122,7 @@ Um ein bestimmtes Modul zu laden, tippen Sie: </p>
 	<comment>(Ersetzen Sie pcnet32 durch das Modul Ihrer NIC)</comment>
 </pre>
 
-<p>Wenn Sie nun auch noch auf SCSI Hardware zugreifen m&#xF6;chten die nicht automatisch
+<p>Wenn Sie nun auch noch auf SCSI Hardware zugreifen m&#xF6;chten, die nicht automatisch
 erkannt wurde, m&#xFC;ssen Sie das passende Modul aus /lib/modules laden. 
 Verwenden Sie dazu <c>modprobe</c>:</p>
 
@@ -130,7 +134,7 @@ Verwenden Sie dazu <c>modprobe</c>:</p>
 </pre>
 
 <p>Mit den oben stehenden Befehlen haben Sie den SCSI Treiber <c>aic7xxx</c> geladen und
-sichergestellt das die Unterst&#xFC;tzung f&#xFC;r SCSI CD-ROMS (<c>sr_mod</c>) und Festplatten 
+sichergestellt, das die Unterst&#xFC;tzung f&#xFC;r SCSI CD-ROMS (<c>sr_mod</c>) und Festplatten 
 (<c>sd_mod</c>) aktiviert ist.</p>
 
 <note>Version -r10 des ISO Images enth&#xE4;lt jetzt auch <c>hdparm</c>. Wenn eine Ihrer Festplatten
@@ -152,15 +156,15 @@ zus&#xE4;tzlichen Dreh anwenden.</p>
 # <i>cardmgr -f</i>
 </pre>
 
-<p>W&#xE4;hrend cardmgr &#xFC;berpr&#xFC;ft welche Hardware vorhanden ist, sollten aus Ihrem
+<p>W&#xE4;hrend cardmgr &#xFC;berpr&#xFC;ft, welche Hardware vorhanden ist, sollten aus Ihrem
 Lautsprecher einige Piepser ert&#xF6;nen und die PCMCIA Netzwerkkarte ihre Arbeit
 aufnehmen. Sie k&#xF6;nnen nat&#xFC;rlich die PCMCIA Karte auch nach dem Laden des cardmgr
-einstecken.(Technisch gesehen m&#xFC;ssen Sie <i>cardmgr</i> nicht starten wenn Sie
+einstecken (Technisch gesehen m&#xFC;ssen Sie <i>cardmgr</i> nicht starten wenn Sie
 genau wissen welche Module Ihre PCMCIA Karte ben&#xF6;tigt. Aber wenn nicht, versuchen
-Sie nicht alle Module zu laden um zu sehen welches passt. Das wird nicht
-funktionieren, da sich alle Module laden lassen und darauf warten das eine
+Sie nicht alle Module zu laden um zu sehen, welches passt. Das wird nicht
+funktionieren, da sich alle Module laden lassen und darauf warten, das eine
 passende PCMCIA Karte eingesteckt wird. Au&#xDF;erdem entfernt <c>cardmgr</c> die
-Module der Karte wieder wenn sie entnommen wird.)
+Module der Karte wieder, wenn sie entnommen wird).
 </p>
 
 </body>
@@ -171,11 +175,11 @@ Module der Karte wieder wenn sie entnommen wird.)
 <section>
 <body>
 
-<p>Die neue -r11+ Boot CD erlaubt es nun ein Netzwerk zu konfigurieren damit <c>ssh</c>, 
+<p>Die neue -r11+ Boot CD erlaubt es nun ein Netzwerk zu konfigurieren, damit <c>ssh</c>, 
 <c>scp</c> oder <c>wget</c> schon vor der eigentlichen Installation verwendet werden k&#xF6;nnen. Auch
 wenn Sie diese Programme jetzt nicht brauchen, sollten Sie nun das Netzwerk konfigurieren. Einmal
-konfiguriert kann Portage diese Netzwerkverbindung nutzen wenn Sie sich in der "chroot" Umgebung
-befinden. (F&#xFC;r die Gentoo Linux Installation erforderlich.)</p>
+konfiguriert kann Portage diese Netzwerkverbindung nutzen, wenn Sie sich in der "chroot" Umgebung
+befinden (F&#xFC;r die Gentoo Linux Installation erforderlich).</p>
 
 </body>
 </section>
@@ -190,7 +194,7 @@ geht es f&#xFC;r Sie bei der statischen Netzwerkkonfiguration weiter.</p>
 # <i>dhcpcd eth0</i> 
 </pre>
 <note>
-Einige Provider erwarten das Sie einen Hostnamen &#xFC;bergeben. Um dies zu tun h&#xE4;ngen Sie die 
+Einige Provider erwarten, dass Sie einen Hostnamen &#xFC;bergeben. Um dies zu tun, h&#xE4;ngen Sie die 
 Option <c>-h meinhostname</c> an das oben stehende Kommando.</note>
 
 <p>Wenn Sie <i>dhcpConfig</i> Warnungen bekommen, keine Panik. Die meisten Meldungen sind 
@@ -213,11 +217,11 @@ Ihres "default Gateway".</p>
 # <i>/sbin/ifconfig $IFACE $IPNUM broadcast $BCAST netmask $NMASK</i>
 # <i>/sbin/route add -net default gw $GTWAY netmask 0.0.0.0 metric 1</i>
 </pre>
-<p>Jetzt m&#xFC;ssen Sie die Datei <path>/etc/resolv.conf</path> erstellen damit die Namensaufl&#xF6;sung 
+<p>Jetzt m&#xFC;ssen Sie die Datei <path>/etc/resolv.conf</path> erstellen, damit die Namensaufl&#xF6;sung 
 (Web/FTP Server durch Namen anstatt der IP Adresse finden) funktioniert.</p>
 
 <note>Im Moment ist nur <c>nano</c>, ein kleiner, leicht zu bedienender Editor installiert.
-Verwenden Sie <c>nano</c> mit dem Schalter <c>-w</c> um den automatischen Zeilenumbruch 
+Verwenden Sie <c>nano</c> mit dem Schalter <c>-w</c>, um den automatischen Zeilenumbruch 
 abzuschalten.</note>
 
 <p>Hier ein Beispiel der Datei /etc/resolv.conf:</p>
@@ -227,15 +231,15 @@ domain mydomain.com
 nameserver 10.0.0.1
 nameserver 10.0.0.2
 </pre>
-<p>Ersetzten Sie <c>10.0.0.1</c> und <c>10.0.0.2</c> mit den IP Adressen Ihres prim&#xE4;ren und
+<p>Ersetzen Sie <c>10.0.0.1</c> und <c>10.0.0.2</c> mit den IP Adressen Ihres prim&#xE4;ren und
 sekund&#xE4;ren DNS Servers.</p>
 </body>
 </section>
 <section>
 <title>Test der Netzwerkanbindung</title>
 <body>
-<p>Da Ihre Netzwerkanbindung jetzt konfiguriert ist sollte das <c>/sbin/ifconfig -a</c> Kommando ergeben,
- das Ihre Netzwerkkarte (hoffentlich) arbeitet (achten Sie auf <e>UP</e> und <e>RUNNING</e> in der Ausgabe).
+<p>Da Ihre Netzwerkanbindung jetzt konfiguriert ist, sollte der Befehl <c>/sbin/ifconfig -a</c> ausgeben,
+ dass Ihre Netzwerkkarte (hoffentlich) arbeitet (achten Sie auf <e>UP</e> und <e>RUNNING</e> in der Ausgabe).
 </p>
 
 <pre caption="/sbin/ifconfig bei einer arbeitenden Netzwerkkarte">
@@ -255,6 +259,9 @@ If you have a static ppp link, you can !!! do this...!!!
 Sollen wir hier eigenmaechtig eine PPPoE Abschnitt einfuegen - In Deutschland ist das ja deutlich
 verbereiteter als in den USA (JS) ?
 Waere zu Ueberlegen, moechte aber erst den Rest uebersetzen. (MG).
+
+Waere auch dafuer, da ich selbst PPPoE nutze. (EH)
+
 </note>
 -->
 </body>
@@ -262,7 +269,7 @@ Waere zu Ueberlegen, moechte aber erst den Rest uebersetzen. (MG).
 <section>
 <title>Das Netzwerk ist jetzt online!</title>
 <body>
-<p>Der Netzwerkanschluss sollte nun konfiguriert und nutzbar sein. Sie sind nun in der Lage sich via 
+<p>Der Netzwerkanschluss sollte nun konfiguriert und nutzbar sein. Sie sind nun in der Lage, sich via 
 <c>ssh</c>, <c>scp</c> und <c>wget</c> mit anderen Rechnern in Ihrem LAN oder im Internet zu
 verbinden.</p>
 </body>
@@ -273,8 +280,9 @@ verbinden.</p>
 <section>
 <body>
 
-<p>Nun da der Kernel Netzwerk und Festplatten Kontroller unterst&#xFC;zt, wird es Zeit
-die Partitionen f&#xFC;r Gentoo Linux einzurichten.</p>
+<p>Nun, da der Kernel Netzwerk und Festplatten Kontroller <!-- Kontroller, Controller .. ich weiss
+nicht so recht. (EH) --> unterst&#xFC;zt, wird es Zeit die Partitionen f&#xFC;r Gentoo Linux
+einzurichten.</p>
 
 <p>
 Hier nun ein kurzer &#xDC;berblick &#xFC;ber das Standard Layout der Partitionen
@@ -284,9 +292,9 @@ und eine spezielle Boot Partition. Die Boot Partition ist dazu bestimmt den
 GRUB Bootmanager und den oder die Linux Kernel aufzunehmen. Die Boot Partition
 ist ein sicherer Platz um alle zum booten relevanten Dateien abzulegen.
 Bei der t&#xE4;glichen Nutzung sollte die Boot Partition <e>nicht gemountet</e>
-bleiben. Dies verhindert das der Kernel von GRUB nach einem System Absturz
+bleiben. Dies verhindert, das der Kernel von GRUB nach einem System Absturz
 nicht mehr geladen werden kann (z.B. wegen einem besch&#xE4;digten Dateisystem).
-Au&#xDF;erdem verhindert dies das "Henne-Ei-Problem" bei dem GRUB den Kernel
+Au&#xDF;erdem verhindert dies, dass das "Henne-Ei-Problem", bei dem GRUB den Kernel
 wegen einem kaputten Dateisystem nicht mehr laden kann, Sie das Dateisystem aber
 reparieren k&#xF6;nnten, w&#xE4;re es nur m&#xF6;glich zu booten.</p>
 
