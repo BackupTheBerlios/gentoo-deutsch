@@ -4,14 +4,15 @@
 
 <title>Willkommen</title>
 <author title="Author"><mail link="gentoo-deutsch-dev@lists.berlios.de">Das Gentoo.de Team</mail></author>
-<date>4. Dez. 2003</date>
+<date>24. Dez. 2003</date>
 
 <box>
   <block>
     <title>Quick Links:</title>
     <p>
 		<ul>
-			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 21.12.03)</uri></b></li>
+			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer
+      aktuell (letzte: 24.12.03)</uri></b></li>
 			<li><uri link="http://www.gentoo.de/inhalte/doku/#header_8">Die Dokus auf einen Blick</uri></li>
 			<li><uri link="http://gentoo.diefleissigen.de/faq" target="_blank">Gentoo FAQ</uri></li>
 			<li><uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/">Unser CVS Tree</uri></li>
@@ -80,22 +81,9 @@
 <chapter>
 	<title>Gentoo Deutsch</title>
 <section>
-	<title>Warnung</title>
-<body>
-<p>
-<news type="other" date="3.12.2003" title="Security Alert: Linux Kernel Bug">
-Im Rahmen des Server-Einbruchs bei Debian wurde ein Bug im Linux Kernel gefunden. Ein Fehler im Systemaufruf do_brk() führt dazu, dass ein Programm Zugriff auf den vollen Adressraum des Kernels erhalten kann. Ein Angreifer kann so natürlich auch Root-Rechte erlangen. Um dies zu verhindern, empfehlen wir allen Nutzern die aktualisierten Kernel-Fassungen
-aufzuspielen. Um die aktuellen Pakete zu erhalten führen Sie ein <b>emerge sync</b> durch und emergen dann Ihre
-Kernel-Version oder updaten gleich auf 2.4.23.<br/>
-<uri link="http://isec.pl/vulnerabilities/isec-0012-do_brk.txt">Weitere Informationen über do_brk()</uri>
-</news>
-</p>
-</body>
-</section>
-
-<section>
 	<title>Weihnachtsgrüsse</title>
-	<body>
+
+<body>
 		<p>
 			Ein ereignisreiches Jahr neigt sich nun langsam dem Ende zu und wie an so vielen Stellen ist es nun
 			auch hier an der Zeit, die Erlebnisse noch einmal Revue passieren zu lassen. Für Gentoo war dies ein
