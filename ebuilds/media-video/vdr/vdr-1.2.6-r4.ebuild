@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.8 2003/12/28 11:18:32 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.9 2004/01/04 20:24:59 fow0ryl Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -131,6 +131,14 @@ src_unpack() {
 		/bin/sed -i osdbase.c \
 		  -e 's:logofileS=MALLOC(char, strlen(ConfigDirectory):logofileS=MALLOC(char, strlen("/usr/share/vdr"):' \
 		  -e 's:strcpy(logofileS, ConfigDirectory):strcpy(logofileS, "/usr/share/vdr"):'
+	fi
+
+	# for osdbase.h in case, VDR_OPTS->256color
+	if vdr_opts 256color
+	then
+		einfo "Applying 256 Color patch to OSD ..."
+		/bin/sed -i osdbase.h \
+		  -e 's:#define MAXNUMCOLORS 24:#define MAXNUMCOLORS 256:'
 	fi
 
 	# use patch from mailbox plugin, even if plugin is not used
