@@ -370,7 +370,7 @@
 	<title>Was "commit" eigentlich macht</title> 
 	<body> 
 	<p> 
-	"cvs commit" reicht nicht <i>nur</i> Ihre Änderungen ein. Bevor die Änderungen eingereicht werden, wird Ihr	Editor gestartet.
+	"cvs commit" reicht nicht <i>nur</i> Ihre Änderungen ein. Bevor die Änderungen eingereicht werden, wird Ihr Editor gestartet.
 	Hier können Sie nun eine Beschreibung Ihrer Änderungen eingeben. Speichern Sie die Datei und verlassen Sie den Editor, werden 
 	Ihre Änderungen und die zugehörigen Kommentare den anderen Entwicklern zugänglich gemacht. 
 	</p> 
