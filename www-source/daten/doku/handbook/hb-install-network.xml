@@ -1,7 +1,7 @@
 <!-- Der Inhalt dieses Dokuments unterliegt der CC-BY-SA Linzenz -->
 <!-- Nachzulesen unter: http://creativecommons.org/licenses/by-sa/1.0 --> 
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-network.xml,v 1.5 2003/12/23 10:11:46 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-network.xml,v 1.6 2004/01/02 17:41:33 dertobi123 Exp $ -->
 
 <!-- English CVS Version: 1.15  -->
 
@@ -359,7 +359,7 @@ Gentoo bereitgestellt werden.
 </p>
 
 <pre caption="Nach bereitgestellten Kernelmodulen suchen">
-# <i>ls /lib/modules`uname -r`/kernel/drivers/net</i>
+# <i>ls /lib/modules/`uname -r`/kernel/drivers/net</i>
 </pre>
 
 <p>
