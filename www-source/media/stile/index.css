@@ -1,6 +1,6 @@
 body{
   font-family:Verdana,Arial,Helvetica,sans-serif;
-  font-size: medium;
+  font-size: small;
   margin:0px 0px 0px 0px;
   background-color:#FFFFFF
 }
@@ -55,7 +55,7 @@ div#gmenu{
   border-bottom: 1px solid #45347B;
   left: 0px;
   top: 110px;
-  font-size:medium;
+  font-size:small;
   font-weight:bold;
   padding: 0px;
   line-height: 2.0em;
@@ -87,7 +87,7 @@ div.submenu{
   background-color: #F2F0F9;
   border: 1px solid #45347B;
   position: absolute;
-  font-size: medium;
+  font-size: small;
   visibility: hidden;
   z-index: 100;
 }
@@ -150,7 +150,7 @@ div#body{
   width:70%;
   left:25%;
   top:150px;
-  font-size:medium;
+  font-size:small;
   margin-right:30px;
   visibility: visible;
 }
@@ -160,7 +160,7 @@ div#body{
 }
 
 div#about h4{
-	font-size: medium;
+	font-size: small;
 	margin-bottom: 0em;
 }
 
@@ -181,7 +181,7 @@ div#body h1{
 div#body h1.top{
 	margin-top: 0px;
 	background-color: #FFFFFF;
-	font-size: medium;
+	font-size: small;
 	color: #45347B;
 	font-family:Verdana,Arial,Helvetica,sans-serif;
 	border-bottom: 1px dotted #45347B;
@@ -352,7 +352,7 @@ div.codetitle{
 	background-color:#45347B;
 	color:#F2F0F9;
 	padding:0.3em 0.5em 0.3em 0.5em;
-	font-size:medium;
+	font-size:small;
 	margin-bottom:0px
 }
 
