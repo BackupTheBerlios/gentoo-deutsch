@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6.ebuild,v 1.2 2003/11/16 11:28:28 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6.ebuild,v 1.3 2003/11/16 14:18:13 fow0ryl Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
@@ -13,7 +13,7 @@ DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
-		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz						http://www.vdr-portal.de/download/patches/Komplettpatch-1.2.6_no-LSP.diff.bz2
+		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz						http://www.vdr-portal.de/download/patches/Komplettpatch-1.2.6.diff.bz2
 		http://linvdr.org/download/VDR-AIO/vdr-${ELCHI_VN}-ElchiAIO3c.diff.gz
 		"
 #		http://www.akool.de/download/vdr-${AKOOL_VN}.patch.bz2
@@ -74,7 +74,7 @@ src_unpack() {
 			ewarn "elchi patch is already part of akool patch ... skipping"
 		fi
 		einfo "Apply akool patch ..."
-		patch -p1 < ../Komplettpatch-1.2.6_no-LSP.diff
+		patch -p1 < ../Komplettpatch-1.2.6.diff
 		#epatch ../vdr-${AKOOL_VN}.patch
 	fi
 
