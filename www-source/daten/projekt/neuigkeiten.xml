@@ -7,7 +7,7 @@
 <author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
 <author title="Author"><mail link="stkn@berlios.de">Stefan Knoblich</mail></author>
 
-<date>26. Mai 2003</date>
+<date>2. Dezember 2003</date>
 
 <box>
   <block>
@@ -23,6 +23,17 @@
 </box>
 
 <chapter>
+
+<section>
+  <body>
+  <news type="news" date="2.12.2003" title="Gentoo-Newsletter">
+    <p>Im ersten Gentoo Newsletter für Dezember werden für die Translations-Projekte noch Mitarbeiter gesucht und der Artikel im LWN vorgestellt.
+	Außerdem wird Chris PeBenito vorgestellt, Eine Zusammenfassung wichtiger Berichte aus der Community und Tips zum Umgang mit 
+	ANSI Escape Sequenzen gegeben. Wie immer:  <uri link="http://www.gentoo.org/news/en/gwn/20031201-newsletter.xml">Viel Spass beim Lesen</uri>.
+    </p>
+  </news>
+  </body>
+</section>
 
 <section>
   <body>
