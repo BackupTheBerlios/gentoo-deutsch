@@ -1,13 +1,13 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/mplayer-sh/mplayer-sh-0.0.7.ebuild,v 1.1 2003/03/02 10:16:03 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/mplayer-sh/mplayer-sh-0.0.7.ebuild,v 1.2 2003/10/26 11:30:44 martini Exp $
 
 IUSE=""
 
 S=${WORKDIR}/mplayer-sh-0.0.7
 DESCRIPTION="Video Disk Recorder Mplayer Script"
 HOMEPAGE="http://batleth.sapienti-sat.org/"
-SRC_URI="http://batleth.sapienti-sat.org/projects/VDR/mplayer.sh-007.tar.gz"
+SRC_URI="http://batleth.sapienti-sat.org/projects/VDR/old/mplayer.sh-007.tar.gz"
 KEYWORDS="x86"
 SLOT="0"
 LICENSE="GPL-2"
