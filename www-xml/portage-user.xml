@@ -9,7 +9,7 @@
 <author title="&#220;bersetzung"><mail link="sebastian@beneke-it.de">Sebastian Beneke</mail></author>
 
 <abstract>Diese Anleitung soll einen kurzen &#220;berblick geben, wie Sie Ihre Pakete aktuell halten und
-das System pflegen k&#246nnen.</abstract>
+das System pflegen k&#246;nnen.</abstract>
 
 <version>1.2.1</version>
 <date>04 Jun 2002</date>
@@ -54,7 +54,7 @@ kontaktieren. Damit k&#246;nnen Sie einige oder alle Ihre Ver&#228;nderungen zu 
 <section>
 <title>Portage updaten</title>
 <body>
-<p>Bevor Sie unseren Portage tree verwenden k&#246;nnen ist es wichtig, dass Sie Ihr Portage updaten. Um 
+<p>Bevor Sie unseren Portage tree verwenden k&#246;nnen, ist es wichtig dass Sie Ihr Portage updaten. Um 
 dies zu tun geben Sie folgendes ein:
 </p>
 
@@ -188,7 +188,7 @@ Diese Datenbank enth&#228;lt die installierten Dateien und ihre md5-Checksummen.
 
 <p>Der Standardweg um Pakete unter Gentoo Linux zu aktualisieren besteht darin, zun&#228;chst 
 die neuen Pakete zu installieren und danach die alten Pakete zu deinstallieren. Dies ist 
-sicher (und auch recht lustig) durchf&#252;hrbar. Zun&#228;chst installieren Sie das neue Paket 
+sicher (und macht auch Spass) durchf&#252;hrbar. Zun&#228;chst installieren Sie das neue Paket 
 wie oben beschrieben. Danach deinstallieren Sie das alte Paket mittels:</p>
 
 <pre>
@@ -216,6 +216,7 @@ aktiviert. Um weiter Informationen dazu zu erhalten geben sie <c>emerge --help c
 </section>
 </chapter>
 </guide>
+
 
 
 
