@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version: 1.27 -->
 
@@ -46,12 +46,12 @@
   <mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
 </author>
 
-<license/>
-
 <abstract>
 Dieser Leitfaden ist eine Schritt-für-Schritt-Anleitung für das Absichern 
 von Gentoo Linux
 </abstract>
+
+<license/>
 
 <version>0.4.9</version>
 <date>3. November 2003</date>
@@ -309,36 +309,50 @@ sehr präzise sind.
 Eine Sicherheitsrichtlinie sollte mindestens die folgenden Punkte beinhalten:
 </p>
 
-<ul>
-<li>Akzeptable Anwendung</li>
-<li>
-<ul>
-  <li>Bildschirmschoner</li>
-  <li>Behandlung von Kennwörtern</li>
-  <li>Herunterladen von Programmen</li>
-  <li>Wissen darüber, ob diese überwacht werden</li>
-  <li>Benutzung von Antiviren-Software</li>
-  <li>etc.</li>
-</ul>
-</li>
-<li>
-  Behandlung von sensitiven Daten (jegliche Schriftliche Form, 
-  Papier oder Digital
-</li>
-<li>
-<ul>
-  <li>Sauberer Schreibtisch und verschlossene, vertrauliche Informationen</li>
-  <li>PC herunterfahren vorm Verlassen</li>
-  <li>Benutzung von Verschlüsselung</li>
-  <li>Behandlung von Schlüsseln für vertraute Mitarbeiter</li>
-  <li>Behandlung von vertraulichem Material auf Reisen</li>
-</ul>
-</li>
-<li>Behandlung der Computerausstattung auf Reisen</li>
-<ul>
- <li>Behandlung des Laptops auf Reisen und bei Hotelaufenthalten</li>
-</ul>
-</ul>
+<table>
+  <tr>
+    <th>Akzeptable Anwendung</th>
+  </tr>
+  <tr>
+    <ti>
+      <ul>
+        <li>Bildschirmschoner</li>
+        <li>Behandlung von Kennwörtern</li>
+        <li>Herunterladen von Programmen</li>
+        <li>Wissen darüber, ob diese überwacht werden</li>
+        <li>Benutzung von Antiviren-Software</li>
+        <li>etc.</li>
+      </ul>
+    </ti>
+  </tr>
+  <tr>
+    <th>
+      Behandlung von sensitiven Daten (jegliche Schriftliche Form, 
+      Papier oder Digital
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <ul>
+        <li>Sauberer Schreibtisch und verschlossene, vertrauliche Informationen</li>
+        <li>PC herunterfahren vorm Verlassen</li>
+        <li>Benutzung von Verschlüsselung</li>
+        <li>Behandlung von Schlüsseln für vertraute Mitarbeiter</li>
+        <li>Behandlung von vertraulichem Material auf Reisen</li>
+      </ul>
+    </ti>
+  </tr>
+  <tr>
+    <th>Behandlung der Computerausstattung auf Reisen</th>
+  </tr>
+  <tr>
+    <ti>
+      <ul>
+       <li>Behandlung des Laptops auf Reisen und bei Hotelaufenthalten</li>
+      </ul>
+    </ti>
+  </tr>
+</table>
 
 <p>
 Die Richtlinie für die IT-Abteilung kann sich von der für die normalen 
@@ -526,8 +540,8 @@ vc/1
 </chapter>
 
 <chapter>
-<section>
 <title>Mehr Protokolle (Logs)</title>
+<section>
 <body>
 
 <p>
@@ -548,7 +562,7 @@ Installation zwischen drei verschiedenen Protokollierungsprogrammen zu wählen.
 <section>
 <title>Loggen: Syslogd</title>
 <body>
-7
+
 <p>
 Syslogd ist das gängigste Protokollierungsprogramm für Linux und Unix. Es 
 beinhaltet keine Protokollrotation. Diese Eigenschaft wird
@@ -2754,7 +2768,7 @@ und diese als Regel zu einer existierenden Kette hinzufügen. Iptables
 unterstützt die folgenden Optionen.
 </p>
 
-<table border="0">
+<table>
   <tr>
   <th>Option:</th>
   <th>Beschreibung:</th>
@@ -2915,7 +2929,7 @@ state lädt. Wenn Sie nun von Aussen mit Ihrer Maschine, dann könnten Sie
 für unterschiedliche Anwendungszwecke. Einige dieser Module sind:
 </p>
 
-<table border="0">
+<table>
   <tr>
   <th>Modul/Treffer</th>
   <th>Beschreibung</th>
@@ -3546,7 +3560,7 @@ Die Konfigurationsdatei basiert auf regelmäßigen Ausdrücken, Makros und
 Regeln für Dateien und Verzeichnisse. Wir haben die folgenden Makros:
 </p>
 
-<table borlder="0">
+<table>
   <tr>
   <th>Makro</th>
   <th>Beschreibung</th>
@@ -3604,7 +3618,7 @@ Ordnern durchzuführen. Diese sind eine Kombination aus Berechtigungen,
 Dateieigenschaften und kryptographischen Hashes/Checksummen.
 </p>
 
-<table border="0">
+<table>
   <tr>
   <th>Flag</th>
   <th>Beschreibung</th>
@@ -3692,7 +3706,7 @@ Und wenn Aide mit mhash Unterstützung kompiliert ist, hat es noch einige
 weitere Funktionen:
 </p>
 
-<table border="0">
+<table>
   <tr>
   <th>Flag</th>
   <th>Beschreibung</th>
@@ -3729,7 +3743,7 @@ Verzeichnisnamen und die Regel ein. Aide wird alle Dateien rekursiv
 hinzufügen, solange Sie nicht etwas anderes angeben.
 </p>
 
-<table border="0">
+<table>
   <tr>
   <th>Flag</th>
   <th>Beschreibung</th>

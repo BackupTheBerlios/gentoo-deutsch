@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<guide link="/doc/de/quickinstall.xml">
+<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version 1.4 -->
+
+<guide link="/doc/de/quickinstall.xml">
 
 <title>Kurzübersicht Installation (x86)</title>
 <author title="Author">Steven Wagner</author>
@@ -9,8 +11,8 @@
   <mail link="swift@gentoo.org">Sven Vermeulen</mail>
 </author>
 <author title="Übersetzer">
-	<mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
-</author>	
+  <mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
+</author>
 
 <abstract>
 Die Schnell Installations Referenz beschreibt alle Details des Installations
@@ -33,17 +35,17 @@ Gentoo Linux haben.
 <p>
 Die Installations ISOs finden sie auf einem der <uri link=
 "http://www.gentoo.org/main/en/mirrors.xml">Gentoo Spiegel</uri>. Detaillierte
-Beschreibungen der verschiedenen CDs sind im <uri 
+Beschreibungen der verschiedenen CDs sind im <uri
 link="http://store.gentoo.org">Gentoo Store</uri> verfügbar. CD1 beinhaltet
-alles, was Sie benötigen um Gentoo Linux schnell ohne Verbindung 
-ins Internet zu installieren. CD2 ist optional und beinhaltet vor-kompilierte 
+alles, was Sie benötigen um Gentoo Linux schnell ohne Verbindung
+ins Internet zu installieren. CD2 ist optional und beinhaltet vor-kompilierte
 Pakete wie KDE, GNOME, OpenOffice, Mozilla, Evolution und andere.
 </p>
 
 <p>
 Booten Sie von der ersten Gentoo CD. Drücken Sie &lt;F1&gt; und/oder &lt;F2&gt;
-um die verschiedene Boot Optionen zu sehen. Drücken Sie am Bootscreen 
-&lt;ENTER&gt; um mit dem Default Kernel fortzufahren. Eventuell werden Sie eine 
+um die verschiedene Boot Optionen zu sehen. Drücken Sie am Bootscreen
+&lt;ENTER&gt; um mit dem Default Kernel fortzufahren. Eventuell werden Sie eine
 Anzeige erhalten.
 </p>
 
@@ -55,8 +57,8 @@ Anzeige erhalten.
 </pre>
 
 <p>
-Die empfohlene Partitionierung beinhaltet eine 64 MB große /boot Partition mit 
-ext3, eine Swap Partition die doppelt so groß ist wie der Arbeitsspeicher, und 
+Die empfohlene Partitionierung beinhaltet eine 64 MB große /boot Partition mit
+ext3, eine Swap Partition die doppelt so groß ist wie der Arbeitsspeicher, und
 den Rest als /-Partition mit ReiserFS.
 </p>
 
@@ -148,7 +150,7 @@ Nun folgt die Installation der von Ihnen benötigten Tools:
 (System Logger; Auswahl: sysklogd, metalog, msyslog, syslog-ng)       # <i>emerge -k app-admin/syslog-ng </i>
 (Automatisches starten des Systemlogger beim Boot)                    # <i>rc-update add syslog-ng default</i>
 (Installation eines Cron Daemon; Asuwahl: vcron, dcron, fcron)        # <i>emerge -k sys-apps/vcron</i>
-(Automatisches starten des Cron Daemon automatically beim Boot)       # <i>rc-update add vcron default</i>   
+(Automatisches starten des Cron Daemon automatically beim Boot)       # <i>rc-update add vcron default</i>
 (Nur genkernel Benutzer: Installation von hotplug)                    # <i>emerge -k hotplug</i>
 (Nur genkernel Benutzer: Automatisches starten von hotplug beim Boot) # <i>rc-update add hotplug default</i>
 (Nur nicht-ext2,ext3 Benutzer; Auswahl: reiserfsprogs, xfsprogs, jfsutils)  # <i>emerge -k reiserfsprogs</i>
@@ -195,25 +197,25 @@ Installation eines Bootloader. Links grub, rechts lilo:
 # <i>emerge -k grub</i>                                          | # <i>emerge -k lilo</i>
 # <i>grub</i>                                                    | # <i>nano -w /etc/lilo.conf</i>
 grub&gt; <i>root (hd0,0)</i>   (Boot Partition)                     |  boot=/dev/hda
-grub&gt; <i>setup (hd0)</i>    (Installieren in den MBR             |  prompt 
+grub&gt; <i>setup (hd0)</i>    (Installieren in den MBR             |  prompt
 grub&gt; <i>quit</i>                                                |  timeout=50
 # <i>nano -w /boot/grub/grub.conf</i>                            |  default=gentoo
-  default 0                                               |  
+  default 0                                               |
   timeout 15                                              |  <comment># Nur für Genkernel Benutzer:</comment>
   splashimage=(hd0,0)/grub/splash.xpm.gz                  |  image=/boot/kernel-<comment>&lt;Kernel Version&gt;</comment>
                                                           |    root=/dev/hda3
   title=Gentoo Linux                                      |    label=gentoo
-    root (hd0,0)                                          |  
+    root (hd0,0)                                          |
   <comment># Nur für Genkernel Benutzer:</comment>                           |  <comment># Nicht-genkernel Benutzer:</comment>
     kernel (hd0,0)/kernel-<comment>&lt;Kernel Version&gt;</comment> root=/dev/hda3 |  image=/boot/bzImage
     initrd (hd0,0)/initrd-<comment>&lt;Kernel Version&gt;</comment>                |    root=/dev/hda3
   <comment># Nicht-genkernel Benutzer:</comment>                             |    label=gentoo
-    kernel (hd0,0)/bzImage                                | 
+    kernel (hd0,0)/bzImage                                |
                                                           |  <comment># Für Dual-Boot:</comment>
   <comment># Für Dual-Boot:</comment>                                        |  other=/dev/hda<comment>X</comment>
   title=Windows XP                                        |    label=windows
-    root (hd0,5)                                          | 
-    chainloader (hd0,5)+1                                 | # <i>/sbin/lilo</i> 
+    root (hd0,5)                                          |
+    chainloader (hd0,5)+1                                 | # <i>/sbin/lilo</i>
 </pre>
 
 <p>
@@ -228,17 +230,17 @@ Unmounten Sie nun alle Partitionen und rebooten Sie in Ihr neues System:
 (Nach dem Neustart:)
 (Nur ADSL-Benutzer)                             # <i>adsl-setup</i>
 (Nur GRP-benutzer, Benutzung der optionalen CD2 )
-(  (1) Mount CD2)                               # <i>mount /dev/cdrom /mnt/cdrom</i>  
+(  (1) Mount CD2)                               # <i>mount /dev/cdrom /mnt/cdrom</i>
 (  (2) Kopieren der Pakete)                     # <i>cp -a /mnt/cdrom/packages/* /usr/portage/packages/</i>
 (  (3) Installation zusätzlicher Software)      # <i>emerge -k xfree gnome kde mozilla openoffice-bin</i>
 (  (4) Konfiguration des Xserver)               # <i>/usr/X11R6/bin/xf86config</i>
 </pre>
 
 <p>
-        Sie können weitere Informationen in der <uri link="http://www.gentoo.org/doc/de/index.xml">Gentoo Dokumentation</uri>
-        finden.
+Sie können weitere Informationen in der <uri link="http://www.gentoo.org/doc/de/index.xml">Gentoo Dokumentation</uri>
+finden.
 </p>
-    
+
 </body>
 </section>
 </chapter>

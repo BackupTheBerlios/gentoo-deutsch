@@ -757,26 +757,26 @@ RESUMECOMMAND="/usr/bin/wget --proxy-user=<comment>username</comment> --proxy-pa
         (Zum Beispiel nur <c>./configure</c> und <c>make &amp;&amp; make install</c>).
         Schauen Sie zunächst ins Ebuild um zu sehen, was Gentoo macht.
       </p>
-      
+
       <p>
         Als erstes sollten Sie die Sourcen mittels <c>ebuild 
         /usr/portage/&lt;kategorie&gt;/&lt;paket&gt;/&lt;ebuild&gt; unpack</c> 
         entpacken.
       </p>
-      
+
       <p>
-      	Wechseln Sie nun nach <path>/var/tmp/portage/&lt;paket&gt;-&lt;version&gt;/work</path>.
-      	Hier finden Sie die entpackten Sourcen. Führen Sie die nötigen Schritte
-      	aus, um das Paket zu konfigurieren und kompilieren.
+        Wechseln Sie nun nach <path>/var/tmp/portage/&lt;paket&gt;-&lt;version&gt;/work</path>.
+        Hier finden Sie die entpackten Sourcen. Führen Sie die nötigen Schritte
+        aus, um das Paket zu konfigurieren und kompilieren.
       </p>
-      
+
       <p>
-      	Wenn Sie fertig sind, führen Sie <c>touch 
-      	/var/tmp/portage/&lt;paket&gt;-&lt;version&gt;/.compiled</c> 
-      	aus, um Portage glauben zu lassen, dass das Paket konfiguriert und 
-      	kompiliert wurde. Schliessen Sie die Installation mit 
-      	<c>ebuild /usr/portage/&lt;kategorie&gt;/&lt;paket&gt;/&lt;ebuild&gt;
-				merge</c> ab.
+        Wenn Sie fertig sind, führen Sie <c>touch 
+        /var/tmp/portage/&lt;paket&gt;-&lt;version&gt;/.compiled</c> 
+        aus, um Portage glauben zu lassen, dass das Paket konfiguriert und 
+        kompiliert wurde. Schliessen Sie die Installation mit 
+        <c>ebuild /usr/portage/&lt;kategorie&gt;/&lt;paket&gt;/&lt;ebuild&gt;
+        merge</c> ab.
       </p>
 
     </body>
