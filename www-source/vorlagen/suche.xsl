@@ -15,7 +15,7 @@
         </td> 
       </tr>
       
-      <tr>
+      <tr border="1px dotted #F2F0F9">
         <td class="description" style="width: 75%">
           <![CDATA[<!--item: description-->]]>
         </td>
