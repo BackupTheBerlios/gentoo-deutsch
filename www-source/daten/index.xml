@@ -87,8 +87,8 @@
 <p>
  <news type="other" date="3.12.2003" title="Security Alert: Linux Kernel Bug">
 Im Rahmen des Server-Einbruchs bei Debian wurde ein Bug im Linux Kernel gefunden. Ein Fehler im Systemaufruf do_brk() führt dazu, dass ein Programm Zugriff auf den vollen Adressraum des Kernels erhalten kann. Ein Angreifer kann so natürlich auch Root-Rechte erlangen. Um dies zu verhindern, empfehlen wir allen Nutzern die aktualisierten Kernel-Fassungen
-aufzuspielen. Um die aktuellen Pakete zu erhalten führen Sie ein <b>emerge rsync</b> durch und emergen dann Ihre
-Kernel-Version oder updaten gleich auf 2.4.23.<br/> 	 
+aufzuspielen. Um die aktuellen Pakete zu erhalten führen Sie ein <b>emerge sync</b> durch und emergen dann Ihre
+Kernel-Version oder updaten gleich auf 2.4.23.<br/>
  <uri link="http://isec.pl/vulnerabilities/isec-0012-do_brk.txt">Weitere Informationen über do_brk()</uri> 		 
 </news>
 </p>
