@@ -475,8 +475,10 @@
 </xsl:template>
 
 <xsl:template match="news">
-	<span style="font-size:small;"><xsl:value-of select="@date"/></span><br/>
-	<span style="font-weight:bold;"><xsl:value-of select="@title"/></span><br/>
+	<p style="background-color:#45347B; text-color:#FFFFFF;">
+		<span style="font-size:small;"><xsl:value-of select="@date"/></span><br/>
+		<span style="font-weight:bold; font-size:large;"><xsl:value-of select="@title"/></span><br/>
+	</p>
 	<p>
 		<xsl:value-of select="."/>
 	</p>
