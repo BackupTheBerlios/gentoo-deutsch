@@ -1,0 +1,196 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Ebuilds einreichen</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Ebuilds einreichen</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Zu Beginn</option>
+<option value="#doc_chap2">2. Ein Ebuild einreichen</option>
+<option value="#doc_chap3">3. Mehrere Ebuilds</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Zu Beginn</p>
+<p class="secthead"><a name="_sect1">Erstellen eines Bugzilla Accounts </a></p>
+				<p>
+                                Gehen Sie mit Ihrem Browser nach <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a>. 
+                                Dies ist die URL der &quot;Bugzilla Bug Tracking&quot; Datenbank. In der Liste 
+                                finden Sie einen Link namens &quot;Open a new Bugzilla account&quot;. Falls Sie 
+                                noch keinen Account besitzten sollten (z.B. durch das Einreichen eines 
+                                Bugs), klicken Sie auf diesen Link und erstellen einen neuen Account.
+                                </p>
+			<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Ein Ebuild einreichen</p>
+<p class="secthead"><a name="_sect1">Erstellen eines neuen Bugs </a></p>
+				<p>
+                                Unten auf der Hauptseite oder auch der Login Seite finden Sie 
+                                eine gelbe Box. Wählen Sie den <font class="code">New</font> Link. Oder Sie gehen einfach 
+                                direkt zur URL <a href="http://bugs.gentoo.org/enter_bug.cgi">http://bugs.gentoo.org/enter_bug.cgi</a>.
+                                Beides bringt Sie zur <font class="code">Enter Bug</font> Seite.
+                                </p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+                                Im Bugzilla System werden alle Einträge als Bugs bezeichnet. Dies 
+                                beinhaltet auch eingereichte Ebuilds. Jedem Bug wird eine Tracking ID 
+                                zugeordnet. Notieren Sie sich diese ID, besonders falls Sie noch andere 
+                                Ebuilds haben, die von diesem Ebuild abhängig sind.
+				</p></td></tr></table>
+
+				<p>
+                                Bugzilla kann mehrere Produkte betreuen. Bei Gentoo zum Beispiel können 
+                                diese anderen Produkte Dokumentation oder Werkzeuge zum Administrieren 
+                                der Website beinhalten. Ebuilds sollten hier immer beim &quot;Produkt&quot; 
+                                <font class="code">Gentoo Linux</font> eingereicht werden.
+                                </p>
+
+				<p>
+                                Durch das Klicken auf das Produkt <font class="code">Gentoo Linux</font> wird ein Formular zum Erstellen 
+                                eines neuen Bugs geöffnet.
+                                </p>
+			<p class="secthead"><a name="_sect2">Ausfüllen des Bug Formulars </a></p>
+				<p>
+                                Das erste Feld heisst <font class="code">version</font>. Wenn Sie die genaue Version wissen, können Sie 
+                                sie hier setzen. Sollten Sie sie nicht kennen, wählen Sie <font class="code">unspecified</font>. Als 
+                                nächstes wählen Sie die Komponente (component). Alle Ebuild Scripts gehören dem 
+                                Component Typ <font class="code">Ebuilds</font> an.
+                                </p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>
+                                Ebuilds sollten <font class="emphasis">immer</font> zum Component Typ <font class="code">Ebuild</font> zugeordnet werden. Kategorien
+                                wie <font class="code">GNOME</font>, <font class="code">Libraries</font> und <font class="code">Server</font> mögen so wirken als würden Sie auch 
+                                für Ebuilds gelten, aber Sie sind nur für das Berichten von Fehlern dieser Pakete gedacht 
+                                und <font class="emphasis">nicht</font> für das Einreichen von Ebuilds.
+				</p></td></tr></table>
+
+				<p>
+                                Die Kategorien <font class="code">Platform</font>, <font class="code">OS</font> und <font class="code">Priority</font> müssen für Ebuilds nicht 
+                                gesetzt werden.
+                                </p>
+
+				<p>
+                                Das <font class="code">Severity</font> Feld sollte auf <font class="code">enhancement</font> gesetzt werden.
+                                </p>
+
+				<p>
+                                Lassen Sie das <font class="code">Assigned To</font> Feld leer. Wenn Sie jedoch den Status Ihres Ebuilds 
+                                überwachen möchten, tragen Sie bei <font class="code">CC</font> Ihre Email Adresse ein.
+                                </p>
+
+				<p>
+                                Füllen Sie das <font class="code">Summary</font> Feld mit einer Kurzen Notiz aus, in welcher Sie beschrieben 
+                                welches Paket Sie einreichen und ob es ein Update oder eine ganz neue Version ist. 
+                                Etwas wie folgend ist großartig: <font class="code">foo-bar-x.y.z.ebuild (New Package)</font> oder <font class="code">
+                                foo-x.y.z.ebuild (Update)</font>
+                                </p>
+
+                                <p>
+                                Das <font class="code">Description</font> Feld sollte so vollständig wie möglich ausgefüllt werden. Bitte denken 
+                                Sie an die internationalen Entwickler und User, verfassen Sie die Beschreibung bitte auf 
+                                Englisch! Hier ist ein Beispiel von Bug Nummer 7:
+                                </p>
+
+				<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+				Hi!
+
+Please find attached gramps.tar.gz containing gramps-0.7.0.ebuild and a
+patch so that it will compile against python-2.2
+
+gramps is the Genealogical Research and Analysis Management Programming
+System.  It is a very cool gnome/python app.  If you are in the US, you
+can head over to 
+http://www.familysearch.com/
+and you can probably find a GEDCOM file for your family tree to import
+into gramps. (Mormons sure do like geneaology)
+
+I suggest app-misc/gramps Also, this ebuild depend on Imaging and ReportLab
+previously submitted
+
+tod
+
+				</pre></td></tr>
+</table>
+				<p>
+                                Wenn die Beschreibung komplett ist, klicken Sie auf <font class="code">Submit</font>.
+                                </p>
+			<p class="secthead"><a name="_sect3">Anhängen des Ebuild Scripts </a></p>
+				<p>
+                                Nach dem Klicken auf <font class="code">submit</font> auf der <font class="code">Enter Bug</font> Seite, kommen Sie 
+                                zur <font class="code">Posting Bug</font> Seite. Beachten Sie bitte die Bug Nummer.
+                                </p>
+
+				<p>
+                                Zum Ende der Seite hin finden Sie einen Link <font class="code">Attach a file to
+				this bug</font>. Klicken Sie auf diesen Link.
+                                </p>
+
+				<p>
+                                Wählen Sie die Datei durch die Benutztung der Textbox oder des <font class="code">Browse</font> 
+                                Dialogs aus. Im <font class="code">Description</font> Feld, geben sie bitte den Namen der Ebuild 
+                                Datei ein, in etwa den, den Sie im <font class="code">Summary</font> Abschnitt auf der letzten Seite 
+                                benutzt haben.
+                                </p>
+
+				<p>
+                                Bitte stellen Sie sicher, das der &quot;Content&quot; Typ auf &quot;text/plain&quot; gestellt ist und 
+                                der Knopf für <font class="code">select from list</font> markiert wurde.
+                                </p>
+
+				<p>
+                                Es werden keine weitern Felder benötig, klicken Sie <font class="code">Submit</font> und Sie haben es 
+                                geschafft!
+                                </p>
+			<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Mehrere Ebuilds</p>
+<p class="secthead"><a name="_sect1">Abhängigkeiten </a></p>
+				<p>
+                                Im Fall, dass Sie mehrere Ebuilds einreichen sollten und einige von anderen abhängig 
+                                sind, ist es sehr hilfreich, wenn diese Abhängigkeiten notiert werden. Durch das erneute 
+                                Ansehen des Bugs, sollten Sie die Möglichkeit haben, eine weitere Notiz zu ergänzen. Bitte 
+                                ergänzen Sie hier eventuelle Abhängigkeiten.
+                                </p>
+			<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 7 Jan, 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+		<b><a class="altlink" href="mailto:mbutcher@frii.com">Matt Butcher</a></b>
+	<br><i>Author</i><br><br>
+                <b><a class="altlink" href="mailto:sebastian@beneke-it.de">Sebastian Beneke</a></b>
+        <br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> 
+        Diese Anleitung erklärt, wie Ebuilds mittels Bugzilla eingereicht werden können.
+	</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
