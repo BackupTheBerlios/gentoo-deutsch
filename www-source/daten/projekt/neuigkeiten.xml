@@ -5,7 +5,7 @@
 
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 
-<date>18. Oktober 2002</date>
+<date>12. Januar 2003</date>
 
 <box>
   <block>
@@ -22,41 +22,12 @@
 
 <section>
 
-<title>O'Reilly Artikel über Gentoo Linux 1.4</title>
+<title>Gentoo Wöchentliche Nachrichten -- 6. Januar 2003</title>
 
 <body>
 <p>
-A new article introducing Gentoo Linux written by Daniel Robbins is featured 
-on O'Reilly Network's Web site today. In the article, a brief overview of some 
-of the features of Gentoo Linux, Daniel expounds on what kinds of enhancements 
-users can expect in the 1.4 final release: support for true 64-bit on the 
-UltraSparc architecture, KDE 3.0.4, a gentoo-sources kernel with Andrea 
-Archangeli's 3.5GB "user address space" patch and grsec, and of course the new 
-Gentoo Reference Platform for fast binary installs.
+
 </p>
-</body>
-
-</section>
-
-<section>
-
-<title>Neue UT 2003 LiveCD</title>
-
-<body>
-  <p>
-A new release of our Unreal Tournament 2003 Gentoo LiveCD is now
-available and includes quite a few enhancements. The Unreal Tournament
-2003 Demo has been upgraded to the 1080c patchlevel, fixing numerous
-quirks in the game itself. In addition, the UT2003 LiveCD now is now
-optimized for modern systems, requiring a Pentium Classic or greater to
-run and optimized for a P6-class instruction set like the Pentium II and
-III (it was previously a relatively unoptimized i486+ CD.) The CD now
-supports monitors with and without EDID functionality as well as wheel
-mice. In addition, machines with 512MB or more of RAM can now cache the
-entire UT2003 Demo to tmpfs (RAM) to dramatically enhance load-time
-performance. Oh, and SoundBlaster PCI 512 cards will now be correctly
-detected.
-  </p>
 </body>
 
 </section>
