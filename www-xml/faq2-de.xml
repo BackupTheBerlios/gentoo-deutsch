@@ -27,6 +27,38 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 		</pre> eingestellt werden.
 		</p></body>
 	</section>
+	<section>
+		<title>Wie installiere ich eine USB Maus unter Gentoo?</title>
+		<body><p>Stellen Sie sicher, dass im Kernel USB Unterst&#xFC;tzung aktiviert ist.
+		Folgende Optionen sollten direkt in den Kernel (X) oder als Modul (M) einkompiliert werden:
+		<pre>
+  		Input Core Support
+		(M)  Input Core Support
+		(M)  Mouse Support
+
+        	USB support
+		(X) Support for USB
+		(X) Preliminary USB device filesystem
+		(M) UHCI (Intel PIIX4, VIA, ...) support oder "UHCI Alternate Driver (JE) Support je nach Chipsatz
+		(M) USB Human Interface Device (full HID) support
+		(X) HID input layer support
+		</pre>
+		Dies erstellt die Module usb-uhci.o (oder:uhci.o), hid.o, input.o, mousedev.o
+		Diese werden dann in /etc/modules.autoload noch eingetragen, damit sie auch beim Start
+		verf&#xFC;gbar sind:
+		<pre>
+		input
+		mousedev
+		hid
+		usb-uhci (oder uhci)
+		</pre>
+		Nun muss dies in /etc/X11/XFConfig noch eingetragen werden:
+		<pre>
+    		Option "Device"      "/dev/input/mice"
+		</pre>
+		und die USB Maus sollte funktionieren.
+		</p></body>
+	</section>
 
 	<section>
 		<title>Wie installiere ich Gentoo auf einem Motherboard mit dem nforce Chipsatz?</title>
@@ -71,7 +103,44 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 		Eine ausf&#xFC;hrliche ALSA-Installationsanleitung finden Sie im Desktop-Guide.
 		</p></body>
 	</section>
-
+	<section>
+		<title>Wie kann ich aus meiner NVIDIA Karte noch mehr Leistung herausquetschen?</title>
+		<body><p>Die Zauberw&#246;rter heisen hier SBA (Side Band Adressing) und AFW (AGP Fast Writes).
+		Als erstes, sollte man schauen ob die NVIDIA Karte dies &#xFC;berhaupt unterst&#xFC;tzt:
+		<pre>
+		 cat /proc/driver/nvidia/agp/card
+		Fast Writes:	Supported
+		SBA:		Supported
+		AGP Rates:     	4x 2x 1x
+		Registers:     	0x1f000217:0x1f000314
+		</pre>
+		Nun muss evtl. im BIOS des Motherboards "Fast Writes" aktiviert werden und wir kontrollieren
+		ob das Motherboard hier mitspielt:
+		<pre>
+		$ cat /proc/driver/nvidia/agp/status
+		Status:     	Enabled
+		Driver:     	AGPGART
+		AGP Rate:	4x
+		Fast Writes:	Disabled
+		SBA:	        Disabled
+		</pre>
+		Nun editieren wir /etc/modules.d/nvidia um folgende Zeilen:
+		<pre>
+		alias char-major-195 NVdriver
+		options NVdriver NVreg_EnableAGPSBA=1 NVreg_EnableAGPFW=1
+		</pre>
+		und rebooten unser System. Nun sollte es aktiviert sein:
+		<pre>
+		$ cat /proc/driver/nvidia/agp/status
+		Status:     Enabled
+		Driver:     AGPGART
+		AGP Rate:     4x
+		Fast Writes:     Enabled
+		SBA:        Enabled
+		</pre>
+		und alle EGO Shooter noch etwas fl&#xFC;ssiger laufen.
+		</p></body>
+		</section>
 </chapter>
 <chapter>
         <title>Netzwerk</title>
@@ -94,9 +163,9 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
         </section>
         </chapter>
 <chapter>
-	<title>Ebuilds von BerliOS</title>
+	<title>gentoo.de</title>
 	<section>
-		<title>Wie benutze ich Ebuilds von BerliOS?</title>
+		<title>Wie benutze ich die gentoo.de Ebuilds von BerliOS?</title>
 		<body><p>
 		Seit Portage Version 2.0.21 existiert eine einfache M&#246;glichkeit "inoffizielle" Ebuilds zu benutzen.
 		Dies geschieht indem man die Environmentvariable <i>PORTDIR_OVERLAY</i> entsprechend setzt.
@@ -110,13 +179,26 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 		# cvs -d:pserver:anonymous:@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
 		# cvs -z3 -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co ebuilds
 		</pre>
-		Fertig. Diese Befehle m&#252;ssen nur einmal ausgef&#252;hrt werden. Zum Aktualisieren der 
+		Fertig. Diese Befehle m&#252;ssen nur einmal ausgef&#252;hrt werden. Zum Aktualisieren der
 		Ebuilds ist sp&#228;ter nur noch folgendes (wiederum als root) n&#246;tig:
 		<pre>
 		# cd /usr/local/ebuilds
 		# cvs update -Pd
 		</pre>
 		</p></body>
+	</section>
+	<section>
+		<title>Wie wandle ich meine &#252;bersetzten XML Dokumente in HTML um?</title>
+		<body><p>
+		Dazu braucht man xsltproc, welches mit emerge libxslt installiert werden kann.
+		Nun wechselt man lokal in das Verzeichnis www-xml und wandelt die Datei wie folgt um:
+		<pre>
+		"xsltproc ../www-xsl/guide-main-german.xsl datei.xml >
+		../www-berlios/htmlfromxsl/datei.html"
+		</pre>
+		Gar nicht so schwer, oder?
+		</p></body>
+
 	</section>
 </chapter>
 </guide>

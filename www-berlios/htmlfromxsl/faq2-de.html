@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
 <link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
 <link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
 <title>Gentoo Linux 
@@ -23,7 +23,7 @@
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Installation</option>
 <option value="#doc_chap2">2. Laufendes System</option>
 <option value="#doc_chap3">3. Netzwerk</option>
-<option value="#doc_chap4">4. Ebuilds von BerliOS</option></select>
+<option value="#doc_chap4">4. gentoo.de</option></select>
 </form>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap1">1.</a></font>Installation</p>
@@ -41,7 +41,49 @@
 		</pre></td></tr>
 </table> eingestellt werden.
 		</p>
-<p class="secthead"><a name="_sect2">Wie installiere ich Gentoo auf einem Motherboard mit dem nforce Chipsatz? </a></p>
+<p class="secthead"><a name="_sect2">Wie installiere ich eine USB Maus unter Gentoo? </a></p>
+<p>Stellen Sie sicher, dass im Kernel USB Unterstützung aktiviert ist.
+		Folgende Optionen sollten direkt in den Kernel (X) oder als Modul (M) einkompiliert werden:
+		<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+  		Input Core Support
+		(M)  Input Core Support
+		(M)  Mouse Support
+
+        	USB support
+		(X) Support for USB
+		(X) Preliminary USB device filesystem
+		(M) UHCI (Intel PIIX4, VIA, ...) support oder &quot;UHCI Alternate Driver (JE) Support je nach Chipsatz
+		(M) USB Human Interface Device (full HID) support
+		(X) HID input layer support
+		</pre></td></tr>
+</table>
+		Dies erstellt die Module usb-uhci.o (oder:uhci.o), hid.o, input.o, mousedev.o
+		Diese werden dann in /etc/modules.autoload noch eingetragen, damit sie auch beim Start
+		verfügbar sind:
+		<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		input
+		mousedev
+		hid
+		usb-uhci (oder uhci)
+		</pre></td></tr>
+</table>
+		Nun muss dies in /etc/X11/XFConfig noch eingetragen werden:
+		<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+    		Option &quot;Device&quot;      &quot;/dev/input/mice&quot;
+		</pre></td></tr>
+</table>
+		und die USB Maus sollte funktionieren.
+		</p>
+<p class="secthead"><a name="_sect3">Wie installiere ich Gentoo auf einem Motherboard mit dem nforce Chipsatz? </a></p>
 			<p>Für den Onboard Netzwerkcontroller ist ein spezieller Treiber ist auf der nVidia
 			<a href="http://download.nvidia.com/XFree86_40/nforce/1.0-0236/NVIDIA_nforce-1.0-0236.tar.gz">Webseite</a>,
 			zu haben. Falls Sie keine externe Netzwerkkarte während der Installation zur Hand haben, kopieren
@@ -49,9 +91,9 @@
 			nach dem Sie den Kernel kompiliert haben.
 			Dann entpacken Sie das tar Archiv und wechseln Sie in das Unterverzeichnis nforce/nvnet/ und führen
 			Sie folgendes aus:
-			<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+			<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 2</p></td></tr>
+			Beispiel 5</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 			# make clean
 			# make
@@ -60,9 +102,9 @@
 </table>
 			Dies muss bei jeder Kernel Neukompilierung erneut ausgeführt werden.
 			Dann sollte noch in die /etc/modules.conf um folgende Zeilen erweitert werden:
-			<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+			<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 3</p></td></tr>
+			Beispiel 6</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 			alias eth0 nvnet
 			</pre></td></tr>
@@ -79,14 +121,66 @@
 <p>Wenn ALSA Sound verwendet wird, muss nach jeder Kernel-Neukompilation auch die ALSA
 		Treiber neu kompiliert werden. Stellen Sie sicher, dass /usr/src/linux auf die richtigen
 		Quelldateien verweist und dann starten sie:
-		<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+		<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 4</p></td></tr>
+			Beispiel 7</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 		# emerge alsa-driver
 		</pre></td></tr>
 </table>
 		Eine ausführliche ALSA-Installationsanleitung finden Sie im Desktop-Guide.
+		</p>
+<p class="secthead"><a name="_sect2">Wie kann ich aus meiner NVIDIA Karte noch mehr Leistung herausquetschen? </a></p>
+<p>Die Zauberwörter heisen hier SBA (Side Band Adressing) und AFW (AGP Fast Writes).
+		Als erstes, sollte man schauen ob die NVIDIA Karte dies überhaupt unterstützt:
+		<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		 cat /proc/driver/nvidia/agp/card
+		Fast Writes:	Supported
+		SBA:		Supported
+		AGP Rates:     	4x 2x 1x
+		Registers:     	0x1f000217:0x1f000314
+		</pre></td></tr>
+</table>
+		Nun muss evtl. im BIOS des Motherboards &quot;Fast Writes&quot; aktiviert werden und wir kontrollieren
+		ob das Motherboard hier mitspielt:
+		<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 9</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		$ cat /proc/driver/nvidia/agp/status
+		Status:     	Enabled
+		Driver:     	AGPGART
+		AGP Rate:	4x
+		Fast Writes:	Disabled
+		SBA:	        Disabled
+		</pre></td></tr>
+</table>
+		Nun editieren wir /etc/modules.d/nvidia um folgende Zeilen:
+		<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 10</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		alias char-major-195 NVdriver
+		options NVdriver NVreg_EnableAGPSBA=1 NVreg_EnableAGPFW=1
+		</pre></td></tr>
+</table>
+		und rebooten unser System. Nun sollte es aktiviert sein:
+		<a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 11</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		$ cat /proc/driver/nvidia/agp/status
+		Status:     Enabled
+		Driver:     AGPGART
+		AGP Rate:     4x
+		Fast Writes:     Enabled
+		SBA:        Enabled
+		</pre></td></tr>
+</table>
+		und alle EGO Shooter noch etwas flüssiger laufen.
 		</p>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap3">3.</a></font>Netzwerk</p>
@@ -98,48 +192,62 @@
                 NFS Verzeichnisse stehen und wird, wenn überhaupt, erst nach Minuten fortgesetzt. Die Erklärung ist 
                 simpel, zum Zeitpunkt des Mountens fehlt Portmap. Wenn Sie regelmäßig mit NFS arbeiten, empfiehlt es sich, 
                 portmap zum standard Runlevel zu ergänzen:
-                <a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 5</p></td></tr>
+			Beispiel 12</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
                 # rc-update add portmap default
                 </pre></td></tr>
 </table>
                 </p>
                 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap4">4.</a></font>Ebuilds von BerliOS</p>
-<p class="secthead"><a name="_sect1">Wie benutze ich Ebuilds von BerliOS? </a></p>
+<font class="chapnum"><a name="doc_chap4">4.</a></font>gentoo.de</p>
+<p class="secthead"><a name="_sect1">Wie benutze ich die gentoo.de Ebuilds von BerliOS? </a></p>
 <p>
 		Seit Portage Version 2.0.21 existiert eine einfache Möglichkeit &quot;inoffizielle&quot; Ebuilds zu benutzen.
 		Dies geschieht indem man die Environmentvariable <font class="input">PORTDIR_OVERLAY</font> entsprechend setzt.
 		Z.B. in <font class="path">/etc/profile</font> durch
-		<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+		<a name="doc_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 6</p></td></tr>
+			Beispiel 13</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 		export PORTDIR_OVERLAY=/usr/local/ebuilds
 		</pre></td></tr>
 </table>
 		Um die Ebuilds von BerliOS dort abzulegen einfach folgende Befehle (als root) ausführen:
-		<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+		<a name="doc_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 7</p></td></tr>
+			Beispiel 14</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 		# cd /usr/local
 		# cvs -d:pserver:anonymous:@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
 		# cvs -z3 -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co ebuilds
 		</pre></td></tr>
 </table>
-		Fertig. Diese Befehle müssen nur einmal ausgeführt werden. Zum Aktualisieren der 
+		Fertig. Diese Befehle müssen nur einmal ausgeführt werden. Zum Aktualisieren der
 		Ebuilds ist später nur noch folgendes (wiederum als root) nötig:
-		<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+		<a name="doc_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 8</p></td></tr>
+			Beispiel 15</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 		# cd /usr/local/ebuilds
 		# cvs update -Pd
 		</pre></td></tr>
 </table>
+		</p>
+<p class="secthead"><a name="_sect2">Wie wandle ich meine übersetzten XML Dokzumente in HTML um? </a></p>
+<p>
+		Dazu braucht man xsltproc, welches mit emerge libxslt installiert werden kann.
+		Nun wechselt man lokal in das Verzeichnis www-xml und wandelt die Datei wie folgt um:
+		<a name="doc_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 16</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		&quot;xsltproc ../www-xsl/guide-main-german.xsl datei.xml &gt;
+		../www-berlios/htmlfromxsl/datei.html&quot;
+		</pre></td></tr>
+</table>
+		Gar nicht so schwer, oder?
 		</p>
 <br><br>
 </td>

@@ -26,6 +26,11 @@ keinen Fall vollst&#xE4;ndig. </abstract>
 		kategorie/paket Verzeichnis in /usr/portage. </p></body>
 	</section>
 	<section>
+		<title>Den Portage Verzeichnisbaum mit CVS auschecken</title>
+		<body><p>Falls CVS noch unbekannt für Sie ist, gibt es
+		</p></body>
+	</section>
+	<section>
 		<title>Was geh&#xF6;rt nicht in den Portage Verzeichnisbaum?</title>
 		<body>
 			<p>Generell sollte im Portage Verzeichnis nur die .ebuild Dateien und sehr kleine zugeh&#xF6;rige Dateien wie 
@@ -36,8 +41,8 @@ keinen Fall vollst&#xE4;ndig. </abstract>
 			Grund auch immer), dann sollte sie mit der -kb option in das CVS eingebracht werden:
 		<pre caption="Code Auflistung 1">
 		# cvs add -kb myphoto.png</pre>
-		Die -kb option teilt CVS mit, dass myphoto.png eine Bin&#xE4;rdatei ist und einer besonderen 
-		Behandlung bedarf. Zum Beispiel das Zusammenf&#xFC;hren von zwei verschiedenen Bin&#xE4;rdateien wird somit nicht erlaubt, 
+		Die -kb option teilt CVS mit, dass myphoto.png eine Bin&#xE4;rdatei ist und einer besonderen
+		Behandlung bedarf. Zum Beispiel das Zusammenf&#xFC;hren von zwei verschiedenen Bin&#xE4;rdateien wird somit nicht erlaubt,
 		was hier auch naheliegend ist. Wenn wir schon beim Zusammenf&#xFC;hren sind, alle Patches die dem Portage Verzeichnisbaum
 		hinzugef&#xFC;gt werden, sollten nicht komprimiert sein. Dies erlaubt dann CVS Ver&#xE4;nderungen einzubringen und die Entwickler 
 		von dabei m&#xF6;glicherweise entstehenden Konfliken korrekt zu warnen.</p></body> 	
@@ -47,7 +52,7 @@ keinen Fall vollst&#xE4;ndig. </abstract>
 		<body><p>Wie vorher bereits beschrieben, existiert in jedem paket Unterverzeichnis das Verzeichnis files. 
 		Alle Patches, Konfigurationsdateien oder andere Dateien, die von diesem Paket gebraucht werden, geh&#xF6;ren 
 		hier hinein. Selbst erstellte Patches sollten mit einem Versions-Namen versehen werden, wie zum beispiel 
-		meinpaket-1.0-gentoo.diff. Die Gentoo Erweiterung im Namen informiert die Benutzer, dass dieser Patch durch 
+		meinpaket-1.0-gentoo.diff. Die Gentoo Erweiterung im Namen informiert die Benutzer, dass dieser Patch durch
 		uns, den Gentoo Entwicklern, erstellt wurde und nicht aus einer Mailingliste oder sonst wo gezogen wurde. 
 		Auch hier sollten die  diffs nicht komprimiert werden, da CVS mit Bin&#xE4;rdateien nicht so gut umgehen kann.</p></body>
 	</section>
