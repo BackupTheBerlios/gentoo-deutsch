@@ -200,7 +200,7 @@ Nachdem das Programm und eventuell auch noch seine Abhängigkeiten von Portage k
 und installiert wurde, überprüfen wir gleich, ob unser Brenner korrekt erkannt wird. Für
 Benutzer eines SCSI CD-ROMs oder 2.4. Kernel Nutzer, die die IDE-SCSI Emulation wie
 oben beschrieben durchgeführt haben, geht dies mit <i>cdrecord -scanbus</i>.
-</p><pre> 
+</p><pre caption="Beispiel für cdrecord"> 
 # cdrecord -scanbus
 Cdrecord-Clone 2.01a18 (i686-pc-linux-gnu) Copyright (C) 1995-2003 Jörg Schilling
 Linux sg driver version: 3.1.25
@@ -225,6 +225,63 @@ inzwischen auch DVDs rippen kann. GNOME-Fans benutzen das Nautilus-Plugin nautil
 xcdroast, welches dank GTK auch Drag'n drop unterstützt. Puristen an der Kommandozeile können
 mkisofs und cdrecord verwenden. Die Manpages erläutern hier alle möglichen Optionen.
 </p>
+</body>
+</section>
+</chapter>
+
+<chapter> 
+<title>Brennen auf der Kommandozeile</title> 
+<section> 
+	<title>Daten CDs</title> 
+<body>
+<p>Brennen auf der Kommandozeile ist einfacher als man denkt! In diesem Abschnitt werde ich exemplarisch einige
+Beispiele vorstellen, mit denen man schnell und einfach seine CDs brennen kann, ohne XFree gestartet haben zu
+müssen. Dies ist sehr praktisch, wenn man z.B. von der Arbeit aus schnell auf dem Heimrechner ein paar
+Dateien sichern möchte (natürlich sollte im Laufwerk praktischerweise schon ein Rohling bereitliegen). Die Daten, 
+die auf einen Rohling gebrannt werden, müssen zunächst in einem Dateisystem zusammengefasst werden. Diese 
+werden mit Hilfe des Tools <i>mkisofs</i> in einem sogenanntem Image zusammengefasst, welches nach einem 
+kurzen Test mittels <i>cdrecord</i> auf die Scheibe geschrieben.
+</p>
+<pre caption="Beispiel für mkisofs">
+$ mkisofs -r -o cd_image bildergalerie/
+</pre>
+<p>
+Im obigen Beispiel werden die Daten im Verzeichnis <i>bildergalerie/</i> in das Image <i>cd_image</i> geschrieben. Die Option 
+<i>-r</i> stellt sicher, dass die Daten als Rock-Ridge-Extension gespeichert werden. Dabei werden die Daten in in das DOS-kompatible
+8.3 Format umgewandelt (unter Beibehaltung der alten Dateinamen) und die Zugriffsrechte auf öffentlich gesetzt. Möchte lieber
+das MS Joliet Dateisystem verwenden, benutzt man stattdessen die Option <i>-J</i>.</p>
+<p>
+Als nächstes kann die Integrität des Images überprüft werden. Dazu wird die Datei einfach als eine Partition gemountet. In unserem
+nächsten Beispiel mounten wir das Image auf <i>/cdrom</i> und werfen einen Blick auf das Dateilayout:</p>
+<pre caption="Beispiel für das Mounten eines Loopback Devices">
+$ mount -t iso9660 -o ro,loop/dev/loop0 cd_image /cdrom
+$ cd /cdrom
+$ ls -l
+</pre>
+<p>
+<note>Um CD Images einsehen zu können, muss die Unterstützung für "loopback" in den Kernel einkompiliert worden sein</note>
+</p>
+<p>Nun wollen wir das Image auf CD brennen. Dazu sollten wir mit <i>cdrecord -scanbus</i> vorher herausgefunden haben, an
+welchem Bus unser Brenner hängt. Dies sowie die ID und LUN werden dabei als dreistellige Zahl, durch Kommata voneinander getrennt 
+angegeben. In meinem obigen Beispiel übergeben ist dies 0,0,0. Jeder Benutzer übergibt also mittels <i>dev=SCSI_BUS,SCSI_ID,SCSI_LUN</i>
+die Korrekte Lage des Brenners an cdrecord:</p>
+<pre caption="Beispiel für cdrecord">
+$ cdrecord -v speed=12 dev=0,0,0 -data cd_image
+</pre>
+<p>
+<impo>Sollten der Rohling ein CD-RW Medium sein, muss die Option <i>blank=all</i> hinzugefügt werden.</impo>
+</p><p> 
+Bei langsamen Rechner empfiehlt sich die <i>-dummy</i> Option. Dabei wird der Brennvorgang simuliert, aber der Laser nicht
+eingeschaltet. So kann man überprüfen, ob die Übertragungsgeschwindigkeit zum Brenner ausreicht. Moderne scsi3-mmc kompatible 
+Brenner unterstützen auch den treiberspezifischen <i>driveropts=burnfree</i> Modus. Weitere Informationen findet man in der
+Manpage von cdrecord, die mit <i>man cdrecord</i> aufgerufen werden kann.
+</p>
+</body>
+</section>
+<section>
+	<title>Audio CDs</title> 
+<body>
+<p>Noch zu erstellen</p> 
 </body>
 </section>
 <section>
