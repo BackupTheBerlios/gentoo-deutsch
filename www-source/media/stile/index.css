@@ -354,7 +354,7 @@ table.impo{
 	border-left:8px solid #FFFF6C
 }
 
-td.header{
+td.header, tr.header td{
 	font-weight:bold;
 	background-color:#45347B;
 	color:#F2F0F9;
@@ -369,3 +369,4 @@ td.header{
 #body li{
         list-style-type: square;
 }
+

@@ -24,7 +24,7 @@
         </xsl:choose>
       </xsl:variable>
       
-      <table class="ebuildlist"> 
+      <table class="ebuildlist" cellspacing="0" cellpadding="0" border="0"> 
         <tr class="header">
           <td>Name</td>
           <td>Version</td>
