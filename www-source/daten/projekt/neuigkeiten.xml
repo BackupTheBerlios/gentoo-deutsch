@@ -20,6 +20,21 @@
 
 <chapter>
 <section>
+  <body>
+  <news type="news" date="05.11.2003" title="Gentoo-Newsletter">
+    <p>
+      Der aktuelle Gentoo Newsletter ruft zum Wiederbeleben des Gentoo Embedded Projekt auf.
+      Gentoo Dev Patrick Kursawe aka phosphan wird vorgestellt, die Verfügbarkeit von ersten
+      KDE 3.2 Beta ebuilds wird angekündigt und in den "Tipps und Tricks" geht es um <c>at</c>.
+      Es wird Ihnen <c>at</c> näher gebracht, mit dem Sie Einmalereignissen planen können.
+      <uri link="http://www.gentoo.org/news/de/gwn/20031103-newsletter.xml">Hier</uri> gehts zur
+      aktuellen Ausgabe.
+    </p>
+  </news>
+  </body>
+</section>
+
+<section>
 	<body>
 	<news type="news" date="29.10.2003" title="Gentoo-Newsletter">
 		<p>
