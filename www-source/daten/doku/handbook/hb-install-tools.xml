@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-tools.xml,v 1.5 2003/12/13 21:57:42 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-tools.xml,v 1.6 2003/12/21 15:24:57 dertobi123 Exp $ -->
 
-<!-- English CVS Version 1.11 -->
+<!-- English CVS Version 1.12 -->
 
 <sections>
 <section>
@@ -132,7 +132,7 @@ Sollten Sie LVM verwenden, dann empfiehlt sich die Installation von <c>lvm-user<
 </p>
 
 <pre caption="Installation der LVM Tools">
-# <i>emerge -k lvm-user</i>
+# <i>emerge --usepkg lvm-user</i>
 </pre>
 
 <p>
@@ -151,12 +151,12 @@ Optional: Netzwerk Tools</uri> fort.
 <p>
 Um mit <c>rp-pppoe</c> eine Verbindung mit dem Internet herstellen zu können,
 muss es vorher installiert werden. GRP-Benutzer (der vorkompilierten Pakete)
-müssen folgenden Befehl ausführen (Beachten Sie den großen Buchstaben K):
+müssen folgenden Befehl ausführen:
 </p>
 
 <pre caption="Installation von rp-pppoe auf einem GRP System">
 <comment>(Nur für GRP Benutzer:)</comment>
-# <i>emerge -K rp-pppoe</i>
+# <i>emerge --usepkgonly rp-pppoe</i>
 </pre>
 
 <p>
