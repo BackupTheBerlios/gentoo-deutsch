@@ -568,7 +568,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <!--<tr><ti><uri link="virt-mail-howto.xml">Virtual/Mailhost Howto</uri></ti></tr>-->
         <tr><th>Dokumentation für einen Arbeitsplatzrechner</th></tr>
         <tr><ti><uri link="desktop">Desktop Konfigurations-Leitfaden</uri></ti></tr>
-        <!--<tr><ti><uri link="alsa-guide.xml">ALSA Konfigurations Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="alsa-guide.xml">ALSA Konfigurations Handbuch</uri></ti></tr>
         <tr><ti><uri link="java">Java Handbuch</uri></ti></tr>
         <tr><ti><uri link="guide-localization">Lokalisierungs Handbuch</uri></ti></tr>
         <!--<tr><ti><uri link="dri-howto.xml">Direct Rendering Handbuch</uri></ti></tr>-->
