@@ -105,10 +105,10 @@ Die nächsten Kernelquellen mit denen Sie als Linux-Anwender vielleicht vertraut
 sind die <c>vanilla-sources</c>. Wie ich vorher schon kurz erwähnt habe, sind dies
 die offiziellen Kernelquellen von <uri>http://www.kernel.org/</uri>. Diese Quellen werden
 (entgegen dem weitverbreiteteten Glauben) nicht von Linus Torvalds selbst, sondern von
-Marcelo Tosati verwaltet. Linus ist der "Chef" der aktiven Kernelentwicklung und da er eben
+Marcelo Tosatti verwaltet. Linus ist der "Chef" der aktiven Kernelentwicklung und da er eben
 nur eine Person ist, übergibt er die Verwaltung des stabilen Kernel-Zweigs an Personen,
 denen er dies zutraut. So ist zum Beispiel Alan Cox Verwalter der Kernel-Serie 2.2
-und Marcelo Tosati wurde eben Verwalter der Kernel-Serie 2.4. Dies ist exakt das, worauf
+und Marcelo Tosatti wurde eben Verwalter der Kernel-Serie 2.4. Dies ist exakt das, worauf
 alle Patchsätze der Serie 2.4 basieren. Marcelo hat bei der Verwaltung hervorragende Arbeit
 geleistet und man kann auf diesen Kernel in Sachen Stabilität, Aktualität (betrifft nicht
 noch in der Entwicklung befindliche Teile) und Hardwareunterstützung wirklich zählen.
