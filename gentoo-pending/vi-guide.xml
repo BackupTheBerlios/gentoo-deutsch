@@ -412,61 +412,80 @@ richtet catering to beginners.</abstract>
 <title>Einfügemodus</title>
 <body>
 	<p>
-	So far, we've covered how to move around in vi, perform file i/o, and perform basic editing
-	operations.  However, I still haven't shown you how to actually type in free-form text!  This
-	was intentional, because vi's insert mode is a bit complicated at first.  However, after you
-	become comfortable with insert mode, its complexity (and flexibility) will become an asset.
+	Bisher haben wir behandelt, wie man sich mittels vi in Texten bewegt, Datei Ein- und Ausgabe
+	realisiert und ein paar grundlegende Bearbeitungskommandos durchführt. Aber ich habe Ihnen bisher
+	immer nicht gezeigt, wie Sie freie Texteingaben machen können. Dies war Absicht, denn vi's Einfügemodus
+	(insert mode) ist zuerst ein bisschen kompliziert. Nachdem Sie sich mit dem Einfügemodus vertraut
+	gemacht haben, wird Ihnen die Komplexität (und Flexibilität) unverzichtbar erscheinen.
 	</p>
 	<p>
-	In vi insert mode, you'll be able to enter text directly to the screen just like you can in many
-	other visual editors.  Once you've entered your modifications, you can hit escape to return to
-	command mode.  You can enter insert mode by pressing <c>i</c> or <c>a</c>.  If you press <c>i</c>,
-	your text will be <e>inserted</e> before the current character, and if you hit <c>a</c>, your text
-	will be <e>appended</e> after the current character. Remember, after you enter your text, hit
-	<c>&lt;ESC&gt;</c> to return to command mode.
+	Im vi Einfügemodus haben Sie die Möglichkeit, Text direkt am Bildschirm einzugeben - ganz so wie es
+	auch in vielen anderen Editoren und Textverarbeitungen der Fall ist. Sobald Sie Ihre Änderungen gemacht haben,
+	können Sie Escape drücken um in den Kommandomodus zurückzukehren. Sie kommen in den Einfügemodus, indem Sie
+	<c>i</c> oder <c>a</c> eingeben. Wenn Sie <c>i</c> eingeben, dann wird Ihr Text vor dem aktuellen Zeichen
+	<e>eingefügt</e> werden. Wenn Sie <c>a</c> eingeben, dann wird Ihr Text hinter dem aktuellen Zeichen angehängt
+	werden. Beachten Sie bitte : nachdem Sie Ihren Text eingegeben haben drücken Sie bitte <c>&lt;ESC&gt;</c>
+	um in den Kommandomodus zurückzukehren.
 	</p>
 </body>
 </section>
 
 <section>
-<title>Benefits of insert mode</title>
+<title>Vorteile des Einfügemodus</title>
 <body>
-	<p>Go ahead and try using the <c>a</c> and <c>i</c> commands.  Hit either <c>a</c> or <c>i</c>, type some text, and then hit
-		escape to get back to command mode.  After hitting <c>a</c> or <c>i</c>, try hitting <c>&lt;ENTER&gt;</c>, and see what happens.
-		Try using the arrow keys and the <c>&lt;DEL&gt;</c> key to get a feel for how insert mode works.  By using
-the arrow keys and <c>&lt;DEL&gt;</c> key, you can perform significant editing steps without repeatedly entering
-and leaving insert mode</p>
+	<p>
+	Machen Sie weiter und versuchen Sie, die <c>a</c> und <c>i</c> Kommandos zu benutzen. Drücken Sie entweder
+	<c>a</c> oder <c>i</c>, geben Sie ein wenig Text ein und ddann drücken Sie Escape um wieder in den Kommandomodus
+	zurückzukehren. Nachdem Sie <c>a</c> oder <c>i</c> gedrückt haben, versuchen Sie <c>&lt;ENTER&gt;</c> einzugeben und passen
+	Sie auf, was passiert. Durch die Benutzung der Pfeiltasten und <c>&lt;DEL&gt;</c>-Taste können Sie beachtliche
+	Bearbeitungsschritte machen, ohne ständig in den Eingabemodus und wieder hinaus zu springen.
+	</p>
 </body>
 </section>
-<section>
-<title>Insert options</title>
-<body>
-	<p>Here are some other handy ways to enter insert mode.  Press <c>A</c> (captial) to begin appending
-		to the <e>end</e> of the current line, regardless of your current position on the line.  Likewise, press
-		<c>I</c> (capital) to begin inserting text at the <e>beginning</e> of the current line.  Press <c>o</c> to create
-			a new blank line below the current line into which you can insert text, and press <c>O</c> (capital) to
-create a new line above the current line.  To replace the entire current line with a new line,
-press <c>cc</c>.  To replace everything from the current position to the end of the line, type <c>c$</c>.  To replace
-everything from the current position to the beginning of the line, type <c>c0</c>.</p>
-<p>In addition to performing a special operation, every one of these commands will put you
-	into insert mode.  After typing in your text, hit <c>&lt;ESC&gt;</c> to return to command mode.
-</p>
 
+<section>
+<title>Einfügeoptionen</title>
+<body>
+	<p>
+	Hier kommen noch ein paar andere praktische Möglichkeiten, um in den Einfügemodus zu gelangen. Drücken
+	Sie <c>A</c> (Gross!) um - unabhängig von der aktuellen Position in der Zeile - mit dem Anhängen am
+	<e>Ende</e> der Zeile zu beginnen. Sie können auch <c>I</c> (Gross!) drücken um den Text am <e>Anfang</e>
+	der Zeile einzufügen. Oder <c>o</c> um eine neue Leerzeile unter der aktuellen Zeile einzufügen in die Sie
+	dann Text eingeben können, und <c>O</c> (Gross!) um eine neue Zeile über der aktuellen einzufügen.
+	Um die aktuelle Zeile mit einer neuen Zeile zu überschreiben geben Sie bitte <c>cc</c> als Kommando.
+	Um innerhalb der Zeille Alles von der aktuellen Position bis zum Ende hin zu löschen können Sie <c>c$</c>
+	eingeben. Um umgekehrt alles von der aktuellen Position bis zum Anfang der Zeile zu löschen, geben Sie
+	das Kommando <c>c0</c>.
+	</p>
+	<p>
+	Zusätzlich dazu, dass jedes dieser Kommandos eine spezielle Operation durchführt bringen sie Sie
+	in den Einfügemodus. Nachdem Sie Ihren Text eingegeben haben, drücken Sie <c>&lt;ESC&gt;</c>
+	um in den Kommandomodus zurückzukehren.
+	</p>
 </body>
 </section>
-<section>
-<title>Changing text</title>
-<body>
-	<p>We've used the <c>c</c> (change) command a little bit so far when we typed <c>cc</c>, <c>c0</c> and <c>c$</c>.  <c>cc</c> is a special
-				form of the change command, similar to <c>dd</c>.  the <c>c0</c> and <c>c$</c> commands are examples of using the change
-				command in combination with a movement command.  In this form, <c>c</c> works similarly to <c>d</c>, except that it 
-leaves you in insert mode so that you can enter replacement text for the deleted region.  Try combining some
-movement commands with <c>c</c> and test them out on your file (hint: <c>cW</c>, <c>ce</c>, <c>c(</c> .)
-</p>
 
+<section>
+<title>Textänderungen</title>
+<body>
+	<p>
+	We've used the <c>c</c> (change) command a little bit so far when we typed <c>cc</c>, <c>c0</c> and <c>c$</c>.  <c>cc</c> is a special
+	form of the change command, similar to <c>dd</c>.  the <c>c0</c> and <c>c$</c> commands are examples of using the change
+	command in combination with a movement command.  In this form, <c>c</c> works similarly to <c>d</c>, except that it
+	leaves you in insert mode so that you can enter replacement text for the deleted region.  Try combining some
+	movement commands with <c>c</c> and test them out on your file (hint: <c>cW</c>, <c>ce</c>, <c>c(</c> .)
+
+	Wir haben das <c>c</c> Kommando bisher benutzt, wenn wir <c>cc</c>, <c>c0</c> und <c>c$</c> angewendet haben.
+	<c>cc</c> ist eine spezielle Form des Änderungskommandos, ähnlich zu <c>dd</c>. Die <c>c0</c> und <c>c$</c> Kommandos sind
+	Beispiele der Anwendung des Änderungskommandos in Verbindung mit einem Bewegungskommandos. In dieser Form arbeitet <c>c</c>
+	gleichwertig zu <c>d</c>, mit Außnahme darin bestehend, daß es Sie im Einfügemodus lässt sodaß Sie ersetzenden Text für die
+	gelöschte Region eingeben können. Versuchen Sie einige der Bewegungskommandos mit <c>c</c> zu kombinieren und probieren Sie
+	sie mit Ihrer Datei aus (Tipp : <c>cW</c>, <c>ce</c>, <c>c(</c> ).
+	</p>
 </body>
 </section>
 </chapter>
+
 <chapter>
 <title>Compound Commands</title>
 <section>
