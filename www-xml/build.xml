@@ -52,15 +52,15 @@ sowie ein teilweise kompiliertes <!-- nicht so gut. Alternativen?? damit ?? (JS)
 Habe hier "teilweise" eingebaut, klingt unkomplizierter. (EH) -->
 i686 Basissystem (<path>stage2-i686-1.2.tbz2</path>) in TAR-Archiven.
 Die beiden neuen TAR-Archive ben&#xF6;tigen einen Pentium Pro oder besser (auf einem K6-System und
-niedriger nicht m&#xF6;glich). <!-- Vielleicht etwas lang, aber klingt verstaendlicher (EH) -->
-Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf neu kompilieren wollen, 
+niedriger nicht einsetzbar). <!-- Vielleicht etwas lang, aber klingt verstaendlicher (EH), habe m&#xF6;glich durch einsetzbar erseztzt -->
+Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf neu kompilieren wollen,
 k&#xF6;nnen Sie damit die Installationsdauer von Gentoo Linux deutlich verkz&#xFC;en.<!-- Ist das ok?
 Hat wer bessere Vorschlaege? (EH) -->
 </p>
 
 <p>Jetzt lassen Sie uns kurz den den Installationsprozess skizzieren. Sie erstellen die Partitionen,
 erzeugen die Dateisysteme und entpacken entweder das <e>stage1</e>, <e>stage2</e> oder <e>stage3</e> 
-Archiv. Wenn Sie das <e>stage2</e> oder <e>stage3</e> Archiv verwenden, m&#xFC;ssen Sie alle n&#xF6;tigen Schritte 
+Archiv. Wenn Sie das <e>stage1</e> oder <e>stage2</e> Archiv verwenden, m&#xFC;ssen Sie alle n&#xF6;tigen Schritte
 unternehmen, um Ihr System auf den Stand des <e>stage3</e> Archivs <!-- nicht Archiv's - Im Deutschen gibt es kaum 's (MG)-->
 zu bringen. Wenn Sie <e>stage3</e> erreicht haben, k&#xF6;nnen Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
 installieren, usw.) und in ein voll funktionsf&#xE4;higes Gentoo Linux booten.
@@ -151,7 +151,7 @@ Und mit <c>hdparm -t /dev/hdx</c>, testen Sie die Performance Ihrer Festplatte.<
 <section>
 <body>
 <p>Wenn Sie eine PCMCIA Netzwerkkarte verwenden, m&#xFC;ssen Sie noch einen
-zus&#xE4;tzlichen Dreh anwenden.</p>
+zus&#xE4;tzlichen Dreh anwenden.</p> <!--- gibts fuer Dreh noch ein besseres Wort (JS)? -->
 <pre>
 # <i>insmod pcmcia_core</i>
 # <i>insmod i82365</i>
@@ -224,7 +224,7 @@ Ihres "default Gateway".</p>
 (Web/FTP Server durch Namen anstatt der IP Adresse finden) funktioniert.</p>
 
 <note>Im Moment ist nur <c>nano</c>, ein kleiner, leicht zu bedienender Editor installiert.
-Verwenden Sie <c>nano</c> mit dem Schalter <c>-w</c>, um den automatischen Zeilenumbruch 
+Verwenden Sie <c>nano</c> mit der Option <c>-w</c>, um den automatischen Zeilenumbruch
 abzuschalten.</note>
 
 <p>Hier ein Beispiel der Datei /etc/resolv.conf:</p>
@@ -305,7 +305,7 @@ reparieren k&#xF6;nnten, w&#xE4;re es nur m&#xF6;glich zu booten.</p>
 vier Dateisystem zur Verf&#xFC;gung: XFS, ext2, ext3 (Journaling) und ReiserFS.
 Ext2 ist ein erprobtes Linux Dateisystem, unterst&#xFC;tzt aber kein Journaling.
 Das Dateisystem ext3 ist eine Weiterentwicklung von ext2 und unterst&#xFC;tzt
-Metadaten Journaling sowie "ordered data writes" <!-- Wie soll man das Uebersetzten ??? -->
+Metadaten Journaling sowie geordnete Schreibzugriffe <!-- war vorher: ordered data writes (JS) -->
 und ein effektives Daten Journaling. ReiserFS ist ein B*-tree basiertes 
 Dateisystem das eine sehr gute Performance bei der Handhabung kleiner Dateien
 verspricht und deutlich performanter (10x-15x) als ext2 und ext3 ist, wenn kleine 
@@ -372,7 +372,7 @@ wie z.B.: <c>-d agcount=3 -l size=32m</c>. Die Option <c>-d agcount=3</c> verrin
 "allocation groups". XFS wird auf jeden Fall eine "allocation group" pro
 4GB auf der Partition einrichten, d.h. auf einer 20GB Partition ist der minimale Wert f&#xFC;r
 <e>agcount</e> 5. Der Parameter <c>-l size=32m</c> erh&#xF6;ht die Gr&#xF6;&#xDF;e des Journals auf 32MB, was
-die Performance erh&#xF6;ht.</note>
+die Performance verbessert.</note> <!-- war 2x erh&#xF6;ht in einem Satz (JS)-->
 
 <warn>Wenn Sie ein XFS Dateisystem auf eine bestehende ReiserFS Partition installieren, k&#xF6;nnen sp&#xE4;tere 
 Versuche die Partition zu mounten fehlschlagen, wenn Sie das Dateisystem nicht explizit angeben :
@@ -696,7 +696,9 @@ hingeschrieben werden? Zum Beispiel: "CONFIG_DEVFS_FS=y". Waere doch ein nettes 
 jemand die Optionen im ncurses Config-tool nicht findet. (EH) 
 
 Meinst Du wirklich? Ich glaube nicht das Gentoo eine "Distri" fuer "first time user" ist.
-Das Gros der Anwender wird schon mal einen Kernel konfiguriert haben. (MG) 
+Das Gros der Anwender wird schon mal einen Kernel konfiguriert haben. (MG)
+
+Ich plane gerade mit fghellar sowieso ein Gentoo-Kernel HOWTO, da kommen solche Fragen rein (JS)
 
 -->
 
@@ -707,7 +709,7 @@ aktivieren. Aktivieren dazu Sie die Optionen "ATA/IDE/MFM/RLL support" ---> "IDE
 devices" ---> "SCSI emulation support" (wenn Sie ea vorziehen, auch als Modul). Zus&#xE4;tzlich m&#xFC;ssen
 "SCSI support" sowie "SCSI CD-ROM support" und "SCSI generic support" (wenn gew&#xFC;nscht auch als 
 Module) im Kernel aktiviert sein. Wenn Sie sich f&#xFC;r Module entschieden haben, tragen Sie
-in die diese noch mit dem Befehl: <c>echo -e "ide-scsi\nsg\nsr_mod"  >> /etc/modules.autoload</c> 
+in die diese noch mit dem Befehl: <c>echo -e "ide-scsi\nsg\nsr_mod"  >> /etc/modules.autoload</c>
 in die Datei <path> /etc/modules.autoload</path> ein, damit die Module auch automatisch geladen werden, 
 wenn der Rechner bootet.
 </impo>
@@ -926,7 +928,7 @@ aufgebaut wird.
 Dummerweise, gehen die Einstellungen, die Sie mit <c>hdparm</c> am Anfang der 
 Installation vorgenommen haben, durch einen Reboot verloren. Um die
 Festplatten bei bei jedem Bootvorgang neu zu optimieren, schreiben Sie die
-<c>hdpram</c> Kommandos einfach in die <path>/etc/conf.d/local.start</path>:
+<c>hdparm</c> Kommandos einfach in die <path>/etc/conf.d/local.start</path>:
 </p>
 <pre>    
 # <i>nano -w /etc/conf.d/local.start</i>    
