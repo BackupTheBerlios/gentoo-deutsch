@@ -242,12 +242,12 @@ update -d -P
 <p>
 Sie benötigen Ihre Zugangsdaten zum CVS Server bevor Sie fortfahren. Loggen
 Sie sich am CVS Server ein und checken das Modul <path>www-source</path> aus.
-Ersetzen Sie <c>anonymous</c> mit Ihrem Benutzernamen.
+Ersetzen Sie <c>developername</c> mit Ihrem Benutzernamen.
 </p>
 
 <pre caption="Eine lokale Kopie des CVS Tree erzeugen">
-# cvs -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
-# cvs -z3 -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co www-source
+# export CVS_RSH=ssh
+# cvs -z3 -ddevelopername@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co www-source
 </pre>
 
 <p>
