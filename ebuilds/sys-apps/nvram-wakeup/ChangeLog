@@ -1,6 +1,11 @@
 # ChangeLog for sys-apps/nvram-wakeup
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/nvram-wakeup/ChangeLog,v 1.2 2004/05/15 13:31:22 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/nvram-wakeup/ChangeLog,v 1.3 2004/05/24 13:15:35 austriancoder Exp $
+
+*nvram-wakeup-0.96 (24 Mar 2004)
+
+  24 Mar 2004; Christian Gmeiner <christian at visual-page.de> nvram-wakeup-0.96.ebuild
+  version bump and fix in ebuild
 
 *nvram-wakeup-0.95a (15 Apr 2004)
 
