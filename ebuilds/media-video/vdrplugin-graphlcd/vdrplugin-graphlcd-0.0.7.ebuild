@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/vdrplugin-graphlcd-0.0.7.ebuild,v 1.1 2003/11/05 21:45:15 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/vdrplugin-graphlcd-0.0.7.ebuild,v 1.2 2003/11/09 09:39:59 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="graphlcd"
@@ -34,6 +34,8 @@ function vdr_opts {
 
 src_unpack() {
 	unpack ${A}
+#	einfo "apply timing patch ... "
+#	patch -p0 < ${FILESDIR}/vdrplugin-${VDRPLUGIN}.diff || die "timing patch problem"
 }
 
 src_compile() {
@@ -79,6 +81,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	chmod u+s /usr/bin/vdr
 	einfo
 	einfo "you need to add the module to /etc/conf.d/vdr"
 	einfo "and restart vdr to activate it."
