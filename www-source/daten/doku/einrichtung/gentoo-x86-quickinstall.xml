@@ -25,6 +25,7 @@ Gentoo Linux haben.
 <date>9. Oktober 2003</date>
 
 <chapter>
+<section>
 <title>Schnell Installations Referenz</title>
 <body>
 
@@ -233,6 +234,6 @@ Unmounten Sie nun alle Partitionen und rebooten Sie in Ihr neues System:
 <p>
 Sie können weitere Informationen in der <uri link="http://www.gentoo.org/main/dn/docs.xml">Gentoo Dokumentation</uri>.
 finden</p>
-</body></chapter>	
+</body></section></chapter>	
 
 </guide>
