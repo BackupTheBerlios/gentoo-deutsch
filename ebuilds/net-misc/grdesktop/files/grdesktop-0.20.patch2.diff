@@ -1,0 +1,17 @@
+--- help/omf.make.orig	2003-11-22 03:02:00.000000000 +0100
++++ help/omf.make	2003-11-22 03:02:21.000000000 +0100
+@@ -42,7 +42,7 @@
+ 	for file in $(omffile); do \
+ 		$(INSTALL_DATA) $$file.out $(DESTDIR)$(omf_dest_dir)/$$file; \
+ 	done
+-	-scrollkeeper-update -p $(scrollkeeper_localstate_dir) -o $(DESTDIR)$(omf_dest_dir)
++	-scrollkeeper-update -p $(DESTDIR)$(scrollkeeper_localstate_dir) -o $(DESTDIR)$(omf_dest_dir)
+ 
+ uninstall-local-omf:
+ 	-for file in $(srcdir)/*.omf; do \
+@@ -50,4 +50,4 @@
+ 		rm -f $(omf_dest_dir)/$$basefile; \
+ 	done
+ 	-rmdir $(omf_dest_dir)
+-	-scrollkeeper-update -p $(scrollkeeper_localstate_dir)
++	-scrollkeeper-update -p $(DESTDIR)$(scrollkeeper_localstate_dir)

@@ -1,0 +1,29 @@
+--- help/C/Makefile.in.orig	2003-11-22 02:59:00.000000000 +0100
++++ help/C/Makefile.in	2003-11-22 02:59:51.000000000 +0100
+@@ -308,7 +308,7 @@
+ 	for file in $(omffile); do \
+ 		$(INSTALL_DATA) $$file.out $(DESTDIR)$(omf_dest_dir)/$$file; \
+ 	done
+-	-scrollkeeper-update -p $(scrollkeeper_localstate_dir) -o $(DESTDIR)$(omf_dest_dir)
++	-scrollkeeper-update -p $(DESTDIR)$(scrollkeeper_localstate_dir) -o $(DESTDIR)$(omf_dest_dir)
+ 
+ uninstall-local-omf:
+ 	-for file in $(srcdir)/*.omf; do \
+@@ -316,7 +316,7 @@
+ 		rm -f $(omf_dest_dir)/$$basefile; \
+ 	done
+ 	-rmdir $(omf_dest_dir)
+-	-scrollkeeper-update -p $(scrollkeeper_localstate_dir)
++	-scrollkeeper-update -p $(DESTDIR)$(scrollkeeper_localstate_dir)
+ 
+ all: omf
+ 
+@@ -378,7 +378,7 @@
+ 	for file in $(extraomf); do \
+ 		$(INSTALL_DATA) $$file.out $(DESTDIR)$(omf_dest_dir)/$$file; \
+ 	done
+-	-scrollkeeper-update -p $(scrollkeeper_localstate_dir) -o $(DESTDIR)$(omf_dest_dir)
++	-scrollkeeper-update -p $(DESTDIR)$(scrollkeeper_localstate_dir) -o $(DESTDIR)$(omf_dest_dir)
+ 
+ dist-hook: app-dist-hook
+ 
