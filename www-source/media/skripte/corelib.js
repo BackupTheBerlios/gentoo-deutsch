@@ -671,7 +671,8 @@ x_menu.prototype.recurser = function(parent_link)
           obj_arrow.style.lineHeight = "2.5ex";
         } else {
           // der Unicode-Pfeil: &#9654; als UTF-8
-          obj_arrow.firstChild.nodeValue = "▶";
+          // obj_arrow.firstChild.nodeValue = "▶";
+	  obj_arrow.firstChild.nodeValue = String.fromCharCode(9654);
         }
       }
       else if (browser.ie)
