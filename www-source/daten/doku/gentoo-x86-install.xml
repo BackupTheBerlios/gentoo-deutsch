@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-x86-install.xml,v 1.4 2003/11/15 10:29:29 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-x86-install.xml,v 1.5 2003/12/03 21:14:09 pylon Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-<!-- English CVS version: 1.185 -->
+<!-- English CVS version: 1.189 -->
 
 <guide link="/doc/de/gentoo-x86-install.xml">
   <title>Gentoo Linux 1.4 Installationsanweisungen</title>
@@ -109,8 +109,8 @@
 
   <license/>
 
-  <version>2.6.24</version>
-  <date>01. November 2003</date>
+  <version>2.6.28</version>
+  <date>30. November 2003</date>
 
   <chapter>
   <title>Über die Installation</title>
@@ -271,9 +271,9 @@
 
         <note>Die Installationsanweisungen auf der Live CD sind möglicherweise
         nicht auf den neuesten Stand.  Bitte verwenden Sie
-        <uri>http://www.gentoo.de/inhalte/doku/gentoo-x86-install.xml</uri>
-        für die aktuellen Installationsanweisungen  (oder die wirklich immer
-        aktuelleste Version der Englischen Anweisungen unter
+        <uri>http://www.gentoo.org/doc/de/gentoo-x86-install.xml</uri> für die
+        aktuellen Installationsanweisungen  (oder die wirklich immer aktuelleste
+        Version der Englischen Anweisungen unter
         <uri>http://www.gentoo.org/doc/en/gentoo-x86-install.xml</uri>).</note>
 
       </body>
@@ -1549,6 +1549,10 @@ Regenerating /etc/ld.so.cache...
 # <i>emerge sync</i>
         </pre>
 
+        <p>Wenn Sie gewarnt werden, dass eine neue Portage-Version vorhanden
+        ist und dass Sie updaten sollen, können Sie dieses ignorieren.  Portage
+        wird später während der Installation geupdated.</p>
+
       </body>
     </section>
   </chapter>
@@ -1568,16 +1572,16 @@ Regenerating /etc/ld.so.cache...
         Programme einkompiliert werden; üblicherweise sind die
         Standardeinstellungen (eine <e>leere</e> oder ungesetzte USE Variable)
         okay.  Mehr Informationen über USE Flags können im <uri
-        link="http://www.gentoo.de/inhalte/doku/use-howto.xml">Gentoo Handbuch
-        für USE-Flags</uri> gefunden werden.  Weiterhin gibt es eine Liste über
-        alle aktuellen <uri link="http://www.gentoo.org/dyn/use-index.xml">USE
+        link="http://www.gentoo.org/doc/de/use-howto.xml">Gentoo Handbuch für
+        USE-Flags</uri> gefunden werden.  Weiterhin gibt es eine Liste über alle
+        aktuellen <uri link="http://www.gentoo.org/dyn/use-index.xml">USE
         Flags</uri>.</p>
 
         <p>Beginnen Sie mit einem stage1 tar-Archiv, sollten Sie auch
         entsprechende Einstellungen an CHOST, CFLAGS und CXXFLAGS für Ihr System
         (Beispiele befinden sich direkt in der <path>/etc/make.conf</path>)
         vornehmen.</p>
-        
+
         <warn>Benutzen Sie ein stage2 oder stage3 tar-Archiv wurden diese
         Einstellungen schon von uns optimal vorgenommen und benötigen keiner
         weiteren Modifikation.</warn>
@@ -1865,7 +1869,7 @@ none                /proc       proc     defaults        0 0
         verwenden, müssen Sie vorab die Linux Kernel Sourcen, die Sie verwenden
         möchten, mergen.  Gentoo bietet Ihnen einige Kernel ebuilds; eine Liste
         mit Beschreibung gibt es im <uri
-        link="http://www.gentoo.de/inhalte/doku/gentoo-kernel.xml">Gentoo Kernel
+        link="http://www.gentoo.org/doc/de/gentoo-kernel.xml">Gentoo Kernel
         Handbuch</uri>.  Wenn Sie sich in der Wahl nicht schlüssig sind,
         empfehlen wir die <c>gentoo-sources</c>.  Benötigen Sie die
         Unterstützung für XFS, installieren Sie <c>xfs-sources</c> oder
@@ -2228,7 +2232,7 @@ File systems ---&gt;
 
         <p>Weitere Informationen, um Programme und Dienste während des
         Systemsstarts auszuführen, finden Sie im <uri
-        link="http://www.gentoo.de/inhalte/doku/rc-scriptsxml">Gentoo Linux Init
+        link="http://www.gentoo.org/doc/de/rc-scripts.xml">Gentoo Linux Init
         System</uri> Handbuch.</p>
 
       </body>
@@ -2364,6 +2368,12 @@ File systems ---&gt;
 
         <pre caption="NIS Domainnamen konfigurieren">
 # <i>echo nis.meinedomain.lan &gt; /etc/nisdomainname</i>
+        </pre>
+
+        <p>Fügen Sie das <c>domainname</c> Script zum default Runlevel hinzu:</p>
+
+        <pre caption="domainname zum Default-Runlevel hinzufügen">
+# <i>rc-update add domainname default</i>
         </pre>
 
         <note>Eventuell erhalten Sie die Daten von Ihrem Netzwerkadminstrator.
@@ -2954,15 +2964,15 @@ other=/dev/hda1
         Mailingliste (weitere Informationen auf der <uri
         link="http://www.gentoo.org/main/en/lists.xml">Mailinglisten
         Webseite</uri>).  Außerdem ist die <uri
-        link="http://www.gentoo.de/inhalte/doku/desktop.xml">Anleitung zur
-        Gentoo Linux Desktop Konfiguration</uri> recht praktisch für die weitere
+        link="http://www.gentoo.org/doc/de/desktop.xml">Anleitung zur Gentoo
+        Linux Desktop Konfiguration</uri> recht praktisch für die weitere
         Konfiguration Ihres Gentoo Linux Systems.  Der nützliche <uri
-        link="http://www.gentoo.de/inhalte/doku/portage-user.xml">Portage
-        Benutzer Leitfaden</uri> hilft Ihnen die Grundlagen von Portage zu
-        verstehen.  Darüberhinaus gibt es etliche weitere <uri
-        link="http://www.gentoo.de/inhalte/doku/">Gentoo Linux
+        link="http://www.gentoo.org/doc/de/portage-user.xml">Portage Benutzer
+        Leitfaden</uri> hilft Ihnen die Grundlagen von Portage zu verstehen.
+        Darüberhinaus gibt es etliche weitere <uri
+        link="http://www.gentoo.org/doc/de/index.xml">Gentoo Linux
         Dokumente</uri>.  Haben Sie Fragen, die die Installation betreffen,
-        schauen Sie in die <uri link="http://www.gentoo.de/inhalte/doku/faq">FAQ
+        schauen Sie in die <uri link="http://www.gentoo.org/doc/de/faq.xml">FAQ
         (häufig gestellte Fragen)</uri>.  Herzlich Willkommen und haben Sie Spaß
         mit Gentoo Linux!</p>
 

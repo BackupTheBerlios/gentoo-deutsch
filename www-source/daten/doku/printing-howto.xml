@@ -1,4 +1,7 @@
-<?xml version='1.0' encoding="iso-8859-15"?> 
+<?xml version='1.0' encoding="UTF-8"?>
+
+<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
+
 <guide> 
 <title>Gentoo Druckereinrichtung</title> 
 <author title="Autor"><mail link="davisjp@muc.edu"> 
@@ -322,4 +325,3 @@ Jetzt, da SAMBA konfiguriert ist, starten sie es neu, wechseln sie auf ihren Win
 </section>
 </chapter>
 </guide>
- 
