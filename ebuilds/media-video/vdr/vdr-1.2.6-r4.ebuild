@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.5 2003/12/27 20:28:07 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.6 2003/12/27 20:42:56 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -49,7 +49,7 @@ function vdr_opts {
 			return 0
 		fi
 	done
-	ewarn "No optional ${1} in VDR_OPTS; Fine."
+	[ -z $2 ] && ewarn "No optional ${1} in VDR_OPTS; Fine."
 	return 1
 }
 
@@ -106,7 +106,7 @@ src_unpack() {
 
 		einfo "applying remove duplicate Symblol 59 patch ..."
 		epatch ${FILESDIR}/KomplettPatch-1.2.6-E.diff
-		#/bin/sed -e '782,811d' fontsym.c
+		#/bin/sed -i -e '782,811d' fontsym.c
 	fi
 
 	# here comes the gentoo specific stuff ( also called the "fun part")
@@ -248,7 +248,7 @@ pkg_postinst() {
 	for i in ${INSTALLED_PLUGINS}
 		do 
 		 einfo ${i}
-		 if vdr_opts emergeplugs ; then
+		 if vdr_opts emergeplugs quiet ; then
 			einfo
 		 	ACCEPT_KEYWORDS="~x86" /usr/bin/emerge ${i}
 			einfo
