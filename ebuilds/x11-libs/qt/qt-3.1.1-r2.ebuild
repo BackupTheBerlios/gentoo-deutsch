@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-libs/qt/Attic/qt-3.1.1-r2.ebuild,v 1.3 2003/02/01 14:32:43 wpbasti Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-libs/qt/Attic/qt-3.1.1-r2.ebuild,v 1.4 2003/02/01 14:49:01 wpbasti Exp $
 
 inherit eutils
 
@@ -68,8 +68,6 @@ src_unpack() {
             cp qmake.conf qmake.conf.orig
             sed -e "s:= -O2:= -O2 -fPIC $CXXFLAGS:" qmake.conf.orig > qmake.conf
         fi
-
-
 }
 
 src_compile() {
