@@ -4,6 +4,7 @@
 
 <config>
 
+
 <source value="/home/groups/gentoo-deutsch/htdocs/neu/cache/www-source" short="src">
   <templates>vorlagen</templates>
   <data>daten</data>
