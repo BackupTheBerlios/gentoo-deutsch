@@ -475,7 +475,7 @@
 </xsl:template>
 
 <xsl:template match="news">
-	<p style="background-color:#45347B; text-color:#FFFFFF;">
+	<p style="background-color:#45347B; color:#FFFFFF;">
 		<span style="font-size:small;"><xsl:value-of select="@date"/></span><br/>
 		<span style="font-weight:bold; font-size:large;"><xsl:value-of select="@title"/></span><br/>
 	</p>
