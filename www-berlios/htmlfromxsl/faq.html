@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
 <link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
 <link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
 <title>Gentoo Linux 
@@ -167,7 +167,12 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		Installation vorhanden ist. Dazu geben Sie einfach <font class="input">debug grub</font> von dem Grub Terminal oder lesen Sie das
 		<a href="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/0F1731DC664023B7862569D0005C44AF?OpenDocument">IBM developerWorks Grub tutorial</a>.
 		</p>
-                <p class="chaphead">
+                <p class="secthead"><a name="_sect13">Mein ASUS CUV4X-D will nicht booten und es friert bei manchen Prozessen des Kernel
+		ladens und der Hardware Suche ein. </a></p>
+<p>Deaktivieren sie MPS 1.4 (multi-processor-system) im BIOS oder stellen sie diese
+		Funktion auf 1.1. Beim benutzen dieser Option verändern sie einfach die MPS Version. Das Multi-Processor-System
+		wird weiterhin richtig Arbeiten. Stellen sie sicher das Gentoo Linux mit der Boot Option &quot;noapic&quot; bootet.</p>
+		<p class="chaphead">
 <font class="chapnum"><a name="doc_chap3">3.</a></font>Paket Verwaltung</p>
 <p class="secthead"><a name="_sect1">In welchem Format werden die Pakete gespeichert? </a></p>
 <p>Die Pakete existieren in unserem Portage &quot;Baum/Stammbaum/Archiv&quot; als <font class="emphasis">ebuild</font>, den Installations Skripten. 
@@ -378,13 +383,14 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<p>Diese Änderung wurde in neueren KDE Versionen bereits vorgenommen.</p>
 		<p class="chaphead">
 <font class="chapnum"><a name="doc_chap5">5.</a></font>Verwaltung</p>
-<p class="secthead"><a name="_sect1">Probleme mit einem beschädigten Dateisystem unter ReiserFS -- wie behebe ich das? </a></p>
+<p class="secthead"><a name="_sect1">ReiserFS und Dateisystem Fehler -- und wie man die behebt </a></p>
 		<p>
-		ReiserFS hat grosse Probleme in Verbindung mit den 2.4 Kernel Reihen. Wir raten zur Zeit nachdrücklich
-		von der Verwendung mit ReiserFS ab. Wenn die ReiserFS Partition bereits beschädigt ist, sollten Sie
-		mit der Gentoo Linux CD booten und <font class="code">reiserfsck --rebuild-tree</font> auf das beschädigte Dateisystem
-		ausführen. Dies sollte die Konsistenz des Dateisystems wieder herstellen, auch wenn einige Dateien
-		oder Verzeichnisse durch die Beschädigung verloren gegangen sein können.
+		Wenn deine
+		ReiserFS Parition fehlerhaft ist, versuchen sie die Gentoo
+		Linux Boot CD zu booten und starten Sie <font class="code">reiserfsck --rebuild-tree</font> auf
+		dem Fehlerhaften Dateisystem.  Dies sollte das Dateisystem wieder stabil machen
+		, manchmal verliert man aber manche Datein und Verzeichnise durch
+		das fehlerhafte Dateisystem.
 		</p>
 		<p class="chaphead">
 <font class="chapnum"><a name="doc_chap6">6.</a></font>Entwicklung</p>
@@ -448,22 +454,49 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		</p>
 		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's können für 5 Euro bei <a href="http://www.lin24.de">http://www.lin24.de</a> und <a href="http://www.liniso.de">http://www.liniso.de</a> bezogen werden.
 		</p>
-<p class="secthead"><a name="_sect4">Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt? </a></p>
-<p>Als erster Schritt sollten die Dokumente unter <a href="http://www.gentoo.org/index-docs.html">http://www.gentoo.org/index-docs.html</a> (in Deutsch:  <a href="http://www.gentoo.de">http://www.gentoo.de</a> )
-		durchforstet werden. Findet sich darin keine Lösung, kann man sich in die verschiedenen Maillisten unter <a href="www.gentoo.org">www.gentoo.org</a> eintragen. Um
-		die Archive der Maillisten zu durchsuchen, ist Google (<a href="www.google.com">www.google.com</a>) sehr praktisch. Einfach &quot;lists.gentoo.org foo&quot;
-		als Suchanfrage stellen. Alternativ kann auch ein Blick in das Forum (<a href="http://forums.gentoo.org/">http://forums.gentoo.org/</a>) helfen. Oder Sie stellen ihre
-		Frage im IRC unter <font class="code">#gentoo</font> bzw. <font class="code">#gentoo.de</font> von <a href="irc.openprojects.net">irc.openprojects.net</a>.
+<p class="secthead"><a name="_sect4">Why, when I hit reply to a post on a Gentoo mailing list, does my answer 
+		only go to the original poster and not the entire list? </a></p>
+		<p>The mailing list administrators have decided to go with minimal munging 
+		(altering of mail headers), which means that they have decided against  
+		altering headers to have replies go to the mailing list.  There are various 
+		reasons for this. For example, if a subscriber has a full mailbox, the 
+		entire list receives notice of this every time that something is posted.  
+		
+		Most GUI based mailers have a &quot;reply to all&quot; function. This will ensure that 
+		your reply goes to the mailing list as well as the original poster. Most 
+		users of text based emailers already know the methods to use, but if you 
+		don't, in Pine, there is a &quot;reply to group&quot; option.  Setting Mutt to reply to 
+		the list is covered in the unofficial documentation at
+		<a href="http://forums.gentoo.org/viewtopic.php?t=1085">forums.gentoo.org</a>.
+		
+		Some list members do not like this method, but it was very heavily 
+		discussed when it went into effect, with arguments on both sides.  
+		Eventually the list administrators decided to keep it this way. Discussing 
+		it on the mailing list will sometimes bring a polite explanation and other 
+		times a rather brusque comment to check the archives. Although the 
+		administrators regret the inconvenience that it may cause some users, it is 
+		felt that at present it is preferable to the alternative for several 
+		reasons, many of these covered
+		<a href="http://www.unicom.com/pw/reply-to-harmful.html">here</a>.  
+		
+		(There are other eloquent arguments in favor of munging, and yes, the list 
+		administrators have seen them.) </p>
+		<p class="secthead"><a name="_sect5">This FAQ hasn't answered my question.  What do I do now? </a></p>
+		<p>A good first step is to browse through the relevant doumentation <a href="http://www.gentoo.org/index-docs.html">here</a>, 
+		failing that, the various Gentoo Linux mailing
+		lists listed on <a href="http://www.google.com">Google</a>.  To search through the Gentoo mailling lists, just enter &quot;lists.gentoo.org foo&quot; to search for &quot;foo&quot;.  If all else fails, or you just want
+		to hang out with Gentoo folks, visit us on irc: <font class="input">#gentoo</font>
+		on <font class="input">irc.freenode.net</font>.
 		</p>
-<br><br>
+		<br><br>
 </td>
 <td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 <tr><td align="center" class="alttext">
-						letzte Änderung  Juli 2002</td></tr>
+						letzte Änderung 08 October 2002 (de: 26 Oktober 2002)</td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 <tr><td class="alttext">
-<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Leitender Architekt</i><br><br>Colin Morey<br><i>Reviewer</i><br><br><b><a class="altlink" href="mailto:marko@nexboard.de">Marko Kercmar</a></b><br><i>Übersetzer</i><br><br><b><a class="altlink" href="mailto:egbers@netzraum.com">Sebastian Egbers</a></b><br><i>Übersetzer</i><br><br><b><a class="altlink" href="mailto:js@ameds.de">Jens Schittenhelm</a></b><br><i>Übersetzer</i><br><br>
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Chief Architect</i><br><br>Colin Morey<br><i>Reviewer</i><br><br><b><a class="altlink" href="mailto:zhen@gentoo.org">John P. Davis</a></b><br><i>Editor</i><br><br><b><a class="altlink" href="mailto:marko@nexboard.de">Marko Kercmar</a></b><br><i>Übersetzer</i><br><br><b><a class="altlink" href="mailto:egbers@netzraum.com">Sebastian Egbers</a></b><br><i>Übersetzer</i><br><br><b><a class="altlink" href="mailto:js@ameds.de">Jens Schittenhelm</a></b><br><i>Übersetzer</i><br><br>
 </td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 <tr><td class="alttext">
