@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/doc-unmaint.xml,v 1.1 2003/12/04 16:01:55 dertobi123 Exp $-->
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<guide link="/inhalte/projekt/translation/doc-unmaint/">
+
+<title>Statusübersicht</title>
+
+<author title="Autor">
+  <mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
+</author>
+
+<abstract>
+Statusübersicht über die aktuell nicht übersetzten oder in Übersetzung
+befindlichen Dokumente
+</abstract>
+
+<version>1.0</version>
+<date>04. Dezember 2003</date>
+
+<chapter>
+<title>Statusübersicht</title>
+<section>
+<body>
+
+<p>
+Eine aktuelle Auflistung des Status eines Dokuments, das heisst, welchen
+Versionen gerade aktuell sind, erhalten Sie auf der Statusübersicht auf <uri
+link="http://dev.gentoo.org/~pylon/status-german-translations.de.html">Pylons
+Entwicklerseite</uri>
+</p>
+
+<table>
+  <tr>
+  <th>Dokument</th>
+  </tr>
+  <tr>
+  <ti>cvsup.xml</ti>
+  </tr>
+  <tr>
+  <ti>devfs-guide.xml</ti>
+  </tr>
+  <tr>
+  <ti>diskless-howto.xml</ti>
+  </tr>
+  <tr>
+  <ti>eclass-howto.xml</ti>
+  </tr>
+  <tr>
+  <ti>eclasses-list.xml</ti>
+  </tr>
+  <tr>
+  <ti>gentoo-ppc-faq.xml</ti>
+  </tr>
+  <tr>
+  <ti>gentoo-release-policy.xml</ti>
+  </tr>
+  <tr>
+  <ti>gentooppc-quickstart.xml</ti>
+	  </tr>
+  <tr>
+  <ti>ldap-howto.xml</ti>
+  </tr>
+  <tr>
+  <ti>ltsp.xml</ti>
+  </tr>
+  <tr>
+  <ti>lvm.xml</ti>
+  </tr>
+  <tr>
+  <ti>management-structure.xml</ti>
+  </tr>
+  <tr>
+  <ti>openafs.xml</ti>
+  </tr>
+  <tr>
+  <ti>openmosix-howto.xml</ti>
+  </tr>
+  <tr>
+  <ti>source-mirror.xml</ti>
+  </tr>
+  <tr>
+  <ti>uml.xml</ti>
+  </tr>
+</table>
+
+</body>
+</section>
+</chapter>
+
+<!--
+<chapter>
+<title>Ressourcen</title>
+<section>
+<body>
+
+<p>
+<e>Mailingliste:</e> <mail link="gentoo-doc-de@gentoo.org">gentoo-doc-de@gentoo.org</mail>
+<br />
+<e>FAQ:</e> <uri link="/inhalte/projekt/translation">Übersetzer Guide</uri>
+</p>
+
+</body>
+</section>
+</chapter>
+-->
+
+</guide>
