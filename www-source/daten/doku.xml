@@ -30,7 +30,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 	<body>
   		<p>
 			<ul>
-				<li><uri link="einrichtung/installation1.4">Installationsanleitung für Gentoo Linux 1.4</uri></li>
+				<li><uri link="einrichtung/installation14">Installationsanleitung für Gentoo Linux 1.4</uri></li>
 				<li><uri link="einrichtung/installationppc">Installation PPC</uri></li>
 				<li><uri link="einrichtung/lokalisierung">Lokalisierung</uri></li>
 				<li><uri link="einrichtung/desktop">Desktop-Konfiguration</uri></li>
