@@ -71,6 +71,13 @@
                   </xsl:for-each>
                   
                   <br/><br/>
+                  <b>Archiv:</b>
+                  <br/>
+                  <a class="uri" href="{$baselink}/{category}/{name}/{name}.tar.gz?tarball=1">
+                    <xsl:text>&#160;&#187; Download</xsl:text>
+                  </a>
+                  
+                  <br/><br/>
                   <b>Versionen:</b>
                   <br/>
                   <xsl:for-each select="../pkg[name = $pname]">
@@ -91,6 +98,7 @@
                         <xsl:text>.ebuild</xsl:text>
                       </xsl:attribute>
                     
+                      <xsl:text>&#160;&#187; </xsl:text>
                       <xsl:value-of select="version"/>
                       <xsl:if test="revision != ''"> 
                         <xsl:text>-r</xsl:text>
