@@ -47,7 +47,7 @@ automatisch aus dem Internet geladen.) Unsere zweite CD ist
 gentoo-i686-1.2.iso</uri>. Dieses Image ist etwas gr&#xF6;&#xDF;er (100+Mb) -- Es
 enth&#xE4;lt das gleiche Material wie auf unserem 16Mb Image, <e>plus</e> einem 
 vorkompiliertem i686 Basissystem (<path>stage3-i686-1.2.tbz2</path>) 
-sowie einem zum Teil kompiliertem <!-- nicht so gut. Alternativen?? damit ?? (JS) -->
+sowie ein zum Teil kompiliertes <!-- nicht so gut. Alternativen?? damit ?? (JS) mit s ists ok :-) (MG)-->
 i686 Basissystem (<path>stage2-i686-1.2.tbz2</path>) in TAR-Archiven.
 Die beiden neuen TAR-Archive ben&#xF6;tigen einen Pentium Pro oder besser (K6 geht nicht). 
 Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf kompilieren wollen, 
@@ -140,7 +140,7 @@ optimiert werden muss, ist nun der richtige Zeitpunkt daf&#xFC;r.</note>
 </chapter>
 
 <chapter>
-<title>PCMCIA Lernel Module laden</title>
+<title>PCMCIA Kernel Module laden</title>
 <section>
 <body>
 <p>Wenn Sie eine PCMCIA Netzwerkkarte verwenden, m&#xFC;ssen Sie noch einen
@@ -197,7 +197,7 @@ Option <c>-h meinhostname</c> an das oben stehende Kommando.</note>
 harmlos. Weiter geht es unten mit dem Test der Netzwerkanbindung.</p>
 
 </body>
-</section>partition/filesystem setup,
+</section>
 <section>
 <title>Statische Konfiguration</title>
 <body>
@@ -254,6 +254,7 @@ eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
 If you have a static ppp link, you can !!! do this...!!!
 Sollen wir hier eigenmaechtig eine PPPoE Abschnitt einfuegen - In Deutschland ist das ja deutlich
 verbereiteter als in den USA (JS) ?
+Waere zu Ueberlegen, moechte aber erst den Rest uebersetzen. (MG).
 </note>
 -->
 </body>
@@ -266,41 +267,46 @@ verbereiteter als in den USA (JS) ?
 verbinden.</p>
 </body>
 </section>
-<!-- So Pause :->  (Gute Arbeit !!!! (JS) -->
 </chapter>
 <chapter>
-<title>Set up partitions</title>
+<title>Einrichten der Partitionen</title>
 <section>
 <body>
 
-<p>Now that the kernel can see our network card and disk controllers, it's time
-to set up disk partitions for Gentoo Linux.</p>
+<p>Nun da der Kernel Netzwerk und Festplatten Kontroller unterst&#xFC;zt, wird es Zeit
+die Partitionen f&#xFC;r Gentoo Linux einzurichten.</p>
 
-<p>Here's a quick overview of the standard Gentoo Linux partition layout.
-We're going to create at least three partitions: a swap partition, a root
-partition (to hold the bulk of Gentoo Linux), and a special boot partition.
-The boot partition is designed to hold GRUB boot loader information as well as
-your Linux kernel(s).  The boot partition gives us a safe place to store
-everything related to booting Linux. During normal day-to-day Gentoo Linux use,
-your boot partition should remain <e>unmounted</e>.  This prevents your kernel
-from being made unavailable to GRUB (due to filesystem corruption) in the event
-of a system crash, preventing the chicken-and-egg problem where GRUB can't read
-your kernel (since your filesystem isn't consistent) but you can't bring your
-filesystem back to a consistent state (since you can't boot!)      </p>
+<p>
+Hier nun eine kurzer &#xDC;berblick &#xFC;ber das Standard Layout der Partitionen
+bei Gentoo Linux. Sie erzeugen mindestens drei Partitionen: eine Swap
+Partition, eine Root Partition (hier liegt der Hauptteil von Gentoo Linux)
+und eine spezielle Boot Partition. Die Boot Partition ist dazu bestimmt den
+GRUB Bootmanager und den oder die Linux Kernel aufzunehmen. Die Boot Partition
+ist ein sicherer Platz um alle zum booten relevanten Dateien abzulegen.
+Bei der t&#xE4;glichen Nutzung sollte die Boot Partition <e>nicht gemountet</e>
+bleiben. Dies verhindert das der Kernel von GRUB nach einem System Absturz
+nicht mehr geladen werden kann (z.B. wegen einem besch&#xE4;digten Dateisystem).
+Au&#xDF;erdem verhindert dies das "Henne-Ei-Problem" bei dem GRUB den Kernel
+wegen einem kaputten Dateisystem nicht mehr laden kann, Sie aber das Dateisystem
+reparieren k&#xF6;nnten, w&#xE4;re es nur m&#xF6;glich zu booten.</p>
 
-<p>Now, on to filesystem types.  Right now, you have four filesystem options:
-XFS, ext2, ext3 (journaling) and ReiserFS.  ext2 is the tried and true Linux
-filesystem but doesn't have metadata journaling.  ext3 is the new version of
-ext2 with both metadata journaling and ordered data writes, effectively
-providing data journaling as well.  ReiserFS is a B*-tree based filesystem
-that promises very good small file performance, and greatly outperforms both ext2 and
-ext3 when dealing with small files (files less than 4k), often by a factor of
-10x-15x.  However, we do <e>not</e> recommend ReiserFS at this time,
-due to repeated occurances of file-system corruption with the 2.4.x series
-kernels.  ReiserFS has metadata journaling, but no data journaling.  XFS
-is a high-performance enterprise-class filesystem with metadata journaling that
-is fully supported under Gentoo Linux.
-</p><p>
+<p>Weiter geht es mit den verschiedenen Dateisystemen. Momentan stehen Ihnen
+vier Dateisystem zur Verf&#xFC;gung: XFS, ext2, ext3 (Journaling) und ReiserFS.
+ext2 ist ein erprobtes Linux Dateisystem, unterst&#xFC;tzt aber kein Journaling.
+Das Dateisystem ext3 ist eine Weiterentwicklung von ext2 und unterst&#xFC;tzt
+Metadaten Journaling sowie "ordered data writes" <!-- Wie soll man das Uebersetzten ??? -->
+und ein effektives Daten Journaling. ReiserFS ist ein B'-tree basiertes 
+Dateisystem das eine sehr gute Performance bei der Handhabung kleiner Dateien
+verspricht und deutlich performanter (10x-15x) als ext2 und ext3 ist, wenn kleine 
+Dateien (kleiner 4k) im Spiel sind. Wie auch immer, momentan empfehlen wir die
+Verwendung von ReiserFS, wegen wiederholtem Auftreten von  Dateisystemfehlern in 
+der 2.4.x Serie des Kernels, <e>nicht</e>. ReiserFS unterst&#xFC;tzt Metadaten 
+Journaling aber kein Daten Journaling. <!-- Was auch immer das heisst :-) -->
+XFS ist ein "high-performance, enterprise-class" Dateisystem mit Metadaten
+Journaling und wird voll von Gentoo Linux unterst&#xFC;tzt.</p>
+
+<!-- Jetzt ist erst mal Schluss -->
+<p>
 If
 you're looking for the most standard filesystem, use ext2.  If you're looking
 for the most rugged journalled filesystem, use ext3.  If you're looking for a

@@ -23,9 +23,9 @@
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Über die Installation</option>
 <option value="#doc_chap2">2. Booten</option>
 <option value="#doc_chap3">3. Laden der Kernel Module</option>
-<option value="#doc_chap4">4. PCMCIA Lernel Module laden</option>
+<option value="#doc_chap4">4. PCMCIA Kernel Module laden</option>
 <option value="#doc_chap5">5. Konfiguration der Netzwerkanbindung</option>
-<option value="#doc_chap6">6. Set up partitions</option>
+<option value="#doc_chap6">6. Einrichten der Partitionen</option>
 <option value="#doc_chap7">7. Mount partitions</option>
 <option value="#doc_chap8">8. Mounting the CD-ROM</option>
 <option value="#doc_chap9">9. Unpack the stage you want to use</option>
@@ -64,7 +64,7 @@ automatisch aus dem Internet geladen.) Unsere zweite CD ist
 gentoo-i686-1.2.iso</a>. Dieses Image ist etwas größer (100+Mb) -- Es
 enthält das gleiche Material wie auf unserem 16Mb Image, <font class="emphasis">plus</font> einem 
 vorkompiliertem i686 Basissystem (<font class="path">stage3-i686-1.2.tbz2</font>) 
-sowie einem zum Teil kompiliertem 
+sowie ein zum Teil kompiliertes 
 i686 Basissystem (<font class="path">stage2-i686-1.2.tbz2</font>) in TAR-Archiven.
 Die beiden neuen TAR-Archive benötigen einen Pentium Pro oder besser (K6 geht nicht). 
 Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf kompilieren wollen, 
@@ -163,7 +163,7 @@ sichergestellt das die Unterstützung für SCSI CD-ROMS (<font class="code">sr_mod
 <b>Anmerkung: </b>Version -r10 des ISO Images enthält jetzt auch <font class="code">hdparm</font>. Wenn eine Ihrer Festplatten
 optimiert werden muss, ist nun der richtige Zeitpunkt dafür.</p></td></tr></table>
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap4">4.</a></font>PCMCIA Lernel Module laden</p>
+<font class="chapnum"><a name="doc_chap4">4.</a></font>PCMCIA Kernel Module laden</p>
 <p>Wenn Sie eine PCMCIA Netzwerkkarte verwenden, müssen Sie noch einen
 zusätzlichen Dreh anwenden.</p>
 <a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -280,36 +280,41 @@ eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
 <font class="code">ssh</font>, <font class="code">scp</font> und <font class="code">wget</font> mit anderen Rechnern in Ihrem LAN oder im Internet zu
 verbinden.</p>
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap6">6.</a></font>Set up partitions</p>
+<font class="chapnum"><a name="doc_chap6">6.</a></font>Einrichten der Partitionen</p>
 
-<p>Now that the kernel can see our network card and disk controllers, it's time
-to set up disk partitions for Gentoo Linux.</p>
+<p>Nun da der Kernel Netzwerk und Festplatten Kontroller unterstüzt, wird es Zeit
+die Partitionen für Gentoo Linux einzurichten.</p>
 
-<p>Here's a quick overview of the standard Gentoo Linux partition layout.
-We're going to create at least three partitions: a swap partition, a root
-partition (to hold the bulk of Gentoo Linux), and a special boot partition.
-The boot partition is designed to hold GRUB boot loader information as well as
-your Linux kernel(s).  The boot partition gives us a safe place to store
-everything related to booting Linux. During normal day-to-day Gentoo Linux use,
-your boot partition should remain <font class="emphasis">unmounted</font>.  This prevents your kernel
-from being made unavailable to GRUB (due to filesystem corruption) in the event
-of a system crash, preventing the chicken-and-egg problem where GRUB can't read
-your kernel (since your filesystem isn't consistent) but you can't bring your
-filesystem back to a consistent state (since you can't boot!)      </p>
+<p>
+Hier nun eine kurzer Überblick über das Standard Layout der Partitionen
+bei Gentoo Linux. Sie erzeugen mindestens drei Partitionen: eine Swap
+Partition, eine Root Partition (hier liegt der Hauptteil von Gentoo Linux)
+und eine spezielle Boot Partition. Die Boot Partition ist dazu bestimmt den
+GRUB Bootmanager und den oder die Linux Kernel aufzunehmen. Die Boot Partition
+ist ein sicherer Platz um alle zum booten relevanten Dateien abzulegen.
+Bei der täglichen Nutzung sollte die Boot Partition <font class="emphasis">nicht gemountet</font>
+bleiben. Dies verhindert das der Kernel von GRUB nach einem System Absturz
+nicht mehr geladen werden kann (z.B. wegen einem beschädigten Dateisystem).
+Außerdem verhindert dies das &quot;Henne-Ei-Problem&quot; bei dem GRUB den Kernel
+wegen einem kaputten Dateisystem nicht mehr laden kann, Sie aber das Dateisystem
+reparieren könnten, wäre es nur möglich zu booten.</p>
 
-<p>Now, on to filesystem types.  Right now, you have four filesystem options:
-XFS, ext2, ext3 (journaling) and ReiserFS.  ext2 is the tried and true Linux
-filesystem but doesn't have metadata journaling.  ext3 is the new version of
-ext2 with both metadata journaling and ordered data writes, effectively
-providing data journaling as well.  ReiserFS is a B*-tree based filesystem
-that promises very good small file performance, and greatly outperforms both ext2 and
-ext3 when dealing with small files (files less than 4k), often by a factor of
-10x-15x.  However, we do <font class="emphasis">not</font> recommend ReiserFS at this time,
-due to repeated occurances of file-system corruption with the 2.4.x series
-kernels.  ReiserFS has metadata journaling, but no data journaling.  XFS
-is a high-performance enterprise-class filesystem with metadata journaling that
-is fully supported under Gentoo Linux.
-</p>
+<p>Weiter geht es mit den verschiedenen Dateisystemen. Momentan stehen Ihnen
+vier Dateisystem zur Verfügung: XFS, ext2, ext3 (Journaling) und ReiserFS.
+ext2 ist ein erprobtes Linux Dateisystem, unterstützt aber kein Journaling.
+Das Dateisystem ext3 ist eine Weiterentwicklung von ext2 und unterstützt
+Metadaten Journaling sowie &quot;ordered data writes&quot; 
+und ein effektives Daten Journaling. ReiserFS ist ein B'-tree basiertes 
+Dateisystem das eine sehr gute Performance bei der Handhabung kleiner Dateien
+verspricht und deutlich performanter (10x-15x) als ext2 und ext3 ist, wenn kleine 
+Dateien (kleiner 4k) im Spiel sind. Wie auch immer, momentan empfehlen wir die
+Verwendung von ReiserFS, wegen wiederholtem Auftreten von  Dateisystemfehlern in 
+der 2.4.x Serie des Kernels, <font class="emphasis">nicht</font>. ReiserFS unterstützt Metadaten 
+Journaling aber kein Daten Journaling. 
+XFS ist ein &quot;high-performance, enterprise-class&quot; Dateisystem mit Metadaten
+Journaling und wird voll von Gentoo Linux unterstützt.</p>
+
+
 <p>
 If
 you're looking for the most standard filesystem, use ext2.  If you're looking
