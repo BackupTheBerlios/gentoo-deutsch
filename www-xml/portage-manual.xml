@@ -776,32 +776,14 @@ Calculating dependencies ...done!
 	</p>
 	<p>
 	<i>--emptytree</i> : Diese Option l&#228;sst Portage vort&#228;uschen,
-	das keines der Abh&#228;ngigkeiten von dem Paket oder 
-	<!-- blablabla, sehr lang gegruebelt, bitte helfen! /:-) (EH)
+	dass keine der Abh&#228;ngigkeiten oder Pakete auf denen das zu installierende 
+        Paket beruht installiert sind. 
 
-	Originaltext:
-	
-	This option makes Portage pretend that none of the
-	dependencies of this package or the packages it depends upon are 
-	installed. 
-	
-	--> 
-
-	Dies ist n&#252;tzlich mit der Option <i>--pretend</i>, um eine komplette
+	Dies l&#228;sst sich sehr gut Option <i>--pretend</i> verbinden, um eine komplette
 	Liste der Abh&#228;ngigkeiten f&#252;r jedes einzelne Paket anzeigen
-	zu lassen.
-
-	<!-- Gut so? heute hab ichs nicht so drauf mitm Uebersetzen :-)) (EH)
-
-	Originaltext:
-	
-	This is useful with pretend to display a complete
-	tree of dependencies for any particular package.  All dependencies
-	except for glibc are displayed.
-
-	-->
-	
+	zu lassen. Alle Abh&#228;ngigkeiten mit Ausnahme von Glibc werden dargestellt.
 	</p>
+
 	<p><i>--nodeps</i> : Portage attempts to merge only the specified
 	packages and ignores any dependencies.  If you do not have the 
 	appropriate dependencies already installed then compilation may
