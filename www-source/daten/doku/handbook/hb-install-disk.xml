@@ -3,11 +3,11 @@
 
 <!-- English CVS Version: 1.27 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.9 2003/12/21 14:02:50 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.10 2003/12/23 10:11:46 dertobi123 Exp $ -->
 
 <sections>
 <section>
-<title>Einfühung in Block Devices</title>
+<title>Einführung in Block Devices</title>
 <subsection>
 <title>Block Devices</title>
 <body>
@@ -949,7 +949,7 @@ Sie wollen LVM benutzen. In diesem Fall sollten Sie zuerst
 </subsection>
 </section>
 <section>
-<title>>Benutzung von fdisk auf SPARC zur Partitionierung Ihrer Festplatte</title>
+<title>Benutzung von fdisk auf SPARC zur Partitionierung Ihrer Festplatte</title>
 <subsection>
 <body>
 

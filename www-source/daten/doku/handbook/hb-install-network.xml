@@ -1,7 +1,7 @@
 <!-- Der Inhalt dieses Dokuments unterliegt der CC-BY-SA Linzenz -->
 <!-- Nachzulesen unter: http://creativecommons.org/licenses/by-sa/1.0 --> 
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-network.xml,v 1.4 2003/12/21 15:10:58 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-network.xml,v 1.5 2003/12/23 10:11:46 dertobi123 Exp $ -->
 
 <!-- English CVS Version: 1.15  -->
 
@@ -69,7 +69,6 @@ Konfiguration Ihrer Netzwerkkarte.
 
 </body>
 </subsection>
-
 <subsection>
 <title>Optional: Proxy Konfiguration</title>
 <body>
@@ -116,9 +115,6 @@ als Benutzer "john" mit dem Passwort "foobar" anzumelden:
 
 </body>
 </subsection>
-</section>
-
-<section>
 <subsection>
 <title>Verbinden mit dem Netzwerk bei anderen Installationsmedien</title>
 <body>
