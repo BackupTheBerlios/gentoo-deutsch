@@ -74,28 +74,6 @@
 
 
 <section>
-	<body>
-	<news type="other" date="12.10.2003" title="Gentoo went Practical-Linux">
-
-		<p>
-			Wir waren auf den <b>Pracical Linux-Tag 2003 am 11.10.2003 in Gießen (Mittelhessen) eingeladen</b>
-		</p>
-		<p>
-			<uriimg uri="http://www.practical-linux.de/" picuri="http://www.gentoo.de/media/bilder/icons/pl_logo.gif" align="center"/>
-		</p>
-		<p>
-			Neben Projekten wie Debian, KDE und Gnome haben auch wir uns am vergangenen Samstag präsentiert, vorgestellt und 
-			Gentoo CDs für verschiedenste Architekturen verteilt. 
-			Benjamin 'beejay' Judas hielt einen gut besuchten Vortrag über Gentoo Linux, dessen Script als
-			<uri link="http://www.judas-merlau.de/gentoo2.swf" target="_blank">Flash-Datei (72kb)</uri> oder als
-			<uri link="http://www.judas-merlau.de/gentoo2.pdf" target="_blank">PDF (223kb)</uri> zum Herunterladen verfügbar ist.
-			Einen ausführlicheren Bericht über Gentoo auf dem Practical Linux-Tag finden Sie im nächsten Gentoo Weekly Newsletter.
-		</p>
-	</news>
-	</body>
-</section>
-
-<section>
 	<title>Information</title>
 	<body>
 	<p>
