@@ -244,14 +244,118 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	<tr><ti><c>econf</c></ti><ti>Führt <c>./configure</c>mit den notwendigen Pfadänderungen (Prefix,host, mandir, infodir, datadir, 
 	sysconfdir, localstatedir) durch. Optionale Argumente für <c>./configure</c>können gesetzt werden.</ti></tr>
 	<tr><ti><c>einstall</c></ti><ti>Führt ein <c>make install</c> durch, sodass Portage weiss, wohin die Dateien installiert werden.</ti></tr>
-	<tr><ti><c>die</c></ti><ti>Kann verwendet werden, um den Benutzer über wichtige Dinge zu informieren. Das Argument das an <c>einfo</c> 
+	<tr><ti><c>die</c></ti><ti>Bricht den aktuellen Prozess ab. Das übergebene Argument wird dem Benutzer als Nachricht dargestellt.</ti></tr>
+	<tr><ti><c>einfo</c></ti><ti>Kann verwendet werden, um den Benutzer über wichtige Dinge zu informieren. Das Argument das an <c>einfo</c> 
 	übergeben wird, ist die Nachricht, die der Benutzer erhält.</ti></tr>
-	<tr><ti><c>einfo</c></ti><ti>..</ti></tr>
 	</table>
-</body>
+        </body>
 </section>
+<section>
+	<title>Regeln zum Schreiben eines ebuilds</title>
+	<body><p>Da ebuilds in Wirklichkeit nur aus einfachen Shell Skripten bestehen, sollte der zu bearbeitende Editor auf diesen Modus eingestellt
+	werden. Korrektes Einrücken sollte beachtet werden, nur Tab-Sprünge und keine Leerzeichen. Am besten den Editor so einstellen, dass die
+	Tabulatorsprünge alle vier Leerzeichen gesetzt sind. Die Klammern um die Umgebungsvariablen sollten nicht vergessen werden; d.h. <c>${P}</c>
+	anstatt nur <c>$P</c>.</p>
 
+	<p> Längere Zeilen sollten mit '\' umgebrochen werden:
+	<pre caption="Code Auflistung 2.1">
+	./configure \
+	--prefix=/usr || die "configure failed"</pre>
+	Für weitere Details kann man einen Blick in <i>skel.ebuild</i> werfen, dies befindet sich in /usr/portage.</p>
+	
+	<p>Bei der Benutzung von Vim kann folgender Code am Ende der .vimrc Datei eingetragen werden, damit sind automatisch alle Einstellungen
+	für Gentoo-Dokumente gesetzt.
+	<pre caption="Code Auflistung 2.2">
+	if (getcwd() =~ 'gentoo-x86\|gentoo-src\|portage')
+	set tabstop=4 shiftwidth=4 noexpandtab
+	endif</pre>
+	</p>
 
+	<p>Bei der Benutzung von emacs kann in das .emacsrc (GNU Emacs) oder in die init.el (XEmacs) eingetragen werden.
+  	<pre caption="Code Auflistung 2.3">
+	(defun ebuild-mode ()
+  	(shell-script-mode)
+	  (sh-set-shell "bash")
+	  (make-local-variable 'tab-width)
+	  (setq tab-width 4))
+	(setq auto-mode-alist (cons '("\\.ebuild\\'" . ebuild-mode) auto-mode-alist))
+	(setq auto-mode-alist (cons '("\\.eclass\\'" . ebuild-mode) auto-mode-alist))</pre></p>
+	</body>
+</section>
+<section>
+	<title>Die USE Variablen</title>
+	<body><p>Die USE-Variablen dienen dem Zweck, Portage global zu konfigurieren und automatisch bestimmte Kompilierungsoptionen an- oder abzuschalten.
+	Hier ist ein Beispiel. Wir gehen nun davon aus, dass Sie ein GNOME-Fan sind, und jedes ebuild, welches eine optionale GNOME Unterstützung anbietet, soll 
+   	dies automatisch miteinkompilieren. In diesem Fall fürgen wir <c>gnome</c> in die USE variable von <i>/etc/make.conf</i> hinzu und Portage berücksichgt dies
+	bei jeder Kompilierung eines Paketes mit GNOME Unterstützung. Im umgekehrten Fall, wenn optinale GNOME Funktionen nicht gewünscht sind, editiert man
+	/etc/make.conf und stellt sicher, dass <c>gnome</c> in der USE Variable nicht gesetzt ist. Gentoo Linux besitzt eine Überwältigende Anzahl von USE Optionen,
+	die es Ihnen erlauben, das System genau so zu konfigurieren, wie Sie es haben möchten.</p>
+
+	<p><note> Wenn eine USE Variable deaktiviert ist (hier im Beispiel <c>gnome</c>) wirk sich dies nur auf die <i>optinalen</i> Kompilierungsoptionen aus. Wenn 
+	Sie jedoch ein ebuild <c>emergen</c>, welches auf ein GNOME Paket angewiesen ist, wird GNOME automatisch als eine Abhängigkeit hiervon mitinstalliert,
+	falls es nicht bereits erfolgt ist. Das ist auch der Grund, weshalb man vor dem eigentlichen <c>emerge</c> ein <c>emerge --pretend</c> ausführen sollte. In
+	so einem Fall wissen Sie bereits vorher bescheid, was alles auf Ihrem System installiert wird.</note></p>
+
+	<p>In Ihren eigenen ebuilds kann mit Hilfe der USE Variable geprüft werden, ob die entsprechende Variable vom Besitzer der Installation bereits gesetzt ist. Das 
+	<c>use</c> Kommando gibt den Namen jeder Variable zurück, die USE und seiner Befehlszeile präsent ist. Der Befehl wird normalerweise so angewendet:</p>
+	
+	<p><c>if [ "`use X`" ]; then commands; fi</c></p>
+
+	<p>USE Variablen können auch dazu verwendet werden, bestimmte Abhängigkeiten zu setzen. In unserem Beispiel wollen wir ein bestimmtes Paket nur
+	dann als erforderlich markieren, wenn eine bestimmte USE Variable gesetzt ist. Dies kann mit folgender Syntax durchgeführt werden: <c>variable? 
+	(mycat/mypackage-1.0-r1)</c> in der DEPEND Zeile Ihres ebuilds. In diesem Fall wird <c>mycat/mypackage-1.0-r1</c> nur dann erforderlich, wenn
+	die entsprechende Variable in den USE vorhanden ist. Umgekehrt ist es auch möglich, festzulegen, welche weitere Abhängigkeit verwendet werden soll, wenn
+	eine USE-Flag <i>nicht</i> gesetzt ist: <c> variable? (mycat/mypackage-1.0-r1) : (othercat/otherpackage-1.0-r5)</c>. In diesem Fall wird dann das
+	Paket <c>othercat/otherpackage-1.0-r5</c> anstatt von <c>mycat/mypackage-1.0-r1</c> installiert. Soll ein Abhängigkeit nur dann installiert werden,
+	wenn die Variable nicht vorhanden ist, verwendet man <c>!variable? (mycat/mypackage-1.0-r1)</c>. Es sollte sichergestellt werden, dass nur die oben
+	genannte Syntax verwendet wird und nicht die Bash eigene "ifs". Bash Bedingungen stören Portages Abhängigkeits-Cache, sodass die Verwendung dieser
+	zu einem funktionsunfähigem ebuild führen wird.</p>
+
+	<p>Hier noch ein wichtiger Tipp zur Verwendung von <c>USE</c>. In dem meisten Fällen besitzt das Paket bereits ein <c>./configure</c> Skript um 
+	das Paket zu konfigurieren. Optionale Bestandteile werden durch Übergabe bestimmer Argumente zur Laufzeit mitkompiliert. Zur Übergabe der USE-Flags
+	an das Konfikurationsskript geht man am besten wie folgt vor: Zunächst sollte herausgefunden werden, ob eine bestimmte <c>./configure</c> Option
+	standardmässig ein- oder abgeschaltet ist.</p>
+
+	<pre caption="Code Auflistung 2.4"> 
+	DEPEND="X? ( >=x11-base/xfree-4.3 )
+	        mysql? ( >=dev-db/mysql-3.23.49 )
+	        apache2? ( >=net-www/apache-2 ) : ( =net-www/apache-1.* )"
+
+	src_compile() {
+    		local myconf
+		use X || myconf="--disable-x11"
+		use mysql || myconf="${myconf} --disable-mysql"
+
+	    ./configure ${myconf} --prefix=/usr --host=${CHOST} || die
+	    emake || die
+	}
+	</pre>
+
+	<p>Im obigen Beispiel prüfen wir, ob die X und mysql USE Variablen abgeschaltet sind. Der Abschnitt <c>use X ||</c> kontrolliert, ob X in der USE Variable
+	vorhanden ist. Ist dies nicht der Fall, so übergibt er das Argument <c>myconf="--disable-x11"</c> an das Konfigurationsskript. Es ist nicht notwendig X11
+	und mysql explizit zu aktivieren, da diese standardmässig bereits eingeschaltet sind. Wenn jedoch eine bestimmte Option standardmässig abgeschaltet ist
+	kann man wie folgt vorgehen:</p>
+
+	<pre caption="Code Auflistung 2.5"> 
+	DEPEND="X? ( >=x11-base/xfree-4.3 )
+	        mysql? ( >=dev-db/mysql-3.23.49 )"
+
+	src_compile() {
+	    local myconf
+	    use X &gt;&gt; myconf="--enable-x11"
+	    use mysql &gt;&gt; myconf="${myconf} --enable-mysql"
+	
+	    ./configure ${myconf} --prefix=/usr --host=${CHOST} || die
+	    emake || die
+	}
+	</pre>
+	
+	<p>In diesem Beispiel werden X11 und MySQL-Unterstützung nur dann explizit aktiviert, wenn die entsprechende USE Variable vorhanden ist. Der Abschnitt
+	<c>use mysql &gt;&gt;</c> prüft, ob mysql in der USE-Flag gesetzt ist, und übergibt dann <c> myconf="${myconf} --enable-mysql"</c>.</p>
+
+	<p>Eine kontnuierlich aktualisierte Liste aller USE Variablen fidnet mann <uri link="http://www.gentoo.org/dyn/use-index.xml">hier</uri>.
+       </p></body>
+ </section>
 </chapter>
 
 </guide>
