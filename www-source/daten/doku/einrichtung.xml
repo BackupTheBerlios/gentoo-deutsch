@@ -21,8 +21,9 @@ Hier finden Sie ien Übersicht unsere Dokumentationen
 <p>
 <uri link="alternativ/index.html">Alternative Installtion</uri><br/>
 <uri link="desktop/index.html">Desktop Einrichtung</uri><br/>
-<uri link="installation/index.html">Installtion Gentoo 1.2</uri><br/>
-<uri link="installation14rc4/index.html">Installtion Gentoo 1.4rc4</uri><br/>
+<uri link="installation/index.html">Installtion Gentoo 1.2</uri> (veraltet)<br/>
+<uri link="installation14rc4/index.html">Installtion Gentoo 1.4rc4</uri> (veraltet)<br/>
+<uri link="installation14/index.html">Installation Gentoo 1.4</uri><br/>
 <uri link="lokalisierung/index.html">Lokalisierung</uri><br/>
 <uri link="gentoo-kernel/index.html">Kernel Leitfaden</uri><br/>
 </p>
