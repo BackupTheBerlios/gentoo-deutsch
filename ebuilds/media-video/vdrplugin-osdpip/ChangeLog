@@ -1,0 +1,16 @@
+# ChangeLog for media-video/vdr-clock
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdpip/ChangeLog,v 1.1 2004/01/04 20:00:26 fow0ryl Exp $
+
+*vdrplugin-mailbox-0.1.4 (26 Dez 2003)
+
+  26 Dez 2003; H.Ryll <henning.ryll@web.de.de>
+  new plugin version
+
+*vdrplugin-mailbox-0.1.0 (07 Dez 2003)
+
+  09 Dez 2003; H.Ryll <henning.ryll@web.de.de>
+  dependency changed, linkage.c problem fixed
+
+  07 Dez 2003; H.Ryll <henning.ryll@web.de.de>
+  intial version of mailbox plugin
