@@ -1,0 +1,61 @@
+# /etc/conf.d/vdr:
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/confd.vdr-1.1.31,v 1.1 2003/05/12 18:53:05 mad Exp $
+
+# Global config file for vdr rc-scripts
+
+# activate the watchdog timer with a timeout of SEC
+# seconds (default: 0); '0' disables the watchdog
+#WATCHDOG="60"
+
+# send Dolby Digital audio to stdin of command CMD
+#AUDIO="" 
+
+# read config files from DIR (default is to read them
+# from the video directory)
+#CONFIG="/etc/vdr"
+
+# use only the given DVB device (NUM = 0, 1, 2...)
+# there may be several NUMs options (default: all DVB
+# devices will be used)
+#DEVICE=""
+
+# call CMD to shutdown the computer
+# SHUTDOWN="/usr/bin/vdrshutdown.sh"
+#SHUTDOWN=""
+
+# write the EPG data into the given FILE (default is
+# /video/epg.data); use '-E-' to disable this
+# if FILE is a directory, the default EPG file will be
+# created in that directory
+#EPGFILE="/var/vdr/epg.data"
+
+# set log level (default: 3)
+# 0 = no logging, 1 = errors only,
+# 2 = errors and info, 3 = errors, info and debug
+# if logging should be done to LOG_LOCALn instead of
+# LOG_USER, add '.n' to LEVEL, as in 3.7 (n=0..7)
+#LOG="3"
+
+# use DIR as video directory (default: /video)
+# VIDEO="/media/video"
+#VIDEO=""
+
+# call CMD before and after a recording
+# RECORD="/usr/bin/vdrrecord.sh"
+#RECORD=""
+
+# use PORT for SVDRP (default: 2001)
+# 0 turns off SVDRP
+# PORT="2001"
+#PORT=""
+
+# search for plugins in DIR (default is ./PLUGINS/lib)
+#LIB="/usr/lib/vdr"
+
+# load a plugin defined by the given options
+# list all plugins you want to be loaded, seperated by space
+#PLUGINS=""
+
+# controlling tty
+#TERMINAL=""
+
