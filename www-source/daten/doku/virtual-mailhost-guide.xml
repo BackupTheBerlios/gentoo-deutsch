@@ -2,7 +2,7 @@
 
 <!-- English CVS Version: 1.23 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/virtual-mailhost-guide.xml,v 1.3 2004/02/03 22:08:59 noganex Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/virtual-mailhost-guide.xml,v 1.4 2004/02/03 22:43:54 noganex Exp $ -->
 
 <guide link=" /doc/en/virt-mail-howto.xml" >
 <title>Virtual Mailhosting System Guide</title>
@@ -48,6 +48,7 @@ XV. Troubleshooting
 
 <chapter>
 <title>Einführung</title>
+<section>
 <body>
 
 <p>
@@ -143,10 +144,12 @@ Abschnitt aus.
 </note>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Postfix Grundlagen</title>
+<section>
 <body>
 
 <pre caption="Postfix installieren" >
@@ -217,10 +220,12 @@ funktionieren bevor Sie überhaupt weitermachen.
 </note>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Courier-imap</title>
+<section>
 <body>
 
 <pre caption="Courier-imap installieren" >
@@ -257,10 +262,12 @@ kontrollieren Sie bitte, dass alles richtig arbeitet bevor Sie weitermachen.
 </p>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Cyrus-sasl</title>
+<section>
 <body>
 
 <p>
@@ -298,10 +305,12 @@ mech_list: LOGIN PLAIN
 </pre>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>SSL Zertifikate für Postfix und Apache</title>
+<section>
 <body>
 
 <p>
@@ -352,10 +361,12 @@ system (&quot;$REQ -new -nodes -keyout newreq.pem -out newreq.pem $DAYS&quot;);
 </pre>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>SSL und SASL Support an Postfix binden</title>
+<section>
 <body>
 
 <p>
@@ -435,10 +446,12 @@ File zu authentifizieren.
 </p>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>MySQL</title>
+<section>
 <body>
 
 <p>
@@ -511,10 +524,12 @@ id   email            destination
 </pre>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Apache und phpMyAdmin</title>
+<section>
 <body>
 
 <p>
@@ -601,10 +616,12 @@ angelegt haben. Das stellt sicher, dass ein .maildir angelegt wird.
 </p>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Der vmail User</title>
+<section>
 <body>
 
 <p>
@@ -628,10 +645,12 @@ reicht.
 </p>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>MySQL Authentifikation und Vhosts einstellen</title>
+<section>
 <body>
 
 <p>
@@ -839,10 +858,12 @@ sollten Sie den Troubleshooting Teil am Ende des HowTos lesen.
 </p>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Squirrelmail</title>
+<section>
 <body>
 
 <pre>
@@ -858,10 +879,12 @@ sollten Sie den Troubleshooting Teil am Ende des HowTos lesen.
 </pre>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Mailman</title>
+<section>
 <body>
 
 <p>
@@ -975,10 +998,12 @@ Erstellen und Verwalten von Listen zur erfahren.
 </p>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Inhalte filtern unnd Anti-Virus</title>
+<section>
 <body>
 
 <p>
@@ -988,10 +1013,12 @@ Wenn Sie ihm helfen wollen, dann schicken Sie ihm bitte eine Mail.
 </p>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
 <title>Die Arbeiten abschließen</title>
+<section>
 <body>
 
 <p>
@@ -1015,6 +1042,7 @@ aktiviert.
 </p>
 
 </body>
+</section>
 </chapter>
 
 <chapter>
