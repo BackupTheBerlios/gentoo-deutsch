@@ -1,0 +1,25 @@
+diff -u --recursive --new-file graphlcd-0.0.7/t6963.c graphlcd-0.0.7-patched/t6963.c
+--- graphlcd-0.0.7/t6963.c	2003-06-20 10:09:08.000000000 +0200
++++ graphlcd-0.0.7-patched/t6963.c	2003-11-26 22:33:06.000000000 +0100
+@@ -393,17 +393,17 @@
+   unsigned char status = port_in(T6963_CONTROL_PORT);       /* TODO: support multiple wirings! */
+ #ifdef WIRING_WINDOWS
+   if(wr == 1)         /* WR = HI */
+-    status &= 0xfb;
+-  else if(wr == 0)
+     status |= 0x04;
++  else if(wr == 0)
++    status &= 0xfb;
+   if(ce == 1)         /* CE = HI */
+     status &= 0xfe;
+   else if(ce == 0)
+     status |= 0x01;
+   if(cd == 1)         /* CD = HI */
+-    status |= 0x08;
+-  else if(cd == 0)
+     status &= 0xf7;
++  else if(cd == 0)
++    status |= 0x08;
+   if(rd == 1)         /* RD = HI */
+     status &= 0xfd;
+   else if(rd == 0)

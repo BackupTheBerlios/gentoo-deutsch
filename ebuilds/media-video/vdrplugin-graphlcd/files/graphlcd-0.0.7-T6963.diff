@@ -1,0 +1,38 @@
+*** t6963.c.org	Thu Nov 27 22:12:53 2003
+--- t6963.c	Thu Nov 27 22:22:57 2003
+***************
+*** 463,470 ****
+    LowSetControl(1, 1, 0, 1);        // CD down (data)
+    LowSetControl(0, 0, 0, 1);        // CE & WR down
+    port_out(T6963_DATA_PORT, data);  // present data
+!   LowSetControl(1, 1, 1, 1);        // all up again
+! }
+  
+  
+  void cGraphLCDDevice::LowCommand(byte cmd) {
+--- 463,470 ----
+    LowSetControl(1, 1, 0, 1);        // CD down (data)
+    LowSetControl(0, 0, 0, 1);        // CE & WR down
+    port_out(T6963_DATA_PORT, data);  // present data
+!   LowSetControl(1, 1, 0, 1);        // CE & WR up, CD down
+!   }
+
+  
+  void cGraphLCDDevice::LowCommand(byte cmd) {
+***************
+*** 473,479 ****
+    LowSetControl(1, 1, 1, 1);        // CD up (command)
+    LowSetControl(0, 0, 1, 1);        // CE & WR down
+    port_out(T6963_DATA_PORT, cmd);   // present data to LCD on PC's port pins
+!   LowSetControl(1, 1, 0, 1);        // CE & WR up, CD down
+  }
+  
+
+--- 473,479 ----
+    LowSetControl(1, 1, 1, 1);        // CD up (command)
+    LowSetControl(0, 0, 1, 1);        // CE & WR down
+    port_out(T6963_DATA_PORT, cmd);   // present data to LCD on PC's port pins
+!   LowSetControl(1, 1, 1, 1);        // all up again
+  }
+
+

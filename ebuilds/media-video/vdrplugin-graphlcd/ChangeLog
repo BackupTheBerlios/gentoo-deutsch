@@ -1,8 +1,11 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/ChangeLog,v 1.2 2003/11/09 09:39:59 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/ChangeLog,v 1.3 2003/11/27 21:42:53 fow0ryl Exp $
 
 *vdrplugin-graphlcd-0.0.7 (04 Nov 2003)
+
+  27 Nov 2003; H.Ryll <henning.ryll@web.de.de>
+  feegy and timing patch added, VDR_OPTS Changed from GLCD_ to LCD
 
   09 Nov 2003; H.Ryll <henning.ryll@web.de.de>
   suid bit added, to make vdr work als normal user

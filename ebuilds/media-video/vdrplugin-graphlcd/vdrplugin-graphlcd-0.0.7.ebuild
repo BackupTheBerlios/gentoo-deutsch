@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/vdrplugin-graphlcd-0.0.7.ebuild,v 1.2 2003/11/09 09:39:59 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/vdrplugin-graphlcd-0.0.7.ebuild,v 1.3 2003/11/27 21:42:53 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="graphlcd"
@@ -34,8 +34,20 @@ function vdr_opts {
 
 src_unpack() {
 	unpack ${A}
-#	einfo "apply timing patch ... "
-#	patch -p0 < ${FILESDIR}/vdrplugin-${VDRPLUGIN}.diff || die "timing patch problem"
+	cd ${S}
+
+	if vdr_opts LCD_T6963; then
+		epatch ${FILESDIR}/${VDRPLUGIN}-${PV}-T6963.diff || die "T6963 timing patch problem"
+		echo
+	fi
+
+	#
+	# Patch für LCDs von Feegy & LCD-Aktion
+	#
+	if vdr_opts LCD_FEEGY; then
+		epatch /${FILESDIR}/${VDRPLUGIN}-${PV}-feegy.diff || die "feegy patch problem"
+		echo
+	fi
 }
 
 src_compile() {
@@ -44,14 +56,19 @@ src_compile() {
 	sed -i "s/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/" Makefile
 	sed -i "s/^LIBDIR.*$/LIBDIR = \/usr\/lib/" Makefile
 
-	if vdr_opts GLCD_KS0108; then
+	if vdr_opts LCD_KS0108; then
 	   lcd=KS0108
-	elif vdr_opts GLCD_T6963; then
+	elif vdr_opts LCD_T6963; then
 	   lcd=T6963
-	elif vdr_opts GLCD_HD61830; then
+	elif vdr_opts LCD_HD61830; then
 	   lcd=HD61830
 	fi
-	GRAPHLCD_DRIVER=${lcd} make all || die "compile problem"
+
+	if vdr_opts LCD_WIN_WIRE; then
+	   wire=WINDOWS
+	fi
+
+	GRAPHLCD_DRIVER=${lcd} GRAPHLCD_WIRING=${wire} make all || die "compile problem"
 }
 
 src_install() {
