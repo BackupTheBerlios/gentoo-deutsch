@@ -3300,11 +3300,13 @@ In this case it runs once at 3pm. This is done since I do not want to disturb th
 </p>
 
 <p>
-Now there is some problems with storing the db files locally since the attacker will (If he knows that aide is installed) most certainly try to alter the db file, update the db file or modify <path>/usr/bin/aide</path>. So you should create a CD or other media and put a copy of the .db file and the aide binaries.
+Now there is some problems with storing the db files locally since the attacker will (If he knows that aide
+is installed) most certainly try to alter the db file, update the db file or modify <path>/usr/bin/aide</path>.
+So you should create a CD or other media and put a copy of the .db file and the aide binaries.
 </p>
 
 <p>
-More information can be found at <uri link="http://www.cs.tut.fi/~rammer/aide.html">aide's</uri> projectpage.
+Weitere Informationen gibt es auf <uri link="http://www.cs.tut.fi/~rammer/aide.html">der Prohektseite von aide</uri>.
 </p>
 
 </body>
@@ -3314,7 +3316,7 @@ More information can be found at <uri link="http://www.cs.tut.fi/~rammer/aide.ht
 <title>Snort</title>
 <body>
 
-<pre caption="Add a user snort to the system">
+<pre caption="Dem System einen Anwender hinzufügen">
 # user add snort -d /var/log/snort -s /dev/null
 # chown -R snort /var/log/snort
 </pre>
@@ -3329,7 +3331,7 @@ SNORT_OPTS="-D -s -u snort -dev -l $LOGDIR -h $NETWORK -c $CONF"
 </pre>
 
 <pre caption="/etc/snort/snort.conf">
-<codenote>Step 1</codenote>
+<codenote>Schritt 1</codenote>
 var HOME_NET 10.0.0.0/24
 var EXTERNAL_NET any
 var SMTP $HOME_NET
@@ -3338,7 +3340,7 @@ var SQL_SERVERS $HOME_NET
 var DNS_SERVERS [10.0.0.2/32,212.242.40.51/32]
 var RULE_PATH ./
 
-<codenote>Step 2</codenote>
+<codenote>Schritt 2</codenote>
 preprocessor frag2
 preprocessor stream4: detect_scans detect_state_problems detect_scans disable_evasion_alerts
 preprocessor stream4_reassemble: ports all
@@ -3347,10 +3349,10 @@ preprocessor rpc_decode: 111 32771
 preprocessor bo: -nobrute
 preprocessor telnet_decode
 
-<codenote>Step 3</codenote>
+<codenote>Schritt 3</codenote>
 include classification.config
 
-<codenote>Step 4</codenote>
+<codenote>Schritt 4</codenote>
 include $RULE_PATH/bad-traffic.rules
 include $RULE_PATH/exploit.rules
 include $RULE_PATH/scan.rules
@@ -3425,7 +3427,7 @@ config classification: kickass-porn,SCORE! Get the lotion!,1
 </pre>
 
 <p>
-More information can be found at <uri link="http://www.snort.org">Snorts</uri> website.
+Weitere Informationen gibt es auf der <uri link="http://www.snort.org">Snorts</uri> Webseite.
 </p>
 
 </body>
@@ -3478,9 +3480,6 @@ Version 0.2 -> 0.4
   </tr>
   <tr>
     <ti>Wo kann ich die neueste Version dieses Leitfadens finden ?</ti>
-	<ti>The lastest version should be available on <uri>http://gentoo.org</uri> and the development
-	version at <uri>http://gentoo.insecurity.dk</uri></ti>
-
 	<ti>Die neueste Version sollte auf <uri>http://gentoo.org</uri> und die Arbeitsversion auf <uri>http://gentoo.insecurity.dk</uri>
 	verfügbar sein.</ti>
   </tr>
