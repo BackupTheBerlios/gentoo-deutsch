@@ -1,6 +1,6 @@
-diff -Nru vdr-1.2.5/Makefile vdr-1.2.5.mad/Makefile
---- vdr-1.2.5/Makefile	2003-08-09 13:09:45.000000000 +0200
-+++ vdr-1.2.5.mad/Makefile	2003-09-21 18:47:06.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/Makefile vdr-1.2.6/work/vdr-1.2.6/Makefile
+--- Original-vdr-1.2.6/work/vdr-1.2.6/Makefile	2003-12-13 16:05:18.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/Makefile	2003-12-13 16:08:31.000000000 +0100
 @@ -14,23 +14,18 @@
  CXX      ?= g++
  CXXFLAGS ?= -g -O2 -Wall -Woverloaded-virtual
@@ -29,7 +29,7 @@ diff -Nru vdr-1.2.5/Makefile vdr-1.2.5.mad/Makefile
  DTVLIB   = $(DTVDIR)/libdtv.a
  
  OBJS = audio.o channels.o ci.o config.o cutter.o device.o diseqc.o dvbdevice.o dvbosd.o\
-@@ -121,13 +116,15 @@
+@@ -135,13 +130,15 @@
  # Install the files:
  
  install:
@@ -52,9 +52,9 @@ diff -Nru vdr-1.2.5/Makefile vdr-1.2.5.mad/Makefile
  
  # Source documentation:
  
-diff -Nru vdr-1.2.5/PLUGINS/src/hello/Makefile vdr-1.2.5.mad/PLUGINS/src/hello/Makefile
---- vdr-1.2.5/PLUGINS/src/hello/Makefile	2002-12-13 15:54:14.000000000 +0100
-+++ vdr-1.2.5.mad/PLUGINS/src/hello/Makefile	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/Makefile vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/Makefile
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/Makefile	2003-12-13 16:05:18.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/Makefile	2003-12-13 16:08:31.000000000 +0100
 @@ -40,7 +40,7 @@
  
  ### Includes and Defines (add further entries here):
@@ -63,8 +63,8 @@ diff -Nru vdr-1.2.5/PLUGINS/src/hello/Makefile vdr-1.2.5.mad/PLUGINS/src/hello/M
 +INCLUDES += -I$(VDRDIR) -I$(DVBDIR)/include
  
  DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
- 
-@@ -68,7 +68,6 @@
+ DEFINES += -D_GNU_SOURCE
+@@ -69,7 +69,6 @@
  
  libvdr-$(PLUGIN).so: $(OBJS)
  	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
@@ -72,9 +72,9 @@ diff -Nru vdr-1.2.5/PLUGINS/src/hello/Makefile vdr-1.2.5.mad/PLUGINS/src/hello/M
  
  dist: clean
  	@-rm -rf $(TMPDIR)/$(ARCHIVE)
-diff -Nru vdr-1.2.5/PLUGINS/src/hello/hello.c vdr-1.2.5.mad/PLUGINS/src/hello/hello.c
---- vdr-1.2.5/PLUGINS/src/hello/hello.c	2002-12-13 16:01:43.000000000 +0100
-+++ vdr-1.2.5.mad/PLUGINS/src/hello/hello.c	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/hello.c vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/hello.c
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/hello.c	2002-12-13 16:01:43.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/hello.c	2003-12-13 16:08:31.000000000 +0100
 @@ -8,8 +8,8 @@
  
  #include <getopt.h>
@@ -86,9 +86,9 @@ diff -Nru vdr-1.2.5/PLUGINS/src/hello/hello.c vdr-1.2.5.mad/PLUGINS/src/hello/he
  #include "i18n.h"
  
  static const char *VERSION        = "0.1.0";
-diff -Nru vdr-1.2.5/PLUGINS/src/hello/i18n.h vdr-1.2.5.mad/PLUGINS/src/hello/i18n.h
---- vdr-1.2.5/PLUGINS/src/hello/i18n.h	2002-05-11 16:48:16.000000000 +0200
-+++ vdr-1.2.5.mad/PLUGINS/src/hello/i18n.h	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/i18n.h vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/i18n.h
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/i18n.h	2002-05-11 16:48:16.000000000 +0200
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/hello/i18n.h	2003-12-13 16:08:31.000000000 +0100
 @@ -9,7 +9,7 @@
  #ifndef _I18N__H
  #define _I18N__H
@@ -98,9 +98,9 @@ diff -Nru vdr-1.2.5/PLUGINS/src/hello/i18n.h vdr-1.2.5.mad/PLUGINS/src/hello/i18
  
  extern const tI18nPhrase Phrases[];
  
-diff -Nru vdr-1.2.5/PLUGINS/src/osddemo/Makefile vdr-1.2.5.mad/PLUGINS/src/osddemo/Makefile
---- vdr-1.2.5/PLUGINS/src/osddemo/Makefile	2002-12-13 15:54:29.000000000 +0100
-+++ vdr-1.2.5.mad/PLUGINS/src/osddemo/Makefile	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/osddemo/Makefile vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/osddemo/Makefile
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/osddemo/Makefile	2003-12-13 16:05:18.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/osddemo/Makefile	2003-12-13 16:08:31.000000000 +0100
 @@ -40,7 +40,7 @@
  
  ### Includes and Defines (add further entries here):
@@ -109,8 +109,8 @@ diff -Nru vdr-1.2.5/PLUGINS/src/osddemo/Makefile vdr-1.2.5.mad/PLUGINS/src/osdde
 +INCLUDES += -I$(VDRDIR) -I$(DVBDIR)/include
  
  DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
- 
-@@ -68,7 +68,6 @@
+ DEFINES += -D_GNU_SOURCE
+@@ -69,7 +69,6 @@
  
  libvdr-$(PLUGIN).so: $(OBJS)
  	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
@@ -118,11 +118,11 @@ diff -Nru vdr-1.2.5/PLUGINS/src/osddemo/Makefile vdr-1.2.5.mad/PLUGINS/src/osdde
  
  dist: clean
  	@-rm -rf $(TMPDIR)/$(ARCHIVE)
-diff -Nru vdr-1.2.5/PLUGINS/src/osddemo/osddemo.c vdr-1.2.5.mad/PLUGINS/src/osddemo/osddemo.c
---- vdr-1.2.5/PLUGINS/src/osddemo/osddemo.c	2002-12-13 16:02:01.000000000 +0100
-+++ vdr-1.2.5.mad/PLUGINS/src/osddemo/osddemo.c	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/osddemo/osddemo.c vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/osddemo/osddemo.c
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/osddemo/osddemo.c	2002-12-13 16:02:01.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/osddemo/osddemo.c	2003-12-13 16:08:31.000000000 +0100
 @@ -6,7 +6,7 @@
-  * $Id: vdr-1.2.6-gentoo.diff,v 1.1 2003/11/16 10:36:04 fow0ryl Exp $
+  * $Id: vdr-1.2.6-gentoo.diff,v 1.2 2003/12/13 15:39:13 fow0ryl Exp $
   */
  
 -#include <vdr/plugin.h>
@@ -130,9 +130,9 @@ diff -Nru vdr-1.2.5/PLUGINS/src/osddemo/osddemo.c vdr-1.2.5.mad/PLUGINS/src/osdd
  
  static const char *VERSION        = "0.1.0";
  static const char *DESCRIPTION    = "Demo of arbitrary OSD setup";
-diff -Nru vdr-1.2.5/PLUGINS/src/sky/Makefile vdr-1.2.5.mad/PLUGINS/src/sky/Makefile
---- vdr-1.2.5/PLUGINS/src/sky/Makefile	2002-12-13 15:54:24.000000000 +0100
-+++ vdr-1.2.5.mad/PLUGINS/src/sky/Makefile	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/sky/Makefile vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/sky/Makefile
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/sky/Makefile	2003-12-13 16:05:18.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/sky/Makefile	2003-12-13 16:08:31.000000000 +0100
 @@ -40,7 +40,7 @@
  
  ### Includes and Defines (add further entries here):
@@ -141,8 +141,8 @@ diff -Nru vdr-1.2.5/PLUGINS/src/sky/Makefile vdr-1.2.5.mad/PLUGINS/src/sky/Makef
 +INCLUDES += -I$(VDRDIR) -I$(DVBDIR)/include
  
  DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
- 
-@@ -68,7 +68,6 @@
+ DEFINES += -D_GNU_SOURCE
+@@ -69,7 +69,6 @@
  
  libvdr-$(PLUGIN).so: $(OBJS)
  	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
@@ -150,9 +150,9 @@ diff -Nru vdr-1.2.5/PLUGINS/src/sky/Makefile vdr-1.2.5.mad/PLUGINS/src/sky/Makef
  
  dist: clean
  	@-rm -rf $(TMPDIR)/$(ARCHIVE)
-diff -Nru vdr-1.2.5/PLUGINS/src/sky/sky.c vdr-1.2.5.mad/PLUGINS/src/sky/sky.c
---- vdr-1.2.5/PLUGINS/src/sky/sky.c	2003-05-09 17:27:16.000000000 +0200
-+++ vdr-1.2.5.mad/PLUGINS/src/sky/sky.c	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/sky/sky.c vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/sky/sky.c
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/sky/sky.c	2003-05-09 17:27:16.000000000 +0200
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/sky/sky.c	2003-12-13 16:08:31.000000000 +0100
 @@ -11,8 +11,8 @@
  #include <sys/time.h>
  #include <sys/un.h>
@@ -164,9 +164,9 @@ diff -Nru vdr-1.2.5/PLUGINS/src/sky/sky.c vdr-1.2.5.mad/PLUGINS/src/sky/sky.c
  
  static const char *VERSION        = "0.1.1";
  static const char *DESCRIPTION    = "Sky Digibox interface";
-diff -Nru vdr-1.2.5/PLUGINS/src/status/Makefile vdr-1.2.5.mad/PLUGINS/src/status/Makefile
---- vdr-1.2.5/PLUGINS/src/status/Makefile	2002-12-13 15:54:19.000000000 +0100
-+++ vdr-1.2.5.mad/PLUGINS/src/status/Makefile	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/status/Makefile vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/status/Makefile
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/status/Makefile	2003-12-13 16:05:18.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/status/Makefile	2003-12-13 16:08:31.000000000 +0100
 @@ -40,7 +40,7 @@
  
  ### Includes and Defines (add further entries here):
@@ -175,12 +175,12 @@ diff -Nru vdr-1.2.5/PLUGINS/src/status/Makefile vdr-1.2.5.mad/PLUGINS/src/status
 +INCLUDES += -I$(VDRDIR) -I$(DVBDIR)/include
  
  DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
- 
-diff -Nru vdr-1.2.5/PLUGINS/src/status/status.c vdr-1.2.5.mad/PLUGINS/src/status/status.c
---- vdr-1.2.5/PLUGINS/src/status/status.c	2002-12-13 16:01:53.000000000 +0100
-+++ vdr-1.2.5.mad/PLUGINS/src/status/status.c	2003-09-21 18:40:19.000000000 +0200
+ DEFINES += -D_GNU_SOURCE
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/status/status.c vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/status/status.c
+--- Original-vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/status/status.c	2002-12-13 16:01:53.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/PLUGINS/src/status/status.c	2003-12-13 16:08:31.000000000 +0100
 @@ -6,8 +6,8 @@
-  * $Id: vdr-1.2.6-gentoo.diff,v 1.1 2003/11/16 10:36:04 fow0ryl Exp $
+  * $Id: vdr-1.2.6-gentoo.diff,v 1.2 2003/12/13 15:39:13 fow0ryl Exp $
   */
  
 -#include <vdr/plugin.h>
@@ -190,9 +190,9 @@ diff -Nru vdr-1.2.5/PLUGINS/src/status/status.c vdr-1.2.5.mad/PLUGINS/src/status
  
  static const char *VERSION        = "0.1.0";
  static const char *DESCRIPTION    = "Status monitor test";
-diff -Nru vdr-1.2.5/plugin.c vdr-1.2.5.mad/plugin.c
---- vdr-1.2.5/plugin.c	2003-08-30 16:52:58.000000000 +0200
-+++ vdr-1.2.5.mad/plugin.c	2003-09-21 18:40:19.000000000 +0200
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/plugin.c vdr-1.2.6/work/vdr-1.2.6/plugin.c
+--- Original-vdr-1.2.6/work/vdr-1.2.6/plugin.c	2003-08-30 16:52:58.000000000 +0200
++++ vdr-1.2.6/work/vdr-1.2.6/plugin.c	2003-12-13 16:08:31.000000000 +0100
 @@ -16,7 +16,7 @@
  #include "config.h"
  
@@ -211,19 +211,16 @@ diff -Nru vdr-1.2.5/plugin.c vdr-1.2.5.mad/plugin.c
    dlls.Add(new cDll(buffer, Args));
    free(buffer);
    free(s);
-diff -Nru vdr-1.2.5/vdr.c vdr-1.2.5.mad/vdr.c
---- vdr-1.2.5/vdr.c	2003-09-14 11:36:54.000000000 +0200
-+++ vdr-1.2.5.mad/vdr.c	2003-09-21 18:40:19.000000000 +0200
-@@ -93,10 +93,11 @@
- #define DEFAULTSVDRPPORT 2001
- #define DEFAULTWATCHDOG     0 // seconds
- #define DEFAULTPLUGINDIR PLUGINDIR
-+#define DEFAULTCONFIGDIR "/etc/vdr"
+diff -Nru Original-vdr-1.2.6/work/vdr-1.2.6/vdr.c vdr-1.2.6/work/vdr-1.2.6/vdr.c
+--- Original-vdr-1.2.6/work/vdr-1.2.6/vdr.c	2003-12-13 16:05:18.000000000 +0100
++++ vdr-1.2.6/work/vdr-1.2.6/vdr.c	2003-12-13 16:08:31.000000000 +0100
+@@ -345,7 +345,8 @@
+   // Configuration data:
  
-   int SVDRPport = DEFAULTSVDRPPORT;
-   const char *AudioCommand = NULL;
--  const char *ConfigDirectory = NULL;
-+  const char *ConfigDirectory = DEFAULTCONFIGDIR;
-   bool DisplayHelp = false;
-   bool DisplayVersion = false;
-   bool DaemonMode = false;
+   if (!ConfigDirectory)
+-     ConfigDirectory = VideoDirectory;
++     ConfigDirectory = "/etc/vdr";
++//     ConfigDirectory = VideoDirectory;
+ 
+   cPlugin::SetConfigDirectory(ConfigDirectory);
+ 
