@@ -206,7 +206,7 @@ div#body h2 .nr{
 }
 
 table{
-	font-size:0.85em;
+	font-size:medium;
 	border:1px solid #45347B;
 	margin-top:0.8em;
 	margin-bottom:0.8em
@@ -229,17 +229,17 @@ table.resultlist tr{
 }
 
 table.resultlist td.title{
-	font-size: 1.1em;
+	font-size: medium;
 	font-weight: bold;
         background-color:#45347B;
-	color: #FFFFFF;  
+	color: #FFFFFF;
 }
 
 table.resultlist td.details{
-	width: 35%; 
-        max-width: 70px; 
+	width: 35%;
+        max-width: 70px;
         border: 1px dotted #45347B;
-        border-top: 0 none; 
+        border-top: 0 none;
         border-right: 3px solid #45347B;
 }
 
@@ -351,7 +351,7 @@ div.codetitle{
 	background-color:#45347B;
 	color:#F2F0F9;
 	padding:0.3em 0.5em 0.3em 0.5em;
-	font-size:0.85em;
+	font-size:medium;
 	margin-bottom:0px
 }
 
@@ -361,7 +361,7 @@ pre{
 	border-left:0px none;
 	border-right:0px none;
 	padding:0.3em 0.5em 0.3em 0.5em;
-	font-size:0.85em;
+	font-size:small;
 	font-family:"Courier New",Courier,monospace;
 	margin-top:0px
 }
