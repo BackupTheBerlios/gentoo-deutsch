@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.10 -->
+<!-- English CVS Version: 1.11 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-finalise.xml,v 1.6 2003/12/12 21:11:44 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-finalise.xml,v 1.7 2003/12/21 14:21:00 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -19,6 +19,15 @@ Befehl gesetzt werden:
 
 <pre caption="Setzen des Passwortes für root">
 # <i>passwd</i>
+</pre>
+
+<p>
+Wenn Sie ermöglichen möchten, dass sich root über eine Serielle Konsole anmelden
+kann, fügen Sie <c>ttyS0</c> in <path>/etc/securetty</path> ein.
+</p>
+
+<pre caption="Hinzufügen von ttyS0 in /etc/securetty">
+# <i>echo "ttyS0" &gt;&gt; /etc/securetty</i>
 </pre>
 
 </body>
@@ -88,10 +97,13 @@ Gentoo System gebootet wird.
 <p>
 OldWorld PPC Benutzer werden zunächst in MacOS booten, da ihr Bootloader noch
 nicht installiert ist. Diese Benutzer sollten den Punkt <uri
-link="#doc_chap2_sect2">Optional: Konfiguration von BootX</uri> lesen. GRP
-Benutzer können mit Punkt <uri link="#doc_chap2_sect3">Optional: Installation
-von weiteren Paketen</uri> weiterfahren, alle anderen springen gleich zum
-nächsten Kapitel <uri link="?part=1&amp;chap=12">Wie geht es weiter?</uri>.
+link="#doc_chap2_sect2">Optional: Konfiguration von BootX</uri> lesen. MIPS
+Benutzer müssen mit noch ihr MIPS PROM anpassen, um Gentoo booten zu können.
+Diese Benutzer sollten <uri link="#doc_chap3_sect2">Optional: Gentoo/MIPS
+einrichten"</uri>. GRP Benutzer können mit Punkt <uri link="#doc_chap2_sect4">
+Optional: Installation von weiteren Paketen</uri> weiterfahren, alle anderen
+springen gleich zum nächsten Kapitel <uri link="?part=1&amp;chap=12">Wie geht
+es weiter?</uri>.
 </p>
 
 </body>
@@ -123,9 +135,60 @@ link="http://penguinppc.org/projects/bootx/">BootX Homepage</uri> erhältlich.
 
 <p>
 GRP Benutzer können mit dem Punkt <uri
-link="#doc_chap2_sect3">Optional: Installation von weiteren
+link="#doc_chap2_sect4">Optional: Installation von weiteren
 Paketen</uri> forfahren, ansonsten gleich mit dem Kapitel
 <uri link="?part=1&amp;chap=12">Wie geht es weiter?</uri>.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Optional: Gentoo/MIPS einrichten</title>
+<body>
+
+<p>
+Nachdem Sie neu gestartet haben gehen Sie in das <e>System Maintenance Menu</e>
+und wählen <e>Enter Command Monitor</e> (<c>5</c>) aus. Wenn Sie Ihre neue
+Gentoo Installation testen möchten, geben Sie <c>boot -f &lt;kernel name&gt;</c>
+ein. Damit Ihr System immer die Gentoo Installation startet, müssen Sie einige
+Variablen im MIPS PROM setzen:
+</p>
+
+<pre caption="Konfiguration des PROM um Gentoo zu booten">
+1) Start System
+2) Install System Software
+3) Run Diagnostics
+4) Recover System
+5) Enter Command Monitor
+
+Option? <i>5</i>
+Command Monitor.  Type "exit" to return to the menu.
+
+<comment>(&lt;root device&gt; = Gentoo's root Partition, z.B. /dev/sda3)</comment>
+&gt;&gt; <i>setenv OSLoadPartition &lt;root device&gt;</i>
+
+<comment>(Um alle verfügbaren Kernel aufzulisten führen sie "ls" aus)</comment>
+&gt;&gt; <i>setenv OSLoader &lt;kernel name&gt;</i>
+&gt;&gt; <i>setenv OSLoadFilename &lt;kernel name&gt;</i>
+
+<comment>(Deklarieren Sie die Kernel Parameter)</comment>
+&gt;&gt; <i>setenv OSLoadOptions &lt;kernel parameters&gt;</i>
+
+<comment>(Geben Sie den Ort des Volume Header an)</comment>
+&gt;&gt; <i>setenv SystemPartition scsi(0)disk(1)rdisk(0)partition(8)</i>
+
+<comment>(Gentoo automatisch starten)</comment>
+&gt;&gt; <i>setenv AutoLoad Yes</i>
+
+<comment>(Setzen der Zeitzone)</comment>
+&gt;&gt; <i>setenv TimeZone EST5EDT</i>
+
+<comment>(Benutzen der seriellen Konsole, Benutzer von Grafikkarten sollten "g" anstelle von "d1" angeben)</comment>
+&gt;&gt; <i>setenv console d1</i>
+</pre>
+
+<p>
+Jetzt sind Sie soweit, um Gentoo zu geniessen.
 </p>
 
 </body>
