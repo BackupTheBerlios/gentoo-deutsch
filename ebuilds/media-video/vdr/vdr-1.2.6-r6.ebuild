@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r5.ebuild,v 1.4 2004/07/26 22:51:23 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r6.ebuild,v 1.1 2004/07/26 22:51:23 austriancoder Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -40,6 +40,9 @@ DEPEND="virtual/glibc
 		app-admin/fam
 		lirc? ( app-misc/lirc )
 		"
+
+# include functions from eutils
+inherit eutils
 
 #
 # function to implement a "local" use variable called VDR_OPTS
