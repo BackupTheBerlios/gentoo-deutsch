@@ -1,6 +1,10 @@
 # ChangeLog for media-video/vdr-mplayer
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.9 2004/08/01 16:38:25 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mplayer/ChangeLog,v 1.10 2004/08/12 18:21:37 austriancoder Exp $
+
+*vdrplugin-mplayer-0.9.3-r2
+  12. Aug 2004; Christian Gmeiner <christian at visual-page dot de>
+  a little fix for slave mode
 
 *vdrplugin-mplayer-0.9.3-r1
   1. Aug 2004; Christian Gmeiner <christian at visual-page dot de>
