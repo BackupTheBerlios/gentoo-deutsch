@@ -266,10 +266,10 @@ für eine bestimmte Plattform und eine Ankündigung von Änderungen in der Infra
 <title>[26. Mai 2003] Gentoo-Newsletter</title>
 <body>
 <p>
-Im heutigen GWN gibt es wichtige Nachrichten ber Probleme des
+Im heutigen GWN gibt es wichtige Nachrichten über Probleme des
 Oregon State Gentoo-Linux Mirror und eine Rekrutierungskampagne für
-GNOME-Entwickler. Desweiteren werden wir einige krzlich in den Medien
-erschienene Meldungen ber Gentoo-Linux Revue passieren lassen.
+GNOME-Entwickler. Desweiteren werden wir einige kürzlich in den Medien
+erschienenen Meldungen ber Gentoo-Linux Revue passieren lassen.
 <uri link="http://www.gentoo.org/news/de/gwn/20030526-newsletter.xml">Viel Spass beim Lesen</uri>
 </p>
 </body>
@@ -282,7 +282,7 @@ erschienene Meldungen ber Gentoo-Linux Revue passieren lassen.
 <body>
 <p>
 Der Gentoo Kernel Leitfaden wurde von uns übersetzt und ist nun auf Deutsch verfügbar.
-<uri link="http://www.gentoo.de/inhalte/doku/einrichtung/gentoo-kernel/">Hier knnt Ihr ihn lesen</uri>
+<uri link="http://www.gentoo.de/inhalte/doku/einrichtung/gentoo-kernel/">Hier könnt Ihr ihn lesen</uri>
 </p>
 </body>
 </section>
@@ -292,9 +292,9 @@ Der Gentoo Kernel Leitfaden wurde von uns übersetzt und ist nun auf Deutsch ver
 <title>[19. Mai 2003] Gentoo Newsletter</title>
 <body>
 <p>
-Zusätzliche News bezglich Gentoo Games und seine Beziehung zu Gentoo Linux bilden
+Zusätzliche News bezüglich Gentoo Games und seine Beziehung zu Gentoo Linux bilden
 diesmal das Hauptthema des Newsletters. Neuigkeiten und Bilder von der E3 sind auch darin enthalten.
-Natrlich gibts auch die Anwendergeschichten, einen deftigen Portage-Üerblick und all die ganzen anderen
+Natürlich gibts auch die Anwendergeschichten, einen deftigen Portage-Überblick und all die ganzen anderen
 Rubriken die auch sonst in diesem Newsletter vorkommen.
 <uri link="http://www.gentoo.org/news/de/gwn/20030519-newsletter.xml">Hier gehts zum Newsletter</uri>
 </p>
@@ -306,8 +306,8 @@ Rubriken die auch sonst in diesem Newsletter vorkommen.
 <title>[17. Mai 2003] Gentoo Games</title>
 <body>
 <p>
-Hiermit kndigen wir die Grndung von <uri link="http://www.gentoogames.com">Gentoo Games Inc.</uri>, einer Firma für Spieletechniken
-an deren Ziel es ist innovative Linuxbasierte Spieletechnologien fr die Öffentlichkeit anzubieten. Die Firma wurde in Zusammenarbeit mit
+Hiermit kündigen wir die Gründung von <uri link="http://www.gentoogames.com">Gentoo Games Inc.</uri>, einer Firma für Spieletechniken
+an deren Ziel es ist innovative Linuxbasierte Spieletechnologien für die Öffentlichkeit anzubieten. Die Firma wurde in Zusammenarbeit mit
 <uri link="http://supercomputerinc.com">Super Computer,Inc.</uri> gegründet.
 </p>
 </body>
@@ -318,7 +318,7 @@ an deren Ziel es ist innovative Linuxbasierte Spieletechnologien fr die Öffentl
 <body>
 <p>
 Zwei grosse Ankündigungen führen den dieswöchigen Newsletter an. Erstens wird Gentoo dank der neuen Partnerschaft mit
-<uri link="http://www.supercomputerinc.com">Super Computer Inc.</uri> bald für die AMD-Opteron-Plattform verfgbar sein.
+<uri link="http://www.supercomputerinc.com">Super Computer Inc.</uri> bald für die AMD-Opteron-Plattform verfügbar sein.
 Lest den Newsletter, um die zweite grosse Ankündigung zu Erfahren. Ausserdem gibt es noch zwei neue Rubriken im GWN: Anwendergeschichten
 und den Spruch der Woche. <uri link="http://www.gentoo.org/news/de/gwn/20030512-newsletter.xml">Hier gehts zum Newsletter</uri>
 </p>
@@ -330,7 +330,7 @@ und den Spruch der Woche. <uri link="http://www.gentoo.org/news/de/gwn/20030512-
 <title>[05. Mai 2003] Gentoo Newsletter</title>
 <body>
 <p>
-Der erste Mai-Newsletter enthält einige wichtige Verhaltensmassregeln zum Thema "emerge rsync" und und Neuigkeiten ber
+Der erste Mai-Newsletter enthält einige wichtige Verhaltensmassregeln zum Thema "emerge rsync" und und Neuigkeiten über
 kommende Features im nächsten 1.4 Release-Candidate. Diese Woche gibt es leider keinen Portage-Watch, man erholt sich vom
 Ausschau halten ;) <uri link="http://www.gentoo.org/news/en/gwn/20030505-newsletter.xml">Viel Spass beim Lesen! (momentan leider noch auf Englisch)</uri>
 </p>
@@ -343,7 +343,7 @@ Ausschau halten ;) <uri link="http://www.gentoo.org/news/en/gwn/20030505-newslet
 <body>
 <p>
 Der Gentoo vi-Guide wurde von uns auf Deutsch bersetzt und ist nun hier auf der Website
-verfügbar. <uri link="http://www.gentoo.de/inhalte/doku/anwendungen/vi-guide">Hier</uri> knnt Ihr ihn lesen.
+verfügbar. <uri link="http://www.gentoo.de/inhalte/doku/anwendungen/vi-guide">Hier</uri> könnt Ihr ihn lesen.
 </p>
 </body>
 </section>
@@ -352,14 +352,14 @@ verfügbar. <uri link="http://www.gentoo.de/inhalte/doku/anwendungen/vi-guide">H
 <title>[30. April 2003] Bootsplash HowTo</title>
 <body>
 <p>
-Ein britischer User hat in den Foren ein (unserer Meinung nach) erstklassiges HowTo verffentlicht.
+Ein britischer User hat in den Foren ein (unserer Meinung nach) erstklassiges HowTo veröffentlicht.
 In diesem HowTo geht es um die nachträgliche Einrichtung des auf dem Framebuffer basierenden Bootsplashs.
 Gemeint ist hier mit die Textkonsole im Grafikmodus und mit Hintergrundbild, die seit Gentoo-Linux 1.4rc4
 Bestandteil der Live-CD ist, und schon länger von anderen Distributionen bekannt ist. Neben dem HowTo bietet
 er auch noch zwei Tools an, mit denen sich z.B. ein Screenshot der Framebufferkonsole machen lässt, bzw.
 ein Gimp-Plugin, mit dem man spielend einfach Hintergrundbilder für Grub machen kann. Momentan gibt es den Guide
 leider nur in Englischer Sprache und in einer Art Wiki-Form in den Foren.
-<uri link="http://forums.gentoo.org/viewtopic.php?t=49036">Hier</uri> knnt Ihr den Guide lesen.
+<uri link="http://forums.gentoo.org/viewtopic.php?t=49036">Hier</uri> könnt Ihr den Guide lesen.
 </p>
 </body>
 </section>
@@ -378,19 +378,17 @@ Guide gibt es hier : <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/in
 
 </section>
 
-
 <section>
 <body>
 <news sort="news" date="28. April 2003" title="Gentoo Newsletter">
-	Der dieswöchige Newsletter bringt Neuigkeiten ber einen Vorschlag, wie das Management
-	der Ebuilds ab demnächst gestaltet werden knnte. Desweiteren gibt es Informationen
-	ber einige Änderungen bei den Mailinglisten, das wöchtentliche Entwicklerportrait
-	und eine Warnung ber ein frühes Release von Tcl/Tk.
+	Der dieswöchige Newsletter bringt Neuigkeiten über einen Vorschlag, wie das Management
+	der Ebuilds ab demnächst gestaltet werden könnte. Desweiteren gibt es Informationen
+	über einige Ãnderungen bei den Mailinglisten, das wöchtentliche Entwicklerportrait
+	und eine Warnung über ein frühes Release von Tcl/Tk.
 	<uri link="http://www.gentoo.org/news/de/gwn/20030428-newsletter.xml">Viel Spass beim Lesen!</uri>
 </news>
 </body>
 </section>
-
 
 <section>
 <body>
@@ -401,22 +399,20 @@ Guide gibt es hier : <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/in
 	weitestgehend selbsterklärend sein. Ihr findet die Karte <uri link="http://cybersystem.iq-computing.de/gentoo">hier</uri>
 </news>
 </body>
-
-
 </section>
 
 <section>
 <body>
 <news sort="release" date="14.04.2003" title="Gentoo-Linux-1.4rc4 veröffentlicht">
 Anfang der Woche wurde entschieden, daß die nächste Version von Gentoo-Linux 1.4 als
-Release-Candidate 4 an Stelle von Final veröffentlicht werden wrde. Die Verbesserungen
+Release-Candidate 4 an Stelle von Final veröffentlicht werden würde. Die Verbesserungen
 enthalten wesentlich bessere Hardware-Erkennung auf der Live-CD sowie weitreichende Updates
 bei einigen Paketen im Portage-Tree. Die Entscheidung einen weiteren Release-Candidate anstelle
-einer Final-Version zu verffentlichen wurde aus folgenden Grnden getroffen:
+einer Final-Version zu veröffentlichen wurde aus folgenden Gründen getroffen:
 <ul>
 	<li>
-	Es mssen noch Binärpakete die fr die Referenz-Plattform benötigt werden erstellt oder getestet werden.
-	Solange dies noch nicht geschehen ist, kann 1.4-Final nicht verffentlicht werden.
+	Es müsen noch Binärpakete die für die Referenz-Plattform benötigt werden erstellt oder getestet werden.
+	Solange dies noch nicht geschehen ist, kann 1.4-Final nicht veröffentlicht werden.
 	</li>
 	<li>Das momentan als Stable angesehene Baselayout basiert immernoch auf tmpfs. Von Anfang an war eines der Ziele von 1.4
 	war, diese Abhängigkeit zu eleminieren. Im Portage-Tree existiert eine maskierte Baselayout-Version, die dieses Problem löst,

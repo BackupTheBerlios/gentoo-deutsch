@@ -494,7 +494,8 @@
 
 				</td>
 				<td>
-					<xsl:value-of select="."/>
+					<xsl:apply-templates/>
+					<!-- <xsl:value-of select="."/> -->
 				</td>
 			</tr>
 		</table>
