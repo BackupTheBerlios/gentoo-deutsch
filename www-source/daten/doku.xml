@@ -69,11 +69,11 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 
         <p>Willkommen zur Gentoo Dokumentation.  Diese Seite wird Ihnen einen
         kurzen Überblick zur vorhandenen Gentoo Dokumentation liefern.</p>
-<!-->
+
         <p>Finden Sie Fehler in unserer Dokumentation oder haben Sie Vorschläge,
-        schicken sie eine Mail an das <mail link="gentoo-deutsch-dev@lists.berlios.de">
-        gentoo.de Team</mail>.</p>
--->
+        schicken sie eine Mail an das <mail link="gentoo-doc-de@gentoo.org">
+        Übersetzerteam</mail>.</p>
+
       </body>
     </section>
     <section>
@@ -102,7 +102,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
           die im deutschsrpachigen Teil des Forums häufiger gestellt
           werden.</li>
           <li>Zusätzlich gibt es noch die <b><uri
-          link="http://tobias.scherbaum.info/gentoo/faq"> "Dynamische
+          link="http://gentoo.diefleissigen.de"> "Dynamische
           FAQ"</uri></b> in der weitere Fragen aufgegriffen werden.</li>
         </ul>
 
