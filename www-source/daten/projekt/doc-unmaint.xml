@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/doc-unmaint.xml,v 1.1 2003/12/04 16:01:55 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/doc-unmaint.xml,v 1.2 2003/12/05 13:01:18 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/doc-unmaint/">
@@ -37,12 +37,12 @@ Entwicklerseite</uri>
   <tr>
   <ti>cvsup.xml</ti>
   </tr>
-  <tr>
+<!--  <tr>
   <ti>devfs-guide.xml</ti>
-  </tr>
-  <tr>
+  </tr>-->
+<!--  <tr>
   <ti>diskless-howto.xml</ti>
-  </tr>
+  </tr>-->
   <tr>
   <ti>eclass-howto.xml</ti>
   </tr>
@@ -64,9 +64,9 @@ Entwicklerseite</uri>
   <tr>
   <ti>ltsp.xml</ti>
   </tr>
-  <tr>
+<!--  <tr>
   <ti>lvm.xml</ti>
-  </tr>
+  </tr>-->
   <tr>
   <ti>management-structure.xml</ti>
   </tr>
