@@ -243,18 +243,19 @@ table.resultlist tr{
 	vertical-align: top;
 }
 
-table.resultlist td.rank{
-	font-size: 1.3em;
-	font-weight: bold;
-        background-color:#45347B;  
-	color: #FFFFFF;  
-}
-
 table.resultlist td.title{
 	font-size: 1.1em;
 	font-weight: bold;
         background-color:#45347B;
 	color: #FFFFFF;  
+}
+
+table.resultlist td.details{
+	width: 25%; 
+        max-width: 100px; 
+        border: 1px dotted #F2F0F9;
+        border-top: 0 none; 
+        border-right: 1px solid #45347B;
 }
 
 table.resultlist td.title a{

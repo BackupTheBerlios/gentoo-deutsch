@@ -19,7 +19,7 @@
         <td class="description" style="width: 75%">
           <![CDATA[<!--item: description-->]]>
         </td>
-        <td style="width: 25%; max-width: 100px; border: 1px dotted #F2F0F9">
+        <td class="details">
           <p>
             Relevanz:
             <![CDATA[<!--item: score-->]]> &#160;
