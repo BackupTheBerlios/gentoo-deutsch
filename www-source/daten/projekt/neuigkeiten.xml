@@ -15,6 +15,10 @@
 <author title="Author">
   <mail link="cybersystem@gentoo.org">Sascha Schwabbauer</mail>
 </author>
+<author title="Author">
+  <mail link="js@ameds.de">Jens Schittenhelm</mail>
+</author>
+
 
 <date>21. Dezember 2003</date>
 
@@ -35,6 +39,45 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
 </box>
 
 <chapter>
+
+<section>
+	<body>
+		<news type="news" date="2.2.2004" title="Gentoo-Newsletter">
+		<p>
+			Der erste Newsletter im Februar hält eine Zusammenfassung der letzten Management-Treffen bereit,
+			kündigt den Bugday am 7. Februar an und berichtet allerhand Neues aus der Community und von den
+			deutschen Linux-Aktivitäten.
+ 			<uri link="http://www.gentoo.org/news/en/gwn/20040202-newsletter.xml">Viel Spass beim Lesen</uri>.
+ 		</p>
+  		</news>
+  	</body>
+</section>
+
+<section>
+	<body>
+		<news type="news" date="26.1.2004" title="Gentoo-Newsletter">
+		<p>
+			Mit brandneuen Informationen über SELinux und Gentoo 2004 LiveCDs, Vorstellung von Sergey Kuleshov,
+			Backup-Techniken und Tips rund um den Befehl "watch" sowie den aktuellen Sicherheitsmeldungen der Woche.
+ 			<uri link="http://www.gentoo.org/news/en/gwn/20040126-newsletter.xml">Viel Spass beim Lesen</uri>.
+ 		</p>
+  		</news>
+  	</body>
+</section>
+
+<section>
+	<body>
+		<news type="news" date="19.1.2004" title="Gentoo-Newsletter">
+		<p>
+			Die heutige Ausgabe berichtet über die Finalteilname von Gentoo Linux bei der Linux World Expo
+			für die Kategorie "Best Open Source Product", stellt einen der aktuell neu gewählten Co-Leader vor
+			und berichtet über Ebay-Aktivitäten im Gentoo Forum, einer Portierung von Portage auf den Zaurus.
+ 			<uri link="http://www.gentoo.org/news/en/gwn/20040119-newsletter.xml">Viel Spass beim Lesen</uri>.
+ 		</p>
+  		</news>
+  	</body>
+</section>
+
 
 <section>
 	<body>
