@@ -39,7 +39,7 @@
           <xsl:sort select="category"/>
           <xsl:sort select="name"/>
 
-          <tr>
+          <tr title="{description}">
             <xsl:attribute name="class">
               <xsl:choose>
                 <xsl:when test="position() mod 2 = 0">low</xsl:when>
