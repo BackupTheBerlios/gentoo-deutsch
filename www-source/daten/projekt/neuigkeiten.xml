@@ -22,7 +22,34 @@
 
 <section>
 	<body>
-	<news type="news" date="15.08.2003" title="Gentoo-Newsletter">
+	<news type="news" date="04.09.2003" title="Gentoo-Newsletter">
+		<p>
+			<b>Da sich der letzte Gentoo-Bug-Tag als recht erfolgreich erwiesen hat wird es am Samstag, dem 6. September
+			einen weiteren geben - genauer gesagt wird von nun an jeder erste Samstag im Monat ein Bug-Tag sein.</b>
+			Kommt in den Channel #gentoo-bugs auf FreeNode (irc.freenode.net) und helft beim Beiseitigen von Fehlern
+			mit um die Qualität von Gentoo zu verbessern. Dies ist auch eine gute Gelegenheit für Anwender und Entwickler
+			sich gegenseitig kennen zu lernen.
+		</p>
+	</news>
+	</body>
+</section>
+
+<section>
+	<body>
+	<news type="news" date="01.09.2003" title="Gentoo-Newsletter">
+		<p>
+			Im ersten <uri link="http://www.gentoo.org/news/en/gwn/20030901-newsletter.xml">Newsletter</uri> in diesem
+			Monat geht es um den ersten grossen Schritt für Portage auf *BSD-Plattformen: die erstellung von Portage-Paketen
+			für OpenBSD und FreeBSD. Desweiteren wird auf den nächsten Gentoo-Bug-Tag und auf eine offene Stelle für den
+			französischen Head-Translator hingewiesen.
+		</p>
+	</news>
+	</body>
+</section>
+
+<section>
+	<body>
+	<news type="news" date="25.08.2003" title="Gentoo-Newsletter">
 		<p>
 			Der letzte Newsletter für den August enthält Informationen über die Portierung von Gentoo auf die AMD64-Plattform
 			zusammen mit ein paar interessanten Statistiken über die Gentoo-Foren. Einige der anderen Rubriken geniessen - wie
