@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.26,v 1.1 2003/03/19 19:09:22 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.26,v 1.2 2003/04/03 18:07:30 mad Exp $
 
 opts="${opts} fullrestart"
 
@@ -15,18 +15,18 @@ start() {
 	#
 	# reading the default vdr options
 	#
-	[ -n "$AUDIO" ] && vdropts="${vdropts} --audio=${AUDIO} "
-	[ -n "$CONFIG" ] && vdropts="${vdropts} --config=${CONFIG} "
-	[ -n "$DEVICE" ] && for i in ${DEVICE}; do vdropts="${vdropts} --device=${i} "; done
-	[ -n "$SHUTDOWN" ] && vdropts="${vdropts} --shutdown=${SHUTDOWN} "
-	[ -n "$EPGFILE" ] && vdropts="${vdropts} --epgfile=${EPGFILE} "
-	[ -n "$LOG" ] && vdropts="${vdropts} --log=${LOG} "
-	[ -n "$VIDEO" ] && vdropts="${vdropts} --video=${VIDEO} "
-	[ -n "$RECORD" ] && vdropts="${vdropts} --record=${RECORD} "
-	[ -n "$PORT" ] && vdropts="${vdropts} --port=${PORT} "
-	[ -n "$TERMINAL" ] && vdropts="${vdropts} --terminal=${TERMINAL} "
-	[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIB} "
-	[ -n "$LIB" -a -n "$PLUGINS" ] && for i in ${PLUGINS}; do 
+	[ -n "${AUDIO}" ] && vdropts="${vdropts} --audio=${AUDIO} "
+	[ -n "${CONFIG}" ] && vdropts="${vdropts} --config=${CONFIG} "
+	[ -n "${DEVICE}" ] && for i in ${DEVICE}; do vdropts="${vdropts} --device=${i} "; done
+	[ -n "${SHUTDOWN}" ] && vdropts="${vdropts} --shutdown=${SHUTDOWN} "
+	[ -n "${EPGFILE}" ] && vdropts="${vdropts} --epgfile=${EPGFILE} "
+	[ -n "${LOG}" ] && vdropts="${vdropts} --log=${LOG} "
+	[ -n "${VIDEO}" ] && vdropts="${vdropts} --video=${VIDEO} "
+	[ -n "${RECORD}" ] && vdropts="${vdropts} --record=${RECORD} "
+	[ -n "${PORT}" ] && vdropts="${vdropts} --port=${PORT} "
+	[ -n "${TERMINAL}" ] && vdropts="${vdropts} --terminal=${TERMINAL} "
+	[ -n "${LIB}" ] && vdropts="${vdropts} --lib=${LIB} "
+	[ -n "${LIB}" -a -n "${PLUGINS}" ] && for i in ${PLUGINS}; do 
 		#
 		# reading associated plugin config files and render the command options
 		#
@@ -68,7 +68,7 @@ start() {
 	# finaly start vdr
 	# 
 	#echo "/usr/bin/vdr --daemon ${vdropts}"
-	su -c "/usr/bin/vdr --daemon ${vdropts}"
+	su -c "/usr/bin/vdr --daemon ${vdropts} &"
 	eend $? "Failed to start vdr."
 }
 
@@ -82,6 +82,8 @@ fullrestart() {
 	ebegin "Fully restarting $(vdr -V) and DVB drivers"
 	/etc/init.d/vdr stop	
 	/etc/init.d/dvb stop
+	/etc/init.d/vdr zap
+	/etc/init.d/dvb zap
 	sleep 5
 	/etc/init.d/dvb start
 	/etc/init.d/vdr start
