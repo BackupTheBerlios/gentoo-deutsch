@@ -32,7 +32,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 			<ul>
 				<li><uri link="einrichtung/installation14">Installationsanleitung x86</uri></li>
 				<li><uri link="einrichtung/installationppc">Installationsanleitung PPC</uri></li>
-				<li><uri link="einrichtung/gentoo-x86-quickinstall">Schnellübersicht Installation (x86)</uri></li>
+				<li><uri link="einrichtung/gentoo-x86-quickinstall">Kurzübersicht Installation (x86)</uri></li>
 				<li><uri link="einrichtung/alternativ">Alternative Installation</uri></li>
 				<li><uri link="einrichtung/dsleinrichtung">DSL-Einrichtung</uri></li>
 				<li><uri link="einrichtung/lokalisierung">Lokalisierung</uri></li>
