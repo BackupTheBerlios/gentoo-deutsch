@@ -24,6 +24,47 @@
 
 <chapter>
 
+
+
+<section>
+<body>
+	<news type="release" date="11.09.2003" title="Gentoo 2004 und darüber hinaus">
+<p>
+Hiermit kündigen wir den Start drei weiterer Hauptprojekte an: Gentoo Linux 2004, Portage-ng and catalyst. Mit Beginn
+des nächsten Releases von Gentoo Linux (Gentoo Linux 2004), wird Gentoo auf ein vierteljährlichen Release Plan umgestellt.
+Weitere Informationen findet Ihr auf dem <uri link="http://www.gentoo.org/proj/en/releng/">Roadmap für Gentoo Linux.</uri>
+</p><p>
+Darüber hinaus freuen wir uns, den Start der Entwicklung von "portage-ng" bekannt geben zu können. Dies wird der 
+Nachfolger der außerordentlich populären Portage Paketverwaltung. Weitere Informationen und Spezifikationen für
+dieses Projekt findet Ihr auf der <uri link="http://www.gentoo.org/proj/en/portage/portage-ng/systemspec.xml">Portage-ng
+</uri> Projektseite. Portage-ng wird ein echtes Gemeinschaftsprojekt 
+darstellen und wir freuen uns auf Eure Mitarbeit. 
+</p><p>
+Zu guter Letzt ist catalyst. Mit Beginn von Gentoo Linux 2004 werden alle Releases (einschließlich der LiveCDs)
+für die Benutzer selbst zusammenstellbar. Mit Hilfe von catalyst können also selbst modifizierte Gentoo Releases, LiveCDs, GameCDs nach eigenen Vorstellungen verwirklicht werden. Die aktuelle Entwicklung von catalyst unetrstützt das Erstellen
+verschiedener stages und Gentoo Reference Platform (GRP) sets auf AMD64 (sowohl 64bit als auch 32bit), x86 und PowerPC.
+Schon gegen Ende diesen Jahres kann mit dem Erstellen von LiveCDs und GameGDs begonnen werden. Immer auf dem
+Laufenden ist die aktuelle <uri link="http://www.gentoo.org/proj/en/releng/catalyst/">catalyst Homepage.</uri>
+</p>
+	</news>
+</body>
+</section>
+
+<section>
+<body>
+	<news type="other" date="3.12.2003" title="Gentoo rsync Server kompromittiert">
+<p>
+Am 2. September gegn 3:45 UTC einer der rsync.gentoo.org Rotation angehörigen Server wurde durch einen remote 
+exploit kompromittiert. Auf diesem System waren jedoch IDS und ein File Itegrity Checker installiert, sodass wir eine
+detaillierte forensische Spur haben, was alles getan wurde, nachdem in den Rechner eingebrochen wurde, so können
+wir recht sicher bekannt geben, <e>dass der Portage Verzeichnisbaum nicht betroffen ist.</e> Der Rechner wurde dennoch
+von allen rsync.*.gentoo.org Rotationen entfernt und wird bis zur endgültigen Auswertung und einer kompletten
+Neuinstallation nicht zugänglich bleiben. Weitere Informationen in unserem <uri link="http://www.gentoo.org/security/en/glsa/glsa-200312-01.xml">GLSA</uri>
+</p>
+	</news>
+</body>
+</section>
+
 <section>
   <body>
   <news type="news" date="2.12.2003" title="Gentoo-Newsletter">
