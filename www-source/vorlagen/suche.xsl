@@ -46,10 +46,15 @@
 </xsl:template>
 
 
-<xsl:template match="cgi:result_navigation">  
-  <center>
+<xsl:template match="cgi:result_navigation">
+  <div style="text-align: center">
     <![CDATA[<!--cgi: previous--> [ <!--cgi: navbar--> ] <!--cgi: next-->]]>
-    <br/><br/>
+    <br/><br/>  
+  </div>  
+</xsl:template>
+
+<xsl:template match="cgi:result_newsearch">  
+  <div style="text-align: center">
     <![CDATA[
     <form action="<!--cgi: search_url-->" method="get">
       <xsl:if test="retry">
@@ -75,9 +80,7 @@
       nach '<!--cgi: query_str-->' suchen
     </form>
     ]]>
-  </center>
-  
-  Seite <![CDATA[<!--cgi: current_page-->]]> von <![CDATA[<!--cgi: total_pages-->]]>
+  </div>
 </xsl:template>
 
 <xsl:template match="cgi:search_form">

@@ -24,7 +24,8 @@
 
 <body>
 
-  <cgi:result_list/>
+  Ihre Suche ergab keine Ergebnisse. Sie können unten Ihre Suchanfrage für einen erneuten Versuch anpassen.
+  
   <cgi:result_navigation/>
 
 </body>
