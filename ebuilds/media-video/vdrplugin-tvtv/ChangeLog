@@ -1,0 +1,8 @@
+# ChangeLog for media-video/vdr-tvtv
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvtv/ChangeLog,v 1.1 2003/06/05 08:44:35 mad Exp $
+
+*vdrplugin-tvtv-0.1.6 (05 Jun 2003)
+
+  05 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
+  moved to vdr 1.2.0, new lib path
