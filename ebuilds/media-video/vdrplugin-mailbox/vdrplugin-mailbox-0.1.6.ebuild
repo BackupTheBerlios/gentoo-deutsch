@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mailbox/Attic/vdrplugin-mailbox-0.1.2.ebuild,v 1.1 2003/12/23 04:59:46 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mailbox/vdrplugin-mailbox-0.1.6.ebuild,v 1.1 2004/01/25 15:54:03 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="mailbox"
