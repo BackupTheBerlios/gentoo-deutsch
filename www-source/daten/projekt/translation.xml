@@ -147,7 +147,7 @@ englische Fassung beinhalten, um zukünftige Aktualisierungen zu vereinfachen.
 </p>
 
 <pre caption="Verweis auf die Version der zugrundeliegenden englischen Fassung">
-&lt;!-- English CVS Version: 1.0 &gt;
+&lt;!-- English CVS Version: 1.0 --&gt;
 </pre>
 
 </body>
@@ -166,6 +166,7 @@ englische Fassung beinhalten, um zukünftige Aktualisierungen zu vereinfachen.
 <chapter>
 <title>CVS Zugang zu gentoo.de</title>
 <section>
+<title>Einleitung</title>
 <body>
 
 <note>
@@ -173,6 +174,58 @@ Diese kurze Einführung beschreibt nur die notwendigsten Befehle, um den CVS Tre
 von gentoo.de auszuchecken und eigene Änderungen wieder einzubringen. Für
 weitergehende Informationen lesen Sie das <uri link="/inhalte/doku/cvs-howto">CVS Howto</uri>.
 </note>
+
+</body>
+</section>
+<section>
+<title>Vor dem Einbringen der Dokumentation</title>
+<body>
+
+<p>
+Bevor Sie Dokumentation in das CVS einbringen, sollten Sie noch kurz prüfen, ob
+das Dokument syntaktisch korrekt ist.
+</p>
+
+<pre caption="Prüfen der syntaktischen Korrektheit">
+# xmllint dokumentation.xml
+</pre>
+
+<p>
+Num können Sie sich die übersetzte Dokumentation anschauen. Dazu benötigen Sie
+die <path>guide.xsl</path>, <path>main.css</path> sowie optional einige
+Grafiken. Links zu allen Files finden sie auf Swifts
+<uri link="http://dev.gentoo.org/~swift/#doc_chap2_sect1">Entwicklerseite</uri>.
+</p>
+
+<p>
+Gemeinsam mit Ihrer lokalen Arbeitskopie stecken Sie diese Dateien alle in ein
+Verzeichnis, dann können Sie eine html Version generieren.
+</p>
+
+<pre caption="Eine html Version erstellen">
+# xsltproc --novalid guide.xsl doku.xml &gt; test.html
+</pre>
+
+<p>
+Da wir zwar nicht faul aber durchaus etwas bequem sind, erstellen wir uns ein
+kleines Makefile; ein <c>make dokument</c> geht nunmal schneller.
+</p>
+
+<pre caption="Ein kleines Makefile">
+dokument:
+  xsltproc --novalid guide.xsl dokument.xml &gt; test.html
+</pre>
+
+<p>
+Wenn Sie zu bequem sind, sich selber ein Makefile zu schreiben, dann versuchen
+Sie dieses <uri link="http://tobias.scherbaum.info/gentoo/doc/Makefile">hier</uri> ;)
+</p>
+
+</body>
+</section>
+<section>
+<title>Dokumentation ins CVS einbringen</title>
+<body>
 
 <p>
 Zunächst sollten Sie sich die Datei <path>.cvsrc</path> anlegen und folgende
@@ -193,8 +246,8 @@ Ersetzen Sie <c>anonymous</c> mit Ihrem Benutzernamen.
 </p>
 
 <pre caption="Eine lokale Kopie des CVS Tree erzeugen">
-cvs -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
-cvs -z3 -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co www-source
+# cvs -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
+# cvs -z3 -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co www-source
 </pre>
 
 <p>
@@ -203,7 +256,7 @@ Nun können Sie das gewünschte Dokument editieren. Anschliessend bringen Sie Ih
 </p>
 
 <pre caption="Eine Änderung in das CVS einbringen">
-cvs commit -m 'Hier sollten Sie einen aussagekräftigen Kommentar eintragen' name-des-dokument.xml
+# cvs commit -m 'Hier sollten Sie einen aussagekräftigen Kommentar eintragen' name-des-dokument.xml
 </pre>
 
 <p>
@@ -220,6 +273,14 @@ name-des-dokument.xml</c> Kommando, gefolgt von einem <c>cvs commit</c>. Mit
 <title>Ressourcen</title>
 <section>
 <body>
+
+<note>
+Einige Tipps und Tricks dieser Anleitung entstammen dem
+<uri link="http://www.gentoo.org/proj/en/gdp/doc/en/docdev.xml">Howto for
+Documentation Developers</uri>. Es kann nicht schaden auch dort einen Blick
+hineinzuwerfen, mit diesem Dokument sollten dennoch die meisten Ihrer Fragen
+geklärt sein.
+</note>
 
 <p>
 <b>Mailing Listen:</b> Sie sollten sich zumindest auf der gentoo-deutsch-dev
