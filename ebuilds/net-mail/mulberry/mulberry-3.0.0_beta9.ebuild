@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/mulberry/mulberry-3.0.0_alpha5.ebuild,v 1.2 2002/12/03 12:24:14 dimorph Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/mulberry/mulberry-3.0.0_beta9.ebuild,v 1.1 2002/12/03 12:24:14 dimorph Exp $
 IUSE="xfree"
 
 S="${WORKDIR}"
@@ -8,7 +8,7 @@ DESCRIPTION="Mulberry is a high-performance, scalable, and graphically groovy in
 HOMEPAGE="http://www.cyrusoft.com/mulberry/index.html"
 DEPEND="x11-base/xfree"
 RDEPEND=${DEPEND}
-FILENAME="mulberry-3_0a5-rh6.tgz"
+FILENAME="mulberry-3_0b9-rh6.tgz"
 LICENSE="Mulberry-Licence"
 DESTDIR="/opt/mulberry"
 SRC_URI=""
