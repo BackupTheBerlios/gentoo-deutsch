@@ -11,7 +11,7 @@ SLOT="0"
 LICENSE="GPL-2"
 
 DEPEND=">=media-tv/xawtv-3.73-r1
-	>=media-video/linuxtv-dvb-1.0.0_pre3
+	>=media-tv/linuxtv-dvb-1.0.0_pre3
 	>=media-video/vdr-1.2.0"
 
 src_unpack()  {
