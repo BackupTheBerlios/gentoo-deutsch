@@ -1,13 +1,13 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/linuxtv-dvb-1.1.0.ebuild,v 1.1 2004/02/15 12:23:03 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/linuxtv-dvb-1.1.0.ebuild,v 1.2 2004/03/16 17:29:49 mad Exp $
 
 DESCRIPTION="This is the standalone DVB driver for Kernel 2.4.x"
 HOMEPAGE="http://linuxtv.org/"
 
 SRC_URI="
 	http://linuxtv.org/download/dvb/${P}.tar.bz2
-	http://www.linuxtv.org/download/dvb/dvb-ttpci-01.fw"
+	http://www.linuxtv.org/download/dvb/dvb-ttpci-01.fw.gz"
 	
 LICENSE="GPL"
 SLOT="1"
@@ -46,7 +46,7 @@ src_unpack() {
 }
 
 src_compile() {
-	cp /usr/portage/distfiles/dvb-ttpci-01.fw ${S}/build-2.4 || die "fw copy problem"
+	cp ${S}/../dvb-ttpci-01.fw ${S}/build-2.4 || die "fw copy problem"
 	cd ${S}/build-2.4
 	make || die "compile problem"
 }
