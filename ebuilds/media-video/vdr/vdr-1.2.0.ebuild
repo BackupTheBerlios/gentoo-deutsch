@@ -1,18 +1,23 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.8 2003/06/10 19:53:03 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.9 2003/06/20 11:58:24 mad Exp $
 
 IUSE="lirc"
 ANALOGTV_VN="0.7.0"
+AC3_OVER_DVB="vdr-1.2.0-AC3overDVB-0.2.0"
 
 S=${WORKDIR}/vdr-${PV}
 DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
-SRC_URI="ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
-         http://www.akool.de/download/vdr-${PV}.patch.bz2
-	 http://www.akool.de/download/vdr-${PV}-without-Elchi.patch.bz2
-	 http://akool.bei.t-online.de/vdr/download/vdr-analogtv-${ANALOGTV_VN}.tar.bz2
-	 http://linvdr.org/download/VDR-AIO/ElchiAIO3a-1.2.0.diff.gz"
+SRC_URI="
+		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
+		http://www.akool.de/download/vdr-${PV}.patch.bz2
+		http://www.akool.de/download/vdr-${PV}-without-Elchi.patch.bz2
+		http://akool.bei.t-online.de/vdr/download/vdr-analogtv-${ANALOGTV_VN}.tar.bz2
+		http://linvdr.org/download/VDR-AIO/ElchiAIO3a-1.2.0.diff.gz
+		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz
+		"
+
 
 KEYWORDS="~x86"
 SLOT="0"
@@ -46,6 +51,14 @@ src_unpack() {
 	cd ${S}
 
 	# needs app-admin/fam-oss
+	if [ -z "`vdr_opts vdr_ac3`" ]; then
+		if [ -z "`vdr_opts akool`" -o -z "`vdr_opts akoolwoe`"]; then
+			ewarn "ac3 patch is already part of akool patch ... skipping"
+		fi
+		einfo "Apply AC3 patch ..."
+		epatch ../${AC3_OVER_DVB}.diff
+	fi
+
 	if [ -z "`vdr_opts akool`" ]; then
 		if [ -z "`vdr_opts akoolwoe`" ]; then
 			eerror "ups, akool & akoolwoe patch will not work together"
@@ -108,11 +121,6 @@ src_install() {
 	insopts -m0755
 	newins ${FILESDIR}/rc.vdr vdr
 
-	# need new watchdog
-	#newins ${FILESDIR}/rc.vdrwatchdog vdrwatchdog
-	# not tested
-	#use lirc && newins ${FILESDIR}/rc.irexec irexec
-
 	dodoc CONTRIBUTORS COPYING README* INSTALL MANUAL HISTORY* UPDATE-1.2.0
 	dodoc ${FILESDIR}/vdrshutdown.sh
 	#dodoc ${FILESDIR}/sudo.txt
@@ -145,7 +153,6 @@ src_install() {
 	exeinto /usr/bin
 	doexe vdr
 	doexe svdrpsend.pl
-	#doexe ${FILESDIR}/vdrwatchdog.sh 
 
 	rm Make.config.template
 	insopts -m0644 -ovdr -gvideo
@@ -175,9 +182,3 @@ pkg_postinst() {
 	einfo "http://www.vdrportal.de/board/board.php?boardid=56"
 	einfo
 }
-
-#pkg_postrm() {
-	#einfo "removing vdr user"
-	#userdel vdr
-#}
-
