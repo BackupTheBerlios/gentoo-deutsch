@@ -1,0 +1,1196 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Portage Handbuch</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Portage Handbuch</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Portage: Ein Überblick</option>
+<option value="#doc_chap2">2. Configuring Portage</option>
+<option value="#doc_chap3">3. Package Management</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Portage: Ein Überblick</p>
+<p class="secthead"><a name="_sect1">Überblick </a></p>
+	<p>
+        Portage ist ein sehr starkes und fortgeschrittenes Paketmanagement System.
+        Seine Flexibilität und Fähigkeit als einfaches Werkzeug zum Kompilieren
+        von Software oder als Herzstück einer brandaktuellen Linux Distribution 
+        zu dienen ist beinahe einzigartig. Die Gentoo Linux Distribution wurde um 
+        Portage entwickelt.
+	</p>
+	<p>
+        Gentoo Linux wird oftmals als &quot;Meta-Distribution&quot; bezeichnet. Gentoo 
+        besteht aus Portage und über 2200 Anleitungen zum Kompilieren von Paketen,
+        sogenannten <font class="input">ebuilds</font>. Diese <font class="input">ebuilds</font> geben Portage die 
+        Anweisungen wie ein bestimmtes Softwarepaket kompiliert und installiert 
+        werden soll. Durch die Benutzung von <font class="input">Profilen</font> und dem Kommandozeilen 
+        Programm <font class="input">emerge</font> können Benutzer und Entwickler Portage dazu nutzen 
+        um die Pakete zu installieren und zu pflegen, die die Grundlage des Betriebssystems 
+        und der darauf laufenden Anwendungen darstellen.
+	</p>
+	<p>
+        Ein Gentoo Linux wird &quot;on-the-fly&quot; kompiliert, d.h. direkt auf dem entsprechenden 
+        Rechner angepasst und erstellt. Der Installationsprozess umfasst das Erstellen eines 
+        funktionierenden Compilers sowie einer minimalen Umgebung, in der Portage Sourcecode
+        aus dem Internet laden kann, um den Rest des &quot;Systemkerns&quot; und etwaige Anwendungen zu
+        installieren. Auch wenn Portage die Benutzung von vorkompilierten Anwendungen 
+        unterstützt, stellt diese nur einen Kompromiss dar und wird nur zur Installation 
+        auf langsamen Maschinen, bzw. von Entwicklern die schnell ein bestimmtes Paket 
+        wiederherstellen wollen oder von Benutzern, die Pakete auf einer schnellen Maschine 
+        kompilieren um sie dann auf einem langsamen Rechner zu installieren, verwendet.
+	</p>
+	<p>
+        Durch das Kompilieren &quot;on-the-fly&quot; und der Tatsache, dass Portage stark konfigurierbar 
+        ist sind nur sehr wenige Gentoo Installationen gleich. Im Grunde wird bei der 
+        Installation von Gentoo Linux eine angepasste Linux Distribution erstellt, die sich 
+        an den Optionen, wie sie in der Portage Konfiguration und den ebuilds selber definiert 
+        sind, orientiert.
+	</p>	
+	<p>
+        Auf den ersten Blick mag die Idee hinter Portage ähnlich dem BSD Ports System sein.
+        Beide kompilieren Pakete aus dem Source und erlauben es dem Benutzer Software sicher 
+        zu installieren bzw. zu deinstallieren. Beide lösen Abhängigkeiten automatisch auf. 
+        Viele Ideen von Portage wurden beim BSD Ports System ausgeliehen, jedoch handelt es 
+        sich bei Portage definitiv nicht um eine weitere &quot;Ports-Kopie&quot;.
+	</p>
+	<p>
+        Das Portage System ist eine Verbindung aus einem auf Python basierenden Kern und 
+        Bash Script basierten <font class="input">ebuilds</font>. Anstatt mit Makefiles und dem <font class="input">make</font> 
+        Kommando zu hantieren, verbindet Portage die Möglichkeiten von Python und das 
+        einfach zu handhabende Shellscripting mit einigen objektbasierten Charakteren, um 
+        ein einzigartig mächtiges System zu erstellen. Dieses setzt Portage an die Spitze aller 
+        aktuellen Ports Systeme.
+	</p>
+	<p>
+        Einige der von Portage angebotenen erweiterten Funktionen sind die Möglichkeit 
+        verschiedene Versionen und Überarbeitungen des gleichen Pakets im Tree zu halten, 
+        Auflösung der entsprechenden Abhängigkeiten, feinstrukturiertes Paketmanagement, 
+        sichere Installation via Sandbox, Schutz von bestehenden Konfigurationsdateien, 
+        Profile und vieles mehr. Viele dieser Funktionen werden noch im Laufe dieses 
+        Handbuches genauer erläutert.
+	</p>
+  <p class="secthead"><a name="_sect2">Conditional Dependency Resolution and Feature Support </a></p>
+	<p>
+	The Portage system is unique in the amount of flexibility it offers
+	users.  Traditional BSD ports systems tend to only support
+	one revision for a package in the ports tree at once.  Portage
+	has no such limitation.  Multiple versions of the same package can
+	be available for installation.  Package dependencies, those packages
+	that are required for the compilation and use of another package,
+	can be specified either by name or by name with a version range
+	attached.  This makes it safe to have multiple versions available
+	in the tree.
+	</p>
+	<p>
+	The dependency system also supports conditional dependencies.  Portage
+	has a powerful concept called the <font class="input">USE setting</font> system.  By
+	changing one configuration variable in a Portage configuration file
+	you can disable optional support (and thus the need to depend on it)
+	for particular features or libraries for all packages at compile time.
+	This is a very flexible and powerful system which is farther explained 
+	in the next chapter.
+	</p>
+	<p>In addition Portage supports the concept of <font class="input">SLOT</font>s.  In
+	the development of Gentoo Linux its developers often found that 
+	we needed to have multiple versions of certain packages (such as
+	libraries) installed to satisfy the demands of other packages.
+	The traditional approach to solving this problem has been to treat
+	different versions of the same package as different packages with
+	slightly different names.</p>
+	<p>
+	Instead of the developers learning
+	to treat certain versions as separate packages, the developers taught
+	Portage how to handle and maintain several versions of the same package
+	though the use of <font class="input">SLOT</font>s.  An example of this would be to consider
+	the common library known as freetype.  The 1.x branch of freetype
+	is incompatible with the 2.x branch but both versions are needed
+	to satisfy the dependencies of various packages.  Most distributions
+	and ports systems tend to have a &quot;freetype&quot; package for freetype 1.x
+	and &quot;freetype2&quot; for 2.x.  We consider this approach a sign of a 
+	fundamentally broken package management system.  We simply assigned
+	the <font class="input">SLOT</font> number 1 to the first and number 2 to the second.  With 
+	this information Portage can track both versions and upgrade both 
+	versions if updates to the respective upstream branches are made.
+	</p>
+<p class="secthead"><a name="_sect3">Profiles </a></p>
+
+	<p>Portage supports the concept of <font class="input">profiles</font>.  A profile
+	contains a list of package names and versions with a directive
+	and a set of default configuration options to be used by Portage.
+	A profile tells Portage which packages and which specific versions
+	of those packages to allow, disallow, or treat as required.  Users
+	can switch profiles by changing a single symlink 
+	(<font class="input">/etc/make.profile</font>).  This may seem simple but it allows 
+	Portage to form the core of a distribution and serve as a professional 
+	grade build system. 
+	</p>
+	<p>
+	The entire effort spent in producing the Gentoo Linux distribution
+	has resulted in a collection of <font class="input">ebuild</font> files Portage uses
+	and a profile.  This profile defines which packages are considered
+	&quot;core&quot; packages vital to the operation of a system.  The profile
+	also allows developers to block and unblock specific packages
+	and versions to temporarily disable broken packages, etc.  The
+	<font class="input">ebuild</font> files simply tell Portage how to actually build
+	and install the packages the profile either demands or allows.
+	</p>
+	
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Configuring Portage</p>
+<p class="secthead"><a name="_sect1">Overview </a></p>
+	<p>
+  	The following chapter covers the various aspect of Portage
+	configuration important to both users and developers.  Portage
+	is a very flexible system and you will need to understand how
+	to configure Portage to be charge of your system and optimize
+	it for your needs.
+	</p>
+	<p>
+	Please note that the use of &quot;users&quot; in this document means
+	persons with administrative rights to use Portage and change the
+	systems configuration.  You must have root access to change
+	Portage's configuration and to merge and unmerge packages.
+	</p>
+<p class="secthead"><a name="_sect2">Portage Configuration Files </a></p>
+	<p>Almost all of the configuration options discussed below can be
+	found in /etc/make.conf and /etc/make.global.  It is important to note
+	that any setting defined in /etc/make.conf will almost always
+	override any setting made in /etc/make.global.  Everything in 
+	/etc/make.conf and /etc/make.global can be considered a system-wide
+	global setting as far as Portage is concerned.
+	</p>
+	<p>
+	When checking to see where an option is already defined, it is 
+	recommended that you check in /etc/make.conf first and then 
+	check /etc/make.globals.  Unless specifically noted, options set 
+	in /etc/make.conf will override options set in /etc/make.globals.
+	</p>
+<p class="secthead"><a name="_sect3">USE settings </a></p>
+  	<p>
+	The USE settings system is a flexible way to enable or disable
+	various features at package build-time on a global level and for
+	individual packages.  This allows an administrator control over how 
+	packages are built in regards to the optional features which can be 
+	compiled into those packages.  For instance packages with optional
+	GNOME support can have this support disabled at compile time by 
+	disabling the <font class="input">gnome</font> USE setting.  Enabling the <font class="input">gnome</font>
+	USE setting would enable GNOME support in these same packages.
+	</p>
+	<p>
+	The effect of USE settings on packages is dependent on whether both
+	the software itself and the package ebuild supports the USE setting
+	as an optional feature.  If the software does not have support for
+	an optional feature then its corresponding USE setting will obviously
+	have no effect.  Also many package dependencies are not considered
+	optional by the software and thus USE settings will have no effect
+	on those mandatory dependencies.  A list of USE keywords used by
+	a particular package can be found by checking the <font class="input">DEPEND</font>
+	and <font class="input">RDEPEND</font> lines in any ebuild file.
+	</p>
+
+	<p>A list of the USE settings used by Gentoo Linux can be found
+	in <font class="input">/usr/portage/profiles/use.desc</font>.  Each USE setting
+	is listed one per line with a brief description of what the USE
+	setting enables.
+	</p>
+
+	<p>
+	Portage determines if a USE setting is enabled or disabled by checking
+	up to four different locations.  These locations change USE settings
+	in a way that &quot;stacks&quot;.  Portage passes through each location and 
+	remembers if a previous location enabled or disabled a setting.
+	USE setting changes are cumulative during Portage's pass through
+	each location.
+	</p>
+	<p>
+	The locations checked in USE setting calculation and the order in which
+	Portage checks them is set by <font class="input">USE_ORDER</font> in /etc/make.globals.
+	To disable a location you can simply remove it from <font class="input">USE_ORDER</font>.
+	</p>
+	<p>
+	The following is a description of each location listed in the order
+	defined by <font class="input">USE_ORDER</font> in Portage's default configuration.
+	</p>
+	
+	
+	<p><b>Defaults</b></p>
+	<p>Portage profiles can define a set of default USE keywords.  This 
+	is defined in the make.defaults file in any Portage profile.  Since 
+	/etc/make.profile serves as a link to the currently used Portage 
+	profile, /etc/make.profile/make.defaults is the set of defaults in 
+	effect.  It is recommended that you do not edit this file as future
+	profile changes may overwrite your changes.</p>
+	
+	<p><b>Auto</b></p>
+	<p>These are defined in the use.defaults file in the Portage profile 
+	(/etc/make.profile/use.defaults).  Each entry consists of a USE
+	setting and a corresponding package.  If the package listed for
+	a USE keyword is currently installed, then that USE setting is
+	considered enabled.  Thus, for instance, if you installed
+	<font class="input">x11-base/xfree</font> and did not explicitly disable the X USE
+	setting in a later pass location then the X keyword is enabled
+	globally while that package is installed.  It is recommended that
+	you do not edit this file as future profile changes may overwrite
+	your changes.</p>
+
+	<p><b>Conf</b></p>
+	<p>If a <font class="input">USE</font> configuration option is defined in /etc/make.conf
+	the USE settings defined are included.  If there is no <font class="input">USE</font>
+	setting in make.conf then /etc/make.globals is checked.  This
+	entry could look something like the following:</p>
+
+	<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+USE=&quot;slang readline gpm berkdb gdbm tcpd pam libwww ssl gb tk
+     lm_sensors lvm ldap tex bonobo sdl gtk xfs evo pda ldap
+     mmx mitshm perl python guile ruby postgres dvd 3dnow tcl
+     lcms gif sdl vorbis ogg oss libg++ directfb decss snmp
+     gnome X opengl mozilla pdflib gpg -nls gd xface jpilot
+     -kde -qt -esd -motif -alsa oggvorbis&quot;
+	</pre></td></tr>
+</table>
+
+	<p>
+	USE settings are enabled by simply listing the setting name.  USE
+	settings are disabled by placing a <font class="input">-</font> character before the
+	setting name.  For instance, <font class="input">gnome</font> enables the GNOME keyword
+	while <font class="input">-motif</font> disabled the motif keyword.
+	</p>
+	<p>
+ 	The <font class="input">USE</font> setting in /etc/make.conf is the recommended place
+	in which to explicitly enable and disable keywords.  This file will
+	not be overwritten automatically by Portage.  It is recommended
+	that you specifically enable and disable USE keywords that you
+	do not want to be disabled or enabled by the previous two locations.
+	</p>
+	
+	<p><b>Env</b></p>
+	<p>USE keyword settings can be overrode manually using a shell
+	environment setting.
+	</p>
+
+	<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+export USE=&quot;-gnome&quot;
+emerge net-im/gaim
+	</pre></td></tr>
+</table>
+
+	<p>This allows the use of a certain set of USE settings for the merging
+	of one or more specific packages.  Any invocation of emerge after
+	setting USE in the shell environment will be in effect as long as
+	emerge is run from that shell and USE is still set.
+	</p>
+	
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>While Portage currently records the set of USE settings used
+	when merging a package these USE settings are not persistent.  If
+	the package is remerged or upgraded in the future it will use
+	the USE keywords currently in effect and not the USE settings defined
+	when it was first merged.</p></td></tr></table>
+	
+  <p class="secthead"><a name="_sect4">Compiler Options </a></p>
+	<p>The compiler options used by Portage to compile packages can be set
+	in /etc/make.conf by editing <font class="input">CHOST</font>, <font class="input">CFLAGS</font>, and 
+	<font class="input">CXXFLAGS</font>. The <font class="input">CHOST</font> setting specifies which platform
+	you are compiling for and <font class="input">CFLAGS</font> and <font class="input">CXXFLAGS</font> settings
+	specify compiler flags to be used while compiling C and C++
+	respectively.
+	</p>
+	<p>
+	Several sets of default settings are offered with comments on which
+	platforms they are to be used with.  These provided defaults are 
+	considered stable and tested.  Changing them may uncover compile 
+	errors and bugs in both the compiler and in the software being 
+	compiled.  Please be careful if you decide to customize a default 
+	setting as you may end up with an unusable system.</p>
+	<p>
+	Users with multiprocessor systems may benefit by modifying the
+	<font class="input">MAKEOPTS</font> option found in /etc/make.globals.  This option
+	is passed to the <font class="input">make</font> command during package compilation
+	to enable multiple gcc instances.
+	</p>
+	
+<p class="secthead"><a name="_sect5">Directory Locations </a></p>
+	<p>Portage allows you to configure the directories it uses 
+	to build packages and where it stores various files.  Most users
+	will have no need to change these locations.  The following
+	options can be set:</p>
+
+	<ul>
+	<li>
+<font class="input">PORTDIR</font> - Portage tree location</li>
+	<li>
+<font class="input">DISTDIR</font> - Local cache of downloaded archives</li>
+	<li>
+<font class="input">PKGDIR</font> - Location of locally generated tbz2 packages</li>
+	<li>
+<font class="input">RPMDIR</font> - Location of locally generated RPM packages</li>
+	<li>
+<font class="input">CURRENTFILE</font> - ???</li>
+	<li>
+<font class="input">PORTAGE_TMPDIR</font> - Temporary space used for package compilation</li>
+	<li>
+<font class="input">BUILD_PREFIX</font> - Related to PORTAGE_TMPDIR</li>
+	<li>
+<font class="input">PKG_TMPDIR</font> - Related to PKG_TMPDIR</li>
+	</ul>
+<p class="secthead"><a name="_sect6">Configuration File Protection </a></p>
+	<p>Portage allows for the protection of all configuration files in
+	specified directories.  Portage will not overwrite files in protected
+	directories.  If a package tries to install a file that already
+	exists, it will be renamed to something like <font class="input">._cfg0000_name</font>.
+	This is done so that users can later look at the new file and 
+	manually merge the differences between the two themselves.</p>
+	<p>
+	Protected directories can be set by <font class="input">CONFIG_PROTECT</font> in either
+	/etc/make.conf or /etc/make.globals.  Specific files and subdirectories
+	under protected directories can be made unprotected by setting
+	<font class="input">CONFIG_PROTECT_MASK</font>.
+	</p>
+	<p>
+	The following is an example and should not be blindly copied:
+	</p>
+
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+CONFIG_PROTECT=&quot;/etc /usr/share/config /usr/kde/2/share/config&quot;
+CONFIG_PROTECT_MASK=&quot;/etc/gconf /etc/init.d /etc/pam.d&quot;
+</pre></td></tr>
+</table>
+
+	<p>Users may request more information on how Configuration File 
+	Protection works by issuing the following command in a shell:
+	</p>
+
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge --help config
+</pre></td></tr>
+</table>
+
+<p class="secthead"><a name="_sect7">FEATURES </a></p>
+	<p>Portage offers a number of options geared towards developers
+	that govern how Portage behaves and cleans up after itself during
+	various stages of a package merge.  These options should only
+	be of interest to developers and may cause problems for users.
+	</p>
+	<p>
+	A list of features to enable can be set by <font class="input">FEATURES</font> in
+	either /etc/make.conf or /etc/make.globals. The following is a list of
+	available options: </p>
+	<p>
+	<ul>
+	<li>
+<font class="input">digest</font> : Automatically create a digest for new ebuilds.</li>
+	<li>
+<font class="input">cvs</font> : Automatically commit new digests to cvs.</li>
+	<li>
+<font class="input">sandbox</font> : Enables &quot;sandbox&quot; for path prefix protection.</li>
+	<li>
+<font class="input">noclean</font> : Portage never cleans up after itself.</li>
+	<li>
+<font class="input">noauto</font> : Do not execute prior ebuild steps automatically.</li>
+	</ul>
+	</p>
+<p class="secthead"><a name="_sect8">Portage SYNC settings </a></p>
+	<p>Portage has the ability to update the Portage tree through the
+	use of two different methods, rsync or anonymous CVS.  You can 
+	define which method Portage should use via the <font class="input">SYNC</font> setting 
+	in /etc/make.conf.  </p>
+
+	<p><b>RSYNC</b></p>
+
+	<p>Users are recommended to use the rsync method unless they plan on 
+	developing their own ebuild files as it places much less of a load
+	on our servers then using anonymous CVS.  For this reason the rsync
+	method is the default set in /etc/make.conf.  This method can be 
+	set in the following way:</p>
+
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+SYNC=&quot;rsync://cvs.gentoo.org/gentoo-x86-portage&quot;
+</pre></td></tr>
+</table>
+
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>The rsync method will blindly overwrite any changes you make
+	to your local copy of the Portage tree.  If you need to keep
+	local changes you will need to use the anonymous CVS method. </p></td></tr></table>
+
+	<p><b>Anonymous CVS</b></p>
+
+	<p>Portage can sync the local Portage tree against a specified
+	anonymous CVS server.  This is useful for developers who do not wish
+	for their changes to be overwritten when Portage syncs with the
+	official tree.  This method can be set in the following way: </p>
+
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+SYNC=&quot;cvs://:pserver:anonymous@gentoo.org:/home/anoncvs&quot;
+</pre></td></tr>
+</table>
+
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Anonymous CVS is slow and resource intensive on both the server
+	and the client.  We ask that you please use the rsync method if you
+	are not making changes to your local Portage tree.</p></td></tr></table>
+
+	<p>Before you can begin using Anonymous CVS to sync your local copy
+	of the tree with the official Portage tree, you must &quot;check out&quot;
+	a copy of the tree using the cvs tool by doing the following:
+	</p>
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# backup old portage directory
+cd /usr
+mv portage portage.old
+
+# &quot;checkout&quot; the tree
+cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs login
+# hit enter when prompted for password
+cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs co gentoo-x86
+
+# move the new tree into place
+mv gentoo-x86 portage
+</pre></td></tr>
+</table>
+
+	<p><b>Developer CVS</b></p>
+
+	<p>Developers with full access to the CVS tree can also have
+	<font class="input">emerge</font> sync the local tree against a CVS repository that
+	they can access through RSH or SSH.
+	</p>
+	<p>
+	Simply check out a CVS tree using your account, move it to 
+	/usr/portage, and use the following <font class="input">SYNC</font> option:
+	</p>
+	
+<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+SYNC=&quot;cvs://youraccount@cvs.gentoo.org:/home/cvsroot&quot;
+</pre></td></tr>
+</table>
+
+<p class="secthead"><a name="_sect9">Mirrors </a></p>
+	<p>The Gentoo Project keeps a local mirror of all archive files
+	referenced in ebuilds in the Portage tree.  Often upstream source
+	tarballs, etc are kept on slow servers that may often be down.  Also
+	upstream developers will remove older versions of software from an 
+	ftp site when new releases of made.  To make life easier for people
+	using the Gentoo distribution (and reduce the upstream source site's 
+	bandwidth usage) we mirror these files.  This allows for faster and 
+	more reliable downloading of these archive files from one more many 
+	mirror sites close to your physical location. </p>
+	<p>
+	Whenever you attempt to merge a package Portage will first check
+	our mirror site for the needed archives.  If the mirror site does not
+	have the needed files then Portage tries to download them from the
+	HTTP or FTP server specified in the package ebuild.</p>
+	<p>
+	The mirror Portage uses can be specified by <font class="input">GENTOO_MIRRORS</font> 
+	in /etc/make.conf.  The following is the current default setting:
+	</p>
+<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 9</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+GENTOO_MIRRORS=&quot;http://www.ibiblio.org/gentoo&quot;
+</pre></td></tr>
+</table>
+	<p>To find a Gentoo mirror closer to your location please check the
+	Gentoo web site or ask your local friendly mailing list. </p>
+<p class="secthead"><a name="_sect10">Downloading Program </a></p>
+	<p>The program which Portage uses to download archive files can
+	be specified by setting the <font class="input">FETCHCOMMAND</font> and 
+	<font class="input">RESUMECOMMAND</font> settings.  Several examples are shown
+	in /etc/make.conf and /etc/make.globals.  Portage uses <font class="input">wget</font> by
+	default which should serve most users needs.
+	</p>
+
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Portage passes HTTP and FTP proxy information to the downloading
+	program through use of the HTTP_PROXY and FTP_PROXY environment
+	variables.</p></td></tr></table>
+<p class="secthead"><a name="_sect11">Proxies </a></p>
+	<p>Portage can be instructed to use both HTTP and FTP proxies
+	when downloading files.  The proxies can be specified by setting 
+	<font class="input">HTTP_PROXY</font> and <font class="input">FTP_PROXY</font> in either /etc/make.conf
+	or /etc/make.globals.  If both HTTP and FTP are served from the
+	same proxy, you can set <font class="input">PROXY</font> instead.</p>
+	
+	<p>The following is an example:</p>
+
+<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 10</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+HTTP_PROXY=&quot;http://192.168.1.1:8080&quot;
+FTP_PROXY=&quot;http://192.168.1.1:8080&quot;
+
+or
+
+PROXY=&quot;http://192.168.1.1:8080&quot;
+</pre></td></tr>
+</table>
+
+	<p>Portage can also be instructed to use an HTTP proxy for use
+	with RSYNC.  RSYNC proxy use can be configured by setting the
+	RSYNC_PROXY option in <font class="input">/etc/make.conf</font> or by setting it as 
+	an environment variable.</p>
+	<p>
+	The following is an example:
+	</p>
+
+<a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 11</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+RSYNC_PROXY=&quot;192.168.1.1:8080&quot;
+</pre></td></tr>
+</table>
+
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>If you are firewalled from the outside world and rsync
+	seems unable to use your HTTP proxy, you can update your Portage
+	tree using a snapshot tarball.  A snapshot tarball is available
+	from <a href="http://www.ibiblio.org/gentoo/snapshots/">http://www.ibiblio.org/gentoo/snapshots/</a>.
+	</p></td></tr></table>
+
+<p class="secthead"><a name="_sect12">Misc. Options </a></p>
+	<p>The following are minor options which may be of use to users:</p>
+
+	<ul>
+	<li>
+<font class="input">NOCOLOR</font> : Allows users to disable the use of colors in output from the emerge tool.</li>
+	<li>
+<font class="input">CLEAN_DELAY</font> : Portage delays unmerging of a package by a defined number of seconds to give users time to cancel.  This specifies the number of seconds to wait and can be disabled by setting it to &quot;0&quot;.</li>
+	</ul>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Package Management</p>
+<p class="secthead"><a name="_sect1">Updating The Portage Tree </a></p>
+	<p>The Portage tree, located within /usr/portage, contains the library
+	of build instructions for various packages (called <font class="input">ebuilds</font>).
+	The tree also contains profile and package.mask information which
+	is vital for keeping your system up to date.  It is important to keep 
+	this tree updated and in sync with the official Portage tree in order
+	to have the newest versions of packages and bug fixes available to you.
+	You can update the Portage tree by issuing the following command:
+	</p>
+<a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 12</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge rsync
+</pre></td></tr>
+</table>
+	<p>The method emerge uses to update the local Portage tree can be 
+	changed.  See <font class="input">Portage SYNC settings</font> in the 
+	<font class="input">Configuring Portage</font> chapter for more information.
+	</p>
+<p class="secthead"><a name="_sect2">Merging Packages </a></p>
+	<p>
+	The act of compiling and installing a package through Portage
+	is referred to as <font class="input">merging</font>.  Portage compiles packages
+	and temporarily installs them to an &quot;image&quot; directory where it 
+	records the files to be installed.  These files are then moved from
+	the image directory and merged with the real / filesystem. 
+	</p>
+	<p>
+	The <font class="input">emerge</font> command serves as the front-end of the Portage
+	system.  The installation and removal of packages is controlled
+	by using this command and its various command-line arguments.
+	</p>
+	<p>
+	To install the newest unmasked version of a given package simply
+	specify the package name like the following:
+	</p>
+<a name="doc_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 13</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge galeon
+</pre></td></tr>
+</table>
+	<p>
+	The command will compile and install any needed dependencies (taking 
+	into account any USE settings) and then compile and install the 
+	newest unmasked version of galeon.  Galeon could also have been
+	referred to using fully qualified name with category: <font class="input">net-www/galeon</font>
+	</p>
+	<p>
+	The <font class="input">emerge</font> command also accepts references to actual ebuild 
+	files.  This allows users to merge older versions of a given package 
+	and to merge third party ebuild based packages.  The following is an
+	example:
+	</p>
+<a name="doc_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 14</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge /usr/portage/net-www/galeon/galeon-1.2.0-r3.ebuild
+</pre></td></tr>
+</table>
+	<p>
+	In addition to specifying the package name or ebuild file to be merged,
+	<font class="input">emerge</font> supports several very useful command line arguments.
+	Of these arguments <font class="input">--pretend</font> is perhaps the most useful.  When
+	this argument is used the intended action is not performed.  Instead
+	Portage displays a list of packages that would have been installed
+	or updated while performing the action.  The following is an example
+	listing of what would have been merged during the installation
+	of the latest version of the kdevelop package:
+	</p>
+
+<a name="doc_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 15</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+root@kodiak blocke # emerge --pretend kdevelop             
+
+These are the packages that I would merge, in order.
+
+Calculating dependencies ...done!
+[ebuild  N   ] kde-base/kdelibs-2.2.2-r4 to /
+[ebuild  N   ] dev-util/kdbg-1.2.2 to /
+[ebuild   U  ] app-text/psutils-1.17 to /
+[ebuild   U  ] app-text/a2ps-4.13b-r3 to /
+[ebuild   U  ] app-text/jadetex-2.20 to /
+[ebuild  N   ] app-text/sgmltools-lite-3.0.3-r2 to /
+[ebuild  N   ] kde-base/kdoc-2.2.2-r1 to /
+[ebuild  N   ] net-www/htdig-3.1.5-r2 to /
+[ebuild  N   ] app-text/enscript-1.6.3-r1 to /
+[ebuild  N   ] kde-base/kdebase-2.2.2-r2 to /
+[ebuild  N   ] app-doc/qt-docs-2.3.1 to /
+[ebuild  N   ] dev-util/kdevelop-2.0.2 to /
+</pre></td></tr>
+</table>
+	<p>In the above listing, packages marked with a <font class="input">N</font> are
+	packages which have not yet been installed and would be installed
+	during this action.  Packages marked with a <font class="input">U</font> indicate
+	that an older version of the package was already installed and the
+	action would upgrade the package.
+	</p>
+	<p>
+	The other arguments available are:
+	</p>
+	<p>
+	<font class="input">--fetchonly</font> : Downloads the needed archive files for compiling
+	the package to be installed and any dependencies that need to be met.
+	</p>
+	<p>
+	<font class="input">--emptytree</font> : This option makes Portage pretend that none of the
+	dependencies of this package or the packages it depends upon are 
+	installed.  This is useful with <font class="input">--pretend</font> to display a complete
+	tree of dependencies for any particular package.  All dependencies
+	except for glibc are displayed.
+	</p>
+	<p>
+<font class="input">--nodeps</font> : Portage attempts to merge only the specified
+	packages and ignores any dependencies.  If you do not have the 
+	appropriate dependencies already installed then compilation may
+	fail.
+	</p>
+	<p>
+<font class="input">--onlydeps</font> : Only dependencies for a given package are
+	merged.  The specified package is not merged.
+        </p>
+	<p>
+<font class="input">--noreplace</font> : Skips the merge of specified packages if they
+	are already installed
+	</p>
+	<p>
+<font class="input">--usepkg</font> : Instead of compiling the specified packages
+	Portage will attempt to use pre-compiled tbz2 packages from a specified
+	location.  The location is specified by the <font class="input">PKGDIR</font> shell
+	environment variable.
+	</p>
+	<p>
+<font class="input">--debug</font> : The ebuild environment is instructed to become 
+	much more verbal.  This is useful for developers trying to track 
+	down syntax errors in bash script based ebuild files.
+	</p>
+	<p>
+<font class="input">--autoclean</font> : Forces <font class="input">emerge</font> to clean out
+	package-specific temporary build directories before it starts
+	to build a package.  Portage does this by default so this option
+	is only useful to developers who disabled this default behavior.
+	</p>
+	<p>
+<font class="input">--verbose</font> : Tells <font class="input">emerge</font> to run in verbose mode.
+	Currently, this only causes GNU info errors to be displayed.  These
+	errors can be safely ignored by users.
+	</p>
+<p class="secthead"><a name="_sect3">Unmerging Packages </a></p>
+	<p>The act of &quot;unmerging&quot; is to remove the files associated with
+	an installed package from the filesystem.  The software in the package
+	is removed from the system and can no longer be used until it is 
+	remerged.
+	</p>
+	<p>Packages are removed by invoking the <font class="input">emerge</font> command and
+	specifying the <font class="input">unmerge</font> argument followed by the name of the
+	package to be removed.  The following example would unmerge all
+	installed versions of the <font class="input">ltrace</font> package:
+	</p>
+
+<a name="doc_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 16</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge unmerge ltrace
+
+or
+
+emerge unmerge dev-util/ltrace
+</pre></td></tr>
+</table>
+	<p>Portage also allows for a specific versions of packages
+	to be unmerged. Ranges are specified using <font class="input">=</font> (exact version),
+	<font class="input">&lt;</font> (less then), <font class="input">&gt;</font> (greater then), <font class="input">&lt;=</font> 
+	(less then or equal to), and <font class="input">&gt;=</font> (greater then or equal to).
+	The following would unmerge all versions of ltrace equal to 
+	version 0.3.15 and older:
+	</p>
+
+<a name="doc_pre17"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 17</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
+</pre></td></tr>
+</table>
+
+	<p>When specifying package ranges it is important to escape <font class="input">&gt;</font>
+	and <font class="input">&lt;</font> characters so your shell does not interpret them.
+	Also you will need to specify the category in the package name as 
+	shown in the example.  For another example of how package
+	range specifications work see the <font class="input">emerge --help</font> command.
+	</p>
+
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Unmerging packages can be dangerous.  If you remove any
+	core packages your system may cease to function and 
+	the removal of various libraries may cause software to fail.
+	<b>Portage does not warn you if you are removing core packages
+	or dependencies for other packages.</b>
+	</p></td></tr></table>
+
+	<p>If the package to be removed is in fact installed the emerge
+	program will display exactly what packages are to be removed and
+	will wait a specified number of seconds to give the user time to
+	cancel.  During this waiting period the user may press Control-C
+	to cancel before the unmerge beings.
+	</p>
+	<p>
+	Once the unmerge begins you will see a long list of filenames 
+	belonging to the package displayed.  Some of these filenames
+	will have a flag displayed to the left of the filename.
+	The flags <font class="input">!mtime</font>, <font class="input">!empty</font>, and <font class="input">cfg</font> specify
+	reasons why certain files were not removed when this package
+	was unmerged.  Files listed without any of these three flags
+	were removed from the filesystem successfully.
+	</p>
+	<p>
+	The <font class="input">!mtime</font> flag means the file was modified after this specific 
+	version of the package was installed.  This means that someone
+	edited this file after the package was installed or some other package
+	overwrote the file at a later time.  This allows for packages to be
+	updated to newer versions without fear that unmerging the older
+	installed version will remove vital files.  
+	</p>
+	<p>
+	The <font class="input">!empty</font> flag refers to directories which Portage refuses 
+	to remove due to the directory not being empty (multiple packages 
+	often claim ownership to the same directories).  Configuration File 
+	protection kicks in when you see the <font class="input">cfg</font> flag.  This means 
+	a newer installed package is claiming ownership of this particular
+	configuration file and Portage refuses to remove it.
+	</p>
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Files are considered owned by the last package installed.
+	This is dependent on the order of installation and is independent
+	of the actual version number or revision number of the packages
+	installed.  Removing the newest installed package that claims a certain
+	file will always remove the file even if older packages installed
+	versions of the same file in the past (assuming the user did not 
+	manually modify the file).
+	</p></td></tr></table>
+	
+<p class="secthead"><a name="_sect4">System Update </a></p>
+	<p>Portage supports the ability to upgrade installed packages
+	automatically with a single command.  The system update feature
+	allows users to update the &quot;core&quot; packages to versions recommended
+	by Gentoo core developers as being important to the operation
+	of any Gentoo Linux system.  A system update does not update
+	nonessential packages, only those packages defined in the Portage
+	profile as being essential for the operation and maintaince of 
+	a system.
+	</p>
+	<p>
+	To perform a system update issue the following command:
+	</p>
+<a name="doc_pre18"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 18</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge --update system
+</pre></td></tr>
+</table>
+	<p>Portage will then compile and install updates depending on
+	what versions and packages you have installed and what is recommended
+	by the current Portage profile.  Users can use the <font class="input">--pretend</font>
+	argument with the above example to get a list of what would be
+	installed and upgraded during this action.
+	</p>
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>You will notice in the install instructions that one of the
+	first steps is to run <font class="input">emerge system</font> to install the base
+	(or &quot;core&quot;) packages.  <font class="input">emerge --update system</font> updates
+	those base packages to the latest recommended versions.
+	</p></td></tr></table>
+<p class="secthead"><a name="_sect5">World Update </a></p>
+	<p>Portage also supports the ability to automatically upgrade
+	selected non-essential packages with a single command.  The portage
+	system has a degree of intelligence built into it to allow for the 
+	safe upgrading of a system where multiple versions of conflicting 
+	packages may be available.</p>
+
+	<p>Portage's world update feature checks the system profile, the
+	list of blocked packages (<font class="input">package.mask</font>), the world profile and 
+	the dependencies (including version ranges) of packages listed 
+	in the world profile when determining which packages need upgrading.
+	A package is only upgraded if a newer version exists and the package
+	is listed in the world profile or is a dependency of a package in the 
+	world profile.  In addition the package or specific version of the 
+	package must not be blocked by the system profile or in 
+	<font class="input">package.mask</font>.
+	</p>
+
+	<p>When considering which packages to upgrade, Portage tries to 
+	upgrade all packages mentioned in the world profile to the newest
+	unblocked version available.  Portage also considers the dependencies
+	of each package mentioned in the world profile and will try to
+	upgrade the dependency to a newer version if one is available, matches
+	the version ranges specified, and is not blocked by either the system
+	profile or <font class="input">package.mask</font>.  It also takes into consideration
+	<font class="input">SLOTS</font> as mentioned in a previous chapter.
+	</p>
+
+	<p>Users familiar with other distributions and packaging methods
+	besides Portage may be confused by why Portage does not simply
+	do a blind upgrade of packages based solely on version numbers (as it
+	did before Gentoo 1.0).  Many of the packages included in Gentoo's
+	Portage Tree have many versions available.  An older or newer
+	version of a package may be incompatible with the software that relies
+	on it.  Blindly upgrading libraries and tools without taking into
+	consideration the needs of other packages can quickly result in
+	many severe problems.  To avoid this Portage tries to take care when
+	upgrading and takes the needs of all packages into consideration based
+	on the needs declared in individual package ebuilds.
+	</p>
+	
+	<p>
+	The heart of Portage's world update is the world profile.  Unlike
+	the system profile which is usually defined by developers and never
+	touched by users, the world update profile is generated indirectly
+	over time by actions performed by the user.
+	The world profile operates much like a &quot;favorites list&quot;.
+	Packages that are manually installed by the user through use of the
+	<font class="input">emerge</font> command are recorded in the <font class="input">world</font> file located at
+	<font class="input">/var/cache/edb/world</font>.  Portage assumes that because you took
+	the effort to tell it to install the package then you must have some
+	interest in keeping it up to date.
+	</p>
+	<p>
+	The <font class="input">world</font> file consists of one package name with category per
+	line and may look something like the following:
+	</p>
+<a name="doc_pre19"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 19</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+net-im/gaim
+net-www/skipstone
+net-www/galeon
+app-editors/vim
+app-text/ispell
+net-mail/evolution
+dev-util/ltrace
+sys-apps/xfsprogs
+=net-www/mozilla-0.9.8-r3
+sys-apps/attr
+sys-apps/dmapi
+sys-kernel/linux-sources
+sys-apps/acl
+app-office/gnucash
+app-cdr/xcdroast
+</pre></td></tr>
+</table>
+	<p>
+	Almost all of the entries in this example file were added 
+	automatically by Portage when the user manually merged the specific 
+	packages.  These packages will be upgrade if a newer version is 
+	available.
+	</p>
+	
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>To save time and make sure your favorite packages are kept updated
+	you may manually edit the <font class="input">world</font> file and add entries for these
+	packages.  Users upgrading from old versions of Portage may need
+	to populate this file.  Recent installations of Gentoo and Portage
+	should have a fairly populated world profile created during
+	installation.</p></td></tr></table>
+	
+	<p>An interesting entry to note is the entry for the mozilla package
+	(<font class="input">=net-www/mozilla-0.9.8-r3</font>).  This entry was added manually
+	by a user to &quot;pin&quot; a specific version.  Package ranges (as discussed
+	in the <font class="input">Unmerge Packages</font> section of this manual) can be used
+	to force Portage to only consider certain version ranges when 
+	updating packages.  This entry in effect &quot;pins&quot; Portage into 
+	considering mozilla-0.9.8-r3 to be the only available version and 
+	thus it will never attempt to update the package during a world
+	update for any reason.
+	</p>
+	
+	<p>World updates are done using the following command:</p>
+<a name="doc_pre20"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 20</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge --update world
+</pre></td></tr>
+</table>
+	<p>Portage will then attempt to update all packages mentioned in
+	the <font class="input">world</font> file and will update any dependencies if needed.
+	Dependencies are upgraded to the newest version available that
+	satisfies the needs of the package being upgraded.  Packages
+	that are not listed in <font class="input">world</font> and are not dependencies of
+	the aforementioned packages are not updated.
+	</p>
+
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Portage will not overwrite files in directories protected
+	by Configuration File Protection.  You will need to manually
+	merge the differences between your current configuration files
+	and the new versions Portage saved for you.  If you do not
+	update your configuration files installed software may stop 
+	functioning.  Please see <font class="input">Configuration File Protection</font> 
+	in the <font class="input">Configuring Portage</font> chapter or use the command 
+	<font class="input">emerge --help config</font> for more information. </p></td></tr></table> 
+
+	<p>To view a list of what would be updated or installed during 
+	a world update, you can use the <font class="input">--pretend</font> argument as 
+	mentioned in previous sections of this chapter.
+	</p>
+
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>A world update also performs a system update automatically.  
+	Core packages cannot be pinned using the <font class="input">world</font> file method as 
+	the current Portage profile will always override it.</p></td></tr></table>
+
+	<p>
+	An interesting side effect of how world update works can
+	be exploited by users wishing to recompile all installed software
+	on a system.  Since world update will try to update all packages
+	mentioned in the <font class="input">world</font> file and their dependencies, the use
+	of the argument <font class="input">--emptytree</font> is a way of forcing the recompile
+	of these packages and every dependency except for glibc.
+	This can be useful for users wishing to change their compiler options
+	or USE keyword settings and want these changes to be used by all
+	the software they use without manually remerging every package.
+	Simply populate the <font class="input">world</font> file with all your commonly used
+	applications and issue the following command: 
+	</p>
+<a name="doc_pre21"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 21</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge --update world --emptytree
+</pre></td></tr>
+</table>
+	<p>
+	You can add the <font class="input">--pretend</font> argument to this command to get a 
+	list of packages that would be recompiled as a result of this action.
+	</p>
+	
+<p class="secthead"><a name="_sect6">Cleaning System </a></p>
+	<p>Portage supports the ability to install multiple versions
+	of the same version on top of each other.  There are quite a few
+	packages in Gentoo's Portage Tree that makes use of this
+	functionality (for backwards compatibility as older applications may
+	be incompatible with a newer version of another package)
+	</p>
+	<p>In most cases though when a newer version of a package is installed
+	most of the older package is overwritten and all that remains is
+	a few documentation files and other files unimportant to the operation
+	of a system.  Overtime this &quot;cruft&quot; can build up and waste valuable
+	disk-space.
+	</p>
+	<p>To combat this, Portage provides an easy way to remove traces
+	of older versions from a user's system.  This functionality is referred
+	to as the emerge <font class="input">clean</font> option and be used by issuing the
+	following command:
+	</p>
+<a name="doc_pre22"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 22</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge clean
+</pre></td></tr>
+</table>
+	<p>
+<font class="input">emerge</font> will then display a list of package revisions and 
+	versions to be removed, the versions that will remain, and give
+	the user time to cancel out of the action by pressing Control-C.
+	On a typical system a flurry of activity will occur as it displays
+	long lists of files that were either deleted or kept.
+	</p>
+
+	<p>Unless specified, Portage assumes the clean action is to be
+	performed for the <font class="input">world</font> (all installed packages).  You can
+	narrow the scope of the clean action by using options such as 
+	<font class="input">world</font>, <font class="input">system</font>, a list of package names, and package 
+	version ranges as mentioned in the unmerge section of this chapter.
+	</p>
+
+	<p>When considering which package versions should be removed the 
+	Portage system considers the various profiles, the needs of other
+	installed packages, and a packages SLOT.  Assuming dependencies
+	are correctly defined for all packages, the clean action will
+	safely remove old package system and should not remove any
+	functionality or prevent the system from functioning.
+	</p>	
+<p class="secthead"><a name="_sect7">Pruning Packages </a></p>
+	<p>
+	Portage also supports a package <font class="input">prune</font> action.   The prune
+	action is an unsafe form of the clean.  It removes all versions
+	of all packages except for the last installed version.  It does
+	not perform many of the checks <font class="input">clean</font> performs and can
+	remove essential dependencies from your system.  Users of this 
+	option can easily break their systems and its use is not recommended
+	except in specific specialized circumstances.
+	</p>
+
+	<p>The <font class="input">prune</font> action accepts the same list as options as the
+	<font class="input">clean</font> action and can be used like the following:
+	</p>
+<a name="doc_pre23"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 23</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge prune
+</pre></td></tr>
+</table>
+<p class="secthead"><a name="_sect8">Searching The Portage Tree </a></p>
+	<p>Portage Trees such as the one that forms the heart of the Gentoo
+	Linux distribution can be quite large.  The <font class="input">emerge</font> command
+	provides a search feature which accepts a search string in the form
+	of a regular expression contained in quotes.  Regular expressions
+	are very complicated beasts so it is recommended you find a good book
+	on the topic if you are interested in fully using regular expressions.
+	</p>
+	<p>
+	Most simple searches can be done without knowing how to form
+	regular expressions.  The following is an example of a simple search 
+	for a package either named &quot;gcc&quot; or has &quot;gcc&quot; as part of its name:
+	</p>
+<a name="doc_pre24"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 24</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge search gcc
+</pre></td></tr>
+</table>
+	<p>
+	For each match the search action lists the package name, newest 
+	available version, newest version installed, its home page, and
+	a description of the software contained in the package.
+	</p>
+<p class="secthead"><a name="_sect9">Getting Help </a></p>
+	<p>More information on the many options and actions <font class="input">emerge</font>
+	supports can be found by issuing the following command:</p>
+<a name="doc_pre25"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 25</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+emerge --help
+</pre></td></tr>
+</table>
+<p class="secthead"><a name="_sect10">Useful Utilities </a></p>
+	<p>Several utilities have been made available by Gentoo users
+	to make life easier.  These utilities are available in the
+	<font class="input">app-admin/gentoolkit</font> in the Gentoo Portage tree.
+	</p>
+	<p>
+	<ul>
+	<li>
+<font class="input">etc-update</font> : shell script using vim to assist with the
+	merging of /etc files (can be dangerous if used incorrectly)</li>
+	<li>
+<font class="input">qpkg</font> : package database query tool</li>
+	<li>
+<font class="input">epm</font> : another package database query tool with RPM like syntax</li>
+	</ul>
+	</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 18.Juli 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:blocke@shivan.org">Bruce A. Locke</a></b>
+<br><i>Author and Editor</i><br><br>
+<b><a class="altlink" href="mailto:sebastian@beneke-it.de">Sebastian Beneke</a></b>
+<br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> 
+Dieses Handbuch liefert einen generellen Überblick über Portage,
+detaillierte Informationen sowie eine Anleitung zur Installation und
+Pflege von Paketen des Portage Systems.
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
