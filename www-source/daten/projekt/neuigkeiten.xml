@@ -45,6 +45,12 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
             Das bedeutet das alle gentoo-*@gentoo.org Adressen nicht funktionieren. Alle anderen @gentoo.org Adressen, wie z.B. www@gentoo.org oder auch Developer Emailadressen funktionieren weiterhin. 
             Alle Mails die an die Listen geschickt werden, kommen allerdings in die Warteschleife, somit sollten keine Mails verloren gehen.
         </p>
+	<p>
+	    <b>Update:</b> Ueber das Wochenende leidete der Gentoo Mailing Listen Server unter starken Netzwerkproblemen.
+            Um alle eingehenden Mails dennoch zu behalten, gingen diese in eine Warteschleife, in der Hoffnung, dass das Problem schnell behoben wird. 
+	    Heute wurden die Listen aus einem Backup wiederhergestellt; dennoch sind die Neuanmeldungen von Donnerstag und Freitag leider verloren.
+ 	    Alle die sich in dieser Zeit angemeldet haben, werden gebeten dies noch einmal zu tun.
+	</p>
         </news>
     </body>
 </section>
