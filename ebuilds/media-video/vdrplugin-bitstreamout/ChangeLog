@@ -1,8 +1,9 @@
-# ChangeLog for media-video/vdr-clock
+# ChangeLog for media-video/vdr-bitstreamout
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-bitstreamout/ChangeLog,v 1.1 2003/06/21 11:01:44 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-bitstreamout/ChangeLog,v 1.2 2003/09/14 20:50:40 fow0ryl Exp $
 
-*vdrplugin-console-0.5.1 (24 Feb 2003)
+*vdrplugin-bitstreamout-0.46e (14 Sept 2003)
 
-  15 Jun 2003; H.Ryll <henning.ryll@web.de>
-  moved to vdr 1.2.0, new lib path
+  15 Sept 2003; H.Ryll <henning.ryll@web.de>
+  inital version for vdr >= 1.2.0
+  
