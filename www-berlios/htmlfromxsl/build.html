@@ -55,29 +55,31 @@ war extrem langsam.) Um die Installation zu starten, laden Sie zuerst eines unse
 CD ISO Images von <a href="http://www.ibiblio.org/gentoo/releases/build/">http://www.ibiblio.org/gentoo/releases/build/</a>. Im Augenblick 
 haben wir zwei CDs verfügbar. Unsere erste CD ist 
 <a href="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">
-gentoo-ix86-1.2.iso</a>.Dieses Image ist recht klein (16Mb) und enthält ein minimales 
+gentoo-ix86-1.2.iso</a>. Dieses Image ist recht klein (16Mb) und enthält ein minimales 
 &quot;chrootfähiges&quot; 
+
 Image (<font class="path">stage1-ix86-1.2.tbz2</font>) -- alles was Sie benötigen um ein
-Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei 
-automatisch aus dem Internet geladen.) Unsere zweite CD ist 
+Gentoo Linux System von Grund auf aufzubauen (Die Quelldateien werden dabei 
+automatisch aus dem Internet geladen). Unsere zweite CD ist 
 <a href="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">
 gentoo-i686-1.2.iso</a>. Dieses Image ist etwas größer (100+Mb) -- Es
 enthält das gleiche Material wie auf unserem 16Mb Image, <font class="emphasis">plus</font> einem 
 vorkompiliertem i686 Basissystem (<font class="path">stage3-i686-1.2.tbz2</font>) 
-sowie ein zum Teil kompiliertes 
+sowie ein teilweise kompiliertes 
 i686 Basissystem (<font class="path">stage2-i686-1.2.tbz2</font>) in TAR-Archiven.
-Die beiden neuen TAR-Archive benötigen einen Pentium Pro oder besser (K6 geht nicht). 
-Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf kompilieren wollen, 
-können diese die Installation deutlich beschleunigen.
+Die beiden neuen TAR-Archive benötigen einen Pentium Pro oder besser (auf einem K6-System und
+niedriger nicht möglich). 
+Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf neu kompilieren wollen, 
+können Sie damit die Installationsdauer von Gentoo Linux deutlich verkzüen.
 </p>
 
 <p>Jetzt lassen Sie uns kurz den den Installationsprozess skizzieren. Sie erstellen die Partitionen,
 erzeugen die Dateisysteme und entpacken entweder das <font class="emphasis">stage1</font>, <font class="emphasis">stage2</font> oder <font class="emphasis">stage3</font> 
-Archiv. Wenn Sie das <font class="emphasis">stage2</font> oder <font class="emphasis">stage3</font> Archiv verwenden müssen Sie alle nötigen Schritte 
-unternehmen um Ihr System auf den Stand des <font class="emphasis">stage3</font> Archivs zu bringen. Wenn Sie <font class="emphasis">stage3</font>
-erreicht haben können Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
+Archiv. Wenn Sie das <font class="emphasis">stage2</font> oder <font class="emphasis">stage3</font> Archiv verwenden, müssen Sie alle nötigen Schritte 
+unternehmen, um Ihr System auf den Stand des <font class="emphasis">stage3</font> Archiv's zu bringen. Wenn Sie <font class="emphasis">stage3</font>
+erreicht haben, können Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
 installieren, usw.) und in ein voll funktionsfähiges Gentoo Linux booten.
-Abhängig von der gewählten  Installationsstufe von der Sie starten, 
+Abhängig von der gewählten Installationsstufe, von der Sie starten, 
 hier die benötigten Schritte:
 </p>
 
@@ -106,7 +108,7 @@ hier die benötigten Schritte:
 
 <p>Wenn Sie sich für eine CD entschieden haben, booten Sie damit. Sie werden von
 einem Haufen Text und einem <font class="code">boot:</font> Prompt am unteren Bildschirmrand 
-begrüßt. Drücken Sie an diesem Prompt <font class="emphasis">enter</font> und Linux wird von der CD
+begrüßt. Drücken Sie an diesem Prompt <font class="emphasis">Enter</font> und Linux wird von der CD
 geladen.</p>
 
 
@@ -115,9 +117,9 @@ Boot-CD begrüßt. Dies beinhaltet <font class="code">nano</font> (einen Klon des 
 die Anleitung zur Netzwerkkonfiguration. Danach werden Sie nach Ihrem bevorzugtem
 Keyboard Layout befragt, gefolgt von der automatischen Erkennung der PCI Geräte. Während
 der Geräteerkennung werden alle passenden Kernelmodule für PCI SCSI Controller und
-Netzwerkkarten geladen. Wenn Sie danach <font class="emphasis">Enter</font> drücken kommen Sie in eine
+Netzwerkkarten geladen. Wenn Sie danach <font class="emphasis">Enter</font> drücken, kommen Sie in eine
 minimale Linux Umgebung. Sie sollten nun ein root Prompt (&quot;<font class="code">#</font>&quot;) auf der
-aktuellen Konsole haben. Durch drücken von Alt-F2, Alt-F3, usw. gefolgt von
+aktuellen Konsole haben. Durch drücken von Alt-F2, Alt-F3 usw.., gefolgt von
 einem <font class="emphasis">Enter</font>  können Sie weitere Konsolen aktivieren.</p>
 
 
@@ -140,7 +142,7 @@ Um ein bestimmtes Modul zu laden, tippen Sie: </p>
 </pre></td></tr>
 </table>
 
-<p>Wenn Sie nun auch noch auf SCSI Hardware zugreifen möchten die nicht automatisch
+<p>Wenn Sie nun auch noch auf SCSI Hardware zugreifen möchten, die nicht automatisch
 erkannt wurde, müssen Sie das passende Modul aus /lib/modules laden. 
 Verwenden Sie dazu <font class="code">modprobe</font>:</p>
 
@@ -156,7 +158,7 @@ Verwenden Sie dazu <font class="code">modprobe</font>:</p>
 </table>
 
 <p>Mit den oben stehenden Befehlen haben Sie den SCSI Treiber <font class="code">aic7xxx</font> geladen und
-sichergestellt das die Unterstützung für SCSI CD-ROMS (<font class="code">sr_mod</font>) und Festplatten 
+sichergestellt, das die Unterstützung für SCSI CD-ROMS (<font class="code">sr_mod</font>) und Festplatten 
 (<font class="code">sd_mod</font>) aktiviert ist.</p>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
@@ -177,25 +179,25 @@ zusätzlichen Dreh anwenden.</p>
 </pre></td></tr>
 </table>
 
-<p>Während cardmgr überprüft welche Hardware vorhanden ist, sollten aus Ihrem
+<p>Während cardmgr überprüft, welche Hardware vorhanden ist, sollten aus Ihrem
 Lautsprecher einige Piepser ertönen und die PCMCIA Netzwerkkarte ihre Arbeit
 aufnehmen. Sie können natürlich die PCMCIA Karte auch nach dem Laden des cardmgr
-einstecken.(Technisch gesehen müssen Sie <font class="input">cardmgr</font> nicht starten wenn Sie
+einstecken (Technisch gesehen müssen Sie <font class="input">cardmgr</font> nicht starten wenn Sie
 genau wissen welche Module Ihre PCMCIA Karte benötigt. Aber wenn nicht, versuchen
-Sie nicht alle Module zu laden um zu sehen welches passt. Das wird nicht
-funktionieren, da sich alle Module laden lassen und darauf warten das eine
+Sie nicht alle Module zu laden um zu sehen, welches passt. Das wird nicht
+funktionieren, da sich alle Module laden lassen und darauf warten, das eine
 passende PCMCIA Karte eingesteckt wird. Außerdem entfernt <font class="code">cardmgr</font> die
-Module der Karte wieder wenn sie entnommen wird.)
+Module der Karte wieder, wenn sie entnommen wird).
 </p>
 
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap5">5.</a></font>Konfiguration der Netzwerkanbindung</p>
 
-<p>Die neue -r11+ Boot CD erlaubt es nun ein Netzwerk zu konfigurieren damit <font class="code">ssh</font>, 
+<p>Die neue -r11+ Boot CD erlaubt es nun ein Netzwerk zu konfigurieren, damit <font class="code">ssh</font>, 
 <font class="code">scp</font> oder <font class="code">wget</font> schon vor der eigentlichen Installation verwendet werden können. Auch
 wenn Sie diese Programme jetzt nicht brauchen, sollten Sie nun das Netzwerk konfigurieren. Einmal
-konfiguriert kann Portage diese Netzwerkverbindung nutzen wenn Sie sich in der &quot;chroot&quot; Umgebung
-befinden. (Für die Gentoo Linux Installation erforderlich.)</p>
+konfiguriert kann Portage diese Netzwerkverbindung nutzen, wenn Sie sich in der &quot;chroot&quot; Umgebung
+befinden (Für die Gentoo Linux Installation erforderlich).</p>
 
 <p class="secthead"><a name="_sect2">DHCP </a></p>
 <p>Mit DHCP ist die Netzwerkkonfiguration sehr einfach. Wenn Ihr Provider kein DHCP anbietet,
@@ -210,7 +212,7 @@ geht es für Sie bei der statischen Netzwerkkonfiguration weiter.</p>
 </table>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
-Einige Provider erwarten das Sie einen Hostnamen übergeben. Um dies zu tun hängen Sie die 
+Einige Provider erwarten, dass Sie einen Hostnamen übergeben. Um dies zu tun, hängen Sie die 
 Option <font class="code">-h meinhostname</font> an das oben stehende Kommando.</p></td></tr></table>
 
 <p>Wenn Sie <font class="input">dhcpConfig</font> Warnungen bekommen, keine Panik. Die meisten Meldungen sind 
@@ -233,12 +235,12 @@ Ihres &quot;default Gateway&quot;.</p>
 # <font class="input">/sbin/route add -net default gw $GTWAY netmask 0.0.0.0 metric 1</font>
 </pre></td></tr>
 </table>
-<p>Jetzt müssen Sie die Datei <font class="path">/etc/resolv.conf</font> erstellen damit die Namensauflösung 
+<p>Jetzt müssen Sie die Datei <font class="path">/etc/resolv.conf</font> erstellen, damit die Namensauflösung 
 (Web/FTP Server durch Namen anstatt der IP Adresse finden) funktioniert.</p>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>Im Moment ist nur <font class="code">nano</font>, ein kleiner, leicht zu bedienender Editor installiert.
-Verwenden Sie <font class="code">nano</font> mit dem Schalter <font class="code">-w</font> um den automatischen Zeilenumbruch 
+Verwenden Sie <font class="code">nano</font> mit dem Schalter <font class="code">-w</font>, um den automatischen Zeilenumbruch 
 abzuschalten.</p></td></tr></table>
 
 <p>Hier ein Beispiel der Datei /etc/resolv.conf:</p>
@@ -252,11 +254,11 @@ nameserver 10.0.0.1
 nameserver 10.0.0.2
 </pre></td></tr>
 </table>
-<p>Ersetzten Sie <font class="code">10.0.0.1</font> und <font class="code">10.0.0.2</font> mit den IP Adressen Ihres primären und
+<p>Ersetzen Sie <font class="code">10.0.0.1</font> und <font class="code">10.0.0.2</font> mit den IP Adressen Ihres primären und
 sekundären DNS Servers.</p>
 <p class="secthead"><a name="_sect4">Test der Netzwerkanbindung </a></p>
-<p>Da Ihre Netzwerkanbindung jetzt konfiguriert ist sollte das <font class="code">/sbin/ifconfig -a</font> Kommando ergeben,
- das Ihre Netzwerkkarte (hoffentlich) arbeitet (achten Sie auf <font class="emphasis">UP</font> und <font class="emphasis">RUNNING</font> in der Ausgabe).
+<p>Da Ihre Netzwerkanbindung jetzt konfiguriert ist, sollte der Befehl <font class="code">/sbin/ifconfig -a</font> ausgeben,
+ dass Ihre Netzwerkkarte (hoffentlich) arbeitet (achten Sie auf <font class="emphasis">UP</font> und <font class="emphasis">RUNNING</font> in der Ausgabe).
 </p>
 
 <a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -276,14 +278,14 @@ eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
 </table>
 
 <p class="secthead"><a name="_sect5">Das Netzwerk ist jetzt online! </a></p>
-<p>Der Netzwerkanschluss sollte nun konfiguriert und nutzbar sein. Sie sind nun in der Lage sich via 
+<p>Der Netzwerkanschluss sollte nun konfiguriert und nutzbar sein. Sie sind nun in der Lage, sich via 
 <font class="code">ssh</font>, <font class="code">scp</font> und <font class="code">wget</font> mit anderen Rechnern in Ihrem LAN oder im Internet zu
 verbinden.</p>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap6">6.</a></font>Einrichten der Partitionen</p>
 
-<p>Nun da der Kernel Netzwerk und Festplatten Kontroller unterstüzt, wird es Zeit
-die Partitionen für Gentoo Linux einzurichten.</p>
+<p>Nun, da der Kernel Netzwerk und Festplatten Kontroller  unterstüzt, wird es Zeit die Partitionen für Gentoo Linux
+einzurichten.</p>
 
 <p>
 Hier nun ein kurzer Überblick über das Standard Layout der Partitionen
@@ -293,9 +295,9 @@ und eine spezielle Boot Partition. Die Boot Partition ist dazu bestimmt den
 GRUB Bootmanager und den oder die Linux Kernel aufzunehmen. Die Boot Partition
 ist ein sicherer Platz um alle zum booten relevanten Dateien abzulegen.
 Bei der täglichen Nutzung sollte die Boot Partition <font class="emphasis">nicht gemountet</font>
-bleiben. Dies verhindert das der Kernel von GRUB nach einem System Absturz
+bleiben. Dies verhindert, das der Kernel von GRUB nach einem System Absturz
 nicht mehr geladen werden kann (z.B. wegen einem beschädigten Dateisystem).
-Außerdem verhindert dies das &quot;Henne-Ei-Problem&quot; bei dem GRUB den Kernel
+Außerdem verhindert dies, dass das &quot;Henne-Ei-Problem&quot;, bei dem GRUB den Kernel
 wegen einem kaputten Dateisystem nicht mehr laden kann, Sie das Dateisystem aber
 reparieren könnten, wäre es nur möglich zu booten.</p>
 
