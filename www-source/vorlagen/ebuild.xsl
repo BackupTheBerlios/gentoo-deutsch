@@ -74,11 +74,29 @@
                   <b>Versionen:</b>
                   <br/>
                   <xsl:for-each select="../pkg[name = $pname]">
-                    <xsl:value-of select="version"/>
-                    <xsl:if test="revision != ''"> 
-                      <xsl:text>-</xsl:text>
-                      <xsl:value-of select="revision"/>
-                    </xsl:if>  
+                    <a class="uri">
+                      <xsl:attribute name="href">
+                        <xsl:text>http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/ebuilds/</xsl:text>
+                        <xsl:value-of select="$cname"/>
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="$pname"/>
+                        <xsl:text>/</xsl:text>
+                        <xsl:value-of select="$pname"/>
+                        <xsl:text>-</xsl:text>
+                        <xsl:value-of select="version"/>
+                        <xsl:if test="revision != ''"> 
+                          <xsl:text>-r</xsl:text>
+                          <xsl:value-of select="revision"/>
+                        </xsl:if>  
+                        <xsl:text>.ebuild</xsl:text>
+                      </xsl:attribute>
+                    
+                      <xsl:value-of select="version"/>
+                      <xsl:if test="revision != ''"> 
+                        <xsl:text>-r</xsl:text>
+                        <xsl:value-of select="revision"/>
+                      </xsl:if>  
+                    </a>
                     <br/>                
                   </xsl:for-each>
                 </td>
