@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dxr3/vdrplugin-dxr3-0.2.1.ebuild,v 1.2 2003/12/10 17:48:59 rootshell Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dxr3/vdrplugin-dxr3-0.2.1-r1.ebuild,v 1.1 2003/12/10 17:48:59 rootshell Exp $
 
 VDRPLUGIN="dxr3"
 
@@ -19,8 +19,13 @@ DEPEND=">=media-video/vdr-1.2.0
 
 src_unpack() {
 	unpack ${A}
-	einfo "Applying dxr3 elchi patch..."
-	epatch ${FILESDIR}/dxr3_elchi.diff
+	if [ "${VDR_OPTS}" = "elchi" ] || [ "${VDR_OPTS}" = "akool" ]; then
+		einfo "patching dxr3 plugin (Elchi)..."
+		epatch ${FILESDIR}/dxr3_elchi.diff
+	else
+		einfo "NOT patching dxr3-plugin"
+		einfo "enable patch via VDR_OPTS (see vdr-ebuild)"
+	fi
 }
 
 src_compile() {
