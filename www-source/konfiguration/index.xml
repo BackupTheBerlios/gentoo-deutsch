@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
+<!-- Gentoo Linux Konfigurations-Datei -->
+
 <config>
 
 <source value="/home/groups/gentoo-deutsch/htdocs/neu/cache/www-source" short="src">
