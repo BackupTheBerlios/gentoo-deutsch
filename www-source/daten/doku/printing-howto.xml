@@ -2,7 +2,7 @@
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version 1.21 -->
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/printing-howto.xml,v 1.7 2003/12/08 19:54:12 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/printing-howto.xml,v 1.8 2003/12/08 19:55:21 dertobi123 Exp $ -->
 
 <guide link = "/doc/de/printing-howto.xml">
 
@@ -44,8 +44,8 @@ ein Netzwerk.
 
 <license/>
 
-<version>1.3</version>
-<date>13. November 2003</date>
+<version>1.4</version>
+<date>7. Dezember 2003</date>
 
 <chapter>
 <title>Die Installation von CUPS und foomatic</title>
