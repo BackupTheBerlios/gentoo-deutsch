@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/dvb.eclass,v 1.2 2004/08/11 12:56:31 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/dvb.eclass,v 1.3 2004/08/14 01:11:08 austriancoder Exp $
 #
 # Matthias Schwarzott <zzam@gmx.de>
 
@@ -25,6 +25,7 @@ vdr_opts() {
 		fi
 	done
 	ewarn "No optional ${1} in VDR_OPTS"
+	echo
 	return 1
 }
 
