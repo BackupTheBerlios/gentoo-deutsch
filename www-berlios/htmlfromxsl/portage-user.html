@@ -1,0 +1,273 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Portage User Guide</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Portage User Guide</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Zu Beginn</option>
+<option value="#doc_chap2">2. Einführung von emerge</option>
+<option value="#doc_chap3">3. Pakete upgraden</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Zu Beginn</p>
+<p class="secthead"><a name="_sect1">Downloaden des Portage tree </a></p>
+
+<p>Nachdem Sie Gentoo Linux installiert und ein wenig mit ihm gearbeitet haben, ist es möglich, daß Sie Fehler 
+in einigen Paketen entdecken oder Sie wollen einfach nur die neusten Gentoo Linux Software Pakete installieren bzw.
+Ihre momentanen Pakete updaten. Um dies durchführen zu können müssen Sie unseren neuesten Portage Ports Tree
+downloaden. Hier beschreiben wir wie es geht.</p>
+
+<p>Zunächst erstellen Sie ein Verzeichnis namens <font class="path">/usr/portage</font>. Danach stellen Sie sicher, das rsync installiert ist. Sollte
+dies nicht der Fall sein, downloaden Sie es von unserem ibiblio Mirror und installieren Sie es mit <font class="code">emerge
+rsync-x.y.z.tbz2</font>. Danach synchronisieren Sie Ihr Portage Verzeichnis mittels:
+</p>
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge rsync</font>
+</pre></td></tr>
+</table>
+
+<p>Sie sollten regelmäßig folgenden Befehl ausführen um alte ebuild Scripte zu entfernen</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Bitte beachten Sie, dass <font class="code">emerge --clean rsync </font> alle Ihre persönlichen Veränderungen und Ergänzungen im 
+<font class="path">/usr/portage </font>tree löscht. Bitte verwenden Sie diesen Befehl mit Vorsicht.</p></td></tr></table>
+
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge --clean rsync </font>
+</pre></td></tr>
+</table>
+
+<p>Wenn Sie regelmäßige Veränderungen an Ihrem <font class="path">/usr/portage</font> tree vornehmen,
+können Sie <a href="mailto:drobbins@gentoo.org">Daniel</a> für einen Zugang zum CVS
+kontaktieren. Damit können Sie einige oder alle Ihre Veränderungen zu unserem offiziellen CVS tree hinzufügen.
+</p>
+
+<p class="secthead"><a name="_sect2">Portage updaten </a></p>
+<p>Bevor Sie unseren Portage tree verwenden können, ist es wichtig dass Sie Ihr Portage updaten. Um 
+dies zu tun geben Sie folgendes ein:
+</p>
+
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cd /usr/portage/sys-apps/portage</font>
+# <font class="input">emerge portage-x.y.z.ebuild</font>
+</pre></td></tr>
+</table>
+
+<p>Nun benutzen Sie die neueste Version von Portage. Ab jetzt können Sie unser ebuild System benutzen 
+um Ihre installierte Software auf den neuesten Stand zu bringen</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Einführung von emerge</p>
+<p class="secthead"><a name="_sect1">emerge --pretend </a></p>
+<p> 
+Um ein Paket zu installieren gehen Sie in sein Verzeichnis unterhalb von <font class="path">/usr/portage</font>, z.B.:
+</p>
+
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">cd /usr/portage/net-irc/xchat</font> 
+</pre></td></tr>
+</table>
+
+<p>Dann führen Sie <font class="code">emerge --pretend</font> aus, um zu sehen welche Abhängigkeiten (falls es welche gibt) 
+installiert werden</p>
+
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge --pretend xchat-1.4.3.ebuild</font>
+
+These are the packages that I would merge, in order.
+
+Calculating dependencies......... done!
+[ebuild   U] sys-libs/zlib-1.1.3-r2 to /
+[ebuild   U] dev-libs/glib-1.2.10 to /
+[ebuild N  ] media-libs/jpeg-6b-r2 to /
+[ebuild N  ] x11-base/xfree-4.0.3-r3 to /
+[ebuild N  ] x11-libs/gtk+-1.2.10-r1 to /
+[ebuild N  ] media-libs/giflib-4.1.0-r3 to /
+[ebuild N  ] media-libs/tiff-3.5.6_beta to /
+[ebuild N  ] media-libs/imlib-1.9.10 to /
+[ebuild N  ] net-irc/xchat-1.4.3 to /
+</pre></td></tr>
+</table>
+
+<p>In diesem bestimmten Fall werden wir <font class="path">xchat</font> auf einer
+Maschine ohne X installieren.  So hat <font class="code">emerge --pretend</font>
+richtig festgestellt, daß zunächst etliche Abhängigkeiten erfüllt werden müssen. 
+Besonders <font class="path">sys-libs/zlib</font> und <font class="path">dev-libs/glib</font> müssen aktualisiert 
+werden (U) und dann müssen noch einige ebuilds (natürlich inklusive <font class="path">x11-base/xfree</font>) eingespielt werden (N).</p>
+<p class="secthead"><a name="_sect2">USE und emerge </a></p>
+<p>Oben habe ich <font class="code">emerge --pretend</font> auf einem System ausgeführt, welches
+<font class="code">gnome</font> nicht in der <font class="code">USE</font> Variable in <font class="path">/etc/make.conf</font> definiert hat.
+Das bedeutet, dass optionale GNOME Unterstützung, falls vorhanden, nicht aktiviert wird. 
+Wie auch immer, <font class="path">xchat</font> <font class="emphasis">hat</font> optionale GNOME Unterstützung. Nun lassen 
+Sie uns einen Blick auf die Ausgabe von <font class="code">emerge --pretend</font> werfen nachdem ich <font class="code">gnome</font> zur
+<font class="code">USE</font> Umgebungsvariable in <font class="path">/etc/make.conf</font> ergänzt habe:
+</p>
+
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge --pretend xchat-1.4.3.ebuild</font>
+
+These are the packages that I would merge, in order.
+
+Calculating dependencies............................ done!
+[ebuild N  ] media-libs/jpeg-6b-r2 to /
+[ebuild N  ] gnome-base/libghttp-1.0.9 to /
+[ebuild N  ] media-libs/audiofile-0.2.1 to /
+[ebuild N  ] media-sound/esound-0.2.22-r2 to /
+[ebuild N  ] gnome-base/gnome-env-1.0 to /
+[ebuild N  ] gnome-base/libxml-1.8.11 to /
+[ebuild N  ] gnome-base/ORBit-0.5.8 to /
+[ebuild N  ] gnome-base/oaf-0.6.5 to /
+[ebuild   U] dev-libs/glib-1.2.10 to /
+[ebuild N  ] net-libs/libwww-5.3.2-r1 to /
+[ebuild N  ] media-libs/giflib-4.1.0-r3 to /
+[ebuild N  ] dev-util/guile-1.4-r3 to /
+[ebuild   U] sys-libs/zlib-1.1.3-r2 to /
+[ebuild N  ] x11-base/xfree-4.0.3-r3 to /
+[ebuild N  ] x11-libs/gtk+-1.2.10-r1 to /
+[ebuild N  ] media-libs/tiff-3.5.6_beta to /
+[ebuild N  ] media-libs/imlib-1.9.10 to /
+[ebuild N  ] gnome-base/gnome-libs-1.2.13 to /
+[ebuild N  ] gnome-base/glibwww-0.2-r1 to /
+[ebuild N  ] gnome-base/gdk-pixbuf-0.11.0 to /
+[ebuild N  ] gnome-base/gconf-1.0.0 to /
+[ebuild N  ] gnome-base/gnome-vfs-1.0.1 to /
+[ebuild N  ] gnome-base/control-center-1.4.0.1 to /
+[ebuild N  ] gnome-base/scrollkeeper-0.2 to /
+[ebuild N  ] dev-util/xml-i18n-tools-0.8.1 to /
+[ebuild N  ] gnome-base/libglade-0.16-r1 to /
+[ebuild N  ] gnome-base/gnome-core-1.4.0.4 to /
+[ebuild N  ] net-irc/xchat-1.4.3 to /
+</pre></td></tr>
+</table>
+
+<p>Wie Sie sehen erkennt emerge dank der gesetzten USE Variable, dass xchat optionale 
+GNOME Unterstützung beinhalten sollte. Damit diese optionale GNOME Unterstützung 
+korrekt compiliert werden kann, muss natürlich GNOME zuerst installiert werden. 
+<font class="code">emerge</font> erkennt dies alles und ergänzt verschiedene Pakete, die zur GNOME Installation
+benötig werden zur Liste der zu installierenden ebuilds. In einigen Fällen 
+kann es vorkommen, dass Ihre USE Variable nicht richtig gesetzt ist. Dadurch kann es 
+passieren, dass <font class="code">emerge</font> unerwartete optionale Erweiterungen aktiviert oder ausschliesst. 
+Deshalb empfehle ich, dass Sie vor dem eigentlichen <font class="code">emerge</font> immer ein <font class="code">emerge --pretend</font> 
+ausführen. Dies gilt besonders für neue oder ungewöhnliche ebuilds. Dadurch wissen Sie, was Sie erwartet. :) 
+Sobald alles OK aussieht können Sie mit dem eigentlich <font class="code">emerge</font> durch weglassen der 
+<font class="code">--pretend</font> Option fortfahren:</p>
+
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge xchat-1.4.3.ebuild</font>
+</pre></td></tr>
+</table>
+
+<p>Nachdem alle Abhängigkeiten installiert sind (soweit es welche gibt; 
+nicht alle Pakete haben welche) wird der xchat Source nach <font class="path">/usr/portage/distfiles</font> 
+runtergeladen, verifiziert (md5), entpackt, compiliert und in ein temporäres 
+Verzeichnis installiert. Danach werden sie ins lokale Filesystem integriert 
+und eine Paketdatenbank in <font class="path">/var/db/pkg/net-irc/xchat-1.4.3/CONTENTS</font> erstellt. 
+Diese Datenbank enthält die installierten Dateien und ihre md5-Checksummen.</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Pakete upgraden</p>
+
+<p>Der Standardweg um Pakete unter Gentoo Linux zu aktualisieren besteht darin, zunächst 
+die neuen Pakete zu installieren und danach die alten Pakete zu deinstallieren. Dies ist 
+sicher (und macht auch Spass) durchführbar. Zunächst installieren Sie das neue Paket 
+wie oben beschrieben. Danach deinstallieren Sie das alte Paket mittels:</p>
+
+<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge unmerge =net-irc/xchat-1.0.0-r1</font>
+</pre></td></tr>
+</table>
+
+<p>
+Portage benutzt ein sogenanntes &quot;sicheres&quot; deinstallieren; es &quot;löscht&quot; nur original 
+Dateien. Wenn eine Datei überschrieben oder modifiziert wurde, bleibt es im 
+Dateisystem erhalten (vorrausgesetzt, dass Sie eine neuere Version installiert 
+haben). Wenn Sie also eine alte Version von xchat nach der Installation einer neuen 
+Version löschen (unmergen), wird die ausführbare Datei von xchat nicht gelöscht, solange 
+sie einen neueren Zeitstempel bzw. eine andere md5-Checksumme hat. Dieses sichere 
+Löschen ist wirklich Großartig, da es sicherstellt, dass jeder Zeit eine Version der 
+Anwendung verfügbar ist. Sollten Sie zuerst gelöscht haben würde xchat für einige Minuten 
+nicht verfügbar sein bis die neue Version runtergeladen, compiliert und installiert wäre.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b> Portage hat nun eine spezielle Funktion, die &quot;config file protection&quot;, 
+eine Schutzfunktion für Konfigurationsdateien. Die Aufgabe dieser Funktion ist es 
+zu verhindern, dass neue Pakete bereits existierende Konfiguration verändern. 
+Schutz der Konfigurationsdateien ist automatisch für /etc und die KDE Konfigurationsverzeichnisse 
+aktiviert. Um weiter Informationen dazu zu erhalten geben sie <font class="code">emerge --help config</font> ein.</p></td></tr></table>
+
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 04 Jun 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Chief Architect</i><br><br><b><a class="altlink" href="mailto:thomasfl@gentoo.org">Thomas Flavel</a></b><br><i>Editor</i><br><br><b><a class="altlink" href="mailto:sebastian@beneke-it.de">Sebastian Beneke</a></b><br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Diese Anleitung soll einen kurzen Überblick geben, wie Sie Ihre Pakete aktuell halten und
+das System pflegen können.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Support our development efforts by donating via credit card!</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="drobbins@gentoo.org"><input type="hidden" name="item_name" value="Gentoo Linux Support"><input type="hidden" name="item_number" value="1000"><input type="hidden" name="image_url" value="http://www.gentoo.org/images/paypal.png"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="return" value="http://www.gentoo.org"><input type="hidden" name="cancel_return" value="http://www.gentoo.org"><input type="image" src="http://images.paypal.com/images/x-click-but21.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Purchase RAM using this link, and a percentage
+of your sale will go towards further Gentoo Linux development.</p>
+<a href="http://www.qksrv.net/click-477620-5032687" target="_top"><img src="http://www.qksrv.net/image-477620-5032687" width="125" height="125" alt="DDR Memory at Crucial.com" border="0"></a><p class="alttext">Why these guys?  Because <b>cvs.gentoo.org</b> and <b>inventor.gentoo.org</b> use high-quality Crucial RAM. We know that it's good stuff because we rely on it ourselves.</p>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Copyright 2001 Gentoo
+		Technologies, Inc.  Questions, Comments, Corrections?  Email <a class="highlight" href="mailto:gentoo-dev@gentoo.org">gentoo-dev@gentoo.org</a>.
+			</td></tr>
+</table></body>
+</html>
