@@ -83,7 +83,7 @@
   </menu>
 !-->
 	<menu value="gentoo.de">
-		<item href="http://www.gentoo.de" title="Startseite"/>
+		<item href="../" title="Startseite"/>
 		<item href="projekt/neuigkeiten" title="Neuigkeiten"/>
 		<item href="doku" title="Übersetzte Dokumentationen"/>
 		<item href="download/ebuilds_de" title="Unsere Ebuilds"/>
