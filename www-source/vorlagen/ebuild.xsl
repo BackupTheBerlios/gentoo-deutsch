@@ -57,6 +57,27 @@
                 <td>
                   <xsl:value-of select="name"/>
                 </td>
+                <td>
+                  <b>Letzte Änderung:</b>
+                  <br/>
+                  <xsl:for-each select="../pkg[name = $pname]">
+                    <xsl:sort select="date/@year"/>
+                    <xsl:sort select="date/@month"/>
+                    <xsl:sort select="date/@day"/>
+                    
+                    <xsl:if test="position() = 1">
+                      <xsl:value-of select="concat(date/@day, '.', date/@month, '.', date/@year)"/>
+                    </xsl:if>
+                  </xsl:for-each>
+                  
+                  <br/><br/>
+                  <b>Versionen:</b>
+                  <br/>
+                  <xsl:for-each select="../pkg[name = $pname]">
+                    <xsl:value-of select="version"/>
+                    <br/>                
+                  </xsl:for-each>
+                </td>
               </tr>
                           
             </xsl:if>
