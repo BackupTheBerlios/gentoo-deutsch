@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoolkit.xml,v 1.1 2003/12/09 09:36:10 iceman Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoolkit.xml,v 1.2 2003/12/09 10:07:28 jay Exp $ -->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
 <guide link = "/doc/en/gentoolkit.xml">
@@ -11,7 +11,7 @@ Matt Butcher</mail>
 	Translated to german from original revision 1.7
 -->
 <author title="Editor"><!-- zhen@gentoo.org -->
-  John P. Davis, übersetzt von David Leder
+  John P. Davis, Ã¼bersetzt von David Leder
 </author>
 <author title="Editor">
   <mail link="erwin@gentoo.org">Erwin</mail>
@@ -20,7 +20,7 @@ Matt Butcher</mail>
 <!-- Licensed under GFDL -->
 
 <abstract>
-	Gentoolkit ist eine Zusammenfassung von Werkzeugen für das einfache Administrieren
+	Gentoolkit ist eine Zusammenfassung von Werkzeugen fÃ¼r das einfache Administrieren
 	eines Gentoo Systems. Dieses Dokument deckt die Basis einiger Werkzeuge des
 	aktuellen Gentoolkits ab.
 </abstract>
@@ -33,15 +33,15 @@ Matt Butcher</mail>
 	<section>
 		<title>Was ist Gentoolkit?</title>
 		<body>
-			<p>Gentoo ist eine einzigartige Distribution und hat einige Komplexitäten,
+			<p>Gentoo ist eine einzigartige Distribution und hat einige KomplexitÃ¤ten,
 				die in anderen Distributionen gar nicht vorhanden sind. Als Gentoo
-				Entwickler und Mitarbeiter ein paar dieser Komplexitäten entdeckten
+				Entwickler und Mitarbeiter ein paar dieser KomplexitÃ¤ten entdeckten
 				schrieben sie Werkzeuge um den Benutzern und Administratoren zu
 				helfen. Viele dieser Werkzeuge befinden sich im Gentoo Projekt
 				und sind im Paket <path>app-portage/gentoolkit</path>.
 			</p>
 
-			<p>Gentoolkit beinhaltet eine ganze Menge von nützlichen Werkzeugen um
+			<p>Gentoolkit beinhaltet eine ganze Menge von nÃ¼tzlichen Werkzeugen um
 				Portage und die ebuild Architektur zu managen. Die meisten
 				Benutzer -- vor allem diejenigen die ihr System oft updaten --
 				werden einen Nutzen aus dem installierten Gentoolkit ziehen.</p>
@@ -57,10 +57,10 @@ Matt Butcher</mail>
 			<pre>
 <i>emerge gentoolkit </i>
 			</pre>
-			<note>Viele der der Tools im Gentoolkit enthüllen wichtige Informationen
-				über das System oder erfordern root Berechtigungen. Darum können
+			<note>Viele der der Tools im Gentoolkit enthÃ¼llen wichtige Informationen
+				Ã¼ber das System oder erfordern root Berechtigungen. Darum kÃ¶nnen
 				einige Programme, (oder damit sie richtig funktionieren) nur als
-				Benutzer mit root Berechtigungen ausgeführt werden.</note>
+				Benutzer mit root Berechtigungen ausgefÃ¼hrt werden.</note>
 		</body>
 	</section>
 	<section>
@@ -82,16 +82,16 @@ Matt Butcher</mail>
 
 		<title>Einleitung</title>
 		<body>
-			<p><c>qpkg</c> ist ein flexibles Werkzeug um Informationen über ebuilds zu ermitteln,
-				ob sie installiert sind, oder auch nicht. Es kann informationen über Dateien,
-				und zu welchen ebuilds sie gehören enthalten. Sogar mehrere Versionen des selben
+			<p><c>qpkg</c> ist ein flexibles Werkzeug um Informationen Ã¼ber ebuilds zu ermitteln,
+				ob sie installiert sind, oder auch nicht. Es kann informationen Ã¼ber Dateien,
+				und zu welchen ebuilds sie gehÃ¶ren enthalten. Sogar mehrere Versionen des selben
 				Pakets die installiert sind und was ein einzelnes ebuild tut.
 			</p>
 			<p>Der Aufruf von <c>qpkg</c> ohne Argumenten schreibt eine liste aller ebuilds,
 			mit Sternen
 				(*) neben den Paketen, welche auf dem System installiert sind.
 			</p>
-			<note>Standardmässig schreibt <c>qpkg</c> in Farbe. um dies auszuschalten,
+			<note>StandardmÃ¤ssig schreibt <c>qpkg</c> in Farbe. um dies auszuschalten,
 				benutzen Sie <c>--no-color</c> oder <c>-nc</c></note>
 
 		</body>
@@ -119,18 +119,18 @@ net-misc/neon-0.21.1
        HTTP and WebDAV client library [ http://www.webdav.org/neon ] </i>
 			</pre>
 			<p>
-				<c>qpkg</c> las sich durch die ebuild Dateien für die ffüfnf <path>net-misc/neon</path>
+				<c>qpkg</c> las sich durch die ebuild Dateien fÃ¼r die ffÃ¼fnf <path>net-misc/neon</path>
 				ebuilds und schrieb die Informationen DESCRIPTION und HOMEPAGE auf den Bildschirm.
 			</p>
 		</body>
 
 	</section>
 	<section>
-		<title>Dateien auflisten die zu einem ebuild gehören.</title>
+		<title>Dateien auflisten die zu einem ebuild gehÃ¶ren.</title>
 		<body>
 			<p>
 				<c>qpkg</c> kann auch die Dateien auflisten, welche zu einem installierten
-				ebuild gehören. Ich weiss, das gentoolkit einige Werkzeuge installiert hat,
+				ebuild gehÃ¶ren. Ich weiss, das gentoolkit einige Werkzeuge installiert hat,
 				aber ich weiss nicht, welche genau. Um dies herauszufinden kann ich
 				<c>qpkg -l</c> eingeben.
 			</p>
@@ -193,12 +193,12 @@ CONTENTS:
 		<title>Doppelte Pakete auflisten</title>
 		<body>
 			<p>
-				Manchmal können mehrere Versionen des selben Pakets existieren. <c>qpkg --dup</c>
+				Manchmal kÃ¶nnen mehrere Versionen des selben Pakets existieren. <c>qpkg --dup</c>
 				wird eine Liste von doppelt vorkommenden Paketen ausgeben. Die Existenz eines
-				doppelten Pakets muss nicht heissen, dass die ältere Version entfernt werden
-				kann. Die Versionen könnten verschiedene Lücken  füllen. Um für Duplikate für
+				doppelten Pakets muss nicht heissen, dass die Ã¤ltere Version entfernt werden
+				kann. Die Versionen kÃ¶nnten verschiedene LÃ¼cken  fÃ¼llen. Um fÃ¼r Duplikate fÃ¼r
 				den selben Zweck zu finden benutze ich <c>qpkg --dups --slot</c>. Ich habe nur
-				KDE von 3.0 auf 3.0.2 geupdated und habe nun Duplikate für denselben Zweck.
+				KDE von 3.0 auf 3.0.2 geupdated und habe nun Duplikate fÃ¼r denselben Zweck.
 			</p>
 			<pre> 
 hebron portage # <i>qpkg --dups --slot 
@@ -219,17 +219,17 @@ x11-libs/qt </i>
 		</body>
 	</section>
 	<section>
-		<title>Paketintegrität überprüfen</title>
+		<title>PaketintegritÃ¤t Ã¼berprÃ¼fen</title>
 
 		<body>
 			<p>
-				Manchmal ist es hilfreich, die Integrität eines Pakets zu ürberprüefen, um
+				Manchmal ist es hilfreich, die IntegritÃ¤t eines Pakets zu Ã¼rberprÃ¼efen, um
 				zu wissen, dass Dateien nicht ersetzt wurden seit sie installiert wurden.
-				<c>qpkg</c> kann md5 Summen überprü,fen, genau wie Installationszeiten, um
-				herauszufinden, ob Dateien für ein Pakete wirklich nicht korrupt, ersetzt
+				<c>qpkg</c> kann md5 Summen Ã¼berprÃ¼,fen, genau wie Installationszeiten, um
+				herauszufinden, ob Dateien fÃ¼r ein Pakete wirklich nicht korrupt, ersetzt
 				oder entfernt wurden.
 			</p>
-			<p>Um beiden - mtimes und md5 Summen zu überprüfen, benutze den <c>-c</c> Parameter.</p>
+			<p>Um beiden - mtimes und md5 Summen zu Ã¼berprÃ¼fen, benutze den <c>-c</c> Parameter.</p>
 			<pre>
 
 hebron portage # <i>qpkg gnupg -c -v    
@@ -265,12 +265,12 @@ app-crypt/gnupg-1.0.7 *
 			</pre>
 			<p>
 				Wie du sehen kannst, Habe ich mehr denn eine Version von GnuPG installiert.
-				<c>qpkg</c> meldet, dass viele der Dateien von der älteren Version geaädert
+				<c>qpkg</c> meldet, dass viele der Dateien von der Ã¤lteren Version geaÃ¤dert
 				wurden seit ich es installiert habe. Diese Pakete wurden sehr wahrscheinlich
-				abgeändert als ich von <path>gnupg-1.0.6</path> nach <path>gnupg-1.0.7</path>
+				abgeÃ¤ndert als ich von <path>gnupg-1.0.6</path> nach <path>gnupg-1.0.7</path>
 				geupdated habe. Merke, dass die letzten zwei Zeilen anzeigen, dass 0 von 101
-				Dateien von <path>gnupg-1.0.7</path> geändert wurden seit ich es installierte.
-				Das ist gut. Wenn irgend eines davon geändert wurde, wwä reich verwundert.
+				Dateien von <path>gnupg-1.0.7</path> geÃ¤ndert wurden seit ich es installierte.
+				Das ist gut. Wenn irgend eines davon geÃ¤ndert wurde, wwÃ¤ reich verwundert.
 			</p>
 
 		</body>
@@ -280,8 +280,8 @@ app-crypt/gnupg-1.0.7 *
 		<body>
 			<p>
 				<c>qpkg</c> kann gebraucht werden, um andere Abfragen zu machen, aber ich werde
-				hier nicht weiter darauf eingehen. Es gibt eine sehr komplette Man-Page für
-				<c>qpkg</c>. Lese dort für weitere Informationen.
+				hier nicht weiter darauf eingehen. Es gibt eine sehr komplette Man-Page fÃ¼r
+				<c>qpkg</c>. Lese dort fÃ¼r weitere Informationen.
 			</p>
 
 		</body>
@@ -294,20 +294,20 @@ app-crypt/gnupg-1.0.7 *
 		<body>
 			<p>
 				<c>lintool</c> ist ein Programm dass ebuild Skripte nach Standard Konformen und
-				Voraussetzungen überprrütft. Es ist wichtig für ebuild Entwicker, <c>lintool</c>
-				zu benützen, um sicher zu sein, dass sie die Dinge richtig machen, und nicht
+				Voraussetzungen Ã¼berprrÃ¼tft. Es ist wichtig fÃ¼r ebuild Entwicker, <c>lintool</c>
+				zu benÃ¼tzen, um sicher zu sein, dass sie die Dinge richtig machen, und nicht
 				das Haupt-Team zu beanspruchen, die ohnehin viel zu tun haben, um die ebuilds
 				richtig ins Gentoo Repository einzubinden.
 			</p>
 		</body>
 	</section>
 	<section>
-		<title>Benützung</title>
+		<title>BenÃ¼tzung</title>
 
 		<body>
 			<p>
-				<c>lintool</c> produziert eine schön gestaltete Liste von Tests und Resultaten das es
-				ausführt.
+				<c>lintool</c> produziert eine schÃ¶n gestaltete Liste von Tests und Resultaten das es
+				ausfÃ¼hrt.
 			</p>
 			<pre> 
 hebron portage # <i>lintool app-crypt/gnupg/gnupg-1.0.7.ebuild 
@@ -332,15 +332,15 @@ app-crypt/gnupg/gnupg-1.0.7.ebuild                                     : Not OK
 			<p>
 				Die erste Zeile fasst zusammen, ob das ebuild OK ist oder nicht. Im Falle von
 				<c>gnupg-1.0.7.ebuild</c> ist es nicht OK. Wenn man sich durch die Liste der
-				checks liest, können wir sehen, dass eine Warnung für schlecht geformte headers
+				checks liest, kÃ¶nnen wir sehen, dass eine Warnung fÃ¼r schlecht geformte headers
 				und einen Fehler bei einer Umgebungsvariable gab.
 			</p>
 
 			<p>
-				Bei einem Blick auf das ebuild, sehe ich, dass ein paar benötigte
+				Bei einem Blick auf das ebuild, sehe ich, dass ein paar benÃ¶tigte
 				Umgebungsvariablen (LICENSE un RDEPEND) fehlen. Wenn man diese beiden
-				hinzufügt, ist der Fehler behoben. Aber es gibt immer noch zwei Warnungen --
-				eine für schlecht geformte Headers und eine für die Umgebungsvariablen
+				hinzufÃ¼gt, ist der Fehler behoben. Aber es gibt immer noch zwei Warnungen --
+				eine fÃ¼r schlecht geformte Headers und eine fÃ¼r die Umgebungsvariablen
 				Um mir zu helfen kann ich <c>lintool</c> noch einmal mit <c>--show-details</c>
 				durchlaufen lassen.
 			</p>
@@ -392,13 +392,13 @@ hebron gnupg # <i>lintool --show-details ./gnupg-1.0.7.ebuild
 		<body>
 			<p>
 				<c>epm</c> ist ein Paket managendes Werkzeug dass die Red Hat rpm Kommandos
-				klont. Im jetzigen Stand unterstützt es nicht alle Features von rpm, aber es
-				unterstützt einige der maähtigeren rpm Abfrageoptionen.
+				klont. Im jetzigen Stand unterstÃ¼tzt es nicht alle Features von rpm, aber es
+				unterstÃ¼tzt einige der maÃ¤htigeren rpm Abfrageoptionen.
 			</p>
 
 			<p>
 				Es handled auch das Entfernen von Paketen, welches hier nicht beschrieben wird.
-				Benutze <c>epm --help</c> um mehr über das lLö chenvon Paketen mit <c>epm</c> zu
+				Benutze <c>epm --help</c> um mehr Ã¼ber das lLÃ¶ chenvon Paketen mit <c>epm</c> zu
 				erfahren.
 			</p>
 		</body>
@@ -457,9 +457,9 @@ hebron etc # <i>epm -ql ethereal
 /etc/ethereal/manuf </i>
 			</pre>
 			<p>
-				<c>epm</c> stellt einige erweiterte Abfrageoptionen zur Verfügung welche in
+				<c>epm</c> stellt einige erweiterte Abfrageoptionen zur VerfÃ¼gung welche in
 				<c>qpkg</c> nicht vorhanden sind, als dieses Dokument geschrieben wurde. Auf jeden
-				Fall kann es auch nur für Konfigurations- oder Dokumentationsdateien suchen.
+				Fall kann es auch nur fÃ¼r Konfigurations- oder Dokumentationsdateien suchen.
 			</p>
 			<pre>
 
@@ -490,7 +490,7 @@ hebron etc # epm -qd ethereal
 /usr/share/doc/ethereal-0.8.20/README.vmware.gz
 		</i>	</pre>
 			<note>
-				<c>emp --help</c> listet alle Optionen die epm <e>schliesslich</e> zur Verfügung
+				<c>emp --help</c> listet alle Optionen die epm <e>schliesslich</e> zur VerfÃ¼gung
 				stellt. Jedoch sind Optionen mit Sternen (*) noch nicht implementiert.
 			</note>
 		</body>
@@ -508,14 +508,14 @@ hebron etc # epm -qd ethereal
 			-->
 			<p>
 				<c>etc-update</c> bietet eine angenehme Alternativ zum updaten von Konfigurationsdateien
-				von Hand. Nachdem durchlaufen eines emerge welches Konfigurationsdateien ändert
-				kann man etc-update ausführen um zu helfen alle geaäderten Konfigurationsdateien
+				von Hand. Nachdem durchlaufen eines emerge welches Konfigurationsdateien Ã¤ndert
+				kann man etc-update ausfÃ¼hren um zu helfen alle geaÃ¤derten Konfigurationsdateien
 				upzudaten.
 			</p>
 
 			<p>
-				Dies tut es durch eine Menu-basierte Benutzerschnittstelle und hält die MMölglichkeit
-				die Konfigurationsdateien anzuschauen und zusammenzuführen bereit - und dies vor
+				Dies tut es durch eine Menu-basierte Benutzerschnittstelle und hÃ¤lt die MMÃ¶lglichkeit
+				die Konfigurationsdateien anzuschauen und zusammenzufÃ¼hren bereit - und dies vor
 				dem Entscheid, was zu tun ist.
 			</p>
 		</body>
@@ -523,7 +523,7 @@ hebron etc # epm -qd ethereal
 	<section>
 		<title>gentool</title>
 		<body>
-			<p>gentool ist eine kollektiver Name für einige kleine Skripte die ebuild Statistiken
+			<p>gentool ist eine kollektiver Name fÃ¼r einige kleine Skripte die ebuild Statistiken
 			analysieren.
 			Beispiel: gentoo-total-coverage schreibt eine Liste von E-Mail Adressen und die Anzahl
 			an ebuilds welche jede hat im Portage Verzeichnisbaum
@@ -534,7 +534,7 @@ hebron etc # epm -qd ethereal
 	<section>
 		<title>pkg-size</title>
 		<body>
-			<p><c>pkg-size</c> gibt die Grösse der Installierten Dateien in einem gewissen Paket an.
+			<p><c>pkg-size</c> gibt die GrÃ¶sse der Installierten Dateien in einem gewissen Paket an.
 			</p>
 			<pre>
 
@@ -547,8 +547,8 @@ net-analyzer/nmap-2.54_beta24-r1 897024 (876KB) </i>
 		<title>mkebuild</title>
 		<body>
 			<p><c>mkebuild</c> vereinfacht das Erstellen von neuen ebuilds und automatisiert so
-			viel wie möglich. Die Datei sollte irgend ein Pakeformat haben. Wenn es nicht funktioniert
-			gibt es Tipps zurck, was man machen müsste/kkönnnte damit es funktioniert.
+			viel wie mÃ¶glich. Die Datei sollte irgend ein Pakeformat haben. Wenn es nicht funktioniert
+			gibt es Tipps zurck, was man machen mÃ¼sste/kkÃ¶nnnte damit es funktioniert.
 			</p>
 
 		</body>
@@ -558,8 +558,8 @@ net-analyzer/nmap-2.54_beta24-r1 897024 (876KB) </i>
 		<body>
 			<!-- Can't find any documentation on this anywhere... not even a comment in the
 code. -->
-			<p>Downloaded einen täglichen Schnappschuss per HTTP mit wget und synchronisiert es
-			mit Portage, falls es erwünscht ist.
+			<p>Downloaded einen tÃ¤glichen Schnappschuss per HTTP mit wget und synchronisiert es
+			mit Portage, falls es erwÃ¼nscht ist.
 			</p>
 		</body>
 
