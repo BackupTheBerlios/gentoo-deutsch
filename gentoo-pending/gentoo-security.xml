@@ -3436,27 +3436,27 @@ More information can be found at <uri link="http://www.snort.org">Snorts</uri> w
 -- Intrusion detection end --
 
 <chapter>
-<title>Changes since last version</title>
+<title>Änderungen seit der letzten Version</title>
 <section>
-<title>Changes</title>
+<title>Änderungen</title>
 <body>
 
 <p>
 Version 0.1 -> 0.2
 </p>
 <ul>
-  <li>Fixed a lot of typos found by various people (Mostly by Bjarke Sørensen)</li>
-  <li>Changes to tie apache.conf (ServerTokens min)</li>
-  <li>Fixed problem with pre-tags more than 80 chars wide</li>
-  <li>Added a firewall chapter</li>
+  <li>Berichtigung vieler Rechtschreibfehler, die von verschiedenen Leuten entdeckt wurden (hauptsächlich von Bjarke Sørensen)</li>
+  <li>Änderungen in der apache.conf (ServerTokens min)</li>
+  <li>Lösung des Problems von pre-Tags mit mehr als 80 Zeichen </li>
+  <li>Firewall-Kapitel hinzugefügt</li>
 </ul>
 
 <p>
 Version 0.2 -> 0.4
 </p>
 <ul>
-  <li>Added a chapter on intrusion detection.</li>
-  <li>Fixed a bug in the firewall script.</li>
+  <li>Kapitel über Intrusion Detection hinzugefügt</li>
+  <li>Behebung eines Fehlers im Firewall-Script</li>
 </ul>
 
 </body>
@@ -3469,15 +3469,20 @@ Version 0.2 -> 0.4
 <title>FAQ</title>
 
 <section>
-<title>Answars and questions</title>
+<title>Fragen und Antworten</title>
 <body>
 
 <table border="0">
   <tr>
-    <th>Question</th><th>Answar</th>
+    <th>Frage</th><th>Answar</th>
   </tr>
   <tr>
-    <ti>Where can I find the latest version of this guide?</ti><ti>The lastest version should be available on <uri>http://gentoo.org</uri> and the development version at <uri>http://gentoo.insecurity.dk</uri></ti>
+    <ti>Wo kann ich die neueste Version dieses Leitfadens finden ?</ti>
+	<ti>The lastest version should be available on <uri>http://gentoo.org</uri> and the development
+	version at <uri>http://gentoo.insecurity.dk</uri></ti>
+
+	<ti>Die neueste Version sollte auf <uri>http://gentoo.org</uri> und die Arbeitsversion auf <uri>http://gentoo.insecurity.dk</uri>
+	verfügbar sein.</ti>
   </tr>
 </table>
 
