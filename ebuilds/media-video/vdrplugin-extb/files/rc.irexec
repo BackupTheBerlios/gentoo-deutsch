@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-extb/files/rc.irexec,v 1.1 2004/07/22 21:37:22 austriancoder Exp $
+
+
+depend() {
+	need lircd
+}
+
+start() {
+	ebegin "Starting irexec"
+	/usr/bin/irexec -d /etc/lircrc
+	eend $? "Failed to start irexec."
+}
+
+stop() {
+	ebegin "Stopping irexec"
+	killall irexec
+	eend $? "Failed to stop irexec."
+}
+

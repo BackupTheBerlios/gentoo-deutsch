@@ -1,0 +1,8 @@
+# ChangeLog for media-video/vdr-extb
+# Copyright 2004 Christian Gmeiner; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-extb/ChangeLog,v 1.1 2004/07/22 21:37:22 austriancoder Exp $
+
+*vdrplugin-extb-0.2.7 (22 July 2004)
+
+  22 July 2004; Lars Altenhain <lars at altenhain dot de>
+  initla ebuild
