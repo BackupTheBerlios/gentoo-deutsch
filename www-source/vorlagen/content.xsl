@@ -13,7 +13,7 @@
 
 <xsl:include href="suche.xsl"/>
 
-
+<!--
 <xsl:output 
   method="xml" 
   encoding="utf-8" 
@@ -23,9 +23,9 @@
   omit-xml-declaration="no"
   cdata-section-elements=""
 />
+-->
 
 
-<!--
 <xsl:output
   method="html"
   encoding="utf-8"
@@ -35,7 +35,7 @@
   omit-xml-declaration="yes"
   cdata-section-elements=""
 />
--->
+
 
 <xsl:variable name="baseurl"><xsl:value-of select="$def_online"/>/</xsl:variable>
 <xsl:variable name="styleurl"><xsl:value-of select="$baseurl"/><xsl:value-of select="$pub_media"/>/<xsl:value-of select="$pub_style"/>/</xsl:variable>
