@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dvd/vdrplugin-dvd-0.3.4-r10.ebuild,v 1.1 2003/11/16 11:27:24 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dvd/vdrplugin-dvd-0.3.4-r10.ebuild,v 1.2 2004/03/22 18:42:55 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="dvd"
@@ -14,7 +14,7 @@ KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
 
-DEPEND=">=media-video/vdr-1.2.0
+DEPEND=">=media-video/vdr-1.3.2
 	>=media-libs/libdvdcss-1.2.6
 	>=media-libs/libdvdnav-0.1.9
 	>=media-libs/libdvdread-0.9.4
@@ -22,6 +22,12 @@ DEPEND=">=media-video/vdr-1.2.0
 
 src_unpack() {
 	unpack ${A}
+
+	if [ -n "`vdr -V | grep "1.3"`" ]
+	then
+		einfo "applying VDR 1.3.x patch"
+		patch  -p0 < ${FILESDIR}/vdr-1.3.6-dvd-${PV}.diff
+	fi
 }
 
 src_compile() {

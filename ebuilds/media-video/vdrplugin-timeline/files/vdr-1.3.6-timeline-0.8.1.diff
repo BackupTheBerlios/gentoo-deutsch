@@ -1,0 +1,21 @@
+diff -Nru timeline-0.8.1-orig/checkerOsd.c timeline-0.8.1/checkerOsd.c
+--- timeline-0.8.1-orig/checkerOsd.c	2003-10-14 18:09:02.000000000 +0200
++++ timeline-0.8.1/checkerOsd.c	2004-03-15 18:46:31.000000000 +0100
+@@ -184,7 +184,7 @@
+ 			cChannel const *ch1=ct1->Channel();
+ 			char line1[200],line2[200],line3[200];
+ 
+-			if (ct1->Active())
++			if (ct1->Flags())
+ 			{
+ 				if (showDay<0 && ct1->IsSingleEvent())
+ 				{
+@@ -199,7 +199,7 @@
+ 				{
+ 					cChannel const *ch2=ct2->Channel();
+ 
+-					if (ct1!=ct2 && ct2->Active())
++					if (ct1!=ct2 && ct2->Flags())
+ 					{
+ 						bool hasmatched=false;
+ 						time_t start1t,start2t;

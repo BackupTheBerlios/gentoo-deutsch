@@ -1,0 +1,293 @@
+diff -rub VDR.org/PLUGINS/src/weather-0.2.1e/display.c VDR/PLUGINS/src/weather-0.2.1e/display.c
+--- VDR.org/PLUGINS/src/weather-0.2.1e/display.c	2003-08-12 21:55:40.000000000 +0200
++++ VDR/PLUGINS/src/weather-0.2.1e/display.c	2004-02-09 07:54:43.000000000 +0100
+@@ -6,6 +6,7 @@
+ #include "sun.xpm"
+ #include "border.xpm"
+ 
++const cFont *font;
+ const static char YES = '.';
+ //const static char *POSSIBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ°";
+ const static int gapY = 2;
+@@ -122,7 +123,7 @@
+ }
+ 
+ void cWeatherOsd::printMetar (cOsdBase *osd, Decoded_METAR *Mptr, int x, int y) {
+-	cFont *font = new cFont((eDvbFont)0);
++	const cFont *font = cFont::GetFont(eDvbFont(0));
+ 	osd->SetFont((eDvbFont)0);
+ 	//int cy = 0;
+ 
+diff -rub VDR.org/PLUGINS/src/weather-0.2.1e/i18n.c VDR/PLUGINS/src/weather-0.2.1e/i18n.c
+--- VDR.org/PLUGINS/src/weather-0.2.1e/i18n.c	2003-09-03 20:27:54.000000000 +0200
++++ VDR/PLUGINS/src/weather-0.2.1e/i18n.c	2004-02-09 07:52:45.000000000 +0100
+@@ -345,6 +345,54 @@
+     "",// TODO
+     "",// TODO
+   },
++  { "Debug",
++    "Debug",
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++  },
++  { "No",
++    "Nein",
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++  },
++  { "Yes",
++    "Ja",
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++    "",// TODO
++  },
+   { "Display",
+     "Anzeige",
+     "",// TODO
+diff -rub VDR.org/PLUGINS/src/weather-0.2.1e/metarReader.c VDR/PLUGINS/src/weather-0.2.1e/metarReader.c
+--- VDR.org/PLUGINS/src/weather-0.2.1e/metarReader.c	2003-08-15 23:33:46.000000000 +0200
++++ VDR/PLUGINS/src/weather-0.2.1e/metarReader.c	2004-02-09 07:52:45.000000000 +0100
+@@ -55,6 +55,7 @@
+ }
+ 
+ void cUpdate::Action(void) {
++        if (setup->debug)
+ 	dsyslog("weather Thread started (pid=%d)", getpid());
+    active = true;
+ 	do {
+@@ -67,6 +68,7 @@
+ 	} while (active && setup->updateTime > 0);
+ 
+ 	active = false;
++        if (setup->debug)
+ 	dsyslog("weather Thread ended (pid=%d)", getpid());
+ 	Cancel(0);
+ }
+@@ -77,9 +79,11 @@
+ 	netbuf *nData = NULL;
+ 
+ 	FtpInit();
++        if (setup->debug)
+ 	dsyslog("Connectiong %s.", host);
+ 
+ 	if (FtpConnect(host, &conn) == 0) {
++        	if (setup->debug)
+ 		dsyslog("Could not connect server: %s", host);
+ 		logLastResponse(conn);
+ 
+@@ -87,9 +91,11 @@
+ 	}
+ 
+ 	logLastResponse(conn);
++        if (setup->debug)
+ 	dsyslog("Login user [%s].", setup->user);
+ 
+ 	if (FtpLogin(setup->user, setup->pwd, conn) == 0) {
++        	if (setup->debug)
+ 		dsyslog("Could not login user: %s", setup->user);
+ 		logLastResponse(conn);
+ 		FtpQuit(conn);
+@@ -98,9 +104,11 @@
+ 	}
+ 
+ 	logLastResponse(conn);
++        if (setup->debug)
+ 	dsyslog("Setting connection mode: %s", (setup->passiveFTP ? "PASV" : "PORT"));
+ 
+ 	if (FtpOptions(FTPLIB_CONNMODE, (setup->passiveFTP ? FTPLIB_PASSIVE : FTPLIB_PORT), conn) == 0) {
++        	if (setup->debug)
+ 		dsyslog("Could not set connection mode %s.", (setup->passiveFTP ? "PASV" : "PORT"));
+ 		logLastResponse(conn);
+ 		FtpQuit(conn);
+@@ -109,9 +117,11 @@
+ 	}
+ 
+ 	sprintf(filename, "%s%s.TXT", metarDir, setup->stationId);
++        if (setup->debug)
+ 	dsyslog("Getting %s.", filename);
+ 
+ 	if (FtpAccess(filename, FTPLIB_FILE_READ, FTPLIB_ASCII, conn, &nData) == 0) {
++        	if (setup->debug)
+ 		dsyslog("Could not acces file: %s", filename);
+ 		logLastResponse(conn);
+ 		FtpQuit(conn);
+@@ -120,9 +130,11 @@
+ 	}
+ 
+ 	logLastResponse(conn);
++        if (setup->debug)
+ 	dsyslog("Reading date.");
+ 
+ 	if (FtpRead(date, 1024, nData) == 0) {
++        	if (setup->debug)
+ 		dsyslog("Could not read metar");
+ 		logLastResponse(conn);
+ 		FtpQuit(conn);
+@@ -130,9 +142,11 @@
+ 		return;
+ 	}
+ 
++        if (setup->debug)
+ 	dsyslog("Reading metar.");
+ 
+ 	if (FtpRead(metar, 1024, nData) == 0) {
++        	if (setup->debug)
+ 		dsyslog("Could not read metar");
+ 		logLastResponse(conn);
+ 		FtpQuit(conn);
+@@ -141,9 +155,11 @@
+ 	}
+ 
+ 	logLastResponse(conn);
++        if (setup->debug)
+ 	dsyslog("Closing connection.");
+ 
+ 	if (FtpClose(nData) == 0) {
++        	if (setup->debug)
+ 		dsyslog("Could not close file: %s", filename);
+ 		logLastResponse(conn);
+ 		FtpQuit(conn);
+@@ -152,12 +168,14 @@
+ 	}
+ 
+ 	logLastResponse(conn);
++        if (setup->debug)
+ 	dsyslog("Fetched METAR: %s", metar);
+ 	DcdMETAR(metar, &decodedMetar);
+ 
+ 	char tmp[3000];
+ 
+ 	sprint_metar(tmp, &decodedMetar);
++        if (setup->debug)
+ 	dsyslog("Decoded METAR: %s", tmp);
+ 
+ 	fetched = true;
+@@ -165,6 +183,7 @@
+ }
+ 
+ void cUpdate::logLastResponse(netbuf *conn) {
++        if (setup->debug)
+ 	dsyslog("Response was: \n%s", FtpLastResponse(conn));
+ }
+ 
+diff -rub VDR.org/PLUGINS/src/weather-0.2.1e/setup.c VDR/PLUGINS/src/weather-0.2.1e/setup.c
+--- VDR.org/PLUGINS/src/weather-0.2.1e/setup.c	2003-08-12 21:55:40.000000000 +0200
++++ VDR/PLUGINS/src/weather-0.2.1e/setup.c	2004-02-09 07:52:45.000000000 +0100
+@@ -6,4 +6,5 @@
+ 	strcpy(pwd, "name@host.com");
+ 	display = 0;
+ 	passiveFTP = 1;
++        debug = 0;
+ }
+diff -rub VDR.org/PLUGINS/src/weather-0.2.1e/setup.h VDR/PLUGINS/src/weather-0.2.1e/setup.h
+--- VDR.org/PLUGINS/src/weather-0.2.1e/setup.h	2003-08-12 21:55:40.000000000 +0200
++++ VDR/PLUGINS/src/weather-0.2.1e/setup.h	2004-02-09 07:52:45.000000000 +0100
+@@ -11,6 +11,7 @@
+ 		int  updateTime;
+ 		int display;
+ 		int passiveFTP;
++                int debug; 
+ 		cWeatherSetup(void);
+ };
+ 
+diff -rub VDR.org/PLUGINS/src/weather-0.2.1e/simpleDisplay.c VDR/PLUGINS/src/weather-0.2.1e/simpleDisplay.c
+--- VDR.org/PLUGINS/src/weather-0.2.1e/simpleDisplay.c	2003-08-12 21:55:40.000000000 +0200
++++ VDR/PLUGINS/src/weather-0.2.1e/simpleDisplay.c	2004-02-09 07:56:36.000000000 +0100
+@@ -56,12 +56,12 @@
+ 
+ void cSimpleWeatherOsd::printMetar (cOsdBase *osd, Decoded_METAR *Mptr, int x, int y) {
+ 
+-	cFont *font = new cFont((eDvbFont)0);
++	const cFont *font = cFont::GetFont(eDvbFont(0));
+ 	osd->SetFont((eDvbFont)0);
+ 	drawData(osd, Mptr, 0, font, x, y);
+ }
+ 
+-int cSimpleWeatherOsd::calculateMaxDescriptionFontWidth(measurement measurements[], int size, cFont *font) {
++int cSimpleWeatherOsd::calculateMaxDescriptionFontWidth(measurement measurements[], int size, const cFont *font) {
+ 	int maxSize = 0;
+ 	int strSize = 0;
+ 
+@@ -89,7 +89,7 @@
+ 	return maxSize;
+ }
+ 
+-void cSimpleWeatherOsd::drawData(cOsdBase *osd, Decoded_METAR *Mptr, int cy, cFont *font, int x, int y) {
++void cSimpleWeatherOsd::drawData(cOsdBase *osd, Decoded_METAR *Mptr, int cy, const cFont *font, int x, int y) {
+ 	measurement measurements[10];
+ 
+ 	for(int i=0; i<10; i++) {
+diff -rub VDR.org/PLUGINS/src/weather-0.2.1e/simpleDisplay.h VDR/PLUGINS/src/weather-0.2.1e/simpleDisplay.h
+--- VDR.org/PLUGINS/src/weather-0.2.1e/simpleDisplay.h	2003-08-12 21:55:40.000000000 +0200
++++ VDR/PLUGINS/src/weather-0.2.1e/simpleDisplay.h	2004-02-09 07:57:40.000000000 +0100
+@@ -21,8 +21,8 @@
+ 		eDvbColor color;
+ 		cUpdate *metarReader;
+ 		virtual void printMetar (cOsdBase *osd, Decoded_METAR *Mptr, int x, int y);
+-		void drawData(cOsdBase *osd, Decoded_METAR *Mptr, int cy, cFont *font, int x, int y);
+-		int calculateMaxDescriptionFontWidth(measurement measurements[], int size, cFont *font);
++		void drawData(cOsdBase *osd, Decoded_METAR *Mptr, int cy, const cFont *font, int x, int y);
++		int calculateMaxDescriptionFontWidth(measurement measurements[], int size, const cFont *font);
+ 		int calculateMaxValueFontWidth(measurement measurements[], int size, cFont *font);
+ 		int calculateMaxFontWidth(char strings[][500], int size, cFont *font);
+ };
+diff -rub VDR.org/PLUGINS/src/weather-0.2.1e/weather.c VDR/PLUGINS/src/weather-0.2.1e/weather.c
+--- VDR.org/PLUGINS/src/weather-0.2.1e/weather.c	2003-09-03 20:30:36.000000000 +0200
++++ VDR/PLUGINS/src/weather-0.2.1e/weather.c	2004-02-09 07:52:45.000000000 +0100
+@@ -25,6 +25,7 @@
+ 	Add(new cMenuEditStrItem(tr("Password (e-mail)"), setup->pwd, 20, ALLOWED_MAIL_CHARS));
+ 	Add(new cMenuEditIntItem(tr("Updatetime (min)"), &setup->updateTime, 0, 10));
+    Add(new cMenuEditBoolItem(tr("Use passive connection"), &setup->passiveFTP));
++   Add(new cMenuEditBoolItem(tr("Debug"), &setup->debug, tr("No"), tr("Yes")));
+    Add(new cMenuEditBoolItem(tr("Display"), &setup->display, tr("Advanced"), tr("Simple")));
+ }
+ 
+@@ -40,6 +41,7 @@
+ 	SetupStore("Password", setup->pwd);
+  	SetupStore("UpdateTime", setup->updateTime);
+ 	SetupStore("PassiveFTP", setup->passiveFTP);
++	SetupStore("Debug", setup->debug);
+ 	SetupStore("Display", setup->display);
+ }
+ 
+@@ -107,6 +109,8 @@
+ 	   setup.display = atoi(Value);
+ 	} else if (!strcasecmp(Name, "PassiveFTP")) {
+ 	   setup.passiveFTP = atoi(Value);
++	} else if (!strcasecmp(Name, "Debug")) {
++	   setup.debug = atoi(Value);
+ 	} else {
+ 		return false;
+ 	}

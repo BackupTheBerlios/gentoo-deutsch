@@ -1,6 +1,6 @@
 # Copyright 2003 Gentoo Technologies Inc
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-timeline/vdrplugin-timeline-0.8.1.ebuild,v 1.1 2003/10/14 18:15:34 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-timeline/vdrplugin-timeline-0.8.1.ebuild,v 1.2 2004/03/22 18:43:59 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="timeline"
@@ -13,10 +13,17 @@ KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
 
-DEPEND=">=media-video/vdr-1.2.0"
+DEPEND=">=media-video/vdr-1.2.6"
 
 src_unpack() {
 	unpack ${A}
+	
+	if [ -n "`vdr -V | grep "1.3"`" ]
+	then
+		einfo "applying VDR 1.3.x patch"
+		patch  -p0 < ${FILESDIR}/vdr-1.3.6-${VDRPLUGIN}-${PV}.diff
+	fi
+
 }
 
 src_compile() {

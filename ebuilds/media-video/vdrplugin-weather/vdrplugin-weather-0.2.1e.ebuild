@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-weather/vdrplugin-weather-0.2.1e.ebuild,v 1.2 2003/10/16 21:18:22 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-weather/vdrplugin-weather-0.2.1e.ebuild,v 1.3 2004/03/22 18:45:49 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="weather"
@@ -13,12 +13,19 @@ KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
 
-DEPEND=">=media-video/vdr-1.2.2
+DEPEND=">=media-video/vdr-1.3.2
 	>=dev-libs/mdsplib-0.11
 	>=net-libs/ftplib-3.1-r1"
 
 src_unpack() {
 	unpack ${A}
+	
+	if [ -n "`vdr -V | grep "1.3"`" ]
+	then
+		cd ${S}
+		einfo "applying VDR 1.3.x patch"
+		patch < ${FILESDIR}/vdr-1.3.6-${VDRPLUGIN}-${PV}.diff
+	fi
 }
 
 src_compile() {

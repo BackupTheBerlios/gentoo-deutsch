@@ -1,0 +1,14 @@
+diff -Nru dvd-0.3.4-rc10/control-dvd.c vdr-dvd-0.3.4-rc10-patched/control-dvd.c
+--- dvd-0.3.4-rc10/control-dvd.c	Tue Nov 11 14:43:29 2003
++++ vdr-dvd-0.3.4-rc10-patched/control-dvd.c	Sun Jan  4 18:43:35 2004
+@@ -172,8 +172,8 @@
+ {
+      DEBUG_OSDPOS("*** OSD Open\n");
+      if(!osdPosOffsetSet && player!=NULL) {
+-	cFont font(fontOsd);
+-	int h = font.Height('X');
++	const cFont *font = cFont::GetFont(fontOsd);
++	int h = font->Height('X');
+ 	osdPosOffset = ( player->getHeight()/h - Setup.OSDheight ) - 3 ;
+ 	osdPosOffsetSet = true;
+         osdPos += osdPosOffset;

@@ -1,7 +1,11 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-weather/ChangeLog,v 1.1 2003/10/16 21:16:14 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-weather/ChangeLog,v 1.2 2004/03/22 18:45:49 fow0ryl Exp $
 
-*vdrplugin-weather (16 Oct 2003)
-
+*vdrplugin-weather-0.21e
+  21 March 2004; H.Ryll <henning.ryll@web.de>
+  works with VDR > 1.3.x
+  
+*vdrplugin-weather-0.21e
   16 Oct 2003; Martin Mittelsdorf <martini@vdr-portal.de>
+  initial version
