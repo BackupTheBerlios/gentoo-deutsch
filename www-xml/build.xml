@@ -40,7 +40,7 @@ haben wir zwei CDs verf&#xFC;gbar. Unsere erste CD ist
 <uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">
 gentoo-ix86-1.2.iso</uri>. Dieses Image ist recht klein (16Mb) und enth&#xE4;lt ein minimales 
 "chrootf&#xE4;higes" <!-- Ich probier es mal damit (JS) -->
-<!-- Naja, "laufaehiges" klingt kundenverstaendlicher.. aber darüber laesst sich streiten :-) (EH)-->
+<!-- Naja, "laufaehiges" klingt kundenverstaendlicher.. aber darueber laesst sich streiten :-) (EH)-->
 Image (<path>stage1-ix86-1.2.tbz2</path>) -- alles was Sie ben&#xF6;tigen um ein
 Gentoo Linux System von Grund auf aufzubauen (Die Quelldateien werden dabei 
 automatisch aus dem Internet geladen). Unsere zweite CD ist 
