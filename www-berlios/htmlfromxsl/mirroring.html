@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Documentation
+	
+-- 
+	Gentoo Linux Mirroring Anleitung</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux Mirroring Anleitung</p>
+<form>
+<b>Contents</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica,  sans-serif; font-size:10"><option value="#doc_chap1">1. Erstellen eines rsync Mirrors</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Erstellen eines rsync Mirrors</p>
+
+<p>Zur Zeit benötigt man ca. 56Mb um unseren Portage tree zu mirrorn, es ist also nicht
+sehr Speicherintensiv; mit min. 200Mb freiem Speicher sollte man genug Speicher für das zukünftige Wachstum haben.
+Einen Portage tree Mirror zu erstellen ist einfach -- Stellen Sie zuerst sicher, dass ihr Mirror rsync
+installiert hat. Dann bearbeiten Sie die Datei <font class="path">rsyncd.conf</font> um etwa so
+auszusehen: </p>
+
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+pid file = /var/run/rsyncd.pid
+motd file = /etc/rsync/rsyncd.motd
+syslog facility = local3
+timeout = 150
+[gentoo-x86-portage]
+        path = /space/gentoo/rsync
+        comment = Gentoo Linux Portage tree
+[gentoo-portage]
+        path = /space/gentoo/rsync
+        comment = Gentoo Linux Portage tree 
+</pre></td></tr>
+</table>
+
+<p>Im obigen Beispiel zeigt der <font class="code">gentoo-x86-portage</font> Mirror zu den selben Daten wie
+<font class="code">gentoo-portage</font>. Obwohl wir vor kurzem den offiziellen Name des Mirrors zu
+<font class="code">gentoo-portage</font> geändert haben, wird <font class="code">gentoo-x86-portage</font> noch für zurückgreifende Kompatibilität
+benötigt, fügen Sie also beide Einträge ein. Ihre rsync motd kann alles annehmbare enthalten,
+wie z.B. Informationen über den Host der den Portage Mirror zur Verfügung stellt und administrative Kontakte.</p>
+
+<p>Jetzt müssen Sie den Gentoo Linux Portage tree mirrorn. Sie sollten den folgenden Befehl
+dafür benutzen:</p> <a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>rsync -rlptDvz --delete
+rsync://rsync.gentoo.org/gentoo-portage/ /space/gentoo/rsync/</pre></td></tr>
+</table> <p>Vergewissern Sie sich, dass
+Sie die <font class="code">--delete</font> Option aktiviert haben, damit die veralteten ebuilds von ihrem Mirror
+gelöscht werden. Erstellen Sie einen cron job der jede halbe Stunde den rsync ausführt, und zwar um :00
+und :30. Schicken Sie dann eine email an <a href="mailto:sandymac_[at]_gentoo.org">William McArthur</a> 
+und lassen Sie ihn wissen, dass ihr rsync Mirror bereit ist. Er wird dann einen offiziellen
+rsync[num].[countrycode].gentoo.org DNS Eintrag erstellen und Sie in unseren DNS
+Zyklus für rsync.gentoo.org und rsync.[countrycode].gentoo.org eintragen. Er wird auch
+cvs.gentoo.org's QoS erstellen, damit Sie &quot;bevorzugten&quot; Zugriff auf unsere
+rsync Server erhalten. Kurz nachdem Sie in unseren DNS eingetragen wurden, sollten sie
+rsync Zugriffe sehen; Dann müssen Sie den cron job so ändern, dass er auf den Haupt-Mirror
+- rsync://rsync1.us.gentoo.org verweist (alles andere sollte gleich bleiben).
+-- Danke, dass sie Gentoo Linux Usern und Entwicklern helfen! :)</p>
+
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+					Updated 04 Mai 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Chief Architect</i><br><br><b><a class="altlink" href="mailto:peitolm@gentoo.org">Colin Morey</a></b><br><i>Editor</i><br><br><b><a class="altlink" href="mailto:scandium@gentoo-linux.net">Rainer Groesslinger</a></b><br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Summary:</b> 
+Dieses Dokument beinhaltet Anweisungen um einen Gentoo Linux rsync Mirror zu erstellen.
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Support our development efforts by donating via credit card!</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="drobbins@gentoo.org"><input type="hidden" name="item_name" value="Gentoo Linux Support"><input type="hidden" name="item_number" value="1000"><input type="hidden" name="image_url" value="http://www.gentoo.org/images/paypal.png"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="return" value="http://www.gentoo.org"><input type="hidden" name="cancel_return" value="http://www.gentoo.org"><input type="image" src="http://images.paypal.com/images/x-click-but21.gif" border="0" name="submit" alt="Make payments with  PayPal - it's fast, free and secure!">
+</form>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Purchase RAM using this link, and a percentage
+of your sale will go towards further Gentoo Linux development.</p>
+<a href="http://www.qksrv.net/click-477620-5032687" target="_top"><img src="http://www.qksrv.net/image-477620-5032687" width="125" height="125" alt="DDR Memory at Crucial.com" border="0"></a><p class="alttext">Why these guys?  Because <b>cvs.gentoo.org</b> and <b>inventor.gentoo.org</b> use high-quality Crucial RAM. 
+We know that it's good stuff because we rely on it ourselves.</p>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Copyright 2001 Gentoo
+		Technologies, Inc.  Questions, Comments, Corrections?  Email <a class="highlight" href="mailto:gentoo-dev@gentoo.org">gentoo-dev@gentoo.org</a>.
+			</td></tr>
+</table></body>
+</html>
