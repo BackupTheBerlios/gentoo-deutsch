@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <info>
-<title>Willkommen</title>
+<title>Gentoo-Linux</title>
 
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 
@@ -9,27 +9,26 @@
 
 <box>
   <block>
-    <title>Aktuelles:</title>
+    <title>Gentoo-Linux</title>
     <p>
-      Was gibt es aktuelles bei Gentoo Linux. Hier erfahren Sie es...
+      Was ist Gentoo-Linux eigentlich? - Hier erfahren Sie es
     </p>
   </block>
-
 </box>
 
 <chapter>
-<title>Aktuelles</title>
+<title>Gentoo Linux</title>
 
 <section>
 
-<title>Gentoo Linux in Kürze</title>
+<title>Gentoo Linux in KÃ¼rze</title>
 
 <body>
 <p>
-Gentoo Linux ist eine schnelle und vielseitige, vollkommen freie Linux Distribution für x86-PC's, PowerPC, UltraSparc und
-Alpha Systeme, die sich hauptsächlich an Linux Power-User wendet. Im Gegensatz zu anderen Distributionen hat Gentoo Linux
+Gentoo Linux ist eine schnelle und vielseitige, vollkommen freie Linux Distribution fÃ¼r x86-PC's, PowerPC, UltraSparc und
+Alpha Systeme, die sich hauptsÃ¤chlich an Linux Power-User wendet. Im Gegensatz zu anderen Distributionen hat Gentoo Linux
 ein fortgeschrittenes Paketmanagement-System namens Portage. Portage ist ein echtes Ports basiertes System in der Tradition
-der BSD-Ports, allerdings ist es Python basiert und besitzt einige sehr fortgeschrittene Features, wie z.B. Abhängigkeiten,
+der BSD-Ports, allerdings ist es pythonbasiert und besitzt einige sehr fortgeschrittene Features, wie z.B. AbhÃ¤ngigkeiten,
 feinem Paketmanagement, "fake" (OpenBSD-style) Installationen, Path-Sandboxing, sichere Deinstallation, Systemprofile,
 Virtuelle Packete, Konfigurationsfile-Management, und vieles mehr.
 </p>
@@ -39,30 +38,30 @@ Virtuelle Packete, Konfigurationsfile-Management, und vieles mehr.
 
 <section>
 
-<title>Über Portage</title>
+<title>Ãœber Portage</title>
 
 <body>
 <p>
-Portage ermöglicht, Gentoo-Linux so aufzusetzen wie man möchte - mit den Optimierungen, die man möchte und mit optionaler
-Build-Time Funktionalität (wie z.B. Unterstützung Gnome, KDE, mysql, Alsa, LDAP usw.) - wenn man dies möchte. Wenn man
-kein Gnome auf dem System haben möchte, dann werden die installierten Applikationen auch keinen Gnome-Support aktiviert haben;
-wenn man Gnome auf dem System haben möchte, dann werden sie diesen aktiviert haben. Dies ist der Grund, weshalb wir Gentoo-Linux
-als eine Meta-Distribution oder LTE (Linux Technology Engine) ansehen. Sie können selbst entscheiden, welches System Sie möchten
-und Portage wird es für Sie aufbauen.
+Portage ermglicht, Gentoo-Linux so aufzusetzen wie man mÃ¶chte - mit den Optimierungen, die man mÃ¶chte und mit optionaler
+Build-Time FunktionalitÃ¤t (wie z.B. UnterstÃ¼tzung Gnome, KDE, mysql, Alsa, LDAP usw.) - wenn man dies mchte. Wenn man
+kein Gnome auf dem System haben mÃ¶chte, dann werden die installierten Applikationen auch keinen Gnome-Support aktiviert haben;
+wenn man Gnome auf dem System haben mÃ¶chte, dann werden sie diesen aktiviert haben. Dies ist der Grund, weshalb wir Gentoo-Linux
+als eine Meta-Distribution oder LTE (Linux Technology Engine) ansehen. Sie kÃ¶nnen selbst entscheiden, welches System Sie mÃ¶chten
+und Portage wird es fÃ¼r Sie aufbauen.
 </p>
 
 <p>
-Wir unterhalten einen offiziellen Gentoo-Linux Portage-Baum, der die neuesten unserer Ebuild-Skripte enthält. Durch aktualisieren
-des Baums, bekommen Sie Zugang zu den neuesten und besten Linux-Technologien und Applikationen. Sagen Sie Portage, welches Ebuild
-Sie installieren möchten und Portage wird automatisch den Sourcecode herunterladen, diesen extrahieren, configurieren, kompilieren
-und das Paket anschliessend installieren. Durch die Lösung mit automatischen Abhängigkeiten ist es möglich, KDE 3.1 oder Gnome 2.2
+Wir unterhalten einen offiziellen Gentoo-Linux Portage-Baum, der die neuesten unserer Ebuild-Skripte enthÃ¤lt. Durch aktualisieren
+des Baums bekommen Sie Zugang zu den neuesten und besten Linux-Technologien und Applikationen. Sagen Sie Portage, welches Ebuild
+Sie installieren mÃ¶chten und Portage wird automatisch den Sourcecode herunterladen, diesen extrahieren, konfigurieren, kompilieren
+und das Paket anschliessend installieren. Durch die LÃ¶sung mit automatischen AbhÃ¤ngigkeiten ist es mÃ¶glich, KDE 3.1 oder Gnome 2.2
 durch Eingabe eines einzigen Kommandos zu installieren und die erzeugten Binaries werden automatisch entsprechend Ihrem System
 optimiert und angepasst.
 </p>
 
 <p>
-Wenn Sie diese Art von Macht und Flexibilität des Systems anspricht, dann können wir Ihnen einen Test von Gentoo-Linux
-nur nahelegen! Sie werden nicht enttäuscht sein.
+Wenn Sie diese Art von Macht und FlexibilitÃ¤t des Systems anspricht, dann kÃ¶nnen wir Ihnen einen Test von Gentoo-Linux
+nur nahelegen! Sie werden nicht enttÃ¤uscht sein.
 </p>
 
 </body>
