@@ -1,8 +1,10 @@
-# ChangeLog for media-video/linuxdvb
+# ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.2 2003/02/17 22:26:33 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.3 2003/02/18 22:42:01 mad Exp $
 
 *vdr-1.1.25 (17 Feb 2003)
+  18 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> rc-1.1.25
+  added some info messages
 
   17 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25.ebuild
   new version, nothing new ... 
