@@ -21,6 +21,20 @@
 <chapter>
 <section>
   <body>
+  <news type="news" date="10.11.2003" title="Gentoo-Newsletter">
+    <p>
+	  In diesem Newsletter gibt es aktuelle Informationen über Portage-NG, den neuen Portage, der sich zur
+	  zeit in einer frühen Entwicklungsphase befindet. Natürlich gibt es auch in dieser Woche das Entwickler-Portrait
+	  mit demjenigen der dafür verantwortlich ist, dass wir alle was zu lesen haben : Sven Vermeulen. Im Internationalen
+	  Teil gibt es wiedermal Neuigkeiten aus der deutschen Community, einem Usertreffen in Hamburg. Natürlich fehlen auch
+	  die anderen Rubriken nicht. <uri link="http://www.gentoo.org/news/de/gwn/20031110-newsletter.xml">Viel Spass beim Lesen</uri>.
+    </p>
+  </news>
+  </body>
+</section>
+
+<section>
+  <body>
   <news type="news" date="05.11.2003" title="Gentoo-Newsletter">
     <p>
       Der aktuelle Gentoo Newsletter ruft zum Wiederbeleben des Gentoo Embedded Projekt auf.
