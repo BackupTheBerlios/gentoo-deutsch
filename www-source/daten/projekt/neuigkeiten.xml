@@ -22,6 +22,24 @@
 
 <title>Aktuelles</title>
 
+<section>
+<title>[05. Juni 2003] Gentoo-Newsletter</title>
+<body>
+<p>
+Wir freuen uns ankündigen zu dürfen, daß die Gentoo-Plattform bald für MacOS X verfügbar sein
+wird. Das bedeutet, daß es für die Anwender möglich sein wird die Leistungsfähigkeit und Einfachheit der
+Gentoo Plattform und des Portage-Baums dort benutzen können wo sie gerade arbeiten, auf dem Betriebssystem
+daß sie gerade benutzen -- selbst dann, wenn das Betriebssystem nicht GNU/Linux ist. Wir möchten unseren
+Anwendern mehr Wahlmöglichkeiten als jeder andere geben und dies gilt auch für die Möglichkeit nicht-GNU
+Betriebssysteme und Nicht-Linux Kernels zu benutzen, wenn die Notwendigkeit oder der Wunsch besteht.
+
+Momentan fertigen wir gerade eine passende Infrastruktur für dieses Projekt (Mailinglisten, Projektseite, etc.)
+und integrieren gerade Portage für MacOS X in die Produktionslinie einzuarbeiten. Weitere Meldungen werden folgen,
+wenn diese Vorarbeiten abgeschlossen sind.
+</p>
+</body>
+</section>
+
 
 <section>
 <title>[04. Juni 2003] Neue KDE/GNOME LiveCDs für PowerPC</title>
