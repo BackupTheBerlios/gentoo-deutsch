@@ -5,6 +5,7 @@
 
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
 <author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
+<author title="Author"><mail link="stkn@berlios.de">Stefan Knoblich</mail></author>
 
 <date>26. Mai 2003</date>
 
@@ -18,6 +19,20 @@
 </box>
 
 <chapter>
+
+<section>
+	<body>
+	<news type="release" date="05.08.2003" title="Gentoo 1.4 released">
+		<p>
+		Endlich ist es soweit! Ab sofort ist die 1.4er Version von Gentoo Linux verfügbar.
+		Zu den Neuerungen gehören u.a. Binärpakete (z.B. von XFree und KDE) auf Basis der Gentoo Reference Plattform (GRP).
+		Bitte verwenden Sie einen der <uri link="http://www.gentoo.org/main/en/mirrors.xml">Mirror Server</uri> zum Download.
+		Die Installationsanleitung gibt es <uri link="http://www.gentoo.org/doc/en/gentoo-x86-install.xml">hier</uri>.
+		</p>
+	</news>
+	</body>
+</section>
+
 
 <section>
 	<body>
