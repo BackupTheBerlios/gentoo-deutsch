@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.4 2003/12/27 20:09:37 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.5 2003/12/27 20:28:07 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -106,6 +106,7 @@ src_unpack() {
 
 		einfo "applying remove duplicate Symblol 59 patch ..."
 		epatch ${FILESDIR}/KomplettPatch-1.2.6-E.diff
+		#/bin/sed -e '782,811d' fontsym.c
 	fi
 
 	# here comes the gentoo specific stuff ( also called the "fun part")
