@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr:
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/confd.vdr-1.1.25,v 1.1 2003/02/17 20:51:26 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/confd.vdr-1.1.25,v 1.2 2003/03/10 16:03:43 fow0ryl Exp $
 
 # Global config file for vdr rc-scripts
 
@@ -53,7 +53,7 @@
 #LIB="/usr/lib/vdr"
 
 # load a plugin defined by the given options
-# list all plugins you want loaded, coma seperated
+# list all plugins you want to be loaded, seperated by space
 #PLUGINS=""
 
 # controlling tty
