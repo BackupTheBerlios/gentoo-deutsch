@@ -1,10 +1,13 @@
 # ChangeLog for media-video/vdr
 # Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.45 2004/04/23 18:59:11 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.46 2004/04/29 20:23:20 fow0ryl Exp $
 
 *vdr-1.3.6-r1 (23 Apr 2004)
   23. Apr 2004: Christian Gmeiner <christian at visual-page.de> vdr-1.3.6-r1.ebuild
   Support for 2.6 kernels and other improvements
+
+  29. Apr 2004: Henning Ryll <henning.ryll@web.de> vdr-1.3.6-r1.ebuild
+  libsi patch added
 
 *vdr-1.3.6 (18. March 2004)
   18. March 2004: Christian Gmeiner <christian at visual-page.de> vdr-1.3.6.ebuild:
@@ -18,14 +21,200 @@
   14. March 2004: Christian Gmeiner <christian at visual-page.de> vdr-1.3.6.ebuild:
   version bump.
 
-*vdr-1.2.6 (12 Dec 2003)
+vdr-1.3.4
+  15 Feb 2004; M.Hierling <mad@cc.fh-lippe.de>
+  initial 1-3.4
+  added Elchi
 
-  12 Dec 2003; Daniel Ahlberg <aliz@gentoo.org> vdr-1.1.27.ebuild:
-  Version bump.
+vdr-1.3.2
+  24 Jan 2004; M.Hierling <mad@cc.fh-lippe.de>
+  initial, removed some includes, libs
+  removed all patches, this is vanilla
 
-*vdr-1.1.27 (13 Apr 2003)
+*vdr-1.2.6-r5
+  12 Feb 2004; M.Hierling <mad@cc.fh-lippe.de>
+  added upt patch provided by thoand
+  new vdr_opts put
+  switched back to ~x86
 
-  13 Apr 2003; Martin Holzer <mholzer@gentoo.org> vdr-1.1.27.ebuild,
-  files/vdr-1.1.27-gentoo.diff files/digest-vdr-1.1.27 ChangeLog:
+*vdr-1.2.6-r4
+  24 Jan 2004; M.Hierling <mad@cc.fh-lippe.de>
+  marked as stable for x86 tree
+  beauty confdir
 
-  Initial ebuild by myself.
+  7 Jan 2004; H.Ryll <henning.ryll@web.de>
+  Optional 256 Color OSD added VDR_OPTS=256color
+
+  27 Dez 2003; M.Hierling <mad@cc.fh-lippe.de>
+  fixed some typos
+  added full path to all binarys
+  added VDR_OPTS emergeplugs for automatically emerge of all used plugins (read wiki!)
+  qpkg change output to uncolored for use with emerge
+  changed all patch stuff to epatch (not that much unwanted output, only nice green [OK] )
+
+  27 Dez 2003; H.Ryll <henning.ryll@web.de>
+  Update to Improved OSD 3a
+
+  7 Jan 2004; H.Ryll <henning.ryll@web.de>
+  Optional 256 Color OSD added
+
+  24 Dez 2003; F.Schilhabel <fernsehleo@gmx.net>
+  initial import of r4 with new logic w/o gentoo-patch(es)
+
+*vdr-1.2.6-r3
+  13 Dez 2003; H.Ryll <henning.ryll@web.de>
+  Now including new Complete-Patch "B" with improved OSD
+  based on version 1.2.6 (not r1 or r2)
+  Hopefully solving Problems with scanner.c
+
+  14 Dez 2003; H.Ryll <henning.ryll@web.de>
+  Now including new Complete-Patch "C" with improved OSD
+  Improved OSD now works with elchi-patch too
+
+*vdr-1.2.6-r2
+  12 Dec 2003; F.Schilhabel <fernsehleo|gmx.net>
+  main ebuild logic rewritten from scratch.
+  it should be easier now to extend the ebuild with new patches and conditionals
+  <rootshell>
+
+*vdr-1.2.6-r1
+  11.Dec 2003; F.Schilhabel <fernsehleo@gmx.net>
+  fixed (hopefully) compilation with akool patch;
+  applied safer compiler flags
+  <rootshell>
+
+  16 Nov 2003; H.Ryll <henning.ryll@web.de>
+  first qick'n dirty version of 1.2.6
+
+*vdr-1.2.5
+  21 Sep 2003; M.Hierling <mad@cc.fh-lippe.de>
+  added new vdr version, remove splash screen because
+  my patch for test_stillimage doesn´t work
+
+*vdr-1.2.2
+  18 Aug 2003; P.Frank <pfrank@gmx.de>
+  added new vdr version
+
+*vdr-1.2.1
+  05 Aug 2003; M.Hierling <mad@cc.fh-lippe.de>
+  added support for splash screen
+
+  03 Jul 2003; M.Hierling <mad@cc.fh-lippe.de>
+  renamed vdr_vfat to vfat 
+
+  30 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
+  added gentoo patch, build a new Elchi patch (nothing new, only to
+  get rid of the hunks and rej), fixed wrong plugin filename
+
+  26 Jun 2003; H.Ryll <henning.ryll@web.de>
+  new version
+
+*vdr-1.2.0 (04 Jun 2003)
+  03 Jul 2003; M.Hierling <mad@cc.fh-lippe.de>
+  renamed vdr_vfat to vfat 
+
+  01 Jul 2003; M.Hierling <mad@cc.fh-lippe.de>
+  fixed download location of akool patch
+
+  20 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
+  added AD3overDVB patch, contributed by trtr-z
+
+  04 Jun 2003; M.Hierling <mad@cc.fh-lippe.de>
+  jumped to version 1.2.0, vdr now runs with uid vdr and gid video,
+  pluginnames changed, some default dirs changed, added default
+  plugins, moved plugindir to /usr/lib/vdr 
+  added VDR_OPTS (vfat, rcu, akool) to steer the installation of
+  patches and vdr addons
+  added vdrshutdown.sh sample script
+
+*vdr-1.1.31 (12 May 2003)
+  12 May 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.31.ebuild
+  new version, version needs cvs head driver from 2002-05-10
+  and is therefore marked unstable, nothing new
+
+  15 May 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.31.ebuild
+  fixed compile problem (menu.c), see vdr ml
+
+*vdr-1.1.30 (06 May 2003)
+  06 May 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.30.ebuild
+  new version, version needs cvs head driver from 2002-04-27
+  and is therefore marked unstable, nothing new
+
+*vdr-1.1.29 (27 Apr 2003)
+  27 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.29.ebuild
+  new version, version needs cvs head driver from 2002-04-27
+  and is therefore marked unstable, nothing new
+
+*vdr-1.1.28 (21 Apr 2003)
+  22 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.28.ebuild
+  new version, version needs cvs head driver from 2002-04-21
+  and is therefore marked unstable, nothing new
+
+*vdr-1.1.27 (11 Apr 2003)
+  14 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.27.ebuild
+  new version, this version runs only with cvs head dvb driver
+  (may change) and is therefore marked unstable
+
+*vdr-1.1.26-r1 (11 Apr 2003)
+  11 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26-r1.ebuild
+  changed to vdr-vanilla, added PROVIDE Flag, removed elchi, 
+
+  03 Apr 2003; H.Ryll <henning.ryll@web.de> rc.vdr-1.1.26
+*vdr-1.1.26 (19 Mar 2003)
+  04 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26.ebuild
+  added the libs to the installation (needed by some dvb tools)
+
+  03 Apr 2003; H.Ryll <henning.ryll@web.de> rc.vdr-1.1.26
+  handling of _EXTRAOPTS fixed
+  
+  03 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26.ebuild
+  added support for the irexec programm to restart vdr with a 
+  userdefined key (edit /etc/vdr/irexec.conf and start irexec)
+
+  19 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.26.ebuild
+  new vdr version, some fixes to install all config files
+  new download location (cadsoft instead of linuxtv)
+
+*vdr-1.1.25-r3 (15 Mar 2003)
+  15 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25-r3.ebuild
+  added use variable for VFAT (USE="vdr_vfat")
+  added use variable for Elchi AIO (USE="vdr_elchi")
+  The supplied Elchi 1.1.25 patch is nothing new, it is the
+  1.1.20 patch but packed new to be applied without the nasty
+  ofset warnings
+
+*vdr-1.1.25-r2 (14 Mar 2003)
+  14 Mar 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25-r2.ebuild
+  added a watchdog daemon script and the appropriate init script
+
+*vdr-1.1.25-r1 (24 Feb 2003)
+  27 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25-r1.ebuild
+  now using dvb rc.script for loading modules
+
+  24 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> dr-1.1.25-r1.ebuild
+  adapted to the new location from the dvb header files
+
+*vdr-1.1.25 (17 Feb 2003)
+  18 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> rc-1.1.25
+  added some info messages
+
+  17 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.25.ebuild
+  new version, nothing new ... 
+  fixed typo in rc script
+
+*vdr-1.1.24 (13 Feb 2003)
+
+  17 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.24.ebuild
+  fixed typo in rc script
+
+  14 Feb 2003; M.Hierling <mad@cc.fh-lippe.de> ChangeLog :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that
+  the comments should well explained and written in clean English. The
+  details about writing correct changelogs are explained in the
+  skel.ChangeLog file which you can find in the root directory of the
+  portage repository.
+
+  This is my second ebuild script, so please be considerately with me. 
+  I got some hints from Henning Ryll <henning.ryll@web.de> thanks to him.
