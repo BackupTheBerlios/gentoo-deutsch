@@ -12,8 +12,8 @@
 
 <abstract>Gentoo Linux stellt sich vor</abstract>
 
-<version>1.0.8</version>
-<date>13 Juni 2003</date>
+<version>1.1</version>
+<date>4. Dezember 2003</date>
 
 <chapter>
 	<title>Gentoo Linux... in einem Poster</title>
@@ -21,8 +21,21 @@
 <section>
 <body>
 
+<p>
 <uriimg picuri="/media/bilder/poster.jpg" align="center"/>
 <br/>
+Übersetzung: <e>Larry the Cow war ein wenig frustriert über den aktuellen Stand
+der Linux Distributionen....<br/>
+...bis er Gentoo Linux ausprobierte.</e><br/>
+Larry the Cow war ein wenig frustriert über Linux. Die neuesten Distros erschienen ihm
+wie ein Haufen von dem selben alten Zeug. Nichts neues -- nichts innovatives. Dann
+probierte Larry Gentoo Linux aus. Er war beeindruckt. Er fand ein BSD-ähnliches 
+Ports-System mit einem haufen fortgeschrittener Funktionen vor. Er entdeckte
+viele hochaktuelle Pakete, die er automatisch mit den Optimierungseinstellungen und
+Funktionen, die <e>er</e> wünschte, kompilieren konnte, anstatt sich mit irgendwelchen
+Vorgaben eines Distributions-Erstellers zufrieden geben zu müssen. Und plötzlich hatte
+Larry the Cow alles unter seiner Kontrolle. Und es gefiel ihm.
+</p>
 
 </body>
 </section>
