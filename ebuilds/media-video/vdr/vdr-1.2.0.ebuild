@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.6 2003/06/07 15:12:52 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.7 2003/06/10 19:41:15 mad Exp $
 
 IUSE="lirc"
 ANALOGTV_VN="0.7.0"
@@ -27,20 +27,38 @@ DEPEND="virtual/glibc
 		lirc? ( app-misc/lirc )
 		"
 
+#
+# function to implement a "local" use variable called VDR_OPTS
+#
 function vdr_opts {
 	echo ${VDR_OPTS} | grep --silent $1 && return 0
 	einfo "No optional $1 in VDR_OPTS"
 	return 1
 }
 
+
 src_unpack() {
+	#
+	# getting VDR_OPS from commandline or configfile
+	#
+	if [ -z "$VDR_OPTS" ]; then
+		VDR_OPTS=$(awk -F'"' '/^VDR_OPTS/ {print $2}' /etc/conf.d/vdr)
+		einfo
+		einfo "read VDR_OPTS from /etc/conf.d/vdr "
+		einfo
+	fi
+
+	einfo
+	einfo "VDR_OPTS: $VDR_OPTS"
+	einfo
+
 	unpack ${A}
 	cd ${S}
 
 	# needs app-admin/fam-oss
 	if [ -z "`vdr_opts akool`" ]; then
 		if [ -z "`vdr_opts akoolwoe`" ]; then
-			eerror "ups, akool & akoolwe patch will not work together"
+			eerror "ups, akool & akoolwoe patch will not work together"
 			die "incompatible VDR_OPTS"
 		fi
 		if [ -z "`vdr_opts elchi`" ]; then
@@ -149,10 +167,10 @@ src_install() {
 }
 
 pkg_setup(){
-	einfo "adding vdr user"
 	# temp userid 270 until got one from gentoo.org
 	if ! grep -q "^vdr:" /etc/passwd ; then
 		useradd -u 270 -g video -G audio,cdrom -d /video -s /bin/bash -c "VDR Daemon" vdr
+		einfo "adding vdr user"
 	fi
 }
 
