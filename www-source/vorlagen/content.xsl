@@ -98,7 +98,7 @@
 
   <div id="about">
     <a href="{$baseurl}" class="icon">
-      <img src="{$imageurl}icons/home.png" width="16" height="16" alt="Zurück zur Startseite"/>
+      <img src="{$imageurl}icons/home.png" width="16" height="16" alt="Zurck zur Startseite"/>
       <xsl:value-of select="$lng_homepage"/>
     </a>
     <xsl:text>&#160; &#160;</xsl:text>
@@ -185,7 +185,7 @@
         <form style="font-size: 0.7em" action="http://www.gentoo.de/">
           <p><select name="url" size="1" class="jumpbox"
             onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
-            <option value="---">[Bitte Kapitel auswählen]</option>
+            <option value="---">[Bitte Kapitel auswï¿½len]</option>
 
             <xsl:for-each select="chapter/title">
               <option value="header_{position()}"><xsl:value-of select="."/></option>
@@ -479,8 +479,17 @@
 		<span style="font-size:small;"><xsl:value-of select="@date"/></span><br/>
 		<span style="font-weight:bold; font-size:large;"><xsl:value-of select="@title"/></span><br/>
 	</p>
-	<p style="background-color:#F5F5F5; padding:3px; margin-top:0px">
-		<xsl:value-of select="."/>
+	<p style="font-size:medium; background-color:#F5F5F5; padding:3px; margin-top:0px">
+		<table>
+			<tr>
+				<td>
+					<img src="inhalte/media/bilder/icons/{$sort}.jpg"/>
+				</td>
+				<td>
+					<xsl:value-of select="."/>
+				</td>
+			</tr>
+		</table>
 	</p>
 </xsl:template>
 
