@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.3 2003/07/03 21:13:51 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.4 2003/07/03 21:22:57 holler Exp $
 
 DESCRIPTION="exchange4linux - exchange4linux is a production/stable server solution to store/exchange workgroup data on Linux in a style simular to Exchange. Main goal is to provide Outlook users a free and open server alternative on Linux."
 HOMEPAGE="http://www.exchange4linux.org/"
@@ -44,6 +44,7 @@ src_compile() {
   chmod +x server.sh
   cd ../BILL-StorageMailer-${PV}
   python /usr/lib/python2.2/compileall.py .
+  rm mail.local.sh
 
 }
 
