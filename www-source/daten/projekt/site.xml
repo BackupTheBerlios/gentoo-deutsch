@@ -4,8 +4,13 @@
 
 <guide type="project" link="/projects/xml.html">
 <title>Das Gentoo XML Projekt</title>
-<author title="Author"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
-<author title="Übersetzer"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
+<author title="Author">
+  <mail link="drobbins@gentoo.org">Daniel Robbins</mail>
+</author>
+<author title="Übersetzer">
+  <mail link="js@ameds.de">Jens Schittenhelm</mail>
+</author>
+
 <abstract>
 Diese Seite enthält Informationen über das Gentoo "guide" XML Projekt, welches
 zur Dokumentation und der Gestaltung der Gentoo Webseite eingesetzt wird.
@@ -20,35 +25,59 @@ zur Dokumentation und der Gestaltung der Gentoo Webseite eingesetzt wird.
 <section>
 <body>
 
-<p>Das Gentoo Linux Team benutzt ein einfaches XML Format, das <c>guide XML</c>
+<p>
+Das Gentoo Linux Team benutzt ein einfaches XML Format, das <c>Guide XML</c>
 bezeichnet wird und speziell für die Dokumentation und Gestaltung der Webseite
 entworfen wurde. Sollten Sie an weiteren Informationen über dieses Format
 interessiert sein, können Sie die englischen Artikelserie <e>A site reborn</e>
 auf der <uri link="http://www.ibm.com/developerworks">IBM
-developerWorks</uri> Seite von Daniel Robbins lesen:</p>
-
-<ul>
-	<li>In <uri link="http://www-106.ibm.com/developerworks/usability/library/us-gentoo/index.html">Part 1</uri>, Daniel creates a user-centric action plan and introduces <c>pytext</c>, an embedded Python interpreter.</li>
-	<li>In <uri link="http://www-106.ibm.com/developerworks/usability/library/us-gent/">Part 2</uri>, Daniel shows off the new <c>guide XML</c> documentation system and sets up a daily CVS-log mailing list.</li>
-	<li>In <uri link="http://www-106.ibm.com/developerworks/usability/library/us-gentoo3/">Part 3</uri>, Daniel designs a new look for the site as a whole.</li>
-	<li>In <uri link="http://www-106.ibm.com/developerworks/usability/library/us-gentoo4/">Part 4</uri>, Daniel completes the conversion to XML/XSLT, fixes a host of Netscape 4.x browser compatibility bugs, and adds an auto-generated XML Changelog to the site.</li>
-</ul>
-
-<p>Wir haben auch eine deutsche Fassung des <uri link="http://www.gentoo.de/inhalte/doku/xml-guide/">Gentoo Linux Documentationsleitfaden</uri> 
-in dem die Anwendung des <c>guide XML</c> Formates genau beschrieben wird.
-Laden Sie hierzu auch gleich die aktuellste Version der <c>guide XML</c> Tools herunter.
-Diese Datei enthält einen kompletten CVS Schnappschuss aller Dateien, die zum Erstellen
-der Webseite verwendet werden:
-<uri link="http://www.gentoo.org/dyn/arch/xml-guide-latest.tar.gz">xml-guide-latest.tar.gz</uri>.  
-Dieses Tar-Archiv wird bei jeder Aktualisierung der Gentoo-Webseite automatisch aktualisiert.
-Eine Anleitung zur Verwendung dieser Dateien befindet sich im 
-<uri link="http://www.gentoo.de/inhalte/doku/xml-guide/">Gentoo Linux Documentationsleitfaden</uri>.
-( Dieses Tar-Archiv ist nichts anderes, als eine Kopie des <path>gentoo-web</path> Verzeichnisses
-des <path>gentoo-src</path> CVS Moduls ).
+developerWorks</uri> Seite von Daniel Robbins lesen:
 </p>
 
-<p>Informationen die speziell das deutsche Dokumentationsteam und die gentoo.de Webseite betreffen, 
-befinden sich in der <uri link="http://www.gentoo.de/inhalte/projekt/translation/">Information für Übersetzer</uri>.</p>
+<ul>
+<li>
+  In <uri link="http://www-106.ibm.com/developerworks/usability/library/us-gentoo/index.html">Part 1</uri>, 
+  Daniel creates a user-centric action plan and introduces <c>pytext</c>, 
+  an embedded Python interpreter.
+</li>
+<li>
+  In <uri link="http://www-106.ibm.com/developerworks/usability/library/us-gent/">Part 2</uri>, 
+  Daniel shows off the new <c>guide XML</c> documentation system and sets up 
+  a daily CVS-log mailing list.
+</li>
+<li>
+  In <uri link="http://www-106.ibm.com/developerworks/usability/library/us-gentoo3/">Part 3</uri>, 
+  Daniel designs a new look for the site as a whole.
+</li>
+<li>
+  In <uri link="http://www-106.ibm.com/developerworks/usability/library/us-gentoo4/">Part 4</uri>, 
+  Daniel completes the conversion to XML/XSLT, fixes a host of Netscape 4.x 
+  browser compatibility bugs, and adds an auto-generated XML Changelog to the 
+  site.
+</li>
+</ul>
+
+<p>
+Wir haben auch eine deutsche Fassung des 
+<uri link="http://www.gentoo.de/inhalte/doku/xml-guide/">Gentoo Linux Dokumentationsleitfaden</uri> 
+in dem die Anwendung des <c>guide XML</c> Formates genau beschrieben wird.
+Laden Sie hierzu die aktuellste Version der <c>Guide XML</c> Tools herunter. 
+Diese Datei enthält einen kompletten CVS Schnappschuss aller Dateien, die zum 
+Erstellen der Webseite verwendet werden: 
+<uri link="http://www.gentoo.org/dyn/arch/xml-guide-latest.tar.gz">xml-guide-latest.tar.gz</uri>.  
+Dieses Tar-Archiv wird bei jeder Aktualisierung der Gentoo-Webseite automatisch 
+aktualisiert. Eine Anleitung zur Verwendung dieser Dateien befindet sich im 
+<uri link="http://www.gentoo.de/inhalte/doku/xml-guide/">Gentoo Linux Dokumentationsleitfaden</uri>.
+(Dieses Tar-Archiv ist nichts anderes, als eine Kopie des 
+<path>gentoo-web</path> Verzeichnisses des <path>gentoo-src</path> CVS Moduls).
+</p>
+
+<p>
+Informationen die speziell das deutsche Dokumentationsteam und die gentoo.de 
+Webseite betreffen, befinden sich in der 
+<uri link="http://www.gentoo.de/inhalte/projekt/translation/">Information für Übersetzer</uri>.
+</p>
+
 </body>
 </section>
 </chapter>
