@@ -1800,48 +1800,47 @@ Mehr dazu gibts auf <uri>http://www.pureftpd.org</uri>
 <body>
 
 <p>
-Proftpd has had several security problems, but they seem to have fixed most of them. Still apply some enhancements:</p>
-
+Proftpd hat einige Sicherheitsprobleme, aber es hat den Anschein als seien die meisten repariert worden. Weitere Verbesserungen wären:</p>
 <pre caption="/etc/proftpd/proftpd.conf">
-ServerName "My ftp daemon"
-#Don't show the ident of the server
-ServerIdent on "Go away"
+ServerName "Mein ftp Daemon"
+#Zeigen Sie nicht den Ident des Servers
+ServerIdent on "Hau ab!"
 
-#Makes it easier to create virtual users
+#Vereinfacht es virtuelle Benutzer anzulegen
 RequireValidShell off
 
-#Use alternative password and group file (passwd uses crypt format)
+#Benutzen Sie eine alternative Passwort- und Gruppendatei (passwd benutzt das Crypt-Format)
 AuthUserFile "/etc/proftpd/passwd"
 AuthGroupFile "/etc/proftpd/group"
 
-# Permissions
+# Berechtigungen
 Umask 077
 
-# Timeouts and limitations
+# Timeouts und Beschränkungen
 MaxInstances 30
-MaxClients 10 "Only 10 connections allowed"
-MaxClientsPerHost 1 "You have already logged on once"
-MaxClientsPerUser 1 "You have already logged on once"
+MaxClients 10 "Nur 10 Verbindungen erlaubt"
+MaxClientsPerHost 1 "Sie sind schon eingeloggt"
+MaxClientsPerUser 1 "Sie sind schon eingeloggt"
 TimeoutStalled 10
 TimeoutNoTransfer 20
 TimeoutLogin 20
 
-#Chroot everyone
+#jeden "chroot"-en
 DefaultRoot ~
 
-#don't run as root
+#nicht als root laufen lassen
 User  nobody
 Group nogroup
 
-#Log every transfer
+#Jeden Transfer aufzeichnen
 TransferLog /var/log/transferlog
 
-#Problems with globbing
+#Probleme mit Zeichenersetzung
 DenyFilter \*.*/
 </pre>
 
 <p>
-The rest is up to you and your reading ability (<uri>http://www.proftpd.org</uri>).
+Alles Andere hängt von Ihnen und Ihren Lesekenntnissen ab (<uri>http://www.proftpd.org</uri>).
 </p>
 
 </body>
@@ -1852,7 +1851,8 @@ The rest is up to you and your reading ability (<uri>http://www.proftpd.org</uri
 <body>
 
 <p>
-Vsftpd (stands for very secure ftp) is a small ftp daemon running a reasonably default configuration. It is simple and does not have as many features (like virtual users) as pureftp and proftp.
+Vsftpd (dies steht für "Very Secure ftp") ist ein kleiner FTP-Dämon mit einer einfachen Standardkonfiguration. Er
+ist einfach und hat nicht so viele Funktionen (wie z.B. virtuelle Benutzer) wie sie PureFTP und ProFTP anbieten.
 </p>
 
 <pre caption="/etc/vsftpd">
