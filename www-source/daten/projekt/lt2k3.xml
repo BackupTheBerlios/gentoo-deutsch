@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<info>
+<title>LinuxTag 2003</title>
+
+<author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
+
+<date>11. Juli 2003</date>
+
+<box>
+  <block>
+    <title>Gentoo auf dem Linuxtag 2003 in Karlsruhe</title>
+    <p>
+      	Uns wurde ein Stand mit 15m³ zugewiesen, der sich als zu klein darstellt.
+	  	Wir teilen uns den Stand mit den Xine-Entwicklern, die den besten, freien
+	  	Medienplayer entwickeln, den ich kenne. Wir haben 1000 gesponsorte Gentoo-LiveCDs
+	  	mit Xine (und einem Xine-Binary-Installer für andere Distributionen).
+    </p>
+    <p>
+		Da es so aussieht, als wäre Geld mit unter ein Grund für den Linuxtag, haben die
+		Organisatoren für die freuen Projekte WLAN vorgesehen. Gentoo teilt sich die
+		Infrastruktur mit etwa 10 anderen Projekten, darunter XBox-Linux, Rock-Linux, vrml,
+		x.org und KDE.
+	</p>
+  </block>
+
+</box>
+
+<chapter>
+<title>Donnerstag</title>
+
+<section>
+<title></title>
+	<body>
+	<p>
+
+	</p>
+</body>
+</section>
+
+</chapter>
+</info>
