@@ -1,13 +1,13 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.1.25.ebuild,v 1.2 2003/02/18 22:42:01 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.1.25.ebuild,v 1.3 2003/02/24 18:03:48 mad Exp $
 
 IUSE="lirc rcu"
 
 S=${WORKDIR}/${P}
 DESCRIPTION="Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
-SRC_URI="http://linvdr.org/download/vdr/Developer/vdr-1.1.25.tar.bz2"
+SRC_URI="http://linvdr.org/download/vdr/Developer/${P}.tar.bz2"
 
 KEYWORDS="x86"
 SLOT="0"
