@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.29 -->
+<!-- English CVS Version: 1.31 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.3 2003/12/12 21:20:09 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.4 2003/12/21 16:03:38 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -25,12 +25,12 @@ natürlich auch von Ihrer Architektur ab.
 <body>
 
 <p>
-Gentoo ist offiziell für fünf Architekturen verfügbar und und hat einen
-experimentellen Support für weitere drei. Die offiziellen Architekturen sind
+Gentoo ist offiziell für sechs Architekturen verfügbar und und hat einen
+experimentellen Support für weitere zwei. Die offiziellen Architekturen sind
 <b>x86</b> (inklusive aller Subarchitekturen, wie Pentium, Athlon, etc.),
 <b>sparc</b> (sowohl Sparc32, als auch Sparc64), <b>ppc</b> (PowerPC),
-<b>hppa</b> und <b>alpha</b>. Experimentelle Unterstützung ist für <b>amd64</b>,
-<b>ia64</b> und <b>mips</b> verfügbar.
+<b>hppa</b>, <b>alpha</b> und <c>mips</c>. Experimentelle Unterstützung ist
+für <b>amd64</b> und <b>ia64</b> verfügbar.
 </p>
 
 <p>
@@ -59,12 +59,17 @@ folgenden Voraussetzungen, bevor Sie mit der Installation fortfahren.
   link="http://www.pateam.org">PA Team Webseite</uri> kontrollieren
 </li>
 <li>
-  Für die <e>PowerPC Architektur</e> benötigen Sie einen iMac oder einen
-  Pegasos
+  Für die <e>PowerPC Architektur</e> benötigen Sie mindestens einen PowerPC (am
+  Besten einen G3 oder G4 wie den iMac, iBook, PowerBook, etc.)
 </li>
 <li>
   Für die <e>SPARC Architektur</e> sollten Sie die <uri
   link="http://www.ultralinux.org/faq.html#s_2">UltraLinux FAQ</uri> lesen
+</li>
+<li>
+  Für die <e>MIPS Architektur</e> sollten Sie das <uri
+  link="/doc/en/mips-requirements.xml">MIPS Hardware Anforderungen</uri>
+  Dokument lesen
 </li>
 </ul>
 
@@ -92,6 +97,7 @@ Wir werden nun folgende Installationsmedien beschreiben:
 <li>Gentoo LiveCDs</li>
 <li>Knoppix</li>
 <li>andere Distributionen</li>
+<li>Booten aus dem Netz</li>
 </ul>
 
 <p>
@@ -257,6 +263,7 @@ Nun werfen wir einen Blick auf die verfügbaren Installationsmedien:
 </li>
 <li><uri link="#doc_chap2_sect7">Knoppix</uri></li>
 <li><uri link="#doc_chap2_sect8">Existierende Distribution</uri></li>
+<li><uri link="#doc_chap2_sect9">Booten aus dem Netz</uri></li>
 </ul>
 
 </body>
@@ -505,6 +512,39 @@ Distribution. Sie können den Rest dieses Kapitels überspringen und mit der
 <uri link="?part=1&amp;chap=3">Konfiguration des Netzwerk</uri> fortfahren.
 </p>
 
+</body>
+</subsection>
+<subsection>
+<title>Booten aus dem Netz</title>
+<body>
+
+<p>
+In einigen Fällen haben Sie nicht die Möglichkeit von einer CD booten oder eine
+bestehendes Linuxsystem für die Gentoo Installation zu nutzen. Wenn Ihr System
+eine Netzwerkkarte hat, die PXE unterstützt können Sie beim booten ein kleines
+System laden und dann aus diesem heraus installieren.
+</p>
+
+<p>
+Wenn Sie die Netzwerkboot Methode benutzen möchten (<e>MIPS</e> haben keine
+Wahl) sollten Sie einen funktionierenden DHCP und TFTP Server eingerichtet
+haben. Informationen wie Sie einen <uri link="/doc/en/diskless-howto.xml#doc_chap3">
+DHCP Server</uri> und einen <uri link="/doc/en/diskless-howto.xml#doc_chap4">
+TFTP Server</uri> aufsetzen, sind in der <uri link="/doc/en/diskless-howto.xml">
+Diskless Anleitung</uri> verfügbar.
+</p>
+
+<p>
+Je nach Ihrer Konfiguration müssen Sie entweder ein Kernel Image für Ihr System
+herunterladen oder erstellen.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Auswahl des Installationsmedium</title>
+<body>
+
 <p>
 Treffen Sie nun die Wahl des Installationsmedium und fahren Sie mit dem
 entsprechenden Abschnitt fort. Da dies ein Gentoo Handbuch ist, benutzen wir
@@ -518,6 +558,9 @@ Benutzung anderer Installationsmedien in den alternativen Abschnitten.
 </li>
 <li>
   <uri link="#doc_chap4">Alternativ: Downloaden, Brennen und Booten von Knoppix</uri>
+</li>
+<li>
+  <uri link="#doc_chap5">Alternativ: Booten aus dem Netz</uri>
 </li>
 </ul>
 
@@ -620,6 +663,10 @@ werden ein paar populäre Tools vorstellen, die das für Sie machen können.
     Mit cdrecord schreiben sie einfach <c>cdrecord dev=/dev/hdc</c> (ersetzen
     Sie <path>/dev/hdc</path> mit dem Device Pfad Ihres CD-RW Laufwerk) gefolgt
     vom Pfad zu dem ISO Image :)
+  </li>
+  <li>
+    Mit dem Mac OS X Finder markieren Sie das ISO und klicken auf <c>File</c> und
+    dann auf <c>Burn Image</c>.
   </li>
 </ul>
 
@@ -1057,8 +1104,8 @@ password: <comment>(Press Enter here)</comment>
 
 <p>
 Sie sollten einen Root Prompt ("#") auf der aktuellen Konsole haben und mit
-Alt-F2, Alt-F3 aud Alt-F4 weitere Konsolen benutzen können. Gehen Sie mit Alt-F1
-wieder auf die Ausgangskonsole zurück.
+Alt-fn-F2, Alt-fn-F3 aud Alt-fn-F4 weitere Konsolen benutzen können. Gehen
+Sie mit Alt-fn-F1 wieder auf die Ausgangskonsole zurück.
 </p>
 
 <p>
@@ -1296,6 +1343,10 @@ machen.
     Sie <path>/dev/hdc</path> mit dem Device Pfad Ihres CD-RW Laufwerk) gefolgt
     vom Pfad zu dem ISO Image :)
   </li>
+  <li>
+    Mit dem Mac OS X Finder markieren Sie das ISO und klicken auf <c>File</c> und
+    dann auf <c>Burn Image</c>.
+  </li>
 </ul>
 
 <p>
@@ -1334,6 +1385,123 @@ $ <i>su -</i>
 Password: <comment>(Eingabe des root Passwortes)</comment>
 </pre>
 
+<p>
+Fahren Sie nun mit der <uri link="?part=1&amp;chap=3">Konfiguration des
+Netzwerk</uri> fort.
+</p>
+
 </body>
+</section>
+<section>
+<title>Alternativ: Booten aus dem Netz</title>
+<subsection>
+<body>
+
+<p>
+Um Gentoo installieren zu können, muss das Image, welches Sie vom TFTP Server
+herunterladen, die notwendigen Tools zur Erstellung von Dateisystemen, zum
+Erstellen und Mounten von Partitionen und zum entpacken von Tar-Archiven sowei
+chroot mitbringen. Sie können existierende Netboot Images herunterladen, die
+alle benötigten Tools enthalten.
+</p>
+
+<p>
+Zu diesem Zeitpunkt ist uns nur eine Architektur bekannt, für die Netboot Images
+verfügbar sind; das ist die MIPS Architektur.
+</p>
+
+<ul>
+  <li><uri link="#doc_chap5_sect2">Ein MIPS System aus dem Netz booten</uri></li>
+</ul>
+
+</body>
+</subsection>
+<subsection>
+<title>Ein MIPS System aus dem Netz booten</title>
+<body>
+
+<p>
+Laden Sie zunächst eines der verfügbaren Netboot Images von
+<uri>http://dev.gentoo.org/~kumba/mips/netboot/</uri> herunter.
+</p>
+
+<p>
+Konfigurieren Sie nun Ihren DHCP Server so, dass dieser diese Datei an den
+bootenden Client schickt. SGI Maschinen benötigen einige kleinere Einstellungen
+am Host System, damit TFTP richtig funktioniert.
+</p>
+
+<pre caption="Einige Änderungen damit TFTP mit SGI Maschinen richtig funktioniert">
+<comment>(Deaktivieren Sie "Path Maximum Transfer Unit", wenn nicht findes das SGI PROM keinen Kernel)</comment>
+# <i>echo 1 &gt; /proc/sys/net/ipv4/ip_no_pmtu_disc</i>
+<comment>(Setzen Sie den vom SGI PROM nutzbaren Portbereich)</comment>
+# <i>echo "2048 32767" &gt; /proc/sys/net/ipv4/ip_local_port_range</i>
+</pre>
+
+<p>
+Schalten Sie nun Ihre Maschine an, gehen Sie in den PROM Monitor und führen Sie
+das Kommando zum Booten des Kernel via Netzwerk aus:
+</p>
+
+<pre caption="Net booting a MIPS">
+        Running power-on diagnostics
+
+System Maintenance Menu
+
+1) Start System
+2) Install System Software
+3) Run Diagnostics
+4) Recover System
+5) Enter Command Monitor
+
+Option? <i>5</i>
+Command Monitor. Type "exit" to return to the menu.
+&gt;&gt; <i>bootp(): root=/dev/ram0</i>
+</pre>
+
+<note>
+Sie müssen evtl. die Esc Taste drücken, um in obiges Menü zu kommen. Andernfalls
+versucht Ihr System das System direkt zu starten.
+</note>
+
+<p>
+Manchmal ist Netboot ein trickreiches Unterfangen. Die folgenden PROM Kommanos
+helfen Ihnen vielleicht, das garantieren wir aber nicht. Wenn der Netboot an
+Ihrer Maschine nicht funktioniert, kontrollieren Sie die Einstellungen auf der
+TFTP Maschine doppelt, um sicherzustellen das:
+</p>
+
+<ul>
+  <li>dhcpd der SGI Maschine eine IP Adresse gibt</li>
+  <li>
+    Berechtigungen im TFTP Folder richtig gesetzt sind (typischerweise
+    <path>/tftpboot</path>)
+  </li>
+  <li>
+    Kontrollieren Sie die Systemlogs um zu sehen, was der TFTP Server berichtet
+    (evtl. Fehler)
+  </li>
+  <li>
+    Beten Sie zu einem Plüschtux (das kann helfer oder nicht, es ist auf jeden
+    Fall keine offiziell Unterstützte  Technik zur Fehlerbehebung)
+  </li>
+</ul>
+
+<pre caption="Netboot Tricks">
+&gt;&gt; <i>resetenv</i>
+&gt;&gt; <i>unsetenv netaddr</i>
+&gt;&gt; <i>unsetenv dlserver</i>
+&gt;&gt; <i>init</i>
+&gt;&gt; <i>bootp(): root=/dev/ram0</i>
+</pre>
+
+<p>
+Wenn alles funktioniert, werden Sie von einer busybox <c>ash</c> Shell begrüßt.
+Sie können nun mit der <uri link="?part=1&amp;chap=3">Konfiguration des Netzwerk
+fortfahren</uri>.
+</p>
+
+</body>
+</subsection>
 </section>
 </sections>
