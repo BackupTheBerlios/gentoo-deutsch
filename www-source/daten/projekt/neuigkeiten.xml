@@ -33,6 +33,19 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
 
 <chapter>
 
+<section>
+  <body>
+  <news type="news" date="8.12.2003" title="Gentoo-Newsletter">
+<p>
+Der zweite Gentoo Newsletter für Dezember berichtet über die Sicherheitsmeldungen im 
+Zusammenhang mit dem Einbruch im Gentoo rsync Server in der letzten Woche, enthält Infomationen
+über den Gentoo Store in 2004, einen Artikel über Gentoo Linux im Linux Journal, eine 
+Vorstellung des Entwickler Arcady Genkin, sowie Tips über Backup mittels tar.  
+ <uri link="http://www.gentoo.org/news/en/gwn/20031208-newsletter.xml">Viel Spass beim Lesen</uri>.
+ </p>
+  </news>
+  </body>
+</section>
 
 <section>
 <body>
