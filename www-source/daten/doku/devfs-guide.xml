@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/devfs-guide.xml,v 1.3 2003/12/10 20:05:35 schnitz Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/devfs-guide.xml,v 1.4 2003/12/11 16:05:24 dertobi123 Exp $ -->
+
+<!-- English CVS Version: 1.4 -->
 
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
-<guide link="/doc/en/devfs-guide.xml">
+<guide link="/doc/de/devfs-guide.xml">
 <title>Device File System Tutorial</title>
 <author title="Author">
   <mail link="swift@gentoo.org">Sven Vermeulen</mail>
@@ -11,7 +13,7 @@
 <author title="Reviewer">
   <mail link="seemant@gentoo.org">Seemant Kulleen</mail>
 </author>
-<author title="Uebersetzer">
+<author title="Translator">
   <mail link="fabian@schnitz-online.de">Fabian Stietzel</mail>
 </author>
 
@@ -20,10 +22,10 @@ In diesem Tutorial wird erklärt, was das devfs ist und wie man mit ihm
 arbeitet.
 </abstract>
 
-<version>0.1</version>
-<date>September 11, 2003</date>
-
 <license/>
+
+<version>0.1</version>
+<date>11. September 2003</date>
 
 <chapter>
 <title>Was ist das devfs?</title>
@@ -45,7 +47,7 @@ wie mit einer regulären Datei interagieren, anstatt spezielle APIs zu benutzen.
 Die Gerätedateien sind in 2 Gruppen unterteilt. Die erste Gruppe,
 <e>Character</e> Devices genannt, besteht aus Hardware, deren Schreib- und
 Lesevorgänge nicht gepuffert sind. Die zweite Gruppe nennt sich <e>Block</e>
-Devices und enthält natürlich die Hardware, den Schreib- und Lesevorgänge
+Devices und enthält natürlich die Hardware, deren Schreib- und Lesevorgänge
 gepuffert sind. Beide Gerätearten können zeichenweise oder in Blöcken
 ausgelesen werden. Die Namensgebung kann deswegen verwirrend klingen und ist
 in der Tat falsch.
@@ -76,8 +78,8 @@ Hier zwei Beispiele: <path>/dev/hda4</path> und <path>/dev/tty5</path>. Die
 erste Gerätedatei verweißt auf die vierte Partition des ersten IDE Geräts. Ihr
 Major-Minor Paar ist <path>3, 4</path>. Mit anderen Worten, die erste Zahl
 verweißt auf das Gerät und die zweite auf die entsprechende Partition. Die
-zweite Gerätedatei hat <path>3, 4</path> als Major-Minor Paar. In diesem Fall
-verweißt die erste Zahl auf den Terminal Treiber und die Zweite auf die
+zweite Gerätedatei hat <path>4, 5</path> als Major-Minor Paar. In diesem Fall
+verweist die erste Zahl auf den Terminal Treiber und die Zweite auf die
 Terminal Nummer (hier das fünfte Terminal).
 </p>
 
@@ -94,7 +96,7 @@ machen werden Sie bemerken, dass nicht nur alle ihre Geräte, sondern
 Sie haben Gerätedateien für Geräte die Sie nicht haben. Solch eine Gruppe von
 Gerätedateien zu pflegen ist, gelinde gesagt, lästig. Stellen Sie sich vor, Sie
 müssen die Berechtigungen aller Gerätedateien ändern, welche auf ein Gerät in
-ihrem System verweißen, aber den Rest der Gerätedateien lassen wie er ist.
+ihrem System verweisen, aber den Rest der Gerätedateien lassen wie er ist.
 </p>
 
 <p>
@@ -106,7 +108,7 @@ müssen?
 </p>
 
 <p>
-Wenn Sie Programme laufen haben, welche Hardware benutzen die Gerätedateien
+Wenn Sie Programme laufen haben die Hardware benutzen die Gerätedateien
 verwendet, können Sie ihre Root Partition nicht ohne Schreibzugriff mounten.
 Selbst wenn es keinen anderen Grund gibt sie mit Schreibzugriff gemountet zu
 haben. Sie können <path>/dev</path> nicht auf einer seperaten Partition haben,
@@ -122,13 +124,11 @@ weil mount <path>/dev</path> benötigt, um Partitionen zu mounten.
 <p>
 Wie Sie sich sicher vorstellen können, haben die Kernel Hacker mehrere Wege
 gefunden die vorher genannten Probleme zu lösen. Jedoch hatten viele von ihnen
-andere Lösungen die in diesem
-<uri
-link="http://www.atnf.csiro.au/people/rgooch/linux/docs/devfs.html#faq-why">Dokument</uri>
+andere Lösungen, die in diesem
+<uri link="http://www.atnf.csiro.au/people/rgooch/linux/docs/devfs.html#faq-why">Dokument</uri>
 beschrieben sind. Wir werden diese Implementierungen nicht beachten, sondern
 uns auf die Eine konzentrieren, die es in die offiziellen Kernel Sourcen
-geschafft hat:
-devfs.
+geschafft hat: devfs.
 </p>
 
 </body>
@@ -181,17 +181,16 @@ IDE und SCSI sind an einem IDE/SCSI Controller (Onboard oder eine extra PCI
 Karte) angeschlossen, den man <e>host</e> nennt. Jeder Controller kann mehrere
 Kanäle haben, die <e>Bus</e> gennant werden. In jedem Kanal können Sie mehrere
 IDs haben. Die ID, welche <e>Target</e> gennant wird, kennzeichnet eine
-Festplatte. Manche SCSI Geräte haben mehrere Luns
-(<e>Logical Unit Numbers</e>). Zum Beispiel Geräte wie Hi-End Streamer, die
-mehrere Bänder auf einmal verwalten. Meistens gibt es aber nur eine lun,
-nämlich <path>lun0/</path>.
+Festplatte. Manche SCSI Geräte haben mehrere luns (<e>Logical Unit Numbers</e>).
+Zum Beispiel Geräte wie Hi-End Streamer, die mehrere Bänder auf einmal
+verwalten. Meistens gibt es aber nur eine lun, nämlich <path>lun0/</path>.
 </p>
 
 <p>
 Wo wir vorher <path>/dev/hda4</path> benutzt haben, haben wir nun
 <path>/dev/ide/host0/bus0/target0/lun0/part4</path>. Das ist viel einfacher...
-Nein, streite nicht mit mir... es <e>ist</e> einfacher... ach, wie auch immer!
-:)
+Nein, streiten Sie nicht mit mir... es <e>ist</e> einfacher... ach,
+wie auch immer! :)
 </p>
 
 <note>
@@ -280,12 +279,12 @@ Um solch ein Signal zu senden, benutzen Sie <c>kill</c> oder <c>killall</c>:
 <body>
 
 <warn>
-Zur Zeit ist Gentoo ohne diese Symlinks nicht funktionsfähig. 
+Zur Zeit ist Gentoo ohne diese Symlinks nicht funktionsfähig.
 </warn>
 
 <p>
 Wenn Sie die Symlinks, die <path>/dev/</path> vollstopfen, aus ihrem Gentoo
-System entfernen wollen (sie sind standarmäßig aktiviert), editieren Sie
+System entfernen wollen (sie sind standardmäßig aktiviert), editieren Sie
 <path>/etc/devfsd.conf</path> und entfernen Sie die folgenden zwei Zeilen:
 </p>
 
@@ -296,7 +295,7 @@ UNREGISTER      .*  RMOLDCOMPAT
 </pre>
 
 <p>
-Um diese Änderungen zu übernehmen müssen Sie ihr System neustarten.
+Um diese Änderungen zu übernehmen, müssen Sie ihr System neustarten.
 </p>
 
 </body>
@@ -328,7 +327,7 @@ LOOKUP      .*  MODLOAD
 <p>
 Obwohl sie Berechtigungen in <path>/etc/devfsd.conf</path> setzen können, raten
 wir Ihnen PAM (<e>Pluggable Authentification Modules</e>) zu nutzen. Und zwar
-weil PAM das letzte Wort hat was Berechtigungen betrifft und möglicherweise
+weil PAM das letzte Wort hat, was Berechtigungen betrifft und möglicherweise
 ihre Änderungen in <path>/etc/devfsd.conf</path> ignoriert.
 </p>
 
@@ -351,16 +350,16 @@ Beispiel die Sound Gruppe:
     /dev/admm* \
     /dev/adsp* /dev/aload* /dev/amidi* /dev/dmfm* \
     /dev/dmmidi* /dev/sndstat
-</pre>                  
+</pre>
 
 <p>
-Die Syntax ist recht einfach: Sie beginnen mit dem Namen der Gruppe und
-führen dahinter alle Geräte auf, die zur betreffenden Gruppe gehören.
+Die Syntax ist recht einfach: Sie beginnt mit dem Namen der Gruppe und
+führt dahinter alle Geräte auf, die zur betreffenden Gruppe gehören.
 </p>
 
 <p>
 Nun, Gruppen sind nicht sehr nützlich wenn man nichts mit ihnen machen kann.
-Der Nächste Abschnitt beschreibt wie Berichtigungen gesetzt werden.
+Der Nächste Abschnitt beschreibt, wie Berichtigungen gesetzt werden.
 </p>
 
 <pre caption = "Berechtigungen für die Sound Gruppe in /etc/security/console.perms">
@@ -375,9 +374,9 @@ die Berechtigungen einiger Gerätedateien überprüfen und möglicherweise ände
 </p>
 
 <p>
-Das zweite Feld enthält die Berechtigungen, die für eine Gerätedatei gesetzt
-werden, nach einem erfolgreichen Login. Wenn sich ein Benutzer am System einlogt
-und die Gerätedateien haben eine(n) standard Owner/Group ändert PAM die
+Das zweite Feld enthält die Berechtigungen, die nach einem erfolgreichen Login
+für eine Gerätedatei gesetzt werden. Wenn sich ein Benutzer am System einloggt
+und die Gerätedateien eine(n) Standard Owner/Group haben, ändert PAM die
 Berechtigungen und gibt dem Benutzer Owner Rechte. Auch werden die
 Zugriffsrechte entstprechend gesetzt, hier 0600 (Nur der aktuell angemeldete
 Benutzer hat Lese/Schreibzugriff).
@@ -390,16 +389,16 @@ haben).
 </p>
 
 <p>
-Im vierten Feld stehen die Berechtigungen, welche gesetzt werden wenn die
+Im vierten Feld stehen die Berechtigungen, welche gesetzt werden, wenn die
 Gerätedatei wieder in den Standardzustand zurückversetzt wird. Mit andern
-Worten, wenn sich der Owner der Gerätedateien auslogt setzt PAM die
+Worten, wenn sich der Owner der Gerätedateien ausloggt, setzt PAM die
 Berechtigungen auf den im vierten Feld beschriebenen Stand zurück.
 </p>
 
 <p>
 Im fünften Feld steht der Owner (mit Gruppe wenn nötig) der Gerätedatei für
 den Standardzustand. Mit anderen Worten, wenn sich der Owner der Gerätedateien
-auslogt werden die Owner Rechte auf den im fünften Feld beschriebenen Stand
+ausloggt, werden die Owner Rechte auf den im fünften Feld beschriebenen Stand
 zurückgesetzt.
 </p>
 
@@ -427,7 +426,7 @@ mehrere Gerätedateien auf einmal auswählen.
 <p>
 Im vierten Feld wird der Owner (mit Gruppe) angegeben. Im Gegensatz zu PAM wird
 das nicht automatisch geändert (bis es in <path>console.perms</path> angegeben
-wird) weil PAM immer gewinnt.
+wird), weil PAM immer gewinnt.
 </p>
 
 <p>
@@ -443,7 +442,7 @@ Im fünften Feld stehen die Berechtigungen für die Gerätedatei.
 <p>
 Hier die normale Vorgehensweise bei Gentoo Installationen: Wenn sie mit
 <c>chown</c> (CHangeOWNer) und <c>chmod</c> (CHange MODe) einige Gerätedateien
-verändern speichert <c>devfsd</c> die Informationen wenn Sie das System
+verändern, speichert <c>devfsd</c> die Informationen wenn Sie das System
 herunterfahren. Das passiert weil <path>/etc/devfsd.conf</path> folgendes
 enthält:
 </p>
@@ -500,7 +499,7 @@ Für mehr Informationen über devfs, hier noch ein paar Quellen:
 </p>
 
 <p>
-Die devfd.conf Manpage erläutert die Syntax von <path>/etc/devfsd.conf</path>.
+Die devfsd.conf Manpage erläutert die Syntax von <path>/etc/devfsd.conf</path>.
 Um sie anzusehen führen Sie <c>man devfsd.conf</c> aus.
 </p>
 
