@@ -1,0 +1,59 @@
+# ChangeLog for media-gfx/blender
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-gfx/blender/Attic/ChangeLog,v 1.1 2003/07/24 17:02:30 beejay Exp $
+
+  27 May 2003; Hanno Boeck <hanno@gentoo.org> blender-2.26.ebuild,
+  blender-2.27.ebuild:
+  Changed license, it must be GPL-2 or BL, not both.
+
+*blender-2.27 (25 May 2003)
+  25 May 2003; Thomas Raschbacher <lordvan@gentoo.org> blender-2.27.ebuild:
+  Version bump
+	
+*blender-2.26 (12 Feb 2003)
+
+  18 Apr 2003; Philip Walls <malverian@gentoo.org> blender-2.26.ebuild :
+  Strip Pentium4 -march flag. Fixes bug #19526
+
+  12 Feb 2003; Hanno Boeck <hanno@gentoo.org> blender-2.26.ebuild :
+  Version bump.
+
+*blender-2.26_pre20030109 (10 Jan 2003)
+
+  12 Jan 2003; Martin Holzer <mholzer@gentoo.org> :
+  Changed Homepage. Closes #13707
+
+  10 Jan 2003; Kain <kain@kain.org> : blender-2.26_pre20030109.ebuild
+  files/digest-blender-2.26_pre20030109
+  Blender CVS snapshot source build for 2.26.  I figured this would be decent
+  to work with, since Blender CVS is in feature freeze at the moment.  This
+  blender works with autoconf and has GCC-3 fixes, so it builds (and runs!)
+  for me on PPC and x86.  Testers wanted.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*blender-2.23-r1 (13 Feb 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*blender-2.23 (15 Oct 2002)
+
+  15 Oct 2002; Matt Keadle <mkeadle@gentoo.org> blender-2.23-r1.ebuild
+  files/digest-blender-2.23-r1
+
+  Added sys-libs/lib-compat to RDEPEND
+
+*blender-2.23 (19 August 2002)
+
+  19 August 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, blender-2.23.ebuild :
+
+  Added -ppc to the keywords.
+
+*blender-2.23 (15 Jun 2002)
+
+  15 Jun 2002; Daniel Robbins <drobbins@gentoo.org> : The final Blender release;
+  no longer mirrored at blender.nl so we now download it from an unofficial mirror
+  (since there's no longer an official one :/ )
+
+*blender-2.22 (1 Feb 2002)
