@@ -189,12 +189,102 @@
 <section> 
 	<title>Erste Schritte mit CVS, Teil 1</title>
 	<body> 
-		<p> 
+		<p>
+		Um Quelltexte von einem CVS-Server herunterzuladen sind zwei Schritte notwendig. Zunächst loggen wir uns beim Passwort-Server
+		ein. Dann laden wir die Quelltexte mit dem <c>checkout</c> Befehl herunter. Hier ein Beispiel von Befehlen, um die aktuellen
+		Quelltexte des Samba Projektes herunterzuladen. 
 		</p>
+		<pre>
+			# <i>export CVSROOT=:pserver:cvs@pserver.samba.org:/cvsroot</i> 
+		</pre>
+		<p>
+		Dieser erste Befehl setzt die CVSROOT-Umgebungsvariable. Wenn sie diese Variable nicht setzen, müssen sie die folgenden zwei
+		Befehle jeweils durch ein <c>-d:pserver:cvs@pserver.samba.org:/cvsroot</c> hinter dem <c>cvs</c> Befehl erweitern. 
+		Die CVSROOT-Umgebungsvariable spart uns also einiges an Tipparbeit.
+		</p> 
 	</body> 
+</section>
+
+<section>
+	<title>Erste Schritte mit CVS, Teil 2</title>
+	<body>
+		<p>
+		Nun besprechen wir die Befehle, die notwendig sind, um eine aktuelle Kopie der Quelltexte zu erhalten. Weiter unten werden 
+		wir näher auf die genaue Bedeutung dieser Befehle eingehen. 
+		</p>
+		<pre>
+		#<i>cvs login</i>
+		(Logging in to cvs@pserver.samba.org)
+		CVS password: <comment>(Geben Sie hier ihr Passwort ein)</comment> 
+
+		#<i>cvs -z5 co samba</i>
+		U samba/COPYING
+		U samba/Manifesst
+		U samba/README
+		U samba/Read-Manifest-Now
+		U samba/Roadmap 
+		U samba/WHATSNWE.txt
+		<comment>(Dies ist nur ein Ausschnitt aus der eigentlichen cvs co Ausgabe</comment>
+		</pre>
+	</body>
+</section>
+
+<section>
+	<title>Erste Schritte mit CVS - Die Erklärung</title>
+	<body>
+		<p> 
+		Der erste Befehl loggt uns auf dem pserver ein. Der zweite Befehl sagt dem CVS Client, dass
+		er das Samba-Modul auschecken soll (co - check out). Dabei wird ein gzip-Kompressions-Level
+		von 5 ("-z5") verwendet, so wird die Übertragung über einen langsamen Internetzugang beschleunigt.
+		Für jede Datei die auf dem lokalen System neu erzeugt wird, gibt CVS eine "U [Pfad] "-Zeile aus.
+		Das "U" steht dabei für "update". 
+		</p>
+	</body>
+</section>
+
+<section>
+	<title>Nach dem Checkout</title> 
+	<body>
+		<p>
+		Wenn der checkout-Befehl fertig ist, sehen sie ein Verzeichnis "samba" in ihrem aktuellen 
+		Arbeitsverzeichnis. In allen Unterverzeichnissen werden sie Unterverzeichnisse mit dem Namen "CVS" finden.
+		In diesen speichert CVS Informationen über die Verzeichnisse, sie können ignoriert werden, da sie für die 
+		Benutzung von CVS nicht von Bedeutung sind. Von nun an, brauchen sie sich keine Sorgen mehr um die 
+		CVSROOT-Umgebungsvariable machen. Sie brauchen auch den "-d"-Teil der Komamndozeile nicht mehr. Diese
+		Informationen befinden sich nun alle in den CVS-Unterverzeichnissen. Also, sie brauchen die CVSROOT-Variable
+		wirklich nur für den ersten Login und das erste Checkout. 
+		</p>
+	</body>
 </section> 
 
+<section> 
+	<title>Quelltexte aktualisieren</title>
+	<body>
+		<p>
+		Jetzt haben sie die Quelltexte. Sie können diese kompilieren, installieren, einsehen oder was auch immer sie
+		damit anstellen möchten. 
+		</p>
+		<p>
+		Hin und wieder wir des aber vorkommen, dass sie diese Quelltexte auf den neusten Stand bringen möchten. Dazu müssen
+		sie sich nicht wieder am pserver einloggen. Ihre Informationen sind ja noch im CVS Unterverzeichnis gespeichert. 
+		Gehen sie also zunächst in das Hauptverzeichnis des Moduls, das sie augecheckt haben, geben sie dann ein:
+		</p>
+		<pre>
+		# <i>cvs update -dP</i>
+		</pre>
+	</body>
+</section> 
+
+<section> 
+	<title>Ein genauerer Blick auf "cvs update", Teil 1</title>
+	<body>
+		<p>
+		
+		</p>
+	</body>
+</section>
 
 
+</guide>
 		
 		
