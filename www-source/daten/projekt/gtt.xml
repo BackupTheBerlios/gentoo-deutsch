@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.5 2004/01/24 22:18:10 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.6 2004/01/24 22:19:13 dertobi123 Exp $ -->
 
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
@@ -98,6 +98,7 @@ link="/inhalte/projekt/doc-de-meet-03-12.log">hier</uri>.
 </section>
 <section>
 <title>Meeting Januar 2004</title>
+<body>
 
 <p>
 <b>Zusammenfassung:</b>
@@ -127,6 +128,7 @@ Dokumentation informiert.
 link="/inhalte/projekt/doc-de-meet-04-01.log">hier</uri>.
 </p>
 
+</body>
 </section>
 </chapter>
 </guide>
