@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/faq.xml,v 1.9 2003/12/06 22:36:13 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/faq.xml,v 1.10 2004/01/06 14:59:07 jay Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-<!-- English CVS Version 1.49 -->
+<!-- English CVS Version 1.50 -->
 
 <guide link="/doc/en/faq.xml">
 
@@ -58,7 +58,7 @@ Mitglied vom Dokumentations Team.
 <license/>
 
 <version>1.1.11</version>
-<date>3. Dezember 2003</date>
+<date>4.Januar 2004</date>
 
 <chapter>
 <title>Übersicht</title>
