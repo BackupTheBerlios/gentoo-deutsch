@@ -2508,8 +2508,8 @@ Jetzt einiger praktischer Kram!
 </p>
 
 <p>
-Wheen iptables in den Kernel geladen wird, hat es 5 Aufhänger an die Sie ihre Regeln hängen können. Sie heissen INPUT,
-OUTPUT FORWARD, PREROUTING und POSTROUTING. Diese Listen nennt man Ketten, da sie per zugefügter Regel funktionieren und überprüfen die Regeln eine nach der anderen in der Reihenfolge wie sie hinzugefügt wurden. Wenn eine Regel ein Paket verweigert, wird es fallengelassen und wird die Kette nicht weiter hinunter wandern. 
+Wenn iptables in den Kernel geladen wird, hat es 5 Aufhänger an die Sie ihre Regeln hängen können. Sie heissen INPUT,
+OUTPUT FORWARD, PREROUTING und POSTROUTING. Diese Listen nennt man Ketten, da sie per zugefügter Regel funktionieren und überprüfen die Regeln eine nach der anderen in der Reihenfolge wie sie hinzugefügt wurden. Wenn eine Regel ein Paket verweigert, wird es fallengelassen und wird die Kette nicht weiter hinunter wandern.
 </p>
 
 <p>
@@ -2575,103 +2575,105 @@ Sie können Regeln direkt in die 5 Hauptketten setzen oder Ketten erstellen und 
     <ti>-j</ti><ti>Jump (Ziel für Regel)</ti>
   </tr>
   <tr>
-    <ti>-m</ti><ti>Extended match (might use extension)</ti>
+    <ti>-m</ti><ti>Erweiterter Treffer (Kann erweiterung benutzen)</ti>
   </tr>
   <tr>
-    <ti>-n</ti><ti>Numeric output of addresses and ports</ti>
+    <ti>-n</ti><ti>Numerische Ausgabe von Adressen und Ports</ti>
   </tr>
   <tr>
-    <ti>-t</ti><ti>Table to manipulate</ti>
+    <ti>-t</ti><ti>Zu ändernde Tabelle</ti>
   </tr>
   <tr>
-    <ti>-v</ti><ti>Verbose mode</ti>
+    <ti>-v</ti><ti>Ausführliche Ausgabe</ti>
   </tr>
   <tr>
-    <ti>-x</ti><ti>Expand numbers (display exact values)</ti>
+    <ti>-x</ti><ti>Zahlen Erweitern (exakte Werte anzeigen)</ti>
   </tr>
   <tr>
-    <ti>-f</ti><ti>Match second or further fragments only</ti>
+    <ti>-f</ti><ti>Nur auf die zweiten oder weitere Pakete achten</ti>
   </tr>
   <tr>
-    <ti>-V</ti><ti>Packet version</ti>
+    <ti>-V</ti><ti>Paketversion</ti>
   </tr>
   <tr>
-    <ti>--line-numbers</ti><ti>Print line numbers when listing</ti>
+    <ti>--line-numbers</ti><ti>Zeilennummern mit ausgeben</ti>
   </tr>
 </table>
 
 <p>
-First we will try to block all ICMP packages to our machine, just to get familiar with iptables.
+Zuerst werden wir versuchen alle ICMP-Pakete an unsere Maschine zu blocken - nur um und mit iptables vertraut zu machen.
 </p>
 
-<pre caption="Block all ICMP packages">
+<pre caption="Alle ICMP-Pakete blocken">
 # <i>iptables -A INPUT -p icmp -j DROP</i>
 </pre>
 
 <p>
-First we specify the chain it should be appended to. Next to specify the protocol and then the rule. The
-rule can be a ACCEPT, DROP, REJECT, LOG, QUEUE, MASQUERADE, a loaded module or a user defined chain. In
-this case we use DROP which will drop the packet without responding to the client.
+Zuerst legen wir die Kette fest an die die Regel angehängt werden soll. Als nächstes legen wir das Protokoll
+und dann die Regel fest. Die Regel könnte ein ACCEPT, DROP, REJECT, LOG, QUEUE, MASQUERADE, ein geladenes Modul
+oder eine benutzerdefinierte Kette sein. In diesem Fall benutzen wir DROP daß das Paket ohne irgendeine Antwort
+an den Client fallen lässt.
 </p>
 
 <p>
-Now try <c>ping localhost</c>. It will not be able to get any response since its blocking the entire
-ICMP protocol incoming to our machine. It will not be able to ping other machines either since its not
-allowed to get the ICMP packets returning from the host. Now flush the chain to get ICMP flowing again.
+Nun versuchen Sie ein <c>ping localhost</c>. Es wird nicht möglich sein, eine Antwort zu bekommen, da
+das komplette ICMP-Protokoll eingehend geblockt wird. Es wird auch nicht möglich sein, andere Maschinen
+azupingen, da die Pakete nicht mehr von den anderen Rechnern in unseren Rechner kommen können. Nun leeren Sie
+die Kette um ICMP wieder zum Laufen zu bekommen.
 </p>
 
-<pre caption="Flush all rules">
+<pre caption="Alle Regeln leeren (Flush)">
 # <i>iptables -F</i>
 </pre>
 
 <p>
-Now lets look at the stateful part in iptables. If we wanted to have a stateful inspection of packets
-incoming on eth0 we could enable it by issuing:
+Nun sehen wir uns die Zustandsmaschinerie in iptables an. Wenn wir eine Prüfung bezüglich des Verbindungszustandes
+an eth0 haben wollen, könnten wir dies folgendermassen aktivieren:
 </p>
 
-<pre caption="Accept packets that originate from an already established connection">
+<pre caption="Pakete die zu einer bereits bestehenden Verbindung gehören akzeptieren">
 # <i>iptables -A INPUT -i eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT</i>
 </pre>
 
 <p>
-This will accept any packet already established or related in the INPUT chain. And you could drop any
-packet that is not in the state table by issuing <c>iptables -A INPUT -i eth0 -m state --state INVALID -j DROP</c>
-just before. This enables the stateful part in iptables by loading the extension state. If you wanted connection
-from the outside to connect to you machine you could use the <c>--state NEW</c>. Iptables contain some modules
-for different purposes. Some of them are:
+Dies wird in der INPUT-Kette alle Pakete die zu einer bereits bestehenden oder einer verwandten Verbindung gehören akzeptieren.
+Man könnte auch jedes Paket daß nicht in der Zustandstabelle abgedeckt wurde fallen lassen, indem man
+<c>iptables -A INPUT -i eth0 -m state --state INVALID -j DROP</c> direkt davor aufruft. Das aktiviert die Zustandssteuerung in
+iptables da es die Erweiterung state lädt. Wenn Sie nun von Aussen mit Ihrer Maschine, dann könnten Sie <c>--state NEW</c> benutzen.
+Iptables enthält einige unterschiedliche Module für unterschiedliche Anwendungszwecke. Einige dieser Module sind:
 </p>
 
 <table border="0">
   <tr>
-    <th>Module/Match</th><th>Description</th><th>Extended options</th>
+    <th>Modul/Treffer</th><th>Beschreibung</th><th>Erweiterte Optionen</th>
   </tr>
   <tr>
-    <ti>mac</ti><ti>Matching extension for incoming packets mac address.</ti><ti>--mac-source</ti>
+    <ti>mac</ti><ti>Prüfung auf die Quell-MAC-Adressen der eingehenden Pakete.</ti><ti>--mac-source</ti>
   </tr>
   <tr>
-    <ti>state</ti><ti>Enables stateful inspection</ti><ti>--state (states are ESTABLISHED,RELATED, INVALID, NEW)</ti>
+    <ti>state</ti><ti>Prüfung auf Zustand</ti><ti>--state (passende Werte sind ESTABLISHED,RELATED, INVALID, NEW)</ti>
   </tr>
   <tr>
-    <ti>limit</ti><ti>Rate matching limiting</ti><ti>--limit, --limit-burst</ti>
+    <ti>limit</ti><ti>Trefferrate begrenzen</ti><ti>--limit, --limit-burst</ti>
   </tr>
   <tr>
-    <ti>owner</ti><ti>Attempt to match various characteristics of the packet creator</ti><ti>--uid-owner userid --gid-owner groupid --pid-owner processid --sid-owner sessionid</ti>
+    <ti>owner</ti><ti>Prüfung auf diverse Fähigkeiten des Paketgernators</ti><ti>--uid-owner userid --gid-owner groupid --pid-owner processid --sid-owner sessionid</ti>
   </tr>
   <tr>
-    <ti>unclean</ti><ti>Various random sanity checks on packets</ti><ti/>
+    <ti>unclean</ti><ti>Diverse Gültigkeitsprüfungen auf den Paketen</ti><ti/>
   </tr>
 </table>
 
 <p>
-Lets try to create a user defined chain and apply it to one of the existing chains:
+Lassen Sie uns nun eine benutzerdefinierte Kette erstellen und in einer der existierenden Ketten einbetten:
 </p>
 
-<pre caption="Creating a userdefined chain">
-<codenote>Create a new chain with one rule</codenote>
+<pre caption="Benutzerdefinierte Kette erstellen">
+<codenote>Neue Kette mit einer Regel erstellen</codenote>
 # <i>iptables -X mychain</i>
 # <i>iptables -N mychain</i>
 # <i>iptables -A mychain -i eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT</i>
-<codenote>The default policy is all outgoing traffic is allowed. Incoming is dropped.</codenote>
+<codenote>Die Standardrichtlinie sagt, dass jeglicher ausgehender Verkehr erlaubt ist, aber eingehender verboten.</codenote>
 # <i>iptables -P OUTPUT ACCEPT</i>
 # <i>iptables -P INPUT DROP</i>
 <codenote>And add it to the INPUT chain</codenote>
@@ -2679,25 +2681,27 @@ Lets try to create a user defined chain and apply it to one of the existing chai
 </pre>
 
 <p>
-By applying the rule to the input chain we get the policy: All is allowed out and only incoming is allowed, if its
-already established. This is general a bad idea. Default policies should be drop but this is just an example.
+Indem man die Regel in die INPUT-Kette einpasst bekommt man die Richtlinie: Alles darf raus, aber reinkommen darf nur was
+soweiso schon aufgebaut ist. Das ist im Allgemeinen eine schlechte Idee. Standardrichtlinien sollten immer fallen lassen - aber das
+ist ja nur ein Beispiel.
 </p>
 
 <p>
-Now if you want more documentation have a look at the <uri link="http://www.iptables.org/documentation/index.html#HOWTO">iptables documentation</uri>
+Wenn Sie mehr Dokumentation haben wollen, dann werfen Sie einen Blick auf
+<uri link="http://www.iptables.org/documentation/index.html#HOWTO">die iptables Dokumentation</uri>
 </p>
 
 <p>
-Lets see a full blown example. In this case my firewall/gateway policy states:
+Schauen wir uns nun ein komplettes Beispiel an. In diesem Falle sagt meine Firewall/Gateway Richtline:
 </p>
 
 <ul>
-  <li>Connections to the firewall is only allowed through SSH (port 22)</li>
-  <li>The local network should have access to HTTP, HTTPS and SSH (DNS should also be allowed)</li>
-  <li>ICMP traffic can contain payload as should not be allowed. Of course we have to allow some ICMP traffic.</li>
-  <li>Port scan should be detected and logged</li>
-  <li>SYN attack should avoided</li>
-  <li>All other traffic should be dropped and logged</li>
+  <li>Verbindungen zur Firewall wird nur über SSH erlaubt (Port 22)</li>
+  <li>Das lokale Netz soll Zugriff auf HTTP, HTTPS und SSH haben (DNS sollte auch erlaubt sein)</li>
+  <li>ICMP-Verkehr könnte kritische Daten enthalten und sollte deswegen nicht erlaubt sein. Natürlich gibt es einige Ausnahmen</li>
+  <li>Portscans sollten erkannt und aufgezeichnet werden</li>
+  <li>SYN-Angriffe sollten abgewehrt werden</li>
+  <li>Jeglicher anderer Verkehr sollte blockiert und aufgezeichnet werden</li>
 </ul>
 
 <pre caption="/etc/init.d/firewall">
@@ -2708,11 +2712,11 @@ IPTABLESRESTORE=/sbin/iptables-restore
 FIREWALL=/etc/firewall.rules
 DNS1=212.242.40.3
 DNS2=212.242.40.51
-#inside
+#Innen
 IIP=10.0.0.2
 IINTERFACE=eth0
 LOCAL_NETWORK=10.0.0.0/24
-#outside
+#Aussen
 OIP=217.157.156.144
 OINTERFACE=eth1
 
@@ -2724,24 +2728,24 @@ depend() {
 
 rules() {
   stop
-  ebegin "Setting internal rules"
+  ebegin "Setze interne Regeln"
 
-  einfo "Setting default rule to drop"
+  einfo "Setze Standardregel auf Fallenlassen"
   $IPTABLES -P FORWARD DROP
   $IPTABLES -P INPUT   DROP
   $IPTABLES -P OUTPUT  DROP
 
-  #default rule
-  einfo "Creating states chain"
+  #Standardregel
+  einfo "Erstelle Zustands-Kette"
   $IPTABLES -N allowed-connection
   $IPTABLES -F allowed-connection
   $IPTABLES -A allowed-connection -m state --state ESTABLISHED,RELATED -j ACCEPT
   $IPTABLES -A allowed-connection -i $IINTERFACE -m limit -j LOG --log-prefix \
-      "Bad packet from ${IINTERFACE}:"
+      "Böses Paket von ${IINTERFACE}:"
   $IPTABLES -A allowed-connection -j DROP
 
-  #ICMP traffic
-  einfo "Creating icmp chain"
+  #ICMP Verkehr
+  einfo "Erstelle ICMP-Kette"
   $IPTABLES -N icmp_allowed
   $IPTABLES -F icmp_allowed
   $IPTABLES -A icmp_allowed -m state --state NEW -p icmp --icmp-type \
@@ -2751,11 +2755,11 @@ rules() {
   $IPTABLES -A icmp_allowed -p icmp -j LOG --log-prefix "Bad ICMP traffic:"
   $IPTABLES -A icmp_allowed -p icmp -j DROP
 
-  #Incoming traffic
-  einfo "Creating incoming ssh traffic chain"
+  #Eingehender Verkehr
+  einfo "Erstelle Kette für eingehenden SSH-Verkehr"
   $IPTABLES -N allow-ssh-traffic-in
   $IPTABLES -F allow-ssh-traffic-in
-  #Flood protection
+  #Flood-Schutz
   $IPTABLES -A allow-ssh-traffic-in -m limit --limit 1/second -p tcp --tcp-flags \
       ALL RST --dport ssh -j ACCEPT
   $IPTABLES -A allow-ssh-traffic-in -m limit --limit 1/second -p tcp --tcp-flags \
@@ -2764,13 +2768,13 @@ rules() {
       ALL SYN --dport ssh -j ACCEPT
   $IPTABLES -A allow-ssh-traffic-in -p tcp --dport ssh -j ACCEPT
 
-  #outgoing traffic
-  einfo "Creating outgoing ssh traffic chain"
+  #Ausgehender Verkehr
+  einfo "Erstelle Kette für ausgehenden SSH-Verkehr"
   $IPTABLES -N allow-ssh-traffic-out
   $IPTABLES -F allow-ssh-traffic-out
   $IPTABLES -A allow-ssh-traffic-out -p tcp --dport ssh -j ACCEPT
 
-  einfo "Creating outgoing dns traffic chain"
+  einfo "Erstelle Kette für ausgehenden DNS-Verkehr"
   $IPTABLES -N allow-dns-traffic-out
   $IPTABLES -F allow-dns-traffic-out
   $IPTABLES -A allow-dns-traffic-out -p udp -d $DNS1 --dport domain \
@@ -2784,48 +2788,48 @@ rules() {
   $IPTABLES -A allow-www-traffic-out -p tcp --dport www -j ACCEPT
   $IPTABLES -A allow-www-traffic-out -p tcp --dport https -j ACCEPT
 
-  #Catch portscanners
-  einfo "Creating portscan detection chain"
+  #Portscanner fangen
+  einfo "Erstelle Portscan-Erkennungs-Kette"
   $IPTABLES -N check-flags
   $IPTABLES -F check-flags
-  $IPTABLES -A check-flags -p tcp --tcp-flags ALL FIN,URG,PSH -m limit \ 
-      --limit 5/minute -j LOG --log-level alert --log-prefix "NMAP-XMAS:" 
+  $IPTABLES -A check-flags -p tcp --tcp-flags ALL FIN,URG,PSH -m limit \
+      --limit 5/minute -j LOG --log-level alert --log-prefix "NMAP-XMAS:"
   $IPTABLES -A check-flags -p tcp --tcp-flags ALL FIN,URG,PSH -j DROP
-  $IPTABLES -A check-flags -p tcp --tcp-flags ALL ALL -m limit --limit \ 
+  $IPTABLES -A check-flags -p tcp --tcp-flags ALL ALL -m limit --limit \
       5/minute -j LOG --log-level 1 --log-prefix "XMAS:"
   $IPTABLES -A check-flags -p tcp --tcp-flags ALL ALL -j DROP
-  $IPTABLES -A check-flags -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG \ 
+  $IPTABLES -A check-flags -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG \
       -m limit --limit 5/minute -j LOG --log-level 1 --log-prefix "XMAS-PSH:"
   $IPTABLES -A check-flags -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
-  $IPTABLES -A check-flags -p tcp --tcp-flags ALL NONE -m limit \ 
+  $IPTABLES -A check-flags -p tcp --tcp-flags ALL NONE -m limit \
       --limit 5/minute -j LOG --log-level 1 --log-prefix "NULL_SCAN:"
   $IPTABLES -A check-flags -p tcp --tcp-flags ALL NONE -j DROP
-  $IPTABLES -A check-flags -p tcp --tcp-flags SYN,RST SYN,RST -m limit \ 
+  $IPTABLES -A check-flags -p tcp --tcp-flags SYN,RST SYN,RST -m limit \
       --limit 5/minute -j LOG --log-level 5 --log-prefix "SYN/RST:"
   $IPTABLES -A check-flags -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
-  $IPTABLES -A check-flags -p tcp --tcp-flags SYN,FIN SYN,FIN -m limit \ 
+  $IPTABLES -A check-flags -p tcp --tcp-flags SYN,FIN SYN,FIN -m limit \
       --limit 5/minute -j LOG --log-level 5 --log-prefix "SYN/FIN:"
   $IPTABLES -A check-flags -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
 
-  # Apply and add invalid states to the chains
-  einfo "Applying chains to INPUT"
+  # Ungültige Zustände in den Ketten einpassen
+  einfo "Passe Ketten in INPUT an"
   $IPTABLES -A INPUT -m state --state INVALID -j DROP
-  $IPTABLES -A INPUT -j icmp_allowed 
+  $IPTABLES -A INPUT -j icmp_allowed
   $IPTABLES -A INPUT -j check-flags
   $IPTABLES -A INPUT -i lo -j ACCEPT
   $IPTABLES -A INPUT -j allow-ssh-traffic-in
   $IPTABLES -A INPUT -j allowed-connection
 
-  einfo "Applying chains to FORWARD"
+  einfo "Passe Ketten in FORWARD an"
   $IPTABLES -A FORWARD -m state --state INVALID -j DROP
-  $IPTABLES -A FORWARD -j icmp_allowed 
+  $IPTABLES -A FORWARD -j icmp_allowed
   $IPTABLES -A FORWARD -j check-flags
   $IPTABLES -A FORWARD -o lo -j ACCEPT
   $IPTABLES -A FORWARD -j allow-ssh-traffic-in
   $IPTABLES -A FORWARD -j allow-www-traffic-out
   $IPTABLES -A FORWARD -j allowed-connection
 
-  einfo "Applying chains to OUTPUT"
+  einfo "Passe Ketten in OUTPUT an"
   $IPTABLES -A OUTPUT -m state --state INVALID -j DROP
   $IPTABLES -A OUTPUT -j icmp_allowed
   $IPTABLES -A OUTPUT -j check-flags
@@ -2835,24 +2839,24 @@ rules() {
   $IPTABLES -A OUTPUT -j allow-www-traffic-out
   $IPTABLES -A OUTPUT -j allowed-connection
 
-  #Allow client to route through via NAT (Network Address Translation)
-  $IPTABLES -t nat -A POSTROUTING -o $IINTERFACE -j MASQUERADE 
+  #erlaube den Clients über NAT (Network Address Translation) zu routen
+  $IPTABLES -t nat -A POSTROUTING -o $IINTERFACE -j MASQUERADE
   eend $?
 }
 
 start() {
-  ebegin "Starting firewall"
+  ebegin "Starte Firewall"
   if [ -e "${FIREWALL}" ]; then
     restore
   else
-    einfo "${FIREWALL} does not exists. Using default rules."
+    einfo "${FIREWALL} existiert nicht. Benutze Standardregeln."
     rules
   fi
   eend $?
 }
 
 stop() {
-  ebegin "Stopping firewall"
+  ebegin "Halte Firewall an"
   $IPTABLES -F
   $IPTABLES -t nat -F
   $IPTABLES -X
@@ -2871,7 +2875,7 @@ showstatus() {
 }
 
 panic() {
-  ebegin "Setting panic rules"
+  ebegin "Setze Panikregeln"
   $IPTABLES -F
   $IPTABLES -X
   $IPTABLES -t nat -F
@@ -2884,13 +2888,13 @@ panic() {
 }
 
 save() {
-  ebegin "Saving Firewall rules"
+  ebegin "Sichere Firewallregeln"
   $IPTABLESSAVE &gt; $FIREWALL
   eend $?
 }
 
 restore() {
-  ebegin "Restoring Firewall rules"
+  ebegin "Stelle Firewallregeln wieder her"
   $IPTABLESRESTORE &lt; $FIREWALL
   eend $?
 }
@@ -2900,34 +2904,36 @@ restart() {
 }
 
 showoptions() {
-  echo "Usage: $0 {start|save|restore|panic|stop|restart|showstatus}"
-  echo "start)      will restore setting if exists else force rules"
-  echo "stop)       delete all rules and set all to accept"
-  echo "rules)      force settings of new rules"
-  echo "save)       will store settings in ${FIREWALL}"
-  echo "restore)    will restore settings from ${FIREWALL}"
-  echo "showstatus) Shows the status" 
+  echo "Benutzung: $0 {start|save|restore|panic|stop|restart|showstatus}"
+  echo "start)      Wird die Standardeinstellung wieder herstellen oder anderndfalls zu Regeln zwingen"
+  echo "stop)       Alle Regeln löschen und alles akzeptieren"
+  echo "rules)      zu Einstellungen der neuen regeln zwingen"
+  echo "save)       speichert die Regeln in ${FIREWALL}"
+  echo "restore)    stellt die Regeln von ${FIREWALL} wieder her"
+  echo "showstatus) Status anzeigen"
 }
 </pre>
-<note>I backslashed some lines for readability issues. It might be a good idea to join this lines in
-an actual configuration. Get it <uri link="firewall.gz">here</uri>.</note>
+<note>
+ich habe aus Lesbarkeitsgründen auf den Backslash zurückgegriffen. Es könnte eine gute Idee sein
+in der Echten Konfiguration die Zeilen wieder zusammenzufügen. Diese Version gibt es <uri link="firewall.gz">hier</uri>.
+</note>
 
 <p>
-Free advice when creating a firewall:
+Kostenloser Ratschlag für das Erstellen einer Firewall:
 </p>
 
 <ol>
-  <li>Create your firewall policy before implementing it</li>
-  <li>Keep it simple</li>
-  <li>Know how the protocol works (read the <uri link="http://www.ietf.org/">RFC (Request For Comments)</uri>)</li>
-  <li>Keep in mind that a firewall it just another piece of software running as root</li>
-  <li>Test your firewall</li>
+  <li>Erstellen Sie vor der Implementierung eine Richtlinie für die Firewall</li>
+  <li>Halten Sie sie einfach</li>
+  <li>Erlangen Sie Wissen über die Protokolle (lesen Sie das <uri link="http://www.ietf.org/">RFC (Request For Comments)</uri>)</li>
+  <li>Denken Sie daran, dass eine Firewall ein weiteres Paket ist, dass als root läuft</li>
+  <li>Testen Sie die Firewall</li>
 </ol>
 
 <p>
-If you think that iptables is hard to understand or takes to long to setup a decent firewall you could
-use <uri link="http://www.shorewall.net">Shorewall</uri>. It basically uses iptables to generate firewall
-rules, but concentrates on rules and not specific protocols.
+Wenn Sie denken, dass iptables schwer zu verstehen sind oder es zu lange dauert eine sinnvolle Firewall zu erstellen,
+dann könnten Sie auch <uri link="http://www.shorewall.net">Shorewall</uri> benutzen. Es benutzt im Grunde genommen iptables
+um eine Firewall zu erstellen, aber es konzentriert sich auf Regeln und nicht auf spezielle Protokolle.
 </p>
 
 </body>
@@ -2942,7 +2948,7 @@ Squid is a very powerful proxy server and it can do filters, rejects allowed tra
 regular expression path/uri, source and destination address (IP), domain, browser, the authenticated
 username, mime-type and port (protocol). I probably forgot some features, but it can be hard to cover
 the entire feature list.
-</p> 
+</p>
 
 <p>
 In the following example I have added a banner filter instead of a filter based on porn sites. The
