@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.1 2003/12/04 15:46:51 dertobi123 Exp $ -->
+
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<guide>
+
+<title>German Translation Team</title>
+
+<author title="Autor">
+  <mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
+</author>
+
+<abstract>
+Übersicht über die Aktivitäten des deutschsprachigen Übersetzerteam.
+</abstract>
+
+<license />
+
+<version>1.0</version>
+<date>04. Dezember 2003</date>
+
+<chapter>
+<title>Wichtige Doku für Übersetzer, Ressourcen</title>
+<section>
+<body>
+
+<p>
+Bevor Sie mit der Übersetzung anfangen sollten Sie die
+<uri link="/inhalte/projekt/translation">Informationen für Übersetzer</uri>, den
+<uri link="/inhalte/doku/guide-xml">Guide XML</uri> und je nach Vorkenntnissen
+auch das
+<uri link="/inhalte/doku/cvs-howto">CVS Howto</uri> gelesen haben.
+</p>
+
+<p>
+Sie sollten auf der <mail link="gentoo-doc-de@gentoo.org">gentoo-doc-de Mailing
+Liste</mail> angemeldet sein, ein Großteil der Kommunikation wird hierüber
+ablaufen.
+</p>
+
+<p>
+Bei Fragen oder zum Austausch mit anderen Übersetzern schauen Sie im
+<path>#gentoo-doc-de</path> Channel im FreeNode Netz vorbei.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Meeting</title>
+<section>
+<title>Meeting Dezember 2003</title>
+<body>
+
+<p>
+<b>Zusammenfassung:</b>
+</p>
+
+<p>
+<e>1. Ankündigungen:</e> Alle Übersetzer sollten sich auf der <mail
+link="gentoo-doc-de@gentoo.org">gentoo-doc-de</mail> Liste anmelden. Meetings
+wird es von nun an jeden Monat geben. Sollte sich zeigen, dass Bedarf an
+regelmäßigeren Terminen besteht, so werden wir das beraten. Das Log des Meeting
+wird veröffentlicht, damit auch diejenigen, die aus terminlichen Gründen nicht
+am Meeting teilnehmen konnten, sich einen Überblick verschaffen können.
+</p>
+
+<p>
+<e>2. Pflege der Dokumentation:</e> Nach kurzer Diskussion wurde beschlossen,
+dass der Übersetzer eines Dokuments auch solange für die Pflege und
+Aktualisierung eines Dokuments zuständig ist, bis er das Dokument abgibt. Sollte
+der Betreuer eines Dokuments Hilfe oder Unterstützung benötigen, so kann er dies
+auf der Mailing Liste kundtun. Für bisher übersetzte, aber nicht mehr betreute
+Dokumente werden über die Mailing Liste an Übersetzer verteilt.
+</p>
+
+<p>
+<e>3. Übersetzung von Dokumentation:</e> Bisher nicht übersetzte Dokumente
+wurden an Übersetzer verteilt. Eine Auflistung von an <uri
+link="/inhalte/projekt/trans-stauts">Übersetzer verteilter Dokumentation</uri>
+und bisher <uri link="/inhalte/projekt/doc-unmaint">nicht verteilter
+Dokumentation</uri> dient als Überblick.
+</p>
+
+<p>
+<e>4. Fragen:</e> Es ging hauptsächlich um den Arbeitsablauf einer Übersetzung
+und die technische Seite, wie Editoreinstellungen und Coding Style.
+</p>
+
+<p>
+<e>Log:</e> Das Log vom Meeting finden Sie <uri
+link="/inhalte/projekt/doc-de-meet-03-12.log">hier</uri>.
+</p>
+
+</body>
+</section>
+</chapter>
+
+</guide>
