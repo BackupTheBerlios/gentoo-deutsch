@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.20 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.4 2003/12/12 21:25:08 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.5 2003/12/14 15:02:54 jay Exp $ -->
 
 <sections>
 <section>
@@ -12,10 +12,10 @@
 
 <p>
 Als wir Sie baten, das Installationsmedium auszuwählen (LiveCDs, existierende
-Distribution usw.), erklärten wir die damit verbundenen Vor- und Nachteile.
-Dazu gehört die Auswahl Ihrer Stage: Wollen Sie alles komplett übersetzen
+Distribution usw.), haben wir die damit verbundenen Vor- und Nachteile erklärt.
+Dazu gehört die Auswahl Ihrer Stufe: Wollen Sie alles komplett übersetzen
 (<e>stage1</e>), den Bootstrap Prozess überspringen (<e>stage2</e>), oder von
-einem vorkompilierten Ausgangszustand starten (<e>stage3</e>)?
+einem vorkompilierten System starten (<e>stage3</e>)?
 </p>
 
 <p>
@@ -28,8 +28,8 @@ Ihr gewähltes Stagearchiv zu installieren.
 <p>
 Die folgenden zwei Abschnitte erläutern, wie Sie Ihr gewünschtes Stagearchiv
 installieren. Die Standardoption ist das Stagearchiv Ihrer Wahl aus dem
-Internet zu laden. Jedoch bringen einige LiveCDs diese Stagearchive direkt
-auf CD mit.
+Internet zu laden. Jedoch enthalten einige LiveCDs diese Stagearchive direkt
+auf der CD.
 </p>
 
 <p>
@@ -84,7 +84,7 @@ Falls Sie <c>lynx</c> nicht verwenden können, steht Ihnen <c>links2</c> zur
 Verfügung. <c>links2</c> ist leistungsstärker als <c>lynx</c>, hat aber auch
 einige Nachteile, zum Beispiel beachtet er die vorhin vielleicht eingestellten
 Proxy-Angaben nicht. Die Einstellung erfolgt nun durch 
-<c>links2 -http-proxy proxy.server.com:8080</c>. Im weiteren gehen Sie wie
+<c>links2 -http-proxy proxy.server.com:8080</c>. Im übrigen gehen Sie wie
 für <c>lynx</c> beschrieben vor.
 </p>
 
@@ -101,7 +101,7 @@ für <c>lynx</c> beschrieben vor.
 
 <p>
 Nun entpackten Sie das heruntergeladene Stagearchiv auf Ihrem System.
-Wir benutzen GNU <c>tar</c> dafür, weil es der direkte Weg ist:
+Wir benutzen GNU <c>tar</c> dafür, weil es der direkteste Weg ist:
 </p>
 
 <pre caption="Entpacken des Stage-Archivs">
@@ -111,9 +111,9 @@ Wir benutzen GNU <c>tar</c> dafür, weil es der direkte Weg ist:
 <p>
 Stellen Sie sicher, dass Sie die gleichen Schalter (<c>-xvjpf</c>) verwenden.
 Das <c>x</c> steht für <e>Auspacken</e> (engl. <e>Extract</e>), das <c>v</c>
-für <e>Redsam</e> (engl. <e>Verbose</e>) (zugegeben, dies ist optional),
-das <c>j</c> für <e>Dekomprimieren mit bzip2</e>, das <c>p</c> für <e>Erhalte 
-die Dateirechte</e> (engl. <e>Preserve permissions</e>) und das <c>f</c> zeigt
+für <e>Auskunftsfreudig</e> (engl. <e>Verbose</e>) (zugegeben, dies ist optional),
+das <c>j</c> für <e>Dekomprimieren mit bzip2</e>, das <c>p</c> für <e>Erhalt 
+der Dateirechte</e> (engl. <e>Preserve permissions</e>) und das <c>f</c> zeigt
 an, dass wir eine Datei auspacken wollen und nicht die Standardeingabe
 benutzen.
 </p>
@@ -248,10 +248,10 @@ Nun geht es weiter mit der
 <body>
 
 <p>
-Um Gentoo zu optimieren, können Sie einige Variablen setzen, die auf das
-Verhalten von Portage wirken. Alle diese Variablen können als
-Umgebungsvariablen gesetzt werden (mit <c>export</c>), dies ist aber nicht
-dauerhaft. Um Ihre Einstellungen zu behalten, bietet Portage Ihnen
+Um Gentoo zu optimieren, können Sie einige Variablen setzen, die Einfluss
+auf das Verhalten von Portage nehmen. Alle diese Variablen können als
+Umgebungsvariablen gesetzt werden (mit <c>export</c>), dies ist aber keine
+dauerhafte Lösung. Um Ihre Einstellungen zu behalten, bietet Portage Ihnen
 <path>/etc/make.conf</path>, eine Konfigurationsdatei für Portage. Diese Datei
 werden wir nun bearbeiten.
 </p>
@@ -369,8 +369,8 @@ Programm verhält sich anders.
 In <path>make.conf</path> sollten Sie die Optimierungs-Flags definieren, von
 denen Sie erwarten, dass Ihr System <e>allgemein</e> am anspechbarsten ist.
 Machen Sie keine Experimente bei dieser Variable; zu forsche
-Optimierung kann dazu führen, dass Programme sich böswillg verhalten (Abstürze,
-oder viel schlimmer: Fehlfunktionen).
+Optimierung kann dazu führen, dass Programme sich böswillig verhalten (Abstürze,
+oder noch viel schlimmer: Fehlfunktionen).
 </p>
 
 <p>
@@ -390,7 +390,7 @@ Namen der Zielarchitektur. Mögliche Optionen werden in <path>make.conf</path>
 XP Architektur:
 </p>
 
-<pre caption="Die GCC march Einstellung">
+<pre caption="Die GCC march Einstellung für Athlon XP">
 -march=athlon-xp
 </pre>
 
@@ -423,7 +423,8 @@ kombinieren, wie das folgende Beispiel zeigt:
 
 <pre caption="Setzen der CFLAGS und CXXFLAGS Variablen">
 CFLAGS="-march=athlon-xp -pipe -O2"
-CXXFLAGS="${CFLAGS}"                  <comment># Benutze die gleichen Einstellungen für beide Variablen</comment>
+CXXFLAGS="${CFLAGS}"                  
+<comment># Benutze die gleichen Einstellungen für beide Variablen</comment>
 </pre>
 
 </body>
@@ -446,7 +447,7 @@ anstelle von X11 Support (X-server) übersetzt werden.
 Die meisten Distributionen kompilieren ihre Pakete mit eingeschalteter
 Unterstützung für alles, was möglich ist. Dies vergrößert die Programme,
 verlängert die Startzeit und, nicht zu vergessen, erhöht die Abhängigkeiten.
-Mit Gentoo können Sie bestimmen, mit welchen Optionen ein Paket übersetzt
+Mit Gentoo können Sie selbst bestimmen, mit welchen Optionen ein Paket übersetzt
 werden soll. Hier kommen die <c>USE</c> Variable ins Spiel.
 </p>
 
@@ -513,7 +514,7 @@ dann sollte <c>ACCEPT_KEYWORDS</c> auf Ihre Architektur mit vorangestellter
 Tilde (<e>~</e>) gesetzt sein. Denken Sie <e>nicht</e>, dies sei ein
 Äquivalent für "testing" oder "unstable" in anderen Distributionen.
 Pakete innerhalb <e>~ARCH</e> <e>können</e> gelegentlich zerstörend wirken!
-Manche Architekturen durchlaufen nichtmals den Bootstrap erfolgreich, wenn 
+Manche Architekturen durchlaufen nicht einmal den Bootstrap erfolgreich, wenn 
 Sie <e>~ARCH</e> benutzen (erwähnt sei SPARC).
 </p>
 
