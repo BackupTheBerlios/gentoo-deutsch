@@ -250,6 +250,7 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	</table>
         </body>
 </section>
+
 <section>
 	<title>Regeln zum Schreiben eines ebuilds</title>
 	<body><p>Da ebuilds in Wirklichkeit nur aus einfachen Shell Skripten bestehen, sollte der zu bearbeitende Editor auf diesen Modus eingestellt
@@ -282,6 +283,7 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	(setq auto-mode-alist (cons '("\\.eclass\\'" . ebuild-mode) auto-mode-alist))</pre></p>
 	</body>
 </section>
+
 <section>
 	<title>Die USE Variablen</title>
 	<body><p>Die USE-Variablen dienen dem Zweck, Portage global zu konfigurieren und automatisch bestimmte Kompilierungsoptionen an- oder abzuschalten.
@@ -342,8 +344,8 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 
 	src_compile() {
 	    local myconf
-	    use X &gt;&gt; myconf="--enable-x11"
-	    use mysql &gt;&gt; myconf="${myconf} --enable-mysql"
+	    use X &amp;&amp; myconf="--enable-x11"
+	    use mysql &amp;&amp; myconf="${myconf} --enable-mysql"
 	
 	    ./configure ${myconf} --prefix=/usr --host=${CHOST} || die
 	    emake || die
@@ -351,12 +353,64 @@ keinen Fall vollständig. Die Übersetzung ist ebenfalls unvollständig.</abstra
 	</pre>
 	
 	<p>In diesem Beispiel werden X11 und MySQL-Unterstützung nur dann explizit aktiviert, wenn die entsprechende USE Variable vorhanden ist. Der Abschnitt
-	<c>use mysql &gt;&gt;</c> prüft, ob mysql in der USE-Flag gesetzt ist, und übergibt dann <c> myconf="${myconf} --enable-mysql"</c>.</p>
+	<c>use mysql &amp;&amp;</c> prüft, ob mysql in der USE-Flag gesetzt ist, und übergibt dann <c> myconf="${myconf} --enable-mysql"</c>.</p>
 
 	<p>Eine kontnuierlich aktualisierte Liste aller USE Variablen fidnet mann <uri link="http://www.gentoo.org/dyn/use-index.xml">hier</uri>.
        </p></body>
- </section>
+</section>
 </chapter>
 
+<chapter>
+	<title>Aufbau des Dateisystems</title>
+
+<section>
+	<title>Einführung in FHS</title>
+	<body>
+	<p>Der Aufbau des Gentoo Linux Dateisystems orientiert sich am am FHS Standard, kurz für: <i>Filesystem Hierarchy Standard</i>. Eine kurze 
+	Beschreibung dieses Standards wir hier gegeben, eine komplette Spezifikation findet man unter <uri link="http://www.pathname.com/fhs/">http://www.pathname.com/fhs/
+	</uri>.
+	</p>
+
+	<p><note>Der /opt Breich wird in Abschnitt 3.12 der FHS Spezifikation beschrieben. Abschnitt 4.4 behandelt das /usr/X11R6 Verzeichnis. KDE und GNOME werden
+	nicht spezifisch besprochen und sind in der aktuellen Fassung des FHS überhaupt nicht berücksichtigt.</note>
+	</p></body>
+</section>
+
+
+<section>
+	<title>Wohin mit meinem Paket in diesem Dateisystem?</title>
+	<body>
+	<p>Normalerweise wird bei der Verwendung von autoconf und automake das Paket standardmässig korrekt installiert, allerdings mit einigen wenigen
+	Ausnahmen:
+	<ul>
+	<li>Wenn das Programm nach /bin, /sbin, /usr/bin oder /usr/sbin installiert wird, die dazugehörigen Man-Pages sollten nach /usr/share/man kopiert werden.
+	Dies kann meistens durch Übergabe des Arguments <c>./configure --mandir=/usr/share/man</c> im ebuild Skript bewerkstelligt werden.</li>
+	<li>GNU Info Dateien gehören nach /usr/share/info, <i> auch wenn die Info-Dateien X11, GNOME oder KDE-Programme betreffen</i>. Nochmals:
+	/usr/share/info ist der <i>einzige</i> offizielle Platz für GNU Info-Dateien! Leider instellieren die meisten ./configure Skripte die GNU Dateien nach
+	/usr/info, sodass man mit Hilfe des <c>--infodir=/usr/share/info</c> Arguments nachhelfen muss.</li>
+	<li>Dokumentationen werden in ein Unterverzeichnis von /usr/share/doc installiert. Dies sollte Namen, Version und Revisionsnummer des betreffenden
+	Programmes beinhalten. Das gilt für alle Programme, GNOME, KDE, X11 wie auch der Konsole. Manchmal wird weitere Dokumentation für 
+	spezielle Zwecke in die /usr/shareHierarchy eingebunden.</li>
+	<li>X11-spezifische Programme und Bibliotheken sollten immer nach /usr installiert werden und nicht direkt nach /usr/X11R6, welches ausschliesslich
+	für das X Window System, Version 11 Release 6 vorbehalten ist. Dies ist wahrscheinlich einer genauere Interpretation der FHS Spezifikation, als
+	es in anderen Distributionen üblich ist.</li>
+	<li>GNOME und KDE Programme gehören ebenfalls nach /usr.</li>
+	</ul></p>
+
+	<impo>Manche Distributionen installieren KDE und GNOME nach /opt. Zur Zeit existiert kein Standard für die Installtion von Dateien der Desktop-Umgebungen.
+	Im Interesse einer einfachen und konsistenten Handhabung, haben wir uns entschieden, alle KDE und GNOME Pakete nach /usr zu installieren.</impo>
+
+	<p>Generell sollte das ebuild seine Dateien in den /usr Verzeichnisbaum installieren. Manche Programme können mit oder ohne GNOME; KDE und X11
+	bibliotheken kompiliert werden, was für verwirrung sorgt. Unsere Lösung, alles nach /usr zu installieren, verhindert doppelte Arbeit und unnötige Komplexität
+	für die ebuild Entwickler. Der Pfad, in den die Programmdateien installiert werden, sollte nicht an das Vorhandensein oder Fehlen von USE Variablen
+	geknüpft werden. Somit installieren die ebuilds im Portage Verzeichnisbaum in fast allen Fällen ihre Dateien nach /usr.</p>
+
+	<p><note>Das /opt Verzeichnis in Gentoo Linux ist für binäre Pakete reserviert. Als Beispiele können hier mozilla-bin, acroread und realplayer angeführt
+	werden. Die hierhin installierten Pakete benötigen in der Regel eine /etc/env.d/foo Markierungsdatei. Dies dient der Möglichkeit, Pfade und zusätzliche
+	Variablen der Laufzeitumgebung hinzuzufügen können.</note></p>
+	</body>
+</section>
+
+</chapter>
 </guide>
  
