@@ -15,11 +15,11 @@
 <date> Juli 2002</date>
 
 <chapter>
-	<title>Einf&#xFC;hrung in Gentoo</title>
+	<title>Gentoo allgemein</title>
 
 	<section>
 		<title>Wie wird Gentoo ausgesprochen, und was ist damit gemeint?</title>
-		<body><p>Gentoo ist eine Art von kleinen schnellen Penguins, ausgesprochen "jen-two".</p></body>
+		<body><p>Gentoo ist eine Art von kleinen schnellen Pinguinen, ausgesprochen "schen-tuu".</p></body>
 	</section>
 
 	<section>
@@ -40,11 +40,11 @@
 	<section>
 		<title>Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</title>
 		<body><p>Die fertigen <e>.tbz2</e> Dateien sind ein Minimal-Archiv von System Dateien
-		die den Usern den bootstrap und die Installation von Gentoo Linux erlauben.
+		die den Benutzern den bootstrap und die Installation von Gentoo Linux erlauben.
 		Die Fertige <e>.iso</e> ist eine komplettes, bootf&#xE4;higes CD Image das
 		einen System Kernel, einen zum Teil komplette Zusammenstellung von Kernel Modulen,
 		wichtigen System Hilfsprogrammen wie <c>mkfs</c> und Netzwerk Unterst&#xFC;tzung,
-		sowie das Minimal-System des <e>.tbz2</e> Archivs enth&#xE4;lt. Die meisten User werden
+		sowie das Minimal-System des <e>.tbz2</e> Archivs enth&#xE4;lt. Die meisten Benutzer werden
 		Gentoo Linux von der .iso Datei auf eine CD brennen, von der CD booten,
 		und mit einer Minimalen Linux Umgebung von der Gentoo Boot CD Installieren.
 		Es ist f&#xFC;r den Benutzer jedoch m&#xF6;glich Gentoo Linux direkt von einer
@@ -68,9 +68,9 @@
 		been significant changes to the core Gentoo Linux system (such as baselayout
 		changes, or a new profile), and as such .tbz2 updates are relatively rare.//-->
 		<!-- Das kann ich wieder -->
-		Die .iso Datei muss nur geupdatet werden, wenn jemand andere Hardware hat
-		die nicht mit der .iso booten will. Seitdem Kernel Module und Updates
-		regelm&#xE4;ssig gemacht werden kann es kaum zu dieser Situation kommen.
+		Die .iso Datei muss nur aktualisiert werden, wenn jemand andere Hardware hat
+		die nicht mit der .iso booten will. Seitdem Aktualisierungen der Kernel Module und Updates
+		regelm&#xE4;ssig gemacht werden kann es nur selten zu dieser Situation kommen.
 		</p>
 	</body>
 	</section>
