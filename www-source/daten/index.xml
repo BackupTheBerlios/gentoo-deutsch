@@ -25,11 +25,11 @@
     
 <p>
 <ul>
-	<li><uri link="/inhalte/projekt/praesentation">Ãœber Gentoo-Linux</uri></li>
-	<li><uri link="/inhalte/projekt/projekt/">ProjektÃ¼bersicht gentoo.de</uri></li>
-	<li><uri link="/inhalte/projekt/translation/">Info fÃ¼r Ãœbersetzer</uri></li>
+	<li><uri link="/inhalte/projekt/praesentation">Über Gentoo-Linux</uri></li>
+	<li><uri link="/inhalte/projekt/projekt/">Projektübersicht gentoo.de</uri></li>
+	<li><uri link="/inhalte/projekt/translation/">Info für Übersetzer</uri></li>
 	<li><uri link="/inhalte/projekt/site/">Gentoos Guide XML Projekt</uri></li>
-	<li><uri link="/inhalte/doku">Ãœbersetzte Dokumentationen</uri></li>
+	<li><uri link="/inhalte/doku">Übersetzte Dokumentationen</uri></li>
 	<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das gentoo.de Team</uri></li>
 </ul>
 </p>
@@ -80,36 +80,73 @@
 
 <chapter>
 	<title>Gentoo Deutsch</title>
+
 <section>
-	<title>WeihnachtsgrÃ¼sse</title>
+	<body>
+		<news type="other" date="28.12.2003" title="Gentoo-Linux 2004.0 - Tester gesucht">
+		<p>
+			Das anstehende Release von Gentoo-Linux 2004.0 braucht so schnell wie möglich Tester. Die folgenden Teile benötigen Tests:
+     	 	<ul>
+				<li>Die Live-CD und Installation über Live-CD</li>
+      			<li>Die Stages und Installation über diese</li>
+      			<li>Stage3 + GRP Installation</li>
+			</ul>
+		</p>
+		<p>
+			Wenn Sie beitragen wollen und über die notwendigen Ressourcen auf Ihrem System verfügen
+			um eine Installation zu testen, dann brauchen wir Sie als einen Tester.
+		</p>
+		<p>
+			Es werden sowohl normale Anwender als auch wirkliche Profis gebraucht um Bugs und eventuelle
+			Unklarheiten aus diesem Release zu entfernen. Wenn Sie irgendwelche Bugs oder Unklarheiten finden,
+			dann erstellen Sie bitte einen Bug auf <uri link="http://bugs.gentoo.org">Bugzilla</uri>. Als
+			Produkt wählen Sie bitte "Gentoo LiveCD (all flavors)".
+		</p>
+		<p>
+			Die Stages sind bereits herunterladbar auf
+			<uri link="http://gentoo.oregonstate.edu/experimental/x86/stages/">http://gentoo.oregonstate.edu/experimental/x86/stages/</uri>.
+			Die Live-CD-Images werden noch folgen, wobei aber angemerkt sein soll, dass eventuelle Bugs auf der Live-CD vermieden werden
+			können, wenn diese bereits in den Stages behoben sind. Es wäre also vorteilhaft, wenn zuerst die Stages getestet werden.
+		</p>
+		<p>
+			Wenn Sie dann einen Bug auf Bugzilla verfassen, dann schicken Sie zusätzlich bitte eine E-Mail an
+			<uri link="mailto:NOSPAM_beejay_AT_gentoo_DOT_org">Benjamin Judas</uri> und an <uri link="mailto:NOSPAM_seemant_AT_gentoo_DOT_org">Seemant Kulleen</uri> (aber bitte
+			auf Englisch) mit der Bug-ID und einer kurzen Beschreibung. Wir begrüssen jede Hilfe, die wir kriegen können.
+		</p>
+  		</news>
+  	</body>
+</section>
+
+<section>
+	<title>Weihnachtsgrüsse</title>
 
 <body>
 		<p>
 			Ein ereignisreiches Jahr neigt sich nun langsam dem Ende zu und wie an so vielen Stellen ist es nun
-			auch hier an der Zeit, die Erlebnisse noch einmal Revue passieren zu lassen. FÃ¼r Gentoo war dies ein
-			Ã¼beraus erfolgreiches Jahr: Neben einem sehr grossen Zuwachs an Anwendern sowohl im privaten als auch
-			im Businessbereich konnte Gentoo bei vielen Gelegenheiten seine Vielseitigkeit demonstrieren. SpÃ¤testens
-			mit der VerÃ¶ffentlichung der Final-Version von Gentoo-Linux 1.4 Anfang August wurde Gentoo-Linux neben SuSE,
-			Debian, Mandrake und RedHat zu den grossen Distributionen gezÃ¤hlt.</p>
+			auch hier an der Zeit, die Erlebnisse noch einmal Revue passieren zu lassen. Für Gentoo war dies ein
+			überaus erfolgreiches Jahr: Neben einem sehr grossen Zuwachs an Anwendern sowohl im privaten als auch
+			im Businessbereich konnte Gentoo bei vielen Gelegenheiten seine Vielseitigkeit demonstrieren. Spätestens
+			mit der Veröffentlichung der Final-Version von Gentoo-Linux 1.4 Anfang August wurde Gentoo-Linux neben SuSE,
+			Debian, Mandrake und RedHat zu den grossen Distributionen gezählt.</p>
 		<p>
-			Auch fÃ¼r Gentoo.de war dies ein ereignisreiches Jahr. Nach einem verlÃ¤ngerten Winterschlaf erwachte das Projekt
-			wieder zum Leben und festigte so seine Position als Portal fÃ¼r die Gemeinschaft der deutschen Anwenderschar.
+			Auch für Gentoo.de war dies ein ereignisreiches Jahr. Nach einem verlängerten Winterschlaf erwachte das Projekt
+			wieder zum Leben und festigte so seine Position als Portal für die Gemeinschaft der deutschen Anwenderschar.
 			Deutschland wird mittlerweile als die Gentoo-Hochburg nach den USA gewertet. Nirgendwo anders gibt es solch eine
 			starke Community, was sich auch durch diverse Usertreffen manifestierte. Gentoo.de ist mittlerweile der Lieferant
-			No. 1 fÃ¼r deutsche Ãœbersetzungen, was sich jetzt und in Zukunft in einem erhÃ¶hten Verantwortungsbewusstsein fÃ¼r
+			No. 1 für deutsche Übersetzungen, was sich jetzt und in Zukunft in einem erhöhten Verantwortungsbewusstsein für
 			alle Projektteilnehmer bemerkbar machen wird.</p>
 		<p>
 			Die Zusammenarbeit zwischen Gentoo.org und Gentoo.de wurde bei vielen Gelegenheiten demonstriert: Sei es bei der
-			bereits erwÃ¤hnten Ãœbersetzerarbeit oder bei diversen einschlÃ¤gigen Veranstaltungen. So konnte ein Team von Teilnehmern
+			bereits erwähnten Übersetzerarbeit oder bei diversen einschlägigen Veranstaltungen. So konnte ein Team von Teilnehmern
 			beider Projekte (Gentoo.org und Gentoo.de) im Sommer beim Linuxtag in Karlsruhe viele neue Anwender gewinnen und beim Practical-Linux-Tag
-			im Oktober in Giessen viele interessante GesprÃ¤che mit Anwendern aus vielen verschiedenen Fachgebieten fÃ¼hren.</p>
+			im Oktober in Giessen viele interessante Gespräche mit Anwendern aus vielen verschiedenen Fachgebieten führen.</p>
 		<p>
-			Auch im nÃ¤chsten Jahr werden wir unsere Aufgabe nach bestem Wissen und Gewissen erfÃ¼llen und wir hoffen, daÃŸ wir weiterhin
-			fÃ¼r viele deutschsprachige Anwender die Anlaufstelle No. 1 bleiben und auch viele neue gewinnen kÃ¶nnen. Soviel sei schon einmal vorab
-			verraten: Im nÃ¤chsten Jahr wird es viele Ãœberraschungen fÃ¼r die deutsche Anwendergemeinschaft geben. Ãœberraschungen, von denen jeder
+			Auch im nächsten Jahr werden wir unsere Aufgabe nach bestem Wissen und Gewissen erfüllen und wir hoffen, daß wir weiterhin
+			für viele deutschsprachige Anwender die Anlaufstelle No. 1 bleiben und auch viele neue gewinnen können. Soviel sei schon einmal vorab
+			verraten: Im nächsten Jahr wird es viele Überraschungen für die deutsche Anwendergemeinschaft geben. Überraschungen, von denen jeder
 			Anwender profitieren kann - Vieles wird wesentlich einfacher werden.</p>
 		<p>
-			In diesem Sinne wÃ¼nscht das Gentoo.de Team im Namen von allen Gentoo-Entwicklern rund um den Globus frohe und besinnliche Weihnachten
+			In diesem Sinne wünscht das Gentoo.de Team im Namen von allen Gentoo-Entwicklern rund um den Globus frohe und besinnliche Weihnachten
 			und einen guten Rutsch ins neue Jahr!</p>
 	</body>
 </section>
@@ -120,21 +157,21 @@
 
 
 <p>
-Gentoo Linux ist eine portbasierte Distribution fÃ¼r den erfahrenen Linux User. Sie eignet sich hervorragend fÃ¼r
-alle Personen, die maximale Kontrolle Ã¼ber ihr System erhalten wollen. Man kann mit Gentoo alles machen
+Gentoo Linux ist eine portbasierte Distribution für den erfahrenen Linux User. Sie eignet sich hervorragend für
+alle Personen, die maximale Kontrolle über ihr System erhalten wollen. Man kann mit Gentoo alles machen
 - vom Server bis zum Desktop-System, vom Cluster bis zur einfachen Boot-CD.
 </p>
 
 <p>
 <warn>
-Gentoo-Linux ist nur bedingt eine Distribution fÃ¼r Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele
+Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele
 Dokumentationen zu lesen -- auch Englische. Es gibt keine grafischen Konfigurationshilfen, fast alles muss
-von Hand konfiguriert werden. Sollten Sie bisher nur Ã¼ber KDE, Gnome oder irgend einer anderen grafischen
-OberfÃ¤che mit Linux in BerÃ¼hrung gekommen sein, dann ist Gentoo sicherlich nicht gleich die richtige
-Distribution fÃ¼r Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer sein Ihrem Rechner ein
-Speicherupgrade zu gÃ¶nnen oder eine schnellere CPU anzuschaffen. Sie mÃ¼ssen kein Linux-Profi sein,
-aber der Status eines fortgeschrittenen Anwenders ist hilfreich - sonst kÃ¶nnte Ihr Ausflug ins Gentoo-Land
-recht bald einen herben RÃ¼ckschlag erleiden.
+von Hand konfiguriert werden. Sollten Sie bisher nur über KDE, Gnome oder irgend einer anderen grafischen
+Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht gleich die richtige
+Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer sein Ihrem Rechner ein
+Speicherupgrade zu gönnen oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein,
+aber der Status eines fortgeschrittenen Anwenders ist hilfreich - sonst könnte Ihr Ausflug ins Gentoo-Land
+recht bald einen herben Rückschlag erleiden.
 </warn>
 </p>
 
@@ -146,29 +183,29 @@ recht bald einen herben RÃ¼ckschlag erleiden.
 <body>
 
 <p>
-Das Projekt gentoo-deutsch soll als Sammelstelle fÃ¼r Anpassungen von Gentoo Linux an deutsche 
+Das Projekt gentoo-deutsch soll als Sammelstelle für Anpassungen von Gentoo Linux an deutsche 
 Gegebenheiten dienen.
  </p>
 
  <p>
-An Mitarbeit interessierte Benutzer finden auf der <uri link="/inhalte/projekt/projekt/">Ãœbersichtseite</uri> alle 
-Informationen, um sich aktiv bei uns engagieren zu kÃ¶nnen.  Gentoo.de hat es sich neben der Erstellung von 
+An Mitarbeit interessierte Benutzer finden auf der <uri link="/inhalte/projekt/projekt/">Übersichtseite</uri> alle 
+Informationen, um sich aktiv bei uns engagieren zu können.  Gentoo.de hat es sich neben der Erstellung von 
 <uri link="http://www.gentoo.de/inhalte/download/ebuilds_de/">eigenen Ebuilds</uri> auch 
-zur Hauptaufgabe gemacht, die Ãœbersetzung der Gentoo.org-Dokumentationen ins Deutsche durchzufÃ¼hren. 
-<uri link="http://www.gentoo.de/inhalte/doku/">Hier</uri> sehen Sie einen Ãœberblick Ã¼ber unsere bisherige Arbeit.
+zur Hauptaufgabe gemacht, die Übersetzung der Gentoo.org-Dokumentationen ins Deutsche durchzuführen. 
+<uri link="http://www.gentoo.de/inhalte/doku/">Hier</uri> sehen Sie einen Überblick über unsere bisherige Arbeit.
 </p>
 
 <p>
-FÃ¼r die Community stellen wir <uri link="/inhalte/projekt/neuigkeiten/">aktuelle Neuigkeiten</uri> zur VerfÃ¼gung. Weitergehende Informationen bei Problemen bieten unsere <uri link="/inhalte/community/mailinglisten/">
-Mailinglisten</uri>. HÃ¤ufig gestellte Fragen werden in der <uri link="http://gentoo.diefleissigen.de/faq" target="_blank">Gentoo FAQ</uri> abgehandelt. Bekannt fÃ¼r seine Hilfsbereitschaft sind  unsere 
+Für die Community stellen wir <uri link="/inhalte/projekt/neuigkeiten/">aktuelle Neuigkeiten</uri> zur Verfügung. Weitergehende Informationen bei Problemen bieten unsere <uri link="/inhalte/community/mailinglisten/">
+Mailinglisten</uri>. Häufig gestellte Fragen werden in der <uri link="http://gentoo.diefleissigen.de/faq" target="_blank">Gentoo FAQ</uri> abgehandelt. Bekannt für seine Hilfsbereitschaft sind  unsere 
 <uri link="/inhalte/community/foren/">Foren</uri>. Auch im <uri link="/inhalte/community/irc/">
 IRC</uri> sind wir vertreten.
 </p>
 
 <p>
 Auch sonst ist die Gentoo Community sehr aktiv. Wer sich mit Gleichgesinnten in seiner Umgebung treffen 
-mÃ¶chte, kann sich bei den <uri link="http://forums.gentoo.org/viewtopic.php?t=88917">User 
-Treffen</uri> bemerkbar machen. Des weiteren sind wir hÃ¤ufiger auf Veranstaltungen vertreten, um Gentoo 
+möchte, kann sich bei den <uri link="http://forums.gentoo.org/viewtopic.php?t=88917">User 
+Treffen</uri> bemerkbar machen. Des weiteren sind wir häufiger auf Veranstaltungen vertreten, um Gentoo 
 Linux zu promoten. Ein Beispiel ist der <uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri>.         
 </p>
 		
