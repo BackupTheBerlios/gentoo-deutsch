@@ -1,6 +1,9 @@
 # ChangeLog for media-video/linuxdvb
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvb/ChangeLog,v 1.1 2003/04/26 12:15:06 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvb/ChangeLog,v 1.2 2003/04/26 13:43:10 mad Exp $
+
+*libdvb-0.3.0 (26 Apr 2003) M.Hierling <mad@cc.fh-lippe.de> libdvb-0.3.0.ebuild
+  new version, 1 new lib (for ci support)
 
 *libdvb-0.2.3 (03 Apr 2003)
   initial
