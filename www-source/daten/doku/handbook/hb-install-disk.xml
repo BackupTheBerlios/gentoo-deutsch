@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.21 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.4 2003/12/05 13:41:29 pyrania Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.5 2003/12/14 14:21:03 pyrania Exp $ -->
 
 <sections>
 <section>
@@ -572,7 +572,7 @@ ein anderes Partitions Schema verwenden wollen!
 
 <p>
 Zuerst erstellen wir eine kleine Boot Partition. Drücken Sie <c>n</c> um eine
-neue Partition zu erstellen, dann <c>p</c> um eine primäre Partition zu wählen,
+neue Partition zu erstelle, dann <c>p</c> um eine primäre Partition zu wählen,
 gefolgt von <c>1</c> für die erste primäre Partition. Wenn Sie nach dem ersten
 Zylinder gefragt werden, drücken Sie enter. Für den letzten Zylinder geben Sie
 <c>+32M</c> ein, um eine 32 MB Partition zu erzeugen.
@@ -613,18 +613,19 @@ Device Boot    Start       End    Blocks   Id  System
 <body>
 
 <p>
-Let's now create the swap partition. To do this, type <c>n</c> to create a new 
-partition, then <c>p</c> to tell fdisk that you want a primary partition. Then 
-type <c>2</c> to create the second primary partition, <path>/dev/hda2</path> in
-our case. When prompted for the first cylinder, hit enter. When prompted for 
-the last cylinder, type <c>+512M</c> to create a partition 512MB in size. After
-you've done this, type <c>t</c> to set the partition type, <c>2</c> to select 
-the partition you just created and then type in <c>82</c> to set the partition 
-type to "Linux Swap". After completing these steps, typing <c>p</c> should
-display a partition table that looks similar to this:
+Lassen Sie uns jetzt eine Swap Partition erstellen. Drücken Sie hierfür <c>n</c>
+um eine neue Partition zu erstellen, gefolgt von <c>p</c> um fdisk zu sagen, sie
+als Primäre Partition zu markieren. Dann drücken Sie <c>2</c> um die zweite
+primäre Partition zu erstellen, in unserem Fall <path>/dev/hda2</path>. Wenn Sie
+nach dem ersten Zylinder gefragt werden, drücken Sie enter. Beim letzten
+Zylinder geben Sie <c>+512M</c> an, um eine 512MB große Partition zu erstellen.
+Danach drücken Sie <c>t</c> um dem Partitionstyp zu setzen, <c>2</c> um die
+eben erstellte Partition zu wählen und daraufhin <c>82</c> um den Partitionstyp
+"Linux Swap" zu wählen. Wenn Sie diese Schritte erledigt haben, sollten Sie
+<c>p</c> drücken, um die Partitiontabelle ausgeben zu lassen:
 </p>
 
-<pre caption="Partition listing after creating a swap partition">
+<pre caption="Partitionstabelle nach dem erstellen der Swap Partition">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda: 30.0 GB, 30005821440 bytes
@@ -639,10 +640,11 @@ Device Boot    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Creating the Root Partition</title>
+<title>Erstellen der Boot Partition</title>
 <body>
 
 <p>
+ 
 Finally, let's create the root partition. To do this, type <c>n</c> to create a 
 new partition, then <c>p</c> to tell fdisk that you want a primary partition. 
 Then type <c>3</c> to create the third primary partition, <path>/dev/hda3</path>
