@@ -759,25 +759,48 @@ Calculating dependencies ...done!
 [ebuild  N   ] app-doc/qt-docs-2.3.1 to /
 [ebuild  N   ] dev-util/kdevelop-2.0.2 to /
 </pre>
-	<p>In the above listing, packages marked with a <i>N</i> are
-	packages which have not yet been installed and would be installed
-	during this action.  Packages marked with a <i>U</i> indicate
-	that an older version of the package was already installed and the
-	action would upgrade the package.
+	<p>Pakete, die mit einem <i>N</i> gekennzeichnet sind, befinden
+	sich noch nicht installiert auf Ihrem Rechner, wobei durch diese
+	Aktion es installiert wird. Pakete, die mit einem <i>U</i>
+	gekennzeichnet werden, befinden sich bereits installiert auf
+	Ihrem System (wobei es sich h&#246;chstwahrscheinlich um veraltete
+	Pakete handelt) und werden durch diese Aktion aktualisiert.
 	</p>
 	<p>
-	The other arguments available are:
+	Folgende Parameter sind ausserdem Verf&#252;gbar:	
 	</p>
 	<p>
-	<i>--fetchonly</i> : Downloads the needed archive files for compiling
-	the package to be installed and any dependencies that need to be met.
+	<i>--fetchonly</i> : Ladet alle ben&#246;tigten Dateien herunter, die
+	f&#252;r das Kompilieren notwendig sind sowie alle Abh&#228;ngigkeiten,
+	die dadurch entstehen.
 	</p>
 	<p>
-	<i>--emptytree</i> : This option makes Portage pretend that none of the
+	<i>--emptytree</i> : Diese Option l&#228;sst Portage vort&#228;uschen,
+	das keines der Abh&#228;ngigkeiten von dem Paket oder 
+	<!-- blablabla, sehr lang gegruebelt, bitte helfen! /:-) (EH)
+
+	Originaltext:
+	
+	This option makes Portage pretend that none of the
 	dependencies of this package or the packages it depends upon are 
-	installed.  This is useful with <i>--pretend</i> to display a complete
+	installed. 
+	
+	--> 
+
+	Dies ist n&#252;tzlich mit der Option <i>--pretend</i>, um eine komplette
+	Liste der Abh&#228;ngigkeiten f&#252;r jedes einzelne Paket anzeigen
+	zu lassen.
+
+	<!-- Gut so? heute hab ichs nicht so drauf mitm Uebersetzen :-)) (EH)
+
+	Originaltext:
+	
+	This is useful with pretend to display a complete
 	tree of dependencies for any particular package.  All dependencies
 	except for glibc are displayed.
+
+	-->
+	
 	</p>
 	<p><i>--nodeps</i> : Portage attempts to merge only the specified
 	packages and ignores any dependencies.  If you do not have the 
