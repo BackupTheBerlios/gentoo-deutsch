@@ -1,9 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE sections SYSTEM "/dtd/book.dtd">
+
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.28 -->
+<!-- English CVS Version: 1.31 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.12 2004/01/03 14:20:39 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.13 2004/01/11 09:55:45 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -1827,7 +1830,7 @@ Wenn Sie Gentoo nicht von einer Gentoo LiveCD installieren, müssen Sie
 <path>/proc</path>  mit der Option bind mounten:
 </p>
 
-<pre caption="proc und dev mit der Option bind mounten">
+<pre caption="proc mit der Option bind mounten">
 # <i>mount -o bind /proc /mnt/gentoo/proc</i>
 </pre>
 
