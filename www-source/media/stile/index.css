@@ -229,7 +229,7 @@ table.resultlist tr{
 }
 
 table.resultlist td.title{
-	font-size: medium;
+	font-size: small;
 	font-weight: bold;
         background-color:#45347B;
 	color: #FFFFFF;
