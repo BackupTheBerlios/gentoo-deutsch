@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.2.ebuild,v 1.1 2004/01/24 11:20:26 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.2.ebuild,v 1.2 2004/01/24 11:31:27 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -12,7 +12,7 @@ S=${WORKDIR}/vdr-${PV}
 DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="
-		ftp://ftp.cadsoft.de/vdr//Developer/vdr-${PV}.tar.bz2
+		ftp://ftp.cadsoft.de/vdr/Developer/vdr-${PV}.tar.bz2
 		"
 
 # vanilla :-)
@@ -258,7 +258,7 @@ pkg_postinst() {
 	einfo "http://www.vdrportal.de/board/board.php?boardid=56"
 	einfo
 
-	INSTALLED_PLUGINS=$(qpkg -I -nc | grep vdrplugin | cut -d" " -f 1)
+	[ -x /usr/bin/qpkg ] && INSTALLED_PLUGINS=$(qpkg -I -nc | grep vdrplugin | cut -d" " -f 1)
 	if [ -z "$INSTALLED_PLUGINS" ]; then
 		einfo "Remember: it is generally a good idea, to recompile plugins now."
 		einfo
