@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book SYSTEM "/dtd/book.dtd">
 
-<!-- English CVS Version: 1.19 -->
+<!-- English CVS Version: 1.30 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/handbook.xml,v 1.5 2003/11/27 12:28:09 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/handbook.xml,v 1.6 2003/12/07 02:37:07 dertobi123 Exp $ -->
 
 <book link="handbook.xml">
 <title>Gentoo Handbuch</title>
@@ -120,8 +120,8 @@ bündeln.
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 <license/>
 
-<version>0.12</version>
-<date>21. November 2003</date>
+<version>0.21</version>
+<date>06. Dezember 2003</date>
 
 <part>
 <title>Gentoo installieren</title>
@@ -171,8 +171,8 @@ Benutzung partitionieren.
 <title>Installation der Gentoo Installations Dateien</title>
 <abstract>
 Die Installation von Gentoo funktioniert durch sogenante Stage-Dateien. In
-diesem Kapitel beschreiben wir, wie Sie eine Stage-Datei entpacken und einen
-chroot in Ihr neues System ausführen.
+diesem Kapitel beschreiben wir, wie Sie eine Stage-Datei entpacken und
+Portage konfigurieren.
 </abstract>
   <include href="hb-install-stage.xml"/>
 </chapter>
@@ -219,8 +219,8 @@ Konfiguration des Bootloaders nach Ihren Bedürfnissen begleiten.
 <chapter>
 <title>Installation von benötigten System Tools</title>
 <abstract>
-Wie bereits gesagt, bei Gentoo geht es um die Auswahl. In diesem kapitel helfen
-wir Ihnen Tools zu installieren, sie haben die Auswahl.
+Wie bereits gesagt, bei Gentoo geht es um die Auswahl. In diesem Kapitel helfen
+wir Ihnen bei der Auswahl und Installation wichtiger Tools
 </abstract>
   <include href="hb-install-tools.xml"/>
 </chapter>
@@ -229,8 +229,8 @@ wir Ihnen Tools zu installieren, sie haben die Auswahl.
 <title>Abschliessen Ihrer Gentoo Installation</title>
 <abstract>
 Sie sind fast fertig. Wir werden nun noch einen (oder mehrere) Benutzer zu Ihrem
-System hinzufügen und dann die Installation verlassen, um die neue Gentoo
-Installation zu booten.
+System hinzufügen und dann die Installation verlassen, um das neue Gentoo
+System zu booten.
 </abstract>
   <include href="hb-install-finalise.xml"/>
 </chapter>
