@@ -77,23 +77,24 @@ richtet catering to beginners.</abstract>
 </section>
 
 <section>
-<title>Introducing vim</title>
+<title>Einführung in vim</title>
 <body>
 
 	<p>
-	There are many versions of vi, and I'm going to be showing you how to use a
-	version of vi called "vim".  vim is very popular and has a number of extensions
-	that make vi a lot nicer (whenever I demonstrate a vim-specific command, I'll
-	make a note of it.) If you need to install vim, you can get it from <uri href="http://www.vim.org">http://www.vim.org</uri>.
-	In addition to an enhanced command-line vi, vim also comes with gvim, a nice graphical editor which can be
-	configured to use the excellent GTK+ gui library.  Here's a gvim screenshot from my system:
+	Es gibt viele Versionen von vi, und ich werde Ihnen zeigen, wie man eine Version namens "vim"
+	benutzt. vim ist sehr beliebt und besitzt einige Erweiterungen, die vi viel interessanter machen
+	(wann immer ich ein vim-spezifisches Kommando benutze, wenn werde ich es anzeigen). Wenn Sie vim installieren
+	möchten, dann können Sie es von <uri href="http://www.vim.org">http://www.vim.org</uri> herunterladen.
+	Zusätzlich zu erweiterten Kommandozeilen-vi, kommt auch gvim mit auf den Rechner, einen netten grafischen Editor,
+	der so eingestellt werden kann, dass er die ausgezeichnete GTK+ GUI-Bibliothek benutzt. Hier ein gvim-Screenshot von
+	meinem System:
 	</p>
 
 	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vishot.png" short="screenshot" caption="VIM screenshot"/>
 
 	<p>
-	If you're a vi newbie, try to get gvim running on your system.  Using vi
-	from a gui can make things a bit easier for beginners.
+	Wenn Sie ein vi-Neuling sind, dann versuchen Sie, gvim auf Ihrem System zu Laufen
+	zu bekommen. Von einer GUI aus sind die Dinge etwas einfacher für Anfänger.
 	</p>
 
 </body>
@@ -101,41 +102,50 @@ richtet catering to beginners.</abstract>
 </chapter>
 
 <chapter>
-<title>First Steps</title>
+<title>Erste Schritte</title>
+
 <section>
-<title>Pick a file</title>
+<title>Eine Datei benutzen</title>
 <body>
-<p>Before using vi to edit files, you need to know how to use vi to move around in
-a file.  vi has a lot of movement commands, and we're going to take a look at many
-of them.  For this part of the tutorial, find an unimportant text file and load it into 
-vi by typing:</p>
-<pre>
-$ vi myfile.txt
-</pre><p>
-If you have vim installed, type "vim myfile.txt".  If you'd prefer to use gvim, type
-"gvim myfile.txt".  myfile.txt should be the name of a text file on your system.
-</p>
+	<p>
+	Bevor Sie vi benutzen um Dateien zu bearbeiten, müssen Sie ersteinmal wissen, wie Sie
+	sich mit vi innerhalb des Textes bewegen können. vi hat eine Menge von Bewegungs-Kommandos,
+	und wir werden uns viele von diesen ansehen. Für diesen teil des Tutorials suchen Sie sich
+	bitte eine unwichtige Textdatei und öffnen diese mit vi, indem Sie folgendes am Kommandoprompt
+	Ihrer Shell eingeben:
+	</p>
+	<pre>
+		$ vi meinedatei.txt
+	</pre>
+	<p>
+	Wenn Sie vim installiert haben, dann geben sie "vim meinedatei.txt" ein. Wenn Sie die
+	Benutzung von gvim bevorzugen, dann geben Sie bitte "gvim meinedatei.txt" ein. meinedatei.txt
+	ist durch den Namen einer einfachen Textdatei auf Ihrem System zu ersetzen.
+	</p>
 </body>
 </section>
 
 <section>
 <title>Inside vi</title>
 <body>
-
-<p>After vi loads, you should see a part of the text file you loaded on your screen.
-Congratulations -- you're in vi!  Unlike many editors, when vi starts up, it is in 
-a special mode called "command mode".  This means that if you press "l" on the keyboard, 
-instead of inserting an "l" into the file at the current cursor position, the cursor
-will move one character to the right instead.  In command mode, the
-characters on your keyboard are used to send commands to vi rather than insert literal
-characters into the text.  One of the most essential types of commands are movement commands;
-let's take a look at some.</p>
-
+	<p>
+	After vi loads, you should see a part of the text file you loaded on your screen.
+	Congratulations -- you're in vi!  Unlike many editors, when vi starts up, it is in
+	a special mode called "command mode".  This means that if you press "l" on the keyboard,
+	instead of inserting an "l" into the file at the current cursor position, the cursor
+	will move one character to the right instead.  In command mode, the
+	characters on your keyboard are used to send commands to vi rather than insert literal
+	characters into the text.  One of the most essential types of commands are movement commands;
+	let's take a look at some.
+	</p>
 </body>
 </section>
 </chapter>
+
+
 <chapter>
 <title>Moving around</title>
+
 <section>
 <title>Moving in vi, part 1</title>
 <body>
