@@ -19,10 +19,22 @@
 </box>
 
 <chapter>
+<section>
+	<body>
+	<news type="news" date="29.10.2003" title="Gentoo-Newsletter">
+		<p>
+			Der heutige Newsletter enthält Infos über Virtual Hosting und den enstprechenden Umstellungen in
+			Apache2, sowie Infos über die neuen Gentoo Live CDs mit dem 2.6. Kernel. Ausserdem gibt
+			es wieder einige offenen Stellen zu besetzen.
+			<uri link="http://www.gentoo.org/news/en/gwn/20031027-newsletter.xml">Nichts wie hin</uri>!
+		</p>
+	</news>
+	</body>
+</section>
 
 <section>
 	<body>
-	<news type="other" date="29.10.2003" title="Neue Dokumantationen">
+	<news type="other" date="29.10.2003" title="Neue Dokumentationen">
 		<p>
 			In den letzten Tagen hat sich auf gentoo.de einiges getan. Die 
 			<uri link="http://www.gentoo.de/inhalte/doku/">Übersichtsseite</uri> für die Dokumentationen wurde
@@ -34,6 +46,7 @@
 	</news>
 	</body>
 </section>
+
 <section>
 	<body>
 	<news type="news" date="20.10.2003" title="Gentoo-Newsletter">
