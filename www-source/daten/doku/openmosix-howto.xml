@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/openmosix-howto.xml,v 1.1 2003/12/10 10:01:15 schurke Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/openmosix-howto.xml,v 1.2 2003/12/10 10:51:47 jay Exp $ -->
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<!-- English CVS Version: 1.4 -->
 
 <guide link="/doc/de/openmosix-howto.xml">
   
@@ -24,7 +26,7 @@
 <license/>
 
 <abstract>
-Dieses HOWTO soll Dir helfen, mittels Gentoo-Linux einen openMosix-Cluster einzurichten.
+Dieses HOWTO soll Ihnen helfen, einen openMosix-Cluster in Gentoo-Linux einzurichten.
 </abstract>
 
 <version>1.3</version>
@@ -37,7 +39,7 @@ Dieses HOWTO soll Dir helfen, mittels Gentoo-Linux einen openMosix-Cluster einzu
 <body>
 
 <p>
-Dieses HOWTO soll Dir helfen, einen openMosix-Cluster einzurichten, der auf der 
+Dieses HOWTO soll Ihnen helfen, einen openMosix-Cluster einzurichten, der auf der 
 Gentoo-Linux Distribution basiert. Es ist unsere Absicht, dies so 
 benutzerfreundlich als möglich und hilfreich für den Linux-Neuling zu 
 gestalten. Während ein erfahrener Benutzer die HOWTOs, die über openMosix, 
@@ -47,10 +49,10 @@ Erfahrung erleichtert.
 </p>
 
 <note>
-Falls Du planst, Deinen openMosix-Cluster mit disklosen Rechnern 
-aufzusetzen, solltest Du als erstes den Abschnitt über den Kernel weiter unten 
-lesen, um zu lernen, wie Du einen Kernel mit openMosix-Unterstützung 
-kompilierst, anschließend unser <uri link="diskless-howto.xml">diskless HOWTO</uri> 
+Falls Sie planen, den openMosix-Cluster mit disklosen Rechnern 
+aufzusetzen, sollten Sie als erstes den Abschnitt über den Kernel weiter unten 
+lesen, um zu lernen, wie Sie einen Kernel mit openMosix-Unterstützung 
+kompilieren, anschließend unser <uri link="diskless-howto.xml">diskless HOWTO</uri> 
 lesen und dann hierher zurückkommen, um mit der eigentlichen Cluster-Installation 
 fortzufahren.
 </note>
@@ -76,18 +78,18 @@ wie p-threads, oder schwere Prozesse, die gemeinsamen Speicher nutzen.
 </p>
 
 <p>
-Für weitere Informationen über openMosix, kannst Du deren <uri
+Für weitere Informationen über openMosix, können Sie die openMosix<uri
 link="http://openmosix.sourceforge.net">Homepage</uri> besuchen.
 </p>
 
 </body>
 </section>
 <section>
-<title>Über den cluster</title>
+<title>Über den Cluster</title>
 <body>
 
 <p>
-Unser Cluster wir aus einzelnen Computern bestehen (sogenannten Knoten), die 
+Der Cluster wird aus einzelnen Computern bestehen (sogenannten Knoten), die 
 Rechenressourcen untereinander teilen, um die Rechenleistung aller Knoten zu 
 steigern. Es müssen nicht alle Knoten die gleiche Architektur aufweisen, 
 allerdings ist das Clustering viel leichter zu bewerkstelligen, wenn sie das 
@@ -97,17 +99,17 @@ doch tun.
 </body>
 </section>
 <section>
-<title>Bevor Du beginnst</title>
+<title>Bevor Sie beginnen</title>
 <body>
 
 <p>
-Du solltest Gentoo auf den Rechnern installiert haben, die Du in den Cluster 
-einbringen willst. Außerdem benötigst Du die openMosix Kernelquellen, die zu 
-Deinem Komfort schon von Gentoo angepasst wurden.
+Sie sollten Gentoo auf allen Rechnern installiert haben, die in den Cluster 
+eingebracht werden. Außerdem benötigen Sie die openMosix Kernelquellen, die zu 
+Ihrem Komfort schon von Gentoo angepasst wurden.
 </p>
 
 <p>
-Um diese Quellen herunterzuladen, verwendest Du einfach <c>emerge</c>:
+Um diese Quellen herunterzuladen, verwenden Sie einfach <c>emerge</c>:
 </p>
 
 <pre caption="Die veränderten Kernelquellen installieren">
@@ -126,18 +128,18 @@ Um diese Quellen herunterzuladen, verwendest Du einfach <c>emerge</c>:
 
 <p>
 Der Kernel ist die Software, die zwischen der Hardware und allen anderen 
-Programmen sitzt, die Du auf Deinem Computer geladen hast, er ist das Herz 
-eines kernelbasierten Betriebssystems. Wenn Dein Computer startet, führt das 
+Programmen sitzt, die Sie auf Ihrem Computer geladen haben, er ist das Herz 
+eines kernelbasierten Betriebssystems. Wenn der Computer startet, führt das 
 BIOS die Befehle aus, die es im reservierten Bootspace der Festplatte findet. 
-Diese Befehle sind üblicherweise ein Bootloader, der Deinen Kernel lädt. 
+Diese Befehle sind üblicherweise ein Bootloader, der den Kernel lädt. 
 Nachdem der Kernel geladen wurde, werden alle weiteren Prozesse vom Kernel 
 verwaltet.
 </p>
 
 <p>
 Für weitere Informationen über den Kernel und die Konfiguration eines Kernels 
-kannst Du Dir das <uri link="http://www.tldp.org/HOWTO/Kernel-HOWTO.html">Kernel
-HOWTO</uri> ansehen.
+kann ein Blick in das <uri link="http://www.tldp.org/HOWTO/Kernel-HOWTO.html">Kernel
+HOWTO</uri> nicht schaden.
 </p>
 
 </body>
@@ -147,7 +149,7 @@ HOWTO</uri> ansehen.
 <body>
 
 <p>
-Der Kernel kann so groß sein, wie Du willst und ganz nach Deinen Wünschen konfiguriert sein, 
+Der Kernel kann so groß sein, wie Sie es vorhaben und ganz nach Ihren Wünschen konfiguriert sein, 
 aber es gibt einige notwendige Kerneloptionen, die ausgewählt werden müssen.
 </p>
 
@@ -163,7 +165,7 @@ gezeigt mit den openmosix-Quellen zu verknüpfen.
 </pre>
 
 <p>
-Dann gehst Du in die Kernelkonfiguration:
+Dann wechseln Sie in die Kernelkonfiguration:
 </p>
 
 <pre caption="Editieren der Kernelkonfiguration">
@@ -173,10 +175,10 @@ Dann gehst Du in die Kernelkonfiguration:
 
 <p>
 
-Du solltest eine grau/blaue Benutzeroberfläche sehen, die eine sichere 
+Sie sollten eine grau/blaue Benutzeroberfläche sehen, die eine sichere 
 Alternative zum manuellen Editieren von <path>/usr/src/linux/.config</path> bietet. Wenn 
-Dein Kernel zurzeit gut funktioniert, möchtest Du die aktuelle 
-Konfigurationsdatei eventuell sichern:
+der Kernel zurzeit gut funktioniert, sollte die aktuelle 
+Konfigurationsdatei eventuell vorher gesichert werden:
 </p>
 
 <pre caption="Sicherungskopie der Kernelkonfiguration erstellen">
@@ -184,9 +186,9 @@ Konfigurationsdatei eventuell sichern:
 </pre>
 
 <p>Der oberste Menüpunkt sollte <c>openMosix ---&gt;</c>.  lauten. Wenn das nicht der Fall 
-ist, musst Du die Kernelquellen mit dem openMosix-Patch emergen (siehe <uri
-link="#doc_chap1_sect4">Bevor Du beginnst</uri>). Gehe in die folgenden Untermenüs 
-und stelle sicher, dass die folgenden Punkte als eingebaut gewählt sind. (<e>NICHT</e> als
+ist, müssen Sie die Kernelquellen mit dem openMosix-Patch emergen (siehe <uri
+link="#doc_chap1_sect4">bevor Sie beginnen</uri>). Wechseln Sie in die folgenden Untermenüs 
+und stellen sicher, dass die folgenden Punkte als eingebaut gewählt sind. (<e>NICHT</e> als
 Module):
 </p>
 
@@ -221,12 +223,12 @@ File systems ---&gt;
 </pre>
 
 <note>
-Diese Kernelkonfigurationsoptionen sind zusätzlich zu Deinen systemspezifischen
+Diese Kernelkonfigurationsoptionen sind zusätzlich zu Ihren systemspezifischen
 Konfigurationsoptionen zu wählen und können diese Optionen nicht ersetzen.
 </note>
 
 <p>
-Nachdem Du den Kernel neu konfiguriert hast, muss er neu übersetzt werden:
+Nachdem Sie den Kernel neu konfiguriert haben, muss er neu übersetzt werden:
 </p>
 
 <pre caption="Neukompilierung des Kernels und der Module">
@@ -237,10 +239,10 @@ Nachdem Du den Kernel neu konfiguriert hast, muss er neu übersetzt werden:
 </pre>
 
 <p>
-Danach erstellst Du einen Eintrag für diesen neuen Kernel in <path>lilo.conf</path> oder
-<path>grub.conf</path> (abhängig davon, welchen Bootloader du verwendest) und wählst diesen
-Kernel als Standard aus. Nachdem das neue <path>bzImage</path> in Dein <path>/boot</path> Verzeichnis 
-kopiert wurde, musst Du nur noch das System neu starten.
+Danach erstellen Sie einen Eintrag für diesen neuen Kernel in <path>lilo.conf</path> oder
+<path>grub.conf</path> (abhängig davon, welcher Bootloader verwendet wird) und wählt diesen
+Kernel als Standard aus. Nachdem das neue <path>bzImage</path> in das <path>/boot</path> Verzeichnis 
+kopiert wurde, müssen Sie nur noch das System neu starten.
 </p>
 
 </body>
@@ -250,7 +252,7 @@ kopiert wurde, musst Du nur noch das System neu starten.
 <body>
 
 <p>
-Falls Du Kernelkonfigurationsoptionen nicht findest, überprüfe die folgenden Punkte:
+Falls Sie bestimmte Kernelkonfigurationsoptionen nicht finden, sollten folgende Punkte überprüft werden:
 </p>
 
 <ul>
@@ -274,7 +276,7 @@ Falls Du Kernelkonfigurationsoptionen nicht findest, überprüfe die folgenden P
 Damit Prozesse im Cluster weitergegeben werden können, müssen einige Benutzerprogramme
 installiert werden. Außerdem muss ein openMosix-Serverprogramm gestartet werden, damit
 der Rechner am Cluster teilnehmen und die Möglichkeiten von openMosix voll ausschöpfen
-kann. Um diese Programme und Dateien zu installieren, verwendest Du <c>emerge</c>:
+kann. Um diese Programme und Dateien zu installieren, verwenden Sie <c>emerge</c>:
 </p>
 
 <pre caption="Installation der openMosix Benutzerprogramme">
@@ -294,8 +296,8 @@ alle Rechner in Deinem Netzwerk erkennt.
 </p>
 
 <p>
-Erstelle ein Verzeichnis <path>/mfs</path> auf jedem Rechner und hänge es ein, wenn Du das
-openMosix-Dateisystem verwenden willst, das es Dir ermöglicht, auf alle Rechner zuzugreifen 
+Erstellen Sie ein Verzeichnis <path>/mfs</path> auf jedem Rechner und hängen es ein, wenn Sie das
+openMosix-Dateisystem verwenden wollen, das es ermöglicht, auf alle Rechner zuzugreifen 
 (sehr empfohlen).
 </p>
 
@@ -339,23 +341,23 @@ verfügbaren Rechner behält.
 <body>
 
 <p>
-openMosix-user installiert einige nützliche Werkzeuge in Deinem System. Um einige zu nennen:
+openMosix-user installiert einige nützliche Werkzeuge im System. Um einige zu nennen:
 </p>
 
 <ul>
   <li>
-    <c>mosmon</c> - openMosix monitor. Ermöglicht Dir, den Status aller Deiner Rechner 
+    <c>mosmon</c> - openMosix monitor. Er Ermöglicht es Ihnen, den Status aller Rechner 
     inklusive CPU-Ausnützung, installiertem Speicher, genutztem Speicher etc. zu sehen.
   </li>
   <li>
-    <c>mtop</c> - Erweiterte Version von top, welche Dir zeigt, auf welchem Rechner
+    <c>mtop</c> - Erweiterte Version von top, welches Ihnen zeigt, auf welchem Rechner
     ein Prozess tatsächlich läuft.
   </li>
   <li><c>mps</c> - Erweiterte Version von ps. Zeigt ebenfalls die Rechnernummer an.</li>
   <li>
-    <c>mosctl whois</c> - Dieses Programm ist sehr nützlich, da Dir mosmon und
+    <c>mosctl whois</c> - Dieses Programm ist sehr nützlich, da mosmon und
     die anderen Werkzeuge nur die Rechnernummer anzeigen. Mit <c>mosctl whois nodenumber</c> 
-    kannst Du die IP-Adresse oder den Hostnamen dieses Rechners herausfinden.
+    können Sie die IP-Adresse oder den Hostnamen dieses Rechners herausfinden.
   </li>
 </ul>
 
@@ -369,7 +371,7 @@ unter schwerer Last verhält. Dieses Paket nennt sich <c>openmosixtest</c>:
 </pre>
 
 <p>
-In dem ebuild erfährst Du, wie Du den Test ablaufen lässt.
+In dem ebuild erhalten Sie die Informationen, wie sich der Test ablaufen lässt.
 </p>
 
 </body>
@@ -379,8 +381,8 @@ In dem ebuild erfährst Du, wie Du den Test ablaufen lässt.
 <body>
 
 <p>
-Um einen grafischen Überblick über Deinen Cluster zu erhalten und um zu sehen, wie Prozesse
-weitergegeben werden, kannst Du <c>openmosixview</c> verwenden.
+Um einen grafischen Überblick über Ihren Cluster zu erhalten und um zu sehen, wie Prozesse
+weitergegeben werden, können Sie <c>openmosixview</c> verwenden.
 </p>
 
 <pre caption="openmosixview installieren">
@@ -389,7 +391,7 @@ weitergegeben werden, kannst Du <c>openmosixview</c> verwenden.
 
 <p>
 
-Um diese wunderbare Anwendung zu starten, gibst Du einfach <c>openmosixview</c> ein:
+Um diese wunderbare Anwendung zu starten, geben Sie einfach <c>openmosixview</c> ein:
 </p>
 
 <pre caption="openmosixview starten">
