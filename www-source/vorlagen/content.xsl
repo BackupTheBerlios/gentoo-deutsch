@@ -13,12 +13,12 @@
 <xsl:include href="suche.xsl"/>
 
 <!--
-<xsl:output 
-  method="xml" 
-  encoding="utf-8" 
-  indent="no" 
-  doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" 
-  doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" 
+<xsl:output
+  method="xml"
+  encoding="utf-8"
+  indent="no"
+  doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+  doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
   omit-xml-declaration="no"
   cdata-section-elements=""
 />
@@ -45,38 +45,39 @@
   <html>
   <head>
     <title>
-      <xsl:value-of select="title"/> 
+      <xsl:value-of select="title"/>
       <xsl:text> @ Gentoo Linux - Das deutschsprachige Portal</xsl:text>
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="{$styleurl}index.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="{$styleurl}print.css" media="print"/>    
+    <link rel="stylesheet" type="text/css" href="{$styleurl}print.css" media="print"/>
     <link rel="shortcut icon" href="{$baseurl}favicon.ico" type="image/x-icon"/>
-    <script type="text/javascript" src="{$scripturl}corelib.js"></script>
+    <!--<script type="text/javascript" src="{$scripturl}corelib.js"></script>!-->
     <style type="text/css"><![CDATA[img { behavior: url("]]><xsl:value-of select="$scripturl"/>pngbehavior.htc<![CDATA["); }]]></style>
   </head>
 
-  <body onclick="menu.closeAll()">
+  <!--<body onclick="menu.closeAll()">!-->
+  <body>
 
   <![CDATA[<!-- keine-suche-start -->]]>
 
   <xsl:call-template name="menu"/>
-  
+
   <div id="logo_bg">&#160;</div>
 
   <div id="logo">
     <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
-    
+
     <td style="width: 50%" valign="top">
       <img src="{$imageurl}logo/title.jpg" height="88" width="218" alt="Gentoo Linux - Das deutschsprachige Portal"/>
     </td>
-    
+
     <td style="width: 272px">
-      <a href="{$baseurl}index.html" title="Zur Gentoo.de-Startseite">    
+      <a href="{$baseurl}index.html" title="Zur Gentoo.de-Startseite">
         <img src="{$imageurl}logo/logo.jpg" height="105" width="272" alt="Gentoo Linux Logo"/>
-      </a>  
+      </a>
     </td>
-    
+
     <td valign="bottom" align="right" style="width: 50%">
       <form method="get" action="/cgi-bin/perlfect/search/search.pl" style="margin-bottom: 30px">
         <p>
@@ -89,11 +90,11 @@
 	<input type="text" name="q" value="Suchbegriff" size="20"/>
 	</p>
       </form>
-    </td>  
-    
+    </td>
+
     </tr>
     </table>
-  </div>  
+  </div>
 
   <div id="about">
     <a href="{$baseurl}" class="icon">
@@ -105,7 +106,7 @@
       <img src="{$imageurl}icons/print.png" width="16" height="16" alt="Diese Seite drucken"/>
       <xsl:value-of select="$lng_print"/>
     </a>
-    
+
     <xsl:if test="/guide">
       <h4><xsl:value-of select="$lng_version"/></h4>
       <p>
@@ -184,7 +185,7 @@
         <form style="font-size: 0.7em" action="http://www.gentoo.de/">
           <p><select name="url" size="1" class="jumpbox"
             onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
-            <option value="---">[Bitte Kapitel auswählen]</option>  
+            <option value="---">[Bitte Kapitel auswÃ€hlen]</option>  
         
             <xsl:for-each select="chapter/title">
               <option value="header_{position()}"><xsl:value-of select="."/></option>
