@@ -1,0 +1,9 @@
+# ChangeLog for app-misc/volksbibel
+# Copyright 2002-2003 Mario Scheel; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-misc/volksbibel/ChangeLog,v 1.1 2003/11/22 18:19:35 zweistein12 Exp $
+
+*volksbibel-2003 (2 Nov 2003)
+
+  2 Nov 2003; Mario Scheel <mail@marioscheel.de>
+  volksbibel-2003.ebuild:
+  Init Version.
