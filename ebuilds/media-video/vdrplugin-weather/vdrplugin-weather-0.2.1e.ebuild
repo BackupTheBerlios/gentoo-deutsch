@@ -1,9 +1,9 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-weather/vdrplugin-weather-0.2.1e.ebuild,v 1.4 2004/08/12 18:59:34 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-weather/vdrplugin-weather-0.2.1e.ebuild,v 1.5 2004/08/12 19:01:49 austriancoder Exp $
 
 IUSE=""
-inherit vdrplugin
+inherit vdrplugin eutils
 
 #S=${WORKDIR}/${VDRPLUGIN}-${PV}
 DESCRIPTION="Video Disk Recorder ${VDRPLUGIN} Plugin"
