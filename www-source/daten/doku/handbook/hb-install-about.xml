@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.8 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-about.xml,v 1.1 2003/11/22 17:41:38 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-about.xml,v 1.2 2003/11/27 12:37:14 jay Exp $ -->
 
 <sections>
 <section>
@@ -15,7 +15,7 @@
 <p>
 Zuerst, <e>willkommen</e> bei Gentoo. Sie sind dabei in die Welt der
 Auswahl und Performance einzusteigen. Bei Gentoo dreht sich vieles um Auswahl.
-Bei der Installation von Gentoo, das wird Ihnen mehrfach klargemacht -- könnnen
+Bei der Installation von Gentoo, das wird Ihnen mehrfach klargemacht -- so könnnen
 Sie auswählen, ob Sie Gentoo selber kompilieren möchten, wie Sie Gentoo
 installieren möchten, welche Systemlogger Sie benutzen möchten und so weiter ...
 </p>
@@ -125,7 +125,7 @@ Wenn Sie sich nicht sicher sind, ob ein Problem ein Benutzer Problem ist (ein
 Fehler den Sie trotz sorgfältiger Lektüre dieser Dokumentation machen) oder ein
 Software Problem (ein Fehler, den wir trotz sorgfältigen Tests der
 Installation/Dokumentation begangen haben) sollten Sie #gentoo.de im
-irc.freenode.net Netz joinen, ansonsten sind Sie natürlich auch Willkommen :)
+irc.freenode.net Netz besuchen, ansonsten sind Sie natürlich auch so willkommen :)
 </p>
 
 <p>
