@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.4 2003/12/05 12:55:53 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/gtt.xml,v 1.5 2004/01/24 22:18:10 dertobi123 Exp $ -->
 
 <!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
 
@@ -17,8 +17,8 @@
 
 <license />
 
-<version>1.0</version>
-<date>04. Dezember 2003</date>
+<version>1.1</version>
+<date>24. Januar 2004</date>
 
 <chapter>
 <title>Wichtige Doku für Übersetzer, Ressourcen</title>
@@ -96,6 +96,37 @@ link="/inhalte/projekt/doc-de-meet-03-12.log">hier</uri>.
 
 </body>
 </section>
-</chapter>
+<section>
+<title>Meeting Januar 2004</title>
 
+<p>
+<b>Zusammenfassung:</b>
+</p>
+
+<p>
+<e>1. Pflege der Dokumentation:</e> Kleinere Aktualisierungen an der
+Dokumentation werden direkt vom Lead Translator vorgenommen; bei größeren
+Änderungen wird der zuständige Übersetzer über die Mailingliste informiert, dass
+eine Aktualisierung notwendig ist.
+</p>
+
+<p>
+<e>2. Handbuchübersetzung:</e> Der erste Teil wurde bereits im vergangenen Jahr
+übersetzt, die Übersetzung von Teil 2 neigt sich dem Ende zu. Die Übersetzer
+berichteten, wie weit sie mit den Übersetzungen der jeweiligen Kapitel sind.
+</p>
+
+<p>
+<e>Englischsprachige Commit Liste:</e> Tove regte an, bei gentoo.org eine CVS
+Commitliste anzulegen, die alle interessierten über Änderungen an der englischen
+Dokumentation informiert.
+</p>
+
+<p>
+<e>Log:</e> Das Log vom Meeting finden Sie <uri
+link="/inhalte/projekt/doc-de-meet-04-01.log">hier</uri>.
+</p>
+
+</section>
+</chapter>
 </guide>
