@@ -1,7 +1,7 @@
 <!-- Der Inhalt dieses Dokuments unterliegt der CC-BY-SA Linzenz -->
 <!-- Nachzulesen unter: http://creativecommons.org/licenses/by-sa/1.0 --> 
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-network.xml,v 1.2 2003/12/07 18:53:43 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-network.xml,v 1.3 2003/12/14 14:33:08 jay Exp $ -->
 
 <!-- English CVS Version: 1.13  -->
 
@@ -13,8 +13,8 @@
 <body>
 
 <p>Es hängt davon ab, welches Medium Sie für die Installation von Gentoo
-verwenden, ob Sie ohne Netzwerk (bzw. Internet)-Verbindung weiter machen können.
-Und nein, das ist kein Scherz.
+verwenden, ob Sie die Installation ohne Netzwerk (bzw. Internet)-Verbindung weiter 
+machen können. Und nein, das ist kein Scherz.
 </p>
 
 <p>
@@ -55,13 +55,13 @@ Wenn Sie sich in solch einer Situation befinden, müssen Sie die 2CD-Sets
 verwenden. Diese Sets enthalten den Quellcode, einen Schnappschuss des
 Portage-Tree sowie die Werkzeuge, die Sie benötigen um sowohl ein
 Gentoo-Basis-System als auch alles Weitere einzurichten. Allerdings hat dieses
-Verfahren auch einen Nachteil, sie werden unter Umständen nicht die aktuellste
+Verfahren auch den Nachteil, dass Sie unter Umständen nicht die aktuellste
 Software installieren. Die Unterschiede dürften jedoch minimal sein.
 </p>
 
 <p>
 Wenn Sie die Installation ohne Internetverbindung durchführen möchten, so
-verwenden Sie ein 2CD-Set und überspringen Sie den Rest dieses Kapitels. Fahren
+verwenden Sie das 2CD-Set und überspringen Sie den Rest dieses Kapitels. Fahren
 Sie mit <uri link="?part=1&amp;chap=4">Vorbereiten der Fesplatte(n)</uri> fort.
 Anderenfalls, fahren Sie hier fort und befolgen Sie die Anweisungen zur
 Konfiguration Ihrer Netzwerkkarte.
@@ -139,21 +139,21 @@ hier fort: <uri link="?part=1&amp;chap=4">Vorbereiten der Festplatte(n)</uri>
 <section>
 <title>Automatische Netzwerk-Erkennung</title>
 <subsection>
-<title>Funktioniert es vielleicht sogar schon?</title>
+<title>Funktioniert es vielleicht schon auf Anhieb?</title>
 <body>
 
 <p>
 Wenn Ihr System sich in einem Ethernet mit DHCP Server befindet, ist es sehr
-wahrscheinlich, dass die Netzwerkkonfiguration schon automatisch korrekt ist.
-Wenn dies der Fall ist, sollten die vielen Netzwerkbefehle der LiveCD, wie
-<c>ping</c>, <c>irssi</c>, <c>wget</c>, <c>links</c>, sowie andere, bereits
-arbeiten.
+wahrscheinlich, dass die Netzwerkkonfiguration schon automatisch korrekt 
+eingerichtet wurde. Wenn dies der Fall ist, sollten die vielen Netzwerkbefehle der 
+LiveCD, wie <c>ping</c>, <c>irssi</c>, <c>wget</c>, <c>links</c>, sowie andere, 
+bereits funktionieren.
 </p>
 
 <p>
 Wenn das Netzwerk konfiguriert ist, dann sollte Ihnen der Befehl
-<c>/sbin/ifconfig</c> mindestens eine Netzwerkschnittstelle außer lo, also etwa
-eth0, anzeigen:
+<c>/sbin/ifconfig</c> mindestens eine weiter Netzwerkschnittstelle außer lo, 
+zum Beispiel eth0, anzeigen:
 </p>
 
 <pre caption="/sbin/ifconfig - Ausgabe für eine arbeitende Netzwerkkarte">
@@ -178,7 +178,7 @@ eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
 Dazu können Sie beispielsweise den DNS Server Ihres Internetanbieters
 "anpingen". Die Adresse dieses Servers finden Sie in
 <path>/etc/resolv.conf</path>. Außerdem sollten Sie eine Webseite Ihrer Wahl
-"pingen". So stellen Sie sicher, dass sie sowohl mit dem Internetverbunden sind,
+"pingen". So stellen Sie sicher, dass sie sowohl mit dem Internet verbunden sind,
 als auch, dass Ihre Namensauflösung auch korrekt arbeitet.
 </p>
 
@@ -240,14 +240,14 @@ automatische Konfiguration fehlgeschlagen sein sollte, ist das Script
 <c>net-setup eth0</c>
 </p>
 
-<pre captio="Das net-setup Skript starten">
+<pre caption="Das net-setup Skript starten">
 # <i>net-setup eth0</i>
 </pre>
 
 <p>
 <c>net-setup</c> wird Ihnen einige Fragen bezüglich Ihrer Netzwerkumgebung
 stellen. Haben Sie alle Fragen beantwortet, sollten Sie eine funktionsfähige
-Netzwerkverbindung haben. Testen Sie Ihr Netzwerk wieder wie vorhin beschrieben.
+Netzwerkverbindung haben. Testen Sie Ihr Netzwerk wieder, wie oben beschrieben.
 Sollten die Tests funktionieren, so haben Sie es geschafft. Sie können nun mit
 der Installation von Gentoo fortfahren. Überspringen Sie den Rest dieses Kapitels
 und fahren Sie mit der <uri link="?part=1&amp;chap=4">Vorbereitung der
@@ -289,7 +289,7 @@ einsehen. Stellen Sie bitte auch sicher, dass Sie die richtige Netzwerkkarte
 verwenden. Wenn Ihre Netzwerkkarte im System nicht erkannt wird, müssen Sie das
 entsprechende Kernel-Modul laden. In diesem Fall müssen Sie mit der <uri
 link="#doc_chap4">Manuellen Konfiguration des Netzwerks</uri> fortfahren. Dort
-gehen wir näher auf das laden der entsprechenden Kernelmodule ein.
+gehen wir näher auf das Laden der entsprechenden Kernelmodule ein.
 </p>
 
 <p>
@@ -306,7 +306,7 @@ link="?part=1&amp;chap=4">Vorbereiten der Festplatte(n)</uri> fort.
 <p>
 Wenn Sie PPTP Unterstüzung benötigen, können Sie das Programm <c>pptpclient</c>,
 das Ihnen von der LiveCD bereitgestellt wird, verwenden. Allerdings müssen Sie
-vorher sichergehen, dass Ihre Konfiguration richtig ist. Dazu editieren Sie die
+vorher sichergehen, dass Ihre Konfiguration korrekt ist. Dazu editieren Sie die
 Datei <path>/etc/ppp/pap-secrets</path> oder <path>/etc/ppp/chap-secrets</path>,
 so dass diese die korrekte Benutzername/Kennwort-Kombination beinhalten.
 </p>
@@ -349,7 +349,7 @@ link="?part=1&amp;chap=4">Vorbereiten der Festplatte(n)</uri> fort.
 
 <p>
 Wenn die LiveCD bootet, versucht sie alle Ihre Hardwaregeräte zu erkennen und
-läd die entsprechenden Kernelmodule (Treiber). In den allermeisten Fällen
+lädt automatisch die entsprechenden Kernelmodule (Treiber). In den allermeisten Fällen
 funktioniert dies sehr gut. Allerdings kann es vorkommen, dass ein Kernelmodul
 nicht automatisch geladen wird.
 </p>
@@ -388,7 +388,7 @@ eth0      Link encap:Ethernet  HWaddr FE:FD:00:00:00:00
 </pre>
 
 <p>
-Wenn Sie diesen Fehler erhalten, dann wurde Ihre Karte nicht erkannt.
+Wenn Sie stattdessen diesen Fehler erhalten, dann wurde Ihre Karte nicht erkannt.
 </p>
 
 <pre caption="Testen der Verfügbarkeit der Netzwerkkarte, fehlgeschlagen">
@@ -586,7 +586,7 @@ fest.
 
 <p>
 Um eine IP-Adresse zuzuteilen, wird die IP-Adresse, die Broadcast-Adresse sowie
-die Netzmaske benötigt. Der folgende Befehl muss ausgeführt werden, wobei
+die Netzmaske benötigt. Der folgende Befehl muss ausgeführt werden, wobei die Variablen
 <c>${IP_ADDR}</c> durch die IP-Adresse, <c>${BROADCAST}</c> durch die
 Broadcast-Adresse und <c>${NETMASK}</c> durch die Netzmaske ersetzt werden sollte.
 </p>
@@ -628,7 +628,7 @@ nameserver ${NAMESERVER2}
 Das wars schon. Nun sollten Sie Ihre Internetverbindung testen. Dazu "pingen"
 Sie einfach einen Internetserver (wie <uri
 link="http://www.google.com">Google</uri>). Funktioniert es, sind Sie nun
-endlich bereit Gentoo zu installieren.
+endlich bereit, Gentoo zu installieren.
 </p>
 
 </body>
