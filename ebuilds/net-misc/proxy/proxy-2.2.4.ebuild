@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/proxy/proxy-2.2.4.ebuild,v 1.2 2003/02/01 23:55:04 wpbasti Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/proxy/proxy-2.2.4.ebuild,v 1.3 2003/02/18 18:14:03 holler Exp $
 
 DESCRIPTION="Proxy - Simple port redirector (nice for port forwarding without iptables)"
 HOMEPAGE="http://proxy.sourceforge.net/"
@@ -8,7 +8,8 @@ HOMEPAGE="http://proxy.sourceforge.net/"
 S=${WORKDIR}/${P}
 SRC_URI="http://download.sourceforge.net/proxy/${P}.tar.gz"
 LICENSE="GPL-2"
-SLOT="1"
+SLOT="0"
+KEYWORDS="x86 ~ppc"
 
 RDEPEND="virtual/glibc"
 DEPEND="virtual/glibc"
