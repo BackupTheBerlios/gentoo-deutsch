@@ -1,6 +1,6 @@
 # Copyright 2004 Stefan Nickl <snickl@snickl.freaks.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-misc/gpsman/Attic/gpsman-6.1.2.ebuild,v 1.1 2004/08/07 17:58:08 snickl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-misc/gpsman/Attic/gpsman-6.2.ebuild,v 1.1 2004/10/24 18:36:05 snickl Exp $
 
 DESCRIPTION="GPS Manager is a graphical manager of GPS data that makes possible the preparation, inspection and edition of GPS data in a friendly environment"
 HOMEPAGE=""http://www.ncc.up.pt/gpsman/
@@ -20,7 +20,7 @@ src_install() {
 	dobin gpsman.tcl
 	dobin util/*
 
-    doman man/man1/gpsman.1x
+    doman man/man1/gpsman.1
 
 	dodoc LICENSE
 	dodoc manual/GPSMandoc.pdf
