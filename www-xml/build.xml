@@ -481,124 +481,140 @@ Gentoo Linux Umgebung.</p>
 <title>Rsync</title>
 <section>
 <body>
-<p>Now, you'll need to run <c>emerge rsync</c>.  If you're using the a Gentoo Linux 1.1+ stage3 tarball,
-<c>emerge rsync</c> is now optional as we've included a snapshot of the Portage tree for your convenience. <c>emerge rsync</c> will tell <c>emerge</c> to
-connect to rsync.gentoo.org and download the latest version of our Portage ports tree:</p>
+<p>
+Als n&#xE4;chstes ist es n&#xF6;tig <c>emerge rsync</c> aufzurufen. Wenn Sie ein Gentoo Linux 1.1+ stage3
+Archiv verwenden ist <c>emerge rsync</c> jetzt optional, da dort eine Kopie des 
+Portage Verzeichnisses beigelegt ist. Mit dem Kommando <c>emerge rsync</c> veranlassen Sie <c>emerge</c> sich mit 
+rsync.gentoo.org zu verbinden und die aktuellste Version des Portage Verzeichnisses herunterzuladen:
+</p>
 
 <pre>
 # <i>emerge rsync</i>
 </pre>
-<p>The Portage tree will be downloaded; it's about 10Mb in size.</p>
-<impo>The address for the rsync server is currently rsync://rsync.gentoo.org/gentoo-portage.
-  If you have trouble accessing Gentoo rsync, make sure you're
-using this address by setting it as the SYNC variable in your /etc/make.conf.
-</impo>
-<note>The rsync command can be configured to use an HTTP proxy if you
-are behind a firewall.  To configure this item set 
-<i>RSYNC_PROXY="hostname:port"</i> in <i>/etc/make.conf</i> or set it as
-an environment variable.
+
+<p>Das Portage Datenverzeichnis das heruntergeladen wird ist ca. 10MB gro&#xDF;.</p>
+
+<impo>Die aktuelle Adresse des "rsync" Servers ist momentan: rsync://rsync.gentoo.org/gentoo-portage. 
+Wenn Sie Schwierigkeiten haben den Server zu erreichen, stellen Sie sicher, dass Sie 
+auch diesen Server verwenden in dem Sie die SYNC Variable in Ihrer /etc/make.conf entsprechend
+setzen.</impo>
+
+<note>Sie k&#xF6;nnen <c>rsync</c> so konfigurieren, das es einen HTTP Proxy verwendet,
+Dies ist n&#xFC;tzlich wenn Sie sich hinter einer Firewall befinden. Um dies zu 
+konfigurieren tragen Sie <i>RSYNC_PROXY="hostname:port"</i> Variable in die
+/etc/make.conf ein oder setzten dies als Umgebungsvariable.
 </note>
 
 </body>
 </section>
 </chapter>
 <chapter>
-<title>Progressing from stage1 to stage2</title>
+<title>Von "stage1" zu "stage2"</title><!-- Hmmm -->
 <section>
 <body>
 
-<impo>If you are a stage2 or stage3 tarball, then we've already bootstrapped
-for you.  There is no reason for you to bootstrap again, unless you decided to
-do an <c>emerge rsync</c> and want to ensure that you have an up-to-the-minute
-current Gentoo Linux system.  Most people using stage2 or stage3 tarballs will
-<i>not</i> want to bootstrap again, since it can take up to an hour even on
-very fast machines.</impo>
+<impo>Wenn Sie ein "stage2" oder "stage3" Archiv verwenden, dann haben wir 
+den <c>bootstrap</c> Prozess bereits f&#xFC;r Sie durchgef&#xFC;hrt. Es ist nicht 
+n&#xF6;tig dies noch einmal zu tun, au&#xDF;er Sie hatten sich entschieden  ein 
+<c>emerge rsync</c> durchzuf&#xFC;hren um sicherzustellen ein aktuelles 
+Gentoo Linux System zu haben. Die meisten Anwender die sich f&#xFC;r ein
+"stage2" oder "stage3" Archiv entschieden haben, werden <i>nicht</i> noch
+einmal den <c>bootstrap</c> Prozess durchlaufen wollen, da er selbst auf
+sehr schnellen Rechnern bis zu einer Stunde dauern kann.</impo>
 
-<p>Now that you have a working copy of the Portage tree, people using stage1 to
-install will need to bootstrap their Gentoo Linux system as follows.  First
-edit the file <path>/etc/make.conf</path>.  In this file, you should set your
-<c>USE</c> flags, which specify optional functionality that you would like to
-be built into packages; generally, the defaults (an <e>empty</e> or unset USE
-variable) are fine.  You also should set appropriate <c>CHOST</c>, <c>
-CFLAGS</c> and <c>CXXFLAGS</c> settings for the kind of system that you are
-creating (commented examples can be found further down in the file.)  If
-necessary, you can also set proxy information here if you are behind a
-firewall.  </p>
+
+<p>Da Sie nun eine funktionierende Kopie des Portage Verzeichnisses haben,
+m&#xFC;ssen Sie nun den Gentoo Linux "bootstrap" Prozess durchlaufen. Dazu gehen
+Sie folgenderma&#xDF;en vor: Zuerst editieren Sie die Datei <path>/etc/make.conf</path>.
+In dieser Datei k&#xF6;nnen Sie die USE Variable an Ihre Gegebenheiten abpassen.
+&#xDC;ber die USE Variable k&#xF6;nnen Sie steuern welche optionale Funktionalit&#xE4;t Sie
+in die Pakete eingebaut haben m&#xF6;chten. Normalerweise ist die vorgegebene Einstellung,
+eine <e>leere</e> oder ungesetzte USE Variable, ausreichend. Wichtig ist, das Sie 
+die passenden Werte f&#xFC;r die <c>CHOST</c>, <c>CFLAGS</c> und <c>CXXFLAGS</c> f&#xFC;r
+Ihr System eintragen. (Kommentierte Beispiele sind weiter unten in der Datei
+vorhanden).Falls Sie sich hinter einer Firewall befinden sollte dort auch ein Proxy 
+eingetragen werden.</p>
 
 <pre>
-# <i>nano -w /etc/make.conf</i> <comment>(Adjust these settings)</comment>
+# <i>nano -w /etc/make.conf</i> <comment>(Passen Sie die Eintr&#xE4;ge an)</comment>
 </pre>
 <note>
-People who need to substantially tweak the build process should take a look at
-the <path>/etc/make.globals</path> file.  This file comprises gentoo defaults and
-should never be touched.  If the defaults do not suffice, then new values should
-be put in <path>/etc/make.conf</path>, as entries in <path>make.conf</path>
-<comment>override</comment> the entries in <path>make.globals</path>.  If you're
-interested in tweaking USE settings, look in <path>/etc/make.profile/make.defaults</path>.
-If you want to turn off any USE settings found here, add an appropriate <c>USE="-foo"</c>
-in /etc/make.conf (to turn off the <c>foo</c> USE setting.)
-</note>
-<p>Now, it's time to start the "bootstrap" process.  This process will last 1-2 hours depending on 
-how zippy your machine is; it takes about an hour on my 900Mhz AMD Athlon system.  During this
-time, the extracted build image will be prepped for compiling the rest of the system.  The GNU
-compiler suite will be built, as well as the GNU C library.  These are time consuming builds and
-make up the bulk of the bootstrap process:</p>
+Anwender die Ihr System wesentlich optimieren m&#xFC;ssen oder wollen, sollten einen
+Blick in die Datei <path>/etc/make.globals</path> werfen. Diese Datei umfasst alle
+Gentoo Linux Vorgaben und sollte nicht ver&#xE4;ndert werden. Wem die Vorgaben nicht
+gen&#xFC;gen soll die &#xC4;nderungen in die Datei <path>/etc/make.conf</path> eintragen,
+da Eintr&#xE4;ge in der <path>make.conf</path> die vorgegebenen Werte der 
+<path>make.globals</path> &#xFC;berschreiben. Wenn Sie die USE Einstellungen tunen 
+wollen, schauen Sie sich die Datei <path>/etc/make.profile/make.defaults</path> 
+genauer an. Wenn Sie beispielsweise eine der vorhanden Einstellungen deaktivieren
+wollen, setzen Sie den entsprechenden <c>USE="-foo"</c> Eintrag in der /etc/make.conf.
+(Dies w&#xFC;rde das USE Flag <c>foo</c> abschalten) </note>
+
+<p>Jetzt k&#xF6;nnen Sie den "bootstrap" Prozess starten. Das dauert 1-2 Stunden; abh&#xE4;ngig davon
+wie flott Ihr Rechner ist. Auf einem 900Mhz AMD Athlon System dauert der Prozess ca. 1 Stunde.
+W&#xE4;hrend Zeit wird der Rechner darauf vorbereitet den Rest des Systems zu kompilieren.
+Die GNU Compiler Suite sowie die GNU C Bibliothek werden gebaut. Dies sind zeitaufwendige 
+Vorg&#xE4;nge, die den Hauptteil des "bootstrap" Prozesses ausmachen: </p>
+
 <pre>
 # <i>cd /usr/portage</i>
 # <i>scripts/bootstrap.sh</i>
 </pre>
-<p>The "bootstrap" process will now begin.</p>
+<p>Der "bootstrap" Prozess startet.</p>
 <note>
-Portage by default uses <c>/var/tmp</c> during package building, often
-using several hundred megabytes of temporary storage. If you would like to
-change where Portage stores these temporary files, set a new PORTAGE_TMPDIR <e>before</e>
-starting the bootstrap process, as follows:
-</note>
+Normalerweise verwendet Portage <c>/var/tmp</c> w&#xE4;hrend des kompilierens der Pakete.
+Dabei kann es sein, dass mehrere hundert Megabyte des tempor&#xE4;ren Speichers verwendet 
+werden. Wenn Sie den Ort wo Portage die tempor&#xE4;ren Dateien ablegt &#xE4;ndern m&#xF6;chten, k&#xF6;nnen
+Sie dies <e>vor</e> dem Starten des "bootstrap" Prozesses durch setzten der 
+PORTAGE_TMPDIR Variable tun:</note>
 <pre>
 # <i>export PORTAGE_TMPDIR="/otherdir/tmp"</i>
 </pre>
+
 <p>
-The 
-<c>bootstrap.sh</c> will build <c>binutils</c>, <c>gcc</c>, <c>gettext</c>,
-and <c>glibc</c>, rebuilding <c>binutils</c>, <c>gcc</c>, and <c>gettext</c>
-after <c>glibc</c> is built.  Needless to say, this process takes a while.
-Have a nice nap.  Once this process completes, your system will be in a "stage2" state.
-</p>
+Das Skript <c>bootstrap.sh</c> baut nun <c>binutils</c>, <c>gcc</c>, <c>gettext</c> und
+<c>glibc</c>.Danach werden <c>binutils</c>, <c>gcc</c> sowie <c>gettext</c> mit der neuen
+<c>glibc</c> erneut gebaut. Es muss nicht gesagt werden, dass dieser Prozess seine Zeit braucht.
+Machen Sie ein kleines Nickerchen. Wenn der Prozess dann durchgelaufen ist, haben Sie den Stand 
+des "stage2" Archivs erreicht.</p>
 </body>
 </section>
 </chapter>
 <chapter>
-<title>Progressing from stage2 to stage3</title>
+<title>Von "stage2" zu "stage3"</title>
 <section>
 <body>
 
-<p>Once your build image has been bootstrapped and you're at stage2 (again, if you're
-using a stage3 tarball than these steps are not required)
-it's time to build or install the rest of the base
-system as follows:</p>
+<p>Nachdem der "bootstrap" Prozess abgeschlossen ist und  Sie nun bei "stage2" 
+(noch einmal, wenn Sie das "stage3" Archiv verwenden sind alle diese Schritte 
+nicht n&#xF6;tig) angelangt sind, ist es an der Zeit den Rest des Basissystems zu
+bauen und installieren: </p>
 
 <pre>
 # <i>export CONFIG_PROTECT=""</i>
 # <i>emerge --pretend system</i>
-	<comment>[lists the packages to be installed]</comment>
+	<comment>[listet alle zu installierenden Pakete auf]</comment>
 # <i>emerge system</i>
 </pre>
 
-<note>The <c>export CONFIG_PROTECT=""</c> line ensures that any new scripts
-installed to <path>/etc</path> will overwrite the old scripts (stored in
-<path>sys-apps/baselayout</path>), bypassing Portage's new config file
-management support.  Type <c>emerge --help config</c> for more details.</note>
-
-<p>It's going to take a while
-to finish building the entire base system.  Your reward is that it will be
-thoroughly optimized for your system.  The drawback is that you have to find a
-way to keep yourself occupied for some time to come.  The author suggests "Star
-Wars - Super Bombad Racing" for the PS2.  When <c>emerge system</c> completes,
-you'll have a stage3 Gentoo Linux system.</p>
+<note>Das Kommando <c>export CONFIG_PROTECT=""</c> stellt sicher, dass alle
+neuen Scripte die nach <path>/etc</path> installiert werden die alten 
+Scripte (aus dem Paket <path>sys-apps/baselayout</path>) auch &#xFC;berschreiben 
+k&#xF6;nnen. Dazu wird Portages neuer Mechanismus zum Schutz von Konfigurationsdateien
+umgangen. Genaueres erfahren Sie wenn Sie <c>emerge --help config</c> aufrufen.</note>
+ 
+<p>Es dauert seine Zeit das ganze Basissystem zu bauen. Ihr Lohn ist, das es
+g&#xE4;nzlich auf Ihren Rechner optimiert ist. Leider m&#xFC;ssen Sie einen Weg finden
+sich bis zu diesem Zeitpunkt zu besch&#xE4;ftigen. Der Autor empfiehlt "Star
+Wars - Super Bombad Racing" f&#xFC;r die PS2. Wenn <c>emerge system</c> fertig ist,
+sind Sie auf dem Stand des "stage3" Archivs.</p>
 
 </body>
 </section>
 </chapter>
+
+<!-- Mittagspause --> 
+
 <chapter>
 <title>Final steps: timezone</title>
 <section>
