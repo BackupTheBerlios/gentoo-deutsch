@@ -16,118 +16,559 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
     <title>Dokumentationen</title>
     <p>
       Gentoo.de hat es sich neben der Erstellung von eigenen Ebuilds auch zur
-	  Hauptaufgabe gemacht, die Übersetzung der Gentoo.org-Dokumentationen ins Deutsche
-	  durchzuführen. Hier sehen Sie einen Überblick über unsere bisherige Arbeit.
+		  Hauptaufgabe gemacht, die Übersetzung der Gentoo.org-Dokumentationen ins Deutsche
+		  durchzuführen. Hier sehen Sie einen Überblick über unsere bisherige Arbeit.
     </p>
   </block>
 </box>
 
 <chapter>
-<title>Übersicht</title>
+	<section>
+      <title>Inhalt</title>
+      <body>
 
-<section>
-<title>Einrichtung von Gentoo Linux</title>
-	<body>
-  		<p>
-			<ul>
-				<li><uri link="einrichtung/installation14">Installationsanleitung x86</uri></li>
-				<li><uri link="einrichtung/installationppc">Installationsanleitung PPC</uri></li>
-				<li><uri link="einrichtung/gentoo-x86-quickinstall">Kurzübersicht Installation (x86)</uri></li>
-				<li><uri link="einrichtung/alternativ">Alternative Installation</uri></li>
-				<li><uri link="einrichtung/dsleinrichtung">DSL-Einrichtung</uri></li>
-				<li><uri link="einrichtung/lokalisierung">Lokalisierung</uri></li>
-				<li><uri link="einrichtung/gentoo-kernel">Kernel Leitfaden</uri></li>
-				<li><uri link="fortgeschritten/upgrade-1.4">Upgrade von Gentoo 1.2 auf Gentoo 1.4</uri></li>
-			</ul>
-  		</p>
-			<p>Veraltete Dokumente, aber aus historischen Gründen weiterhin
-			vorhanden:</p>
-			<p>
-				<ul>
-					<li><uri link="einrichtung/installation">Installationsanleitung für Gentoo-Linux 1.2</uri></li>
-					<li><uri link="einrichtung/installation14rc4">Installationsanleitung für Gentoo-Linux 1.4rc4</uri></li>
-				</ul>
-			</p>
-	</body>
-</section>
+        <ul>
+          <li><uri link="#doc_chap1">Einführung</uri></li>
+          <li><uri link="#doc_chap2">Installationshilfen</uri></li>
+          <li><uri link="#doc_chap3">Dokumentation zu Gentoo Entwicklungen</uri></li>
+          <li><uri link="#doc_chap4">Dokumentation zur Systemadministration</uri></li>
+          <li><uri link="#doc_chap5">Dokumentation für einen Arbeitsplatzrechner</uri></li>
+          <li><uri link="#doc_chap6">Dokumentation für Gentoo Entwickler</uri></li>
+          <li><uri link="#doc_chap7">Andere Dokumentation</uri></li>
+          <li><uri link="#doc_chap8">Überblick der verfügbaren Dokumente</uri></li>
+        </ul>
 
-<section>
-<title>Nächste Schritte</title>
-	<body>
-		<p>
-			<ul>
-				<li><uri link="einrichtung/desktop">Desktop-Konfiguration</uri></li>
-				<li><uri link="fortgeschritten/alsa">ALSA Soundsystem einrichten</uri></li>
-				<li><uri link="fortgeschritten/drucken">Drucken mit CUPS</uri></li>
-				<li><uri link="fortgeschritten/brennen">CD-Brennen HowTo</uri></li>
-				<li><uri link="fortgeschritten/java">Java Installation</uri></li>
-				<li><uri link="fortgeschritten/sicherheit">Sicherheitsleitfaden</uri></li>
-			</ul>
-		</p>
-	</body>
-</section>
+      </body>
+    </section>
+    <section>
+      <title>Einführung</title>
+      <body>
 
-<section>
-<title>Anwendungen</title>
-	<body>
-		<p>
-			<ul>
-				<li><uri link="anwendungen/gnome-guide">Gnome 2.4 HowTo und FAQ</uri></li>
-				<li><uri link="anwendungen/fluxbox">Fluxbox</uri></li>
-				<li><uri link="anwendungen/nano">Nano Editor</uri></li>
-				<li><uri link="anwendungen/vi-guide">vi-Guide</uri></li>
-				<li><uri link="fortgeschritten/distcc">Distcc</uri></li>
-				<li><uri link="entwickler/cvs-tutorial">CVS Tutorial</uri></li>
-			</ul>
-		</p>
-	</body>
-</section>
+        <p>Willkommen zur Gentoo Dokumentation.  Diese Seite wird Ihnen einen
+        kurzen Überblick zur vorhandenen Gentoo Dokumentation liefern.</p>
 
-<section>
-<title>Gentoo Dokumentationen</title>
-	<body>
-		<p>
-			<ul>
-				<li><uri link="http://www.gentoo.org/doc/de/use-howto.xml">Die Gentoo USE Flags</uri></li>
-				<li><uri link="anwendungen/portage">Portage Benutzerleitfaden</uri></li>
-				<li><uri link="fortgeschritten/portage">Portage Handbuch</uri></li>
-				<li><uri link="fortgeschritten/systemstart">Systemstart mit dem Gentoo Init System</uri></li>
-				<li><uri link="antworten/faq">Original gentoo.org FAQ</uri></li>
-				<li><uri link="antworten/faq_ergaenzung">Zusätzliche gentoo.de FAQ</uri></li>
-			</ul>
-		</p>
-	</body>
-</section>
+        <p>Finden Sie Fehler in unserer Dokumentation oder haben Sie Vorschläge,
+        schicken sie eine Mail an das <mail link="gentoo-deutsch-dev@lists.berlios.de">
+        gentoo.de Team</mail>.</p>
 
-<section>
-<title>Leitfaden für Entwickler</title>
-	<body>
-		<p>
-			<ul>
-				<li><uri link="entwickler/internet-seite">Dokumente für Gentoo Linux schreiben</uri></li>
-				<li><uri link="entwickler/howto">Ebuilds schreiben</uri></li>
-				<li><uri link="entwickler/einreichen">Ebuilds einreichen</uri></li>
-				<li><uri link="entwickler/mirror">Mirror einrichten</uri></li>
-				<li><uri link="entwickler/stage-building-guide">Gentoo Stage-Builder Anleitung</uri></li>
-			</ul>
-		</p>
-	</body>
-</section>
+      </body>
+    </section>
+    <section>
+      <title>Internationalisierung</title>
+      <body>
 
+        <p>Die Dokumentation ist in verschiedenen Sprachen verfügbar, die 
+        Dokumente in andere Sprachen finden Sie auf <uri link="http://www.gentoo.org">
+        www.gentoo.org</uri>.</p>
 
+      </body>
+    </section>
+    <section>
+      <title>FAQ (Frequently Asked Questions = Häufig gestellte Fragen)</title>
+      <body>
 
-<section>
-<title>Englisches</title>
-	<body>
-		<p>
-			<ul>
-				<li><uri link="englisch/localization">Localization</uri></li>
-			</ul>
-		</p>
-	</body>
-</section>
+        <p>Wie jedes großes Projekt hat auch Gentoo eine FAQ.  Wir bieten
+        zuallererst eine offizielle FAQ, die vom Gentoo Documentation Project
+        gepflegt werden:</p>
 
-</chapter>
+        <ul>
+          <li>Die <b><uri link="faq.xml">Gentoo FAQ</uri></b> beantwortet häufig
+          gestellte Fragen über Gentoo Linux mit einem Fokus auf x86
+          Plattformen.</li>
+          <li>Die <b><uri link="faq2.xml">FAQ Ergänzung</uri></b>beantwortet Fragen
+          die im deutschsrpachigen Teil des Forums häufiger gestellt werden.</li>
+          <li>Zusätzlich gibt es noch die <uri link="http://tobias.scherbaum.info/gentoo/faq">
+          "Dynamische FAQ"</uri> in der weitere Fragen aufgegriffen werden.</li>
+        </ul>
 
+        <p>Zusätzlich gibt es eine große Sammlung an FAQs in in unserem <uri
+        link="http://forums.gentoo.org">Forum</uri>.  Um diese zu sehen, gehen
+        Sie direkt nach
+        <uri>http://forums.gentoo.org/viewforum.php?f=40</uri>.</p>
+
+      </body>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Installationshilfen</title>
+    <section>
+      <title>Einführung</title>
+      <body>
+
+        <p>Die Installationshilfen liefern nützliche Informationen zur
+        Installation von Gentoo Linux.  Diese beinhalten architekturbezogene
+        Installationsanleitungen und Anweisungen denen während der Installation
+        gefolgt werden kann (wie z.B. LVM).</p>
+
+      </body>
+    </section>
+    <section>
+      <title>Installationsanleitungen</title>
+      <body>
+
+        <p>Die Installationsanleitungen weisen Sie schrittweise durch den Gentoo
+        Linux 1.4 Installationsprozess.  Wir bieten unterschiedliche
+        Installationsmethoden, ausgehend davon, wie viel Ihres Systems Sie
+        selbst von Grund auf bauen möchten.</p>
+
+        <p>Die Installationsanleitungen sind für die folgenden Architekturen
+        verfügbar:</p>
+
+        <table>
+          <tr>
+            <ti>x86</ti>
+            <ti><b><uri link="gentoo-x86-install">Online</uri></b></ti>
+          </tr>
+<!--
+          <tr>
+            <ti>Alpha</ti>
+            <ti><b><uri link="gentoo-alpha-install.xml">Online</uri></b></ti>
+          </tr>
+          <tr>
+            <ti>HPPA</ti>
+            <ti><b><uri link="gentoo-hppa-install.xml">Online</uri></b></ti>
+          </tr>
+-->
+          <tr>
+            <ti>PPC</ti>
+            <ti><b><uri link="gentoo-ppc-install">Online</uri></b></ti>
+          </tr>
+<!--
+          <tr>
+            <ti>Sparc</ti>
+            <ti><b><uri link="gentoo-sparc-install.xml">Online</uri></b></ti>
+          </tr>
+-->
+
+        </table>
+
+        <p>Der Großteil der Benutzer wird vermutlich die <b><uri
+        link="gentoo-x86-install">x86 Installationsanleitung</uri></b>
+        verwenden.<!-- Für erfahrene Benutzer bieten wir zusätzlich eine <b><uri
+        link="gentoo-x86-quickinstall">x86
+        Schellinstallationsanleitung</uri></b> an.--></p>
+
+<!--
+        <p>Alpha-Benutzer sind vielleicht auch an unserer <b><uri
+        link="gentoo-alpha-compaq-tools.xml">Compaq Alpha Tools
+        Anleitung</uri></b> interessiert, in der erklärt wird, wie Sie das
+        Compaq Tools package für Gentoo Alpha Benutzer aufsetzen.</p>
+-->
+
+      </body>
+    </section>
+    <section>
+      <title>Andere installationsbezogene Dokumentation</title>
+      <body>
+
+        <p>Für einige Personen ist die oben genannte Installationsanleitung
+        nicht ausreichend, da ihr System nicht von einer LiveCD gestartet werden
+        kann.  Die <b><uri link="altinstall">Alternative
+        Installationsanleitung</uri></b> listet nötigen die Schritte, um Gentoo
+        von einem anderen Medium zu installieren (Distribution, bootbare CD,
+        Booten via Netzwerk, usw.).</p>
+<!--
+        <p>Schauen Sie in unsere <b><uri link="lvm.xml">LVM Anleitung</uri></b>,
+        die erklärt, welche Schritte Sie für ein lauffähiges LVM-System
+        durchführen müssen, wenn Sie sich für LVM interessieren.</p>
+
+        <p>Die <b><uri link="new-upgrade-to-gentoo-1.4.xml">Gentoo Linux 1.4
+        Upgrade Anleitung</uri></b> erklärt, wie Sie Ihr Gentoo Linux 1.x System
+        auf Gentoo Linux 1.4 upgraden.</p>
+-->
+      </body>
+    </section>
+
+  </chapter>
+
+  <chapter>
+    <title>Dokumentation zu Gentoo Entwicklungen</title>
+    <section>
+      <title>Einführung</title>
+      <body>
+
+        <p>Die Dokumentation zu Gentoo Entwicklungen enthält diverse Anleitungen
+        zu das, was Gentoo zu Gentoo macht.  Diese beinhalten unser init-System,
+        Portage, USE-Flags, usw...</p>
+
+      </body>
+    </section>
+    <section>
+      <title>Portage und verwandte Dokumentation</title>
+      <body>
+
+        <p>Die <b><uri link="portage-user">Portage User Anleitung</uri></b>
+        erklärt kurz wie Sie Ihre Pakete auf den neuesten Stand halten und Ihre
+        installierte Software warten.  In anderen Worten: diese Anleitung
+        erklärt Ihnen, wie Sie <c>emerge</c> verwenden.</p>
+
+        <p>Das <b><uri link="portage-manual">Portage Handbuch</uri></b>
+        bietet einen generellen Überblick zu Portage, detaillierte
+        Konfigurationsinformationen und eine Endbenutzeranleitung zur
+        Installation und Wartung von Paketen mittels des Portage Systems.  Es
+        ist um einiges umfangreicher als die Portage User Anleitung.</p>
+
+        <p>Das <b><uri link="use-howto">USE Variablen Handbuch</uri></b>
+        führt Sie in das ultimative Tool zur Anpassung von Gentoo ein -- den
+        USE Flags.  Dieses Handbuch hilft Ihnen bei der Wahl Ihrer benötigten
+        USE Flags.  Es beschreibt außerdem die Benutzung von <c>tcat</c>, um
+        ausführlichere Informationen zu den USE Flags eines Pakets zu
+        erhalten.</p>
+
+      </body>
+    </section>
+    <section>
+    <title>Konfiguration von Gentoo</title>
+      <body>
+
+<!--
+        <p>Das <b><uri link="env.d-howto.xml">ENV.D Handbuch</uri></b> erklärt,
+        wie Sie Umgebungsvariablen (wie <path>$PATH</path>) und den "dynamic
+        linker cache" einfach verwalten.</p>
+-->
+
+        <p>Das <b><uri link="rc-scripts">RC-Script Handbuch</uri></b>
+        beschreibt unsere System Start- und Service Management Skripte.  Neben
+        den normalen initscript-bezogenen Punkten beinhaltet es auch initscript
+        Abhängigkeiten und Unterstützung für virtuelle Abhängigkeiten.</p>
+
+      </body>
+    </section>
+    <section>
+      <title>Auswahlen bei Gentoo</title>
+      <body>
+
+        <p>Das <b><uri link="gentoo-kernel">Kernel Handbuch</uri></b> listet
+        die verschiedenen Kernelquellen bei Gentoo.  Viele dieser Kernel werden
+        vom <uri link="http://www.gentoo.org/proj/en/kernel">Gentoo Kernel
+        Project</uri> gepflegt.</p>
+
+      </body>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Dokumentation zur Systemadministration</title>
+    <section>
+      <title>Einführung</title>
+      <body>
+
+        <p>Die Dokumentation zur Systemadministration enthält Leitfäden und
+        Handbücher über die Installation, Konfiguration und/oder das Managen
+        diverser Bereiche der Systemadministration.  Obwohl der Fokus auf Gentoo
+        Systeme liegt, können einige Dokumente von nicht-Gentoo-Nutzern
+        verwendet werden.</p>
+
+      </body>
+    </section>
+    <section>
+      <title>Grundsätzliche Systemadministration</title>
+      <body>
+
+        <p>Das <b><uri link="gentoo-security">Gentoo Security
+        Handbuch</uri></b> erklärt das Sichern eines Gentoo Linux Systems gegen
+        Einbrecher und Attacken.  Es enthält einige grundsätzliche
+        Sicherheitsinformationen (Absichern von Diensten, Entwurf von Firewalls,
+        Verwendung von IDS (Intrusion Detection Systems), Kernelsicherheit
+        usw.).  Für eine noch schärfere Absicherung besuchen Sie bitte die <uri
+        link="http://www.gentoo.org/proj/en/hardened">Gentoo Hardened</uri>
+        Webseite.</p>
+
+<!--
+        <p>Das <b><uri link="prelink-howto.xml">Prelinking Handbuch</uri></b>
+        erläutert, wie Sie Ihr System durch Verwendung von prelink verbessern
+        können.  Durch prelinking starten große Applikationen schneller.</p>
+
+        <p>Das <b><uri link="ipv6.xml">IPv6-Handbuch</uri></b> zeigt, wie Sie
+        IPv6 unter Gentoo Linux einrichten.  IPv6 ist das kommende Internet
+        Protokoll und erfreut sich immer größerer Popularität.</p>
+
+        <p>Das <b><uri link="uml.xml">User Mode Linux Handbuch</uri></b> führt
+        Sie in die Verwendung von User-Mode Linux unter Gentoo Linux ein.  User
+        Mode Linux (UML) bietet ein nettes Feature für Linux: Starten von Linux
+        in Linux (in Linux in Linux...).  Mit UML können Sie einfach virtuelle
+        Umgebungen erzeugen.</p>
+-->
+
+      </body>
+    </section>
+    <section>
+      <title>Spezielle Administrationshandbücher</title>
+      <body>
+
+<!--
+        <p>Das <b><uri link="ldap-howto.xml">LDAP Authentification
+        Handbuch</uri></b> erklärt, wie Sie Benutzeraccounts mit OpenLDAP
+        zentralisiert administrieren.</p>
+
+        <p>Das <b><uri link="openmosix-howto.xml">OpenMosix Handbuch</uri></b>
+        beschreibt Schritt für Schritt, wie Sie eine Farm voller plattenloser
+        Rechner erstellen (ein Cluster mit mehreren PCs).</p>
+
+        <p>Das <b><uri link="ltsp.xml">LTSP Handbuch</uri></b> erläutert die
+        Einrichtung eines Linux Terminal Servers mit Gentoo.</p>
+-->
+
+        <p>Das <b><uri link="distcc">Distcc Handbuch</uri></b> informiert
+        Sie über die Benutzung von distcc für ein verteiltes Kompilieren mit
+        Gentoo Linux.</p>
+<!--
+        <p>Das <b><uri link="devfs-guide.xml">DevFS Handbuch</uri></b>
+        beschreibt wie DevFS funktioniert und wie es zu administrieren ist.</p>
+-->
+        <p>Das <b><uri link="printing-howto">Drucken Handbuch</uri></b> ist
+        eine kompakte Einführung zum Drucken mit Gentoo.</p>
+<!--
+        <p>Das <b><uri link="openafs.xml">OpenAFS Handbuch</uri></b>
+        dokumentiert die Verwendung und Installation von OpenAFS, einer
+        verteilten, netzwerkbasierten Datenaustausch-Technologie.</p>
+
+        <p>Das <b><uri link="virt-mail-howto.xml">Virtual/Mailhost
+        Handbuch</uri></b> ist das unverzichtbare Handbuch für einen Mail
+        Administrator.  Es beschreibt die Verwendung von MySQL für virtuelle
+        Benutzer, webbasierter E-Mail-Software, Mailinglisten Software usw.</p>
+-->
+
+      </body>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Dokumentation für einen Arbeitsplatzrechner</title>
+    <section>
+      <title>Einführung</title>
+      <body>
+
+        <p>Die Dokumentation für einen Arbeitsplatzrechner enthält unseren
+        Desktop Konfigurations-Leitfaden und einige andere Anleitungen für
+        diverse Anwendungen.</p>
+
+      </body>
+    </section>
+    <section>
+      <title>Desktop Konfiguration</title>
+      <body>
+
+        <p>Der <b><uri link="desktop">Desktop
+        Konfigurations-Leitfaden</uri></b> erklärt, wie Sie einen voll
+        funktionsfähigen Gentoo Linux Arbeitsplatzrechner aufsetzen.  Das
+        beinhaltet die Konfiguration von KDE/GNOME, Verwendung von E-Mail,
+        Datenaustausch (mittels Samba) usw.</p>
+
+        <p>Das <b><uri link="alsa-guide">ALSA Konfigurations
+        Handbuch</uri></b> ist ein kompaktes Handbuch zur Installation und der
+        Benutzung von ALSA (Advanced Linux Sound Architecture).</p>
+
+        <p>Das <b><uri link="java">Java Handbuch</uri></b> erklärt, wie Java
+        unter Gentoo Linux verwendet wird.</p>
+
+        <p>Das <b><uri link="guide-localization">Lokalisierungs
+        Handbuch</uri></b> beschreibt die Einstellungen für Gentoo Linux für
+        nicht englischsprachige Benutzer.</p>
+
+				<p>Das <b><uri link="burn-guide">CD-Brennen Howto</uri></b> führt Sie durch
+				die Konfiguration und Installation benötigter Kernel Module und Programme
+				hin zur selbstgebrannten CD.</p>
+				
+				<p>Die <b><uri link="dsl-guide">DSL Anleitung</uri></b>erläutert Ihnen die
+				Einrichtung des DSL Anschlusses und die Einwahl ins Internet.</p>
+				
+				<p>Das <b><uri link="fluxbox">Fluxbox Handbuch</uri></b> führt Sie
+				durch die Konfigurationsmöglichkeiten eines der beliebtesten Windowmanager.</p>
+
+<!--
+        <p>Das <b><uri link="dri-howto.xml">Direct Rendering Handbuch</uri></b>
+        erläutert, wie Sie funktionierende 3D-Beschleunigung mit Hilfe von
+        XFree-DRM erhalten.</p>
+
+        <p>Die <b><uri link="ati-faq.xml">ATI FAQ</uri></b> beantwortet häufig
+        gestellte Fragen zu ATI Grafikkarten.</p>
+-->
+
+      </body>
+    </section>
+    <section>
+      <title>Applikationsspezifische Dokumentation</title>
+      <body>
+
+        <p>Das <b><uri link="nano-basics-guide">Nano Basics
+        Handbuch</uri></b> führt durch Beispiele durch die Grundlagen von
+        Nano.</p>
+
+        <p>Das <b><uri link="vi-guide">Vi Handbuch</uri></b> benutzt die
+        Spickzettel-Methode für eine Einführung in vi.</p>
+
+<!--
+        <p>Das <b><uri link="gnupg-user.xml">GnuPG Benutzer Handbuch</uri></b>
+        ist das klare Handbuch zu GnuPG.</p>
+
+        <p>Das <b><uri link="guide-to-mutt.xml">Schnellstarter Handbuch zu CLI
+        E-Mail Programmen</uri></b> erklärt, wie Sie fetchmail, procmail, mutt
+        und nbsmtp benutzen.</p>
+-->
+
+        <p>Das <b><uri link="cvs-tutorial">CVS Tutorial</uri></b> erläutert
+        die Grundlagen zur Benutzung von CVS, dem Concurrent Versioning
+        System.</p>
+
+      </body>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Dokumentation für Gentoo Entwickler</title>
+    <section>
+      <title>Einführung</title>
+      <body>
+
+        <p>Gentoo ist eine Distribution, die von freiwilliger Mitarbeit lebt.
+        Von daher ist es unerlässlich, hochqualitative Dokumentation zur
+        Entwicklung anzubieten, sodass interessierte Benutzer auf einfachem Weg
+        lernen können, wie sie bei der Weiterentwicklung ihrer
+        Lieblingsdistribution mithelfen können.</p>
+
+      </body>
+    </section>
+<!--
+    <section>
+      <title>Gentoo Entwicklungs-Richtlinien</title>
+      <body>
+
+        <p>Die <b><uri link="policy.xml">Gentoo Linux
+        Entwicklungs-Richtlinie</uri></b> beschreibt die aktuellen Grundsätze
+        zum Erstellen von ebuilds.</p>
+
+        <p>Die <b><uri link="gentoo-release-policy.xml">Gentoo Linux Release
+        Richtlinie</uri></b> beschreibt die aktuellen Grundsätze für Gentoo
+        Linux Releases.</p>
+
+        <p>Die <b><uri link="doc-policy.xml">Gentoo Linux Dokumentations
+        Richtlinie</uri></b> beschreibt die aktuellen Grundsätze zur Erstellung
+        und dem Editieren von Dokumentation.</p>
+
+      </body>
+    </section>
+-->
+    <section>
+      <title>Entwicklungsbezogene Dokumentation</title>
+      <body>
+
+        <p>Das <b><uri link="gentoo-howto">Ebuild Handbuch</uri></b>
+        erklärt, wir ebuilds erstellt werden.</p>
+<!--
+        <p>Das <b><uri link="eclass-howto.xml">Eclass Handbuch</uri></b> zeigt,
+        wie ebuilds erstellt werden, die OOP-ähnliche Vererbungs-Features zur
+        Verfügung stellen.</p>
+-->
+
+        <p>Das <b><uri link="stage-building-guide">Stage Building
+        Handbuch</uri></b> erklärt die Erstellung eines Stage Tar-Archiv.</p>
+
+        <p>Das <b><uri link="ebuild-submit">Beisteuern von Ebuilds
+        Handbuch</uri></b> erläutert, wie von Benutzern erstellte ebuilds
+        eingepflegt werden.</p>
+
+        <p>Das <b><uri link="xml-guide">GuideXML Handbuch</uri></b>
+        beschreibt das XML Format, das für Gentoo Linux' webbasierte
+        Dokumentation verwendet wird.</p>
+
+      </body>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Andere Dokumentation</title>
+    <section>
+      <body>
+
+        <ul>
+          <li>Schauen Sie in unser <uri link="http://www.gentoo.org/cgi-bin/viewcvs.cgi">CVS repository</uri>, wenn Sie unseren Code oder unsere ebuilds sehen wollen.</li>
+          <li><b><uri link="http://www.gentoo.org/main/de/about.xml">Über</uri></b> das Gentoo Projekt.</li>
+          <li>Gentoos <b><uri link="http://www.gentoo.org/main/en/contract.xml">gesellschaftliche Grundlage</uri></b>.</li>
+          <li>Mehr über die <b><uri link="http://www.gentoo.org/proj/en/site.xml">XML Projekte</uri></b>, die Gentoo bestritten hat.</li>
+<!--
+          <li>Wie <b><uri link="rsync.xml">Gentoo : Rsync  gemirrort</uri></b> wird.</li>
+          <li>Wie <b><uri link="source_mirrors.xml">Gentoo : Distfiles  gemirrort</uri></b> wird.</li>
+-->
+          <li>Gentoo Linux News (<uri link="http://www.gentoo.org/rdf/en/gentoo-news.rdf">RDF</uri>, <uri
+          link="http://purl.org/net/syndication/subscribe/?rss=http://www.gentoo.org/rdf/en/gentoo-news.rdf">Subscribe</uri>).</li>
+        </ul>
+
+      </body>
+    </section>
+  </chapter>
+  <chapter>
+    <title>Dokumentliste</title>
+    <body>
+
+      <p>
+        Für Personen, die einen kurzen Überblick lieber haben, hier gibt es ihn:
+      </p>
+
+      <table>
+        <tr><th>Regelmäßig gestellte Fragen</th></tr>
+        <tr><ti><uri link="faq">Gentoo FAQ</uri></ti></tr>
+        <!--<tr><ti><uri link="gentoo-ppc-faq.xml">Gentoo PPC FAQ</uri></ti></tr>-->
+        <tr><th>Installationshilfen</th></tr>
+        <tr><ti><uri link="gentoo-x86-install">Gentoo x86 Installationsanleitung</uri></ti></tr>
+        <!--<tr><ti><uri link="gentoo-alpha-install.xml">Gentoo Alpha Installationsanleitung</uri></ti></tr>-->
+        <!--<tr><ti><uri link="gentoo-hppa-install.xml">Gentoo HPPA Installationsanleitung</uri></ti></tr>-->
+        <tr><ti><uri link="gentoo-ppc-install">Gentoo PPC Installationsanleitung</uri></ti></tr>
+        <!--<tr><ti><uri link="gentoo-sparc-install.xml">Gentoo SPARC Installationsanleitung</uri></ti></tr>-->
+        <tr><ti><uri link="altinstall">Alternative Installationsanleitung</uri></ti></tr>
+        <!--<tr><ti><uri link="lvm.xml">LVM Anleitung</uri></ti></tr>-->
+        <tr><ti><uri link="upgrade-to-gentoo-1.4">Gentoo Linux 1.4
+        Upgrade Anleitung</uri></ti></tr>
+        <tr><th>Dokumentation zu Gentoo Entwicklungen</th></tr>
+        <tr><ti><uri link="portage-user">Portage User Anleitung</uri></ti></tr>
+        <tr><ti><uri link="portage-manual">Portage Handbuch</uri></ti></tr>
+        <tr><ti><uri link="use-howto">USE Variablen Handbuch</uri></ti></tr>
+        <!--<tr><ti><uri link="env.d-howto.xml">ENV.D Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="rc-scripts">RC-Script Handbuch</uri></ti></tr>
+        <tr><ti><uri link="gentoo-kernel">Gentoo Kernel Handbuch</uri></ti></tr>
+        <tr><th>Dokumentation zur Systemadministration</th></tr>
+        <tr><ti><uri link="gentoo-security">Gentoo Security Handuch</uri></ti></tr>
+        <!--<tr><ti><uri link="prelink-howto.xml">Prelinking Handbuch</uri></ti></tr>-->
+        <!--<tr><ti><uri link="ipv6.xml">IPv6-Handbuch</uri></ti></tr>-->
+        <!--<tr><ti><uri link="uml.xml">User Mode Linux Handbuch</uri></ti></tr>-->
+        <!--<tr><ti><uri link="ldap-howto.xml">LDAP Authentification Handbuch</uri></ti></tr>-->
+        <!--<tr><ti><uri link="openmosix-howto.xml">OpenMosix Handbuch</uri></ti></tr>-->
+        <!--<tr><ti><uri link="ltsp.xml">LTSP Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="distcc">DistCC Handbuch</uri></ti></tr>
+        <!--<tr><ti><uri link="devfs-guide.xml">DevFS Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="printing-howto">Drucken Handbuch</uri></ti></tr>
+        <!--<tr><ti><uri link="openafs.xml">OpenAFS Handbuch</uri></ti></tr>-->
+        <!--<tr><ti><uri link="virt-mail-howto.xml">Virtual/Mailhost Howto</uri></ti></tr>-->
+        <tr><th>Dokumentation für einen Arbeitsplatzrechner</th></tr>
+        <tr><ti><uri link="desktop">Desktop Konfigurations-Leitfaden</uri></ti></tr>
+        <!--<tr><ti><uri link="alsa-guide.xml">ALSA Konfigurations Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="java">Java Handbuch</uri></ti></tr>
+        <tr><ti><uri link="guide-localization">Lokalisierungs Handbuch</uri></ti></tr>
+        <!--<tr><ti><uri link="dri-howto.xml">Direct Rendering Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="burn-guide">CD-Brennen Howto</uri></ti></tr>
+        <tr><ti><uri link="dsl-guide">DSL Anleitung</uri></ti></tr>
+        <tr><ti><uri link="fluxbox">Fluxbox Handbuch</uri></ti></tr>
+        <!--<tr><ti><uri link="ati-faq.xml">ATI FAQ</uri></ti></tr>-->
+        <tr><ti><uri link="nano-basics-guide">Nano Basics Handbuch</uri></ti></tr>
+        <tr><ti><uri link="vi-guide">Vi Handbuch</uri></ti></tr>
+        <!--<tr><ti><uri link="guide-to-mutt.xml">Schnellstarter Handbuch zu CLI E-mail Programmen</uri></ti></tr>-->
+        <tr><ti><uri link="cvs-tutorial">CVS Tutorial</uri></ti></tr>
+        <tr><th>Dokumentation für Gentoo Entwickler</th></tr>
+        <!--<tr><ti><uri link="policy.xml">Gentoo Linux Entwicklungs-Richtlinie</uri></ti></tr>-->
+        <!--<tr><ti><uri link="gentoo-release-policy.xml">Gentoo Linux Release Richtlinie</uri></ti></tr>-->
+        <!--<tr><ti><uri link="doc-policy.xml">Gentoo Linux Dokumentations Richtlinie</uri></ti></tr>-->
+        <tr><ti><uri link="gentoo-howto">Ebuild Handbuch</uri></ti></tr>
+        <!--<tr><ti><uri link="eclass-howto.xml">Eclass Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="stage-building-guide">Stage Building Handbuch</uri></ti></tr>
+        <tr><ti><uri link="ebuild-submit">Beisteuern von Ebuilds Handbuch</uri></ti></tr>
+        <tr><ti><uri link="xml-guide">GuideXML Handbuch</uri></ti></tr>
+        <tr><th>Andere Dokumentation</th></tr>
+        <!--<tr><ti><uri link="rsync.xml">Gentoo RSync Mirror</uri></ti></tr>-->
+        <!--<tr><ti><uri link="source_mirrors.xml">Gentoo Distfiles Mirror</uri></ti></tr>-->
+      </table>
+
+    </body>
+  </chapter>
 </info>
 
