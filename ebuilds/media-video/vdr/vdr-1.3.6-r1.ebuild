@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6-r1.ebuild,v 1.5 2004/05/12 15:25:44 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6-r1.ebuild,v 1.6 2004/05/12 15:39:45 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.3.6-AC3overDVB-0.2.4"
@@ -245,9 +245,9 @@ pkg_postinst() {
 	# add fam to /etc/init.d/vdr if patched with akool
 	if vdr_opts akool
 	then
-		/bin/sed -i '/need fam/d' /etc/init.d/vdr
+		/bin/sed -i '/need famd/d' /etc/init.d/vdr
 		/bin/sed -i '/^depend/a\
-		need fam' /etc/init.d/vdr
+		need famd' /etc/init.d/vdr
 	fi
 
 	einfo
