@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
- <!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-security.xml,v 1.15 2003/12/20 20:31:12 dertobi123 Exp $ -->
+ <!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-security.xml,v 1.16 2004/01/22 15:45:06 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-<!-- English CVS Version: 1.36 -->
+<!-- English CVS Version: 1.37 -->
 
 <guide link = "/doc/de/gentoo-security.xml">
 <title>Gentoo Linux Sicherheitsleitfaden</title>
@@ -54,8 +54,8 @@ von Gentoo Linux
 
 <license/>
 
-<version>0.4.13</version>
-<date>4. Dezember 2003</date>
+<version>0.4.14</version>
+<date>16. Januar 2004</date>
 
 <chapter>
 <title>Einleitung</title>
@@ -2110,13 +2110,6 @@ Relaying und hatte seit 1996 kein Sicherheitsloch. Starten Sie einfach ein
 <title>BIND</title>
 <body>
 
-<impo>
-Bind is bekannt für seine lausige Sicherheits Vergangenheit und sollte nicht
-leicht genommen werden. Wie jeder andere Dienst sollte auch Bind <e>niemals</e>
-als root laufen, ändern Sie die Standard Konfiguration für diesen Dienst also 
-bitte nicht.
-</impo>
-
 <p>
 Sie finden Dokumentation zu Bind beim <uri
 link="http://www.isc.org/products/BIND/bind9.html">Internet Software
@@ -2227,9 +2220,9 @@ lesen).
 <body>
 
 <p>
-Über dkbdns gibt es nicht viel zu sagen - ausser das der Autor bereit ist
+djbdns ist eine DNS Implementierung, bei der der Autor bereit ist
 <uri link="http://cr.yp.to/djbdns/guarantee.html">Geld</uri> darauf zu
-verwetten dass es sicher ist. Also versuchen Sie es : <uri>http://www.djbdns.org/</uri>.
+verwetten, dass sie sicher ist. Also versuchen Sie es: <uri>http://www.djbdns.org/</uri>.
 Es arbeitet anders als Bind v.9 aber Sie werden einen Einstieg finden.
 </p>
 
