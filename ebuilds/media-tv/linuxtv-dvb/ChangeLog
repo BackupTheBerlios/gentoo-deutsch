@@ -1,6 +1,10 @@
 # ChangeLog for media-video/linuxdvb
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/ChangeLog,v 1.4 2003/09/21 17:27:30 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/ChangeLog,v 1.5 2003/10/01 18:12:05 martini Exp $
+
+*linuxtv-dvb-1.0.1 (01 Oct 2003)
+  01 Oct 2003; Martin Mittelsdorf <martini@vdr-portal.de>
+  new dvb driver version 1.0.1
 
 *linuxtv-dvb-1.0.0-r20030905 (21 Sep 2003)
   21 Sep 2003; Martin Hierling <mad@cc.fh-lippe.de>
