@@ -22,6 +22,43 @@
 
 <title>Aktuelles</title>
 
+
+<section>
+<title>[04. Juni 2003] Neue KDE/GNOME LiveCDs für PowerPC</title>
+<body>
+<p>
+<uri link="http://apple.slashdot.org/apple/03/05/25/2217237.shtml?tid=106&amp;tid=185">In einem kürzlich auf Slashdot erschienenen Artikel</uri>
+stellte jemand die Frage, ob es möglich sei, eine voll ausgestattete bootfähige Linux LiveCD für den Macintosh zu machen.</p>
+<p>
+Wir dachten, daß das eine gute Idee sei. Aus diesem Grunde veröffentlichen wir heute <b>zwei</b> voll ausgestattete LiveCDs für den PowerPC: die
+eine mit KDE 3 und die andere mit Gnome 2. <uri link="http://www.gentoo.org/images/shots/ppc-livecd/snapshot1.jpg">Schauen Sie sich die LiveCD</uri>
+an - hier wird gerade MacOS X in einem Fenster mittels <uri link="http://www.maconlinux.org/">Mac-on-Linux</uri> ausgeführt.</p>
+<p>
+Um die LiveCD zu benutzen müssen Sie sie einfach auf Ihrem NewWorld PowerPC (iMac oder neuer) booten und die große Leistungsfähigkeit und
+Funktionalität der Gentoo Linux/PPC. LiveCDs können <uri link="http://gentoo.oregonstate.edu/releases/ppc/livecd/1.4_rc7/">hier</uri> oder
+den entsprechenden Stellen auf unseren <uri link="http://www.gentoo.org/main/en/mirrors.xml">Mirrorservern</uri> herunterladen.</p>
+<p>
+Desweiteren sind auf den LiveCDs:
+</p>
+<ul>
+	<li>Angepasster PPC-Kernel (2.4.21-r1) mit G4 AltiVec Unterstützung</li>
+	<li>Neuester Mac-on-Linux-Emulator (zum Ausführen von MacOS X im Fenster)</li>
+	<li>Von Gentoo komprimiertes 2GB loop Live-Dateisystem</li>
+	<li>XFree 4.3 (DRM) entweder mit Gnome-2.2.1/Metacity/Openbox oder KDE-3.1.2</li>
+	<li>Einen kompletten Satz der Gentoo 1.4-rc7 PPC-Stages (um Gentoo zu installieren</li>
+	<li>HFS(+) Resizing Kernel- bzw. Parted-Patch (um auf einfachem Wege Platz für Gentoo zu schaffen)</li>
+	<li>IPv6-Unterstützung ohne notwendige Konfigurationsarbeit</li>
+	<li>Neuestes stabiles Release von Mozilla</li>
+	<li>Distcc-fähiger gcc-Werkzeugsatz (für verteilte PPC-Compilerläufe)</li>
+	<li>Wardriving-Werkzeuge (kismet und airsnort)</li>
+	<li>Routing / fortgeschrittene iptables Unterstützung</li>
+	<li>Apache 2/SSL mit PHP</li>
+	<li>Und viele andere tolle Sachen</li>
+</ul>
+</body>
+</section>
+
+
 <section>
 <title>[02. Juni 2003] Gentoo-Newsletter</title>
 <body>
