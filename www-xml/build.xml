@@ -61,8 +61,8 @@ Hat wer bessere Vorschlaege? (EH) -->
 <p>Jetzt lassen Sie uns kurz den den Installationsprozess skizzieren. Sie erstellen die Partitionen,
 erzeugen die Dateisysteme und entpacken entweder das <e>stage1</e>, <e>stage2</e> oder <e>stage3</e> 
 Archiv. Wenn Sie das <e>stage2</e> oder <e>stage3</e> Archiv verwenden, m&#xFC;ssen Sie alle n&#xF6;tigen Schritte 
-unternehmen, um Ihr System auf den Stand des <e>stage3</e> Archiv's zu bringen. Wenn Sie <e>stage3</e>
-erreicht haben, k&#xF6;nnen Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
+unternehmen, um Ihr System auf den Stand des <e>stage3</e> Archivs <!-- nicht Archiv's - Im Deutschen gibt es kaum 's (MG)-->
+zu bringen. Wenn Sie <e>stage3</e> erreicht haben, k&#xF6;nnen Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
 installieren, usw.) und in ein voll funktionsf&#xE4;higes Gentoo Linux booten.
 Abh&#xE4;ngig von der gew&#xE4;hlten Installationsstufe, von der Sie starten, 
 hier die ben&#xF6;tigten Schritte:
