@@ -1,0 +1,5 @@
+MD5 143f5b0ba58d3f64514af54ac136f77a xine-lib-1_rc3-r1.ebuild 4542
+MD5 8eb4910b4744e8b723e3ebf22c292efc files/digest-xine-lib-1_rc3-r1 67
+MD5 8eb4910b4744e8b723e3ebf22c292efc files/digest-xine-lib-1_rc3 67
+MD5 839a99235ab0a1614ee36d0fc1161bf0 files/protect-CFLAGS.patch-1_rc3 627
+MD5 e0c8c66489965a54223bd8d9c1f003e7 files/vdr-xine.diff.bz2 10133
