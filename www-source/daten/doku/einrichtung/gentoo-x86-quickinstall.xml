@@ -70,23 +70,23 @@ Stage-Tarballs fort.
 </p>
 
 <pre caption="Vorbereiten der Installation">
-(Aktivieren der Swap Partition)                  # <i>swapon /dev/hdax</i>
-(Mounten der Root-Partition)                     # <i>mount /dev/hdax /mnt/gentoo</i>
-(Erstellen des boot-Mountpunkt)                  # <i>mkdir /mnt/gentoo/boot</i>
-(Mounten der Boot Partition)                     # <i>mount /dev/hdax /mnt/gentoo/boot</i>
-(Wechseln zum Mountpunkt)                        # <i>cd /mnt/gentoo</i>
-(Entpacken eines Stage-Tarball...)               # <i>tar -xvjpf /mnt/cdrom/stages/stage?-*.tar.bz2</i>
-(<comment>oder</comment> Download des aktuellsten Tarball...)       # <i>links http://gentoo.oregonstate.edu/releases/x86/1.4/</i>
-(                  ... und entpacken)            # <i>tar -xvjpf stage*</i>
-(Nur bei GRP: Entpacken des Portage Baum)        # <i>tar -xvjf /mnt/cdrom/snapshots/portage-*.tar.bz2 -C /mnt/gentoo/usr</i>
-(Nur bei GRP: Kopieren der Distfiles)            # <i>cp -R /mnt/cdrom/distfiles /mnt/gentoo/usr/portage/distfiles</i>
-(Nur bei GRP: Kopieren der Packages)             # <i>cp -a /mnt/cdrom/packages /mnt/gentoo/usr/portage/packages</i>
-(Auswählen eines Mirror)                         # <i>mirrorselect -i -o &gt;&gt; /mnt/gentoo/etc/make.conf</i>
-(Kopieren der Nameserver Information)            # <i>cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf</i>
-(Mounten des Proc Dateisystem)                   # <i>mount -t proc proc /mnt/gentoo/proc</i>
-(Chroot in die neue Umgebung)                    # <i>chroot /mnt/gentoo /bin/bash</i>
-(Laden der notwendigen Variablen)                # <i>env-update; source /etc/profile</i>
-(Nur bei Netzwerk, GRP: aktualisieren Portage)   # <i>emerge sync</i>
+(Aktivieren der Swap Partition)                # <i>swapon /dev/hdax</i>
+(Mounten der Root-Partition)                   # <i>mount /dev/hdax /mnt/gentoo</i>
+(Erstellen des boot-Mountpunkt)                # <i>mkdir /mnt/gentoo/boot</i>
+(Mounten der Boot Partition)                   # <i>mount /dev/hdax /mnt/gentoo/boot</i>
+(Wechseln zum Mountpunkt)                      # <i>cd /mnt/gentoo</i>
+(Entpacken eines Stage-Tarball...)             # <i>tar -xvjpf /mnt/cdrom/stages/stage?-*.tar.bz2</i>
+(<comment>oder</comment> Download des aktuellsten Tarball...)     # <i>links http://gentoo.oregonstate.edu/releases/x86/1.4/</i>
+(                  ... und entpacken)          # <i>tar -xvjpf stage*</i>
+(Nur bei GRP: Entpacken des Portage Baum)      # <i>tar -xvjf /mnt/cdrom/snapshots/portage-*.tar.bz2 -C /mnt/gentoo/usr</i>
+(Nur bei GRP: Kopieren der Distfiles)          # <i>cp -R /mnt/cdrom/distfiles /mnt/gentoo/usr/portage/distfiles</i>
+(Nur bei GRP: Kopieren der Packages)           # <i>cp -a /mnt/cdrom/packages /mnt/gentoo/usr/portage/packages</i>
+(Auswählen eines Mirror)                       # <i>mirrorselect -i -o &gt;&gt; /mnt/gentoo/etc/make.conf</i>
+(Kopieren der Nameserver Information)          # <i>cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf</i>
+(Mounten des Proc Dateisystem)                 # <i>mount -t proc proc /mnt/gentoo/proc</i>
+(Chroot in die neue Umgebung)                  # <i>chroot /mnt/gentoo /bin/bash</i>
+(Laden der notwendigen Variablen)              # <i>env-update; source /etc/profile</i>
+(Nur bei Netzwerk, GRP: aktualisieren Portage) # <i>emerge sync</i>
 </pre>
 
 <p>
@@ -131,7 +131,7 @@ Fortfahren mit der Installation des Linux Kernel:
 <pre caption="Installation des Kernel">
 (Installation der Kernel Sourcen)                # <i>emerge -k sys-kernel/gentoo-sources</i>
 (Konfiguration des Kernel mit genkernel...)      # <i>emerge -k genkernel; genkernel</i>
-(<comment>oder</comment> (1) Manuelles bauen des Kernel)                      # <i>cd /usr/src/linux; make menuconfig;</i>
+(<comment>oder</comment> (1) Manuelles bauen des Kernel)              # <i>cd /usr/src/linux; make menuconfig;</i>
 (   (2) Inkludieren Sie VM fs, /proc fs, /dev fs,  /dev fs auto mount at boot)
 (   (3) Kompilieren des Kernel)                  # <i>make dep &amp;&amp; make clean bzImage modules modules_install</i>
 (   (4) Den Kernel kopieren)                     # <i>cp arch/i386/boot/bzImage /boot; cp System.map /boot</i>
@@ -157,7 +157,7 @@ Wenn Sie besondere Kernel Ebuilds benötigen, ist nun eine gute Zeit diese zu in
 
 <pre caption = "Installation besonderer Kernel Ebuilds">
 # <i>emerge -k pcmcia-cs</i> (oder <i>emu10k1</i>, <i>nforce-net</i>, <i>nforce-audio</i>, <i>e100</i>, <i>e1000</i>, <i>ati-drivers</i>, <i>rp-pppoe</i>)
-# <i>VIDEO_CARDS="yourcard" emerge xfree-drm</i>   (für ATI Radeon bis 9200, Rage128, Matrox, Voodoo und andere Karten)
+# <i>VIDEO_CARDS="yourcard" emerge xfree-drm</i> (für ATI Radeon bis 9200, Rage128, Matrox, Voodoo und andere Karten)
 </pre>
 
 <p>
@@ -165,12 +165,12 @@ Beenden der Systeinstellungen Ihres Gentoo System:
 </p>
 
 <pre caption = "Beenden der Systeinstellungen Ihres Gentoo System">
-(Setzen des root Passwort)                               # <i>passwd</i>
-(Erstellen eines Benutzers)                              # <i>useradd benutzername -m -G users,wheel,audio -s /bin/bash</i>
-(Setzen des Passwort für diesen Benutzer)                # <i>passwd benutzername</i>
-(Setzen des System Hostnamen)                            # <i>echo meinemaschine &gt; /etc/hostname</i>
-(Setzen des System Domainname)                           # <i>echo meinedomain.com &gt; /etc/dnsdomainname</i>
-(Erstellen der Hosts-Datei, setzen Sie wenigstens "127.0.0.1 meinemaschine")  # <i>nano -w /etc/hosts</i>
+(Setzen des root Passwort)                          # <i>passwd</i>
+(Erstellen eines Benutzers)                         # <i>useradd benutzername -m -G users,wheel,audio -s /bin/bash</i>
+(Setzen des Passwort für diesen Benutzer)           # <i>passwd benutzername</i>
+(Setzen des System Hostnamen)                       # <i>echo meinemaschine &gt; /etc/hostname</i>
+(Setzen des System Domainname)                      # <i>echo meinedomain.com &gt; /etc/dnsdomainname</i>
+(Erstellen der Hosts-Datei, setzen Sie wenigstens "127.0.0.1 meinemaschine") # <i>nano -w /etc/hosts</i>
 </pre>
 
 <pre caption = "Konfigurieren des Netzwerk">
@@ -232,7 +232,7 @@ Unmounten Sie nun alle Partitionen und rebooten Sie in Ihr neues System:
 </pre>
 
 <p>
-Sie können weitere Informationen in der <uri link="http://www.gentoo.org/main/de/docs.xml">Gentoo Dokumentation</uri>.
+Sie können weitere Informationen in der <uri link="http://www.gentoo.org/doc/de/index.xml">Gentoo Dokumentation</uri>.
 finden</p>
 </body></section></chapter>	
 
