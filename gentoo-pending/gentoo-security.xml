@@ -10,6 +10,7 @@
 <author title="Bearbeitung"><mail link="carl@gentoo.org">Carl Anderson</mail></author>
 <author title="Bearbeitung"><mail link="peesh@gentoo.org">Jorge Paulo</mail></author>
 <author title="Übersetzung"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
+<author title="Übersetzung"><mail link="baka@users.berlios.de">Hendrik Grahl</mail></author>
 
 <abstract>Dieser Leitfaden ist eine Schritt-für-Schritt-Anleitung für das Absichern von Gentoo-Linux</abstract>
 
@@ -1448,7 +1449,6 @@ Konfigurieren Sie Ihren Kernel wie Sie normalerweise würden und dann konfigurie
 
 <p>
 Jetzt kompilieren und installieren sie ihren Kernel mit verbesserter Sicherheit.
-
 </p>
 
 </body>
@@ -1493,28 +1493,28 @@ Und es gibt wahrscheinlich vieles mehr...
 
 -- Kernelsicherheit Ende --
 
--- Securing Services start --
+-- Sichern von Diensten Start --
 
 <chapter>
-<title>Securing Services</title>
+<title>Sichern von Diensten</title>
 
 <section>
-<title>Using xinetd</title>
+<title>Benutzung von xinetd</title>
 <body>
 <p>
-xinetd is a replacement for inetd (which Gentoo does not have), the internet services daemon. It supports access control based on the address of the remote host and the time of access. It also provide extensive logging capabilities, including server start time, remote host address, remote user name, server run time, and actions requested.
+xinetd ist ein Ersatz für inetd (welches Gentoo nicht hat), der Internet-Dienst-Daemon. Er unterstützt Zugriffskontrolle basierend auf den Adressen der entfernten Hosts und der Zugriffszeit. Es beinhaltet auch ausführliche Protokollfähigkeiten, inklusive Serverstartzeit, Adresse des entfernten Hosts, entfernter Benutzername, Serverlaufzeit und geforderte Abläufe.
 </p>
 
 <p>
-As with all other services its important to have a good default configuration. But since xinetd is used by root and supports protocols that you might not know how they work we recommend not to use it. But if you want to use it anyway here how you can add some security to it:
+Wie bei allen anderen Diensten ist es wichtig eine gute Standardkonfiguartion zu haben. Da aber xinetd von root benutzt wird und Protokolle unterstützt, von denen Sie möglicherweise die Funktionsweise nicht verstehen, raten wir Ihnen es nicht zu benutzen. Wenn Sie es aber doch benutzen wollen, fügen Sie so mehr Sicherheit hinzu:
 </p>
 
-<pre caption="Install xinetd">
+<pre caption="Installieren von xinetd">
 # <i>emerge xinetd tcpd</i>
 </pre>
 
 <p>
-And edit the configuration file:
+Ergänzen Sie die Konfigurationsdatei um:
 </p>
 
 <pre caption="/etc/xinetd.conf">
@@ -1528,18 +1528,19 @@ defaults
  cps            = 25 30
 }
 
-# This will setup pserver (cvs) via xinetd with the following settings:
-# max 10 instances (10 connections at a time)
-# limit the pserver to tcp only
-# use the user cvs to run this service
-# bind the interfaces to only 1 ip
-# allow access from 10.0.0.*
-# limit the time developers can use cvs from 8am to 5pm
-# use tpcd wrappers (access control controlled in 
-# <path>/etc/hosts.allow</path> and <path>/etc/hosts.deny</path>)
-# max_load on the machine set to 1.0
-# The disable flag is per default set to no but I like having 
-# it in case of it should be disabled
+# Dies konfiguriert pserver (cvs) durch xinetd mit den folgenden Einstellungen:
+# maximal 10 Instanzen (10 Verbindungen gleichzeitig)
+# Begrenzung von pserver auf tcp
+# benutzen des Benutzer-cvs um diesen Dienst laufen zu lassen
+# Anbinden der Schnittstelle an nur 1 IP
+# Zulassen von Zugriff von 10.0.0.*
+# Begrenzung der Zeit in der Entwickler auf das cvs
+# zugreifen können von 08Uhr bis 17Uhr
+# Benutzung von tcpd wrappers (Zugriffskontrolle kontrolliert durch 
+# <path>/etc/hosts.allow</path> und <path>/etc/hosts.deny</path>)
+# max_load ist an der Maschine auf 1.0 gesetzt
+# die disable flag (sperren) steht auf nein, aber ich bevorzuge sie zu 
+# haben, für den Fall das es gesperrt werden sollte
 service cvspserver
 {
  socket_type    = stream
@@ -1560,46 +1561,46 @@ service cvspserver
 </pre>
 
 <p>
-For more information read the <c>man 5 xinetd.conf</c>.
+Für mehr Informationen lesen Sie  <c>man 5 xinetd.conf</c>.
 </p>
 
 </body>
 </section>
 
 <section>
-<title>ssh</title>
+<title>SSH</title>
 <body>
 
 <p>
-The only securing that OpenSSH needs is turning on a stronger authentication based on public key encryption. To many sites (like <uri>http://www.sourceforge.net</uri>, <uri>http://www.php.net</uri> and <uri>http://www.apache.org</uri>) have all suffered unauthorized intrusion to their systems due to password leaks or bad passwords.
+Die einzige Sicherheitsverstärkung die OpenSSH benötigt ist das benutzen einer stärkeren Verschlüsselung basierend auf Public Key Verschlüsselung. Zu viele Seiten (wie <uri>http://www.sourceforge.net</uri>, <uri>http://www.php.net</uri> und <uri>http://www.apache.org</uri>) haben unter unauthorisiertem Eindringen in ihre Systeme gelitten wegen Passwortlecks oder schlechten Passwörtern.
 </p>
 
 <pre caption="/etc/ssh/sshd_config">
-#Only enable version 2
+#Aktivieren Sie nur Version 2
 Protocol 2
 
-#No direct root access
+#Kein direkter root Zugriff
 PermitRootLogin no
 
-#Turn on RSA key authentication
+#Benutzung von RSA Schlüsselauthentifizierung
 RSAAuthentication yes
 PubkeyAuthentication yes
 AuthorizedKeysFile      .ssh/authorized_keys
 
-#Disable .rhost files and normal password auth.
+# Sperren von .rhost Dateien und normaler Passwordauthentifizierung
 RhostsAuthentication no
 PasswordAuthentication no
 PermitEmptyPasswords no
 
 AllowHosts *.gentoo.org
 
-#Noone else than members of wheel or admin should have access
+#Niemand außer Mitgliedern von wheel oder admin sollte Zugriff
 AllowGroups wheel admin
 
-#And 2 users
+#Und 2 Benutzer
 AllowUsers kn bs
 
-#add logging level
+#Hinzufügen des Protokollierungslevels
 SyslogFacility AUTH
 LogLevel INFO
 
@@ -1608,37 +1609,37 @@ ListenAddress 127.0.0.1
 </pre>
 
 <p>
-Now all your users have to do, is create a key (on their machine they want to login from) with the following command
+Jetzt ist das einzige was Ihre Benutzer mache müssen einen Schlüssel erstellen (auf ihrer Maschine von der sie sich einloggen wollen) mit folgendem Befehl:
 </p>
 
-<pre caption="Create a RSA keypair">
+<pre caption="Erstellen eines RSA Schlüsselpaares">
 # <i>/usr/bin/ssh-keygen -t rsa</i>
 </pre>
 
 <p>
-Type in a passphrase
+Tippen Sie einen Passsatz (auch Mantra genannt) ein:
 </p>
 
-<pre caption="Output of ssh-keygen">
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/kn/.ssh/id_rsa):<c>[Press enter]</c>
-Created directory '/home/kn/.ssh'.
-Enter passphrase (empty for no passphrase): <c>[Enter passphrase]</c>
-Enter same passphrase again: <c>[Enter passphrase again]</c>
-Your identification has been saved in /home/kn/.ssh/id_rsa.
-Your public key has been saved in /home/kn/.ssh/id_rsa.pub.
-The key fingerprint is:
+<pre caption="Ausgabe von ssh-keygen">
+Generierung des öffentlichen/privaten rsa Schlüsselpaares.
+Geben sie den Dateinamen ein unter dem der Schlüssel gespeichert wird (/home/kn/.ssh/id_rsa):<c>[Enter drücken]</c>
+Verzeichnis erstellt '/home/kn/.ssh'.
+Passsatz eingeben (leer für keinen Passsatz): <c>[Passsatz eingeben]</c>
+Denselben Passsatz erneut eingeben: <c>[Erneut Passsatz eingeben]</c>
+Ihre Identifikation wurde in /home/kn/.ssh/id_rsa gespeichert.
+Ihr öffentlicher Schlüssel wurde in /home/kn/.ssh/id_rsa.pub gespeichert.
+Der Fingerabdruck des Schlüssels ist: 
 07:24:a9:12:7f:83:7e:af:b8:1f:89:a3:48:29:e2:a4 kn@knielsen
 </pre>
 
 <p>
-This will add two files in your <path>~/.ssh/</path> directory called id_rsa and id_rsa.pub. The file called id_rsa is your private key and should be kept from other people than yourself. The other file id_rsa.pub is to be distributed to every server that you have access to. Add the key to the users home directory in <path>~/.ssh/authorized_keys</path> and the user should be able to login.
+Dies fügt zwei Dateien zu Ihrem <path>~/.ssh/</path> Verzeichnis mit den Namen id_rsa und id_rsa.pub hinzu. Die Datei id_rsa ist Ihr privater Schlüssel und sollte von anderen Leuten außer Ihnen ferngehalten werden. Die andere Datei id_rsa.pub soll an jeden Server verteilt werden zu dem Sie Zugriff haben. Fügen Sie den Schlüssel in das home Verzeichnis des Benutzers in <path>~/.ssh/authorized_keys</path> ein, so sollte der Benutzer die Möglichkeit haben sich einzuloggen.
 </p>
 
-<p>Now your users should guard this private key well. Put it on a media that they always carry with them or keep it on their workstation (put this in the <uri link="#doc_chap2">password</uri> policy).
+<p>Ihre Benutzer sollten diesen privaten Schlüssel gut verwahren. Packen Sie es auf ein Medium, dass sie immer mit sich tragen oder lassen Sie es auf ihrer Workstation (fügen Sie dies in die <uri link="#doc_chap2">Passwort</uri>richtlinien ein).
 </p>
 
-<p>More on <uri link="http://www.openssh.org">OpenSSH</uri> can be found at their website</p>
+<p>Mehr über <uri link="http://www.openssh.org">OpenSSH</uri> finden Sie auf der ihrer Webseite.</p>
 
 </body>
 </section>
