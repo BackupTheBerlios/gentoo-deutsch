@@ -1,0 +1,333 @@
+diff -Nru streamdev-0.3.1.orig/client/menu.c streamdev-0.3.1/client/menu.c
+--- streamdev-0.3.1.orig/client/menu.c	2004-02-16 14:37:37.000000000 +0100
++++ streamdev-0.3.1/client/menu.c	2004-05-18 16:50:16.000000000 +0200
+@@ -1,4 +1,5 @@
+ #include <vdr/menuitems.h>
++#include <vdr/interface.h>
+ 
+ #include "client/menu.h"
+ #include "client/player.h"
+@@ -44,9 +45,15 @@
+ 	cTBString buffer;
+ 
+ 	if (ClientSocket.SuspendServer())
++#if VDRVERSNUM >= 10307
++		Skins.Message(mtInfo, tr("Server is suspended"));
++	else
++		Skins.Message(mtError, tr("Couldn't suspend Server!"));
++#else
+ 		Interface->Info(tr("Server is suspended"));
+ 	else
+ 		Interface->Error(tr("Couldn't suspend Server!"));
++#endif
+ }
+ 
+ // --- cStreamdevMenuRecordingItem -------------------------------------------
+@@ -104,8 +111,13 @@
+ 	           // pressing 'Back' during replay
+ 
+ 	if (!Base) {
++#if VDRVERSNUM >= 10307
++		Skins.Message(mtStatus, tr("Fetching recordings..."));
++		Skins.Flush();
++#else
+ 		Interface->Status(tr("Fetching recordings..."));
+ 		Interface->Flush();
++#endif
+ 	}
+ 
+ 	if (Base || Recordings.Load()) {
+@@ -176,7 +188,11 @@
+ 		cStreamdevMenuRecordingItem *Item) {
+   cRemoteRecording *recording = Recordings.GetByName(Item->FileName());
+   if (!recording)
++#if VDRVERSNUM >= 10307
++     Skins.Message(mtError, tr("Error while accessing recording!"));
++#else
+      Interface->Error(tr("Error while accessing recording!"));
++#endif
+   return recording;
+ }
+ 
+@@ -229,7 +245,11 @@
+           if (!Count())
+             return osBack;
+         } else
++#if VDRVERSNUM >= 10307
++          Skins.Message(mtError, tr("Error while deleting recording!"));
++#else
+           Interface->Error(tr("Error while deleting recording!"));
++#endif
+       }
+     }
+   }
+@@ -275,7 +295,7 @@
+ }
+ 
+ // --- cMenuEditChanItem -----------------------------------------------------
+-
++#if VDRVERSNUM < 10307
+ class cMenuEditChanItem : public cMenuEditIntItem {
+ protected:
+   virtual void Set(void);
+@@ -283,9 +303,9 @@
+   cMenuEditChanItem(const char *Name, int *Value);
+   virtual eOSState ProcessKey(eKeys Key);
+   };
+-
++#endif
+ // --- cMenuEditDateItem -----------------------------------------------------
+-
++#if VDRVERSNUM < 10307
+ class cMenuEditDateItem : public cMenuEditItem {
+ protected:
+   time_t *value;
+@@ -294,9 +314,9 @@
+   cMenuEditDateItem(const char *Name, time_t *Value);
+   virtual eOSState ProcessKey(eKeys Key);
+   };
+-
++#endif
+ // --- cMenuEditDayItem ------------------------------------------------------
+-
++#if VDRVERSNUM < 10307
+ class cMenuEditDayItem : public cMenuEditIntItem {
+ protected:
+   static int days[];
+@@ -306,9 +326,9 @@
+   cMenuEditDayItem(const char *Name, int *Value);
+   virtual eOSState ProcessKey(eKeys Key);
+   };
+-
++#endif
+ // --- cMenuEditTimeItem -----------------------------------------------------
+-
++#if VDRVERSNUM < 10307
+ class cMenuEditTimeItem : public cMenuEditItem {
+ protected:
+   int *value;
+@@ -319,7 +339,7 @@
+   cMenuEditTimeItem(const char *Name, int *Value);
+   virtual eOSState ProcessKey(eKeys Key);
+   };
+-
++#endif
+ // --- cStreamdevMenuEditTimer -----------------------------------------------
+ 
+ class cStreamdevMenuEditTimer : public cOsdMenu {
+@@ -400,7 +420,11 @@
+ 				if (ch)
+ 					m_Data.m_Channel = ch;
+ 				else {
++#if VDRVERSNUM >= 10307
++					Skins.Message(mtError, tr("*** Invalid Channel ***"));
++#else
+ 					Interface->Error(tr("*** Invalid Channel ***"));
++#endif
+ 					break;
+ 				}
+ 				if (!*m_Data.m_File)
+diff -Nru streamdev-0.3.1.orig/client/player.c streamdev-0.3.1/client/player.c
+--- streamdev-0.3.1.orig/client/player.c	2004-02-16 13:38:36.000000000 +0100
++++ streamdev-0.3.1/client/player.c	2004-05-18 16:51:41.000000000 +0200
+@@ -132,7 +132,9 @@
+ 
+ void cStreamdevPlayerControl::Hide() {
+ 	if (m_Visible) {
++#if VDRVERSNUM < 10307
+ 		Interface->Close();
++#endif
+ 		m_Visible = false;
+ 	}
+ }
+diff -Nru streamdev-0.3.1.orig/client/setup.c streamdev-0.3.1/client/setup.c
+--- streamdev-0.3.1.orig/client/setup.c	2004-02-16 13:02:01.000000000 +0100
++++ streamdev-0.3.1/client/setup.c	2004-05-18 16:36:01.000000000 +0200
+@@ -1,4 +1,5 @@
+ #include <vdr/menuitems.h>
++#include <vdr/skins.h>
+ 
+ #include "client/setup.h"
+ #include "client/device.h"
+@@ -51,7 +52,11 @@
+ 		if (m_NewSetup.StartClient)
+ 			cStreamdevDevice::Init();
+ 		else
++#if VDRVERSNUM >= 10307
++			Skins.Message(mtInfo, tr("Please restart VDR to activate changes"));
++#else
+ 			Interface->Info(tr("Please restart VDR to activate changes"));
++#endif
+ 	}
+ 
+ 	if (m_NewSetup.StreamType != stTS)
+diff -Nru streamdev-0.3.1.orig/client/socket.c streamdev-0.3.1/client/socket.c
+--- streamdev-0.3.1.orig/client/socket.c	2004-02-16 14:31:01.000000000 +0100
++++ streamdev-0.3.1/client/socket.c	2004-05-18 16:33:15.000000000 +0200
+@@ -451,12 +451,20 @@
+ 	}
+ 
+ 	if (rec == NULL || *rec != *Recording) {
++#if VDRVERSNUM >= 10307
++		Skins.Message(mtError, tr("Recordings not in sync! Try again..."));
++#else
+ 		Interface->Error(tr("Recordings not in sync! Try again..."));
++#endif
+ 		return false;
+ 	}
+ 
+ 	if (!Command("DELR " + cTBString::Number(Recording->Index()), 250)) {
++#if VDRVERSNUM >= 10307
++		Skins.Message(mtError, tr("Couldn't delete recording! Try again..."));
++#else
+ 		Interface->Error(tr("Couldn't delete recording! Try again..."));
++#endif
+ 		return false;
+ 	}
+ 	return true;
+@@ -512,7 +520,11 @@
+ 
+ 	if (New.Index() == -1) { // New timer
+ 		if (!Command((cTBString)"NEWT " + New.ToText(), 250)) {
++#if VDRVERSNUM >= 10307
++			Skins.Message(mtError, tr("Couldn't save timer! Try again..."));
++#else
+ 			Interface->Error(tr("Couldn't save timer! Try again..."));
++#endif
+ 			return false;
+ 		}
+ 	} else { // Modified timer
+@@ -521,9 +533,15 @@
+ 			
+ 		if (!Expect(250, &buffer)) {
+ 			if (errno == 0)
++#if VDRVERSNUM >= 10307
++				Skins.Message(mtError, tr("Timers not in sync! Try again..."));
++			else
++				Skins.Message(mtError, tr("Server error! Try again..."));
++#else
+ 				Interface->Error(tr("Timers not in sync! Try again..."));
+ 			else
+ 				Interface->Error(tr("Server error! Try again..."));
++#endif
+ 			return false;
+ 		}
+ 
+@@ -533,13 +551,21 @@
+ 					oldstate.m_Active,oldstate.m_Day,oldstate.m_Start,oldstate.m_StartTime,oldstate.m_Priority,oldstate.m_File,oldstate.m_FirstDay,(const char*)oldstate.m_Summary,oldstate.m_Channel->Number());
+ 			Dprintf("new timer: %d,%d,%d,%d,%d,%d,%s,%d,%s,%d\n", Old->m_Index,
+ 					Old->m_Active,Old->m_Day,Old->m_Start,Old->m_StartTime,Old->m_Priority,Old->m_File,Old->m_FirstDay,(const char*)Old->m_Summary,Old->m_Channel->Number());*/
++#if VDRVERSNUM >= 10307
++			Skins.Message(mtError, tr("Timers not in sync! Try again..."));
++#else
+ 			Interface->Error(tr("Timers not in sync! Try again..."));
++#endif
+ 			return false;
+ 		}
+ 
+ 		if (!Command("MODT " + cTBString::Number(New.Index()) + " " 
+ 				+ New.ToText(), 250)) {
++#if VDRVERSNUM >= 10307
++			Skins.Message(mtError, tr("Couldn't save timer! Try again..."));
++#else
+ 			Interface->Error(tr("Couldn't save timer! Try again..."));
++#endif
+ 			return false;
+ 		}
+ 	}
+@@ -559,21 +585,35 @@
+ 		
+ 	if (!Expect(250, &buffer)) {
+ 		if (errno == 0)
++#if VDRVERSNUM >= 10307
++			Skins.Message(mtError, tr("Timers not in sync! Try again..."));
++		else
++			Skins.Message(mtError, tr("Server error! Try again..."));
++#else
+ 			Interface->Error(tr("Timers not in sync! Try again..."));
+ 		else
+ 			Interface->Error(tr("Server error! Try again..."));
++#endif
+ 		return false;
+ 	}
+ 
+ 	cRemoteTimer oldstate((const char*)buffer + 4);
+ 	
+ 	if (oldstate != *Timer) {
++#if VDRVERSNUM >= 10307
++		Skins.Message(mtError, tr("Timers not in sync! Try again..."));
++#else
+ 		Interface->Error(tr("Timers not in sync! Try again..."));
++#endif
+ 		return false;
+ 	}
+ 
+ 	if (!Command("DELT " + cTBString::Number(Timer->Index()), 250)) {
++#if VDRVERSNUM >= 10307
++		Skins.Message(mtError, tr("Couldn't delete timer! Try again..."));
++#else
+ 		Interface->Error(tr("Couldn't delete timer! Try again..."));
++#endif
+ 		return false;
+ 	}
+ 	return true;
+diff -Nru streamdev-0.3.1.orig/common.c streamdev-0.3.1/common.c
+--- streamdev-0.3.1.orig/common.c	2004-02-16 22:07:18.000000000 +0100
++++ streamdev-0.3.1/common.c	2004-05-18 16:52:31.000000000 +0200
+@@ -74,11 +74,13 @@
+    cOsdItem *item = new cOsdItem(buffer);
+    free(buffer);
+ 
++#if VDRVERSNUM < 10307
+ #ifdef HAVE_BEAUTYPATCH
+    item->SetColor(clrScrolLine, clrBackground);
+ #else
+    item->SetColor(clrCyan, clrBackground);
+ #endif
++#endif
+    Add(item);
+ }
+ 	
+diff -Nru streamdev-0.3.1.orig/common.h streamdev-0.3.1/common.h
+--- streamdev-0.3.1.orig/common.h	2004-02-11 11:09:08.000000000 +0100
++++ streamdev-0.3.1/common.h	2004-05-18 16:26:09.000000000 +0200
+@@ -3,6 +3,7 @@
+ 
+ #include <vdr/tools.h>
+ #include <vdr/plugin.h>
++#include <vdr/skins.h>
+ 
+ #include "tools/socket.h"
+ 
+diff -Nru streamdev-0.3.1.orig/server/connectionVTP.c streamdev-0.3.1/server/connectionVTP.c
+--- streamdev-0.3.1.orig/server/connectionVTP.c	2004-02-16 19:19:12.000000000 +0100
++++ streamdev-0.3.1/server/connectionVTP.c	2004-04-14 19:30:48.000000000 +0200
+@@ -436,16 +436,28 @@
+         if (timer) {
+            cTimer t = *timer;
+            if (strcasecmp(tail, "ON") == 0)
++#if VDRVERSNUM>=10306
++              t.SetFlags(tfActive);
++#else
+               t.SetActive(taActive);
++#endif
+            else if (strcasecmp(tail, "OFF") == 0)
++#if VDRVERSNUM>=10306
++              t.ClrFlags(tfActive);
++#else
+               t.SetActive(taInactive);
++#endif
+            else if (!t.Parse(tail)) {
+               Reply(501, "Error in timer settings");
+               EXIT_WRAPPER();
+               }
+            *timer = t;
+            Timers.Save();
++#if VDRVERSNUM>=10306
++           isyslog("timer %d modified (%s)", timer->Index() + 1, timer->HasFlags(tfActive) ? "active" : "inactive");
++#else
+            isyslog("timer %d modified (%s)", timer->Index() + 1, timer->Active() ? "active" : "inactive");
++#endif
+            Reply(250, "%d %s", timer->Index() + 1, timer->ToText(true));
+            }
+         else
