@@ -105,6 +105,20 @@ with another language than english. It also explains what to do to get the Euro 
 </chapter>
 
 <chapter>
+<title>KDE</title>
+<section>
+        <body>
+                <p>For KDE the appropriate i18n-packet needs to be installed.
+<pre>
+# <i>emerge kde-i18n-de</i>
+</pre>
+		</p>
+        </body>
+</section>
+</chapter>
+
+
+<chapter>
 <title>Euro character (terminal)</title>
 <section>
         <body>
@@ -167,6 +181,6 @@ with another language than english. It also explains what to do to get the Euro 
 
 </chapter>
 
-<version>$Revision: 1.1 $</version>
-<date>$Date: 2002/06/30 09:07:46 $</date>
+<version>$Revision: 1.2 $</version>
+<date>$Date: 2003/01/09 00:54:52 $</date>
 </guide>

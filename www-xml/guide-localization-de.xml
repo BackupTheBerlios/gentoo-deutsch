@@ -28,11 +28,15 @@ eines Gentoo Linux behilflich sein.</abstract>
 <title>Systemuhr</title>
 <section>
         <body>
-                <p>Die meisten deutschen Benutzer haben ihre Systemuhr sicherlich 
-		auf die deutsche Uhrzeit eingestellt, daher sollte sollte man die
-		Umgebungsvariable <i>CLOCK</i> in <path>/etc/rc.conf</path> richtigstellen.
+                <p>Wer neben Linux auch noch andere Betriebssysteme installiert,
+                und daher seine Rechneruhr auf die lokale Zeit eingestellt hat, sollte die
+                Umgebungsvariable <i>CLOCK</i> in <path>/etc/rc.conf</path> richtigstellen.
+                Das hat allerdings den Nachteil, da&#223; nach einer Zeitumstellung die Uhrzeit
+                solange falsch ist, bis man (oder das andere BS) die Echtzeituhr entsprechend 
+                korrigiert hat. F&#252;r reine Linux-System ist es daher empfehlenswert die
+                Echzeituhr auf GMT einzustellen.
 <pre>
- CLOCK="local"
+ CLOCK="local" # fuer Multi-BS-Systeme
 </pre>
 		</p>
         </body>
@@ -91,6 +95,20 @@ eines Gentoo Linux behilflich sein.</abstract>
      Option "XkbLayout"    "de"
      # Option XkbVariant"  "nodeadkeys"
      ...
+</pre>
+		</p>
+        </body>
+</section>
+</chapter>
+
+<chapter>
+<title>KDE</title>
+<section>
+        <body>
+                <p>Damit man in KDE seine gew&#252;nschte Sprache einstellen kann,
+                mu&#223; man das entsprechende Sprachpacket installieren.
+<pre>
+# <i>emerge kde-i18n-de</i>
 </pre>
 		</p>
         </body>
@@ -164,6 +182,6 @@ eines Gentoo Linux behilflich sein.</abstract>
 
 </chapter>
 
-<version>$Revision: 1.1 $</version>
-<date>$Date: 2002/06/30 09:07:46 $</date>
+<version>$Revision: 1.2 $</version>
+<date>$Date: 2003/01/09 00:54:52 $</date>
 </guide>
