@@ -1,6 +1,12 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.29 2003/12/11 16:08:33 rootshell Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.30 2003/12/12 12:58:22 rootshell Exp $
+*vdr-1.2.6-r2
+  12 Dec 2003; F.Schilhabel <fernsehleo|gmx.net>
+  main ebuild logic rewritten from scratch.
+  it should be easier now to extend the ebuild with new patches and conditionals
+  <rootshell>
+
 *vdr-1.2.6-r1
   11.Dec 2003; F.Schilhabel <fernsehleo@gmx.net>
   fixed (hopefully) compilation with akool patch;
