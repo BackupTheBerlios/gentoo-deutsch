@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/pxes/pxes-0.7-r1.ebuild,v 1.1 2004/01/24 15:29:28 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/pxes/pxes-0.7-r1.ebuild,v 1.2 2004/05/08 11:04:30 fow0ryl Exp $
 
 IUSE="ltsp"
 DESCRIPTION="PXES is a package for building thin clients using multiple types of clients"
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/pxes/${PN}-base-i586-${PV}-1.tar.gz
 	mirror://sourceforge/pxes/pxesconfig-${PV}-1.tar.gz
 	ltsp? ( mirror://sourceforge/pxes/${PN}-ltsp-${PV}.tar.gz )"
 
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 SLOT="0"
 LICENSE="GPL-2"
