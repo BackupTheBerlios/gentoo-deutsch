@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="UTF-8"?>
 
 
-<!-- English CVS Version: 1.11 -->
+<!-- English CVS Version: 1.13 -->
 
 <guide mainid="about">
 	<title>Über Gentoo Linux</title>
@@ -9,6 +9,7 @@
 	<author title="Author"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 	<author title="Editor"><mail link="peesh@gentoo.org">Jorge Paulo</mail></author>
 	<author title="Übersetzer"><mail link="pylon@gentoo.org">Lars Weiler</mail></author>
+	<author title="Übersetzer"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
 
 	<abstract>Gentoo Linux stellt sich vor</abstract>
 
@@ -21,7 +22,7 @@
 		<section>
 			<body>
 
-				<fig link="http://www.ibiblio.org/web-gentoo/images/poster.jpg"/>
+				<fig link="/media/bilder/poster.jpg"/>
 				<br/>
 
 			</body>
@@ -82,7 +83,7 @@
 	</chapter>
 
 	<chapter>
-		<title>Gentoo Linux 1.4_rc4</title>
+		<title>Gentoo Linux 1.4</title>
 		<section>
 			<body>
 
