@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6.ebuild,v 1.3 2004/03/18 10:25:12 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6.ebuild,v 1.4 2004/03/28 12:02:53 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -14,7 +14,7 @@ HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/Developer/vdr-${PV}.tar.bz2
 		http://linvdr.org/download/VDR-AIO/vdr-1.3.6/vdr-1.3.6-ElchiAIO4d.diff.gz
-		http://linvdr.org/download/VDR-AIO/logos/xpmlogos.tgz
+		http://www.fh-luh.de/~mad/vdr/xpmlogos.tar		
 		"
 
 # vanilla :-)
