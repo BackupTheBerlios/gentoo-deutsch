@@ -324,67 +324,69 @@ emerge net-im/gaim
         bzw. upgedated werden, wird nur die aktuell im System definierte USE Einstellung 
         angewendet und keinesfalls die zum Zeitpunkt der Erstinstallation geltende.</p></td></tr></table>
 
-  <p class="secthead"><a name="_sect4">Compiler Options </a></p>
-	<p>The compiler options used by Portage to compile packages can be set
-	in /etc/make.conf by editing <font class="input">CHOST</font>, <font class="input">CFLAGS</font>, and 
-	<font class="input">CXXFLAGS</font>. The <font class="input">CHOST</font> setting specifies which platform
-	you are compiling for and <font class="input">CFLAGS</font> and <font class="input">CXXFLAGS</font> settings
-	specify compiler flags to be used while compiling C and C++
-	respectively.
+  <p class="secthead"><a name="_sect4">Compiler Optionen </a></p>
+	<p>
+        Die Compiler Optionen, welche von Portage zum kompilieren von Paketen genutzt 
+        werden, können in /etc/make.conf gesetzt werden indem <font class="input">CHOST</font>, <font class="input">CFLAGS</font> 
+        und <font class="input">CXXFLAGS</font> editiert werden. Die <font class="input">CHOST</font> Einstellung gibt an, auf 
+        welcher Plattform Sie kompilieren. <font class="input">CFLAGS</font> und <font class="input">CXXFLAGS</font> geben 
+        Compiler Einstellungen an während C bzw. C++ kompiliert wird.
 	</p>
 	<p>
-	Several sets of default settings are offered with comments on which
-	platforms they are to be used with.  These provided defaults are 
-	considered stable and tested.  Changing them may uncover compile 
-	errors and bugs in both the compiler and in the software being 
-	compiled.  Please be careful if you decide to customize a default 
-	setting as you may end up with an unusable system.</p>
+        Es werden Ihnen einige kommentierte Standard Einstellungen für unterschiedliche 
+        Plattformen angeboten. Diese Einstellungen können als getestet und stabil angesehen 
+        werden. Diese zu ändern, könnte zu Fehlern in der Software und dem Compiler 
+        führen. Bitte seien Sie beim ändern der Standard Einstellung vorsichtig, da Sie 
+        ein unbenutzbares bzw. beschädigtes System erhalten könnten.
+        </p>
 	<p>
-	Users with multiprocessor systems may benefit by modifying the
-	<font class="input">MAKEOPTS</font> option found in /etc/make.globals.  This option
-	is passed to the <font class="input">make</font> command during package compilation
-	to enable multiple gcc instances.
+        Benutzer eines Multiprozessor Systems könnten einige Vorteile erhalten, indem sie in 
+        /etc/make.globals die Option <font class="input">MAKEOPTS</font> editieren. Diese Option wird während des 
+        Kompilierungsvorganges an <font class="input">make</font> übergeben um mehrere GCC Instanzen zu aktivieren.
 	</p>
 	
-<p class="secthead"><a name="_sect5">Directory Locations </a></p>
-	<p>Portage allows you to configure the directories it uses 
-	to build packages and where it stores various files.  Most users
-	will have no need to change these locations.  The following
-	options can be set:</p>
+<p class="secthead"><a name="_sect5">Lage der Verzeichnisse </a></p>
+	<p>
+        Portage erlaubt es Ihnen zu bestimmen in welchen Verzeichnissen Pakete kompiliert 
+        und verschiedene Dateien gespeichert werden sollen. Die meisten Benutzer werden 
+        diese Optionen nicht benötigen. Folgende Optionen können genutzt werden:
+        </p>
 
 	<ul>
 	<li>
-<font class="input">PORTDIR</font> - Portage tree location</li>
+<font class="input">PORTDIR</font> - Position des Portage Trees</li>
 	<li>
-<font class="input">DISTDIR</font> - Local cache of downloaded archives</li>
+<font class="input">DISTDIR</font> - Lokaler Cache der runtergeladenen Pakete</li>
 	<li>
-<font class="input">PKGDIR</font> - Location of locally generated tbz2 packages</li>
+<font class="input">PKGDIR</font> - Ort der lokal erzeugten tbz2 Pakete</li>
 	<li>
-<font class="input">RPMDIR</font> - Location of locally generated RPM packages</li>
+<font class="input">RPMDIR</font> - Ort der lokal erzeugten RPM Pakete</li>
 	<li>
 <font class="input">CURRENTFILE</font> - ???</li>
 	<li>
-<font class="input">PORTAGE_TMPDIR</font> - Temporary space used for package compilation</li>
+<font class="input">PORTAGE_TMPDIR</font> - Kurzfristiger Platz zum Kompilieren der Pakete</li>
 	<li>
-<font class="input">BUILD_PREFIX</font> - Related to PORTAGE_TMPDIR</li>
+<font class="input">BUILD_PREFIX</font> - Gehört zu PORTAGE_TMPDIR</li>
 	<li>
-<font class="input">PKG_TMPDIR</font> - Related to PKG_TMPDIR</li>
+<font class="input">PKG_TMPDIR</font> - Gehört zu PKG_TMPDIR</li>
 	</ul>
-<p class="secthead"><a name="_sect6">Configuration File Protection </a></p>
-	<p>Portage allows for the protection of all configuration files in
-	specified directories.  Portage will not overwrite files in protected
-	directories.  If a package tries to install a file that already
-	exists, it will be renamed to something like <font class="input">._cfg0000_name</font>.
-	This is done so that users can later look at the new file and 
-	manually merge the differences between the two themselves.</p>
+<p class="secthead"><a name="_sect6">Schutz der Konfigurations Dateien </a></p>
 	<p>
-	Protected directories can be set by <font class="input">CONFIG_PROTECT</font> in either
-	/etc/make.conf or /etc/make.globals.  Specific files and subdirectories
-	under protected directories can be made unprotected by setting
-	<font class="input">CONFIG_PROTECT_MASK</font>.
+        Portage erlaubt den Schutz aller Konfigurations Dateien in bestimmten 
+        Verzeichnissen. Portage wird in geschützten Verzeichnissen keine Dateien 
+        überschreiben. Wenn ein Paket versucht, bereits existierende Dateien zu 
+        überschreiben, wird die entsprechende Datei nach dem Muster
+        <font class="input">._cfg0000_name</font> umbenannt. Dies geschieht damit der Benutzer später 
+        die neue Datei einsehen kann, um die Unterschiede manuell einzufügen.
+        </p>
+	<p>
+        Geschützte Verzeichnisse können über <font class="input">CONFIG_PROTECT</font> entweder in 
+        /etc/make.conf oder /etc/make.globals definiert werden. Bestimmte Dateien 
+        und Unterverzeichnisse unterhalb geschützter Verzeichnisse können durch
+        <font class="input">CONFIG_PROTECT_MASK</font> vom Schutz ausgenommen werden.
 	</p>
 	<p>
-	The following is an example and should not be blindly copied:
+        Das Folgende ist nur ein Beispiel und sollte nicht blind kopiert werden:
 	</p>
 
 <a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -396,8 +398,9 @@ CONFIG_PROTECT_MASK=&quot;/etc/gconf /etc/init.d /etc/pam.d&quot;
 </pre></td></tr>
 </table>
 
-	<p>Users may request more information on how Configuration File 
-	Protection works by issuing the following command in a shell:
+	<p>
+        Benutzer können mehr Informationen über den Schutz von Konfigurations 
+        Dateien erfahren, indem sie folgendes in ihrer Shell eingeben:
 	</p>
 
 <a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -408,28 +411,31 @@ emerge --help config
 </pre></td></tr>
 </table>
 
-<p class="secthead"><a name="_sect7">FEATURES </a></p>
-	<p>Portage offers a number of options geared towards developers
-	that govern how Portage behaves and cleans up after itself during
-	various stages of a package merge.  These options should only
-	be of interest to developers and may cause problems for users.
+<p class="secthead"><a name="_sect7">FUNKTIONEN </a></p>
+	<p>
+        Portage bietet eine ganze Menge Optionen, die auf Entwickler abzielen, 
+        welche regeln wollen wie sich Portage verhält und nach der Installation 
+        verschiedener Paketstufen aufräumt. Diese Optionen sollten nur für
+        Entwickler interessant sein. Bei normalen Benutzern könnten sie Probleme 
+        verursachen.
 	</p>
 	<p>
-	A list of features to enable can be set by <font class="input">FEATURES</font> in
-	either /etc/make.conf or /etc/make.globals. The following is a list of
-	available options: </p>
+        Eine Liste an Funktionen kann unter <font class="input">FEATURES</font> entweder in 
+        /etc/make.conf oder /etc/make.globals aktiviert werden. Hier eine Liste 
+        der verfügbaren Funktionen:
+        </p>
 	<p>
 	<ul>
 	<li>
-<font class="input">digest</font> : Automatically create a digest for new ebuilds.</li>
+<font class="input">digest</font> : Erstellt automatisch einen Digest für neue Ebuilds.</li>
 	<li>
-<font class="input">cvs</font> : Automatically commit new digests to cvs.</li>
+<font class="input">cvs</font> : Ergänzt neue Ebuild Digests automatisch ins CVS.</li>
 	<li>
-<font class="input">sandbox</font> : Enables &quot;sandbox&quot; for path prefix protection.</li>
+<font class="input">sandbox</font> : Aktiviert das Sandboxverfahren.</li>
 	<li>
-<font class="input">noclean</font> : Portage never cleans up after itself.</li>
+<font class="input">noclean</font> : Portage räumt nach dem kompilieren nicht auf.</li>
 	<li>
-<font class="input">noauto</font> : Do not execute prior ebuild steps automatically.</li>
+<font class="input">noauto</font> : Führt keine wichtigen Ebuild Schritte automatisch aus.</li>
 	</ul>
 	</p>
 <p class="secthead"><a name="_sect8">Portage SYNC settings </a></p>
