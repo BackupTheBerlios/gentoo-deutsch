@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdteletext/ChangeLog,v 1.4 2004/06/02 12:39:36 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdteletext/ChangeLog,v 1.5 2004/07/12 22:12:49 austriancoder Exp $
+
+*vdrplugin-osdteletext-0.4 (12 July 2004)
+  12 July 2004; Christian Gmeiner <christian at visual-page dot de>
+  version bump
+  added support for 2.4er kernels
 
 *vdrplugin-osdteletext-0.3.2-r1 (02 June 2004)
   02. June 2004; Christian Gmeiner <christian at visual-page dot de>
