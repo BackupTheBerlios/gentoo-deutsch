@@ -1,2 +1,5 @@
-MD5 7ca22c3b2b04e3f22244be498f5a873e vserver-0.22.ebuild 615
+MD5 a237d74e6b05b27ee1efe8c841532b5a vserver-0.26.ebuild 956
+MD5 a237d74e6b05b27ee1efe8c841532b5a vserver-0.22.ebuild 956
 MD5 c5c15c9da898a93cfc8e7506f5aa2f86 files/digest-vserver-0.22 68
+MD5 1ef98c22df825a9f61a2a5383cf86d9c files/digest-vserver-0.26 67
+MD5 e97e217350d57a6af3330c2ac912b2a5 files/rc.vservers 820
