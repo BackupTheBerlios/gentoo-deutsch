@@ -28,7 +28,8 @@
     </item>
     <item title="Dokumentation" href="doku">
       <item href="einrichtung" title="Einrichtung">
-        <item href="installation" title="Installation"/>
+        <item href="installation" title="Installation Gentoo-Linux 1.2"/>
+        <item href="installation14rc4" title="Installation Gentoo-Linux 1.4rc4"/>
         <item href="installationppc" title="Installation Apple"/>
         <item href="lokalisierung" title="Lokalisierung"/>
         <item href="desktop" title="Desktop-Konfiguration"/>
