@@ -27,7 +27,7 @@
 
 <xsl:output
   method="html"
-  encoding="iso-8859-15"
+  encoding="UTF-8"
   indent="no"
   doctype-public="-//W3C//DTD HTML 4.01//EN"
   doctype-system="http://www.w3.org/TR/html4/strict.dtd"
@@ -48,7 +48,7 @@
       <xsl:value-of select="title"/> 
       <xsl:text> @ Gentoo Linux - Das deutschsprachige Portal</xsl:text>
     </title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="{$styleurl}index.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="{$styleurl}print.css" media="print"/>    
     <link rel="shortcut icon" href="{$baseurl}favicon.ico" type="image/x-icon"/>
