@@ -1300,7 +1300,7 @@ Speichern Sie die Datei und beenden Sie den Browser mit <c>q</c>.
 möchten.</comment>
 <comment>Wenn Sie ein stage tar-Archiv heruntergeladen haben, ändern Sie den
 Pfad von &quot;/mnt/cdrom/gentoo/&quot; in &quot;/mnt/gentoo/&quot;.</comment>
-# <c>tar -xvjpf /mnt/cdrom/stage3-*.tar.bz2</c>
+# <c>tar -xvjpf /mnt/cdrom/gentoo/stage3-*.tar.bz2</c>
 </pre>
 
 				<p>Wenn sie Ihr stage tar-Archiv nach
