@@ -119,7 +119,7 @@ Durch das Hinzufügen von gcc3-Flags zur make.conf vor Skript 2 würde einige Teil
 Ihr System wird wahrscheinlich nicht starten, bevor Skript 3 nicht vollständig durchgeführt wurde.
 </p></td></tr></table>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>An dieser Stelle sollten sie sich an sovielen Konsolen anmelden, wie sie glauben zu brauchen bis Skript 3 abgearbeitet ist.</p></td></tr></table>
+<b>Anmerkung: </b>An dieser Stelle sollten sie sich an sovielen Konsolen anmelden, die sie brauchen bis Skript 3 abgearbeitet ist.</p></td></tr></table>
 # <font class="input">nano -w update-step2.sh</font> <font class="comment">// Überprüft die Variable ARCH. (x86,ppc,sparc,sparc64)</font>
 # <font class="input">./update-step2.sh</font>       <font class="comment">// Ändert das Profil, build-bootstrap gcc und glibc.</font>
 
@@ -129,7 +129,8 @@ Ihr System wird wahrscheinlich nicht starten, bevor Skript 3 nicht vollständig d
 # <font class="input">./update-step3.sh</font>       <font class="comment">// bootstraps gcc und erneuert Login-kritische Pakete.</font>
 # <font class="input">etc-update</font>              <font class="comment">// Überprüfung ALLER Änderung.</font>
 
-# <font class="comment">// An dieser Stelle müssen sie entscheiden, ob sie alles neu übersetzen wollen oder aber relativ schnell ein laufendes System haben möchten.</font>
+# <font class="comment">// An dieser Stelle müssen sie entscheiden, ob sie alles neu übersetzen wollen oder aber</font>
+  <font class="comment">// relativ schnell ein laufendes System haben möchten.</font>
 # <font class="input">./update-step4.sh</font> <font class="comment">// Optional. Erneuert nur beschädigte Pakete.</font>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
 <b>Warnung: </b>Dies wird ALLE beschädigten Pakete entfernen, um sie anschließend wieder einzuspielen.</p></td></tr></table>
