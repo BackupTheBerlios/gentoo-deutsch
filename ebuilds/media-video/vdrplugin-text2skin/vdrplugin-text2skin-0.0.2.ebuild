@@ -7,7 +7,11 @@ S=${WORKDIR}/${VDRPLUGIN}-${PV}
 DESCRIPTION="VDR text2skin PlugIn"
 HOMEPAGE="http://www.magoa.net/linux/"
 SRC_URI="http://www.magoa.net/linux/files/vdr-${VDRPLUGIN}-${PV}.tgz
-         http://www.magoa.net/linux/files/demo.tgz"
+	 http://www.magoa.net/linux/files/demo.tgz
+	 http://egal.home.t-link.de/Skin-EgalsTry-0.0.3.tar.gz
+	 http://web.vdrskins.org/vdrskins/albums/userpics/10008/MoroneFlat-0.0.2a.tar.gz
+	 http://web.vdrskins.org/vdrskins/albums/userpics/10004/EgalOrange-0.0.3.tar.gz
+	 "
 KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL"
@@ -53,6 +57,45 @@ src_install() {
 	doins ${S}/../demo/langs/*.png
 	insinto /etc/vdr/plugins/text2skin/demo/logos
 	doins ${S}/../demo/logos/*.xpm
+
+	insinto /etc/vdr/plugins/text2skin/EgalsTry
+	doins ${S}/../EgalsTry/*
+	insinto /etc/vdr/plugins/text2skin/EgalsTry/symbols
+	doins ${S}/../EgalsTry/symbols/*.xpm
+	insinto /etc/vdr/plugins/text2skin/EgalsTry/langs
+	doins ${S}/../EgalsTry/langs/*.png
+	insinto /etc/vdr/plugins/text2skin/EgalsTry/logos
+	doins ${S}/../EgalsTry/logos/*.xpm
+	insinto /etc/vdr/plugins/text2skin/EgalsTry/progressiv
+	doins ${S}/../EgalsTry/progressiv/*.png
+
+	insinto /etc/vdr/plugins/text2skin/EgalOrange
+	doins ${S}/../EgalOrange/*
+	insinto /etc/vdr/plugins/text2skin/EgalOrange/symbols
+	doins ${S}/../EgalOrange/symbols/*.xpm
+	insinto /etc/vdr/plugins/text2skin/EgalOrange/langs
+	doins ${S}/../EgalOrange/langs/*.png
+	insinto /etc/vdr/plugins/text2skin/EgalOrange/logos
+	doins ${S}/../EgalOrange/logos/*.xpm
+
+	insinto /etc/vdr/plugins/text2skin/MoroneFlat
+	doins ${S}/../MoroneFlat/*
+	insinto /etc/vdr/plugins/text2skin/MoroneFlat/symbols
+	doins ${S}/../MoroneFlat/symbols/*
+	insinto /etc/vdr/plugins/text2skin/MoroneFlat/langs
+	doins ${S}/../MoroneFlat/langs/*
+	insinto /etc/vdr/plugins/text2skin/MoroneFlat/logos
+	doins ${S}/../MoroneFlat/logos/*
+	insinto /etc/vdr/plugins/text2skin/MoroneFlat/contrib
+	doins ${S}/../MoroneFlat/contrib/*
+	insinto /etc/vdr/plugins/text2skin/MoroneFlat/contrib/menubottom-middle-green
+	doins ${S}/../MoroneFlat/contrib/menubottom-middle-green/*
+	insinto /etc/vdr/plugins/text2skin/MoroneFlat/contrib/menubottom-light-green
+	doins ${S}/../MoroneFlat/contrib/menubottom-middle-green/*
+	insinto /etc/vdr/plugins/text2skin/MoroneFlat/contrib/menubottom-dark-green
+	doins ${S}/../MoroneFlat/contrib/menubottom-middle-green/*
+
+
 	chown -R vdr:video ${D}/etc/vdr/plugins/text2skin
 }
 
