@@ -1,7 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-bootloader.xml,v 1.2 2003/12/12 22:54:45 dertobi123 Exp $ -->
 
+<!-- English CVS Version: 1.17 -->
 
 <sections>
 <section>
@@ -32,12 +34,36 @@ zwischen GRUB (empfohlen) und LILO.
 </p>
 
 <table>
- <tr><th>Architektur</th><th>Empfohlen</th><th>Alternativen</th></tr>
- <tr><th>x86</th><ti>GRUB</ti><ti>LILO</ti></tr>
- <tr><th>alpha</th><ti>aBoot</ti><ti>MILO</ti></tr>
- <tr><th>sparc</th><ti>SILO</ti><ti></ti></tr>
- <tr><th>ppc</th><ti>yaBoot (NewWorld), BootX (OldWorld)</ti><ti></ti></tr>
- <tr><th>hppa</th><ti>PALO</ti><ti></ti></tr>
+<tr>
+  <th>Architektur</th>
+  <th>Empfohlen</th>
+  <th>Alternativen</th>
+</tr>
+<tr>
+  <th>x86</th>
+  <ti><uri link="#doc_chap2">>GRUB</uri></ti>
+  <ti><uri link="#doc_chap3">>LILO</uri></ti>
+</tr>
+<tr>
+  <th>alpha</th>
+  <ti><uri link="#doc_chap4">aBoot</uri></ti>
+  <ti><uri link="#doc_chap5">MILO</uri></ti>
+</tr>
+<tr>
+  <th>sparc</th>
+  <ti><uri link="#doc_chap6">SILO</uri></ti>
+  <ti></ti>
+</tr>
+<tr>
+  <th>ppc</th>
+  <ti><uri link="#doc_chap8">yaBoot</uri> (NewWorld)</ti>
+  <ti><uri link="#doc_chap9">BootX</uri> (OldWorld)</ti>
+</tr>
+<tr>
+  <th>hppa</th>
+  <ti><uri link="#doc_chap7">PALO</uri></ti>
+  <ti></ti>
+</tr>
 </table>
 
 </body>
@@ -79,6 +105,10 @@ daher <e>788</e>.
 <p>
 Merken Sie sich diesen Wert (oder schreiben Sie ihn auf), Sie werden ihn wenig
 später brauchen.
+</p>
+
+<p>
+Wählen Sie nun einen Bootloader aus der obigen Tabelle aus.
 </p>
 
 </body>
@@ -135,7 +165,7 @@ installieren.
 <p>Um GRUB zu installieren, lassen Sie es zunächst emergen:</p>
 
 <pre caption = "Installieren von GRUB">
-# <i>emerge -k grub</i>
+# <i>emerge --usepkg grub</i>
 </pre>
 
 <p>
@@ -252,8 +282,9 @@ sollten Sie <c>doscsi</c> als Kerneloption hinzufügen
 
 <p>
 Speichern Sie nun die <path>grub.conf</path> Datei und verlassen den Editor. Von
-jetzt an ist GRUB vollständig konfiguriert und Sie können sich dem Rest des
-Systems widmen.
+jetzt an ist GRUB vollständig konfiguriert und Sie können mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fortfahren.
 </p>
 
 </body>
@@ -282,7 +313,7 @@ unterstützt beide und anscheinend haben Sie sich für LILO entschieden.
 <p>Installieren von LILO ist ein Klacks, benutzen Sie einfach <c>emerge</c>.</p>
 
 <pre caption = "Installieren von LILO">
-# <i>emerge -k lilo</i>
+# <i>emerge --usepkg lilo</i>
 </pre>
 
 </body>
@@ -364,6 +395,12 @@ System anwenden kann (also sich selbst auf der Platte installiert).
 # <i>/sbin/lilo</i>
 </pre>
 
+<p>
+Fahren Sie nun mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fort.
+</p>
+
 </body>
 </subsection>
 </section>
@@ -381,7 +418,7 @@ Zunächst installieren wir aboot auf unserem System. Natürlich benutzen wir
 </p>
 
 <pre caption = "Installieren von aboot">
-# <i>emerge -k aboot</i>
+# <i>emerge --usepkg aboot</i>
 </pre>
 
 <p>
@@ -430,8 +467,9 @@ Zusätzlichen müssen Sie noch das Einloggen am seriellen Anschluß erlauben:
 </pre>
 
 <p>
-aboot ist nun konfiguriert und bereit zur Benutzung. Fahren Sie mit dem nächsten
-Installationsabschnitt fort.
+Fahren Sie nun mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fort.
 </p>
 
 </body>
@@ -456,7 +494,7 @@ Um MILO zu installieren benutzen wir <c>emerge</c>.
 </p>
 
 <pre caption = "Installieren von MILO">
-# <i>emerge -k milo</i>
+# <i>emerge -usepkg milo</i>
 </pre>
 
 <p>
@@ -493,7 +531,9 @@ lesen ist eine <e>schlechte</e> Idee.
 </p>
 
 <p>
-Setzen Sie nun die Installation mit dem nächsten Abschnitt fort.
+Fahren Sie nun mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fort.
 </p>
 
 </body>
@@ -508,7 +548,7 @@ link="http://www.sparc-boot.org">SILO</uri>, dem Sparc Improved boot LOader.
 </p>
 
 <pre caption = "Installieren von SILO">
-# <i>emerge -k silo</i>
+# <i>emerge --usepkg silo</i>
 </pre>
 
 <p>
@@ -562,7 +602,9 @@ führen Sie einfach <c>/sbin/silo</c> aus:
 </pre>
 
 <p>
-Fahren Sie nun fort mit dem nächsten Installationsabschnitt.
+Fahren Sie nun mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fort.
 </p>
 
 </body>
@@ -610,7 +652,9 @@ Wenn die Konfigarution beendet ist, führen Sie einfach <c>palo</c> aus.
 </pre>
 
 <p>
-Fahren Sie nun mit dem nächsten Abschnitt der Installation fort.
+Fahren Sie nun mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fort.
 </p>
 
 </body>
@@ -634,6 +678,13 @@ irgendeinem Grund nicht <c>yabootconfig</c> verwenden wollen um
 Beispieldatei schon installiert auf Ihrem System editieren.
 </p>
 
+<ul>
+  <li><uri link="#doc_chap8_sect2">Standard: Benutzen von yabootconfig</uri></li>
+  <li>
+    <uri link="#doc_chap8_sect3">Alternativ: yaBoot manuell konfigurieren</uri>
+  </li>
+</ul>
+
 </body>
 </subsection>
 <subsection>
@@ -651,14 +702,14 @@ Um  <c>yabootconfig</c> benutzen zu können muss ihr Laufwerk eine Bootstrap
 Partition haben und <path>/etc/fstab</path> muss mit Ihrem Linux Partitionen
 konfiguriert sein. Beides sollte durch die vorangegangen Schritte schon
 geschehen sein. Stellen Sie zuerst durch die Ausführung von
-<c>emerge -u yaboot</c> sicher, dass Sie die neueste Version von yaBoot
+<c>emerge --update yaboot</c> sicher, dass Sie die neueste Version von yaBoot
 installiert haben. Dies ist notwendig, weil die neueste Version über Portage
 verfügbar sein wird, aber vielleicht noch nicht in den Stage Dateien vorhanden
 ist.
 </p>
 
 <pre caption = "Installieren von yaBoot">
-# <i>emerge -ku yaboot</i>
+# <i>emerge --usepkg --update yaboot</i>
 </pre>
 
 <p>
@@ -678,10 +729,16 @@ OS Einstellung zu setzen)  stellen Sie sicher, dass Sie <c>ybin -v</c> erneut
 ausführen um die Veränderungen auf die Bootstrap Partition anzuwenden.
 </p>
 
+<p>
+Fahren Sie nun mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fort.
+</p>
+
 </body>
 </subsection>
 <subsection>
-<title>Alternative: Die manuelle yaBoot Konfiguration</title>
+<title>Alternativ: Die manuelle yaBoot Konfiguration</title>
 <body>
 
 <p>
@@ -690,7 +747,7 @@ System installiert ist:
 </p>
 
 <pre caption = "Installieren von yaBoot">
-# <i>emerge -ku yaboot</i>
+# <i>emerge --usepkg --update yaboot</i>
 </pre>
 
 <p>
@@ -752,8 +809,10 @@ nur für die erstmalige Einrichtung benötigt.
 
 <p>
 Für weitere Informationen über Yaboot werfen Sie einen Blick auf das<uri
-link="http://penguinppc.org/projects/yaboot">yaboot Projekt</uri>. Fahren Sie
-nun mit dem nächsten Abschnitt fort.
+link="http://penguinppc.org/projects/yaboot">yaboot Projekt</uri>. Fahren
+Sie nun mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fort.
 </p>
 
 </body>
@@ -774,7 +833,9 @@ nach dem Neustart müssen Sie einige Einstellungen im BootX Control Panel
 </p>
 
 <p>
-Fahren Sie nun mit dem nächsten Installationsabschnitt fort.
+Fahren Sie nun mit der <uri
+link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+fort.
 </p>
 
 </body>
