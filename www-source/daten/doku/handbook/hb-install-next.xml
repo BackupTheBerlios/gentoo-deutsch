@@ -1,7 +1,7 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-next.xml,v 1.1 2003/11/22 08:08:02 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-next.xml,v 1.2 2003/11/27 12:07:09 jay Exp $ -->
 
 <!-- Original English CVS Version 1.6 -->
 <sections>
@@ -28,23 +28,21 @@ Handbuch</uri> welches einen ausführliche Beschreibung der Internas
 beinhaltet.
 </p>
 
-<!-- Translation stops here -->
-
 <p>
-If you want to know more about how USE interacts, read the <uri
-link="/doc/en/use-howto.xml">USE Howto</uri> which introduces USE flags to you
-and helps you decide what USE flags you need.
+Wenn Sie mehr über die verschiedenen USE Funktionen erfahren wollen, ist das <uri
+link="/doc/en/use-howto.xml">USE Howto</uri> mit seiner Einführung über die USE
+Flags und einer Übersicht zur Entscheidungshilfe die richtige Wahl.
 </p>
 
 <p>
-If you are interested in optimizing your system for desktop-use, or you want to
-learn how to configure your system to be a full working desktop system, consult
-our extensive <uri link="/doc/en/desktop.xml">Desktop Configuration Guide</uri>.
+Zur Optimierung Ihres Systems für einen Endbenutzer oder wenn Sie wissen wollen,
+wie ein Desktop-System eingerichtet wird, sollte der sehr ausführliche 
+<uri link="/doc/en/desktop.xml">Desktop Configuration Guide</uri> weiterhelfen.
 </p>
 
 <p>
-For a full listing of all our available documentation check out our <uri
-link="/doc/en/index.xml">Documentation Resources</uri> page.
+Für eine komplette Liste aller für Gentoo Linux erhältlichen Dokumentationen
+verweisen wir auf die <uri link="/doc/en/index.xml">Dokuementationsübersicht</uri>.
 </p>
 
 </body>
@@ -55,19 +53,19 @@ link="/doc/en/index.xml">Documentation Resources</uri> page.
 <body>
 
 <p>
-You are of course always welcome on our <uri
-link="http://forums.gentoo.org">Gentoo Forums</uri> or on one of our many 
-<uri link="/main/en/irc.xml">Gentoo IRC channels</uri>.
+Sie sind natürlich in den <uri link="http://forums.gentoo.org">
+Gentoo Foren</uri> oder in einem der vielen
+<uri link="/main/en/irc.xml">Gentoo IRC Kanälen</uri>  jederzeit willkommen.
 </p>
 
 <p>
-We also have several <uri 
-link="/main/en/lists.xml">mailinglists</uri> open to all 
-our users. Information on how to join is contained in that page.
+Auch haben wir verschiedene <uri 
+link="/main/en/lists.xml">Mailinglisten</uri> die allen Benutzern offen
+stehen. Weitere Informationen hierzu befinden sich auf der Seite.
 </p>
 
 <p>
-We'll shut up now and let you enjoy your installation :)
+Wir halten jetzt unseren Mund und lassen Sie die Gentoo Linux Installation geniessen :)
 </p>
 
 </body>
