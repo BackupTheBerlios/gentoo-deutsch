@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/messagewall/messagewall-1.0.8.ebuild,v 1.1 2003/03/23 09:55:23 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/messagewall/messagewall-1.0.8.ebuild,v 1.2 2003/08/23 20:55:15 ripclaw Exp $
 
 
 S=${WORKDIR}/${PN}
@@ -26,7 +26,7 @@ pkg_setup() {
 	fi
 	if ! grep -q ^mwall: /etc/passwd ; then
 		einfo "Adding user mwall"
-		useradd -g mwall -C "User for MessageWall (normal)" -d /var/mwall mwall
+		useradd -g mwall -c "User for MessageWall (normal)" -d /var/mwall mwall
 	fi
 	if ! grep -q ^mwalla: /etc/group ; then
 		einfo "Adding group mwalla"
@@ -34,7 +34,7 @@ pkg_setup() {
 	fi
 	if ! grep -q ^mwalla: /etc/passwd ; then
 		einfo "Adding user mwalla"
-		useradd -g mwalla -C "User for MessageWall (authentication)" -d /var/mwalla mwall
+		useradd -g mwalla -c "User for MessageWall (authentication)" -d /var/mwalla mwall
 	fi
 
 }
