@@ -8,7 +8,7 @@
 
 <box>
   <block>
-	<title>Projekt:</title>
+	<title>Projekt: Übersetzung</title>
     <p>
 		<ul>
 			<li><uri link="/inhalte/projekt/translation/">Information für Übersetzer</uri></li>
@@ -27,6 +27,21 @@
 		</ul>
     </p>
   </block>
+
+  <block>
+    <title>Projekt: VDR</title>
+    <p>
+
+		<ul>
+			<li><uri link="http://vdr.gentoo.de/">WIKI</uri></li>
+			<li><uri link="http://www.vdrportal.de/board/board.php?boardid=56">Portal</uri></li>
+			<li><uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/ebuilds/media-video/">Ebuilds</uri></li>
+			<li><uri link="http://www.gentoofaq.org/vdr/">Doku</uri></li>
+			<li><uri link="http://www.gentoofaq.org/vdr/index.pl">Gendocedit</uri></li>
+		</ul>
+    </p>
+  </block>
+
 
   <block>
     <title>Community:</title>
