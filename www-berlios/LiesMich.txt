@@ -3,3 +3,7 @@ Achtung!
 Eingecheckte Dateien in diesem Verzeichnis werden sofort angezeigt.
 Daher vor dem einchecken bitte etwas Vorsicht walten lassen und die 
 Seiten nochmal pruefen.
+
+Achja, wenn jemand ein neues Unterverzeichnis hier anlegt, muss er
+das auch im htdoc-Verzeichnis anlegen (oder das Script copywww.sh
+in CVSROOT verbessern. ;) )
