@@ -1,5 +1,5 @@
 <?php
-
+// Kommentar zum testen
 include('head.php');
 
 ?>
