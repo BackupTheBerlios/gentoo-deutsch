@@ -460,20 +460,33 @@ emerge --help config
 </section>
 
 <section>
-<title>Portage SYNC settings</title>
+<title>Portage SYNC Einstellungen</title>
 <body>
-	<p>Portage has the ability to update the Portage tree through the
-	use of two different methods, rsync or anonymous CVS.  You can 
-	define which method Portage should use via the <i>SYNC</i> setting 
-	in /etc/make.conf.  </p>
+	<p>Portage hat die M&#246;glichkeit, den Portage Tree zu erneuern mit
+	zwei verschiedenen Methoden: rsync oder anonymous CVS. Sie k&#246;nnen
+	angeben, welche Methode Portage ben&#252;tzen soll, um das update
+	durchzuf&#252;hren. Jene Methode k&#246;nnen Sie &#252;ber die <i>SYNC</i>
+	Option, die sich in der Datei /etc/make.conf befindet, angeben.
+	</p>
 
 	<p><b>RSYNC</b></p>
 
-	<p>Users are recommended to use the rsync method unless they plan on 
+	<p>Es ist empfohlen, die rsync Methode zu benutzen, es sei denn Sie
+	planen, Ihre eigenen Ebuilds zu entwickeln, was die Last unserer
+	Server reduzieren w&#252;rde, wenn Sie anonymous CVS verwenden.
+	
+	<!-- Ich weiss nicht, ist das richtig uebersetzt? Hier der Originaltext: (EH)
+		
+	Users are recommended to use the rsync method unless they plan on 
 	developing their own ebuild files as it places much less of a load
-	on our servers then using anonymous CVS.  For this reason the rsync
-	method is the default set in /etc/make.conf.  This method can be 
-	set in the following way:</p>
+	on our servers then using anonymous CVS. 
+	
+	-->
+	
+	In jenem Fall, rsync ist die standard Methode, welche in /etc/make.conf
+	angegeben wurde.
+	Sie k&#246;nnen sie folgendermaﬂen angeben:
+	</p>
 
 <pre>
 SYNC="rsync://cvs.gentoo.org/gentoo-x86-portage"
@@ -494,72 +507,102 @@ SYNC="rsync://cvs.gentoo.org/gentoo-x86-portage"
 SYNC="cvs://:pserver:anonymous@gentoo.org:/home/anoncvs"
 </pre>
 
-	<note>Anonymous CVS is slow and resource intensive on both the server
-	and the client.  We ask that you please use the rsync method if you
-	are not making changes to your local Portage tree.</note>
+	<note>Anonymous CVS ist langsam und sehr Ressourcenintensiv f&#252;r
+	den Server als auch f&#252;r den Client (lokal). Wir m&#246;chten
+	Sie darum bitten, das Sie die rsync Methode verwenden, wenn Sie keine
+	&#228;nderungen im lokalen Portage Tree vornehmen wollen.
+	</note>
 
-	<p>Before you can begin using Anonymous CVS to sync your local copy
-	of the tree with the official Portage tree, you must "check out"
-	a copy of the tree using the cvs tool by doing the following:
+	<p>Bevor Sie beginnen, Anonymous CVS zu benutzen, um Ihre lokale
+	Kopie mit jenem offiziellen Portage Tree zu synchronisieren, m&#252;ssen
+	Sie zuerst den neuesten	Tree herunterladen ("checkout") mittels des
+	cvs tools mit folgender Vorgangsweise:
 	</p>
 <pre>
-# backup old portage directory
+# Sichern des alten Portage Trees
 cd /usr
 mv portage portage.old
 
-# "checkout" the tree
+# Herunterladen ("checkout") des Trees
 cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs login
-# hit enter when prompted for password
+# Bet&#228;tigen Sie einfach Enter bei der Passwortabfrage
 cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs co gentoo-x86
 
-# move the new tree into place
+# Verschieben Sie den neuen Tree zur gewohnten Stelle
 mv gentoo-x86 portage
 </pre>
 
-	<p><b>Developer CVS</b></p>
+	<p><b>Entwickler CVS</b></p>
 
+	<!-- (EH) Bitte uebersetzen -->
 	<p>Developers with full access to the CVS tree can also have
 	<i>emerge</i> sync the local tree against a CVS repository that
 	they can access through RSH or SSH.
 	</p>
 	<p>
-	Simply check out a CVS tree using your account, move it to 
-	/usr/portage, and use the following <i>SYNC</i> option:
+	Laden Sie einfach den CVS Tree herunter ("chekout") mittels Ihres
+	Accounts, verschieben Sie jenen nach /usr/portage und benutzen
+	Sie folgende <i>SYNC</i> Option:
 	</p>
 	
 <pre>
-SYNC="cvs://youraccount@cvs.gentoo.org:/home/cvsroot"
+SYNC="cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot"
 </pre>
 
 </body>
 </section>
 
 <section>
-<title>Mirrors</title>
+<title>Spiegelungen (Mirrors)</title>
 <body>
-	<p>The Gentoo Project keeps a local mirror of all archive files
-	referenced in ebuilds in the Portage tree.  Often upstream source
-	tarballs, etc are kept on slow servers that may often be down.  Also
-	upstream developers will remove older versions of software from an 
-	ftp site when new releases of made.  To make life easier for people
-	using the Gentoo distribution (and reduce the upstream source site's 
-	bandwidth usage) we mirror these files.  This allows for faster and 
-	more reliable downloading of these archive files from one more many 
-	mirror sites close to your physical location. </p>
+	<p>Das Gentoo Projekt beinhaltet eine lokale Spiegelung von allen
+	Archivdateien, die als Ebuild im Portage Tree vorliegen. Meistens
+	werden raufzuladende source Tarballs usw. auf langsamen Server
+	gehalten, die ziemlich oft ausfallen. Auch Entwickler entfernen
+	regelm&#228;ssig alte Versionen Ihrer Software von FTP-Seiten,
+	wenn neue Releases gemacht wurden. Um das Leben von Benutzer, die
+	die Gentoo Distribution nutzen, zu erleichtern, spiegeln wir diese
+	Dateien. Das erlaubt ein schnelleres und sicheres Herunterladen
+	der Archivdateien von Spiegelungsserver, die n&#228;her zu Ihrem
+	Standort ist.
+
+	
+	<!-- Originaltext, bin etwas unsicher bei dieser Uebersetzung: (EH)
+
+		The Gentoo Project keeps a local mirror of all archive files
+		referenced in ebuilds in the Portage tree.  Often upstream source
+		tarballs, etc are kept on slow servers that may often be down.  Also
+		upstream developers will remove older versions of software from an 
+		ftp site when new releases of made.  To make life easier for people
+		using the Gentoo distribution (and reduce the upstream source site's 
+		bandwidth usage) we mirror these files.  This allows for faster and 
+		more reliable downloading of these archive files from one more many 
+		mirror sites close to your physical location. 
+	-->
+
+	</p>
 	<p>
-	Whenever you attempt to merge a package Portage will first check
-	our mirror site for the needed archives.  If the mirror site does not
-	have the needed files then Portage tries to download them from the
-	HTTP or FTP server specified in the package ebuild.</p>
+	Wann auch immer Sie vorhaben, ein Paket herunterzuladen, indem Sie es
+	"mergen", versucht Portage zu aller erst unseren Spiegelungsserver
+	f&#252;r die angeforderten Archive zu erreichen . Wenn sich auf jenem 
+	Server die ben&#246;tigten Dateien nicht befinden, versucht Portage
+	den jeweiligen HTTP oder FTP Server, der im Ebuild Paket
+	angegeben ist.
+	</p>
 	<p>
-	The mirror Portage uses can be specified by <i>GENTOO_MIRRORS</i> 
-	in /etc/make.conf.  The following is the current default setting:
+	Die Angabe des Spiegelungsserver, welcher Portage ben&#252;tzt, erfolgt
+	in der <i>GENTOO_MIRRORS</i> Option, die sich in der Datei /etc/make.conf
+	befindet. 
+
+	Das Folgende ist die standard Einstellung:
 	</p>
 <pre>
 GENTOO_MIRRORS="http://www.ibiblio.org/gentoo"
 </pre>
-	<p>To find a Gentoo mirror closer to your location please check the
-	Gentoo web site or ask your local friendly mailing list. </p>
+	<p>F&#252;r einen Gentoo Spiegelungsserver in Ihrer N&#228;he,
+	besuchen Sie die Gentoo Webseite oder fragen Sie in Ihrer Mailinglist
+	nach einem f&#252;r Sie g&#252;nstigeren Server.
+	</p>
 </body>
 </section>
 
