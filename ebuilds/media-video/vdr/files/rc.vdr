@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.vdr,v 1.4 2003/06/05 12:47:28 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.vdr,v 1.5 2003/06/26 17:38:28 fow0ryl Exp $
 
 opts="${opts} fullrestart"
 
@@ -91,6 +91,7 @@ fullrestart() {
 			grundig_29504-401 \
 			grundig_29504-491 \
 			ves1820 \
+			stv0299 \
 			alps_tdmb7 \
 			alps_tdlb7
 	sleep 3
