@@ -90,7 +90,7 @@ richtet catering to beginners.</abstract>
 	meinem System:
 	</p>
 
-	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vishot.png" short="screenshot" caption="VIM screenshot"/>
+	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vishot.png" short="Screenshot" caption="VIM Screenshot"/>
 
 	<p>
 	Wenn Sie ein vi-Neuling sind, dann versuchen Sie, gvim auf Ihrem System zu Laufen
@@ -277,7 +277,7 @@ richtet catering to beginners.</abstract>
 	Blatt Papier passt.
 	</p>
 
-	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-first.png" short="First part of the cheat sheet" caption="Cheat Sheet"/>
+	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-first.png" short="Erster Teil des Spickzettels" caption="Spickzettel"/>
 </body>
 
 </section>
@@ -392,14 +392,11 @@ richtet catering to beginners.</abstract>
 <title>Aktualisieren des Spickzettels</title>
 <body>
 	<p>
-	Time to update the cheat sheet!  After adding all the commands we've covered so far, your
-	cheat sheet should look like this:
-
 	Es wird Zeit unseren Spickzettel zu akualisieren! Nachdem Sie alle Kommandos die wir bisher
 	behandelt haben, sollte der Spickzettel in etwa so aussehen:
 	</p>
 
-	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-edit.png" short="Cheat sheet" caption="Cheat sheet with editing commands"/>
+	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-edit.png" short="Spickzettel" caption="Spickzettel mit Bearbeitungskommandos"/>
 
 </body>
 </section>
@@ -469,12 +466,6 @@ richtet catering to beginners.</abstract>
 <title>Textänderungen</title>
 <body>
 	<p>
-	We've used the <c>c</c> (change) command a little bit so far when we typed <c>cc</c>, <c>c0</c> and <c>c$</c>.  <c>cc</c> is a special
-	form of the change command, similar to <c>dd</c>.  the <c>c0</c> and <c>c$</c> commands are examples of using the change
-	command in combination with a movement command.  In this form, <c>c</c> works similarly to <c>d</c>, except that it
-	leaves you in insert mode so that you can enter replacement text for the deleted region.  Try combining some
-	movement commands with <c>c</c> and test them out on your file (hint: <c>cW</c>, <c>ce</c>, <c>c(</c> .)
-
 	Wir haben das <c>c</c> Kommando bisher benutzt, wenn wir <c>cc</c>, <c>c0</c> und <c>c$</c> angewendet haben.
 	<c>cc</c> ist eine spezielle Form des Änderungskommandos, ähnlich zu <c>dd</c>. Die <c>c0</c> und <c>c$</c> Kommandos sind
 	Beispiele der Anwendung des Änderungskommandos in Verbindung mit einem Bewegungskommandos. In dieser Form arbeitet <c>c</c>
@@ -487,131 +478,162 @@ richtet catering to beginners.</abstract>
 </chapter>
 
 <chapter>
-<title>Compound Commands</title>
+<title>Verbund-Kommandos</title>
+
 <section>
-<title>Compound commands</title>
+<title>Verbund-Kommandos</title>
 <body>
-	<p>vi <e>really</e> becomes powerful when you start using compound ("combo") commands, like <c>d{</c> and <c>cw</c>.  
-In addition to these commands, you can also combine a number with any movement command, such as
-<c>3w</c>, which will tell vi to jump three words to the right.  Here are some more movement "combo" command
-examples: <c>12b</c>, <c>4j</c>.</p>
-<p>vi, in addition to allowing (number)(movement command) combinations, also allows <c>d</c> or <c>c</c>
-	to be combined with a number or movement command.  So, <c>d3w</c> will delete the next three words, <c>d2j</c> will
-	delete the current and next two lines, etc.  Test out some <c>c</c> and <c>d</c> combo moves to get a feel for
-how powerful and concise vi editing can be.  Once these commands are second-nature, you'll be able
-to edit files at blazing speed.</p>
+	<p>
+	vi wird <e>wirklich</e> sehr mächtig, wenn Sie damit beginnen Verbund-Kommandos (also Kombinationen) wie z.B.
+	<c>d{</c> and <c>cw</c> zu benutzen. Zusätzlich zu diesen Kommandos können Sie eine Zahl mit einem Bewegungskommando
+	kombinieren, wie zum Beispiel <c>3w</c>, welches vi anweist drei Wörter nach rechts zu springen. Hier ein paar Beispiele
+	zu "Bewegungskombinationen": <c>12b</c>, <c>4j</c>.
+	</p>
+	<p>
+	Zusätzlich zu (Zahl)(Bewegunskommando)-Kombinationen erlaubt vi auch <c>d</c> oder <c>c</c> mit einer Zahl oder
+	einem Bewegungskommando zu kombinieren. So wird zum Beispiel <c>d3w</c> die nächsten drei Wörter löschen und <c>d2j</c>
+	wird die aktuelle und die nächsten beiden Zeilen löschen. Probieren Sie einige <c>d</c> und <c>c</c> Kombinationen aus,
+	um ein Gefühl dafür zu bekommen, wie mächtig und schnell das Editieren mit vi sein kann. Sobald Ihnen diese Kommandos
+	normal erscheinen, werden Sie die Fähigkeit besitzen Dateien in unglaublicher Geschwindigkeit zu bearbeiten.
+	</p>
 
 </body>
 </section>
-<section>
-<title>Updating the cheat sheet</title>
-<body>
-<p>Time to update the cheat sheet again.  Here's what it looks like so far:</p>
-<p>
-	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-compound.png" short="Cheat Sheet" caption="Cheat sheet with compound commands"/>
 
-</p>
+<section>
+<title>Aktualisieren des Spickzettels</title>
+<body>
+	<p>
+	Time to update the cheat sheet again.  Here's what it looks like so far:
+	Es ist wieder einmal Zeit, den Spickzettel zu aktualisieren. Hier sehen Sie, wie in etwa er nun aussehen sollte:
+	</p>
+	<p>
+	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-compound.png" short="Spickzettel" caption="Spickzettel mit Verbundkommandos"/>
+
+	</p>
 </body>
 </section>
+
 <section>
-<title>Productivity features</title>
+<title>Produktivity Fähigkeiten</title>
 
 <body>
-<p>So far, we've covered how to move, save and quit, perform simple edits
-and deletions, and use insert mode.  With everything listed on the cheat
-sheet so far, you should be able to use vi to perform almost any task.</p>
-<p>However, vi also has many more powerful commands.  In this section, you'll
-	learn how to <e>cut</e>, <e>copy</e> and <e>paste</e>, <e>search</e> and <e>replace</e>, and use <e>autoindent</e>
-features.  These commands will help make vi more fun and productive.</p>
-
+	<p>
+	Bisher haben wir behandelt, wie man sich Bewegungen durchführt, Speichert und Beendet,
+	einfache Änderungen und Löschungen realisiert, und wie man den Einfügemodus benutzt.
+	Mit den Sachen die Sie bisher auf Ihrem Spickzettel haben, sollten Sie schon jegliche Aufgabe
+	erledigen können.
+	</p>
+	<p>
+	Trotz Alledem : vi hat viele weitere mächtige Kommandos. In diesem Abschnitt werden Sie lernen, wie man <e>Ausschneidet</e>,
+	<e>Kopiert</e> und <e>Einfügt</e>, <e>Sucht</e> und <e>Ersetzt</e> und <e>Autoindent</e> (automatisches Einrücken) benutzt.
+	Diese Kommandos tragen dazu bei, vi spassiger und produktiver zu machen.
+	</p>
 </body>
 </section>
+
 <section>
 <title>Visual mode</title>
 <body>
-<p>The best way to cut and paste is to use visual mode, a special mode that
-has been added to modern versions of vi, like vim and elvis.  You can think
-of visual mode as a "highlight text" mode.  Once the text is highlighted,
-it can be copied or deleted, and then pasted.  If you are using gvim, you 
-can highlight by simply dragging the left mouse button over a particular
-region:</p>
-<p>
-	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vihighlight.png" short="Highlighted text" caption="VIM with highlighted text"/>
-
-</p>
+	<p>
+	Die beste Möglichkeit zum Ausschneiden und Einfügen ist der Visual Mode, ein spezieller
+	Modus der den modernen Versionen von vi (wie vim und elvis) hinzugefügt wurde. Sie können
+	sich den Visual Mode als einen Modus mit Texthervorhebung vorstellen. Sobald der Text
+	hervorgehoben ist, kann er kopiert oder gelöscht und dann eingefügt werden. Wenn Sie gvim
+	benutzen, dann können Sie Text hervorheben, indem Sie einfach mit der linken Maustaste gedrückt
+	über einen beliebigen Bereich fahren.
+	</p>
+	<p>
+	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vihighlight.png" short="Hervorgehobener Text" caption="VIM mit hervorgehobenen Text"/>
+	</p>
 </body>
 </section>
+
 <section>
 <title></title>
 <body>
+	<p>
+	Desweiteren können Sie auch in den Visual-Mode gehen indem Sie <c>v</c> drücken (dies
+	wird für Sie auch die einzige Möglichkeit darstellen, wenn Sie vi aus der Konsole benutzen).
+	Dann können Sie den Cursor bewegen, indem Sie Bewegungskommandos benutzen (normalerweise die
+	Pfeiltasten) und damit einen Textbereich markieren. Sobald er einmal hervorgehoben ist, können wir
+	den Text ausschneiden oder kopieren.
+	</p>
 
-	<p>In addition, you can also enter visual mode by hitting <c>v</c> (this may be your
-only option if you are using vi from the console.)  Then, by moving the cursor
-using movement commands (typically the arrow keys), you'll be able to highlight
-a region of text.  Once highlighted, we are ready to cut or copy the text.
-</p>
-
-<p>If you're copying the text, hit <c>y</c> (which stands for "yank").  If you're cutting
-	the text, hit <c>d</c>.  You'll be placed back in command mode.  Now, move to the position
-	where you'd like to insert the cut or copied text, and hit <c>P</c> to insert after the cursor, 
-	or <c>p</c> to insert before the cursor.  Voila, the cut/copy and paste is complete!
-Test out several copy/cut and paste operations before advancing to the next section.
-</p>
-
+	<p>
+	Wenn Sie Text kopieren, dann drücken Sie <c>y</c> (das für "yank", also "rausreissen" steht).
+	Wenn Sie Text ausschneiden wollen, dann drücken Sie <c>d</c>. Sie werden dann zurück in den Kommandomodus
+	gebracht. Nun bewegen Sie den Cursor zu der Position, an der Sie den ausgeschnittenen oder kopierten Text
+	einfügen wollen und drücken Sie <c>P</c> um den Text nach dem Cursor einzufügen, oder drücken Sie <c>p</c>
+	um den Text vor dem Cursor einzufügen. Fertig - der Ausschneide-/Kopiervorgang ist schon erledigt!
+	Versuchen Sie ein paar Kopier-, Ausschneide- und Einfügeoperationen bevor Sie zum nächsten Abschnitt fortfahren.
+	</p>
 </body>
 </section>
+
 <section>
 <title>Replacing text</title>
 <body>
-	<p>To replace patterns of text, we use <e>ex</e> mode.  If you'd like to replace the first pattern
-		that appears on the current line, type <c>:s/&lt;regexp&gt;/&lt;replacement&gt;/</c> and hit <c>&lt;ENTER&gt;</c>, where &lt;regexp&gt; 
-is the pattern you'd like to match and &lt;replacement&gt; is the replacement string.  To replace all
-matches on the current line, type <c>:s/&lt;regexp&gt;/&lt;replacement&gt;/g</c> and hit enter.  To replace every 
-occurence of this pattern in your file (normally what you want), type <c>:%s/&lt;regexp&gt;/&lt;replacement&gt;/g</c>.
-If you'd like to do a global replace, but have vi prompt you for each change, type 
-<c>:%s/&lt;regexp&gt;/&lt;replacement&gt;/gc</c> (stands for "confirm") and hit <c>&lt;ENTER&gt;</c>.</p>
-
+	<p>
+	Um Textmuster zu ersetzen, benutzen wir den <e>ex</e>-Modus. Wenn Sie das erste Muster auf der aktuellen Zeile ersetzen möchsten,
+	geben Sie <c>:s/&lt;regexp&gt;/&lt;replacement&gt;/</c> ein und drücken Sie <c>&lt;ENTER&gt;</c>, wobei &lt;regexp&gt; das Muster ist,
+	dass gesucht und ersetzt werden soll und &lt;replacement&gt; das Ersetzmuster darstellt. Um alle entsprechungen auf der aktuellen Zeile
+	zu ersetzen, geben Sie <c>:s/&lt;regexp&gt;/&lt;replacement&gt;/g</c> ein. Um jedes Vorkommen innerhalb der Datei zu ersetzen (das will
+	man normalweise), geben Sie <c>:%s/&lt;regexp&gt;/&lt;replacement&gt;/g</c> ein. Wenn Sie Global Alles ersetzen möchten, aber vi vor
+	jeder Ersetzung nachfragen soll, dann geben Sie <c>:%s/&lt;regexp&gt;/&lt;replacement&gt;/gc</c> (steht für "bestätigen") ein und
+	drücken Sie <c>&lt;ENTER&gt;</c>.
+	</p>
 </body>
 </section>
+
 <section>
 <title>Indentation</title>
 <body>
-<p>vi supports autoindentation, for when you are editing source code.  Most modern versions
-of vi (like vim) will auto-enable autoindent mode when you are editing a source file (like a .c
-file, for example).  When autoindent is enabled, you can use <c>&lt;CTR&gt;d</c> (control-d) to move one indent
-level to the left, and <c>&lt;CTR&gt;t</c> (control-t) to move one indent level to the right.  If autoindent
-wasn't enabled automatically, you can manually enable it by typing in the <e>ex</e> command <c>:set</c> autoindent.
-You can also tell vi to set the tab size to your favorite setting by using the <c>:set tabstop</c> command;
-<c>:set tabstop=4</c> is quite popular.</p>
-
+	<p>
+	vi beherrscht Automatisches Einrücken, welches als Hilfe gedacht ist, wenn Sie Quellcode editieren. Die meisten modernen
+	Versionen von vi (wie vim) werden diesen Modus automatisch aktivieren, wenn Sie eine Quellcodedatei bearbeiten (wie z.B.
+	eine .c-Datei). Wenn Automatisches Einrücken aktiviert ist, dann können Sie mittels <c>&lt;CTR&gt;d</c> (Strg-d) die Einrückung
+	eine Stufe nach links bewegen, und mit <c>&lt;CTR&gt;t</c> (Strg-t) eine Stufe nach rechts. Wenn Automatisches Einrücken nicht
+	automatisch aktiviert wurde, dann können Sie es manuell anschalten indem Sie <c>:set autoindent</c> im <e>ex</e> Modus eingeben.
+	Sie können vi auch Ihre bevorzugte Tabulatorweite zu benutzen; dies geht mittels des <c>:set tabstop</c> Kommandos. <c>:set tabstop=4</c>
+	ist recht beliebt.
+	</p>
 </body>
 </section>
+
 <section>
-<title>Our final cheat sheet</title>
+<title>Der letzte Spickzettel</title>
+
 <body>
-<p>Well, we've reached the end of the vi tutorial!  After adding all the advanced editing commands
-to your cheat sheet, it should look like this:</p>
-<p>
-	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-final.png" short="Cheat Sheet" caption="Final cheet sheet"/>
+	<p>
+	Nun gut - dies ist das Ende des Tutorials! Nachdem Sie nun all die fortgeschrittenen Editierkommandos
+	auf dem Spickzettel notiert haben, sollte es etwa so aussehen:
+	</p>
+	<p>
+	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-final.png" short="Spickzettel" caption="Letzter Spickzettel"/>
+	</p>
 
-</p>
-
-<p>Keep your cheat sheet handy, and begin using vi to edit files and compose emails.  Refer to the
-cheat sheet when needed; you'll find that within the week, you'll have nearly all the commands
-memorized and your vi productivity will shoot through the roof!</p>
-
+	<p>
+	Haben Sie Ihren Spickzettel immer bei der Hand und fangen Sie an mit vi Dateien zu editieren und E-Mails
+	zu verfassen. Schauen Sie auf den Spickzettel wenn nötig: Innerhalb einer Woche werden Sie feststellen, dass
+	Sie sich fast alle Kommandos behalten haben und Ihre Produktivität mit vi wird durch die Decke platzen! ;)
+	</p>
 </body>
 </section>
+
 <section>
-<title>Resources</title>
+<title>Ressourcen</title>
 <body>
-<p>Here are some resources you may find helpful as you continue to learn more about vi:</p>
-<ul>
-<li><uri link="http://www.thomer.com/thomer/vi/vi.html">The vi Lovers Home Page</uri>, an excellent resource for all
-things vi.</li>
-<li><uri link="http://www.vim.org">The vim homepage</uri> is the place to go for all your vim needs.</li>
-<li>If you're looking for a good, old-fashioned book, <uri link="http://www.oreilly.com/catalog/vi6/">Learning the vi Editor, 6th Edition</uri> would be an excellent choice.  Contains good coverage of vi and vi clones.</li>
-</ul>
+	<p>
+	Hier sind ein paar Ressourcen, die Ihnen sicherlich weiterhelfen, wenn Sie mehr über vi lernen wollen:
+	</p>
+	<ul>
+		<li><uri link="http://www.thomer.com/thomer/vi/vi.html">Die "vi Lovers Home Page"</uri>, Eine hervorragende Ressource für Alles rund um vi.</li>
+		<li><uri link="http://www.vim.org">Die "vim Homepage"</uri> ist der Ort für Infos rund um vim.</li>
+		<li>Wenn Sie nach einem guten, altmodischen Buch suchen, dann ist
+		<uri link="http://www.oreilly.com/catalog/vi6/">"Learning the vi Editor", 6. Ausgabe</uri> sicherlich das Richtige
+		für Sie. Viel Inhalt über vi und vi-Klone.</li>
+	</ul>
 </body>
 </section>
 </chapter>
