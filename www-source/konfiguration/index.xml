@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<!-- 
-  Last modification: 28.02.2003 
+<!--
+  Last modification: 28.02.2003
   by Sebastian Werner <sebastian@werner-productions.de>
 -->
 
@@ -25,7 +25,6 @@
     <item title="Projekt" href="projekt">
       <item href="neuigkeiten" title="Neuigkeiten"/>
       <item href="praesentation" title="Präsentation"/>
-      <item href="links" title="Links"/>
     </item>
     <item title="Dokumentation" href="doku">
       <item href="einrichtung" title="Einrichtung">
