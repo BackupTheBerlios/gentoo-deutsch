@@ -3,339 +3,363 @@
 
 <!-- English CVS Version: 1.21 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.1 2003/11/23 14:03:25 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.2 2003/12/01 14:28:42 pyrania Exp $ -->
 
 <sections>
 <section>
-<title>Introduction to Block Devices</title>
+<title>Einführung in Block Devices</title>
 <subsection>
 <title>Block Devices</title>
 <body>
 
 <p>
-We'll take a good look at disk-oriented aspects of Gentoo Linux
-and Linux in general, including Linux filesystems, partitions and block devices.
-Then, once you're familiar with the ins and outs of disks and filesystems,
-you'll be guided through the process of setting up partitions and filesystems
-for your Gentoo Linux installation.
+Wir werden einen guten Einblick in die Festplatten bezogenen Aspekte von Gentoo
+Linux und Linux im allgemeinen, inklusive Linux Dateisystemen, Partitionen und
+Block Devices erhalten.
+Dann, sobald Sie mit den Vor- und Nachteilen von Festplatten und Dateisystemen
+vertrut sind, werden Sie durch den Prozess des Partitionierens und der
+Dateisystem Erstellung für Ihre Gentoo Linux Installation geführt.
 </p>
 
 <p>
-To begin, we'll introduce <e>block devices</e>. The most famous block device is
-probably the one that represents the first IDE drive in a Linux system, namely
-<path>/dev/hda</path>. If your system uses SCSI drives, then your first hard
-drive would be <path>/dev/sda</path>.
+Zu Beginn werden wir Ihnen <e>Block Devices</e> vorstellen. Das berühmteste
+Block Device is warscheinlich das, welches das erste IDE Laufwerk in einem Linux
+System repräsentiert, namentlich <path>/dev/hda</path>. Wenn Ihr System SCSI
+Laufwerke verwendet, dann wäre Ihre Erste Festplatte <path>/dev/sda</path>.
 </p>
 
 <p>
-The block devices above represent an abstract interface to the disk. User
-programs can use these block devices to interact with your disk without worrying
-about whether your drives are IDE, SCSI or something else. The program can
-simply address the storage on the disk as a bunch of contiguous,
-randomly-accessible 512-byte blocks.
-</p>
-
-</body>
-</subsection>
-<subsection>
-<title>Partitions and Slices</title>
-<body>
-
-<p>
-Although it is theoretically possible to use a full disk to house your Linux
-system, this is almost never done in practice. Instead, full disk block devices
-are split up in smaller, more manageable block devices. On most systems,
-these are called <e>partitions</e>. Other architectures use a similar technique,
-called <e>slices</e>.
+Das obige Block Device repräsentiert ein abstractes Interface zur Festplatte.
+Benutzerprogramme können diese Block Deviced benutzen, um Ihrer Festplatte
+anzusprechen, ohne sich darum zu kümmern, ob Ihre Festplatten IDE, SCSI oder
+irgendwas anderes sind. Das Programm kann den Speicherplatz auf der Festplatte
+*einfach als eine anhäufung von zusammenhängenden, zufällig zugreifbaren
+512-Byte Blöcken ansprechen.
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Partitions</title>
+*<title>Partitionen und Slices</title>
 <body>
 
 <p>
-Partitions are divided in three types:
-<e>primary</e>, <e>extended</e> and <e>logical</e>.
-</p>
-
-<p>
-A <e>primary</e> partition is a partition of which the information is stored in
-the MBR (master boot record). As an MBR is very small (512 bytes) only four
-primary partitions can be defined (for instance, <path>/dev/hda1</path> to
-<path>/dev/hda4</path>).
-</p>
-
-<p>
-An <e>extended</e> partition is a special primary partition (meaning the
-extended partition must be one of the four possible primary partitions) which
-contains more partitions. Such a partition didn't exist originally, but as
-four partitions is too little, it is brought to life to extend the formatting
-scheme without loosing backwards compatibility.
-</p>
-
-<p>
-A <e>logical</e> partition is a partition inside the extended partition. Their
-definitions aren't placed inside the MBR, but are declared inside the extended
-partition. 
+Obwohl es theoretisch möglich ist eine ganze Festplatte zu nutzen, um Ihr Linux
+System zu beherbergen, wird dies in der Praxis so gut wie nie gemacht.
+Stattdessen werden komplette Festplatten Block Devices in kleinere, besser
+verwaltbare Block Devices unterteilt. Auf den meisten Systemen werden sie
+<e>Partitionen</e> gennant. Andere Architekturen benutzen ähnliche Techniken,
+welche <e>Slices</e> genannt werden.
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Logical Volumes</title>
+<title>Partitionen</title>
 <body>
 
 <p>
-Some people might find partitions and slices too restrictive. If you feel the
-same way, you should take a look at LVM -- the <e>Logical Volume Manager</e>.
+Es wird unter drei Partitionstypen unterschieden:
+<e>primar</e>, <e>erweitert</e> und <e>logisch</e>.
 </p>
 
 <p>
-With LVM, you create partitions (or slices) the normal way, but you won't use
-them to house your Linux system. Instead, you add another layer of storage
-(namely the LVM layer) on which you install Gentoo. But what are the benefits of
-LVM?
+Eine <e>primäre</e> Partition ist eine Partition, deren Informationen im MBR
+(Master Boot Record) gespeichert sind. Da ein MBR sehr klein ist (512 Bytes),
+können nur vier primäre Partitionen definiert werden (zum Beispiel
+<path>/dev/hda1</path> bis <path>/dev/hda4</path>).
 </p>
 
 <p>
-With LVM you can easily resize the volumes on which you have installed Gentoo.
-You can also take a snapshot of a volume without freezing the system, making
-your backup strategy more transparent for the users (and less troublesome).
-Another advantage is that you can add several disks to a single volume (meaning
-if one of your volumes is low on free space, you can extend it without having to
-copy over files). 
+Eine <e>erweiterte</e> Partition ist eine spezielle primäre Partition (was
+bedeutet, dass eine erweiterte Partition eine der vier möglichen promären
+Partitionen sein muss), welche mehrere Partiotionen beinhaltet. Eine solche
+Partition existierte ursprünglich nicht, aber da vier Partitionen zu wenig sind,
+wurden sie erfunden, um das Format zu erweitern ohne die rückwärts Kompabilität
+zu verlieren.
 </p>
 
 <p>
-An LVM is structured in three abstract items. You have a <e>physical volume</e>,
-which is a partition, slice or disk you want to use to store the LVM layer on.
-Then you have a <e>volume group</e> to which you assign certain physical
-volumes. This volume group contains several <e>logical volumes</e> which are 
-some sort of virtual partitions.
+Eine <e>logische</e> Partition ist eine Partition innerhalb einer erweiterten
+Partition. Ihre Definitionen sind nicht im MBR gespeichert, sondern in der
+erweiterten Partition.
+</p>
+
+</body>
+</subsection>
+<subsection>
+*<title>Logische Volumes</title>
+<body>
+
+<p>
+Einige Leute könnten Partitionen und Slices als zu beschränkt empfinden. Wenn
+Sie genauso denken, sollten Sie einen blick auf LVM werfen -- den <e> Logischen
+Volume Manager</e>
 </p>
 
 <p>
-These logical volumes are used as regular partitions; however, if a logical
-volume requires more space, it can use the available space in the volume group
-to extend itself. If the volume group doesn't have sufficient available space,
-you can add more physical volumes to it, fully transparent to the user (i.e. no
-need to copy over data, freeze the system etc.). This makes LVM very flexible.
+Bei LVM erstellen Sie Partitionen (oder Slices) wie gewohnt, aber Sie werden sie
+nicht nutzen um ihr Linux System zu beherbergen. Stattdessen fügen Sie eine
+weitere Ebene des Speichers (die LVM Ebene) hinzu, auf welcher Sie Gentoo Linux
+installieren. Aber was sind die Vorteile von LVM?
 </p>
 
 <p>
-If you want to use LVM, you are advised to keep your root filesystem
-(<path>/</path>) and your boot filesystem (<path>/boot</path>) outside the LVM.
-If you want to place most of your files in a logical volume (<path>/home</path>,
-<path>/usr</path>, <path>/tmp</path>, <path>/opt</path> and <path>/var</path> 
-are used in this handbook) your root filesystem doesn't need to be very big 
-(a mere 150 Mb will do just fine).
+Mit LVM können Sie ganz einfach die Größe des Volumes ändern, auf dem Sie Gentoo
+installiert haben.
+Zudem können Sie Backups eines Volumes machen, ohne das System einzufrieren,
+wodurch Sie Ihre Backup Strategie für Ihre User transparenter (und weniger
+Problemreich) machen können.
+Ein weiterer Vorteil ist, dass Sie mehrere Festplatten zu einem einzelnen
+Volume hinzufügen können (was bedeutet, wenn eines Ihrer Volumes wenig freien
+Speicherplatz zur verfügung hat, können Sie es erweitern ohne Dateien
+rumkopieren zu müssen).
+</p>
+
+<p>
+Ein LVM ist in drei abstrakte Teile unterteilt. Sie haben ein <e>physichses
+Volume</e>, welches eine Partition, Slice oder Festplatte ist, welche Sie
+benutzen wollen, um den LVM Layer darauf zu speichern.
+Dann gibt es noch eine <e>Volume Gruppe</e> der Sie bestimmte physische
+Volumes zuweisen können. Diese Volume Gruppe beinhaltet verschiedene <e>logische
+Volumes</e> welche eine Art von Virtuellen Partitionen sind.
+</p>
+
+<p>
+Diese logischen Volumes werden als normale Partitionen benutzt; wenn ein
+logisches Volume nun mehr Speicherplatz benötigt, kann es den verfügbaren
+Speicher in seiner Volume Gruppe nutzen um sich selbst zu erweitern. Wenn die
+Volume Gruppe nicht genügend Speicherplatz hat, können Sie weitere physische
+Volumes hinzufügen - vollkommen transparent zum User (z.B. müssen Sie keine
+Daten verschieben, das System einfrieren etc.). Dadurch ist ein LVM sehr
+flexibel.
+</p>
+
+<p>
+Wenn Sie LVM benutzen wollen, weisen wir Sie darauf hin, dass ihr root
+Dateisystem (<path>/</path>) und Ihr boot Dateisystem (<path>/boot</path>)
+außerhalb des LVM liegen müssen. Wenn Sie die meisten Dateien in ein logisches
+Volume speichern wollen (<path>/home</path>, <path>/usr</path>,
+<path>/tmp</path>, <path>/opt</path> und <path>/var</path>
+werden in diesem Handbuch benutzt), muss Ihr root Dateisystem nicht sehr groß
+sein (ca. 140 MB sollten genug sein).
 </p>
 
 </body>
 </subsection>
 </section>
 <section>
-<title>Designing a Partitioning Scheme</title>
+<title>Erstellung eines Partitions Schemas</title>
 <subsection>
-<title>Default Partitioning Scheme</title>
+<title>Standart Partitions Schema</title>
 <body>
 
 <p>
-If you are not interesting in drawing up a partitioning scheme for your system,
-you can use the (non-LVM) partitioning scheme we use throughout this book:
+Wenn Sie nicht daran interessiert sind ein Partitions Schema für Ihr System zu
+erstellen, können Sie das (nicht LVM) Partitions Schema verwenden, welches wir
+in diesem Handbuch benutzen:
 </p>
 
 <p>
-For x86:
+Für x86:
 </p>
 
 <table>
 <tr>
   <th>Partition</th>
-  <th>Filesystem</th>
-  <th>Size</th>
-  <th>Description</th>
+  <th>Dateisystem</th>
+  <th>Größe</th>
+  <th>Beschreibung</th>
 </tr>
 <tr>
   <ti><path>/dev/hda1</path></ti>
   <ti>ext2</ti>
   <ti>32M</ti>
-  <ti>Boot partition</ti>
+  <ti>Boot Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda2</path></ti>
   <ti>(swap)</ti>
   <ti>512M</ti>
-  <ti>Swap partition</ti>
+  <ti>Swap Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda3</path></ti>
   <ti>ext3</ti>
-  <ti>Rest of the disk</ti>
-  <ti>Root partition</ti>
+  <ti>Rest der Festplatte</ti>
+  <ti>Root Partition</ti>
 </tr>
 </table>
 
 <p>
-For ppc:
+Für ppc:
 </p>
 
 <table>
 <tr>
   <th>Partition NewWorld</th>
   <th>Partition OldWorld</th>
-  <th>Filesystem</th>
-  <th>Size</th>
-  <th>Description</th>
+  <th>Dateisystem</th>
+  <th>Größe</th>
+  <th>Beschreibung</th>
 </tr>
 <tr>
   <ti><path>/dev/hda1</path></ti>
-  <ti>(Not needed)</ti>
+  <ti>(nicht benötigt)</ti>
   <ti>ext2</ti>
   <ti>32M</ti>
-  <ti>Bootstrap partition</ti>
+  <ti>Bootstrap Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda2</path></ti>
   <ti><path>/dev/hda1</path></ti>
   <ti>(swap)</ti>
   <ti>512M</ti>
-  <ti>Swap partition</ti>
+  <ti>Swap Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda3</path></ti>
   <ti><path>/dev/hda2</path></ti>
   <ti>ext3</ti>
-  <ti>Rest of the disk</ti>
-  <ti>Root partition</ti>
+  <ti>Rest der Festplatte</ti>
+  <ti>Root Partition</ti>
 </tr>
 </table>
 
 <p>
-For Sparc:
+Für Sparc:
 </p>
 
 <table>
 <tr>
   <th>Sun Disklabel</th>
-  <th>Filesystem</th>
-  <th>Size</th>
-  <th>Description</th>
+  <th>Dateisystem</th>
+  <th>Größe</th>
+  <th>Beschreibung</th>
 </tr>
 <tr>
   <ti><path>/dev/hda1</path></ti>
   <ti>ext2</ti>
   <ti>32M</ti>
-  <ti>Boot partition</ti>
+  <ti>Boot Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda2</path></ti>
   <ti>(swap)</ti>
   <ti>512M</ti>
-  <ti>Swap partition</ti>
+  <ti>Swap Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda3</path></ti>
   <ti>(none)</ti>
   <ti>Full disk</ti>
-  <ti>Sun Disk Label (required)</ti>
+  <ti>Sun Disk Label (benötigt)</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda4</path></ti>
   <ti>ext3</ti>
-  <ti>Rest of the disk</ti>
-  <ti>Root partition</ti>
+  <ti>Rest der Festplatte</ti>
+  <ti>Root Partition</ti>
 </tr>
 </table>
 
 <p>
-If you want to use LVM, you should create a small root partition instead of a
-big one, ignore the swap partition and create a big partition as you will make 
-the individual seperation later when you define the logical volumes). Then mark 
-this big partition of type "Linux LVM" or "LVM" (8e).
+Wenn Sie LVM benutzen wollen, sollten Sie eine kleine root Partition anstelle
+einer großen erstellen, ignorieren Sie die swap Partition und erstellen Sie eine
+große Partition, da Sie die individuelle aufteilung später machen, wenn Sie die
+logischen Volumes festlegen. Markieren Sie anschließend diese große Partition
+als Typ "Linux LVM" oder "LVM" (8e).
 </p>
 
 <p>
-If you are installing Gentoo from an existing distribution, you should first
-resize your existing partitions (if you don't have any spare room left) to be
-able to install Gentoo. You can use <uri 
-link="http://www.gnu.org/software/parted">GNU/Parted</uri> to resize your
-partitions.
+Um Gentoo von einer existierenden Distribution aus zu installieren, sollten
+Sie, zuerst Ihre bestehenden Partitionen verkleinern (wenn Sie keinen freien
+Speicherplatz verfügbar haben). Sie können <uri
+link="http://www.gnu.org/software/parted">GNU/Parted</uri> benutzen, um Ihre
+Partitionen zu verkleinern.
 </p>
 
 <p>
-If you are interested in knowing how big a partition (or logical 
-volume) should be, or even how many partitions (or volumes) you need, read on. 
-Otherwise continue now with partitioning your disk:
+Wenn Sie daran interessiert sind zu erfahren wie groß eine Partition (oder
+logisches Volume) sein sollte, oder auch wieviele Partitionen (oder Volumes) Sie
+benötigen, lesen Sie weiter. Anderenfalls fahren Sie nun mit dem Partitionieren
+Ihrer Festplatte fort:
 </p>
 
 <ul>
 <li>
-  <uri link="#doc_chap3">Using fdisk on x86 to Partition your Disk</uri>
+  <uri link="#doc_chap3">Umgang mit fdisk auf x86 um Ihre Festplatte zu
+  partitionieren</uri>
 </li>
 <li>
-  <uri link="#doc_chap4">Using fdisk on Alpha to Partition your Disk</uri>
+  <uri link="#doc_chap4">Umgang mit fdisk auf Alpha um Ihre Festplatte zu
+  partitionieren</uri>
 </li>
 <li>
-  <uri link="#doc_chap5">Using fdisk on SPARC to Partition your Disk</uri>
+  <uri link="#doc_chap5">Umgang mit fdisk auf SPARC um Ihre Festplatte zu
+  partitionieren</uri>
 </li>
 <li>
-  <uri link="#doc_chap6">Using mac-fdisk on PPC to Partition your Disk</uri>
+  <uri link="#doc_chap6">Umgang mit mac-fdisk auf x86 um Ihre Festplatte zu
+  partitionieren</uri>
 </li>
 <li>
-  <uri link="#doc_chap7">Using fdisk on HPPA to Partition your Disk</uri>
+  <uri link="#doc_chap7">Umgang mit fdisk auf HPPA um Ihre Festplatte zu
+  partitionieren</uri>
 </li>
 </ul>
 
 </body>
 </subsection>
 <subsection>
-<title>How Many and How Big?</title>
+<title>Wie viele und wie groß?</title>
 <body>
 
 <p>
-The number of partitions (or logical volumes in case you want to use LVM) is 
-highly dependent on your environment. For instance,
-if you have lots of users, you will most likely want to have your
-<path>/home</path> separate as it increases security and makes backups more
-easy. If you are installing Gentoo to perform as a mailserver, your 
-<path>/var</path> should be separate as all mails are stored inside 
-<path>/var</path>. A good choice of filesystem will then maximise your 
-performance. Gameservers will have a separate <path>/opt</path> as most gaming 
-servers are installed there. The reason is similar for <path>/home</path>: 
-security and backups.
+Die Anzahl an Partitionen (oder logischen Volumes, wenn sie LVM nutzen wollen)
+hängt von Ihrer Umgebung ab. Wenn Sie z.B. eine Menge User haben, wollen Sie
+höchst wahrscheinlich Ihr <path>/home</path> separat halten, da es die
+Sicherheit erhöht und Backups einfacher macht. Wenn Sie Gentoo installieren um
+als Mailserver zu fungieren, sollten Sie <path>/var</path> separat halten, da
+alle Mails in <path>/var</path> gespeichert werden. Eine gute Wahl des
+Dateisystems maximiert dann zusätzlich die Performance. Gameserver sollten ein
+separates <path>/opt</path> haben, da die meisten Game Server dort installiert
+werden. Der Grund ist ähnlich wie bei <path>/home</path>: 
+Sicherheit und Backups.
 </p>
 
 <p>
-As you can see, it very much depends on what you want to achieve. Separate
-partitions or volumes have the following advantages:
+Wie Sie sehen können hängt es sehr stark davon ab, was Sie erreichen wollen.
+Separate Partitionen oder Volumes haven folgende Vorteile:
 </p>
 
 <ul>
 <li>
-  You can choose the most performant filesystem for each partition or volume
+  Sie können das Filesystem mit der höchsten Performance für jede Partition oder
+  jedes Volume auswählen
 </li>
 <li>
-  Your entire system cannot run out of free space if one defunct tool is
-  continuously writing files to a partition or volume
+  Ihr komplettes System kka nicht ohne freien Speicherplatz laufen, wenn ein
+  defektes Tool ununterbrochen Dateien auf eine Partition oder ein Volume
+  schreibt
 </li>
 <li>
-  If necessary, file system checks are reduced in time, as multiple checks can
-  be done in parallel (although this advantage is more with multiple disks than
-  it is with multiple partitions)
+  Falls nötig können Dateisystem Checks Zeitlich verkürzt werden, in dem
+  mehrere Checks parallel durchgeführt werden können (obwohl dieser Vorteil eher
+  mit mehreren Festplatten als mit mehreren Partitionen zum tragen kommt)
 </li>
 <li>
-  Security can be enhanced by mounting some partitions or volumes read-only, 
-  nosuid (setuid bits are ignored), noexec (executable bits are ignored) etc.
+  Die Sicherheit kann erhöht werden, indem Sie einige Partitionen oder Volumes
+  read-only, nosuid (setuid bits werden ignoriert), noexec (executable bits
+  werden ignoriert) etc.
 </li>
 </ul>
 
 <p>
-However, multiple partitions have one big disadvantage (if you're not using
-LVM): if not configured properly, you might result in having a system with lots
-of free space on one partition and none on another.
+Wie dem auch sie, mehrere Partitionen haben einen großen Nachteil (wenn Sie kein
+LVM benutzen): wenn sie nicht ordentlich konfiguriert werden, könnte das
+Tesultat ein System sein welches viel Speicherplatz auf der einen Partition und
+keinen auf einder anderen frei hat.
 </p>
 
 <p>
