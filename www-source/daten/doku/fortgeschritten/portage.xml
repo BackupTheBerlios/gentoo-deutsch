@@ -188,8 +188,8 @@ Pflege von Paketen des Portage Systems.
 	<p>
 	Fast alle Konfigurations-Optionen, die weiter unten erkl&#228;rt werden,
 	befinden sich in den Dateien /etc/make.conf und /etc/make.global.
-	Es ist wichtig zu wissen, das alle Einstellungen, die in /etc/make.conf
-	definiert sind, von den Einstellungen, die in /etc/make.global gemacht
+	Es ist wichtig zu wissen, das alle Einstellungen, die in /etc/make.global
+	definiert sind, von den Einstellungen, die in /etc/make.conf gemacht
 	wurden, fast immer &#252;berschrieben werden.
 	
 	Alle Einstellungen in /etc/make.conf und /etc/make.global k&#246;nnen als
