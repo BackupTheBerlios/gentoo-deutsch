@@ -45,3 +45,4 @@ src_install () {
 	exeinto /etc/X11/Sessions
 	doexe fvwm2
 }
+ 

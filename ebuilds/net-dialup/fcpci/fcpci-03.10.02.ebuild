@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/fcpci/fcpci-03.10.02.ebuild,v 1.1 2003/01/16 18:12:29 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/fcpci/fcpci-03.10.02.ebuild,v 1.2 2003/02/01 23:55:03 wpbasti Exp $
 
 DESCRIPTION="CAPI4Linux drivers for AVM Fritz!Card PCI"
 HOMEPAGE="http://www.avm.de/"
@@ -35,3 +35,4 @@ src_install () {
 
 }
 
+ 

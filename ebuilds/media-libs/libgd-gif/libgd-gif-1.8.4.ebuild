@@ -1,4 +1,4 @@
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libgd-gif/libgd-gif-1.8.4.ebuild,v 1.1 2002/07/08 11:30:06 xpender Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libgd-gif/libgd-gif-1.8.4.ebuild,v 1.2 2003/02/01 23:55:03 wpbasti Exp $
 
 MY_P=gd-1.8.4gif
 S=${WORKDIR}/gd-1.8.4
@@ -54,3 +54,4 @@ src_install() {
 	dohtml -r ./
 
 }
+ 

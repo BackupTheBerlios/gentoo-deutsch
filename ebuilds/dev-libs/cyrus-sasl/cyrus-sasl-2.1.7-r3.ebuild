@@ -1,6 +1,7 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-sasl/cyrus-sasl-2.1.7-r3.ebuild,v 1.4 2002/10/11 21:25:44 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-sasl/cyrus-sasl-2.1.7-r3.ebuild,v 1.5 2003/02/01 23:55:02 wpbasti Exp $
+
 
 S=${WORKDIR}/${P}
 
@@ -110,3 +111,4 @@ src_install () {
 	exeinto /etc/init.d ; newexe ${FILESDIR}/saslauthd2.rc6 saslauthd
 	exeinto /etc/init.d ; newexe ${FILESDIR}/pwcheck.rc6 pwcheck
 }
+ 

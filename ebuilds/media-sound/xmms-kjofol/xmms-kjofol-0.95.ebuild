@@ -23,4 +23,4 @@ pkg_postinst() {
 echo 'This plugin works as a remote for XMMS. Start XMMS before'
 echo 'using this plugin with kj'
 echo 'Place K-Jofol skins in ~/.xmms/kjofol/'
-} 
+}  

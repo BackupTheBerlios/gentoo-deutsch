@@ -17,4 +17,4 @@ DEPEND=">=x11-libs/gtk+-2*
 
 src_install () {
 	make DESTDIR=${D} install || die
-}
+} 

@@ -14,3 +14,4 @@ KEYWORDS="x86 ppc"
 DEPEND=">=dev-libs/glib-1.2*
 	>=x11-libs/gtk+-1.2*"
 
+ 

@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/amavis-perl/amavis-perl-11.ebuild,v 1.1 2002/08/20 23:11:43 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/amavis-perl/amavis-perl-11.ebuild,v 1.2 2003/02/01 23:55:03 wpbasti Exp $
 
 DESCRIPTION="AMaViS-Perl - A Mail Virus Scanner"
 SRC_URI="http://www.amavis.org/dist/perl/${P}.tar.gz"
@@ -73,3 +73,4 @@ pkg_postinst() {
 	einfo "**************************************************"
 	
 }
+ 

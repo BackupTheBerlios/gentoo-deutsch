@@ -15,3 +15,4 @@ src_compile() {
 src_install () {
 	make prefix=${D}/usr install || die
 }
+ 

@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-irc/kmyirc/kmyirc-0.2.6.ebuild,v 1.1 2002/09/16 07:58:25 shermann Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-irc/kmyirc/kmyirc-0.2.6.ebuild,v 1.2 2003/02/01 23:55:03 wpbasti Exp $
 
 inherit kde-base
 
@@ -21,3 +21,4 @@ KEYWORDS="x86"
 newdepend " >=kde-base/kdelibs-3.0.3
 	    >=sys-apps/portage-2.0.26"
 
+ 

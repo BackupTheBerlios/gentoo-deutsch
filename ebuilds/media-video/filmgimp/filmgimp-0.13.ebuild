@@ -26,4 +26,4 @@ src_install() {
                 install || die
                                                                                                                                                
         dodoc AUTHORS COPYING ChangeL* HACKING INSTALL MAINTAINERS NEWS PLUGIN_MAINTAINERS README* TODO*
-}
+} 

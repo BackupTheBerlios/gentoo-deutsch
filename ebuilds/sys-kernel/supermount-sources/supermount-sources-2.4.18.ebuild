@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-kernel/supermount-sources/supermount-sources-2.4.18.ebuild,v 1.1 2002/07/14 08:45:02 jay Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-kernel/supermount-sources/supermount-sources-2.4.18.ebuild,v 1.2 2003/02/01 23:55:04 wpbasti Exp $
 #OKV=original kernel version, KV=patched kernel version.  They can be the same.
 
 #we use this next variable to avoid duplicating stuff on cvs
@@ -100,3 +100,4 @@ pkg_postinst() {
 		ln -sf linux-${KV} ${ROOT}/usr/src/linux
 	fi
 }
+ 

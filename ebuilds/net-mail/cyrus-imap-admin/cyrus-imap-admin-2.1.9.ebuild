@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/cyrus-imap-admin/Attic/cyrus-imap-admin-2.1.9.ebuild,v 1.2 2002/10/08 11:53:27 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/cyrus-imap-admin/Attic/cyrus-imap-admin-2.1.9.ebuild,v 1.3 2003/02/01 23:55:03 wpbasti Exp $
 
 inherit perl-module
 
@@ -102,3 +102,4 @@ pkg_postinst() {
 
 }
 
+ 

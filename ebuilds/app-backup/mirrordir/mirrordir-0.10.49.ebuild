@@ -15,7 +15,6 @@ SLOT="0"
 
 
 
-
 src_unpack() {
     unpack ${A}
     cp ${S}/pam/Makefile.am ${S}/pam/Makefile.am.orig

@@ -22,3 +22,4 @@ RDEPEND="${DEPEND}
 	dev-util/pkgconfig"
 
 DOCS="AUTHORS ChangeLog COPYING INSTALL NEWS README"
+ 

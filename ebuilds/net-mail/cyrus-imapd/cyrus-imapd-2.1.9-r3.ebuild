@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/cyrus-imapd/cyrus-imapd-2.1.9-r3.ebuild,v 1.1 2002/10/08 11:09:00 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/cyrus-imapd/cyrus-imapd-2.1.9-r3.ebuild,v 1.2 2003/02/01 23:55:03 wpbasti Exp $
 
 S=${WORKDIR}/${P}
 
@@ -199,3 +199,4 @@ pkg_postinst() {
 	ewarn "*   saslpasswd2 cyrus                                 *"
 	ewarn "*******************************************************"
 }
+ 

@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-perl/IMAP-Admin/IMAP-Admin-1.6.1.ebuild,v 1.1 2002/11/18 09:51:00 shermann Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-perl/IMAP-Admin/IMAP-Admin-1.6.1.ebuild,v 1.2 2003/02/01 23:55:02 wpbasti Exp $
 
 CATEGORY="dev-perl"
 DESCRIPTION="IMAP::Admin - Perl module for basic IMAP server administration"
@@ -37,3 +37,4 @@ src_install() {
 	install  || die
 }
 
+ 

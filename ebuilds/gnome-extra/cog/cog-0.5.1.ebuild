@@ -27,3 +27,4 @@ src_install() {
 
         dodoc AUTHORS COPYING ChangeL* INSTALL NEWS README* TODO*
 }
+ 

@@ -1,6 +1,7 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-de/openoffice-de-1.0.0-r1.ebuild,v 1.1 2002/07/11 18:11:09 jay Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-de/openoffice-de-1.0.0-r1.ebuild,v 1.2 2003/02/01 23:55:01 wpbasti Exp $
+
 
 # IMPORTANT:  This is extremely alpha!!!
 
@@ -451,3 +452,4 @@ pkg_postinst() {
 
 }
 
+ 

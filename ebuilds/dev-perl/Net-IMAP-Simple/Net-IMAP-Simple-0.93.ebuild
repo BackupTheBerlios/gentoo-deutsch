@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-perl/Net-IMAP-Simple/Net-IMAP-Simple-0.93.ebuild,v 1.1 2002/11/18 09:51:00 shermann Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-perl/Net-IMAP-Simple/Net-IMAP-Simple-0.93.ebuild,v 1.2 2003/02/01 23:55:02 wpbasti Exp $
 CATEGORY="dev-perl"
 DESCRIPTION="Net::IMAP::Simple - Perl extension for simple IMAP account handling, mostly compatible with Net::POP3."
 SRC_URI="http://search.cpan.org/CPAN/authors/id/J/JP/JPAF/${P}.tar.gz"
@@ -36,3 +36,4 @@ src_install() {
 	install  || die
 }
 
+ 

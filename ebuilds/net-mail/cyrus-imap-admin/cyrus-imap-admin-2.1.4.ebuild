@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/cyrus-imap-admin/Attic/cyrus-imap-admin-2.1.4.ebuild,v 1.2 2002/07/06 19:29:34 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/cyrus-imap-admin/Attic/cyrus-imap-admin-2.1.4.ebuild,v 1.3 2003/02/01 23:55:03 wpbasti Exp $
 
 DESCRIPTION="Utilities to administer a Cyrus IMAP Server (includes Perl modules)"
 HOMEPAGE="http://asg.web.cmu.edu/cyrus/imapd/"
@@ -98,3 +98,4 @@ src_install () {
         dodoc COPYRIGHT README*
 	
 }
+ 

@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/mtx/Attic/mtx-1.2.17.ebuild,v 1.2 2002/10/21 12:48:31 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/mtx/Attic/mtx-1.2.17.ebuild,v 1.3 2003/02/01 23:55:04 wpbasti Exp $
 
 S=${WORKDIR}/${P}rel
 DESCRIPTION="SCSI Media Changer and Backup Device Control"
@@ -31,3 +31,4 @@ src_install() {
 	dodoc contrib/*
 
 }
+ 

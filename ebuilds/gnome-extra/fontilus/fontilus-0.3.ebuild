@@ -21,3 +21,4 @@ DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0"
 
 DOCS="AUTHORS COPYING ChangeLog INSTALL NEWS  README"
+ 

@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/gnome-extra/gnome-system-tools/Attic/gnome-system-tools-0.22.0.ebuild,v 1.1 2002/12/11 12:38:09 elefantenfloh Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/gnome-extra/gnome-system-tools/Attic/gnome-system-tools-0.22.0.ebuild,v 1.2 2003/02/01 23:55:02 wpbasti Exp $
 
 inherit gnome2 debug
 
@@ -28,3 +28,4 @@ src_install() {
 
         dodoc AUTHORS COPYING ChangeL* HACKING INSTALL MAINTAINERS NEWS PLUGIN_MAINTAINERS README* TODO*
 }
+ 

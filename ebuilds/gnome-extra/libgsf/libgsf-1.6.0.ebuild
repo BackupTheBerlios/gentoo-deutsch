@@ -45,3 +45,4 @@ src_compile() {
 }
 
 DOCS="dodoc AUTHORS COPYING* ChangeLog INSTALL NEWS README"
+ 

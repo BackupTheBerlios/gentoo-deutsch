@@ -1,6 +1,7 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
+
 DESCRIPTION="GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications."
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/gpgme/${P}.tar.gz"
 HOMEPAGE="http://www.gnupg.org/gpgme.html"
@@ -31,3 +32,4 @@ src_install() {
 	make DESTDIR=${D} install || die
 	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README README-alpha THANKS TODO VERSION
 }
+ 

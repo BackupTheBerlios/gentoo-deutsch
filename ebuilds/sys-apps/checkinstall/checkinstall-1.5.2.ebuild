@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/checkinstall/checkinstall-1.5.2.ebuild,v 1.3 2003/01/19 16:59:21 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/checkinstall/checkinstall-1.5.2.ebuild,v 1.4 2003/02/01 23:55:04 wpbasti Exp $
 
 DESCRIPTION="CheckInstall installations tracker"
 HOMEPAGE="http://checkinstall.izto.org/"
@@ -42,3 +42,4 @@ src_install () {
 	dodoc doc-pak/*
 	docinto installwatch-0.6.3; dodoc doc-pak/*
 }
+ 

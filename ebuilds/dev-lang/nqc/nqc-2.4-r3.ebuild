@@ -1,8 +1,9 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-lang/nqc/nqc-2.4-r3.ebuild,v 1.1 2002/12/17 21:59:24 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-lang/nqc/nqc-2.4-r3.ebuild,v 1.2 2003/02/01 23:55:01 wpbasti Exp $
 
 # The revision number of this ebuild is not used gentoo-specific!
+
 
 S=${WORKDIR}/${P}.${PR}
 DESCRIPTION="Not Quite C - C-like compiler for Lego Mindstorms"
@@ -41,3 +42,4 @@ pkg_postinst() {
 	einfo "***************************************************************"
 	
 }
+ 

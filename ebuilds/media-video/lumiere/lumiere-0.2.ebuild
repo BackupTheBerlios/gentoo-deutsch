@@ -35,3 +35,4 @@ src_compile() {
 }
 
 DOC="AUTHORS COPYING ChangeL* INSTALL MAINTAINERS NEWS  README* TODO*"
+ 

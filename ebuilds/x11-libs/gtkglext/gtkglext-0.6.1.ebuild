@@ -19,3 +19,4 @@ RDEPEND=">=dev-libs/glib-2.0.6-r1
 DEPEND="${DEPEND}
          doc? ( >=dev-util/gtk-doc-0.9 )"
  
+ 

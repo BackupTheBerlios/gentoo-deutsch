@@ -1,6 +1,7 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/aspell-de/aspell-de-20001109.ebuild,v 1.1 2002/07/10 09:44:55 jay Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/aspell-de/aspell-de-20001109.ebuild,v 1.2 2003/02/01 23:55:01 wpbasti Exp $
+
 
 MY_P=igerman98-${PV}
 S=${WORKDIR}/${MY_P}
@@ -44,3 +45,4 @@ src_install () {
 
 }
 
+ 

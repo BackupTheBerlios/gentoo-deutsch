@@ -72,3 +72,4 @@ src_install() {
 }
 
 DOCS="AUTHORS COPYING* ChangeLog HACKING NEWS README TODO"
+ 

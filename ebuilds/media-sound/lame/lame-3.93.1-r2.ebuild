@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-sound/lame/lame-3.93.1-r2.ebuild,v 1.1 2003/01/31 22:37:52 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-sound/lame/lame-3.93.1-r2.ebuild,v 1.2 2003/02/01 23:55:03 wpbasti Exp $
 
 IUSE="gtk"
 DESCRIPTION="LAME Ain't an Mp3 Encoder"
@@ -60,3 +60,4 @@ src_install () {
 	dohtml -r ./
 }
 
+ 

@@ -26,4 +26,4 @@ DOCS="AUTHORS ChangeLog COPYING INSTALL NEWS README"
 
 post_install() {
 	echo "There is no .desktop-file a this time."
-}
+} 

@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-python/PyKDE/PyKDE-3.3.2.ebuild,v 1.1 2002/08/31 10:23:00 tschortsch Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-python/PyKDE/PyKDE-3.3.2.ebuild,v 1.2 2003/02/01 23:55:02 wpbasti Exp $
 
 S="${WORKDIR}/PyKDE-3.3.2"
 DESCRIPTION="PyKDE is a set of Python bindings for the KDE libs (VERSION 3.x ONLY!!)."
@@ -49,3 +49,4 @@ src_install() {
 }
 
 
+ 

@@ -1,6 +1,7 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
+
 # Fix me!!!
 addwrite /root/
 addwrite /etc/gconf/
@@ -34,3 +35,4 @@ src_install() {
 }
 
 #	     gnulocaledir=${D}/usr/share/locale 
+ 

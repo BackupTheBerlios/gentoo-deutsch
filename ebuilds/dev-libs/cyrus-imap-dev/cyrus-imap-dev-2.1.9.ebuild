@@ -1,6 +1,7 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-imap-dev/Attic/cyrus-imap-dev-2.1.9.ebuild,v 1.1 2002/10/08 11:08:34 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/cyrus-imap-dev/Attic/cyrus-imap-dev-2.1.9.ebuild,v 1.2 2003/02/01 23:55:02 wpbasti Exp $
+
 
 S=${WORKDIR}/cyrus-imapd-${PV}
 
@@ -79,3 +80,4 @@ src_install () {
 	dodoc COPYRIGHT README*
 
 }
+ 

@@ -19,3 +19,4 @@ DEPEND=">=dev-libs/glib-2.0*
 	>=media-libs/libart_lgpl-2.0* 
 	>=gnome-base/libgnome-2.0*"
 
+ 

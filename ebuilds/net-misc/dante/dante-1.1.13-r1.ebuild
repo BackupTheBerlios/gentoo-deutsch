@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/dante/dante-1.1.13-r1.ebuild,v 1.2 2003/01/17 11:40:00 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/dante/dante-1.1.13-r1.ebuild,v 1.3 2003/02/01 23:55:04 wpbasti Exp $
 
 IUSE="tcpd"
 
@@ -60,3 +60,4 @@ src_install() {
 	newexe ${FILESDIR}/dante-sockd-init dante-sockd
 
 }
+ 
