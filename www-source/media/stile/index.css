@@ -9,9 +9,10 @@ img{
   border:0px none
 }
 
+/* Commented due to visibility issues with class codetitle
 div{
   visibility: hidden;
-}
+}*/
 
 div#logo_bg{
   height:92px;
@@ -354,6 +355,7 @@ div.codetitle{
 	padding:0.3em 0.5em 0.3em 0.5em;
 	font-size:small;
 	margin-bottom:0px
+	visibility:visible;
 }
 
 pre{
