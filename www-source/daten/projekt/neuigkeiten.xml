@@ -22,7 +22,19 @@
 
 <section>
 	<body>
-	<news type="news" date="04.09.2003" title="Gentoo-Newsletter">
+	<news type="news" date="08.09.2003" title="Gentoo-Newsletter">
+		<p>
+			In diesem <uri link="http://www.gentoo.org/news/en/gwn/20030908-newsletter.xml">Newsletter</uri> gibt es Resultate
+			des zweiten Bug-Tages. Er war wieder ein voller Erfolg und die Idee einen solchen Bug-Tag nun regelmässig durchzuführen
+			ist damit völlig bestätigt. Das und noch vieles mehr gibt es in diesem Newsletter.
+		</p>
+	</news>
+	</body>
+</section>
+
+<section>
+	<body>
+	<news type="other" date="04.09.2003" title="Bug Tag">
 		<p>
 			<b>Da sich der letzte Gentoo-Bug-Tag als recht erfolgreich erwiesen hat wird es am Samstag, dem 6. September
 			einen weiteren geben - genauer gesagt wird von nun an jeder erste Samstag im Monat ein Bug-Tag sein.</b>
