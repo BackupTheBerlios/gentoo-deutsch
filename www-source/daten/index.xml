@@ -91,7 +91,8 @@
 	Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele Dokumentationen
 	zu lesen -- auch Englische. Es gibt keine grafischen Konfigurationshilfen, fast alles muss von Hand konfiguriert werden. Sollten Sie bisher
 	nur über KDE, Gnome oder irgend einer anderen grafischen Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht die
-	richtige Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer Ihrem Rechner ein Speicherupgrade zu gönnen
+	richtige Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann
+  es ratsamer sein Ihrem Rechner ein Speicherupgrade zu gönnen
 	oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein, aber der Status eines fortgeschrittenen Anwenders
 	ist ratsam - sonst erleidet Ihr Ausflug ins Gentoo-Land bald einen herben Rückschlag.
 	</warn>
