@@ -30,8 +30,8 @@
 <option value="#doc_chap8">8. Die CD-ROM mounten</option>
 <option value="#doc_chap9">9. Entpacken des gewünschten stage*.tbz2 Archivs</option>
 <option value="#doc_chap10">10. Rsync</option>
-<option value="#doc_chap11">11. Progressing from stage1 to stage2</option>
-<option value="#doc_chap12">12. Progressing from stage2 to stage3</option>
+<option value="#doc_chap11">11. Von &quot;stage1&quot; zu &quot;stage2&quot;</option>
+<option value="#doc_chap12">12. Von &quot;stage2&quot; zu &quot;stage3&quot;</option>
 <option value="#doc_chap13">13. Final steps: timezone</option>
 <option value="#doc_chap14">14. Final steps: kernel and system logger</option>
 <option value="#doc_chap15">15. Final steps: install additional packages</option>
@@ -516,9 +516,12 @@ Gentoo Linux Umgebung.</p>
 
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap10">10.</a></font>Rsync</p>
-<p>Now, you'll need to run <font class="code">emerge rsync</font>.  If you're using the a Gentoo Linux 1.1+ stage3 tarball,
-<font class="code">emerge rsync</font> is now optional as we've included a snapshot of the Portage tree for your convenience. <font class="code">emerge rsync</font> will tell <font class="code">emerge</font> to
-connect to rsync.gentoo.org and download the latest version of our Portage ports tree:</p>
+<p>
+Als nächstes ist es nötig <font class="code">emerge rsync</font> aufzurufen. Wenn Sie ein Gentoo Linux 1.1+ stage3
+Archiv verwenden ist <font class="code">emerge rsync</font> jetzt optional, da dort eine Kopie des 
+Portage Verzeichnisses beigelegt ist. Mit dem Kommando <font class="code">emerge rsync</font> veranlassen Sie <font class="code">emerge</font> sich mit 
+rsync.gentoo.org zu verbinden und die aktuellste Version des Portage Verzeichnisses herunterzuladen:
+</p>
 
 <a name="doc_pre18"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -527,64 +530,74 @@ connect to rsync.gentoo.org and download the latest version of our Portage ports
 # <font class="input">emerge rsync</font>
 </pre></td></tr>
 </table>
-<p>The Portage tree will be downloaded; it's about 10Mb in size.</p>
+
+<p>Das Portage Datenverzeichnis das heruntergeladen wird ist ca. 10MB groß.</p>
+
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
-<b>Wichtig: </b>The address for the rsync server is currently rsync://rsync.gentoo.org/gentoo-portage.
-  If you have trouble accessing Gentoo rsync, make sure you're
-using this address by setting it as the SYNC variable in your /etc/make.conf.
-</p></td></tr></table>
+<b>Wichtig: </b>Die aktuelle Adresse des &quot;rsync&quot; Servers ist momentan: rsync://rsync.gentoo.org/gentoo-portage. 
+Wenn Sie Schwierigkeiten haben den Server zu erreichen, stellen Sie sicher, dass Sie 
+auch diesen Server verwenden in dem Sie die SYNC Variable in Ihrer /etc/make.conf entsprechend
+setzen.</p></td></tr></table>
+
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>The rsync command can be configured to use an HTTP proxy if you
-are behind a firewall.  To configure this item set 
-<font class="input">RSYNC_PROXY=&quot;hostname:port&quot;</font> in <font class="input">/etc/make.conf</font> or set it as
-an environment variable.
+<b>Anmerkung: </b>Sie können <font class="code">rsync</font> so konfigurieren, das es einen HTTP Proxy verwendet,
+Dies ist nützlich wenn Sie sich hinter einer Firewall befinden. Um dies zu 
+konfigurieren tragen Sie <font class="input">RSYNC_PROXY=&quot;hostname:port&quot;</font> Variable in die
+/etc/make.conf ein oder setzten dies als Umgebungsvariable.
 </p></td></tr></table>
 
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap11">11.</a></font>Progressing from stage1 to stage2</p>
+<font class="chapnum"><a name="doc_chap11">11.</a></font>Von &quot;stage1&quot; zu &quot;stage2&quot;</p>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
-<b>Wichtig: </b>If you are a stage2 or stage3 tarball, then we've already bootstrapped
-for you.  There is no reason for you to bootstrap again, unless you decided to
-do an <font class="code">emerge rsync</font> and want to ensure that you have an up-to-the-minute
-current Gentoo Linux system.  Most people using stage2 or stage3 tarballs will
-<font class="input">not</font> want to bootstrap again, since it can take up to an hour even on
-very fast machines.</p></td></tr></table>
+<b>Wichtig: </b>Wenn Sie ein &quot;stage2&quot; oder &quot;stage3&quot; Archiv verwenden, dann haben wir 
+den <font class="code">bootstrap</font> Prozess bereits für Sie durchgeführt. Es ist nicht 
+nötig dies noch einmal zu tun, außer Sie hatten sich entschieden  ein 
+<font class="code">emerge rsync</font> durchzuführen um sicherzustellen ein aktuelles 
+Gentoo Linux System zu haben. Die meisten Anwender die sich für ein
+&quot;stage2&quot; oder &quot;stage3&quot; Archiv entschieden haben, werden <font class="input">nicht</font> noch
+einmal den <font class="code">bootstrap</font> Prozess durchlaufen wollen, da er selbst auf
+sehr schnellen Rechnern bis zu einer Stunde dauern kann.</p></td></tr></table>
 
-<p>Now that you have a working copy of the Portage tree, people using stage1 to
-install will need to bootstrap their Gentoo Linux system as follows.  First
-edit the file <font class="path">/etc/make.conf</font>.  In this file, you should set your
-<font class="code">USE</font> flags, which specify optional functionality that you would like to
-be built into packages; generally, the defaults (an <font class="emphasis">empty</font> or unset USE
-variable) are fine.  You also should set appropriate <font class="code">CHOST</font>, <font class="code">
-CFLAGS</font> and <font class="code">CXXFLAGS</font> settings for the kind of system that you are
-creating (commented examples can be found further down in the file.)  If
-necessary, you can also set proxy information here if you are behind a
-firewall.  </p>
+
+<p>Da Sie nun eine funktionierende Kopie des Portage Verzeichnisses haben,
+müssen Sie nun den Gentoo Linux &quot;bootstrap&quot; Prozess durchlaufen. Dazu gehen
+Sie folgendermaßen vor: Zuerst editieren Sie die Datei <font class="path">/etc/make.conf</font>.
+In dieser Datei können Sie die USE Variable an Ihre Gegebenheiten abpassen.
+Über die USE Variable können Sie steuern welche optionale Funktionalität Sie
+in die Pakete eingebaut haben möchten. Normalerweise ist die vorgegebene Einstellung,
+eine <font class="emphasis">leere</font> oder ungesetzte USE Variable, ausreichend. Wichtig ist, das Sie 
+die passenden Werte für die <font class="code">CHOST</font>, <font class="code">CFLAGS</font> und <font class="code">CXXFLAGS</font> für
+Ihr System eintragen. (Kommentierte Beispiele sind weiter unten in der Datei
+vorhanden).Falls Sie sich hinter einer Firewall befinden sollte dort auch ein Proxy 
+eingetragen werden.</p>
 
 <a name="doc_pre19"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 19</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
-# <font class="input">nano -w /etc/make.conf</font> <font class="comment">(Adjust these settings)</font>
+# <font class="input">nano -w /etc/make.conf</font> <font class="comment">(Passen Sie die Einträge an)</font>
 </pre></td></tr>
 </table>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
-People who need to substantially tweak the build process should take a look at
-the <font class="path">/etc/make.globals</font> file.  This file comprises gentoo defaults and
-should never be touched.  If the defaults do not suffice, then new values should
-be put in <font class="path">/etc/make.conf</font>, as entries in <font class="path">make.conf</font>
-<font class="comment">override</font> the entries in <font class="path">make.globals</font>.  If you're
-interested in tweaking USE settings, look in <font class="path">/etc/make.profile/make.defaults</font>.
-If you want to turn off any USE settings found here, add an appropriate <font class="code">USE=&quot;-foo&quot;</font>
-in /etc/make.conf (to turn off the <font class="code">foo</font> USE setting.)
-</p></td></tr></table>
-<p>Now, it's time to start the &quot;bootstrap&quot; process.  This process will last 1-2 hours depending on 
-how zippy your machine is; it takes about an hour on my 900Mhz AMD Athlon system.  During this
-time, the extracted build image will be prepped for compiling the rest of the system.  The GNU
-compiler suite will be built, as well as the GNU C library.  These are time consuming builds and
-make up the bulk of the bootstrap process:</p>
+Anwender die Ihr System wesentlich optimieren müssen oder wollen, sollten einen
+Blick in die Datei <font class="path">/etc/make.globals</font> werfen. Diese Datei umfasst alle
+Gentoo Linux Vorgaben und sollte nicht verändert werden. Wem die Vorgaben nicht
+genügen soll die Änderungen in die Datei <font class="path">/etc/make.conf</font> eintragen,
+da Einträge in der <font class="path">make.conf</font> die vorgegebenen Werte der 
+<font class="path">make.globals</font> überschreiben. Wenn Sie die USE Einstellungen tunen 
+wollen, schauen Sie sich die Datei <font class="path">/etc/make.profile/make.defaults</font> 
+genauer an. Wenn Sie beispielsweise eine der vorhanden Einstellungen deaktivieren
+wollen, setzen Sie den entsprechenden <font class="code">USE=&quot;-foo&quot;</font> Eintrag in der /etc/make.conf.
+(Dies würde das USE Flag <font class="code">foo</font> abschalten) </p></td></tr></table>
+
+<p>Jetzt können Sie den &quot;bootstrap&quot; Prozess starten. Das dauert 1-2 Stunden; abhängig davon
+wie flott Ihr Rechner ist. Auf einem 900Mhz AMD Athlon System dauert der Prozess ca. 1 Stunde.
+Während Zeit wird der Rechner darauf vorbereitet den Rest des Systems zu kompilieren.
+Die GNU Compiler Suite sowie die GNU C Bibliothek werden gebaut. Dies sind zeitaufwendige 
+Vorgänge, die den Hauptteil des &quot;bootstrap&quot; Prozesses ausmachen: </p>
+
 <a name="doc_pre20"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 20</p></td></tr>
@@ -593,14 +606,14 @@ make up the bulk of the bootstrap process:</p>
 # <font class="input">scripts/bootstrap.sh</font>
 </pre></td></tr>
 </table>
-<p>The &quot;bootstrap&quot; process will now begin.</p>
+<p>Der &quot;bootstrap&quot; Prozess startet.</p>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
-Portage by default uses <font class="code">/var/tmp</font> during package building, often
-using several hundred megabytes of temporary storage. If you would like to
-change where Portage stores these temporary files, set a new PORTAGE_TMPDIR <font class="emphasis">before</font>
-starting the bootstrap process, as follows:
-</p></td></tr></table>
+Normalerweise verwendet Portage <font class="code">/var/tmp</font> während des kompilierens der Pakete.
+Dabei kann es sein, dass mehrere hundert Megabyte des temporären Speichers verwendet 
+werden. Wenn Sie den Ort wo Portage die temporären Dateien ablegt ändern möchten, können
+Sie dies <font class="emphasis">vor</font> dem Starten des &quot;bootstrap&quot; Prozesses durch setzten der 
+PORTAGE_TMPDIR Variable tun:</p></td></tr></table>
 <a name="doc_pre21"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 21</p></td></tr>
@@ -608,20 +621,20 @@ starting the bootstrap process, as follows:
 # <font class="input">export PORTAGE_TMPDIR=&quot;/otherdir/tmp&quot;</font>
 </pre></td></tr>
 </table>
-<p>
-The 
-<font class="code">bootstrap.sh</font> will build <font class="code">binutils</font>, <font class="code">gcc</font>, <font class="code">gettext</font>,
-and <font class="code">glibc</font>, rebuilding <font class="code">binutils</font>, <font class="code">gcc</font>, and <font class="code">gettext</font>
-after <font class="code">glibc</font> is built.  Needless to say, this process takes a while.
-Have a nice nap.  Once this process completes, your system will be in a &quot;stage2&quot; state.
-</p>
-<p class="chaphead">
-<font class="chapnum"><a name="doc_chap12">12.</a></font>Progressing from stage2 to stage3</p>
 
-<p>Once your build image has been bootstrapped and you're at stage2 (again, if you're
-using a stage3 tarball than these steps are not required)
-it's time to build or install the rest of the base
-system as follows:</p>
+<p>
+Das Skript <font class="code">bootstrap.sh</font> baut nun <font class="code">binutils</font>, <font class="code">gcc</font>, <font class="code">gettext</font> und
+<font class="code">glibc</font>.Danach werden <font class="code">binutils</font>, <font class="code">gcc</font> sowie <font class="code">gettext</font> mit der neuen
+<font class="code">glibc</font> erneut gebaut. Es muss nicht gesagt werden, dass dieser Prozess seine Zeit braucht.
+Machen Sie ein kleines Nickerchen. Wenn der Prozess dann durchgelaufen ist, haben Sie den Stand 
+des &quot;stage2&quot; Archivs erreicht.</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap12">12.</a></font>Von &quot;stage2&quot; zu &quot;stage3&quot;</p>
+
+<p>Nachdem der &quot;bootstrap&quot; Prozess abgeschlossen ist und  Sie nun bei &quot;stage2&quot; 
+(noch einmal, wenn Sie das &quot;stage3&quot; Archiv verwenden sind alle diese Schritte 
+nicht nötig) angelangt sind, ist es an der Zeit den Rest des Basissystems zu
+bauen und installieren: </p>
 
 <a name="doc_pre22"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -629,23 +642,23 @@ system as follows:</p>
 <tr><td bgcolor="#ddddff"><pre>
 # <font class="input">export CONFIG_PROTECT=&quot;&quot;</font>
 # <font class="input">emerge --pretend system</font>
-	<font class="comment">[lists the packages to be installed]</font>
+	<font class="comment">[listet alle zu installierenden Pakete auf]</font>
 # <font class="input">emerge system</font>
 </pre></td></tr>
 </table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>The <font class="code">export CONFIG_PROTECT=&quot;&quot;</font> line ensures that any new scripts
-installed to <font class="path">/etc</font> will overwrite the old scripts (stored in
-<font class="path">sys-apps/baselayout</font>), bypassing Portage's new config file
-management support.  Type <font class="code">emerge --help config</font> for more details.</p></td></tr></table>
-
-<p>It's going to take a while
-to finish building the entire base system.  Your reward is that it will be
-thoroughly optimized for your system.  The drawback is that you have to find a
-way to keep yourself occupied for some time to come.  The author suggests &quot;Star
-Wars - Super Bombad Racing&quot; for the PS2.  When <font class="code">emerge system</font> completes,
-you'll have a stage3 Gentoo Linux system.</p>
+<b>Anmerkung: </b>Das Kommando <font class="code">export CONFIG_PROTECT=&quot;&quot;</font> stellt sicher, dass alle
+neuen Scripte die nach <font class="path">/etc</font> installiert werden die alten 
+Scripte (aus dem Paket <font class="path">sys-apps/baselayout</font>) auch überschreiben 
+können. Dazu wird Portages neuer Mechanismus zum Schutz von Konfigurationsdateien
+umgangen. Genaueres erfahren Sie wenn Sie <font class="code">emerge --help config</font> aufrufen.</p></td></tr></table>
+ 
+<p>Es dauert seine Zeit das ganze Basissystem zu bauen. Ihr Lohn ist, das es
+gänzlich auf Ihren Rechner optimiert ist. Leider müssen Sie einen Weg finden
+sich bis zu diesem Zeitpunkt zu beschäftigen. Der Autor empfiehlt &quot;Star
+Wars - Super Bombad Racing&quot; für die PS2. Wenn <font class="code">emerge system</font> fertig ist,
+sind Sie auf dem Stand des &quot;stage3&quot; Archivs.</p>
 
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap13">13.</a></font>Final steps: timezone</p>
