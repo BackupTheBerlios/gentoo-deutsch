@@ -42,7 +42,7 @@ div#logo input{
   width: 120px;
 }
 
-div#body input{
+div#body input[type=button]{
   background-color:#F2F0F9;
   border: 1px solid #45347B;  
   font-size: 11.5px;

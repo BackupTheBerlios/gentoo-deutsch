@@ -72,7 +72,7 @@
       
         <input type="text" name="q" value="<!--cgi: query_str-->" />
       
-        <input type="submit" value="Suchen" />
+        <input type="submit" value="Suchen" style="color/>
       <br/>      
       <br/>
       </xsl:if>
