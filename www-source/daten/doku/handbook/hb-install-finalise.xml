@@ -1,7 +1,7 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-finalise.xml,v 1.1 2003/11/19 16:34:08 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-finalise.xml,v 1.2 2003/11/19 22:00:34 jay Exp $ -->
 
 <!-- Original English Version 1.8 -->
 <sections>
@@ -32,10 +32,10 @@ eines Benutzers für die täglichen Aufgaben.
 </p>
 
 <p>
-For instance, to create a user called <c>john</c> who is member of the
-<c>wheel</c> group (be able to change to root using <c>su</c>), <c>users</c>
-group (default for all users) and <c>audio</c> group (be able to use audio
-devices):
+In unserem Beispiel erstellen wir einen Benutzer <c>john</c> welcher Mitglied
+der <c>wheel</c> Gruppe (welche das Recht besitzt mit <c>su</c> nach root zu wechseln),
+der <c>users</c> Gruppe (Standard für alle Benutzer), sowie der <c>audio</c> Gruppe
+(um Soundkarten ansprechen zu können) ist.
 </p>
 
 <pre caption="AHinzufügen eines Benutzers für den täglichen Gebrauch">
@@ -99,7 +99,7 @@ link="?part=1&amp;chap=12">Wie geht es weiter?</uri>.
 <body>
 
 <impo>
-Dieser Unterabschnitt ist <e>nur</e> für PPC Benutzer interessant, die Bootx
+Dieser Unterabschnitt ist <e>nur</e> für PPC Benutzer interessant, die BootX
 als ihren Bootloader einsetzen wollen. Alle anderen Leser können diesen Abschnitt
 getrost überspringen.
 </impo>
@@ -113,17 +113,17 @@ Now your machine is booted in MacOS, open the BootX control panel.
 </p>
 
 <p>
-BootX can be configured to start Linux upon boot. If you do this, you will
-first see your machine boot into MacOS then, during startup, BootX will
-load and start Linux. See the <uri
-link="http://penguinppc.org/projects/bootx/">BootX home page</uri> for more 
-information.
+BootX kann nun so konfiguriert werden, dass es Linux beim Booten startet.
+In diesem fall wird der Rechner zunächst in MacOS booten, um BootX zu
+laden und dann Linux starten. Weitere Informationen sind auf der <uri
+link="http://penguinppc.org/projects/bootx/">BootX Homepage</uri> erhältlich.
 </p>
 
 <p>
-If you are a GRP users you can continue with <uri
-link="#doc_chap2_sect3">Optional: Install Extra Packages</uri>, otherwise go to
-<uri link="?part=1&amp;chap=12">Where to go from here?</uri>.
+GRP Benutzer können mit dem Punkt <uri
+link="#doc_chap2_sect3">Optional: Installation von weiteren
+Paketen</uri> forfahren, ansonsten gleich mit Punkt
+<uri link="?part=1&amp;chap=12">Wie geht es weiter?</uri> fortfahren.
 </p>
 
 </body>
@@ -133,58 +133,61 @@ link="#doc_chap2_sect3">Optional: Install Extra Packages</uri>, otherwise go to
 <body>
 
 <impo>
-This part is for GRP users only. Other users should skip this part and continue
-with <uri link="?part=1&amp;chap=12">Where to go from here?</uri>.
+Dieser Unterabschnitt ist nur für GRP Benutzer. Alle anderen sollten diesen Abschnitt
+überspringen und direkt zum Punkt <uri link="?part=1&amp;chap=12">Wie geht es 
+weiter?</uri> übergehen.
 </impo>
 
 <p>
-Now that your system is booted, log on as the user you created (for instance,
-<c>john</c>) and use <c>su -</c> to gain root privileges:
+Nach dem Booten des Systems, melden Sie sich mit Ihrem neu angelegten Benutzernamen
+(hier in unserem Beispiel <c>john</c> an und benutzen <c>su -</c> um root Rechte zu
+erhalten:
 </p>
 
-<pre caption="Gaining root privileges">
+<pre caption="root Rechte erhalten">
 $ <i>su -</i>
-Password: <comment>(Enter your root password)</comment>
+Password: <comment>(Hier das root Passwort eingeben)</comment>
 </pre>
 
 <p>
-Now we need to copy over the prebuild binaries from the second CD (CD-2) if you
-have it. First mount this CD:
+Nun müssen die vorkompilierten Binärpakete von der zweiten CD (CD-2)
+kopiert werden. Zuerst sollte die CD gemountet werden:
 </p>
 
-<pre caption="Mount the CD-2">
-<comment>(Put CD-2 in the CD tray)</comment>
+<pre caption="Mounten der CD-2">
+<comment>(Die CD ins Laufwerk einlegen)</comment>
 # <i>mount /mnt/cdrom</i>
 </pre>
 
 <p>
-Now copy over all prebuild binaries from the CD to
-<path>/usr/portage/packages</path>. Make sure you use the same copy-command!
+Nun werden die geünschten Dateien nach
+<path>/usr/portage/packages</path> kopiert. Stellen Sie sicher, dass der Kopierbefehl korrekt ist!
 </p>
 
-<pre caption="Copy over prebuild binaries">
+<pre caption="Kopieren der vorkompilierten Binärpakete">
 # <i>cp -a /mnt/cdrom/packages/* /usr/portage/packages/</i>
 </pre>
 
 <p>
-Now install the packages you want. CD-2 contains several prebuild binaries, for
-instance KDE:
+Nun können Sie die gewünschten Pakete installieren. CD-2 enthält unter anderem ein vorkompilierte KDE
+Fassung:
 </p>
 
-<pre caption="Installing KDE">
+<pre caption="Installation von KDE">
 # <i>emerge -k kde</i>
 </pre>
 
 <p>
-Be sure to install the binaries now. When you do an <c>emerge sync</c> to update
-Portage (as you will learn later), the prebuilt binaries might not match against
-the ebuilds in your updated Portage. You can try to circumvent this by using
-<c>emerge -K</c> instead of <c>emerge -k</c>.
+Installieren Sie die Binärpakete zu diesem Zeitpunkt. Wenn Sie ein <c>emerge sync</c>
+ausführen, um Portage auf den aktuellsten Stand zu bringen (wir gehen später noch genauer 
+darauf ein), können die vorkompilierten Binärpakete schon wieder älter sein, als die neuesten ebuilds
+in Portage. Um dieses Problem zu umgehen, kannn alternativ ein
+<c>emerge -K</c> statt <c>emerge -k</c> ausgeführt werden.
 </p>
 
 <p>
-Congratulations, your system is now fully equiped! Continue with <uri
-link="?part=1&amp;chap=12">Where to go from here?</uri> to learn more about
+Gratulation! Ihr System ist nun vollständig ausgestattet. Im Kapitel<uri
+link="?part=1&amp;chap=12">Wie geht es weiter?</uri> erhalten Sie alle nötigen Informationen, die sie brauchen.
 Gentoo.
 </p>
 
