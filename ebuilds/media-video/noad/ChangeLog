@@ -1,0 +1,7 @@
+# ChangeLog for media-video/vdr
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/noad/ChangeLog,v 1.1 2003/10/03 11:29:35 mad Exp $
+
+*noad-0.3.2
+  03 Oct 2003; M.Hierling <mad@cc.fh-lippe.de>
+  initial version, no doku, no description
