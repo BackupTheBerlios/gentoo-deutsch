@@ -1,10 +1,10 @@
 # ChangeLog for media-video/tvmovie2vdr
 # Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/tvmovie2vdr/ChangeLog,v 1.5 2004/08/02 01:16:02 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/tvmovie2vdr/ChangeLog,v 1.6 2004/08/02 01:19:32 austriancoder Exp $
 
 *tvmovie2vdr-0.1.4-r1 (2 Aug 2004)
   2 Aug 2004; Christian Gmeiner <christian at visual-page dot de>
-  added little patches to allow to call /etc/vdr/tvmovie2vdr/tvm2vdr.pl
+  added little patches to allow to call /etc/vdr/tvmovie2vdr/tvm2vdr.pl form e.g. /home/user
 
 *tvmovie2vdr-0.1.4 (1 Aug 2004)
   1 Aug 2004; Christian Gmeiner <christian at visual-page dot de>

@@ -1,0 +1,16 @@
+--- tvmovie2vdr-0.1.4/tvm2vdr-org.pl	2004-08-02 02:36:14.918261000 +0200
++++ tvmovie2vdr-0.1.4/tvm2vdr.pl	2004-08-02 02:38:13.809187320 +0200
+@@ -24,11 +24,11 @@
+ use HTML::Entities;
+ use bytes; # no unicode
+ 
+-push (@INC, "./");
++push (@INC, "/etc/vdr/tvmovie2vdr/");
+ require ("config.pl");
+ require ("channels.pl");
+ 
+-push (@INC, "./inc");
++push (@INC, "/etc/vdr/tvmovie2vdr/inc");
+ require ("helperfunc.pl");
+ 
+ 

@@ -1,0 +1,16 @@
+--- tvmovie2vdr-0.1.4/tvinfomerk2vdr-org.pl	2004-05-12 22:12:52.000000000 +0200
++++ tvmovie2vdr-0.1.4/tvinfomerk2vdr.pl	2004-08-02 02:38:25.101470632 +0200
+@@ -4,11 +4,11 @@
+ #
+ # Initialisierung
+ #
+-push (@INC, "./");
++push (@INC, "/etc/vdr/tvmovie2vdr/");
+ require ("config.pl");
+ require ("channels.pl");
+ 
+-push (@INC, "./inc");
++push (@INC, "/etc/vdr/tvmovie2vdr/inc");
+ require ("helperfunc.pl");
+ require ("tvinfofetch.pl");
+ 
