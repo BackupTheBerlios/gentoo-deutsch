@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.16 2003/12/14 19:38:40 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.17 2003/12/14 19:42:28 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/hb-status/">
@@ -14,7 +14,7 @@
 Statusübersicht über den Stand der Handbuchübersetzung.
 </abstract>
 
-<version>1.1</version>
+<version>1.2</version>
 <date>14. Dezember 2003</date>
 
 <chapter>
@@ -189,7 +189,7 @@ Der Termin wird abgestimmt, wenn alle Dokumente übersetzt sind.
   </tr>
   <tr>
   <ti>2</ti>
-  <ti>erreicht</ti>
+  <th>erreicht</th>
   <ti>Übersetzung der Dokumente</ti>
   </tr>
   <tr>
@@ -199,7 +199,7 @@ Der Termin wird abgestimmt, wenn alle Dokumente übersetzt sind.
   </tr>
   <tr>
   <ti>4</ti>
-  <ti>erreicht</ti>
+  <th>erreicht</th>
   <ti>gemeinsames Bugfixing</ti>
   </tr>
   <tr>
