@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.9.ebuild,v 1.3 2004/06/03 19:26:11 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.9.ebuild,v 1.4 2004/08/03 02:20:11 austriancoder Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.3.7-AC3overDVB-0.2.5"
@@ -22,7 +22,6 @@ LICENSE="GPL-2"
 
 if [ "${KV:0:3}" == "2.6" ]
 then
-	einfo "Kernel 2.6.x detected"
 	DEPEND="virtual/glibc
 		media-libs/jpeg
 		sys-libs/ncurses
@@ -35,7 +34,6 @@ fi
 
 if [ "${KV:0:3}" == "2.4" ]
 then
-	einfo "Kernel 2.4.x detected"
 	DEPEND="virtual/glibc
 		virtual/linux-sources
 		>=linuxtv-dvb-1.0.0
@@ -66,6 +64,18 @@ function vdr_opts {
 
 
 src_unpack() {
+	if [ "${KV:0:3}" == "2.6" ]
+	then
+		einfo "Kernel 2.6.x detected"
+		echo
+	fi
+
+	if [ "${KV:0:3}" == "2.4" ]
+	then
+		einfo "Kernel 2.4.x detected"
+		echo
+	fi
+
 	einfo
 	einfo "VDR_OPTS: $VDR_OPTS"
 	einfo
