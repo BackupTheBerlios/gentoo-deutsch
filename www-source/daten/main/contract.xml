@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding="UTF-8"?>
-<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
+
 
 <!-- English CVS Version 1.5 -->
 
-<mainpage id="contract">
+<guide id="contract">
 <title>Gentoo Linux Gesellschaftsvertrag</title>
 <author title="Author"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 
@@ -89,4 +89,4 @@ zugänglich gemacht.
 </body>
 </section>
 </chapter>
-</mainpage>
+</guide>
