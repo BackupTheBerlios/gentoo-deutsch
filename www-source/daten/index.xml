@@ -18,7 +18,7 @@
 	     	<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
         		Zur Projekütbersicht von BerliOS</uri></li>
 			<li><uri link="http://cybersystem.iq-computing.de/gentoo">Zeigt uns die Gentoo-Hochburg in Deutschland</uri></li>
-			<li><uri link="ftp://ftp.berlios.de/pub/gentoo-deutsch/gentoo-pppoe-dsl.tar.bz2">Kurzanleitung fr DSL</uri></li>
+			<li><uri link="ftp://ftp.berlios.de/pub/gentoo-deutsch/gentoo-pppoe-dsl.tar.bz2">Kurzanleitung für DSL</uri></li>
 		</ul>
     </p>
   </block>
@@ -73,9 +73,8 @@
 <title>Gentoo Deutsch</title>
 
 <section>
-	<title>Gentoo-Linux 1.4 ist da !</title>
 	<body>
-	<news type="release" date="05.08.2003" title="Gentoo Linux 1.4 verffentlicht">
+	<news type="release" date="05.08.2003" title="Gentoo Linux 1.4 veröffentlicht">
 		<p>
 			Nach der langen Durststrecke von über einem Jahr seit der Letzten stabilen
 			Gentoo-Version ist es nun endlich so weit - <b>Gentoo-Linux 1.4 ist da !</b>
