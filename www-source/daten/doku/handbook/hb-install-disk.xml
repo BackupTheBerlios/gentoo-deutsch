@@ -3,11 +3,11 @@
 
 <!-- English CVS Version: 1.21 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.5 2003/12/14 14:21:03 pyrania Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.6 2003/12/14 19:29:25 dertobi123 Exp $ -->
 
 <sections>
 <section>
-<title>Einf�hrung in Block Devices</title>
+<title>Einfühung in Block Devices</title>
 <subsection>
 <title>Block Devices</title>
 <body>
@@ -17,38 +17,37 @@ Wir werden einen guten Einblick in die Festplatten bezogenen Aspekte von Gentoo
 Linux und Linux im allgemeinen, inklusive Linux Dateisystemen, Partitionen und
 Block Devices erhalten.
 Dann, sobald Sie mit den Vor- und Nachteilen von Festplatten und Dateisystemen
-vertrut sind, werden Sie durch den Prozess des Partitionierens und der
-Dateisystem Erstellung f�r Ihre Gentoo Linux Installation gef�hrt.
+vertraut sind, werden Sie durch den Prozess des Partitionierens und der
+Dateisystemerstellung für Ihre Gentoo Linux Installation geführt.
 </p>
 
 <p>
-Zu Beginn werden wir Ihnen <e>Block Devices</e> vorstellen. Das ber�hmteste
+Zu Beginn werden wir Ihnen <e>Block Devices</e> vorstellen. Das berühmteste
 Block Device is warscheinlich das, welches das erste IDE Laufwerk in einem Linux
-System repr�sentiert, namentlich <path>/dev/hda</path>. Wenn Ihr System SCSI
-Laufwerke verwendet, dann w�re Ihre Erste Festplatte <path>/dev/sda</path>.
+System repräsentiert, namentlich <path>/dev/hda</path>. Wenn Ihr System SCSI
+Laufwerke verwendet, dann wäre Ihre erste Festplatte <path>/dev/sda</path>.
 </p>
 
 <p>
-Das obige Block Device repr�sentiert ein abstractes Interface zur Festplatte.
-Benutzerprogramme k�nnen diese Block Deviced benutzen, um Ihrer Festplatte
-anzusprechen, ohne sich darum zu k�mmern, ob Ihre Festplatten IDE, SCSI oder
+Das obige Block Device repräsentiert ein abstraktes Interface zur Festplatte.
+Benutzerprogramme können diese Block Device benutzen, um Ihre Festplatte
+anzusprechen, ohne sich darum zu kümmern, ob Ihre Festplatten IDE, SCSI oder
 irgendwas anderes sind. Das Programm kann den Speicherplatz auf der Festplatte
-*einfach als eine anh�ufung von zusammenh�ngenden, zuf�llig zugreifbaren
-512-Byte Bl�cken ansprechen.
+einfach als eine Anhäufung von zusammenhängenden, zufällig zugreifbaren
+512-Byte Blöcken ansprechen.
 </p>
-
 </body>
 </subsection>
 <subsection>
-*<title>Partitionen und Slices</title>
+<title>Partitionen und Slices</title>
 <body>
 
 <p>
-Obwohl es theoretisch m�glich ist eine ganze Festplatte zu nutzen, um Ihr Linux
+Obwohl es theoretisch möglich ist eine ganze Festplatte zu nutzen, um Ihr Linux
 System zu beherbergen, wird dies in der Praxis so gut wie nie gemacht.
 Stattdessen werden komplette Festplatten Block Devices in kleinere, besser
 verwaltbare Block Devices unterteilt. Auf den meisten Systemen werden sie
-<e>Partitionen</e> gennant. Andere Architekturen benutzen �hnliche Techniken,
+<e>Partitionen</e> genant. Andere Architekturen benutzen ähnliche Techniken,
 welche <e>Slices</e> genannt werden.
 </p>
 
@@ -64,18 +63,18 @@ Es wird unter drei Partitionstypen unterschieden:
 </p>
 
 <p>
-Eine <e>prim�re</e> Partition ist eine Partition, deren Informationen im MBR
+Eine <e>primäre</e> Partition ist eine Partition, deren Informationen im MBR
 (Master Boot Record) gespeichert sind. Da ein MBR sehr klein ist (512 Bytes),
-k�nnen nur vier prim�re Partitionen definiert werden (zum Beispiel
+können nur vier primäre Partitionen definiert werden (zum Beispiel
 <path>/dev/hda1</path> bis <path>/dev/hda4</path>).
 </p>
 
 <p>
-Eine <e>erweiterte</e> Partition ist eine spezielle prim�re Partition (was
-bedeutet, dass eine erweiterte Partition eine der vier m�glichen prom�ren
-Partitionen sein muss), welche mehrere Partiotionen beinhaltet. Eine solche
-Partition existierte urspr�nglich nicht, aber da vier Partitionen zu wenig sind,
-wurden sie erfunden, um das Format zu erweitern ohne die r�ckw�rts Kompabilit�t
+Eine <e>erweiterte</e> Partition ist eine spezielle primäre Partition (was
+bedeutet, dass eine erweiterte Partition eine der vier möglichen promären
+Partitionen sein muss), welche mehrere Partitionen beinhaltet. Eine solche
+Partition existierte ursprünglich nicht, aber da vier Partitionen zu wenig sind,
+wurden sie erfunden, um das Format zu erweitern ohne die Rückwärtskompabilität
 zu verlieren.
 </p>
 
@@ -88,60 +87,60 @@ erweiterten Partition.
 </body>
 </subsection>
 <subsection>
-*<title>Logische Volumes</title>
+<title>Logische Volumes</title>
 <body>
 
 <p>
-Einige Leute k�nnten Partitionen und Slices als zu beschr�nkt empfinden. Wenn
-Sie genauso denken, sollten Sie einen blick auf LVM werfen -- den <e> Logischen
+Einige Leute könnten Partitionen und Slices als zu beschränkt empfinden. Wenn
+Sie genauso denken, sollten Sie einen Blick auf LVM werfen -- den <e> Logischen
 Volume Manager</e>
 </p>
 
 <p>
 Bei LVM erstellen Sie Partitionen (oder Slices) wie gewohnt, aber Sie werden sie
-nicht nutzen um ihr Linux System zu beherbergen. Stattdessen f�gen Sie eine
+nicht nutzen um ihr Linux System zu beherbergen. Stattdessen fügen Sie eine
 weitere Ebene des Speichers (die LVM Ebene) hinzu, auf welcher Sie Gentoo Linux
 installieren. Aber was sind die Vorteile von LVM?
 </p>
 
 <p>
-Mit LVM k�nnen Sie ganz einfach die Gr��e des Volumes �ndern, auf dem Sie Gentoo
+Mit LVM können Sie ganz einfach die Größe des Volumes ändern, auf dem Sie Gentoo
 installiert haben.
-Zudem k�nnen Sie Backups eines Volumes machen, ohne das System einzufrieren,
-wodurch Sie Ihre Backup Strategie f�r Ihre User transparenter (und weniger
-Problemreich) machen k�nnen.
+Zudem können Sie Backups eines Volumes machen, ohne das System einzufrieren,
+wodurch Sie Ihre Backup Strategie für Ihre User transparenter (und weniger
+Problemreich) machen können.
 Ein weiterer Vorteil ist, dass Sie mehrere Festplatten zu einem einzelnen
-Volume hinzuf�gen k�nnen (was bedeutet, wenn eines Ihrer Volumes wenig freien
-Speicherplatz zur verf�gung hat, k�nnen Sie es erweitern ohne Dateien
-rumkopieren zu m�ssen).
+Volume hinzufügen können (was bedeutet, wenn eines Ihrer Volumes wenig freien
+Speicherplatz zur verfügung hat, können Sie es erweitern ohne Dateien
+rumkopieren zu müssen).
 </p>
 
 <p>
-Ein LVM ist in drei abstrakte Teile unterteilt. Sie haben ein <e>physichses
+Ein LVM ist in drei abstrakte Teile unterteilt. Sie haben ein <e>physisches
 Volume</e>, welches eine Partition, Slice oder Festplatte ist, welche Sie
 benutzen wollen, um den LVM Layer darauf zu speichern.
 Dann gibt es noch eine <e>Volume Gruppe</e> der Sie bestimmte physische
-Volumes zuweisen k�nnen. Diese Volume Gruppe beinhaltet verschiedene <e>logische
+Volumes zuweisen können. Diese Volume Gruppe beinhaltet verschiedene <e>logische
 Volumes</e> welche eine Art von Virtuellen Partitionen sind.
 </p>
 
 <p>
 Diese logischen Volumes werden als normale Partitionen benutzt; wenn ein
-logisches Volume nun mehr Speicherplatz ben�tigt, kann es den verf�gbaren
-Speicher in seiner Volume Gruppe nutzen um sich selbst zu erweitern. Wenn die
-Volume Gruppe nicht gen�gend Speicherplatz hat, k�nnen Sie weitere physische
-Volumes hinzuf�gen - vollkommen transparent zum User (z.B. m�ssen Sie keine
+logisches Volume nun mehr Speicherplatz benötigt, kann es den verfügbaren
+Speicher in seiner Volume Gruppe nutzen, um sich selbst zu erweitern. Wenn die
+Volume Gruppe nicht genügend Speicherplatz hat, können Sie weitere physische
+Volumes hinzufügen - vollkommen transparent zum User (z.B. müssen Sie keine
 Daten verschieben, das System einfrieren etc.). Dadurch ist ein LVM sehr
 flexibel.
 </p>
 
 <p>
-Wenn Sie LVM benutzen wollen, weisen wir Sie darauf hin, dass ihr root
+Wenn Sie LVM benutzen wollen, weisen wir Sie darauf hin, dass Ihr root
 Dateisystem (<path>/</path>) und Ihr boot Dateisystem (<path>/boot</path>)
-au�erhalb des LVM liegen m�ssen. Wenn Sie die meisten Dateien in ein logisches
+außerhalb des LVM liegen müssen. Wenn Sie die meisten Dateien in ein logisches
 Volume speichern wollen (<path>/home</path>, <path>/usr</path>,
 <path>/tmp</path>, <path>/opt</path> und <path>/var</path>
-werden in diesem Handbuch benutzt), muss Ihr root Dateisystem nicht sehr gro�
+werden in diesem Handbuch benutzt), muss Ihr root Dateisystem nicht sehr groß
 sein (ca. 140 MB sollten genug sein).
 </p>
 
@@ -151,24 +150,24 @@ sein (ca. 140 MB sollten genug sein).
 <section>
 <title>Erstellung eines Partitions Schemas</title>
 <subsection>
-<title>Standart Partitions Schema</title>
+<title>Standard Partitions Schema</title>
 <body>
 
 <p>
-Wenn Sie nicht daran interessiert sind ein Partitions Schema f�r Ihr System zu
-erstellen, k�nnen Sie das (nicht LVM) Partitions Schema verwenden, welches wir
+Wenn Sie nicht daran interessiert sind ein Partitions Schema für Ihr System zu
+erstellen, können Sie das (nicht LVM) Partitions Schema verwenden, welches wir
 in diesem Handbuch benutzen:
 </p>
 
 <p>
-F�r x86:
+Für x86:
 </p>
 
 <table>
 <tr>
   <th>Partition</th>
   <th>Dateisystem</th>
-  <th>Gr��e</th>
+  <th>Größe</th>
   <th>Beschreibung</th>
 </tr>
 <tr>
@@ -192,7 +191,7 @@ F�r x86:
 </table>
 
 <p>
-F�r ppc:
+Für ppc:
 </p>
 
 <table>
@@ -200,12 +199,12 @@ F�r ppc:
   <th>Partition NewWorld</th>
   <th>Partition OldWorld</th>
   <th>Dateisystem</th>
-  <th>Gr��e</th>
+  <th>Größe</th>
   <th>Beschreibung</th>
 </tr>
 <tr>
   <ti><path>/dev/hda1</path></ti>
-  <ti>(nicht ben�tigt)</ti>
+  <ti>(nicht benötigt)</ti>
   <ti>ext2</ti>
   <ti>32M</ti>
   <ti>Bootstrap Partition</ti>
@@ -227,14 +226,14 @@ F�r ppc:
 </table>
 
 <p>
-F�r Sparc:
+Für Sparc:
 </p>
 
 <table>
 <tr>
   <th>Sun Disklabel</th>
   <th>Dateisystem</th>
-  <th>Gr��e</th>
+  <th>Größe</th>
   <th>Beschreibung</th>
 </tr>
 <tr>
@@ -253,7 +252,7 @@ F�r Sparc:
   <ti><path>/dev/hda3</path></ti>
   <ti>(none)</ti>
   <ti>Full disk</ti>
-  <ti>Sun Disk Label (ben�tigt)</ti>
+  <ti>Sun Disk Label (benötigt)</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda4</path></ti>
@@ -264,101 +263,101 @@ F�r Sparc:
 </table>
 
 <p>
-Wenn Sie LVM benutzen wollen, sollten Sie eine kleine root Partition anstelle
-einer gro�en erstellen, ignorieren Sie die swap Partition und erstellen Sie eine
-gro�e Partition, da Sie die individuelle aufteilung sp�ter machen, wenn Sie die
-logischen Volumes festlegen. Markieren Sie anschlie�end diese gro�e Partition
+Wenn Sie LVM benutzen wollen, sollten Sie eine kleine Root Partition anstelle
+einer großen erstellen, ignorieren Sie die Swap Partition und erstellen Sie eine
+große Partition, da Sie die individuelle Aufteilung später machen, wenn Sie die
+logischen Volumes festlegen. Markieren Sie anschließend diese große Partition
 als Typ "Linux LVM" oder "LVM" (8e).
 </p>
 
 <p>
 Um Gentoo von einer existierenden Distribution aus zu installieren, sollten
 Sie, zuerst Ihre bestehenden Partitionen verkleinern (wenn Sie keinen freien
-Speicherplatz verf�gbar haben). Sie k�nnen <uri
+Speicherplatz verfügbar haben). Sie können <uri
 link="http://www.gnu.org/software/parted">GNU/Parted</uri> benutzen, um Ihre
 Partitionen zu verkleinern.
 </p>
 
 <p>
-Wenn Sie daran interessiert sind zu erfahren wie gro� eine Partition (oder
+Wenn Sie daran interessiert sind zu erfahren, wie groß eine Partition (oder
 logisches Volume) sein sollte, oder auch wieviele Partitionen (oder Volumes) Sie
-ben�tigen, lesen Sie weiter. Anderenfalls fahren Sie nun mit dem Partitionieren
+benötigen, lesen Sie weiter. Anderenfalls fahren Sie nun mit dem Partitionieren
 Ihrer Festplatte fort:
 </p>
 
 <ul>
 <li>
   <uri link="#doc_chap3">Benutzung von fdisk auf x86 zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 <li>
   <uri link="#doc_chap4">Benutzung von fdisk auf Alpha zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 <li>
   <uri link="#doc_chap5">Benutzung von fdisk auf SPARC zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 <li>
   <uri link="#doc_chap6">Benutzung von mac-fdisk auf PPC zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 <li>
   <uri link="#doc_chap7">Benutzung von fdisk auf HPPA zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 </ul>
 
 </body>
 </subsection>
 <subsection>
-<title>Wie viele und wie gro�?</title>
+<title>Wie viele und wie groß?</title>
 <body>
 
 <p>
 Die Anzahl an Partitionen (oder logischen Volumes, wenn sie LVM nutzen wollen)
-h�ngt von Ihrer Umgebung ab. Wenn Sie z.B. eine Menge User haben, wollen Sie
-h�chst wahrscheinlich Ihr <path>/home</path> separat halten, da es die
-Sicherheit erh�ht und Backups einfacher macht. Wenn Sie Gentoo installieren um
+hängt von Ihrer Umgebung ab. Wenn Sie z.B. eine Menge User haben, wollen Sie
+höchst wahrscheinlich Ihr <path>/home</path> separat halten, da es die
+Sicherheit erhöht und Backups einfacher macht. Wenn Sie Gentoo installieren um
 als Mailserver zu fungieren, sollten Sie <path>/var</path> separat halten, da
 alle Mails in <path>/var</path> gespeichert werden. Eine gute Wahl des
-Dateisystems maximiert dann zus�tzlich die Performance. Gameserver sollten ein
+Dateisystems maximiert dann zusätzlich die Performance. Gameserver sollten ein
 separates <path>/opt</path> haben, da die meisten Game Server dort installiert
-werden. Der Grund ist �hnlich wie bei <path>/home</path>: 
+werden. Der Grund ist ähnlich wie bei <path>/home</path>:
 Sicherheit und Backups.
 </p>
 
 <p>
-Wie Sie sehen k�nnen h�ngt es sehr stark davon ab, was Sie erreichen wollen.
+Wie Sie sehen können hängt es sehr stark davon ab, was Sie erreichen wollen.
 Separate Partitionen oder Volumes haven folgende Vorteile:
 </p>
 
 <ul>
 <li>
-  Sie k�nnen das Filesystem mit der h�chsten Performance f�r jede Partition oder
-  jedes Volume ausw�hlen
+  Sie können das Filesystem mit der höchsten Performance für jede Partition oder
+  jedes Volume auswählen
 </li>
 <li>
-  Ihr komplettes System kka nicht ohne freien Speicherplatz laufen, wenn ein
+  Ihr komplettes System kann nicht ohne freien Speicherplatz laufen, wenn ein
   defektes Tool ununterbrochen Dateien auf eine Partition oder ein Volume
   schreibt
 </li>
 <li>
-  Falls n�tig k�nnen Dateisystem Checks Zeitlich verk�rzt werden, in dem
-  mehrere Checks parallel durchgef�hrt werden k�nnen (obwohl dieser Vorteil eher
-  mit mehreren Festplatten als mit mehreren Partitionen zum tragen kommt)
+  Falls nötig können Dateisystem Checks Zeitlich verkürzt werden, in dem
+  mehrere Checks parallel durchgeführt werden können (obwohl dieser Vorteil eher
+  mit mehreren Festplatten als mit mehreren Partitionen zum Tragen kommt)
 </li>
 <li>
-  Die Sicherheit kann erh�ht werden, indem Sie einige Partitionen oder Volumes
+  Die Sicherheit kann erhöht werden, indem Sie einige Partitionen oder Volumes
   read-only, nosuid (setuid bits werden ignoriert), noexec (executable bits
-  werden ignoriert) etc.
+  werden ignoriert) etc mounten.
 </li>
 </ul>
 
 <p>
-Wie dem auch sie, mehrere Partitionen haben einen gro�en Nachteil (wenn Sie kein
-LVM benutzen): wenn sie nicht ordentlich konfiguriert werden, k�nnte das
-Tesultat ein System sein welches viel Speicherplatz auf der einen Partition und
+Wie dem auch sei, mehrere Partitionen haben einen großen Nachteil (wenn Sie kein
+LVM benutzen): wenn sie nicht ordentlich konfiguriert werden, könnte das
+Resultat ein System sein, welches viel Speicherplatz auf der einen Partition und
 keinen auf einder anderen frei hat.
 </p>
 
@@ -368,7 +367,7 @@ in einem Notebook zu Demonstrationszwecken genutzt wird (inklusive webserver,
 mailserver, gnome, ...):
 </p>
 
-*<pre caption="Filesystem usage example">
+<pre caption="Filesystem usage example">
 Filesystem    Type    Size  Used Avail Use% Mounted on
 /dev/hda5     ext3    509M  132M  351M  28% /
 /dev/hda2     ext3    5.0G  3.0G  1.8G  63% /home
@@ -377,46 +376,46 @@ Filesystem    Type    Size  Used Avail Use% Mounted on
 /dev/hda9     ext3    2.0G  607M  1.3G  32% /var
 /dev/hda1     ext2     51M   17M   31M  36% /boot
 /dev/hda6     swap    516M   12M  504M   2% &lt;not mounted&gt;
-<comment>(Unpartitionierter Speicherplatz f�r zuk�nftige Benutzung: 2 GB)</comment>
+<comment>(Unpartitionierter Speicherplatz für zukünftige Benutzung: 2 GB)</comment>
 </pre>
 
 <p>
 <path>/usr</path> ist ziemlich voll (83% used), aber sobald die ganze Software
 installiert ist, tendiert <path>/usr</path> nicht mehr dazu allzuviel zu
 wachsen.
-Man k�nnte denken der zugewiesene Speicherplatz f�r <path>/var</path>, sei
+Man könnte denken der zugewiesene Speicherplatz für <path>/var</path>, sei
 zuviel, aber Gentoo kompiliert alle Programme in <path>/var/tmp/portage</path>,
-daher sollten Sie f�r <path>/var</path> mindestens 1GB frei haben, wenn Sie
-keine gro�en Programme installieren wollen; mit einer Gr��e von bis zu 3GB
+daher sollten Sie für <path>/var</path> mindestens 1GB frei haben, wenn Sie
+keine großen Programme installieren wollen; mit einer Größe von bis zu 3GB
 sollten auch KDE und OpenOffice.org kein Problem mehr sein.
 </p>
 
 <p>
-Jetzt partitionieren Sie Ihre Festplatte(n) mit Hilfe der Anleitungen die f�r
-Ihre Architektur als Beispiel zur Verf�gung stehen:
+Jetzt partitionieren Sie Ihre Festplatte(n) mit Hilfe der Anleitungen die für
+Ihre Architektur als Beispiel zur Verfügung stehen:
 </p>
 
 <ul>
 <li>
   <uri link="#doc_chap3">Benutzung von fdisk auf x86 zur Partitionierung Ihrer
-  	Festplatte
+  Festplatte
   </uri>
 </li>
 <li>
   <uri link="#doc_chap4">Benutzung von fdisk auf Alpha zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 <li>
   <uri link="#doc_chap5">Benutzung von fdisk auf SPARC zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 <li>
   <uri link="#doc_chap6">Benutzung von mac-fdisk auf PPC zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 <li>
   <uri link="#doc_chap7">Benutzung von fdisk auf HPPA zur Partitionierung Ihrer
-  	Festplatte</uri>
+  Festplatte</uri>
 </li>
 </ul>
 
@@ -429,11 +428,11 @@ Ihre Architektur als Beispiel zur Verf�gung stehen:
 <body>
 
 <impo>
-Nur Benutzer mit <e>x86</e> basierten System sollten diese Sektion lesen.
+Nur Benutzer mit <e>x86</e> basierten System sollten diesen Abschnitt lesen.
 </impo>
 
 <p>
-Die folgenden Teile erkl�ren, wie das bereits beschriebene Beispiel Partitions
+Die folgenden Teile erklären, wie das bereits beschriebene Beispiel Partitions
 Layout (ohne LVM) erstellt wird:
 </p>
 
@@ -457,18 +456,18 @@ Layout (ohne LVM) erstellt wird:
 </table>
 
 <p>
-�ndern Sie Ihr Partitionslayout nach Ihrem eigenen willen.
+Ändern Sie Ihr Partitionslayout nach Ihren eigenen Vorstellungen
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Das derzeitge Partitionslayout ansehen</title>
+<title>Die derzeitige Partitionstabelle ansehen</title>
 <body>
 
 <p>
-<c>fdisk</c> ist ein verbreitetes und m�chtiges Tool um Ihre Festplatte in
-Partitionen zu teilen. Starten Sie <c>fdisk</c> f�r Ihre Festplatte (in unserem
+<c>fdisk</c> ist ein verbreitetes und mächtiges Tool um Ihre Festplatte in
+Partitionen zu teilen. Starten Sie <c>fdisk</c> für Ihre Festplatte (in unserem
 Beispiel benutzen wir <path>/dev/hda</path>):
 </p>
 
@@ -477,7 +476,7 @@ Beispiel benutzen wir <path>/dev/hda</path>):
 </pre>
 
 <p>
-Sobald Sie in <c>fdisk</c> sind, werden Sie mit folgendem Prompt begr��t:
+Sobald Sie in <c>fdisk</c> sind, werden Sie mit folgendem Prompt begrüßt:
 </p>
 
 <pre caption="fdisk Prompt">
@@ -485,10 +484,10 @@ Command (m for help):
 </pre>
 
 <p>
-Dr�cken Sie <c>p</c> um Ihr derzeitiges Partitionslayout anzeigen zu lassen:
+Drücken Sie <c>p</c> um Ihr derzeitige Partitionstabelle anzeigen zu lassen:
 </p>
 
-<pre caption="Ein Beispiel Partitionslayout">
+<pre caption="Ein Beispiel Partitionstabelle">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda: 240 heads, 63 sectors, 2184 cylinders
@@ -510,43 +509,43 @@ Command (m for help):
 
 <p>
 Diese Festplatte beherbergt sieben Linux Dateisysteme (jedes mit einer
-dazugeh�rigen Partition, gelistet als "Linux") und auch eine Swap Partition
+dazugehörigen Partition, gelistet als "Linux") und auch eine Swap Partition
 (gelistet als "Linux swap").
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>L�schen aller Partitionen</title>
+<title>Löschen aller Partitionen</title>
 <body>
 
 <p>
-Zuerst entfernen wir alle existierenden Partitionen von der Festplatte. Dr�cken
-Sie <c>d</c> um eine Partition zu l�schen. Zum Beispiel um ein bestehendes
-<path>/dev/hda1</path> zu l�schen:
+Zuerst entfernen wir alle existierenden Partitionen von der Festplatte. Drücken
+Sie <c>d</c> um eine Partition zu löschen. Zum Beispiel um ein bestehendes
+<path>/dev/hda1</path> zu löschen:
 </p>
 
-<pre caption="L�schen einer Partition">
+<pre caption="Löschen einer Partition">
 Command (m for help): <i>d</i>
 Partition number (1-4): <i>1</i>
 </pre>
 
 <p>
-Die Partition wurde zur L�schung markiert und wird nicht mehr angezeigt, wenn
-Sie <c>p</c> dr�cken, aber wird nicht gel�scht, bis Sie Ihre �nderungen
-gespeichert sind. Wenn Sie einen Fehler gemacht haben und ohne zu speichern
-abbrechen wollen, dr�cken Sie umgehend <c>q</c> und enter; Ihre Partition wird
-dann nicht gel�scht.
+Die Partition wurde zur Löschung markiert und wird nicht mehr angezeigt, wenn
+Sie <c>p</c> drücken, aber wird nicht gelöscht, bis Ihre Änderungen
+gespeichert sind. Wenn Sie einen Fehler gemacht haben und ohne zu Speichern
+abbrechen wollen, drücken Sie umgehend <c>q</c> und Enter; Ihre Partition wird
+dann nicht gelöscht.
 </p>
 
 <p>
-Angenommen, dass Sie wirklich all Ihre Partitionen auf Ihrer Festplatte l�schen
-wollen, dr�cken Sie noch einmal <c>p</c> um die Partitionstabelle anzuzeigen und
-dann <c>d</c> und die Nummer der Partition die Sie l�schen wollen. Irgendwann
+Angenommen, dass Sie wirklich all Ihre Partitionen auf Ihrer Festplatte löschen
+wollen, drücken Sie noch einmal <c>p</c> um die Partitionstabelle anzuzeigen und
+dann <c>d</c> und die Nummer der Partition die Sie löschen wollen. Irgendwann
 werden Sie eine leere Partitionstabelle haben:
 </p>
 
-<pre caption="Eine leere Partition Tabelle">
+<pre caption="Eine leere Partitionstabelle">
 Disk /dev/hda: 30.0 GB, 30005821440 bytes
 240 heads, 63 sectors/track, 3876 cylinders
 Units = cylinders of 15120 * 512 = 7741440 bytes
@@ -557,10 +556,10 @@ Command (m for help):
 </pre>
 
 <p>
-Jetzt, da die Partitions Tabelle im Speicher leer ist, sind wir vorbereitet, um
+Jetzt, da die Partitionstabelle im Speicher leer ist, sind wir vorbereitet, um
 die Partitionen zu erstellen. Wir werden ein Default Partitions Schema benutzen,
 wie wir es zuvor angesprochen haben.
-Natu�rlich sollten Sie den Instruktionen nicht buchst�blich ausf�hren, wenn Sie
+Natürlich sollten Sie den Instruktionen nicht buchstäblich ausführen, wenn Sie
 ein anderes Partitions Schema verwenden wollen!
 </p>
 
@@ -571,10 +570,10 @@ ein anderes Partitions Schema verwenden wollen!
 <body>
 
 <p>
-Zuerst erstellen wir eine kleine Boot Partition. Dr�cken Sie <c>n</c> um eine
-neue Partition zu erstelle, dann <c>p</c> um eine prim�re Partition zu w�hlen,
-gefolgt von <c>1</c> f�r die erste prim�re Partition. Wenn Sie nach dem ersten
-Zylinder gefragt werden, dr�cken Sie enter. F�r den letzten Zylinder geben Sie
+Zuerst erstellen wir eine kleine Boot Partition. Drücken Sie <c>n</c> um eine
+neue Partition zu erstellen, dann <c>p</c> um eine primäre Partition zu wählen,
+gefolgt von <c>1</c> für die erste primäre Partition. Wenn Sie nach dem ersten
+Zylinder gefragt werden, drücken Sie Enter. Für den letzten Zylinder geben Sie
 <c>+32M</c> ein, um eine 32 MB Partition zu erzeugen.
 </p>
 
@@ -591,7 +590,7 @@ Last cylinder or +size or +sizeM or +sizeK (1-3876, default 3876): <i>+32M</i>
 </pre>
 
 <p>
-Wenn Sie jetzt <c>p</c> dr�cken, solltgen Sie die folgende Partitionstabelle
+Wenn Sie jetzt <c>p</c> drücken, solltgen Sie die folgende Partitionstabelle
 sehen:
 </p>
 
@@ -613,19 +612,21 @@ Device Boot    Start       End    Blocks   Id  System
 <body>
 
 <p>
-Lassen Sie uns jetzt eine Swap Partition erstellen. Dr�cken Sie hierf�r <c>n</c>
-um eine neue Partition zu erstellen, gefolgt von <c>p</c> um fdisk zu sagen, sie
-als Prim�re Partition zu markieren. Dann dr�cken Sie <c>2</c> um die zweite
-prim�re Partition zu erstellen, in unserem Fall <path>/dev/hda2</path>. Wenn Sie
-nach dem ersten Zylinder gefragt werden, dr�cken Sie enter. Beim letzten
-Zylinder geben Sie <c>+512M</c> an, um eine 512MB gro�e Partition zu erstellen.
-Danach dr�cken Sie <c>t</c> um dem Partitionstyp zu setzen, <c>2</c> um die
-eben erstellte Partition zu w�hlen und daraufhin <c>82</c> um den Partitionstyp
-"Linux Swap" zu w�hlen. Wenn Sie diese Schritte erledigt haben, sollten Sie
-<c>p</c> dr�cken, um die Partitiontabelle ausgeben zu lassen:
+Nun erstellen Sie die Swap Partition. Um dies zu tun drücken Sie <c>n</c> um
+eine Partition zu erstellen, dann <c>p</c> um fdisk mitzuteilen, dass Sie eine
+primäre Partition anlegen möchten. Dann drücken Sie <c>2</c> um die zweite
+primäre Partition, <path>dev/hda2</path> in unserem Fall, anzulegen. Wenn Sie
+nach dem ersten Zylinder gefragt werden, drücken Sie Enter. Wenn Sie nach dem
+letzen Zylinder gefragt werden, tippen Sie <c>+512M</c> um eine Partition mit
+einer Größe von 512 MB zu erstellen. Nachdem Sie dies getan haben, müssen Sie mit
+<c>t</c> den Partitionstyp festlegen, <c>2</c> um die gerade angelegte Partition
+auszuwaehlen und dann <c>82</c> um den Partitionstyp als "Linux Swap"
+festzulegen. Nachdem Sie diese Schritte abgeschlossen haben, drücken Sie
+<c>p</c> und Sie erhalten eine Paritionstabelle, die dieser recht ähnlich
+schaut:
 </p>
 
-<pre caption="Partitionstabelle nach dem erstellen der Swap Partition">
+<pre caption="Partitionstabelle nach dem Erstellen der Swap Partition">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda: 30.0 GB, 30005821440 bytes
@@ -640,21 +641,22 @@ Device Boot    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Erstellen der Boot Partition</title>
+<title>Erstellen der Root Partition</title>
 <body>
 
 <p>
- 
-Finally, let's create the root partition. To do this, type <c>n</c> to create a 
-new partition, then <c>p</c> to tell fdisk that you want a primary partition. 
-Then type <c>3</c> to create the third primary partition, <path>/dev/hda3</path>
-in our case. When prompted for the first cylinder, hit enter. When prompted for
-the last cylinder, hit enter to create a partition that takes up the rest of the
-remaining space on your disk. After completing these steps, typing <c>p</c> 
-should display a partition table that looks similar to this:
+Zum Schluss müssen sie noch die Root Partition erstellen. Um dies zu tun, drücken
+Sie <c>n</c> um eine Partition zu erstellen, dann <c>p</c> um fdisk mitzuteilen,
+dass Sie eine primäre Partition anlegen möchten. Dann drücken Sie <c>3</c> um die
+dritte primäre Partition, <path>dev/hda3</path> in unserem Fall, anzulegen. Wenn Sie
+nach dem ersten Zylinder gefragt werden, drücken Sie Enter. Wenn Sie nach dem
+letzen Zylinder gefragt werden, tippen Sie Enter um eine Partition zu erstellen,
+die den restlichen freien Platz belegt. Nachdem Sie diese Schritte abgeschlossen
+haben, drücken Sie <c>p</c> und Sie erhalten eine Paritionstabelle, die dieser recht
+ähnlich sieht:
 </p>
 
-<pre caption="Partition listing after creating the root partition">
+<pre caption="Partitionstabelle nach dem Erstellen der Root Partition">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda: 30.0 GB, 30005821440 bytes
@@ -671,115 +673,121 @@ Device Boot    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Saving the Partition Layout</title>
+<title>Speichern der Partitionstabelle</title>
 <body>
 
 <p>
-To save the partition layout and exit <c>fdisk</c>, type <c>w</c>.
+Um die Partitionstablle zu speichern und <c>fdisk</c> zu verlassen, drücken Sie
+<c>w</c>.
 </p>
 
-<pre caption="Save and exit fdisk">
+<pre caption="Speichern und verlassen von fdisk">
 Command (m for help): <i>w</i>
 </pre>
 
 <p>
-Now that your partitions are created, you can now continue with <uri
-link="#doc_chap9">Creating Filesystems</uri>, unless you have chosen to use LVM
-in which case you should first read <uri link="#doc_chap8">Optional: Using
-LVM</uri>.
+Nachdem Ihre Partitionen nun erstellt sind können Sie mit dem
+<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen LVM benutzen. In diesem Fall sollten Sie zuerst
+<uri link="#doc_chap8">Optional: LVM</uri> lesen.
 </p>
 
 </body>
 </subsection>
 </section>
 <section>
-<title>Using fdisk on Alpha to Partition your Disk</title>
+<title>Benutzung von fdisk auf Alpha zur Partitionierung Ihrer Festplatte</title>
 <subsection>
 <body>
 
 <impo>
-Only users with <e>Alpha</e> based systems should read this section.
+Nur Benutzer von <e>Alpha</e> basierenden Systeme sollten diesen Abschnitt
+lesen.
 </impo>
 
 <p>
-The following parts explain how to create the example slice layout described
-previously, namely:
+Die folgende Teile erklären, wie Sie das vorhin vorgestellte Slice Layout
+erstellen.
 </p>
 
 <table>
 <tr>
   <th>Slice</th>
-  <th>Description</th>
+  <th>Beschreibung</th>
 </tr>
 <tr>
   <ti><path>/dev/sdaa</path></ti>
-  <ti>Swap slice</ti>
+  <ti>Swap Slice</ti>
 </tr>
 <tr>
   <ti><path>/dev/sdab</path></ti>
-  <ti>Root slice</ti>
+  <ti>Root Slice</ti>
 </tr>
 <tr>
   <ti><path>/dev/sdac</path></ti>
-  <ti>Full disk (required)</ti>
+  <ti>Ganze Festplatte (benötigt)</ti>
 </tr>
 </table>
 
 <p>
-Change your slice layout according to your own will.
+Passen Sie das Slice Layout an Ihre Vorstellungen an.
 </p>
 
 
 </body>
 </subsection>
 <subsection>
-<title>Identifying Available Disks</title>
+<title>Identifizierung verfügbarer Festplatten</title>
 <body>
 
 <p>
-To figure out what disks you have running, use the following commands:
+Um herauszufinden, welche Festplatten Ihnen zur Verfügung stehen, benutzen Sie
+die folgenden Kommandos:
 </p>
 
-<pre caption="Identifying available disks">
-<comment>(For IDE disks)</comment>      # <i>dmesg | grep 'drive$'</i>
-<comment>(For SCSI disks)</comment>     # <i>dmesg | grep 'scsi'</i>
+<pre caption="Identifizierung verfügbarer Festplatten">
+<comment>(Für IDE Festplatten)</comment>      # <i>dmesg | grep 'drive$'</i>
+<comment>(Für SCSI Festplatten)</comment>     # <i>dmesg | grep 'scsi'</i>
 </pre>
 
 <p>
-From this output you should be able to see what disks were detected and their
-respective <path>/dev</path> entry. In the following parts we assume that the
-disk is a SCSI disk on <path>/dev/sda</path>.
+Aus dieser Ausgabe sollten Sie in der Lage sein zu erkennen, welche Festplatten
+erkannt wurden und deren besonderen <path>/dev</path> Eintrag abzulesen. In den
+folgenden Abschnitten gehen wir von einer SCSI Festplatte auf
+<path>/dev/sda</path> aus.
 </p>
 
 <p>
-Now fire up <c>fdisk</c>:
+Starten Sie nun <c>fdisk</c>:
 </p>
 
-<pre caption="Starting fdisk">
+<pre caption="Starten von fdisk">
 # <i>fdisk /dev/sda</i>
 </pre>
 
 </body>
 </subsection>
 <subsection>
-<title>Deleting All Slices</title>
+<title>Löschen von allen Slices</title>
 <body>
 
 <p>
-We start with deleting all slices <e>except</e> the 'c'-slice. The following
-shows how to delete a slice (in the example we use 'a'). Repeat the process to
-delete all other slices (again, except the 'c'-slice).
+Wir beginnen mit dem Löschen von allen Slices, <c>ausser</c> des 'c'-Slice.
+Nachfolgend zeigen wir Ihnen, wie Sie ein Slice (im Beispiel nutzen wir 'a')
+löschen können. Wiederholen Sie den Schritt für alle Slices (wieder: ausser des
+'c'-Slice).
 </p>
 
 <p>
-Use <c>p</c> to view all existing slices. <c>d</c> is used to delete a slice.
+Benutzen Sie <c>p</c> um alle existierenden Slices anzuzeigen. <c>d</c>
+benötigen Sie zum Löschen eines Slice.
 </p>
 
-<pre caption="Deleting a slice">
+<pre caption="Löschen eines Slice">
 BSD disklabel command (m for help): <i>p</i>
 
 8 partitions:
-#       start       end      size     fstype   [fsize bsize   cpg]                                    
+#       start       end      size     fstype   [fsize bsize   cpg]
   a:        1       235*      234*    4.2BSD     1024  8192    16
   b:      235*      469*      234*      swap
   c:        1      5290*     5289*    unused        0     0
@@ -794,36 +802,37 @@ Partition (a-h): <i>a</i>
 </pre>
 
 <p>
-After repeating this process for all slices, a listing should show you something
-similar to this:
+Nachdem Sie den Prozess für alle anderen Slices wiederholt haben, sollte die
+Auflistung folgender ähnlich sehen:
 </p>
 
-<pre caption="Viewing an empty scheme">
+<pre caption="Ansicht einer leeren Partitionstabelle">
 BSD disklabel command (m for help): <i>p</i>
 
 3 partitions:
-#       start       end      size     fstype   [fsize bsize   cpg]                                    
+#       start       end      size     fstype   [fsize bsize   cpg]
   c:        1      5290*     5289*    unused        0     0
 </pre>
 
 </body>
 </subsection>
 <subsection>
-<title>Creating the Swap Slice</title>
+<title>Erstellen des Swap Slice</title>
 <body>
 
 <p>
-On Alpha based systems you don't need a separate boot partition. However, the
-first cylinder cannot be used as the <c>aboot</c> image will be placed there.
+Auf Alpha basierten System benötigen Sie keine separate Boot Partition. Dennoch
+kann der erste Zylinder nicht benutzt werden, da das <c>aboot</c> Image dort
+abgelegt werden wird.
 </p>
 
 <p>
-We will create a swap slice starting at the third cylinder, with a total
-size of 1 Gbyte. Use <c>n</c> to create a new slice. After creating the slice,
-we will change its type to <c>1</c>, meaning <e>swap</e>.
+Wir werden ein Swap Slice beginnend am dritten Cylinder mit einer Größe von 1
+GB erstellen. Benutzen Sie <c>n</c> um ein neues Slice zu erstellen. Nachdem Sie
+das Slice erstellt haben, ändern Sie den Typ mit <c>1</c> auf Swap.
 </p>
 
-<pre caption="Creating the swap slice">
+<pre caption="Erstellen der Swap Slice">
 BSD disklabel command (m for help): <i>n</i>
 Partition (a-p): <i>a</i>
 First cylinder (1-5290, default 1): <i>3</i>
@@ -835,14 +844,15 @@ Hex code (type L to list codes): <i>1</i>
 </pre>
 
 <p>
-After these steps you should see a layout similar to the following:
+Nach diesen Schritten sollten Sie ein der folgenden Auflistung ähnliches Layout
+sehen:
 </p>
 
-<pre caption="Slice layout after creating the swap slice">
+<pre caption="Slice Layout nach dem Erstellen des Swap Slice">
 BSD disklabel command (m for help): <i>p</i>
 
 3 partitions:
-#       start       end      size     fstype   [fsize bsize   cpg]                                    
+#       start       end      size     fstype   [fsize bsize   cpg]
   a:        3      1003      1001       swap
   c:        1      5290*     5289*    unused        0     0
 </pre>
@@ -850,27 +860,29 @@ BSD disklabel command (m for help): <i>p</i>
 </body>
 </subsection>
 <subsection>
-<title>Create the Root Slice</title>
+<title>Erstellen des Root Slice</title>
 <body>
 
 <p>
-We will now create the root slice, starting from the first cylinder <e>after</e>
-the swap slice. Use the <c>p</c> command to view where the swap slice ends. In
-our example, this is at 1003, making the root partition start at 1004.
+Wir werden nun das Root Slice anlegen, beginnend vom ersten Zylinder <e>nach</e>
+der Swap Slice. Benutzen Sie das <c>p</c> Kommando um zu schauen, wo das Swap
+Slice endet. In unserem Beispiel ist dies 1003, das Root Slice beginnt also
+bei 1004.
 </p>
 
 <p>
-Another problem is that there is currently a bug in <c>fdisk</c> making it think
-the number of available cylinders is one above the real number of cylinders. In
-other words, when you are asked for the last cylinder, decrease the cylinder
-number (in this example: 5290) with one.
+Ein weiteres Problem ist, dass aktuell ein Bug in <c>fdisk</c> existiert.
+Dadurch denkt <c>fdisk</c>, dass die Anzahl verfügbarer Zylinder eine Nummer
+über der realen Zahl der Tylinder liegt. In anderen Worten, wenn Sie nach dem
+letzten Zylinder gefragt werden, verkleinern Sie die Zylindernummer (in diesem
+Beispiel: 5290) mit eins.
 </p>
 
 <p>
-When the partition is created, we change the type to <c>8</c>, for <e>ext2</e>.
+Wenn das Slice erstellt wurde ändern Sie den Typ auf <c>8</c> für <e>ext2</e>.
 </p>
 
-<pre caption="Creating the root slice">
+<pre caption="Erstellen des Root Slice">
 D disklabel command (m for help): <i>n</i>
 Partition (a-p): <i>b</i>
 First cylinder (1-5290, default 1): <i>1004</i>
@@ -882,14 +894,14 @@ Hex code (type L to list codes): <i>8</i>
 </pre>
 
 <p>
-Your slice layout should now be similar to this:
+Ihr Slice Layout sollte nun ähnlich dem Folgenden aussehen:
 </p>
 
-<pre caption="Viewing the slice layout">
+<pre caption="Ansicht des Slice Layout">
 BSD disklabel command (m for help): <i>p</i>
 
 3 partitions:
-#       start       end      size     fstype   [fsize bsize   cpg]                                    
+#       start       end      size     fstype   [fsize bsize   cpg]
   a:        3      1003      1001       swap
   b:     1004      5289      4286       ext2
   c:        1      5290*     5289*    unused        0     0
@@ -898,96 +910,96 @@ BSD disklabel command (m for help): <i>p</i>
 </body>
 </subsection>
 <subsection>
-<title>Save the Slice Layout and Exit</title>
+<title>Speichern des Slice Layout und beenden von fdisk</title>
 <body>
 
 <p>
-Save <c>fdisk</c> by typing <c>w</c>. This will also save your slice layout.
+Schliessen Sie <c>fdisk</c> indem Sie <c>w</c> eingeben. Damit wird auch Ihr
+Slice Layout gespeichert.
 </p>
 
-<pre caption="Save and exit fdisk">
+<pre caption="Speichern und verlassen von fdisk">
 Command (m for help): <i>w</i>
 </pre>
 
 <p>
-Now that your slices are created, you can now continue with <uri
-link="#doc_chap9">Creating Filesystems</uri>, unless you have chosen to use LVM
-in which case you should first read <uri link="#doc_chap8">Optional: Using
-LVM</uri>.
+Nachdem Ihre Slices nun erstellt sind können Sie mit dem
+<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen LVM benutzen. In diesem Fall sollten Sie zuerst
+<uri link="#doc_chap8">Optional: LVM</uri> lesen.
 </p>
 
 </body>
 </subsection>
 </section>
 <section>
-<title>Using fdisk on SPARC to Partition your Disk</title>
+<title>>Benutzung von fdisk auf SPARC zur Partitionierung Ihrer Festplatte</title>
 <subsection>
 <body>
 
 <impo>
-Only users with <e>SPARC</e> based systems should read this section.
+Nur Benutzer mit <e>SPARC</e> basierten System sollten diesen Abschnitt lesen.
 </impo>
 
 <p>
-The following parts explain how to create the example partition layout described
-previously, namely:
-</p>
+Die folgenden Teile erklären, wie das bereits beschriebene Beispiel
+Partitionslayout erstellt wird:</p>
 
 <table>
 <tr>
   <th>Partition</th>
-  <th>Description</th>
+  <th>Beschreibung</th>
 </tr>
 <tr>
   <ti><path>/dev/hda1</path></ti>
-  <ti>Boot partition</ti>
+  <ti>Boot Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda2</path></ti>
-  <ti>Swap partition</ti>
+  <ti>Swap Partition</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda3</path></ti>
-  <ti>Sun Disk Label (required)</ti>
+  <ti>Sun Disk Label (benötigt)</ti>
 </tr>
 <tr>
   <ti><path>/dev/hda4</path></ti>
-  <ti>Root partition</ti>
+  <ti>Root Partition</ti>
 </tr>
 </table>
 
 <p>
-Change your partition layout according to your own will.
+Passen Sie das Partitionslayout an Ihre Vorstellungen an.
 </p>
 
 
 </body>
 </subsection>
 <subsection>
-<title>Firing up fdisk</title>
+<title>Starten von fdisk</title>
 <body>
 
 <p>
-Start <c>fdisk</c> with your disk as argument:
+Starten Sie <c>fdisk</c> mit Ihrer Festplatte als Argument.
 </p>
 
-<pre caption="Starting fdisk">
+<pre caption="Starten von fdisk">
 # <i>fdisk /dev/hda</i>
 </pre>
 
 <p>
-You should be greeted with the fdisk prompt:
+Sie sollten vom fdisk Prompt begrüsst werden:
 </p>
 
-<pre caption="The fdisk prompt">
+<pre caption="Der fdisk Prompt">
 Command (m for help):
 </pre>
 
 <p>
-To view the available partitions, type in <c>p</c>:
+Um die verfügbaren Partitionen anzuzeigen drücken Sie <c>p</c>:
 </p>
 
-<pre caption="Listing available partitions">
+<pre caption="Auflisten verfügbarer Partitionen">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda (Sun disk label): 240 heads, 63 sectors/track, 3876 cylinders
@@ -1001,42 +1013,45 @@ Device Flag    Start       End    Blocks   Id  System
 </pre>
 
 <p>
-Note the <c>Sun disk label</c> in the output. If this is missing, the disk is
-using the DOS-partitioning, not the Sun partitioning. In this case, use <c>s</c>
-to ensure that the disk has a sun partition table.
+Beachten Sie das <c>Sun Disk Label</c> in der Ausgabe. Wenn dieses fehlt, benutzt
+die Festplatte die DOS-Partitionierung, nicht die Sun Partitionierung. In diesem
+Fall benutzen Sie <c>s</c> um sicherzustellen, dass die Festplatte eine Sun
+Partitionstabelle hat.
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Deleting Existing Partitions</title>
+<title>Löschen existierender Partitionen</title>
 <body>
 
 <p>
-It's time to delete any existing partitions. To do this, type <c>d</c> and hit 
-Enter. You will then be prompted for the partition number you would like to 
-delete. To delete a pre-existing <path>/dev/hda1</path>, you would type:
+Es ist nun Zeit alle existierenden Partitionen zu löschen. Um dies zu tun
+geben Sie <c>d</c> ein und drücken Enter. Sie werden dann nach einer
+Partitionsnummer gefragt, die Sie löschen möchten. Um eine bereits existierende
+<path>/dev/hda1</path> zu löschen, würden Sie folgendes eingeben:
 </p>
 
-<pre caption="Deleting a partition">
+<pre caption="Löschen einer Partition">
 Command (m for help): <i>d</i>
 Partition number (1-4): <i>1</i>
 </pre>
 
 <p>
-Assuming you want to remove all existing partitions, press <c>p</c> to view the
-available partitions, and <c>d</c> to delete those one by one. If you feel like
-you made an error, press <c>q</c> immediately -- <c>fdisk</c> doesn't
-immediately change the partitions but keeps the changes in memory. Only when you
-press <c>w</c> are the partitions saved.
+Nachfolgend gehen wir davon aus, dass Sie alle existierenden Partitionen löschen
+möchten. Drücken Sie <c>p</c> um sich alle verfügbaren Partitionen anzeigen zu
+lassen und <c>d</c> um eine davon zu löschen. Wenn Sie glauben einen Fehler
+gemacht zu haben, drücken Sie sofort <c>q</c>. <c>fdisk</c> ändert die
+Partitionstabelle nicht sofort, behält aber die Änderungen im Speicher. Nur wenn
+Sie <c>w</c> drücken werden Ihre vorgenommenen Änderungen auch gespeichert.
 </p>
 
 <p>
-After deleting all partitions, you should have a partition layout similar to the
-following:
+Nachdem Sie alle Partitionen gelöscht haben, sollte Ihre Partitionstabelle
+ähnlich wie folgende aussehen:
 </p>
 
-<pre caption="View an empty partition scheme">
+<pre caption="Ansicht einer leeren Partitionstabelle">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda (Sun disk label): 240 heads, 63 sectors/track, 3876 cylinders
@@ -1049,19 +1064,19 @@ Device Flag    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Create the Sun Disk Label</title>
+<title>Erstellen des Sun Disk Label</title>
 <body>
 
 <p>
-Now that the in-memory partition table is empty, we're ready to create the Sun
-Disk Label partition. To do this, type <c>n</c> to create a new partition, then 
-type <c>3</c> to create the partition. When prompted for the first cylinder, 
-hit enter. When prompted for the last cylinder, hit enter. After you've done 
-this, type <c>t</c> to set the partition type, and then type in <c>5</c> to set
-the partition type to "Whole disk".
+Nun, da die Partitionstabelle leer ist, sind wir bereit die Sun Disk Label
+Partition zu erstellen. Um dies zu tun drücken Sie <c>n</c> um eine neue
+Partition zu erstellen, dann drücken Sie <c>3</c> um die Partition zu erstellen.
+Wenn Sie nach dem ersten Zylinder gefragt werden drücken Sie Enter. Nachdem Sie
+dies getan haben, drücken Sie <c>t</c> um den Partitionstyp zu ändern und
+drücken dann <c>5</c>, um den Partitiontyp auf "Whole disk" zu setzen.
 </p>
 
-<pre caption="Steps to create a Sun Disk Label">
+<pre caption="Schritte zu Erstellung eines Sun Disk Label">
 Command (m for help): <i>n</i>
 Partition number (1-4): <i>3</i>
 First cylinder (1-3876, default 0): <i>0</i>
@@ -1074,11 +1089,12 @@ Hex code (type L to list codes): <i>5</i>
 </pre>
 
 <p>
-After completing these steps, typing <c>p</c> should display a partition table 
-that looks similar to this:
+Nachdem Sie diese Schritte abgeschlossen haben, drücken Sie <c>p</c> und Ihnen
+sollte eine Partitionstabelle angezeigt werden, die der folgenden recht ähnlich
+sieht:
 </p>
 
-<pre caption="View the partition layout">
+<pre caption="Ansicht der Partitionstabelle">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda (Sun disk lable): 240 heads, 63 sectors/track, 3876 cylinders
@@ -1091,19 +1107,19 @@ Device Flag    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Creating the Boot Partition</title>
+<title>Erstellen der Boot Partition</title>
 <body>
 
 <p>
-We're ready to create a boot partition. To do this, type <c>n</c> to create a 
-new partition, then type <c>1</c> to create the partition. When prompted for the
-first cylinder, hit enter. When prompted for the last cylinder, type <c>+32M</c>
-to create a partition <c>32MB</c> in size. Make sure that the entire boot
-partition must be contained entirely within the first 2Gb of the disk. 
-You can see output from these steps below:
+Zuerst erstellen wir eine kleine Boot Partition. Drücken Sie <c>n</c> um eine
+neue Partition zu erstellen, gefolgt von <c>1</c> um die Partition zu erstellen.
+Wenn Sie nach dem ersten Zylinder gefragt werden, drücken Sie Enter. Für den
+letzten Zylinder geben Sie <c>+32M</c> ein, um eine 32 MB Partition zu erzeugen.
+Stellen Sie sicher, dass die gesamte Boot Partition innerhalb der ersten 2GB der
+Festplatte liegt. Sie können die Ausgabe dieser Schritte hier sehen:
 </p>
 
-<pre caption="Creating a boot partition">
+<pre caption="Erstellen einer Boot Partition">
 Command (m for help): <i>n</i>
 Partition number (1-4): <i>1</i>
 First cylinder (1-3876, default 1): <comment>(Press Enter)</comment>
@@ -1112,10 +1128,11 @@ Last cylinder or +size or +sizeM or +sizeK (1-3876, default 3876): <i>+32M</i>
 </pre>
 
 <p>
-Now, when you type <c>p</c>, you should see the following partition printout:
+Wenn Sie nun <c>p</c> drücken, sollte Ihnen folgende Partitionstabelle angezeigt
+werden:
 </p>
 
-<pre caption="Listing the partition layout">
+<pre caption="Ansicht der Partitionstabelle">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda (Sun disk label): 240 heads, 63 sectors/track, 3876 cylinders
@@ -1128,21 +1145,23 @@ Device Flag    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Creating a swap partition</title>
+<title>Erstellen einer Swap Partition</title>
 <body>
 
 <p>
-Next, let's create the swap partition. To do this, type <c>n</c> to create a new
-partition, then <c>2</c> to create the second partition, <path>/dev/hda2</path>
-in our case. When prompted for the first cylinder, hit enter. When prompted for 
-the last cylinder, type <c>+512M</c> to create a partition 512MB in size. After 
-you've done this, type <c>t</c> to set the partition type, and then type in 
-<c>82</c> to set the partition type to "Linux Swap". After completing these 
-steps, typing <c>p</c> should display a partition table that looks similar to 
-this:
+Nun erstellen Sie die Swap Partition. Um dies zu tun drücken Sie <c>n</c> um
+eine Partition zu erstellen, dann <c>2</c> um die zweite Partition,
+<path>dev/hda2</path> in unserem Fall, anzulegen. Wenn Sie nach dem ersten
+Zylinder gefragt werden, drücken Sie Enter. Wenn Sie nach dem letzten Zylinder
+gefragt werden, tippen Sie <c>+512M</c> um eine Partition mit
+einer Größe von 512 MB zu erstellen. Nachdem Sie dies getan haben, müssen Sie mit
+<c>t</c> den Partitionstyp festlegen und dann <c>82</c> um den Partitionstyp als
+"Linux Swap" festzulegen. Nachdem Sie diese Schritte abgeschlossen haben, drücken
+Sie <c>p</c> und Sie erhalten eine Partitionstabelle, die dieser recht ähnlich
+schaut:
 </p>
 
-<pre caption="Listing of available partitions">
+<pre caption="Auflistung verfügbarer Partitionen">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda (Sun disk label): 240 heads, 63 sectors/track, 3876 cylinders
@@ -1157,20 +1176,22 @@ Device Flag    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Creating the root partition</title>
+<title>Erstellen der Root Partition</title>
 <body>
 
 <p>
-Finally, let's create the root partition. To do this, type <c>n</c> to create a 
-new partition, then type <c>4</c> to create the third partition, 
-<path>/dev/hda4</path> in our case. When prompted for the first cylinder, hit 
-enter. When prompted for the last cylinder, hit enter to create a partition 
-that takes up the rest of the remaining space on your disk. After completing 
-these steps, typing <c>p</c> should display a partition table that looks similar
-to this:
+Zum Schluss müssen sie noch die Root Partition erstellen. Um dies zu tun drücken
+Sie <c>n</c> um eine Partition zu erstellen, dann <c>p</c> um fdisk mitzuteilen,
+dass Sie eine primäre Partition anlegen möchten. Dann drücken Sie <c>4</c> um die
+dritte Partition, <path>dev/hda4</path> in unserem Fall, anzulegen. Wenn Sie
+nach dem ersten Zylinder gefragt werden, drücken Sie Enter. Wenn Sie nach dem
+letzten Zylinder gefragt werden, drücken Sie Enter um eine Partition zu erstellen,
+die den restlichen freien Platz belegt. Nachdem Sie diese Schritte abgeschlossen
+haben, drücken Sie <c>p</c> und Sie erhalten eine Partitionstabelle, die dieser recht
+ähnlich sieht:
 </p>
 
-<pre caption="Listing complete partition table">
+<pre caption="Auflistung der vollständigen Partitionstabelle">
 Command (m for help): <i>p</i>
 
 Disk /dev/hda (Sun disk label): 240 heads, 63 sectors/track, 3876 cylinders
@@ -1186,133 +1207,136 @@ Device Flag    Start       End    Blocks   Id  System
 </body>
 </subsection>
 <subsection>
-<title>Save and Exit</title>
+<title>Speichern und fdisk beenden</title>
 <body>
 
 <p>
-To save your partition layout and exit <c>fdisk</c>, type <c>w</c>:
+Um Ihre Partitionstablle zu sichern und <c>fdisk</c> zu beenden, geben Sie
+<c>w</c> ein:
 </p>
 
-<pre caption="Save and exit fdisk">
+<pre caption="Speichern und Beenden von fdisk">
 Command (m for help): <i>w</i>
 </pre>
 
 <p>
-Now that your partitions are created, you can now continue with <uri
-link="#doc_chap9">Creating Filesystems</uri>, unless you have chosen to use LVM
-in which case you should first read <uri link="#doc_chap8">Optional: Using
-LVM</uri>.
+Nachdem Ihre Partitionen nun erstellt sind können Sie mit dem
+<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
 </p>
 
 </body>
 </subsection>
 </section>
 <section>
-<title>Using mac-fdisk on PPC to Partition your Disk</title>
+<title>Benutzung von mac-fdisk auf PPC zur Partitionerung der Festplatte</title>
 <body>
 
 <p>
-At this point, create your partitions using <c>mac-fdisk</c>:
+An dieser Stelle erstellen Sie Ihre Partitionen mit <c>mac-fdisk</c>:
 </p>
 
-<pre caption="Starting mac-fdisk">
+<pre caption="Starten von mac-fdisk">
 # <i>mac-fdisk /dev/hda</i>
 </pre>
 
 <p>
-First delete the partitions you have cleared previously to make room for your
-Linux partitions. Use <c>d</c> in <c>mac-fdisk</c> to delete those partition(s).
-It will ask for the partition number to delete.
+Löschen Sie zunächst die Partitionen, die Sie vorher gelöscht haben, um Platz
+für Ihre Linux Partitionen zu schaffen. Benutzen Sie <c>d</c> in
+<c>mac-fdisk</c> um diese Partitionen zu löschen. Es wird sie beim Löschvorgang
+nach einer Partitionsnummer fragen.
 </p>
 
 <p>
-Second, create an <e>Apple_Bootstrap</e> partition by using <c>b</c>. It will
-ask for what block you want to start. If you previously selected <c>3</c> as
-partition number, enter <c>3p</c>.
+Nun erstellen Sie eine <e>Apple_Bootstrap</e> Partition mit <c>b</c>. Sie werden
+nach einem Block gefragt, an dem Sie starten wollen. Wenn Sie gerade <c>3</c>
+als Partitionsnummer gewählt haben, geben Sie <c>3p</c> ein.
 </p>
 
 <p>
-Now create a swap partition by pressing <c>c</c>. Again <c>mac-fdisk</c> will
-ask for what block you want to start this partition from. As we used <c>3</c>
-before to create the Apple_Bootstrap partition, you now have to enter
-<c>4p</c>. When you're asked for the size, enter <c>512M</c> (or whatever size
-you want -- 512 is recommended though). When asked for a name, enter <c>swap</c>
-(mandatory).
+Erstellen Sie nun eine Swap Partition indem Sie <c>c</c> drücken.
+<c>mac-fdisk</c> wird Sie wieder nach einem Block fragen, an dem Sie diese
+Partition beginnen lassen wollen. Nachdem wir <c>3</c> vorher für die
+Apple_Bootstrap Partition gewählt haben, müssen Sie nun <c>4p</c> eingeben. Wenn
+Sie nach der Größe gefragt werden geben Sie <c>512M</c> ein (oder die Größe die Sie
+möchten ein, 512 ist empfholen). Wenn Sie nach einem Namen gefragt werden geben
+Sie <c>swap</c> ein. (notwending).
 </p>
 
 <p>
-To create the root partition, enter <c>c</c>, followed by <c>5p</c> to select
-from what block the root partition should start. When asked for the size, enter
-<c>5p</c> again. <c>mac-fdisk</c> will interprete this as "Use all available
-space". When asked for the name, enter <c>root</c> (mandatory).
+Um die Root Partition zu erstellen geben Sie <c>c</c> gefolgt von <c>5p</c> ein
+um auszuwählen, an welchem Block die Root Partition beginnen soll. Wenn Sie nach
+der Größe gefragt werden, geben Sie wieder <c>5p</c> ein. <c>mac-fdisk</c>
+interpretiert dies als "Benutze den ganzen verfügbaren Platz". Wenn Sie nach dem
+Namen gefragt werden, geben Sie <c>root</c> ein. (zwingend).
 </p>
 
 <p>
-To finish up, write the partition to the disk using <c>w</c> and <c>q</c> to
-quit <c>mac-fdisk</c>.
+Abschliessend schreiben Sie die Partitionstabelle mit <c>w</c> und beenden
+<c>mac-fdisk</c> mit <c>q</c>.
 </p>
 
 <p>
-Now that your partitions are created, you can now continue with <uri
-link="#doc_chap9">Creating Filesystems</uri>, unless you have chosen to use LVM
-in which case you should first read <uri link="#doc_chap8">Optional: Using
-LVM</uri>.
+Nachdem Ihre Partitionen nun erstellt sind können Sie mit dem
+<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
 </p>
 
 </body>
 </section>
 <section>
-<title>Using fdisk on HPPA to Partition your Disk</title>
+<title>Benutzung von fdisk auf HPPA zur Partitionerung der Festplatte</title>
 <body>
 
 <p>
-Use <c>fdisk</c> to create the partitions you want:
+Erstellen Sie die gewünschten Partitionen mit <c>fdisk</c>:
 </p>
 
-<pre caption="Partitioning the disk">
+<pre caption="Partitionierung der Festplatte">
 # <i>fdisk /dev/sda</i>
 </pre>
 
 <p>
-PALO needs a special partition to work. You have to create a partition of at
-least 16Mb at the beginning of your disk. The partition type must be of type
-<e>f0</e> (Linux/PA-RISC boot).
+PALO benötigt eine spezielle Partitionierung. Sie müssen eine Partition mit
+einer Größe von mindestens 16MB am Beginn der Festplatte anlegen. Der
+Partitionstyp muss <e>f0</e> sein (Linux/PA-RISC boot).
 </p>
 
 <impo>
-If you ignore this and continue without a special PALO partition, your system
-will stop loving you and fail to start.
+Wenn Sie dies ignorieren und ohne spezielle PALO Partition fortfahren wird Ihr
+System aufhören Sie zu lieben und nicht mehr Starten.
 </impo>
 
 <p>
-Also, if your disk is larger than 2Gb, make sure that the boot partition is in
-the first 2Gb of your disk. PALO is unable to read a kernel after the 2Gb limit.
+Wenn Ihre Festplatte größer als 2GB ist, stellen Sie sich, dass die Boot
+Partition innerhalb der ersten 2GB Ihrer Festplatte liegt. PALO kann keinen
+Kernel hinter der 2GB Grenze lesen.
 </p>
 
 <p>
-Now that your partitions are created, you can now continue with <uri
-link="#doc_chap9">Creating Filesystems</uri>, unless you have chosen to use LVM
-in which case you should first read <uri link="#doc_chap8">Optional: Using
-LVM</uri>.
+Nachdem Ihre Partitionen nun erstellt sind können Sie mit dem
+<uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
+Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
 </p>
 
 </body>
 </section>
 <section>
-<title>Optional: Using LVM</title>
+<title>Optional: LVM</title>
 <subsection>
-<title>Initialising the Partitions</title>
+<title>Partitionen Initialisieren</title>
 <body>
 
 <p>
-To use LVM, you first need activate LVM and initialise your created partitions. 
-To do so, use <c>vgscan</c> (activate LVM) and <c>pvcreate</c> (initialise 
-partitions). In this example, we assume that <path>/dev/hda1</path> is a
-regular boot partition, <path>/dev/hda2</path> a regular (but small) root 
-partition and <path>/dev/hda3</path> a big partition for the LVM.
+Um LVM benutzen zu können müssen Sie LVM aktivieren und Ihre erstellten
+Partitionen initialisieren. Um dies zu erledigen, benutzen Sie <c>vgscan</c>
+(aktivieren von LVM) und <c>pvcreate</c> (initialisieren der Partitionen.
+In diesem Beispiel gehen wir davon aus, dass <path>/dev/hda1</path> eine normale
+Boot Partition, <path>/dev/hda2</path> eine normale (aber nicht kleine) Root
+Partition und <path>/dev/hda3</path> eine große Partition für LVM ist.
 </p>
 
-<pre caption="Activating and Initialising LVM partitions">
+<pre caption="Aktivieren und Initialisieren der LVM Partitionen">
 # <i>vgscan</i>
 # <i>pvcreate /dev/hda3</i>
 </pre>
@@ -1320,41 +1344,43 @@ partition and <path>/dev/hda3</path> a big partition for the LVM.
 </body>
 </subsection>
 <subsection>
-<title>Set up the Volume Group</title>
+<title>Setzen der Volume Group</title>
 <body>
 
 <p>
-Now we need to setup the volume group. We will use <c>vgcreate</c> to do so, but
-<c>vgcreate</c> needs the full (DevFS-style) path to the device file. So we
-first find out where these devices files are located:
+Nun müssen Sie eine Volume Group anlegen. Wir benutzen <c>vgcreate</c> um dies
+zu erledigen, aber <c>vgcreate</c> benötigt den vollen (DevFS-Stil) Pfad zur
+Device Datei. Sie müssen also zunächst herausfinden, wo sich diese Device
+Dateien befinden:
 </p>
 
-<pre caption="Getting to know the full location">
+<pre caption="Den vollen Pfad in Erfahrung bringen">
 # <i>ls -l /dev/hda3</i>
 lr-xr-xr-x    1 root     root           33 Oct 21  2003 /dev/hda3 -&gt; ide/host0/bus0/target0/lun0/part3
 </pre>
 
 <p>
-Now we create the volume group called "vg":
+Nun erstellen wir die Volume Group namens "vg":
 </p>
 
-<pre caption="Create the VG group">
+<pre caption="Erstellen der Volume Group">
 # <i>vgcreate vg /dev/ide/host0/bus0/target0/lun0/part3</i>
 </pre>
 
 </body>
 </subsection>
 <subsection>
-<title>Creating the Logical Volumes</title>
+<title>Erstellen der logischen Volumes</title>
 <body>
 
 <p>
-Now we create the logical volumes. In this example, we create a separate
-<path>usr/</path> (10 Gb), <path>home/</path> (5 Gb), <path>opt/</path> (2 Gb),
-<path>tmp/</path> (2 Gb), <path>var/</path> (5 Gb) and a swap of 512 Mb.
+Nun erstellen Sie die logischen Volumes. In diesem Beispiel erstellen wir
+separate für
+<path>usr/</path> (10 GB), <path>home/</path> (5 GB), <path>opt/</path> (2GB),
+<path>tmp/</path> (2 GB), <path>var/</path> (5 GB) und Swap mit 512 MB.
 </p>
 
-<pre caption="Creating the logical volumes">
+<pre caption="Erstellen der logischen Volumes">
 # <i>lvcreate -L10G -nusr vg</i>
 # <i>lvcreate -L5G -nhome vg</i>
 # <i>lvcreate -L2G -nopt vg</i>
@@ -1364,146 +1390,147 @@ Now we create the logical volumes. In this example, we create a separate
 </pre>
 
 <p>
-As of now, the logical volumes are created and usable as they were regular
-partitions:
+Von nun an sind die logischen Volume erstellt und wie normale Partitionen
+benutzbar:
 </p>
 
-<pre caption="Listing the logical volumes">
+<pre caption="Auflistung der logischen Volumes">
 # <i>ls /dev/vg</i>
 home     opt      swap     tmp     usr      var
 </pre>
 
 <p>
-<e>These</e> files are now your "partitions" (logical volumes).
+<e>Diese</e> Datein sind nun Ihre "Partitionen" (logische Volumes).
 </p>
 
 </body>
 </subsection>
 </section>
 <section>
-<title>Creating Filesystems</title>
+<title>Erstellen der Dateisysteme</title>
 <subsection>
-<title>Introduction</title>
+<title>Einleitung</title>
 <body>
 
 <p>
-Now that your partitions (and logical volumes if you use LVM) are created, it is
-time to place a filesystem on them. If you don't care about what filesystem to
-choose and are happy with what we use default in this handbook, continue with 
-<uri link="#doc_chap9_sect3">Applying a Filesystem to a Partition</uri>.
-Otherwise read on to learn about the available filesystems...
+Jetzt sind Ihre Partitionen (und logischen Volumes, wenn Sie LVM benutzen)
+erstellt, so dass es nun an der Zeit ist Dateisysteme anzulegen. Wenn Sie mit dem
+zufrieden sind, was wir Ihnen vorschlagen, dann fahren Sie mit
+<uri link="#doc_chap9_sect3">Dateisystem auf einer Partition anlegen</uri> fort.
+Wenn nicht lesen Sie weiter, um ein wenig mehr über Dateisysteme zu lernen ...
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Filesystems?</title>
+<title>Dateisysteme?</title>
 <body>
 
 <p>
-Several filesystems are available. Some of them are found stable on all
-architectures, others only on a few. The following table lists the available
-filesystems and the architectures they are known to work on:
+Verschiedene Dateisysteme sind verfügbar. Einige von ihnen sind auf allen
+Architekturen stabil, andere nur auf einigen. Die folgende Tabelle listet die
+verfügbaren Dateisysteme und die Architekturen, auf denen diese arbeiten, auf:
 </p>
 
 <table>
 <tr>
-  <th>Filesystem</th>
-  <th>Journaled</th>
-  <th>Architectures</th>
+  <th>Dateisystemm</th>
+  <th>Journalisierendes Dateisystem</th>
+  <th>Architektur</th>
 </tr>
 <tr>
   <ti>ext2</ti>
-  <ti>no</ti>
-  <ti>All architectures</ti>
+  <ti>nein</ti>
+  <ti>Alle Architekturen</ti>
 </tr>
 <tr>
   <ti>ext3</ti>
-  <ti>yes</ti>
-  <ti>All</ti>
+  <ti>ja</ti>
+  <ti>Alle Architekturen</ti>
 </tr>
 <tr>
   <ti>reiserfs</ti>
-  <ti>yes</ti>
+  <ti>ja</ti>
   <ti>x86, hppa, alpha</ti>
 </tr>
 <tr>
   <ti>xfs</ti>
-  <ti>yes</ti>
+  <ti>ja</ti>
   <ti>x86, alpha</ti>
 </tr>
 <tr>
   <ti>jfs</ti>
-  <ti>yes</ti>
+  <ti>ja</ti>
   <ti>x86, alpha</ti>
 </tr>
 </table>
 
 <p>
-<b>ext2</b> is the tried and true Linux filesystem but doesn't have metadata
-journaling, which means that routine ext2 filesystem checks at startup time can
-be quite time-consuming. There is now quite a selection of newer-generation
-journaled filesystems that can be checked for consistency very quickly and are
-thus generally preferred over their non-journaled counterparts. Journaled
-filesystems prevent long delays when you boot your system and your filesystem
-happens to be in an inconsistent state.
+<b>ext2</b> ist das erprobte und wahre Linux Dateisystem, unterstützt aber kein
+Metadata Journaling, was bedeutet, dass routinemäßige Dateisystem Checks beim
+Booten sehr zeitaufwändig sein können. Es gibt mittlerweile eine Auswahl an
+journalisierenden Dateisystemen neuerer Generation, die die Konsistenzchecks sehr
+schnell erledigen und dadurch im Vergleich mit den nicht-journalisierenden
+Gegenstücken vorzuziehen sind. Jounalisierende Dateisysteme verhindern lange
+Verzögerungen beim Booten und was dazu führt, dass sich das Dateisystem in
+einem inkonsistenten Status befindet.
 </p>
 
 <p>
-<b>ext3</b> is the journaled version of the ext2 filesystem, providing metadata
-journaling for fast recovery in addition to other enhanced journaling modes like
-full data and ordered data journaling. ext3 is a very good and reliable
-filesystem. It offers generally decent performance under most conditions.
-Because it does not extensively employ the use of "trees" in its internal
-design, it doesn't scale very well, meaning that it is not an ideal choice for
-very large filesystems, or situations where you will be handling very large
-files or large quantities of files in a single directory. But when used within
-its design parameters, ext3 is an excellent filesystem.
+<b>ext3</b> ist die journalisierende Version des ext2 Dateisystem, die Metadata
+Journaling für schnelle Wiederherstellung sowie andere verbesserte Journaling
+Modi wie "full data" und "ordered data" Jornaling unterstützt. ext3 ist ein sehr
+gutes und verlässliches Dateisystem. In den meisten Fällen bietet es eine
+annehmbare Leistung. Da es keinen Gebrauch von "Trees" in seinem internen Design
+macht, skaliert es nicht sehr gut, was bedeutet, dass es keine ideale Wahl für
+große Dateisysteme, oder Situationen in denen sehr große Dateien oder große
+Mengen von Dateien innerhalb eines Verzeichnis benötigt werden, ist.
 </p>
 
 <p>
-<b>ReiserFS</b> is a B*-tree based filesystem that has very good overall 
-performance and greatly outperforms both ext2 and ext3 when dealing with small 
-files (files less than 4k), often by a factor of 10x-15x. ReiserFS also scales 
-extremely well and has metadata journaling. As of kernel 2.4.18+, ReiserFS is 
-now rock-solid and highly recommended for use both as a general-purpose 
-filesystem and for extreme cases such as the creation of large filesystems, the 
-use of many small files, very large files and directories containing tens of 
-thousands of files. 
+<b>ReiserFS</b> ist ein B*-tree basierendes Dateisystem mit einer guten
+Performance und überholt sowohl ext2 und ext3 im Umgang mit kleinen Dateien
+(Dateien kleiner als 4k) oftmals mit einem Faktor von 10x-15x. ReiserFS skaliert
+extrem gut und hat Metadata Journaling. Seit Kernel 2.4.18+ ist ReiserFS
+stabil und sowohl fuer generelle Anwendungen, als auch für extreme Fälle wie
+große Dateisysteme, den Gebrauch mit vielen kleinen Dateien, den Gebrauch mit
+sehr großen Dateien und Verzeichnissen mit tausenden von Dateien empfohlen.
 </p>
 
 <p>
-<b>XFS</b> is a filesystem with metadata journaling that is fully supported 
-under Gentoo Linux's xfs-sources kernel. It comes with a robust feature-set and
-is optimized for scalability. We only recommend using this filesystem on Linux
-systems with high-end SCSI and/or fibre channel storage and a uninterruptible
-power supply. Because XFS aggressively caches in-transit data in RAM, improperly
-designed programs (those that don't take proper precautions when writing files
-to disk and there are quite a few of them) can lose a good deal of data if the
-system goes down unexpectedly.
+<b>XFS</b> ist ein Dateisytem mit metadata journaling, dass in Gentoo's
+xfs-sources Kernel voll unterstützt wird. Es kommt mit einem robusten Feature-Set
+und ist auf Skalierbarkeit ausgelegt. Wir empfehlen den Einsatz dieses
+Dateisystems nur auf Linux Systemen mit High-End SCSI und/oder Fibre Channel
+Storage und einer redundaten Stromversorgung. Da XFS agressiv vom RAM gebraucht
+macht, können unsachgemäß designte Programme (solche die keine
+Vorsichtsmassnahmen treffen, wenn Sie auf die Festplatte schreiben und davon
+gibt es einige) dazu führen, dass eine ganze Menge Daten verloren gehen, wenn
+das System unerwartet ausfällt.
 </p>
 
 <p>
-<b>JFS</b> is IBM's high-performance journaling filesystem. It has recently 
-become production-ready and there hasn't been a sufficient track record to 
-comment positively nor negatively on its general stability at this point.
+<b>JFS</b> ist IBMs Hochleistungs Journaling Dateisystem. Es ist vor kurzem
+einsatzbereit geworden und es gibt noch keine ausreichende Spur, so dass seine
+allgemeine Stabilität an diesem Punkt weder positiv noch negativ kommentiert
+werden kann.
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Applying a Filesystem to a Partition</title>
+<title>Eine Partition mit einem Dateisystem formatieren</title>
 <body>
 
 <p>
-To create a filesystem on a partition or volume, there are tools available for 
-each possible filesystem:
+Um ein Dateisystem auf einer Partition oder einem Volume zu erstellen, gibt es
+für jedes Dateisystem Tools:
 </p>
 
 <table>
 <tr>
-  <th>Filesystem</th>
-  <th>Creation Command</th>
+  <th>Dateisystem</th>
+  <th>Kommando</th>
 </tr>
 <tr>
   <ti>ext2</ti>
@@ -1528,98 +1555,97 @@ each possible filesystem:
 </table>
 
 <p>
-For instance, to have the boot partition (<path>/dev/hda1</path> in our
-example) in ext2 and the root partition (<path>/dev/hda3</path> in our example)
-in ext3 (as in our example), you would use:
+Um die Boot Partition (<path>/dev/hda1</path> in unserem Beispiel) als ext2 und
+die Root Partition (<path>/dev/hda3</path> in unserem Beispiel) als ext3 (wie in
+unserem Beispiel) zu formatieren, führen Sie folgende Kommandos aus:
 </p>
 
-<pre caption="Applying a filesystem on a partition">
+<pre caption="Eine Partition mit einem Dateisystem formatieren">
 # <i>mke2fs /dev/hda1</i>
 # <i>mke2fs -j /dev/hda3</i>
 </pre>
 
 <p>
-Now create the filesystems on your newly created partitions (or logical
-volumes).
+Erstellen Sie nun die Dateisysteme auf Ihren neu erstellten Partionen (oder
+logischen Volumes).
 </p>
 
 </body>
 </subsection>
 <subsection>
-<title>Activating the Swap Partition</title>
+<title>Aktivieren der Swap Partition</title>
 <body>
 
 <p>
-<c>mkswap</c> is the command that is used to initialize swap partitions:
+<c>mkswap</c> ist das Kommando, mit dem Sie die Swap Partition initialisieren:
 </p>
 
-<pre caption="Creating a Swap signature">
+<pre caption="Erstellen der Swap Signatur">
 # <i>mkswap /dev/hda2</i>
 </pre>
 
 <p>
-To activate the swap partition, use <c>swapon</c>:
+Um die Swap Partition zu aktivieren benutzen Sie <c>swapon</c>:
 </p>
 
-<pre caption="Activating the swap partition">
+<pre caption="Aktivieren der Swap Partition">
 # <i>swapon /dev/hda2</i>
 </pre>
 
 <p>
-Create and activate the swap now.
+Erstellen und aktivieren Sie jetzt Ihre Swap Partition.
 </p>
 
 </body>
 </subsection>
 </section>
 <section>
-<title>Mounting</title>
+<title>Mounten</title>
 <body>
 
 <p>
-Now that your partitions are initialised and are housing a filesystem, it is
-time to mount those partitions. Use the <c>mount</c> command. Don't forget to
-create the necessary mount directories:
+Nachdem Ihre Partitionen nun initialisiert sind und ein Dateisystem beinhalten,
+ist es an der Zeit diese Partitionen zu mounten. Benutzen Sie das <c>mount</c>
+Kommando, Vergessen Sie nicht die notwendigen Mount Verzeichnisse zu erstellen:
 </p>
 
-<pre caption="Mounting partitions">
+<pre caption="Mounten von Partitionen">
 # <i>mount /dev/hda3 /mnt/gentoo</i>
 # <i>mkdir /mnt/gentoo/boot</i>
 # <i>mount /dev/hda1 /mnt/gentoo/boot</i>
 </pre>
 
 <p>
-We also need to mount the proc filesystem (a virtual interface with the kernel)
-on <path>/proc</path>. We first create the <path>/mnt/gentoo/proc</path> 
-mountpoint:
+Sie müssen auch noch das proc Dateisystem (ein virtuelles Interface zum Kernel)
+auf <path>/proc</path> mounten. Zunächst erstellen Sie den
+<path>/mnt/gentoo/proc</path> Mountpoint.
 </p>
 
-<pre caption="Creating the /mnt/gentoo/proc mountpoint">
+<pre caption="Erstellen des /mnt/gentoo/proc Mountpoint">
 # <i>mkdir /mnt/gentoo/proc</i>
 </pre>
 
 <p>
-If you are installing Gentoo from a LiveCD, you just need to mount
-<path>proc</path>:
+Wenn Sie Gentoo von einer LiveCD installieren, reicht es <c>proc</c> zu mounten:
 </p>
 
-<pre caption="Mounting proc">
+<pre caption="proc mounten">
 # <i>mount -t proc none /mnt/gentoo/proc</i>
 </pre>
 
 <p>
-If you are not installing Gentoo from a Gentoo LiveCD, you need to
-bindmount <path>/proc</path> and <path>/dev</path>:
+Wenn Sie Gentoo nicht von einer Gentoo LiveCD installieren, müssen Sie
+<path>/proc</path> und <path>/dev</path> mit der Option bind mounten:
 </p>
 
-<pre caption="Bind-mounting proc and dev">
+<pre caption="proc und dev mit der Option bind mounten">
 # <i>mount -o bind /proc /mnt/gentoo/proc</i>
 # <i>mount -o bind /dev /mnt/gentoo/dev</i>
 </pre>
 
 <p>
-Now continue with <uri link="?part=1&amp;chap=5">Installing the Gentoo
-Installation Files</uri>.
+Fahren Sie nun mit dem <uri link="?part=1&amp;chap=5">Installation der Gentoo
+Installations Dateien </uri> fort.
 </p>
 
 </body>
