@@ -195,13 +195,13 @@ div#body h1 .nr{
 }
 
 div#body h2{
-	font-size:1.2em;
+	font-size:large;
 	margin-top:1.8em;
 	margin-bottom:0.1em
 }
 
 div#body h2 .nr{
-	font-size:0.8em;
+	font-size:large;
 	color:#45347B
 }
 
