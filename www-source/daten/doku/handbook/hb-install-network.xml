@@ -1,7 +1,9 @@
 <!-- Der Inhalt dieses Dokuments unterliegt der CC-BY-SA Linzenz -->
 <!-- Nachzulesen unter: http://creativecommons.org/licenses/by-sa/1.0 --> 
 
-<!-- English CVS Version: 1.12  -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-network.xml,v 1.2 2003/12/07 18:53:43 dertobi123 Exp $ -->
+
+<!-- English CVS Version: 1.13  -->
 
 <sections>
 <section>
@@ -19,16 +21,16 @@ Und nein, das ist kein Scherz.
 Normalerweise werden Sie eine Netzwerkverbindung benötigen, um mit der
 Installation fortfahren zu können. Allerdings bietet Gentoo auch die Möglichkeit
 einer Installation ohne Netzwerkverbindung, wenn eins der folgenden
-Installationsmedien verwendet wird
+Installationsmedien verwendet wird:
 </p>
 
 <ul>
   <li>
-    Gentoo x86 2-CD Installation LiveCD sets (einschließlich x86, i868,
-        pentium3)
+    Gentoo x86 2-CD Installation LiveCD Set (einschließlich x86, i868,
+    pentium3)
   </li>
   <li>
-    Gentoo PPC 2-CD Installation LiveCD sets (einschließlich G3 und G4)
+    Gentoo PPC 2-CD Installation LiveCD Set (einschließlich G3 und G4)
   </li>
 </ul>
 
@@ -50,8 +52,8 @@ Gentoo nicht über eine Internetverbindung installieren.
 
 <p>
 Wenn Sie sich in solch einer Situation befinden, müssen Sie die 2CD-Sets
-verwenden. Diese Sets enthalten die Quelltexte, eine Momentaufnahme des
-Portage-Baums sowie die Werkzeuge, die sich benötigen um sowohl ein
+verwenden. Diese Sets enthalten den Quellcode, einen Schnappschuss des
+Portage-Tree sowie die Werkzeuge, die Sie benötigen um sowohl ein
 Gentoo-Basis-System als auch alles Weitere einzurichten. Allerdings hat dieses
 Verfahren auch einen Nachteil, sie werden unter Umständen nicht die aktuellste
 Software installieren. Die Unterschiede dürften jedoch minimal sein.
@@ -59,8 +61,8 @@ Software installieren. Die Unterschiede dürften jedoch minimal sein.
 
 <p>
 Wenn Sie die Installation ohne Internetverbindung durchführen möchten, so
-verwenden Sie ein 2CD-Set und überspringen Sie den Rest dieser Sektion. Fahren
-Sie mit <uri link="?part=1&amp;chap=4">Preparing the Disks</uri> fort.
+verwenden Sie ein 2CD-Set und überspringen Sie den Rest dieses Kapitels. Fahren
+Sie mit <uri link="?part=1&amp;chap=4">Vorbereiten der Fesplatte(n)</uri> fort.
 Anderenfalls, fahren Sie hier fort und befolgen Sie die Anweisungen zur
 Konfiguration Ihrer Netzwerkkarte.
 </p>
@@ -104,7 +106,7 @@ http://Benutzername:Passwort@Server
 </pre>
 
 <p>
-Demnach geben Sie für Proxy-Server im vorherigen Beispiel folgendes ein, um sich
+Demnach geben Sie für den Proxy-Server im vorherigen Beispiel folgendes ein, um sich
 als Benutzer "john" mit dem Passwort "foobar" anzumelden:
 </p>
 
@@ -126,7 +128,7 @@ Dieses Dokument geht weitestgehend davon aus, dass Sie Ihr System von einer
 Gentoo Live CD gebootet haben. Es gibt jedoch auch andere Medien von denen Sie
 Gentoo installieren können. Dabei sollten Sie sicherstellen, dass das
 entsprechende Medium eine Internetverbindung herstellen kann. Fahren Sie danach
-hier fort: <uri link="?part=1&amp;chap=4">Die Festplatten vorbereiten</uri>
+hier fort: <uri link="?part=1&amp;chap=4">Vorbereiten der Festplatte(n)</uri>
 </p>
 
 </body>
@@ -137,14 +139,14 @@ hier fort: <uri link="?part=1&amp;chap=4">Die Festplatten vorbereiten</uri>
 <section>
 <title>Automatische Netzwerk-Erkennung</title>
 <subsection>
-<title>Funktioniert es vielleicht einfach?</title>
+<title>Funktioniert es vielleicht sogar schon?</title>
 <body>
 
 <p>
 Wenn Ihr System sich in einem Ethernet mit DHCP Server befindet, ist es sehr
 wahrscheinlich, dass die Netzwerkkonfiguration schon automatisch korrekt ist.
-Wenn dies der Fall ist, sollten die vielen Netzwerkbefehle der LiveCD wie
-<c>ping</c>, <c>irssi</c>, <c>wget</c>, <c>links</c>, sowie andere bereits
+Wenn dies der Fall ist, sollten die vielen Netzwerkbefehle der LiveCD, wie
+<c>ping</c>, <c>irssi</c>, <c>wget</c>, <c>links</c>, sowie andere, bereits
 arbeiten.
 </p>
 
@@ -177,7 +179,7 @@ Dazu können Sie beispielsweise den DNS Server Ihres Internetanbieters
 "anpingen". Die Adresse dieses Servers finden Sie in
 <path>/etc/resolv.conf</path>. Außerdem sollten Sie eine Webseite Ihrer Wahl
 "pingen". So stellen Sie sicher, dass sie sowohl mit dem Internetverbunden sind,
-  und Ihre Namensauflösung auch korrekt arbeitet. 
+als auch, dass Ihre Namensauflösung auch korrekt arbeitet.
 </p>
 
 <pre caption="Der Netzwerktest">
@@ -189,6 +191,7 @@ Sind Sie korrekt mit dem Internet verbunden? Wenn ja, dann können Sie den Rest
 dieses Kapitels überspringen. Nicht? Pech gehabt, dann werden Sie es wohl noch
 weiterhin versuchen müssen. ;-)
 </p>
+
 </body>
 </subsection>
 </section>
@@ -206,7 +209,7 @@ Ethernetverbindungen), <c>adsl-setup</c> (für ADSL Verbindungen) bzw.
 
 <p>
 Wenn Ihr Installationsmedium das entsprechende Tool nicht enthält, so fahren Sie
-bitte an folgender Stelle fort: 
+bitte mit folgendem Abschnitt fort:
 <uri link="#doc_chap4">Manuelle Netzwerk Konfiguration</uri>
 </p>
 
@@ -224,6 +227,7 @@ bitte an folgender Stelle fort:
     link="#doc_chap3_sect4">Alternative 2: Verwendung von PPTP</uri>
   </li>
 </ul>
+
 </body>
 </subsection>
 <subsection>
@@ -242,17 +246,19 @@ automatische Konfiguration fehlgeschlagen sein sollte, ist das Script
 
 <p>
 <c>net-setup</c> wird Ihnen einige Fragen bezüglich Ihrer Netzwerkumgebung
-stellen. Haben Sie alle Fragen beantworten, sollten Sie eine funktionsfähige
-Netzwerkverbindung haben. Testen Sie Ihr Netzwerk wieder wie oben. Sollten die
-Tests funktionieren, so haben Sie es geschafft. Sie können nun mit der
-Installation von Gentoo fortfahren. Überspringen Sie den Rest dieses Kapitels
-und fahren Sie <uri link="?part=1&amp;chap=4">hier</uri> fort.
+stellen. Haben Sie alle Fragen beantwortet, sollten Sie eine funktionsfähige
+Netzwerkverbindung haben. Testen Sie Ihr Netzwerk wieder wie vorhin beschrieben.
+Sollten die Tests funktionieren, so haben Sie es geschafft. Sie können nun mit
+der Installation von Gentoo fortfahren. Überspringen Sie den Rest dieses Kapitels
+und fahren Sie mit der <uri link="?part=1&amp;chap=4">Vorbereitung der
+Festplatte(n)</uri> fort.
 </p>
 
 <p>
-Sollte Ihr Netzwerk nun immernoch nicht funktionieren, fahren Sie bitte mit <uri
+Sollte Ihr Netzwerk nun immer noch nicht funktionieren, fahren Sie bitte mit <uri
 link="#doc_chap4">Manuelle Netzwerk Konfiguration</uri> fort.
 </p>
+
 </body>
 </subsection>
 
@@ -261,11 +267,11 @@ link="#doc_chap4">Manuelle Netzwerk Konfiguration</uri> fort.
 <body>
 
 <p>
-Für den Fall, dass Sie PPPoE benötigen um eine Verbindung mit dem Internet
+Für den Fall, dass Sie PPPoE benötigen, um eine Verbindung mit dem Internet
 herzustellen, bringt die LiveCD (in jeder Version) das Tool <c>rp-pppoe</c>
 mit. Verwenden Sie das Skript <c>adsl-setup</c> um Ihre Verbindung zu
-konfigurieren. Sie werden nach der Netzwerkkarte gefragt werden, die mit Ihrem
-DSL-Modem verbunden ist, nach dem Benutzernamen und nach Ihrem Kennwort. Ferner
+konfigurieren. Sie werden nach der Netzwerkkarte gefragt, die mit Ihrem
+DSL-Modem verbunden ist, dem Benutzernamen und nach Ihrem Kennwort. Ferner
 geben Sie noch die IP-Adressen der DNS-Server des Providers ein, und ob Sie eine
 Firewall benötigen oder nicht.
 </p>
@@ -287,12 +293,12 @@ gehen wir näher auf das laden der entsprechenden Kernelmodule ein.
 </p>
 
 <p>
-Wenn alles funktioniert hat, dann fahren Sie mit <uri
-link="?part=1&amp;chap=4">Die Festplatte vorbereiten</uri> fort.
+Wenn alles funktioniert hat, dann fahren Sie mit dem nächsten Kapitel, <uri
+link="?part=1&amp;chap=4">Vorbereiten der Festplatte(n)</uri> fort.
 </p>
+
 </body>
 </subsection>
-
 <subsection>
 <title>Alternative 2: Verwendung von PPTP</title>
 <body>
@@ -327,8 +333,8 @@ Nun geben Sie den Befehl <c>pptp</c> (mit den Optionen, die Sie in
 </pre>
 
 <p>
-Wenn alles funktioniert hat, dann fahren Sie mit <uri
-link="?part=1&amp;chap=4">Die Festplatte vorbereiten</uri> fort.
+Wenn alles funktioniert hat, dann fahren Sie mit dem <uri
+link="?part=1&amp;chap=4">Vorbereiten der Festplatte(n)</uri> fort.
 </p>
 
 </body>
@@ -337,7 +343,6 @@ link="?part=1&amp;chap=4">Die Festplatte vorbereiten</uri> fort.
 
 <section>
 <title>Manuelle Netzwerk Konfiguration</title>
-
 <subsection>
 <title>Die richtigen Kernel-Module laden</title>
 <body>
@@ -346,7 +351,7 @@ link="?part=1&amp;chap=4">Die Festplatte vorbereiten</uri> fort.
 Wenn die LiveCD bootet, versucht sie alle Ihre Hardwaregeräte zu erkennen und
 läd die entsprechenden Kernelmodule (Treiber). In den allermeisten Fällen
 funktioniert dies sehr gut. Allerdings kann es vorkommen, dass ein Kernelmodul
-nicht automatisch geladen wurde.
+nicht automatisch geladen wird.
 </p>
 
 <p>
@@ -393,8 +398,8 @@ eth0: error fetching interface information: Device not found
 
 <p>
 Wurde Ihre Netzwerkkarte erkannt, so können Sie nun erneut <c>net-setup</c> oder
-<c>adsl-setup</c> ausprobieren (diese sollten nun funktionieren). Für die
-Freaks unter Euch werden wir noch erklären, wie man das Netzwerk manuell
+<c>adsl-setup</c> ausprobieren (diese sollten nun funktionieren). Den richtigen
+Freaks unter Ihnen werden wir auch noch erklären, wie man das Netzwerk manuell
 einrichtet.
 </p>
 
@@ -403,9 +408,9 @@ Dabei gibt es zwei Möglichkeiten: Entweder Sie benutzen DHCP (IP automatisch
 beziehen), oder Sie richten das Netzwerk wirklich manuell ein indem Sie die
 Befehle <c>ifconfig</c> und <c>route</c> benutzen.
 </p>
+
 </body>
 </subsection>
-
 <subsection>
 <title>DHCP Verwenden</title>
 <body>
@@ -424,8 +429,8 @@ Provider einen solchen Dienst anbietet. Benutzen Sie <c>dhcpcd</c>:
 
 <p>
 Wenn das funktioniert (Versuchen Sie einen Internet-Server zu pingen), dann sind
-Sie fertig mit der Konfiguration des Netzwerks und können mit der <uri
-link="?part=1&amp;chap=4">Einrichtung der Festplatte</uri> fortfahren.
+Sie fertig mit der Konfiguration des Netzwerks und können mit dem <uri
+link="?part=1&amp;chap=4">Vorbereiten der Festplatte(n)</uri> fortfahren.
 </p>
 
 </body>
@@ -474,7 +479,7 @@ innerhalb des Netzwerks eindeutig bestimmt.
 
 <p>
 Diese Unterteilung wird mittels der <e>netmask</e> (dt. soviel wie Netzmaske)
-beschrieben. Die netmask ist eine Reihe von Einsen gefolgt von einer Reihe 
+beschrieben. Die netmask ist eine Reihe von Einsen gefolgt von einer Reihe
 von Nullen. Der Teil der IP-Adresse der den Einsen entspricht, ist der
 Netzwerkteil. Die Netzmaske kann wie eine IP-Adresse aufgeschrieben werden.
 </p>
@@ -490,7 +495,7 @@ Netmask:    11111111 11111111 11111111 00000000
 
 <p>
 In anderen Worten ist 192.168.0.14 ein Host in unserem Teilnetz, während
-192.168.1.2 dies nicht ist. 
+192.168.1.2 dies nicht ist.
 </p>
 
 <p>
@@ -498,7 +503,7 @@ Die <e>Broadcast</e> Adresse ist eine IP-Adresse, die den gleichen Netzwerkteil
 wie unser Netzwerk hat, allerdings nur Einsen im Hostteil hat. Alle Computer in
 dem Teilnetz hören auf diese IP-Adresse. Diese Adresse ist zum Broadcasting
 eines Paketes an alle Computer gedacht. D.h. ein Paket wird an alle Computer im
-Netzwerk gleichzeitig geschickt. 
+Netzwerk gleichzeitig geschickt.
 </p>
 
 <pre caption="Broadcast address">
@@ -521,7 +526,7 @@ ein normaler Host ist, besitzt auch das Gateway eine normale IP-Adresse (z.B.
 Zuvor haben wir schon erwähnt, dass jeder Host eine eigene IP-Adresse besitzt.
 Um diesen Host aber mit einem Namen ansprechen zu können (anstatt einer
 IP-Adresse) benötigen Sie einen Dienst, der Namen (wie <e>dev.gentoo.org</e>)
-in IP-Adressen (wie <e>64.5.62.82</e>) umwandelt. Dieser Dienst wird 
+in IP-Adressen (wie <e>64.5.62.82</e>) umwandelt. Dieser Dienst wird
 <e>nameservice</e> genannt. Um diesen Dienst nutzen zu können, müssen Sie
 die entsprechenden <e>name servers</e> kennen. Diese werden in der Datei
 <path>/etc/resolv.conf</path> festgehalten.
@@ -566,7 +571,6 @@ In der Zusammenfassung benötigen Sie also folgende Daten bevor Sie fortfahren:
 
 </body>
 </subsection>
-
 <subsection>
 <title>Verwendung von ifconfig und route</title>
 <body>
@@ -593,7 +597,7 @@ Broadcast-Adresse und <c>${NETMASK}</c> durch die Netzmaske ersetzt werden sollt
 
 <p>
 Nun wird das "routing" eingerichtet. Hier muss ${GATEWAY} durch die IP-Adresse
-des Gateway ersetzt werden. 
+des Gateway ersetzt werden.
 </p>
 
 <pre caption="Verwendung von route">
@@ -631,7 +635,3 @@ endlich bereit Gentoo zu installieren.
 </subsection>
 </section>
 </sections>
-
-
-
-
