@@ -32,6 +32,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 			<ul>
 				<li><uri link="einrichtung/installation14">Installationsanleitung für Gentoo Linux 1.4</uri></li>
 				<li><uri link="einrichtung/installationppc">Installation PPC</uri></li>
+				<li><uri link="einrichtung/gentoo-x86-quickinstall">Schnell Installations Referenz</uri></li>
 				<li><uri link="einrichtung/lokalisierung">Lokalisierung</uri></li>
 				<li><uri link="einrichtung/desktop">Desktop-Konfiguration</uri></li>
 				<li><uri link="einrichtung/alternativ">Alternative Installation</uri></li>
