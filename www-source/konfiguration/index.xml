@@ -3,10 +3,9 @@
 <!--
   Last modification: 28.02.2003
   by Sebastian Werner <sebastian@werner-productions.de>
+
 -->
-
 <config>
-
   <language value="de_DE" short="lng">
     <homepage>Startseite</homepage>
     <print>Drucken</print>
@@ -20,7 +19,7 @@
     <impo>Wichtig</impo>
     <warn>Warnung</warn>
   </language>
-
+<!--
   <menu value="gentoo.de">
     <item title="Projekt" href="projekt">
       <item href="neuigkeiten" title="Neuigkeiten"/>
@@ -40,7 +39,7 @@
       </item>
       <item href="antworten" title="Antworten">
         <item href="faq" title="FAQ"/>
-        <item href="faq_ergaenzung" title="FAQ Ergäzungen"/>
+        <item href="faq_ergaenzung" title="FAQ Ergänzungen"/>
       </item>
       <item href="anwendungen" title="Anwendungen">
         <item href="nano" title="Nano-Editor"/>
@@ -77,10 +76,10 @@
     </item>
     <item title="Download" href="download">
       <item href="mirrors" title="Mirrors"/>
-      <item href="ebuilds_de" title="Ergäzende Programme"/>
-      <!--<item href="ebuilds" title="Aktuelles Programme"/> !-->
+      <item href="ebuilds_de" title="ErgÃ€zende Programme"/>
+      <item href="ebuilds" title="Aktuelles Programme"/>
       <item href="sonstiges" title="Sonstiges"/>
     </item>
   </menu>
-
+!-->
 </config>
