@@ -83,20 +83,20 @@
 boot: <font class="input">rescue ide2=0x180,0x386</font>
 </pre></td></tr>
 </table>
-<p>Wenn sie 1.0_rc5 oder eine ältere Boot CD benutzen, abgesehen vom runterladen einer neuen ISO, 
+<p>Wenn sie 1.0_rc5 oder eine ältere Boot CD benutzen, abgesehen vom runterladen einer neuen ISO,
 geben Sie oben <font class="code">gentoo</font> anstatt <font class="code">rescue</font> ein.</p>
-<p class="secthead"><a name="_sect4">Mir erscheint das ganze sehr instabiel und ich benutzte &quot;-O9 -ffast-math
+<p class="secthead"><a name="_sect4">Mir erscheint das ganze sehr instabil und ich benutzte &quot;-O9 -ffast-math
 		-fomit-frame-pointer&quot; optimierungen. Warum? </a></p>
-		<p>When you use any optimizations beyond <font class="code">-O3</font>, you're really taking the risk of 
-		having broken packages.
-		Very aggressive optimizations sometimes cause the compiler to streamline the assembly code 
-		to the point where it doesn't quite do the same thing anymore.  <font class="emphasis">Loc-Dog</font> (on IRC) 
-		uses <font class="code">-O3 -mcpu=i686 -march=i686 -fforce-addr -fomit-frame-pointer -funroll-loops 
-		-frerun-cse-after-loop -frerun-loop-opt -malign-functions=4</font>, which is about
-		as much as I'd want to push global optimization settings.  Beyond this, it's best to use
-		ultra-high optimizations only with specific packages where you really need that extra 2%,
-		(eg graphics and various multimedia programs), and where you can easily test the package 
-		to ensure that it hasn't been optimized into oblivion.</p>
+		<p>Bei Optimierungen über <font class="code">-O3</font> hinaus, ist das Risko hoch, dass einzelne Pakete
+		nicht mehr funktionieren. Sehr agressive Optimimierungen können den Assembler Code
+		insoweit bis zu einem Punkt verändern, wo er nicht mehr das tut, was eigentlich von ihm
+		erwartet wird. <font class="emphasis">Loc-Dog</font> (im IRC)benutzt <font class="code">-O3 -mcpu=i686 -march=i686 -fforce-addr
+		-fomit-frame-pointer -funroll-loops -frerun-cse-after-loop -frerun-loop-opt -malign-functions=4</font>,
+		um sein System so weit es geht im Bereich des noch tragbaren zu optimieren. Darüber hinaus
+		sollten ultra-hohe Optimierungen nur noch bei einzelnen Paketen angewendet werden, wo die
+		Leistungssteigerung um 2% noch gerechtfertigt ist (Graphik und verschiedene Multimedia-Programme)
+		auch, um die jeweiligen Pakete noch testen zu können und sicherzustellen, dass sie nicht bis in
+		den Status des Vergessens optimiert wurden.</p>
 		<p class="secthead"><a name="_sect5">Wie lautet das Standard Root Passwort nach der Installation? </a></p>
 <p>Das standard Passwort ist leer, einfach Enter drücken.</p>
 <p class="secthead"><a name="_sect6">Wie kann ich bei root (oder einem anderen User) das Passwort ändern? </a></p>
@@ -104,13 +104,13 @@ geben Sie oben <font class="code">gentoo</font> anstatt <font class="code">rescu
 		Für zusätzliche Optionen und Einstellungen, schauen Sie sich bitte <font class="code">man passwd</font> an, nachdem sie Gentoo Linux
 		fertig Installiert haben.
 		</p>
-<p class="secthead"><a name="_sect7">Wie kann man einen Normalen User hinzufügen? </a></p>
+<p class="secthead"><a name="_sect7">Wie kann man einen normalen Benutzer hinzufügen? </a></p>
 		<p>Jeder weiss wohl, das es nicht sehr empfehlenswert ist immer <font class="emphasis">root</font> zu benutzen.
-		Wie kann man also andere User hinzufügen?</p>
+		Wie kann man also andere Benutzer hinzufügen?</p>
 		<p>Der Befehl <font class="code">adduser gentoo</font> würde einen User mit dem Username gentoo erstellen. Der nächste Schritt ist,
 		diesem User ein Password zu geben und <font class="code">passwd</font> tut genau das.</p>
-		<p class="secthead"><a name="_sect8">Warum kann ein User nicht mit su zu root werden? </a></p>
-<p>Aus Sicherheitsgründen können User nur mit <font class="code">su</font> zu root werden, wenn sie in der 
+		<p class="secthead"><a name="_sect8">Warum kann ein Benutzer nicht mit su zu root werden? </a></p>
+<p>Aus Sicherheitsgründen können Benutzer nur mit <font class="code">su</font> zu root werden, wenn sie in der
 		<font class="emphasis">wheel</font> Groupe sind. Um einen <font class="input">Usernamen</font> zu der <font class="emphasis">wheel</font> Gruppe hinzufügen, benutzen sie den 
 		folgenden Befehl als root:</p>
 		<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -131,15 +131,15 @@ geben Sie oben <font class="code">gentoo</font> anstatt <font class="code">rescu
 		<p class="secthead"><a name="_sect10">Wie kann ich devfs deaktivieren? </a></p>
 		<p>Bei Gentoo Linux 1.0_rc6 und neuer, kann man devfs deaktivieren durch das übergeben des
 		<font class="code">gentoo=nodevfs</font> Argumentes zum Kernel.</p>
-		<p class="secthead"><a name="_sect11">How do I get a /dev/mouse  that
-		doesn't go away when I reboot (when using devfs)? </a></p>
+		<p class="secthead"><a name="_sect11">Wie erhalte ich ein /dev/mouse  das nach dem Booten nicht
+		wieder verloren geht (bei benutzung von devfs)? </a></p>
 		<p>
-		If you are using 1.0_rc6 or later, then you can just use <font class="code">ln -s</font>
-		to make the usual symbolic link from <font class="path">/dev/mouse</font>, and
-		it will be preserved between reboots.
+		Ab Version 1.0_rc6 oder später, es genügt einfach <font class="code">ln -s</font>
+		um einen gewohnten symbolischen link von <font class="path">/dev/mouse</font> zu
+		erstellen, welcher auch zwischen Neustarts erhalten bleibt.
 		</p>
-		<p>All other users need to edit <font class="path">/etc/devfsd.conf</font>
-		and add these lines:</p>
+		<p>Alle anderen benutzer sollten Ihre <font class="path">/etc/devfsd.conf</font>
+		editieren und folgende Zeilen hinzufügen:</p>
 <a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 3</p></td></tr>
@@ -148,10 +148,10 @@ REGISTER        ^misc/psaux$    CFUNCTION GLOBAL symlink misc/psaux mouse
 UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 </pre></td></tr>
 </table>
-		<p>If you are not using the devfs PS/2 mouse <font class="path">/dev/misc/psaux</font> device,
-		adjust the <font class="code">misc/psaux</font> strings above accoringly.  You'll then want to 
-		<font class="code">killall -HUP devfsd</font>
-		to get devfsd to reread <font class="path">/etc/devfsd.conf</font>.</p>
+		<p>Benutzen Sie eine andere Maus, als die standardmässig vorgegebene devfs PS/2 Maus 
+		unter <font class="path">/dev/misc/psaux</font>, sollten die <font class="code">misc/psaux</font> Zeilen entsprechend
+		abgeändert werden. Anschliessend sollte noch <font class="code">killall -HUP devfsd</font> ausgeführt werden,
+		um die Pfadangaben in <font class="path">/etc/devfsd.conf</font> erneut einzulesen.</p>
 		<p class="secthead"><a name="_sect12">Grub kann die stage x.y nicht finden? </a></p>
 <p>
 		Während der Installation hat grub die boot Datein
@@ -179,12 +179,12 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		eine komplete Umbegung in einer weiterentwickelten Version des <font class="code">.tbz2</font> Datei Formates (<font class="code">.tar.bz2</font> 
 		Kompitabel mit Meta-Information, die am Ende der Datei gespeichert sind)</p>
 		<p class="secthead"><a name="_sect2">Warum ein neues Port System schreiben (Portage), wenn man die BSD Version verwenden könnte? </a></p>
-		<p>In einem Satz: Weil Portage in vielen Dingen viel besser ist.
-		One of the design
-		philosophies of the <font class="code">.ebuild</font> syntax was to make it an analog of what you'd type to 
-		install the program manually, thus making Portage very easy to learn and modify to your 
-		needs.  We also have OpenBSD-style &quot;fake&quot; installs, safe unmerging, system profiles, 
-		package masking, a real dependency system, and lots of other good stuff.</p>
+		<p>In einem Satz: Weil Portage in vielen Dingen viel besser ist. Eine der Entwicklungsphilosophien
+		von der <font class="code">.ebuild</font> Syntax ist die Analogie zu dem, was Sie an der Kommandozeile eingeben würden,
+		um die Pakete von Hand zu installieren. Somit sollte Portage sehr einfach zu erlernen sein und auch
+		ohne grossen Aufwand an die eigenen Bedürfnisse angepasstw erden können. Wir haben auch &quot;gefälschte&quot;
+		Installationen im OpenBSD-Stil, sicheres entfernen, Systemanpassungen, Paketmaskierung, ein echtes
+		System, welches Abhängigkeiten berücksichtigt und noch viele andere guten Sachen.</p>
 		<p class="secthead"><a name="_sect3">Wo liegt der Unterschied zu Debian's apt oder den BSD Ports? </a></p>
 <p>Portage enthält die besten Funktionen von apt und ports; zum Beispiel die
 		USE Optionen, ein komplettes Abhängigkeitssystem, sicheres installieren und
@@ -193,46 +193,48 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		Paket Management Systems enthält.</p>
 <p class="secthead"><a name="_sect4">Wie installiere und deinstalliere ich Pakete? </a></p>
 		<p>Das <a href="/doc/portage-user.html">Portage User Guide</a> erklärt ausführlich, wie man Pakete installiert, deinstalliert und Portage updated.</p>
-	        <p class="secthead"><a name="_sect5">Wie kann ich globale Einstellungen zum compilieren der Pakete einstellen? </a></p>
+	        <p class="secthead"><a name="_sect5">Wie kann ich globale Einstellungen zum kompilieren der Pakete einstellen? </a></p>
 <p>
-<font class="path">/etc/make.conf</font> should be modified to override global and
-		profile-specific default options used to compile and merge packages. The most common options 
-		are as follows:</p>
+<font class="path">/etc/make.conf</font> kann editiert werden, um globale und profil-spezifische
+		Standardeinstellungen zu überschreiben, die beim kompilieren und einführen der Pakete verwendet werden.
+		Die am meisten üblichen Befele sind folgende:</p>
 		<table class="ntable">
 		<tr>
 			<td bgcolor="#7a5ada" class="infohead"><b>Flag</b></td>
-			<td bgcolor="#7a5ada" class="infohead"><b>Description</b></td>
+			<td bgcolor="#7a5ada" class="infohead"><b>Beschreibung</b></td>
 		</tr>
 		<tr>
 			<td bgcolor="#ddddff" class="tableinfo">CHOST</td>
-			<td bgcolor="#ddddff" class="tableinfo">This sets the HOST variable for compiles, e.g. <font class="code">i686-pc-linux-gnu</font>
+			<td bgcolor="#ddddff" class="tableinfo">Dies setzt die HOST Variable für Compiler, z.B. <font class="code">i686-pc-linux-gnu</font>
 </td>
 		</tr>
 		<tr>
 			<td bgcolor="#ddddff" class="tableinfo">CFLAGS</td>
-			<td bgcolor="#ddddff" class="tableinfo">The options for <font class="code">gcc</font> when compiling programs written in C (*.c files)</td>
+			<td bgcolor="#ddddff" class="tableinfo">Die Optionen für den <font class="code">gcc</font> zum kompilieren von Programmen, die in C (*.c Dateien) geschrieben sind</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ddddff" class="tableinfo">CXXFLAGS</td>
-			<td bgcolor="#ddddff" class="tableinfo">The options for <font class="code">gcc</font> when compiling programs written in C++ (*.c,*.cpp etc.
-			files)</td>
+			<td bgcolor="#ddddff" class="tableinfo">Die Optionen für den <font class="code">gcc</font> zum kompilieren von Programmen, die in C++ (*.c,*.cpp etc.
+			Dateien) geschrieben sind</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ddddff" class="tableinfo">USE</td>
-			<td bgcolor="#ddddff" class="tableinfo">This allows you to set what optional components you'd like compiled-in, if
-			available.  For example, if you have <font class="code">gnome</font> inside the USE string, then when
-			you compile <font class="code">xchat</font>, it will include GNOME support.  All our dependencies are
-			also USE-aware.</td>
+			<td bgcolor="#ddddff" class="tableinfo">Dies Erlaubt das Setzen von gewünschten Komponenten, die mit hinein kompiliert
+			werden sollen, sofern diese vorhanden sind. Zum Besipiel, wenn Sie <font class="code">gnome</font> innerhalb
+			der USE Zeile haben, und Sie <font class="code">xchat</font> kompilieren, wird dies die Gnome Unterstützung
+			von xchat hinzufügen. Auch alle Paket-Abhängigkeiten machen von den Veränderungen in der
+			USE-Zeile Gebrauch.</td>
 		</tr>
 		<tr>
 			<td bgcolor="#ddddff" class="tableinfo">GENTOO_MIRRORS</td>
-			<td bgcolor="#ddddff" class="tableinfo">A space separated list of URIs currently mirroring the Gentoo packages.  Portage 
-			will attempt download from a <font class="code">GENTOO_MIRROR</font> first before trying the official
-			<font class="code">SRC_URI</font>.  To force Portage to skip mirrors, set this variable to &quot;&quot;.</td>
+			<td bgcolor="#ddddff" class="tableinfo">Durch Leerzeichen getrennte Liste von URIs die im zur Zeit Gentoo Pakete spiegeln. Portage
+			verucht zunächst von einem <font class="code">GENTOO_MIRROR</font> herunter zu laden, bevor es die offizielle
+			<font class="code">SRC_URI</font> ausprobieren. Um das Überspringen von Mirrors zu erzwingen, kann diese Variable auf &quot;&quot;
+			gesetzt werden.</td>
 		</tr>
 		</table>
 		<p class="secthead"><a name="_sect6">Was ist mit /etc/make.defaults passiert? </a></p>
-		<p>Seit Portage 1.5 und danach ist <font class="path">/etc/make.defaults</font> veraltet; 
+		<p>Seit Portage 1.5 und danach ist <font class="path">/etc/make.defaults</font> veraltet;
 		wenn Sie portage-1.5-r1 oder neuer installiert haben, können Sie es ohne Probleme löschen.
 		Die Datei wurde ersetzt durch <font class="path">/etc/make.profile/make.defaults</font>
 		(<font class="path">/etc/make.profile</font> sollte aktuell ein Symbolischer-Link nach
@@ -256,19 +258,20 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		(wieder erst mit <font class="code">--pretend</font> aufrufen), um ein komplettes System Upgrade aller
 		installierten Pakete zu machen.
 		</p>
-<p class="secthead"><a name="_sect8">When updating a package using emerge or ebuild, how do I avoid 
-		clobbering my config files? </a></p>
+<p class="secthead"><a name="_sect8">Wenn ich ein Paket mit emerge oder ebuild aktualisiere, wie kann ich 
+		verhindern, dass meine config Dateien sich anhäufen? </a></p>
 <p>
-		Portage now includes config file management support by default.  Type 
-		<font class="code">emerge --help config</font> for more details.  The (overly) simple answer is that if
-		a package installs <font class="path">foo</font> somewhere under <font class="path">/etc</font>, and
-		another <font class="path">foo</font> already exists there, then the new <font class="path">foo</font> will
-		instead be renamed to <font class="path">._cfgxxxx_foo</font> in that directory.  A useful
-		tool for examining and updating any protected config files is <font class="code">etc-update</font>,
-		currently obtained by <font class="code">emerge app-admin/gentoolkit</font>.
+		Portage enthält standardmässig eine Unterstützung für config Dateien. <font class="code">emerge --help config</font>
+		gibt darüber mehr Informationen. Eine einfacher Grund dafür ist, dass ein Paket namens <font class="path">foo</font>
+		irgendeine config Datei unter <font class="path">/etc</font> ablegt und eine config Datei eines anderen <font class="path">foo</font>
+		Paketes bereits darin existiert, was zum Überschreiben dieser Datei führen würde. Die neue config
+		Datei von <font class="path">foo</font> wird deshalb als <font class="path">._cfgxxxx_foo</font> in diesem Verzeichnis abgespeichert.
+		Ein sinvolles Werkzeug zum Untersuchen unad Aktualisieren von geschützten config Dateien ist <font class="code">etc-update</font>,
+		welches durch ein <font class="code">emerge app-admin/gentoolkit</font> zu haben ist.
 		</p>
 <p class="secthead"><a name="_sect9">Ich möchte den ./configure Schritt selber ausführen. Geht das? </a></p>
 <p>
+		
 		Yes, but it is not trivial.  First do <font class="code">man ebuild</font> followed by
 		<font class="code">ebuild foo-x.y.z.ebuild unpack</font>.  Then <font class="code">cd</font> to 
 		<font class="path">/var/tmp/portage/foo-x.y.z/work</font>.  You can manually perform
@@ -341,15 +344,15 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <font class="chapnum"><a name="doc_chap4">4.</a></font>Gentoo Linux benutzen</p>
 <p class="secthead"><a name="_sect1">Ich habe openssh auf meiner Box installiert, aber ich kann mich nur als root und nicht als normaler Benutzer von aussen einloggen. </a></p>
 		<p>
-		This is most probably because your user account doesn't have a valid shell specified. Check
-		for your user entry in 
-		<font class="path">/etc/passwd</font> and see if it ends in /bin/bash (or any other shell). If it doesn't,
-		you must set a shell for the user. This is done using the usermod command, like this ;
+		Dies kann passieren wenn der Benutzer Account nicht ein richtiges shell eingestellt hat.
+		Überprüfen Sie den Benutzer Eintrag in
+		<font class="path">/etc/passwd</font> und sehen sie nach ob die Zeile mit /bin/bash (oder einem anderen Shell) endet. Wenn dies nicht der Fall ist,
+		müssen sie einen Shell für den User einstellen. Dies ist mit dem usermod Befehl möglich, wie dieses ;
 		</p>
 		<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 5</p></td></tr>
-<tr><td bgcolor="#ddddff"><pre># <font class="input">usermod -s /bin/bash myuser</font></pre></td></tr>
+<tr><td bgcolor="#ddddff"><pre># <font class="input">usermod -s /bin/bash meinuser</font></pre></td></tr>
 </table>
 		<p class="secthead"><a name="_sect2">Ich kann X Anwendungen nur als root ausführen. </a></p>
 <p>Ihr <font class="path">/tmp</font> Verzeichnis hat die falschen Zugriffsrechte. Geben sie folgendes als root ein:</p>
@@ -372,18 +375,19 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <tr><td bgcolor="#ddddff"><pre># <font class="input">chmod 0644 /etc/resolv.conf</font></pre></td></tr>
 </table>
 		<p class="secthead"><a name="_sect5">Warum liesst KDE nicht /etc/profile? </a></p>
-<p>You need to add <font class="code">--login</font> to the first line in <font class="path">/opt/kde2.1/bin/startkde
-		</font>, so that it reads as follows:</p>
+<p>Man muss <font class="code">--login</font> in der ersten Zeile in <font class="path">/opt/kde2.1/bin/startkde
+		</font> hinzufügen, damit es so aussieht:</p>
 		<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 8</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>#!/bin/sh --login</pre></td></tr>
 </table>
-		<p>This fix has been added to recent versions of KDE.</p>
+		<p>Diese Änderung wurde in höcheren KDE Version eingebaut.</p>
 		<p class="chaphead">
 <font class="chapnum"><a name="doc_chap5">5.</a></font>Verwaltung</p>
 <p class="secthead"><a name="_sect1">ReiserFS and filesystem corruption issues -- how to fix'em, etc </a></p>
 		<p>
+		
 		ReiserFS has had serious problems with the 2.4-series kernels; we
 		highly recommend avoiding ReiserFS for the time being.  If your
 		ReiserFS partition is already corrupt, try booting the Gentoo 
@@ -392,33 +396,10 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		again, although you may have lost some files or directories due
 		to the corruption.
 		</p>
-		<p class="secthead"><a name="_sect2">How to I view the timestamps in /var/log/syslog.d, etc. on a pre-1.0_rc5 Gentoo 
-		system? </a></p>
-		<p>To view multilog (Gentoo Linux 1.0_rc5 and earlier) timestamps, you need to pipe the 
-		current log through the <font class="code">tai64nlocal</font>command:</p>
-
-<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
-<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 9</p></td></tr>
-<tr><td bgcolor="#ddddff"><pre>
-# <font class="input">cat /var/log/syslog.d/current | tai64nlocal | less</font>
-</pre></td></tr>
-</table>
-
-<p>Or, alternatively, if you want to &quot;tail&quot; the log:</p>
-
-<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
-<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 10</p></td></tr>
-<tr><td bgcolor="#ddddff"><pre>
-# <font class="input">tail -f /var/log/syslog.d/current | tai64nlocal</font>
-</pre></td></tr>
-</table>
-
-<p class="chaphead">
+		<p class="chaphead">
 <font class="chapnum"><a name="doc_chap6">6.</a></font>Entwicklung</p>
-<p class="secthead"><a name="_sect1">Where can I report bugs? </a></p>
-<p>For bugs within a specific program, contact the program's author. Otherwise, use our
+<p class="secthead"><a name="_sect1">Wie kann ich Fehler melden? </a></p>
+<p>För Bugs in einem Spezielen Programm, kontaktieren sie den Programm Ersteller. Otherwise, use our
 		Bugzilla bug tracker at <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a>.  You can also visit us in
 		<font class="code">#gentoo</font> on the <a href="http://www.openprojects.net">OpenProjects</a> IRC network.
 		</p>
@@ -445,9 +426,9 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
         <p>
             Console beeps can be turned off using setterm, like this ;
 
-        <a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 11</p></td></tr>
+			Beispiel 9</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre># <font class="input">setterm -blength 0</font></pre></td></tr>
 </table>
 
@@ -458,9 +439,9 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
             beeps for other terminals, pipe the command output to the 
             target terminal, like this ;
 
-        <a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
-			Beispiel 12</p></td></tr>
+			Beispiel 10</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre># <font class="input">setterm -blength 0 &gt;/dev/vc/1</font></pre></td></tr>
 </table>
 
@@ -479,6 +460,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's können fÜr 5 Euro bei <a href="http://www.lin24.de">http://www.lin24.de</a> und <a href="http://www.liniso.de">http://www.liniso.de</a> bezogen werden.
 		</p>
 <p class="secthead"><a name="_sect4">Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt? </a></p>
+		
 		<p>A good first step is to browse through the relevant doumentation at <a href="http://www.gentoo.org/index-docs.html">http://www.gentoo.org/index-docs.html</a>, 
 		failing that, the various Gentoo Linux mailing
 		lists listed on <a href="www.gentoo.org">www.gentoo.org</a>.  To search through the Gentoo mailling lists, Google
@@ -495,7 +477,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 						letzte Änderung  Juli 2002</td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 <tr><td class="alttext">
-<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Leitender Architekt</i><br><br>Colin Morey<br><i>Reviewer</i><br><br><b><a class="altlink" href="mailto:marko@nexboard.de">Marko Kercmar</a></b><br><i>Übersetzter</i><br><br><b><a class="altlink" href="mailto:egbers@netzraum.com">Sebastian Egbers</a></b><br><i>Übersetuter</i><br><br>
+<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Leitender Architekt</i><br><br>Colin Morey<br><i>Reviewer</i><br><br><b><a class="altlink" href="mailto:marko@nexboard.de">Marko Kercmar</a></b><br><i>Übersetzter</i><br><br><b><a class="altlink" href="mailto:egbers@netzraum.com">Sebastian Egbers</a></b><br><i>Übersetuter</i><br><br><b><a class="altlink" href="mailto:js@ameds.de">Jens Schittenhelm</a></b><br><i>Übersetuter</i><br><br>
 </td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
 <tr><td class="alttext">
