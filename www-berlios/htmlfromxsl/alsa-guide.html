@@ -78,15 +78,14 @@ Da wir zur Zeit noch die 2.4.x Kernel Serie benutzen, müssen die Kernel und ALSA
 </p>
 <p>
 Zuerst müssen wir sicherstellen, dass unsere Kernel Konfiguration für den Einsatz von ALSA vorbereitet ist. Dazu ist es
-notwendig, dass im Kernel der Punkt &quot;Sound Card Support&quot; als Modul (M) einkompiliert wird
-First we'll make sure that our kernel configuration is ready for use with ALSA. Dadurch wird das Modul <font class="code">soundcore.o</font>
+notwendig, dass im Kernel der Punkt &quot;Sound Card Support&quot; als Modul (M) einkompiliert wird. Dadurch wird das Modul <font class="code">soundcore.o</font>
 erstellt.
 </p>
 <p>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
 Wahrscheinlich wird es auch funktionieren, wenn &quot;Sound Card Support&quot; direkt in den Kernel (Y) einkompiliert, anstatt es
-als Modul (M) zu bauen. Jedoch empfieht die offizielle ALSA Dokumentation es als Modul (M) zu erstellen, da ALSA
+als Modul (M) zu bauen. Jedoch empfielht die offizielle ALSA Dokumentation es als Modul (M) zu erstellen, da ALSA
 beim Start versucht, das Modul zu laden.
 </p></td></tr></table>
 </p>
@@ -136,7 +135,7 @@ separatem Verzeichnis abgelegt werden (konkret: <font class="path">/lib/modules/
 Befehl <font class="code">make modules modules_install</font> nicht tangiert werden.
 </p></td></tr></table>
 </p>
-<p class="secthead"><a name="_sect2">ALSA Module </a></p>
+<p class="secthead"><a name="_sect2">Das richtige ALSA Modul </a></p>
 
 <p>
 Nun wird es Zeit, die passenden ALSA Treiber für Ihre Soundkarte zu installieren. Wenn Ihre Soundkarte auf einem
@@ -158,7 +157,7 @@ Sie mit <font class="code">rmmod</font> nicht mehr benötigte Treiber auf Ihrem S
 </p>
 
 <p>
-Ein einfaches <font class="code">emerge alsa-driver</font> würde <font class="emphasis">all</font> ALSA Treiber kompilieren und in das System einbinden.
+Ein einfaches <font class="code">emerge alsa-driver</font> würde <font class="emphasis">alle</font> ALSA Treiber kompilieren und in das System einbinden.
 </p>
 <p>
 Um jedoch Zeit zu sparen, empfiehlt es sich, den <font class="emphasis">Modul Namen</font> Ihrer Soundkarte in der 
@@ -184,7 +183,7 @@ an ALSA_CARDS übergeben werden, z.B. so:  <font class="code">env ALSA_CARDS='emu
 </p></td></tr></table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>Sollten Sie OSS Kompatibilität benötigen, so sollte &quot;emerge<font class="input">alsa-oss</font>&quot; ausgeführt werden, um den ALSA/OSS
+<b>Anmerkung: </b>Sollten Sie OSS Kompatibilität benötigen, so sollte &quot;emerge <font class="input">alsa-oss</font>&quot; ausgeführt werden, um den ALSA/OSS
 compatibility wrapper auf Ihrem System einzurichten. 
 </p></td></tr></table>
 
@@ -206,7 +205,7 @@ Es ist nicht notwendig <font class="path">/etc/modules.conf</font> zu modifizier
 </p></td></tr></table>
 <p>
 Überprüfen Sie den ALSA Abschnitt am <font class="emphasis">Anfang der Konfigurationsdatei</font>. 
-Durch Hnzufügen dieser Zeile, können Sie die maximale Nummer der benutzen Soundkarten auf 
+Durch Hinzufügen dieser Zeile, können Sie die maximale Nummer der benutzen Soundkarten auf 
 Ihrem System angeben (im Normalfall ist dies nur eine einzige).
 </p>
 <p>
@@ -215,7 +214,7 @@ Ihrem System angeben (im Normalfall ist dies nur eine einzige).
 			Beispiel 5: Am Anfang von of /etc/modules.d/alsa</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 # Alsa 0.9.X kernel modules' configuration file.
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-berlios/htmlfromxsl/alsa-guide.html,v 1.1 2002/11/10 08:10:58 jay Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-berlios/htmlfromxsl/alsa-guide.html,v 1.2 2002/11/10 16:33:53 jay Exp $
 
 # ALSA portion
 alias char-major-116 snd
@@ -229,7 +228,7 @@ alias char-major-14 soundcore
 </table>
 </p>
 <p>
-Nun geben wir an, welche Treiber ALSA Benutzen soll. Im der gleichen Datei tragen wir folgende Zeilen ein:
+Nun geben wir an, welche Treiber ALSA benutzen soll. Im der gleichen Datei tragen wir folgende Zeilen ein:
 <a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 6: Etwas weiter unten in /etc/modules.d/alsa</p></td></tr>
@@ -274,7 +273,7 @@ alias /dev/midi snd-seq-oss
 </p>
 <p>
 Überprüfen Sie noch einmal alle Ihre Eingaben in der Datei <font class="path">/etc/modules.d/alsa</font> und wenn Sie sicher sind, dass
-kein Fehler vorhanden sit, können Sie <font class="code">update-modules</font> ausführen:
+kein Fehler vorhanden ist, können Sie <font class="code">update-modules</font> ausführen:
 <a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 8</p></td></tr>
@@ -290,6 +289,7 @@ Durch das Ausführen von <font class="code">update-modules</font> werden die Date
 <p>
 Nun sollten Sie sicherstellen, dass in /etc/devfsd.conf die ALSA geräte korrekt eingetragen und registriert sind.
 </p>
+<p>
 <a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 9</p></td></tr>
@@ -312,11 +312,14 @@ REGISTER        sound/.*     PERMISSIONS root.audio 660
 REGISTER        snd/.*       PERMISSIONS root.audio 660
 </pre></td></tr>
 </table>
+</p>
+<p>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
 Wie man sehen kann, werden von devfsd.conf die Zugriffe auf /dev/sound auf root.audio beschränkt. Nicht root-user müssen also in der Gruppe audio
 sein, um die Soundkarte auch zu hören.
 </p></td></tr></table>
+</p>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap3">3.</a></font>ALSA starten</p>
 <p class="secthead"><a name="_sect1">Alsasound zu einem runlevel hinzufügen </a></p>
@@ -336,7 +339,7 @@ Nun sollte man daran gehen, ALSA beim booten auch zu starten. Dies geschieht mit
 </p>
 <p class="secthead"><a name="_sect2">Stummschaltung aufheben </a></p>
 <p>
-Da Wir Linux User sind und Reboots uncool sind, starten wir das alsasound Skript von Hand:
+Da wir Linux User sind und rebooten des Systems uncool ist, starten wir das alsasound Skript von Hand:
 </p>
 <a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -390,7 +393,7 @@ Wenn wir nun so weit gekommen sind, sollten wir die Stummschaltung der  Master u
 </pre></td></tr>
 </table>
 </p>
-Um zu Überprüfen, ob der Ton tut, benutzen wir den Befehl aplay (alsa play). Wenn Sie einen Klang hören, dann funktioniert
+Um zu Überprüfen, ob der Ton funktioniert, benutzen wir den Befehl aplay (alsa play). Wenn Sie einen Klang hören, dann arbeitet
 Ihre Soundkarte. Herzlichen Glückwunsch! Um die Lautstärke an Ihre Bedürfnisse anzupassen, ist das ncurses-basierte Paket
 <font class="code">alsamixer</font> die richtige Wahl.
 <p>
@@ -403,7 +406,7 @@ herstellen.
 <p class="secthead"><a name="_sect1">Nach Kernel Aktualisierungen. </a></p>
 <p> Wenn Sie Ihren Kernel neu kompilieren oder auf einen aktuelleren Kernel umsteigen, dann müssen Sie die
 ALSA Module ebenfalls neu kompilieren.</p>
-<p>Auch wenn Sie alle Pakete: <font class="code">alsa-driver</font>, <font class="code">alsa-libs</font> und <font class="code">alsa-utils</font>installiert haben, 
+<p>Auch wenn Sie alle Pakete: <font class="code">alsa-driver</font>, <font class="code">alsa-libs</font> und <font class="code">alsa-utils</font> installiert haben, 
 ist es notwendig nur das erste Paket neu zu kompilieren, da es die Module unter
 <font class="path">/lib/modules/*/kernel/sound/pci/</font> ablegt. Ein einfaches</p>
 <a name="doc_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -416,9 +419,9 @@ emerge alsa-driver
 <p> genügt vollständig</p>
 <p class="secthead"><a name="_sect2">/etc/modules.autoload </a></p>
 <p>Um ALSA zu benutzen, muss diese Datei im Normalfall nicht modifiziert werden. Mit unserem <font class="code">rc-update add alsasound boot</font>
-wird das System die richtigen Module beim Start automatisch laden..</p>
+wird das System die richtigen Module beim Start automatisch laden.</p>
 <p>Es ist also nicht notwendig <font class="code">snd-pcm-oss</font> oder <font class="code">snd-mixer-oss</font> in diese Datei einzufügen. 
-Für weitere Informationen pder häufige Fragen ist <a href="http://www.djcj.org/LAU/guide/alsbook/faq1.html">dieses FAQ</a> der
+Für weitere Informationen oder häufige Fragen ist <a href="http://www.djcj.org/LAU/guide/alsbook/faq1.html">dieses FAQ</a> der
 richtige Anlaufpunkt.</p>
 <p class="secthead"><a name="_sect3">Noch mehr Links </a></p>
 <p>
