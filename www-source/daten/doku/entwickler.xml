@@ -25,7 +25,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 <uri link="internet-seite/index.html">Pflege der Internet-Seite</uri><br/>
 <uri link="mirror/index.html">Einen Portage-Mirror einrichten</uri><br/>
 <uri link="cvs-tutorial/index.html">CVS Tutorial</uri><br/>
-<uri link="stage-builder-guide/index.html">Stage Builder Anleitung</uri>
+<uri link="stage-building-guide/index.html">Stage Builder Anleitung</uri>
 </p>
 </body>
 
