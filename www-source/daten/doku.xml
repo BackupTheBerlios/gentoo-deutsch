@@ -328,10 +328,9 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <p>Das <b><uri link="openmosix-howto">OpenMosix Handbuch</uri></b>
         beschreibt Schritt für Schritt, wie Sie eine Farm voller plattenloser
         Rechner erstellen (ein Cluster mit mehreren PCs).</p>
-
+-->
         <p>Das <b><uri link="ltsp">LTSP Handbuch</uri></b> erläutert die
         Einrichtung eines Linux Terminal Servers mit Gentoo.</p>
--->
 
         <p>Das <b><uri link="distcc">Distcc Handbuch</uri></b> informiert Sie
         über die Benutzung von distcc für ein verteiltes Kompilieren mit Gentoo
