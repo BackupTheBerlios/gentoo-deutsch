@@ -12,7 +12,7 @@
 	Gnome 2.4 zu beachten ist. Ausserdem werden bisher in den Gentoo Foren aufgetauchte
 	Fragen rund um das Upgrade und mögliche Probleme thematisiert.</abstract>
 
-	<version>1.1</version>
+	<version>1.2</version>
 	<date>06.10.2003</date>
 	
 	<chapter>
@@ -48,7 +48,7 @@
 					<p>... sollten Sie ihr Portage auf den aktuellen Stand bringen.</p>
 					<pre caption="Portage aktualisieren"># <c>emerge sync</c></pre>
 					<p>Als nächstes schauen wir uns an, welche Pakete Gnome upgraden möchte.</p>
-					<pre caption="Blockende Abhängigkeiten"># <c>ACCEPT_KEYWORDS="~x86" emerge -p gnome</c></pre>
+					<pre caption="Blockende Abhängigkeiten"># <c>emerge -p gnome</c></pre>
 					<p>Wie Sie sehen, blockt das Paket <c>bonobo-activation</c> das Upgrade. 
 					Dieses Paket können Sie vor dem Upgrade bedenkenlos unmergen; 
 					<c>bonobo-activation</c> ist ab Gnome 2.4 Teil von <c>libbonobo</c>.</p>
