@@ -1,0 +1,509 @@
+diff -Nru pilot-0.0.6.orig/pilotbmp.c pilot-0.0.6/pilotbmp.c
+--- pilot-0.0.6.orig/pilotbmp.c	2004-01-20 09:51:19.000000000 +0100
++++ pilot-0.0.6/pilotbmp.c	2004-05-20 15:41:02.000000000 +0200
+@@ -7,7 +7,6 @@
+  */
+  
+ #include "pilotbmp.h"
+-#include "symbols.h"
+ #include <vdr/font.h>
+ #ifndef VDRVERSNUM
+ #include <vdr/config.h>
+@@ -28,19 +27,18 @@
+ {
+    for (int i = 0; i < 15; i++)
+    {
+-     SetColor(i, eDvbColor(palette[i]));
++     SetColor(i, palette[i]);
+    }
+ }
+-
+-void cBmp::DrawText(int x, int y, const char *s, eDvbColor ColorFg)
++void cBmp::DrawText(int x, int y, const char *s, tColor ColorFg, tColor ColorBg, const cFont *Font)
+ {
+     // adapted from VDR source in osdbase.c
+      char fg = Index(ColorFg);
+      int h = font->Height(s);
+      while (s && *s) {
+            const cFont::tCharData *CharData = font->CharData(*s++);
+-           if (int(x + CharData->width) > width)
+-              break;
++/*           if (int(x + CharData->width) > width)
++              break;*/
+            for (int row = 0; row < h; row++) {
+                cFont::tPixelData PixelData = CharData->lines[row];
+                for (int col = CharData->width; col-- > 0; ) {
+@@ -54,27 +52,10 @@
+ }
+ 
+ 
+-
+-void cBmp::DrawSymbol(int x, int y, int symbol, eDvbColor ColorFg) {
+-  // adapted from VDR source in osdbase.c
+-   char fg = Index(ColorFg);
+-     int h = 26;
+-
+-   for (int i = 0; i < NUMSYMBOLS; i++)
+-   {
+-       data[i] = (tCharData *)&Symbols[i];
+-   }
+-   const tCharData *CharData = data[symbol];
+-
+-  for (int row = 0; row < h; row++) {
+-
+-         cFont::tPixelData PixelData = CharData->lines[row];
+-
+-           for (int col = CharData->width; col-- > 0; ) {
+-         if (PixelData & 1)
+-              SetIndex(x + col, y + row, fg);
+-           PixelData >>= 1;
+-          }
+-        }
++  void cBmp::DrawSymbol(int x, int y, char *SymbolName[], tColor color)
++{
++  cBitmap bm(SymbolName);
++  osd->DrawBitmap(x, y, bm, color );
+ }
+ 
++
+diff -Nru pilot-0.0.6.orig/pilotbmp.h pilot-0.0.6/pilotbmp.h
+--- pilot-0.0.6.orig/pilotbmp.h	2004-01-20 09:50:37.000000000 +0100
++++ pilot-0.0.6/pilotbmp.h	2004-05-20 15:36:43.000000000 +0200
+@@ -8,6 +8,7 @@
+ 
+ class cBmp: public cBitmap {
+ private:
++  cOsd *osd;
+ #if VDRVERSNUM>=10300
+   const cFont *font;
+ #else
+@@ -24,8 +25,9 @@
+   cBmp(int Width, int Height);
+   ~cBmp();
+   void SetPalette(int palette[16]);
+-  void DrawText(int x, int y, const char *s, eDvbColor ColorFg);
+-  void DrawSymbol(int x, int y, int symbol, eDvbColor ColorFg);
++  void DrawText(int x, int y, const char *s, tColor ColorFg, tColor ColorBg, const cFont *Font);
++  void DrawSymbol(int x, int y, char *SymbolName[], tColor color);
++
+ };
+ 
+ #endif //__PILOTBMP_H
+diff -Nru pilot-0.0.6.orig/pilotosd.c pilot-0.0.6/pilotosd.c
+--- pilot-0.0.6.orig/pilotosd.c	2004-03-17 00:00:30.000000000 +0100
++++ pilot-0.0.6/pilotosd.c	2004-05-20 19:28:15.000000000 +0200
+@@ -12,6 +12,9 @@
+ #include <vdr/config.h>
+ #endif
+ 
++#include "symbols/up.xpm"
++#include "symbols/down.xpm"
++
+ extern int PilotChannelNumber;
+ 
+ cPilotOsd::cPilotOsd(void)
+@@ -33,6 +36,11 @@
+ {
+   delete osd;
+ }
++void cPilotOsd::DrawSymbol(int x, int y, char *SymbolName[], tColor ColorFg)
++{
++  cBitmap bm(SymbolName);
++  osd->DrawBitmap(x, y, bm, ColorFg, pal[0]);
++}
+ 
+ void cPilotOsd::DisplayChannel(const cChannel *Channel)
+ {
+@@ -48,9 +56,9 @@
+   else
+      snprintf(ChanName, BufSize, "%s", " *** Invalid Channel *** ");
+   // Draw background for channel name
+-  bitmap->Fill(2, 2, config.width-2, LINEHEIGHT-2, eDvbColor(pal[3]));
++  osd->DrawRectangle(2, 2, config.width-2, LINEHEIGHT-2, pal[3]);
+   // Draw channel number and name
+-  bitmap->DrawText(10, 3, ChanName, eDvbColor(pal[2]));
++  osd->DrawText(10, 3, ChanName,pal[2],pal[3],font);
+   DisplayBitmap();
+ }
+ 
+@@ -200,12 +208,12 @@
+             "%d %-16.16s", 
+ 	    (Channels.GetByNumber(PilotChannelNumber))->Number(), 
+ 	    (Channels.GetByNumber(PilotChannelNumber))->Name()); 
+-    osd = cOsd::OpenRaw(0, 0);
++  osd=cOsdProvider::NewOsd(config.originx, config.originy);
+     if (osd) {
+-      WindowHandle = osd->Create(config.originx, config.originy, config.width, config.height, 4);
+-      bitmap = new cBmp(config.width, config.height);
++
++    tArea Area = { 0, 0, config.width-1, config.height-1, 4};
++    osd->SetAreas(&Area, 1);
+       SendPalette();
+-      bitmap->Clear();
+       UpdateEPGInfo(1);
+       DrawMenu(0,0);
+       DisplayBitmap();
+@@ -236,7 +244,7 @@
+            if (number == 0) {
+               // keep the "Toggle channels" function working
+               // FIXME Well, it doesn't :)
+-              cRemote::Put(Key);
++//              cRemote::Put(Key);
+               return osContinue;
+               }
+          }
+@@ -426,10 +434,10 @@
+            // Scroll back in time
+            UpdateEPGInfo(3);
+            DrawMenu(0,0);
+-           bitmap->DrawSymbol(config.width - 25, 3+LINEHEIGHT, 0, eDvbColor(pal[7]));
++           DrawSymbol(config.width - 25, 3+LINEHEIGHT, 0, pal[7]);
+            DisplayBitmap();
+            usleep(100000);
+-           bitmap->DrawSymbol(config.width - 25, 3+LINEHEIGHT, 0, eDvbColor(pal[4]));
++           DrawSymbol(config.width - 25, 3+LINEHEIGHT, 0, pal[4]);
+            DisplayBitmap();
+            return osContinue;
+ 	 }
+@@ -441,10 +449,10 @@
+            // Scroll back in time
+            UpdateEPGInfo(2);
+            DrawMenu(0,0);
+-           bitmap->DrawSymbol(config.width - 25, config.height - 2 - LINEHEIGHT, 1, eDvbColor(pal[3]));
++           DrawSymbol(config.width - 25, config.height - 2 - LINEHEIGHT, up_xpm, pal[3]);
+            DisplayBitmap();
+            usleep(100000);
+-           bitmap->DrawSymbol(config.width - 25, config.height - 2 - LINEHEIGHT, 1, eDvbColor(pal[5]));
++           DrawSymbol(config.width - 25, config.height - 2 - LINEHEIGHT, up_xpm, pal[5]);
+            DisplayBitmap();
+            return osContinue;
+ 	 }
+@@ -499,7 +507,7 @@
+     // DXR3 workaround
+     pal[0]= clrTransparent; 
+     // Main window color
+-    pal[1]= clrBackground; 
++//    pal[1]= clrBackground; 
+     // Line color
+     pal[2]= clrBlack; 
+     // Channel name background, Time and titles color
+@@ -540,7 +548,7 @@
+ }
+ 
+ void cPilotOsd::ClearBitmap() {
+-  bitmap->Fill(0, 0, config.width, config.height, eDvbColor(pal[0]));
++  osd->DrawRectangle(0, 0, config.width, config.height, pal[0]);
+ }
+ 
+ void cPilotOsd::CursorUp() {
+@@ -592,35 +600,31 @@
+   int height = config.height;
+ 
+   // Draw main window
+-  bitmap->Fill(0, 0, config.width, height, eDvbColor(pal[1]));
+-  // Draw background for channel name
+-  bitmap->Fill(0, 0, config.width, LINEHEIGHT, eDvbColor(pal[3]));
+-  // Draw background for next program
+-  bitmap->Fill(0, (3+LINEHEIGHT)*3-10, config.width, height, eDvbColor(pal[8]));
+-  
++  osd->DrawRectangle(0, 0, config.width, height, pal[1]);
++  osd->DrawRectangle(0, 0, config.width, LINEHEIGHT, pal[3]);
++  osd->DrawRectangle(0, (3+LINEHEIGHT)*3-10, config.width, height, pal[8]);
+   for(int i=0; i<config.width; i++)
+   {
+     // Draw Main rectangle and horizontal lines
+-    bitmap->SetPixel(i, 0,                        eDvbColor(pal[2])); 
+-    bitmap->SetPixel(i, 1,                        eDvbColor(pal[2])); 
+-    bitmap->SetPixel(i, height-2,                 eDvbColor(pal[2]));
+-    bitmap->SetPixel(i, height-1,                 eDvbColor(pal[2]));
++    osd->DrawPixel(i, 0,                        pal[2]);
++    osd->DrawPixel(i, 1,                        pal[2]);
++    osd->DrawPixel(i, height-2,                 pal[2]);
++    osd->DrawPixel(i, height-1,                 pal[2]);
+   }
+ 
+   // Draw vertical lines
+   for(int i=0; i<height; i++)
+   {
+-    bitmap->SetPixel(0,       i,        eDvbColor(pal[2]));
+-    bitmap->SetPixel(1,       i,        eDvbColor(pal[2]));
+-    bitmap->SetPixel(config.width-2, i, eDvbColor(pal[2]));
+-    bitmap->SetPixel(config.width-1, i, eDvbColor(pal[2]));
++    osd->DrawPixel(0,       i,        pal[2]);
++    osd->DrawPixel(1,       i,        pal[2]);
++    osd->DrawPixel(config.width-2, i, pal[2]);
++    osd->DrawPixel(config.width-1, i, pal[2]);
+   }
+   
+   DisplayInfo(delta);
+ }
+ 
+ void cPilotOsd::DisplayBitmap() {
+-  osd->SetBitmap(config.originx, config.originy, *bitmap, WindowHandle);
+   osd->Flush();
+ }
+ 
+@@ -631,50 +635,49 @@
+   bool withInfo=true;
+   if (withInfo) {
+     // Draw channel number and name
+-    bitmap->DrawText(10, 3, ChanName, eDvbColor(pal[2]));
++  osd->DrawText(10, 3, ChanName, pal[2],pal[3],font);
+     if (!isempty(titlePresentInfo)) {
+-      bitmap->DrawText(10, 3+LINEHEIGHT, Present->GetTimeString(), eDvbColor(pal[3]));
+-      bitmap->DrawText(t, (3+LINEHEIGHT)*1, titlePresentInfo, eDvbColor(pal[3]));
++  osd->DrawText(10, 3+LINEHEIGHT, Present->GetTimeString(), pal[3],pal[1],font);
++  osd->DrawText(t, (3+LINEHEIGHT)*1, titlePresentInfo, pal[3],pal[1],font);
+     }
+     if (!isempty(textPresentInfo)) {
+       // Draw Red button, on the side for non-DXR3 users and upper left to DXR3 users
+       if (config.usedxr3==0)
+-        bitmap->Fill(t-16, (3+LINEHEIGHT)*1 + 8, t-6, (3+LINEHEIGHT)*1+18, eDvbColor(pal[10]));
++        osd->DrawRectangle(t-16, (3+LINEHEIGHT)*1 + 8, t-6, (3+LINEHEIGHT)*1+18, pal[10]);
+       else
+-        bitmap->Fill(config.width-46, 3+8, config.width-36, 3+18, eDvbColor(pal[10]));
++        osd->DrawRectangle(config.width-46, 3+8, config.width-36, 3+18, pal[10]);
+     }
+     if (!isempty(subtitlePresentInfo)) {
+-      bitmap->DrawText(t, (3+LINEHEIGHT)*2-5, subtitlePresentInfo, eDvbColor(pal[9]));
++      osd->DrawText(t, (3+LINEHEIGHT)*2-5, subtitlePresentInfo, pal[3], pal[1],font);
+     }
+     if (!isempty(titleFollowingInfo)) {
+       char time[10]="";
+       sprintf(time, "> %s", Following->GetTimeString());
+-      bitmap->DrawText(70, 3+LINEHEIGHT, time, eDvbColor(pal[3]));
+-      bitmap->DrawText(t, (3+LINEHEIGHT)*3, titleFollowingInfo, eDvbColor(pal[3]));
++      osd->DrawText(70, 3+LINEHEIGHT, time, pal[3], pal[1],font);
++      osd->DrawText(t, (3+LINEHEIGHT)*3, titleFollowingInfo, pal[3], pal[8],font);
+     }
+     if (!isempty(textFollowingInfo)) {
+       // Draw Green button, on the side for non-DXR3 users and upper left to DXR3 users
+       if (config.usedxr3==0)
+-        bitmap->Fill(t-16, (3+LINEHEIGHT)*3 + 8, t-6, (3+LINEHEIGHT)*3+18, eDvbColor(pal[6]));
++        osd->DrawRectangle(t-16, (3+LINEHEIGHT)*3 + 8, t-6, (3+LINEHEIGHT)*3+18, pal[6]);
+       else
+-        bitmap->Fill(config.width-26, 3+8, config.width-16, 3+18, eDvbColor(pal[6]));
++        osd->DrawRectangle(config.width-26, 3+8, config.width-16, 3+18, pal[6]);
+     }
+     if (!isempty(subtitleFollowingInfo)) {
+-      bitmap->DrawText(t, (3+LINEHEIGHT)*4-5, subtitleFollowingInfo, eDvbColor(pal[9]));
++      osd->DrawText(t, (3+LINEHEIGHT)*4-5, subtitleFollowingInfo, pal[9],pal[8],font);
+     }
+   }
+ 
+   // Display scrolling arrows
+-  bitmap->Fill(config.width - 28, 4+LINEHEIGHT, config.width-4, config.height-2, eDvbColor(pal[1]));
+-  // Draw background for arrows
+-  bitmap->Fill(config.width - 28, 2+LINEHEIGHT, config.width-2, (3+LINEHEIGHT)*2-2, eDvbColor(pal[8]));
+-  bitmap->Fill(config.width - 28, config.height-2-LINEHEIGHT, config.width-4, config.height-2, eDvbColor(pal[8]));
++  osd->DrawRectangle(config.width - 28, 4+LINEHEIGHT, config.width-4, config.height-2, pal[1]);
++  osd->DrawRectangle(config.width - 28, 2+LINEHEIGHT, config.width-2, (3+LINEHEIGHT)*2-2, pal[8]);
++  osd->DrawRectangle(config.width - 28, config.height-2-LINEHEIGHT, config.width-4, config.height-2, pal[8]);
+   // Draw arrows
+-  bitmap->DrawSymbol(config.width - 25, 3+LINEHEIGHT, 0, eDvbColor(pal[4]));
+-  bitmap->DrawSymbol(config.width - 25, config.height - 2 - LINEHEIGHT, 1, eDvbColor(pal[5]));
++  DrawSymbol(config.width - 25, 3+LINEHEIGHT, up_xpm, pal[4]);
++  DrawSymbol(config.width - 25, config.height - 2 - LINEHEIGHT, down_xpm, pal[5]);
+   for(int y=3+LINEHEIGHT; y < config.height-2; y++){
+-    bitmap->SetPixel(config.width - 29, y, eDvbColor(pal[2]));
+-    bitmap->SetPixel(config.width - 30, y, eDvbColor(pal[2]));
++    osd->DrawPixel(config.width - 29, y, pal[2]);
++    osd->DrawPixel(config.width - 30, y, pal[2]);
+   }
+ 
+   // Time bar
+@@ -700,25 +703,25 @@
+     if (percent > 1.0) percent = 1.0;
+     // Draw the time bar
+     for(int x=2; x<width-2; x++){
+-      bitmap->SetPixel(10+x, (3+LINEHEIGHT)*2, eDvbColor(pal[2]));
+-      bitmap->SetPixel(10+x, (3+LINEHEIGHT)*2+1, eDvbColor(pal[2]));
+-      bitmap->SetPixel(10+x, (3+LINEHEIGHT)*2+height, eDvbColor(pal[2]));
+-      bitmap->SetPixel(10+x, (3+LINEHEIGHT)*2+height-1, eDvbColor(pal[2]));
++      osd->DrawPixel(10+x, (3+LINEHEIGHT)*2, pal[2]);
++      osd->DrawPixel(10+x, (3+LINEHEIGHT)*2+1, pal[2]);
++      osd->DrawPixel(10+x, (3+LINEHEIGHT)*2+height, pal[2]);
++      osd->DrawPixel(10+x, (3+LINEHEIGHT)*2+height-1, pal[2]);
+       for(int y=2; y<height-2; y++){
+         if( x > (int)(percent*(float)width)) {
+           // Elapsed part
+-          bitmap->SetPixel(10+x, (3+LINEHEIGHT)*2+y, eDvbColor(pal[3]));
++          osd->DrawPixel(10+x, (3+LINEHEIGHT)*2+y, pal[3]);
+         } else {
+           // Remaining part
+-          bitmap->SetPixel(10+x, (3+LINEHEIGHT)*2+y, eDvbColor(pal[1]));
++          osd->DrawPixel(10+x, (3+LINEHEIGHT)*2+y, pal[1]);
+         }
+       }
+     }
+     for(int y=(3+LINEHEIGHT)*2; y<(3+LINEHEIGHT)*2+height; y++){
+-      bitmap->SetPixel(10, y, eDvbColor(pal[2]));
+-      bitmap->SetPixel(10+1, y, eDvbColor(pal[2]));
+-      bitmap->SetPixel(10+width, y, eDvbColor(pal[2]));
+-      bitmap->SetPixel(10+width-1, y, eDvbColor(pal[2]));
++      osd->DrawPixel(10, y, pal[2]);
++      osd->DrawPixel(10+1, y, pal[2]);
++      osd->DrawPixel(10+width, y, pal[2]);
++      osd->DrawPixel(10+width-1, y, pal[2]);
+     }
+   }
+ }
+@@ -730,31 +733,34 @@
+   char *t = NULL;
+   
+   // Clear channel name 
+-  bitmap->Fill(2, 2, config.width-2, LINEHEIGHT-2, eDvbColor(pal[3]));
+-  // Display Title
+-  if (type == 1) 
+-    bitmap->DrawText(10, 3, titlePresentInfo, eDvbColor(pal[2]));
++  osd->DrawRectangle(2, 2, config.width-2, LINEHEIGHT-2,pal[3]);
++
++// Display Title
++if (type == 1)
++    osd->DrawText(10, 3, titlePresentInfo, pal[2], pal[3],font);
+   else if (type == 2)
+-    bitmap->DrawText(10, 3, titleFollowingInfo, eDvbColor(pal[2]));
+-  else 
+-    bitmap->DrawText(10, 3, "-", eDvbColor(pal[2]));
++    osd->DrawText(10, 3, titleFollowingInfo, pal[2], pal[3],font);
++  else
++    osd->DrawText(10, 3, "-", pal[2], pal[3],font);
++
++
+   // Clean channel info
+-  bitmap->Fill(2, LINEHEIGHT+2, config.width-2, height-2, eDvbColor(pal[1]));
++  osd->DrawRectangle(2, LINEHEIGHT+2, config.width-2, height-2, pal[1]);
+   // Display close window symbol
+-  bitmap->DrawText(config.width - 25, 2, "X", eDvbColor(pal[10]));
++  osd->DrawText(config.width - 25, 2, "X", pal[10],pal[1],font);
+   if (type == 1) 
+     text = WrapText(textPresentInfo, config.width - 60, &lines);
+   else if (type == 2)
+     text = WrapText(textFollowingInfo, config.width - 60, &lines);
+   else 
+-    bitmap->DrawText(10, 3, "-", eDvbColor(pal[2]));
++    osd->DrawText(10, 3, "-", pal[2], pal[1],font);
+   t = text;
+   while (*t) {
+         char *n = strchr(t, '\n');
+         if (l >= offset) {
+            if (n)
+               *n = 0;
+-           bitmap->DrawText(15, (3+LINEHEIGHT)*(1 + l - offset), t, eDvbColor(pal[3]));
++           osd->DrawText(15, (3+LINEHEIGHT)*(1 + l - offset), t, pal[3], pal[1],font);
+            if (n)
+               *n = '\n';
+            else
+@@ -767,8 +773,8 @@
+            break;
+         }
+   // Draw lift arrows
+-  if (offset > 0)   bitmap->DrawSymbol(config.width - 25, 3+LINEHEIGHT, 0, eDvbColor(pal[9]));
+-  if (NBLINES + offset < lines) bitmap->DrawSymbol(config.width - 25, height - 2 - LINEHEIGHT, 1, eDvbColor(pal[9]));
++  if (offset > 0)   DrawSymbol(config.width - 25, 3+LINEHEIGHT, up_xpm, pal[9]);
++  if (NBLINES + offset < lines) DrawSymbol(config.width - 25, height - 2 - LINEHEIGHT, down_xpm, pal[9]);
+ }
+ 
+ char * cPilotOsd::WrapText(const char *Text, int Width, int *Height) {
+@@ -795,7 +801,7 @@
+          }
+       else if (isspace(*p))
+          Blank = p;
+-      int cw = bitmap->Width(*p);
++      int cw = font->Width(*p);
+       if (w + cw > Width) {
+          if (Blank) {
+             *Blank = '\n';
+diff -Nru pilot-0.0.6.orig/pilotosd.h pilot-0.0.6/pilotosd.h
+--- pilot-0.0.6.orig/pilotosd.h	2004-01-20 09:39:32.000000000 +0100
++++ pilot-0.0.6/pilotosd.h	2004-05-20 15:33:04.000000000 +0200
+@@ -6,15 +6,14 @@
+ #include <ctype.h>
+ #include "pilotbmp.h"
+ 
+-#define LINEHEIGHT 30
++static const cFont *font = cFont::GetFont(fontOsd);
++static const int LINEHEIGHT = font->Height();
+ #define NBLINES 4
+ 
+ class cPilotOsd : public cOsdObject {
+ private:
+-  cOsdBase *osd;
+-  cBmp *bitmap;
+-  int WindowHandle;
+-  eDvbColor color;
++  void DrawSymbol(int x, int y, char *SymbolName[], tColor color);
++  cOsd *osd;
+   int pal[16];
+   int lastTime;
+   int number;
+diff -Nru pilot-0.0.6.orig/symbols/down.xpm pilot-0.0.6/symbols/down.xpm
+--- pilot-0.0.6.orig/symbols/down.xpm	1970-01-01 01:00:00.000000000 +0100
++++ pilot-0.0.6/symbols/down.xpm	2004-05-19 19:51:21.000000000 +0200
+@@ -0,0 +1,31 @@
++/* XPM */
++static char * down_xpm[] = {
++"22 26 2 1",
++".	c #FFFFFF",
++"*	c #000000",
++"......................",
++"......................",
++"......................",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++"**********************",
++".********************.",
++"..******************..",
++"...****************...",
++"....**************....",
++".....************.....",
++"......**********......",
++".......********.......",
++"........******........",
++".........****.........",
++"..........**..........",
++"......................",
++"......................",
++"......................"};
+diff -Nru pilot-0.0.6.orig/symbols/up.xpm pilot-0.0.6/symbols/up.xpm
+--- pilot-0.0.6.orig/symbols/up.xpm	1970-01-01 01:00:00.000000000 +0100
++++ pilot-0.0.6/symbols/up.xpm	2004-05-19 19:51:21.000000000 +0200
+@@ -0,0 +1,31 @@
++/* XPM */
++static char * up_xpm[] = {
++"22 26 2 1",
++".	c #FFFFFF",
++"*	c #000000",
++"......................",
++"......................",
++"......................",
++"..........**..........",
++".........****.........",
++"........******........",
++".......********.......",
++"......**********......",
++".....************.....",
++"....**************....",
++"...****************...",
++"..******************..",
++".********************.",
++"**********************",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++".......********.......",
++"......................",
++"......................",
++"......................"};
