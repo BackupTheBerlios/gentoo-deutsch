@@ -28,7 +28,7 @@
       <xsl:for-each select="pkg">
         <xsl:sort select="category"/>
         
-        <xsl:variable name="cname" select="name()"/>
+        <xsl:variable name="cname" select="category"/>
         
         <xsl:if test="preceding-sibling::pkg/child::category != $cname">
           <xsl:value-of select="$cname"/>
