@@ -92,8 +92,6 @@
     </table>
   </div>  
 
-  <![CDATA[<!-- keine-suche-stop -->]]>
-
   <div id="about">
     <a href="{$baseurl}" class="icon">
       <img src="{$imageurl}icons/home.png" width="16" height="16" alt="Zurück zur Startseite"/>
@@ -167,6 +165,8 @@
     <xsl:apply-templates select="/*/box/*"/>
     
   </div>
+  
+  <![CDATA[<!-- keine-suche-stop -->]]>  
 
   <div id="body">
     <a id="top"/>

@@ -42,44 +42,6 @@
   
     <![CDATA[<!--end: results-->]]>
   </table>
-  
-  <br/><br/>
-
-  <table class="resultlist" cellpadding="0" cellspacing="0" border="0">
-  <![CDATA[<!--loop: results-->]]>
-    <tr>
-      <td class="rank">
-        <![CDATA[<!--item: rank-->]]>. 
-      </td>
-      <td class="title">
-        <![CDATA[<a href="<!--item: url-->"><!--item: title--></a>]]>
-      </td>
-      <td rowspan="2" class="info">
-        <p>
-          Relevanz:
-          <![CDATA[<!--item: score-->]]> &#160;
-        </p>
-        <p> 
-          Datum:
-          <![CDATA[<!--item: date-->]]> &#160;
-        </p>
-        <p>
-          Größe:
-          <![CDATA[<!--item: size-->]]> kB
-        </p> 
-      </td> 
-    </tr>
-    <tr>
-      <td class="rank">&#160;</td>
-      <td class="description">
-        <![CDATA[<!--item: description-->]]>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">&#160;</td>
-    </tr>
-  <![CDATA[<!--end: results-->]]>
-  </table>
 
 </xsl:template>
 
