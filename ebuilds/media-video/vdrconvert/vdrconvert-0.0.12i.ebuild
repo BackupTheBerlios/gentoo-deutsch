@@ -1,11 +1,11 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.0.12i.ebuild,v 1.1 2003/11/09 09:34:02 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrconvert/vdrconvert-0.0.12i.ebuild,v 1.2 2003/11/12 16:04:13 fow0ryl Exp $
 
 IUSE=""
 SCRIPT="vdrconvert"
 PANTELTJE="tcmplex-panteltje-0.3"
-CONV_DIR="/etc/vdr/vdrconvert"
+CONV_DIR="/var/vdr/vdrconvert"
 
 S=${WORKDIR}/${SCRIPT}-${PV}
 DESCRIPTION="Video Disk Recorder VDRconvert Script"
@@ -28,13 +28,15 @@ DEPEND=">=media-video/vdr-1.2.0
 	>=mjpegtools-1.6.1
 	>=requant-0.0.1
 	>=alsa-utils-0.9.2
-	>=sudo-1.6.5
+    	>=sudo-1.6.5
+	>=at-3.1.8
 	>=cdrtools-1.1
 	>=imlib2-1.0.6-r1
 	>=libdvb-0.5.0-r1
 	>=mpg123-0.59r-r3
 	>=netpbm-9.12-r4
 	>=freetype-2.1.4
+	>=tosvcd-0.9
 "
 	
 
@@ -52,8 +54,8 @@ src_compile() {
 	einfo ${S}
 	cd ${S}
 #	sed -i "s/^VDRCONVERTDIR=\/etc\/vdr\/vdrconvert *$/VDRCONVERTDIR=${CONV_DIR}/"  ./init/vdrvonvert.gentoo
+#	sed -i "s/. .\/vdrconvert.env/\/etc\/conf.d\/vdrconvert.env/" vdrconvert.sh
 	sed -i "s/\/vdrconvert\/etc/\/vdrconvert/"  ./etc/vdrconvert.env
-	mv ./init/vdrconvert.gentoo ./init/vdrconvert
 	cd ${WORKDIR}/${PANTELTJE}
 	make
 }
@@ -63,9 +65,6 @@ src_install() {
 	doexe ${WORKDIR}/${PANTELTJE}/tcmplex-panteltje
 	exeinto /etc/init.d
 	doexe ${FILESDIR}/vdrconvert
-	insinto /etc/vdr
-	doins etc/commands.conf
-	doins ${FILESDIR}/reccmds.conf
 	exeinto	${CONV_DIR}
 	doexe add.sh
 	doexe burn.sh
@@ -88,12 +87,26 @@ src_install() {
 	doexe vdr2vcd.sh
 	doexe vdrconvert.sh
 	doexe writedvd.sh
+	insinto /etc/vdr
+	doins etc/commands.conf
+	doins ${FILESDIR}/reccmds.conf
+	insinto /etc/conf.d
+	doins ./etc/vdrconvert.env
 	insinto ${CONV_DIR}
 	doins ./etc/silence-1s.mp2
-	doins ./etc/vdrconvert.env
+	doins ./etc/vdrconvert.env.template
+	insinto ${CONV_DIR}/fonts/truetype
+	doins ./fonts/truetype/* 
+	insinto ${CONV_DIR}/postscript
+	doins ./postscript/*
+	dodoc README README.EN README.GR minihowto
 }
 
 pkg_postinst() {
+	einfo "setting rights in vdrconvert dir"
+	chown vdr:video ${CONV_DIR}
+	ln -s ${CONV_DIR} /etc/vdr/vdrconvert
+	ln -s /etc/conf.d/vdrconvert.env ${CONV_DIR}/vdrconvert.env
 	einfo
 	einfo "you have to create a destination directory and to set DESTDIR in"
 	einfo "/etc/vdr/vdrconvert/vdrconvert.env"
