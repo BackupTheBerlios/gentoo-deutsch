@@ -1,7 +1,12 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-lcdproc/ChangeLog,v 1.1 2003/06/21 11:02:22 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-lcdproc/ChangeLog,v 1.2 2004/06/10 00:03:47 martini Exp $
 
+*vdrplugin-lcdproc-0.0.10 (10 Jun 2004)
+ 
+  10 Jun 2004; M.Mittelsdorf <martini@vdr-portal.de>
+  version bump to 0.0.10
+  
 *vdrplugin-lcdproc-0.0.9 (24 Feb 2003)
 
   15 Jun 2003; H.Ryll <henning.ryll@web.de>

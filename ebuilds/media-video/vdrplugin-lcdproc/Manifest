@@ -1,3 +1,5 @@
-MD5 77b05cc0b7245602934d88361c12c791 vdrplugin-lcdproc-0.0.9.ebuild 1228
-MD5 64b245ea002806faf65e32c2a28b963e ChangeLog 339
+MD5 5eca4cda8b0da1999fdbc307198e4a31 ChangeLog 341
+MD5 d053b075cfea5ad352ccb4f8cf018516 vdrplugin-lcdproc-0.0.9.ebuild 1232
+MD5 d053b075cfea5ad352ccb4f8cf018516 vdrplugin-lcdproc-0.0.10.ebuild 1232
 MD5 3ea3e2fb1bdfc07e2260f91586bfddad files/digest-vdrplugin-lcdproc-0.0.9 65
+MD5 1678f137c9ad7917ad53746f16fcb299 files/digest-vdrplugin-lcdproc-0.0.10 66
