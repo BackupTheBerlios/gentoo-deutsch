@@ -7,8 +7,7 @@
   <block>
     <title>Ihre Suche</title>
     <p>
-      nach &#171;<cgi:query_str/>&#187;
-      <br/>
+      nach &#171;<cgi:query_str/>&#187; 
       ergab <cgi:results_num/> Treffer.
       <br/>
     </p>
@@ -17,7 +16,6 @@
     <title>Ihre Position</title>
     <p>
       Sie sehen die Ergebnisse
-      <br/>
       von <cgi:first_number/> bis <cgi:last_number/>
     </p>
   </block>
