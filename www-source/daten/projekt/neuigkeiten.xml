@@ -410,9 +410,11 @@ und eine Warnung ber ein frühes Release von Tcl/Tk.
 </section>
 
 <section>
+<!--
 <title>[14. April 2003] Gentoo-Linux-1.4rc4 verffentlicht</title>
-
+-->
 <body>
+<news date="14.04.2003" title="Gentoo-Linux-1.4rc4 veröffentlicht">
 <p>
 Anfang der Woche wurde entschieden, daß die nächste Version von Gentoo-Linux 1.4 als
 Release-Candidate 4 an Stelle von Final veröffentlicht werden wrde. Die Verbesserungen
@@ -434,6 +436,7 @@ einer Final-Version zu verffentlichen wurde aus folgenden Grnden getroffen:
 	</li>
 </ul>
 </p>
+</news>
 </body>
 </section>
 
