@@ -63,7 +63,7 @@
 				<title>Gnome aktualisieren.</title>
 				<body>
 				
-				<p>Die beste Methode, dass Problem bezüglich bonobo-activation händeln Sie am besten wie folgt: Aktualisieren Sie
+				<p>Das Problem bezüglich bonobo-activation händeln Sie am besten wie folgt: Aktualisieren Sie
 				Ihr System mit <c>emerge -u gnome</c> so weit, bis das Upgrade an bonobo-activation abbricht.
 				Entfernen Sie nun <c>emerge -C bonobo-activation</c> und daran anschliessend wieder <c>emerge -u gnome</c>
 				um das Upgrade fortzuführen.</p>
