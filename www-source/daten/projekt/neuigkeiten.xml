@@ -37,12 +37,6 @@ Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
 	<body>
 		<news type="news" date="15.12.2003" title="Gentoo-Newsletter">
 		<p>
-			In this week's Gentoo Weekly Newsletter, we cover the Gentoo Managers' Meeting held on the 1st of December.
-			The managers discussed the new release naming scheme which takes effect next year, as well as the
-			implementation of GLEP 14, which is designed to check a system for identified security holes and auto-apply
-			fixes. We also profile developer Robin Hugh Johnson, give you a tip about using ls, and bring you plenty of
-			other content too.
-
 			In diesem GWN gibt es Informationen über das Gentoo-Manager-Treffen am 1. Dezember. Unter Anderem wurde das
 			neue Release-Schema diskutiert, das ab dem nächsten Jahr Anwendung finden wird und auch die Verwirklichung von
 			GLEP 14, die das automatische Prüfen eines Systems auf bekannte Sicherheitslücken und das automatische Beheben
