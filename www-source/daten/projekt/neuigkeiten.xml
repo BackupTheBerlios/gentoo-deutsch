@@ -22,6 +22,20 @@
 
 <section>
 	<body>
+	<news type="news" date="18.08.2003" title="Gentoo-Newsletter">
+		<p>
+		In dieser Woche beginnt der Newsletter mit Neuigkeiten über Gentoos Bestreben einen neueren, robusteren DNS
+		in Anspruch in nehmen wie auch weitere von Entwickler Kevyn Shortell bereitgestellte Fotos von der Linux World Expo.
+		Ausserdem gibt es das Portrait über den langjährigen Entwickler Nick Hadaway, viele Community-Neuigkeiten,
+		einen Tip über die Benutzung von ImageMagick zum anfertigen von Screenshots und Vieles mehr. 
+		<uri link="http://www.gentoo.org/news/en/gwn/20030818-newsletter.xml">Viel Spass beim Lesen</uri>
+		</p>
+	</news>
+	</body>
+</section>
+
+<section>
+	<body>
 	<news type="news" date="11.08.2003" title="Gentoo-Newsletter">
 		<p>
 		Dieses Mal gibts einen Bericht über den Stand von Gentoo auf der Linux-World-Expo in San Francisco und die restlichen

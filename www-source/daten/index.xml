@@ -13,7 +13,7 @@
     <title>Quick Links:</title>
     <p>
 		<ul>
-			<li><b><uri link="inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 11.08.03)</uri></b></li>
+			<li><b><uri link="inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 18.08.03)</uri></b></li>
 			<li><uri link="inhalte/projekt/lt2k3">LinuxTag 2003</uri></li>
 	     	<li><uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
         		Zur Projekütbersicht von BerliOS</uri></li>
@@ -28,7 +28,7 @@
     <p>
 		<ul>
 			<li><uri link="inhalte/projekt/praesentation">Über Gentoo-Linux</uri></li>
-			<li><uri link="inhalte/doku">Übersetzte Dokumentationen</uri></li>
+			<li><uri link="inhalte/doku">Übersetze Dokumentationen</uri></li>
 		</ul>
     </p>
   </block>
