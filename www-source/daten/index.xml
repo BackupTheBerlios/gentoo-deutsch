@@ -78,18 +78,23 @@ Gentoo-Benutzer</uri>
 <title>Gentoo Deutsch</title>
 
 <section>
+	<title>LinuxTag 2003 - Messe und Kongresszentrum Karlsruhe // 10. BIS 13. JULI 2003</title>
+	<body>
+  	<p style="align:center;">
+  		<uriimg uri="http://www.linuxtag.org/2003/de/expo/exhibitors-detail.xsp?id=360" picuri="http://www.linuxtag.org/2003/pictures/default/ltlogo2.gif"/>
+		Gentoo und Xine zusammen auf dem Linuxtag<br/>
+		<b>Stand Nr. G16</b>
+	</p>
+	</body>
+</section>
+
+<section>
 <title>Das Projekt</title>
 
 <body>
   <p>
    Das Projekt gentoo-deutsch soll als Sammelstelle für Anpassungen von Gentoo Linux an deutsche Gegebenheiten dienen.
   </p>
-
-  	<p style="align:center;">
-  		<uriimg uri="http://www.linuxtag.org/2003/de/expo/exhibitors-detail.xsp?id=360" picuri="http://www.gentoo.de/media/bilder/icons/genxinlt.png"/>
-		Gentoo und Xine zusammen auf dem Linuxtag<br/>
-		<b>Stand Nr. G16</b>
-	</p>
 
   <p>
 Es sollte in erster Linie dazu dienen, daß nicht jede Dokumentation 4 mal übersetzt wird, bevor sie auf Gentoo.org
