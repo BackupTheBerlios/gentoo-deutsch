@@ -1,2 +1,5 @@
-MD5 79df12c4ac08f489b68b7582cdb355c3 vdrplugin-image-0.0.5a.ebuild 1570
+MD5 3efa53d89ec98beaf332eda71ed4643a vdrplugin-image-0.0.5a.ebuild 1658
+MD5 4263f0b5081835806069f123dc1a1f43 vdrplugin-image-0.0.8_pre5.ebuild 1962
+MD5 2bb0729a4a6d812b6d4640bbd81c12f8 ChangeLog 341
+MD5 53b38a6c6658d8bad80056fd6bc21c1b files/digest-vdrplugin-image-0.0.8_pre5 72
 MD5 7f99e3d72ea05e098333e40c6fbdf848 files/digest-vdrplugin-image-0.0.5a 64
