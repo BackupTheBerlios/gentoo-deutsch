@@ -473,6 +473,22 @@
   <li><xsl:apply-templates/></li>
 </xsl:template>
 
+<xsl:template match="uriimg">
+	<a>
+		<xsl:attribute name="href">
+			<xsl:value-of select="@uri"/>
+		</xsl:attribute>
+		<img>
+			<xsl:attribute name="src">
+				<xsl:value-of select="@picuri"/>
+			</xsl:attribute>
+			<xsl:attribute name="alt">
+				<xsl:value-of select="@uri"/>
+			</xsl:attribute>
+		</img>
+	</a>
+</xsl:template>
+
 <xsl:template match="figure">
   <xsl:variable name="fignum"><xsl:number level="any"/></xsl:variable>
   <xsl:variable name="figid">doc_fig<xsl:value-of select="$fignum"/></xsl:variable>
