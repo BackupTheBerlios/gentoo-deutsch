@@ -34,7 +34,7 @@
           <xsl:value-of select="$cname"/>
           <xsl:text>: </xsl:text>
         
-          <xsl:for-each select="../pkg">
+          <xsl:for-each select="../pkg[category = $cname]">
             <xsl:value-of select="name"/>
             <xsl:text>, </xsl:text>
           </xsl:for-each>
