@@ -13,7 +13,7 @@
 </author>	
 
 <abstract>
-Die Schnellinstallation Referenz beschreibt alle Details des Installations
+Die Schnell Installations Referenz beschreibt alle Details des Installations
 Prozesses in einer sehr knapp gehaltenen Form. Benutzer die dieser Anleitung
 folgen möchten sollten bereits Erfahrungen in der Installation von
 Gentoo Linux haben.
@@ -30,17 +30,17 @@ Gentoo Linux haben.
 <body>
 
 <p>
-Die Installation ISOs finden sie auf einem der <uri link=
-"http://www.gentoo.org/main/en/mirrors.xml">Gentoo Mirror</uri>. Detaillierte
+Die Installations ISOs finden sie auf einem der <uri link=
+"http://www.gentoo.org/main/en/mirrors.xml">Gentoo Spiegel</uri>. Detaillierte
 Beschreibungen der verschiedenen CDs sind im <uri 
 link="http://store.gentoo.org">Gentoo Store</uri> verfügbar. CD1 beinhaltet
-alles, was Sie benöltigen um Gentoo Linux schnell ohne Verbindung 
-ins Internet zu installieren. CD2 ist optional und beinhaltet vor-komplilierte Pakete
+alles, was Sie benötigen um Gentoo Linux schnell ohne Verbindung 
+ins Internet zu installieren. CD2 ist optional und beinhaltet vor-kompilierte Pakete
 wie KDE, GNOME, OpenOffice, Mozilla, Evolution und andere.
 </p>
 
 <p>
-Botten Sie von der ersten Gentoo CD. Drücken Sie &lt;F1&gt; und/oder &lt;F2&gt; um
+Booten Sie von der ersten Gentoo CD. Drücken Sie &lt;F1&gt; und/oder &lt;F2&gt; um
 die verschiedene Boot Optionen zu sehen. Drücken Sie am Bootscreen &lt;ENTER&gt; um
 mit dem Default Kernel fortzufahren. Eventuell werden Sie eine Anzeige erhalten.
 </p>
@@ -58,7 +58,7 @@ die doppelt so groß ist wie der Arbeitsspeicher, und der Rest als /-Partition m
 </p>
 
 <p>
-Formatieren Sie Ihre Paritionen mit <c>mke2fs</c> (Ext2), <c>mke2fs
+Formatieren Sie Ihre Partitionen mit <c>mke2fs</c> (Ext2), <c>mke2fs
 -j</c> (Ext3), <c>mkreiserfs</c> (ReiserFS), <c>mkfs.xfs</c> (XFS),
 <c>mkfs.jfs</c> (JFS) und <c>mkswap</c> (swap partition). Zum Beispiel:
 <c>mke2fs -j /dev/hda3</c>.
@@ -75,8 +75,8 @@ Stage-Tarballs fort.
 (Erstellen des boot-Mountpunkt)                  # <i>mkdir /mnt/gentoo/boot</i>
 (Mounten der Boot Partition)                     # <i>mount /dev/hdax /mnt/gentoo/boot</i>
 (Wechseln zum Mountpunkt)                        # <i>cd /mnt/gentoo</i>
-(Entpacken eines Stage-Tarball...)                     # <i>tar -xvjpf /mnt/cdrom/stages/stage?-*.tar.bz2</i>
-(<comment>oder</comment> download des aktuellsten Tarball...)              # <i>links http://gentoo.oregonstate.edu/releases/x86/1.4/</i>
+(Entpacken eines Stage-Tarball...)               # <i>tar -xvjpf /mnt/cdrom/stages/stage?-*.tar.bz2</i>
+(<comment>oder</comment> Download des aktuellsten Tarball...)       # <i>links http://gentoo.oregonstate.edu/releases/x86/1.4/</i>
 (                  ... und entpacken)            # <i>tar -xvjpf stage*</i>
 (Nur bei GRP: Entpacken des Portage Baum)        # <i>tar -xvjf /mnt/cdrom/snapshots/portage-*.tar.bz2 -C /mnt/gentoo/usr</i>
 (Nur bei GRP: Kopieren der Distfiles)            # <i>cp -R /mnt/cdrom/distfiles /mnt/gentoo/usr/portage/distfiles</i>
@@ -94,9 +94,9 @@ Jetzt können Sie Gentoo installieren:
 </p>
 
 <pre caption = "Gentoo installieren">
-(Passen Sie USE, CFLAGS und CXXFLAGS an. Bei Stage1 können Sie auch CHOST ändern)  # <i>nano -w /etc/make.conf</i>
-(Nur Stage1: Bootstrap des System)                                                 # <i>cd /usr/portage; scripts/bootstrap.sh</i>
-(Nur Stage1 und Stage2: Installation des Basissystems)                             # <i>emerge system</i>
+(Passen Sie USE, CFLAGS und CXXFLAGS an; auch CHOST bei Stage1) # <i>nano -w /etc/make.conf</i>
+(Nur Stage1: Bootstrap des System)                       # <i>cd /usr/portage; scripts/bootstrap.sh</i>
+(Nur Stage1 und Stage2: Installation des Basissystems)   # <i>emerge system</i>
 </pre>
 
 <p>
@@ -104,8 +104,8 @@ Als nächstes müssen Sie wichtige Informationen setzen:
 </p>
 
 <pre caption = "Anpassen der Konfigurationsdateien">
-(Setzen der Zeitzone)                        # <i>ln -sf /usr/share/zoneinfo/path/to/timezonefile /etc/localtime</i>
-(Editieren der fstab Datei)                  # <i>nano -w /etc/fstab</i>
+(Setzen der Zeitzone)            # <i>ln -sf /usr/share/zoneinfo/path/to/timezonefile /etc/localtime</i>
+(Editieren der fstab Datei)      # <i>nano -w /etc/fstab</i>
 </pre>
 
 <p>
@@ -129,25 +129,25 @@ Fortfahren mit der Installation des Linux Kernel:
 </p>
 
 <pre caption="Installation des Kernel">
-(Installation der Kernel Sourcen)                          # <i>emerge -k sys-kernel/gentoo-sources</i>
-(Konfiguration des Kernel mit genkernel...)                # <i>emerge -k genkernel; genkernel</i>
-(<comment>oder</comment> (1) Manuelles bauen des Kernel)   # <i>cd /usr/src/linux; make menuconfig;</i>
+(Installation der Kernel Sourcen)                # <i>emerge -k sys-kernel/gentoo-sources</i>
+(Konfiguration des Kernel mit genkernel...)      # <i>emerge -k genkernel; genkernel</i>
+(<comment>oder</comment> (1) Manuelles bauen des Kernel)                      # <i>cd /usr/src/linux; make menuconfig;</i>
 (   (2) Inkludieren Sie VM fs, /proc fs, /dev fs,  /dev fs auto mount at boot)
-(   (3) Kompilieren des Kernel)                            # <i>make dep &amp;&amp; make clean bzImage modules modules_install</i>
-(   (4) Den Kernel kopieren)                               # <i>cp arch/i386/boot/bzImage /boot; cp System.map /boot</i>
+(   (3) Kompilieren des Kernel)                  # <i>make dep &amp;&amp; make clean bzImage modules modules_install</i>
+(   (4) Den Kernel kopieren)                     # <i>cp arch/i386/boot/bzImage /boot; cp System.map /boot</i>
 </pre>
 
 <p>
 Nun folgt die Installation der von Ihnen benötigten Tools:
 </p>
 
-<pre caption = "Installatino von wichtigen System Tools">
-(Installation des System Logger; Auswahl: sysklogd, metalog, msyslog, syslog-ng) # <i>emerge -k app-admin/syslog-ng </i>
-(Automatisches starten des Systemlogger beim Boot)                     # <i>rc-update add syslog-ng default</i>
-(Installation eines Cron Daemon; Asuwahl: vcron, dcron, fcron)         # <i>emerge -k sys-apps/vcron</i>
-(Automatisches starten des Cron Daemon automatically beim Boot)        # <i>rc-update add vcron default</i>   
-(Nur genkernel Benutzer: Installation von hotplug)                     # <i>emerge -k hotplug</i>
-(Nur genkernel Benutzer: Automatisches starten von hotplug beim Boot)  # <i>rc-update add hotplug default</i>
+<pre caption = "Installation von wichtigen System Tools">
+(System Logger; Auswahl: sysklogd, metalog, msyslog, syslog-ng)       # <i>emerge -k app-admin/syslog-ng </i>
+(Automatisches starten des Systemlogger beim Boot)                    # <i>rc-update add syslog-ng default</i>
+(Installation eines Cron Daemon; Asuwahl: vcron, dcron, fcron)        # <i>emerge -k sys-apps/vcron</i>
+(Automatisches starten des Cron Daemon automatically beim Boot)       # <i>rc-update add vcron default</i>   
+(Nur genkernel Benutzer: Installation von hotplug)                    # <i>emerge -k hotplug</i>
+(Nur genkernel Benutzer: Automatisches starten von hotplug beim Boot) # <i>rc-update add hotplug default</i>
 (Nur nicht-ext2,ext3 Benutzer; Auswahl: reiserfsprogs, xfsprogs, jfsutils)  # <i>emerge -k reiserfsprogs</i>
 </pre>
 
@@ -174,13 +174,13 @@ Beenden der Systeinstellungen Ihres Gentoo System:
 </pre>
 
 <pre caption = "Konfigurieren des Netzwerk">
-(Konfiguration des Netzwerk; dhcp-Benutzer sollten iface_eth0="dhcp" setzen)      # <i>nano -w /etc/conf.d/net</i>
-(Auflisten der Module die beim Start geladen werden sollen)      # <i>nano -w /etc/modules.autoload.d/kernel-2.4</i>
+(Konfiguration des Netzwerk; dhcp-Benutzer sollten iface_eth0="dhcp" setzen) # <i>nano -w /etc/conf.d/net</i>
+(Auflisten der Module die beim Start geladen werden sollen) # <i>nano -w /etc/modules.autoload.d/kernel-2.4</i>
 (Konfiguration von grundlegenden Systemeinstellungen (folgen Sie den Kommentaren)  # <i>nano -w /etc/rc.conf</i>
-(Nur nicht-PCMCIA: Starten des Netzwerk beim Boot)               # <i>rc-update add net.eth0 default</i>
+(Nur nicht-PCMCIA: Starten des Netzwerk beim Boot)          # <i>rc-update add net.eth0 default</i>
 (Nur wenn Sie mehrere Netzwerkkarten haben:)
-   (1) Erstellen Sie Initscripte für jede Karte)                 # <i>ln -s /etc/init.d/net.eth0 /etc/init.d/net.ethx</i>
-   (2) Automatisches Starten von PCMCIA beim Boot)               # <i>rc-update add net.ethx default</i>
+   (1) Erstellen Sie Initscripte für jede Karte)            # <i>ln -s /etc/init.d/net.eth0 /etc/init.d/net.ethx</i>
+   (2) Automatisches Starten von PCMCIA beim Boot)          # <i>rc-update add net.ethx default</i>
 (Nur PCMCIA: Kontrollieren Sie /etc/conf.d/pcmcia und laden von PCMCIA beim Boot) # <i>rc-update add pcmcia boot</i>
 </pre>
 
@@ -201,13 +201,13 @@ grub&gt; <i>quit</i>                                                |  timeout=5
                                                           |    root=/dev/hda3
   title=Gentoo Linux                                      |    label=gentoo
     root (hd0,0)                                          |  
-  <comment># Nur für Genkernel Benutzer:</comment>                                 |  <comment># Nicht-genkernel Benutzer:</comment>
+  <comment># Nur für Genkernel Benutzer:</comment>                           |  <comment># Nicht-genkernel Benutzer:</comment>
     kernel (hd0,0)/kernel-<comment>&lt;Kernel Version&gt;</comment> root=/dev/hda3 |  image=/boot/bzImage
     initrd (hd0,0)/initrd-<comment>&lt;Kernel Version&gt;</comment>                |    root=/dev/hda3
   <comment># Nicht-genkernel Benutzer:</comment>                                   |    label=gentoo
     kernel (hd0,0)/bzImage                                | 
                                                           |  <comment># Für Dual-Boot:</comment>
-  <comment># Für Dual-Boot:</comment>                                      |  other=/dev/hda<comment>X</comment>
+  <comment># Für Dual-Boot:</comment>                                        |  other=/dev/hda<comment>X</comment>
   title=Windows XP                                        |    label=windows
     root (hd0,5)                                          | 
     chainloader (hd0,5)+1                                 | # <i>/sbin/lilo</i> 
@@ -232,7 +232,7 @@ Unmounten Sie nun alle Partitionen und rebooten Sie in Ihr neues System:
 </pre>
 
 <p>
-Sie können weitere Informationen in der <uri link="http://www.gentoo.org/main/dn/docs.xml">Gentoo Dokumentation</uri>.
+Sie können weitere Informationen in der <uri link="http://www.gentoo.org/main/de/docs.xml">Gentoo Dokumentation</uri>.
 finden</p>
 </body></section></chapter>	
 
