@@ -2,6 +2,17 @@
 # Copyright 2003 Stefan Knoblich <stefan.knoblich@t-online.de>
 # Distributed under the GPL v2
 
+*lmule-1.2.0.1 (26 Apr 2003)
+
+  26 Apr 2003; Stefan Knoblich <stefan.knoblich@t-online.de> lmule-1.2.0.1.ebuild
+  
+  New lmule version.
+  Added Copyright stuff in ebuild ;)
+  Added some (important) bugfixes from cvs:
+    + Search crash fix
+    + Socket SIGPIPE fix
+    + Preview fix
+
 *lmule-1.2.0 (21 Apr 2003)
 
   21 Apr 2003; Stefan Knoblich <stefan.knoblich@t-online.de> lmule-1.2.0.ebuild

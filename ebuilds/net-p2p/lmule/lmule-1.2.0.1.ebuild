@@ -1,3 +1,5 @@
+# Copyright 2003 Stefan Knoblich <stefan.knoblich@t-online.de>
+# Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="Port of the Emule to Linux"
 HOMEPAGE="http://lmule.sourceforge.net/"
