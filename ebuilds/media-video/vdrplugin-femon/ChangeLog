@@ -1,11 +1,6 @@
-# ChangeLog for media-video/vdr-femon
+# ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-femon/ChangeLog,v 1.6 2004/07/28 10:09:40 austriancoder Exp $
-
-*vdrplugin-femon-0.0.6 (28 July 2004)
-
-  28 July 2004; Christian Gmeiner <christian at visual-page dot de>
-  version bump
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-femon/ChangeLog,v 1.7 2004/07/28 10:11:01 austriancoder Exp $
 
 *vdrplugin-femon-0.1.3 (11 June 2004)
 
