@@ -1,2 +1,5 @@
-MD5 4034e4ac50dbdc8bf352c5fd0e16bc4c noad-0.3.2.ebuild 873
+MD5 69780db4ec013c4659c6a37977412ad1 noad-0.3.2b.ebuild 863
+MD5 cb9954c1aa20475e1be5d55cf76d4a59 noad-0.3.2.ebuild 870
+MD5 999e1e3803005996f8f80475a95ed509 ChangeLog 301
 MD5 1fb8a1228a0e15b29285a665ea7322df files/digest-noad-0.3.2 58
+MD5 720c1bd4ef4bb1db24e2fb76bd81c809 files/digest-noad-0.3.2b 59
