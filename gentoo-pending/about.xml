@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?>
 
+<!-- English CVS Version: 1.11 -->
+
 <guide mainid="about">
 	<title>Über Gentoo Linux</title>
 
@@ -30,9 +32,9 @@
 			<title>Gentoo Linux in einem Absatz</title>
 			<body>
 
-				<p>Wir schaffen Gentoo Linux, eine besondere Art von Linux, die
-				automatisch für nahezu jede Applikation oder jeden Einsatz optimiert und
-				angepasst werden kann.  Extreme Performance, Konfigurierbarkeit und eine
+				<p>Gentoo Linux, eine besondere Art von Linux, die automatisch für
+				nahezu jede Applikation oder jeden Einsatz optimiert und angepasst
+				werden kann.  Extreme Performanz, Konfigurierbarkeit und eine
 				erstklassige Benutzer- und Entwicklergemeinde sind die Gütezeichen von
 				Gentoo.</p>
 
@@ -49,7 +51,7 @@
 		<section>
 			<title>Was ist Portage?</title>
 			<body>
-				
+
 				<p><b>Portage</b> ist das Herz von Gentoo Linux und übt viele
 				Schlüsselfunktionen aus.  Zum einen ist Portage das <i>Software
 				Distributions</i> System für Gentoo Linux.  Um die neueste Software von
