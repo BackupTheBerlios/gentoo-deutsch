@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.5.ebuild,v 1.4 2003/10/17 18:07:26 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.5.ebuild,v 1.5 2003/10/21 19:29:21 martini Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
@@ -175,6 +175,13 @@ pkg_setup(){
 
 pkg_postinst() {
 	# test -d /video && mkdir /video
+	# add fam to /etc/init.d/vdr if patched with akool
+	if vdr_opts akool; then
+		sed -i '/need fam/d' /etc/init.d/vdr
+		sed -i '/^depend/a\
+		need fam' /etc/init.d/vdr
+	fi
+
 	einfo
 	einfo "Congratulations, you have just installed VDR,"
 	einfo "The Digital Video Recorder. To get started you"
