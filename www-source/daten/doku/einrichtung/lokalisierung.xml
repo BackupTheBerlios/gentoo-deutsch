@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding="iso-8859-15"?>
 <guide>
 <title>Gentoo Linux Anleitung zur deutschen Lokalisierung</title>
-<author><mail link="holler@ahsoftware.de">
+<author><mail link="holler@gentoo.de">
         Alexander Holler</mail>
 </author>
 
@@ -28,11 +28,15 @@ eines Gentoo Linux behilflich sein.</abstract>
 <title>Systemuhr</title>
 <section>
         <body>
-                <p>Die meisten deutschen Benutzer haben ihre Systemuhr sicherlich 
-		auf die deutsche Uhrzeit eingestellt, daher sollte sollte man die
-		Umgebungsvariable <i>CLOCK</i> in <path>/etc/rc.conf</path> richtigstellen.
+                <p>Wer neben Linux auch noch andere Betriebssysteme installiert,
+                und daher seine Rechneruhr auf die lokale Zeit eingestellt hat, sollte die
+                Umgebungsvariable <i>CLOCK</i> in <path>/etc/rc.conf</path> richtigstellen.
+                Das hat allerdings den Nachteil, da&#223; nach einer Zeitumstellung die Uhrzeit
+                solange falsch ist, bis man (oder das andere BS) die Echtzeituhr entsprechend 
+                korrigiert hat. F&#252;r reine Linux-System ist es daher empfehlenswert die
+                Echzeituhr auf GMT einzustellen.
 <pre>
- CLOCK="local"
+ CLOCK="local" # fuer Multi-BS-Systeme
 </pre>
 		</p>
         </body>
@@ -98,6 +102,20 @@ eines Gentoo Linux behilflich sein.</abstract>
 </chapter>
 
 <chapter>
+<title>KDE</title>
+<section>
+        <body>
+                <p>Damit man in KDE seine gew&#252;nschte Sprache einstellen kann,
+                mu&#223; man das entsprechende Sprachpacket installieren.
+<pre>
+# <i>emerge kde-i18n-de</i>
+</pre>
+		</p>
+        </body>
+</section>
+</chapter>
+
+<chapter>
 <title>Eurosymbol f&#252;r die Konsole</title>
 <section>
         <body>
@@ -106,7 +124,7 @@ eines Gentoo Linux behilflich sein.</abstract>
 		die das Eurozeichen beinhaltet. Verf&#252;gbare Schriftarten findet man in
 		<path>/usr/share/consolefonts</path>.
 <pre>
- CONSOLEFONT="lat0-16"
+ CONSOLEFONT="lat9w-16"
 </pre>
 		</p>
         </body>
@@ -164,6 +182,6 @@ eines Gentoo Linux behilflich sein.</abstract>
 
 </chapter>
 
-<version>$Revision: 1.3 $</version>
-<date>$Date: 2003/01/27 22:57:49 $</date>
+<version>$Revision: 1.4 $</version>
+<date>$Date: 2003/02/18 18:22:10 $</date>
 </guide>
