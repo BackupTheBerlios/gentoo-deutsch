@@ -353,8 +353,7 @@
     <xsl:attribute name="href">
       <xsl:text>mailto:</xsl:text>
       <xsl:choose>
-	<xsl:when test="@nospam and @link">NOSPAM-<xsl:value-of select="@link"/></xsl:when>
-        <xsl:when test="@link"><xsl:value-of select="@link"/></xsl:when>                                                            
+        <xsl:when test="@link">KEINSPAM-<xsl:value-of select="@link"/></xsl:when>                                                            
         <xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>   
       </xsl:choose>
     </xsl:attribute>

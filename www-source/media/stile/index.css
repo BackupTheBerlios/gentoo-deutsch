@@ -38,7 +38,8 @@ div#logo{
 div#logo input{
   background-color:#F2F0F9;
   border: 1px dotted #45347B;  
-  font-size: 11px;
+  font-size: 12px;
+  width: 50px;
 }
 
 div#logo table{
