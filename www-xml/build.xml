@@ -277,8 +277,8 @@ verbinden.</p>
 die Partitionen f&#xFC;r Gentoo Linux einzurichten.</p>
 
 <p>
-Hier nun eine kurzer &#xDC;berblick &#xFC;ber das Standard Layout der Partitionen
-bei Gentoo Linux. Sie erzeugen mindestens drei Partitionen: eine Swap
+Hier nun ein kurzer &#xDC;berblick &#xFC;ber das Standard Layout der Partitionen
+bei Gentoo Linux. Wir erzeugen mindestens drei Partitionen: eine Swap
 Partition, eine Root Partition (hier liegt der Hauptteil von Gentoo Linux)
 und eine spezielle Boot Partition. Die Boot Partition ist dazu bestimmt den
 GRUB Bootmanager und den oder die Linux Kernel aufzunehmen. Die Boot Partition
@@ -287,104 +287,104 @@ Bei der t&#xE4;glichen Nutzung sollte die Boot Partition <e>nicht gemountet</e>
 bleiben. Dies verhindert das der Kernel von GRUB nach einem System Absturz
 nicht mehr geladen werden kann (z.B. wegen einem besch&#xE4;digten Dateisystem).
 Au&#xDF;erdem verhindert dies das "Henne-Ei-Problem" bei dem GRUB den Kernel
-wegen einem kaputten Dateisystem nicht mehr laden kann, Sie aber das Dateisystem
+wegen einem kaputten Dateisystem nicht mehr laden kann, Sie das Dateisystem aber
 reparieren k&#xF6;nnten, w&#xE4;re es nur m&#xF6;glich zu booten.</p>
 
 <p>Weiter geht es mit den verschiedenen Dateisystemen. Momentan stehen Ihnen
 vier Dateisystem zur Verf&#xFC;gung: XFS, ext2, ext3 (Journaling) und ReiserFS.
-ext2 ist ein erprobtes Linux Dateisystem, unterst&#xFC;tzt aber kein Journaling.
+Ext2 ist ein erprobtes Linux Dateisystem, unterst&#xFC;tzt aber kein Journaling.
 Das Dateisystem ext3 ist eine Weiterentwicklung von ext2 und unterst&#xFC;tzt
 Metadaten Journaling sowie "ordered data writes" <!-- Wie soll man das Uebersetzten ??? -->
-und ein effektives Daten Journaling. ReiserFS ist ein B'-tree basiertes 
+und ein effektives Daten Journaling. ReiserFS ist ein B*-tree basiertes 
 Dateisystem das eine sehr gute Performance bei der Handhabung kleiner Dateien
 verspricht und deutlich performanter (10x-15x) als ext2 und ext3 ist, wenn kleine 
 Dateien (kleiner 4k) im Spiel sind. Wie auch immer, momentan empfehlen wir die
-Verwendung von ReiserFS, wegen wiederholtem Auftreten von  Dateisystemfehlern in 
+Verwendung von ReiserFS, wegen wiederholtem Auftreten von Dateisystemfehlern in 
 der 2.4.x Serie des Kernels, <e>nicht</e>. ReiserFS unterst&#xFC;tzt Metadaten 
 Journaling aber kein Daten Journaling. <!-- Was auch immer das heisst :-) -->
 XFS ist ein "high-performance, enterprise-class" Dateisystem mit Metadaten
 Journaling und wird voll von Gentoo Linux unterst&#xFC;tzt.</p>
 
-<!-- Jetzt ist erst mal Schluss -->
 <p>
-If
-you're looking for the most standard filesystem, use ext2.  If you're looking
-for the most rugged journalled filesystem, use ext3.  If you're looking for a
-high-performance filesystem with journaling support, use XFS;  both ext3 and XFS are 
-mature and refined.  All filesystems except ReiserFS are production-ready.  
-Here are our basic recommended filesystem
-sizes and types:</p>
+Wenn Sie ein Standard Dateisystem suchen, nehmen Sie ext2. Wenn Sie ein robustes Journaling 
+Dateisystem brauchen, nehmen Sie ext3. Wenn Sie ein "high performance" Dateisystem, das auch 
+Journaling unterst&#xFC;tzt, brauchen, nehmen Sie XFS. Beide, ext3 und XFS sind bereits ausgreift. 
+Alle Dateisysteme bis auf ReiserFS sind f&#xFC;r der Produktionsbetrieb geeignet.
+Wir empfehlen folgende Dateisystemgr&#xF6;&#xDF;en und -arten:</p>
 
   <table>
   <tr>
   	<th>Partition</th>
-	<th>Size</th>
-	<th>Type</th>
-  	<th>example device</th>
+	<th>Gr&#xF6;&#xDF;e</th>
+	<th>Typ</th>
+  	<th>Beispiel Device</th>
   </tr>
   <tr>
-  	<ti>boot partition, containing kernel(s) and boot information</ti>
-	<ti>100 Megabytes</ti>
-	<ti>ext2/3 highly recommended (easiest); if ReiserFS then mount with <c>-o notail</c></ti>
+  	<ti>Boot Partition, enth&#xE4;lt den/die Kernel und alle zum booten relevanten Information</ti>
+	<ti>100 Megabyte</ti>
+	<ti>ext2/3 empfohlen (einfach); wenn Sie ReiserFS verwenden, mounten Sie es mit der <c>-o notail</c> Option</ti>
   	<ti>/dev/hda1</ti>
   </tr>
    <tr>
-  	<ti>swap partition (no longer a 128 Megabyte limit)</ti>
-	<ti>&gt;=2*Amount of RAM in this system is recommended but no longer (as of kernel 2.4.10) required</ti>
+  	<ti>Swap Partition (es gibt kein 128 Megabyte Limit mehr)</ti>
+	<ti>&gt;=2*RAM wird empfohlen , ist aber seit Kernel 2.4.10 nicht mehr n&#xF6;tig</ti>
 	<ti>Linux swap</ti>
   	<ti>/dev/hda2</ti>
   </tr>
   <tr>
-  	<ti>root partition, containing main filesystem (/usr, /home, etc)</ti>
-	<ti>&gt;=1.5 Gigabytes</ti>
-	<ti>XFS, ext3 recommended; ext2 ok</ti>
+  	<ti>Root Partition, enth&#xE4;lt das Hauptdateisystem (/usr, /home, usw.)</ti>
+	<ti>&gt;=1.5 Gigabyte</ti>
+	<ti>XFS, ext3 empfohlen; ext2 ok</ti>
   	<ti>/dev/hda3</ti>
   </tr>
  </table>
 
-<note>At this point, create your partitions using fdisk.  Note that your partitions
-should be of type 82 if swap and 83 for regular filesystems (whether XFS, ReiserFS <e>or</e> ext2).
-</note>
+<note>Sie sollten nun Ihre Partition mit <c>fdisk</c> erzeugen. Denken Sie daran, dass
+der Partitionstyp f&#xFC;r Swap "82" und f&#xFC;r regul&#xE4;re Partitionen "83" ist (egal ob Sie XFS, ext3
+oder ext2 verwenden wollen).</note>
 
-<p>Once you've created your partitions using <c>fdisk</c>, it's time to initialize
-the filesystems that will be used to house our data.  Initialize swap as follows:</p>
+<p>Wenn Sie Ihre Dateisysteme mit <c>fdisk</c> erstellt haben, ist es jetzt an der Zeit
+diese zu initialisieren. Die Swap Partition richten Sie folgenderma&#xDF;en ein:</p>
 <pre>
 # <i>mkswap /dev/hda2</i>
 </pre>
-<p>You can use the <c>mke2fs</c> command to create ext2 filesystems:</p>
+<p>Mit dem Kommando <c>mke2fs</c> erstellen Sie ext2 Dateisysteme:</p>
 <pre>
 # <i>mke2fs /dev/hda1</i>
 </pre>
-<p>To create an XFS filesystem, use the <c>mkfs.xfs</c> command:</p>
+<p>Um ein XFS Dateisystem zu erstellen, verwenden Sie <c>mkfs.xfs</c></p>
 <pre>
 # <i>mkfs.xfs /dev/hda3</i>
 </pre>
 <note>
-You may want to add a couple of additional flags to the <c>mkfs.xfs</c> command: <c>-d agcount=3 -l size=32m</c>. 
-The <c>-d agcount=3</c> command will lower
-the number of allocation groups.  XFS will insist on using at least 1 allocation group per 4 GB of your partition,
-so, for example, if you hava a 20 GB partition you will need a minimum agcount of 5.  The <c>-l size=32m</c> command
-increases the journal size to 32 Mb, increasing performance.
-</note>
-<warn>
-If you are installing an XFS partition over a previous ReiserFS partition, later attempts to mount may fail without
-an explicit <c>mount -t xfs</c>.  The solution is to zero out the partition before creating the XFS filesystem:
-<c>dd if=/dev/zero of=/dev/hd<comment>x</comment> bs=1k</c>. 
-</warn>
-<p>If you'd like to use ext3, you can create ext3 filesystems using <c>mke2fs -j</c>:</p>
+Es kann sein, dass Sie <c>mkfs.xfs</c> mit einigen Optionen verwenden wollen 
+wie z.B.: <c>-d agcount=3 -l size=32m</c>. Die Option <c>-d agcount=3</c> verringert die Anzahl an
+"allocation groups". XFS wird auf jeden Fall eine "allocation group" pro
+4GB auf der Partition einrichten, d.h. auf einer 20GB Partition ist der minimale Wert f&#xFC;r
+<e>agcount</e> 5. Der Parameter <c>-l size=32m</c> erh&#xF6;ht die Gr&#xF6;&#xDF;e des Journals auf 32MB, was
+die Performance erh&#xF6;ht.</note>
+
+<warn>Wenn Sie ein XFS Dateisystem auf eine bestehende ReiserFS Partition installieren, k&#xF6;nnen sp&#xE4;tere 
+Versuche die Partition zu mounten fehlschlagen wenn Sie das Dateisystem nicht explizit angeben :
+<c>mount -t xfs</c>. Um dies zu Umgehen sollten Sie die alte ReiserFS Partition mit Nullen 
+&#xFC;berschreiben bevor Sie das XFS Dateisystem erstellen: 
+<c>dd if=/dev/zero of=/dev/hd<comment>x</comment> bs=1k</c>.</warn>
+
+<p>Wenn Sie ext3 verwenden wollen, erstellen Sie das Datesystem mit folgendem Befehl: <c>mke2fs -j</c>:</p>
 <pre>
 # <i>mke2fs -j /dev/hda3</i>
 </pre>
-<p>To create ReiserFS filesystems, use the <c>mkreiserfs</c> command:</p>
+<p>Um ein ReiserFS Datesystem zu erstellen, verwenden Sie das <c>mkreiserfs</c> Kommando:</p>
 <pre>
 # <i>mkreiserfs /dev/hda3</i>
 </pre>
 
-<warn>Again, we do not recommend ReiserFS at this time.  While ReiserFS has
-worked fine for many, filesystem corruption has been too common a problem with
-ReiserFS and the 2.4.x series kernels.</warn>
+<warn>
+Noch einmal, momentan raten wir von ReiserFS ab. Obwohl ReiserFS bei vielen Benutzern fehlerfrei
+arbeitet, gibt es ein allgemeines Problem mit Dateisystemkorruption bei ReiserFS in Verbindung
+mit Kernels der Serie 2.4.x.</warn>
 
-<note>You can find out more about using ext3 under Linux 2.4 at <uri>http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html</uri>.</note>
+<note>Mehr Informationen zum Thema ext3 unter Linux 2.4 finden Sie hier: <uri>http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html</uri>.</note>
 </body>
 </section>
 </chapter>

@@ -286,8 +286,8 @@ verbinden.</p>
 die Partitionen für Gentoo Linux einzurichten.</p>
 
 <p>
-Hier nun eine kurzer Überblick über das Standard Layout der Partitionen
-bei Gentoo Linux. Sie erzeugen mindestens drei Partitionen: eine Swap
+Hier nun ein kurzer Überblick über das Standard Layout der Partitionen
+bei Gentoo Linux. Wir erzeugen mindestens drei Partitionen: eine Swap
 Partition, eine Root Partition (hier liegt der Hauptteil von Gentoo Linux)
 und eine spezielle Boot Partition. Die Boot Partition ist dazu bestimmt den
 GRUB Bootmanager und den oder die Linux Kernel aufzunehmen. Die Boot Partition
@@ -296,69 +296,65 @@ Bei der täglichen Nutzung sollte die Boot Partition <font class="emphasis">nicht
 bleiben. Dies verhindert das der Kernel von GRUB nach einem System Absturz
 nicht mehr geladen werden kann (z.B. wegen einem beschädigten Dateisystem).
 Außerdem verhindert dies das &quot;Henne-Ei-Problem&quot; bei dem GRUB den Kernel
-wegen einem kaputten Dateisystem nicht mehr laden kann, Sie aber das Dateisystem
+wegen einem kaputten Dateisystem nicht mehr laden kann, Sie das Dateisystem aber
 reparieren könnten, wäre es nur möglich zu booten.</p>
 
 <p>Weiter geht es mit den verschiedenen Dateisystemen. Momentan stehen Ihnen
 vier Dateisystem zur Verfügung: XFS, ext2, ext3 (Journaling) und ReiserFS.
-ext2 ist ein erprobtes Linux Dateisystem, unterstützt aber kein Journaling.
+Ext2 ist ein erprobtes Linux Dateisystem, unterstützt aber kein Journaling.
 Das Dateisystem ext3 ist eine Weiterentwicklung von ext2 und unterstützt
 Metadaten Journaling sowie &quot;ordered data writes&quot; 
-und ein effektives Daten Journaling. ReiserFS ist ein B'-tree basiertes 
+und ein effektives Daten Journaling. ReiserFS ist ein B*-tree basiertes 
 Dateisystem das eine sehr gute Performance bei der Handhabung kleiner Dateien
 verspricht und deutlich performanter (10x-15x) als ext2 und ext3 ist, wenn kleine 
 Dateien (kleiner 4k) im Spiel sind. Wie auch immer, momentan empfehlen wir die
-Verwendung von ReiserFS, wegen wiederholtem Auftreten von  Dateisystemfehlern in 
+Verwendung von ReiserFS, wegen wiederholtem Auftreten von Dateisystemfehlern in 
 der 2.4.x Serie des Kernels, <font class="emphasis">nicht</font>. ReiserFS unterstützt Metadaten 
 Journaling aber kein Daten Journaling. 
 XFS ist ein &quot;high-performance, enterprise-class&quot; Dateisystem mit Metadaten
 Journaling und wird voll von Gentoo Linux unterstützt.</p>
 
-
 <p>
-If
-you're looking for the most standard filesystem, use ext2.  If you're looking
-for the most rugged journalled filesystem, use ext3.  If you're looking for a
-high-performance filesystem with journaling support, use XFS;  both ext3 and XFS are 
-mature and refined.  All filesystems except ReiserFS are production-ready.  
-Here are our basic recommended filesystem
-sizes and types:</p>
+Wenn Sie ein Standard Dateisystem suchen, nehmen Sie ext2. Wenn Sie ein robustes Journaling 
+Dateisystem brauchen, nehmen Sie ext3. Wenn Sie ein &quot;high performance&quot; Dateisystem, das auch 
+Journaling unterstützt, brauchen, nehmen Sie XFS. Beide, ext3 und XFS sind bereits ausgreift. 
+Alle Dateisysteme bis auf ReiserFS sind für der Produktionsbetrieb geeignet.
+Wir empfehlen folgende Dateisystemgrößen und -arten:</p>
 
   <table class="ntable">
   <tr>
   	<td bgcolor="#7a5ada" class="infohead"><b>Partition</b></td>
-	<td bgcolor="#7a5ada" class="infohead"><b>Size</b></td>
-	<td bgcolor="#7a5ada" class="infohead"><b>Type</b></td>
-  	<td bgcolor="#7a5ada" class="infohead"><b>example device</b></td>
+	<td bgcolor="#7a5ada" class="infohead"><b>Größe</b></td>
+	<td bgcolor="#7a5ada" class="infohead"><b>Typ</b></td>
+  	<td bgcolor="#7a5ada" class="infohead"><b>Beispiel Device</b></td>
   </tr>
   <tr>
-  	<td bgcolor="#ddddff" class="tableinfo">boot partition, containing kernel(s) and boot information</td>
-	<td bgcolor="#ddddff" class="tableinfo">100 Megabytes</td>
-	<td bgcolor="#ddddff" class="tableinfo">ext2/3 highly recommended (easiest); if ReiserFS then mount with <font class="code">-o notail</font>
-</td>
+  	<td bgcolor="#ddddff" class="tableinfo">Boot Partition, enthält den/die Kernel und alle zum booten relevanten Information</td>
+	<td bgcolor="#ddddff" class="tableinfo">100 Megabyte</td>
+	<td bgcolor="#ddddff" class="tableinfo">ext2/3 empfohlen (einfach); wenn Sie ReiserFS verwenden, mounten Sie es mit der <font class="code">-o notail</font> Option</td>
   	<td bgcolor="#ddddff" class="tableinfo">/dev/hda1</td>
   </tr>
    <tr>
-  	<td bgcolor="#ddddff" class="tableinfo">swap partition (no longer a 128 Megabyte limit)</td>
-	<td bgcolor="#ddddff" class="tableinfo">&gt;=2*Amount of RAM in this system is recommended but no longer (as of kernel 2.4.10) required</td>
+  	<td bgcolor="#ddddff" class="tableinfo">Swap Partition (es gibt kein 128 Megabyte Limit mehr)</td>
+	<td bgcolor="#ddddff" class="tableinfo">&gt;=2*RAM wird empfohlen , ist aber seit Kernel 2.4.10 nicht mehr nötig</td>
 	<td bgcolor="#ddddff" class="tableinfo">Linux swap</td>
   	<td bgcolor="#ddddff" class="tableinfo">/dev/hda2</td>
   </tr>
   <tr>
-  	<td bgcolor="#ddddff" class="tableinfo">root partition, containing main filesystem (/usr, /home, etc)</td>
-	<td bgcolor="#ddddff" class="tableinfo">&gt;=1.5 Gigabytes</td>
-	<td bgcolor="#ddddff" class="tableinfo">XFS, ext3 recommended; ext2 ok</td>
+  	<td bgcolor="#ddddff" class="tableinfo">Root Partition, enthält das Hauptdateisystem (/usr, /home, usw.)</td>
+	<td bgcolor="#ddddff" class="tableinfo">&gt;=1.5 Gigabyte</td>
+	<td bgcolor="#ddddff" class="tableinfo">XFS, ext3 empfohlen; ext2 ok</td>
   	<td bgcolor="#ddddff" class="tableinfo">/dev/hda3</td>
   </tr>
  </table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>At this point, create your partitions using fdisk.  Note that your partitions
-should be of type 82 if swap and 83 for regular filesystems (whether XFS, ReiserFS <font class="emphasis">or</font> ext2).
-</p></td></tr></table>
+<b>Anmerkung: </b>Sie sollten nun Ihre Partition mit <font class="code">fdisk</font> erzeugen. Denken Sie daran, dass
+der Partitionstyp für Swap &quot;82&quot; und für reguläre Partitionen &quot;83&quot; ist (egal ob Sie XFS, ext3
+oder ext2 verwenden wollen).</p></td></tr></table>
 
-<p>Once you've created your partitions using <font class="code">fdisk</font>, it's time to initialize
-the filesystems that will be used to house our data.  Initialize swap as follows:</p>
+<p>Wenn Sie Ihre Dateisysteme mit <font class="code">fdisk</font> erstellt haben, ist es jetzt an der Zeit
+diese zu initialisieren. Die Swap Partition richten Sie folgendermaßen ein:</p>
 <a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 8</p></td></tr>
@@ -366,7 +362,7 @@ the filesystems that will be used to house our data.  Initialize swap as follows
 # <font class="input">mkswap /dev/hda2</font>
 </pre></td></tr>
 </table>
-<p>You can use the <font class="code">mke2fs</font> command to create ext2 filesystems:</p>
+<p>Mit dem Kommando <font class="code">mke2fs</font> erstellen Sie ext2 Dateisysteme:</p>
 <a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 9</p></td></tr>
@@ -374,7 +370,8 @@ the filesystems that will be used to house our data.  Initialize swap as follows
 # <font class="input">mke2fs /dev/hda1</font>
 </pre></td></tr>
 </table>
-<p>To create an XFS filesystem, use the <font class="code">mkfs.xfs</font> command:</p>
+<p>Um ein XFS Dateisystem zu erstellen, verwenden Sie <font class="code">mkfs.xfs</font>
+</p>
 <a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 10</p></td></tr>
@@ -384,19 +381,21 @@ the filesystems that will be used to house our data.  Initialize swap as follows
 </table>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
-You may want to add a couple of additional flags to the <font class="code">mkfs.xfs</font> command: <font class="code">-d agcount=3 -l size=32m</font>. 
-The <font class="code">-d agcount=3</font> command will lower
-the number of allocation groups.  XFS will insist on using at least 1 allocation group per 4 GB of your partition,
-so, for example, if you hava a 20 GB partition you will need a minimum agcount of 5.  The <font class="code">-l size=32m</font> command
-increases the journal size to 32 Mb, increasing performance.
-</p></td></tr></table>
+Es kann sein, dass Sie <font class="code">mkfs.xfs</font> mit einigen Optionen verwenden wollen 
+wie z.B.: <font class="code">-d agcount=3 -l size=32m</font>. Die Option <font class="code">-d agcount=3</font> verringert die Anzahl an
+&quot;allocation groups&quot;. XFS wird auf jeden Fall eine &quot;allocation group&quot; pro
+4GB auf der Partition einrichten, d.h. auf einer 20GB Partition ist der minimale Wert für
+<font class="emphasis">agcount</font> 5. Der Parameter <font class="code">-l size=32m</font> erhöht die Größe des Journals auf 32MB, was
+die Performance erhöht.</p></td></tr></table>
+
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
-<b>Warnung: </b>
-If you are installing an XFS partition over a previous ReiserFS partition, later attempts to mount may fail without
-an explicit <font class="code">mount -t xfs</font>.  The solution is to zero out the partition before creating the XFS filesystem:
-<font class="code">dd if=/dev/zero of=/dev/hd<font class="comment">x</font> bs=1k</font>. 
-</p></td></tr></table>
-<p>If you'd like to use ext3, you can create ext3 filesystems using <font class="code">mke2fs -j</font>:</p>
+<b>Warnung: </b>Wenn Sie ein XFS Dateisystem auf eine bestehende ReiserFS Partition installieren, können spätere 
+Versuche die Partition zu mounten fehlschlagen wenn Sie das Dateisystem nicht explizit angeben :
+<font class="code">mount -t xfs</font>. Um dies zu Umgehen sollten Sie die alte ReiserFS Partition mit Nullen 
+überschreiben bevor Sie das XFS Dateisystem erstellen: 
+<font class="code">dd if=/dev/zero of=/dev/hd<font class="comment">x</font> bs=1k</font>.</p></td></tr></table>
+
+<p>Wenn Sie ext3 verwenden wollen, erstellen Sie das Datesystem mit folgendem Befehl: <font class="code">mke2fs -j</font>:</p>
 <a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 11</p></td></tr>
@@ -404,7 +403,7 @@ an explicit <font class="code">mount -t xfs</font>.  The solution is to zero out
 # <font class="input">mke2fs -j /dev/hda3</font>
 </pre></td></tr>
 </table>
-<p>To create ReiserFS filesystems, use the <font class="code">mkreiserfs</font> command:</p>
+<p>Um ein ReiserFS Datesystem zu erstellen, verwenden Sie das <font class="code">mkreiserfs</font> Kommando:</p>
 <a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 12</p></td></tr>
@@ -414,12 +413,13 @@ an explicit <font class="code">mount -t xfs</font>.  The solution is to zero out
 </table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
-<b>Warnung: </b>Again, we do not recommend ReiserFS at this time.  While ReiserFS has
-worked fine for many, filesystem corruption has been too common a problem with
-ReiserFS and the 2.4.x series kernels.</p></td></tr></table>
+<b>Warnung: </b>
+Noch einmal, momentan raten wir von ReiserFS ab. Obwohl ReiserFS bei vielen Benutzern fehlerfrei
+arbeitet, gibt es ein allgemeines Problem mit Dateisystemkorruption bei ReiserFS in Verbindung
+mit Kernels der Serie 2.4.x.</p></td></tr></table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>You can find out more about using ext3 under Linux 2.4 at <a href="http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html">http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html</a>.</p></td></tr></table>
+<b>Anmerkung: </b>Mehr Informationen zum Thema ext3 unter Linux 2.4 finden Sie hier: <a href="http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html">http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html</a>.</p></td></tr></table>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap7">7.</a></font>Mount partitions</p>
 <p>
