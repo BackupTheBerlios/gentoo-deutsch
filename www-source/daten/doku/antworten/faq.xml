@@ -53,7 +53,7 @@
 <li><uri link="#doc_chap3_sect7">Warum kann ein Benutzer nicht mit su zu root werden?</uri></li>
 <li><uri link="#doc_chap3_sect8">Wie kann ich devfs aktivieren?</uri></li>
 <li><uri link="#doc_chap3_sect9">Wie kann ich devfs deaktivieren?</uri></li>
-<li><uri link="#doc_chap3_sect10">Wie erhalte ich bei Benutzung von devfs ein <path>/dev/mouse </path> das nach dem Booten nicht wieder verloren geht?</uri></li>
+<li><uri link="#doc_chap3_sect10">Wie erhalte ich bei Benutzung von devfs ein /dev/mouse das nach dem Booten nicht wieder verloren geht?</uri></li>
 <li><uri link="#doc_chap3_sect11">Grub kann die stage x.y nicht finden?</uri></li>
 <li><uri link="#doc_chap3_sect12">Mein ASUS CUV4X-D will nicht booten und es friert bei manchen Prozessen des Kernel ladens und der Hardware Suche ein.</uri></li>
 <li><uri link="#doc_chap3_sect13">Wenn ich ein Gentoo 1.4_rc1 habe, kann ich mein System dann ohne Neuinstallation auf 1.4_rc2, 1.4_final/_rc3  aktualisieren?</uri></li>
