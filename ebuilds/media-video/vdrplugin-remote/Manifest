@@ -1,3 +1,5 @@
-MD5 b2be346ace85dec5090680e741075937 ChangeLog 436
-MD5 bd2d2cb872f5006bf5bdd4085b15301a vdrplugin-remote-0.2.0.ebuild 1217
+MD5 e92adac99ede1ce87a7c33e6b342e40b vdrplugin-remote-0.2.0.ebuild 1223
+MD5 e92adac99ede1ce87a7c33e6b342e40b vdrplugin-remote-0.3.0.ebuild 1223
+MD5 4e591a404e032c45b869264e1d032f73 ChangeLog 504
 MD5 90d298146bb7a6b4978e5c90b948165a files/digest-vdrplugin-remote-0.2.0 64
+MD5 7c4665117f52a04a321c832ac0e0b2d7 files/digest-vdrplugin-remote-0.3.0 64
