@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book SYSTEM "/dtd/book.dtd">
 
-<!-- English CVS Version: 1.34 -->
+<!-- English CVS Version: 1.38 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/handbook.xml,v 1.7 2003/12/12 21:05:42 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/handbook.xml,v 1.8 2003/12/19 20:02:06 dertobi123 Exp $ -->
 
 <book link="handbook.xml">
 <title>Gentoo Handbuch</title>
@@ -83,6 +83,9 @@
 <author title="Editor">
   <mail link="erwin@gentoo.org">Erwin</mail>
 </author>
+<author title="Editor">
+  <mail link="kumba@gentoo.org">Joshua Kinard</mail>
+</author>
 <author title="Reviewer">
     <mail link="g2boojum@gentoo.org">Grant Goodyear</mail>
 </author>
@@ -132,8 +135,8 @@ bündeln.
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 <license/>
 
-<version>0.24</version>
-<date>10. Dezember 2003</date>
+<version>0.28</version>
+<date>18. Dezember 2003</date>
 
 <part>
 <title>Gentoo installieren</title>
