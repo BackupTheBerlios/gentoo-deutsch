@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 
-<!DOCTYPE guide SYSTEM "../../gentoo-web/dtd/guide.dtd">
+<!DOCTYPE guide SYSTEM "../www-xsl/guide.dtd">
 
 <guide link="/doc/faq.html">
 <title>Gentoo Linux Frequently Asked Questions</title>
@@ -104,15 +104,15 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 		<title>Mir erscheint das ganze sehr instabil und ich benutzte "-O9 -ffast-math
 		-fomit-frame-pointer" optimierungen. Warum?</title>
 		<body>
-		<p>Bei Optimierungen über <c>-O3</c> hinaus, ist das Risko hoch, daß einzelne Pakete
-		nicht mehr funktionieren. Sehr agressive Optimimierungen können den Assembler Code
-		insoweit bis zu einem Punkt verändern, wo er nicht mehr das tut, was eigentlich von ihm
+		<p>Bei Optimierungen &#xFC;ber <c>-O3</c> hinaus, ist das Risko hoch, dass einzelne Pakete
+		nicht mehr funktionieren. Sehr agressive Optimimierungen k&#xF6;nnen den Assembler Code
+		insoweit bis zu einem Punkt ver&#xE4;ndern, wo er nicht mehr das tut, was eigentlich von ihm
 		erwartet wird. <e>Loc-Dog</e> (im IRC)benutzt <c>-O3 -mcpu=i686 -march=i686 -fforce-addr
 		-fomit-frame-pointer -funroll-loops -frerun-cse-after-loop -frerun-loop-opt -malign-functions=4</c>,
-		um sein System so weit es geht im Bereich des noch tragbaren zu optimieren. Darüber hinaus
+		um sein System so weit es geht im Bereich des noch tragbaren zu optimieren. Dar&#xFC;ber hinaus
 		sollten ultra-hohe Optimierungen nur noch bei einzelnen Paketen angewendet werden, wo die
 		Leistungssteigerung um 2% noch gerechtfertigt ist (Graphik und verschiedene Multimedia-Programme)
-		auch, um die jeweiligen Pakete noch testen zu können und sicherzustellen, dass sie nicht bis in
+		auch, um die jeweiligen Pakete noch testen zu k&#xF6;nnen und sicherzustellen, dass sie nicht bis in
 		den Status des Vergessens optimiert wurden.</p>
 		</body>
 	</section>
@@ -169,24 +169,24 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 		</body>
 	</section>
 	<section>
-		<!-- korrekt übersetzt? (JS)-->
+		<!-- korrekt &#xFC;bersetzt? (JS)-->
 		<title>Wie erhalte ich ein <path>/dev/mouse </path> das nach dem Booten nicht
 		wieder verloren geht (bei benutzung von devfs)?</title>
 		<body>
 		<p>
-		Ab Version 1.0_rc6 oder später, es genügt einfach <c>ln -s</c>
+		Ab Version 1.0_rc6 oder sp&#xE4;ter, es gen&#xFC;gt einfach <c>ln -s</c>
 		um einen gewohnten symbolischen link von <path>/dev/mouse</path> zu
 		erstellen, welcher auch zwischen Neustarts erhalten bleibt.
 		</p>
 		<p>Alle anderen benutzer sollten Ihre <path>/etc/devfsd.conf</path>
-		editieren und folgende Zeilen hinzufügen:</p>
+		editieren und folgende Zeilen hinzuf&#xFC;gen:</p>
 <pre>
 REGISTER        ^misc/psaux$    CFUNCTION GLOBAL symlink misc/psaux mouse
 UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 </pre>
-		<p>Benutzen Sie eine andere Maus, als die standardmäßig vorgegebene devfs PS/2 Maus 
+		<p>Benutzen Sie eine andere Maus, als die standardm&#xE4;ssig vorgegebene devfs PS/2 Maus 
 		unter <path>/dev/misc/psaux</path>, sollten die <c>misc/psaux</c> Zeilen entsprechend
-		abgeändert werden. Anschliessend sollte noch <c>killall -HUP devfsd</c> ausgeführt werden,
+		abge&#xE4;ndert werden. Anschliessend sollte noch <c>killall -HUP devfsd</c> ausgef&#xFC;hrt werden,
 		um die Pfadangaben in <path>/etc/devfsd.conf</path> erneut einzulesen.</p>
 		</body>
 	</section>
@@ -231,11 +231,11 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<title>Warum ein neues Port System schreiben (Portage), wenn man die BSD Version verwenden k&#xF6;nnte?</title>
 		<body>
 		<p>In einem Satz: Weil Portage in vielen Dingen viel besser ist. Eine der Entwicklungsphilosophien
-		von der <c>.ebuild</c> Syntax ist die Analogie zu dem, was Sie an der Kommandozeile eingeben würden,
+		von der <c>.ebuild</c> Syntax ist die Analogie zu dem, was Sie an der Kommandozeile eingeben w&#xFC;rden,
 		um die Pakete von Hand zu installieren. Somit sollte Portage sehr einfach zu erlernen sein und auch
-		ohne großen Aufwand an die eigenen Bedürfnisse angepasstw erden können. Wir haben auch "gefälschte"
+		ohne grossen Aufwand an die eigenen Bed&#xFC;rfnisse angepasstw erden k&#xF6;nnen. Wir haben auch "gef&#xE4;lschte"
 		Installationen im OpenBSD-Stil, sicheres entfernen, Systemanpassungen, Paketmaskierung, ein echtes
-		System, welches Abhängigkeiten berücksichtigt und noch viele andere guten Sachen.</p>
+		System, welches Abh&#xE4;ngigkeiten ber&#xFC;cksichtigt und noch viele andere guten Sachen.</p>
 		</body>
 	</section>
 
@@ -259,8 +259,8 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<!-- kompilieren mit c oder k ?? (JS)-->
 		<title>Wie kann ich globale Einstellungen zum kompilieren der Pakete einstellen?</title>
 		<body><p><path>/etc/make.conf</path> kann editiert werden, um globale und profil-spezifische
-		Standardeinstellungen zu überschreiben, die beim kompilieren und einführen der Pakete verwendet werden.
-		Die am meisten üblichen Befele sind folgende:</p>
+		Standardeinstellungen zu &#xFC;berschreiben, die beim kompilieren und einf&#xFC;hren der Pakete verwendet werden.
+		Die am meisten &#xFC;blichen Befele sind folgende:</p>
 		<table>
 		<tr>
 			<th>Flag</th>
@@ -268,30 +268,30 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		</tr>
 		<tr>
 			<ti>CHOST</ti>
-			<ti>Dies setzt die HOST Variable für Compiler, z.B. <c>i686-pc-linux-gnu</c></ti>
+			<ti>Dies setzt die HOST Variable f&#xFC;r Compiler, z.B. <c>i686-pc-linux-gnu</c></ti>
 		</tr>
 		<tr>
 			<ti>CFLAGS</ti>
-			<ti>Die Optionen für den <c>gcc</c> zum kompilieren von Programmen, die in C (*.c Dateien) geschrieben sind</ti>
+			<ti>Die Optionen f&#xFC;r den <c>gcc</c> zum kompilieren von Programmen, die in C (*.c Dateien) geschrieben sind</ti>
 		</tr>
 		<tr>
 			<ti>CXXFLAGS</ti>
-			<ti>Die Optionen für den <c>gcc</c> zum kompilieren von Programmen, die in C++ (*.c,*.cpp etc.
+			<ti>Die Optionen f&#xFC;r den <c>gcc</c> zum kompilieren von Programmen, die in C++ (*.c,*.cpp etc.
 			Dateien) geschrieben sind</ti>
 		</tr>
 		<tr>
 			<ti>USE</ti>
-			<ti>Dies Erlaubt das Setzen von gewünschten Komponenten, die mit hinein kompiliert
+			<ti>Dies Erlaubt das Setzen von gew&#xFC;nschten Komponenten, die mit hinein kompiliert
 			werden sollen, sofern diese vorhanden sind. Zum Besipiel, wenn Sie <c>gnome</c> innerhalb
-			der USE Zeile haben, und Sie <c>xchat</c> kompilieren, wird dies die Gnome Unterstützung
-			von xchat hinzufügen. Auch alle Paket-Abhängigkeiten machen von den Veränderungen in der
+			der USE Zeile haben, und Sie <c>xchat</c> kompilieren, wird dies die Gnome Unterst&#xFC;tzung
+			von xchat hinzuf&#xFC;gen. Auch alle Paket-Abh&#xE4;ngigkeiten machen von den Ver&#xE4;nderungen in der
 			USE-Zeile Gebrauch.</ti>
 		</tr>
 		<tr>
 			<ti>GENTOO_MIRRORS</ti>
 			<ti>Durch Leerzeichen getrennte Liste von URIs die im zur Zeit Gentoo Pakete spiegeln. Portage
-			verucht zunächst von einem <c>GENTOO_MIRROR</c> herunter zu laden, bevor es die offizielle
-			<c>SRC_URI</c> ausprobieren. Um das Überspringen von Mirrors zu erzwingen, kann diese Variable auf ""
+			verucht zun&#xE4;chst von einem <c>GENTOO_MIRROR</c> herunter zu laden, bevor es die offizielle
+			<c>SRC_URI</c> ausprobieren. Um das &#xDC;berspringen von Mirrors zu erzwingen, kann diese Variable auf ""
 			gesetzt werden.</ti>
 		</tr>
 		</table>
@@ -327,14 +327,14 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 
 	<section>
 		<title>Wenn ich ein Paket mit <c>emerge</c> oder <c>ebuild</c> aktualisiere, wie kann ich 
-		verhindern, daß meine config Dateien sich anhäufen?</title>
+		verhindern, dass meine config Dateien sich anh&#xE4;ufen?</title>
 		<body><p>
-		Portage enthält standardmäßig eine Unterstützung für config Dateien. <c>emerge --help config</c>
-		gibt darüber mehr Informationen. Eine einfacher Grund dafür ist, daß ein Paket namens <path>foo</path>
+		Portage enth&#xE4;lt standardm&#xE4;ssig eine Unterst&#xFC;tzung f&#xFC;r config Dateien. <c>emerge --help config</c>
+		gibt dar&#xFC;ber mehr Informationen. Eine einfacher Grund daf&#xFC;r ist, dass ein Paket namens <path>foo</path>
 		irgendeine config Datei unter <path>/etc</path> ablegt und eine config Datei eines anderen <path>foo</path>
-		Paketes bereits darin existiert, was zum Überschreiben dieser Datei führen würde. Die neue config
+		Paketes bereits darin existiert, was zum &#xDC;berschreiben dieser Datei f&#xFC;hren w&#xFC;rde. Die neue config
 		Datei von <path>foo</path> wird deshalb als <path>._cfgxxxx_foo</path> in diesem Verzeichnis abgespeichert.
-		Ein sinvolles Werkzeug zum Untersuchen unad Aktualisieren von geschützten config Dateien ist <c>etc-update</c>,
+		Ein sinvolles Werkzeug zum Untersuchen unad Aktualisieren von gesch&#xFC;tzten config Dateien ist <c>etc-update</c>,
 		welches durch ein <c>emerge app-admin/gentoolkit</c> zu haben ist.
 		</p></body>
 	</section>
@@ -342,7 +342,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<section>
 		<title>Ich m&#xF6;chte den <c>./configure</c> Schritt selber ausf&#xFC;hren. Geht das?</title>
 		<body><p>
-		<!--noch nicht übersetzt (JS)-->
+		<!--noch nicht &#xFC;bersetzt (JS)-->
 		Yes, but it is not trivial.  First do <c>man ebuild</c> followed by
 		<c>ebuild foo-x.y.z.ebuild unpack</c>.  Then <c>cd</c> to 
 		<path>/var/tmp/portage/foo-x.y.z/work</path>.  You can manually perform
@@ -394,7 +394,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<!--noch nicht übersetzt (JS)-->
+		<!--noch nicht &#xFC;bersetzt (JS)-->
 		<title>.tar.gz sources for installed software are piling up in /usr/portage/distfiles/ using 
 		valuable space. Is it safe to delete these files?</title>
 		<body><p>
@@ -408,7 +408,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<!--noch nicht übersetzt (JS)-->
+		<!--noch nicht &#xFC;bersetzt (JS)-->
 		<title>How can I manage my own ebuilds without destroying them by (r)sync?</title>
 		<body>
 		<p>The simplest method is to use anonymous CVS instead of rsync, and 
@@ -438,7 +438,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
     		<title>Ich habe openssh auf meiner Box installiert, aber ich kann mich nur als root und nicht als normaler Benutzer von aussen einloggen.</title>
     		<body>
 		<p>
-		<!--noch nicht übersetzt (JS)-->
+		<!--noch nicht &#xFC;bersetzt (JS)-->
 		This is most probably because your user account doesn't have a valid shell specified. Check
 		for your user entry in 
 		<path>/etc/passwd</path> and see if it ends in /bin/bash (or any other shell). If it doesn't,
@@ -472,7 +472,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<!--noch nicht übersetzt (JS)-->
+		<!--noch nicht &#xFC;bersetzt (JS)-->
 		<title>Warum liesst KDE nicht <path>/etc/profile</path>?</title>
 		<body><p>You need to add <c>--login</c> to the first line in <path>/opt/kde2.1/bin/startkde
 		</path>, so that it reads as follows:</p>
@@ -488,7 +488,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		<title>ReiserFS and filesystem corruption issues -- how to fix'em, etc</title>
 		<body>
 		<p>
-		<!--noch nicht übersetzt (JS)-->
+		<!--noch nicht &#xFC;bersetzt (JS)-->
 		ReiserFS has had serious problems with the 2.4-series kernels; we
 		highly recommend avoiding ReiserFS for the time being.  If your
 		ReiserFS partition is already corrupt, try booting the Gentoo 
@@ -609,7 +609,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<section>
 		<title>Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt?</title>
 		<body>
-		<!--noch nicht übersetzt (JS)-->
+		<!--noch nicht &#xFC;bersetzt (JS)-->
 		<p>A good first step is to browse through the relevant doumentation at <uri>http://www.gentoo.org/index-docs.html</uri>, 
 		failing that, the various Gentoo Linux mailing
 		lists listed on <uri>www.gentoo.org</uri>.  To search through the Gentoo mailling lists, Google
