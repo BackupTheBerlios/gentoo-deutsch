@@ -1,7 +1,17 @@
 # ChangeLog for x11-misc/karamba
 # Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-misc/karamba/Attic/ChangeLog,v 1.6 2003/04/11 02:50:23 shermann Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-misc/karamba/Attic/ChangeLog,v 1.7 2003/04/16 09:47:35 shermann Exp $
 
+*karamba-0.17 (14 Apr 2003)
+
+  14 Apr 2003; Stephan Hermann <sh@sourcecode.de>
+  New version
+  From the authors changelog:
+  Changes since version 0.16
+  Karamba: Added topbar, bottombar, and ontop options.
+  CPU sensor: Added %user, %system, %nice, %idle and %load to format
+  Thanks to Bruno Dufour:
+  Disk sensor: Added %fp (free space, percentage) and %up (used space, percentage) to format
 *karamba-0.16 (11 Apr 2003)
 
   11 Apr 2003; Stephan Hermann <sh@sourcecode.de>
