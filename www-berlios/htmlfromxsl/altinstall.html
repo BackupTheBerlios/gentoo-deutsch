@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
 <link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
 <link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
 <title>Gentoo Linux 
@@ -48,7 +48,7 @@ ebenfalls nötig. Natürlich brauchen wir auch das aktuellste ISO, das unter
 <p class="secthead"><a name="_sect2">Überblick </a></p>
 
 <p>Als erstes muss die Netboot-Maschine eine IP Adresse beziehen, bevor es das
-Images aus dem Netzwerk ziehen kann. Es gibt mehrere Möglichkeiten, um an
+Image aus dem Netzwerk ziehen kann. Es gibt mehrere Möglichkeiten, um an
 eine IP-Adresse zu kommen, und jede wird genügen. Persönlich bevorzuge
 ich GRUB für alles, aber wenn Ihr Computer bereits das Booten vom Netzwerk
 unterstützt, ist GRUB nicht unbedingt notwendig. Auch wenn es vielleicht
@@ -58,9 +58,9 @@ oder dhcp Server zu installieren.
 
 <p>
 Nachdem Ihr Computer eine IP Adresse bezogen hat folgt der nächste logische Schritt.
-Wie müssen herausfinden, was gebootet werden soll und wo es aufbewahrt wird.
-Nochmals wäre es natürlich einfacher mit GRUB Kommandos zu arbeiten, anstatt einen BOOTP 
-oder DHCP Server aufzusetzen. Außerdem müssen Sie festlegen wie eine Initrd erstellt 
+Sie müssen herausfinden, was gebootet werden soll und wo es aufbewahrt wird.
+Natürlich wäre es einfacher mit GRUB Kommandos zu arbeiten, anstatt einen BOOTP 
+oder DHCP Server aufzusetzen. Außerdem müssen Sie festlegen, wie eine Initrd erstellt 
 werden soll und wie der Kernel diese als ROOT-Dateisystem verwenden soll.
 </p>
 
@@ -93,8 +93,8 @@ in meinem Rechner:</p>
 </table>
 
 <p>
-Falls Sie sich bereits in Gentoo befinden sollten und GRUB mit Netzwerkunterstützung 
-durch Gentoo-Tools installieren möchten, sollten Sie die folgenden Schritte genau 
+Sollten Sie sich bereits in Gentoo befinden und Sie den GRUB mit Netzwerkunterstützung 
+durch Gentoo-Tools installieren wollen, sollten Sie die folgenden Schritte genau 
 befolgen. Ein Beispiel, um ein Ebuild zur Installation von GRUB mit Tulip Unterstützung 
 zu nutzen:
 </p>
@@ -119,7 +119,7 @@ Nachdem wir die GRUB Shell nun installiert haben, müssen wir GRUB noch in einen
 Bootsektor installieren. Auch wenn Sie GRUB direkt in den Bootsektor der Festplatte 
 Ihres Installations Systems installieren könnten, gehen wir hier davon aus, dass die 
 Installation auf eine Diskette erfolgt. Dafür gibt es zwei Möglichkeiten. Sie können 
-zum einen direkt die GRUB Shell oder ein mitgeliefertes Script, <font class="input">grub-install</font> 
+zum einen direkt die GRUB Shell oder zum anderen ein mitgeliefertes Script, <font class="input">grub-install</font> 
 genannt, benutzen. Sie sollten <font class="code">grub-install</font> zur Installation auf einer Diskette 
 den Vorzug geben.
 </p>
@@ -138,7 +138,7 @@ den Vorzug geben.
 <p>
 <font class="code">grub-install</font> funktioniert nicht immer ... und ist nicht immer der beste Weg zur 
 Installation. Da die GRUB Shell genauso arbeitet, wie GRUB beim Booten, könnte es 
-wünschenswert sein die GRUB Shell zu benutzten. Hier ist ein Beispiel zur Verwendung der 
+wünschenswert sein die GRUB Shell zu benutzen. Hier ist ein Beispiel zur Verwendung der 
 GRUB Shell zur Installation von GRUB auf einer Diskette:
 </p>
 
@@ -174,23 +174,23 @@ tftp	dgram	udp	wait	nobody	/usr/sbin/tcpd	in.tftpd
 </table>
 
 <p>
-Um den NEtkit tftp Server unter Gentoo Linux zu installieren, benutzen Sie 
+Um den Netkit TFTP Server unter Gentoo Linux zu installieren, benutzen Sie 
 &quot;emerge net-misc/netkit-tftp&quot;.
 </p>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
 Es gibt ein Ebuild für Xinetd ... sollten Sie dieses bevorzugen, können Sie es natürlich 
-ebenfalls verwenden. Auf jeden Fall benutzt ich es nicht, daher weiß ich auch nicht, wie 
-man es mit tftp einrichtet. Sollten Sie es benutzten, wäre es sehr freundlichen, wenn Sie 
+ebenfalls verwenden. Auf jeden Fall benutz ich es nicht, daher weiß ich auch nicht, wie 
+man es mit tftp einrichtet. Sollten Sie es benutzten, wäre es sehr freundlich von Ihnen, wenn Sie 
 mir Details mailen könnten. Dann könnte ich dies in diesem Howto integrieren.
 </p></td></tr></table>
 
 <p>
-Da wir nun einen tftp Server am Laufen haben, brauchen wir nur noch einen Kernel und eine 
+Da wir nun einen TFTP Server am Laufen haben, brauchen wir nur noch einen Kernel und eine 
 ROOT-Initrd. Sie können einen eigenen Kernel kompilieren, aber achten Sie darauf, dass dieser 
 alle wichtigen Dinge, die für das funktionieren von Gentoo Linux nötig sind (wie devfs und 
-initrd fürs Netbooting), enthält. Die ROOT Initrd stellt die Datei rescue.gz vom Gentoo ISO.
+initrd fürs Netbooting), enthält. Die ROOT-Initrd erstellt die Datei rescue.gz vom Gentoo ISO.
 </p>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
@@ -223,7 +223,7 @@ bezogen werden sollen.
 grub&gt; <font class="input">ifconfig --address=192.168.0.10 --server=192.168.0.2</font>
 grub&gt; <font class="input">root (nd)</font>
 grub&gt; <font class="input">kernel /tftpboot/kernel devfs=nomount vga=normal load_ramdisk=1 </font>
-      <font class="input">prompt_ramdisk=0 ramdisk_size=18580 root=/dev/ram0 rw</font> <font class="comment">(alles in eine Zeile)</font>
+      <font class="input">prompt_ramdisk=0 ramdisk_size=24000 root=/dev/ram0 rw</font> <font class="comment">(alles in eine Zeile)</font>
 grub&gt; <font class="input">initrd /tftpboot/rescue.gz</font>
 grub&gt; <font class="input">boot</font>
 </pre></td></tr>
@@ -231,7 +231,7 @@ grub&gt; <font class="input">boot</font>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>Sie können auch bootp und dhcp verwenden, um Ihre IP via GRUB zu
-konfigurieren. Verwenden Sie die bootp und dcpd Kommandos.</p></td></tr></table>
+konfigurieren. Verwenden Sie die bootp und dhcpd Kommandos.</p></td></tr></table>
 
 <p>Jetzt wo Ihre Maschine gebootet ist, können Sie wie immer installieren. Lesen Sie dazu im HOWTO 
 zur Installation von CD weiter.
