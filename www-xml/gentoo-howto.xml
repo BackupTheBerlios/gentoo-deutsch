@@ -8,353 +8,656 @@
 <author title="Autor"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Autor"><mail link="pete@gentoo.org">Peter Gavin</mail></author>
 <author title="&#xDC;bersetuter"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
-<abstract>Dieses Dokument ist eine Beschreibung des Gentoo Portage Systems, es erklärt wie man neue Pakete erstellt und ist quasi als Standard für die Gentoo entwickler gedacht. Es ist noch in Arbeit und wird konstant aktualisiert und auf keinen Fall vollständig. </abstract>
+<abstract>Dieses Dokument ist eine Beschreibung des Gentoo Portage Systems, es erklärt wie man neue Pakete erstellt 
+und ist quasi als Standard für die Gentoo entwickler gedacht. Es ist noch in Arbeit und wird konstant aktualisiert und auf 
+keinen Fall vollständig. </abstract>
 
 <version>1.1.1-de</version>
 <date> 24. April 2002</date>
 
 <chapter>
 	<title>Der Portage Verzeichnisbaum</title>
-
 	<section>
 		<title>Einführung</title>
-		<body><p>Der Portage Verzeichnisbaum ist normalerweise unter /usr/portage zu finden und ist hierarchisch strukturiert bestehend aus Kategorien gefolgt von Paket-Verzeichnissen. Hier ein Beispiel: Die util-linux-2.11g.ebuild Datei ist unter /usr/portage/sys-apps/util-linux zu finden. In diesem verzeichnis können sich mehrere verschiedene Versionen neben dem util-linux-2.11g.ebuild befinden. Alle unterschiedelichen Pakete teilen sich unabhängig von ihrer Version dasselbe kategorie/paket Verzeichnis in /usr/portage. </p></body>
+		<body><p>Der Portage Verzeichnisbaum ist normalerweise unter /usr/portage zu finden und ist hierarchisch 
+		strukturiert bestehend aus Kategorien gefolgt von Paket-Verzeichnissen. Hier ein Beispiel: Die util-linux-2.11g.ebuild 
+		Datei ist unter /usr/portage/sys-apps/util-linux zu finden. In diesem verzeichnis können sich mehrere verschiedene Versionen 
+		neben dem util-linux-2.11g.ebuild befinden. Alle unterschiedelichen Pakete teilen sich unabhängig von ihrer Version dasselbe 
+		kategorie/paket Verzeichnis in /usr/portage. </p></body>
 	</section>
-
 	<section>
 		<title>Was gehört nicht in den Portage Verzeichnisbaum?</title>
 		<body>
-			<p>Generell sollte im Portage Verzeichnis nur die .ebuild Dateien und sehr kleine zugehörige Dateien wie zum Beispiel Patches oder Beispielskonfigurationen gespeichert werden. Diese Dateien sollten immer unter /usr/portage/kategorie/paket/files abgespeichert werden, um das kategorie/paket Verzeichnis nicht zu unübersichtlich machen. Generell ist es für Entwickler keine gute Idee Binärdateien (Nicht-ASCII-Dateien) im CVS abzulegen. Wenn dies dennoch notwenig sein sollte (zum Beispiel eine PNG Grafik aus welchem Grund auch immer), dann sollte sie mit der -kb option in das CVS eingebracht werden:
+			<p>Generell sollte im Portage Verzeichnis nur die .ebuild Dateien und sehr kleine zugehörige Dateien wie 
+			zum Beispiel Patches oder Beispielskonfigurationen gespeichert werden. Diese Dateien sollten immer unter 
+			/usr/portage/kategorie/paket/files abgespeichert werden, um das kategorie/paket Verzeichnis nicht zu 
+			unübersichtlich machen. Generell ist es für Entwickler keine gute Idee Binärdateien (Nicht-ASCII-Dateien) 
+			im CVS abzulegen. Wenn dies dennoch notwenig sein sollte (zum Beispiel eine PNG Grafik aus welchem 
+			Grund auch immer), dann sollte sie mit der -kb option in das CVS eingebracht werden:
 		<pre caption="Code Auflistung 1">
 		# cvs add -kb myphoto.png</pre>
-Die -kb option teilt CVS mit, dass myphoto.png eine Binärdatei ist und einer besonderen Behandlung bedarf. Zum Beispiel das Zusammenführen von zwei verschiedenen Binärdateien wird somit nicht erlaubt, was hier auch naheliegend ist. Wenn wir schon beim Zusammenführen sind, alle Patches die dem Portage Verzeichnisbaum hinzugefügt werden, sollten nicht komprimiert sein. Dies erlaubt dann CVS Veränderungen einzubringen und die Entwickler von dabei möglicherweise entstehenden Konfliken korrekt zu warnen.</p></body> 	</section> 
-        
-
+		Die -kb option teilt CVS mit, dass myphoto.png eine Binärdatei ist und einer besonderen 
+		Behandlung bedarf. Zum Beispiel das Zusammenführen von zwei verschiedenen Binärdateien wird somit nicht erlaubt, 
+		was hier auch naheliegend ist. Wenn wir schon beim Zusammenführen sind, alle Patches die dem Portage Verzeichnisbaum 
+		hinzugefügt werden, sollten nicht komprimiert sein. Dies erlaubt dann CVS Veränderungen einzubringen und die Entwickler 
+		von dabei möglicherweise entstehenden Konfliken korrekt zu warnen.</p></body> 	
+	</section> 
 	<section>
 		<title>Das files Verzeichnis</title>
-		<body><p>Wie vorher bereits beschrieben, existiert in jedem paket Unterverzeichnis das Verzeichnis files. Alle Patches, Konfigurationsdateien oder andere Dateien, die von diesem Paket gebraucht werden, gehören hier hinein. Selbst erstellte Patches sollten mit einem Versions-Namen versehen werden, wie zum beispiel meinpaket-1.0-gentoo.diff. Die Gentoo Erweiterung im Namen informiert die Benutzer, dass dieser Patch durch uns, den Gentoo Entwicklern, erstellt wurde und nicht aus einer Mailingliste oder sonst wo gezogen wurde. Auch hier sollten die  diffs nicht komprimiert werden, da CVS mit Binärdateien nicht so gut umgehen kann.</p></body>
+		<body><p>Wie vorher bereits beschrieben, existiert in jedem paket Unterverzeichnis das Verzeichnis files. 
+		Alle Patches, Konfigurationsdateien oder andere Dateien, die von diesem Paket gebraucht werden, gehören 
+		hier hinein. Selbst erstellte Patches sollten mit einem Versions-Namen versehen werden, wie zum beispiel 
+		meinpaket-1.0-gentoo.diff. Die Gentoo Erweiterung im Namen informiert die Benutzer, dass dieser Patch durch 
+		uns, den Gentoo Entwicklern, erstellt wurde und nicht aus einer Mailingliste oder sonst wo gezogen wurde. 
+		Auch hier sollten die  diffs nicht komprimiert werden, da CVS mit Binärdateien nicht so gut umgehen kann.</p></body>
 	</section>
 </chapter>	
 
 <chapter>
 	<title>Die ebuild Skripte</title>
-
 	<section>
-		<title>Wo ist der Unterschied zwischen .iso und .tbz2 Datein?</title>
-		<body><p>Die fertigen <e>.tbz2</e> Datein sind ein Mimimales Archiv von System Datein
-		die den Usern den bootstrap und die Installation von Gentoo Linux erlauben.
-		Die Fertige <e>.iso</e> ist eine komplettes, bootbares CD Image das
-		einen System Kernel, einen zum Teil komplette Zusammenstellung von Kernel Modulen,
-		wichtigen System Hilfsprogrammen wie <c>mkfs</c> und Netzwerk Unterst&#xFC;tzung,
-		sowie das Minimal-System des <e>.tbz2</e> Archivs enth&#xE4;lt. Die meisten User werden
-		Gentoo Linux von der .iso Datei auf eine CD brennen, von der CD booten,
-		und mit einer Minimalen Linux Umgebung von der Gentoo Boot CD Installieren.
-		Es ist f&#xFC;r den Benutzer jedoch m&#xF6;glich Gentoo Linux direkt von einer
-		bereits vorhandenen Linux distribution zu Installieren.
-		Solche Benutzer m&#xFC;ssen nur eine .tbz2 Datei downloaden,
-		den Inhalt auf eine Reserve Partitionen entpacken
-		(stellen Sie sicher das Sie das <c>p</c> Argument benutzen wenn Sie das Archiv entpacken),
-		dann in das System einen chroot ausf&#xFC;hren und &#xFC;ber normale Art und Weise installieren.</p>
-        </body>
-	</section>
+	<title>Einführung</title>
+	<body>
+	<p>Die ebuild Skripte sind die Grundlage des gesamten Portage Systems. Sie enthalten die gesamte Information
+	zum downloaden, entpacken, kompilieren und installieren des Quellcodes aber auch eventuelle Änderungen und 
+	Konfigurationen , die vor oder nach der Installation oder beim Entfernen durchgeführt werden. Während das meiste
+	von Portage in Python geschrieben ist, sind die ebuilds als bash-Skripte gehalten, da dies das Aufrufen von Befehlszeilen
+	wie auf der Kommandozeile ermöglicht. Eines der Hauptdesign-Prinzipien der ebuild Skripte ist, daß die darin aufgerufenen
+	Befehle denen der Kommandozeil entsprechen, wie wenn der Benutzer das Paket manuell installieren würde. Aus diesem
+	Grund ist die bash-Syntax eine gute Wahl.</p>
 
-	<section>
-		<title>Warum werden .iso und .tbz2 Datein mit Unterschiedlichen -r (Revisionen) erstellt/ver&#xF6;ffentlicht?</title>
-		<body><p>
-		Das Minimal-System aus dem .tbz2 Archiv braucht nur erneuert zu werden, wenn signifikante &#xC4;nderungen am Kern
-		von Gentoo Linux gemacht wurden (z. B. &#xC4;nderungen am Basislayout oder ein neues Profil) - dadurch sind .tbz2
-		Updates relativ selten.
-		<!-- Blub.. Was fuer ein Satz.. Keine Ahnung, mal ueberlegen -->
-		<!-- Nicht schoen aber ok -S.E -->
-		<!--The .tbz2 minimal-system tarball only needs to be revised when there have
-		been significant changes to the core Gentoo Linux system (such as baselayout
-		changes, or a new profile), and as such .tbz2 updates are relatively rare.//-->
-		<!-- Das kann ich wieder -->
-		Die .iso Datei muss nur geupdatet werden, wenn jemand andere Hardware hat
-		die nicht mit der .iso booten will. Seitdem Kernel Module und Updates
-		regelm&#xE4;ssig gemacht werden kann es kaum zu dieser Situation kom  Type 
-		<c>emerge --help config</c> for more details.  The (overly) simple answer is that if
-		a package installs <path>foo</path> somewhere under <path>/etc</path>, and
-		another <path>foo</path> already exists there, then the new <path>foo</path> will
-		instead be renamed to <path>._cfgxxxx_foo</path> in that directory.  A useful
-		tool for examining and updating any protected config files is <c>etc-update</c>,
-		currently obtained by <c>emerge app-admin/gentoolkit</c>.
-		</p></body>
-	</section>
+	<p>Ebuild Skripte werden durch die <c>ebuild</c> und <c>emerge</c> Befehle ausgeführt. Man muss sich das 
+	<c>ebuild</c> Kommando als einfaches Erstellungswerkzeug vorstellen. Es kann ein ebuild erstellen und installieren, 
+	aber mehr auch nicht. Es kontrolliert, ob Abhängigkeiten erfüllt sind, kann diese aber nicht selbständig auflösen. Auf
+	der anderen Seite ist <c>emerge</c> als hochspezialisierte Zentrale für <c>ebuild</c>, welches die Möglichkeit 
+	besitzt, selbständig abhängige Pakete zu installieren, wenn gewünscht als "was wäre wenn..." dem Benutzer anzeigen,
+	welche ebuilds eingeführt <e>würden</e> und vieles mehr. Allgemein sticht <c>emerge</c> den <c>ebuild</c> Befehl
+	in allen Belangen aus, bis auf einen Punkt. Mit <c>ebuild</c> kann der Benutzer inkrementell alle unterschiedlichen
+	Bereiche einer Paketinstallation (herunterladen, entpacken, kompilieren, installieren und einführen) Schritt für Schritt.  
+	ausführen. Für Entwickler ist dies ein unverzichtbares Werkzeug zum debuggen, da nur so Probleme mit dem ebuild
+	auf einen kleinen Bereich des Gesamtprozesses eingegrenzt werden können.</p>
+	</body>
+</section>
 
-	<section>
-		<title>Ich m&#xF6;chte den <c>./configure</c> Schritt selber ausf&#xFC;hren. Geht das?</title>
-		<body><p>
-		Yes, but it is not trivial.  First do <c>man ebuild</c> followed by
-		<c>ebuild foo-x.y.z.ebuild unpack</c>.  Then <c>cd</c> to 
-		<path>/var/tmp/portage/foo-x.y.z/work</path>.  You can manually perform
-		the <c>./configure</c> and <c>make</c> steps yourself (you'll have to do
-		both, since Portage does not separate the configure and build steps).  To
-		have Portage finish the installation (so that you can easily remove it later,
-		should you desire to do so, and it will be registered in Portage as a possible
-		dependency) you first need to <c>touch /var/tmp/portage/foo-x.y.z/.compiled</c>
-		(tricking Portage into thinking that <c>ebuild foo-x.y.z.ebuild compile</c> has
-		completed), followed by <c>ebuild foo-x.y.z.ebuild merge</c>.
-		</p></body>
-	</section>
+<section>
+<title>Die Benennung von  ebuild Dateien</title>
+	<body>
+	<p>Jeder Ebuild Dateiname besteht aus vier Abschnitten:</p>
 
-	<section>
-		<title>Was, wenn rsync bei mir nicht funktioniert?</title>
-		<body><p>
-		If you're behind a firewall that doesn't permit
-		rsync traffic, then you can instead download the daily
-		/usr/portage snapshot from 
-		<uri>http://cvs.gentoo.org/snapshots</uri>.  Just unpack
-		the tarball (using <c>tar xvjf portage-foo.tbz2</c>) in
-		the <path>/usr</path> directory.
-		</p></body>
-	</section>
+	<p>Der erste Abschnitt ist der Paketname, der nur aus Kleinbuchstaben, den Zahlen 0-9 und dem Bindestrich ('-')
+	enthalten darf. Beispiele sind: <c>util-linux</c>, <c>sysklogd</c> und <c>glibc</c>.  </p>
 
-	<section>
-		<title>Wie benutze ich <i>emerge</i> hinter einer Firewall?</title>
-		<body><p>
-		Ver&#xE4;ndern Sie die PROXY Einstellungen in <path>/etc/make.conf</path>. Wenn das nicht
-		funktioniert, bearbeiten Sie <path>/etc/wget/wgetrc</path> und passen Sie http_proxy und
-		ftp_proxy entspr&#xE4;chend an.
-		</p></body>
-	</section>
+	<p>Der zweite Abschnitt ist die Versionsnummer des Paketes, welche normalerweise mit der Versionsnummer des
+	Quellcode Tarballs übereinstimmt. Diese besteht normalerweise aus zwei oder drei Nummern, die durch Punkte
+	von einander getrennt sind, wie zum Beispiel <c>1.2</c> oder <c>4.5.2</c> (sehr lange, durch Punkte
+	voneinander getrennte Nummern werden auch unterstützt) und darf von einen einfachen Buchstaben auf die letzte
+	Zahl gefolgt werden, zum Beispiel: <c>1.4b</c> oder <c>2.6h</c>. Die Paketnummer wird mit der Versionsnummer
+	durch einen Bindestrich verbunden: <c>foo-1.0</c>, <c>bar-2.4.6</c>, etc.</p>
 
-	<section>
-		<title>Kann ich von einem anderen Betriebssystem aus ein rsync machen?</title>
-		<body><p>Es gibt ein Programm das unison heisst, das sowohl unter UNIX als auch unter Win32 l&#xE4;uft. Es ist verf&#xFC;gbar unter:
-		<uri>http://www.cis.upenn.edu/~bcpierce/unison/</uri>.</p></body>
-	</section>
 
-	<section>
-		<title>Ich habe zuhause nur eine langsame Modem-Verbingund. Kann ich die Quellen woanders downloaded und dann zu meinem System hinzuf&#xFC;gen?</title>
-		<body><p>
-		Definitely. You can run <c>emerge --pretend package</c> to see what programs
-		are going to be installed. Download sources and bring them on any media
-		home. Put the sources into <path>/usr/portage/distfiles</path> and run
-		<c>emerge package</c> to see it picking up the sources you just brought in!
-		</p></body>
-	</section>
 
-	<section>
-		<title>.tar.gz sources for installed software are piling up in /usr/portage/distfiles/ using 
-		valuable space. Is it safe to delete these files?</title>
-		<body><p>
-		Yes, you can safely delete these files. But if you are on a slow
-		connection, such as a modem, you might want to keep the archives if
-		possible; often several ebuilds will be released for the same version of
-		a specific piece of software  - if you have deleted the archive and you
-		upgrade the software it will have to be downloaded from the internet
-		again.
-		</p></body>
-	</section>
 
-	<section>
-		<title>How can I manage my own ebuilds without destroying them by (r)sync?</title>
-		<body>
-		<p>The simplest method is to use anonymous CVS instead of rsync, and 
-		maintain your local
-		ebuilds in /usr/portage/local.  Here's how to do it:</p>
-		<pre>
-# <i>emerge cvs</i> <comment>(if necessary)</comment>
-# <i>cd <path>/usr</path></i>
-# <i>cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs login</i> <comment>(hit &lt;enter&gt;)</comment>
-# <i>cvs -d :pserver:anonymous@gentoo.org:/home/anoncvs get gentoo-x86</i>
-# <i>cp /usr/portage/distfiles/* gentoo-x86/distfiles/</i>
-# <i>cp -a /usr/portage/packages/* gentoo-x86/packages/</i>
-# <i>mv portage portage.old</i>
-# <i>ln -s gentoo-x86 portage</i>
-# <i>mkdir /usr/portage/local</i>
-# <i>echo local &gt;&gt; /usr/portage/profiles/categories</i>
-# <i>cp /etc/make.conf /etc/make.conf.orig</i>
-# <i>sed -e 's/#SYNC="cvs/SYNC="cvs/' /etc/make.conf.orig &gt; /etc/make.conf</i>
-		</pre>
-		</body>
-	</section>
-</chapter>
+<impo>If you're thinking of using a trailing letter in your version string,
+note that the trailing letter should <e>not</e> be used to signify alpha or beta
+status for the package, since alphas and betas are <e>prereleases</e> and
+letter revisions are <e>newer versions</e>.  This is an important distinction
+because Portage uses an ebuild's version number to determine if it is newer
+or older than other packages with the same category and name.  It's very
+important that version numbers faithfully represent the version of the
+package so that Portage properly performs its dependency checking duties.</impo>
 
-<chapter>
-	<title>Gentoo Linux benutzen</title>
-	<section>
-    		<title>Ich habe openssh auf meiner Box installiert, aber ich kann mich nur als root und nicht als normaler Benutzer von aussen einloggen.</title>
-    		<body>
-		<p>
-		This is most probably because your user account doesn't have a valid shell specified. Check
-		for your user entry in 
-		<path>/etc/passwd</path> and see if it ends in /bin/bash (or any other shell). If it doesn't,
-		you must set a shell for the user. This is done using the usermod command, like this ;
-		</p>
-		<pre># <i>usermod -s /bin/bash myuser</i></pre>
-		</body>
-	</section>
-	
-	<section>
-		<title>Ich kann X Anwendungen nur als root ausf&#xFC;hren.</title>
-		<body><p>Ihr <path>/tmp</path> Verzeichnis hat die falschen Zugriffsrechte. Geben sie folgendes als root ein:</p>
-		<pre># <i>chmod 1777 /tmp</i></pre>
-		</body>
-	</section>
+<p>The third (optional) section contains a special suffix; either
+<c>_alpha</c>, <c>_beta</c>, <c>_pre</c> or <c>_rc</c>. Any of these suffixes
+may be immediately followed my a number, e.g., <c>linux-2.4.0_pre10</c>;
+Assuming identical version parts, an <c>_alpha</c> package is older than
+<c>_beta</c>, <c>_beta</c> older than <c>_pre</c>, and <c>_pre</c> older than
+<c>_rc</c>.
+</p>
 
-	<section>
-		<title>Wie stelle ich ein internationales Tastatur-Layout ein?</title>
-		<body><p>Passen Sie die <c>KEYMAP</c> Variable in <path>/etc/rc.conf</path> an. Entweder
-		booten Sie danach das System, oder starten Sie das Keymaps-Script neu:
-		<c>/etc/init.d/keymaps restart</c>.</p>
-		</body>
-	</section>
+<note>An <c>_rc</c> package is older than a package without an underscore
+prefix (i.e. <c>linux-2.4.0</c>), and <c>linux-2.4.0</c> is older than a
+package with a single letter prefix, i.e. <c>linux-2.4.0b</c>.  As you would
+expect, the <c>linux-2.4.0b</c> package is considered older than
+<c>linux-2.4.0c</c>.  Again this versioning information is important, as
+Portage uses it internally to determine whether one package or ebuild is newer
+than another with the same category and name.</note>
 
-	<section>
-		<title>Die DNS Namens Aufl&#xF6;sung funktioniert nur f&#xFC;r root.</title>
-		<body><p><path>/etc/resolv.conf</path> hat die falschen Zugriffsrechte. <c>chmod</c> es zu folgendem:
-		</p>
-		<pre># <i>chmod 0644 /etc/resolv.conf</i></pre>
-		</body>
-	</section>
+<p>The fourth (optional) section of the package name is the Gentoo Linux-specific <e>revision</e> number,
+which is specified by <c>-r#</c>, where <c>#</c> is an integer,
+e.g. <c>package-4.5.3-r3</c>. This revision number is independent of
+the version of the source tarball and is used to inform people that
+a new and improved Gentoo Linux rev of a particular package is available.
+</p>
 
-	<section>
-		<title>Warum liesst KDE nicht <path>/etc/profile</path>?</title>
-		<body><p>You need to add <c>--login</c> to the first line in <path>/opt/kde2.1/bin/startkde
-		</path>, so that it reads as follows:</p>
-		<pre>#!/bin/sh --login</pre>
-		<p>This fix has been added to recent versions of KDE.</p>
-		</body>
-	</section>
-</chapter>
+<p>
+If you make non-trivial improvements to an existing ebuild file, you should
+copy the ebuild file to a new file with the revision number incremented by 1.
+Initial releases normally have no revision number, e.g.
+<path>package-4.5.3</path> and are considered by Portage to have a a revision
+number of zero.  This means that counting goes as follows: <c>1.0</c> (initial
+version), <c>1.0-r1</c>, <c>1.0-r2</c>, etc.
+</p>
 
-<chapter>
-	<title>Verwaltung</title>
-	<section>
-		<title>ReiserFS and filesystem corruption issues -- how to fix'em, etc</title>
-		<body>
-		<p>
-		ReiserFS has had serious problems with the 2.4-series kernels; we
-		highly recommend avoiding ReiserFS for the time being.  If your
-		ReiserFS partition is already corrupt, try booting the Gentoo 
-		Linux boot CD and run <c>reiserfsck --rebuild-tree</c> on
-		the corrupted filesystem.  This should make the filesystem consistent
-		again, although you may have lost some files or directories due
-		to the corruption.
-		</p>
-		</body>
-	</section>
-<!-- is this still relevant? -cpm -->
-	<section>
-		<title>How to I view the timestamps in /var/log/syslog.d, etc. on a pre-1.0_rc5 Gentoo 
-		system?</title>
-		<body>
-		<p>To view multilog (Gentoo Linux 1.0_rc5 and earlier) timestamps, you need to pipe the 
-		current log through the <c>tai64nlocal</c>command:</p>
-
-<pre>
-# <i>cat /var/log/syslog.d/current | tai64nlocal | less</i>
-</pre>
-
-<p>Or, alternatively, if you want to "tail" the log:</p>
-
-<pre>
-# <i>tail -f /var/log/syslog.d/current | tai64nlocal</i>
-</pre>
+<p>And I suppose that we actually have a <e>fifth</e> section of the ebuild name -- the
+<c>.ebuild</c> extension itself.
+</p>
 
 </body>
-	</section>
+</section>
+
+<section>
+<title>Contents of an ebuild File</title>
+<body><p>1. Variable Settings:</p>
+<p>The first part of every ebuild file is made up of a number of
+variable settings. The variables you can set are:</p>
+<table>
+<tr><ti><c>P</c></ti><ti>the name and version of the package; you should not need to set this, as it is determined from the name of the ebuild file</ti></tr>
+<tr><ti><c>A</c></ti><ti>the name (without the path) of the main archive file for your package</ti></tr>
+<tr><ti><c>S</c></ti><ti>the source directory for your package; normally ${WORKDIR}/${P}</ti></tr>
+<tr><ti><c>DESCRIPTION</c></ti><ti>a short, one line description of your package</ti></tr>
+<tr><ti><c>SRC_URI</c></ti><ti>the URIs for every source file in your package, separated by whitespace; normally the first one is something like &quot;ftp://ftp.company.com/pub/somepackage/${A}&quot;</ti></tr>
+<tr><ti><c>HOMEPAGE</c></ti><ti>your package's homepage</ti></tr>
+<tr><ti><c>DEPEND</c></ti><ti>build dependencies; see the section <uri link="#dependencies">Package Dependencies</uri></ti></tr>
+<tr><ti><c>RDEPEND</c></ti><ti>runtime dependencies; see the section <uri link="#dependencies">Package Dependencies</uri></ti></tr>
+</table>
+<p>2. ebuild Functions</p>
+<p>There are a number of different functions that you can define in ebuild files that control the building and installation process of your package.</p>
+<table>
+<tr><ti><c>pkg_setup</c></ti><ti>Use this function to perform any miscellaneous prerequisite tasks.  This might include adding system accounts or checking for an existing configuration file.  This function must return 0 in order for processing to proceed.</ti></tr>
+<tr><ti><c>src_unpack</c></ti><ti>Use this function to unpack your sources and run autoconf/automake/etc. if necessary. By default, it unpacks the packages in <c>${A}</c>. The default starting directory is <c>${WORKDIR}</c>.</ti></tr>
+<tr><ti><c>src_compile</c></ti><ti>Use this function to configure and build the package. Default starting directory is <c>${S}</c>.</ti></tr>
+<tr><ti><c>src_install</c></ti><ti>Use this function install the package to an image in <c>${D}</c>. If your package uses automake, you can do this simply with <c>make DESTDIR=${D} install</c>. <e>Make sure your package installs all its files using <c>${D}</c> as the root!</e></ti></tr>
+<tr><ti><c>pkg_preinst</c></ti><ti>The commands in this function are run just prior to merging a package image into the filesystem.</ti></tr>
+<tr><ti><c>pkg_postinst</c></ti><ti>The commands in this function are run just following merging a package image into the filesystem.</ti></tr>
+<tr><ti><c>pkg_prerm</c></ti><ti>The commands in this function are run just prior to unmerging a package image from the filesystem.</ti></tr>
+<tr><ti><c>pkg_postrm</c></ti><ti>The commands in this function are run just following unmerging a package image from the filesystem.</ti></tr>
+<tr><ti><c>pkg_config</c></ti><ti>You use this function to setup an initial configuration for the package after it's installed. All paths in this function should be prefixed with ${ROOT}.  This function is <e>only</e> executed if and when the user runs: <c>ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config</c>.</ti></tr>
+</table>
+</body>
+</section>
+
+<section>
+<title>Rules for writing an ebuild File</title>
+<body>
+<p>Since ebuild files are really just shell scripts, you should
+use your editor's shell-script mode for editing them. You should use
+proper indentation, using only tab characters -- no spaces. Make sure
+you set up your editor to put tabstops at 4 spaces. Always make sure
+you use braces around your environment variables; e.g. <c>${P}</c>
+instead of just <c>$P</c>.</p>
+
+<p>Long lines are wrapped with ' \', thus:</p>
+<pre>
+./configure \
+	--prefix=/usr || die "configure failed"
+</pre>
+
+<p>For further details, refer to <path>skel.ebuild</path> (usually
+residing in /usr/portage).</p>
+
+<p>If you're using Vim, you can put the following snippet at the bottom
+of your .vimrc to make sure you're using the right settings when editing
+ anything Gentoo-related.</p>
+
+<pre>
+if (getcwd() =~ 'gentoo-x86\|gentoo-src\|portage')
+	set tabstop=4 shiftwidth=4 noexpandtab
+endif
+</pre>
+<p>TODO: add stuff about emacs.</p></body>
+</section>
+
+<section>
+<title><c>USE</c> Variables</title>
+
+<body>
+
+<p>The purpose of USE variables is to allow you to configure Portage to globally
+and automatically enable or disable certain <e>optional build-time</e>
+features.  Here's an example.  Let's say you're a GNOME fan, and you'd like any
+ebuild that has the option of compiling-in optional GNOME support to do
+so.  In this case, you'd add <c>gnome</c> to the <c>USE</c> variable in
+<path>/etc/make.conf</path>, and then Portage will automatically add optional
+GNOME functionality to packages if it is available.  Likewise, if you don't
+want optional GNOME features to be added to your ebuilds if they are available,
+simply edit <path>/etc/make.conf</path> and make sure that <c>gnome</c> is
+<e>not</e> set in the <c>USE</c> variable.  Gentoo Linux has an almost
+overwhelming number of USE options, allowing you to have your system configured
+exactly the way you want it.
+
+<note> If you unset a USE variable (for example, removing <c>gnome</c> from
+<c>USE</c>), this will only instruct Portage to disable <e>optional</e>
+build-time support for GNOME.  However, if you <c>emerge</c> an ebuild that
+<e>requires</e> GNOME, the package will obviously have GNOME support enabled, as you
+would expect.  This also means that
+GNOME will be automatically installed (as a dependency) if it hasn't been already.  That's why
+it's always a good idea to do an <c>emerge --pretend</c> before doing the
+"real" <c>emerge</c>; that way, you'll always know that you're going to get!
+</note>
+
+In your own ebuilds, you can check whether a USE variable is set by using the
+<c>use &lt;variable&gt;</c> command. The <c>use</c> command prints out the name
+of every variable that is present in both <c>USE</c> and its command line. You
+would normally use this command as follows:</p>
+
+<p><c>if [ &quot;`use X`&quot; ]; then commands; fi</c></p>
+
+
+<p>USE variables can also be used to set dependencies. For example, you may
+only want to require a package if a certain USE variable is set. This is done
+by using the syntax <c>variable? ( mycat/mypackage-1.0-r1 )</c> in the DEPEND
+variable for your ebuild. In this example, <c>mycat/mypackage-1.0-r1</c> will
+only be required if <c>variable</c> is present in <c>USE</c></p>
+
+<p>Here's an important tip about how to use <c>USE</c>.  Most of the time,
+a package will have a <c>./configure</c> script used to perform configuration
+steps.  Generally, if your ebuild uses <c>./configure</c>, any optional build-time
+functionality will be enabled or disabled by passing the appropriate arguments to
+the <c>./configure</c> command.  Here's the best way to handle this.  First,
+find out whether the particular <c>./configure</c> option that you want to add
+<c>USE</c> support for is is <e>enabled</e> or <e>disabled</e> by default.  If
+it's <e>enabled</e> by default, then do things as follows:</p>
+<pre>
+DEPEND="gnome? ( &gt;=gnome-base/gnome-1.4 )
+	mysql? ( &gt;=dev-db/mysql-3.23.49 )"
+
+src_compile() {
+	local myconf
+	use gnome || myconf="--disable-gnome"
+	use mysql || myconf="${myconf} --disable-mysql"
+
+	./configure ${myconf} --prefix=/usr --host=${CHOST} || die
+	emake || die
+}
+</pre>
+<p>
+Above, we only check to see if the <c>gnome</c> and <c>mysql</c> <c>USE</c> variables
+are disabled.  The <c>use gnome || </c> part tests whether <c>gnome</c> is in the <c>USE</c>
+variable, and if not, then sets <c>myconf="--disable-gnome"</c>.  There's no need to explicitly
+enable GNOME or MySQL, since for this package, they are both enabled by
+default.  However, if a particular feature is <e>disabled</e> by default, you can
+use this approach:</p>
+<pre>
+DEPEND="gnome? ( &gt;=gnome-base/gnome-1.4 )
+	mysql? ( &gt;=dev-db/mysql-3.23.49 )"
+
+src_compile() {
+	local myconf
+	use gnome &amp;&amp; myconf="--enable-gnome"
+	use mysql &amp;&amp; myconf="${myconf} --enable-mysql"
+
+	./configure ${myconf} --prefix=/usr --host=${CHOST} || die
+	emake || die
+}
+</pre>
+<p>This time, we only explicitly enable GNOME and MySQL support if it's respective <c>USE</c> variable
+has been set.  The <c>use mysql &amp;&amp;</c> part tests whether <c>mysql</c> is in the <c>USE</c>
+variable, and if so, then sets <c>myconf="${myconf} --enable-mysql"</c>.</p>
+
+<p>The following USE variables are currently used in Gentoo Linux:</p>
+
+<table>
+<tr><th>Variable</th><th>Description</th></tr>
+<tr><ti>3dfx</ti><ti>Adds support for 3dfx video cards to XFree86. See: voodoo3</ti></tr>
+<tr><ti>3dnow</ti><ti>dds support for 3dnow multimedia processor instructions</ti></tr>
+<tr><ti>aalib</ti><ti>Adds support for media-libs/aalib (ASCI-Graphics Library)</ti></tr>
+<tr><ti>acl</ti><ti>Adds support for sys-apps/acl (XFS dump/restore utilities)</ti></tr>
+<tr><ti>afs</ti><ti>Adds OpenAFS support (distributed file system)</ti></tr>
+<tr><ti>alsa</ti><ti>Adds support for media-libs/alsa-lib (Advanced Linux Sound Architecture</ti></tr>
+<tr><ti>apm</ti><ti>Adds APM (Advanced Power Management) support</ti></tr>
+<tr><ti>arts</ti><ti>Adds support for aRts: the KDE sound daemon</ti></tr>
+<tr><ti>atlas</ti><ti>Adds support for atlas instead of blas in dev-lang/</ti></tr>
+<tr><ti>avi</ti><ti>Adds Win32 AVI support and also adds avifile (Library for avi) support</ti></tr>
+<tr><ti>berkdb</ti><ti>Adds support for sys-libs/db (Berkeley DB for MySQL)</ti></tr>
+<tr><ti>bonobo</ti><ti>Adds support for gnome-base/bonobo (Gnome CORBA interfaces)</ti></tr>
+<tr><ti>crypt</ti><ti>Add support for encryption -- using mcrypt or gpg where applicable</ti></tr>
+<tr><ti>cups</ti><ti>Add support for CUPS (Common Unix Printing System</ti></tr>
+<tr><ti>dga</ti><ti>Adds DGA Support (Xfree86 ) (DGA=Direct Graphic Access)</ti></tr>
+<tr><ti>directfb</ti><ti>Adds support for DirectFB layer (library for FB devices)</ti></tr>
+<tr><ti>doc</ti><ti>Adds extra documentation generated by fe.x gtk-doc</ti></tr>
+<tr><ti>dvd</ti><ti>Adds support for DVDs</ti></tr>
+<tr><ti>encode</ti><ti>Adds support for MEncoder or LaME encoder, wherever applicable</ti></tr>
+<tr><ti>esd</ti><ti>Adds support for media-sound/esound (Enlightened Sound Daemon)</ti></tr>
+<tr><ti>evo</ti><ti>Adds support for evolution in gnumeric</ti></tr>
+<tr><ti>fbcon</ti><ti>Adds framebuffer support for the console, via the kernel</ti></tr>
+<tr><ti>flash</ti><ti>Adds support for creating flash files using Ming</ti></tr>
+<tr><ti>gb</ti><ti>Adds support for Gnome Basic to gnumeric</ti></tr>
+<tr><ti>gd</ti><ti>Adds support for sys-libs/gdbm (GNU database libraries)</ti></tr>
+<tr><ti>gdbm</ti><ti>Adds support for sys-libs/gdbm (GNU database libraries)</ti></tr>
+<tr><ti>ggi</ti><ti>Adds support for media-libs/libggi (non-X video api/drivers)</ti></tr>
+<tr><ti>ggz</ti><ti>Adds support for the Gnu Gaming Zone - http://ggz.sf.net</ti></tr>
+<tr><ti>gif</ti><ti>Adds GIF image support</ti></tr>
+<tr><ti>gnome</ti><ti>Adds GNOME support</ti></tr>
+<tr><ti>gphoto2</ti><ti>Adds digital camera support</ti></tr>
+<tr><ti>gpm</ti><ti>Adds support for sys-libs/gpm (Console-based mouse driver)</ti></tr>
+<tr><ti>gtk</ti><ti>Adds support for x11-libs/gtk+ (The GIMP Toolkit)</ti></tr>
+<tr><ti>gtkhtml</ti><ti>Adds support for gnome-extra/gtkhtml</ti></tr>
+<tr><ti>guile</ti><ti>Adds support for dev-util/guile (interpreter for Scheme)</ti></tr>
+<tr><ti>icc</ti><ti>Use the Intel C++ Compiler if the package supports it</ti></tr>
+<tr><ti>icc-pgo</ti><ti>Enable PGO data generation or use when use icc.</ti></tr>
+<tr><ti>imap</ti><ti>Adds support for IMAP</ti></tr>
+<tr><ti>imlib</ti><ti>Adds support for media-libs/imlib (Image loading and rendering library)</ti></tr>
+<tr><ti>innodb</ti><ti>Adds innodb support for mySQL (transaction support)</ti></tr>
+<tr><ti>ipv6</ti><ti>Adds support for IP version 6</ti></tr>
+<tr><ti>java</ti><ti>Adds support for Java</ti></tr>
+<tr><ti>jpeg</ti><ti>Adds JPEG image support</ti></tr>
+<tr><ti>kde</ti><ti>Adds support for kde-base/kde (K Desktop Enviroment)</ti></tr>
+<tr><ti>lcms</ti><ti>Adds lcms support to media-gfx/imagemagick (Color management)</ti></tr>
+<tr><ti>ldap</ti><ti>Adds LDAP support (Lightweight Directory Access Protocol)</ti></tr>
+<tr><ti>libg++</ti><ti>Adds C++ modules in dev-db/postgresql (libpq++)</ti></tr>
+<tr><ti>libgda</ti><ti>Adds GNU Data Access (CORBA wrapper) support for gnumeric</ti></tr>
+<tr><ti>libwww</ti><ti>Adds libwww support (General purpose WEB API)</ti></tr>
+<tr><ti>matrox</ti><ti>Adds Matrox MGA support to mplayer</ti></tr>
+<tr><ti>mikmod</ti><ti>Adds libmikmod support to allow playing of SoundTracker-style music files</ti></tr>
+<tr><ti>mmx</ti><ti>Adds support for optimizations for Pentium MMX and Athlon class processors</ti></tr>
+<tr><ti>motif</ti><ti>Adds motif support (Open Motif)</ti></tr>
+<tr><ti>mozaccess-builtin</ti><ti>Adds text-to-speech and eventually braille support mozilla</ti></tr>
+<tr><ti>mozctl</ti><ti>Adds Pango like module to mozilla (???)</ti></tr>
+<tr><ti>mozilla</ti><ti>Adds mozilla support</ti></tr>
+<tr><ti>mozirc</ti><ti>Adds IRC (Internet Relay Chat) module to mozilla</ti></tr>
+<tr><ti>mozxmlterm</ti><ti>Adds Xterm like terminal with XML support to mozilla</ti></tr>
+<tr><ti>mpeg</ti><ti>Adds libmpeg3 support to various packages</ti></tr>
+<tr><ti>mysql</ti><ti>Adds mySQL support</ti></tr>
+<tr><ti>nas</ti><ti>Adds support for network audio sound</ti></tr>
+<tr><ti>ncurses</ti><ti>Adds ncurses support (console display library)</ti></tr>
+<tr><ti>nls</ti><ti>Adds Native Language Support (using gettext - GNU locale utilities)</ti></tr>
+<tr><ti>nocardbus</ti><ti>Disables cardbus support in pcmcia-cs</ti></tr>
+<tr><ti>odbc</ti><ti>Adds ODBC Support (Open DataBase Connectivity)</ti></tr>
+<tr><ti>oggvorbis</ti><ti>Adds support for the OggVorbis audio encoding</ti></tr>
+<tr><ti>opengl</ti><ti>Adds support for OpenGL</ti></tr>
+<tr><ti>oss</ti><ti>Adds support for OSS (Open Sound System)</ti></tr>
+<tr><ti>pam</ti><ti>Adds support PAM (Pluggable Authentication Modules)</ti></tr>
+<tr><ti>pcmcia</ti><ti>Adds support for PCMCIA slots/devices found on laptop computers</ti></tr>
+<tr><ti>pda</ti><ti>Adds support for portable devices.</ti></tr>
+<tr><ti>pdflib</ti><ti>Adds support for PDF (Portable Document Format)</ti></tr>
+<tr><ti>perl</ti><ti>Adds support/bindings for the Perl language</ti></tr>
+<tr><ti>pic</ti><ti>Adds PIC support to gcc (???)</ti></tr>
+<tr><ti>plotutils</ti><ti>Adds plotutils support to gnuplot (library for 2-D vector graphics)</ti></tr>
+<tr><ti>png</ti><ti>Adds support for libpng (PNG images)</ti></tr>
+<tr><ti>pnp</ti><ti>Adds support for PNP in pcmcia-cs (Plug-N-Play)</ti></tr>
+<tr><ti>postgres</ti><ti>Adds support for the postgresql database</ti></tr>
+<tr><ti>python</ti><ti>Adds support/bindings for the Python language</ti></tr>
+<tr><ti>qt</ti><ti>Adds support for the Qt library</ti></tr>
+<tr><ti>qtmt</ti><ti>Adds support for multithreaded QT</ti></tr>
+<tr><ti>quicktime</ti><ti>Adds support for OpenQuickTime</ti></tr>
+<tr><ti>readline</ti><ti>enables support for libreadline, a GNU line-editing library that most everyone wants</ti></tr>
+<tr><ti>ruby</ti><ti>Adds support/bindings for the Ruby language</ti></tr>
+<tr><ti>samba</ti><ti>Adds support for SAMBA</ti></tr>
+<tr><ti>sdl</ti><ti>Adds support for Simple Direct Layer (media library)</ti></tr>
+<tr><ti>slang</ti><ti>Adds support for the slang text display library (it's like ncurses, but different)</ti></tr>
+<tr><ti>slp</ti><ti>Adds Service Locator Protocol support to CUPS</ti></tr>
+<tr><ti>snmp</ti><ti>Adds support for the Simple Network Management Protocol if available</ti></tr>
+<tr><ti>socks5</ti><ti>Adds support for the socks5 proxy</ti></tr>
+<tr><ti>spell</ti><ti>Adds dictionary support</ti></tr>
+<tr><ti>sse</ti><ti>fast floating point optimisation for Pentium class chips</ti></tr>
+<tr><ti>ssl</ti><ti>Adds support for Secure Socket Layer connections</ti></tr>
+<tr><ti>static</ti><ti>Causes things to be statically linked instead of dynamically</ti></tr>
+<tr><ti>svga</ti><ti>Adds support for SVGAlib (graphics library)</ti></tr>
+<tr><ti>tcltk</ti><ti>Support for Tcl and/or Tk</ti></tr>
+<tr><ti>tcpd</ti><ti>Adds support for TCP wrappers</ti></tr>
+<tr><ti>tetex</ti><ti>Adds support for teTeX</ti></tr>
+<tr><ti>tiff</ti><ti>Adds support for the tiff image format</ti></tr>
+<tr><ti>truetype</ti><ti>Adds support for FreeType and/or FreeType2 fonts</ti></tr>
+<tr><ti>trusted</ti><ti>Builds trusting versions of the pcmcia-cs programs</ti></tr>
+<tr><ti>voodoo3</ti><ti>Adds support for 3Dfx's Voodoo3 video chipset, else defaults to Voodoo4/5 support if not in USE</ti></tr>
+<tr><ti>X</ti><ti>Adds support for XFree86</ti></tr>
+<tr><ti>xface</ti><ti>Adds xface support -- only in use for sylpheed and sylpheed-claws</ti></tr>
+<tr><ti>xml</ti><ti>Check/Support flag for XML library (version 1)</ti></tr>
+<tr><ti>xml2</ti><ti>Check/Support flag for XML library (version 2)</ti></tr>
+<tr><ti>xmms</ti><ti>Check/Support for XMMS (X MultiMedia System) player</ti></tr>
+<tr><ti>xv</ti><ti>Adds in optional support for the Xvideo extension (an X API for video playback)</ti></tr>
+<tr><ti>zeo</ti><ti>Adds support for Zope Enterprise Objects</ti></tr>
+</table>
+</body>
+</section>
 </chapter>
 
 <chapter>
-	<title>Entwicklung</title>
-	<section>
-		<title>Where can I report bugs?</title>
-		<body><p>For bugs within a specific program, contact the program's author. Otherwise, use our
-		Bugzilla bug tracker at <uri>http://bugs.gentoo.org</uri>.  You can also visit us in
-		<c>#gentoo</c> on the <uri link="http://www.openprojects.net">OpenProjects</uri> IRC network.
-		</p></body>
-	</section>
+<title>Filesystem Locations</title>
 
-	<section>
-		<title>How often are new releases made?</title>
-		<body><p>New releases are announced on the <uri link="http://lists.gentoo.org/mailman/listinfo/gentoo-announce">gentoo-announce</uri> 
-		mailing list<!-- TODO: approximatley every X months -->, In reality the packages themselves 
-		are updated shortly after the main authors release new code. As for when new Cd images etc
-		are released, that tends to be whenever there are any major updates to the base code, or when
-		new modules get added.</p></body>
-	</section>
+<section>
+<title>Introduction to the FHS</title>
+<body>
+<p>The filesystem layout standards used in Gentoo Linux closely follow the FHS,
+short for <e>Filesystem Hierarchy Standard</e>. A simplified
+description of the standard is given here; for a complete
+specification go to <uri>http://www.pathname.com/fhs/</uri>.</p>
+<note> The <path>/opt</path> hierarchy is addressed in section 3.12 of the FHS.
+Section 4.4 deals with the <path>/usr/X11R6</path> directory.  KDE and GNOME are
+not specifically addressed, and are in fact not even mentioned in the current
+version of the FHS.
+</note>
+</body>
+</section>
 
-	<section>
-		<title>I would like a package to be added to Portage; how would I go about this?</title>
-		<body><p>Head over to <uri>http://bugs.gentoo.org</uri> and submit a new bug of the type
-		"ebuild".  Attach your ebuild to the bug report.</p></body>
-	</section>
+<section>
+<title>How to fit your packages into the filesystem</title>
+<body><p>Usually, if the package uses autoconf and automake, the
+default installation destinations are mostly correct, with a few exceptions:</p>
+<ul>
 
-	<section>
-		<title>How can I add a question or answer to this FAQ?</title>
-		<body><p>Submit a new bug over at <uri>http://bugs.gentoo.org</uri> and add it to the
-		"Docs-user" product.</p></body>
-	</section>
+<li>If you're installing a program into <path>/bin</path>, <path>/sbin</path>,
+<path>/usr/bin</path> or <path>/usr/sbin</path>, then the program's
+corresponding man page should be installed into the <path>/usr/share/man</path>
+tree.  This can often be accomplished by specifying a  <c>./configure
+--mandir=/usr/share/man</c> in the ebuild.</li>
 
-	<section>
-		<title>make -f Makefile.cvs on a KDE app produces "invalid unused variable" errors</title>
-		<body><p>
-		Export <c>WANT_AUTOMAKE_1_4=1</c> for all KDE projects before running 
-		<c>make -f Makefile.cvs</c>. Also, for KDE2 apps export <c>WANT_AUTOCONF_2_1=1</c>, 
-		and for KDE3 apps export <c>WANT_AUTOCONF_2_5=1</c>.
-		</p></body>
-	</section>
+<li>GNU info files should always be installed to <path>/usr/share/info</path>,
+<e>even if the info files are about X11, GNOME or KDE-specific programs or
+tools</e>.  Make a note: <path>/usr/share/info</path> is the <e>only</e>
+official location for GNU info files.  Since most <c>./configure</c> scripts
+default to installing GNU info files in <c>/usr/info</c>, it's often necessary
+to call <c>./configure</c> with the <c>--infodir=/usr/share/info</c> argument.</li>
 
+<li>Documentation files are installed in <path>/usr/share/doc</path>, into a
+subdirectory reflecting the name, version and revision of the particular
+program. This applies to all programs: GNOME, KDE, X11 and console alike.
+However, some programs may install additional documentation and support files
+into a <path>/usr/share</path> hierarchy for their own purposes.
+</li>
 
-	<section>
-   		<title>My speaker beeps like crazy while compiling Mozilla. How do I disable console beeps?
-    		</title>
-    	<body>
-        <p>
-            Console beeps can be turned off using setterm, like this ;
+<li>X11-specific programs and libraries should always be installed into <path>/usr</path>, not
+directly into <path>/usr/X11R6</path>.  We reserve the <path>/usr/X11R6</path> hierarchy for
+the X Window System, Version 11 Release 6 <e>itself</e>.  This is perhaps a more to-the-letter
+interpretation of the FHS than some other distributions have made.</li>
 
-        <pre># <i>setterm -blength 0</i></pre>
+<li>GNOME and KDE programs, similarly, should always be installed into
+<path>/usr</path>.</li>
 
-            If you would like to turn off the console beeps on boot
-            you need to put this command in  
-            <path>/etc/conf.d/local.start</path>. However, this only
-            disables beeps for the current terminal. To disable
-            beeps for other terminals, pipe the command output to the 
-            target terminal, like this ;
+</ul>
+<impo> Some distributions choose to install GNOME and KDE into <path>/opt</path>. There
+exists no standard for these desktop environments in terms of where to actually install
+their files. In the interests of simplicity and consistency, we elect to install all
+KDE and GNOME packages into the <path>/usr</path> hierarchy.</impo>
 
-        <pre># <i>setterm -blength 0 >/dev/vc/1</i></pre>
+<p>In general, you should have ebuilds install their files into the <path>/usr</path>
+tree.  <e>Some</e> programs can be compiled and linked with or without GNOME, KDE and X11 libraries,
+which can cause confusion.  Our solution is to install everything into <path>/usr</path>
+which avoids ambiguity and needless complexity for ebuild authors.  The location in which to
+install a program's files should <e>not</e> depend on the presence or abscence of specific
+<c>USE</c> variables.  Therefore, the ebuilds in the portage tree <e>almost always</e>
+install into the <path>/usr</path> hierarchy exclusively.</p>
 
-            You need to replace /dev/vc/1 with the terminal
-            you would like to disable console beeps for.
-        </p>
-    	</body>
-	</section>
+<note>The <path>/opt</path> directory is reserved in Gentoo Linux for binary-only packages.
+Examples include mozilla-bin, acroread, netscape and realplayer.  Packages that get
+installed here will usually require a <path>/etc/env.d/foo</path> stub file.  This is
+so that paths and additional variables can be included into the environment.</note>
+
+</body>
+</section>
 </chapter>
 
 <chapter>
-<title>Resources</title>
-	<section>
-		<title>Wo kann ich mehr &#xFC;ber supervise das bei Gentoo Linux 1.0_rc5 und fr&#xFC;her benutzt wurde finden?</title>
-		<body><p><!-- TODO: --><uri>http://cr.yp.to/daemontools.html</uri></p></body>
-	</section>
+<title>The Portage scripts and utilities</title>
 
-	<section>
-		<title>Wo kann man mehr Informationen &#xFC;ber Gentoo Linux finden?</title>
-		<body><p>Die Offizelle Gentoo Dokumentation kann bei <uri>http://www.gentoo.org</uri> gefunden werden. Homepage vom &#xDC;bersetzungsprojekt ins Deutsche <uri>http://gentoo-deutsch.berlios.de</uri>. Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verf&#xFC;gbar.</p></body>
-	</section>
+<section>
+<title>Public scripts</title>
+<body><p>These are scripts used by the system-administrator to install and remove packages, and maintain the package database.</p>
+<p><c>ebuild</c> is the main engine of the Portage system; it performs all major tasks such as unpacking, compiling, installing, merging, and unmerging packages. It is called using the command: <c>ebuild path/to/package.ebuild command</c>. The commands available are:</p>
+<table>
+<tr><th>Command</th><th>Description</th><th>Related <c>ebuild</c> Function</th></tr>
+<tr><ti>*<c>setup</c></ti><ti>performs any miscellaneous commands required before the ebuild can proceed</ti><ti><c>pkg_setup</c></ti></tr>
+<tr><ti><c>depend</c></ti><ti>displays the dependencies required to build the package</ti><ti>n/a</ti></tr>
+<tr><ti><c>check</c></ti><ti>checks that the package dependencies are fulfilled</ti><ti>n/a</ti></tr>
+<tr><ti><c>rcheck</c></ti><ti>checks that the package runtime dependencies are fulfilled</ti><ti>n/a</ti></tr>
+<tr><ti><c>merge</c></ti><ti>unpacks, compiles, installs, and merges the package into your filesystem</ti><ti>n/a</ti></tr>
+<tr><ti>*<c>qmerge</c></ti><ti>merges the package into your filesystem, assuming that the the unpack, compile, and install stages have already been executed</ti><ti>n/a</ti></tr>
+<tr><ti>*<c>unpack</c></ti><ti>unpacks the source tarballs into the work directory</ti><ti><c>src_unpack</c></ti></tr>
+<tr><ti>*<c>compile</c></ti><ti>compiles the package</ti><ti><c>src_compile</c></ti></tr>
+<tr><ti><c>rpm</c></ti><ti>creates an RPM from the package</ti><ti>n/a</ti></tr>
+<tr><ti><c>package</c></ti><ti>creates a Gentoo <c>tbz2</c> package</ti><ti>n/a</ti></tr>
+<tr><ti>*<c>prerm</c></ti><ti>executes the pre-removal stage of the package</ti><ti><c>pkg_prerm</c></ti></tr>
+<tr><ti>*<c>postrm</c></ti><ti>executes the post-removal stage of the package</ti><ti><c>pkg_postrm</c></ti></tr>
+<tr><ti>*<c>preinst</c></ti><ti>executes the pre-installation stage of the package</ti><ti><c>pkg_preinst</c></ti></tr>
+<tr><ti>*<c>postinst</c></ti><ti>executes the post-installation stage of the package</ti><ti><c>pkg_postinst</c></ti></tr>
+<tr><ti><c>config</c></ti><ti>sets up a default configuration once the package is merged</ti><ti><c>pkg_config</c></ti></tr>
+<tr><ti>*<c>touch</c></ti><ti>updates the mtimes for each source archive in the package</ti><ti>n/a</ti></tr>
+<tr><ti>*<c>clean</c></ti><ti>cleans the work directory for the package</ti><ti>n/a</ti></tr>
+<tr><ti>*<c>fetch</c></ti><ti>fetches the package source tarballs</ti><ti>n/a</ti></tr>
+<tr><ti>*<c>digest</c></ti><ti>creates a digest file for the package</ti><ti>n/a</ti></tr>
+<tr><ti>*<c>install</c></ti><ti>installs the package into the image directory</ti><ti><c>src_install</c></ti></tr>
+<tr><ti><c>unmerge</c></ti><ti>unmerges the package from your filesystem</ti><ti>n/a</ti></tr>
+</table>
+<p>Note: commands with an asterisk (*) are normally only used by the developer.</p>
 
-	<section>
-		<title>Kann man CDs von Gentoo Linux kaufen?</title>
-		<body><p>USA: Ja! Frische CDRs sind fuer $5 USD von <uri>http://www.cheapbytes.com</uri> kaufbar.
-		</p>
-		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's k&#xF6;nnen f&#xDC;r 5 Euro bei <uri>http://www.lin24.de</uri> und <uri>http://www.liniso.de</uri> bezogen werden.
-		</p></body>
-	</section>
-	<section>
-		<title>Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt?</title>
-		<body>
-		<p>A good first step is to browse through the relevant doumentation at <uri>http://www.gentoo.org/index-docs.html</uri>, 
-		failing that, the various Gentoo Linux mailing
-		lists listed on <uri>www.gentoo.org</uri>.  To search through the Gentoo mailling lists, Google
-		(<uri>www.google.com</uri>) is a wonderful resource: just enter "lists.gentoo.org foo" to search the
-		Gentoo mailing lists for "foo".  If all else fails, or you just want
-		to hang out with Gentoo folks, visit us on irc: <c>#gentoo</c>
-		on <uri>irc.openprojects.net</uri>.
-		</p>
-		</body>
-	</section>
+<p><c>emerge</c> recursively merges a package and all of its dependencies into your filesystem.
+This command has many options, try <c>emerge --help</c> for a list of them.</p>
+
+<p><c>env-update</c> updates the configuration files (including, but not limited to <path>/etc/ld.so.conf</path> and <path>/etc/profile.env</path>) to include changes made by installed packages.</p>
+</body>
+</section>
+
+<section>
+<title>Private Scripts and Commands</title>
+<body>
+
+<p>These are scripts you can use in your ebuild files to perform common tasks.</p>
+
+<p>For more detailed instructions, look at the scripts themselves in <path>/usr/lib/portage/bin</path>.</p>
+
+<table>
+<tr><ti>into</ti><ti>sets the target prefix (<path>DESTTREE</path>) for <c>dobin</c>, <c>dolib</c>, <c>dolib.a</c>, <c>dolib.so</c>, <c>domo</c>, <c>dosbin</c></ti></tr>
+<tr><ti>dobin</ti><ti>installs the specified binaries into <path>DESTTREE/bin</path></ti></tr>
+<tr><ti>dodoc</ti><ti>installs the specified files into the package's documentation directory (<path>/usr/share/doc/${PF}/DOCDESTTREE</path>) where <path>DOCDESTREE</path> is settable with <c>docinto</c></ti></tr>
+<tr><ti>doexe</ti><ti>installs the specified files with mode <e>EXEOPTIONS</e> into <path>EXEDESTTREE</path>. <e>EXEOPTIONS</e> defaults to -m0755 and is settable via the <c>exeopts</c> command.  <path>EXEDESTTREE</path> is settable via the <c>exeinto</c> command.</ti></tr>
+<tr><ti>dohard</ti><ti>creates a hardlink, handles ${D} transparently</ti></tr>
+<tr><ti>dohtml</ti><ti>installs the specified files and directories into <path>/usr/share/doc/${PF}/html</path></ti></tr>
+<tr><ti>doinfo</ti><ti>installs the specified files into /usr/share/info, then compresses them with gzip</ti></tr>
+<tr><ti>doins</ti><ti>installs the specified files with mode <e>INSOPTIONS</e> into <path>INSDESTTREE</path>. <e>INSOPTIONS</e> defaults to -m0644 and is settable via the <c>insopts</c> command.  <path>INSDESTTREE</path> is settable via the <c>insinto</c> command.</ti></tr>
+<tr><ti>dolib</ti><ti>installs the specified libraries with mode <e>LIBOPTIONS</e> into <path>DESTTREE/lib</path>. <e>LIBOPTIONS</e> defaults to -m0644 and is settable via the <c>libopts</c> command</ti></tr>
+<tr><ti>dolib.a</ti><ti>installs the specified libraries into <path>DESTTREE/lib</path> with mode 0644</ti></tr>
+<tr><ti>dolib.so</ti><ti>installs the specified libraries into <path>DESTTREE/lib</path> with mode 0755</ti></tr>
+<tr><ti>doman</ti><ti>installs the specified files into <path>/usr/share/man/manX</path>, according to the suffix X</ti></tr>
+<tr><ti>domo</ti><ti>used for manually installing .mo files, which are used for storing localized string data</ti></tr>
+<tr><ti>donewins</ti><ti>same as <c>newins</c>; its actually a symlink to it.  this is deprecated and exists for compatibility with old ebuilds.  use <c>newins</c> instead</ti></tr>
+<tr><ti>dosbin</ti><ti>installs a binary into <path>DESTTREE/sbin</path>, marking it as executable</ti></tr>
+<tr><ti>dosed</ti><ti>removes all occurences of ${D} (the installation prefix path) in the specified files</ti></tr>
+<tr><ti>dosym</ti><ti>creates a symlink, handles ${D} transparently</ti></tr>
+<tr><ti>emake</ti><ti>runs a parallell make. some projects cannot be made in parallell; use make</ti></tr>
+<tr><ti>fowners</ti><ti>applies the specified ownership (first argument) to the specified file (second argument) via the chown command, handles ${D} transparently</ti></tr>
+<tr><ti>fperms</ti><ti>applies the specified permissions (first argument) to the specified file (second argument) via the chmod command, handles ${D} transparently</ti></tr>
+<tr><ti>newbin</ti><ti>wrapper around <c>dobin</c> which installs the specified binary (first argument) in <path>DESTTREE/bin</path>, transparently renaming to the second argument</ti></tr>
+<tr><ti>newdoc</ti><ti>wrapper around <c>dodoc</c> which installs the specified file (first argument) in <path>/usr/share/doc/${PF}/DOCDESTTREE</path>, transparently renaming to the second argument</ti></tr>
+<tr><ti>newexe</ti><ti>wrapper around <c>doexe</c> which installs the specified file with mode <e>EXEOPTIONS</e> into <path>EXEDESTTREE</path>, transparently renaming to the second argument</ti></tr>
+<tr><ti>newins</ti><ti>wrapper around <c>doins</c> which installs the specified file with mode <e>INSOPTIONS</e> into <path>INSDESTTREE</path>, transparently renaming to the second argument</ti></tr>
+<tr><ti>newlib.a</ti><ti>wrapper around <c>dolib.a</c> which installs the specified library into <path>DESTTREE/lib</path>, transparently renaming to the second argument</ti></tr>
+<tr><ti>newlib.so</ti><ti>wrapper around <c>dolib.so</c> which installs the specified library into <path>DESTTREE/lib</path>, transparently renaming to the second argument</ti></tr>
+<tr><ti>newman</ti><ti>wrapper around <c>doman</c> which installs the specified file into <path>/usr/share/man/manX</path>, transparently renaming to the second argument</ti></tr>
+<tr><ti>newsbin</ti><ti>wrapper around <c>dosbin</c> which installs the specified file into <path>DESTTREE/sbin</path>, transparently renaming to the second argument</ti></tr>
+<tr><ti>pmake</ti><ti>deprecated; use emake instead</ti></tr>
+<tr><ti>prepalldocs</ti><ti>recursively gzips all doc files in <path>/usr/share/doc</path>, transparently fixing up any symlink paths</ti></tr>
+<tr><ti>prepallinfo</ti><ti>recursively gzips all info files in <path>/usr/share/info</path></ti></tr>
+<tr><ti>prepallman</ti><ti>recursively gzips all man pages in <path>/opt/*/man/*</path>, <path>/usr/share/man/*</path>, <path>/usr/local/man/*</path>, <path>/usr/X11R6/share/man/*</path> and transparently fixes up any symlink paths</ti></tr>
+<tr><ti>prepall</ti><ti>wrapper around <c>prepallman</c>, <c>prepallinfo</c> and <c>prepallstrip</c>.  also ensures all libraries in <path>/opt/*/lib</path>, <path>/lib</path>, <path>/usr/lib</path> and <path>/usr/X11R6/lib</path> are executable.  also moves any stray aclocal macros into <path>/usr/share/aclocal</path></ti></tr>
+<tr><ti>try</ti><ti>deprecated. Use the || die construct instead.</ti></tr>
+</table>
+</body>
+</section>
 </chapter>
+
+<chapter>
+<title>Package Dependencies</title>
+
+<section>
+<title>Why dependencies are important</title>
+<body>
+<p>Portage is more than just a convenience script that gives you a unified
+way to build any one project (program, library) from source. It will also
+fetch and install any necessary dependencies if you take care to specify
+these in your ebuild.</p>
+
+<p>In the official ebuilds, all dependencies have already been specified,
+so when you issue <c>emerge net-www/mozilla/mozilla-1.0</c>, Portage will
+insure that all libraries necessary for Mozilla to build and run are
+properly installed before Mozilla itself is built.</p>
+
+<p>Portage even distinguishes between build-time dependencies and run-time
+dependencies. (Caveat: Currently, Portage installs all build-time and run-time
+dependencies and leaves it at that. At a later stage, it will be possible to
+trim your installation so that only the run-time dependencies are left installed).
+</p>
+
+</body>
+</section>
+
+<section>
+<title>How to Specify Dependencies in Your ebuild Files</title>
+<body>
+<p>The <c>DEPEND</c> variable inside your <path>foo-x.y.z.ebuild</path> tells Portage
+about which packages are needed to build <path>foo</path>. The <c>RDEPEND</c> variable
+specifies which packages are needed for <path>foo</path> to run.
+Example:</p>
+<pre>
+DEPEND="virtual/glibc
+        sys-libs/zlib"
+RDEPEND="virtual/glibc"
+</pre>
+
+<p>This tells Portage that to build <path>foo-x.y.z</path>, the packages
+<path>virtual/glibc</path> (more on  virtuals in a bit) and <path>sys-libs/zlib</path>
+are needed. It does not say anything about which version of glibc or zlib that are needed,
+which means "anything goes".</p>
+
+<p>The "anything goes" is of course a bit scary, and will not work in the general case.
+But for central libraries like glibc, which strives very hard to be 100% binary compatible
+all the time, it actually works. For other libraries, we can of course specify version
+dependencies. There are numerous ways to do this:</p>
+<pre>
+&gt;=sys-apps/bar-1.2
+=sys-apps/baz-1.0
+</pre>
+
+<p> &gt;= and = do what you would expect; sys-apps/bar version 1.2 or newer is okay (this means that
+sys-apps/bar-2.0 is okay), while sys-apps/baz version 1.0 is the only version that is accepted.</p>
+
+<p>Portage knows of four special suffixes to a version number: <c>-rX</c>, <c>-preX</c>,
+<c>-alphaX</c> and <c>-betaX</c> where X is a number (as many digits as you like). Given the
+specification <c>&gt;=sys-apps/foo-1.0</c> and the files:</p>
+<pre>
+sys-apps/frob-1.0-r1
+sys-apps/frob-1.0
+sys-apps/frob-1.0_pre1
+sys-apps/frob-1.0_beta1
+sys-apps/frob-1.0_alpha1
+</pre>
+<p>Portage will arrange them internally in the order listed, and pick the one on the top. This
+means it will always pick <c>_beta</c> packages over <c>_alphaX</c>, <c>_preX</c> over <c>_betaX</c>,
+non-suffixed over <c>_preX</c> and <c>-rX</c> suffixed over non-suffixed.</p>
+
+<p>Other methods of specifying version dependencies are follow:</p>
+<pre>
+~sys-apps/qux-1.0
+=sys-apps/foo-1.2*
+</pre>
+
+<p>~sys-apps/qux-1.0 will select the newest revision of qux-1.0</p>
+
+<p>=sys-apps/foo-1.2* will select the newest member of the 1.2 series, but will ignore
+1.3 and later series. That is, foo-1.2.3 and foo-1.2.0 are both valid, while foo-1.3.3
+and foo-1.3.0 are not.</p>
+
+</body>
+</section>
+</chapter>
+
 </guide>
