@@ -2,6 +2,11 @@
 # Copyright 2004 Martin Mittelsdorf; Distributed under the GPL
 # $Header:
 
+*motion-*
+  28 Jul 2004; Martin Mittelsdorf <martini at vdr-portal.de>
+  added init script
+  changed all ebuilds to install init script
+
 *motion-3.1.16
   26 Jul 2004; Martin Mittelsdorf <martini at vdr-portal.de>
   version bump

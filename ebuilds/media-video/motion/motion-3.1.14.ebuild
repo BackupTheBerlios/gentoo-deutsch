@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/motion/motion-3.1.14.ebuild,v 1.1 2004/06/01 19:28:41 martini Exp $ 
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/motion/motion-3.1.14.ebuild,v 1.2 2004/07/28 20:26:35 martini Exp $ 
 
 DESCRIPTION="A software motion detector. It grabs images from video4linux devices and/or webcams"
 HOMEPAGE="http://motion.sf.net"
@@ -47,6 +47,9 @@ src_install() {
 	rm ${D}/etc/motion-dist.conf
 	insinto /etc/motion
 	doins ${S}/motion-dist.conf
+	insinto /etc/init.d
+	insopts -m755
+	newins ${FILESDIR}/rc.motion motion
 }
 
 pkg_postinst() {
