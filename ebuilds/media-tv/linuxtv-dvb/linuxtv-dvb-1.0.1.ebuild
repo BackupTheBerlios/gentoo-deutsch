@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/linuxtv-dvb-1.0.1.ebuild,v 1.1 2003/10/01 18:09:04 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/linuxtv-dvb-1.0.1.ebuild,v 1.2 2003/10/28 22:10:51 martini Exp $
 
 IUSE=""
 
@@ -43,6 +43,10 @@ src_unpack() {
 	unpack ${A} || die "unpack failed"
 	#einfo patching stillimage
 	#cat ${FILESDIR}/stillimage.patch | patch ${S}/apps/test/test_stillimage.c
+
+	#patch av7110 for loading keymaps as normal user
+	cd ${S}/driver/av7110
+	epatch ${FILESDIR}/av7110_ir-permission-666.diff
 }
 
 src_compile() {

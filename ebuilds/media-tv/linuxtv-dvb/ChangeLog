@@ -1,6 +1,10 @@
 # ChangeLog for media-video/linuxdvb
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/ChangeLog,v 1.5 2003/10/01 18:12:05 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/ChangeLog,v 1.6 2003/10/28 22:10:51 martini Exp $
+
+*linuxtv-dvb-1.0.1 (28 Oct 2003)
+  01 Oct 2003; Martin Mittelsdorf <martini@vdr-portal.de>
+  added patch for supporting remote-plugin as normal user
 
 *linuxtv-dvb-1.0.1 (01 Oct 2003)
   01 Oct 2003; Martin Mittelsdorf <martini@vdr-portal.de>
