@@ -1,5 +1,10 @@
 # ChangeLog for media-video/vdrplugin-dxr3
 # Copyright 2003 Phillip Rothe <phil@alpha-centauri.org>; Distributed under the GPL
+
+*vdrplugin-dxr3-0.2.2 (10 Dec 2003)
+  19 Feb 2004; C. Gmeiner <christian@visual-page.de>
+  version bump
+  
 *vdrplugin-dxr3-0.2.1 (10 Dec 2003)
   10 Dec 2003; F. Schilhabel <fernsehleo@gmx.net>
   added patch to fix compilation with an Elchi enhanced VDR
