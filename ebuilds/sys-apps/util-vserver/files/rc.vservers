@@ -1,0 +1,58 @@
+#!/sbin/runscript
+
+USR_SBIN=/usr/sbin
+
+opts="$opts restart status"
+
+depend() {
+	need net
+	}
+
+start() {
+	ebegin "Starting virtual servers"
+	cd /etc/vservers
+	for serv in *.conf
+	do
+		ONBOOT=
+		. $serv
+		name=`basename $serv .conf`
+		if [ "$ONBOOT" = "yes" ] ; then
+			$USR_SBIN/vserver $name start
+		else
+			 einfo "virtual server $name not configured for on boot start"
+		fi
+	done
+	touch /var/lock/subsys/vservers
+
+}
+
+stop() {
+	einfo "Stopping the virtual servers"
+	cd /etc/vservers
+	for serv in *.conf
+	do
+		name=`basename $serv .conf`
+		$USR_SBIN/vserver $name stop
+	done
+	rm -f /var/lock/subsys/vservers
+
+
+}
+
+restart(){
+	stop()
+	start()
+}
+
+status(){
+	cd /etc/vservers
+	for serv in *.conf
+	do
+		ONBOOT=no
+		name=`basename $serv .conf`
+		. $serv
+		echo -n ONBOOT=$ONBOOT " "
+		$USR_SBIN/vserver $name running
+	done
+	
+}
