@@ -6,17 +6,18 @@
 <title>Gentoo Linux Frequently Asked Questions</title>
 <author title="Leitender Architekt"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Reviewer">Colin Morey</author>
-<author title="Uebersetzter"><mail link="marko@nexboard.de">Marko Kercmar</mail></author>
-<abstract>Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt in der gentoo-dev Mailingliste und aus dem IRC -- Wenn du andere Fragen (oder antworten!) zum hinzufuegen hast, bitte Kontaktier einen Author oder ein Mitglied vom Dokumentations Team.</abstract>
+<author title="&#xDC;bersetzter"><mail link="marko@nexboard.de">Marko Kercmar</mail></author>
+<author title="&#xDC;bersetuter"><mail link="egbers@netzraum.com">Sebastian Egbers</mail></author>
+<abstract>Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt in der gentoo-dev Mailingliste und aus dem IRC -- Wenn du andere Fragen (oder Antworten!) zum hinzuf&#xFC;gen hast, bitte Kontaktier einen Author oder ein Mitglied vom Dokumentations Team.</abstract>
 
 <version>1.1.1-de</version>
-<date> Juni 2002</date>
+<date> Juli 2002</date>
 
 <chapter>
 	<title>Mit Gentoo "anfangen"</title>
 
 	<section>
-		<title>Wie wird Gentoo ausgesprochen, und was wird damit gemeint?</title>
+		<title>Wie wird Gentoo ausgesprochen, und was ist damit gemeint?</title>
 		<body><p>Gentoo ist eine Art von kleinen schnellen Penguins, ausgesprochen "jen-two".</p></body>
 	</section>
 
@@ -28,8 +29,8 @@
 			<uri link="http://www.slackware.com/">Slackware</uri>,
 			<uri link="http://www.linuxfromscratch.org">Linux From Scratch</uri> oder
             <uri link="http://www.bsd.org">BSD</uri> Usern gefallen. Anders als die meisten Linux
-            Distributionen, hat Gentoo ein Paket System errinernd an die BSD's "Ports",
-            wir meinen, Sie koennen immer sich sein das sie die Letzten Version der Pakete haben.
+            Distributionen, hat Gentoo ein Paket System das an die BSD's "Ports" erinnert;
+            wir meinen, Sie k&#xF6;nnen sich immer sicher sein das sie die Letzten Versionen der Pakete haben.
         </p></body> 	</section> </chapter>
 
 <chapter>
@@ -37,41 +38,38 @@
 
 	<section>
 		<title>Wo ist der Unterschied zwischen .iso und .tbz2 Datein?</title>
-		<body><p>Die Fertigen <e>.tbz2</e> Datein sind Mimimales Archiv von System Datein
+		<body><p>Die fertigen <e>.tbz2</e> Datein sind ein Mimimales Archiv von System Datein
 		die den Usern den bootstrap und die Installation von Gentoo Linux erlauben.
-		Die Fertige <e>.iso</e> ist eine Komplette, Bootbare CD Image das
+		Die Fertige <e>.iso</e> ist eine komplettes, bootbares CD Image das
 		einen System Kernel, einen zum Teil komplette Zusammenstellung von Kernel Modulen,
-		wichtigen System Hilfsprogrammen wie <c>mkfs</c> und Netzwerk Unterstuetzung,
-		sowie das Minimal-System <e>.tbz2</e> Archiv.  Die meisten User werden
-		<!--
-		Komische Satz zusammenstellung / Spaeter Errneuern
-		-->
-		Gentoo Linux durch das Brennen der .iso Datei auf eine CD, Booten von der CD,
+		wichtigen System Hilfsprogrammen wie <c>mkfs</c> und Netzwerk Unterst&#xFC;tzung,
+		sowie das Minimal-System des <e>.tbz2</e> Archivs enth&#xE4;lt. Die meisten User werden
+		Gentoo Linux von der .iso Datei auf eine CD brennen, von der CD booten,
 		und mit einer Minimalen Linux Umgebung von der Gentoo Boot CD Installieren.
-		<!--
-		Ende Komische Satz zusammenstellung / Spaeter Errneuern
-		-->
-		Es ist jedoch moeglich fuer User Gentoo Linux direkt von einer
+		Es ist f&#xFC;r den Benutzer jedoch m&#xF6;glich Gentoo Linux direkt von einer
 		bereits vorhandenen Linux distribution zu Installieren.
-		Solche Benutzer muessen nur eine die .tbz2 Datei downloaden,
+		Solche Benutzer m&#xFC;ssen nur eine .tbz2 Datei downloaden,
 		den Inhalt auf eine Reserve Partitionen entpacken
-		(gehen sie sicher das sie das <c>p</c> Argument benutzen wen sie das Archiv entpacken),
-		nun in das System einen chroot ausfuehren und ueber normale Art und Weise installieren.</p>
+		(stellen Sie sicher das Sie das <c>p</c> Argument benutzen wenn Sie das Archiv entpacken),
+		dann in das System einen chroot ausf&#xFC;hren und &#xFC;ber normale Art und Weise installieren.</p>
         </body>
 	</section>
 
 	<section>
-		<title>Warum werden .iso und .tbz2 Datein mit Unterschiedlichen -r (Revisionen) gebaut/veroeffentlicht?</title>
+		<title>Warum werden .iso und .tbz2 Datein mit Unterschiedlichen -r (Revisionen) erstellt/ver&#xF6;ffentlicht?</title>
 		<body><p>
-		Das Minimal-System .tbz2 Archiv benoetigt nur
+		Das Minimal-System aus dem .tbz2 Archiv braucht nur erneuert zu werden, wenn signifikante &#xC4;nderungen am Kern
+		von Gentoo Linux gemacht wurden (z. B. &#xC4;nderungen am Basislayout oder ein neues Profil) - dadurch sind .tbz2
+		Updates relativ selten.
 		<!-- Blub.. Was fuer ein Satz.. Keine Ahnung, mal ueberlegen -->
-		The .tbz2 minimal-system tarball only needs to be revised when there have
+		<!-- Nicht schön aber ok -S.E -->
+		<!--The .tbz2 minimal-system tarball only needs to be revised when there have
 		been significant changes to the core Gentoo Linux system (such as baselayout
-		changes, or a new profile), and as such .tbz2 updates are relatively rare.
+		changes, or a new profile), and as such .tbz2 updates are relatively rare.//-->
 		<!-- Das kann ich wieder -->
 		Die .iso Datei muss nur geupdatet werden, wenn jemand andere Hardware hat
 		die nicht mit der .iso booten will. Seitdem Kernel Module und Updates
-		regelmaessig gemacht werden kann es kaum zu dieser Situation kommen.
+		regelm&#xE4;ssig gemacht werden kann es kaum zu dieser Situation kommen.
 		</p>
 	</body>
 	</section>
@@ -88,21 +86,22 @@ link="/doc/build.html">Download/Install page</uri> for updates.</p>
 	<section>
 		<!-- Is des Deutsch "," + "und" danach -->
 		<title>Ich habe einen Sony Super-Slim VAIO Laptop, und die Gentoo Linux CD hat Probleme
-			mit dem finden meines PCMCIA ATAPI CD-ROM Laufwerkes.</title>
+			beim erkennen meines PCMCIA ATAPI CD-ROM Laufwerkes.</title>
 		<body>
-		<p>Gehen sie sicher, das das zweite IDE Port fuer die CDROM Eingestellt ist (es setzt sich selbst zurueck wenn das Laufwerk nicht
-			beim Booten angeschlossen ist) und dann geben Sie folgendes bei Isolinux <c>boot:</c> ein:</p>
+		<p>Gehen sie sicher, das der zweite IDE Port f&#xFC;r das CDROM Eingestellt ist (es setzt sich selbst
+		zur&#xFC;ck wenn das Laufwerk nicht	beim Booten angeschlossen ist) und dann geben Sie folgendes bei
+		Isolinux <c>boot:</c> ein:</p>
 <pre>
 boot: <i>rescue ide2=0x180,0x386</i>
 </pre>
-<p>Wenn sie 1.0_rc5 oder eine aeltere Boot CD benutzen, abgesehen vom runterladen einer neuen ISO, 
+<p>Wenn sie 1.0_rc5 oder eine &#xE4;ltere Boot CD benutzen, abgesehen vom runterladen einer neuen ISO, 
 geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 </body>
 
 </section>
 	<section>
-		<title>I'm finding things to be really unstable and I'm using "-O9 -ffast-math 
-		-fomit-frame-pointer" optimizations.  What gives?</title>
+		<title>Mir erscheint das ganze sehr instabiel und ich benutzte "-O9 -ffast-math
+		-fomit-frame-pointer" optimierungen. Warum?</title>
 		<body>
 		<p>When you use any optimizations beyond <c>-O3</c>, you're really taking the risk of 
 		having broken packages.
@@ -119,28 +118,29 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 
 	<section>
 		<title>Wie lautet das Standard Root Passwort nach der Installation?</title>
-		<body><p>Das Standard Passwort ist leer, einfach Enter Druecken.</p></body>
+		<body><p>Das standard Passwort ist leer, einfach Enter dr&#xFC;cken.</p></body>
 	</section>
 
 	<section>
-		<title>Wie kann ich bei root (oder anderen User) das Passwort aendern?</title>
-		<body><p>Sie koennen <c>passwd</c> benutzen um das Passwort fuer den User mit den sie eingelogt sind aendern.
-		Fuer zusaetzliche Optionen und Einstellen, sehen sie sich bitte <c>man passwd</c> an nachdem sie Gentoo Linux fertig Installiert haben.
+		<title>Wie kann ich bei root (oder einem anderen User) das Passwort &#xE4;ndern?</title>
+		<body><p>Sie k&#xF6;nnen <c>passwd</c> benutzen, um das Passwort f&#xFC;r den User mit dem sie eingelogt sind zu &#xE4;ndern.
+		F&#xFC;r zus&#xE4;tzliche Optionen und Einstellungen, schauen Sie sich bitte <c>man passwd</c> an, nachdem sie Gentoo Linux
+		fertig Installiert haben.
 		</p></body>
 	</section>
 	<section>
-		<title>Wie kann man einen Normalen User hinzufuegen?</title>
+		<title>Wie kann man einen Normalen User hinzuf&#xFC;gen?</title>
 		<body>
-		<p>Jeder weiss wohl, das es nicht sehr empfehlenswert ist immer <e>root</e> zu benutzen,
-		Wie kann man also andere User hinzufuegen?</p>
-		<p>Der Befehl <c>adduser gentoo</c> wuerde einen User mit dem Username gentoo erstellen. Der naechste Schritt ist es
+		<p>Jeder weiss wohl, das es nicht sehr empfehlenswert ist immer <e>root</e> zu benutzen.
+		Wie kann man also andere User hinzuf&#xFC;gen?</p>
+		<p>Der Befehl <c>adduser gentoo</c> w&#xFC;rde einen User mit dem Username gentoo erstellen. Der n&#xE4;chste Schritt ist,
 		diesem User ein Password zu geben und <c>passwd</c> tut genau das.</p>
 		</body>
 	</section>
 	<section>
 		<title>Warum kann ein User nicht mit su zu root werden?</title>
-		<body><p>Wegen Sicherheitsgruenden, koennen User nur mit <c>su</c> zu root werden wenn sie in der 
-		<e>wheel</e> Groupe sind. Um einen <i>Usernamen</i> zu der <e>wheel</e> Gruppe hinzufuegen, benutzen sie den 
+		<body><p>Aus Sicherheitsgr&#xFC;nden k&#xF6;nnen User nur mit <c>su</c> zu root werden, wenn sie in der 
+		<e>wheel</e> Groupe sind. Um einen <i>Usernamen</i> zu der <e>wheel</e> Gruppe hinzuf&#xFC;gen, benutzen sie den 
 		folgenden Befehl als root:</p>
 		<pre># <i>usermod -G users,wheel username</i></pre>
 		</body>
@@ -149,10 +149,10 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 		<title>Wie kann ich devfs aktivieren?</title>
 		<body>
 		<p>
-		Wenn Sie 1.0_rc5 oder neuer benutzen, muss man nichts machen um devfs
+		Wenn Sie 1.0_rc5 oder neuer benutzen, braucht man nichts machen um devfs
 		zu aktivieren: es ist schon aktiviert (Haben sie auch devfs in den Kernel eingebunden?).
-		Wieimmer
-		Wenn sie jedoch, eine Version von Gentoo Linux <e>vor</e> der Version 1.0_rc5 benutzen, fuegen sie biite
+		Wie immer
+		Wenn sie jedoch, eine Version von Gentoo Linux <e>vor</e> der Version 1.0_rc5 benutzen, f&#xFC;gen sie bitte
 		<c>devfs=mount</c> zu Ihrer <c>GRUB</c> Kernel Boot Option hinzu, so das die Zeile zum Teil so aussieht wie
 		<c>kernel /boot/boot/bzImage devfs=mount foo=bar</c>  Der Kernel wird auf
 		<path>/dev</path> das <e>devfs</e>  Dateisystem automatisch booten.
@@ -162,7 +162,7 @@ geben Sie oben <c>gentoo</c> anstatt <c>rescue</c> ein.</p>
 	<section>
 		<title>Wie kann ich devfs deaktivieren?</title>
 		<body>
-		<p>Bei Gentoo Linux 1.0_rc6 und besser/neuer, kann man devfs deaktivieren durch das uebergeben des
+		<p>Bei Gentoo Linux 1.0_rc6 und neuer, kann man devfs deaktivieren durch das &#xFC;bergeben des
 		<c>gentoo=nodevfs</c> Argumentes zum Kernel.</p>
 		</body>
 	</section>
@@ -190,17 +190,17 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	<section>
 		<title>Grub kann die stage x.y nicht finden?</title>
 		<body><p>
-		Waehrend der Installation hat grub die boot Datein
+		W&#xE4;hrend der Installation hat grub die boot Datein
 		nach <path>/boot/grub</path> (<path>/boot/boot/grub</path> in Gentoo Linux 1.0_rc5 und 
-		aelter) kopiert. Grub sucht automatisch das Verzeichnis <path>/boot/grub</path> auf der Boot Partition ab.
-		(Wir empfehlen ihnen, eine ersatz nicht-auto boot Partition auf	<path>/boot</path> gemeuntet haben,
-		<!-- Lala, since that way it is much more difficult to clobber your kernel and boot
-		info by accident.) --> Der Obere Error kommt meistens vom nicht benutzen einer ersatzt Boot Partiton 
+		&#xE4;lter) kopiert. Grub sucht automatisch das Verzeichnis <path>/boot/grub</path> auf der Boot Partition ab.
+		(Wir empfehlen ihnen, eine ersatz nicht-auto boot Partition auf	<path>/boot</path> gemountet haben,
+		da es so schwieriger ist ausversehen den kernel oder die Boot-Informationen zu zerst&#xF6;ren.
+		 Der obere Fehler kommt meistens vom nicht benutzen einer ersatzt Boot Partiton 
 		(b) Vergessen des mounten der Boot Partition auf <path>/boot</path> bevor man das
 		Minimal-System Archiv entpackt hat oder
 		<c>emerge --usepkg system</c>, oder (c) vergessen des
 		<c>notail</c> Argumentes when <path>/boot</path> eine ReiserFS Partition ist.
-		Sie koennen mehr Informationen ueber Grub finden, in der Beigelegten Debug Anleitung
+		Sie k&#xF6;nnen mehr Informationen &#xFC;ber Grub finden, in der Beigelegten Debug Anleitung
 		debug grub von dem Grub Terminal oder durch das lesen des 
 		<uri link="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/0F1731DC664023B7862569D0005C44AF?OpenDocument">IBM developerWorks Grub tutorial</uri>.
 		</p>
@@ -211,7 +211,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <chapter>
 	<title>Paket Verwaltung</title>
 	<section>
-		<title>In what format are the packages stored?</title>
+		<title>In welchem Format werden die Pakete gespeichert?</title>
 		<body><p>They exist in our portage tree as <e>ebuild</e> autobuild scripts; we are primarily 
 		a ports-based distribution, meaning that we provide scripts (<c>.ebuild</c> files) and a 
 		special system (Portage) so that you can build apps from sources. We generally only build 
@@ -223,9 +223,10 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>Why write a new port system (Portage) instead of using BSD's version?</title>
+		<title>Warum ein neues Port System schreiben (Portage), wenn man die BSD Version verwenden k&#xF6;nnte?</title>
 		<body>
-		<p>In one sentence, because Portage is much better in so many ways.  One of the design
+		<p>In einem Satz: Weil Portage in vielen Dingen viel besser ist.
+		One of the design
 		philosophies of the <c>.ebuild</c> syntax was to make it an analog of what you'd type to 
 		install the program manually, thus making Portage very easy to learn and modify to your 
 		needs.  We also have OpenBSD-style "fake" installs, safe unmerging, system profiles, 
@@ -234,23 +235,23 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>How does this differ from Debian's apt or BSD's ports?</title>
-		<body><p>Portage features the best of apt and ports; for example, USE options, a full
-		dependency system, safe installs and uninstalls, and a true package database.  Think of
-		Portage as the best of both worlds; a ports system with the sensibilities and safety of a
-		Linux package management system built-in.</p></body>
+		<title>Wo liegt der Unterschied zu Debian's apt oder den BSD Ports?</title>
+		<body><p>Portage enth&#xE4;lt die besten Funktionen von apt und ports; zum Beispiel die
+		USE Optionen, ein komplettes Abh&#xE4;ngigkeitssystem, sicheres installieren und
+		deinstallieren, eine wirkliche Paket-Datenbank. Stellen Sie sich Portage als das Beste
+		beider Welten vor; ein Ports-System das die sensibilit&#xE4;t und sicherheit eines Linux
+		Paket Management Systems enth&#xE4;lt.</p></body>
 	</section>
 
 	<section>
-	        <title>How do I install and uninstall packages?</title>
+	        <title>Wie installiere und deinstalliere ich Pakete?</title>
 	        <body>
-		<p>The <uri link="/doc/portage-user.html">Portage User Guide</uri> details how to install
-		and uninstall packages, and update Portage.</p>
+		<p>Das <uri link="/doc/portage-user.html">Portage User Guide</uri> erkl&#xE4;rt ausf&#xFC;hrlich, wie man Pakete installiert, deinstalliert und Portage updated.</p>
 	        </body>
 	</section>
 
 	<section>
-		<title>How can I set a global configuration for compiling packages?</title>
+		<title>Wie kann ich globale Einstellungen zum compilieren der Pakete einstellen?</title>
 		<body><p><path>/etc/make.conf</path> should be modified to override global and
 		profile-specific default options used to compile and merge packages. The most common options 
 		are as follows:</p>
@@ -290,32 +291,29 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>What happened to <path>/etc/make.defaults</path>?</title>
+		<title>Was ist mit <path>/etc/make.defaults</path> passiert?</title>
 		<body>
-		<p>As of Portage 1.5 onwards, <path>/etc/make.defaults</path> is antiquated; 
-		if you have portage-1.5-r1 or above installed then you can safely delete it.
-		This file has been replaced by <path>/etc/make.profile/make.defaults</path>
-		(<path>/etc/make.profile</path> should actually be a symlink to, 
-		<path>/usr/portage/profiles/default</path>),
-		which contains system profile-specific default settings. The priority order of
-		the various configuration files is as follows (highest first):
+		<p>Seit Portage 1.5 und danach ist <path>/etc/make.defaults</path> veraltet; 
+		wenn Sie portage-1.5-r1 oder neuer installiert haben, k&#xF6;nnen Sie es ohne Probleme l&#xF6;schen.
+		Die Datei wurde ersetzt durch <path>/etc/make.profile/make.defaults</path>
+		(<path>/etc/make.profile</path> sollte aktuell ein Symbolischer-Link nach
+		<path>/usr/portage/profiles/default</path> sein),
+		welche System-Profil-Spezifische standard Einstellungen enth&#xE4;lt. Die Priorit&#xE4;tsreihenfolge der unterschiedlichen Konfigurations-Datei ist folgende (h&#xF6;ste zuerste):
 		<ol>
-			<li>Environment variables</li>
-			<li><path>/etc/make.conf</path>, for your use</li>
-			<li><path>/etc/make.profile/make.defaults</path>, for profile-specific defaults</li>
-			<li><path>/etc/make.globals</path>, for global defaults (settings not specified in
-			any other place come from here)</li>
+			<li>Umgebungs-Variablen</li>
+			<li><path>/etc/make.conf</path>, f&#xFC;r Ihre Verwednung</li>
+			<li><path>/etc/make.profile/make.defaults</path>, f&#xFC;r Profil-Spezifische Standards</li>
+			<li><path>/etc/make.globals</path>, f&#xFC;r globale Standards (Einstellungen die nicht speziell an irgend einer anderen Stelle gesetzt wurden, kommen von hier)</li>
 		</ol></p></body>
 	</section>
 	
 	<section>
-		<title>Is there a way to upgrade all installed packages
-		e.g. <e>apt-get upgrade</e> or <e>make World</e>?</title>
-		<body><p><b>YES!</b>  Type <c>emerge --update</c> (use it with <c>--pretend</c> first) to
-		update all core system packages, and use <c>emerge --update world</c> (again, use it with 
-		<c>--pretend</c> first) to do a complete system upgrade of all installed packages.
-
-
+		<title>Gibt es eine M&#xF6;glichkeit alle installierten Pakete zu aktualisieren wie z. B.
+		<e>apt-get upgrade</e> oder <e>make World</e>?</title>
+		<body><p><b>JA!</b> Geben Sie <c>emerge --update</c> ein (erst mit <c>--pretend</c>
+		aufrufen), um die Kern-System-Pakete zu aktualisieren, und <c>emerge --update world</c>
+		(wieder erst mit <c>--pretend</c> aufrufen), um ein komplettes System Upgrade aller
+		installierten Pakete zu machen.
 		</p></body>
 	</section>
 
@@ -334,7 +332,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>I want to perform the <c>./configure</c> step myself.  Can I?</title>
+		<title>Ich m&#xF6;chte den <c>./configure</c> Schritt selber ausf&#xFC;hren. Geht das?</title>
 		<body><p>
 		Yes, but it is not trivial.  First do <c>man ebuild</c> followed by
 		<c>ebuild foo-x.y.z.ebuild unpack</c>.  Then <c>cd</c> to 
@@ -350,7 +348,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>What if rsync doesn't work for me?</title>
+		<title>Was, wenn rsync bei mir nicht funktioniert?</title>
 		<body><p>
 		If you're behind a firewall that doesn't permit
 		rsync traffic, then you can instead download the daily
@@ -362,23 +360,22 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>How do I use <i>emerge</i> from behind a firewall?</title>
+		<title>Wie benutze ich <i>emerge</i> hinter einer Firewall?</title>
 		<body><p>
-		Edit the PROXY settings in <path>/etc/make.conf</path>.  If that doesn't work,
-		edit <path>/etc/wget/wgetrc</path> and edit http_proxy and ftp_proxy
-		appropriately.
+		Ver&#xE4;ndern Sie die PROXY Einstellungen in <path>/etc/make.conf</path>. Wenn das nicht
+		funktioniert, bearbeiten Sie <path>/etc/wget/wgetrc</path> und passen Sie http_proxy und
+		ftp_proxy entspr&#xE4;chend an.
 		</p></body>
 	</section>
 
 	<section>
-		<title>Can I rsync from another operating system?</title>
-		<body><p>There's a program called unison that works under both UNIX and Win32, available from
+		<title>Kann ich von einem anderen Betriebssystem aus ein rsync machen?</title>
+		<body><p>Es gibt ein Programm das unison heisst, das sowohl unter UNIX als auch unter Win32 l&#xE4;uft. Es ist verf&#xFC;gbar unter:
 		<uri>http://www.cis.upenn.edu/~bcpierce/unison/</uri>.</p></body>
 	</section>
 
 	<section>
-		<title>I have only slow modem connection at home. Can I download sources somewhere else and
-		add them to my system?</title>
+		<title>Ich habe zuhause nur eine langsame Modem-Verbingund. Kann ich die Quellen woanders downloaded und dann zu meinem System hinzuf&#xFC;gen?</title>
 		<body><p>
 		Definitely. You can run <c>emerge --pretend package</c> to see what programs
 		are going to be installed. Download sources and bring them on any media
@@ -425,10 +422,9 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 </chapter>
 
 <chapter>
-	<title>Gentoo Linux Benutzen</title>
+	<title>Gentoo Linux benutzen</title>
 	<section>
-    		<title>I have installed openssh on my box, but can only log in as root - my normal user
-		account doesn't work. </title>
+    		<title>Ich habe openssh auf meiner Box installiert, aber ich kann mich nur als root und nicht als normaler Benutzer von aussen einloggen.</title>
     		<body>
 		<p>
 		This is most probably because your user account doesn't have a valid shell specified. Check
@@ -441,22 +437,22 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 	
 	<section>
-		<title>Ich kann X Anwendungen nur als root ausfuehren.</title>
-		<body><p>Ihr <path>/tmp</path> Verzeichnis hat die Falschen Zugriffsrechte. Geben sie folgendes als root ein:</p>
+		<title>Ich kann X Anwendungen nur als root ausf&#xFC;hren.</title>
+		<body><p>Ihr <path>/tmp</path> Verzeichnis hat die falschen Zugriffsrechte. Geben sie folgendes als root ein:</p>
 		<pre># <i>chmod 1777 /tmp</i></pre>
 		</body>
 	</section>
 
 	<section>
-		<title>How do I set up an International Keyboard Layout?</title>
-		<body><p>Edit the <c>KEYMAP</c> variable in <path>/etc/rc.conf</path>.
-		Then either reboot or restart the keymaps script:
+		<title>Wie stelle ich ein internationales Tastatur-Layout ein?</title>
+		<body><p>Passen Sie die <c>KEYMAP</c> Variable in <path>/etc/rc.conf</path> an. Entweder
+		booten Sie danach das System, oder starten Sie das Keymaps-Script neu:
 		<c>/etc/init.d/keymaps restart</c>.</p>
 		</body>
 	</section>
 
 	<section>
-		<title>Die DNS Namens Aufloesung funktioniert nur fuer root.</title>
+		<title>Die DNS Namens Aufl&#xF6;sung funktioniert nur f&#xFC;r root.</title>
 		<body><p><path>/etc/resolv.conf</path> hat die falschen Zugriffsrechte. <c>chmod</c> es zu folgendem:
 		</p>
 		<pre># <i>chmod 0644 /etc/resolv.conf</i></pre>
@@ -464,7 +460,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 	</section>
 
 	<section>
-		<title>Why is KDE not reading <path>/etc/profile</path>?</title>
+		<title>Warum liesst KDE nicht <path>/etc/profile</path>?</title>
 		<body><p>You need to add <c>--login</c> to the first line in <path>/opt/kde2.1/bin/startkde
 		</path>, so that it reads as follows:</p>
 		<pre>#!/bin/sh --login</pre>
@@ -474,7 +470,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 </chapter>
 
 <chapter>
-	<title>Maintenance</title>
+	<title>Verwaltung</title>
 	<section>
 		<title>ReiserFS and filesystem corruption issues -- how to fix'em, etc</title>
 		<body>
@@ -512,7 +508,7 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 </chapter>
 
 <chapter>
-	<title>Development</title>
+	<title>Entwicklung</title>
 	<section>
 		<title>Where can I report bugs?</title>
 		<body><p>For bugs within a specific program, contact the program's author. Otherwise, use our
@@ -580,24 +576,24 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 <chapter>
 <title>Resources</title>
 	<section>
-		<title>Wo kann ich mehr ueber supervise das bei Gentoo Linux 1.0_rc5 und frueher benutzt wurde finden?</title>
+		<title>Wo kann ich mehr &#xFC;ber supervise das bei Gentoo Linux 1.0_rc5 und fr&#xFC;her benutzt wurde finden?</title>
 		<body><p><!-- TODO: --><uri>http://cr.yp.to/daemontools.html</uri></p></body>
 	</section>
 
 	<section>
-		<title>Wo kann man mehr Informationen ueber Gentoo Linux finden?</title>
-		<body><p>Die Offizelle Gentoo documentation kabn bei <uri>http://www.gentoo.org</uri> gefunden werden. Homepage vom Uebersetzungsprojekt ins Deutsche <uri>http://gentoo-deutsch.berlios.de</uri>. Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verfuegbar.</p></body>
+		<title>Wo kann man mehr Informationen &#xFC;ber Gentoo Linux finden?</title>
+		<body><p>Die Offizelle Gentoo documentation kann bei <uri>http://www.gentoo.org</uri> gefunden werden. Homepage vom &#xDC;bersetzungsprojekt ins Deutsche <uri>http://gentoo-deutsch.berlios.de</uri>. Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verf&#xFC;gbar.</p></body>
 	</section>
 
 	<section>
 		<title>Kann man CDs von Gentoo Linux kaufen?</title>
 		<body><p>USA: Ja! Frische CDRs sind fuer $5 USD von <uri>http://www.cheapbytes.com</uri> kaufbar.
 		</p>
-		<p>Europa/Deutschland: Keine Ahnung, sollte sich jemand finden der dies liesst und Gentoo Linux CDs Professionell (nicht grad privat) macht und verkauft kann sich mal bei <mail link="marko@nexboard.de">mir</mail> melden
+		<p>Europa/Deutschland: Keine Ahnung, sollte sich jemand finden der dies liesst und Gentoo Linux CDs Professionell (nicht grad privat) macht und verkauft kann sich mal bei <mail link="marko@nexboard.de">mir</mail> melden.
 		</p></body>
 	</section>
 	<section>
-		<title>This FAQ hasn't answered my question.  What do I do now?</title>
+		<title>Diese FAQ konnte meine Fragen nicht beantworten. Was mache ich jetzt?</title>
 		<body>
 		<p>A good first step is to browse through the relevant doumentation at <uri>http://www.gentoo.org/index-docs.html</uri>, 
 		failing that, the various Gentoo Linux mailing
