@@ -1,0 +1,5 @@
+# /etc/conf.d/vdr.dvdselect:
+
+# Global config file for vdr rc-scripts
+
+_EXTRAOPTS=""

@@ -1,0 +1,34 @@
+diff -Nru dvdselect-0.7a.orig/config.c dvdselect-0.7a/config.c
+--- dvdselect-0.7a.orig/config.c	2004-05-21 02:17:06.000000000 +0200
++++ dvdselect-0.7a/config.c	2004-06-21 12:52:13.253696368 +0200
+@@ -24,8 +24,8 @@
+     strcpy(NameOrgDevice, "/dev/scd0");
+     strcpy(ImageDir, "/video");
+     strcpy(DVDOutputDir, "/video/dvd");
+-    strcpy(DVDReadScript, "/video/config/plugins/dvdselect_readdvd.sh");
+-    strcpy(DVDWriteScript, "/video/config/plugins/dvdselect_writedvd.sh");
++    strcpy(DVDReadScript, "/etc/vdr/dvdselect_readdvd.sh");
++    strcpy(DVDWriteScript, "/etc/vdr/dvdselect_writedvd.sh");
+ }
+ 
+ bool cDVDSelectSetup::SetupParse(const char *Name, const char *Value)
+diff -Nru dvdselect-0.7a.orig/menu.c dvdselect-0.7a/menu.c
+--- dvdselect-0.7a.orig/menu.c	2004-05-23 00:04:38.000000000 +0200
++++ dvdselect-0.7a/menu.c	2004-06-21 08:10:41.000000000 +0200
+@@ -16,11 +16,11 @@
+ #define TSDIR        "video_ts"
+ #define FINDCMD      "cd '%s' && find '%s' -follow -iname '%s' -printf '%%p\n' -o -iname '%s' -printf '%%h\n' 2> /dev/null"
+ 
+-#define SCRIPT_DVDWRITE_CMD      "%s '%s'"
+-#define SCRIPT_DVDREAD_CMD      "%s '%s' '%s' '%s'"
+-#define RMCMD      "rm '%s' 2> /dev/null"
+-#define MOUNTCMD      "ln -nfs '%s' '%s' 2> /dev/null"
+-#define RESETCMD      "ln -nfs '%s' '%s' 2> /dev/null"
++#define SCRIPT_DVDWRITE_CMD      "sudo %s '%s'"
++#define SCRIPT_DVDREAD_CMD      "sudo %s '%s' '%s' '%s'"
++#define RMCMD      "sudo rm '%s' 2> /dev/null"
++#define MOUNTCMD      "sudo ln -nfs '%s' '%s' 2> /dev/null"
++#define RESETCMD      "sudo ln -nfs '%s' '%s' 2> /dev/null"
+ 
+ 
+ // --- cDVDList -------------------------------------------------------------
