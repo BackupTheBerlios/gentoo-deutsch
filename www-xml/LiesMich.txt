@@ -6,4 +6,16 @@ Sooweit ich gesehen habe ist auf berlios das Perl-Moodul XSL-Parser
 verfuegbar. Evtl. kann man damit die Seiten beim einchecken gleich
 in html umwandeln und ins htdoc-Verzeichnis kopieren. Wer Interesse
 hat, soll sich einfach mal das copywww.sh und das commitinfo im 
-CVSROOT anschauen. 
+CVSROOT anschauen.
+
+Da XML die benannten HTML-Zeichen nicht moechte, hier noch ein 
+Miniscript um diese trotzdem benutzen zu koennen:
+
+---------------------------
+#!/bin/sh
+cat $1 | sed -e 's/&auml;/&#228;/' -e 's/&ouml;/&#246;/' -e 's/&uuml;/&#252;/' \
+        -e 's/&szlig;/&#223;/' -e 's/&Auml;/&#196;/' -e 's/&Ouml;/&#214;/' \
+        -e 's/&Uuml;/&#220;/' -e 's/&euro;/&#8364;/' \
+        > $1.new
+---------------------------
+			
