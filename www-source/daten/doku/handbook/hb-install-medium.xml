@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.31 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.5 2003/12/28 22:23:38 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.6 2003/12/28 22:28:52 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -1400,7 +1400,7 @@ Netzwerk</uri> fort.
 <p>
 Um Gentoo installieren zu können, muss das Image, welches Sie vom TFTP Server
 herunterladen, die notwendigen Tools zur Erstellung von Dateisystemen, zum
-Erstellen und Mounten von Partitionen und zum entpacken von Tar-Archiven sowei
+Erstellen und Mounten von Partitionen und zum entpacken von Tar-Archiven sowie
 chroot mitbringen. Sie können existierende Netboot Images herunterladen, die
 alle benötigten Tools enthalten.
 </p>
