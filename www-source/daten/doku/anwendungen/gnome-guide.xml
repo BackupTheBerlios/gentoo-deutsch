@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-	<!-- Letzte Änderung: 29.09.2003 -->
+	<!-- Letzte Änderung: 06.10.2003 -->
 
 <guide>
 
@@ -12,8 +12,8 @@
 	Gnome 2.4 zu beachten ist. Ausserdem werden bisher in den Gentoo Foren aufgetauchte
 	Fragen rund um das Upgrade und mögliche Probleme thematisiert.</abstract>
 
-	<version>1.0</version>
-	<date>29.09.2003</date>
+	<version>1.1</version>
+	<date>06.10.2003</date>
 	
 	<chapter>
 		<title>Grundlegendes</title>
@@ -36,31 +36,6 @@
 				</body>
 			</section>
 
-			<section>
-				<title>Wer sollte das Upgrade durchführen?</title>
-				<body>
-
-					<p>- Jeder, der von den zahlreiche Verbesserungen Gebrauch machen will.
-					<br />- Jeder, dem langweilig ist.
-					<br />- Jeder, der verhindern möchte, dass sich seine CPU langweilt.
-					<br />- Jeder, dem 'Bleeding Edge' schon fast zu alt ist.</p>
-
-				</body>
-			</section>
-
-			<section>
-				<title>Wer sollte auf das Upgrade (vorerst) verzichten?</title>
-				<body>
-
-					<p>Jeder, der nicht genau weiss, was er tut. Momentan ist Gnome 2.4 im 
-					Portage noch nicht als Stable gekennzeichnet, 
-					und das nicht ohne Grund. Eine Suche nach 'gnome 2.4' auf 
-					<uri link="bugs.gentoo.org">bugs.gentoo.org</uri> bringt noch einige offene 
-					Bugs hervor.</p>
-
-				</body>
-			</section>
-
 	</chapter>
 
 	<chapter>
@@ -74,12 +49,10 @@
 					<pre caption="Portage aktualisieren"># <c>emerge sync</c></pre>
 					<p>Als nächstes schauen wir uns an, welche Pakete Gnome upgraden möchte.</p>
 					<pre caption="Blockende Abhängigkeiten"># <c>ACCEPT_KEYWORDS="~x86" emerge -p gnome</c></pre>
-					<p>Wie Sie sehen, blocken die Pakete <c>linc</c> und <c>bonobo-activation</c> das Upgrade. 
-					Beide Pakete können wir vor dem Upgrade bedenkenlos unmergen; 
-					<c>linc</c> wird während des Upgrades neu installiert, 
+					<p>Wie Sie sehen, blockt das Paket <c>bonobo-activation</c> das Upgrade. 
+					Dieses Paket können Sie vor dem Upgrade bedenkenlos unmergen; 
 					<c>bonobo-activation</c> ist ab Gnome 2.4 Teil von <c>libbonobo</c>.</p>
-					<pre caption="Entfernen der blockenden Pakete"># <c>emerge -C bonobo-activation</c>
-# <c>emerge -C linc</c></pre>
+					<pre caption="Entfernen des blockenden Paketes"># <c>emerge -C bonobo-activation</c></pre>
 			
 				</body>
 			</section>
@@ -92,14 +65,10 @@
 			<section>
 				<title>Gnome aktualisieren.</title>
 				<body>
-								
-				<warn>Da Gnome 2.4 momentan noch als Unstable gekennzeichnet ist, 
-				zieht es unter anderem ein neues <c>xfree</c> und einen neuen 
-				<c>GCC</c> mit. Vor allem der neue GCC 3.3.x scheint bei einigen 
-				Gentooists größere Probleme zu machen!</warn>
-				<p>Jetzt können wir das Upgrade anstossen, wenn alles glatt läuft, 
+				
+				<p>Nachdem Sie das Abhängigkeitsproblem beseitigt haben können Sie das Upgrade anstossen, wenn alles glatt läuft, 
 				dauert das ein Weilchen ;)</p>
-				<pre caption="Gnome upgraden"># <c>ACCEPT_KEYWORDS="~x86" emerge gnome</c></pre>
+				<pre caption="Gnome upgraden"># <c>emerge -u gnome</c></pre>
 			
 			</body>
 		</section>
@@ -120,6 +89,9 @@
 					ohne die IRC-, Composer- und Mail/Newskomponenten emergen.</p>
 					<note> Epiphany benötigt einen mit gtk2 kompilierten Mozilla.</note>
 					<pre caption="Mozilla ohne optionale Komponenten emergen">USE="moznoirc moznomail moznocompose gtk2"</pre>
+					<p>Wenn Sie Mozilla und Epiphany auf keinen Fall installieren möchten, können Sie dem Portage vorgaukeln,
+					dass Epiphany installiert wäre.</p>
+					<pre caption="Epiphany injecten"># <c>emerge --inject net-www/epiphany-1.0.1</c></pre>
 					
 					<p><b>Wenn ich mich anmelde, dann bleibt der Gnome Splash-Screen solange stehen, 
 					bis ich einmal draufgeklickt habe.</b><br />
@@ -169,8 +141,8 @@
 			<title>Interessante Threads in den Gentoo Foren:</title>
 			<body>
 				
-				<p>[1] <uri link="http://forums.gentoo.org/viewtopic.php?t=84851">http://forums.gentoo.org/viewtopic.php?t=84851</uri>
-				[2] <uri link="http://forums.gentoo.org/viewtopic.php?t=83880">http://forums.gentoo.org/viewtopic.php?t=83880</uri>
+				<p>[1] <uri link="http://forums.gentoo.org/viewtopic.php?t=84851">http://forums.gentoo.org/viewtopic.php?t=84851</uri><br />
+				[2] <uri link="http://forums.gentoo.org/viewtopic.php?t=83880">http://forums.gentoo.org/viewtopic.php?t=83880</uri><br />
 				[3] <uri link="http://forums.gentoo.org/viewtopic.php?t=83456">http://forums.gentoo.org/viewtopic.php?t=83456</uri></p>
 			</body>
 		</section>
