@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.22 -->
+<!-- English CVS Version: 1.23 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.6 2003/12/18 22:25:34 tove Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.7 2003/12/21 15:19:21 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -478,6 +478,17 @@ vorhanden war). <e>Niemals</e> sollten Sie irgendwas in
 <path>/etc/make.profile</path> modifizieren; dies wird beim nächsten Portage
 Update überschrieben!
 </p>
+
+<!-- comment until the second part is translated
+
+<p>
+Eine vollständige Beschreibung zu <C>USE</C> können Sie im zweiten Teil des
+Gentoo Handbuch, <uri link="?part=2&amp;chap=1">Kapitel 1: USE Flags</uri>
+lesen. Als Beispiel nun die <c>USE</c> Einstellung für ein
+KDE-basiertes System mit Überstützung für DVD, ALSA und
+CD-Brenner.
+</p>
+-->
 
 <p>
 Eine vollständige Beschreibung zu <c>USE</c> können Sie in unserem
