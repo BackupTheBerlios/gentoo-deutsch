@@ -1,20 +1,20 @@
 <?xml version='1.0'?>
 
-<!DOCTYPE guide SYSTEM "../../../dtd/guide.dtd">
+<!DOCTYPE guide SYSTEM "../www-xsl/guide.dtd">
 
 
 <guide link="/doc/build.html">
-<title>Gentoo Linux 1.2 Installation Instructions</title>
+<title>Gentoo Linux 1.2 Installations Anleitung</title>
 <author title="Chief Architect"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Author">Chris Houser</author>
 <author title="Author"><mail link="jerry@gentoo.org">Jerry Alexandratos</mail></author>
 <author title="Ghost"><mail link="g2boojum@gentoo.org">Grant Goodyear</mail></author>
-<author title="&#xDC;bersetzung"><mail link="markusg@berlios.de">Markus Greiner</mail></author>
+<author title="&#xDC;bersetzung"><mail link="mgreiner@berlios.de">Markus Greiner</mail></author>
 
-<abstract>These instructions step you through the process of installing Gentoo
-Linux 1.2.  The Gentoo Linux installation process supports various installation
-approaches, depending upon how much of the system you want to custom-build from
-scratch.</abstract>
+<abstract>Diese Anleitung f&#xFC;hrt Sie schrittweise durch den Gentoo Linux 1.2 Installationsprozess.
+Die Gentoo Linux Installation unterst&#xFC;tzt verschiedene Installationsarten, abh&#xE4;ngig davon
+wieviel des Systems von Grund auf installiert werden soll.
+</abstract>
 
 <version>1.51</version>
 <date>15 Juli 2002</date>
@@ -25,26 +25,33 @@ scratch.</abstract>
 <body>
 
 <p>Die neue Boot CD startet von fast jedem modernen IDE CD-ROM Laufwerk, sowie von vielen 
-SCSI CD-ROMs. Die CD-ROM unterst&#xFC;tzt IDE Kontroller (eingebaut im Kernel) sowie alle SCSI Ger&#xE4;te 
-(vorhanden als Module).  Zus&#xE4;tzlich stellen wir Module f&#xFC;r buchst&#xE4;blich jede Netzwerkkarte 
-zur Verf&#xFC;gung die Linux unterst&#xFC;zt, sowie Tools die es erm&#xF6;glichen das Netzwerk zu 
-konfigurieren und ausgehende <c>ssh</c> Verbindungen zum Dateidownload aufzubauen.</p>
+SCSI CD-ROMs. Die CD-ROM unterst&#xFC;tzt IDE Kontroller (eingebaut im Kernel) sowie alle 
+SCSI Ger&#xE4;te (vorhanden als Module). Zus&#xE4;tzlich stellen wir Module f&#xFC;r 
+buchst&#xE4;blich jede Netzwerkkarte zur Verf&#xFC;gung die Linux unterst&#xFC;zt, 
+sowie Tools die es erm&#xF6;glichen das Netzwerk zu konfigurieren und ausgehende 
+<c>ssh</c> Verbindungen zum Dateidownload aufzubauen.</p>
 
 <p> Um von der "Build" CD zu installieren, wird ein 486+ Prozessor ben&#xF6;tigt und 
 ideallerweise mindestens 64 Megabytes RAM. (Gentoo Linux konnte erfolgreich mit 
 64 MB Ram +  64 MB Swap installiert werden, aber die Installation unter diesen Bedingungen 
-war extrem langsam.) Um die Installation zu starten, laden Sie zuerst eines unserer CD ISO Images 
-von <uri>http://www.ibiblio.org/gentoo/releases/build/</uri>. Im Augenblick haben wir zwei CDs
-verf&#xFC;gbar. Unsere erste CD ist <uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">gentoo-ix86-1.2.iso</uri>.
-Dieses Image ist recht klein (16Mb) und enth&#xE4;lt ein minimales "chrootable" <!-- Wenn jemand eine Uebersetzung kennt, immer her damit!! -->
+war extrem langsam.) Um die Installation zu starten, laden Sie zuerst eines unserer 
+CD ISO Images von <uri>http://www.ibiblio.org/gentoo/releases/build/</uri>. Im Augenblick 
+haben wir zwei CDs verf&#xFC;gbar. Unsere erste CD ist 
+<uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">
+gentoo-ix86-1.2.iso</uri>.Dieses Image ist recht klein (16Mb) und enth&#xE4;lt ein minimales 
+"chrootable" <!-- Wenn jemand eine Uebersetzung kennt, immer her damit!! -->
 Image (<path>stage1-ix86-1.2.tbz2</path>) -- alles was Sie ben&#xF6;tigen um ein 
-Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei automatisch aus dem Internet geladen.)
-Unsere zweite CD ist <uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">gentoo-i686-1.2.iso</uri>.
-Dieses Image ist etwas gr&#xF6;&#xDF;er (100+Mb) -- Es enth&#xE4;lt es enth&#xE4;lt das gleiche Material wie auf unserem 16Mb Image,
-<e>plus</e> einem vorkompiliertem i686 Basissystem (<path>stage3-i686-1.2.tbz2</path>) sowie einem halb-fertigen 
+Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei 
+automatisch aus dem Internet geladen.) Unsere zweite CD ist 
+<uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">
+gentoo-i686-1.2.iso</uri>. Dieses Image ist etwas gr&#xF6;&#xDF;er (100+Mb) -- Es 
+enth&#xE4;lt es enth&#xE4;lt das gleiche Material wie auf unserem 16Mb Image,
+<e>plus</e> einem vorkompiliertem i686 Basissystem (<path>stage3-i686-1.2.tbz2</path>) 
+sowie einem halb-fertigen <!-- nicht so gut. Alternativen?? --> 
 i686 Basissystem (<path>stage2-i686-1.2.tbz2</path>) in TAR-Archiven.
-Die beiden neuen TAR-Archive ben&#xF6;tigen einen Pentium Pro oder besser (K6 geht nicht). Wenn Sie ein i686+ System
-verwenden und nicht alles von Grund auf kompilieren wollen, k&#xF6;nnen diese die Installation deutlich beschleunigen.
+Die beiden neuen TAR-Archive ben&#xF6;tigen einen Pentium Pro oder besser (K6 geht nicht). 
+Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf kompilieren wollen, 
+k&#xF6;nnen diese die Installation deutlich beschleunigen.
 </p>
 
 <p>Jetzt lassen Sie uns kurz den den Installationsprozess skizzieren. Sie erstellen die Partitionen,
@@ -53,7 +60,8 @@ Archiv. Wenn Sie das <e>stage2</e> oder <e>stage3</e> Archiv verwenden m&#xFC;ss
 unternehmen um Ihr System auf den Stand des <e>stage3</e> Archivs zu bringen. Wenn Sie <e>stage3</e>
 erreicht haben k&#xF6;nnen Sie das System konfigurieren (die Konfigurationsdateien anpassen, einen Bootloader 
 installieren, usw.) und in ein voll funktionsf&#xE4;higes Gentoo Linux booten.
-Abh&#xE4;ngig von der gew&#xE4;hlten  Installationsstufe von der Sie starten, hier die ben&#xF6;tigten Schritte:
+Abh&#xE4;ngig von der gew&#xE4;hlten  Installationsstufe von der Sie starten, 
+hier die ben&#xF6;tigten Schritte:
 </p>
 
 
@@ -68,45 +76,50 @@ Abh&#xE4;ngig von der gew&#xE4;hlten  Installationsstufe von der Sie starten, hi
 </section>
 </chapter>
 <chapter>
-<title>Booting</title>
+<title>Booten</title>
 <section>
 <body>
 
-<p>Once you've chosen the CD you want to use, go ahead and boot it. You'll be
-greeted with a bunch of text and a <c>boot:</c> prompt at the bottom of the
-screen.  At this prompt, hit enter, and Linux will begin to load from the
-CD.</p> 
+<p>Wenn Sie sich f&#xFC;r eine CD entschieden haben, booten Sie damit. Sie werden von
+einem Haufen Text und einem <c>boot:</c> Prompt am unteren Bildschirmrand 
+begr&#xFC;&#xDF;t. Dr&#xFC;cken Sie an diesem Prompt <e>enter</e> und Linux wird von der CD
+geladen.</p>
 
-<p>Next, you'll be greeted with a small list of commands available on the boot
-CD, including <c>nano</c> (a pico editor clone) and instructions for setting up
-the network.  Then, you'll be prompted to select your preferred keymap,
-followed by PCI autodection.  The PCI autodetection process will automatically
-load the appropriate kernel modules for many popular PCI SCSI and ethernet
-devices.  After this, you can hit enter to enter the minimal boot CD Linux
-environment.  You should have a root ("<c>#</c>") prompt on the current
-console, and can also open new consoles by typing alt-f2, alt-f3, etc and then
-hitting enter.</p>
+
+<p>Als n&#xE4;chstes werden Sie mit einer kleinen Liste von verf&#xFC;gbaren Befehlen auf der 
+Boot-CD begr&#xFC;&#xDF;t. Dies beinhaltet <c>nano</c> (einen Klon des Editors <c>pico</c>) und
+die Anleitung zur Netzwerkkonfiguration. Danach werden Sie nach Ihrem bevorzugtem
+Keyboardlayout befragt, gefolgt von der automatischen Erkennung der PCI Ger&#xE4;te. W&#xE4;hrend
+der Ger&#xE4;teerkennung werden alle passenden Kernelmodule f&#xFC;r PCI SCSI Controller und
+Netzwerkkarten geladen. Wenn Sie danach <e>enter</e> dr&#xFC;cken kommen Sie in eine
+minimale Linux Umgebung. Sie sollten nun ein root Prompt ("<c>#</c>") auf der
+aktuellen Konsole haben. Durch dr&#xFC;cken von alt-f2, alt-f3, usw. gefolgt von 
+einem <e>enter</e>  k&#xF6;nnen Sie weitere Konsolen aktivieren.</p>
+
 
 </body>
 </section>
 </chapter>
 
 <chapter>
-<title>Load kernel modules</title>
+<title>Laden der Kernel Module</title>
 <section>
 <body>
 
-<p>We're almost ready to begin installing Gentoo Linux, but first we need take
-the necessary steps so that the kernel recognizes our network cards, and
-optionally any SCSI hardware that is in our system that PCI autodetection
-missed.  To view a list of all available network card modules, type <c>ls
-/lib/modules/*/kernel/drivers/net/*</c>.  To load a particular module,
-type:</p>
+<p>Sie sind jetzt fast soweit, dass Sie mit der Installation anfangen k&#xF6;nnen.
+Sie m&#xFC;ssen aber noch daf&#xFC;r sorgen, dass der Kernel auch die Netzwerkkarte 
+erkennt. Eventuell m&#xFC;ssen auch noch SCSI Module geladen werden die nicht
+automatisch erkannt wurden.Um eine Liste aller verf&#xFC;gbaren Metzwerkkartenmodule
+anzuzeigen, geben Sie <c>ls /lib/modules/*/kernel/drivers/net/*</c> ein.
+Um ein bestimmtes Modul zu laden, tippen Sie: </p>
+
 
 <pre>
 # <i>modprobe pcnet32</i>
-	<comment>(replace pcnet32 with your NIC module)</comment>
+	<comment>(Ersetzen Sie pcnet32 durch das Modul Ihrer NIC)</comment>
 </pre>
+
+<!-- Hier gehts demnaescht weiter --> 
 
 <p>Now, if you want to be able to access any SCSI hardware that wasn't detected
 during the PCI autodetection process, you'll need to load the appropriate
