@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/capi4k-utils/Attic/capi4k-utils-20020701.ebuild,v 1.4 2002/07/26 18:46:41 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/capi4k-utils/Attic/capi4k-utils-20020701.ebuild,v 1.5 2002/07/26 18:54:00 holler Exp $
 
 MY_P=capi4k-utils-2002-07-01
 S=${WORKDIR}/${PN}
@@ -39,7 +39,7 @@ pkg_postinst() {
 
 	einfo "*************************************************"
 	einfo "* NOTE: To use isdn4linux with CAPI replace     *"
-	einfo "* I4L_MODULE="hisax" with I4L_MODULE="capidrv", *"
+	einfo "* I4L_MODULE=\"hisax\" with I4L_MODULE=\"capidrv\", *"
 	einfo "* start /etc/init.d/capi and load the module    *"
 	einfo "* capidrv.                                      *"
 	einfo "*************************************************"
