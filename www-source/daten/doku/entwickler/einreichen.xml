@@ -1,16 +1,17 @@
-<?xml version="1.0" encoding="iso-8859-15"?>
+<?xml version="1.0" encoding="utf-8"?>
 
+<!-- English CVS Version 1.5 -->
 
-<guide>
+<guide link="/inhalte/doku/entwickler/einreichen">
 	<title>Ebuilds einreichen</title>
 	<author title="Author">
 		<mail link="mbutcher@frii.com">Matt Butcher</mail>
 	</author>
-        <author title="&#220;bersetzung">
-                <mail link="sebastian@beneke-it.de">Sebastian Beneke</mail>
-        </author>
+  <author title="&#220;bersetzung">
+    <mail link="sebastian@beneke-it.de">Sebastian Beneke</mail>
+  </author>
 	<abstract>
-        Diese Anleitung erkl&#228;rt, wie Ebuilds mittels Bugzilla eingereicht werden k&#246;nnen.
+        Diese Anleitung erklärt, wie Ebuilds mittels Bugzilla eingereicht werden können.
 	</abstract>
 
 	<version>1.0</version>
@@ -38,20 +39,20 @@
 			<body>
 				<p>
                                 Unten auf der Hauptseite oder auch der Login Seite finden Sie 
-                                eine gelbe Box. W&#228;hlen Sie den <c>New</c> Link. Oder Sie gehen einfach 
+                                eine gelbe Box. Wählen Sie den <c>New</c> Link. Oder Sie gehen einfach 
                                 direkt zur URL <uri>http://bugs.gentoo.org/enter_bug.cgi</uri>.
                                 Beides bringt Sie zur <c>Enter Bug</c> Seite.
                                 </p>
 
 				<note>
-                                Im Bugzilla System werden alle Eintr&#228;ge als Bugs bezeichnet. Dies 
+                                Im Bugzilla System werden alle Einträge als Bugs bezeichnet. Dies 
                                 beinhaltet auch eingereichte Ebuilds. Jedem Bug wird eine Tracking ID 
                                 zugeordnet. Notieren Sie sich diese ID, besonders falls Sie noch andere 
-                                Ebuilds haben, die von diesem Ebuild abh&#228;ngig sind.
+                                Ebuilds haben, die von diesem Ebuild abhängig sind.
 				</note>
 
 				<p>
-                                Bugzilla kann mehrere Produkte betreuen. Bei Gentoo zum Beispiel k&#246;nnen 
+                                Bugzilla kann mehrere Produkte betreuen. Bei Gentoo zum Beispiel können 
                                 diese anderen Produkte Dokumentation oder Werkzeuge zum Administrieren 
                                 der Website beinhalten. Ebuilds sollten hier immer beim "Produkt" 
                                 <c>Gentoo Linux</c> eingereicht werden.
@@ -59,29 +60,29 @@
 
 				<p>
                                 Durch das Klicken auf das Produkt <c>Gentoo Linux</c> wird ein Formular zum Erstellen 
-                                eines neuen Bugs ge&#246;ffnet.
+                                eines neuen Bugs geöffnet.
                                 </p>
 			</body>
 		</section>
 		<section>
-			<title>Ausf&#252;llen des Bug Formulars</title>
+			<title>Ausfüllen des Bug Formulars</title>
 			<body>
 				<p>
-                                Das erste Feld heisst <c>version</c>. Wenn Sie die genaue Version wissen, k&#246;nnen Sie 
-                                sie hier setzen. Sollten Sie sie nicht kennen, w&#228;hlen Sie <c>unspecified</c>. Als 
-                                n&#228;chstes w&#228;hlen Sie die Komponente (component). Alle Ebuild Scripts geh&#246;ren dem 
+                                Das erste Feld heisst <c>version</c>. Wenn Sie die genaue Version wissen, können Sie 
+                                sie hier setzen. Sollten Sie sie nicht kennen, wählen Sie <c>unspecified</c>. Als 
+                                nächstes wählen Sie die Komponente (component). Alle Ebuild Scripts gehören dem 
                                 Component Typ <c>Ebuilds</c> an.
                                 </p>
 
 				<impo>
                                 Ebuilds sollten <e>immer</e> zum Component Typ <c>Ebuild</c> zugeordnet werden. Kategorien
-                                wie <c>GNOME</c>, <c>Libraries</c> und <c>Server</c> m&#246;gen so wirken als w&#252;rden Sie auch 
-                                f&#252;r Ebuilds gelten, aber Sie sind nur f&#252;r das Berichten von Fehlern dieser Pakete gedacht 
-                                und <e>nicht</e> f&#252;r das Einreichen von Ebuilds.
+                                wie <c>GNOME</c>, <c>Libraries</c> und <c>Server</c> mögen so wirken als würden Sie auch 
+                                für Ebuilds gelten, aber Sie sind nur für das Berichten von Fehlern dieser Pakete gedacht 
+                                und <e>nicht</e> für das Einreichen von Ebuilds.
 				</impo>
 
 				<p>
-                                Die Kategorien <c>Platform</c>, <c>OS</c> und <c>Priority</c> m&#252;ssen f&#252;r Ebuilds nicht 
+                                Die Kategorien <c>Platform</c>, <c>OS</c> und <c>Priority</c> müssen für Ebuilds nicht 
                                 gesetzt werden.
                                 </p>
 
@@ -91,18 +92,18 @@
 
 				<p>
                                 Lassen Sie das <c>Assigned To</c> Feld leer. Wenn Sie jedoch den Status Ihres Ebuilds 
-                                &#252;berwachen m&#246;chten, tragen Sie bei <c>CC</c> Ihre Email Adresse ein.
+                                überwachen möchten, tragen Sie bei <c>CC</c> Ihre Email Adresse ein.
                                 </p>
 
 				<p>
-                                F&#252;llen Sie das <c>Summary</c> Feld mit einer Kurzen Notiz aus, in welcher Sie beschrieben 
+                                Füllen Sie das <c>Summary</c> Feld mit einer Kurzen Notiz aus, in welcher Sie beschrieben 
                                 welches Paket Sie einreichen und ob es ein Update oder eine ganz neue Version ist. 
-                                Etwas wie folgend ist gro&#223;artig: <c>foo-bar-x.y.z.ebuild (New Package)</c> oder <c>
+                                Etwas wie folgend ist großartig: <c>foo-bar-x.y.z.ebuild (New Package)</c> oder <c>
                                 foo-x.y.z.ebuild (Update)</c>
                                 </p>
 
                                 <p>
-                                Das <c>Description</c> Feld sollte so vollst&#228;ndig wie m&#246;glich ausgef&#252;llt werden. Bitte denken 
+                                Das <c>Description</c> Feld sollte so vollständig wie möglich ausgefüllt werden. Bitte denken 
                                 Sie an die internationalen Entwickler und User, verfassen Sie die Beschreibung bitte auf 
                                 Englisch! Hier ist ein Beispiel von Bug Nummer 7:
                                 </p>
@@ -110,8 +111,8 @@
 				<pre>
 				Hi!
 
-Please find attached gramps.tar.gz containing gramps-0.7.0.ebuild and a
-patch so that it will compile against python-2.2
+Please find attached gramps-0.7.0.ebuild and a patch so that it will
+compile against python-2.2
 
 gramps is the Genealogical Research and Analysis Management Programming
 System.  It is a very cool gnome/python app.  If you are in the US, you
@@ -132,7 +133,7 @@ tod
 			</body>
 		</section>
 		<section>
-			<title>Anh&#228;ngen des Ebuild Scripts</title>
+			<title>Anhängen des Ebuild Scripts</title>
 			<body>
 				<p>
                                 Nach dem Klicken auf <c>submit</c> auf der <c>Enter Bug</c> Seite, kommen Sie 
@@ -145,7 +146,7 @@ tod
                                 </p>
 
 				<p>
-                                W&#228;hlen Sie die Datei durch die Benutztung der Textbox oder des <c>Browse</c> 
+                                Wählen Sie die Datei durch die Benutztung der Textbox oder des <c>Browse</c> 
                                 Dialogs aus. Im <c>Description</c> Feld, geben sie bitte den Namen der Ebuild 
                                 Datei ein, in etwa den, den Sie im <c>Summary</c> Abschnitt auf der letzten Seite 
                                 benutzt haben.
@@ -153,11 +154,11 @@ tod
 
 				<p>
                                 Bitte stellen Sie sicher, das der "Content" Typ auf "text/plain" gestellt ist und 
-                                der Knopf f&#252;r <c>select from list</c> markiert wurde.
+                                der Knopf für <c>select from list</c> markiert wurde.
                                 </p>
 
 				<p>
-                                Es werden keine weitern Felder ben&#246;tig, klicken Sie <c>Submit</c> und Sie haben es 
+                                Es werden keine weitern Felder benötig, klicken Sie <c>Submit</c> und Sie haben es 
                                 geschafft!
                                 </p>
 			</body>
@@ -166,13 +167,13 @@ tod
 	<chapter>
 		<title>Mehrere Ebuilds</title>
 		<section>
-			<title>Abh&#228;ngigkeiten</title>
+			<title>Abhängigkeiten</title>
 			<body>
 				<p>
-                                Im Fall, dass Sie mehrere Ebuilds einreichen sollten und einige von anderen abh&#228;ngig 
-                                sind, ist es sehr hilfreich, wenn diese Abh&#228;ngigkeiten notiert werden. Durch das erneute 
-                                Ansehen des Bugs, sollten Sie die M&#246;glichkeit haben, eine weitere Notiz zu erg&#228;nzen. Bitte 
-                                erg&#228;nzen Sie hier eventuelle Abh&#228;ngigkeiten.
+                                Im Fall, dass Sie mehrere Ebuilds einreichen sollten und einige von anderen abhängig 
+                                sind, ist es sehr hilfreich, wenn diese Abhängigkeiten notiert werden. Durch das erneute 
+                                Ansehen des Bugs, sollten Sie die Möglichkeit haben, eine weitere Notiz zu ergänzen. Bitte 
+                                ergänzen Sie hier eventuelle Abhängigkeiten.
                                 </p>
 			</body>
 		</section>
