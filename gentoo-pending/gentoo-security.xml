@@ -478,16 +478,16 @@ In order to store the new information in lilo.conf you need to run <c>/sbin/lilo
 </section>
 </body>
 </section>
-
-<section>
-<title>Restricting Console Usage</title>
+						
+<section>	
+<title>Einschränkung der Konsolenbenutzung.</title>
 <body>
 <p>
-<path>/etc/securetty</path> contains terminal types that enables/allows you to specify which TTY devices root is allowed to login in from.
+<path>/etc/securetty</path> enthält Terminaltypen die es Ihnen ermöglichen/erlauben festzulegen von welchen TTY Geräten aus root sich einloggen darf.
 </p>
 
 <p>
-We suggest that you comment out all lines except vc/1. This will ensure that root only can login once and only on one terminal.
+Wir empfehlen, dass sie alle Zeilen bis auf vc/1 auskommentieren. Dies stellt sicher, dass sich root nur einmal einloggen kann und nur an einem Terminal.
 </p>
 
 <pre caption="/etc/securetty">
@@ -498,19 +498,19 @@ vc/1
 </section>
 
 <section>
-<title>More logging</title>
+<title>Mehr Protokolle (logs)</title>
 <body>
 
 <p>
-Extra logging should be added to catch warnings or errors that might warn of an attack in progress or an already deployed attack. Attackers often scan or probe networks before attacking.
+Zusätzliche Protokolle sollten hinzugefügt werden um Warnungen oder Fehler aufzuspüren, die vor einem momentanen oder bereits durchgeführten Angriff warnen könnten. Angreifer betrachten ein Netzwerk oder durchsuchen dies oft bevor sie angreifen.
 </p>
 
 <p>
-Its also vital that the log files are easy readable and manageable.
+Es ist auch unersetzlich, dass die Protokolldateien einfach zu lesen und zu verwalten sind.
 </p>
 
 <p>
-Gentoo Linux lets you choose between 3 different loggers when installing.
+Gentoo Linux gibt ihnen die Möglichkeit bei der Installation zwischen drei verschiedenen Protokollierungsprogrammen zu wählen.
 </p>
 
 <section>
@@ -518,11 +518,11 @@ Gentoo Linux lets you choose between 3 different loggers when installing.
 <body>
 
 <p>
-Syslogd is the most common logger for Linux and Unix in general. It does not come with log rotation. This feature is handled by running <path>/usr/sbin/logrotate</path> in a cron job and properly configured settings in <path>/etc/logrotate.conf</path>. How often log rotation should be done depends on the system load.
+Syslogd ist das gängigste Protokollierungsprogramm für Linux und Unix. Es beinhaltet keine Protokollrotation. Diese Eigenschaft wird übernommen durch das Verwenden von <path>/usr/sbin/logrotate</path> in einem cron job und korrekt konfigurierten Einstellungen in <path>/etc/logrotate.conf</path>. Wie oft die Protokollrotation stattfinden sollte hängt von der Systembelastung ab. 
 </p>
 
 <p>
-Here is an example of how you can configure syslog
+Hier ist ein Beispiel wie man syslog konfigurieren kann
 </p>
 
 <pre caption="/etc/syslog.conf">
@@ -554,11 +554,11 @@ authpriv.*;auth.*          /var/log/secure
 </pre>
 
 <p>
-The attacker will most likely try to erase their tracks by editing or deleting the log files. You can make it harder for the attacker by sending the log to one or more logging servers on different machines.
+Der Angreifer wird höchstwahrscheinlich versuchen seine Spuren zu verwischen indem er die Protokolldateien bearbeitet oder löscht. Sie können es für den Angreifer schwerer machen indem sie das Protokoll an einen oder mehrere Protokollserver auf verschiedenen Maschinen schicken.
 </p>
 
 <p>
-More info about syslogd can be found in the man page (<path>man syslog</path>)
+Mehr Informationen über syslogd finden sie in der man page (<path>man syslog</path>)
 </p>
 
 </body>
@@ -569,11 +569,11 @@ More info about syslogd can be found in the man page (<path>man syslog</path>)
 <body>
 
 <p>
-<uri link="http://metalog.sourceforge.net">Metalog</uri> by Frank Dennis is not able to log to a remote server, but it does have advantages when it comes to performance and logging flexibility.
+<uri link="http://metalog.sourceforge.net">Metalog</uri> von Frank Dennis bietet nicht die Möglichkeit Protokolle an einen entfernten (remote) Server zu senden, aber es hat Vorteile im  Bereich der Performance und der Protokollierungsflexibilität.
 </p>
 
 <p>
-It can log by program name or by facility (like syslogd) and comes with regular expression matching and execution of commands. Very good for taking action when needed.
+Es kann nach Programmnamen oder nach Einrichtung(facility?) protokollieren (wie syslogd) und beinhaltet reguläre Ausdrucksübereinstimmung und die Möglichkeit Kommandos auszuführen. Sehr gut um handeln zu können, wenn nötig.
 </p> 
 
 <pre caption="/etc/metalog.conf">
@@ -635,11 +635,11 @@ Everything very important :
 </pre>
 
 <p>
-This is basically a standard configuration with a few modifications, like a minimum logging level at 7, which means that everything will be logged.
+Die ist prinzipiell eine Standardkonfiguration mit einigen Modifikationen, wie einem Minimum-Protokollierungslevel von 7, was bedeutet, dass alles protokolliert wird.
 </p>
 
 <p>
-pwdfail.sh for postfix.
+pwdfail.sh für postfix.
 </p>
 
 <pre caption = "postfix' pwdfail.sh">
@@ -648,7 +648,7 @@ echo "$3" | mail -s "Warning (program : $2)" root
 </pre>
 
 <p>
-pwdfail.sh for qmail.
+pwdfail.sh für qmail.
 </p>
 
 <pre caption = "qmail's pwdfail.sh">
@@ -660,7 +660,7 @@ $3
 </pre>
 
 <p>
-More information can be found in the <uri link="http://metalog.sourceforge.net">metalog</uri> website.
+Mehr Informationen finden sie auf der <uri link="http://metalog.sourceforge.net">Metalog</uri> Webseite.
 </p>
 
 
@@ -672,11 +672,12 @@ More information can be found in the <uri link="http://metalog.sourceforge.net">
 <body>
 
 <p>
-Syslog-ng provide some of the same features that syslog and metalog has with a small difference. It can filter messages based on level and content (like metalog), provide remote logging like syslog, handle log from syslogd (even streams from Solaris, write to a TTY, execute programs and it can act as a logging server. Basically it is the best of both loggers combined with advanced configuration.
+Syslog-ng enthält einige derselben Funktionen wie Syslog und Metalog mit einem kleinen Unterschied. Es ermöglicht die Filterung von Nachrichten basierend auf Level und Inhalt (wie Metalog), bietet entferntes protokollieren (wie syslog) und kann Protokolle von syslogd verarbeiten. Sogar Streams von Solaris, schreiben an ein TTY, Ausführen von Programmen und es kann als Protokollierungsserver benutzt werden.
+Grundlegend ist dies das Beste aus beiden Prtokollierern kombiniert mit einer erweiterten Konfiguration.
 </p>
 
 <p>
-A classic configuration file slightly modified.
+Eine klassische, leicht modifizierte Konfigurationsdatei.
 </p>
 
 <pre caption="/etc/syslog-ng/syslog-ng.conf">
@@ -755,11 +756,11 @@ log { source(src); destination(console_all); };
 </pre>
 
 <p>
-Very easy to configure but also very easy to miss something in the configuration file since it is huge. The author still promises some extra features like encryption, authentication, compression and MAC (Mandatory Access Control) control. With these options it will be a perfect for network logging. since the attacker cannot spy on the log.
+Sehr einfach zu konfigurieren, aber es ist auch sehr einfach etwas zu übersehen, da die Konfigurationsdatei riesig ist. Der Author verspricht zudem noch einige zusätzliche Funktionen wie Verschlüsselung, Authentifizierung, Komprimierung und MAC (Mandatory Acces Control) Kontrolle. Mit diesen Optionen wird es perfekt sein für Netzwerkprotokollierung, da der Angreifer die Protokolle nicht ausspionieren kann.
 </p>
 
 <p>
-And syslog-ng does have other advantages. It does not have to run as root!.
+Syslog-ng hat auch noch andere Vorteile, es muss nicht als root laufen!
 </p>
 
 </body>
@@ -768,30 +769,32 @@ And syslog-ng does have other advantages. It does not have to run as root!.
 </section>
 
 <section>
-<title>Mounting of partitions</title>
+<title>Partitionen mounten</title>
 <body>
 
 <p>
+Mountet man eine ext2, ext3 oder eine reiserfs Partition, so gibt es mehrere Optionen die man in <path>/etc/fstab</path> einfügen kann. Diese Optionen sind: 
 When mounting an ext2, ext3 or a reiserfs partition, you have several options you can apply to the <path>/etc/fstab</path>. The options are:
 </p>
 
 <ul>
 
 <li>
-nosuid - Will ignore the SUID bit and make it just like an ordinary file.
+nosuid - Ignoriert das SUID bit und behandelt es einfach wie eine normale Datei.
 </li>
 
 <li>
-noexec - Will prevent from executing files from this partition.
+noexec - Verhindert das Ausführen von Dateien von dieser Partition.
 </li>
 
 <li>
-nodev - Ignores devices. 
+nodev - Ignoriert Geräte. 
 </li>
 </ul>
 
 <p>
-Unfortunately these settings can easily be circumvented by executing a non-direct path. However setting /tmp to noexec will stop about 99% of all script kiddies since their exploits are designed to be executed directly from /tmp.
+Leider können diese Einstellungen leicht umgangen werden indem man einen nicht-direkten Pfad ausführt.
+Jedoch wenn man /tmp auf noexec setzt stoppt das etwa 99% aller Script-Kiddies, da deren Exploits so gestaltet sind, dass sie direkt von /tmp ausgeführt werden.
 </p>
 
 <pre caption="/etc/fstab">
@@ -805,21 +808,21 @@ Unfortunately these settings can easily be circumvented by executing a non-direc
 /dev/cdroms /cdrom0 /mnt/cdrom iso9660 noauto,ro 0 0
 proc /proc proc defaults 0 0
 </pre>
-<warn>Placing <path>/tmp</path> in noexec mode can prevent certain scripts from executing properly</warn>
-<note>Disk quotas is described in another chapter</note>
+<warn>Setzt man <path>/tmp</path> in noexec Modus, kann dies dazu führen, dass einige Scripts nicht richtig asugeführt werden.</warn>
+<note>Plattenquoten werden in einem anderen Kapitel beschrieben</note>
 
 <p>
-Note that I do not set <path>/var</path> in noexec or nosuid even if files normally is never executed from this mount point. The reason for this is that qmail is installed in <path>/var/qmail</path> and must be allowed to execute and access 1 suid file. I setup <path>/usr</path> in read-only mode since I never write anything there unless I want to update Gentoo. Then I remount the file system in read-write mode, update and remount again.
+Beachten sie, dass ich <path>/var</path> weder in noexec noch in nosuid Modus setze, obwohl Dateien von diesem Mountpunkt normalerweise niemals ausgeführt werden. Der Grund dafür ist, dass qmail in <path>/var/qmail</path> installiert ist und berechtigt sein muss eine suid-Datei auszuführen und auf sie zuzugreifen. Ich setze <path>/usr</path> in read-only Modus, da ich hier nichts verändere solange ich Gentoo nicht aktualisiere. Dann mounte ich das Dateisystem erneut in read-write Modus, aktualisiere und mounte dann erneut in read-only.
 </p>
 
-<note>Even if you do not use qmail, Gentoo still needs the executable bit set on <path>/var/tmp</path> since ebuilds are made here. But an alternative path can be setup if you insists on having <path>/var</path> in noexec mode.
+<note> Selbst wenn sie qmail nicht benutzen, braucht Gentoo trotzdem noch die Ausführberechtigung in <path>/var/tmp</path>, da dort ebuilds hergestellt werden. Jedoch kann hierfür ein alternativer Pfad eingerichtet werden, wenn Sie darauf bestehen <path>/var</path> in noexec Modus zu betreiben.
 </note>
 
 </body>
 </section>
 
 <section>
-<title>User/group limitations</title>
+<title>Einschränkungen für Benutzer/Gruppen </title>
 <body>
 
 <section>
@@ -827,7 +830,7 @@ Note that I do not set <path>/var</path> in noexec or nosuid even if files norma
 <body>
 
 <p>
-Controlling resource limitations can be very effective when trying to prevent a local DoS or handling the maximum allowed logins for a group or user.
+Die Kontrolle von Ressourcenbegrenzungen kann sehr effektiv sein, wenn es darum geht eine lokale DoS Attacke zu verhindern oder bei der Handhabung von maximal erlaubten Logins für eine Gruppe oder einen Benutzer.
 </p>
 
 <pre caption="/etc/security/limits.conf">
@@ -843,9 +846,10 @@ Controlling resource limitations can be very effective when trying to prevent a 
 </pre>
 
 <p>
-If you find yourself trying to set nproc or maxlogins to 0, maybe you should be delete that user instead. The example above sets the group "dev" settings for processes, core file and maxlogins. The rest is set to a default value. 
+Wenn Sie dabei sind den Wert von nproc oder maxlogins gleich 0 zu setzen, sollten sie diesen Benutzer vielleicht lieber löschen. Das Beispiel oben setzt die Einstellungen für die Gruppe "dev" für Prozesse, Kerndateien und maximale Logins. Der Rest erhält einen Standardwert.
 </p>
-<note><path>/etc/security/limits.conf</path> is part of the PAM package and will only apply to packages that use PAM. </note>
+<note><path>/etc/security/limits.conf</path> ist Teil des PAM Paketes und wir nur angewendet auf Pakete die PAM benutzen.
+</note>
 
 
 </body>
