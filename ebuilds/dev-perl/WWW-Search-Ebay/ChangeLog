@@ -1,0 +1,10 @@
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-perl/WWW-Search-Ebay/ChangeLog,v 1.1 2003/12/05 04:20:44 shermann Exp $
+
+*WWW-Search-Ebay-2.16-0 (04 Dec 2003)
+	
+  04 Dec 2003; Stephan Hermann <sh@sourcecode.de> :
+  Initial Release
+	
+ 
