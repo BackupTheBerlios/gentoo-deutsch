@@ -1,7 +1,7 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-bootloader.xml,v 1.3 2003/12/14 09:42:55 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-bootloader.xml,v 1.4 2003/12/14 15:45:17 tove Exp $ -->
 
 <!-- English CVS Version: 1.18 -->
 
@@ -14,23 +14,23 @@
 
 <p>
 Nun, da Ihr Kernel konfiguriert und kompiliert ist und die notwendigen
-Systemkonfigurationsdateien richtig konfiguriert sind, ist es Zeit ein Programm zu
-installieren, dass Ihren Kernel lädt wenn Sie ihr System starten. Solch ein
-Programm nennt man einen <e>Bootloader</e>. Jedoch bevor sie
-anfangen, betrachten sie ihre Wahlmöglichkeiten...
+Systemkonfigurationsdateien richtig konfiguriert sind, ist es Zeit ein Programm
+zu installieren, dass Ihren Kernel lädt wenn Sie Ihr System starten. Solch ein
+Programm nennt man einen <e>Bootloader</e>. Jedoch bevor sie anfangen,
+betrachten sie ihre Wahlmöglichkeiten...
 </p>
 
 <p>
-Für Linux existieren verschiedene Bootloader, jedoch funktionieren diese nur auf
-einem kleinen Bereich von Architekturen. Daher müssen Sie zwischen den
+Für Linux existieren verschiedene Bootloader, jedoch funktionieren diese nur
+auf einem kleinen Bereich von Architekturen. Daher müssen Sie zwischen den
 Bootloadern wählen, die Ihre Architektur unterstützen.
 </p>
 
 <p>
-Die nächste Tabelle listet die Architekturen und die unterstützten Bootloader auf.
-Wählen Sie einen Bootloader basierend auf Ihrer Architektur; z.B. wenn Sie einen
-Pentium 4 haben, dann ist Ihre Architektur <e>x86</e>. Sie haben also die Wahl
-zwischen GRUB (empfohlen) und LILO.
+Die nächste Tabelle listet die Architekturen und die unterstützten Bootloader
+auf. Wählen Sie einen Bootloader basierend auf Ihrer Architektur; z.B. wenn Sie
+einen Pentium 4 haben, dann ist Ihre Architektur <e>x86</e>. Sie haben also die
+Wahl zwischen GRUB (empfohlen) und LILO.
 </p>
 
 <table>
@@ -80,7 +80,7 @@ Dies schließt <c>genkernel</c> Benutzer ein.
 
 <p>
 <e>Wenn</e> Sie Ihren Kernel mit Framebuffer Unterstützung konfiguriert haben,
-müssen sie das <c>vga</c> Statement zu ihrer Bootloaderkonfigurationsdatei
+müssen Sie das <c>vga</c> Statement zu Ihrer Bootloaderkonfigurationsdatei
 hinzufügen, wenn sie Framebuffer benötigen. Die nächste Tabelle listet die
 verfügbaren <c>vga</c> Werte auf, die Sie benutzen können. In den
 Beispielkonfigurationsdateien benutzen wir <e>800x600 @ 16bpp</e>,
@@ -136,9 +136,9 @@ Sie die Klammern um das <path>hd0,0</path>, denn diese sind Pflicht.
 Festplatten zählen von Null anstatt von "a" und Partitionen starten bei Null
 anstatt bei 1. Beachten Sie bitte auch, dass mit den hd-Geräten nur Festplatten
 gezählt werden, keine ATAPI-IDE Geräte wie CD-ROM Player oder Brenner.
-Dasselbe Modell wird auch bei SCSI Laufwerken verwendet. (Normalerweise erhalten
-sie höhere Nummern als IDE Laufwerke, außer wenn das BIOS konfiguriert ist von
-SCSI zu booten.)
+Dasselbe Modell wird auch bei SCSI Laufwerken verwendet. (Normalerweise
+erhalten sie höhere Nummern als IDE Laufwerke, außer wenn das BIOS konfiguriert
+ist von SCSI zu booten.)
 </p>
 
 <p>
@@ -170,7 +170,7 @@ installieren.
 </pre>
 
 <p>
-Um mit der Konfiguration von GRUB zu beginnen, tippen sie <c>grub</c>. Ihnen
+Um mit der Konfiguration von GRUB zu beginnen, tippen Sie <c>grub</c>. Ihnen
 wird die <path>grub&gt;</path> GRUB Kommdandozeile präsentiert. Nun müssen Sie
 die richtigen Befehle eintippen um den GRUB Boot Record auf Ihrer Festplatte zu
 installieren.
@@ -183,18 +183,19 @@ installieren.
 <p>
 In der Beispielskonfiguration wollen wir GRUB so installieren, dass es alle
 Informationen von der Boot Partition <path>/dev/hda1</path> liest und den GRUB
-Boot Record auf dem MBR(Master Boot Record) der Festplatte installiert, damit
+Boot Record auf dem MBR (Master Boot Record) der Festplatte installiert, damit
 das Erste was wir sehen, wenn wir den Computer einschalten die GRUB
 Eingabeaufforderung ist. Natürlich müssen Sie die Befehle entsprechend ändern,
-wenn Sie von der Beispielskonfiguration während der Installation abgewichen sind.
+wenn Sie von der Beispielkonfiguration während der Installation abgewichen
+sind.
 </p>
 
 <p>
 Der Tab-Komplettierungsmechanismus von GRUB kann innerhalb von GRUB benutzt
-werden. Zum Beispiel, wenn Sie "<c>root (</c>" eintippen, gefolgt von einem TAB,
-wird Ihnen eine Liste von Geräten gegeben (solche wie  <path>hd0</path>). Wenn
-Sie "<c>root (hd0,</c>"  eintippen, gefolgt von einem TAB, wird Ihnen eine Liste
-von verfügbaren Partitionen angezeigt, unter denen Sie auswählen können
+werden. Zum Beispiel, wenn Sie "<c>root (</c>" eintippen, gefolgt von einem
+TAB, wird Ihnen eine Liste von Geräten gegeben (solche wie <path>hd0</path>).
+Wenn Sie "<c>root (hd0,</c>" eintippen, gefolgt von einem TAB, wird Ihnen eine
+Liste von verfügbaren Partitionen angezeigt, unter denen Sie auswählen können
 (solche wie <path>hd0,0</path>).
 </p>
 
@@ -206,22 +207,23 @@ allzu schwer sein. Also weiter in der Konfiguration von GRUB!
 <pre caption = "Installieren von GRUB im MBR">
 grub&gt; <i>root (hd0,0)</i>          <comment>(Benutze die Informationen von der Boot Partition)</comment>
 grub&gt; <i>setup (hd0)</i>           <comment>(Installiere GRUB im MBR)</comment>
-grub&gt; <i>quit</i>                  <comment>(Verlassen der GRUB Shell)</comment>
+grub&gt; <i>quit</i>                  <comment>(Verlasse die GRUB Shell)</comment>
 </pre>
 
 <note>
-Wenn Sie GRUB lieber in einer bestimmten Partition anstatt des MBR
-installieren wollen, müssen das <c>setup</c> so verändern, dass es auf die
-richtige Partition verweist. Zum Beispiel, wenn sie GRUB in <path>/dev/hda3</path>
-installieren wollen, dann wird der Befehl zu <c>setup (hd0,2)</c>.
+Wenn Sie GRUB lieber in einer bestimmten Partition anstatt des MBR installieren
+wollen, müssen Sie das <c>setup</c> so verändern, dass es auf die
+richtige Partition verweist. Zum Beispiel, wenn Sie GRUB in 
+<path>/dev/hda3</path> installieren wollen, dann wird der Befehl zu
+<c>setup (hd0,2)</c>.
 Diese Option wird in der Regel nur von wenigen Benutzern genutzt.
 </note>
 
 <p>
 Obwohl GRUB nun installiert ist, müssen Sie trotzdem noch eine
-Konfigurationsdatei dafür schreiben, damit GRUB automatisch Ihren neu erstellten
-Kernel bootet. Erstellen Sie <path>/boot/grub/grub.conf</path> mit <c>nano</c>
-(oder wenn gewünscht einem anderen Editor):
+Konfigurationsdatei dafür schreiben, damit GRUB automatisch Ihren neu
+erstellten Kernel bootet. Erstellen Sie <path>/boot/grub/grub.conf</path> mit
+<c>nano</c> (oder wenn gewünscht einem anderen Editor):
 </p>
 
 <pre caption = "Erstellen von /boot/grub/grub.conf">
@@ -230,7 +232,7 @@ Kernel bootet. Erstellen Sie <path>/boot/grub/grub.conf</path> mit <c>nano</c>
 
 <p>
 Nun wollen wir eine <path>grub.conf</path> schreiben. Folgend finden Sie eine
-<path>grub.conf</path> für das Partitionierungsbeispiel, dass wir in diesem
+<path>grub.conf</path> für das Partitionierungsbeispiel, das wir in diesem
 Leitfaden verwendet haben mit dem Kernel-Image <path>kernel-2.4.22</path>.
 </p>
 
@@ -255,7 +257,7 @@ chainloader +1
 <note>
 Wenn Sie ein anderes Partitionierungschema verwenden und/oder Kernel-Image,
 passen Sie Ihre Konfiguration entsprechend an. Stellen Sie jedoch sicher, dass
-alles was einem GRUB-Gerät folgt (wie z.B. <path>(hd0,0)</path>) relativ zum
+alles was einem GRUB-Device folgt (wie z.B. <path>(hd0,0)</path>) relativ zum
 Mountpoint ist, nicht dem Root. Mit anderen Worten,
 <path>(hd0,0)/grub/splash.xpm.gz</path> ist in Wirklichkeit
 <path>/boot/grub/splash.xpm.gz</path> denn <path>(hd0,0)</path> ist
@@ -277,15 +279,15 @@ title=Gentoo Linux
 </pre>
 
 <p>
-<c>Genkernel</c> Benutzer sollten wissen, dass Ihr Kernel dieselben Bootoptionen
-benutzt wie der auf der LiveCD. Zum Beispiel, wenn Sie SCSI Geräte haben,
-sollten Sie <c>doscsi</c> als Kerneloption hinzufügen
+<c>Genkernel</c> Benutzer sollten wissen, dass Ihr Kernel die selben
+Bootoptionen benutzt wie der auf der LiveCD. Zum Beispiel, wenn Sie SCSI Geräte
+haben, sollten Sie <c>doscsi</c> als Kerneloption hinzufügen.
 </p>
 
 <p>
-Speichern Sie nun die <path>grub.conf</path> Datei und verlassen den Editor. Von
-jetzt an ist GRUB vollständig konfiguriert und Sie können mit der <uri
-link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
+Speichern Sie nun die <path>grub.conf</path> Datei und verlassen Sie den
+Editor. Von jetzt an ist GRUB vollständig konfiguriert und Sie können mit der
+<uri link="?part=1&amp;chap=10">Installation von benötigten Systemtools</uri>
 fortfahren.
 </p>
 
@@ -337,8 +339,8 @@ und erstellen die Datei.
 <p>
 Vor einigen Abschnitten baten wir Sie, sich den Namen des Kernel-Images zu
 merken, welches Sie erstellt haben. In der folgenden <path>lilo.conf</path>
-Beispielsdatei nehmen wir an, dass der Imagename <path>kernel-2.4.22</path> ist.
-Wir benutzen zudem das Beispielspartitionsschema in dieser Datei.
+Beispielsdatei nehmen wir an, dass der Imagename <path>kernel-2.4.22</path>
+ist. Wir benutzen zudem das Beispielpartitionsschema in dieser Datei.
 </p>
 
 <pre caption = "Example /etc/lilo.conf">
@@ -382,15 +384,15 @@ image=/boot/kernel-2.4.22
 </pre>
 
 <p>
-<c>Genkernel</c> Benutzer sollten wissen, dass Ihr Kernel dieselben Bootoptionen
-benutzt wie der auf der LiveCD. Zum Beispiel, wenn Sie SCSI Geräte haben,
-sollten sie <c>doscsi</c> als Kerneloption hinzufügen
+<c>Genkernel</c> Benutzer sollten wissen, dass Ihr Kernel dieselben
+Bootoptionen benutzt wie der auf der LiveCD. Zum Beispiel, wenn Sie SCSI Geräte
+haben, sollten Sie <c>doscsi</c> als Kerneloption hinzufügen
 </p>
 
 <p>
-Speichern Sie nun die Datei und verlassen Sie den Editor. Zum Schluss müssen sie
-<c>/sbin/lilo</c> ausführen, damit LILO die <path>/etc/lilo.conf</path> auf Ihr
-System anwenden kann (also sich selbst auf der Platte installiert).
+Speichern Sie nun die Datei und verlassen Sie den Editor. Zum Schluss müssen
+Sie <c>/sbin/lilo</c> ausführen, damit LILO die <path>/etc/lilo.conf</path> auf
+Ihr System anwenden kann (also sich selbst auf der Platte installiert).
 </p>
 
 <pre caption = "Fertigstellen der LILO Installation">
@@ -416,7 +418,7 @@ aboot kann nur auf Alpha-basierenden System verwendet werden!
 
 <p>
 Zunächst installieren wir aboot auf unserem System. Natürlich benutzen wir
-<c>emerge</c> um dies zu tun:
+<c>emerge</c> dazu:
 </p>
 
 <pre caption = "Installieren von aboot">
@@ -424,10 +426,10 @@ Zunächst installieren wir aboot auf unserem System. Natürlich benutzen wir
 </pre>
 
 <p>
-Der nächste Schritt ist unsere Bootdiskette bootbar zu machen. Diese wird
-<c>aboot</c> starten, wenn Sie Ihr System booten. Wir machen unsere Bootdiskette
-bootbar durch das Schreiben des <c>aboot</c> Bootloaders auf den Anfang der
-Diskette.
+Im nächsten Schritt machen wir unsere Bootdiskette bootbar. Diese wird
+<c>aboot</c> starten, wenn Sie Ihr System booten. Wir machen unsere
+Bootdiskette bootbar durch das Schreiben des <c>aboot</c> Bootloaders auf den
+Anfang der Diskette.
 </p>
 
 <pre caption = "Die Bootdiskette bootbar machen">
@@ -443,10 +445,10 @@ Bitte lesen Sie die entsprechenden Manualseiten (<c>man 8 swriteboot</c> und
 </note>
 
 <p>
-Zusätzlich können Sie dafür dafür sorgen, dass Gentoo einfacher bootet in dem
+Zusätzlich können Sie dafür dafür sorgen, dass Gentoo einfacher bootet indem
 Sie die aboot Konfigurationsdatei und die SRM boot_osflags Variable einrichten.
-Sie müssen sicherstellen, dass die bootdef_dev auch entsprechend gesetzt ist (an
-der Konsole einfacher als von Linux aus).
+Sie müssen sicherstellen, dass die bootdef_dev auch entsprechend gesetzt ist
+(an der Konsole einfacher als von Linux aus).
 </p>
 
 <pre caption = "Das Booten von Gentoo verbessern">
@@ -460,10 +462,10 @@ Wenn Sie unter Benutzung einer seriellen Konsole installieren, vergessen Sie
 nicht das Flag für das booten serieller Konsolen (serial console boot flag) in
 <path>aboot.conf</path> einzubinden.  In <path>/etc/aboot.conf.example</path>
 finden Sie weitere Informationen.
-Zusätzlichen müssen Sie noch das Einloggen am seriellen Anschluß erlauben:
+Zusätzlichen müssen Sie noch das Einloggen am seriellen Anschluss erlauben:
 </p>
 
-<pre caption = "Erlauben des Logins am seriellen Anschluß">
+<pre caption = "Erlauben des Logins am seriellen Anschluss">
 # <i>echo tts/0 &gt;&gt; /etc/securetty</i>
 # <i>echo 's0:12345:respawn:/sbin/agetty 9600 tts/0 vt100' &gt;&gt; /etc/inittab</i>
 </pre>
@@ -481,14 +483,14 @@ fort.
 <body>
 
 <impo>
-MILO kann nur bei Alpha-basierenden System verwendet werden!
+MILO kann nur auf Alpha-basierenden Systemen verwendet werden!
 </impo>
 
 <p>
-Bevor Sie fortfahren sollten Sie sich entscheiden, wie Sie MILO benutzen wollen.
-In diesem Abschnitt werden wir annehmen, dass Sie eine MILO Bootdiskette
-erstellen wollen. Wenn Sie von einer MS-DOS Partition auf Ihrer Festplatte
-starten wollen, sollten sie die Befehle entsprechend erweitern.
+Bevor Sie fortfahren, sollten Sie sich entscheiden, wie Sie MILO benutzen
+wollen. In diesem Abschnitt werden wir annehmen, dass Sie eine MILO
+Bootdiskette erstellen wollen. Wenn Sie von einer MS-DOS Partition auf Ihrer
+Festplatte starten wollen, sollten sie die Befehle entsprechend erweitern.
 </p>
 
 <p>
@@ -502,8 +504,8 @@ Um MILO zu installieren benutzen wir <c>emerge</c>.
 <p>
 Nachdem MILO installiert wurde, sollten die MILO-Images in
 <path>/opt/milo</path> sein. Die untenstehenden Befehle erstellen eine
-Bootdiskette zur Benutzung für MILO. Denken Sie daran das richtige Image für Ihr
-Alpha-System zu verwenden.
+Bootdiskette zur Benutzung für MILO. Denken Sie daran das richtige Image für
+Ihr Alpha-System zu verwenden.
 </p>
 
 <pre caption = "Installieren von MILO auf einer Diskette">
@@ -523,7 +525,7 @@ Ihre MILO Bootdiskette ist nun bereit um Gentoo Linux zu booten. Sie müssen
 vielleicht noch Umgebungsvariablen in Ihrem ARCS Firmware setzen um MILO zum
 starten zu kriegen; dies wird alles in dem <uri
 link="http://tldp.org/HOWTO/MILO-HOWTO/">MILO-HOWTO</uri> erklärt mit einigen
-Beispielen für gängige System und Beispiele der Kommandos für den Gebrauch im
+Beispielen für gängige Systeme und Beispiele der Kommandos für den Gebrauch im
 interaktiven Modus.
 </p>
 
@@ -563,7 +565,7 @@ und erstellen Sie <path>/etc/silo.conf</path>.
 </pre>
 
 <p>
-Folgend finden Sie ein Beispiel: <path>/etc/silo.conf</path>. Es wird das
+Nachfolgend finden Sie ein Beispiel: <path>/etc/silo.conf</path>. Es wird das
 Partitionierungsschema benutzt, das wir in diesem Buch verwenden, sowie
 <path>kernel-2.4.22</path> als Kernel-Image.
 </p>
@@ -571,14 +573,14 @@ Partitionierungsschema benutzt, das wir in diesem Buch verwenden, sowie
 <pre caption = "Beispiels /etc/silo.conf">
 partition = 1         <comment># Boot Partition</comment>
 root = /dev/hda4      <comment># Root Partition</comment>
-timeout = 15          <comment>#  Warte 15 Sekunden bevor die Standardsektion gebootet wird</comment>
+timeout = 15          <comment># Warte 15 Sekunden bevor die Standardsektion gebootet wird</comment>
 
 image = /boot/kernel-2.4.22
   label = linux
 </pre>
 
 <p>
-Wenn Sie die Beispiels <path>silo.conf</path> verwenden, die von Portage
+Wenn Sie die Beispiel <path>silo.conf</path> verwenden, die von Portage
 geliefert wurde, dann vergewissern Sie sich, dass Sie <e>alle</e> Zeilen
 auskommentieren, die Sie nicht benötigen.
 </p>
@@ -623,7 +625,7 @@ PALO kann nur auf HPPA-basierenden Systemen verwendet werden!
 <p>
 Auf der PA-RISC Plattform wird der Bootloader Palo genannt. Sie können die
 Konfigurationsdatei in <path>/etc/palo.conf</path> finden. Hier ist eine
-Beispielskonfiguration:
+Beispielkonfiguration:
 </p>
 
 <pre caption = "/etc/palo.conf Beispiel">
@@ -635,14 +637,14 @@ Beispielskonfiguration:
 <p>
 Die erste Zeile nennt Palo den Ort des Kernels und welche Bootparameter
 verwendet werden müssen. <c>2/vmlinux</c> bedeutet, dass der Kernel
-<c>vmlinux</c> auf der zweiten Partition liegt. Achtung: Der Pfad zum Kernel ist
-relativ zur Partition, nicht zum Root des Dateisystems.
+<c>vmlinux</c> auf der zweiten Partition liegt. Achtung: Der Pfad zum Kernel
+ist relativ zur Partition, nicht zum Root des Dateisystems.
 </p>
 
 <p>
 Die zweite Zeile gibt an, welcher Wiederherstellungskernel benutzt werden soll.
 Es ist Ihre erste Installation und Sie haben keinen Wiederherstellungskernel,
-daher kommentieren Sie dieses bitte aus. Die dritte Zeile gibt an auf welcher
+daher kommentieren Sie dieses bitte aus. Die dritte Zeile gibt an, auf welcher
 Festplatte Palo sich befindet.
 </p>
 
@@ -677,8 +679,8 @@ Es gibt zwei Wege yaBoot für Ihr System zu konfigurieren. Sie können das neue
 und verbesserte <c>yabootconfig</c> (vorhanden in <path>yaboot-1.3.8-r1</path>
 und später) verwenden, um Yaboot automatisch zu konfigurieren. Wenn Sie aus
 irgendeinem Grund nicht <c>yabootconfig</c> verwenden wollen um
-<path>/etc/yaboot.conf</path> automatisch einzurichten, editieren Sie einfach die
-schon installierte Beispieldatei auf Ihrem System.
+<path>/etc/yaboot.conf</path> automatisch einzurichten, editieren Sie einfach
+die schon installierte Beispieldatei auf Ihrem System.
 </p>
 
 <ul>
@@ -701,14 +703,13 @@ einrichten.
 </p>
 
 <p>
-Um  <c>yabootconfig</c> benutzen zu können, muss ihr Laufwerk eine Bootstrap
+Um  <c>yabootconfig</c> benutzen zu können, muss Ihr Laufwerk eine Bootstrap
 Partition haben und <path>/etc/fstab</path> muss konfiguriert sein.
-Beides sollte durch die vorangegangen Schritte schon
-geschehen sein. Stellen Sie zuerst durch das Ausführen von
-<c>emerge --update yaboot</c> sicher, dass Sie die neueste Version von yaBoot
-installiert haben. Dies ist notwendig, weil die neueste Version über Portage
-verfügbar sein wird, aber vielleicht noch nicht in den Stage Dateien vorhanden
-ist.
+Beides sollte durch die vorangegangen Schritte schon geschehen sein. Stellen
+Sie zuerst durch das Ausführen von <c>emerge --update yaboot</c> sicher, dass
+Sie die neueste Version von yaBoot installiert haben. Dies ist notwendig, weil
+die neueste Version über Portage verfügbar sein wird, aber vielleicht noch
+nicht in den Stage Dateien vorhanden ist.
 </p>
 
 <pre caption = "Installieren von yaBoot">
@@ -727,9 +728,10 @@ Konfigurationsdatei zu installieren.
 
 <p>
 Sie sollten den Inhalt von <path>/etc/yaboot.conf</path> überprüfen. Wenn Sie
-Veränderungen an <path>/etc/yaboot.conf</path> vornehmen (wie die Standard-/Boot
-OS Einstellung zu setzen)  stellen Sie sicher, dass Sie <c>ybin -v</c> erneut
-ausführen um die Veränderungen auf die Bootstrap Partition anzuwenden.
+Veränderungen an <path>/etc/yaboot.conf</path> vornehmen (wie die
+Standard-/Boot OS Einstellung zu setzen) stellen Sie sicher, dass Sie
+<c>ybin -v</c> erneut ausführen um die Veränderungen auf die Bootstrap
+Partition anzuwenden.
 </p>
 
 <p>
@@ -755,7 +757,7 @@ System installiert ist:
 
 <p>
 Nachfolgend finden Sie eine vollständige <path>yaboot.conf</path> Datei. Ändern Sie
-sie nach Belieben:
+diese nach Belieben:
 </p>
 
 <pre caption = "/etc/yaboot.conf">
@@ -800,14 +802,14 @@ enableofboot
 </pre>
 
 <p>
-Sobald <path>yaboot.conf</path> so eingerichtet ist, wie Sie es wünschen, führen
-Sie <c>mkofboot -v</c> aus um die Einstellungen in der Bootstrap Partition zu
-installieren. <e>Vergessen Sie dies nicht!</e> Wenn alles gut geht und Sie
-dieselben Optionen haben, wie wir im obigen Beispiel gibt Ihnen der nächste Neustart
-ein simples Bootmenü mit fünf Einträgen. Wenn Sie später Ihre yaBoot
-Konfiguration erneuern, müssen Sie einfach <c>ybin -v</c> ausführen um Ihre
-Bootstrap Partition auf den neuesten Stand zu bringen - <c>mkofboot</c>  wird
-nur für die erstmalige Einrichtung benötigt.
+Sobald <path>yaboot.conf</path> so eingerichtet ist, wie Sie es wünschen,
+führen Sie <c>mkofboot -v</c> aus um die Einstellungen in der Bootstrap
+Partition zu installieren. <e>Vergessen Sie dies nicht!</e> Wenn alles gut geht
+und Sie dieselben Optionen haben wie wir im obigen Beispiel, gibt Ihnen der
+nächste Neustart ein simples Bootmenü mit fünf Einträgen. Wenn Sie später Ihre
+yaBoot Konfiguration erneuern, müssen Sie einfach <c>ybin -v</c> ausführen um
+Ihre Bootstrap Partition auf den neuesten Stand zu bringen - <c>mkofboot</c>
+wird nur für die erstmalige Einrichtung benötigt.
 </p>
 
 <p>
