@@ -349,7 +349,7 @@ Angestellten leicht unterscheiden.
 Die Sicherheitsrichtlinie kann riesig werden und wichtige Informationen können 
 leicht vergessen gehen. Die Richtline für die IT-Abteilung kann Informationen 
 enthalten, die gegenüber den normalen Benutzern als vertraulich gelten. Somit 
-ist es sinnvoll, sich in kleinen Richtlinien fortzubewegen: Richtlinie für 
+ist es sinnvoll, sich in kleinen Richtlinien fortzubewegen: Richtlinie für
 akzeptable Bedienung, Richtlinie für Passwörter, für E-Mail und für Fernzugriff.
 </p>
 
@@ -357,9 +357,9 @@ akzeptable Bedienung, Richtlinie für Passwörter, für E-Mail und für Fernzugr
 Beispiele für Richtlinien können beim
 <uri link="http://www.sans.org/newlook/resources/policies/policies.htm">
 The SANS Security Policy Project</uri> gefunden werden. Wenn Sie ein kleines
-Netzwerk haben und diese Richtlinie für zu gross halten, dann sollten 
+Netzwerk haben und diese Richtlinie für zu gross halten, dann sollten
  sie einen Blick auf das
-<uri link="http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2196.html">RFC2196</uri> 
+<uri link="http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2196.html">RFC2196</uri>
 werfen, dass ein Sicherheitshandbuch darstellt
 </p>
 
@@ -374,11 +374,11 @@ werfen, dass ein Sicherheitshandbuch darstellt
 <body>
 
 <p>
-Die <path>/etc/make.conf</path>-Datei enthält die benutzerdefinierten 
-und die <path>/etc/make.profile/make.defaults</path>-Datei die 
-Standard USE Flags. Die wichtigen Flags für diesen Guide sind  
-<c>PAM</c> (Pluggable Authentication Module), <c>tcpd</c> (TCP Wrapper) und 
-<c>SSL</c> (Secure Socket Layer). Diese sind in den Standard USE Flags 
+Die <path>/etc/make.conf</path>-Datei enthält die benutzerdefinierten
+und die <path>/etc/make.profile/make.defaults</path>-Datei die
+Standard USE Flags. Die wichtigen Flags für diesen Guide sind
+<c>PAM</c> (Pluggable Authentication Module), <c>tcpd</c> (TCP Wrapper) und
+<c>SSL</c> (Secure Socket Layer). Diese sind in den Standard USE Flags
 enthalten.
 </p>
 
@@ -389,13 +389,13 @@ enthalten.
 <body>
 
 <p>
-Grub unterstützt 2 verschiedene Wege für Passwortkontrolle in seiner 
+Grub unterstützt 2 verschiedene Wege für Passwortkontrolle in seiner
 Konfigurationsdatei(<path>/boot/grub/grub.conf</path>):
 Zum einen normalen Text und zum anderen md5+salt Verschlüsselung.
 </p>
 
 <p>
-Dann kopieren und  fügen Sie das Passwort in <path>/boot/grub/grub.conf</path> ein.
+Fügen Sie ein Passwort in <path>/boot/grub/grub.conf</path> ein.
 </p>
 
 <pre caption="/boot/grub/grub.conf">
@@ -508,12 +508,12 @@ root sich einloggen darf.
 
 <p>
 Wir empfehlen, dass sie alle Zeilen bis auf <c>vc/1</c> auskommentieren. 
-Dies stellt sicher, dass sich root nur einma und nur an einem Terminal
+Dies stellt sicher, dass sich root nur einmal und nur an einem Terminal
 einloggen kann.
 </p>
 
 <note>
-Benutzer in der Wheel Gruppe können weiterhin auf anderen Konsolen per
+Benutzer in der wheel Gruppe können weiterhin auf anderen Konsolen per
 <c>su -</c> root werden.
 </note>
 
@@ -531,15 +531,15 @@ vc/1
 <body>
 
 <p>
-Zusätzliche Protokolle sollten hinzugefügt werden um Warnungen oder Fehler 
-aufzuspüren, die vor einem momentanen oder bereits durchgeführten Angriff 
-warnen könnten. Angreifer beobachten ein Netzwerk oder durchsuchen dies 
+Zusätzliche Protokolle sollten hinzugefügt werden um Warnungen oder Fehler
+aufzuspüren, die vor einem momentanen oder bereits durchgeführten Angriff
+warnen könnten. Angreifer beobachten ein Netzwerk oder durchsuchen dies
 oft bevor sie angreifen.
 </p>
 
 <p>
-Es ist auch unersetzlich, dass die Protokolldateien einfach zu lesen und 
-zu verwalten sind. Gentoo Linux gibt ihnen die Möglichkeit bei der 
+Es ist auch unersetzlich, dass die Protokolldateien einfach zu lesen und
+zu verwalten sind. Gentoo Linux gibt ihnen die Möglichkeit bei der
 Installation zwischen drei verschiedenen Protokollierungsprogrammen zu wählen.
 </p>
 
@@ -548,12 +548,12 @@ Installation zwischen drei verschiedenen Protokollierungsprogrammen zu wählen.
 <section>
 <title>Loggen: Syslogd</title>
 <body>
-
+7
 <p>
 Syslogd ist das gängigste Protokollierungsprogramm für Linux und Unix. Es 
-beinhaltet keine Protokollrotation. Diese Eigenschaft wird übernommen 
+beinhaltet keine Protokollrotation. Diese Eigenschaft wird
 durch das Verwenden von <path>/usr/sbin/logrotate</path> in einem Cron Job
-und korrekt konfigurierten Einstellungen in <path>/etc/logrotate.conf</path>. 
+und korrekt konfigurierten Einstellungen in <path>/etc/logrotate.conf</path> übernommen.
 Wie oft die Protokollrotation stattfinden sollte hängt von der 
 Systembelastung  ab.
 </p>
@@ -667,7 +667,7 @@ bietet nicht die Möglichkeit Protokolle an einen entfernten (remote)
 Server zu senden, aber es hat Vorteile im  Bereich der Performance und der 
 Protokollierungsflexibilität. Es kann nach Programmnamen <!--oder nach 
 Einrichtung -->protokollieren (wie syslogd) und beinhaltet reguläre 
-Ausdrucksübereinstimmung und die Möglichkeit Kommandos auszuführen. 
+Ausdrucksübereinstimmung und die Möglichkeit Kommandos auszuführen.
 Sehr gut um Handeln zu können, wenn nötig.
 </p>
 
@@ -705,8 +705,8 @@ zu machen.
 </p>
 
 <p>
-Unkommentieren Sie dann die Zeile unter "Password failures" in 
-<path>/etc/metalog/metalog.conf</path> wir folgt:
+Unkommentieren Sie dann die Zeile unter "Password failures" in
+<path>/etc/metalog/metalog.conf</path> wie folgt:
 </p>
 
 <pre caption="/etc/metalog/metalog.conf">
@@ -720,12 +720,12 @@ command = "/usr/local/sbin/mail_pwd_failures.sh"
 <body>
 
 <p>
-Syslog-ng enthält einige derselben Funktionen wie Syslog und Metalog mit 
-einem kleinen Unterschied. Es ermöglicht die Filterung von Nachrichten 
-basierend auf Level und Inhalt (wie Metalog), bietet entferntes Protokollieren 
-(wie syslog) und kann Protokolle von syslogd verarbeiten. Sogar Streams von 
+Syslog-ng enthält einige derselben Funktionen wie Syslog und Metalog mit
+einem kleinen Unterschied. Es ermöglicht die Filterung von Nachrichten
+basierend auf Level und Inhalt (wie Metalog), bietet entferntes Protokollieren
+(wie syslog) und kann Protokolle von syslogd verarbeiten. Sogar Streams von
 Solaris, schreiben an ein TTY, Ausführen von Programmen und die Nutzung als
-Protokollierungsserver sind möglich. Grundlegend ist dies das Beste aus 
+Protokollierungsserver sind möglich. Grundlegend ist dies das Beste aus
 beiden Protokollierern kombiniert mit einer erweiterten Konfiguration.
 </p>
 
@@ -810,15 +810,15 @@ log { source(src); destination(console_all); };
 
 <p>
 Sehr einfach zu konfigurieren, aber es ist auch sehr einfach etwas zu übersehen,
-da die Konfigurationsdatei riesig ist. Der Author verspricht zudem noch einige 
-zusätzliche Funktionen wie Verschlüsselung, Authentifizierung, Komprimierung 
-und MAC (Mandatory Acces Control) Kontrolle. Mit diesen Optionen wird es 
-perfekt sein für Netzwerkprotokollierung, da der Angreifer die Protokolle 
+da die Konfigurationsdatei riesig ist. Der Autor verspricht zudem noch einige
+zusätzliche Funktionen wie Verschlüsselung, Authentifizierung, Komprimierung
+und MAC (Mandatory Access Control) Kontrolle. Mit diesen Optionen wird es
+perfekt sein für Netzwerkprotokollierung, da der Angreifer die Protokolle
 nicht ausspionieren kann.
 </p>
 
 <p>
-Syslog-ng hat auch noch andere Vorteile, es muss nicht als root laufen!
+Syslog-ng hat auch noch andere Vorteile - es muss nicht als root laufen!
 </p>
 
 </body>
@@ -831,13 +831,13 @@ Syslog-ng hat auch noch andere Vorteile, es muss nicht als root laufen!
 <body>
 
 <p>
-Mountet man eine ext2, ext3 oder eine reiserfs Partition, so gibt es mehrere 
+Mountet man eine ext2, ext3 oder eine reiserfs Partition, so gibt es mehrere
 Optionen die man in <path>/etc/fstab</path> einfügen kann. Diese Optionen sind:
 </p>
 
 <ul>
 <li>
-  <c>nosuid</c> - Ignoriert das SUID bit und behandelt es einfach wie eine 
+  <c>nosuid</c> - Ignoriert das SUID bit und behandelt es einfach wie eine
   normale Datei.
 </li>
 <li>
@@ -850,10 +850,10 @@ Optionen die man in <path>/etc/fstab</path> einfügen kann. Diese Optionen sind:
 </ul>
 
 <p>
-Leider können diese Einstellungen leicht umgangen werden, indem man einen 
-nicht-direkten Pfad ausführt. Jedoch wenn man /tmp auf noexec setzt, 
+Leider können diese Einstellungen leicht umgangen werden, indem man einen
+nicht-direkten Pfad ausführt. Jedoch wenn man /tmp auf noexec setzt,
 stoppt das etwa 99% aller Script-Kiddies, da deren Exploits so
-gestaltet sind, dass sie direkt von /tmp ausgeführt werden.
+gestaltet sind dass sie direkt von /tmp ausgeführt werden.
 </p>
 
 <pre caption="/etc/fstab">
@@ -869,30 +869,30 @@ proc /proc proc defaults 0 0
 </pre>
 
 <warn>
-Setzt man <path>/tmp</path> in noexec Modus, kann dies dazu führen, 
+Setzt man <path>/tmp</path> in noexec Modus, kann dies dazu führen,
 dass einige Scripts nicht richtig ausgeführt werden.
 </warn>
 
 <note>
-Plattenquoten werden im Kapitel <uri link="#doc_chap6_sect3">Quotas</uri> 
+Plattenquotas werden im Kapitel <uri link="#doc_chap6_sect3">Quotas</uri>
 behandelt
 </note>
 
 <note>
-Beachten Sie, dass ich <path>/var</path> weder in <c>noexec</c> noch in <c>nosuid</c> 
-Modus setze, obwohl Dateien von diesem Mountpunkt normalerweise niemals ausgeführt 
-werden. Der Grund dafür ist, dass qmail in <path>/var/qmail</path> 
-installiert ist und berechtigt sein muss eine suid-Datei auszuführen und 
-auf sie zuzugreifen. Ich setze <path>/usr</path> in read-only Modus, da ich 
-hier nichts verändere solange ich Gentoo nicht aktualisiere. Dann mounte ich 
-das Dateisystem erneut in read-write Modus, aktualisiere und mounte dann erneut 
+Beachten Sie dass ich <path>/var</path> weder in <c>noexec</c> noch in <c>nosuid</c>
+Modus setze, obwohl Dateien von diesem Mountpunkt normalerweise niemals ausgeführt
+werden. Der Grund dafür ist, dass qmail in <path>/var/qmail</path>
+installiert ist und berechtigt sein muss eine suid-Datei auszuführen und
+auf sie zuzugreifen. Ich setze <path>/usr</path> in read-only Modus, da ich
+hier nichts verändere solange ich Gentoo nicht aktualisiere. Dann mounte ich
+das Dateisystem erneut in read-write Modus, aktualisiere und mounte dann erneut
 in read-only.
 </note>
 
 <note>
-Selbst wenn sie qmail nicht benutzen, braucht Gentoo trotzdem noch die 
-Ausführberechtigung in <path>/var/tmp</path>, da dort ebuilds hergestellt 
-werden. Jedoch kann hierfür ein alternativer Pfad eingerichtet werden, 
+Selbst wenn sie qmail nicht benutzen, braucht Gentoo trotzdem noch die
+Ausführberechtigung in <path>/var/tmp</path>, da dort ebuilds hergestellt
+werden. Jedoch kann hierfür ein alternativer Pfad eingerichtet werden,
 wenn Sie darauf bestehen <path>/var</path> in noexec Modus zu betreiben.
 </note>
 
@@ -907,8 +907,8 @@ wenn Sie darauf bestehen <path>/var</path> in noexec Modus zu betreiben.
 <body>
 
 <p>
-Die Kontrolle von Ressourcenbegrenzungen kann sehr effektiv sein, wenn es 
-darum geht eine lokale DoS Attacke zu verhindern oder bei der Handhabung 
+Die Kontrolle von Ressourcenbegrenzungen kann sehr effektiv sein, wenn es
+darum geht eine lokale DoS Attacke zu verhindern oder bei der Handhabung
 von maximal erlaubten Logins für eine Gruppe oder einen Benutzer.
 </p>
 
@@ -925,14 +925,14 @@ von maximal erlaubten Logins für eine Gruppe oder einen Benutzer.
 </pre>
 
 <p>
-Wenn Sie dabei sind, den Wert von <c>nproc</c> oder <c>maxlogins</c> gleich 0 zu 
-setzen, sollten sie diesen Benutzer vielleicht lieber löschen. Das Beispiel 
-oben setzt die Einstellungen für die Gruppe <c>dev</c> für Prozesse, 
+Wenn Sie dabei sind den Wert von <c>nproc</c> oder <c>maxlogins</c> gleich 0 zu
+setzen, sollten sie diesen Benutzer vielleicht lieber löschen. Das Beispiel
+oben setzt die Einstellungen für die Gruppe <c>dev</c> für Prozesse,
 Kerndateien und <c>maxlogins</c>. Der Rest erhält einen Standardwert.
 </p>
 
 <note>
-<path>/etc/security/limits.conf</path> ist Teil des PAM Paketes und wir 
+<path>/etc/security/limits.conf</path> ist Teil des PAM Paketes und wird
 nur auf Pakete angewendet, die PAM benutzen.
 </note>
 
@@ -943,9 +943,9 @@ nur auf Pakete angewendet, die PAM benutzen.
 <body>
 
 <p>
-<path>/etc/limits</path> ist recht ähnlich zur Limit-Datei 
+<path>/etc/limits</path> ist recht ähnlich zur Limit-Datei
 <path>/etc/security/limits.conf</path>. Der einzige Unterschied ist das
-Format und daß diese nur auf Benutzern oder Wild-Cards (aber keinen Gruppen) 
+Format und daß diese nur auf Benutzern oder Wild-Cards (aber keinen Gruppen)
 beruht. Werfen wir einen Blick auf die Konfiguration:
 </p>
 
@@ -955,10 +955,10 @@ kn L10 C100000 U35
 </pre>
 
 <p>
-Hier setzen wir die Standardeinstellungen und eine spezielle Einstellung für 
-den Anwender <e>kn</e>. Limits sind ein Teil des Shadow-Paketes und betreffen 
-nur das Shadow-Login-Programm. Es ist nicht notwendig irgendwelche 
-Beschränkungen in dieser Datei zu setzen, wenn Sie die PAM-Einstellung in 
+Hier setzen wir die Standardeinstellungen und eine spezielle Einstellung für
+den Anwender <e>kn</e>. Limits sind ein Teil des Shadow-Paketes und betreffen
+nur das Shadow-Login-Programm. Es ist nicht notwendig irgendwelche
+Beschränkungen in dieser Datei zu setzen, wenn Sie die PAM-Einstellung in
 <path>/etc/make.conf</path> vorgenommen haben und PAM vollständig konfiguriert haben.
 </p>
 
@@ -970,22 +970,22 @@ Beschränkungen in dieser Datei zu setzen, wenn Sie die PAM-Einstellung in
 <body>
 
 <warn>
-Stellen Sie sicher, dass ihr Dateisystem Quotas unterstützt. ReiserFS zum 
+Stellen Sie sicher, dass ihr Dateisystem Quotas unterstützt. ReiserFS zum
 Beispiel tut es nicht!
 </warn>
 
 <p>
-Die Anwendung von Quotas auf einem Dateisystem verhindert, daß Anwender den 
-Datenträger mit Ihren Daten überfüllen oder es verhindert das Schreiben für 
-Anwender überhaupt. Die Kernel-Option wird bei der Kernelkonfiguration unter
-<c>File systems->Quota support</c> aktiviert. Nehmen Sie die folgende 
-Einstellung vor, kompilieren Sie den Kernel neu und starten Sie mit diesem 
+Die Anwendung von Quotas auf einem Dateisystem verhindert, daß Anwender den
+Datenträger mit Ihren Daten überfüllen oder das diese überhaupt schreiben können.
+Die Kernel-Option wird bei der Kernelkonfiguration unter
+<c>File systems->Quota support</c> aktiviert. Nehmen Sie die folgende
+Einstellung vor, kompilieren Sie den Kernel neu und starten Sie mit diesem
 Ihren Computer neu.
 </p>
 
 <p>
-Starten Sie die Installation mit <c>emerge quota</c>. Passen Sie Ihre 
-<path>/etc/fstab</path> an, indem Sie usrquota und grpquota bei den 
+Starten Sie die Installation mit <c>emerge quota</c>. Passen Sie Ihre
+<path>/etc/fstab</path> an, indem Sie usrquota und grpquota bei den
 Partitionen hinzufügen, für die Sie die Nutzungsbeschränkung festlegen wollen.
 </p>
 
@@ -1002,8 +1002,8 @@ proc /proc proc defaults 0 0
 </pre>
 
 <p>
-Auf jeder Partition auf der Sie Quotas aktiviert haben erstellen Sie nun die 
-Quota-Dateien (quota.user und quota.group) und setzen Sie sie in die Wurzel 
+Auf jeder Partition auf der Sie Quotas aktiviert haben erstellen Sie nun die
+Quota-Dateien (quota.user und quota.group) und setzen Sie sie in die Wurzel
 der Partition
 </p>
 
@@ -1015,11 +1015,11 @@ der Partition
 </pre>
 
 <p>
-Dieser Schritt muss auf jeder Partition durchgeführt werden, auf der Quotas 
-aktiviert wurden. Nachdem Sie die Quota-Dateien erstellt und konfiguriert haben, 
-muss ein Initskript erstellt werden, dass die Quotas jedesmal beim Booten 
-aktiviert. Kopieren Sie das folgende Skript und erstellen Sie damit eine Datei 
-namens <path>/etc/init.d/quotas</path>. Erstellen Sie einfach die Datei 
+Dieser Schritt muss auf jeder Partition durchgeführt werden, auf der Quotas
+aktiviert wurden. Nachdem Sie die Quota-Dateien erstellt und konfiguriert haben,
+muss ein Initskript erstellt werden, dass die Quotas jedesmal beim Booten
+aktiviert. Kopieren Sie das folgende Skript und erstellen Sie damit eine Datei
+namens <path>/etc/init.d/quotas</path>. Erstellen Sie einfach die Datei
 (wenn sie noch nicht existiert) und machen Sie das Script ausführbar.
 </p>
 
