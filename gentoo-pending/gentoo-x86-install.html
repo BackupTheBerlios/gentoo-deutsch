@@ -1,0 +1,2605 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/css/main.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Documentation
+	
+-- 
+	Gentoo Linux 1.4_rc4 Installation Instructions</title>
+</head>
+<body style="margin-left:0px;margin-top:0px;" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/"><img border="0" src="/images/gtop-s.jpg" alt="Gentoo Logo"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/"><img border="0" src="/images/gbot-s.gif" alt="Gentoo Logo Side"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" colspan="1" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux 1.4_rc4 Installation Instructions</p>
+<form name="contents" action="http://www.gentoo.org">
+<b>Contents</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Über die Installation</option>
+<option value="#doc_chap2">2. Booten</option>
+<option value="#doc_chap3">3. Laden der Kernel Module</option>
+<option value="#doc_chap4">4. Konfiguration der Netzwerkanbindung</option>
+<option value="#doc_chap5">5. Einstellen Ihres Datums und der Zeit</option>
+<option value="#doc_chap6">6. Dateisysteme, Partitionen und Block-Geräte</option>
+<option value="#doc_chap7">7. Partitionen mounten</option>
+<option value="#doc_chap8">8. Stage tar-Archive und chroot</option>
+<option value="#doc_chap9">9. Den aktuellen Portage Tree herunterladen</option>
+<option value="#doc_chap10">10. Gentoo Optimierungen festlegen (make.conf)</option>
+<option value="#doc_chap11">11. Beginnen von stage1</option>
+<option value="#doc_chap12">12. Beginnen von stage2 und Fortsetzung von stage1</option>
+<option value="#doc_chap13">13. Beginnen von stage3</option>
+<option value="#doc_chap14">14. Einstellen der Zeitzone</option>
+<option value="#doc_chap15">15. Installieren des Kernels und des System Logger</option>
+<option value="#doc_chap16">16. Installation von diversen benötigten Paketen</option>
+<option value="#doc_chap17">17. Ändern der /etc/fstab für Ihre Maschine</option>
+<option value="#doc_chap18">18. Das Passwort für root eingeben</option>
+<option value="#doc_chap19">19. Einstellen des Hostname</option>
+<option value="#doc_chap20">20. Die /etc/hosts anpassen</option>
+<option value="#doc_chap21">21. Abschließende Netzwerk Konfiguration</option>
+<option value="#doc_chap22">22. Basiseinstellungen vornehmen (inklusive Tastaturbelegung einstellen)</option>
+<option value="#doc_chap23">23. Konfigurieren des Bootloaders</option>
+<option value="#doc_chap24">24. Bootdiskette erstellen</option>
+<option value="#doc_chap25">25. Installation beendet!</option>
+<option value="#doc_chap26">26. Gentoo-Stats</option></select>
+</form>
+<p class="chaphead">
+<span class="chapnum"><a name="doc_chap1">1.</a></span>Über die Installation</p>
+
+				<p>Die neue Boot CD startet von fast jedem modernen IDE CD-ROM Laufwerk,
+				sowie von vielen SCSI CD-ROMs, sofern das BIOS booten von einem CD-ROM
+				erlaubt. Die CD-ROM unterstützt IDE Controller (eingebaut im Kernel)
+				sowie alle SCSI Geräte (vorhanden als Module). Zusätzlich stellt sie
+				Module für buchstäblich jede Netzwerkkarte zur Verfügung die Linux
+				unterstützt, sowie Tools die es ermöglichen das Netzwerk zu
+				konfigurieren und ausgehende <span class="code">ssh</span> Verbindungen zum Dateidownload
+				aufzubauen.</p>
+
+				<p> Um von der &quot;Build&quot; CD zu installieren, wird ein 486+ Prozessor
+				benötigt und idealerweise mindestens 64 Megabyte RAM. (Gentoo Linux
+				konnte erfolgreich mit 64 MB RAM +  64 MB Swap installiert werden, aber
+				die Installation unter diesen Bedingungen war extrem langsam.)</p>
+
+				<p>Gentoo Linux kann über drei verschiedene &quot;stage&quot;
+				tar-Archiven installiert werden.  Ausgehend von dem gewählten
+				tar-Archiv, entscheiden Sie, wie viel Ihres Systems selbst kompiliert
+				werden soll.  Wählen Sie das stage1 tar-Archiv, wenn Sie den
+				bootstrap-Prozess durchführen und das komplette System von Grund auf
+				erzeugen wollen.  Mit dem stage2 tar-Archiv kompilieren Sie ihr gesamtes
+				System mit einem vorab durchgeführten bootstrap-Prozess.  Das stage3
+				tar-Archiv enthält ein bereits kompiliertes Gentoo Linux
+				Basissystem.</p>
+
+				<p>
+<b>Wollen Sie von einem stage1, stage2 oder stage3 tar-Archiv
+				installieren?</b>  Ausgehend von stage1 haben Sie die totale Kontrolle
+				über die Optimierungseinstellungen und optionalen Funktionen während des
+				Kompilierens, die von Beginn an für Ihr System aktiviert sind.  Dadurch
+				ist stage1 gut für &quot;Power-User&quot; geeignet, die wissen, was sie
+				tun.  Die Installation von stage2 überspringt den bootstrap-Prozess; das
+				ist recht hilfreich, wenn Sie mit den von uns vorgenommenen
+				Optimierungen für Ihr stage2 tar-Archiv zufrieden sind.  Eine
+				Installation mit stage3 ist die schnellste Möglichkeit, Gentoo Linux zu
+				installieren.  Jedoch wird dadurch das Basissystem mit den
+				Optimierungen, die wir für Sie gewählt haben, installiert.  Jede
+				offizielle Version von Gentoo Linux wird stage3 tar-Archive mit
+				Optimierungen für die gängigen Prozessoren bereitstellen, was für die
+				meisten Anwender ausreichend ist.  <b>Sollten Sie zum ersten Mal Gentoo
+				Linux installieren, benutzen Sie ein stage3 tar-Archiv.</b>
+</p>
+
+				<p>Wie sollen Sie die Installation beginnen?  Zuerst müssen Sie sich für
+				eine unserer LiveCD ISO-Images unter
+				<a href="http://www.ibiblio.org/gentoo/releases/1.4_rc4/x86/">http://www.ibiblio.org/gentoo/releases/1.4_rc4/x86/</a>
+				entscheiden.  Alternativ können Sie einen unserer Mirror-Server
+				verwenden, um die hohe Last auf unserem Hauptserver zu verringern.  Eine
+				Liste der Server kann unter
+				<a href="http://www.gentoo.org/main/en/mirrors.xml">http://www.gentoo.org/main/en/mirrors.xml</a> gefunden werden.</p>
+
+				<p>Diese LiveCDs sind komplette CD-Images, die mit einer
+				CD-Brenn-Software auf eine CD-R oder CD-RW gebrannt werden sollten.
+				Derzeit bieten wir zwei Arten von LiveCDs an:</p>
+
+				<p>Die erste trägt die Bezeichnung &quot;gentoo-basic&quot;, ist etwa
+				40MB groß, beinhaltet nur das stage1 tar-Archiv und befindet sich im
+				<span class="path">x86/livecd/</span> Verzeichnis.  Diese LiveCD ist von minimaler
+				Größe, um sie schnell herunterzuladen und beinhaltet nur das stage1
+				tar-Archiv, das sich im Verzeichnis <span class="path">/mnt/cdrom/gentoo/</span>
+				befindet, nachdem die CD gebootet wurde.</p>
+
+				<p>Die zweite derzeit angebotene LiveCD trägt die Bezeichnung
+				&quot;gentoo-3stages&quot;.  Diese CD ist ebenso im Verzeichnis
+				<span class="path">x86/livecd/</span> zu finden.  Sie beinhaltet die stage1, stage2
+				und stage3 tar-Archive.  Mit dieser CD ist es möglich, recht schnell ein
+				komplett funktionierendes Gentoo Linux System zu erhalten.</p>
+
+				<p>
+<b>Was passierte mit den i686, pentium3, athlon, athlon-mp stages,
+				LiveCDs und GRP (Gentoo Reference Platform)?</b>  Gentoo 1.4_rc4 ist nur
+				eine kleinere (Vorab-)Version.  1.4_final wird für die gewohnten
+				x86-Architekturen und GRP bereitgestellt werden.  Möchten Sie Gentoo
+				Linux für andere x86-Architekturen oder GRP optimiert installieren,
+				schauen Sie in die 1.4_rc2-Dokumentation unter
+				<a href="http://www.gentoo.org/doc/en/gentoo-x86-1.4_rc2-install.xml">http://www.gentoo.org/doc/en/gentoo-x86-1.4_rc2-install.xml</a>
+				(derzeit nur in Englisch).</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Fällt Ihnen ein Problem während der Installation auf und möchten
+				Sie uns über diesen &quot;Bug&quot; informieren, füllen Sie bitte einen
+				Bug-Report unter <a href="http://bugs.gentoo.org">http://bugs.gentoo.org</a> aus.  Sollte der Bug
+				die ursprünglichen Entwickler einer Software erreichen (wie z.B. das KDE
+				Team), dann werden die <span class="emphasis">Gentoo Linux Developer</span> das für Sie
+				übernehmen.  Sie helfen mit einem Bug-Report auch anderen Gentoo Linux
+				Benutzern, die möglicherweise ebenso Ihr Problem haben.  Mit einer
+				Behebung des Problems helfen Sie von daher der gesamten Gentoo Linux
+				Gemeinschaft!</p></td></tr></table>
+
+				<p>Jetzt lassen Sie uns kurz den den Installationsprozess skizzieren.
+				Zuerst laden Sie die LiveCD herunter, brennen diese und booten von ihr.
+				Nachdem Sie am root-Prompt angelangt sind, erstellen Sie die
+				Partitionen, erzeugen die Dateisysteme und entpacken entweder das
+				<span class="emphasis">stage1</span>, <span class="emphasis">stage2</span> oder <span class="emphasis">stage3</span> Archiv. Wenn Sie das
+				<span class="emphasis">stage1</span> oder <span class="emphasis">stage2</span> Archiv verwenden, müssen Sie alle
+				nötigen Schritte unternehmen, um Ihr System auf den Stand des
+				<span class="emphasis">stage3</span> Archivs zu bringen. Wenn Sie <span class="emphasis">stage3</span> erreicht haben,
+				können Sie das System konfigurieren (die Konfigurationsdateien anpassen,
+				einen Bootloader installieren, usw.) und in ein voll funktionsfähiges
+				Gentoo Linux booten.  Abhängig von der gewählten Installationsstufe, von
+				der Sie starten, hier die benötigten Schritte:</p>
+
+				<table class="ntable">
+					<tr>
+						<td bgcolor="#7a5ada" class="infohead"><b>stage tar-Archiv</b></td>
+						<td bgcolor="#7a5ada" class="infohead"><b>Installationsanforderungen</b></td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo">1</td>
+						<td bgcolor="#ddddff" class="tableinfo">Einrichten von Partition und Dateisystem, emerge rsync,
+						bootstrap, emerge system, emerge kernel sources, abschliessende
+						Konfiguration</td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo">2</td>
+						<td bgcolor="#ddddff" class="tableinfo">Einrichten von Partition und Dateisystem, emerge rsync, emerge
+						system, emerge kernel sources, abschliessende Konfiguration</td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo">3</td>
+						<td bgcolor="#ddddff" class="tableinfo">Einrichten von Partition und Dateisystem, emerge rsync,
+						abschliessende Konfiguration</td>
+					</tr>
+				</table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap2">2.</a></span>Booten</p>
+
+				<p>Booten Sie nun die LiveCD.  Sie sollten ein buntes Boot-Prompt mit
+				dem Gentoo Linux Logo sehen.  Drücken Sie hier Enter, um mit dem
+				Boot-Prozess zu starten oder geben Sie optionale Boot-Optionen an, indem
+				Sie einen Kernel auswählen, gefolgt weiteren Optionen und mit Enter
+				abschließen.  Zum Beispiel <span class="code">gentoo nousb nohotplug</span>.  Für eine
+				detaillierte Beschreibung der möglichen Boot-Optionen, schauen Sie in
+				die folgende Tabelle der verfügbaren Kernel und Optionen oder drücken
+				Sie F2 am Boot-Prompt für die Hilfe.</p>
+
+				<table class="ntable">
+					<tr>
+<td bgcolor="#7a5ada" class="infohead"><b>Verfügbare Kernel</b></td>
+<td bgcolor="#7a5ada" class="infohead"><b>Beschreibung</b></td>
+</tr>
+
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">gentoo</td>
+<td bgcolor="#ddddff" class="tableinfo">normaler Gentoo Kernel (default)</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">800</td>
+<td bgcolor="#ddddff" class="tableinfo">800x600 Framebuffer Modus</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">1024</td>
+<td bgcolor="#ddddff" class="tableinfo">1024x768 Framebuffer Modus</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">1280</td>
+<td bgcolor="#ddddff" class="tableinfo">1280x1024 Framebuffer Modus</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">nofb</td>
+<td bgcolor="#ddddff" class="tableinfo">Framebuffer Modus abgeschaltet</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">smp</td>
+<td bgcolor="#ddddff" class="tableinfo">lädt einen SMP Kernel (für mehrere Prozessoren)
+					ohne Framebuffer Modus</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">acpi</td>
+<td bgcolor="#ddddff" class="tableinfo">Schaltet ACPI ein und lädt ACPI Module während
+					des init-Prozesses</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">memtest</td>
+<td bgcolor="#ddddff" class="tableinfo">Bootet das RAM Test Programm</td>
+</tr>
+				</table>
+
+				<table class="ntable">
+					<tr>
+<td bgcolor="#7a5ada" class="infohead"><b>Verfübare Boot Optionen</b></td>
+<td bgcolor="#7a5ada" class="infohead"><b>Beschreibung</b></td>
+</tr>
+
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">doataraid</td>
+<td bgcolor="#ddddff" class="tableinfo">Lädt IDE RAID Module in initrd</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">dofirewire</td>
+<td bgcolor="#ddddff" class="tableinfo">Lädt FireWire Module in initrd (für
+					FireWire CD-ROMs, usw.)</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">dokeymap</td>
+<td bgcolor="#ddddff" class="tableinfo">Lässt die Tastaturbelegung für non-us
+					Tastaturen auswählen</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">dopcmcia</td>
+<td bgcolor="#ddddff" class="tableinfo">Startet PCMCIA Dienste</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">doscsi</td>
+<td bgcolor="#ddddff" class="tableinfo">Scannt nach SCSI Geräten (kann zu
+					Komplikationen mit manchen Ethernet-Karten führen)</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">noapm</td>
+<td bgcolor="#ddddff" class="tableinfo">Verhindert das Laden vom APM (Powermanagement)
+					Modul</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">nodetect</td>
+<td bgcolor="#ddddff" class="tableinfo">Führt nicht die automatische
+					Hardwareerkennung mit hwsetup/kudzu und hotplug aus</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">nodhcp</td>
+<td bgcolor="#ddddff" class="tableinfo">DCHP wird nicht ausgewührt, wenn eine
+					Netzwerkkarte erkannt wurde</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">nohotplug</td>
+<td bgcolor="#ddddff" class="tableinfo">Verhindert das Laden von hotplug
+					Diensten</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">noraid</td>
+<td bgcolor="#ddddff" class="tableinfo">Verhindert das Laden von evms Modulen</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">nousb</td>
+<td bgcolor="#ddddff" class="tableinfo">Verhindert das Laden von USB Modulen, impliziert
+					nohotplug</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">ide=nodma</td>
+<td bgcolor="#ddddff" class="tableinfo">Erzwingt das Abschalten von DMA für
+					inkorrekt funktionierende IDE Geräte</td>
+</tr>
+					<tr>
+<td bgcolor="#ddddff" class="tableinfo">cdcache</td>
+<td bgcolor="#ddddff" class="tableinfo">Lädt alle benötigten Komponenten der LiveCD in
+					den RAM (etwa 40MB werden benötigt), wodurch die CD ungemountet und
+					eine andere eingelegt werden kann</td>
+</tr>
+				</table>
+
+				<p>Sobald Sie Enter gedrückt haben, werden sie mit den üblichen Ausgaben
+				des Kernels beim Booten, einigen kernel und initrd Meldungen, gefolgt
+				von der normalen Gentoo Linux Boot-Sequenz, begrüßt.  Sie werden
+				automatisch als &quot;<span class="code">root</span>&quot; eingeloggt; das root-Passwort
+				wird aus Sicherheitsgründen auf eine zufällige Zeichenkette gesetzt.
+				Sie sollten einen root-Prompt (&quot;<span class="code">#</span>&quot;) auf der aktuellen
+				Konsole haben.  Sie können zu weiteren Konsolen wechseln, indem Sie
+				Alt-F2, Alt-F3 und Alt-F4 drücken.  Um zu der ersten Konsole
+				zurückzukehren, drücken Sie Alt-F1.  Nun sollten Sie ein root-Passwort
+				vergeben, indem Sie <span class="code">passwd</span> eingeben und den Anweisungen
+				folgen.</p>
+
+				<p>Sie haben möglicherweise schon den Haufen an Hilfetext oberhalb des
+				<span class="code">#</span>-Prompts gesehen.  Dieser erklärt, wie Sie ihr Netzwerk
+				konfigurieren und wo Sie auf der CD die Gentoo Linux stage tar-Archive
+				und Pakete finden.</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap3">3.</a></span>Laden der Kernel Module</p>
+
+				<p>Falls die PCI-Autoerkennung Ihre Hardware nicht komplett erkannt hat,
+				müssen Sie die entsprechenden Kernel Module von Hand nachladen.  Um eine
+				Liste aller vorhandenen Netzwerkkarten (NIC) Module zu sehen, geben Sie
+				<span class="code">ls /lib/modules/*/kernel/drivers/net/*</span> ein.  Um ein spezielles
+				Modul zu laden, schreiben Sie:</p>
+
+<a name="doc_chap3_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.1: PCI Modul Konfiguration</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">modprobe pcnet32</span>
+	<span class="comment">(Ersetzen Sie pcnet32 durch das Modul Ihrer NIC)</span>
+</pre></td></tr>
+</table>
+
+				<p>Wenn Sie nun auch noch auf SCSI Hardware zugreifen möchten, die nicht
+				automatisch erkannt wurde, müssen Sie das passende Modul aus
+				<span class="path">/lib/modules</span> laden.  Verwenden Sie dazu wieder
+				<span class="code">modprobe</span>:</p>
+
+<a name="doc_chap3_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.2: SCSI Modul laden</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">modprobe aic7xxx</span>
+<span class="comment">(ersetzen Sie aic7xxx durch das richtige SCSI-Modul für Ihren Controller)</span>
+# <span class="code">modprobe sd_mod</span>
+<span class="comment">(sc_mod ist das Modul für SCSI Festplatten Unterstützung)</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Unterstützung für SCSI CD-ROMs und Festplatten ist schon im Kernel
+				eingebaut.</p></td></tr></table>
+
+				<p>Falls Sie Hardware-RAID verwenden, müssen Sie die für Ihren
+				RAID-Controller passenden ATA-RAID Module laden.</p>
+
+<a name="doc_chap3_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.3: Laden der RAID Module</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">modprobe ataraid</span>
+# <span class="code">modprobe pdcraid</span>
+<span class="comment">(Promise Raid Controller)</span>
+# <span class="code">modprobe hptraid</span>
+<span class="comment">(Highpoint Raid Controller)</span>
+</pre></td></tr>
+</table>
+
+				<p>Die Gentoo LiveCD sollte DMA an Ihren Festplatten aktiviert haben.
+				Falls dem nicht so ist, können Sie mit <span class="code">hdparm</span> DMA für Ihre
+				Festplatten einschalten.</p>
+
+<a name="doc_chap3_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3.4: DMA einschalten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<span class="comment">Ersetzen Sie hdX durch die entsprechende Bezeichnung für Ihre
+Festplatte</span>
+# <span class="code">hdparm -d1 /dev/hdX</span>
+<span class="comment">(DMA einschalten)</span>
+# <span class="code">hdparm -d1 -A1 -m16 -u1 -a64 /dev/hdX</span>
+<span class="comment">(DMA einschalten und andere sichere Durchsatz steigernde Optionen)</span>
+# <span class="code">hdparm -X66 /dev/hdX</span>
+<span class="comment">(Zwinge die Verwendung von Ultra-DMA -- gefährlich! -- kann manche
+Festplatten in Unordnung bringen)</span>
+</pre></td></tr>
+</table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap4">4.</a></span>Konfiguration der Netzwerkanbindung</p>
+<p class="secthead"><a name="doc_chap4_sect1">Vielleicht klappt es schon? </a></p>
+
+				<p>Falls Sie eine 1.4_rc3 oder spätere LiveCD verwenden, it es möglich,
+				dass Ihre Netzwerkanbindung schon automatisch konfiguriert wurde.  Falls
+				es so ist, können Sie die auf der LiveCD beinhalteten Programme für
+				Netzwerke verwenden, wie z.B. <span class="code">ssh</span> (Sichere Shell Verbindung zu
+				einem anderen Rechner), <span class="code">scp</span> (Sicheres kopieren von Dateien zu/von
+				einem anderen Rechner), <span class="code">ping</span> (ICMP Test-Pakete senden),
+				<span class="code">irssi</span> (IRC Chat Programm), <span class="code">wget</span> (Dateien von http oder ftp
+				herunterladen), <span class="code">lynx</span> (Textbasierter Web-Browser), sowie weitere
+				Programme.</p>
+
+				<p>Falls die Netzwerkanbindung schon konfiguriert wurde, sollte der
+				Aufruf von <span class="code">/sbin/ifconfig</span> die Neztwerkarten neben <span class="code">lo</span>
+				anzeigen, wie z.B.  <span class="code">eth0</span>:</p>
+
+<a name="doc_chap4_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.1: /sbin/ifconfig bei einer funktionerenden Netzwerkkarte</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
+          inet addr:192.168.0.2  Bcast:192.168.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::50:ba8f:617a/10 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1498792 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1284980 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:1984 txqueuelen:100
+          RX bytes:485691215 (463.1 Mb)  TX bytes:123951388 (118.2 Mb)
+          Interrupt:11
+</pre></td></tr>
+</table>
+
+				<p>Sie sollten außerdem versuchen, den DNS (Direct Name Server) Ihres
+				ISP (Internet Service Provider) anzu&quot;ping&quot;en (die IP-Adresse
+				befindet sich in <span class="path">/etc/resolv.conf</span>), als auch eine Web-Seite
+				Ihrer Wahl, einfach nur um sicherzustellen, dass Ihre Pakete das Netz
+				erreichen und die DNS Namesauflösung ordentlich funktioniert, usw.</p>
+
+<a name="doc_chap4_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.2: Weiteres Netzwerktesten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">ping -c 3 www.yahoo.com</span>
+</pre></td></tr>
+</table>
+
+				<p>Können Sie Ihre Netzwerkanbindung verwenden?  Falls dem so ist,
+				können Sie den Rest dieses Kapitels überspringen.</p>
+
+			<p class="secthead"><a name="doc_chap4_sect2">PPPoE Konfiguration </a></p>
+
+				<p>Angenommen Sie benötigen PPPoE, um sich zum Internet zu verbinden, so
+				macht es die LiveCD (egal welche Version) für Sie mit <span class="code">rp-pppoe</span>
+				leicht.  Benutzen Sie das angebotene <span class="code">adsl-setup</span> Skript, um Ihre
+				Verbindung einzurichten.  Sie werden nach der Netzwerkkarte, die mit
+				Ihrem ADSL-Modem verbunden ist, Ihrem Usernamen und dem Passwort, den
+				IP-Adressen Ihres DNS und ob Sie eine einfache Firewall benötigen,
+				gefragt.</p>
+
+<a name="doc_chap4_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.3: PPPoE Konfigurieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">adsl-setup</span>
+# <span class="code">adsl-start</span>
+</pre></td></tr>
+</table>
+
+				<p>Wenn es nicht auf Anhieb funktioniert, überprüfen Sie, ob Sie Ihren
+				Usernamen und das Passwort korrekt angegeben haben, indem Sie in
+				<span class="path">/etc/ppp/pap-secrets</span> oder
+				<span class="path">/etc/ppp/chap-secrets</span> nachschauen.  Außerdem seien Sie
+				sicher, dass Sie die richtige Netzwerkkarte gewählt haben.</p>
+
+			<p class="secthead"><a name="doc_chap4_sect3">Automatische Netzwerkkonfiguration </a></p>
+
+				<p>Der einfachste Weg die Netzwerkanbindung zu konfigurieren, falls sie
+				nicht automatisch konfiguriert wurde, ist mit dem <span class="code">net-setup</span>
+				Skript.</p> <a name="doc_chap4_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.4: net-setup Skript</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">net-setup eth0</span>
+</pre></td></tr>
+</table>
+
+				<p>Natürlich, falls Sie es lieber wünschen, können Sie auch Ihre
+				Netzwerkanbindung manuell konfigurieren.  Das wird als nächstes
+				beschrieben.</p>
+
+			<p class="secthead"><a name="doc_chap4_sect4">Manuelle DHCP Konfiguration </a></p>
+
+				<p>Mit DHCP ist die Netzwerkkonfiguration sehr einfach. Wenn Ihr
+				Provider kein DHCP anbietet, geht es für Sie bei der statischen
+				Netzwerkkonfiguration weiter.</p>
+
+<a name="doc_chap4_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.5: Netzerk Konfiguration via DHCP</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="input">dhcpcd eth0</span> 
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Einige Provider erwarten, dass Sie einen Hostnamen übergeben. Um
+				dies zu tun, hängen Sie die Option <span class="code">-h meinhostname</span> an das oben
+				stehende Kommando.</p></td></tr></table>
+
+				<p>Wenn Sie <span class="emphasis">dhcpConfig</span> Warnungen bekommen, keine Panik. Die
+				meisten Meldungen sind harmlos. Jetzt geht es für Sie unten, mit dem
+				Test der Netzwerkanbindung, weiter.</p>
+
+			<p class="secthead"><a name="doc_chap4_sect5">Manuelle statische Konfiguration </a></p>
+
+				<p>Sie müssen Ihre Netzwerkanbindung so weit konfigurieren, dass Sie die
+				benötigten Quellen herunterladen können. Außerdem wird das lokale
+				(localhost) Interface benötigt.  Bitte geben Sie dazu folgende Befehle
+				ein und ersetzen $IFACE mit Ihrem Netzwerkinterface (typischerweise
+				<span class="code">eth0</span>), $IPNUM mit Ihrer IP Adresse, $BCAST mit Ihrer Broadcast
+				Adresse und $NMASK mit Ihrer Netzwerkmaske. Bei dem <span class="code">route</span> Befehl
+				ersetzen Sie $GTWAY durch die IP Adresse Ihres &quot;default Gateway&quot;.</p>
+
+<a name="doc_chap4_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.6: Statische IP Netzwerkkonfiguration</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">/sbin/ifconfig $IFACE $IPNUM broadcast $BCAST netmask $NMASK</span>
+# <span class="code">/sbin/route add -net default gw $GTWAY netmask 0.0.0.0 metric 1</span>
+</pre></td></tr>
+</table>
+
+				<p>Jetzt müssen Sie die Datei <span class="path">/etc/resolv.conf</span> erstellen,
+				damit die Namensauflösung (Web/FTP Server durch den Namen, anstatt der
+				IP Adresse finden) funktioniert.</p>
+
+				<p>Hier ein Beispiel der Datei <span class="path">/etc/resolv.conf</span>:</p>
+
+<a name="doc_chap4_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.7: /etc/resolv.conf Vorlage</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+domain mydomain.com
+nameserver 10.0.0.1
+nameserver 10.0.0.2
+</pre></td></tr>
+</table>
+
+				<p>Ersetzen Sie <span class="code">10.0.0.1</span> und <span class="code">10.0.0.2</span> mit den IP Adressen
+				Ihres primären und sekundären DNS Servers.</p>
+
+			<p class="secthead"><a name="doc_chap4_sect6">Proxy Konfiguration </a></p>
+
+				<p>Wenn Sie sich hinter einem Proxy befinden, ist es nötig, dass Sie
+				Ihre Einstellungen entsprechend konfigurieren, bevor Sie fortfahren.
+				Sie werden einige Variablen setzen, um Ihren Proxy entsprechend
+				einzustellen.</p>
+
+<a name="doc_chap4_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4.8: Proxy konfigurieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">export http_proxy=&quot;proxy.netzwerk.lan:1234&quot;</span>
+# <span class="code">export ftp_proxy=&quot;$http_proxy&quot;</span>
+# <span class="code">export RSYNC_PROXY=&quot;$http_proxy&quot;</span>
+</pre></td></tr>
+</table>
+
+			<p class="secthead"><a name="doc_chap4_sect7">Die Netzwerkanbindung funktioniert! </a></p>
+
+				<p>Die Netzwerkanbindung sollte nun konfiguriert und nutzbar sein.  Es
+				sollte möglich sein, dass sie mit den vorhandenen Programmen <span class="code">ssh</span>,
+				<span class="code">scp</span>, <span class="code">lynx</span>, <span class="code">irssi</span> und <span class="code">wget</span> andere Rechner in
+				Ihrem LAN oder dem Internet erreichen können.</p>
+
+			<p class="secthead"><a name="doc_chap4_sect8">Die Netzwerkanbindung funktioniert nicht! </a></p>
+
+				<p>Falls Sie immer noch keine Netzwerkanbindung haben, können Sie für
+				Hilfe im <a href="http://forums.gentoo.org/">Gentoo Forum</a>
+				ersuchen.  Einige hilfreiche Links sind im Beitrag
+				<a href="http://forums.gentoo.org/viewtopic.php?t=43025">http://forums.gentoo.org/viewtopic.php?t=43025</a>.</p>	
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap5">5.</a></span>Einstellen Ihres Datums und der Zeit</p>
+
+				<p>Es wird nun benötigt, dass Sie Ihr Datum und Ihre Zeit einstellen.
+				Sie können dies mit dem <span class="code">date</span> Kommando machen</p>
+
+<a name="doc_chap5_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 5.1: Setzen des Datums</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">date</span>
+Thu Feb 27 09:04:42 CST 2003
+<span class="comment">(Falls Ihr Datum falsch ist, setzen Sie es mit nächsten Kommando)</span>
+# <span class="code">date 022709042003</span>
+<span class="comment">(date MMDDhhmmCCYY)</span>
+</pre></td></tr>
+</table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap6">6.</a></span>Dateisysteme, Partitionen und Block-Geräte</p>
+<p class="secthead"><a name="doc_chap6_sect1">Einführung in Block-Geräte </a></p>
+
+				<p>In diesem Abschnitt werden die Festplatten-orientierten Askpekte von
+				Gentoo Linux und Linux im Allgemeinen, sowie die Linux Dateisysteme,
+				Partitionen und Block-Geräte, erläutert.  Dann, sobald Sie damit
+				vertraut sind, werden Sie durch den Prozess zur Einrichtung von
+				Partitionen und Dateisystemen für Ihr Gentoo Linux geführt.</p>
+
+				<p>Zu Beginn werden die &quot;Block-Geräte&quot; eingeführt.  Das
+				bekannteste Block-Gerät ist vermutlich das, welches die erste
+				IDE-Festplatte in einem Linux-System repräsendiert:</p>
+
+<a name="doc_chap6_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.1: /dev/hda, das Block-Gerät, das die erste IDE-Festplatte repräsentiert</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+/dev/hda
+</pre></td></tr>
+</table>
+
+				<p>Falls Sie in Ihrem System SCSI-Laufwerke verwenden, dann wird Ihre
+				erste Festplatte diese sein:</p>
+
+<a name="doc_chap6_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.2: /dev/sda, das Block-Gerät, das die erste logische SCSI-Festplatte repräsentiert</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+/dev/sda
+</pre></td></tr>
+</table>
+
+				<p>Die oben genannten Block-Geräte repräsentieren eine <span class="emphasis">allgemeine</span>
+				Schnittstelle zu der Festplatte.  Programme können diese Block-Geräte
+				verwenden, um auf die Festplatte zuzugreifen, ohne sich darum zu
+				kümmern, ob sie IDE, SCSI oder irgendwas anderes ist.  Das Programm kann
+				einfach auf die gespeicherten Daten der Festplatte in Bündeln von
+				zusammenhängenden, frei addressierbaren, 512-Byte-Blöcken zugreifen.</p>
+
+			<p class="secthead"><a name="doc_chap6_sect2">Partitionen und fdisk </a></p>
+
+				<p>Unter Linux erstellen Sie Dateisysteme mit dem speziellen Kommando
+				<span class="code">mkfs</span> (oder <span class="code">mke2fs</span>, <span class="code">mkreiserfs</span>, usw.) unter der
+				Angabe eines bestimmten Block-Gerätes als Kommandozeilen-Argument.</p>
+
+				<p>Wie auch immer, obwohl es theoretisch möglich ist, eine
+				&quot;komplette Festplatte&quot; als Block-Gerät (eines, das die
+				<span class="emphasis">gesamte</span> Festplatte repräsentiert) zu benutzen, um ein einziges
+				Dateisystem darauf unterzubringen, wird dieses in der Praxis so gut wie
+				nie angewandt.  Stattdessen wird eine Festplatte in mehrere kleine
+				Block-Geräte, so genannte &quot;Partitionen&quot;, augeteilt.  Die
+				Partitionen werden mit dem Programm <span class="code">fdisk</span> erzeugt, das benötigt
+				wird, um die auf jeder Festplatte gespeicherte Partitionstabelle zu
+				erzeugen und zu ändern.</p>
+
+				<p>Sie können die Partitionstabelle ansehen, indem Sie <span class="code">fdisk</span> mit
+				dem Argument eines Block-Gerätes aufrufen:</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Alternative Programme, um die Partitionstabelle einer Festplatte
+				anzusprechen, sind <span class="code">cfdisk</span>, <span class="code">parted</span> oder <span class="code">partimage</span>.</p></td></tr></table>
+
+<a name="doc_chap6_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.3: fdisk starten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">fdisk /dev/hda</span>
+</pre></td></tr>
+</table>
+<p>oder</p>
+<a name="doc_chap6_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.4: fdisk starten und die Partitionstabelle auf /dev/sda ansehen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">fdisk /dev/sda</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b><b>Beachten Sie, dass Sie die Partitiontabelle <span class="emphasis">nicht</span>
+				speichern oder Änderungen an ihr vornehmen sollten, wenn irgendeine
+				dieser Partitionen Dateisysteme beinhalten, die in Benutzung sind, oder
+				wichtige Daten beinhalten.  Dieses führt meistens zum Verlust von Daten
+				auf dieser Festplatte.</b>
+</p></td></tr></table>
+
+				<p>Bei fdisk werden Sie mit einer Ausgabe wie der folgenden begrüßt:</p>
+
+<a name="doc_chap6_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.5: Das fdisk Prompt</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Command (m for help):
+</pre></td></tr>
+</table>
+
+				<p>Geben Sie <span class="code">p</span> ein, um Ihre aktuelle Partitionsaufteilung
+				darzustellen:</p>
+
+<a name="doc_chap6_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.6: Eine beispielhafte Partitionsaufteilung</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Command (m for help): p
+
+Disk /dev/hda: 240 heads, 63 sectors, 2184 cylinders
+Units = cylinders of 15120 * 512 bytes
+
+Device Boot    Start       End    Blocks   Id  System
+/dev/hda1             1        14    105808+  83  Linux
+/dev/hda2            15        49    264600   82  Linux swap
+/dev/hda3            50        70    158760   83  Linux
+/dev/hda4            71      2184  15981840    5  Extended
+/dev/hda5            71       209   1050808+  83  Linux
+/dev/hda6           210       348   1050808+  83  Linux
+/dev/hda7           349       626   2101648+  83  Linux
+/dev/hda8           627       904   2101648+  83  Linux
+/dev/hda9           905      2184   9676768+  83  Linux
+
+Command (m for help): 
+</pre></td></tr>
+</table>
+
+				<p>Diese Festplatte ist so partitioniert, dass sie sieben Linux
+				Dateisysteme (jede entsprechene Partition wird als &quot;Linux&quot;
+				gelistet), sowie eine swap Partition (gelistet als &quot;Linux
+				swap&quot;).</p>
+
+				<p>Beachten Sie die Namensgebung der Partitionen zugehörigen
+				Block-Geräten auf der linken Seite, beginnend mit <span class="code">/dev/hda1</span> bis
+				zu <span class="code">/dev/hda9</span>.  In den frühen PC-Tagen erlaubte die
+				Partitionierungs-Software maximal vier Partitionen (sogenannte
+				&quot;primäre Partitionen&quot;).  Das war zu begrenzt, sodass eine
+				Erweiterung mit &quot;erweiterten Partitionen&quot; geschaffen wurde.
+				Eine erweiterte Partition ist sehr ähnlich zu einer primären Partition
+				und wird innerhalb der ersten vier primären Partitionen aufgezählt.
+				Dennoch, erweiterte Partitionen können eine beliebige Anzahl an
+				sogenannten &quot;logischen Partitionen&quot; beinhalten, wodurch eine
+				effiziente Möglichkeit, das Limit von vier Partitionen zu umgehen,
+				geboten wird.</p>
+
+				<p>Alle Partitionen von <span class="code">hda5</span> an und höher sind logische
+				Partitionen.  Die Nummern von 1 bis 4 sind reserviert für primäre oder
+				erweiterte Partitionen.</p>
+
+				<p>Somit sind in dem oben genannten Beispiel <span class="code">hda1</span> bis <span class="code">hda3</span>
+				primäre Partitionen.  <span class="code">hda4</span> ist eine erweiterte Partition, die die
+				logischen Partitionen <span class="code">hda5</span> bis <span class="code">hda9</span> beinhaltet.  Sie
+				werden niemals <span class="code">/dev/hda4</span> benutzen, um darin direkt Dateisysteme
+				zu generieren -- es arbeitet einfach nur als ein Container für die
+				Partitionen <span class="code">hda5</span> bis <span class="code">hda9</span>.</p>
+
+				<p>Beachten Sie außerdem, dass jede Partition eine &quot;ID&quot;
+				besitzt, den sogenannten &quot;Partitionstyp&quot;.  Immer, wenn Sie
+				eine neue Partition erstellen, sollten Sie darauf achten, dass der
+				Partitionstyp korrekt angegeben ist.  '83' ist der korrekte
+				Partitionstyp für eine Partition, die ein Linux Dateisystem beinhaltet
+				und '82' ist der korrekte Partitionstyp für eine Linux swap
+				Partition.  Sie können den Partitionstypen mit der Option <span class="code">t</span> in
+				<span class="code">fdisk</span> setzen.  Der Linux Kernel verwendet den Partitionstypen, um
+				automatisch Dateisysteme und swap Partitionen beim Booten zu
+				erkennen.</p>
+
+			<p class="secthead"><a name="doc_chap6_sect3">fdisk zur Partitionierung verwenden </a></p>
+
+				<p>Da Sie nun eine Einführung in die Festplattenpartitionierung unter
+				Linux erhalten haben, ist es an der Zeit, den Prozess zur Erstellung von
+				Partitionen für Ihre Gentoo Linux Installation zu durchschreiten.
+				Darauf werden Sie Partitionierung ähnlich zu dieser haben:</p>
+
+<a name="doc_chap6_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.7: Die Partitionierung nach Durchführung der folgenden Schritte</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Disk /dev/hda: 30.0 GB, 30005821440 bytes
+240 heads, 63 sectors/track, 3876 cylinders
+Units = cylinders of 15120 * 512 = 7741440 bytes
+
+   Device Boot    Start       End    Blocks   Id  System
+/dev/hda1   *         1        14    105808+  83  Linux
+/dev/hda2            15        81    506520   82  Linux swap
+/dev/hda3            82      3876  28690200   83  Linux
+
+Command (m for help):
+</pre></td></tr>
+</table>
+
+				<p>In unserer vorgeschlagenen &quot;Anfänger&quot; Partitionierung haben
+				wir drei Partitionen.  Die erste (<span class="code">/dev/hda1</span>) am Anfang der
+				Festplatte ist eine kleine, sogenannte &quot;boot Partition&quot;.  Der
+				Zweck der boot Partition ist, alle kritischen Daten, die zum Booten
+				benötigt werden zu beinhalten -- die GRUB Bootmanager Informationen
+				(falls Sie GRUB verwenden werden) als auch Ihre(n) Linux Kernel.  Die
+				boot Partition biete einen sicheren Ort, um alles wichtige zu speichern,
+				was zum Booten von Linux benötigt wird.  Während der alltäglichen
+				Benutzung von Gentoo Linux sollte Ihre boot Partition zur Sicherheit
+				<span class="emphasis">ungemountet</span> bleiben.  Wenn Sie ein SCSI System aufsetzen, wird
+				Ihre boot Partition <span class="code">/dev/sda1</span> sein.</p>
+
+				<p>Es ist empfohlen, eine boot Partition am Anfang einer Festplatte
+				einzurichten.  Obwohl es inzwischen egal ist, wo sich die boot Partition
+				befindet, ist es eine Tradition aus den Tagen, als der LILO Bootmanager
+				noch keine Kernel von Dateisystemen oberhalb des Zylinders 1024 laden
+				konnte.</p>
+
+				<p>Die zweite Partition (<span class="code">/dev/hda2</span>) wird für den &quot;swap
+				Bereich&quot; benötigt.  Der Kernel verwendet swap Bereiche als einen
+				virtuellen Speicher, wenn der vorhandene RAM zur Neige geht.  Diese
+				Partition ist, relativ gesehen, auch nicht sehr groß; üblicherweise etwa
+				512MB.  Wenn Sie ein SCSI-System verwenden, wird die Partition
+				<span class="code">/dev/sda2</span> heissen.</p>
+
+				<p>Die dritte Partition (<span class="code">/dev/hda3</span>) ist recht groß und nimmt den
+				kompletten Rest der Festplatte ein.  Diese Partition wird &quot;root
+				Partition&quot; genannt und wird für das Haupt-Dateisystem, das Gentoo
+				Linux selbst beinhaltet, verwendet.  Bei einem SCSI-System wird diese
+				Partition <span class="code">/dev/sda3</span> sein.</p>
+
+				<p>Bevor wir die Festplatte partitionieren, hier ein kurzer technischer
+				Überblick der empfohlenen Partitionen und Dateisystem-Konfigurationen
+				für die Installation von Gentoo Linux:</p>
+
+				<table class="ntable">
+					<tr>
+						<td bgcolor="#7a5ada" class="infohead"><b>Partition</b></td>
+						<td bgcolor="#7a5ada" class="infohead"><b>Größe</b></td>
+						<td bgcolor="#7a5ada" class="infohead"><b>Typ</b></td>
+						<td bgcolor="#7a5ada" class="infohead"><b>beispielhaftes Gerät</b></td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo">boot Partition, beinhaltet Kernel und Boot Informationen</td>
+						<td bgcolor="#ddddff" class="tableinfo">100 Megabyte</td>
+						<td bgcolor="#ddddff" class="tableinfo">ext2/3 stark empfohlen (am einfachsten); falls ReiserFS, dann
+						mit <span class="code">-o notail</span> mounten</td> <td bgcolor="#ddddff" class="tableinfo">/dev/hda1</td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo">swap Partition (kein 128MB limit, nun 2GB)</td>
+						<td bgcolor="#ddddff" class="tableinfo">üblicherweise hat der swap Bereich eine Größe von etwa zwei mal
+						des physichen RAM</td>
+						<td bgcolor="#ddddff" class="tableinfo">Linux swap</td>
+						<td bgcolor="#ddddff" class="tableinfo">/dev/hda2</td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo">root Partition, beinhaltet das Haupt-Dateisystem (/usr, /home,
+						usw.)</td>
+						<td bgcolor="#ddddff" class="tableinfo">&gt;=1.5 Gigabyte</td>
+						<td bgcolor="#ddddff" class="tableinfo">ReiserFS oder ext3 empfohlen; ext2 ist okay</td>
+						<td bgcolor="#ddddff" class="tableinfo">/dev/hda3</td>
+					</tr>
+				</table>
+
+				<p>Gut, nun erzeugen Sie die Partitionen wie in dem oben genannten
+				Beispiel.  Zuerst rufen Sie fdisk mit <span class="code">fdisk /dev/hda</span> oder
+				<span class="code">fdisk /dev/sda</span>, abhängig ob Sie IDE oder SCSI verwenden, auf.
+				Dann geben Sie <p>p</p>, um Ihre aktuelle Partitionierung einzusehen.
+				Gibt es etwas auf der Festplatte, das Sie weiterhin benötigen?  Dann
+				<b>stoppen Sie jetzt</b>.  Wenn Sie mit diesen Anweisungen fortfahren,
+				werden <b>alle Ihre vorhandenen Daten auf der Festplatte
+				gelöscht</b>.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Eine weitere Befolgung der Anweisungen bewirkt ein <b>Löschen</b>
+				aller ihrer bereits vorhanden Daten auf Ihrer Festplatte!  Falls sich
+				etwas auf der Festplatte befindet, seien Sie sich sicher, dass es keine
+				kritischen Daten sind und deren Verlust Sie verschmerzen können.  Seien
+				Sie sich außerdem sicher, dass Sie die <b>korrekte Festplatte gewählt
+				haben</b>, sodass Sie nicht aus Versehen Daten auf der falschen
+				Festplatte löschen.</p></td></tr></table>
+
+				<p>Nun ist es an der Zeit alle existierenden Partitionen zu löschen.
+				Dazu tippen Sie <span class="code">d</span> ein drücken Enter.  Sie werden nach der
+				Partitionsnummer gefragt, die Sie löschen möchten.  Um eine existierende
+				<span class="code">/dev/hda1</span> Partition zu löschen, gehen Sie so vor:</p>
+
+<a name="doc_chap6_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.8: Löschen einer Partition</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Command (m for help): d
+Partition number (1-4): 1
+</pre></td></tr>
+</table>
+
+				<p>Die Partition wird zum Löschen vorgesehen.  Sie wird nicht mehr
+				angezeigt, wenn Sie <span class="code">p</span> eingeben, aber sie wird nicht eher
+				gelöscht, bevor Sie die Änderungen speichern.  Wenn Sie einen Fehler
+				gemacht haben und ohne Speichern der Änderungen fdisk beenden wollen,
+				geben Sie sofort <span class="code">q</span> ein und drücken Sie Enter, sodass Ihre
+				Partition nicht gelöscht wird.</p>
+
+
+
+				<p>Nun, angenommen Sie wollen wirklich alle vorhandenen Partitionen
+				löschen, geben Sie wiederholt <span class="code">p</span> ein, um die Partitionen zu listen
+				und dann <span class="code">d</span>, gefolgt von der Partitionsnummer, die Sie löschen
+				möchten.  Letzten Endes werden Sie mit einer leeren Partitionstabelle
+				enden:</p>
+
+<a name="doc_chap6_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.9: Eine leere Partitionstabelle</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Disk /dev/hda: 30.0 GB, 30005821440 bytes
+240 heads, 63 sectors/track, 3876 cylinders
+Units = cylinders of 15120 * 512 = 7741440 bytes
+
+   Device Boot    Start       End    Blocks   Id  System
+
+Command (m for help):
+</pre></td></tr>
+</table>
+
+				<p>Mit einer im Speicher befindlichen leeren Partitionstabelle, sind Sie
+				bereit, eine boot Partition zu erstellen.  Dazu geben Sie <span class="code">n</span> ein,
+				um eine neue Partition zu erstellen, dann <p>p</p>, um fdisk
+				mitzuteilen, dass Sie eine primäre Partition wünschen.  Dann drücken Sie
+				<span class="code">1</span> zur Generierung der ersten primären Partition.  Wenn Sie nach
+				dem ersten Zylinder gefragt werden, drücken Sie einfach Enter.  Bei der
+				Nachfrage zum letzten Zylinder geben Sie <span class="code">+100M</span> ein, um eine 100MB
+				große Partition zu erstellen.  Die Ausgabe dieser Schritte sieht
+				folgendermaßen aus:</p>
+
+<a name="doc_chap6_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.10: Schritte zur Erstellung der boot Partition</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Command (m for help): n
+Command action
+   e   extended
+   p   primary partition (1-4)
+p
+Partition number (1-4): 1
+First cylinder (1-3876, default 1):
+Using default value 1
+Last cylinder or +size or +sizeM or +sizeK (1-3876, default 3876): +100M
+</pre></td></tr>
+</table>
+
+				<p>Geben Sie nun <span class="code">p</span> ein, sehen Sie die folgende
+				Partitionierung:</p>
+
+<a name="doc_chap6_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.11: Die erste Partition wurde erzeugt</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Command (m for help): p
+
+Disk /dev/hda: 30.0 GB, 30005821440 bytes
+240 heads, 63 sectors/track, 3876 cylinders
+Units = cylinders of 15120 * 512 = 7741440 bytes
+
+   Device Boot    Start       End    Blocks   Id  System
+/dev/hda1             1        14    105808+  83  Linux
+</pre></td></tr>
+</table>
+
+				<p>Als nächstes erzeugen Sie eine swap Partition.  Dazu geben Sie
+				<span class="code">n</span> ein, um eine neue Partition zu erzeugen, dann <span class="code">p</span>, um
+				fdisk mitzuteilen, dass Sie eine primäre Partition wünschen.  Darauf
+				<span class="code">2</span> zur Erzeugung der zweiten primären Partition, in diesem Fall
+				also <span class="code">/dev/hda2</span>.  Werden Sie nach dem ersten Zylinder gefragt,
+				drücken Sie Enter.  Bei der Nachfrage zum letzten Zylinder, geben Sie
+				<span class="code">+512M</span> ein, um eine Partition von 512MB zu erstellen.  Darauf
+				drücken Sie <span class="code">t</span>, um den Partitionstyp zu setzen und geben <span class="code">82</span>
+				ein, entsprechend für einen &quot;Linux Swap&quot; Partitionstyp.
+				Nachdem Sie diese Schritte durchgeführt haben, sollte <span class="code">p</span> ähnlich
+				zu dem Folgenden aussehen:</p>
+
+<a name="doc_chap6_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.12: Die swap Partition wurde erzeugt</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Command (m for help): p
+
+Disk /dev/hda: 30.0 GB, 30005821440 bytes
+240 heads, 63 sectors/track, 3876 cylinders
+Units = cylinders of 15120 * 512 = 7741440 bytes
+
+   Device Boot    Start       End    Blocks   Id  System
+/dev/hda1             1        14    105808+  83  Linux
+/dev/hda2            15        81    506520   82  Linux swap
+</pre></td></tr>
+</table>
+
+				<p>Abschließend erzeugen Sie die root Partition.  Dazu drücken Sie
+				<span class="code">n</span>, um eine neue Partition zu erzeugen, dann <span class="code">p</span>, um fdisk
+				mitzuteilen, dass Sie eine primäre Partition wünschen.  Dann drücken Sie
+				<span class="code">3</span> für die Generierung der dritten primären Partition, also
+				<span class="code">/dev/hda3</span>.  Wird nach dem ersten Zylinder gefragt, drücken Sie
+				Enter.  Bei der Nachfrage zum letzten Zylinder, drücken Sie ebenso
+				Enter, um eine Partition, die den restlichen freien Platz einnimmt, zu
+				erzeugen.  Darauf sollte <span class="code">p</span> eine Ausgabe ähnlich zu der folgenden
+				darstellen:</p>
+
+<a name="doc_chap6_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.13: Die root Partition wurde erzeugt</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Command (m for help): p
+
+Disk /dev/hda: 30.0 GB, 30005821440 bytes
+240 heads, 63 sectors/track, 3876 cylinders
+Units = cylinders of 15120 * 512 = 7741440 bytes
+
+   Device Boot    Start       End    Blocks   Id  System
+/dev/hda1             1        14    105808+  83  Linux
+/dev/hda2            15        81    506520   82  Linux swap
+/dev/hda3            82      3876  28690200   83  Linux
+</pre></td></tr>
+</table>
+
+				<p>Letztendlich muss noch das &quot;bootable&quot; Flag bei der boot
+				Partition gesetzt und die Änderungen abgespeichert werden.  Um
+				<span class="code">/dev/hda1</span> als eine bootbare Partition zu kennzeichnen, geben Sie
+				im Menu <span class="code">a</span> gefolgt von <span class="code">1</span> für die Partitionsnummer ein.
+				Schauen Sie sich nun die Partitiontabelle mit <span class="code">p</span> an, sehen Sie,
+				dass <span class="code">/dev/hda1</span> ein <span class="code">*</span> in der Spalte &quot;Boot&quot;
+				besitzt.  Schreiben Sie nun die Änderungen auf die Festplatte.  Dazu
+				geben Sie <span class="code">w</span> ein und drücken Enter.  Ihre Festplatte ist nun
+				ordentlich für ein Gentoo Linux konfiguriert.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Falls <span class="code">fdisk</span> oder <span class="code">cfdisk</span> Sie anweist, neu zu starten,
+				damit Ihr System die Änderungen an der Partitionstabelle akzeptiert,
+				dann tun Sie dieses bitte.</p></td></tr></table>
+
+			<p class="secthead"><a name="doc_chap6_sect4">Dateisysteme erzeugen </a></p>
+
+				<p>Da nun die Partionen erzeugt wurden, ist es an der Zeit, die
+				Dateisysteme auf der boot und root Partition einzurichten, sodass sie
+				zur Datenspeicherung in Ihr System eingebunden werden können.  Außerdem
+				wird die swap Partition konfiguriert, um als swap Bereich zu dienen.</p>
+
+				<p>Gentoo Linux unterstützt eine Auswahl von unterschiedlichen
+				Dateisystemen; jedes hat seine Stärken und Schwäschen und seine eigene
+				Zusammenstellung an charakteristischer Leistung.  Derzeit wird die
+				Generierung von ext2, ext3, XFS, JFS und ReiserFS Dateisystemen
+				unterstützt.</p>
+
+				<p>ext2 ist ein erprobtes Linux Dateisystem, unterstützt aber kein
+				Journaling, was dazu führt, dass die routinemäßigen ext2 Dateisystem
+				Prüfungen während des Startens recht zeitintensiv sind.  Daher gibt es
+				eine Auswahl von neueren <span class="emphasis">Journaling</span> Dateisystemen, deren
+				Konsitenz sehr schnell überprüft werden kann und von daher grundsätzlich
+				den Nicht-Journaling Dateisystemen vorgezogen werden sollten.
+				Journaling Dateisysteme beugen langen Wartezeiten beim Booten Ihres
+				System mit <span class="emphasis">inkonsistenten</span> Dateisystemen vor.</p>
+
+				<p>ext3 ist das entsprechende Journaling Dateisystem zu ext2, welches
+				Metadaten Journaling für eine schneller Wiederherstellung sorgt,
+				zusätzlich zu anderen verbesserten Journaling Modi, wie komplettes Daten
+				und geordnetes Daten Journaling.  ext3 ist ein sehr gutes und
+				zuverlässiges Dateisystem.  Es bietet grundsätzlich anständige Leistung
+				während der meisten Einsatzumgebungen.  Dadurch, dass es im internen
+				Design nicht sehr stark von &quot;trees&quot; Gebrauch macht, skaliert
+				es nicht sehr gut; sprich, es ist keine gute Wahl für ein sehr großes
+				Dateisystem oder Situationen in denen Sie mit großen Dateien oder einer
+				großen Anzahl von Dateien in einem einzigen Verzeichnis arbeiten werden.
+				Solange Sie es innerhalb seiner Design Parameter verwenden, ist ext3 ein
+				exzellentes Dateisystem.</p>
+
+				<p>ReiserFS ist ein B*-tree basiertes Dateisystem, das im Großen und
+				Ganzen eine gute Leistung bietet und ext2 und ext3 weit übertrifft, wenn
+				Sie mit kleinen Dateien (Dateien kleiner als 4kB) arbeiten, meistens mit
+				einem Faktor von 10- bis 15-fach.  ReiserFS skaliert außerdem sehr gut
+				und hat ein Metadata Journaling.  Seit Kernel 2.4.18 ist ReiserFS sicher
+				und die erste Wahl sowohl für ein Mehrzweck-Dateisystem als auch für
+				Extremfälle, wie großen Dateisystemen, die Verwendung von vielen kleinen
+				Dateien, sehr großen Dateien und Verzeichnissen mit tausenden von
+				Dateien.  ReiserFS ist das Dateisystem, das wir standardmäßig für alle
+				nicht-boot Partitionen empfehlen.</p>
+
+				<p>XFS ist ein Dateisystem mit Metadata Journaling, das durchgängig mit
+				dem Gentoo Linux <span class="path">xfs-sources</span> Kernel operiert.  Es
+				beinhaltet ein robustes Feature-Set und ist für Skalierbarkeit
+				optimiert.  Wir empfehlen, dieses Dateisystem nur in high-end SCSI
+				und/oder Glasfaserkanal-Speicherung mit einer ununterbrechbaren
+				Stromversorgung zu betreiben.  Dadurch, dass XFS sehr häufig die in
+				Bewegung befindlichen Daten im RAM speichert, können unsachgemäß
+				erstellte Programme (diese, die sich nicht an saubere Vorkehrungen beim
+				Speichern auf Festplatte kümmern -- und davon gibt es einige) zu
+				Datenverlust führen, wenn das Programm unvorhergesehen beendet wird.</p>
+
+				<p>JFS ist ein eigens von IBM erstelltes hochleistungsfähiges Journaling
+				Dateisystem.  Es wurde kürzlich erst produktionsreif, weshalb es noch
+				keine Auflistung an Vor- oder Nachteilen zu seiner grundsätzlichen
+				Stabilität gibt.</p>
+
+				<p>Möchten Sie das stabilste Journaling Filesystem verwenden, wählen Sie
+				ext3.  Für ein gutes Mehrzweck-Dateisystem mit hoher Leistung und
+				Journaling, verwenden Sie ReiserFS.  Beide, ext3 und ReiserFS, sind voll
+				entwickelt, raffiniert und empfohlen für den allgemeinen Gebrauch.</p>
+
+				<p>Ausgehend von der oben genannten Beispielpartitionierung, geben Sie
+				die folgenden Kommandos ein, um Ihre Dateisysteme zu generieren:</p>
+
+<a name="doc_chap6_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.14: Generierung der Dateisysteme (Beispiel)</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# mke2fs -j /dev/hda1
+# mkswap /dev/hda2
+# mkreiserfs /dev/hda3
+</pre></td></tr>
+</table>
+
+				<p>Für die boot Partition <span class="code">/dev/hda1</span> wurde ext3 gewählt, da es ein
+				robustes Jornaling Dateisystem ist, das von allen Bootmanagern
+				unterstützt wird.  <span class="code">mkswap</span> ist für die swap Partition
+				<span class="code">/dev/hda2</span> -- die Wahl ist hier offensichtlich.  Für die root
+				Partition <span class="code">/dev/hda3</span> wurde ReiseFS gewählt, da es ein solides
+				Journaling Dateisystem mit einer hervorragenden Leistung ist.  Nun,
+				fahren Sie fort und generieren Sie die Dateisysteme.</p>
+				
+				<p>Als Referenz dient diese Auflistung der verschiedenen <span class="code">mkfs</span>
+				Kommandos, die während der Installation zur Verfügung stehen:</p>
+
+				<p>
+<span class="code">mkswap</span> ist das Kommado, um eine swap Partition zu
+				initialisieren:</p>
+
+<a name="doc_chap6_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.15: swap Partition initialisieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mkswap /dev/hda2</span>
+</pre></td></tr>
+</table>
+
+				<p>Sie können <span class="code">mke2fs</span> benutzen, um ein ext2-Dateisystem zu
+				erstellen:</p>
+
+<a name="doc_chap6_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.16: Ein ext2 Dateisystem erzeugen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mke2fs /dev/hda1</span>
+</pre></td></tr>
+</table>
+
+				<p>Wenn Sie ext3 vorziehen, können Sie es mit <span class="code">mke2fs -j</span>
+				erzeugen:</p>
+
+<a name="doc_chap6_pre17"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.17: Ein ext3 Dateisystem erzeugen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mke2fs -j /dev/hda3</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Mehr Informationen über ext3 mit Linux 2.4 finden Sie unter
+				<a href="http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html">http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html</a>.</p></td></tr></table>
+
+				<p>Für die Generierung eines ReiserFS Dateisystems, verwenden Sie das
+				<span class="code">mkreiserfs</span> Kommando:</p>
+
+<a name="doc_chap6_pre18"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.18: Ein ReiserFS Dateisystem erzeugen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mkreiserfs /dev/hda3</span>
+</pre></td></tr>
+</table>
+
+				<p>Zum Erstellen eines XFS Dateisystems, rufen Sie <span class="code">mkfs.xfs</span>
+				auf:</p>
+
+<a name="doc_chap6_pre19"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.19: Ein XFS Dateisystem erzeugen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mkfs.xfs /dev/hda3</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Möglicherweise möchten Sie weitere Attribute an <span class="code">mkfs.xfs</span>
+				überreichen: <span class="code">-d agcount=3 -l size=32m</span>.  Das <span class="code">-d agcount=3</span>
+				Attribut verringert die Anzahl der Zuordnungsgruppen.  XFS besteht auf
+				mindestens eine Zuordnungsgruppe je vier Gigabyte Ihrer Partition,
+				wodurch z.B. eine 20GB Partition mindestens ein agcount von 5 benötigt.
+				Das <span class="code">-l size=32m</span> Attribut erhöht die Journalgröße auf 32 MB und
+				verbessert dadurch die Leistung.</p></td></tr></table>
+
+				<p>Um ein JFS Dateisystem zu erstellen, verwenden Sie
+				<span class="code">mkfs.jfs</span>:</p>
+
+<a name="doc_chap6_pre20"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6.20: Ein JFS Dateisystem erzeugen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mkfs.jfs /dev/hda3</span>
+</pre></td></tr>
+</table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap7">7.</a></span>Partitionen mounten</p>
+
+				<p>Aktivieren Sie nun Ihre Swap Partition, denn es könnte sein, dass Sie
+				den virtuellen Speicher später noch benötigen:</p>
+
+<a name="doc_chap7_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.1: swap Partition aktivieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="input">swapon /dev/hda2</span>
+</pre></td></tr>
+</table>
+
+				<p>Als nächstes erstellen Sie die Verzeichnisse <span class="path">/mnt/gentoo</span>
+				und <span class="path">/mnt/gentoo/boot</span>, anschließend mounten Sie Ihre
+				Partitionen.  Sobald diese gemountet sind, wird jede Datei, die in
+				<span class="path">/mnt/gentoo</span> kopiert wird, in das neue Dateisystem
+				geschreiben.  Wenn Sie Gentoo Linux mit separaten <span class="path">/usr</span> oder
+				<span class="path">/var</span> Partitionen installieren, müssen diese dann an die
+				entsprechenden Verzeichnisse gemountet werden
+				(<span class="path">/mnt/gentoo/usr</span> und <span class="path">/mnt/gentoo/var</span>).</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Wenn Ihre <span class="emphasis">boot</span> Partition, dort wo der Kernel unterbracht
+				ist, eine ReiserFS Partition ist, achten Sie darauf, dass diese mit der
+				<span class="code">-o notail</span> Option gemountet wird, sonst wird GRUB nicht richtig
+				installiert. Stellen Sie auch sicher, dass die Option <span class="code">notail</span> auch
+				mit in die <span class="path">/etc/fstab</span> mit eingetragen wird, doch dazu
+				später mehr.  Wenn Sie LILO mit ReiserFS verwenden möchten, dann ist die
+				<span class="code">-o notail</span> Option nicht notwendig.  Dennoch ist es immer sicher,
+				die <span class="code">-o notail</span> Option mit ReiserFS zu verwenden, wenn Sie nicht
+				wissen, was zu tun ist.</p></td></tr></table>
+
+<a name="doc_chap7_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7.2: Mount Verzeichnisse erzeugen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mkdir /mnt/gentoo</span>
+# <span class="code">mount /dev/hda3 /mnt/gentoo</span>
+# <span class="code">mkdir /mnt/gentoo/boot</span>
+# <span class="code">mount /dev/hda1 /mnt/gentoo/boot</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Sollten Sie Probleme haben, Ihre boot Partition als ext2 zu
+				mounten, versuchen Sie es mit <span class="code">mount /dev/hda1 /mnt/gentoo/boot -t
+				ext2</span>.</p></td></tr></table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap8">8.</a></span>Stage tar-Archive und chroot</p>
+<p class="secthead"><a name="doc_chap8_sect1">Wahl des gewünschten stage tar-Archivs </a></p>
+
+				<p>Nun sollten Sie sich endgültig entscheiden, mit welchem stage Sie
+				ihre Installation durchführen wollen.</p>
+
+				<p>Wenn Sie die &quot;bau alles von Grund auf&quot; (stage1)
+				Installation gewählt haben, verwenden Sie das
+				<span class="path">stage1-x86-1.4_rc4.tar.bz2</span> Archiv.  Wenn Sie eine der
+				größeren CDs verwenden, haben Sie zusätzlich die Wahl zwischen dem
+				stage2 und dem stage3 Archiv. Diese Archive sparen Ihnen eventuell Zeit,
+				das aber auf Kosten der Konfigurierbarkeit (Wir haben die Compiler
+				Optimierung und <span class="code">USE</span> Variablen für Sie ausgewählt).  Die stage
+				tar-Archive sind auf der CD unter <span class="path">/mnt/cdrom/gentoo</span>
+				verfügbar; Sie können <span class="code">ls /mnt/cdrom/gentoo</span> eingeben, um eine
+				Liste der verfügbaren stage tar-Archive zu erhalten.</p>
+
+				<p>Wenn Sie eine Installation von einem stage tar-Archiv durchführen
+				wollen, das <span class="emphasis">nicht</span> auf der CD ist, müssen Sie es mit den folgenden
+				Anweisungen herunterladen.  Falls Sie das stage tar-Archiv, das Sie
+				benutzen wollen, bereits besitzen (bei den meisten Benutzern üblich),
+				dann fahren Sie mit &quot;Entpacken des stage tar-Archivs&quot;
+				fort.</p>
+
+<a name="doc_chap8_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 8.1: Herunterladen des gewünschten stage tar-Archivs</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">cd /mnt/gentoo</span>
+<span class="comment">Verwenden Sie lynx, um die URL des tar-Archivs zu erhalten:</span>
+# <span class="code">lynx # http://www.ibiblio.org/pub/Linux/distributions/gentoo/releases/1.4_rc4/x86/</span>
+<span class="comment">Verwenden Sie die <span class="code">hoch</span> und <span class="code">runter</span> Cursor-Tasten (oder
+benutzen Sie <span class="code">TAB</span>), um das gewünschte Verzeichnis hervorzuheben.
+Drücken Sie dann <span class="code">d</span> wodurch der Download gestartet wird.
+Speichern Sie die Datei und beenden Sie den Browser mit <span class="code">q</span>.
+
+<b>Oder</b> verwenden Sie <span class="code">wget</span> von der Kommandozeile:</span>
+# <span class="code">wget <span class="comment">fügen Sie hier den URL zum gewünschten tar-Archiv ein</span></span>
+</pre></td></tr>
+</table>
+
+			<p class="secthead"><a name="doc_chap8_sect2">Entpacken des stage tar-Archivs </a></p>
+
+				<p>Nun ist es an der Zeit das gepackte stage tar-Archiv Ihrer Wahl in
+				<span class="path">/mnt/gentoo/</span> zu entpacken.  Bedenken Sie, dass Sie nur
+				<b>ein</b> stage tar-Archiv zu entpacken brauchen, also nur stage1,
+				stage2 oder stage3.  Möchten Sie eine Installation von Gentoo mit stage3
+				durchführen, dann packen Sie es folgendermaßen aus:</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Stellen Sie sicher, dass Sie das Argument <span class="code">p</span> mit <span class="code">tar</span>
+				verwenden.  Vergessen Sie dieses, werden die Dateien mit falschen
+				Rechten entpackt.</p></td></tr></table>
+
+<a name="doc_chap8_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 8.2: Entpacken des stage tar-Archivs</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">cd /mnt/gentoo</span>
+<span class="comment">Ändern Sie &quot;stage3&quot; in &quot;stage2&quot; oder
+&quot;stage1&quot;, wenn Sie von diesen stages an installieren
+möchten.</span>
+<span class="comment">Wenn Sie ein stage tar-Archiv heruntergeladen haben, ändern Sie den
+Pfad von &quot;/mnt/cdrom/gentoo/&quot; in &quot;/mnt/gentoo/&quot;.</span>
+# <span class="code">tar -xvjpf /mnt/cdrom/stage3-*.tar.bz2</span>
+</pre></td></tr>
+</table>
+
+				<p>Wenn sie Ihr stage tar-Archiv nach
+				<span class="path">/mnt/gentoo/</span>heruntergeladen haben, können Sie dieses mit
+				<span class="code">rm /mnt/gentoo/stage*.tar.bz2</span> löschen.</p>
+
+			<p class="secthead"><a name="doc_chap8_sect3">chroot betreten </a></p>
+
+				<p>Als nächstes werden Sie in Ihre neue Gentoo Linux
+				Installationsumgebung <span class="code">chroot</span>en, und dort Ihr neues Gentoo Linux
+				System &quot;betreten&quot;</p>
+
+<a name="doc_chap8_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 8.3: Vorbereiten und betreten der chroot Umgebung</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mount -t proc proc /mnt/gentoo/proc</span>
+# <span class="code">cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf</span>
+# <span class="code">chroot /mnt/gentoo /bin/bash</span>
+# <span class="code">env-update</span>
+Regenerating /etc/ld.so.cache...
+# <span class="code">source /etc/profile</span>
+<span class="comment">(Obiges erneuert die Pfade Ihrer Shell und frischt die Binärdateien auf.)</span>
+</pre></td></tr>
+</table>
+
+				<p>Nachdem Sie diese Kommandos ausgeführt haben, befinden Sie sich
+				&quot;innerhalb&quot; Ihrer neuen Gentoo Linux Umgebung in
+				<span class="path">/mnt/gentoo</span>.  Sie können den Rest der Installation
+				innerhalb dieser chroot Umgebung ausführen.</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap9">9.</a></span>Den aktuellen Portage Tree herunterladen</p>
+
+				<p>Als nächstes ist es nötig, <span class="code">emerge rsync</span> aufzurufen.  Mit
+				diesem Kommando teilen Sie Portage mit, die aktuelle Kopie des Gentoo
+				Linux Portage Tree herunterzuladen.  Der Portage Tree beinhaltet alle
+				Skripte (sogenannte ebuilds), die für das kompilieren aller Pakete unter
+				Gentoo Linux verwendet werden.  Derzeit gibt es ebuild Skripte für knapp
+				4000 Pakete.  Sobald <span class="code">emerge sync</span> beendet ist, haben Sie einen
+				kompletten Portage Tree in <span class="path">/usr/portage</span>.</p>
+
+<a name="doc_chap9_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 9.1: Update des Portage Tree</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="input">emerge rsync</span>
+</pre></td></tr>
+</table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap10">10.</a></span>Gentoo Optimierungen festlegen (make.conf)</p>
+
+				<p>Da Sie nun eine aktuelle Kopie des Portage Tree haben, ist es an der
+				Zeit, die Optimierungen und optionalen Einstellungen zum Kompilieren für
+				Ihr Gentoo Linux System vorzunehmen.  Portage wird diese Einstellungen
+				beim Kompilieren von jedem Programm verwenden.  Dazu editieren Sie die
+				Datei <span class="path">/etc/make.conf</span>.  Darin sollten Sie die <span class="code">USE</span>
+				Flags setzen, wodurch - falls vorhanden - optionale Funktionen in Ihre
+				Programme einkompiliert werden; üblicherweise sind die
+				Standardeinstellungen (eine <span class="emphasis">leere</span> oder ungesetzte <span class="code">USE</span>
+				Variable) okay.  Mehr Informationen über <span class="code">USE</span> Flags können im <a href="http://www.gentoo.org/doc/en/use-howto.xml">USE-Howto</a>
+				(derzeit nur Englisch) gefunden werden.  Weiterhin gibt es eine Liste
+				über alle aktuellen <a href="http://www.gentoo.org/dyn/use-index.xml">USE Flags</a>.</p>
+
+				<p>Sie sollten außerdem <span class="code">CHOST</span>, <span class="code">CFLAGS</span> und <span class="code">CXXFLAGS</span>
+				Einträge entsprechend Ihrem System vornehmen (auskommentierte Beispiele
+				können weiter unten in der Datei gefunden werden).  Diese Einträge
+				werden verwendet, um dem C und C++ Compiler mitzuteilen, wie der Code,
+				der für Ihr System geniert wird, zu optimieren ist.  Es ist üblich, dass
+				beispielsweise Benutzer von Athlon XP Prozessoren &quot;-march=athlon-xp&quot; in
+				CFLAGS und CXXFLAGS eintragen, sodass alle Pakete mit einem
+				entsprechenden Code und Leistungssteigerung für diese CPU gebaut werden.
+				Die Datei <span class="path">/etc/make.conf</span> enthält eine allgemeine Hilfe für
+				die richtigen Einträge von CFLAGS und CXXFLAGS.</p>
+
+				<p>Falls notwendig können ebenso Informationen zum Proxy eintragen,
+				z.B. wenn Sie sich hinter einer Firewall befinden.  Benutzen Sie das
+				folgende Kommando, um die <span class="path">/etc/make.conf</span> mit <span class="code">nano</span>,
+				einem simplen Editor, zu bearbeiten.</p>
+
+<a name="doc_chap10_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 10.1: Einstellen von make.conf Optionen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">nano -w /etc/make.conf</span>
+<span class="comment">(Ändern Sie CHOST, CFLAGS, CXXFLAGS und benötigte USE oder Proxy Einstellungen)</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Möchten Sie den build Prozess im wesentlichen verändern, sollten
+				Sie sich die Datei <span class="path">/etc/make.globals</span> ansehen.  Diese Datei
+				umfasst die Gentoo Standard Einstellungen und sollte niemals verändert
+				werden.  Wenn Ihnen die Default Einstellungen nicht genügen, können Sie
+				neue Einträge in der <span class="path">/etc/make.conf</span> vornehmen, da diese die
+				Einträge in der <span class="path">/etc/make.globals</span> <span class="emphasis">überschreiben</span>.
+				Wenn Sie an den Anpassungen der USE Variablen interessiert sind, schauen
+				Sie sich <span class="path">/etc/make.profile/make.defaults</span> an.  Möchten Sie
+				dort aktivierte USE Variablen abschalten, tragen Sie in der
+				<span class="path">/etc/make.conf</span> entsprechend <span class="code">USE=&quot;-foo&quot;</span>
+				ein, um jede <span class="code">foo</span> USE Variable abzuschalten, die standardmäßig in
+				<span class="path">/etc/make.globals</span> oder
+				<span class="path">/etc/make.profile/make.defaults</span> aktiviert ist.</p></td></tr></table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap11">11.</a></span>Beginnen von stage1</p>
+				
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Wenn Sie nicht von einem stage1 tar-Archiv beginnen, können Sie
+				diesen Abschnitt überspringen.</p></td></tr></table>
+
+				<p>Das stage1 tar-Archiv ist für komplette Anpassungen und Optimierungen
+				gedacht.  Wenn Sie sich für dieses tar-Archiv entschieden haben, werden
+				Sie auf ein über-optimiertes und aktuelles System blicken können.  Haben
+				Sie Spaß, denn Optimierung ist das, was Gentoo Linux ausmacht!  Die
+				Installation von stage1 benötigt eine Menge Zeit, aber das Ergebnis ist
+				ein System, das von Grund auf für Ihren Computer und Ihren Anforderungen
+				optimiert wurde.</p>
+
+				<p>Nun ist es an der Zeit den &quot;bootstrap&quot; Prozess zu starten.
+				Dieser Prozess benötigt selbst auf einem 1200 MHz AMD Athlon System etwa
+				zwei Stunden.  Während dieser Zeit werden die GNU C Library, der
+				Compiler und andere wichtige System Programme gebaut.  Starten Sie die
+				boostrap Prozess wie folgt:</p>
+
+<a name="doc_chap11_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 11.1: Bootstrapping</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">cd /usr/portage</span>
+# <span class="code">scripts/bootstrap.sh</span>
+</pre></td></tr>
+</table>
+
+				<p>Der bootstrap Prozess wird nun beginnen.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Portage benutzt standardmäßig das Verzeichnis
+				<span class="path">/var/tmp</span> während der Kompilierung, oftmals unter Verwendung
+				von mehreren hundert Megabyte an temporären Dateien.  Wenn Sie Portage
+				ein anderes Verzeichnis zum Speichern der temporären Dateien mitteilen
+				wollen, setzen Sie die Variable PORTAGE_TMPDIR <span class="emphasis">bevor</span> Sie mit dem
+				bootstrap Prozess beginnen:</p></td></tr></table>
+
+<a name="doc_chap11_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 11.2: Ändern des Portage Pfades für temporäre Auslagerungsdateien</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">export PORTAGE_TMPDIR=&quot;/anderes/Verzeichnis/tmp&quot;</span>	
+</pre></td></tr>
+</table>
+
+				<p>
+<span class="code">bootstrap.sh</span> wird <span class="code">binutils</span>, <span class="code">gcc</span>, <span class="code">gettext</span>
+				und <span class="code">glibc</span> bauen, darauf <span class="code">binutils</span>, <span class="code">gcc</span> und
+				<span class="code">gettext</span> mit der neuen <span class="code">glibc</span> nochmals kompilieren.  Es ist
+				unnötig darauf hinzuweisen, dass dieser Prozess eine ganze Weile in
+				Anspruch nimmt.  Sobald der Prozess beendet ist, entspricht Ihr System
+				einem &quot;stage2&quot; System, weshalb Sie mit den Anweisungen zu
+				stage2 im kommenden Abschnitt fortfahren können.</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap12">12.</a></span>Beginnen von stage2 und Fortsetzung von stage1</p>
+				
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Dieser Abschnitt ist für jene, die eine Installation von stage1 an
+				fortsetzen oder mit stage2 beginnen.  Falls Sie nicht dazu gehören (z.B.
+				da Sie stage3 verwenden möchten), können Sie diesen Abschnitt
+				überspringen.</p></td></tr></table>
+
+				<p>Das stage2 tar-Archiv hat den bootstrapping Prozess bereits hinter
+				sich gebracht.  Sie müssen lediglich den Rest des System installieren.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Wenn Sie von einem vorbereiteten stage2 die Installation beginnen
+				und sicher sein wollen, dass der Compiler auf dem aktuellen Stand ist,
+				fügen Sie zu den unten genannten Kommandos <span class="code">-u</span> hinzu.  Wenn Sie
+				nicht wissen, was diese Anmerkung bedeutet, können Sie sie
+				ignorieren.</p></td></tr></table>
+
+<a name="doc_chap12_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 12.1: Den Rest des Systems installieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">emerge -p system</span>
+<span class="comment">(listet die zu installierenden Pakete auf)</span>
+# <span class="code">emerge system</span>
+</pre></td></tr>
+</table>
+
+				<p>Es braucht einige Zeit, um das Kompilieren des Basissystems zu
+				beenden.  Der Erfolg ist ein an Ihre Anpassungen optimiertes System.
+				Der Nachteil ist, dass Sie sich während dieser Zeit irgendwie
+				beschäftigen müssen.  Der Autor empfiehlt &quot;Star Wars - Super Bombad
+				Racing&quot; für die Playstation 2...</p>
+
+				<p>Das Basissystem ist nun kompiliert.  Fahren Sie nun mit dem Abschnitt
+				&quot;Einstellen der Zeitzone&quot; fort.</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap13">13.</a></span>Beginnen von stage3</p>
+				
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Dieser Abschnitt ist für jene, die mit stage3 <span class="emphasis">beginnen</span>.
+				Wenn Sie mit stage1 oder stage2 begonnen haben, können Sie ihn
+				überspringen.</p></td></tr></table>
+
+				<p>Das stage3 tar-Archiv biete ein voll funktionsfähiges Gentoo System,
+				sodass keine Kompilierung benötigt wird.  Wie auch immer, das stage3
+				tar-Archiv ist vorkompiliert und kann ein wenig veraltet sein.  Falls
+				Sie das beunruhigen sollte, können Sie automatisch Ihr existierendes
+				stage3 updaten, um die aktuellsten Versionen des Basissystems zu
+				erhalten, indem Sie die folgenden Anweisungen ausführen.  Bedenken Sie,
+				dass dieses eine lange Zeit benötigen kann, wenn Ihr stage3 sehr alt
+				ist; ansonsten wird dieser Prozess recht schnell mit dem Vorteil, die
+				aktuellsten Gentoo Updates und Fehlerbehebungen zu beinhalten, beendet
+				sein.  Wie dem auch sei, wenn Sie möchten, können Sie diesen Bereich
+				überspringen und mit dem nächsten Abschnitt fortfahren.</p>
+
+<a name="doc_chap13_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 13.1: System aktualisieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">export CONFIG_PROTECT=&quot;-*&quot;</span>
+# <span class="code">emerge -up system</span>
+<span class="comment">(listet die zu installierenden Pakete auf)</span>
+# <span class="code">emerge -u system</span>
+<span class="comment">(aktualisiert die Pakete)</span>
+# <span class="code">unset CONFIG_PROTECT</span>
+</pre></td></tr>
+</table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap14">14.</a></span>Einstellen der Zeitzone</p>
+				
+				<p>Nun ist es erforderlich, dass Sie Ihre Zeitzone einstellen.</p>
+
+				<p>Halten Sie nach Ihrer Zeitzone (oder GMT falls Sie die Greenwich Mean
+				Time verwendenden) in <span class="path">/usr/share/zoneinfo</span>.  Dann erzeugen
+				Sie eine symbolische Verknüpfung zu <span class="path">/etc/localtime</span> durch:</p>
+
+<a name="doc_chap14_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 14.1: Erzeugen einer symbolischen Verknüpfung ihrer Zeitzone</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">ln -sf /usr/share/zoneinfo/Pfad/zur/Zeitzonendatei /etc/localtime</span>
+</pre></td></tr>
+</table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap15">15.</a></span>Installieren des Kernels und des System Logger</p>
+				
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Falls Sie es noch nicht getan haben, bitte ändern Sie
+				<span class="path">/etc/make.conf</span> Ihren Vorstellungen entsprechend.</p></td></tr></table>
+
+				<p>Sie müssen nun die Linux Kernel Quellen &quot;mergen&quot;.  Hier
+				eine Liste der derzeit zur Verfügung stehenden Kernel Quellen:</p>
+
+				<table class="ntable">
+					<tr>
+						<td bgcolor="#7a5ada" class="infohead"><b>ebuild Name</b></td>
+						<td bgcolor="#7a5ada" class="infohead"><b>Beschreibung</b></td>
+					</tr>
+
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo"><span class="path">gentoo-sources</span></td>
+						<td bgcolor="#ddddff" class="tableinfo">Der Gentoo-eigene performante und funktionserweiterte Kernel
+						ohne XFS Unterstützung</td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo"><span class="path">xfs-sources</span></td>
+						<td bgcolor="#ddddff" class="tableinfo">Hochkompatibler Kernel mit XFS Unterstützung</td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo"><span class="path">openmosix-sources</span></td>
+						<td bgcolor="#ddddff" class="tableinfo">Ein Linux Kernel mit Erweiterungen der GPL <a href="http://www.openmosix.com">openMosix</a>
+						load-balancing/clustering Technologie</td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo"><span class="path">usermode-sources</span></td>
+						<td bgcolor="#ddddff" class="tableinfo">Ein Linux Kernel mit Erweiterungen für User-Mode Linux
+						(&quot;Linux innerhalb von Linux&quot; Technologie)</td>
+					</tr>
+					<tr>
+						<td bgcolor="#ddddff" class="tableinfo"><span class="path">vanilla-sources</span></td>
+						<td bgcolor="#ddddff" class="tableinfo">Ein Linux Kernel, wie es ihn von kernel.org gibt</td>
+					</tr>
+				</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warning: </b>Wenn Sie Ihren eigenen Kernel konfigurieren, seien Sie mit der
+				<span class="emphasis">grsecurity</span> Option vorsichtig.  Wenn Sie die
+				Sicherheitseinstellungen zu aggressiv wählen, können als Folge bestimmte
+				Programme (wie z.b. X) nicht ordentlich laufen.  Sind sie im Zweifel, so
+				schalten Sie diese Option aus.</p></td></tr></table>
+
+				<p>Wählen Sie einen Kernel und mergen Sie ihn wie folgt:</p>
+
+<a name="doc_chap15_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 15.1: Emergen der Kernel Quellen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">emerge sys-kernel/gentoo-sources</span>
+</pre></td></tr>
+</table>
+
+				<p>Sobald die Linux Kernel Quellen auf Ihrem System verfügbar sind,
+				bauen Sie sich Ihren eigenen Kernel.</p>
+
+				<p>Beachten Sie, dass <span class="path">/usr/src/linux</span> eine symbolische
+				Verknüpfung zu dem aktuell geemergeten Kernel Quellen Paket ist, die
+				automatisch währen des emergen gesetzt wird.  Wenn Sie mehrere Kernel
+				Quellen Pakete haben, müssen Sie die symbolische Verknüpfung
+				<span class="path">/usr/src/linux</span> entsprechend anpassen, bevor Sie
+				fortfahren.</p>
+
+<a name="doc_chap15_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 15.2: Kompilieren des Linux Kernel</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">cd /usr/src/linux</span>
+# <span class="code">make menuconfig</span>
+# <span class="code">make dep &amp;&amp; make clean bzImage modules modules_install</span>
+# <span class="code">cp /usr/src/linux/arch/i386/boot/bzImage /boot</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warning: </b>Damit Ihr Kernel später ordentlich läuft, gibt es einige Optionen,
+				die Sie überprüfen sollten -- das heisst, sie sollten <span class="emphasis">eingeschaltet
+				und nicht als Modul kompiliert</span> werden.  Seien Sie sicher, dass
+				&quot;ReiserFS&quot; eingeschaltet ist, wenn Sie ReiserFS partitionen
+				verwenden; das selbe gilt für &quot;Ext3&quot;.  Wenn Sie XFS verwenden,
+				schalten Sie die &quot;SGI XFS filesystem support&quot; Option ein.
+				Außerdem ist es immer eine gute Idee &quot;Ext2&quot; eingeschaltet zu
+				haben, gleichgültig ob Sie es verwenden oder nicht.  Hier sind einige
+				allgemeine Optionen, die Sie benötigen:</p></td></tr></table>
+
+
+<a name="doc_chap15_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 15.3: make menuconfig Optionen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+Code maturity level options ---&gt;
+  [*] Prompt for development and/or incomplete code/drivers&quot;
+<span class="comment">(Sie benötigen dieses, um einige der Optionen weiter unten zu aktivieren.)</span>
+     ...
+
+File systems ---&gt;
+  &lt;*&gt; Reiserfs support
+<span class="comment">(Nur benötigt, wenn Sie ReiserFS verwenden.)</span>
+       ... 
+  &lt;*&gt; Ext3 journalling file system support
+<span class="comment">(Nur benötigt, wenn Sie ext3 verwenden.)</span>
+       ...
+  [*] Virtual memory file system support (former shm fs)
+<span class="comment">(Erforderlich für Gentoo Linux.)</span>
+       ...
+  &lt;*&gt; JFS filesystem support
+<span class="comment">(Nur benötigt, wenn Sie JFS verwenden.)</span>
+       ...
+  [*] /proc file system support
+<span class="comment">(Erforderlich für Gentoo Linux.)</span>
+  [*] /dev file system support (EXPERIMENTAL)
+  [*]   Automatically mount at boot          
+<span class="comment">(Erforderlich für Gentoo Linux.)</span>
+  [ ] /dev/pts file system for Unix98 PTYs
+<span class="comment">(Schaltet Sie es aus, es wird NICHT gebraucht.)</span>
+       ...
+  &lt;*&gt; Second extended fs support
+<span class="comment">(Nur benötigt, wenn Sie ext2 verwenden.)</span>
+       ...
+  &lt;*&gt; XFS filesystem support
+<span class="comment">(Nur benötigt, wenn Sie XFS verwenden.)</span>
+</pre></td></tr>
+</table>
+
+				<p>Falls Sie ein Hardware-RAID verwenden, müssen Sie eine Reihe von
+				weiteren Optionen im Kernel aktivieren: Für Highpoint RAID Controller
+				wählen Sie die Unterstützung für den hpt366 Chipsatz, Unterstützung für
+				IDE RAID Controller und Highpoint 370 Software RAID.  Für Promise RAID
+				Controller wählen Sie die Unterstützung für PROMISE
+				PDC202{46|62|65|67|68|69|70}, sowie IDE RAID Controller und Promise
+				software RAID (Fasttrak(tm)).</p>
+
+				<p>Verwenden Sie PPPoE um sich ins Internet einzuwählen (z.B. mit DSL),
+				benötigen Sie die folgen Optionen (fest im Kernel kompiliert oder besser
+				als Modul): &quot;PPP (point-to-point protocol)&quot;, &quot;PPP support
+				for async serial ports&quot;, &quot;PPP support for sync tty
+				ports&quot;.  Die beiden Komprimierungs-Optionen stören nicht, aber
+				werden auch nicht unbedingt benötigt; gleiches gilt für die &quot;PPP
+				over Ethernet&quot; Option, die nur von <span class="emphasis">rp-pppoe</span> verwendet wird,
+				wenn es das PPPoE des Kernel verwenden soll.</p>
+
+				<p>Besitzen Sie einen IDE CD-Brenner, dann sollten Sie die SCSI
+				emulation aktivieren.  Schalten Sie &quot;ATA/IDE/MFM/RLL support&quot;
+				---&gt; &quot;IDE, ATA, and ATAPI Block devices&quot; ---&gt; &quot;SCSI
+				emulation support&quot; (üblicherweise als Modul) ein, dann unter
+				&quot;SCSI support&quot; den &quot;SCSI support&quot;, &quot;SCSI CD-ROM
+				support&quot; und &quot;SCSI generic support&quot; (wieder als Modul)
+				einschalten.  Um diese Module automatisch beim Booten zu laden, führen
+				Sie das Kommando <span class="code">echo -e &quot;ide-scsi\nsg\nsr_mod&quot; &gt;&gt;
+				/etc/modules.autoload</span> aus.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Wenn Sie es vorziehen, können Sie nun auch Gentoo Linux mit einem
+				2.2 Kernel installieren.  Jedoch zahlen Sie dafür einen hohen Preis: Sie
+				werden alle raffinierten Erweiterungen der 2.4er Kernel Serie verlieren
+				(wie z.B. XFS und tmpfs Dateisysteme, iptables und mehr), obwohl der 2.2
+				Kernel mit ReiserFS und devfs Unterstützung erweitert werden kann.  Die
+				Gentoo Linux Boot Skripte benötigen entweder tmpfs oder Unterstützung
+				für ramdisk im Kernel, sodass Benutzer von 2.2 Kernel die ramdisk
+				Unterstützung im Kernel einkompiliert haben müssen (nicht als Modul).
+				Es ist <span class="emphasis">wichtig</span>, dass die <span class="code">gentoo=notmpfs</span> Option zur Kernel
+				Startzeile in der <span class="path">/boot/grub/grub.conf</span> oder der
+				<span class="path">/etc/lilo.conf</span> hinzugefügt wird, sodass der 2.2 Kernel eine
+				ramdisk für die Boot Skripte mounted anstatt von tmpfs.  Wenn Sie sich
+				dafür entscheiden, nicht devfs zu verwenden, dann sollte stattdessen die
+				Option <span class="code">gentoo=notmpfs,nodevfs</span> verwendet werden.</p></td></tr></table>
+
+				<p>Ihr neuer angepasster Kernel (und seine Module) sind nun installiert.
+				Nun sollten Sie einen System Logger wählen, den Sie installieren
+				möchten.  Es gibt <span class="code">sysklogd</span>, eine traditionelle Reihe an System
+				Logger Diensten, als auch <span class="code">msyslog</span>, <span class="code">syslog-ng</span> und
+				<span class="code">metalog</span>.  Power User scheinen sich inzwischen von sysklogd
+				abzuwenden (keine gute Performanz) und wählen eine der neueren
+				Alternativen.  Zweifeln Sie, so versuchen Sie metalog, da es recht
+				populär ist.  Um den System Logger Ihrer Wahl zu emergen, geben Sie
+				<span class="emphasis">eine</span> der folgenden vier Möglichkeiten ein:</p>
+
+<a name="doc_chap15_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 15.4: System Logger emergen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">emerge app-admin/sysklogd</span>
+# <span class="code">rc-update add sysklogd default</span>
+<span class="comment">oder</span>
+# <span class="code">emerge app-admin/syslog-ng</span>
+# <span class="code">rc-update add syslog-ng default</span>
+<span class="comment">oder</span>
+# <span class="code">emerge app-admin/metalog</span>
+# <span class="code">rc-update add metalog default</span>
+<span class="comment">oder</span>
+# <span class="code">emerge app-admin/msyslog</span>
+# <span class="code">rc-update add msyslog default</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Metalog schreibt die Ausgaben in Blöcken auf die Festplatte,
+				sodass Nachrichten nicht direkt in den System-Logs erscheinen.  Wenn Sie
+				versuchen einen Dienst von Fehlern zu beseitigen, ist dieses
+				Performanz-steigernde Verhalten nicht sehr hilfreich.  In Ihrem
+				laufenden Gentoo Linux System können Sie an metalog ein USR1 Signal
+				senden, um vorübergehend das Zwischenspeichern abzuschalten (d.h.
+				<span class="code">tail -f /var/log/everything/current</span> arbeitet nun wie erwartet in
+				Echtzeit); und ein USR2 Signal, um die Zwischenspeicherung wieder
+				einzuschalten.  Wenn Sie die Zwischenspeicherung generell abschalten
+				wollen, können Sie <span class="code">METALOG_OPTS=&quot;-B&quot;</span> in
+				<span class="code">METALOG_OPTS=&quot;-B -s&quot;</span> in der
+				<span class="path">/etc/conf.d/metalog</span> ändern.</p></td></tr></table>	
+
+				<p>Sie können nun wahlweise zusätzlich einen Cron Dienst wählen, um
+				regelmäßig auftretende Vorgänge automatisiert ausführen zu lassen.  Zur
+				Zeit gibt es <span class="code">dcron</span>, <span class="code">fcron</span> und <span class="code">vcron</span>.  Wenn Sie sich
+				nicht entscheiden können, wählen Sie vcron.  Die Installation wird
+				folgendermaßen durchgeführt:</p>
+
+<a name="doc_chap15_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 15.5: Cron Dienst installieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">emerge sys-apps/dcron</span>
+# <span class="code">rc-update add dcron default</span>
+# <span class="code">crontab /etc/crontab</span>
+<span class="comment">oder</span>
+# <span class="code">emerge sys-apps/fcron</span>
+# <span class="code">rc-update add fcron default</span>
+# <span class="code">crontab /etc/crontab</span>
+<span class="comment">oder</span>
+# <span class="code">emerge sys-apps/vcron</span>
+# <span class="code">rc-update add vcron default</span>
+<span class="comment">Sie brauchen nicht <span class="code">crontab /etc/crontab</span> bei Verwendung von vcron ausführen.</span> 
+</pre></td></tr>
+</table>
+
+				<p>Weitere Informationen, um Programme und Dienste während des
+				Systemsstarts auszuführen, finden Sie im <a href="/doc/de/rc-scripts.xml">rc-script Guide</a>.</p>
+				
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap16">16.</a></span>Installation von diversen benötigten Paketen</p>
+				
+				<p>Falls Sie <span class="code">rp-pppoe</span> benötigen, um sich ins Internet
+				einzuwählen, so sollten Sie dieses nun installieren.</p>
+
+<a name="doc_chap16_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 16.1: Installation von rp-pppoe</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">USE=&quot;-X&quot; emerge rp-pppoe</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Das <span class="code">USE=&quot;-X&quot;</span> verhindert die Installation des
+				optionalen X Interface für pppoe, was an dieser Stelle angegeben werden
+				sollte, da sonst X und alle seine abhängigen Pakete installiert werden.
+				Sie können <span class="code">rp-pppoe</span> mit X Unterstützung später noch einmal neu
+				bauen.</p></td></tr></table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Bedenken Sie, dass <span class="code">rp-pppoe</span> nur installiert, aber nicht
+				konfiguriert wird.  Dazu rufen Sie nochmals <span class="code">adsl-setup</span> auf,
+				nachdem Sie das erste Mal von Ihrem Gentoo System gebootet haben.</p></td></tr></table>
+
+				<p>Sie benötigen weitere Pakete aus dem Portage Tree, wenn Sie optionale
+				Erweiterungen wie XFS, ReiserFS oder LVM verwenden.</p>
+
+<a name="doc_chap16_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 16.2: Dateisystem Hilfsprogramme emergen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<span class="comment">Wenn Sie XFS verwenden, sollten Sie das die XFS Tools installieren:</span>
+# <span class="code">emerge sys-apps/xfsprogs</span>
+<span class="comment">Wenn Sie ReiserFS verwenden, sollten Sie die ReiserFS Tools installieren:</span>
+# <span class="code">emerge sys-apps/reiserfsprogs</span>
+<span class="comment">Wenn Sie JFS verwenden, sollten Sie die JFS Tools installieren:</span>
+# <span class="code">emerge sys-apps/jfsutils</span>
+<span class="comment">Wenn Sie LVM verwenden, sollten Sie das lvm-user Paket installieren:</span>
+# <span class="code">emerge sys-apps/lvm-user</span>
+</pre></td></tr>
+</table>
+
+				<p>Sind Sie ein Laptop-Benutzer und möchten auf die PCMCIA Slots während
+				Ihres ersten richtigen Reboots zugreifen, sollten Sie das
+				<span class="code">pcmcia-cs</span> Paket installieren.</p>
+
+<a name="doc_chap16_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 16.3: PCMCIA-cs emergen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">emerge sys-apps/pcmcia-cs</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warning: </b>Sie müssen <span class="code">pcmcia-cs</span> nach der Installation nochmals
+				kompilieren, um PCMCIA benutzen zu können.</p></td></tr></table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap17">17.</a></span>Ändern der /etc/fstab für Ihre Maschine</p>
+				
+				<p>Ihr Gentoo Linux System ist beinahe zur Benutzung fertig.  Es müssen
+				lediglich noch ein paar wichtige Systemdateien konfiguriert un der
+				Bootmanager installiert werden.  Zuerst wird die Datei
+				<span class="path">/etc/fstab</span> editiert.  Beachten Sie, dass die <span class="code">notail</span>
+				Option zu Ihrer boot Partition hinzugefügt werden soll, wenn Sie diese
+				als ReiserFS angelegt haben.  Weiterhin geben Sie die Dateisystemtypen
+				<span class="code">ext2</span>, <span class="code">ext3</span> oder <span class="code">reiserfs</span> entsprechen Ihrer
+				Konfiguration an.</p>
+
+				<p>Verwenden Sie eine <span class="path">/etc/fstab</span> ähnlich zu der unten
+				genannten, jedoch tauschen Sie &quot;BOOT&quot;, &quot;ROOT&quot; und
+				&quot;SWAP&quot; mit den tatsächlichen Partitionsnummern aus (wie z.B.
+				<span class="code">hda1</span> usw.).</p>
+
+<a name="doc_chap17_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 17.1: Editieren der fstab</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<span class="comment"># /etc/fstab: static file system information.
+#
+# noatime turns off atimes for increased performance (atimes normally aren't
+# needed; notail increases performance of ReiserFS (at the expense of storage
+# efficiency).  It is safe to drop the noatime options if you want and to 
+# switch between notail and tail freely.
+
+# &lt;fs&gt;           &lt;mount point&gt;   &lt;type&gt;   &lt;opts&gt;          &lt;dump/pass&gt;
+
+# NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
+</span>
+/dev/BOOT           /boot       ext2     noauto,noatime	 1 2
+/dev/ROOT           /           ext3     noatime         0 1
+/dev/SWAP           none        swap     sw              0 0
+/dev/cdroms/cdrom0  /mnt/cdrom  iso9660	 noauto,ro       0 0
+proc                /proc       proc     defaults        0 0
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warning: </b>Bitte beachten Sie, dass <span class="path">/boot</span> nicht während des
+				Bootens gemountet wird.  Das geschieht aus dem Grunde, um die Daten in
+				<span class="path">/boot</span> zu schützen.  Wenn Sie Zugriff auf <span class="path">/boot</span>
+				benötigen, müssen Sie es mounten.</p></td></tr></table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap18">18.</a></span>Das Passwort für root eingeben</p>
+				
+				<p>Bevor Sie es vergessen, sollten Sie root ein Passwort vergeben:</p>
+
+<a name="doc_chap18_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 18.1: root Passwort eingeben</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">passwd</span>
+</pre></td></tr>
+</table>
+
+				<p>Sie sollten darüberhinaus einen weiteren Benutzer für die alltägliche
+				Benutzung anlegen.  Bitte schauen Sie dazu in die <a href="/doc/de/faq.xml">Gentoo FAQ</a>.</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap19">19.</a></span>Einstellen des Hostname</p>
+				
+				<p>Ändern Sie die Datei <span class="path">/etc/hostname</span> so, dass er einen
+				&quot;fully-qualified domain name&quot; in einer einzelnen Zeile
+				enthält, z.B. <span class="code">meinrechner.meinedomain.lan</span>.</p>
+
+<a name="doc_chap19_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 19.1: Hostname einstellen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">echo meinrechner.meinedomain.lan &gt; /etc/hostname</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Eventuell erhalten Sie die Daten von Ihrem Netzwerkadminstrator.
+				Verwenden Sie den Rechner ausschließlich in einem lokalen Netzwerk,
+				verwenden Sie keine echten Domains, mit denen Sie in Kollision geraten
+				können.  Aus diesem Grund gibt es die Top-Level-Domain <span class="code">.lan</span>, um
+				zu Kennzeichnen, dass es sich ausschließlich um eine lokale Domain
+				handelt.</p></td></tr></table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap20">20.</a></span>Die /etc/hosts anpassen</p>
+				
+				<p>Die Datei <span class="path">/etc/hosts</span> enthält eine Liste von IP-Adressen
+				und ihren zugehörigen Hostnamen.  Sie wird vom System verwendet, um
+				IP-Adressen von Hostnamen aufzulösen, die nicht in Ihrem Nameserver
+				verzeichnet sind.  Hier ist ein Beispiel für Diese Datei:</p>
+
+<a name="doc_chap20_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 20.1: Beispiel für /etc/hosts</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+127.0.0.1      localhost
+<span class="comment"># Die nächste Zeile enthält die IP-Adresse Ihres Rechners in Verbindung mit dem Hostnamen</span>
+192.168.1.1    meinrechner.meinedomain.lan
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Wenn Sie Ihre IP-Adresse von einem DHCP-Server beziehen, ist es
+				hilfreich, anstatt <span class="code">localhost</span> ihren Hostname einzutragen.  Das
+				hilft GNOME als auch anderen Programmen in der Namensauflösung.</p></td></tr></table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap21">21.</a></span>Abschließende Netzwerk Konfiguration</p>
+				
+				<p>Fügen Sie die Namen von allen Modulen, die für ein ordentliches
+				Funktionieren Ihres Systems erforderlich sind, in der Datei
+				<span class="path">/etc/modules.autoload</span> hinzu (Sie können ebenso etwaige
+				Optionen für die Module dort hinzufügen).  Wenn Gentoo Linux bootet lädt
+				es diese Module automatisch.  Besonders wichtig sind Ihre
+				Netzwerkkarten Module, wenn Sie diese als Modul kompiliert haben:</p>
+
+<a name="doc_chap21_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 21.1: /etc/modules.autoload</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<span class="comment">Angenommen Sie verwenden eine 3COM Karte, schauen Sie im Verzeichnis
+<span class="path">/lib/modules/`uname -r`/kernel/drivers/net</span> nach dem Namen des
+Moduls.  In diesem Fall wäre es:</span>
+3c59x
+</pre></td></tr>
+</table>
+
+				<p>Passen Sie die Datei <span class="path">/etc/conf.d/net</span> für das erste
+				Booten an:</p>
+
+<a name="doc_chap21_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 21.2: Netzwerk Konfiguration zum Booten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">nano -w /etc/conf.d/net</span>
+# <span class="code">rc-update add net.eth0 default</span>
+</pre></td></tr>
+</table>
+
+				<p>Haben Sie mehr als eine Netzwerkkarte, müssen Sie zusätzliche
+				<span class="path">net.ethx</span> Skripte erstellen, eins für
+				jede Karte (<span class="comment">x</span> = 1, 2, ...):</p>
+
+<a name="doc_chap21_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 21.3: Mehrere Netzwerkkarten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">cd /etc/init.d</span>
+# <span class="code">cp net.eht0 net.eth<span class="comment">x</span></span>
+# <span class="code">rc-update add net.eth<span class="comment">x</span> default</span>
+</pre></td></tr>
+</table>
+
+				<p>Verwenden Sie eine PCMCIA Karte, schauen Sie in die Datei
+				<span class="path">/etc/init.d/pcmcia</span>, um festzustellen, dass alle
+				Einstellungen korrekt sind und fügen Sie die folgenden Zeilen zuoberst
+				des Skripts <span class="path">/etc/init.d/net.ethx</span>:</p>
+
+<a name="doc_chap21_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 21.4: PCMCIA Abhängigkeit in /etc/init.d/net.ethx</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+depend() {
+  need pcmcia
+}
+</pre></td></tr>
+</table>
+
+				<p>Dadurch werden die PCMCIA Treiber automatisch beim Ausführen des
+				Netzwerkkarten Skripts mitgeladen.</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap22">22.</a></span>Basiseinstellungen vornehmen (inklusive Tastaturbelegung einstellen)</p>
+
+<a name="doc_chap22_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 22.1: Basiseingellungen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">nano -w /etc/rc.conf</span>
+</pre></td></tr>
+</table>
+
+				<p>Folgen Sie den Anleitungen in dieser Datei, um die Basiseinstellungen
+				vorzunehmen.  Die <span class="code">CLOCK</span> Einstellung sollte Ihrem System
+				entsprechend eingestellt werden.  Für eine deutsche Tastaturbelegung
+				ändern Sie <span class="code">KEYMAP</span> in <span class="code">KEYMAP=&quot;de-latin1&quot;</span> (für
+				weitere Tastaturbelegungen schauen Sie in das Verzeichnis
+				<span class="path">/usr/share/keymaps</span>).</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap23">23.</a></span>Konfigurieren des Bootloaders</p>
+<p class="secthead"><a name="doc_chap23_sect1">Anmerkungen </a></p>
+
+				<p>Grundsätzlich können Sie derzeit zwischen den beiden
+				Bootloadern<span class="code">GRUB</span> und <span class="code">LILO</span> wählen.  Es ist nicht nötig,
+				beide Bootloader zu installieren, es wird sogar ein Nachteil sein!  Von
+				daher wählen Sie bitte nur einen.</p>
+
+				<p>Wenn Sie Gentoo Linux auf einem System mit einem NVIDIA nForce oder
+				nForce2 Chipsatz mit einer integrierten GeForce Grafikkarte
+				installieren, sollten Sie LILO wählen und GRUB vermeiden.  Mit
+				eingeschalteter on-board Grafikkarte, wird der untere Bereich des RAMs
+				als Grafikspeicher verwendet.  Da GRUB ebenso den unteren
+				Speicherbereich beim Booten verwendet, kann es zu &quot;out of
+				memory&quot; Fehlern kommen.  Von daher, haben Sie einen nForce
+				Chipsatz oder ein anderes Mainboard mit einer on-board Grafikkarte,
+				verwenden Sie LILO.  Selbst, wenn Sie eine weitere Grafikkarte eingebaut
+				haben, ist es praktisch, dass Sie diese entfernen und weiterhin Gentoo
+				Linux booten können.</p>
+
+			<p class="secthead"><a name="doc_chap23_sect2">GRUB konfigurieren </a></p>
+
+				<p>Der kritische Teil beim Verständnis von GRUB ist zu Verstehen, wie
+				GRUB Festplatten und Partitionen anspricht.  Ihre Linux partition
+				<span class="path">/dev/hda1</span> ist unter GRUB <span class="path">(hd0,0)</span>.  Beachten
+				Sie die Klammern um hd0,0 -- Sie sind vonnöten.  Festplatten werden von
+				Null an gezählt anstatt mit &quot;a&quot; beginnend.  Partitionen
+				starten mit Null anstatt mit Eins.  Außerdem werden mit hd nur
+				Festplatten angesprochen und keine ATAPI-IDE Geräte, wie CDROMs,
+				Brenner, jedoch kann es auch für SCSI-Festplatten verwendet werden
+				(normalerweise erhalten sie höhere Nummern als IDE Geräte, außer das
+				BIOS wurde so konfiguriert, dass es von SCSI booten soll).  Angenommen,
+				Sie haben eine Festplatte an /dev/hda, ein CDROM an /dev/hdb und einen
+				Brenner an /dev/hdc, eine weitere Festplatte an /dev/hdd und keine SCSI
+				Festplatten, dann ist <span class="path">/dev/hdd7</span> unter GRUB
+				<span class="path">(hd1,6)</span>.</p>
+
+				<p>Es mag ein wenig trickreich klingen, und es ist wirklich trickreich,
+				aber Sie werden sehen, dass GRUB eine Tab-Completion anbietet, die sehr
+				hilfreich ist, wenn Sie mehrere Festplatten und Partitionen besitzen und
+				wenn Sie sich ein wenig in der GRUB-Nummerierung verlieren.  Wenn Sie
+				ein wenig Gefühl dafür haben, dann sollten Sie GRUB installieren.</p>
+
+				<p>Der einfachste Weg GRUB zu installieren, ist <span class="code">grub</span> am Prompt
+				einzugeben:</p>
+
+<a name="doc_chap23_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 23.1: GRUB installieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">emerge grub</span>
+# <span class="code">grub</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Verwenden Sie ein Hardware RAID, dann wird es auf diese Weise
+				nicht funktionieren.  Überspringen Sie den Abschnitt zur
+				<span class="path">grub.conf</span>, worauf die Einstellungen für RAID erläutert
+				werden.</p></td></tr></table>
+
+				<p>Sie sehen nun das GRUB Prompt <span class="code">grub&gt;</span>.  Sie müssen nun die
+				richtigen Kommandos eintippen, um den GRUB boot record auf Ihre
+				Festplatte zu installieren.  In diesem Beispiel wird GRUB in den MBR
+				(Master Boot Record) installiert, sodass Sie als erstes das GRUB Prompt
+				sehen, wenn Sie Ihren Rechner einschalten.  In diesem Fall wären die
+				Kommandos folgende:</p>
+
+<a name="doc_chap23_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 23.2: GRUB in den MBR installieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+grub&gt; <span class="code">root (hd0,0)</span> <span class="comment">// Ihre Boot Partition</span>
+grub&gt; <span class="code">setup (hd0)</span> <span class="comment">// Wo der boot record installiert werden soll (hier ist es der MBR)</span>
+grub&gt; <span class="code">quit</span>
+</pre></td></tr>
+</table>
+
+<a name="doc_chap23_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 23.3: GRUB nicht in den MBR installieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<span class="comment">Alternativ können Sie GRUB auch woanders als den MBR installieren</span>
+grub&gt; <span class="code">root (hd0,0)</span> <span class="comment">// Ihre Boot Partition</span>
+grub&gt; <span class="code">setup (hd0,4)</span> <span class="comment">// Wo der boot record installiert werden soll (hier ist es /dev/hda5)</span>
+grub&gt; <span class="code">quit</span>
+</pre></td></tr>
+</table>
+
+				<p>Die Kommandos bewirken folgendes: Zuerst teilen Sie mit <span class="code">root ( )</span>
+				GRUB Ihre Boot Partition mit (im obigen Beispiel <span class="path">/dev/hda1</span>
+				oder <span class="path">(hd0,0)</span> in der GRUB Schreibweise).  Das zweite
+				Kommando <span class="code">setup ( )</span> berichtet GRUB wo es den boot record hin
+				installieren soll, sodass es nach seinen speziellen Dateien an der mit
+				<span class="code">root ( )</span> angegebenen Stelle schauen soll.  In dem obigen Fall
+				wird der boot record in den MBR der Festplatte geschrieben, sodass nur
+				<span class="path">/dev/hda</span> (oder auch als <span class="path">(hd0)</span> bekannt)
+				angegeben werden muss.  Wenn Sie einen anderen Bootloader und
+				GRUB als einen zweiten Bootloader verwenden wollen, können Sie den boot
+				record in einer bestimmten Partition installieren.  In diesem Fall geben
+				Sie die bestimmte Partition anstatt der ganzen Festplatte an.  Sobald
+				der boot record erfolgreich installiert wurde, geben Sie <span class="code">quit</span>
+				ein, um GRUB zu beenden.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Die Tab Completion von GRUB kann so benutzt werden, dass Sie
+				beispielsweise <span class="code">root (</span> eingeben und danach die TAB-Taste drücken,
+				wodurch Sie eine Liste der verfügbaren Geräte (nicht nur Festplatten)
+				erhalten.  Drücken Sie die TAB-Taste nachdem Sie <span class="code">root (hd</span>
+				eingegeben haben, wird GRUB Ihnen die verfügbaren Festplatten anzeigen.
+				Und drücken Sie die TAB-Taste nachdem Sie <span class="code">root (hd0,</span> eingegeben
+				haben, zeigt GRUB Ihnen eine Liste der Partitionen auf dieser
+				Festplatte.  Mittels der Tab Completion können Sie recht effektiv den
+				Syntax überprüfen und die richtige Wahl treffen.</p></td></tr></table>
+
+				<p>Gentoo Linux ist nun installiert, aber Sie müssen noch die Datei
+				<span class="path">/boot/grub/grub.conf</span> erzeugen, um ein nettes GRUB Boot Menu
+				zu erhalten.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Um eine rückwärtige Kompatibilität zu GRUB zu bewahren, erzeugen
+				Sie eine Verknüpfung von <span class="path">grub.conf</span> zu
+				<span class="path">menu.lst</span>.  Sie können dieses mit <span class="code">ln -s
+				/boot/grub/grub.conf /boot/grub/menu.lst</span> erledigen.</p></td></tr></table>
+
+				<p>Erstellen Sie jetzt die Datei <span class="path">grub.conf</span> (<span class="code">nano -w
+				/boot/grub/grub.conf</span>) mit dem folgendem Inhalt:</p>
+
+<a name="doc_chap23_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 23.4: grub.conf für GRUB</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+default 0
+timeout 30
+splashimage=(hd0,0)/boot/grub/splash.xpm.gz
+
+title=Mein Gentoo Linux
+root (hd0,0) 
+kernel (hd0,0)/boot/bzImage root=/dev/hda3 
+
+<span class="comment"># Beispiel für ein Hardware RAID</span>
+title=Mein Gentoo Linux mit RAID
+root (hd0,0)
+kernel (hd0,0)/boot/bzImage root=/dev/ataraid/dXpY
+
+<span class="comment"># Beispiel für ein weiteres Betriebssytem</span>
+title=Windows XP
+root (hd0,5)
+chainloader (hd0,5)+1
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>(hd0,0) muss ohne Leerzeichen in den Klammern geschrieben
+				werden.</p></td></tr></table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Wenn Sie vorab die SCSI Emulation für einen IDE CD Brenner
+				eingerichtet haben, dann benötigen Sie den Zusatz <span class="code">hdx=ide-scsi</span> in
+				der <span class="code">kernel</span> Zeile der <span class="path">grub.conf</span> (&quot;hdx&quot; soll
+				dem Gerät Ihres Brenners entsprechen).</p></td></tr></table>
+
+				<p>Nachdem Sie die Datei gespeicher haben, ist Ihre Gentoo Linux
+				Installation beendet.  Wenn Sie den ersten Eintrag im Boot Menu wählen,
+				wird GRUB ohne großen Aufhebens Gentoo Linux starten.  Der zweite
+				Teil in der Datei ist optional und zeigt Ihnen, wie Sie GRUB nutzen
+				können, um Windows zu booten.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b><span class="path">(hd0,0)</span> sollte zu Ihrer boot Partition
+				(<span class="path">/dev/hda1</span> in dem obigen Beispiel) und
+				<span class="path">/dev/hda3</span> zu Ihrer root Partition zeigen.
+				<span class="path">(hd0,5)</span> beinhaltet den Windows Boot Loader.</p></td></tr></table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Der Pfad zum Kernel Image ist relativ zur Boot Partition.  Wenn
+				Sie beispielsweise eine separate Boot Partition unter
+				<span class="path">(hd0,0)</span> und Root Partition in <span class="path">(hd0,1)</span> haben,
+				werden alle Pfade in der obigen <span class="path">grub.conf</span> zu
+				<span class="path">/bzImage</span>.</p></td></tr></table>
+
+				<p>Wenn Sie weitere Optionen dem Kernel mitteilen müssen, fügen Sie
+				diese einfach am Ende der <span class="code">kernel</span> Zeile ein.  Im obigen Beispiel
+				wurde bereits eine Option (<span class="code">root=/dev/hda3</span> übergeben, aber Sie
+				können weitere hinzufügen.  Beispielsweise können Sie devfs ausschalten
+				(nicht empfehlenswert, ausser Sie wissen, was Sie tun), indem Sie
+				<span class="code">gentoo=nodevfs</span> zum <span class="code">kernel</span> Kommando hinzufügen.</p>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Anders als in früheren Versionen von Gentoo Linux brauchen Sie
+				nicht mehr <span class="code">devfs=mount</span> hinzufügen, um devfs einzuschalten, da es
+				nun standardmäßig aktiviert ist.</p></td></tr></table>
+
+			<p class="secthead"><a name="doc_chap23_sect3">LILO konfigurieren </a></p>
+
+				<p>Während GRUB eine neue Alternative für viel Benutzer ist, ist es
+				nicht immer die beste Wahl.  LILO, der LInuxLOader ist der erprobtere
+				Linux Bootloader.  Hier sehen Sie, wie Sie LILO installieren, wenn Sie
+				es anstatt von GRUB verwenden möchten:</p>
+
+				<p>Zuerst müssen Sie LILO emergen:</p>
+
+<a name="doc_chap23_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 23.5: LILO emergen:</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">emerge lilo</span>
+</pre></td></tr>
+</table>
+
+				<p>Nun muss LILO mit der Datei <span class="path">/etc/lilo.conf</span> konfiguriert
+				werden.  Folgend eine Beispielkonfiguration:</p>
+
+<a name="doc_chap23_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 23.6: Beispiel zur lilo.conf</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+boot=/dev/hda
+map=/boot/map
+install=/boot/boot.b
+prompt
+timeout=50
+lba32
+default=linux
+
+image=/boot/vmlinuz-2.4.20
+  label=linux
+  read-only
+  root=/dev/hda3
+
+<span class="comment">Beispiel für ein weiteres Betriebssystem</span>
+other=/dev/hda1
+  label=dos
+</pre></td></tr>
+</table>
+
+				<ul>
+					<li>
+<span class="code">boot=/dev/hda</span> teilt LILO mit, dass es sich auf die erste
+					Festplatte am ersten IDE Controller installieren soll.</li>
+					<li>
+<span class="code">map=/boot/map</span> gibt die map Datei an.  Üblicherweise braucht
+					dieser Eintrag nicht geändert werden</li>
+					<li>
+<span class="code">install=/boot/boot.b</span> veranlassst LILO die angegebene Datei
+					als den neuen Boot Sektor zu installieren.  Üblicherweise braucht
+					dieser Eintrag nicht geändert werden.  Wenn dieser Eintrag fehlt,
+					verwendet LILO eine eigene Datei anstatt von
+					<span class="path">/boot/boot.b</span>.</li>
+					<li>Wenn <span class="code">prompt</span> angegeben wird, zeigt LILO den klassischen
+					<span class="code">lilo:</span> Prompt beim Booten an.  Obwohl es nicht empfehlenswert
+					ist, dass Sie den Prompt abschlaten, können Sie ihn entfernen und
+					weiterhin einen Prompt erhalten, wenn Sie die [Shift]-Taste während
+					des Bootens halten.</li>
+					<li>
+<span class="code">timeout=50</span> setzt die Zeitspanne, wie lange LILO auf eine
+					Eingabe des Benutzers warten soll, bis es von selbst mit dem
+					vorgegebenen Eintrag fortfährt.  Der Wert ist in Zehntelsekunden
+					anzugeben, und 50 der vorgegebene Wert.</li>
+					<li>
+<span class="code">lba32</span> beschreibt die Geometrie der Festplatte.  Ein anderer
+					hier üblicher Eintrag ist <span class="code">linear</span>.  Sie sollten diesen Eintrag
+					nicht ändern, außer Sie wissen wirklich, was Sie tun.  Möglichenfalls
+					können Sie Ihr System dazu bringen, dass es nicht bootet.</li>
+					<li>
+<span class="code">default=linux</span> zeigt auf das automatisch von LILO zu
+					bootende Betriebssystem, das in einer Liste weiter unten in der Datei
+					angegeben wird.  Der Wert muss zu einem von <span class="code">label=</span> angegebenen
+					Wert gleich sein.</li>
+					<li>
+<span class="code">image=/boot/vmlinuz-2.4.20</span> gibt den mit diesem Abschnitt zu
+					bootenden Linux Kernel an.</li>
+					<li>
+<span class="code">label=linux</span> ist ein Name für das Betriebssystem im
+					aktuellen Abschnitt.  In diesem Fall zeigt der <span class="code">default</span> Eintrag
+					auch auf diesen Namen.</li>
+					<li>
+<span class="code">read-only</span> veranlasst, dass die Root Partition (siehe
+					nächste Zeile) zunächst schreibgeschützt gemountet wird und somit
+					nicht während des Bootens verändert werden kann.</li>
+					<li>
+<span class="code">root=/dev/hda5</span> gibt LILO an, welche Partition als Root
+					Partition verwendet werden soll.</li>
+				</ul>
+
+				<p>Nachdem Sie Ihre <span class="path">lilo.conf</span> editiert haben, müssen Sie
+				LILO dazu bringen, die Informationen in den MBR (Master Boot Record) zu
+				laden:</p>
+
+<a name="doc_chap23_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 23.7: LILO ausführen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">/sbin/lilo</span>
+</pre></td></tr>
+</table>
+
+				<p>LILO ist nun konfiguriert und Ihr Rechner ist bereit, um Gentoo Linux
+				zu starten!</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap24">24.</a></span>Bootdiskette erstellen</p>
+<p class="secthead"><a name="doc_chap24_sect1">GRUB Bootdiskette </a></p>
+
+				<p>Es ist immer eine gute Idee eine Bootdiskette bei der ersten
+				Installation einer Linux Distribution zu erstellen.  Dieses ist eine
+				Sicherheitsmaßnahme und generell empfehlenswert.  Wenn Sie Hardware RAID
+				verwenden, müssen Sie eine Bootdiskette mit GRUB erstellen, denn die
+				Installation von GRUB aus chroot-Umgebung wird fehlschlagen.  Gehören
+				Sie also zu dieser Gruppe von Benutzern, erstellen Sie eine GRUB
+				Bootdiskette und wenn Sie das erste Mal Rebooten, installieren Sie GRUB
+				in den MBR.  Erstellen Sie Ihre Bootdiskette folgendermaßen:</p>
+
+<a name="doc_chap24_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 24.1: GRUB Bootdiskette erstellen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">mke2fs /dev/fd0</span>
+# <span class="code">mount /dev/fd0 /mnt/floppy</span>
+# <span class="code">mkdir -p /mnt/floppy/boot/grub</span>
+# <span class="code">cp /usr/share/grub/i386-pc/stage1 /mnt/floppy/boot/grub/</span>
+# <span class="code">cp /usr/share/grub/i386-pc/stage2 /mnt/floppy/boot/grub/</span>
+# <span class="code">umount /mnt/floppy</span>
+# <span class="code">grub</span>
+
+grub&gt; <span class="code">root (fd0)</span>
+grub&gt; <span class="code">setup (fd0)</span>
+grub&gt; <span class="code">quit</span>
+</pre></td></tr>
+</table>
+
+				<p>Rebooten Sie nun von der Diskette.  Beim <span class="code">grub&gt;</span> Prompt von
+				der Diskette können Sie nun die benötigten <span class="code">root</span> und <span class="code">setup</span>
+				Kommados ausführen.</p>
+
+			<p class="secthead"><a name="doc_chap24_sect2">LILO Bootdiskette </a></p>
+
+				<p>Wenn Sie LILO verwenden ist es ebenso eine gute Idee eine
+				Bootdiskette zu erstellen:</p>
+
+<a name="doc_chap24_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 24.2: LILO Bootdiskette erstellen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">dd if=/boot/ihr_kernel of=/dev/fd0</span>
+<span class="comment">Das funktioniert nur, wenn Ihr Kernel kleiner als 1.4MB ist.</span>
+</pre></td></tr>
+</table>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap25">25.</a></span>Installation beendet!</p>
+
+				<p>Nun, Ihr Gentoo Linux ist installiert.  Der einzige verbleibende
+				Schritt ist, einige Konfigurationsdateien anzupassen, die chroot
+				Umgebung zu beenden, Ihre Partitionen sicher zu unmounten und das System
+				zu rebooten:</p>
+
+<a name="doc_chap25_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 25.1: Rebooten des Systems</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">etc-update</span>
+# <span class="code">exit</span>
+<span class="comment">(Dieses beeendet die chroot Umgebung; Sie können genausogut <span class="code">^D</span> (ctrl-d) eintippen)</span>
+# <span class="code">cd /</span>
+# <span class="code">umount /mnt/gentoo/boot</span>
+# <span class="code">umount /mnt/gentoo/proc</span>
+# <span class="code">umount /mnt/gentoo</span>
+# <span class="code">reboot</span>
+</pre></td></tr>
+</table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>Nach dem Rebooten sollten Sie <span class="code">update-modules</span> ausführen, um
+				die Datei <span class="path">/etc/modules.conf</span> zu erstellen.  Anstatt diese
+				Datei direkt zu verändern, sollten Sie Änderungen in den Dateien in
+				<span class="path">/etc/modules.d/</span> vornehmen.</p></td></tr></table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Bedenken Sie, dass wenn Sie Hardware RAID verwenden, müssen Sie
+				die Bootdiskette für das erste Rebooten erstellen.  Gehen Sie dann
+				zurück und installieren Sie GRUB in der Art, wie es weiter oben
+				beschrieben ist.</p></td></tr></table>
+
+				<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Important: </b>Sie haben es geschafft!  Gratulation!</p></td></tr></table>
+
+				<p>Wenn Sie Fragen haben oder sich bei der Entwicklung von Gentoo Linux
+				beteiligen wollen, abonnieren Sie die gentoo-user und gentoo-dev
+				Mailingliste (weitere Informationen auf der <a href="http://www.gentoo.org/main/en/lists.xml">Mailinglisten
+				Webseite</a>).  Außerdem ist die <a href="http://www.gentoo.org/doc/de/desktop.xml">Anleitung zur Gentoo
+				Linux Desktop Konfiguration</a> recht praktisch für die weitere
+				Konfiguration Ihres Gentoo Linux Systems.  Der nützliche <a href="http://www.gentoo.org/doc/de/portage-user.xml">Portage Benutzer
+				Leitfaden</a> hilft Ihnen die Grundlagen von Portage zu verstehen.
+				Darüberhinaus gibt es etliche weitere <a href="http://www.gentoo.org/main/en/docs.xml">Gentoo Linux
+				Dokumentationen</a>.  Haben Sie Fragen, die die Installation
+				betreffen, schaue Sie in die <a href="http://www.gentoo.org/doc/de/faq.xml">FAQ (häufig gestellte
+				Fragen)</a>.  Haben Sie Spaß und willkommen bei Gentoo Linux!</p>
+
+			<p class="chaphead">
+<span class="chapnum"><a name="doc_chap26">26.</a></span>Gentoo-Stats</p>
+
+				<p>Das &quot;Gentoo Linux usage statistics project&quot; wurde gestartet, um den
+				Entwicklern einen Überblick der Gentoo-Benutzer zu verschaffen.  Es
+				sammelt Informationen über die Verbreitung von Gentoo Linux und hilft,
+				Prioritäten bei den Entwicklern zu setzten.  Die Installation ist
+				freiwillig, jedoch wäre es willkommen, wenn Sie sich daran beteiligen
+				würden.  Generierte Statistiken können Sie sich unter
+				<a href="http://stats.gentoo.org/">http://stats.gentoo.org/</a> ansehen.</p>
+
+				<p>Der gentoo-stats Server wird Ihrem System eine eindeutige ID
+				vergeben.  Diese ID wird dafür benötigt, dass jedes System nur einmal
+				gezählt wird.  Diese ID wird weder dafür verwendet, um ihr System
+				individuell zu identifizieren, noch wird sie mit der IP-Adresse oder
+				anderen persönlichen Informationen abgeglichen.  Alle Vorkehrungen
+				wurden getroffen, um Ihre Privatsphäre in der Entwicklung dieses Systems
+				zu wahren.  Nachfolgend sind die Informationen gelistet, die das
+				<span class="code">gentoo-stats</span> Programm überwachen wird:</p>
+			
+			<ul>
+				<li>installierte Pakete und ihre Versionsnummer</li>
+				<li>CPU Informationen: Geschwindigkeit (MHz), Hersteller, Modell, CPU
+				Flags (wie &quot;altivec&quot;</li>
+				<li>Speicher Informationen (installierter physischer RAM, Größe der
+				angelegten Swap Partition(en))</li>
+				<li>PCI Karten und Netzwerkkarten Chipsätze</li>
+				<li>das Gentoo Linux Profil, das Ihr Rechner verwendet (dorthin, wo der
+				Link <span class="path">/etc/make.profile</span> zeigt)</li>
+			</ul>
+
+				<p>Wir sind uns bewusst, dass eine Bekanntmachung von sensiblen Informationen
+				eine Gefährdung für viele Gentoo Linux Benutzer darstellt (und ebenso
+				für die Entwickler).</p>
+				
+
+				<ul>
+					<li>Solange Sie nicht das gentoo-stats Programm ändern, wird niemals
+					eine sensible Information, wie Ihr Passwort, Konfigurationsdateien,
+					der Lieblingsfilm, ... übertragen</li>
+					<li>Die Übermittlung Ihrer E-Mail Adresse ist optional und
+					defaultmäßig ausgeschaltet.</li>
+					<li>Die IP-Adresse von der Ihre Datenübertragung stammt wird niemals
+					in der Art gespeichert, dass wir Sie identifizieren können.  Es gibt
+					keine Zusammenhänge zwischen der IP-Adresse und der System-ID.</li>
+				</ul>
+
+				<p>Die Installation ist einfach -- führen Sie die folgenden Befehle
+				aus:</p>
+
+<a name="doc_chap26_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 26.1: gentoo-stats installieren</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <span class="code">emerge gentoo-stats</span> <span class="comment">Installiert gentoo-stats</span>
+# <span class="code">gentoo-stats --new</span>  <span class="comment">Bezieht eine neue System-ID</span>
+</pre></td></tr>
+</table>
+
+				<p>Der zweite Befehl wird eine neue System-ID anfragen und sie in
+				<span class="path">/etc/gentoo-stats/gentoo-stats.conf</span> ablegen.  Sie können
+				diese Datei anschauen, um zusätzliche Konfigurationsparameter zu
+				sehen.</p>
+
+				<p>Sie sollten das Programm regelmäßig laufen lassen (gentoo-stats
+				benötigt keine Superuser Rechte).  Fügen Sie folgende Zeile in Ihre
+				<span class="path">crontab</span> ein:</p>
+
+<a name="doc_chap26_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 26.2: gentoo-stats mit cron updaten</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<span class="code">0 0 * * 0,4 /usr/sbin/gentoo-stats --update &gt; /dev/null</span>
+</pre></td></tr>
+</table>
+
+				<p>Das <span class="code">gentoo-stats</span> Programm ist ein einfaches Perl-Script, das
+				Sie sich mit Ihrem bevorzugten Textbetrachter oder Editor anschauen
+				können: <span class="path">/usr/sbin/gentoo-stats</span>.</p>
+
+			<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="/images/line.gif" alt="line"></td></tr>
+<tr><td align="center" class="alttext">
+				Updated 16. April 2003</td></tr>
+<tr><td><img src="/images/line.gif" alt="line"></td></tr>
+<tr><td class="alttext">
+		<b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b>
+	<br><i>Chief Architect</i><br><br>Chris Houser<br><i>Author</i><br><br>
+		<b><a class="altlink" href="mailto:">Jerry Alexandratos</a></b>
+	<br><i>Author</i><br><br>
+		<b><a class="altlink" href="mailto:g2boojum@gentoo.org">Grant Goodyear</a></b>
+	<br><i>Ghost</i><br><br>
+		<b><a class="altlink" href="mailto:zhen@gentoo.org">John P. Davis</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:Pierre-Henri.Jondot@wanadoo.fr">Pierre-Henri Jondot</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:stocke2@gentoo.org">Eric Stockbridge</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:rajiv@gentoo.org">Rajiv Manglani</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:seo@gentoo.org">Jungmin Seo</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:zhware@gentoo.org">Stoyan Zhekov</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:jhhudso@gentoo.org">Jared Hudson</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:">Colin Morey</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:peesh@gentoo.org">Jorge Paulo</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:carl@gentoo.org">Carl Anderson</a></b>
+	<br><i>Editor</i><br><br>
+		<b><a class="altlink" href="mailto:mgreiner@berlios.de">Markus Greiner</a></b>
+	<br><i>Übersetzer</i><br><br>
+		<b><a class="altlink" href="mailto:pylon@gentoo.org">Lars Weiler</a></b>
+	<br><i>Übersetzer</i><br><br>
+</td></tr>
+<tr><td><img src="/images/line.gif" alt="line"></td></tr>
+<tr><td class="alttext">
+<b>Summary:</b> Diese Anleitung führt Sie schrittweise durch den Gentoo Linux
+	1.4_rc4 Installationsprozess für die x86 Prozessorarchitektur (AMD, Intel).
+	Die Gentoo Linux Installation unterstützt verschiedene Installationsarten,
+	abhängig davon wieviel des Systems von Grund auf selbst compiliert werden
+	soll.</td></tr>
+<tr><td><img src="/images/line.gif" alt="line"></td></tr>
+<tr><td align="center">
+<p class="alttext">
+<b>Donate</b> to support our development efforts.</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="drobbins@gentoo.org"><input type="hidden" name="item_name" value="Gentoo Linux Support"><input type="hidden" name="item_number" value="1000"><input type="hidden" name="image_url" value="/images/paypal.png"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="return" value="http://www.gentoo.org"><input type="hidden" name="cancel_return" value="http://www.gentoo.org"><input type="image" src="http://images.paypal.com/images/x-click-but21.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</td></tr>
+<tr><td><img src="/images/line.gif" alt="line"></td></tr>
+<tr><td align="center"><a href="http://www.cafeshops.com/cp/store.aspx?s=gentoolinux"><img src="/images/store.png" alt="The Gentoo Linux Store" border="0"></a></td></tr>
+<tr><td><img src="/images/line.gif" alt="line"></td></tr>
+<tr><td align="center">
+<p class="alttext">Win4Lin from <b>NeTraverse</b> lets you run Windows applications under Gentoo Linux at native speeds.</p>
+<a href="http://www.netraverse.com/gentoo.htm" target="_top"><img src="/images/netraverse-gentoo.gif" width="125" height="102" alt="Win4Lin at NeTraverse" border="0"></a><p class="alttext">
+<a href="http://www.netraverse.com/gentoo.htm">Purchase Win4Lin &quot;Gentoo Edition&quot;</a> and you'll also get a special Gentoo discount. Every sale also helps support Gentoo Linux development :)</p>
+</td></tr>
+<tr><td><img src="/images/line.gif" alt="line"></td></tr>
+<tr><td align="center">
+<a href="http://www.qksrv.net/click-477620-5032687" target="_top"><img src="http://www.qksrv.net/image-477620-5032687" width="125" height="125" alt="DDR Memory at Crucial.com" border="0"></a><p class="alttext">Purchase RAM from <b>Crucial.com</b> and a percentage of your sale will go towards further Gentoo Linux development.</p>
+</td></tr>
+<tr><td><img src="/images/line.gif" alt="line"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td colspan="2" align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Copyright 2001-2003 Gentoo Technologies, Inc.  Questions, Comments, Corrections?  Email <a class="highlight" href="mailto:www@gentoo.org">www@gentoo.org</a>.
+			</td></tr>
+</table></body>
+</html>
