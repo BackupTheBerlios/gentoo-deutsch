@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvb/libdvb-0.5.0.ebuild,v 1.1 2003/10/28 14:02:31 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvb/libdvb-0.5.0.ebuild,v 1.2 2003/10/28 14:04:51 martini Exp $
 
 DESCRIPTION="libdvb package with added CAM library and libdvbmpegtools as well as dvb-mpegtools"
 HOMEPAGE="http://www.metzlerbros.org/dvb/"
@@ -8,7 +8,7 @@ SRC_URI="http://www.metzlerbros.org/dvb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 DEPEND=">=sys-apps/sed-4
 	>=media-tv/linuxtv-dvb-1.0.1"

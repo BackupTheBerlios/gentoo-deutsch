@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvb/libdvb-0.4.1.ebuild,v 1.1 2003/07/13 16:34:42 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-libs/libdvb/libdvb-0.4.1.ebuild,v 1.2 2003/10/28 14:02:31 martini Exp $
 
 IUSE=""
 
@@ -27,7 +27,8 @@ src_compile() {
 src_install() {
 	dolib.a libdvb.a
 	dolib.a libdvbci.a
-	dodoc README astrarc hotbirdrc
+	dodoc README
+	dodoc samplerc/*
 	insinto /usr/include/libdvb/
-	doins *.h*
+	doins include/*
 }
