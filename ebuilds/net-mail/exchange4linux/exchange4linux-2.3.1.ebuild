@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.4 2003/07/03 21:22:57 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.5 2003/07/05 18:48:15 holler Exp $
 
 DESCRIPTION="exchange4linux - exchange4linux is a production/stable server solution to store/exchange workgroup data on Linux in a style simular to Exchange. Main goal is to provide Outlook users a free and open server alternative on Linux."
 HOMEPAGE="http://www.exchange4linux.org/"
@@ -16,11 +16,11 @@ KEYWORDS="~x86"
 
 RDEPEND="virtual/glibc
     dev-lang/python
-    dev-python/omniORBpy"
+    dev-python/omniORBpy-2.1"
 
 DEPEND="virtual/glibc
     dev-lang/python
-    dev-python/omniORBpy"
+    dev-python/omniORBpy-2.1"
 
 pkg_setup() {
 
@@ -35,11 +35,10 @@ pkg_setup() {
 src_compile() {
 
   cd BILL-StorageServer-${PV}
+  omniidlrun.py -bpython msgstore.idl
   python /usr/lib/python2.2/compileall.py .
   mv server.sh server.sh.orig
-  # The second replacement is for restarting the server after an failure (139)
-  sed <server.sh.orig >server.sh -e 's/^clear/#clear/' \
-    -e 's:^exec python Server.pyc \$\* >/dev/null 2>/dev/null:#exec python Server.pyc \$\* >/dev/null 2>/dev/null\nERRTEST=139\nuntil [ \${ERRTEST} != 139 ]; do\n  python  Server.pyc \$\* 1>/dev/null 2>/dev/null\n  ERRTEST=\$\?\ndone:'
+  sed <server.sh.orig >server.sh -e 's/^clear/#clear/'
   rm server.sh.orig
   chmod +x server.sh
   cd ../BILL-StorageMailer-${PV}
