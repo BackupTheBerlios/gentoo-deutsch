@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-system.xml,v 1.5 2003/12/14 15:29:33 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-system.xml,v 1.6 2003/12/21 15:23:07 dertobi123 Exp $ -->
 
-<!-- English CVS Version: 1.18 -->
+<!-- English CVS Version: 1.20 -->
 
 <sections>
 <section>
@@ -339,7 +339,8 @@ Sie die Liste hoch und runter blättern.
 Sie können <c>emerge</c> benutzen um zuerst alle benötigten Quellcodes
 herunterzuladen, bevor Sie fortfahren (zum Beispiel weil Sie nicht wollen,
 dass die Internetverbindung während des ganzen 'emerge system' aufrecht
-erhalten wird). Dazu benutzen Sie die <e>-f</e> Option von <c>emerge</c>.
+erhalten wird). Dazu benutzen Sie die <e>--fetchonly</e> Option von
+<c>emerge</c>.
 </p>
 
 <pre caption = "Herunterladen der Quellen">
