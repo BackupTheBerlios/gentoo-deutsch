@@ -5,5 +5,7 @@ Daher vor dem einchecken bitte etwas Vorsicht walten lassen und die
 Seiten nochmal pruefen.
 
 Achja, wenn jemand ein neues Unterverzeichnis hier anlegt, muss er
-das auch im htdoc-Verzeichnis anlegen (oder das Script copywww.sh
-in CVSROOT verbessern. ;) )
+das auch im htdoc-Verzeichnis anlegen (per ssh zu shell.berlios.de).
+Oder das Script copywww.sh in CVSROOT verbessern. Wer sich fraegt,
+wie man das CVSROOT gelangt, einfach 'cvs ... co .' benutzen. Der
+Punkt ist ein Punkt. ;)

@@ -1,0 +1,208 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Documentation
+	
+-- 
+	Gentoo Linux Localization Instructions</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux Localization Instructions</p>
+<form>
+<b>Contents</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Preface</option>
+<option value="#doc_chap2">2. Timezone</option>
+<option value="#doc_chap3">3. Hardware clock</option>
+<option value="#doc_chap4">4. Language</option>
+<option value="#doc_chap5">5. Keyboard-layout (terminal)</option>
+<option value="#doc_chap6">6. Keyboard-layout (X server)</option>
+<option value="#doc_chap7">7. Euro character (terminal)</option>
+<option value="#doc_chap8">8. Euro character (X server)</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Preface</p>
+                <p>As I'm a German I explain how to enable the german language. If you want 
+		another language, you just have to replace the german language code <font class="input">de</font> with 
+		the corresponding code for your country, e.g. <font class="input">fr</font> for France or <font class="input">es</font> for Spain.
+		</p>
+        <p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Timezone</p>
+                <p>To enable the right timezone <font class="path">/etc/localtime</font> should point to the 
+		appropriate file with the datas for your timezone. You will find those files
+		in <font class="path">/usr/share/zoneinfo/</font>.
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime</font>
+</pre></td></tr>
+</table>
+		</p>
+        <p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Hardware clock</p>
+                <p>If your hardware clock is set to local time and not to GMT you have to correct
+		the variable <font class="input">CLOCK</font> in <font class="path">/etc/rc.conf</font>.
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ CLOCK=&quot;local&quot;
+</pre></td></tr>
+</table>
+		</p>
+        <p class="chaphead">
+<font class="chapnum"><a name="doc_chap4">4.</a></font>Language</p>
+                <p>Telling programms what language you prefer will be done with the environment variable
+		<font class="input">LANG</font>. If you want to set the language system-wide for all users you should export 
+		<font class="input">LANG</font> in <font class="path">/etc/profile</font>. If not, this can be done in through your private
+		<font class="path">.bashrc</font> in your home directory. You can find available languages in 
+		<font class="path">/usr/share/i18n/locales</font>.
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ export LANG=&quot;de_DE@euro&quot;
+</pre></td></tr>
+</table>
+		</p>
+        <p class="chaphead">
+<font class="chapnum"><a name="doc_chap5">5.</a></font>Keyboard-layout (terminal)</p>
+                <p>The keyboard-layout for terminal sessions is set through <font class="input">KEYMAP</font> in
+		<font class="path">/etc/rc.conf</font>. You will find the appropriate tables in
+		<font class="path">/usr/share/keymaps</font>. If you aren't using composed characters with
+		tildes (e.g. õ), accent graph (e.g. è) or similar, you could use the
+		nodeadkeys-variants. This will save you to enter a space after typing letters
+		like ~.
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ KEYMAP=&quot;de-latin1&quot;
+ # KEYMAP=&quot;de-latin1-nodeadkeys&quot;
+</pre></td></tr>
+</table>
+		</p>
+        <p class="chaphead">
+<font class="chapnum"><a name="doc_chap6">6.</a></font>Keyboard-layout (X server)</p>
+                <p>The keyboard-layout for the X server is set with the option
+		<font class="input">XkbLayout</font> in the file <font class="path">/etc/X11/XF86Config</font>.
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ Section &quot;InputDevice&quot;
+     Identifier  &quot;Keyboard1&quot;
+     ...
+     Option &quot;XkbLayout&quot;    &quot;de&quot;
+     # Option XkbVariant&quot;  &quot;nodeadkeys&quot;
+     ...
+</pre></td></tr>
+</table>
+		</p>
+        <p class="chaphead">
+<font class="chapnum"><a name="doc_chap7">7.</a></font>Euro character (terminal)</p>
+                <p>If you want to see the Euro character in a session without using X, you have
+		to use a console font which contains it. The console font is set with
+		<font class="input">CONSOLEFONT</font> in <font class="path">/etc/rc.conf</font>. Available fonts will be find in
+		<font class="path">/usr/share/consolefonts</font>.
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ CONSOLEFONT=&quot;lat0-16&quot;
+</pre></td></tr>
+</table>
+		</p>
+        <p class="chaphead">
+<font class="chapnum"><a name="doc_chap8">8.</a></font>Euro character (X server)</p>
+<p class="secthead"><a name="_sect1">General </a></p>
+                <p>Using the above settings and KDE you should already get the Euro character with
+		Alt-Gr-E in all KDE-programs. Remaining the non-KDE-programs.
+		</p>
+<p>Unfortunately this is not as easy as the settings before. You have to set the right
+		font for every single X-program. So I will just explain	how to enable the Euro character 
+		for xterm and (X)Emacs. You can change the fonts for programs under X in your private
+		<font class="path">.Xdefaults</font> in your home directory. To enable it for other (new) users you could
+		copy this file to <font class="path">/etc/skel</font>.
+		</p>
+        <p class="secthead"><a name="_sect2">Euro character for xterm </a></p>
+                <p>Insert the following in your <font class="path">.Xdefaults</font>:
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ xterm*font: 7x13euro
+</pre></td></tr>
+</table>
+		</p>
+        <p class="secthead"><a name="_sect3">Euro character for (X)Emacs </a></p>
+                <p>For (X)Emacs you define the font in <font class="path">.Xdefaults</font> as shown below:
+<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ Emacs.default.attributeFont: -*-courier-medium-r-*-*-*-120-*-*-*-*-iso8859-15
+</pre></td></tr>
+</table>
+		</p>
+<p>If you are using XEmacs (not Emacs) you will have to tell him what to do with
+		the <font class="input">EuroSign</font>. This will be done through a definition in 
+		<font class="path">.xemacs/init.el</font> in your home directory:
+<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Code listing 9</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+ (define-key global-map '(EuroSign) '[€])
+</pre></td></tr>
+</table>
+		<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Note: </b>The character in the square brackets is the Euro character.</p></td></tr></table>
+		</p>
+        <br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+					Updated $Date: 2002/06/27 20:38:21 $</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:holler@ahsoftware.de">
+        Alexander Holler</a></b>
+<br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Summary:</b> This instructions explains the few steps you need to follow to use Gentoo Linux 
+with another language than english. It also explains what to do to get the Euro character shown.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Support our development efforts by donating via credit card!</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="drobbins@gentoo.org"><input type="hidden" name="item_name" value="Gentoo Linux Support"><input type="hidden" name="item_number" value="1000"><input type="hidden" name="image_url" value="http://www.gentoo.org/images/paypal.png"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="return" value="http://www.gentoo.org"><input type="hidden" name="cancel_return" value="http://www.gentoo.org"><input type="image" src="http://images.paypal.com/images/x-click-but21.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center">
+<p class="alttext">Purchase RAM using this link, and a percentage
+of your sale will go towards further Gentoo Linux development.</p>
+<a href="http://www.qksrv.net/click-477620-5032687" target="_top"><img src="http://www.qksrv.net/image-477620-5032687" width="125" height="125" alt="DDR Memory at Crucial.com" border="0"></a><p class="alttext">Why these guys?  Because <b>cvs.gentoo.org</b> and <b>inventor.gentoo.org</b> use high-quality Crucial RAM. We know that it's good stuff because we rely on it ourselves.</p>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Copyright 2001 Gentoo
+		Technologies, Inc.  Questions, Comments, Corrections?  Email <a class="highlight" href="mailto:gentoo-dev@gentoo.org">gentoo-dev@gentoo.org</a>.
+			</td></tr>
+</table></body>
+</html>
