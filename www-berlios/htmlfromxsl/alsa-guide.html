@@ -30,7 +30,7 @@
 <p class="secthead"><a name="_sect1">Was ist ALSA? </a></p>
 <p>
 ALSA (Advanced Linux Sound Architecture) ist ein Projekt, mit dem die Steuerung des Audio Subsystems unter Linux 
-verbessert werden soll, indem viele Bereich neu programmiert werden. Es ist geplant ALSA in den Linux Kernel
+verbessert werden soll, indem viele Bereiche neu programmiert werden. Es ist geplant ALSA in den Linux Kernel
 2.6.x (oder 3.x.x -- je nachdem welcher zu erst fertig ist) zu integrieren.
 </p>
 
@@ -53,11 +53,11 @@ hardware mixing von streams, stark erweiterte Mischeigenschaften, um die vielen 
 <p class="secthead"><a name="_sect2">Warum ALSA benutzen? </a></p>
 <p>
 Wenn Ihre Soundkarte bereits durch den Linux Kernel oder durch das kommerziell erhältliche OSS/4Front Audio Treiber System (welches
-in allen 2.4.x Linux Kernels vorhanden ist), können Sie auch <font class="emphasis">diese Modules</font> für die Benutzung mit Ihrer Soundkarte kompilieren. 
+in allen 2.4.x Linux Kernels vorhanden ist) unterstützt wird, können Sie auch <font class="emphasis">diese Module</font> für die Benutzung mit Ihrer Soundkarte kompilieren.
 Eine Anleitung hierzu finden Sie im <a href="http://www.tldp.org/HOWTO/Sound-HOWTO/index.html">Linux Sound HOWTO</a>.
 </p> 
 <p>
-Jedoch haben diese  OSS/4Front Treiber einge Einschränkungen -- die kommerzielle Lizenz ist eine davon. ALSA ist ein Ansatz diese
+Jedoch haben diese  OSS/4Front Treiber einige Einschränkungen -- die kommerzielle Lizenz ist eine davon. ALSA ist ein Ansatz diese
 Einschränkungen zu umgehen und darüber hinaus Open Source Software mit vollwertiger GPL und LGPL Lizenz einzusetzen, ohne auf
 professionelle Tonqualität beim Aufnhemen, Abspielen und MIDI Sequenzierung verzichten zu müssen.
 </p> 
@@ -85,7 +85,7 @@ erstellt.
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
 Wahrscheinlich wird es auch funktionieren, wenn &quot;Sound Card Support&quot; direkt in den Kernel (Y) einkompiliert, anstatt es
-als Modul (M) zu bauen. Jedoch empfielht die offizielle ALSA Dokumentation es als Modul (M) zu erstellen, da ALSA
+als Modul (M) zu bauen. Jedoch empfiehlt die offizielle ALSA Dokumentation es als Modul (M) zu erstellen, da ALSA
 beim Start versucht, das Modul zu laden.
 </p></td></tr></table>
 </p>
@@ -214,7 +214,7 @@ Ihrem System angeben (im Normalfall ist dies nur eine einzige).
 			Beispiel 5: Am Anfang von of /etc/modules.d/alsa</p></td></tr>
 <tr><td bgcolor="#ddddff"><pre>
 # Alsa 0.9.X kernel modules' configuration file.
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-berlios/htmlfromxsl/alsa-guide.html,v 1.2 2002/11/10 16:33:53 jay Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-berlios/htmlfromxsl/alsa-guide.html,v 1.3 2002/11/10 16:41:29 jay Exp $
 
 # ALSA portion
 alias char-major-116 snd
