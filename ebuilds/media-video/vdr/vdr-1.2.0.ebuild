@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.1 2003/06/04 10:20:52 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.2 2003/06/04 11:26:13 mad Exp $
 
 IUSE="lirc"
 
@@ -66,6 +66,8 @@ src_install() {
 	#use lirc && newins ${FILESDIR}/rc.irexec irexec 
 	
 	dodoc CONTRIBUTORS COPYING README* INSTALL MANUAL HISTORY* UPDATE-1.2.0
+	dodoc ${FILESDIR}/vdrshutdown.sh
+	#dodoc ${FILESDIR}/sudo.txt
 	dohtml PLUGINS.html
 	doman vdr.[15] 
 

@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr:
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/confd,v 1.1 2003/06/04 10:20:53 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/confd,v 1.2 2003/06/04 11:26:13 mad Exp $
 
 # Global config file for vdr rc-scripts
 
@@ -58,3 +58,7 @@
 # controlling tty
 #TERMINAL=""
 
+#
+# VDR_OPTS, saved every emerge
+#
+#VDROPTS=""
