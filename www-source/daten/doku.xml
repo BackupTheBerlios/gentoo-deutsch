@@ -62,8 +62,6 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 				<li><uri link="fortgeschritten/brennen">CD-Brennen HowTo</uri></li>
 				<li><uri link="fortgeschritten/java">Java Installation</uri></li>
 				<li><uri link="fortgeschritten/sicherheit">Sicherheitsleitfaden</uri></li>
-				<li><uri link="fortgeschritten/systemstart">Systemstart</uri></li>
-				<li><uri link="fortgeschritten/distcc">Distcc</uri></li>
 			</ul>
 		</p>
 	</body>
@@ -77,8 +75,8 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 				<li><uri link="anwendungen/gnome-guide">Gnome 2.4 HowTo und FAQ</uri></li>
 				<li><uri link="anwendungen/fluxbox">Fluxbox</uri></li>
 				<li><uri link="anwendungen/nano">Nano Editor</uri></li>
-				<li><uri link="anwendungen/portage">Portage</uri></li>
 				<li><uri link="anwendungen/vi-guide">vi-Guide</uri></li>
+				<li><uri link="fortgeschritten/distcc">Distcc</uri></li>
 				<li><uri link="entwickler/cvs-tutorial">CVS Tutorial</uri></li>
 			</ul>
 		</p>
@@ -86,7 +84,23 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 </section>
 
 <section>
-<title>Entwickler</title>
+<title>Gentoo Dokumentationen</title>
+	<body>
+		<p>
+			<ul>
+				<li><uri link="http://www.gentoo.org/doc/de/use-howto.xml">Die Gentoo USE Flags</uri></li>
+				<li><uri link="anwendungen/portage">Portage Benutzerleitfaden</uri></li>
+				<li><uri link="http://www.gentoo.org/doc/de/portage-manual.xml">Portage Handbuch</uri></li>
+				<li><uri link="fortgeschritten/systemstart">Systemstart mit dem Gentoo Init System</uri></li>
+				<li><uri link="antworten/faq">Original gentoo.org FAQ</uri></li>
+				<li><uri link="antworten/faq_ergaenzung">Zusätzliche gentoo.de FAQ</uri></li>
+			</ul>
+		</p>
+	</body>
+</section>
+
+<section>
+<title>Leitfaden für Entwickler</title>
 	<body>
 		<p>
 			<ul>
@@ -100,17 +114,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 	</body>
 </section>
 
-<section>
-<title>Fragen und Antworten</title>
-	<body>
-		<p>
-			<ul>
-				<li><uri link="antworten/faq">Original gentoo.org FAQ</uri></li>
-				<li><uri link="antworten/faq_ergaenzung">Zusätzliche gentoo.de FAQ</uri></li>
-			</ul>
-		</p>
-	</body>
-</section>
+
 
 <section>
 <title>Englisches</title>
