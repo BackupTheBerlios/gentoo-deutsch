@@ -69,7 +69,7 @@
     </td>
     
     <td style="width: 272px">
-      <a href="{$baseurl}/index.html" title="Zur Gentoo.de-Startseite">    
+      <a href="{$baseurl}index.html" title="Zur Gentoo.de-Startseite">    
         <img src="{$imageurl}logo/logo.jpg" height="105" width="272" alt="Gentoo Linux Logo"/>
       </a>  
     </td>
