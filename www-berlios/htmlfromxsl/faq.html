@@ -151,20 +151,19 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 		adjust the <font class="code">misc/psaux</font> strings above accoringly.  You'll then want to 
 		<font class="code">killall -HUP devfsd</font>
 		to get devfsd to reread <font class="path">/etc/devfsd.conf</font>.</p>
-		<p class="secthead"><a name="_sect12">Grub can't find stage x.y? </a></p>
+		<p class="secthead"><a name="_sect12">Grub kann die stage x.y nicht finden? </a></p>
 <p>
-		During installation the grub boot files are copied
-		to <font class="path">/boot/grub</font> (<font class="path">/boot/boot/grub</font> in Gentoo Linux 1.0_rc5 and 
-		earlier.) Grub automatically looks in the <font class="path">/boot/grub</font> directory on the boot 
-		partition.  (We strongly recommend having a separate no-auto boot partition mounted at 
-		<font class="path">/boot</font>, since that way it is much more difficult to clobber your kernel and boot
-		info by accident.)  The above error generally arises from (a) not using a separate boot 
-		partition, (b) forgetting to mount the boot partition at <font class="path">/boot</font> before either 
-		unpacking the build snapshot or running
-		<font class="code">emerge --usepkg system</font>, or (c) forgetting the
-		<font class="code">notail</font> option when mounting a ReiserFS <font class="path">/boot</font> partition.
-		You can get more information on grub, including how to
-		debug grub from the grub prompt, by reading the 
+		Waehrend der Installation hat grub die boot Datein
+		nach <font class="path">/boot/grub</font> (<font class="path">/boot/boot/grub</font> in Gentoo Linux 1.0_rc5 und 
+		aelter) kopiert. Grub sucht automatisch das Verzeichnis <font class="path">/boot/grub</font> auf der Boot Partition ab.
+		(Wir empfehlen ihnen, eine ersatz nicht-auto boot Partition auf	<font class="path">/boot</font> gemeuntet haben,
+		 Der Obere Error kommt meistens vom nicht benutzen einer ersatzt Boot Partiton 
+		(b) Vergessen des mounten der Boot Partition auf <font class="path">/boot</font> bevor man das
+		Minimal-System Archiv entpackt hat oder
+		<font class="code">emerge --usepkg system</font>, oder (c) vergessen des
+		<font class="code">notail</font> Argumentes when <font class="path">/boot</font> eine ReiserFS Partition ist.
+		Sie koennen mehr Informationen ueber Grub finden, in der Beigelegten Debug Anleitung
+		debug grub von dem Grub Terminal oder durch das lesen des 
 		<a href="http://www-105.ibm.com/developerworks/education.nsf/linux-onlinecourse-bytitle/0F1731DC664023B7862569D0005C44AF?OpenDocument">IBM developerWorks Grub tutorial</a>.
 		</p>
                 <p class="chaphead">
