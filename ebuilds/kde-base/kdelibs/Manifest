@@ -1,0 +1,6 @@
+MD5 f70c6301fe39211cedb81ed3eda0e1d5 ChangeLog 20305
+MD5 b9c570e71e6a06c5abd7ec3c0438fffe kdelibs-3.2.0-r1.ebuild 2464
+MD5 ee0b53e6fbaea17ae3543638dc09ca34 files/digest-kdelibs-3.2.0-r1 68
+MD5 3f21fc4e8ddbf79459bfa8f2df1a5e15 files/animated-gif-fix.patch 317
+MD5 76ef4c7d472a5e3659219ee223f12cb5 files/qt-3.3-printfix.patch 333
+MD5 eda910fd44668994e929249c91bd39b1 files/kidna.cpp.diff 2832
