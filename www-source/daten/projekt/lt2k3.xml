@@ -11,7 +11,7 @@
   <block>
     <title>Gentoo auf dem Linuxtag 2003 in Karlsruhe</title>
     <p>
-      	Uns wurde ein Stand mit 15m³ zugewiesen, der sich als zu klein darstellt.
+      	Uns wurde ein Stand mit 15m² zugewiesen, der sich als zu klein darstellt.
 	  	Wir teilen uns den Stand mit den Xine-Entwicklern, die den besten, freien
 	  	Medienplayer entwickeln, den ich kenne. Wir haben 1000 gesponsorte Gentoo-LiveCDs
 	  	mit Xine (und einem Xine-Binary-Installer für andere Distributionen).
@@ -54,6 +54,38 @@
 				benutzen.</li>
 		</ul>
 	</p>
+</body>
+</section>
+
+<section>
+<title>Freitag</title>
+	<body>
+	<p>
+		Der erste Anwender besuchte uns um 9:00 Uhr. Er fragte uns, ob Gentoo für
+		"Gen-Two" steht und ob dies für Generation Two, also die zweite Generation
+		von Linux-Systemen, dargestellt durch unsere ausgezeichnete Qualität. Wir haben
+		vor, heute 240 CDs zu vergeben.
+	</p>
+	<p>
+		Um 12:30 treffen torbenh unf phoen][x ein; der Platz wird immer weniger und scheint
+		sich zu unserem größten Problem zu entwickeln. Ich zähle 12 aktive Gentoo/Xine-Entwickler
+		auf 15m². Die Menge vor unserem Stand, sie sich die Kurzfilme und Trailer ansehen, die Xine
+		zeigt, habe ich nicht mitgezählt.
+	</p>
+	<p>
+		12:45 : Bei Gesprächen mit mehreren LeutenEs entwickelt sich die Idee, ein DVD-Image mit
+		allen Quellen etc. zu machen. So könnten auch Leute ohne Netzanschluß in den Genuss von
+		Gentoo kommen. Ich denke, wir sollten das im Auge behalten, damit wir es vielleicht zum
+		nächsten Linuxtag vorstellen können ;) Ich habe mit dem Sponsor unserer CDs gesprochen
+		und er sagte mir, daß sie uns nächstes Jahr wieder CDs spendieren werden.
+	</p>
+	<p>
+		15:25 : es kam die Frage auf, ob es ein allgemeines FAQ (mit vielleicht 5-10 Seiten) geben
+		würde, daß die Konzepte und am Meisten benutzten Kommandos für Installation und Administration
+		von Gentoo erklärt (wie <c>etcat</c>, <c>emerge</c>, Hinweise für gelegentliche Probleme und vielleicht
+		auch "Was ist zu tun, wenn....")
+	</p>
+
 </body>
 </section>
 
