@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <info>
 <title>Downloaden von Arbeiten der Mitglieder von Gentoo.de</title>
 
 <chapter>
-<title>Übersicht</title>
+<title>ï¿½ersicht</title>
 
 <section>
 
@@ -12,7 +12,7 @@
   <p>
     <uri link="mirrors/index.html">Mirrors</uri><br/>
     <uri link="ebuilds/index.html">Neue Ebuilds im Portage-Baum</uri><br/>          
-    <uri link="ebuilds_de/index.html">Ebuild Ergänzungen</uri><br/>
+    <uri link="ebuilds_de/index.html">Ebuild ErgÃ¤zungen</uri><br/>
     <uri link="sonstiges/index.html">Sonstige Downloads</uri><br/>
   </p>
 </body>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cgi="http://www.sebastian-werner.net">
 
-<xsl:output method="html" encoding="iso-8859-15" indent="no"/>
+<xsl:output method="html" encoding="UTF-8" indent="no"/>
 
 <xsl:template match="cgi:result_list">
   <table cellpadding="0" cellspacing="0" class="resultlist" width="100%">
@@ -69,11 +69,11 @@
           <option value="all"<!--cgi: match_all-->>Alle W&ouml;rtern finden</option>
           <option value="any"<!--cgi: match_any-->>Mindestens ein Wort finden</option>
         </select>
-      
+
         <input type="text" name="q" value="<!--cgi: query_str-->" />
-      
+
         <input type="submit" value="Suchen" style="color"/>
-        <br/>      
+        <br/>
         <br/>
       </xsl:if>
     </form>
