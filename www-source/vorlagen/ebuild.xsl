@@ -54,7 +54,7 @@
                       <xsl:value-of select="name"/>
                     </a>
                   </b>
-                  <div style="margin-top: 5px">
+                  <div style="margin-top: 5px; visibility: visible;">
                     <xsl:value-of select="description"/>
                   </div>
                 </td>
