@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.2 2003/12/27 15:10:33 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.3 2003/12/27 18:17:58 mad Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -70,7 +70,7 @@ src_unpack() {
 		then
 			ewarn "ac3 patch is already part of akool/complete patch ... skipping"
 		else
-			einfo "Apply AC3 patch ..."
+			einfo "applying AC3 patch ..."
 			epatch ../${AC3_OVER_DVB}.diff
 		fi
 	fi
@@ -83,8 +83,8 @@ src_unpack() {
 			ewarn "elchi patch is already part of akool/complete patch ... skipping"
 		else
 			cd ${S}
-			einfo "Apply ElchiAOI3c patch ..."
-			patch < ../vdr-${ELCHI_VN}-ElchiAIO3c.diff
+			einfo "applying ElchiAOI3c patch ..."
+			epatch ../vdr-${ELCHI_VN}-ElchiAIO3c.diff
 			if vdr_opts iosd
 			then
 				epatch ../improvedosd-3a.diff
@@ -99,17 +99,19 @@ src_unpack() {
 	# Dirk's Komplett Patch
 	if vdr_opts akool
 	then
-		einfo "Apply complete patch ..."
-		patch -p1 < ../KomplettPatch-1.2.6-E.diff
-		einfo "Apply improved OSD 3a patch ..."
-		patch -p1 < ../improvedosd-3-3a.diff
-		einfo "Apply remove duplicate Symblol 59 patch ..."
-		patch -p0 < ${FILESDIR}/KomplettPatch-1.2.6-E.diff
+		einfo "applying complete patch ..."
+		epatch ../KomplettPatch-1.2.6-E.diff
+		einfo "applying improved OSD 3a patch ..."
+		epatch ../improvedosd-3-3a.diff
+		#
+		# by mad because there is on patchfile ?!
+		#einfo "applying remove duplicate Symblol 59 patch ..."
+		#epatch ${FILESDIR}/KomplettPatch-1.2.6-E.diff
 	fi
 
 	# here comes the gentoo specific stuff ( also called the "fun part")
 	# for Makefile...
-	sed -i Makefile \
+	/bin/sed -i Makefile \
 	  -e 's:PLUGINDIR= ./PLUGINS:PLUGINDIR= /usr/lib/vdr:' \
 	  -e 's:$(PLUGINDIR)/lib:$(PLUGINDIR):' \
 	  -e '/Make.config/d' \
@@ -118,23 +120,20 @@ src_unpack() {
 	  -e '51iDEFINES += -DCONFIGDIR=\\\"$(CONFIGDIR)\\\"'
 
 	# now for vdr.c
-	sed -i vdr.c \
+	/bin/sed -i vdr.c \
 	  -e '/#define DEFAULTPLUGINDIR PLUGINDIR/ a\#define DEFAULTCONFIGDIR CONFIGDIR' \
 	  -e 's:ConfigDirectory = VideoDirectory:ConfigDirectory = DEFAULTCONFIGDIR:'
 
 	# finally for plugin.c
-	sed -i plugin.c \
+	/bin/sed -i plugin.c \
 	  -e 's:#define SO_INDICATOR   ".so.":#define SO_INDICATOR   ".so":' \
 	  -e 's:\(asprintf.*\)%s/%s%s%s%s\(.*SO_INDICATOR.*\):\1%s/%s%s%s\2:' \
 	  -e 's:LIBVDR_PREFIX, s, SO_INDICATOR, VDRVERSION);:LIBVDR_PREFIX, s, SO_INDICATOR);:'
 
 	# for osdbase.c in case, VDR_OPTS->iosd || akool ?? is that ok ??
-	# note:
-	# the ebuild logic is becoming worse and worse...
-	# needs a facelift, maybe???
 	if vdr_opts akool || vdr_opts iosd
 	then
-		sed -i osdbase.c \
+		/bin/sed -i osdbase.c \
 		  -e 's:logofileS=MALLOC(char, strlen(ConfigDirectory):logofileS=MALLOC(char, strlen("/usr/share/vdr"):' \
 		  -e 's:strcpy(logofileS, ConfigDirectory):strcpy(logofileS, "/usr/share/vdr"):'
 	fi
@@ -149,14 +148,14 @@ src_compile() {
 	vdr_opts rcu && myconf="${myconf} REMOTE=RCU"
 	vdr_opts vfat && myconf="${myconf} VFAT=1"
 
-	einfo "build VDR with this options ${myconf} now"
-	make ${myconf} || die "compile problem vdr"
+	einfo "building VDR with this options ${myconf} now"
+	make ${myconf} || die "vdr compile problem"
 
 	mkdir -p include/vdr
 	(cd include/vdr; for i in ../../*.h; do ln -sf $i .; done)
 	for i in $(ls ${S}/PLUGINS/src) ; do
 		cd ${S}/PLUGINS/src/${i}
-		make all ||die "compile problem plugin: ${i}"
+		make all || die "compile problem plugin: ${i}"
 	done
 
 }
@@ -180,7 +179,6 @@ src_install() {
 	dolib.a libdtv/libvdr/libvdr.a
 
 	for i in $(ls ${S}/PLUGINS/src) ; do
-		#cd ${i}
 		insinto /usr/lib/vdr
 		insopts -m0755
 		newins ${S}/PLUGINS/src/${i}/libvdr-${i}.so libvdr-${i}.so.${PV}
@@ -221,7 +219,7 @@ pkg_setup(){
 	# temp userid 270 until got one from gentoo.org
 	if ! grep -q "^vdr:" /etc/passwd ; then
 		useradd -u 270 -g video -G audio,cdrom -d /video -s /bin/bash -c "VDR Daemon" vdr
-		einfo "adding vdr user"
+		einfo "added vdr user with id 270 and groups video, audio and cdrom."
 	fi
 }
 
@@ -230,12 +228,12 @@ pkg_postinst() {
 	# add fam to /etc/init.d/vdr if patched with akool
 	if vdr_opts akool
 	then
-		sed -i '/need fam/d' /etc/init.d/vdr
-		sed -i '/^depend/a\
+		/bin/sed -i '/need fam/d' /etc/init.d/vdr
+		/bin/sed -i '/^depend/a\
 		need fam' /etc/init.d/vdr
 	fi
 
-	INSTALLED_PLUGINS=$(qpkg -I | grep vdrplugin | cut -d" " -f 1)
+	INSTALLED_PLUGINS=$(qpkg -I -nc | grep vdrplugin | cut -d" " -f 1)
 	einfo
 	einfo "Congratulations, you have just installed VDR,"
 	einfo "The Digital Video Recorder. To get started you"
@@ -243,9 +241,17 @@ pkg_postinst() {
 	einfo "A good starting point seems to be:"
 	einfo "http://vdr.gentoo.de/ and "
 	einfo "http://www.vdrportal.de/board/board.php?boardid=56"
-	einfo "Remeber: it is generally a good idea, to recompile plugins now... "
+	einfo "Remember: it is generally a good idea, to recompile plugins now."
+	einfo
 	einfo "here is a list:"
+	einfo
 	for i in ${INSTALLED_PLUGINS}
-		do einfo ${i}
+		do 
+		 einfo ${i}
+		 if vdr_opts emergeplugs ; then
+			einfo
+		 	ACCEPT_KEYWORDS="~x86" /usr/bin/emerge ${i}
+			einfo
+		 fi
 	done
 }
