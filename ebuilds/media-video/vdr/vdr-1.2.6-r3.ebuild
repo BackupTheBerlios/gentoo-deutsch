@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.6-r3.ebuild,v 1.2 2003/12/14 08:46:07 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.6-r3.ebuild,v 1.3 2003/12/14 11:47:45 fow0ryl Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
@@ -14,8 +14,10 @@ HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
 		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz
-		http://www.vdr-portal.de/download/patches/KomplettPatch-1.2.6-B.diff.bz2
+		http://www.vdr-portal.de/download/patches/KomplettPatch-1.2.6-C.diff.bz2
 		http://linvdr.org/download/VDR-AIO/vdr-${ELCHI_VN}-ElchiAIO3c.diff.gz
+		http://www.magoa.net/linux/files/improvedosd-1a.diff.gz
+		http://www.magoa.net/linux/files/icons.tar.gz
 		"
 
 KEYWORDS="~x86"
@@ -80,6 +82,11 @@ src_unpack() {
 			cd ${S}
 			einfo "Apply ElchiAOI3b patch ..."
 			patch < ../vdr-${ELCHI_VN}-ElchiAIO3c.diff
+			if vdr_opts iosd
+			then
+				epatch ../improvedosd-1a.diff
+				ln -s ${WORKDIR}/icons/ ${S}/icons
+			fi
 		fi
 	fi
 
@@ -87,7 +94,7 @@ src_unpack() {
 	if vdr_opts akool
 	then
 		einfo "Apply akool patch ..."
-		patch -p1 < ../KomplettPatch-1.2.6-B.diff
+		patch -p1 < ../KomplettPatch-1.2.6-C.diff
 		epatch ${FILESDIR}/vdr-${PV}-scanner-gentoo.diff
 	fi
 

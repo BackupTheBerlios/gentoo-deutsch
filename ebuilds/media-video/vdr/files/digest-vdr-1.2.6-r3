@@ -1,4 +1,6 @@
 MD5 2ccef18b8418da429bad230732603603 vdr-1.2.6.tar.bz2 367069
 MD5 ada6360306c6ec7b47eedc1c07d77f90 vdr-1.2.6-AC3overDVB-0.2.3.diff.gz 27651
-MD5 d1998eb85166dfb649b047819b2aad23 KomplettPatch-1.2.6-B.diff.bz2 118196
+MD5 8b0ef380b24ce03a2fad8e3426e5232d KomplettPatch-1.2.6-C.diff.bz2 135515
 MD5 946e566b1c839fefe376908b16fb6e0a vdr-1.2.6-ElchiAIO3c.diff.gz 27453
+MD5 c1f019932d8d1dd7b9019e6e9aff0354 improvedosd-1a.diff.gz 9372
+MD5 a83b87da0033be7dd4e7c96245ce59dd icons.tar.gz 13281

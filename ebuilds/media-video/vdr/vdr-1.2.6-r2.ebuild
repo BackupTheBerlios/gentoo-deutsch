@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.6-r2.ebuild,v 1.1 2003/12/12 12:58:22 rootshell Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.6-r2.ebuild,v 1.2 2003/12/14 11:47:45 fow0ryl Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
@@ -29,7 +29,7 @@ DEPEND="virtual/glibc
 		media-libs/jpeg
 		sys-libs/ncurses
 		app-admin/sudo
-		app-admin/fam-oss
+		app-admin/fam
 		lirc? ( app-misc/lirc )
 		"
 # function to implement a "local" use variable called VDR_OPTS
