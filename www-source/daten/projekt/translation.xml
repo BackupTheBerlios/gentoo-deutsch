@@ -152,10 +152,10 @@ englische Fassung beinhalten, um zukünftige Aktualisierungen zu vereinfachen.
 &lt;!-- English CVS Version: 1.0 --&gt;
 </pre>
 
-<p>
+<note>
 Bitte beachten Sie das Datum im &lt;date&gt; Tag nicht mit dem aktuellen
 Tagesdatum, sondern mit dem Datum aus dem Original zu ersetzen.
-</p>
+</note>
 
 </body>
 </section>
