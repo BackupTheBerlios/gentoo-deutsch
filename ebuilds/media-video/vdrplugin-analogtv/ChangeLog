@@ -1,6 +1,10 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-analogtv/ChangeLog,v 1.1 2003/06/21 11:01:20 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-analogtv/ChangeLog,v 1.2 2003/08/18 11:21:03 petric Exp $
+
+*vdrplugin-analogtv-0.9.8 (18 Aug 2003)
+  18 Aug 2003; P.Frank <pfrank@gmx.de>
+  Moved to version 0.9.8
 
 *vdrplugin-analogtv-0.7.0 (24 Feb 2003)
 
