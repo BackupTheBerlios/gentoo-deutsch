@@ -26,6 +26,17 @@
 
 <section>
   <body>
+  <news type="news" date="24.11.2003" title="Gentoo-Newsletter">
+    <p>
+	  Der aktuelle Newsletter berichtet vom Managertreffen am  17.11.03, offenen Stellen bei Gentoo Linux, einem Ebuild für Freedesktop und
+	enthält ausführliche Security Announcements. <uri link="http://www.gentoo.org/news/en/gwn/20031124-newsletter.xml">Viel Spass beim Lesen</uri>.
+    </p>
+  </news>
+  </body>
+</section>
+
+<section>
+  <body>
   <news type="news" date="17.11.2003" title="Gentoo-Newsletter">
     <p>
 		In diesem Newsletter wird die neue <uri link="http://packages.gentoo.org/">Online-Paketdatenbank</uri> vorgestellt -
