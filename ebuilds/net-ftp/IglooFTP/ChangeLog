@@ -1,0 +1,8 @@
+# ChangeLog for net-ftp/IglooFTP
+# Copyright 2003 Stefan Knoblich <stefan.knoblich@t-online.de>; Distributed under the GPL
+
+*IglooFTP-0.6.1 (12 Apr 2003)
+
+  12 Apr 2003; Stefan Knoblich <stefan.knoblich@t-online.de> IglooFTP-0.6.1.ebuild
+  
+  Initial version.
