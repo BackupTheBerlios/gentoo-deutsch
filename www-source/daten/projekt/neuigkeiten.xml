@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-15"?>
 
 <info>
 <title>Willkommen</title>
 
 <author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
+<author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
 
-<date>18. Oktober 2002</date>
+<date>20. Mai 2003</date>
 
 <box>
   <block>
@@ -21,18 +22,32 @@
 <title>Aktuelles</title>
 
 <section>
-<title>[17. Mai 2003] Gentoo Games</title>
-	<body>
+<title>[19. Mai 2003] Gentoo Newsletter</title>
+<body>
 <p>
-	Hiermit kündigen wir die Gründung von <uri link="http://www.gentoogames.com">Gentoo Games Inc.</uri>, einer Firma für Spieletechniken
-	an deren Ziel es ist innovative Linuxbasierte Spieletechnologien für die Öffentlichkeit anzubieten. Die Firma wurde in Zusammenarbeit mit
-	<uri link="http://supercomputerinc.com">Super Computer,Inc.</uri> gegründet.
+Zusätzliche News bezüglich Gentoo Games und seine Beziehung zu Gentoo Linux bilden
+diesmal das Hauptthema des Newsletters. Neuigkeiten und Bilder von der E3 sind auch darin enthalten.
+Natürlich gibts auch die Anwendergeschichten, einen deftigen Portage-Überblick und all die ganzen anderen
+Rubriken die auch sonst in diesem Newsletter vorkommen.
+<uri link="http://www.gentoo.org/news/de/gwn/20030519-newsletter.xml">Hier gehts zum Newsletter</uri>
+</p>
+</body>
+</section>
+
+
+<section>
+<title>[17. Mai 2003] Gentoo Games</title>
+<body>
+<p>
+Hiermit kündigen wir die Gründung von <uri link="http://www.gentoogames.com">Gentoo Games Inc.</uri>, einer Firma für Spieletechniken
+an deren Ziel es ist innovative Linuxbasierte Spieletechnologien für die Öffentlichkeit anzubieten. Die Firma wurde in Zusammenarbeit mit
+<uri link="http://supercomputerinc.com">Super Computer,Inc.</uri> gegründet.
 </p>
 </body>
 </section>
 
 <section>
-<title>[17. Mai 2003] Gentoo Newsletter</title>
+<title>[12. Mai 2003] Gentoo Newsletter</title>
 <body>
 <p>
 Zwei grosse Ankündigungen führen den dieswöchigen Newsletter an. Erstens wird Gentoo dank der neuen Partnerschaft mit
