@@ -21,7 +21,7 @@
 <form>
 <b>Inhalt</b>:
 	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Portage: Ein Überblick</option>
-<option value="#doc_chap2">2. Configuring Portage</option>
+<option value="#doc_chap2">2. Portage konfigurieren</option>
 <option value="#doc_chap3">3. Package Management</option></select>
 </form>
 <p class="chaphead">
@@ -85,87 +85,79 @@
         Profile und vieles mehr. Viele dieser Funktionen werden noch im Laufe dieses 
         Handbuches genauer erläutert.
 	</p>
-  <p class="secthead"><a name="_sect2">Conditional Dependency Resolution and Feature Support </a></p>
+  <p class="secthead"><a name="_sect2">Umgebungsabhängige Auflösung von Abhängigkeiten und Funktions Unterstützung </a></p>
 	<p>
-	The Portage system is unique in the amount of flexibility it offers
-	users.  Traditional BSD ports systems tend to only support
-	one revision for a package in the ports tree at once.  Portage
-	has no such limitation.  Multiple versions of the same package can
-	be available for installation.  Package dependencies, those packages
-	that are required for the compilation and use of another package,
-	can be specified either by name or by name with a version range
-	attached.  This makes it safe to have multiple versions available
-	in the tree.
+        Das Portage System ist im Hinblick der Flexibilität welches es dem User bietet 
+        einzigartig. Traditionelle BSD Ports Systeme tendieren dazu nur jeweils eine 
+        Version eines jeden Paketes im Tree zu unterstützen. Portage hat diese Begrenzungen
+        nicht. Es können mehrere Versionen eines Paketes zur Installation zur Verfügung 
+        stehen.Paketabhängigkeiten (Pakete, die zum Kompilieren andere Pakete nötig sind) 
+        können entweder mit ihrem Namen oder mittels Namen mit zusätzlich angehängter 
+        Versionsnummer definiert werden. Das ermöglicht es mehrere Versionen eines Paketes 
+        zeitgleich im Tree zu pflegen.
 	</p>
 	<p>
-	The dependency system also supports conditional dependencies.  Portage
-	has a powerful concept called the <font class="input">USE setting</font> system.  By
-	changing one configuration variable in a Portage configuration file
-	you can disable optional support (and thus the need to depend on it)
-	for particular features or libraries for all packages at compile time.
-	This is a very flexible and powerful system which is farther explained 
-	in the next chapter.
+        Das Abhängigkeits-System unterstützt ebenfalls umgebungsabhängige Abhängigkeiten. 
+        Portage hat dafür ein leistungsstarkes Konzept, die sogenannten <font class="input">USE Settings</font>. 
+        Durch das ändern einer Konfigurations-Variablen in einer Portage Konfiguration, ist 
+        es möglich bestimmte Unterstützung für Funktionen oder Bibliotheken während des 
+        Kompilierens zu aktivieren bzw. abzuschalten. Dies ist ein sehr flexibles und 
+        leistungsstarkes System, welchem wir uns im nächsten Kapitel widmen werden.
 	</p>
-	<p>In addition Portage supports the concept of <font class="input">SLOT</font>s.  In
-	the development of Gentoo Linux its developers often found that 
-	we needed to have multiple versions of certain packages (such as
-	libraries) installed to satisfy the demands of other packages.
-	The traditional approach to solving this problem has been to treat
-	different versions of the same package as different packages with
-	slightly different names.</p>
 	<p>
-	Instead of the developers learning
-	to treat certain versions as separate packages, the developers taught
-	Portage how to handle and maintain several versions of the same package
-	though the use of <font class="input">SLOT</font>s.  An example of this would be to consider
-	the common library known as freetype.  The 1.x branch of freetype
-	is incompatible with the 2.x branch but both versions are needed
-	to satisfy the dependencies of various packages.  Most distributions
-	and ports systems tend to have a &quot;freetype&quot; package for freetype 1.x
-	and &quot;freetype2&quot; for 2.x.  We consider this approach a sign of a 
-	fundamentally broken package management system.  We simply assigned
-	the <font class="input">SLOT</font> number 1 to the first and number 2 to the second.  With 
-	this information Portage can track both versions and upgrade both 
-	versions if updates to the respective upstream branches are made.
+        Zusätzlich unterstützt Portage Konzept der <font class="input">SLOTs</font>. Während der Entwicklung von 
+        Gentoo Linux wurde klar, daß wir öfters mehrere Versionen bestimmter Pakete (wie 
+        z.B. Bibliotheken) benötigen, um die Ansprüche andere Pakete zu erfüllen. Der
+        traditionelle Weg um dieses Problem zu lösen war es, verschiedene Versionen eines 
+        Paketes als unterschiedliche Pakete mit leicht abweichenden Namen zu behandeln.
+        </p>
+	<p>
+        Anstatt verschiedene Versionen als eigene Pakete zu behandeln, brachten die Entwickler 
+        Portage bei, wie mehrere Versionen eines Paketes gleichzeitig durch Benutztung von 
+        <font class="input">SLOTs</font> zu handhaben sind. Als Beispiel sei hier die gängige Freetype Bibliothek 
+        genannt. Die 1.x Reihe von Freetype ist mit der 2.x Reihe inkompatibel, jedoch sind 
+        oftmals beide Versionen nötig, um die Abhängigkeiten verschiedener Pakete zu erfüllen. 
+        Die meisten Distributionen und Ports Systeme tendieren dazu, ein &quot;freetype&quot; Paket für 
+        Freetype 1.x und ein &quot;freetype2&quot; Paket für Freetype 2.x zu führen. Dies betrachten wir 
+        als beinahe komplett beschädigtes Paketmanagemant System. Wir ergänzen einfach die 
+        <font class="input">SLOT</font> Nummer 1 zur ersten und Nummer 2 zur zweiten Version. Mit dieser 
+        Information ist Portage in der Lage beide Reihen zu pflegen und, falls nötig, beide auf 
+        höhere Versionen upzudaten.
 	</p>
-<p class="secthead"><a name="_sect3">Profiles </a></p>
+<p class="secthead"><a name="_sect3">Profile </a></p>
 
-	<p>Portage supports the concept of <font class="input">profiles</font>.  A profile
-	contains a list of package names and versions with a directive
-	and a set of default configuration options to be used by Portage.
-	A profile tells Portage which packages and which specific versions
-	of those packages to allow, disallow, or treat as required.  Users
-	can switch profiles by changing a single symlink 
-	(<font class="input">/etc/make.profile</font>).  This may seem simple but it allows 
-	Portage to form the core of a distribution and serve as a professional 
-	grade build system. 
+	<p>
+        Portage unterstützt ein weiteres Konzept, sogenannte <font class="input">Profile</font>. Ein Profil enthält 
+        eine Liste von Paketnamen und Versionen mit Anweisungen und einigen Standardoptionen, 
+        welche von Portage benutzt werden sollen. Ein Profil enthält Informationen welche Pakete 
+        und welche Versionen jeweils erlaubt bzw. verboten oder als zwingend behandelt werden 
+        sollen. Der Benutzer kann zwischen verschiedenen Profilen wechseln in dem er einfach 
+        einen Symlink ändert (<font class="input">/etc/make.profile</font>).
 	</p>
 	<p>
-	The entire effort spent in producing the Gentoo Linux distribution
-	has resulted in a collection of <font class="input">ebuild</font> files Portage uses
-	and a profile.  This profile defines which packages are considered
-	&quot;core&quot; packages vital to the operation of a system.  The profile
-	also allows developers to block and unblock specific packages
-	and versions to temporarily disable broken packages, etc.  The
-	<font class="input">ebuild</font> files simply tell Portage how to actually build
-	and install the packages the profile either demands or allows.
+        Der gesamte Aufwand, welcher bei der Entwicklung von Gentoo Linux betrieben wurde 
+        resultiert in einer Sammlung von <font class="input">ebuilds</font> und einem Profil. Dieses Profil 
+        beschreibt welche Pakete als Kernpakete für den Betrieb des Systems wichtig sind. 
+        Das Profil erlaubt darüber hinaus den Entwicklern bestimmte Pakete zu blockieren bzw.
+        freizuschalten. Dies ist auch nützlich um defekte Pakete zwischenzeitlich zu deaktivieren.
+        Die <font class="input">ebuild</font> Dateien definieren einfach nur wie bestimmte Pakete von Portage 
+        kompiliert und installiert werden sollen, welche durch das Profil verlangt bzw. 
+        erlaubt werden.
 	</p>
 	
 <p class="chaphead">
-<font class="chapnum"><a name="doc_chap2">2.</a></font>Configuring Portage</p>
-<p class="secthead"><a name="_sect1">Overview </a></p>
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Portage konfigurieren</p>
+<p class="secthead"><a name="_sect1">Überblick </a></p>
 	<p>
-  	The following chapter covers the various aspect of Portage
-	configuration important to both users and developers.  Portage
-	is a very flexible system and you will need to understand how
-	to configure Portage to be charge of your system and optimize
-	it for your needs.
+        Das folgende Kapitel soll verschiedene Aspekte von Portaga abdecken, die jeweils für 
+        Benutzer wie Entwickler wichtig sind. Portage ist ein sehr flexibles System und Sie
+        müssen verstehen, wie man Portage richtig konfiguriert, um Ihr System genau auf Ihre
+        Bedürfnisse abstimmen zu können.
 	</p>
 	<p>
-	Please note that the use of &quot;users&quot; in this document means
-	persons with administrative rights to use Portage and change the
-	systems configuration.  You must have root access to change
-	Portage's configuration and to merge and unmerge packages.
+        Bitte beachten Sie, dass in diesem Dokument der Begriff &quot;Benutzer&quot; Personen mit
+        administrativen Rechten definiert. Um die Portage Konfiguration zu ändern und neue
+        Pakete zu installieren bzw. zu entfernen benötigen Sie Root-Rechte.
 	</p>
 <p class="secthead"><a name="_sect2">Portage Configuration Files </a></p>
 	<p>Almost all of the configuration options discussed below can be

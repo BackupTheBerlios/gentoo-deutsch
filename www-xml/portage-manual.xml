@@ -85,76 +85,70 @@ Pflege von Paketen des Portage Systems.
 </section>
 
 <section>
-<title>Conditional Dependency Resolution and Feature Support</title>
+<title>Umgebungsabh&#228;ngige Aufl&#246;sung von Abh&#228;ngigkeiten und Funktions Unterst&#252;tzung</title>
 <body>
 	<p>
-	The Portage system is unique in the amount of flexibility it offers
-	users.  Traditional BSD ports systems tend to only support
-	one revision for a package in the ports tree at once.  Portage
-	has no such limitation.  Multiple versions of the same package can
-	be available for installation.  Package dependencies, those packages
-	that are required for the compilation and use of another package,
-	can be specified either by name or by name with a version range
-	attached.  This makes it safe to have multiple versions available
-	in the tree.
+        Das Portage System ist im Hinblick der Flexibilit&#228;t welches es dem User bietet 
+        einzigartig. Traditionelle BSD Ports Systeme tendieren dazu nur jeweils eine 
+        Version eines jeden Paketes im Tree zu unterst&#252;tzen. Portage hat diese Begrenzungen
+        nicht. Es k&#246;nnen mehrere Versionen eines Paketes zur Installation zur Verf&#252;gung 
+        stehen.Paketabh&#228;ngigkeiten (Pakete, die zum Kompilieren andere Pakete n&#246;tig sind) 
+        k&#246;nnen entweder mit ihrem Namen oder mittels Namen mit zus&#228;tzlich angeh&#228;ngter 
+        Versionsnummer definiert werden. Das erm&#246;glicht es mehrere Versionen eines Paketes 
+        zeitgleich im Tree zu pflegen.
 	</p>
 	<p>
-	The dependency system also supports conditional dependencies.  Portage
-	has a powerful concept called the <i>USE setting</i> system.  By
-	changing one configuration variable in a Portage configuration file
-	you can disable optional support (and thus the need to depend on it)
-	for particular features or libraries for all packages at compile time.
-	This is a very flexible and powerful system which is farther explained 
-	in the next chapter.
+        Das Abh&#228;ngigkeits-System unterst&#252;tzt ebenfalls umgebungsabh&#228;ngige Abh&#228;ngigkeiten. 
+        Portage hat daf&#252;r ein leistungsstarkes Konzept, die sogenannten <i>USE Settings</i>. 
+        Durch das &#228;ndern einer Konfigurations-Variablen in einer Portage Konfiguration, ist 
+        es m&#246;glich bestimmte Unterst&#252;tzung f&#252;r Funktionen oder Bibliotheken w&#228;hrend des 
+        Kompilierens zu aktivieren bzw. abzuschalten. Dies ist ein sehr flexibles und 
+        leistungsstarkes System, welchem wir uns im n&#228;chsten Kapitel widmen werden.
 	</p>
-	<p>In addition Portage supports the concept of <i>SLOT</i>s.  In
-	the development of Gentoo Linux its developers often found that 
-	we needed to have multiple versions of certain packages (such as
-	libraries) installed to satisfy the demands of other packages.
-	The traditional approach to solving this problem has been to treat
-	different versions of the same package as different packages with
-	slightly different names.</p>
 	<p>
-	Instead of the developers learning
-	to treat certain versions as separate packages, the developers taught
-	Portage how to handle and maintain several versions of the same package
-	though the use of <i>SLOT</i>s.  An example of this would be to consider
-	the common library known as freetype.  The 1.x branch of freetype
-	is incompatible with the 2.x branch but both versions are needed
-	to satisfy the dependencies of various packages.  Most distributions
-	and ports systems tend to have a "freetype" package for freetype 1.x
-	and "freetype2" for 2.x.  We consider this approach a sign of a 
-	fundamentally broken package management system.  We simply assigned
-	the <i>SLOT</i> number 1 to the first and number 2 to the second.  With 
-	this information Portage can track both versions and upgrade both 
-	versions if updates to the respective upstream branches are made.
+        Zus&#228;tzlich unterst&#252;tzt Portage Konzept der <i>SLOTs</i>. W&#228;hrend der Entwicklung von 
+        Gentoo Linux wurde klar, da&#223; wir &#246;fters mehrere Versionen bestimmter Pakete (wie 
+        z.B. Bibliotheken) ben&#246;tigen, um die Anspr&#252;che andere Pakete zu erf&#252;llen. Der
+        traditionelle Weg um dieses Problem zu l&#246;sen war es, verschiedene Versionen eines 
+        Paketes als unterschiedliche Pakete mit leicht abweichenden Namen zu behandeln.
+        </p>
+	<p>
+        Anstatt verschiedene Versionen als eigene Pakete zu behandeln, brachten die Entwickler 
+        Portage bei, wie mehrere Versionen eines Paketes gleichzeitig durch Benutztung von 
+        <i>SLOTs</i> zu handhaben sind. Als Beispiel sei hier die g&#228;ngige Freetype Bibliothek 
+        genannt. Die 1.x Reihe von Freetype ist mit der 2.x Reihe inkompatibel, jedoch sind 
+        oftmals beide Versionen n&#246;tig, um die Abh&#228;ngigkeiten verschiedener Pakete zu erf&#252;llen. 
+        Die meisten Distributionen und Ports Systeme tendieren dazu, ein "freetype" Paket f&#252;r 
+        Freetype 1.x und ein "freetype2" Paket f&#252;r Freetype 2.x zu f&#252;hren. Dies betrachten wir 
+        als beinahe komplett besch&#228;digtes Paketmanagemant System. Wir erg&#228;nzen einfach die 
+        <i>SLOT</i> Nummer 1 zur ersten und Nummer 2 zur zweiten Version. Mit dieser 
+        Information ist Portage in der Lage beide Reihen zu pflegen und, falls n&#246;tig, beide auf 
+        h&#246;here Versionen upzudaten.
 	</p>
 </body>
 </section>
 
 <section>
-<title>Profiles</title>
+<title>Profile</title>
 <body>
 
-	<p>Portage supports the concept of <i>profiles</i>.  A profile
-	contains a list of package names and versions with a directive
-	and a set of default configuration options to be used by Portage.
-	A profile tells Portage which packages and which specific versions
-	of those packages to allow, disallow, or treat as required.  Users
-	can switch profiles by changing a single symlink 
-	(<i>/etc/make.profile</i>).  This may seem simple but it allows 
-	Portage to form the core of a distribution and serve as a professional 
-	grade build system. 
+	<p>
+        Portage unterst&#252;tzt ein weiteres Konzept, sogenannte <i>Profile</i>. Ein Profil enth&#228;lt 
+        eine Liste von Paketnamen und Versionen mit Anweisungen und einigen Standardoptionen, 
+        welche von Portage benutzt werden sollen. Ein Profil enth&#228;lt Informationen welche Pakete 
+        und welche Versionen jeweils erlaubt bzw. verboten oder als zwingend behandelt werden 
+        sollen. Der Benutzer kann zwischen verschiedenen Profilen wechseln in dem er einfach 
+        einen Symlink &#228;ndert (<i>/etc/make.profile</i>).
 	</p>
 	<p>
-	The entire effort spent in producing the Gentoo Linux distribution
-	has resulted in a collection of <i>ebuild</i> files Portage uses
-	and a profile.  This profile defines which packages are considered
-	"core" packages vital to the operation of a system.  The profile
-	also allows developers to block and unblock specific packages
-	and versions to temporarily disable broken packages, etc.  The
-	<i>ebuild</i> files simply tell Portage how to actually build
-	and install the packages the profile either demands or allows.
+        Der gesamte Aufwand, welcher bei der Entwicklung von Gentoo Linux betrieben wurde 
+        resultiert in einer Sammlung von <i>ebuilds</i> und einem Profil. Dieses Profil 
+        beschreibt welche Pakete als Kernpakete f&#252;r den Betrieb des Systems wichtig sind. 
+        Das Profil erlaubt dar&#252;ber hinaus den Entwicklern bestimmte Pakete zu blockieren bzw.
+        freizuschalten. Dies ist auch n&#252;tzlich um defekte Pakete zwischenzeitlich zu deaktivieren.
+        Die <i>ebuild</i> Dateien definieren einfach nur wie bestimmte Pakete von Portage 
+        kompiliert und installiert werden sollen, welche durch das Profil verlangt bzw. 
+        erlaubt werden.
 	</p>
 	
 </body>
@@ -163,23 +157,21 @@ Pflege von Paketen des Portage Systems.
 
 
 <chapter>
-<title>Configuring Portage</title>
+<title>Portage konfigurieren</title>
 
 <section>
-<title>Overview</title>
+<title>&#220;berblick</title>
 <body>
 	<p>
-  	The following chapter covers the various aspect of Portage
-	configuration important to both users and developers.  Portage
-	is a very flexible system and you will need to understand how
-	to configure Portage to be charge of your system and optimize
-	it for your needs.
+        Das folgende Kapitel soll verschiedene Aspekte von Portaga abdecken, die jeweils f&#252;r 
+        Benutzer wie Entwickler wichtig sind. Portage ist ein sehr flexibles System und Sie
+        m&#252;ssen verstehen, wie man Portage richtig konfiguriert, um Ihr System genau auf Ihre
+        Bed&#252;rfnisse abstimmen zu k&#246;nnen.
 	</p>
 	<p>
-	Please note that the use of "users" in this document means
-	persons with administrative rights to use Portage and change the
-	systems configuration.  You must have root access to change
-	Portage's configuration and to merge and unmerge packages.
+        Bitte beachten Sie, dass in diesem Dokument der Begriff "Benutzer" Personen mit
+        administrativen Rechten definiert. Um die Portage Konfiguration zu &#228;ndern und neue
+        Pakete zu installieren bzw. zu entfernen ben&#246;tigen Sie Root-Rechte.
 	</p>
 </body>
 </section>
