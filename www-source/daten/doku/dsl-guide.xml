@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding="iso-8859-15"?>
+
+<guide>
+<title>Anleitung zur Konfiguration von DSL mit Gentoo Linux</title>
+<author title="Autor"><mail link="wpbasti@berlios.de">Sebastian Werner</mail></author>
+
+<abstract>
+Diese Anleitung erklärt in kurzer Form, wie Sie DSL auf Ihrer Gentoo Maschine einrichten können.
+</abstract>
+
+<version>1.0</version>
+<date>04. Februar 2003</date>
+
+<chapter>
+<title>DSL-Einrichtung</title>
+<section>
+<body>
+
+<ul>
+<li>emerge net-dialup/ppp</li>
+<li>Dateien dekomprimieren</li>
+<li>Datei 't-online' nach etc/ppp/peers kopieren.</li>
+<li>Datei 'net-ppp0' nach etc/init.d kopieren. Evtl. vorher ein Backup der vorhanden Datei erstellen.</li>
+<li>Passwort in etc/ppp/pap-secrets eintragen.</li>
+<li>Benutzername in /etc/ppp/peers/t-online anpassen (bei atm@t-online.de).</li>
+<li>Starten per '/etc/init.d/net.ppp0 start'.</li>
+<li>Ping irgendwohin (zum testen).</li>
+<li>Damit beim Starten des System Gentoo Online geht: 'rc-update add net.ppp0 default'.</li>
+</ul>
+
+<p>
+  <uri link="t-online.gz">Download 1: t-online.gz</uri>
+<br/>
+  <uri link="net.ppp0.gz">Download 2: net.ppp0.gz</uri>
+</p>
+
+
+<p>
+  <b>Fertig.</b> Viel Spass...
+</p>
+
+</body>
+</section>
+</chapter>
+</guide>
+
+ 
