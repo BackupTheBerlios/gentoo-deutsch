@@ -753,26 +753,31 @@ Calculating dependencies ...done!
 [ebuild  N   ] dev-util/kdevelop-2.0.2 to /
 </pre></td></tr>
 </table>
-	<p>In the above listing, packages marked with a <font class="input">N</font> are
-	packages which have not yet been installed and would be installed
-	during this action.  Packages marked with a <font class="input">U</font> indicate
-	that an older version of the package was already installed and the
-	action would upgrade the package.
+	<p>Pakete, die mit einem <font class="input">N</font> gekennzeichnet sind, befinden
+	sich noch nicht installiert auf Ihrem Rechner, wobei durch diese
+	Aktion es installiert wird. Pakete, die mit einem <font class="input">U</font>
+	gekennzeichnet werden, befinden sich bereits installiert auf
+	Ihrem System (wobei es sich höchstwahrscheinlich um veraltete
+	Pakete handelt) und werden durch diese Aktion aktualisiert.
 	</p>
 	<p>
-	The other arguments available are:
+	Folgende Parameter sind ausserdem Verfügbar:	
 	</p>
 	<p>
-	<font class="input">--fetchonly</font> : Downloads the needed archive files for compiling
-	the package to be installed and any dependencies that need to be met.
+	<font class="input">--fetchonly</font> : Ladet alle benötigten Dateien herunter, die
+	für das Kompilieren notwendig sind sowie alle Abhängigkeiten,
+	die dadurch entstehen.
 	</p>
 	<p>
-	<font class="input">--emptytree</font> : This option makes Portage pretend that none of the
-	dependencies of this package or the packages it depends upon are 
-	installed.  This is useful with <font class="input">--pretend</font> to display a complete
-	tree of dependencies for any particular package.  All dependencies
-	except for glibc are displayed.
+	<font class="input">--emptytree</font> : Diese Option lässt Portage vortäuschen,
+	dass keine der Abhängigkeiten oder Pakete auf denen das zu installierende 
+        Paket beruht installiert sind. 
+
+	Dies lässt sich sehr gut Option <font class="input">--pretend</font> verbinden, um eine komplette
+	Liste der Abhängigkeiten für jedes einzelne Paket anzeigen
+	zu lassen. Alle Abhängigkeiten mit Ausnahme von Glibc werden dargestellt.
 	</p>
+
 	<p>
 <font class="input">--nodeps</font> : Portage attempts to merge only the specified
 	packages and ignores any dependencies.  If you do not have the 
