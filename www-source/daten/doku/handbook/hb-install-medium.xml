@@ -6,7 +6,7 @@
 
 <!-- English CVS Version: 1.39 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.11 2004/01/15 15:33:10 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.12 2004/01/15 15:36:49 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -655,7 +655,7 @@ mit <uri link="http://www.md5summer.org">md5summer</uri> unter Windows.
 Bitte beachten Sie die Beschreibungen im <uri link="http://store.gentoo.org">
 Gentoo Store</uri> um zu erfahren, welche LiveCD (oder Stage) Sie für Ihre CPU
 benutzen sollten. Ein häufiger Fehler ist es eine LiveCD (oder eine Stage) für
-eine andere Architektur oder aktuellere CPU als die eigene es ist auszuwählen
+eine andere Architektur oder aktuellere CPU, als die eigene es ist, auszuwählen
 (zum Beispiel "athlon-xp" für einen normalen AMD Athlon).
 </note>
 
