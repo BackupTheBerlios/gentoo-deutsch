@@ -15,7 +15,7 @@ Miniscript um diese trotzdem benutzen zu koennen:
 #!/bin/sh
 cat $1 | sed -e 's/\&auml;/\&#228;/' -e 's/\&ouml;/\&#246;/' -e 's/\&uuml;/\&#252;/' \
         -e 's/\&szlig;/\&#223;/' -e 's/\&Auml;/\&#196;/' -e 's/\&Ouml;/\&#214;/' \
-        -e 's/\&Uuml;/&#220;/' -e 's/\&euro;/&#8364;/' \
+        -e 's/\&Uuml;/\&#220;/' -e 's/\&euro;/\&#8364;/' \
         > $1.new
 ---------------------------
 			
