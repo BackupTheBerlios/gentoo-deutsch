@@ -90,7 +90,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 			<ul>
 				<li><uri link="http://www.gentoo.org/doc/de/use-howto.xml">Die Gentoo USE Flags</uri></li>
 				<li><uri link="anwendungen/portage">Portage Benutzerleitfaden</uri></li>
-				<li><uri link="http://www.gentoo.org/doc/de/portage-manual.xml">Portage Handbuch</uri></li>
+				<li><uri link="fortgeschritten/portage">Portage Handbuch</uri></li>
 				<li><uri link="fortgeschritten/systemstart">Systemstart mit dem Gentoo Init System</uri></li>
 				<li><uri link="antworten/faq">Original gentoo.org FAQ</uri></li>
 				<li><uri link="antworten/faq_ergaenzung">Zusätzliche gentoo.de FAQ</uri></li>
