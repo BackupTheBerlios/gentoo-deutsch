@@ -1,0 +1,9 @@
+# ChangeLog for net-dialup/fcdsl
+# Copyright 2003 Alexander Holler; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/fcdsl/ChangeLog,v 1.1 2003/04/09 06:06:53 holler Exp $
+
+*fcdsl-03.10.05 (6 Apr 2003)
+
+  6 Apr 2003; Alexander Holler <holler@gentoo.de> :
+
+  Initial version.

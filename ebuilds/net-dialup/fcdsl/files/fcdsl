@@ -1,0 +1,3 @@
+# Options for the AVM FRITZ!DSL card
+# Correct these settings with the output from drdsl -n
+#options fcdsl VPI=1 VCI=32 VCC=1
