@@ -1,0 +1,1263 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Linux Frequently Asked Questions</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux Frequently Asked Questions</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Der Portage Verzeichnisbaum</option>
+<option value="#doc_chap2">2. Die ebuild Skripte</option>
+<option value="#doc_chap3">3. Filesystem Locations</option>
+<option value="#doc_chap4">4. The Portage scripts and utilities</option>
+<option value="#doc_chap5">5. Package Dependencies</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Der Portage Verzeichnisbaum</p>
+<p class="secthead"><a name="_sect1">Einführung </a></p>
+<p>Der Portage Verzeichnisbaum ist normalerweise unter /usr/portage zu finden und ist hierarchisch 
+		strukturiert bestehend aus Kategorien gefolgt von Paket-Verzeichnissen. Hier ein Beispiel: Die util-linux-2.11g.ebuild 
+		Datei ist unter /usr/portage/sys-apps/util-linux zu finden. In diesem Verzeichnis können sich mehrere verschiedene Versionen 
+		neben dem util-linux-2.11g.ebuild befinden. Alle unterschiedelichen Pakete teilen sich unabhängig von ihrer Version dasselbe 
+		kategorie/paket Verzeichnis in /usr/portage. </p>
+<p class="secthead"><a name="_sect2">Was gehört nicht in den Portage Verzeichnisbaum? </a></p>
+			<p>Generell sollte im Portage Verzeichnis nur die .ebuild Dateien und sehr kleine zugehörige Dateien wie 
+			zum Beispiel Patches oder Beispielskonfigurationen gespeichert werden. Diese Dateien sollten immer unter 
+			/usr/portage/kategorie/paket/files abgespeichert werden, um das kategorie/paket Verzeichnis nicht zu 
+			unübersichtlich machen. Generell ist es für Entwickler keine gute Idee Binärdateien (Nicht-ASCII-Dateien) 
+			im CVS abzulegen. Wenn dies dennoch notwenig sein sollte (zum Beispiel eine PNG Grafik aus welchem 
+			Grund auch immer), dann sollte sie mit der -kb option in das CVS eingebracht werden:
+		<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1: Code Auflistung 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+		# cvs add -kb myphoto.png</pre></td></tr>
+</table>
+		Die -kb option teilt CVS mit, dass myphoto.png eine Binärdatei ist und einer besonderen 
+		Behandlung bedarf. Zum Beispiel das Zusammenführen von zwei verschiedenen Binärdateien wird somit nicht erlaubt, 
+		was hier auch naheliegend ist. Wenn wir schon beim Zusammenführen sind, alle Patches die dem Portage Verzeichnisbaum 
+		hinzugefügt werden, sollten nicht komprimiert sein. Dies erlaubt dann CVS Veränderungen einzubringen und die Entwickler 
+		von dabei möglicherweise entstehenden Konfliken korrekt zu warnen.</p>
+<p class="secthead"><a name="_sect3">Das files Verzeichnis </a></p>
+<p>Wie vorher bereits beschrieben, existiert in jedem paket Unterverzeichnis das Verzeichnis files. 
+		Alle Patches, Konfigurationsdateien oder andere Dateien, die von diesem Paket gebraucht werden, gehören 
+		hier hinein. Selbst erstellte Patches sollten mit einem Versions-Namen versehen werden, wie zum beispiel 
+		meinpaket-1.0-gentoo.diff. Die Gentoo Erweiterung im Namen informiert die Benutzer, dass dieser Patch durch 
+		uns, den Gentoo Entwicklern, erstellt wurde und nicht aus einer Mailingliste oder sonst wo gezogen wurde. 
+		Auch hier sollten die  diffs nicht komprimiert werden, da CVS mit Binärdateien nicht so gut umgehen kann.</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Die ebuild Skripte</p>
+<p class="secthead"><a name="_sect1">Einführung </a></p>
+	<p>Die ebuild Skripte sind die Grundlage des gesamten Portage Systems. Sie enthalten die gesamte Information
+	zum downloaden, entpacken, kompilieren und installieren des Quellcodes aber auch eventuelle änderungen und 
+	Konfigurationen , die vor oder nach der Installation oder beim Entfernen durchgeführt werden. Während das meiste
+	von Portage in Python geschrieben ist, sind die ebuilds als bash-Skripte gehalten, da dies das Aufrufen von Befehlszeilen
+	wie auf der Kommandozeile ermöglicht. Eines der Hauptdesign-Prinzipien der ebuild Skripte ist, dass die darin aufgerufenen
+	Befehle denen der Kommandozeil entsprechen, wie wenn der Benutzer das Paket manuell installieren würde. Aus diesem
+	Grund ist die bash-Syntax eine gute Wahl.</p>
+
+	<p>Ebuild Skripte werden durch die <font class="code">ebuild</font> und <font class="code">emerge</font> Befehle ausgeführt. Man muss sich das 
+	<font class="code">ebuild</font> Kommando als einfaches Erstellungswerkzeug vorstellen. Es kann ein ebuild erstellen und installieren, 
+	aber mehr auch nicht. Es kontrolliert, ob Abhängigkeiten erfüllt sind, kann diese aber nicht selbständig auflösen. Auf
+	der anderen Seite ist <font class="code">emerge</font> als hochspezialisierte Zentrale für <font class="code">ebuild</font>, welches die Möglichkeit 
+	besitzt, selbständig abhängige Pakete zu installieren, wenn gewünscht als &quot;was wäre wenn...&quot; dem Benutzer anzeigen,
+	welche ebuilds eingeführt <font class="emphasis">würden</font> und vieles mehr. Allgemein sticht <font class="code">emerge</font> den <font class="code">ebuild</font> Befehl
+	in allen Belangen aus, bis auf einen Punkt. Mit <font class="code">ebuild</font> kann der Benutzer inkrementell alle unterschiedlichen
+	Bereiche einer Paketinstallation (herunterladen, entpacken, kompilieren, installieren und einführen) Schritt für Schritt.  
+	ausführen. Für Entwickler ist dies ein unverzichtbares Werkzeug zum debuggen, da nur so Probleme mit dem ebuild
+	auf einen kleinen Bereich des Gesamtprozesses eingegrenzt werden können.</p>
+	<p class="secthead"><a name="_sect2">Die Benennung von  ebuild Dateien </a></p>
+	<p>Jeder Ebuild Dateiname besteht aus vier Abschnitten:</p>
+
+	<p>Der erste Abschnitt ist der Paketname, der nur aus Kleinbuchstaben, den Zahlen 0-9 und dem Bindestrich ('-')
+	enthalten darf. Beispiele sind: <font class="code">util-linux</font>, <font class="code">sysklogd</font> und <font class="code">glibc</font>.  </p>
+
+	<p>Der zweite Abschnitt ist die Versionsnummer des Paketes, welche normalerweise mit der Versionsnummer des
+	Quellcode Tarballs übereinstimmt. Diese besteht normalerweise aus zwei oder drei Nummern, die durch Punkte
+	von einander getrennt sind, wie zum Beispiel <font class="code">1.2</font> oder <font class="code">4.5.2</font> (sehr lange, durch Punkte
+	voneinander getrennte Nummern werden auch unterstützt) und darf von einen einfachen Buchstaben auf die letzte
+	Zahl gefolgt werden, zum Beispiel: <font class="code">1.4b</font> oder <font class="code">2.6h</font>. Die Paketnummer wird mit der Versionsnummer
+	durch einen Bindestrich verbunden: <font class="code">foo-1.0</font>, <font class="code">bar-2.4.6</font>, etc.</p>
+
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Wenn Sie mit dem Gedanken spielen, einen angehängten Buchstaben in Ihrer Versionsnummer zu verwenden,
+	sollten Sie darüber im klaren sein, dass dieser Buchstabe <font class="emphasis">nicht</font> dazu verwendet werden sollte, einen
+	eventuellen Alpha oder Beta Status anzuzeigen, da alphas und betas als <font class="emphasis">prereleases</font> zäen, angehängte 
+	Buchstaben jedoch als <font class="emphasis">neuere Versionen</font>. Das ist eine grosse Unterscheidung, da Portage die Versionsnummer eines
+	ebuilds dazu verwendet, herauszufinden, ob es neuer oder älter ist als ein Paket mit gleichem Namen aus derselben 
+	Kategorie. Es ist sehr wichtig, dass Versionsnummern glaubwürdig die Version eines Paketes repräsentieren, damit
+	Portage seine Abhägikeits-Prüfungen korrekt ausführt..</p></td></tr></table>
+
+<p>The third (optional) section contains a special suffix; either
+<font class="code">_alpha</font>, <font class="code">_beta</font>, <font class="code">_pre</font> or <font class="code">_rc</font>. Any of these suffixes
+may be immediately followed my a number, e.g., <font class="code">linux-2.4.0_pre10</font>;
+Assuming identical version parts, an <font class="code">_alpha</font> package is older than
+<font class="code">_beta</font>, <font class="code">_beta</font> older than <font class="code">_pre</font>, and <font class="code">_pre</font> older than
+<font class="code">_rc</font>.
+</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>An <font class="code">_rc</font> package is older than a package without an underscore
+prefix (i.e. <font class="code">linux-2.4.0</font>), and <font class="code">linux-2.4.0</font> is older than a
+package with a single letter prefix, i.e. <font class="code">linux-2.4.0b</font>.  As you would
+expect, the <font class="code">linux-2.4.0b</font> package is considered older than
+<font class="code">linux-2.4.0c</font>.  Again this versioning information is important, as
+Portage uses it internally to determine whether one package or ebuild is newer
+than another with the same category and name.</p></td></tr></table>
+
+<p>The fourth (optional) section of the package name is the Gentoo Linux-specific <font class="emphasis">revision</font> number,
+which is specified by <font class="code">-r#</font>, where <font class="code">#</font> is an integer,
+e.g. <font class="code">package-4.5.3-r3</font>. This revision number is independent of
+the version of the source tarball and is used to inform people that
+a new and improved Gentoo Linux rev of a particular package is available.
+</p>
+
+<p>
+If you make non-trivial improvements to an existing ebuild file, you should
+copy the ebuild file to a new file with the revision number incremented by 1.
+Initial releases normally have no revision number, e.g.
+<font class="path">package-4.5.3</font> and are considered by Portage to have a a revision
+number of zero.  This means that counting goes as follows: <font class="code">1.0</font> (initial
+version), <font class="code">1.0-r1</font>, <font class="code">1.0-r2</font>, etc.
+</p>
+
+<p>And I suppose that we actually have a <font class="emphasis">fifth</font> section of the ebuild name -- the
+<font class="code">.ebuild</font> extension itself.
+</p>
+
+<p class="secthead"><a name="_sect3">Contents of an ebuild File </a></p>
+<p>1. Variable Settings:</p>
+<p>The first part of every ebuild file is made up of a number of
+variable settings. The variables you can set are:</p>
+<table class="ntable">
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">P</font></td>
+<td bgcolor="#ddddff" class="tableinfo">the name and version of the package; you should not need to set this, as it is determined from the name of the ebuild file</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">A</font></td>
+<td bgcolor="#ddddff" class="tableinfo">the name (without the path) of the main archive file for your package</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">S</font></td>
+<td bgcolor="#ddddff" class="tableinfo">the source directory for your package; normally ${WORKDIR}/${P}</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">DESCRIPTION</font></td>
+<td bgcolor="#ddddff" class="tableinfo">a short, one line description of your package</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">SRC_URI</font></td>
+<td bgcolor="#ddddff" class="tableinfo">the URIs for every source file in your package, separated by whitespace; normally the first one is something like &quot;ftp://ftp.company.com/pub/somepackage/${A}&quot;</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">HOMEPAGE</font></td>
+<td bgcolor="#ddddff" class="tableinfo">your package's homepage</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">DEPEND</font></td>
+<td bgcolor="#ddddff" class="tableinfo">build dependencies; see the section <a href="#dependencies">Package Dependencies</a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">RDEPEND</font></td>
+<td bgcolor="#ddddff" class="tableinfo">runtime dependencies; see the section <a href="#dependencies">Package Dependencies</a>
+</td>
+</tr>
+</table>
+<p>2. ebuild Functions</p>
+<p>There are a number of different functions that you can define in ebuild files that control the building and installation process of your package.</p>
+<table class="ntable">
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_setup</font></td>
+<td bgcolor="#ddddff" class="tableinfo">Use this function to perform any miscellaneous prerequisite tasks.  This might include adding system accounts or checking for an existing configuration file.  This function must return 0 in order for processing to proceed.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">src_unpack</font></td>
+<td bgcolor="#ddddff" class="tableinfo">Use this function to unpack your sources and run autoconf/automake/etc. if necessary. By default, it unpacks the packages in <font class="code">${A}</font>. The default starting directory is <font class="code">${WORKDIR}</font>.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">src_compile</font></td>
+<td bgcolor="#ddddff" class="tableinfo">Use this function to configure and build the package. Default starting directory is <font class="code">${S}</font>.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">src_install</font></td>
+<td bgcolor="#ddddff" class="tableinfo">Use this function install the package to an image in <font class="code">${D}</font>. If your package uses automake, you can do this simply with <font class="code">make DESTDIR=${D} install</font>. <font class="emphasis">Make sure your package installs all its files using <font class="code">${D}</font> as the root!</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_preinst</font></td>
+<td bgcolor="#ddddff" class="tableinfo">The commands in this function are run just prior to merging a package image into the filesystem.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_postinst</font></td>
+<td bgcolor="#ddddff" class="tableinfo">The commands in this function are run just following merging a package image into the filesystem.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_prerm</font></td>
+<td bgcolor="#ddddff" class="tableinfo">The commands in this function are run just prior to unmerging a package image from the filesystem.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_postrm</font></td>
+<td bgcolor="#ddddff" class="tableinfo">The commands in this function are run just following unmerging a package image from the filesystem.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_config</font></td>
+<td bgcolor="#ddddff" class="tableinfo">You use this function to setup an initial configuration for the package after it's installed. All paths in this function should be prefixed with ${ROOT}.  This function is <font class="emphasis">only</font> executed if and when the user runs: <font class="code">ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config</font>.</td>
+</tr>
+</table>
+<p class="secthead"><a name="_sect4">Rules for writing an ebuild File </a></p>
+<p>Since ebuild files are really just shell scripts, you should
+use your editor's shell-script mode for editing them. You should use
+proper indentation, using only tab characters -- no spaces. Make sure
+you set up your editor to put tabstops at 4 spaces. Always make sure
+you use braces around your environment variables; e.g. <font class="code">${P}</font>
+instead of just <font class="code">$P</font>.</p>
+
+<p>Long lines are wrapped with ' \', thus:</p>
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+./configure \
+	--prefix=/usr || die &quot;configure failed&quot;
+</pre></td></tr>
+</table>
+
+<p>For further details, refer to <font class="path">skel.ebuild</font> (usually
+residing in /usr/portage).</p>
+
+<p>If you're using Vim, you can put the following snippet at the bottom
+of your .vimrc to make sure you're using the right settings when editing
+ anything Gentoo-related.</p>
+
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+if (getcwd() =~ 'gentoo-x86\|gentoo-src\|portage')
+	set tabstop=4 shiftwidth=4 noexpandtab
+endif
+</pre></td></tr>
+</table>
+<p>TODO: add stuff about emacs.</p>
+<p class="secthead"><a name="_sect5">USE Variables </a></p>
+
+<p>The purpose of USE variables is to allow you to configure Portage to globally
+and automatically enable or disable certain <font class="emphasis">optional build-time</font>
+features.  Here's an example.  Let's say you're a GNOME fan, and you'd like any
+ebuild that has the option of compiling-in optional GNOME support to do
+so.  In this case, you'd add <font class="code">gnome</font> to the <font class="code">USE</font> variable in
+<font class="path">/etc/make.conf</font>, and then Portage will automatically add optional
+GNOME functionality to packages if it is available.  Likewise, if you don't
+want optional GNOME features to be added to your ebuilds if they are available,
+simply edit <font class="path">/etc/make.conf</font> and make sure that <font class="code">gnome</font> is
+<font class="emphasis">not</font> set in the <font class="code">USE</font> variable.  Gentoo Linux has an almost
+overwhelming number of USE options, allowing you to have your system configured
+exactly the way you want it.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b> If you unset a USE variable (for example, removing <font class="code">gnome</font> from
+<font class="code">USE</font>), this will only instruct Portage to disable <font class="emphasis">optional</font>
+build-time support for GNOME.  However, if you <font class="code">emerge</font> an ebuild that
+<font class="emphasis">requires</font> GNOME, the package will obviously have GNOME support enabled, as you
+would expect.  This also means that
+GNOME will be automatically installed (as a dependency) if it hasn't been already.  That's why
+it's always a good idea to do an <font class="code">emerge --pretend</font> before doing the
+&quot;real&quot; <font class="code">emerge</font>; that way, you'll always know that you're going to get!
+</p></td></tr></table>
+
+In your own ebuilds, you can check whether a USE variable is set by using the
+<font class="code">use &lt;variable&gt;</font> command. The <font class="code">use</font> command prints out the name
+of every variable that is present in both <font class="code">USE</font> and its command line. You
+would normally use this command as follows:</p>
+
+<p><font class="code">if [ &quot;`use X`&quot; ]; then commands; fi</font></p>
+
+
+<p>USE variables can also be used to set dependencies. For example, you may
+only want to require a package if a certain USE variable is set. This is done
+by using the syntax <font class="code">variable? ( mycat/mypackage-1.0-r1 )</font> in the DEPEND
+variable for your ebuild. In this example, <font class="code">mycat/mypackage-1.0-r1</font> will
+only be required if <font class="code">variable</font> is present in <font class="code">USE</font>
+</p>
+
+<p>Here's an important tip about how to use <font class="code">USE</font>.  Most of the time,
+a package will have a <font class="code">./configure</font> script used to perform configuration
+steps.  Generally, if your ebuild uses <font class="code">./configure</font>, any optional build-time
+functionality will be enabled or disabled by passing the appropriate arguments to
+the <font class="code">./configure</font> command.  Here's the best way to handle this.  First,
+find out whether the particular <font class="code">./configure</font> option that you want to add
+<font class="code">USE</font> support for is is <font class="emphasis">enabled</font> or <font class="emphasis">disabled</font> by default.  If
+it's <font class="emphasis">enabled</font> by default, then do things as follows:</p>
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+DEPEND=&quot;gnome? ( &gt;=gnome-base/gnome-1.4 )
+	mysql? ( &gt;=dev-db/mysql-3.23.49 )&quot;
+
+src_compile() {
+	local myconf
+	use gnome || myconf=&quot;--disable-gnome&quot;
+	use mysql || myconf=&quot;${myconf} --disable-mysql&quot;
+
+	./configure ${myconf} --prefix=/usr --host=${CHOST} || die
+	emake || die
+}
+</pre></td></tr>
+</table>
+<p>
+Above, we only check to see if the <font class="code">gnome</font> and <font class="code">mysql</font> <font class="code">USE</font> variables
+are disabled.  The <font class="code">use gnome || </font> part tests whether <font class="code">gnome</font> is in the <font class="code">USE</font>
+variable, and if not, then sets <font class="code">myconf=&quot;--disable-gnome&quot;</font>.  There's no need to explicitly
+enable GNOME or MySQL, since for this package, they are both enabled by
+default.  However, if a particular feature is <font class="emphasis">disabled</font> by default, you can
+use this approach:</p>
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+DEPEND=&quot;gnome? ( &gt;=gnome-base/gnome-1.4 )
+	mysql? ( &gt;=dev-db/mysql-3.23.49 )&quot;
+
+src_compile() {
+	local myconf
+	use gnome &amp;&amp; myconf=&quot;--enable-gnome&quot;
+	use mysql &amp;&amp; myconf=&quot;${myconf} --enable-mysql&quot;
+
+	./configure ${myconf} --prefix=/usr --host=${CHOST} || die
+	emake || die
+}
+</pre></td></tr>
+</table>
+<p>This time, we only explicitly enable GNOME and MySQL support if it's respective <font class="code">USE</font> variable
+has been set.  The <font class="code">use mysql &amp;&amp;</font> part tests whether <font class="code">mysql</font> is in the <font class="code">USE</font>
+variable, and if so, then sets <font class="code">myconf=&quot;${myconf} --enable-mysql&quot;</font>.</p>
+
+<p>The following USE variables are currently used in Gentoo Linux:</p>
+
+<table class="ntable">
+<tr>
+<td bgcolor="#7a5ada" class="infohead"><b>Variable</b></td>
+<td bgcolor="#7a5ada" class="infohead"><b>Description</b></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">3dfx</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für 3dfx Grafikkarten zu XFree86 hinzu. Siehe dazu auch: voodoo3.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">3dnow</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für 3dnow multimedia Processor Instructionen hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">aalib</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für media-libs/aalib (ASCI-Graphics Library) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">acl</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für sys-apps/acl (XFS dump/restore utilities) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">afs</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für OpenAFS (Verteiltes Dateisystem) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">alsa</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für media-libs/alsa-lib (Advanced Linux Sound Architecture) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">apm</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für APM (Advanced Power Management) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">arts</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für aRts: dem KDE sound daemon hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">atlas</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für atlas anstatt von blas in dev-lang/ hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">avi</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für Win32 AVI und avifile (avi Bibliothek) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">berkdb</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für sys-libs/db (Berkeley DB für MySQL) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">bonobo</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für gnome-base/bonobo (Gnome CORBA Schnittstelle) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">crypt</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für Kryptographie hinzu -- benutzt mcrypt oder gpg wo anwendbar.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">cups</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für CUPS (Common Unix Printing System) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dga</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt DGA Unterstützung für Xfree86 hinzu (DGA=Direct Graphic Access).</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">directfb</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für DirectFB layer (Bibliotheken für FB Geräte) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">doc</td>
+<td bgcolor="#ddddff" class="tableinfo">Erstellt zusätzliche documentation mittels fe.x und gtk-doc </td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dvd</td>
+<td bgcolor="#ddddff" class="tableinfo">Unterstützung für DVDs</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">encode</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für MEncoder oder LaME encoder, wo möglich, hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">esd</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für media-sound/esound (Enlightened Sound Daemon) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">evo</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für evolution in gnumeric hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">fbcon</td>
+<td bgcolor="#ddddff" class="tableinfo">Framebuffer Unterstützung für die Konsole, über den Kernel aktivierbar.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">flash</td>
+<td bgcolor="#ddddff" class="tableinfo">Unterstützung für Flash Dateien mittels Ming.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gb</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für Gnome Basic zu gnumeric hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gd</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für sys-libs/gdbm (GNU database libraries) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gdbm</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für sys-libs/gdbm (GNU database libraries) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">ggi</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für media-libs/libggi (Nicht-X video api/Treiber) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">ggz</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für die Gnu Gaming Zone (http://ggz.sf.net) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gif</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für GIF Bilder hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gnome</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt GNOME Unterstützung für das jeweilige Paket hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gphoto2</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für Digitalkameras.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gpm</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für sys-libs/gpm (Maustreiber für die Konsole)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gtk</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für x11-libs/gtk+ (The GIMP Toolkit) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">gtkhtml</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für gnome-extra/gtkhtml hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">guile</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für dev-util/guile (ein Scheme Interpreter) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">icc</td>
+<td bgcolor="#ddddff" class="tableinfo">Benutzt den Intel C++ Compiler, wenn das Paket unterstützung dafür anbietet.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">icc-pgo</td>
+<td bgcolor="#ddddff" class="tableinfo">Erlaubt PGO Datenerstellung bzw. deren Nutzung, wenn icc aktiviert ist.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">imap</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für IMAP hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">imlib</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für media-libs/imlib (Bibliothek zum Laden und Rendern von Bildern) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">innodb</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt innodb Unterstützung für mySQL (transaction support) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">ipv6</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für IP version 6 hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">java</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Java Unterstützung hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">jpeg</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt JPEG Unterstützung hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">kde</td>
+<td bgcolor="#ddddff" class="tableinfo">Fügt Unterstützung für kde-base/kde (K Desktop Enviroment) hinzu.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">lcms</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds lcms support to media-gfx/imagemagick (Color management)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">ldap</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds LDAP support (Lightweight Directory Access Protocol)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">libg++</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds C++ modules in dev-db/postgresql (libpq++)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">libgda</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds GNU Data Access (CORBA wrapper) support for gnumeric</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">libwww</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds libwww support (General purpose WEB API)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">matrox</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds Matrox MGA support to mplayer</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mikmod</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds libmikmod support to allow playing of SoundTracker-style music files</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mmx</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for optimizations for Pentium MMX and Athlon class processors</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">motif</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds motif support (Open Motif)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mozaccess-builtin</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds text-to-speech and eventually braille support mozilla</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mozctl</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds Pango like module to mozilla (???)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mozilla</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds mozilla support</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mozirc</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds IRC (Internet Relay Chat) module to mozilla</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mozxmlterm</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds Xterm like terminal with XML support to mozilla</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mpeg</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds libmpeg3 support to various packages</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">mysql</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds mySQL support</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">nas</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for network audio sound</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">ncurses</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds ncurses support (console display library)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">nls</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds Native Language Support (using gettext - GNU locale utilities)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">nocardbus</td>
+<td bgcolor="#ddddff" class="tableinfo">Disables cardbus support in pcmcia-cs</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">odbc</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds ODBC Support (Open DataBase Connectivity)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">oggvorbis</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for the OggVorbis audio encoding</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">opengl</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for OpenGL</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">oss</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for OSS (Open Sound System)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">pam</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support PAM (Pluggable Authentication Modules)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">pcmcia</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for PCMCIA slots/devices found on laptop computers</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">pda</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for portable devices.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">pdflib</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for PDF (Portable Document Format)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">perl</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support/bindings for the Perl language</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">pic</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds PIC support to gcc (???)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">plotutils</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds plotutils support to gnuplot (library for 2-D vector graphics)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">png</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for libpng (PNG images)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">pnp</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for PNP in pcmcia-cs (Plug-N-Play)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">postgres</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for the postgresql database</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">python</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support/bindings for the Python language</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">qt</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for the Qt library</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">qtmt</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for multithreaded QT</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">quicktime</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for OpenQuickTime</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">readline</td>
+<td bgcolor="#ddddff" class="tableinfo">enables support for libreadline, a GNU line-editing library that most everyone wants</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">ruby</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support/bindings for the Ruby language</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">samba</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for SAMBA</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">sdl</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for Simple Direct Layer (media library)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">slang</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for the slang text display library (it's like ncurses, but different)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">slp</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds Service Locator Protocol support to CUPS</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">snmp</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for the Simple Network Management Protocol if available</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">socks5</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for the socks5 proxy</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">spell</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds dictionary support</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">sse</td>
+<td bgcolor="#ddddff" class="tableinfo">fast floating point optimisation for Pentium class chips</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">ssl</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for Secure Socket Layer connections</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">static</td>
+<td bgcolor="#ddddff" class="tableinfo">Causes things to be statically linked instead of dynamically</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">svga</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for SVGAlib (graphics library)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">tcltk</td>
+<td bgcolor="#ddddff" class="tableinfo">Support for Tcl and/or Tk</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">tcpd</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for TCP wrappers</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">tetex</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for teTeX</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">tiff</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for the tiff image format</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">truetype</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for FreeType and/or FreeType2 fonts</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">trusted</td>
+<td bgcolor="#ddddff" class="tableinfo">Builds trusting versions of the pcmcia-cs programs</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">voodoo3</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for 3Dfx's Voodoo3 video chipset, else defaults to Voodoo4/5 support if not in USE</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">X</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for XFree86</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">xface</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds xface support -- only in use for sylpheed and sylpheed-claws</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">xml</td>
+<td bgcolor="#ddddff" class="tableinfo">Check/Support flag for XML library (version 1)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">xml2</td>
+<td bgcolor="#ddddff" class="tableinfo">Check/Support flag for XML library (version 2)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">xmms</td>
+<td bgcolor="#ddddff" class="tableinfo">Check/Support for XMMS (X MultiMedia System) player</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">xv</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds in optional support for the Xvideo extension (an X API for video playback)</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">zeo</td>
+<td bgcolor="#ddddff" class="tableinfo">Adds support for Zope Enterprise Objects</td>
+</tr>
+</table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Filesystem Locations</p>
+<p class="secthead"><a name="_sect1">Introduction to the FHS </a></p>
+<p>The filesystem layout standards used in Gentoo Linux closely follow the FHS,
+short for <font class="emphasis">Filesystem Hierarchy Standard</font>. A simplified
+description of the standard is given here; for a complete
+specification go to <a href="http://www.pathname.com/fhs/">http://www.pathname.com/fhs/</a>.</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b> The <font class="path">/opt</font> hierarchy is addressed in section 3.12 of the FHS.
+Section 4.4 deals with the <font class="path">/usr/X11R6</font> directory.  KDE and GNOME are
+not specifically addressed, and are in fact not even mentioned in the current
+version of the FHS.
+</p></td></tr></table>
+<p class="secthead"><a name="_sect2">How to fit your packages into the filesystem </a></p>
+<p>Usually, if the package uses autoconf and automake, the
+default installation destinations are mostly correct, with a few exceptions:</p>
+<ul>
+
+<li>If you're installing a program into <font class="path">/bin</font>, <font class="path">/sbin</font>,
+<font class="path">/usr/bin</font> or <font class="path">/usr/sbin</font>, then the program's
+corresponding man page should be installed into the <font class="path">/usr/share/man</font>
+tree.  This can often be accomplished by specifying a  <font class="code">./configure
+--mandir=/usr/share/man</font> in the ebuild.</li>
+
+<li>GNU info files should always be installed to <font class="path">/usr/share/info</font>,
+<font class="emphasis">even if the info files are about X11, GNOME or KDE-specific programs or
+tools</font>.  Make a note: <font class="path">/usr/share/info</font> is the <font class="emphasis">only</font>
+official location for GNU info files.  Since most <font class="code">./configure</font> scripts
+default to installing GNU info files in <font class="code">/usr/info</font>, it's often necessary
+to call <font class="code">./configure</font> with the <font class="code">--infodir=/usr/share/info</font> argument.</li>
+
+<li>Documentation files are installed in <font class="path">/usr/share/doc</font>, into a
+subdirectory reflecting the name, version and revision of the particular
+program. This applies to all programs: GNOME, KDE, X11 and console alike.
+However, some programs may install additional documentation and support files
+into a <font class="path">/usr/share</font> hierarchy for their own purposes.
+</li>
+
+<li>X11-specific programs and libraries should always be installed into <font class="path">/usr</font>, not
+directly into <font class="path">/usr/X11R6</font>.  We reserve the <font class="path">/usr/X11R6</font> hierarchy for
+the X Window System, Version 11 Release 6 <font class="emphasis">itself</font>.  This is perhaps a more to-the-letter
+interpretation of the FHS than some other distributions have made.</li>
+
+<li>GNOME and KDE programs, similarly, should always be installed into
+<font class="path">/usr</font>.</li>
+
+</ul>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b> Some distributions choose to install GNOME and KDE into <font class="path">/opt</font>. There
+exists no standard for these desktop environments in terms of where to actually install
+their files. In the interests of simplicity and consistency, we elect to install all
+KDE and GNOME packages into the <font class="path">/usr</font> hierarchy.</p></td></tr></table>
+
+<p>In general, you should have ebuilds install their files into the <font class="path">/usr</font>
+tree.  <font class="emphasis">Some</font> programs can be compiled and linked with or without GNOME, KDE and X11 libraries,
+which can cause confusion.  Our solution is to install everything into <font class="path">/usr</font>
+which avoids ambiguity and needless complexity for ebuild authors.  The location in which to
+install a program's files should <font class="emphasis">not</font> depend on the presence or abscence of specific
+<font class="code">USE</font> variables.  Therefore, the ebuilds in the portage tree <font class="emphasis">almost always</font>
+install into the <font class="path">/usr</font> hierarchy exclusively.</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>The <font class="path">/opt</font> directory is reserved in Gentoo Linux for binary-only packages.
+Examples include mozilla-bin, acroread, netscape and realplayer.  Packages that get
+installed here will usually require a <font class="path">/etc/env.d/foo</font> stub file.  This is
+so that paths and additional variables can be included into the environment.</p></td></tr></table>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap4">4.</a></font>The Portage scripts and utilities</p>
+<p class="secthead"><a name="_sect1">Public scripts </a></p>
+<p>These are scripts used by the system-administrator to install and remove packages, and maintain the package database.</p>
+<p>
+<font class="code">ebuild</font> is the main engine of the Portage system; it performs all major tasks such as unpacking, compiling, installing, merging, and unmerging packages. It is called using the command: <font class="code">ebuild path/to/package.ebuild command</font>. The commands available are:</p>
+<table class="ntable">
+<tr>
+<td bgcolor="#7a5ada" class="infohead"><b>Command</b></td>
+<td bgcolor="#7a5ada" class="infohead"><b>Description</b></td>
+<td bgcolor="#7a5ada" class="infohead"><b>Related <font class="code">ebuild</font> Function</b></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">setup</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">performs any miscellaneous commands required before the ebuild can proceed</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_setup</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">depend</font></td>
+<td bgcolor="#ddddff" class="tableinfo">displays the dependencies required to build the package</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">check</font></td>
+<td bgcolor="#ddddff" class="tableinfo">checks that the package dependencies are fulfilled</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">rcheck</font></td>
+<td bgcolor="#ddddff" class="tableinfo">checks that the package runtime dependencies are fulfilled</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">merge</font></td>
+<td bgcolor="#ddddff" class="tableinfo">unpacks, compiles, installs, and merges the package into your filesystem</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">qmerge</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">merges the package into your filesystem, assuming that the the unpack, compile, and install stages have already been executed</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">unpack</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">unpacks the source tarballs into the work directory</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">src_unpack</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">compile</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">compiles the package</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">src_compile</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">rpm</font></td>
+<td bgcolor="#ddddff" class="tableinfo">creates an RPM from the package</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">package</font></td>
+<td bgcolor="#ddddff" class="tableinfo">creates a Gentoo <font class="code">tbz2</font> package</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">prerm</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">executes the pre-removal stage of the package</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_prerm</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">postrm</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">executes the post-removal stage of the package</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_postrm</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">preinst</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">executes the pre-installation stage of the package</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_preinst</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">postinst</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">executes the post-installation stage of the package</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_postinst</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">config</font></td>
+<td bgcolor="#ddddff" class="tableinfo">sets up a default configuration once the package is merged</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">pkg_config</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">touch</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">updates the mtimes for each source archive in the package</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">clean</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">cleans the work directory for the package</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">fetch</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">fetches the package source tarballs</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">digest</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">creates a digest file for the package</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">*<font class="code">install</font>
+</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the package into the image directory</td>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">src_install</font></td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo"><font class="code">unmerge</font></td>
+<td bgcolor="#ddddff" class="tableinfo">unmerges the package from your filesystem</td>
+<td bgcolor="#ddddff" class="tableinfo">n/a</td>
+</tr>
+</table>
+<p>Note: commands with an asterisk (*) are normally only used by the developer.</p>
+
+<p>
+<font class="code">emerge</font> recursively merges a package and all of its dependencies into your filesystem.
+This command has many options, try <font class="code">emerge --help</font> for a list of them.</p>
+
+<p>
+<font class="code">env-update</font> updates the configuration files (including, but not limited to <font class="path">/etc/ld.so.conf</font> and <font class="path">/etc/profile.env</font>) to include changes made by installed packages.</p>
+<p class="secthead"><a name="_sect2">Private Scripts and Commands </a></p>
+
+<p>These are scripts you can use in your ebuild files to perform common tasks.</p>
+
+<p>For more detailed instructions, look at the scripts themselves in <font class="path">/usr/lib/portage/bin</font>.</p>
+
+<table class="ntable">
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">into</td>
+<td bgcolor="#ddddff" class="tableinfo">sets the target prefix (<font class="path">DESTTREE</font>) for <font class="code">dobin</font>, <font class="code">dolib</font>, <font class="code">dolib.a</font>, <font class="code">dolib.so</font>, <font class="code">domo</font>, <font class="code">dosbin</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dobin</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified binaries into <font class="path">DESTTREE/bin</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dodoc</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified files into the package's documentation directory (<font class="path">/usr/share/doc/${PF}/DOCDESTTREE</font>) where <font class="path">DOCDESTREE</font> is settable with <font class="code">docinto</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">doexe</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified files with mode <font class="emphasis">EXEOPTIONS</font> into <font class="path">EXEDESTTREE</font>. <font class="emphasis">EXEOPTIONS</font> defaults to -m0755 and is settable via the <font class="code">exeopts</font> command.  <font class="path">EXEDESTTREE</font> is settable via the <font class="code">exeinto</font> command.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dohard</td>
+<td bgcolor="#ddddff" class="tableinfo">creates a hardlink, handles ${D} transparently</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dohtml</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified files and directories into <font class="path">/usr/share/doc/${PF}/html</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">doinfo</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified files into /usr/share/info, then compresses them with gzip</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">doins</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified files with mode <font class="emphasis">INSOPTIONS</font> into <font class="path">INSDESTTREE</font>. <font class="emphasis">INSOPTIONS</font> defaults to -m0644 and is settable via the <font class="code">insopts</font> command.  <font class="path">INSDESTTREE</font> is settable via the <font class="code">insinto</font> command.</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dolib</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified libraries with mode <font class="emphasis">LIBOPTIONS</font> into <font class="path">DESTTREE/lib</font>. <font class="emphasis">LIBOPTIONS</font> defaults to -m0644 and is settable via the <font class="code">libopts</font> command</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dolib.a</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified libraries into <font class="path">DESTTREE/lib</font> with mode 0644</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dolib.so</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified libraries into <font class="path">DESTTREE/lib</font> with mode 0755</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">doman</td>
+<td bgcolor="#ddddff" class="tableinfo">installs the specified files into <font class="path">/usr/share/man/manX</font>, according to the suffix X</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">domo</td>
+<td bgcolor="#ddddff" class="tableinfo">used for manually installing .mo files, which are used for storing localized string data</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">donewins</td>
+<td bgcolor="#ddddff" class="tableinfo">same as <font class="code">newins</font>; its actually a symlink to it.  this is deprecated and exists for compatibility with old ebuilds.  use <font class="code">newins</font> instead</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dosbin</td>
+<td bgcolor="#ddddff" class="tableinfo">installs a binary into <font class="path">DESTTREE/sbin</font>, marking it as executable</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dosed</td>
+<td bgcolor="#ddddff" class="tableinfo">removes all occurences of ${D} (the installation prefix path) in the specified files</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">dosym</td>
+<td bgcolor="#ddddff" class="tableinfo">creates a symlink, handles ${D} transparently</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">emake</td>
+<td bgcolor="#ddddff" class="tableinfo">runs a parallell make. some projects cannot be made in parallell; use make</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">fowners</td>
+<td bgcolor="#ddddff" class="tableinfo">applies the specified ownership (first argument) to the specified file (second argument) via the chown command, handles ${D} transparently</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">fperms</td>
+<td bgcolor="#ddddff" class="tableinfo">applies the specified permissions (first argument) to the specified file (second argument) via the chmod command, handles ${D} transparently</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">newbin</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">dobin</font> which installs the specified binary (first argument) in <font class="path">DESTTREE/bin</font>, transparently renaming to the second argument</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">newdoc</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">dodoc</font> which installs the specified file (first argument) in <font class="path">/usr/share/doc/${PF}/DOCDESTTREE</font>, transparently renaming to the second argument</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">newexe</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">doexe</font> which installs the specified file with mode <font class="emphasis">EXEOPTIONS</font> into <font class="path">EXEDESTTREE</font>, transparently renaming to the second argument</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">newins</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">doins</font> which installs the specified file with mode <font class="emphasis">INSOPTIONS</font> into <font class="path">INSDESTTREE</font>, transparently renaming to the second argument</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">newlib.a</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">dolib.a</font> which installs the specified library into <font class="path">DESTTREE/lib</font>, transparently renaming to the second argument</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">newlib.so</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">dolib.so</font> which installs the specified library into <font class="path">DESTTREE/lib</font>, transparently renaming to the second argument</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">newman</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">doman</font> which installs the specified file into <font class="path">/usr/share/man/manX</font>, transparently renaming to the second argument</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">newsbin</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">dosbin</font> which installs the specified file into <font class="path">DESTTREE/sbin</font>, transparently renaming to the second argument</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">pmake</td>
+<td bgcolor="#ddddff" class="tableinfo">deprecated; use emake instead</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">prepalldocs</td>
+<td bgcolor="#ddddff" class="tableinfo">recursively gzips all doc files in <font class="path">/usr/share/doc</font>, transparently fixing up any symlink paths</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">prepallinfo</td>
+<td bgcolor="#ddddff" class="tableinfo">recursively gzips all info files in <font class="path">/usr/share/info</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">prepallman</td>
+<td bgcolor="#ddddff" class="tableinfo">recursively gzips all man pages in <font class="path">/opt/*/man/*</font>, <font class="path">/usr/share/man/*</font>, <font class="path">/usr/local/man/*</font>, <font class="path">/usr/X11R6/share/man/*</font> and transparently fixes up any symlink paths</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">prepall</td>
+<td bgcolor="#ddddff" class="tableinfo">wrapper around <font class="code">prepallman</font>, <font class="code">prepallinfo</font> and <font class="code">prepallstrip</font>.  also ensures all libraries in <font class="path">/opt/*/lib</font>, <font class="path">/lib</font>, <font class="path">/usr/lib</font> and <font class="path">/usr/X11R6/lib</font> are executable.  also moves any stray aclocal macros into <font class="path">/usr/share/aclocal</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ddddff" class="tableinfo">try</td>
+<td bgcolor="#ddddff" class="tableinfo">deprecated. Use the || die construct instead.</td>
+</tr>
+</table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap5">5.</a></font>Package Dependencies</p>
+<p class="secthead"><a name="_sect1">Why dependencies are important </a></p>
+<p>Portage is more than just a convenience script that gives you a unified
+way to build any one project (program, library) from source. It will also
+fetch and install any necessary dependencies if you take care to specify
+these in your ebuild.</p>
+
+<p>In the official ebuilds, all dependencies have already been specified,
+so when you issue <font class="code">emerge net-www/mozilla/mozilla-1.0</font>, Portage will
+insure that all libraries necessary for Mozilla to build and run are
+properly installed before Mozilla itself is built.</p>
+
+<p>Portage even distinguishes between build-time dependencies and run-time
+dependencies. (Caveat: Currently, Portage installs all build-time and run-time
+dependencies and leaves it at that. At a later stage, it will be possible to
+trim your installation so that only the run-time dependencies are left installed).
+</p>
+
+<p class="secthead"><a name="_sect2">How to Specify Dependencies in Your ebuild Files </a></p>
+<p>The <font class="code">DEPEND</font> variable inside your <font class="path">foo-x.y.z.ebuild</font> tells Portage
+about which packages are needed to build <font class="path">foo</font>. The <font class="code">RDEPEND</font> variable
+specifies which packages are needed for <font class="path">foo</font> to run.
+Example:</p>
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+DEPEND=&quot;virtual/glibc
+        sys-libs/zlib&quot;
+RDEPEND=&quot;virtual/glibc&quot;
+</pre></td></tr>
+</table>
+
+<p>This tells Portage that to build <font class="path">foo-x.y.z</font>, the packages
+<font class="path">virtual/glibc</font> (more on  virtuals in a bit) and <font class="path">sys-libs/zlib</font>
+are needed. It does not say anything about which version of glibc or zlib that are needed,
+which means &quot;anything goes&quot;.</p>
+
+<p>The &quot;anything goes&quot; is of course a bit scary, and will not work in the general case.
+But for central libraries like glibc, which strives very hard to be 100% binary compatible
+all the time, it actually works. For other libraries, we can of course specify version
+dependencies. There are numerous ways to do this:</p>
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+&gt;=sys-apps/bar-1.2
+=sys-apps/baz-1.0
+</pre></td></tr>
+</table>
+
+<p> &gt;= and = do what you would expect; sys-apps/bar version 1.2 or newer is okay (this means that
+sys-apps/bar-2.0 is okay), while sys-apps/baz version 1.0 is the only version that is accepted.</p>
+
+<p>Portage knows of four special suffixes to a version number: <font class="code">-rX</font>, <font class="code">-preX</font>,
+<font class="code">-alphaX</font> and <font class="code">-betaX</font> where X is a number (as many digits as you like). Given the
+specification <font class="code">&gt;=sys-apps/foo-1.0</font> and the files:</p>
+<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+sys-apps/frob-1.0-r1
+sys-apps/frob-1.0
+sys-apps/frob-1.0_pre1
+sys-apps/frob-1.0_beta1
+sys-apps/frob-1.0_alpha1
+</pre></td></tr>
+</table>
+<p>Portage will arrange them internally in the order listed, and pick the one on the top. This
+means it will always pick <font class="code">_beta</font> packages over <font class="code">_alphaX</font>, <font class="code">_preX</font> over <font class="code">_betaX</font>,
+non-suffixed over <font class="code">_preX</font> and <font class="code">-rX</font> suffixed over non-suffixed.</p>
+
+<p>Other methods of specifying version dependencies are follow:</p>
+<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 9</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+~sys-apps/qux-1.0
+=sys-apps/foo-1.2*
+</pre></td></tr>
+</table>
+
+<p>~sys-apps/qux-1.0 will select the newest revision of qux-1.0</p>
+
+<p>=sys-apps/foo-1.2* will select the newest member of the 1.2 series, but will ignore
+1.3 and later series. That is, foo-1.2.3 and foo-1.2.0 are both valid, while foo-1.3.3
+and foo-1.3.0 are not.</p>
+
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung  24. April 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:woodchip@gentoo.org">Donny Davies</a></b><br><i>Autor</i><br><br><b><a class="altlink" href="mailto:drobbins@gentoo.org">Daniel Robbins</a></b><br><i>Autor</i><br><br><b><a class="altlink" href="mailto:pete@gentoo.org">Peter Gavin</a></b><br><i>Autor</i><br><br><b><a class="altlink" href="mailto:js@ameds.de">Jens Schittenhelm</a></b><br><i>Übersetzer</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Dieses Dokument ist eine Beschreibung des Gentoo Portage Systems, es erklärt wie man neue Pakete erstellt 
+und ist quasi als Standard für die Gentoo entwickler gedacht. Es ist noch in Arbeit und wird konstant aktualisiert und auf 
+keinen Fall vollständig. </td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>

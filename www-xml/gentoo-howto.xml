@@ -1,16 +1,16 @@
 <?xml version='1.0'?>
+<!DOCTYPE guide SYSTEM "../www-xsl/guide.dtd">
 
-<!DOCTYPE guide SYSTEM "../../gentoo-web/dtd/guide.dtd">
 
-<guide link="/doc/faq.html">
+<guide link="/doc/gentoo-howto.html">
 <title>Gentoo Linux Frequently Asked Questions</title>
 <author title="Autor"><mail link="woodchip@gentoo.org">Donny Davies</mail></author>
 <author title="Autor"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 <author title="Autor"><mail link="pete@gentoo.org">Peter Gavin</mail></author>
-<author title="&#xDC;bersetuter"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
-<abstract>Dieses Dokument ist eine Beschreibung des Gentoo Portage Systems, es erklärt wie man neue Pakete erstellt 
-und ist quasi als Standard für die Gentoo entwickler gedacht. Es ist noch in Arbeit und wird konstant aktualisiert und auf 
-keinen Fall vollständig. </abstract>
+<author title="&#xDC;bersetzer"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
+<abstract>Dieses Dokument ist eine Beschreibung des Gentoo Portage Systems, es erkl&#xE4;rt wie man neue Pakete erstellt 
+und ist quasi als Standard f&#xFC;r die Gentoo entwickler gedacht. Es ist noch in Arbeit und wird konstant aktualisiert und auf 
+keinen Fall vollst&#xE4;ndig. </abstract>
 
 <version>1.1.1-de</version>
 <date> 24. April 2002</date>
@@ -18,64 +18,64 @@ keinen Fall vollständig. </abstract>
 <chapter>
 	<title>Der Portage Verzeichnisbaum</title>
 	<section>
-		<title>Einführung</title>
+		<title>Einf&#xFC;hrung</title>
 		<body><p>Der Portage Verzeichnisbaum ist normalerweise unter /usr/portage zu finden und ist hierarchisch 
 		strukturiert bestehend aus Kategorien gefolgt von Paket-Verzeichnissen. Hier ein Beispiel: Die util-linux-2.11g.ebuild 
-		Datei ist unter /usr/portage/sys-apps/util-linux zu finden. In diesem verzeichnis können sich mehrere verschiedene Versionen 
-		neben dem util-linux-2.11g.ebuild befinden. Alle unterschiedelichen Pakete teilen sich unabhängig von ihrer Version dasselbe 
+		Datei ist unter /usr/portage/sys-apps/util-linux zu finden. In diesem Verzeichnis k&#xF6;nnen sich mehrere verschiedene Versionen 
+		neben dem util-linux-2.11g.ebuild befinden. Alle unterschiedelichen Pakete teilen sich unabh&#xE4;ngig von ihrer Version dasselbe 
 		kategorie/paket Verzeichnis in /usr/portage. </p></body>
 	</section>
 	<section>
-		<title>Was gehört nicht in den Portage Verzeichnisbaum?</title>
+		<title>Was geh&#xF6;rt nicht in den Portage Verzeichnisbaum?</title>
 		<body>
-			<p>Generell sollte im Portage Verzeichnis nur die .ebuild Dateien und sehr kleine zugehörige Dateien wie 
+			<p>Generell sollte im Portage Verzeichnis nur die .ebuild Dateien und sehr kleine zugeh&#xF6;rige Dateien wie 
 			zum Beispiel Patches oder Beispielskonfigurationen gespeichert werden. Diese Dateien sollten immer unter 
 			/usr/portage/kategorie/paket/files abgespeichert werden, um das kategorie/paket Verzeichnis nicht zu 
-			unübersichtlich machen. Generell ist es für Entwickler keine gute Idee Binärdateien (Nicht-ASCII-Dateien) 
+			un&#xFC;bersichtlich machen. Generell ist es f&#xFC;r Entwickler keine gute Idee Bin&#xE4;rdateien (Nicht-ASCII-Dateien) 
 			im CVS abzulegen. Wenn dies dennoch notwenig sein sollte (zum Beispiel eine PNG Grafik aus welchem 
 			Grund auch immer), dann sollte sie mit der -kb option in das CVS eingebracht werden:
 		<pre caption="Code Auflistung 1">
 		# cvs add -kb myphoto.png</pre>
-		Die -kb option teilt CVS mit, dass myphoto.png eine Binärdatei ist und einer besonderen 
-		Behandlung bedarf. Zum Beispiel das Zusammenführen von zwei verschiedenen Binärdateien wird somit nicht erlaubt, 
-		was hier auch naheliegend ist. Wenn wir schon beim Zusammenführen sind, alle Patches die dem Portage Verzeichnisbaum 
-		hinzugefügt werden, sollten nicht komprimiert sein. Dies erlaubt dann CVS Veränderungen einzubringen und die Entwickler 
-		von dabei möglicherweise entstehenden Konfliken korrekt zu warnen.</p></body> 	
+		Die -kb option teilt CVS mit, dass myphoto.png eine Bin&#xE4;rdatei ist und einer besonderen 
+		Behandlung bedarf. Zum Beispiel das Zusammenf&#xFC;hren von zwei verschiedenen Bin&#xE4;rdateien wird somit nicht erlaubt, 
+		was hier auch naheliegend ist. Wenn wir schon beim Zusammenf&#xFC;hren sind, alle Patches die dem Portage Verzeichnisbaum 
+		hinzugef&#xFC;gt werden, sollten nicht komprimiert sein. Dies erlaubt dann CVS Ver&#xE4;nderungen einzubringen und die Entwickler 
+		von dabei m&#xF6;glicherweise entstehenden Konfliken korrekt zu warnen.</p></body> 	
 	</section> 
 	<section>
 		<title>Das files Verzeichnis</title>
 		<body><p>Wie vorher bereits beschrieben, existiert in jedem paket Unterverzeichnis das Verzeichnis files. 
-		Alle Patches, Konfigurationsdateien oder andere Dateien, die von diesem Paket gebraucht werden, gehören 
+		Alle Patches, Konfigurationsdateien oder andere Dateien, die von diesem Paket gebraucht werden, geh&#xF6;ren 
 		hier hinein. Selbst erstellte Patches sollten mit einem Versions-Namen versehen werden, wie zum beispiel 
 		meinpaket-1.0-gentoo.diff. Die Gentoo Erweiterung im Namen informiert die Benutzer, dass dieser Patch durch 
 		uns, den Gentoo Entwicklern, erstellt wurde und nicht aus einer Mailingliste oder sonst wo gezogen wurde. 
-		Auch hier sollten die  diffs nicht komprimiert werden, da CVS mit Binärdateien nicht so gut umgehen kann.</p></body>
+		Auch hier sollten die  diffs nicht komprimiert werden, da CVS mit Bin&#xE4;rdateien nicht so gut umgehen kann.</p></body>
 	</section>
 </chapter>	
 
 <chapter>
 	<title>Die ebuild Skripte</title>
 	<section>
-	<title>Einführung</title>
+	<title>Einf&#xFC;hrung</title>
 	<body>
 	<p>Die ebuild Skripte sind die Grundlage des gesamten Portage Systems. Sie enthalten die gesamte Information
-	zum downloaden, entpacken, kompilieren und installieren des Quellcodes aber auch eventuelle Änderungen und 
-	Konfigurationen , die vor oder nach der Installation oder beim Entfernen durchgeführt werden. Während das meiste
+	zum downloaden, entpacken, kompilieren und installieren des Quellcodes aber auch eventuelle &#xE4;nderungen und 
+	Konfigurationen , die vor oder nach der Installation oder beim Entfernen durchgef&#xFC;hrt werden. W&#xE4;hrend das meiste
 	von Portage in Python geschrieben ist, sind die ebuilds als bash-Skripte gehalten, da dies das Aufrufen von Befehlszeilen
-	wie auf der Kommandozeile ermöglicht. Eines der Hauptdesign-Prinzipien der ebuild Skripte ist, daß die darin aufgerufenen
-	Befehle denen der Kommandozeil entsprechen, wie wenn der Benutzer das Paket manuell installieren würde. Aus diesem
+	wie auf der Kommandozeile erm&#xF6;glicht. Eines der Hauptdesign-Prinzipien der ebuild Skripte ist, dass die darin aufgerufenen
+	Befehle denen der Kommandozeil entsprechen, wie wenn der Benutzer das Paket manuell installieren w&#xFC;rde. Aus diesem
 	Grund ist die bash-Syntax eine gute Wahl.</p>
 
-	<p>Ebuild Skripte werden durch die <c>ebuild</c> und <c>emerge</c> Befehle ausgeführt. Man muss sich das 
+	<p>Ebuild Skripte werden durch die <c>ebuild</c> und <c>emerge</c> Befehle ausgef&#xFC;hrt. Man muss sich das 
 	<c>ebuild</c> Kommando als einfaches Erstellungswerkzeug vorstellen. Es kann ein ebuild erstellen und installieren, 
-	aber mehr auch nicht. Es kontrolliert, ob Abhängigkeiten erfüllt sind, kann diese aber nicht selbständig auflösen. Auf
-	der anderen Seite ist <c>emerge</c> als hochspezialisierte Zentrale für <c>ebuild</c>, welches die Möglichkeit 
-	besitzt, selbständig abhängige Pakete zu installieren, wenn gewünscht als "was wäre wenn..." dem Benutzer anzeigen,
-	welche ebuilds eingeführt <e>würden</e> und vieles mehr. Allgemein sticht <c>emerge</c> den <c>ebuild</c> Befehl
+	aber mehr auch nicht. Es kontrolliert, ob Abh&#xE4;ngigkeiten erf&#xFC;llt sind, kann diese aber nicht selbst&#xE4;ndig aufl&#xF6;sen. Auf
+	der anderen Seite ist <c>emerge</c> als hochspezialisierte Zentrale f&#xFC;r <c>ebuild</c>, welches die M&#xF6;glichkeit 
+	besitzt, selbst&#xE4;ndig abh&#xE4;ngige Pakete zu installieren, wenn gew&#xFC;nscht als "was w&#xE4;re wenn..." dem Benutzer anzeigen,
+	welche ebuilds eingef&#xFC;hrt <e>w&#xFC;rden</e> und vieles mehr. Allgemein sticht <c>emerge</c> den <c>ebuild</c> Befehl
 	in allen Belangen aus, bis auf einen Punkt. Mit <c>ebuild</c> kann der Benutzer inkrementell alle unterschiedlichen
-	Bereiche einer Paketinstallation (herunterladen, entpacken, kompilieren, installieren und einführen) Schritt für Schritt.  
-	ausführen. Für Entwickler ist dies ein unverzichtbares Werkzeug zum debuggen, da nur so Probleme mit dem ebuild
-	auf einen kleinen Bereich des Gesamtprozesses eingegrenzt werden können.</p>
+	Bereiche einer Paketinstallation (herunterladen, entpacken, kompilieren, installieren und einf&#xFC;hren) Schritt f&#xFC;r Schritt.  
+	ausf&#xFC;hren. F&#xFC;r Entwickler ist dies ein unverzichtbares Werkzeug zum debuggen, da nur so Probleme mit dem ebuild
+	auf einen kleinen Bereich des Gesamtprozesses eingegrenzt werden k&#xF6;nnen.</p>
 	</body>
 </section>
 
@@ -88,23 +88,19 @@ keinen Fall vollständig. </abstract>
 	enthalten darf. Beispiele sind: <c>util-linux</c>, <c>sysklogd</c> und <c>glibc</c>.  </p>
 
 	<p>Der zweite Abschnitt ist die Versionsnummer des Paketes, welche normalerweise mit der Versionsnummer des
-	Quellcode Tarballs übereinstimmt. Diese besteht normalerweise aus zwei oder drei Nummern, die durch Punkte
+	Quellcode Tarballs &#xFC;bereinstimmt. Diese besteht normalerweise aus zwei oder drei Nummern, die durch Punkte
 	von einander getrennt sind, wie zum Beispiel <c>1.2</c> oder <c>4.5.2</c> (sehr lange, durch Punkte
-	voneinander getrennte Nummern werden auch unterstützt) und darf von einen einfachen Buchstaben auf die letzte
+	voneinander getrennte Nummern werden auch unterst&#xFC;tzt) und darf von einen einfachen Buchstaben auf die letzte
 	Zahl gefolgt werden, zum Beispiel: <c>1.4b</c> oder <c>2.6h</c>. Die Paketnummer wird mit der Versionsnummer
 	durch einen Bindestrich verbunden: <c>foo-1.0</c>, <c>bar-2.4.6</c>, etc.</p>
 
-
-
-
-<impo>If you're thinking of using a trailing letter in your version string,
-note that the trailing letter should <e>not</e> be used to signify alpha or beta
-status for the package, since alphas and betas are <e>prereleases</e> and
-letter revisions are <e>newer versions</e>.  This is an important distinction
-because Portage uses an ebuild's version number to determine if it is newer
-or older than other packages with the same category and name.  It's very
-important that version numbers faithfully represent the version of the
-package so that Portage properly performs its dependency checking duties.</impo>
+	<impo>Wenn Sie mit dem Gedanken spielen, einen angeh&#xE4;ngten Buchstaben in Ihrer Versionsnummer zu verwenden,
+	sollten Sie dar&#xFC;ber im klaren sein, dass dieser Buchstabe <e>nicht</e> dazu verwendet werden sollte, einen
+	eventuellen Alpha oder Beta Status anzuzeigen, da alphas und betas als <e>prereleases</e> z&#xE4;en, angeh&#xE4;ngte 
+	Buchstaben jedoch als <e>neuere Versionen</e>. Das ist eine grosse Unterscheidung, da Portage die Versionsnummer eines
+	ebuilds dazu verwendet, herauszufinden, ob es neuer oder &#xE4;lter ist als ein Paket mit gleichem Namen aus derselben 
+	Kategorie. Es ist sehr wichtig, dass Versionsnummern glaubw&#xFC;rdig die Version eines Paketes repr&#xE4;sentieren, damit
+	Portage seine Abh&#xE4;gikeits-Pr&#xFC;fungen korrekt ausf&#xFC;hrt..</impo>
 
 <p>The third (optional) section contains a special suffix; either
 <c>_alpha</c>, <c>_beta</c>, <c>_pre</c> or <c>_rc</c>. Any of these suffixes
@@ -298,50 +294,50 @@ variable, and if so, then sets <c>myconf="${myconf} --enable-mysql"</c>.</p>
 
 <table>
 <tr><th>Variable</th><th>Description</th></tr>
-<tr><ti>3dfx</ti><ti>Fügt Unterstützung für 3dfx Grafikkarten zu XFree86 hinzu. Siehe dazu auch: voodoo3.</ti></tr>
-<tr><ti>3dnow</ti><ti>Fügt Unterstützung für 3dnow multimedia Processor Instructionen hinzu.</ti></tr>
-<tr><ti>aalib</ti><ti>Fügt Unterstützung für media-libs/aalib (ASCI-Graphics Library) hinzu.</ti></tr>
-<tr><ti>acl</ti><ti>Fügt Unterstützung für sys-apps/acl (XFS dump/restore utilities) hinzu.</ti></tr>
-<tr><ti>afs</ti><ti>Fügt Unterstützung für OpenAFS (Verteiltes Dateisystem) hinzu.</ti></tr>
-<tr><ti>alsa</ti><ti>Fügt Unterstützung für media-libs/alsa-lib (Advanced Linux Sound Architecture) hinzu.</ti></tr>
-<tr><ti>apm</ti><ti>Fügt Unterstützung für APM (Advanced Power Management) hinzu.</ti></tr>
-<tr><ti>arts</ti><ti>Fügt Unterstützung für aRts: dem KDE sound daemon hinzu.</ti></tr>
-<tr><ti>atlas</ti><ti>Fügt Unterstützung für atlas anstatt von blas in dev-lang/ hinzu.</ti></tr>
-<tr><ti>avi</ti><ti>Fügt Unterstützung für Win32 AVI und avifile (avi Bibliothek) hinzu.</ti></tr>
-<tr><ti>berkdb</ti><ti>Fügt Unterstützung für sys-libs/db (Berkeley DB für MySQL) hinzu.</ti></tr>
-<tr><ti>bonobo</ti><ti>Fügt Unterstützung für gnome-base/bonobo (Gnome CORBA Schnittstelle) hinzu.</ti></tr>
-<tr><ti>crypt</ti><ti>Fügt Unterstützung für Kryptographie hinzu -- benutzt mcrypt oder gpg wo anwendbar.</ti></tr>
-<tr><ti>cups</ti><ti>Fügt Unterstützung für CUPS (Common Unix Printing System) hinzu.</ti></tr>
-<tr><ti>dga</ti><ti>Fügt DGA Unterstützung für Xfree86 hinzu (DGA=Direct Graphic Access).</ti></tr>
-<tr><ti>directfb</ti><ti>Fügt Unterstützung für DirectFB layer (Bibliotheken für FB Geräte) hinzu.</ti></tr>
-<tr><ti>doc</ti><ti>Erstellt zusätzliche documentation mittels fe.x und gtk-doc </ti></tr>
-<tr><ti>dvd</ti><ti>Unterstützung für DVDs</ti></tr>
-<tr><ti>encode</ti><ti>Fügt Unterstützung für MEncoder oder LaME encoder, wo möglich, hinzu.</ti></tr>
-<tr><ti>esd</ti><ti>Fügt Unterstützung für media-sound/esound (Enlightened Sound Daemon) hinzu.</ti></tr>
-<tr><ti>evo</ti><ti>Fügt Unterstützung für evolution in gnumeric hinzu.</ti></tr>
-<tr><ti>fbcon</ti><ti>Framebuffer Unterstützung für die Konsole, über den Kernel aktivierbar.</ti></tr>
-<tr><ti>flash</ti><ti>Unterstützung für Flash Dateien mittels Ming.</ti></tr>
-<tr><ti>gb</ti><ti>Fügt Unterstützung für Gnome Basic zu gnumeric hinzu.</ti></tr>
-<tr><ti>gd</ti><ti>Fügt Unterstützung für sys-libs/gdbm (GNU database libraries) hinzu.</ti></tr>
-<tr><ti>gdbm</ti><ti>Fügt Unterstützung für sys-libs/gdbm (GNU database libraries) hinzu.</ti></tr>
-<tr><ti>ggi</ti><ti>Fügt Unterstützung für media-libs/libggi (Nicht-X video api/Treiber) hinzu.</ti></tr>
-<tr><ti>ggz</ti><ti>Fügt Unterstützung für die Gnu Gaming Zone (http://ggz.sf.net) hinzu.</ti></tr>
-<tr><ti>gif</ti><ti>Fügt Unterstützung für GIF Bilder hinzu.</ti></tr>
-<tr><ti>gnome</ti><ti>Fügt GNOME Unterstützung für das jeweilige Paket hinzu.</ti></tr>
-<tr><ti>gphoto2</ti><ti>Fügt Unterstützung für Digitalkameras.</ti></tr>
-<tr><ti>gpm</ti><ti>Fügt Unterstützung für sys-libs/gpm (Maustreiber für die Konsole)</ti></tr>
-<tr><ti>gtk</ti><ti>Fügt Unterstützung für x11-libs/gtk+ (The GIMP Toolkit) hinzu.</ti></tr>
-<tr><ti>gtkhtml</ti><ti>Fügt Unterstützung für gnome-extra/gtkhtml hinzu.</ti></tr>
-<tr><ti>guile</ti><ti>Fügt Unterstützung für dev-util/guile (ein Scheme Interpreter) hinzu.</ti></tr>
-<tr><ti>icc</ti><ti>Benutzt den Intel C++ Compiler, wenn das Paket unterstützung dafür anbietet.</ti></tr>
+<tr><ti>3dfx</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r 3dfx Grafikkarten zu XFree86 hinzu. Siehe dazu auch: voodoo3.</ti></tr>
+<tr><ti>3dnow</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r 3dnow multimedia Processor Instructionen hinzu.</ti></tr>
+<tr><ti>aalib</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r media-libs/aalib (ASCI-Graphics Library) hinzu.</ti></tr>
+<tr><ti>acl</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r sys-apps/acl (XFS dump/restore utilities) hinzu.</ti></tr>
+<tr><ti>afs</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r OpenAFS (Verteiltes Dateisystem) hinzu.</ti></tr>
+<tr><ti>alsa</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r media-libs/alsa-lib (Advanced Linux Sound Architecture) hinzu.</ti></tr>
+<tr><ti>apm</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r APM (Advanced Power Management) hinzu.</ti></tr>
+<tr><ti>arts</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r aRts: dem KDE sound daemon hinzu.</ti></tr>
+<tr><ti>atlas</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r atlas anstatt von blas in dev-lang/ hinzu.</ti></tr>
+<tr><ti>avi</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r Win32 AVI und avifile (avi Bibliothek) hinzu.</ti></tr>
+<tr><ti>berkdb</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r sys-libs/db (Berkeley DB f&#xFC;r MySQL) hinzu.</ti></tr>
+<tr><ti>bonobo</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r gnome-base/bonobo (Gnome CORBA Schnittstelle) hinzu.</ti></tr>
+<tr><ti>crypt</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r Kryptographie hinzu -- benutzt mcrypt oder gpg wo anwendbar.</ti></tr>
+<tr><ti>cups</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r CUPS (Common Unix Printing System) hinzu.</ti></tr>
+<tr><ti>dga</ti><ti>F&#xFC;gt DGA Unterst&#xFC;tzung f&#xFC;r Xfree86 hinzu (DGA=Direct Graphic Access).</ti></tr>
+<tr><ti>directfb</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r DirectFB layer (Bibliotheken f&#xFC;r FB Ger&#xE4;te) hinzu.</ti></tr>
+<tr><ti>doc</ti><ti>Erstellt zus&#xE4;tzliche documentation mittels fe.x und gtk-doc </ti></tr>
+<tr><ti>dvd</ti><ti>Unterst&#xFC;tzung f&#xFC;r DVDs</ti></tr>
+<tr><ti>encode</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r MEncoder oder LaME encoder, wo m&#xF6;glich, hinzu.</ti></tr>
+<tr><ti>esd</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r media-sound/esound (Enlightened Sound Daemon) hinzu.</ti></tr>
+<tr><ti>evo</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r evolution in gnumeric hinzu.</ti></tr>
+<tr><ti>fbcon</ti><ti>Framebuffer Unterst&#xFC;tzung f&#xFC;r die Konsole, &#xFC;ber den Kernel aktivierbar.</ti></tr>
+<tr><ti>flash</ti><ti>Unterst&#xFC;tzung f&#xFC;r Flash Dateien mittels Ming.</ti></tr>
+<tr><ti>gb</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r Gnome Basic zu gnumeric hinzu.</ti></tr>
+<tr><ti>gd</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r sys-libs/gdbm (GNU database libraries) hinzu.</ti></tr>
+<tr><ti>gdbm</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r sys-libs/gdbm (GNU database libraries) hinzu.</ti></tr>
+<tr><ti>ggi</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r media-libs/libggi (Nicht-X video api/Treiber) hinzu.</ti></tr>
+<tr><ti>ggz</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r die Gnu Gaming Zone (http://ggz.sf.net) hinzu.</ti></tr>
+<tr><ti>gif</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r GIF Bilder hinzu.</ti></tr>
+<tr><ti>gnome</ti><ti>F&#xFC;gt GNOME Unterst&#xFC;tzung f&#xFC;r das jeweilige Paket hinzu.</ti></tr>
+<tr><ti>gphoto2</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r Digitalkameras.</ti></tr>
+<tr><ti>gpm</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r sys-libs/gpm (Maustreiber f&#xFC;r die Konsole)</ti></tr>
+<tr><ti>gtk</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r x11-libs/gtk+ (The GIMP Toolkit) hinzu.</ti></tr>
+<tr><ti>gtkhtml</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r gnome-extra/gtkhtml hinzu.</ti></tr>
+<tr><ti>guile</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r dev-util/guile (ein Scheme Interpreter) hinzu.</ti></tr>
+<tr><ti>icc</ti><ti>Benutzt den Intel C++ Compiler, wenn das Paket unterst&#xFC;tzung daf&#xFC;r anbietet.</ti></tr>
 <tr><ti>icc-pgo</ti><ti>Erlaubt PGO Datenerstellung bzw. deren Nutzung, wenn icc aktiviert ist.</ti></tr>
-<tr><ti>imap</ti><ti>Fügt Unterstützung für IMAP hinzu.</ti></tr>
-<tr><ti>imlib</ti><ti>Fügt Unterstützung für media-libs/imlib (Bibliothek zum Laden und Rendern von Bildern) hinzu.</ti></tr>
-<tr><ti>innodb</ti><ti>Fügt innodb Unterstützung für mySQL (transaction support) hinzu.</ti></tr>
-<tr><ti>ipv6</ti><ti>Fügt Unterstützung für IP version 6 hinzu.</ti></tr>
-<tr><ti>java</ti><ti>Fügt Java Unterstützung hinzu.</ti></tr>
-<tr><ti>jpeg</ti><ti>Fügt JPEG Unterstützung hinzu.</ti></tr>
-<tr><ti>kde</ti><ti>Fügt Unterstützung für kde-base/kde (K Desktop Enviroment) hinzu.</ti></tr>
+<tr><ti>imap</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r IMAP hinzu.</ti></tr>
+<tr><ti>imlib</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r media-libs/imlib (Bibliothek zum Laden und Rendern von Bildern) hinzu.</ti></tr>
+<tr><ti>innodb</ti><ti>F&#xFC;gt innodb Unterst&#xFC;tzung f&#xFC;r mySQL (transaction support) hinzu.</ti></tr>
+<tr><ti>ipv6</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r IP version 6 hinzu.</ti></tr>
+<tr><ti>java</ti><ti>F&#xFC;gt Java Unterst&#xFC;tzung hinzu.</ti></tr>
+<tr><ti>jpeg</ti><ti>F&#xFC;gt JPEG Unterst&#xFC;tzung hinzu.</ti></tr>
+<tr><ti>kde</ti><ti>F&#xFC;gt Unterst&#xFC;tzung f&#xFC;r kde-base/kde (K Desktop Enviroment) hinzu.</ti></tr>
 <tr><ti>lcms</ti><ti>Adds lcms support to media-gfx/imagemagick (Color management)</ti></tr>
 <tr><ti>ldap</ti><ti>Adds LDAP support (Lightweight Directory Access Protocol)</ti></tr>
 <tr><ti>libg++</ti><ti>Adds C++ modules in dev-db/postgresql (libpq++)</ti></tr>
