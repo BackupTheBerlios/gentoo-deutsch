@@ -28,7 +28,8 @@
 <p>
 Die <uri link="http://www.gentoo.org/news/en/gwn/20030106-newsletter.xml">erste Ausgabe des der wöchtentlichen Nachrichten</uri> für
 das neue Jahr bringt einige Updates: Verbesserungen in Portage, incl. "reverse dependency
-checking" und andere Funktionen, die sicher sehr beliebt bei den Gentoo Nutzern überall werden sein. Additionally, this week's
+checking" und andere Funktionen, die sicher sehr beliebt bei den Gentoo Nutzern überall werden sein. Darüberhinaus, this
+week's
 issue
 talks about changes to Perl to ease the translation from 5.6.1 to 5.8 and also discusses the new prelinking capabilities recently
 introduced to Gentoo Linux. Finally, this issue includes information on how you can help the Gentoo Linux project continue to grow.
