@@ -1,16 +1,16 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrskin-hightech16/vdrskin-hightech16-0.0.0.ebuild,v 1.1 2004/07/27 19:57:34 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrskin-hightech16/vdrskin-hightech16-0.0.0.ebuild,v 1.2 2004/07/27 20:04:07 austriancoder Exp $
 
 IUSE=""
 
 SKINNAME=HighTech16
 SKINDIR=/usr/share/vdr/skins/${PN}
-USERID=10007
+USERID=10046
 
 S=${WORKDIR}/${SKINNAME}
 DESCRIPTION="Video Disk Recorder ${SKINNAME} skin"
-HOMEPAGE="http://moldaner.de"
+HOMEPAGE="http://www.vdrskins.org"
 SRC_URI="http://web.vdrskins.org/vdrskins/albums/userpics/${USERID}/HighTech16.tar.gz"
 
 KEYWORDS="x86"
