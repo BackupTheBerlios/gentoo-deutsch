@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/doc-maint.xml,v 1.1 2003/12/29 21:51:32 jay Exp $-->
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<guide link="/inhalte/projekt/translation/doc-unmaint/">
+
+<title>Statusübersicht</title>
+
+<author title="Autor">
+  <mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
+</author>
+
+<abstract>
+Statusübersicht über die Maintainer der aktuellen Dokumente
+</abstract>
+
+<version>1.0</version>
+<date>29. Dezember 2003</date>
+
+<chapter>
+<title>Statusübersicht</title>
+<section>
+<body>
+
+<p>
+Eine aktuelle Auflistung des Status eines Dokuments, das heisst, welchen
+Versionen gerade aktuell sind, erhalten Sie auf der Statusübersicht auf <uri
+link="http://dev.gentoo.org/~pylon/status-german-translations.de.html">Pylons
+Entwicklerseite</uri>
+</p>
+
+<table>
+  <tr>
+  <th>Dokument</th>
+  </tr>
+</table>
+
+</body>
+</section>
+</chapter>
+
+<!--
+<chapter>
+<title>Ressourcen</title>
+<section>
+<body>
+
+<p>
+<e>Mailingliste:</e> <mail link="gentoo-doc-de@gentoo.org">gentoo-doc-de@gentoo.org</mail>
+<br />
+<e>FAQ:</e> <uri link="/inhalte/projekt/translation">Übersetzer Guide</uri>
+</p>
+
+</body>
+</section>
+</chapter>
+-->
+
+</guide>
