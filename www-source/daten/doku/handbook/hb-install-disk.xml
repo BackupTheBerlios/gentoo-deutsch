@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.21 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.3 2003/12/05 13:07:11 pyrania Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.4 2003/12/05 13:41:29 pyrania Exp $ -->
 
 <sections>
 <section>
@@ -572,7 +572,7 @@ ein anderes Partitions Schema verwenden wollen!
 
 <p>
 Zuerst erstellen wir eine kleine Boot Partition. Drücken Sie <c>n</c> um eine
-neue Partition zu erstelle, dann <c>p</c> um eine primäre Partition zu wählen,
+neue Partition zu erstellen, dann <c>p</c> um eine primäre Partition zu wählen,
 gefolgt von <c>1</c> für die erste primäre Partition. Wenn Sie nach dem ersten
 Zylinder gefragt werden, drücken Sie enter. Für den letzten Zylinder geben Sie
 <c>+32M</c> ein, um eine 32 MB Partition zu erzeugen.
