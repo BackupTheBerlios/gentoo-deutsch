@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl"?> 
+
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd"> 
+
+
+<guide link = "/doc/de/cvs-tutorial.xml"> 
+<title>Gentoo Linux CVS Tutorial</title>
+<author title="Chief Architect" email="drobbins@gentoo.org">Daniel Robbins</author> 
+<author title="Übersetzung" email="parity@users.berlios.de">Patrick Sudowe</author>
+
+<!-- Version des englischen Originals 1.1 -->
+<version>1.0</version>
+<date>13 July 2003</date>
+<abstract>
+	Dieses Tutorial führt den Leser in CVS, das Concurrent Versions System, ein. Dieses System
+	wird von Entwicklern rund um die Welt eingesetzt, um Software flexibel und in Zusammenarbeit
+	zu entwickeln. Diese Einführung ist für diejenigen gedacht, die noch keine Erfahrung mit CVS
+	haben. Egal, ob sie CVS nur verwenden möchten um immer die aktuellesten Quelltexte eines Programms
+	herunterladen möchten, oder ob sie als Entwickler an einem großen Projekt mitarbeiten möchten, 
+	diese Kurzanleitung wird Sie mit den nötigen Grundlagen versorgen. 
+</abstract>
+	
+
+<chapter> 
+<title>Einleitung</title>
+
+<section> 
+	<title>Struktur des Tutorials</title>
+	<body> 
+		<p>         
+		Dieses Tutorial besteht aus zwei Teilen. Im ersten Teil werden sie lernen wie sie CVS als 
+		Nicht-Entwickler benutzen, d.h. wie sie Quelltexte eines Programms herunterladen und stets aktualisiert
+		halten. Im zweiten Teil werden sie dann in die Benutzung von CVS als Entwickler eingeführt. Dabei
+		werden sie lernen wie sie Dateien innerhalb von CVS ändern, hinzufügen oder löschen können. Wenn sie
+		CVS noch nicht verwendet haben, dann sollten sie mit dem ersten Teil beginnen. Wenn sie allerdings
+		schon grundlegende Erfahrungen mit CVS haben, dann können sie den ersten Teil dieses Tutorials
+		überspringen, wobei sie den ersten Teil vielleicht überfliegen sollten. 
+		</p> 
+	</body>
+</section> 
+
+<section> 
+	<title>Was ist CVS und wofür brauche ich es?</title> 
+	<body>
+		<p>
+		CVS ist ein Client-Server-System, das es Entwicklern erlaubt ihre Projekte an einem 
+		zentralen Ort zu speichern, dem sogenannten <i>Repository</i>. Mit den CVS Client-Programmen
+		können Entwickler nun den Inhalt des Repositorys ändern. Das CVS merkt sich jede Änderung 
+		am Inhalt der Dateien. Auf diese Weise wird eine komplette Geschichte des Projektes geführt. 
+		Entwickler können sich so ältere Versionen einer Datei ansehen, eine Liste von Änderungen und 
+		andere nützliche Anwendungen ausführen.
+		</p>
+	</body>
+</section> 
+
+<section> 
+	<title>Welche Rolle spielt CVS?</title>
+	<body>
+		<p>
+		Viele Open-Source Projekte haben ihren eigenen CVS Server, die von den Entwicklern des Projekts 
+		als zentraler Ablageplatz für ihre gesamte Arbeit genutzt werden. Die Quelltexte werden häufig täglich
+		geändert und verbessert. Dabei sind die Entwickler häufig auf der ganzen Welt verstreut, und doch können 
+		sie dank CVS zusammen an einem Projekt arbeiten ohne sich gegenseitig zu behindern.
+		</p>
+	</body>
+</section> 
+
+<section>
+	<title>CVS -- Die aktuellsten Entwickler-Quelltexte</title>
+	<body> 
+		<p>
+		Wenn die Entwickler mit ihren Änderungen zufrieden sind, dann packen sie ihr Projekt in eine .tar.gz-Datei
+		und veröffentlichen es als neue offizielle Version. Doch aus verschiedenen Gründen sind diese Versionen manchmal 
+		nicht aktuell genug. Im ersten Teil dieses Tutorials wird ihnen nun gezeigt, wie sie CVS einsetzen, um den
+		neuesten Stand der Entwicklung herunterladen und für sich selbst nutzen können. 
+		</p> 
+	</body>
+</section> 
+
+<section> 
+	<title> Habe ich CVS installiert?</title> 
+	<body>
+		<p>
+		Bevor sie CVS benutzen können, müssen sie es auf Ihrem System installieren. Der einfachste Weg auszuprobieren, 
+		ob CVS schon installiert ist:
+		</p> 
+		<pre> 
+		#<i>cvs</i> 
+		</pre> 
+		<p>
+		Wenn ein CVS Befehl gefunden wird, dann ist CVS auf ihrem System schon installiert. Sonst müssen sie entweder ein
+		Binär-Packet für Ihre Distribution suchen und installieren, oder CVS selber kompilieren und installieren. 
+		</p>
+		<note>
+			Anmerkung des Übersetzers: CVS ist natürlich auch im Portage Baum.
+		</note>
+	</body>
+</section>
+
+<section>
+	<title>CVS selber kompilieren</title>
+	<body>
+		<p>
+		Zunächst müssen sie cvs-1.11.tar.gz von <uri>ftp://ftp.cvshome.org/pub.cvs-1.11/cvs-1.11.tar.gz</uri>
+		herunterladen. Für den Fall, das <uri link="ftp://ftp.cvshome.org/pub/">hier</uri> eine neuere Version
+		existiert, können sie natürlich auch diese herunterladen. 
+		Dann führen sie diese Befehle aus. (Die Ausgabe wird hier nicht angegeben):
+		</p>
+			<pre>
+				# <i>tar xzvf cvs-1.11.tar.gz</i> 
+				# <i>cd cvs-1.11</i>
+				# <i>./configure</i>
+				# <i>make</i>
+				# <i>make install</i> 
+			<pre> 
+		<p>
+		Nun sollte CVS auf ihrem System installiert sein.
+		</p>
+	</body>
+</section>
+
+<section> 
+	<title>Die CVSROOT</title>
+	<body> 
+		<p>
+		Bevor wir beginnen, müssen sie über einige Grundlagen bescheid wissen. Um sich zu einem CVS Repository
+		zu verbinden müssen sie zunächst die CVSROOT (Das CVS Wurzelverzeichnis) kennen. Die CVSROOT ist eine 
+		Zeichenfolge, ähnlich einer URL, das dem cvs-Befehl mitteilt wo sich das Repository befindet, und wie sie 
+		sich mit diesem verbinden möchten. CVS benutzt verschiedene Formate für die CVSROOT-Zeichenfolge jenachdem 
+		ob es sich um lokales oder entferntes Repository handelt und welche Methode sie verwenden, um sich mit diesem
+		zu verbinden. Hier sind einige Beispiele für CVSROOTs mit der zugehörigen Erklärung...
+		</p> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Ein lokales Verzeichnis</title> 
+	<body> 
+		<pre>CVSROOT=/home/cvsroot</pre> 
+		<p> 
+		Diese Einstellung würde man verwenden, wenn man ein lokales CVSROOT-Verzeichnis verwenden möchte. Dabei befindet 
+		sich das lokale CVSROOT im Verzeichnis /home/cvsroot. Natürlich wäre es auch möglich ein entferntes Verzeichnis
+		mittels NFS an dieser Stelle gemounted zu haben. 
+		</p> 
+	</body> 
+</section> 
+
+<section> 
+	<title>Ein entfernter passwortgeschützter Server</title>
+	<body>
+		<pre>CVSROOT=:pserver:cvs@foo.bar.com:/home/cvsroot</pre>
+		<p>
+		Dies ist ein Beispiel für eine CVSROOT auf dem entfernten Server foo.bar.com, wobei dort das Verzeichnis /home/cvsroot 
+		verwendet wird. Das vorangestellte ":pserver:" sagt dem client, dass sie sich über das CVS eigene 
+		Passwort-Server-Protokoll anmelden wollen. Diese Methode wird häufig verwendet um anonymen Benutzern den Zugang zu 
+		öffentlichen CVS-Servern zu gestatten. 
+		</p>
+	</body>
+</section>
+
+<section> 
+	<title>Ein entfernter Zugang über rsh/ssh</title>
+	<body>
+		<pre>CVSROOT=drobbins@foo.bar.com:/data/cvs</pre>
+		<p>
+		Dies ist ein Beispiel für einen Zugang über das RSH oder SSH Protokoll. Dabei wird der CVS Server versuchen 
+		das Repository auf foo.bar.com mittels des drobbins Benutzerkontos zu erreichen. Wenn die CVS_RSH Umgebunsgvariable
+		auf "ssh" gesetzt wurde, dann wird der CVS-Client die Verbindung über SSH aufbauen, sonst wird RSH verwendet. Der
+		SSH-Zugang ist beliebt, wenn Sicherheit nötig ist. Allerdings geben weder RSH noch SSH anonymen Benutzern eine 
+		Möglichkeit sich einzuloggen. Um diese Zugriffsmethode verwenden zu können, brauchen sie ein Benutzerkonto auf 
+		dem System foo.bar.com.
+		</p>
+	</body>
+</section> 
+
+<section> 
+	<title>Einige weitere Dinge...</title>
+	<body> 
+		<p>
+		Zusätzlich zur CVSROOT müssen sie den Namen des Moduls (eine Sammlung von Quelltextdateien) wissen, den sie "auschecken"
+		möchten. Weiterhin brauchen sie noch ein anonymes Passwort, um sich auf dem CVS-Passwort-Server einzuloggen.
+		Es gibt hier kein Standardformat, wie etwa beim anonymen FTP, daher müssen sie das anonyme Passwort auf der 
+		Entwickler-Webseite nachlesen. Wenn sie all diese Informationen haben, können sie loslegen. 
+		</p>
+	</body> 
+</section> 
+
+<section> 
+	<title>Erste Schritte mit CVS, Teil 1</title>
+	<body> 
+		<p> 
+		</p>
+	</body> 
+</section> 
+
+
+
+		
+		
