@@ -319,7 +319,7 @@
 </xsl:template>
 
 <xsl:template match="th">
-  <td class="head" nowrap="nowrap"><xsl:apply-templates/></td>
+  <td class="head"><xsl:apply-templates/></td>
 </xsl:template>
 
 <xsl:template match="ti">
