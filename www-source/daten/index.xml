@@ -35,10 +35,10 @@
   <block>
     <title>QuickLinks:</title>
     <p>
-      <uri link="download/ebuilds">Neue Ebuilds im Portage Baum</uri>
+      <uri link="inhalte/download/ebuilds">Neue Ebuilds im Portage Baum</uri>
       <br/>
       
-      <uri link="download/ebuilds_de">Ergänzende Ebuilds unserer Leute</uri>    
+      <uri link="inhalte/download/ebuilds_de">Ergänzende Ebuilds unserer Leute</uri>    
       <br/>
 
       <uri link="http://developer.berlios.de/projects/gentoo-deutsch/" target="_blank">
