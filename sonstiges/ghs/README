@@ -30,5 +30,5 @@ GHS is initialized and where it puts its files; actually,
 GHS creates a Symlink to /usr/share/doc in Apaches htdocs-dir.
 
 Please send Bugs to
-	benjamin.judas@gmx.de
+	beejay@users.berlios.de
 
