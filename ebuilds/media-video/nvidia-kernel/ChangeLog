@@ -1,15 +1,38 @@
 # ChangeLog for media-video/nvidia-kernel
 # Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/nvidia-kernel/Attic/ChangeLog,v 1.1 2003/07/05 22:36:20 longint Exp $
-
-*nvidia-kernel-1.0.4363-r2 (26 May 2003)
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/nvidia-kernel/Attic/ChangeLog,v 1.2 2003/07/22 20:29:37 longint Exp $
 
   06 Jul 2003; Jan Schubert <Jan.Schubert@GMX.li>
-	Patch for enabling Suspend-Mode in Modul.
-	It'll not work if AGP is enabled (someone said you might also loss your data
-	in case you don't disable AGP allover - including kernel - and try to suspend).
+  Patch for enabling Suspend-Mode in Modul.
+  It'll not work if AGP is enabled (someone said you might also loss your data
+  in case you don't disable AGP allover - including kernel - and try to suspend).
   Works fine on my Dell I8k 8200. Set this in your /etc/X11/XF86Config:
-		Option    "NvAgp" "0"
+    Option    "NvAgp" "0"
+
+*nvidia-kernel-1.0.4180 (18 Jul 2003)
+
+  18 Jul 2003; Olivier Crete <tester@gentoo.org>
+  nvidia-kernel-1.0.4180.ebuild:
+  Added amd64 version of the driver
+
+  14 Jul 2003; Martin Schlemmer <azarah@gentoo.org>
+  nvidia-kernel-1.0.4363-r3.ebuild,
+  files/1.0.4363/NVIDIA_kernel-1.0-4363-2.5-20030714.diff:
+  Update 2.5 patch once again for 2.6.0 kernel.
+
+*nvidia-kernel-1.0.4363-r3 (14 Jul 2003)
+
+  14 Jul 2003; Martin Schlemmer <azarah@gentoo.org> nvidia-kernel-1.0.4363-r3.ebuild,
+  files/1.0.4363/NVIDIA_kernel-1.0-4363-2.5-20030713.diff,
+  files/1.0.4363/NVIDIA_kernel-1.0-4363-highpmd-20030713.diff:
+  Update the 2.5 patch.  Fixup highpmd stuff, as it could be a problem in the
+  way the patch does it (according to AKPM);  currently it maps an offset,
+  copy the struct over, then unmap it again, and then try to use it ?!?!
+
+  12 Jul 2003; Martin Schlemmer <azarah@gentoo.org>
+  files/1.0.4363/NVIDIA_kernel-1.0-4363-highpmd.diff:
+  Cleanup patch a bit more, and fix a type-o that caused the driver to fail
+  initializing DMA.
 
   23 Jun 2003; Martin Schlemmer <azarah@gentoo.org>
   nvidia-kernel-1.0.4363-r2.ebuild:
@@ -22,6 +45,12 @@
   Mark stable for x86.
 
 *nvidia-kernel-1.0.4363-r2 (26 May 2003)
+
+  08 Jul 2003; ,,, <root@gentoo.org> nvidia-kernel-1.0.4363-r2.ebuild,
+  files/1.0.4363/NVIDIA_kernel-1.0-4363-highpmd.diff:
+  Add patch for 2.5.74-mm2, original patch thanks to Thomas Schlichter
+  <schlicht@uni-mannheim.de> and some fixups thanks to Andrew Morton
+  <akpm@osdl.org>.
 
   26 May 2003; Martin Schlemmer <azarah@gentoo.org>
   nvidia-kernel-1.0.4363-r2.ebuild,
@@ -89,6 +118,11 @@
   23 Dec 2002; Martin Schlemmer <azarah@gentoo.org> nvidia-kernel-1.0.4191-r1.ebuild :
 
   Add tasklet patch for 2.5 kernels in again.
+
+*nvidia-kernel-1.0.4191-r2 (16 Mar 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
 
 *nvidia-kernel-1.0.4191-1 (18 Dec 2002)
 

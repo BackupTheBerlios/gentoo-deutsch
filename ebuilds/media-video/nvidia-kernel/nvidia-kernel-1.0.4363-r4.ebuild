@@ -1,7 +1,3 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/nvidia-kernel/Attic/nvidia-kernel-1.0.4363-r3.ebuild,v 1.1 2003/07/05 22:36:20 longint Exp $
-
 inherit eutils
 
 # Make sure Portage does _NOT_ strip symbols.  Need both lines for
@@ -20,7 +16,7 @@ HOMEPAGE="http://www.nvidia.com/"
 # modules for other kernels.
 LICENSE="NVIDIA"
 SLOT="${KV}"
-KEYWORDS="x86 -ppc -sparc -alpha -hppa -mips -arm"
+KEYWORDS="~x86 -ppc -sparc -alpha -hppa -mips -arm"
 
 DEPEND="virtual/linux-sources
 	>=sys-apps/portage-1.9.10"
@@ -39,6 +35,10 @@ pkg_setup() {
 		die "MTRR support not detected!"
 	fi
 
+	check_version_h
+}
+
+check_version_h() {
 	if [ ! -f "${ROOT}/usr/src/linux/include/linux/version.h" ]
 	then
 		eerror "Please verify that your /usr/src/linux symlink is pointing"
@@ -50,6 +50,8 @@ pkg_setup() {
 }
 
 get_KV_info() {
+	check_version_h
+	
 	# Get the kernel version of sources in /usr/src/linux ...
 	export KV_full="$(awk '/UTS_RELEASE/ { gsub("\"", "", $3); print $3 }' \
 		"${ROOT}/usr/src/linux/include/linux/version.h")"
@@ -69,11 +71,19 @@ is_2_5_kernel() {
 	fi
 }
 
+is_2_6_kernel() {
+	get_KV_info
+
+	if [ "${KV_major}" -eq 2 -a "${KV_minor}" -eq 6 ]
+	then
+		return 0
+	else
+		return 1
+	fi
+}
+
 src_unpack() {
 	unpack ${A}
-
-	#Apply suspend-Patch
-	epatch ${FILESDIR}/nvidia-4363-suspendhack.diff
 
 	# Next section applies patches for linux-2.5 kernel, and/or
 	# bugfixes for linux-2.4.  All these are from:
@@ -88,14 +98,17 @@ src_unpack() {
 	cd ${S}
 	einfo "Linux kernel ${KV_major}.${KV_minor}.${KV_micro}"
 	
-	if is_2_5_kernel
+	if is_2_5_kernel || is_2_6_kernel
 	then
-		EPATCH_SINGLE_MSG="Applying tasklet patch for kernel 2.5..." \
-		epatch ${FILESDIR}/${PV}/${NV_PACKAGE}-2.5-20030614.diff
+		EPATCH_SINGLE_MSG="Applying tasklet patch for kernel 2.[56]..." \
+		epatch ${FILESDIR}/${PV}/${NV_PACKAGE}-2.5-20030714.diff
 
 		# Kbuild have issues currently (sandbox related).
 		ln -snf Makefile.nvidia Makefile
 	fi
+
+	#Apply suspend-Patch
+    epatch ${FILESDIR}/nvidia-4363-suspendhack.diff
 }
 
 src_compile() {
@@ -144,10 +157,6 @@ pkg_postinst() {
 	echo
 	ewarn "Please note that the driver name changed from \"NVdriver\""
 	ewarn "to \"nvidia.o\"."
-	echo
-	ewarn "In Order to use Suspend (on your Laptop) you have to disable any"
-	ewarn "AGP-Option - especially unset NvAgp in /etc/X11/XF86Config:"
-	ewarn "  Option    \"NvAgp\" \"0\""
 	echo
 }
 
