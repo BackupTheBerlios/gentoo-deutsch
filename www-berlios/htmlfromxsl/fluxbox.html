@@ -1,0 +1,332 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Fluxbox Desktop in Gentoo</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Fluxbox Desktop in Gentoo</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Vorbemerkungen</option>
+<option value="#doc_chap2">2. Fluxbox</option>
+<option value="#doc_chap3">3. Dateimanagement mit dem ROX-Filer</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Vorbemerkungen</p>
+	<p>
+<a href="http://fluxbox.sourceforge.net/">Fluxbox</a> ist einer von vielen Windowmanagern für X mit seinen
+	Wurzeln im Unix Fenstermanagement. Gegenüber seinem Konkurrenten Blackbox und Openbox
+	besitzt er die Möglichkeit, die Titelleisten zu konfigurieren und mehrere Fenster durch Karteireiter (sogenannte
+	&quot;Tabs&quot;) miteinander zu Verbinden. Mit einer Scrollmaus können die Arbeitsflächen blitzschnell gewechselt werden.
+	Auch ist er nach dem Start von X sofort einsatzbereit. Neben KDE und Gnome erfreut er sich deshalb insbesondere bei 
+	den Gentoo Benutzern grosser Beliebtheit, weshalb ich dieses Dokument geschrieben habe. Die Anwendungen, die 
+	ich dabei vorstelle, sind dabei nur eine von den vielen Möglichkeiten, die unter Gentoo Linux angeboten werden.</p>
+
+	<p>Dieses Dokument geht davon aus, dass Gentoo auf Ihrem Rechner bereits installiert ist und die Hardware unter
+	Xfree86 bereits eingerichtet ist. Als erstes sollte man sicherstellen, dass Portage sich auf dem neuesten Stand
+	befindet. Dazu genügt als root ein:
+	<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">emerge rsync</font>
+	</pre></td></tr>
+</table>
+	</p>
+	<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Fluxbox</p>
+<p class="secthead"><a name="_sect1">Installation </a></p>
+<p>
+	Nun schauen wir doch einmal, was mit Fluxbox installiert wird:
+	<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">emerge -p fluxbox</font>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild  N   ] x11-misc/commonbox-utils-0.1 to /
+	[ebuild  N   ] x11-themes/commonbox-styles-0.1-r1 to /
+	[ebuild  N   ] x11-wm/fluxbox-0.1.10 to /
+
+	<font class="comment">Sollte X noch
+	nicht installiert sein, so sieht die Liste deutlich länger aus</font>
+	# <font class="input">emerge fluxbox</font>
+
+	</pre></td></tr>
+</table>
+	Das Kompilieren dieser drei Pakete sollte schneller gehen, als man sich einen Kaffee kochen kann.
+	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Wer sichergehen will, dass Fluxbox ohne Unterstützung für KDE oder GNOME auskommt, sollte dies vorher mit
+	<font class="input">export USE=&quot;-kde&quot;</font> bzw. <font class="input">export USE=&quot;-gnome&quot;</font> setzen.</p></td></tr></table>
+	</p>
+<p class="secthead"><a name="_sect2">Starten </a></p>
+<p>
+	Mit der Installation wurde <font class="input">/etc/X11/Sessions/fluxbox</font> angelegt, sodass Fluxbox nun aus den Auswahlmenüs von
+	XDM, GDM oder KDM gestartet werden kann. Um sicherzugehen, dass beim Start von Fluxbox auch die Umgebungsvariablen
+	eingelesen werden können, sollte mit
+	<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">nano -w /etc/X11/Sessions/fluxbox</font>
+	</pre></td></tr>
+</table>
+	das Skript wie folgt erweitert werden:
+	<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4: Erweitertes /etc/X11/Sessions/fluxbox Skript</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	#!/bin/sh
+	source /etc/profile
+	/usr/bin/fluxbox
+	</pre></td></tr>
+</table>
+	Nun sollte sich Fluxbox starten und mit einem Rechtsklick auf den leeren Hintergrund das Herz von Fluxbox, das
+	eigentlich Startmenu für die einzelnen Anwendungen aufrufen lasen. Mit der mittleren Maustaste kann ein Menu
+	zum Wechseln zwischen den einzelnen Arbeitsflächen aufgerufen werden, aber wie bereits oben beschrieben geht das
+	deutlich schneller mit dem Mausrad.
+	</p>
+<p class="secthead"><a name="_sect3">Konfiguration </a></p>
+<p>Bei der Installation wird mit <font class="input">fluxbox-generate_menu</font> ein Eintrag aller bereits in Gentoo Linux
+	vorhandenen Anwendungen unter /usr/share/commonbox/menu abgelegt. Dieses sollte nun in das eigene Benutzer
+	verzeichnis kopiert werden.
+	<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">cp /usr/share/commonbox/menu /home/username/.fluxbox/</font>
+	</pre></td></tr>
+</table>
+	Mit einem Editor kann dann das Menu beliebig den eigenen Wünschen angepasst werden:
+	<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">nano -w /home/username/.fluxbox/menu</font>
+	</pre></td></tr>
+</table>
+	Man sieht, dass das Prinzip sehr einfach aufgebaut ist. Mit <font class="input">[exec]</font> zu Beginn der Zeile wird Fluxbox
+	mitgeteilt, dass es sich um ein ausführbares Programm handelt, dessen Name im Fluxbox Menu als <font class="input">(name)</font>
+	erscheint. Der eigentliche Programmaufruf, wie an der Kommandozeile, wird in <font class="input">{anwendung -option1 -option2}</font>
+	gepackt. Hier einige Beispiele:
+	<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7: Ein Beispiel für /usr/share/commonbox/menu</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+
+[begin] (Box)
+        [exec] (xterm) {xterm -fg white -bg black}
+
+[submenu] (Browsers)
+        [exec] (lynx) {xterm -title lynx -fg white -bg black -e lynx}
+[end]
+
+
+[submenu] (Editors)
+        [exec] (xedit) {xedit}
+[end]
+
+
+[submenu] (Net)
+        [exec] (xchat) {xchat}
+[end]
+
+
+[submenu] (Graphics)
+        [exec] (xscreensaver-demo}
+[end]
+
+[submenu] (X-utils)
+        [exec] (xcalc) {xcalc}
+        [exec] (xfontsel) {xfontsel}
+        [exec] (xman) {xman}
+        [exec] (xload) {xload}
+        [exec] (xbiff) {xbiff}
+        [exec] (editres) {editres}
+        [exec] (viewres) {viewres}
+        [exec] (xclock) {xclock}
+[end]
+
+[end]
+
+[submenu] (FB-Settings)
+        [workspaces]   (Workspace List)
+[submenu] (Styles) {Choose a style...}
+        [stylesdir] (/usr/share/commonbox/styles)
+[end]
+
+        [config] (Configure)
+        [reconfig] (Reload config)
+[end]
+
+        [restart] (Restart)
+        [exit] (Exit)
+[end]
+	</pre></td></tr>
+</table>
+</p>
+	<p>
+	Die eigentlichen Einstellungen für Fluxbox können in der ~/.fluxbox/init Datei vorgenommen werden. Diese kann
+	ebenfalls mit einem Editor bequem nach eigenen Wünschen angepasst werden:
+	<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">nano -w ~/.fluxbox/init</font>
+	</pre></td></tr>
+</table>
+	Da ich es liebe, dass geöffnete Fenster gerne ab ca. 10 Pixel Entfernung an den Bilschirmrand &quot;schnappen&quot;,
+	habe ich die <font class="input">init</font> wie folgt
+	angepasst:
+	<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 9: Ein Beispiel für ~/.fluxbox/init</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	session.screen0.edge.SnapThreshold:          10
+	</pre></td></tr>
+</table>
+	Wem das zu umständlich ist, der kann sich mit
+	<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 10</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">emerge fluxconf</font>
+	</pre></td></tr>
+</table>
+	ein grafisches Konfiguartionstool für Fluxbox aus dem Netz ziehen, welches mit <font class="input">fluxconf</font> gestartet wird.
+	</p>
+<p>
+	Mit der Installation von Fluxbox sollten standardmässig schon einige Themen in /usr/share/commonbox/styles
+	abgelegt worden sein. Eine grosse Auswahl gibt es bei <a href="http://themes.freshmeat.net/browse/962/?topic_id=962">
+	Freshmeat</a>; um diese jedem Benutzer (auch von Blackbox, Openbox oder Hackedbox zur Verfügung zu stellen),
+	empfiehlt sich eine Installation in /usr/share/commonbox/styles (die Hintergrundbilder in: 
+	/usr/share/commonbox/backgrounds). Mit  dem Anlegen von symbolischen Links
+	<a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 11</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">ln -s /usr/share/commonbox/styles /home/username/.fluxbox/styles</font>
+	# <font class="input">ln -s /usr/share/commonbox/backgrounds /home/username/.fluxbox/backgrounds</font>
+	</pre></td></tr>
+</table>
+	kann nun der Benutzer auf alle installierten Themen zugreifen.
+	</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Dateimanagement mit dem ROX-Filer</p>
+<p class="secthead"><a name="_sect1">Wozu ein Dateimanager? </a></p>
+<p>
+	Was für Gnome Nautilus und für KDE Konqueror ist, da kommt Fluxbox zunächst ohne Dateimanager daher. Den Puristen
+	unter uns genügt sowieso die Kommandozeile im Terminal, aber wenn es darum geht, bestimmte Icons auf dem Desktop
+	abzulegen wollen, oder mal schnell in einem Verzeichnis zu blättern kommt man um ein grafisches Dateimanagement
+	kaum herum. Auswahl gibt es hier wie Sand am Meer, <font class="input">endeavour</font>, <font class="input">gentoo</font> um nur einige zu nennen. Ich
+	persönlich bevorzuge den ROX-Filer, aber das ist Ansichtssache.
+	<a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 12</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">emerge -p rox
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild  N   ] x11-misc/shared-mime-info-0.7 to /
+	[ebuild  N   ] app-misc/rox-1.3.2 to /
+	
+	#emerge rox</font>
+	</pre></td></tr>
+</table>
+	Nun sollte sich dieser mit <font class="input">rox</font> aufrufen lassen.
+	</p>
+<p class="secthead"><a name="_sect2">Konfiguration </a></p>
+<p>Um mit dem ROX Filer Icons auf dem Desktop abzulegen können, muss dieser vor dem Start von Fluxbox
+	ausgeführt werden. Damit jeder Benutzer in den Genuss kommt, habe ich die /etc/X11/Sessions/fluxbox wie
+	folgt erweitert:
+	<a name="doc_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 13: Erweitertes /etc/X11/Sessions/fluxbox Skript</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	#!/bin/sh
+	source /etc/profile
+	rox --pinboard=myboard &amp;
+	/usr/bin/fluxbox
+	</pre></td></tr>
+</table>
+	Beim nächsten Neustart von Fluxbox sollte links oben ein Ordner mit dem Namen &quot;Desktop&quot; zu sehen sein. Mit 
+	einem Linksklick darauf, öffnet sich der Dateimanager, und die Lieblingsanwendungen können per Drag'n drop
+	auf dem Desktop abgelegt werden. Mit Rechtsklick darauf kann ein Kontextmenue geöffnet werden, das 
+	benuzerdefinierte Einstellungen (anderes Icon, neuer Name etc...) erlaubt. Noch schneller geht es, wenn
+	man die Einstellungen direkt unter ~/Choices/ROX-Filer/pb_myboard vornimmt.
+	<a name="doc_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 14: Desktop Icons in ~/Choices/ROX-Filer/pb_myboard</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	&lt;?xml version=&quot;1.0&quot;?&gt;
+	&lt;pinboard&gt;
+	 &lt;icon x=&quot;32&quot; y=&quot;32&quot; label=&quot;Desktop&quot;&gt;/home/username&lt;/icon&gt;
+	 &lt;icon x=&quot;32&quot; y=&quot;192&quot; label=&quot;Terminal&quot;&gt;/usr/bin/xterm&lt;/icon&gt;
+	&lt;/pinboard&gt;
+	</pre></td></tr>
+</table>
+</p>
+
+	<p>
+	Im Dateimanager selber kann nun festgelegt werden, welche Anwendung sich beim Klicken auf die Datei öffnet.
+	Für Textdateien bietet sich <font class="input">xedit</font> an:
+	<a name="doc_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 15</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	# <font class="input">nano -w ~/Choices/MIME-types/text-plain</font>
+	</pre></td></tr>
+</table>
+	und trägt folgende Werte ein:
+	<a name="doc_pre16"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 16: Modifikationen an ~/Choices/MIME-types/text-plain</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+	#!/bin/sh
+	exec xedit &quot;$1&quot;
+	</pre></td></tr>
+</table>
+	Dies lässt sich beliebig für alle MIME-Dateitypen vornehmen, die unter ~/Choices/MIME-Info/Standard eingetragen
+	sind. Weitere MIME-Info Vorlagen befinden sich unter /usr/share/mime-info.
+	</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 17 Juli 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:js@ameds.de">Jens Schittenhelm</a></b><br><i>Autor</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> 
+Dieses Dokument erläutert die Einrichtung von Fluxbox unter Gentoo Linux.
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
