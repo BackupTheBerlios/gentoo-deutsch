@@ -258,6 +258,74 @@ Software-Installation widmen.
 </p>
 </body>
 </section>
+<section> 
+	<title>USB Brenner</title> 
+<body>
+<p>USB Brenner werden über die SCSI Emulation im Kernel angesprochen. Entsprechend
+konfigurieren wir den Kernel ähnlich wie bei einem ATAPI-IDE Brenner, fügen aber noch die
+entsprechende USB-Unterstützung (je nach System UHCI oder OHCI) hinzu.
+</p>
+<pre caption="Kernel Konfiguration"> 
+ATA/IDE/MFM/RLL support -&gt; IDE, ATA, and ATAPI Block Devices -&gt; &lt;*&gt; SCSI Emulation Support
+SCSI support -&gt; &lt;M&gt; SCSI support
+SCSI support -&gt; &lt;M&gt; SCSI CDROM support
+SCSI support -&gt; &lt;M&gt; SCSI generic support
+USB support  ---&gt;
+ &lt;M&gt; Support for USB
+ [*]   USB verbose debug messages
+ [*]   Preliminary USB device filesystem
+ [*]   Enforce USB bandwidth allocation (EXPERIMENTAL)
+ --- USB Controllers
+ &lt;M&gt;   UHCI (Intel PIIX4, VIA, ...) support
+ &lt; &gt;   OHCI (Compaq, iMacs, OPTi, SiS, ALi, ...) support
+ <cn>Den richtigen USB Controller für Ihr System aktivieren!</cn>
+ &lt;M&gt;   USB Mass Storage support
+</pre>
+<p>Damit die Geräte beim Einstecken des USB Kabels automatisch erkannt, und die
+korrekten Treiber geladen werden, benötigen wir noch das Paket <i>hotplug</i>.
+</p>
+<pre caption="Installation von hotplug">
+# emerge -p hotplug
+ 
+These are the packages that I would merge, in order:
+ 
+Calculating dependencies ...done!
+[ebuild  N   ] sys-apps/hotplug-20030805-r2
+
+ # emerge usbd hotplug
+</pre>
+<p>Nun müssen wir den hotplug Daemon noch  starten und auch in die init Skripte aufnehmen.</p>
+<pre caption="Einrichten von hotplug">
+# /etc/init.d/hotplug start
+ * Starting USB and PCI hotplugging...                                    [ ok ]
+# rc-update add hotplug default
+ * hotplug added to runlevel default
+ * Caching service dependencies...                                         [ ok ] 
+* rc-update complete.
+#
+</pre>
+<p> Nach Anpassung von <i>/etc/devfsd.conf</i>, wie in Punkt 2.3
+beschrieben, stecken wir den eingeschalteten USB-Brenner ein und schauen 
+mit <i>dmesg</i> die Statusmeldungen an:</p>
+<pre caption="Ausgabe von dmesg">
+usb.c: registered new driver usb-storage
+scsi0 : SCSI emulation for USB Mass Storage devices
+scsi : 1 host.
+   Vendor: HP        Model: CD-Writer+ 8200   Rev: 1.0f
+   Type:   CD-ROM            ANSI SCSI revision:  02
+ Detected scsi CD-ROM sr0 at scsi0, channel 0, id 0, lun 0
+sr0: scsi3-mmc drive: 8x/24x writer cd/rw xa/form2 cdda tray
+Uniform CD-ROM driver Revision: 3.11
+WARNING: USB Mass Storage data integrity not assured
+USB Mass Storage device found at 2
+usb.c: usb-storage driver claimed interface c2e1f660
+USB Mass Storage support registered.
+</pre>
+<p>Bei einer ähnlichen Ausgabe wie oben, ist der Brenner korrekt erkannt worden und als /dev/sr0 eingebunden
+worden. Perfekt! Nun können wir wie in Kapitel 3 beschrieben, die Software installieren.</p>
+</body>
+</section>
+
 </chapter>
 
 <chapter> 
@@ -654,6 +722,8 @@ des SCSI Bus.</p>
 <uri link="http://wt.xpilot.org/publications/linux/howtos/cd-writing/html/">Das CD Writing HOWTO</uri></p>
 <p>
 <uri link="http://www.cdrfaq.org/">Das CD-Recordable FAQ</uri></p>
+<p>
+<uri link="http://www.tuxmobil.org/linux_usb_cd.html">USB-CD Writer Howto</uri></p>
 <p>
 Und natürlich die <uri link="http://forums.gentoo.org/viewtopic.php?t=68321&amp;highlight=cdrecord+howto">Gentoo Foren</uri> - bitte wie immer erst suchen, dann posten! Gerade zum Thema CDs Brennen gibt es zahlreiche Threads.</p>
 </body>
