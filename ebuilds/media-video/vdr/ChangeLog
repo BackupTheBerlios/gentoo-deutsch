@@ -1,8 +1,13 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.26 2003/08/18 11:21:57 petric Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.27 2003/09/21 17:30:10 mad Exp $
 
-+vdr-1.2.2
+*vdr-1.2.5
+  21 Sep 2003; M.Hierling <mad@cc.fh-lippe.de>
+  added new vdr version, remove splash screen because
+  my patch for test_stillimage doesn´t work
+
+*vdr-1.2.2
   18 Aug 2003; P.Frank <pfrank@gmx.de>
   added new vdr version
 
