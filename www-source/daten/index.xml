@@ -76,58 +76,21 @@
 
 <section>
 	<body>
-	<news type="other" date="06.10.2003" title="Deutsche Gentoo-Woche">
-		<p>
-			<uriimg picuri="http://www.gentoo.de/media/bilder/icons/burger_gentoo_de.jpg" align="center"/>
-		</p>
-		<p>
-			In dieser Woche kann kein Deutscher Gentoo-Anwender sagen, er hätte nichts zu tun ;). Usertreffen jagt Usertreffen und wir Fragen uns,
-			ob dies nicht eine eigene Rubrik wert sei:
-			<ul>
-				<li>
-					<b>Mittwoch, 08. Oktober 2003:</b> Gentoo-User-Treffen für den Bereich Ruhrgebiet. Treffen im CentrO in Oberhausen,
-					Brauhaus-Zeche Jakobi. Los gehts um 19:00 Uhr, Treffpunkt zwischen 18:45 Uhr und 19:00 Uhr an der Bushaltestelle
-					'Neue Mitte'
-				</li>
-				<li>
-					<b>Donnerstag, 09. Oktober 2003:</b> Gentoo-User-Treffen für die Köln/Bonner-Community. Treffen im
-					<uri link="http://www.netzladen.org/">Netzladen</uri> ab 18:00.
-				</li>
-				<li>
-					<b>Donnerstag, 09. Oktober 2003:</b> Gentoo-User-Treffen der Wiesbadener Community im
-					Cafe Finale auf der Emser Straße ab 19.00
-				</li>
-				<li>
-					<b>Donnerstag, 09. Oktober 2003:</b> Gentoo Linux Stammtisch München im Cafe Neunhausen,
-					Blutenburgstr. 106. Beginn ist um 19.00 Uhr, der Tisch ist auf den Namen 'Gentoo' reserviert.
-				</li>
-				<li>
-					<b>Samstag, 11. Oktober 2003:</b> Practical Linux-Tag 2003 in Giessen Mittelhessen. Details siehe unten.
-					Die Präsentation die vorgeführt wurde ist als
-					<uri link="http://www.judas-merlau.de/gentoo2.swf" target="_blank">Flash-Datei (72kb)</uri> oder als
-					<uri link="http://www.judas-merlau.de/gentoo2.pdf" target="_blank">PDF (223kb)</uri>
-					zum Herunterladen verfügbar.
-				</li>
-			</ul>
-		</p>
-	</news>
-	</body>
-</section>
-
-<section>
-	<body>
-	<news type="other" date="29.08.2003" title="Gentoo goes Practical-Linux">
+	<news type="other" date="12.10.2003" title="Gentoo went Practical-Linux">
 
 		<p>
-			Wir sind auf den <b>Pracical Linux-Tag 2003 am 11.10.2003 in Gießen (Mittelhessen) eingeladen worden</b>
+			Wir waren auf den <b>Pracical Linux-Tag 2003 am 11.10.2003 in Gießen (Mittelhessen) eingeladen</b>
 		</p>
 		<p>
 			<uriimg uri="http://www.practical-linux.de/" picuri="http://www.gentoo.de/media/bilder/icons/pl_logo.gif" align="center"/>
 		</p>
 		<p>
-			Wir werden einen Stand betreuen und auch einen Vortrag halten. Aber nicht nur wir sind dort anzutreffen. Neben GNOME, KDE, Debian und
-			Holarse werden noch viele andere interessante Projekte zu Gast sein. Weitere Informationen gibt es auf
-			<uri link="http://www.practical-linux.de/">Practical-Linux.de</uri>
+			Neben Projekten wie Debian, KDE und Gnome haben auch wir uns am vergangenen Samstag präsentiert, vorgestellt und 
+			Gentoo CDs für verschiedenste Architekturen verteilt. 
+			Benjamin 'beejay' Judas hielt einen gut besuchten Vortrag über Gentoo Linux, dessen Script als
+			<uri link="http://www.judas-merlau.de/gentoo2.swf" target="_blank">Flash-Datei (72kb)</uri> oder als
+			<uri link="http://www.judas-merlau.de/gentoo2.pdf" target="_blank">PDF (223kb)</uri> zum Herunterladen verfügbar ist.
+			Einen ausführlicheren Bericht über Gentoo auf dem Practical Linux-Tag finden Sie im nächsten Gentoo Weekly Newsletter.
 		</p>
 	</news>
 	</body>
