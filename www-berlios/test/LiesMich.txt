@@ -1,5 +1,0 @@
-Verzeichnis zum Testen von Webseiten.
-
-Zum Realtime-Testen sind Seite aus diesem Verzeichnis 
-unter http://gentoo-deutsch.berlios.de/test/ erreichbar.
-
