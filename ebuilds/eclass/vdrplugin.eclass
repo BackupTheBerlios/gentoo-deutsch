@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/vdrplugin.eclass,v 1.1 2004/08/10 19:59:10 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/vdrplugin.eclass,v 1.2 2004/08/11 12:56:31 austriancoder Exp $
 #
 # Matthias Schwarzott <zzam@gmx.de>
 
@@ -14,9 +14,9 @@ INHERITED="$INHERITED $ECLASS"
 ##
 ## ### cut ############################################
 ##
-## # Copyright 1999-2002 Gentoo Technologies, Inc.
+## # Copyright 1999-2004 Gentoo Technologies, Inc.
 ## # Distributed under the terms of the GNU General Public License v2
-## # $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/vdrplugin.eclass,v 1.1 2004/08/10 19:59:10 austriancoder Exp $
+## # $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/eclass/vdrplugin.eclass,v 1.2 2004/08/11 12:56:31 austriancoder Exp $
 ## 
 ## inherit vdrplugin
 ## 
@@ -25,8 +25,7 @@ INHERITED="$INHERITED $ECLASS"
 ## SRC_URI="http://.../.../vdr-${VDRPLUGIN}-${PV}.tgz"
 ## LICENSE="GPL-2"
 ## 
-## DEPEND="${DEPEND}
-##         >=media-video/vdr-1.3.7"
+## DEPEND=">=media-video/vdr-1.3.7"
 ##
 ## ### cut ############################################
 #
@@ -161,10 +160,7 @@ vdrplugin_src_install() {
 		doins ${FILESDIR}/vdr.${VDRPLUGIN}
 	fi
 
-	cd ${D}/usr/lib/vdr/
-	ln -s libvdr-${VDRPLUGIN}.so.${PV} libvdr-${VDRPLUGIN}.so
-
-	cd ${S}
+	dosym libvdr-${VDRPLUGIN}.so.${PV} /usr/lib/vdr/libvdr-${VDRPLUGIN}.so
 }
 
 vdrplugin_pkg_postinst() {
