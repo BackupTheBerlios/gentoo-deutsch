@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/hoerzu2vdr/hoerzu2vdr-0.4.0a.ebuild,v 1.1 2004/03/23 21:03:27 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/hoerzu2vdr/hoerzu2vdr-0.4.0a.ebuild,v 1.2 2004/03/23 21:21:11 austriancoder Exp $
 
 DESCRIPTION="The Kaffeine media player for KDE3 based on xine-lib."
 SRC_URI="http://www.wontorra.net/filemgmt_data/files/${P}.tar.gz"
@@ -18,6 +18,7 @@ src_unpack() {
 src_install() {
 	# binary
 	insinto /etc/vdr/hoerzu2vdr
+	diropts -m0750
 	doins *.jar *.sh
 
 	# config files
