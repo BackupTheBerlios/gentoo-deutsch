@@ -25,8 +25,8 @@
     <p>
       Der aktuelle Gentoo Newsletter ruft zum Wiederbeleben des Gentoo Embedded Projekt auf.
       Gentoo Dev Patrick Kursawe aka phosphan wird vorgestellt, die Verfügbarkeit von ersten
-      KDE 3.2 Beta ebuilds wird angekündigt und in den "Tipps und Tricks" geht es um <c>at</c>.
-      Es wird Ihnen <c>at</c> näher gebracht, mit dem Sie Einmalereignissen planen können.
+      KDE 3.2 Beta ebuilds wird angekündigt und in den "Tipps und Tricks" geht es um <c>at</c>,
+      mit dem Sie Einmalereignisse planen können.
       <uri link="http://www.gentoo.org/news/de/gwn/20031103-newsletter.xml">Hier</uri> gehts zur
       aktuellen Ausgabe.
     </p>
