@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-www/vdradmind/vdradmind-0.95.ebuild,v 1.1 2003/12/14 16:07:14 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-www/vdradmind/vdradmind-0.95.ebuild,v 1.2 2003/12/16 17:52:01 mad Exp $
 
 IUSE=""
 
@@ -14,7 +14,7 @@ SLOT="0"
 LICENSE="GPL-2"
 
 DEPEND="dev-lang/perl
-		dev-perl/Compress-Zlib
+		>=dev-perl/Compress-Zlib-1.2.2
 		media-video/vdr"
 
 RESTRICT="nostrip"

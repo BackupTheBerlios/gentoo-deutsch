@@ -1,8 +1,12 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-www/vdradmind/ChangeLog,v 1.4 2003/12/14 16:07:14 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-www/vdradmind/ChangeLog,v 1.5 2003/12/16 17:52:01 mad Exp $
 
 *vdradmind-0.95 
+  16 Dec 2003; M.Hierling <mad@cc.fh-lippe.de>
+  fixed dep for Compress-Zlib
+  http://www.vdr-portal.de/board/thread.php?threadid=9421&boardid=56&sid=
+
   14 Dec 2003; M.Hierling <mad@cc.fh-lippe.de>
   new version
 
