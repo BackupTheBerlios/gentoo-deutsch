@@ -1973,36 +1973,37 @@ Gentoo unterstützt zwei verschiedene DNS-Server : Bind und djbdns.
 <body>
 
 <p>
-Bind is known for its security history that should not be taken lightly. As with any other service it should
-__never__ run as root so please don't change the default configuration for this service. Per default Gentoo
-does not setup any configuration for this services so you have to add your own dns zones to
-<path>/etc/bind/named.conf</path>. But since the security lies not only within the domain server daemon but
-also in the protocol it should be properly configured.
+Bind ist bekannt für seine Sicherheitsgeschichte die nicht auf die leichte Schulter genommen werden sollte. Wie jeder andere Dienst
+sollte es _nie_ als root laufen, also ändern Sie bitte nicht die Standardkonfiguration für dieses Paket. Normalerweise erstellt
+Gentoo keine Konfiguration für diese Dienste, somit müssen Sie also selbst Ihre DNS-Zonen in <path>/etc/bind/named.conf</path> hinzufügen.
+Aber da die Sicherheit nicht nur im Dämon zu finden ist sondern auch im Protokoll sollte dieses auch ordentlich konfiguriert werden.
 </p>
 
 <p>
-People often ask, why not use djbdns (very secure dns by D.J. Bernstein) and the answer is: Bind does have features that djbdns does not, like support for IPv6 (not without a patch anyway).
+Oft wird die Frage gestellt, warum djbdns (sehr sicherer DNS von D.J. Bernstein) nicht
+benutzt wird - die Antwort ist : Bind hat Features die djbdns nicht hat. Unterstützung für
+IPV6 (wenn auch nur mittels Patch) sei hier als Beispiel genannt.
 </p>
 
 <pre caption="/etc/bind/named.conf">
-#setup access control
+#Zugangskontrolle einrichten
 acl "mynet" { 10.0.0.0/24; };
 
 options {
   directory "/var/bind";
   pid-file "/var/run/named/named.pid";
-#allow "mynet" to make queries
+#erlaube "mynet" Abfragen zu tätigen
   allow-query { "mynet"; };
-#don't allow zone transfers
+#Zone-Transfers nicht erlauben
   allow-transfer { none; };
   forward only;
   forwarders { 10.0.0.2; };
-#Only provide recursive service to "mynet"
+#"mynet" nur rekursive Dienste anbieten
   recursion no;
   allow-recursion { mynet; };
-# Bind to an interface
+#An Netzwerkinterface binden
   listen-on { 10.0.0.1; };
-# Don't show the version
+#Version verbergen
   version "Go away";
 };
 
@@ -2011,7 +2012,7 @@ key "rndc-key" {
   secret "o1BYkYC+bXeZgHDsrVBwRQ==";
 };
 
-#allow only control from localhost and with a key
+#Kontrolle nur von localhost und mit Schlüssel erlauben
 controls {
   inet 127.0.0.1 port 953
   allow { 127.0.0.1; } keys { "rndc-key"; };
@@ -2019,10 +2020,11 @@ controls {
 </pre>
 
 <p>
-This is a default good configuration. However, Bind version 9 has a special chroot functionality that you should use. Here is how you create your chrooted bind:
+Dies ist eine allgemeine und schon recht gute Konfiguration. Bind Version 9 hat jedoch eine spezielle
+chroot-Funktionalität von der Sie Gebrauch machen sollten. Und so erstellen Sie Ihren "ge-chrooteten" Bind:
 </p>
 
-<pre caption="Prepairing a chroot environment">
+<pre caption="chroot-Umgebung vorbereiten">
 # <i>mkdir -p /chroot</i>
 # <i>mkdir /chroot/dns</i>
 # <i>mkdir /chroot/dns/dev</i>
@@ -2044,14 +2046,20 @@ This is a default good configuration. However, Bind version 9 has a special chro
 </pre>
 
 <p>
-This will create a chrooted environment in <path>/chroot</path>. Now all we have to do is modify the init script for supporting the new environment. Edit <path>/etc/init.d/named</path> and add <c>-t /chroot/dns</c> to the start function. You may also want to change the stop function to point to the correct pid file in <path>/chroot/var/run/named/named.pid</path>. Restart your DNS server.
+Dies wird eine ge-chrootete Umgebung im Pfad <path>/chroot</path> erstellen. Alles was wir nun noch tun
+müssen ist eine Anpassung des Init-Skriptes damit dieses die neue Umgebung auch unterstützt. Bearbeiten Sie
+<path>/etc/init.d/named</path> und fügen Sie <c>-t /chroot/dns</c> am Ende der start-Funtion ein. Sie können
+auch die stop-Funktion anpassen, sodaß diese auf das richtige PID-File in <path>/chroot/var/run/named/named.pid</path>
+verweist. Starten Sie dann den DNS-Server neu.
 </p>
+
 <note>
-An attacker can escape a chrooted jail, if he is good enough (see how to prevent this in the kernel patch section)
+Ein Angreifer kann dem chroot-Gefängnis entkommen wenn er gut genug ist (wie das verhindert werden kann können Sie im Abschnitt
+über Kernelpatches lesen.
 </note>
 
 <p>
-Documentation can be found at the <uri link="http://www.isc.org/products/BIND/bind9.html">Internet Software Consortium</uri>
+Dokumentation gibt es auf der Seite des <uri link="http://www.isc.org/products/BIND/bind9.html">Internet Software Consortium</uri>
 </p>
 
 </body>
@@ -2062,7 +2070,10 @@ Documentation can be found at the <uri link="http://www.isc.org/products/BIND/bi
 <body>
 
 <p>
-There is really not much to say about djbdns except that the author is willing to bet <uri link="http://cr.yp.to/djbdns/guarantee.html">money</uri> on how secure it is. So go and try it: <uri>http://www.djbdns.org/</uri> it is very different from the way Bind v.9 works but you will get the hang of it.
+There is really not much to say about djbdns except that the author is willing to bet
+<uri link="http://cr.yp.to/djbdns/guarantee.html">money</uri> on how secure it is.
+So go and try it: <uri>http://www.djbdns.org/</uri> it is very different from the
+way Bind v.9 works but you will get the hang of it.
 </p>
 
 </body>
