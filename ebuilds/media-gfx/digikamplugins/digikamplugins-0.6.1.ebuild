@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-gfx/digikamplugins/digikamplugins-0.6.1.ebuild,v 1.1 2004/04/06 15:17:26 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-gfx/digikamplugins/digikamplugins-0.6.1.ebuild,v 1.2 2004/04/26 00:00:17 ripclaw Exp $
 
 inherit kde-base
 need-kde 3
@@ -36,11 +36,15 @@ src_unpack() {
 	   cd ${S}
 	   /bin/sed -i configure.in.in \
             -e 's:#DO_NOT_COMPILE="$DO_NOT_COMPILE slideshow":DO_NOT_COMPILE="$DO_NOT_COMPILE slideshow":'
+	   /bin/sed -i configure.in \
+            -e 's:#DO_NOT_COMPILE="$DO_NOT_COMPILE slideshow":DO_NOT_COMPILE="$DO_NOT_COMPILE slideshow":'
 	fi
 	if ! [ `use cdr` ]; then
 	   ewarn "cdarchiving disabled, because there is no cdr USE Flag"
 	   cd ${S}
 	   /bin/sed -i configure.in.in \
+            -e 's:#DO_NOT_COMPILE="$DO_NOT_COMPILE cdarchiving":DO_NOT_COMPILE="$DO_NOT_COMPILE scdarchiving":'
+	   /bin/sed -i configure.in \
             -e 's:#DO_NOT_COMPILE="$DO_NOT_COMPILE cdarchiving":DO_NOT_COMPILE="$DO_NOT_COMPILE scdarchiving":'
 	fi
 }
