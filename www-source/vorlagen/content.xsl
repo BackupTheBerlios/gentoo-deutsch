@@ -181,15 +181,15 @@
 
     <xsl:if test="count(chapter/title) &gt; 1">
       <![CDATA[<!-- keine-suche-start -->]]>
-        <form style="font-size: 0.7em">
-          <select name="url" size="1" class="jumpbox"
+        <form style="font-size: 0.7em" action="http://www.gentoo.de/">
+          <p><select name="url" size="1" class="jumpbox"
             onchange="location.hash=form.url.options[form.url.selectedIndex].value; form.url.value='---'">
             <option value="---">[Bitte Kapitel auswählen]</option>  
         
             <xsl:for-each select="chapter/title">
               <option value="header_{position()}"><xsl:value-of select="."/></option>
             </xsl:for-each>
-          </select>
+          </select></p>
         </form>
       <![CDATA[<!-- keine-suche-stop -->]]>
     </xsl:if>
