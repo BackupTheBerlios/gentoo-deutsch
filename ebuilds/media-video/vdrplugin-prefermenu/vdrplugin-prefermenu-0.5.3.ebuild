@@ -1,6 +1,6 @@
 # Copyright 2003 Henning Ryll <henning.ryll@web.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-prefermenu/vdrplugin-prefermenu-0.5.3.ebuild,v 1.1 2003/06/05 08:45:33 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-prefermenu/vdrplugin-prefermenu-0.5.3.ebuild,v 1.2 2003/06/05 09:36:29 mad Exp $
 
 IUSE=""
 VERSION="0.5.3"
@@ -14,7 +14,6 @@ SLOT="0"
 LICENSE="GPL-2"
 
 DEPEND=">=media-video/vdr-1.2.0"
-
 
 src_unpack() {
 	unpack ${A}
@@ -32,10 +31,11 @@ src_install() {
 	insinto /usr/lib/vdr
 	insopts -m0755
 	newins libvdr-prefermenu.so libvdr-prefermenu.so.${VERSION}
-	dosym /usr/lib/vdr/libvdr-prefermenu.so.${VERSION} /usr/lib/vdr/libvdr-prefermenu.so
 	dodoc COPYING README 
 	touch ${D}etc/vdr/plugins/prefermenu.conf
 	fowners vdr ${D}etc/vdr/plugins/prefermenu.conf
+	cd ${D}/usr/lib/vdr/
+	ln -s libvdr-prefermenu.so.${VERSION} libvdr-prefermenu.so
 }
 
 pkg_postinst() {
