@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.vdr,v 1.3 2003/06/05 12:37:22 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.vdr,v 1.4 2003/06/05 12:47:28 mad Exp $
 
 opts="${opts} fullrestart"
 
@@ -80,8 +80,21 @@ stop() {
 
 fullrestart() {
 	ebegin "Fully restarting $(vdr -V) and DVB drivers"
-	/etc/init.d/vdr stop	
+	/etc/init.d/vdr stop
 	/etc/init.d/vdr zap
 	sleep 5
+	/bin/pidof /usr/bin/vdr && /bin/killall -9 vdr
+	sleep 5
+	/sbin/rmmod -v \
+			dvb-ttpci \
+			alps_bsrv2 \
+			grundig_29504-401 \
+			grundig_29504-491 \
+			ves1820 \
+			alps_tdmb7 \
+			alps_tdlb7
+	sleep 3
 	/etc/init.d/vdr start
 }
+
+
