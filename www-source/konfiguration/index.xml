@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <config>
+
   <language value="de_DE" short="lng">
     <homepage>Startseite</homepage>
     <print>Drucken</print>
@@ -13,6 +14,7 @@
     <impo>Wichtig</impo>
     <warn>Warnung</warn>
   </language>
+
   <menu value="gentoo.de">
     <item title="Projekt" href="projekt">
       <item href="neuigkeiten" title="Neuigkeiten"/>
@@ -68,4 +70,5 @@
       <item href="ebuilds" title="Aktuelles Programme"/>
     </item>
   </menu>
+
 </config>
