@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-www/vdradmind/files/rc.vdradmind,v 1.1 2003/05/26 20:04:33 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-www/vdradmind/files/rc.vdradmind,v 1.2 2003/05/26 20:06:22 mad Exp $
 
 depend() {
 	need vdr
@@ -9,7 +9,7 @@ depend() {
 
 start() {
 	ebegin "Starting vdradmind"
-	/usr/bin/vdradmind
+	/usr/bin/vdradmind.pl
 	eend $?
 }
 
