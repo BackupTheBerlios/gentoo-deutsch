@@ -38,6 +38,8 @@
             <xsl:value-of select="name"/>
             <xsl:text>, </xsl:text>
           </xsl:for-each>
+          
+          <br/><br/>
         </xsl:if>  
       
       </xsl:for-each>
