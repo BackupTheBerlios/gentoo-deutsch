@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/linuxtv-dvb-1.1.1.ebuild,v 1.1 2004/03/28 10:58:50 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/linuxtv-dvb-1.1.1.ebuild,v 1.2 2004/04/20 17:16:07 mad Exp $
 
 DESCRIPTION="This is the standalone DVB driver for Kernel 2.4.x"
 HOMEPAGE="http://linuxtv.org/"
@@ -19,9 +19,10 @@ DEPEND="
 		!media-video/linuxdvb"
 
 RDEPEND="virtual/glibc"
+KERNELRELEASE=$(/bin/uname -r)
 
-pkg_setup() {
-	if [ -z "$(modinfo -n input 2>/dev/null)" -o -z "$(modinfo -n evdev 2>/dev/null)" ]; then
+pkg_setup() { 
+		if [ -z "$(modinfo -n input 2>/dev/null)" -o -z "$(modinfo -n evdev 2>/dev/null)" ]; then
 		ewarn
 		ewarn "If something goes wrong, make sure you have evdev,video, i2c and "
 		ewarn "input support in your kernel. Check your kernelconfiguration"
@@ -31,9 +32,9 @@ pkg_setup() {
 		ewarn
 	fi
 
-	if [ -r /lib/modules/$(KERNELRELEASE)/misc/videodev.o ]; then
+	if [ -r /lib/modules/${KERNELRELEASE}/misc/videodev.o ]; then
 		ewarn
-		ewarn "There is a stale /lib/modules/$(KERNELRELEASE)/misc/videodev.o."
+		ewarn "There is a stale /lib/modules/${KERNELRELEASE}/misc/videodev.o."
 		ewarn "Probably from a previous installation of this driver. Make sure you"
 		ewarn "have Video 4 Linux support in your kernel (either as module or"
 		ewarn "statically linked) and delete this file. This has changed from "
