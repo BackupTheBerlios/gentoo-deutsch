@@ -1,10 +1,15 @@
 # ChangeLog for sys-apps/nvram-wakeup
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/nvram-wakeup/ChangeLog,v 1.3 2004/05/24 13:15:35 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/nvram-wakeup/ChangeLog,v 1.4 2004/05/26 08:22:39 austriancoder Exp $
 
-*nvram-wakeup-0.96 (24 Mar 2004)
+*nvram-wakeup-0.96-r1 (26 Mai 2004)
 
-  24 Mar 2004; Christian Gmeiner <christian at visual-page.de> nvram-wakeup-0.96.ebuild
+  26 Mai 2004; Christian Gmeiner <christian at visual-page.de> nvram-wakeup-0.96.ebuild
+  added support for guess-helper.sh
+
+*nvram-wakeup-0.96 (24 Mai 2004)
+
+  24 Mai 2004; Christian Gmeiner <christian at visual-page.de> nvram-wakeup-0.96.ebuild
   version bump and fix in ebuild
 
 *nvram-wakeup-0.95a (15 Apr 2004)
