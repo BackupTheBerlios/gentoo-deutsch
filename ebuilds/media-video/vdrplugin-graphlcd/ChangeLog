@@ -1,8 +1,14 @@
 # ChangeLog for media-video/vdr-clock
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/ChangeLog,v 1.4 2004/06/18 08:30:45 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-graphlcd/ChangeLog,v 1.5 2004/06/20 23:06:31 austriancoder Exp $
 
-*vdrplugin-graphlcd-0.0.7 (18 June 2004)
+*vdrplugin-graphlcd-0.1.0-r1 (21 June 2004)
+
+  21. June 2004; Christian Gmeiner <christian at visual-page dot de>
+  some fixes
+  added showpic
+
+*vdrplugin-graphlcd-0.1.0 (18 June 2004)
 
   18. June 2004; Christian Gmeiner <christian at visual-page dot de>
   version bump to 0.1.0
