@@ -24,59 +24,33 @@
         </xsl:choose>
       </xsl:variable>
       
-      <xsl:for-each select="pkg">
-        <xsl:sort select="category"/>
-        <xsl:sort select="name"/>
-
-        <table>
-
+      <table>
         <tr>
-          <td>Paketname:</td>
-          <td><xsl:value-of select="name"/></td>
+          <td>Name</td>
+          <td>Version</td>
+          <td>Revision</td>
+          <td>Datum</td>
         </tr>
 
-        <tr>
-          <td>Version:</td>
-          <td><xsl:value-of select="version"/></td>
-        </tr>
+        <xsl:for-each select="pkg">
+          <xsl:sort select="category"/>
+          <xsl:sort select="name"/>
 
-        <tr>
-          <td>Revision:</td>
-          <td><xsl:value-of select="revision"/></td>
-        </tr>
+          <tr>
+            <td><xsl:value-of select="name"/></td>
+            <td><xsl:value-of select="version"/></td>
+            <td><xsl:value-of select="revision"/></td>
+            <td>
+              <xsl:value-of select="date/@day"/>
+              <xsl:text>.</xsl:text>
+              <xsl:value-of select="date/@month"/>
+              <xsl:text>.</xsl:text>
+              <xsl:value-of select="date/@year"/>
+            </td>   
+          </tr>
+ 
+        </xsl:for-each> 
 
-        <tr>
-          <td>Lizenz:</td>
-          <td><xsl:value-of select="license"/></td>
-        </tr>
-
-        <tr>
-          <td>Slot:</td>
-          <td><xsl:value-of select="slot"/></td>
-        </tr>
-
-        <tr>
-          <td>Änderung:</td>
-          <td>
-            <xsl:value-of select="date/@day"/>
-            <xsl:text>.</xsl:text>
-            <xsl:value-of select="date/@month"/>
-            <xsl:text>.</xsl:text>
-            <xsl:value-of select="date/@year"/>
-          </td>   
-        </tr>
-
-        <tr>
-          <td>Homepage: </td>
-          <td>
-            <a href="{homepage}">
-              <xsl:value-of select="homepage"/>
-            </a>
-          </td>
-        </tr>
-
-        </table>
-      </xsl:for-each> 
       </table>
     </xsl:element>
   </xsl:element>
