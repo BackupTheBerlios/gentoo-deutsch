@@ -8,6 +8,7 @@ HOMEPAGE="http://mozplugger.mozdev.org/"
 KEYWORDS="~x86 -ppc ~sparc"
 LICENCSE="GPL-2"
 DEPEND="virtual/glibc"
+RDEPEND="!virtual/plugger"
 PROVIDE="virtual/plugger"
 
 src_compile()
