@@ -1,9 +1,9 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.1.ebuild,v 1.1 2003/06/26 17:40:19 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.1.ebuild,v 1.2 2003/06/30 12:07:24 fow0ryl Exp $
 
 IUSE="lirc"
-ANALOGTV_VN="0.7.0"
+ANALOGTV_VN="0.8.0"
 AC3_OVER_DVB="vdr-1.2.0-AC3overDVB-0.2.0"
 AKOOL_VN="1.2.1"
 AKOOLWOE_VN="1.2.0"
@@ -38,8 +38,15 @@ DEPEND="virtual/glibc
 # function to implement a "local" use variable called VDR_OPTS
 #
 function vdr_opts {
-	echo ${VDR_OPTS} | grep --silent $1 && return 0
-	einfo "No optional $1 in VDR_OPTS"
+	local x
+	for x in ${VDR_OPTS}
+	do
+		if [ "${x}" = "${1}" ]
+		then
+			return 0
+		fi
+	done
+	ewarn "No optional ${1} in VDR_OPTS"
 	return 1
 }
 
@@ -54,8 +61,8 @@ src_unpack() {
 
 	# AC3 over DVB Patch
 	# needs app-admin/fam-oss
-	if [ -z "`vdr_opts vdr_ac3`" ]; then
-		if [ -z "`vdr_opts akool`" -o -z "`vdr_opts akoolwoe`"]; then
+	if vdr_opts ac3; then
+		if vdr_opts akoolwoe || vdr_opts akool; then
 			ewarn "ac3 patch is already part of akool patch ... skipping"
 		fi
 		einfo "Apply AC3 patch ..."
@@ -63,18 +70,18 @@ src_unpack() {
 	fi
 
 	# Akool Patches
-	if [ -z "`vdr_opts akool`" ]; then
-		if [ -z "`vdr_opts akoolwoe`" ]; then
+	if vdr_opts akool; then
+		if vdr_opts akoolwoe; then
 			eerror "ups, akool & akoolwoe patch will not work together"
 			die "incompatible VDR_OPTS"
 		fi
-		if [ -z "`vdr_opts elchi`" ]; then
+		if vdr_opts elchi; then
 			ewarn "elchi patch is already part of akool patch ... skipping"
 		fi
 		einfo "Apply akool patch ..."
 		epatch ../vdr-${AKOOL_VN}.patch
-	elif [ -z "`vdr_opts akoolwoe`" ]; then
-		if [ -z "`vdr_opts elchi`" ]; then
+	elif vdr_opts akoolwoe; then
+		if vdr_opts elchi; then
 			eerror "ups, akoolwoe is 'akool without elchi'"
 			eerror "please recheck your decision, but aware:"
 			eerror "elchi patches are not compatible with DXR3"
@@ -85,8 +92,8 @@ src_unpack() {
 	fi
 
 	# Elchi Patch
-	if [ -z "`vdr_opts elchi`" ]; then
-		if [ -n "`vdr_opts akool`" ]; then
+	if vdr_opts elchi; then
+		if !vdr_opts akool; then
 		cd ${S}
 			einfo "Apply ElchiAOI3a patch ..."
 			patch < ../ElchiAIO3a-1.2.0.diff
@@ -95,7 +102,7 @@ src_unpack() {
 	fi
 
 	# AnalogTV Patch
-	if [ -z "`vdr_opts analogtv`" ]; then
+	if vdr_opts analogtv; then
 		einfo "Apply AnalogTV patch ..."
 		cp ${WORKDIR}/analogtv-${ANALOGTV_VN}/3rd-party/vdr/remux.c .
 	fi
