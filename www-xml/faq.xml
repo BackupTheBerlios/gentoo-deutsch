@@ -582,14 +582,14 @@ UNREGISTER      ^misc/psaux$    CFUNCTION GLOBAL unlink mouse
 
 	<section>
 		<title>Wo kann man mehr Informationen &#xFC;ber Gentoo Linux finden?</title>
-		<body><p>Die Offizelle Gentoo documentation kann bei <uri>http://www.gentoo.org</uri> gefunden werden. Homepage vom &#xDC;bersetzungsprojekt ins Deutsche <uri>http://gentoo-deutsch.berlios.de</uri>. Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verf&#xFC;gbar.</p></body>
+		<body><p>Die Offizelle Gentoo Dokumentation kann bei <uri>http://www.gentoo.org</uri> gefunden werden. Homepage vom &#xDC;bersetzungsprojekt ins Deutsche <uri>http://gentoo-deutsch.berlios.de</uri>. Standard Linux Information sind unter <uri>http://www.linuxdoc.org</uri> verf&#xFC;gbar.</p></body>
 	</section>
 
 	<section>
 		<title>Kann man CDs von Gentoo Linux kaufen?</title>
 		<body><p>USA: Ja! Frische CDRs sind fuer $5 USD von <uri>http://www.cheapbytes.com</uri> kaufbar.
 		</p>
-		<p>Europa/Deutschland: Keine Ahnung, sollte sich jemand finden der dies liesst und Gentoo Linux CDs Professionell (nicht grad privat) macht und verkauft kann sich mal bei <mail link="marko@nexboard.de">mir</mail> melden.
+		<p>Europa/Deutschland: Gentoo Linux 1.2 CD's k&#xF6;nnen f&#xDC;r 5 Euro bei <uri>http://www.lin24.de</uri> und <uri>http://www.liniso.de</uri> bezogen werden.
 		</p></body>
 	</section>
 	<section>
