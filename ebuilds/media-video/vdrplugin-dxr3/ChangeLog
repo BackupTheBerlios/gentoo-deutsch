@@ -1,0 +1,7 @@
+# ChangeLog for media-video/vdrplugin-dxr3
+# Copyright 2003 Phillip Rothe <phil@alpha-centauri.org>; Distributed under the GPL
+
+*vdrplugin-dxr3-0.2.1 (28 Aug 2003)
+
+  01 Aug 2003; Phillip Rothe <phil@alpha-centauri.org>
+  initial gentoo ebuild
