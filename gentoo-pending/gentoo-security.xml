@@ -2199,32 +2199,33 @@ eingebauter Befehl ist.
 </p>
 
 <p>
-This is basically the same way you would create a chrooted service. The only difference is that
-services sometimes rely on devices and configuration files in <path>/etc</path>. Simply copy them
-(devices can be copied with cp -a) to the chrooted environment, edit the init script to use chroot
-before executing. It can be difficult to find what devices and configuration files a services need.
-This is where the <c>strace</c> command becomes handy. Start the service with <path>/usr/bin/strace</path>
-bash and look for open, read, stat and maybe connect. This will give you a clue on what files to copy.
-But in most cases just copy the passwd file (edit the copy and remove users that has nothing to do with
-the service), <path>/dev/zero</path>, <path>/dev/log</path> and <path>/dev/random</path>.
+In etwa ist dies der selbe Weg den Sie gehen würden um einen "ge-chrooteten" Dienst zu erstellen. Der einzige
+Unterschied ist, dass Dienste manchmal auf Geräten und Konfigurationsdateien in <path>/etc</path> basieren.
+Kopieren Sie diese einfach in die chroot-Umgebung (Geräte können mit cp -a kopiert werden) und editieren Sie das
+Init-Script sodaß es die chroot-Umgebung vor der Ausführung verwendet. Es kann schwierig sein herauszufinden, welche
+Konfigurationsdateien und Geräte ein Dienst benutzt. Dies ist der Punkt, an dem <c>strace</c> nützlich wird. Starten
+Sie den Service mit <path>/usr/bin/strace</path> bash und suchen Sie nach open, read, stat und vielleicht noch connect. Dies
+wird Ihnen eine Idee darüber geben, welche Dateien Sie kopieren müssen. Aber in den meisten Fällen kopieren Sie einfach die
+passwd-datei (vorher editieren und die Benutzer entfernen, die mit dem Dienst nichts zu tun haben), <path>/dev/zero</path>,
+<path>/dev/log</path> und <path>/dev/random</path> in die neue Umgebung.
 </p>
 
 <p>
-Another way of creating a more secure environment is by using a virtual server environment.
-This will create a copy of the existing Linux and boots it in a virtual mode. This means
-that if the server is compromised its only the virtual server that has been compromised
-and not the real installation.
+Ein weiterer Weg eine sichere Umgebung zu erstellen besteht darin eine virtuelle Serverumgebung zu erstellen.
+Dies wird eine Kopie der exisitierenden Linuxinstallation erstellen und es virtuell booten. Dies bedeutet,
+dass wenn der Server angegriffen wird in Wirklichkeit nur der virtuelle Server angegriffen wird, nicht die
+echte Installation.
 </p>
 
 <p>
-Examples of virtual servers:
+Beispiele von virtuellen Servern:
 </p>
 
 <ul>
 
 <li>
-<uri link="http://user-mode-linux.sourceforge.net">Usermode linux</uri> and an howto
-about <uri link="http://www.gentoo.org/doc/uml.html">user mode linux</uri>.
+<uri link="http://user-mode-linux.sourceforge.net">Usermode Linux</uri> und ein HowTo
+über <uri link="http://www.gentoo.org/doc/uml.html">Usermode Linux</uri>.
 </li>
 
 <li>
@@ -2246,86 +2247,94 @@ about <uri link="http://www.gentoo.org/doc/uml.html">user mode linux</uri>.
 <title>Firewalls</title>
 
 <section>
-<title>A firewall</title>
+<title>Eine Firewall</title>
 <body>
 
 <p>
-People often think that a firewall is the ultimate security, but they are wrong. In most cases a mis configured firewall gives worse security that not having one at all. A firewall is also a piece of software and should be treated the same way as any other service, because is just as likely to have bugs (security holes).
+Oftmals wird eine Firewall als die ultimative Sicherheitsmassnahme bezeichnet - was aber nur bedingt stimmt.
+In den meisten Fällen kann eine falsch konfigurierte Firewall ein System sogar noch mehr verunsichern. Eine
+Firewall ist auch eine Software und sollte genau so wie jeder andere Dienst behandelt werden, denn auch hier
+können Bugs vorhanden sein (die hier Sicherheitslöcher sind).
 </p>
 
 <p>
-So think before implementing one! Do you really need one ? If you think you need one write a policy on how it should work, what type of firewall and who should operate it.
+Also denken Sie nach, bevor Sie eine Firewall in Betrieb nehmen! Brauchen Sie wirklich eine? Wenn Sie der Meinung sind,
+daß sie eine brauchen, dann verfassen Sie eine Richtlinie wie sie funktionieren sollte, welcher Art sie sein soll und
+wer sie betreiben sollte.
 </p>
 
 <p>
-Firewalls are used for two purposes:
-</p>
-
-<ul>
-<li>To keep users (worms/attackers) out</li>
-<li>To keep users (employees/children) in</li>
-</ul>
-
-<p>
-Basically there are three types of firewalls:
+Firewalls werden für folgende beiden Zwecke verwendet:
 </p>
 
 <ul>
-<li>Packet filtering</li>
-<li>Circuit relay</li>
-<li>Application gateway</li>
+<li>Um Benutzer (Würmer/Angreifer) draussen zu halten</li>
+<li>Um Benutzer (Angestellte/Kinder) drinnen zu halten</li>
 </ul>
 
 <p>
-A firewall should be a dedicated machine running no services (or ssh as the only one) and secured the way this guide recommends it to be.
+Es gibt im Allgemeinen drei Arten von Firewalls:
+</p>
+
+<ul>
+<li>Paket-Filter</li>
+<li>>>>> S.o please translate >>>> Circuit relay</li>
+<li>Applikationsgateway</li>
+</ul>
+
+<p>
+Eine Firewall sollte auf einer dedizierten Maschine ohne weitere Dienste laufen (und wenn, dann höchstens noch ssh) und so abgesichert werden
+wie dieser Leitfaden es vorschlägt.
 </p>
 
 </body>
 </section>
 
 <section>
-<title>Packet filtering</title>
+<title>Paket-Filter</title>
 <body>
 
 <p>
-All network traffic is in the form of packets. Large traffic is also split up into small packets for easy handling and then reassembled when arriving at it's destination. Every packet contains information on how and where is should be delivered. And these information is exactly what a packing filtering firewall uses. Filtering is based on:
+Jeglicher Netzwerkverkehr basiert auf Paketen. Viel Verkehr wird in kleinere Pakete transformiert (da diese
+einfacher zu handhaben sind) und bei der Ankunft am Ziel wieder in der richtigen Reihenfolge wieder zusammengesetzt.
+Jedes Paket enthält Informationen darüber wie es wohin transportiert werden soll. Und genau diese Informationen
+macht sich eine Firewall mit Paketfilter zu nutze. Filtern basiert auf:
 </p>
 
 <ul>
-
-<li>Allow or disallow packets based on source/destination IP address.</li>
-<li>Allow or disallow packets based on source/destination port.</li>
-<li>Allow or disallow packets according to protocol.</li>
-<li>Allow or disallow packets according to flags within a specific protocol</li>
-
+<li>Erlauben oder verbieten von Paketen entsprechend der Quell-/Ziel-IP-Adresse</li>
+<li>Erlauben oder verbieten von Paketen entsprechend des Quell-/Ziel-Ports</li>
+<li>Erlauben oder verbieten von Paketen entsprechend dem verwendeten Protokoll</li>
+<li>Erlauben oder verbieten von Paketen entsprechend von bestimmten Einstellungen im Protokoll</li>
 </ul>
 
 <p>
-Basically filtering on all data within the header of a packet and not it's content.
+Normalerweise wird nur anhand der Daten im Kopf eines Paketes und nicht im eigentlichen Inhalt vollzogen.
 </p>
 
 <p>
-Weaknesses:
-</p>
-
-<ul>
-<li>Address information in a packet can potentially be a bogus address or as we say <e>spoofed</e> be the sender</li>
-<li>Data or requests within the allowed packet may contain unwanted data that the attacker can exploit known bugs in the services on or behind the firewall</li>
-<li>Usually single point of failure</li>
-</ul>
-
-<p>
-Advantages:
+Schwächen:
 </p>
 
 <ul>
-<li>Simple and easy to implement</li>
-<li>Can give warnings on a possible attack before they happened (by detecting portscans)</li>
-<li>Good for stopping SYN attacks</li>
+<li>Adressinformationen in einem Paket könnten gefälscht (<e>gespoofed</e>) an den Sender übermittelt werden</li>
+<li>Daten oder Anfragen im erlaubten Paket könnten ungewollte Daten enthalten die ein Angreifer zu seinen Zwecken benutzen
+könnte um z.B. Schwächen in den Diensten oder hinter der Firewall zu benutzen.</li>
+<li>Normalerweise kann ein Fehler die Firewall unbrauchbar machen</li>
 </ul>
 
 <p>
-Examples of free packet filters on Linux:
+Vorteile:
+</p>
+
+<ul>
+<li>Einfach und schnell zu implementieren</li>
+<li>Kann Warnungen vor Angriffen verursachen, bevor diese stattfinden (erkennen von Portscans)</li>
+<li>Geeignet um SYN-Attacken zu beenden</li>
+</ul>
+
+<p>
+Beispiele für freie Paketfilter für Linux:
 </p>
 
 <ul>
@@ -2342,29 +2351,32 @@ Examples of free packet filters on Linux:
 <body>
 
 <p>
-Or circuit level gateways is a firewall that validates connections before allowing data to be exchanged. This means that is simply does not allow or deny packets based based on the header of the packet but determines whether the connection between both ends is valid according to configurable rules before it opens a session and allows data to and from the allowed source address. Filtering is based on:
+Oder auch Circuit Level Gateways sind Firewalls, die Verbindungen validiert bevor die Erlaubnis für den Datenaustausch
+erteilt wird. Dies bedeutet, dass Pakete entsprechend dem Inhalt des Paketkopfes erlaubt oder verboten wird; dies aber
+hängt davon ab, ob die Verbindung an beiden Enden gültig entsprechend konfigurierbaren Regeln ist bevor sie geöffnet oder
+Daten ausgetauscht werden. Filtern basiert auf:
 </p>
 
 <ul>
-<li>Destination/source address</li>
-<li>Destination/source port</li>
-<li>A period of time</li>
-<li>Protocol</li>
-<li>User</li>
-<li>Password</li>
+<li>Ziel-/Quelladresse</li>
+<li>Ziel-/Quellport</li>
+<li>Zeitraum</li>
+<li>Protokoll</li>
+<li>Nutzer</li>
+<li>Passwort</li>
 </ul>
 
 <p>
-All traffic is validated, monitored and traffic without is disallowed.
+Jeglicher Verkehr wird validiert, überwacht und Verkehr ohne diese Informationen wird verboten.
 </p>
 
 <p>
-Weakness:
+Schwächen:
 </p>
 
 <ul>
 <li>
-Operates at the Transport Layer and may require substantial modification of the programming which normally provides transport functions.
+Operiert auf der Transportebene und kann u.U. grundlegende Veränderungen in der Programmierung die normalerweise die Transportfunktionen regelt erfordern.
 </li>
 </ul>
 
@@ -2372,11 +2384,12 @@ Operates at the Transport Layer and may require substantial modification of the 
 </section>
 
 <section>
-<title>Application gateway</title>
+<title>Applikationsgateway</title>
 <body>
 
 <p>
-The application level gateway is a proxy for application, exchanging data with remote system on behalf of it's clients. It is kept away from the public safely behind a DMZ or firewall with no connection from the outside. Filtering is based on:
+Der Gateway auf der Applikationsebene ist ein Proxy für eine Applikation, die Daten mit dem Remotesystem unter Verwendung seiner Clients
+austauschen. Es wird von der Öffentlichkeit hinter einer DMZ oder einer Firewall ohne Verbindung zur Aussenwelt gesichert. Der Filter basiert auf:
 </p>
 
 <ul>
@@ -2433,7 +2446,7 @@ Now test that it works by running <c>iptables -L</c>. If it fails something is w
 </p>
 
 <p>
-Iptables is a stateful packet filter which means that it provides greater control and greater security than ipchains (Linux version 2.2) which is not stateful. You are properly asking yourself what is the stateful part ? and what is the difference?. 
+Iptables is a stateful packet filter which means that it provides greater control and greater security than ipchains (Linux version 2.2) which is not stateful. You are properly asking yourself what is the stateful part ? and what is the difference?.
 </p>
 
 <p>
