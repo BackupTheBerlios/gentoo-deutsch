@@ -3,23 +3,32 @@
 <info>
 <title>Willkommen</title>
 
-<author title="Author"><mail link="sebastian@werner-productions.de">Sebastian Werner</mail></author>
-<author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
-<author title="Author"><mail link="stkn@berlios.de">Stefan Knoblich</mail></author>
+<author title="Author">
+  <mail link="sebastian@werner-productions.de">Sebastian Werner</mail>
+</author>
+<author title="Author">
+  <mail link="beejay@berlios.de">Benjamin Judas</mail>
+</author>
+<author title="Author">
+  <mail link="stkn@berlios.de">Stefan Knoblich</mail>
+</author>
 
 <date>2. Dezember 2003</date>
 
 <box>
-  <block>
-    <title>Aktuelles:</title>
-    <p>
-      Was ist aktuell bei Gentoo Linux? Hier erfahren Sie es...
-    </p>
-   <p>
-    Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
-   <mail link="gentoo-deutsch-dev@lists.berlios.de">Gentoo.de Team</mail>.
-  </p>
-  </block>
+<block>
+<title>Aktuelles:</title>
+
+<p>
+Was ist aktuell bei Gentoo Linux? Hier erfahren Sie es...
+</p>
+
+<p>
+Feedback, Verbesserungen, Vorschläge und neue Nachrichten bitte an das
+<mail link="gentoo-deutsch-dev@lists.berlios.de">Gentoo.de Team</mail>.
+</p>
+
+</block>
 </box>
 
 <chapter>
@@ -41,40 +50,83 @@ im FreeNode Netz vorbei.
 
 <section>
 <body>
-	<news type="release" date="4.12.2003" title="Gentoo 2004 und darüber hinaus">
+<news type="release" date="4.12.2003" title="Gentoo 2004 und darüber hinaus">
+
 <p>
-Hiermit kündigen wir den Start drei weiterer Hauptprojekte an: Gentoo Linux 2004, Portage-ng and catalyst. Mit Beginn
-des nächsten Releases von Gentoo Linux (Gentoo Linux 2004), wird Gentoo auf ein vierteljährlichen Release Plan umgestellt.
-Weitere Informationen findet Ihr auf dem <uri link="http://www.gentoo.org/proj/en/releng/">Roadmap für Gentoo Linux.</uri>
-</p><p>
-Darüber hinaus freuen wir uns, den Start der Entwicklung von "portage-ng" bekannt geben zu können. Dies wird der 
-Nachfolger der außerordentlich populären Portage Paketverwaltung. Weitere Informationen und Spezifikationen für
-dieses Projekt findet Ihr auf der <uri link="http://www.gentoo.org/proj/en/portage/portage-ng/systemspec.xml">Portage-ng
-</uri> Projektseite. Portage-ng wird ein echtes Gemeinschaftsprojekt 
-darstellen und wir freuen uns auf Eure Mitarbeit. 
-</p><p>
-Zu guter Letzt ist catalyst. Mit Beginn von Gentoo Linux 2004 werden alle Releases (einschließlich der LiveCDs)
-für die Benutzer selbst zusammenstellbar. Mit Hilfe von catalyst können also selbst modifizierte Gentoo Releases, LiveCDs, GameCDs nach eigenen Vorstellungen verwirklicht werden. Die aktuelle Entwicklung von catalyst unetrstützt das Erstellen
-verschiedener stages und Gentoo Reference Platform (GRP) sets auf AMD64 (sowohl 64bit als auch 32bit), x86 und PowerPC.
-Schon gegen Ende diesen Jahres kann mit dem Erstellen von LiveCDs und GameGDs begonnen werden. Immer auf dem
-Laufenden ist die aktuelle <uri link="http://www.gentoo.org/proj/en/releng/catalyst/">catalyst Homepage.</uri>
+Hiermit kündigen wir den Start drei weiterer Hauptprojekte an: Gentoo Linux 
+2004, Portage-ng and catalyst. Mit Beginn des nächsten Releases von Gentoo
+Linux <e>(Gentoo Linux 2004)</e>, wird Gentoo auf einen vierteljährlichen Release Plan
+umgestellt. Weitere Informationen finden Sie auf der
+<uri link="http://www.gentoo.org/proj/en/releng/">Gentoo Linux Roadmap</uri>.
 </p>
-	</news>
+
+<p>
+Darüber hinaus freuen wir uns, den Start der Entwicklung von <e>portage-ng</e>
+bekannt geben zu können. Dies wird der Nachfolger der außerordentlich
+populären Portage Paketverwaltung. Weitere Informationen und Spezifikationen
+für dieses Projekt finden Sie auf der 
+<uri link="http://www.gentoo.org/proj/en/portage/portage-ng/systemspec.xml">Portage-ng</uri>
+Projektseite. Portage-ng wird ein echtes Gemeinschaftsprojekt
+darstellen und wir freuen uns auf Ihre Mitarbeit.
+</p>
+
+<p>
+Zu guter Letzt ist <e>catalyst</e>. Mit Beginn von Gentoo Linux 2004 werden
+alle Releases (einschließlich der LiveCDs) für die Benutzer selbst
+zusammenstellbar. Mit Hilfe von catalyst können also selbst modifizierte
+Gentoo Releases, LiveCDs, GameCDs nach eigenen Vorstellungen verwirklicht
+werden. Die aktuelle Entwicklung von catalyst unterstützt das Erstellen
+verschiedener Stages und Gentoo Reference Platform (GRP) Sets auf AMD64
+<!--sowohl 64bit als auch 32bit) ???-->, x86 und PowerPC.
+Schon gegen Ende diesen Jahres kann mit dem Erstellen von LiveCDs und
+GameGDs begonnen werden. Immer auf dem Laufenden ist die aktuelle
+<uri link="http://www.gentoo.org/proj/en/releng/catalyst/">catalyst Projektseite.</uri>
+</p>
+
+</news>
 </body>
 </section>
 
 <section>
 <body>
-	<news type="other" date="3.12.2003" title="Gentoo rsync Server kompromittiert">
+<news type="other" date="3.12.2003" title="Gentoo rsync Server kompromittiert">
+
 <p>
-Am 2. September gegn 3:45 UTC einer der rsync.gentoo.org Rotation angehörigen Server wurde durch einen remote 
-exploit kompromittiert. Auf diesem System waren jedoch IDS und ein File Itegrity Checker installiert, sodass wir eine
-detaillierte forensische Spur haben, was alles getan wurde, nachdem in den Rechner eingebrochen wurde, so können
-wir recht sicher bekannt geben, <e>dass der Portage Verzeichnisbaum nicht betroffen ist.</e> Der Rechner wurde dennoch
-von allen rsync.*.gentoo.org Rotationen entfernt und wird bis zur endgültigen Auswertung und einer kompletten
-Neuinstallation nicht zugänglich bleiben. Weitere Informationen in unserem <uri link="http://www.gentoo.org/security/en/glsa/glsa-200312-01.xml">GLSA</uri>
+Am 2. Dezember gegen 3:45 UTC wurde einer der rsync.gentoo.org Rotation
+angehörenden Server durch einen remote exploit kompromittiert. Auf
+diesem System waren jedoch ein IDS und ein File Itegrity Checker installiert,
+sodass wir eine detaillierte forensische Spur haben, was alles getan wurde,
+nachdem in den Rechner eingebrochen wurde. So können wir ziemlich sicher bekannt
+geben, <e>dass der Portage Verzeichnisbaum nicht betroffen ist.</e>
 </p>
-	</news>
+
+<p>
+Im Zeitraum zwischen dem Einbruch und dem Entdecken des Einbruchs haben laut
+Log Dateien 20 Benutzer ihren Portage Tree an diesem Server synchronisiert. Falls
+Sie die Befürchtung haben, Ihre lokale Kopie des Portage Tree an diesem Server
+synchronisiert zu haben, oder eine zusätzliche Sicherheit möchten, führen Sie
+<c>emerge sync</c> aus.
+</p>
+
+<p>
+Der Rechner wurde aus allen rsync.*.gentoo.org Rotationen entfernt. Er wird bis
+zur endgültigen Auswertung und einer kompletten Neuinstallation nicht zugänglich
+bleiben. Da aktuell nahezu ausgeschlossen werden kann, dass der Gentoo Teil auf
+diesem Rechner kompromittiert wurde und der betreffende Server nicht dem Gentoo
+Infrastructure Team, sondern einem Sponsor untersteht, kommt Gentoo Linux dem
+Wunsch des Sponsors nach, den Namen des Servers bis zum Abschluss der
+Untersuchungen nicht bekannt zu geben.
+</p>
+
+<p>
+Weitere Informationen in unserem <uri
+link="http://www.gentoo.org/security/en/glsa/glsa-200312-01.xml">GLSA</uri>,
+sowie in Artikeln bei <uri
+link="http://www.heise.de/newsticker/data/ju-04.12.03-000/">Heise</uri> und <uri
+link="http://slashdot.org/articles/03/12/03/1921235.shtml">/.</uri>.
+</p>
+
+</news>
 </body>
 </section>
 
