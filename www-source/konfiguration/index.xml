@@ -87,5 +87,7 @@
 		<item href="projekt/neuigkeiten" title="Neuigkeiten"/>
 		<item href="doku" title="Übersetzte Dokumentationen"/>
 		<item href="download/ebuilds_de" title="Unsere Ebuilds"/>
+		<item href="http://forums.gentoo.org/viewforum.php?f=28" title="Forum"/>
+
 	</menu>
 </config>
