@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+	<link title="new" rel="stylesheet" href="http://localhost/gentoo/main-new.css" type="text/css">
+	<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+	<title>Gentoo Hilfe-System</title>
+</head>
+
+<body>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b">
+	<table cellspacing="0" cellpadding="0" border="0" width="193">
+	<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://localhost/gentoo/gtop-s.jpg"></a></td></tr>
+	<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://localhost/gentoo/gbot-s.gif"></a></td></tr>
+	</table></td></tr>
+</table>
+
+<h1>Suchergebnisse</h1>
+
+<p class="secthead">F&uuml;r '$&(LOGICAL_WORDS)' wurden keine Treffer gefunden</p>
+
+<p>
+&Uuml;berpr&uuml;fen Sie die Rechtschreibung der W&ouml;rter die Sie benutzt haben.
+Wenn die Rechtschreibung korrekt war, dann versuchen Sie, die Suche mittels der Angabe von
+mehreren Suchw&ouml;rtern zu spezifizieren"<strong>Any</strong>."
+</p>
+
+<p>
+Wenn die Rechtschreibung korrekt war, und Sie mehr als ein Wort mit "<strong>Any</strong>" benutzt haben,  dann verrsuchen Sie
+weitere W&ouml;rter mit "<strong>Any</strong> zu benutzen."
+</p>
+
+<p>
+Wenn die Rechtschreibung korrekt war, und Sie mehr als ein Wort mit  "<strong>All</strong>" benutzt haben,  dann verrsuchen Sie
+weitere W&ouml;rter mit "<strong>Any</strong> zu benutzen."
+</p>
+
+<p>
+<form method="get" action="$(CGI)">
+	<font size="-1">
+		<input type="hidden" name="config" value="$&(CONFIG)">
+		<input type="hidden" name="restrict" value="$&(RESTRICT)">
+		<input type="hidden" name="exclude" value="$&(EXCLUDE)">
+		Treffer: $(METHOD)
+		Format: $(FORMAT)
+		Sortierung: $(SORT)
+		<br>
+		Suche verfeinern:
+		<input type="text" size="30" name="words" value="$&(WORDS)">
+		<input type="submit" value="Search">
+	</font>
+</form>
+
+<a href="http://www.htdig.org/"><img src="/htdig/htdig.gif" border="0" alt="">ht://Dig $(VERSION)</a>
+
+</body>
+</html>
