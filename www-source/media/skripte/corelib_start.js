@@ -46,7 +46,3 @@ config.store("x_menu/class/submenu", "submenu")
 // Debug-Objekt, Name der Layer, Name der Links, Menü-Objekt
 menu = new x_menu("gmenu", "glink");
 
-
-
-
-
