@@ -1,12 +1,12 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.1 2003/12/24 15:08:57 rootshell Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.2.6-r4.ebuild,v 1.2 2003/12/27 15:10:33 fow0ryl Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
 AKOOL_VN="1.2.6"
 ELCHI_VN="1.2.6"
-MAILBOX_VN="0.1.2"
+MAILBOX_VN="0.1.4"
 
 S=${WORKDIR}/vdr-${PV}
 DESCRIPTION="The Video Disk Recorder"
@@ -15,9 +15,10 @@ SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/vdr-${PV}.tar.bz2
 		http://www.muempf.de/down/${AC3_OVER_DVB}.diff.gz
 		http://sites.inka.de/seca/vdr/vdr-mailbox-${MAILBOX_VN}.tgz
-		http://www.vdr-portal.de/download/patches/KomplettPatch-1.2.6-D.diff.bz2
+		http://www.vdr-portal.de/download/patches/KomplettPatch-1.2.6-E.diff.bz2
 		http://linvdr.org/download/VDR-AIO/vdr-${ELCHI_VN}-ElchiAIO3c.diff.gz
-		http://www.magoa.net/linux/files/improvedosd-2a.diff.gz
+		http://www.magoa.net/linux/files/improvedosd-3a.diff.gz
+		http://www.magoa.net/linux/contrib/improvedosd-3-3a.diff.gz
 		http://www.magoa.net/linux/files/iconscolored.tar.gz
 		http://www.magoa.net/linux/files/icons.tar.gz
 		"
@@ -86,7 +87,7 @@ src_unpack() {
 			patch < ../vdr-${ELCHI_VN}-ElchiAIO3c.diff
 			if vdr_opts iosd
 			then
-				epatch ../improvedosd-2a.diff
+				epatch ../improvedosd-3a.diff
 				# link black & white logos to vdr dir
 				ln -s ${WORKDIR}/icons/ ${S}/icons
 				# now overwrite black & white logos with some colored ones
@@ -99,10 +100,14 @@ src_unpack() {
 	if vdr_opts akool
 	then
 		einfo "Apply complete patch ..."
-		patch -p1 < ../KomplettPatch-1.2.6-D.diff
+		patch -p1 < ../KomplettPatch-1.2.6-E.diff
+		einfo "Apply improved OSD 3a patch ..."
+		patch -p1 < ../improvedosd-3-3a.diff
+		einfo "Apply remove duplicate Symblol 59 patch ..."
+		patch -p0 < ${FILESDIR}/KomplettPatch-1.2.6-E.diff
 	fi
 
-	# here comes the gentoo specific stuff ( also called the "fun part") 
+	# here comes the gentoo specific stuff ( also called the "fun part")
 	# for Makefile...
 	sed -i Makefile \
 	  -e 's:PLUGINDIR= ./PLUGINS:PLUGINDIR= /usr/lib/vdr:' \
