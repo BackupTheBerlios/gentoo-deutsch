@@ -181,7 +181,7 @@ richtet catering to beginners.</abstract>
 </section>
 
 <section>
-<title>Wortbewegungen, Teil 1</title>
+<title>Wortsprünge, Teil 1</title>
 <body>
 	<p>
 	vi erlaubt es auch, den Cursor wortweise links oder rechts zu bewegen. Um zum <i>ersten</i> Zeichen des nächsten Wortes
@@ -192,7 +192,7 @@ richtet catering to beginners.</abstract>
 </section>
 
 <section>
-<title>Wortbewegungen, Teil 2</title>
+<title>Wortsprünge, Teil 2</title>
 <body>
 	<p>
 	Nachdem Sie nun ein bisschen mit den Kommandos zur wortweisen Bewegung herumgespielt haben,
@@ -210,81 +210,107 @@ richtet catering to beginners.</abstract>
 
 
 <section>
-<title>Word moves, part 3</title>
+<title>Wortsprünge, Teil 3</title>
 <body>
-<p>To jump around to the next and previous bigword, you can use a <i>capitalized</i>
-	word move command.  Use <c>W</c> to jump to the first character of the next bigword, <c>E</c> to jump
-	to the last character of the next bigword, and <c>B</c> to jump to the first character
-of the previous bigword.  Test 'em out, and compare the matching word and bigword movement
-commands until you understand their differences.
-</p>
-
-
+	<p>
+	Um zum nächsten und vorherigen Bigword zu springen, können Sie ein grossgeschriebenes Wortbewegungskommando
+	benutzen. Benutzen Sie <c>W</c> um zum ersten Zeichen des nächsten Bigwords zu springen, <c>E</c> um
+	zum letzten Zeichen des nächsten Bigwords zu springen und <c>B</c> um zum ersten Zeichen des vorhergehenden
+	Bigwords zu springen. Probieren Sie es aus und vergleichen Sie die entsprechenden Wort- und Bigwordbewegungskommandos
+	bis Sie die Unterschiede verstehen.
+	</p>
 </body>
 </section>
+
 <section>
-<title>Bigger moves</title>
+<title>Grössere Sprünge</title>
 <body>
-	<p>We just have a few more commands to cover before it's time to start puting together our
-		cheat sheet.  You can use the <c>(</c> and <c>)</c> characters to move to the beginning of the previous and next sentence.
-		In addition, you can hit <c>{</c> or <c>}</c> to jump to the beginning of the current paragraph, and the beginning of the
-next.  Test 'em out.</p>
-
+	<p>
+	Wir müssen noch ein paar Kommandos mehr behandeln, bevor wir unseren Spickzettel zusammenstellen können.
+	Sie können die <c>(</c> und <c>)</c> benutzen um zum Anfang des vorhergehenden und des nächsten Satzes zu springen.
+	Zusätzlich dazu können Sie <c>{</c> oder <c>}</c> benutzen, um zum Anfang des aktuellen bzw. des nächsten Absatzes zu springen.
+	Auch hier ist wiedereinmal ausprobieren angesagt.
+	</p>
 </body>
 </section>
+
 </chapter>
+
+
 <chapter>
-<title>quiting</title>
+<title>Beenden</title>
+
 <section>
-<title>Quitting</title>
+<title>Beenden</title>
+
 <body>
-<p>We've covered the basic movement commands, but there are another couple of commands that you need
-to know.  Typing <c>:q</c> will quit vi.  If this doesn't work, then you probably accidentally modified the file
-in some way.  To tell vi to quit, throwing away any changes, type <c>:q!</c>.  You should now be at the command
-prompt.</p>
-
-<p>In vi, any command that begins with a ":" is said to be an <i>ex-mode</i> command.  This is because vi 
-	has a built-in non-visual editor called <e>ex</e>.  It can be used similarly to sed to perform line-based
-editing operations.  In addition, it can also be used to quit, as we've just seen.  If you ever hit
-the <c>Q</c> key while in command mode, you'll be transported to ex mode.  If this ever happens to you , you'll
-be confronted with a : prompt, and hitting enter will scroll the entire screen upwards.  To get back
-to good 'ol vi mode, simply type vi and hit enter.</p>
-
+	<p>
+	Wir haben die grundsätzlichen Bewegungskommandos behandelt, aber es gibt noch weitere Kommandos die Sie
+	kennen müssen. Die Eingabe <c>:q</c> beendet vi. Sollte dies nicht funktionieren, dann haben Sie vielleicht
+	die Datei geändert. Um vi nun zu beenden und die evtl. gemachten Änderungen zu verwerfen, müssen Sie <c>:q!</c>
+	eingeben. Sie sollten nun wieder zurück auf Ihrer Shell sein.
+	</p>
+	<p>
+	In vi ist jedes mit einem ":" beginnenden Kommandos ein sogenanntes <i>ex-mode</i> Kommando. Der Grund hierfür ist,
+	daß vi einen nicht visuellen Editor mit dem Namen <e>ex</e> eingebaut hat. Er kann ähnlich wie sed dazu benutzt werden
+	um zeilenbasierte Bearbeitungsfunktionen durchzuführen. Desweiteren kann er auch dazu benutzt werden um vi zu beenden -
+	 wie wir eben gerade gesehen haben. Sollten Sie jemals die Taste <c>Q</c> drücken, während Sie sich im Kommandomodus
+	befinden, dann wird vi sofort in den ex Modus schalten. Wenn dies passiert, wird Ihnen ein : Prompt präsentiert, das
+	Drücken von Enter wird den ganzen Bildschirm nach oben rollen. Um wieder in den guten alten vi-Modus zurückzukommen, geben
+	Sie einfach nur vi ein und drücken Enter.
+	</p>
 </body>
 </section>
 </chapter>
+
 <chapter>
-<title>The Cheat Sheet</title>
+<title>Der Spickzettel</title>
 <section>
-<title>The beginnings of the cheat sheet</title>
+
+<title>Die Anfänge des Spickzettels</title>
 <body>
-<p>We've covered a lot of commands, and it's time to transcribe them to our cheat sheet.  For the
-cheat sheet, you'll need a US letter or A4 sized piece of paper (we're going to pack a lot of info
-onto this sheet!)  Here's a picture of my cheat sheet after I've transcribed all the commands that
-we've covered so far.  Try to follow my layout if possible so that we can fit everything on one
-sheet.</p>
+	<p>
+	Wir haben einige Kommandos behandelt und nun ist es Zeit, diese auf unseren Spickzettel zu übertragen.
+	Für den Spickzettel brauchen Sie ein US Letter oder A4 Blatt (wir werden einige Informationen auf diesem
+	Blatt vermerken!). Hier ist ein Bild meines Spickzettels, nachdem ich alle Kommandos aufgeschrieben habe,
+	die wir bis hierhin behandelt haben. Versuchen Sie bitte, meinem Layout zu folgen, sodass alles auf ein
+	Blatt Papier passt.
+	</p>
 
-<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-first.png" short="First part of the cheat sheet" caption="Cheat Sheet"/>
-
+	<figure link="http://www.ibiblio.org/pub/Linux/distributions/gentoo/images/vicheat-first.png" short="First part of the cheat sheet" caption="Cheat Sheet"/>
 </body>
 
 </section>
+
 <section>
-<title>Miscellaneous vi</title>
+<title>Vielseitiger vi</title>
 
 <body>
-<p>Let's continue our rapid command-covering pace.  In command-mode, you can jump to a particularline by typing <c>G</c>.  To jump to the first line of a file, type <c>1G</c>.  Note that <c>G</c> is capitalized.</p>
-<p>If you want to jump to the next occurence of a particular text pattern, type <c>/&lt;regexp&gt;</c> and hit <c>enter</c>.  Replace
-&lt;regexp&gt; with the regular expression you're looking for.  If you don't know how to use regular expressions, don't
-fret -- typing <c>/foo</c> will move to the next occurence of <i>foo</i>.  The only thing you'll need to watch out for is when
-you want to refer to the literal <i>^</i>, <i>.</i>, <i>$</i> or <i>\</i> characters.  Prefix these characters with a backslash (<i>\</i>), and you'll
-be set.  For example, <c>/foo\.gif</c> will search for the next occurence of "<i>foo.gif</i>".</p>
-<p>To repeat the search forwards, hit <c>n</c>.  To repeat the search backwards, type <c>N</c>.  As always, test these
-commands out in your very own vi editor. You can also type <c>//</c> to repeat the last search.</p>
-
+	<p>
+	Lassen Sie uns mit unserem Kommandoschnelldurchlauf fortfahren. Im Kommandomodus können
+	Sie zu einer bestimmten Zeile springen, indem Sie <c>G</c> verwenden. Um zur ersten Zeile
+	in einer Datei zu springen, geben Sie <c>1G</c> ein. Bitte beachten Sie dass grosse G !
+	</p>
+	<p>
+	Wenn Sie zur nächsten Erscheinung eines bestimmten Textmusters springen möchten, geben
+	Sie <c>/&lt;regexp&gt;</c> ein und drücken Sie anschliessend <c>Enter</c>. Ersetzen Sie
+	&lt;regexp&gt; mit dem Regulären Ausdruck nach dem Sie suchen. Wenn Sie nicht wissen,
+	wie man reguläre Ausdrücke benutzt, dann haben Sie keine Angst : Die Eingabe von <c>/foo</c>
+	wird zum nächsten Auftauchen von <i>foo</i> springen. Das einzige wo Sie aufpassen müssen
+	sind die speziellen Zeichen <i>^</i>, <i>.</i>, <i>$</i> oder <i>\</i>. Setzen Sie diesen
+	Zeichen einen Backslash voran (<i>\</i>) und es sollte funktionieren. Zum Beispiel wird
+	<c>/foo\.gif</c> zum nächsten Auftauchen von von "<i>foo.gif</i>" springen.
+	</p>
+	<p>
+	Um die Suche vorwärts Richtung fortzusetzen, drücken Sie <c>n</c> auf der Tastatur. Um rückwärts zu suchen
+	drücken Sie <c>N</c>. Wie immer sollten Sie diese Kommandos in Ihrer vi-Umgebung testen. Sie können auch <c>//</c>
+	eingeben, um die letzte Suche zu wiederholen.
+	</p>
 </body>
 </section>
 </chapter>
+
+
 <chapter>
 <title>Saving and Editing</title>
 <section>
