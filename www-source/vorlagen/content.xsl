@@ -45,7 +45,6 @@
 
 <xsl:template match="guide|info">
   <html>
-  <html>
   <head>
     <title>Gentoo Linux - Das deutschsprachige Portal</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
