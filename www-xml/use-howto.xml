@@ -17,7 +17,7 @@ der USE flags. Neben der reinen Aufz&#228;hlung aller verf&#252;gbaren Flags
 erfahren Sie hier welche USE Flags Sie brauchen.</abstract>
 
 <version>1.0</version>
-<date>05 Jun 2002</date>
+<date>16 Aug 2002</date>
 
 <chapter>
 <title>Einf&#252;hrung</title>
@@ -140,7 +140,7 @@ Sie das <c>fbcon</c> Flag ein.</p>
 </section>
 
 <section>
-<title>DESKTOP EINSTELLUNGEN</title>
+<title>DESKTOP FLAGS</title>
 <body>
 <p>Sind Sie KDE Nutzer? Dann sind folgende Flags f&#252;r Sie:</p>
 <p><c>kde</c> -- KDE Unterst&#252;tzung aktivieren</p>
@@ -159,7 +159,7 @@ Sie das <c>fbcon</c> Flag ein.</p>
 
 
 <section>
-<title>GNOME EINSTELLUNGEN</title>
+<title>GNOME FLAGS</title>
 <body>
 <p>Es gibt viel mehr Flags f&#252;r GNOME Nutzer.</p>
 <p><c>bonobo</c> -- Unterst&#252;tzung f&#252;r GNOMEs CORBA durch Bonobo</p>
@@ -226,7 +226,7 @@ aktivieren:</p>
 </section>
 
 <section>
-<title>ANDERE MULTIMEDIA EINSTELLUNGEN</title>
+<title>ANDERE MULTIMEDIA FLAGS</title>
 <body>
 <p><c>ggi</c> -- Unterst&#252;tzung f&#252;r Nicht-X Video Treiber</p>
 <p><c>dvd</c> -- Unterst&#252;tzung f&#252;r das Abspielen und Entschl&#252;sseln von DVD via libcss Bibliothek</p>
@@ -239,7 +239,7 @@ aktivieren:</p>
 </section>
 
 <section>
-<title>NETZWERK EINSTELLUNGEN</title>
+<title>NETZWERK FLAGS</title>
 <body>
 <p>Nat&#252;rlich m&#246;chten Sie Ihre Gentoo Box an ein Netzwerk anschliessen ;)</p>
 <p><c>ipv6</c> -- Unterst&#252;tzung f&#252;r IPv6</p>
@@ -250,7 +250,7 @@ Maschinen</p>
 </section>
 
 <section>
-<title>SICHERHEITS EINSTELLUNGEN</title>
+<title>SICHERHEITS FLAGS</title>
 <body>
 <p>Wenn Sicherheit f&#252;r Sie ein Thema ist (was es sein sollte!), empfehlen wir das aktivieren 
 von PAM:</p>
@@ -264,7 +264,7 @@ unterst&#252;tzen dies ebenfalls um sichere Verbindungen zu etablieren.</p>
 </section>
 
 <section>
-<title>MAIL EINSTELLUNGEN</title>
+<title>MAIL FLAGS</title>
 <body>
 <p><c>imap</c> -- Unterst&#252;tzung f&#252;r IMAP</p>
 <p><c>ldap</c> -- LDAP-Unterst&#252;tzung (Lightweight Directory Accesss Protocol)</p>
@@ -275,7 +275,7 @@ unterst&#252;tzen dies ebenfalls um sichere Verbindungen zu etablieren.</p>
 
 
 <section>
-<title>MOZILLA EINSTELLUNGEN</title>
+<title>MOZILLA FLAGS</title>
 <body>
 <p><c>mozilla</c> -- Unterst&#252;tzung f&#252;r Mozilla einer Anwendungen</p>
 <p>Beim Einspielen von Mozilla via emerge sollten Sie sich auch folgendes anschauen:</p>
@@ -354,5 +354,23 @@ wenn Sie nur eine Sprache verwenden ist dies nicht n&#246;tig</p>
 
 </body>
 </section>
+
+<section>
+<title>FLAGS, WELCHE <b>NICHT</b> BER&#220;HRT WERDEN D&#220;RFEN!</title>
+<body>
+<p>
+Diese Flags d&#252;rfen <b>nicht</b> ber&#252;hrt werden! Sie werden hier nur genannt um diese Dokumentation 
+zu vervollst&#228;ndigen. Diese Flags werden automatisch mit Ihrem Profil gesetzt. Solange Sie nicht 
+<b>genau</b> wissen was Sie tun, aktivieren oder deaktivieren Sie diese Flags nicht in Ihrer 
+Konfiguration.
+</p>
+
+<p><c>x86</c> -- Identifiziert Ihren Rechner als x86 kompatibel.</p>
+<p><c>ppc</c> -- Identifiziert Ihren Rechner als PowerPC.</p>
+<p><c>sparc</c> -- Identifiziert Ihren Rechner als Sparc.</p>
+<p><c>sparc64</c> -- Identifiziert Ihren Rechner als 64-bit Sparc.</p>
+</body>
+</section>
+
 </chapter>
 </guide>
