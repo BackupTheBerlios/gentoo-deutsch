@@ -4,7 +4,7 @@
 <xsl:output method="html" encoding="iso-8859-15" indent="no"/>
 
 <xsl:template match="cgi:result_list">
-  <table cellpadding="0" cellspacing="0" class="resultlist">
+  <table cellpadding="0" cellspacing="0" class="resultlist" width="100%">
     <![CDATA[<!--loop: results-->]]>
 
       <tr>
@@ -16,8 +16,10 @@
       </tr>
       
       <tr>
-        <td>Beschreibung</td>
-        <td>
+        <td class="description" style="width: 75%">
+          <![CDATA[<!--item: description-->]]>
+        </td>
+        <td style="width: 25%; max-width: 100px">
           <p>
             Relevanz:
             <![CDATA[<!--item: score-->]]> &#160;
