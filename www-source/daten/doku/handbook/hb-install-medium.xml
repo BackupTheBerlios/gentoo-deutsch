@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.32 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.8 2004/01/03 14:20:39 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-medium.xml,v 1.9 2004/01/03 19:19:00 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -344,6 +344,12 @@ welche LiveCDs für Ihre Architektur verfügbar sind.
   <ti></ti>
   <ti></ti>
 </tr>
+<tr>
+  <ti>amd64</ti>
+  <ti>+</ti>
+  <ti></ti>
+  <ti></ti>
+</tr>
 </table>
 
 <p>
@@ -392,12 +398,6 @@ vorkompilierte Pakete.
     geeignet.
   </ti>
 </tr>
-	 <tr>
-  	   <ti>amd64</ti>
-  	   <ti>+</ti>
-  	   <ti></ti>
-  	   <ti></ti>
-  	 </tr>
 </table>
 
 </body>
@@ -698,7 +698,7 @@ Ihre Architektur auswählen.
 </body>
 </subsection>
 <subsection>
-<title>Booten der x86 und AMD64 LiveCD(s)</title>
+<title>Booten der x86 oder AMD64 LiveCD(s)</title>
 <body>
 
 <impo>
