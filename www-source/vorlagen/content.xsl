@@ -483,7 +483,14 @@
 		<table>
 			<tr>
 				<td>
-					<img src="inhalte/media/bilder/icons/news/$sort.jpg"/>
+					<img>
+						<xsl:attribute name="src">
+							inhalte/media/bilder/icons/news/<xsl:value-of select="@sort"/>.jpg
+						</xsl:attribute>
+						<xsl:attribute name="alt">
+							<xsl:value-of select="@sort"/>
+						</xsl:attribute>
+					</img>
 				</td>
 				<td>
 					<xsl:value-of select="."/>
