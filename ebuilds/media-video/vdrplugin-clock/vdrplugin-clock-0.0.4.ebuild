@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-clock/vdrplugin-clock-0.0.4.ebuild,v 1.2 2003/09/16 16:16:57 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-clock/vdrplugin-clock-0.0.4.ebuild,v 1.3 2003/09/24 18:12:08 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="clock"
@@ -24,7 +24,8 @@ src_compile() {
 	sed -i "s/^DVBDIR.*$/DVBDIR = \/usr/" Makefile
 	sed -i "s/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/" Makefile
 	sed -i "s/^LIBDIR.*$/LIBDIR = \/usr\/lib/" Makefile
-	sed -i "s/@install.*$//" Makefile
+	#sed -i "s/@install.*$//" Makefile
+	sed -i "/@install.*$/d" Makefile
 	make all || die "compile problem"
 }
 
