@@ -1,0 +1,10 @@
+# /etc/conf.d/vdr.osdteletext:
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-osdteletext/files/vdr.osdteletext,v 1.1 2003/06/10 16:33:59 mad Exp $
+
+# Global config file for vdr rc-scripts
+
+# If you do not want to additionally load the original teletext plugin,
+# specify the command line option "-r" or "--receive"
+# receive and store teletext
+#_EXTRAOPTS="--receive"
+
