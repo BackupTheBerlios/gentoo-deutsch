@@ -9,8 +9,8 @@
 Dieses Dokument erl&#xE4;utert die Einrichtung von Fluxbox unter Gentoo Linux.
 </abstract>
 
-<version>0.1</version>
-<date>17 Juli 2002</date>
+<version>0.2</version>
+<date>26 Dezember 2003</date>
 
 <chapter>
 <title>Vorbemerkungen</title>
@@ -262,7 +262,7 @@ Dieses Dokument erl&#xE4;utert die Einrichtung von Fluxbox unter Gentoo Linux.
 	<pre caption="Erweitertes /etc/X11/Sessions/fluxbox Skript">
 	#!/bin/sh
 	source /etc/profile
-	rox --bottom=mypanel -o &amp;
+	rox --bottom=mypanel &amp;
 	/usr/bin/fluxbox
 	</pre>
 	Die <i>-o</i> Option bewirkt, dass das Panel auf allen Arbeitsfl&#xE4;chen angezeigt wird, ansonsten
