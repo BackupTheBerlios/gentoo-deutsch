@@ -1,3 +1,5 @@
-MD5 2ab36d29b2f525067732e2fd69830fe0 vdrplugin-analogtv-0.7.0.ebuild 1545
-MD5 6f58c8093c7ab15e8af26aebd989000e ChangeLog 340
+MD5 a2eeb8f914110e55e626a37bf2591197 vdrplugin-analogtv-0.8.0.ebuild 1597
+MD5 794eb1894e5288e37faf04eefa657a32 vdrplugin-analogtv-0.7.0.ebuild 1579
+MD5 36e63031d3f26e81e8ba00d4f987d246 ChangeLog 343
 MD5 08733129e824b0c7d6e857ebd1723805 files/digest-vdrplugin-analogtv-0.7.0 126
+MD5 231f6e2a539a8c6c4a155c1c827e5028 files/digest-vdrplugin-analogtv-0.8.0 126
