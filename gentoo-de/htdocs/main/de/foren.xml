@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<info>
+<title>Das deutsche Forum</title>
+
+<author title="Author">
+  <mail link="sebastian@werner-productions.de">Sebastian Werner</mail>
+</author>
+<author title="Author">
+  <mail link="beejay@berlios.de">Benjamin Judas</mail>
+</author>
+<author title="Author">
+  <mail link="js@ameds.de">Jens Schittenhelm</mail>
+</author>
+
+<date>22. November 2003</date>
+
+<chapter>
+<section>
+<title>Deutschsprachige Foren</title>
+<body>
+
+<p>
+Das offizielle Deutsche Gentoo-Forum ist Bestandteil der allgemeinen Gentoo-Foren.
+<ul><li><uri link="http://forums.gentoo.org/viewforum.php?f=28">Direkt zum Deutschen Forum</uri></li></ul>
+</p>
+
+<p>
+Bitte beachten Sie folgende Regeln vor dem Posten:
+</p>
+
+<p>
+<ul>
+    <li>Wenn Probleme mit Software auftritt, bitte Versionen angeben</li>
+    <li>Bei Hardwareproblemen Version, Hersteller, verwendeter Treiber und verwendete Software angeben</li>
+    <li>Wann tritt ein Problem auf, ist er reproduzierbar, ist er evt. schon auf bugs.gentoo.org registriert?</li>
+    <li>Bei Englischkenntnissen auch die englischen Foren durchsuchen ob das Problem bereits bekannt bzw. gelöst ist</li>
+    <li>Aussagekräftige Überschriften verwenden</li>
+    <li>Nur Antworten posten wenn eine Lösung daraus erschließbar wird. Es ist keinem von Nutzen, wenn jemand postet, daß er auch keine Lösung parat hat</li>
+    <li>Der Hinweis, daß ein Problem bei einem selbst nicht auftritt, ist ohne Beschreibung der Installationsparameter wenig hilfreich</li>
+    <li>Problemberichte sollten detailiert ausfallen</li>
+    <li>Nur ein Thema pro Thread</li>
+    <li>Bitte in unserer FAQ nach Antworten suchen</li>
+    <li>Hat ein Thread nichts mit Gentoo im weitesten Sinne zu tun, ist dieser Thread mit [OT] (Off-Topic) zu kennzeichnen</li>
+</ul>
+</p>
+
+<p>
+Ein weiteres Deutsches Forum, dass unabhängig von gentoo.org ist, können Sie hier besuchen:
+<ul><li><uri link="http://www.gentooforum.de">German Gentoo Community</uri></li></ul>
+</p>
+
+</body>
+</section>
+</chapter>
+<chapter>
+<section>
+<title>Englischsprachige Foren</title>
+<body>
+
+<p>
+Besuchen Sie die Foren hier:
+<ul><li><uri link="http://forums.gentoo.org/">Die allgemeinen Gentoo-Foren</uri></li></ul>
+</p>
+
+<p>
+Vor dem Posten bitte die <uri link="http://forums.gentoo.org/viewtopic.php?t=525">Guidelines</uri> beachten. Häufig 
+gestellte Fragen befinden sich in der Forum <uri link="http://forums.gentoo.org/viewtopic.php?t=23350">FAQ</uri>.
+</p>
+
+</body>
+</section>
+</chapter>
+
+</info>

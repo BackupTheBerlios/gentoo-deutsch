@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<info>
+<title>Unsere Mailinglisten</title>
+
+<author title="Author">
+  <mail link="sebastian@werner-productions.de">Sebastian Werner</mail>
+</author>
+<author title="Author">
+  <mail link="js@ameds.de">Jens Schittenhelm</mail>
+</author>
+
+<date>18. Oktober 2002</date>
+
+<chapter>
+<section>
+<title>Deutschsprachige Mailingliste</title>
+<body>
+<p>
+ Die Mailingliste <mail link="gentoo-user-de@gentoo.org">gentoo-user-de@gentoo.org</mail> ist für allgemeine
+ Fragen rund um Gentoo und Probleme mit der Installation gedacht. Diese Mailingliste wird mit  <uri
+ link="http://ezmlm.org/">ezmlm/idx</uri> verwaltet. Zum Anmelden schickt man einfach eine Mail an
+ <mail link="gentoo-user-de-subscribe@gentoo.org">gentoo-user-de-subscribe@gentoo.org</mail>, oder wenn
+ man die Post nur als gesammelten Stapel erhalten möchte: <mail link="gentoo-user-de-digest-subscribe@gentoo.org">gentoo-user-de-digest-subscribe@gentoo.org</mail>.
+</p>
+</body>
+</section>
+
+<section>
+<title>Andere Mailinglisten</title>
+
+<body>
+<p>
+Natürlich gibt es auch englischsprachige Mailinglisten. Man findet hier eine
+<uri link="http://www.gentoo.org/main/en/lists.xml">Auflistung aller Gentoo.org Mailingslisten</uri>
+</p>
+</body>
+
+</section>
+</chapter>
+
+<chapter>
+<section>
+<title>Übersetzer Mailingliste</title>
+<body>
+
+<p>
+Die Mailingliste <mail link="gentoo-doc-de@gentoo.org">gentoo-doc-de@gentoo.org</mail> ist als Koordinationsstelle
+für alle Übersetzer von englischen Dokumentationen gedacht. Diese Liste erzeugt recht wenig Traffic.
+</p>
+
+</body>
+</section>
+<section>
+<title>Entwickler Mailingliste</title>
+
+<body>
+<p>
+Diese Mailingliste <mail link="gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</mail> ist speziell für Personen gedacht, die am Projekt Gentoo.de mitwirken möchten. Hier werden generell keine Fragen zum System an sich beantwortet. Wer sich bei gentoo.de beteiligen möchte, kann sich <uri link="https://lists.berlios.de/mailman/listinfo/gentoo-deutsch-dev">hier</uri> anmelden. Diese Liste wird in naher Zukunft vermutlich in der Übersetzer-Mailingliste integriert werden.
+</p>
+</body>
+
+</section>
+<section>
+<title>CVS-Vorgänge</title>
+<body>
+
+<p>
+Die Liste <mail link="gentoo-deutsch-cvs@lists.berlios.de">gentoo-deutsch-cvs@lists.berlios.de</mail> enthält
+normalerweise nur automatische CVS-Logs und ist somit für alle Entwickler interessant, die die Veränderungen
+auf gentoo.de mitverfolgen wollen. Anmeldung <uri link="https://lists.berlios.de/mailman/listinfo/gentoo-deutsch-cvs">hier</uri>. Bitte benutzen Sie für Mitteilungen an die Addressaten der Mailingliste die oben genannte Entwickler Liste.
+</p>
+
+<p>
+Eine Übersicht über alle vorhandenen deutschen Mailinglisten von gentoo.de findet man
+unter <uri link="http://developer.berlios.de/mail/?group_id=433">http://developer.berlios.de/mail/?group_id=433</uri>.
+</p>
+
+</body>
+
+</section>
+
+<section>
+<title>Die deutschen Mailinglisten via Web ansehen</title>
+<body>
+
+<p>
+Die Mailinglisten von www.gentoo.de werden via WWW archiviert und können auch eingesehen werden:
+<ul>
+  <li><uri link="https://lists.berlios.de/pipermail/gentoo-deutsch-dev/">gentoo-deutsch-dev</uri></li>
+  <li><uri link="https://lists.berlios.de/pipermail/gentoo-deutsch-cvs/">gentoo-deutsch-cvs</uri></li>
+</ul>
+</p>
+
+</body>
+</section>
+</chapter>
+
+</info>

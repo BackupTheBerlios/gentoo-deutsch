@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<info>
+
+<title>Willkommen</title>
+
+<author title="Author">
+  <mail link="js@ameds.de">Jens Schittenhelm</mail>
+</author>
+
+<date>3. Dezember 2003</date>
+
+<chapter>
+<section>
+<title>Das Projekt</title>
+<body>
+
+<p>
+Das Projekt <path>gentoo.de</path> soll als Sammelstelle für Anpassungen von
+Gentoo Linux an deutsche Gegebenheiten dienen.
+</p>
+
+<p>
+Es sollte in erster Linie dazu dienen, daß nicht jede Dokumentation 4
+mal übersetzt wird, bevor sie auf gentoo.org veröffentlicht wird. Durch die
+langen Antwortzeiten auf Bugs und neue Ebuilds im bugzilla bei
+<uri link="http://www.gentoo.org">gentoo.org</uri>, bietet es sich
+aber auch an, neue Ebuilds hier zwischenzulagern. Per CVS sind diese
+leichter wartbar, und andere können besser von den neuen Ebuilds
+profitieren. Sind sie dann in den Portage-Tree aufgenommen, kann man die Ebuilds
+natürlich wieder aus dem CVS hier entfernen, was aber wohl nur Sinn macht, wenn
+man Entwicklerstatus bei gentoo.org erreicht hat, um seine Ebuilds sinnvoll per
+CVS zu warten.
+<br/>
+Desweiteren ist hier natürlich Platz für andere Kleinigkeiten deren Urheber evtl.
+nicht der Meinung sind, daß sie es Wert sind auf gentoo.org veröffentlicht zu
+werden (oder einfach den Aufwand dazu scheuen).
+</p>
+
+<p>
+Und nicht zuletzt gibt der CVS-Service uns die Möglichkeit gemeinsam Tippfehler
+und sonstige Verbesserungen / Korrekturen an den deutschen Dokumentationen
+vorzunehmen, ohne daß alle Beteiligten Developer-Status bei gentoo.org haben
+müssen. Hier gibt es diesen Status wesentlich schneller ;)
+</p>
+
+</body>
+</section>
+<section>
+<title>Mitarbeiten</title>
+<body>
+
+<p>
+Wer mitarbeiten will, registriert sich bei <uri link="http://developer.berlios.de/account/register.php" target="_blank">berliOS</uri>
+und lässt einem der Admins auf der <uri link="http://developer.berlios.de/projects/gentoo-deutsch" target="_blank">Projektübersicht</uri>
+eine Nachricht mit dem Benutzernamen bei berliOS zukommen. Der Developer-Status,
+den man daraufhin erhält, bringt Schreibzugriff auf das CVS-Repository mit sich,
+d.h. man kann Neues einchecken und Altes verbessern.
+</p>
+
+<p>
+Um bei Gentoo Deutsch mitwirken zu können, können Sie sich in einem der drei
+folgenden Punkten engagieren:
+</p>
+
+<ul>
+  <li>Ebuilds schreiben</li>
+  <li>Dokumentation uebersetzen, schreiben</li>
+  <li>Mitarbeit an der Webseite</li>
+</ul>
+
+<p>
+Vor dem <e>Schreiben von Ebuilds</e> sollten Sie prüfen, ob sich das gewünschte
+Programm nicht bereits im <uri link="http://packages.gentoo.org/"> offiziellen
+Portage</uri> Tree befindet. Ebenso gibt es eine Übersicht über die
+<uri link="#">Ebuilds bei gentoo.de</uri>. Hilfreich ist sicher die Anleitung
+zum <uri link="/doc/de/gentoo-howto.xml">Schreiben von Ebuilds</uri>.
+Die Erstellung von Ebuilds sollte sich wenn immer möglich an der
+<uri link="http://www.gentoo.org/doc/en/policy.xml">Gentoo Linux Development Policy</uri>
+orientieren.
+</p>
+
+<p>
+Erste Anlaufstelle für das <e>Übersetzen von englischen Dokumentationen</e> sind
+sicher die <uri link="/proj/de/gtt/information.xml">Informationen für Übersetzer</uri>.
+Desweiteren sollte man sich einen kleine Übersicht über das
+<uri link="/proj/de/site.xml">Guide XML Projekt von Gentoo</uri> verschaffen und
+sich wenn immer möglich an der <uri link="/doc/de/doc-policy.xml">Gentoo Linux
+Documentation Policy</uri> orientieren. Wer mit
+<uri link="http://cvsbook.red-bean.com/translations/german/">CVS nichts am Hut</uri>
+hat, findet sicher jemanden der einem bei der Bedienung behilflich ist. ;)
+</p>
+
+<p>
+Bei der <e>Mitarbeit an der Webseite</e> werden vor allem die
+<uri link="/main/de/news.xml">Neuigkeiten</uri> eingepflegt
+und die Seiten auf gentoo.de verwaltet.
+</p>
+
+<p>
+Desweiteren sind wir auf Veranstaltungen präsent, um Gentoo der
+Allgemeinheit bekannt zu machen. Ein Beispiel hierfür ist der
+<uri link="/proj/de/lt2k3.xml">LinuxTag 2003</uri>.
+</p>
+
+</body>
+</section>
+<section>
+<title>Projektübersicht</title>
+<body>
+
+<p>
+<b>Wird noch erstellt!</b>
+</p>
+
+</body>
+</section>
+</chapter>
+
+</info>

@@ -1,0 +1,460 @@
+<?xml version='1.0' encoding="iso-8859-15"?>
+<guide link="/doc/fluxbox.html">
+
+<title>Fluxbox Desktop in Gentoo</title>
+
+<author title="Autor"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
+
+<abstract>
+Dieses Dokument erl&#xE4;utert die Einrichtung von Fluxbox unter Gentoo Linux.
+</abstract>
+
+<version>0.2</version>
+<date>26 Dezember 2003</date>
+
+<chapter>
+<title>Vorbemerkungen</title>
+<section>
+	<body>
+	<p><uri link="http://fluxbox.sourceforge.net/">Fluxbox</uri> ist einer von vielen Windowmanagern f&#xFC;r X mit seinen
+	Wurzeln im Unix Fenstermanagement. Gegen&#xFC;ber seinem Konkurrenten Blackbox und Openbox
+	besitzt er die M&#xF6;glichkeit, die Titelleisten zu konfigurieren und mehrere Fenster durch Karteireiter (sogenannte
+	"Tabs") miteinander zu Verbinden. Mit einer Scrollmaus k&#xF6;nnen die Arbeitsfl&#xE4;chen blitzschnell gewechselt werden.
+	Auch ist er nach dem Start von X sofort einsatzbereit. Neben KDE und Gnome erfreut er sich deshalb insbesondere bei 
+	den Gentoo Benutzern grosser Beliebtheit, weshalb ich dieses Dokument geschrieben habe. Die Anwendungen, die 
+	ich dabei vorstelle, sind dabei nur eine von den vielen M&#xF6;glichkeiten, die unter Gentoo Linux angeboten werden.</p>
+
+	<p>Dieses Dokument geht davon aus, dass Gentoo auf Ihrem Rechner installiert und die Hardware unter
+	Xfree86 bereits eingerichtet ist. Als erstes sollte man sicherstellen, dass Portage sich auf dem neuesten Stand
+	befindet. Dazu gen&#xFC;gt als root ein:
+	<pre>
+	# <i>emerge rsync</i>
+	</pre>
+	</p>
+	</body>
+</section>
+</chapter>
+<chapter>
+<title>Fluxbox</title>
+<section>
+	<title>Installation</title>
+	<body><p>
+	Nun schauen wir doch einmal, was mit Fluxbox installiert wird:
+	<pre>
+	# <i>emerge -p fluxbox</i>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild  N   ] x11-misc/commonbox-utils-0.1 to /
+	[ebuild  N   ] x11-themes/commonbox-styles-0.1-r1 to /
+	[ebuild  N   ] x11-wm/fluxbox-0.1.10 to /
+
+	<comment>Sollte X noch
+	nicht installiert sein, so sieht die Liste deutlich l&#xE4;nger aus</comment>
+	# <i>emerge fluxbox</i>
+
+	</pre>
+	Das Kompilieren dieser drei Pakete sollte schneller gehen, als man sich einen Kaffee kochen kann.
+	<note>Wer sichergehen will, dass Fluxbox ohne Unterst&#xFC;tzung f&#xFC;r KDE oder GNOME auskommt, sollte dies vorher mit
+	<i>export USE="-kde"</i> bzw. <i>export USE="-gnome"</i> setzen.</note>
+	</p></body>
+</section>
+<section>
+	<title>Starten</title>
+	<body><p>
+	Mit der Installation wurde <i>/etc/X11/Sessions/fluxbox</i> angelegt, sodass Fluxbox nun aus den Auswahlmen&#xFC;s von
+	XDM, GDM oder KDM gestartet werden kann. Um sicherzugehen, dass beim Start von Fluxbox auch die Umgebungsvariablen
+	eingelesen werden k&#xF6;nnen, sollte mit
+	<pre>
+	# <i>nano -w /etc/X11/Sessions/fluxbox</i>
+	</pre>
+	das Skript wie folgt erweitert werden:
+	<pre caption="Erweitertes /etc/X11/Sessions/fluxbox Skript">
+	#!/bin/sh
+	source /etc/profile
+	startup=$HOME/.xsession
+	/usr/bin/fluxbox
+	</pre>
+	Nun sollte sich Fluxbox starten und mit einem Rechtsklick auf den leeren Hintergrund das Herz von Fluxbox, das
+	eigentlich Startmenu f&#xFC;r die einzelnen Anwendungen aufrufen lasen. Mit der mittleren Maustaste kann ein Menu
+	zum Wechseln zwischen den einzelnen Arbeitsfl&#xE4;chen aufgerufen werden, aber wie bereits oben beschrieben geht das
+	deutlich schneller mit dem Mausrad.
+	<note>
+	Benutzer, die Fluxbox nicht mit einem Login-Manager starten wollen, sondern dies direkt &#xFC;ber <i>startx</i>
+	ausf&#xFC;hren wollen, m&#xFC;ssen ihre ~/.xinitrc entsprechend anpassen. Am einfachsten geht dies mit einem
+	<i>echo "exec fluxbox" > ~/.xinitrc</i>.
+	</note>
+	</p></body>
+</section>
+<section>
+	<title>Konfiguration</title>
+	<body><p>Bei der Installation wird mit <i>fluxbox-generate_menu</i> ein Eintrag aller bereits in Gentoo Linux
+	vorhandenen Anwendungen unter /usr/share/commonbox/menu abgelegt. Dieses sollte nun in das eigene Benutzer
+	verzeichnis kopiert werden.
+	<pre>
+	# <i>cp /usr/share/commonbox/menu /home/username/.fluxbox/</i>
+	</pre>
+	Mit einem Editor kann dann das Menu beliebig den eigenen W&#xFC;nschen angepasst werden:
+	<pre>
+	# <i>nano -w /home/username/.fluxbox/menu</i>
+	</pre>
+	Man sieht, dass das Prinzip sehr einfach aufgebaut ist. Mit <i>[exec]</i> zu Beginn der Zeile wird Fluxbox
+	mitgeteilt, dass es sich um ein ausf&#xFC;hrbares Programm handelt, dessen Name im Fluxbox Menu als <i>(name)</i>
+	erscheint. Der eigentliche Programmaufruf, wie an der Kommandozeile, wird in <i>{anwendung -option1 -option2}</i>
+	gepackt. Hier einige Beispiele:
+	<pre caption="Ein Beispiel f&#xFC;r /usr/share/commonbox/menu">
+
+[begin] (-= Gentoo Linux =-)
+        [exec] (xterm) {xterm -fg white -bg black}
+
+[submenu] (Internet)
+        [exec] (lynx) {xterm -title lynx -fg white -bg black -e lynx}
+	[exec] (xchat) {xchat}
+[end]
+
+[submenu] (Editoren)
+        [exec] (xedit) {xedit}
+[end]
+
+[submenu] (Verschiedenes)
+        [exec] (xcalc) {xcalc}
+        [exec] (xfontsel) {xfontsel}
+        [exec] (xman) {xman}
+        [exec] (xload) {xload}
+        [exec] (xbiff) {xbiff}
+        [exec] (editres) {editres}
+        [exec] (visehenewres) {viewres}
+        [exec] (xclock) {xclock}
+	[exec] (xscreensaver-demo}
+[end]
+
+[end]
+
+[submenu] (Einstellungen)
+        [workspaces]   (Arbeitsplatz-Liste)
+[submenu] (Styles) {Stil aendern...}
+        [stylesdir] (/usr/share/commonbox/styles)
+[end]
+
+        [config] (Konfigurieren)
+        [reconfig] (Neu Laden)
+[end]
+
+        [restart] (Neu Starten)
+        [exit] (Exit)
+[end]
+	</pre></p>
+	<p>
+	Die eigentlichen Einstellungen f&#xFC;r Fluxbox k&#xF6;nnen in der ~/.fluxbox/init Datei vorgenommen werden. Diese kann
+	ebenfalls mit einem Editor bequem nach eigenen W&#xFC;nschen angepasst werden:
+	<pre>
+	# <i>nano -w ~/.fluxbox/init</i>
+	</pre>
+	Da ich es liebe, dass ge&#xF6;ffnete Fenster gerne ab ca. 10 Pixel Entfernung an den Bilschirmrand "schnappen"
+	und ausserdem die Uhr im 24 Stunden Format sehen m&#xF6;chte, habe ich die <i>init</i> wie folgt
+	angepasst:
+	<pre caption="Ein Beispiel f&#xFC;r ~/.fluxbox/init">
+	<comment> Alle anderen Optionen aus Platzgr&#xFC;nden ausgebelendet</comment>
+	session.screen0.edge.SnapThreshold:   10
+	session.screen0.strftimeFormat:       %H:%M
+	</pre>
+	Wem das zu umst&#xE4;ndlich ist, der kann sich mit
+	<pre>
+	# <i>emerge fluxconf</i>
+	</pre>
+	ein grafisches Konfigurationstool f&#xFC;r Fluxbox aus dem Netz ziehen, welches mit <i>fluxconf</i> gestartet wird.
+	</p></body>
+</section>
+<section>
+	<title>Der Fluxbox Stil</title>
+	<body><p>
+	Nun kommt das gr&#xF6;sste Problem der Fluxbox Installation - die Auswahl des geeigneten Themes. Fluxbox Benutzer verwenden
+	unglaublich viel Zeit damit, ihren Desktop so anzupassen, dass er m&#xF6;glichst einzigartig aussieht und dar&#xFC;ber hinaus
+	sehr stylish aussieht. Dazu passen nat&#xFC;rlich einige besondere Schriften, wie zum Beispiel der 
+	<uri link="http://www.xs4all.nl/~hanb/software/fluxbox/artwiz-fonts.tar.bz2">Artwiz-Font</uri>.Das Mass aller Dinge ist 
+	dann nat&#xFC;rlich, der mit allem Stolz irgendwo im Web gepostete Screenshot, auf dem der eigene Bildschirm mit sovielen 
+	m&#xF6;glichen Applikationen zugepflastert wird um einen guten Eindruck zu erwecken, dass der Benutzer (a) entweder ganz 
+	gut besch&#xE4;ftigt ist, um alles noch unter Kontrolle zu haben, oder (b) mal wieder die grandiose
+	Multitasking-&#xFC;berlegenheit von Linux zu demonstrieren. Allem Anschein nach sind transparente und rahmenlose
+	Terminals der letzte Schrei. Anregungen aus den offiziellen Gentoo Foren kann man sich
+	<uri link="http://forums.gentoo.org/viewtopic.php?t=2460">hier</uri> jedenfalls mehr als genug holen, die richtige
+	Wahl zu treffen, ist da schon einiges schwerer.
+	</p><p>
+	Man sollte allerdings noch den Unterschied zwischen den Themen, die ein Hintergrundbild einsetzen, kennen. Um in
+	bestimmten Anwendungen, wie zum Beispiel <i>xhcat</i> oder <i>aterm</i> Transparenz hinzubekommen, bedienen sich
+	diese Anwendungen einem relativ einfachen Trick, indem sie den entsprechenden Ausschnitt aus dem Hintergrund
+	kopieren. Das geht aber nat&#xFC;rlich nur bei den Themen, bei denen auch ein Hintergrundbild vorhanden ist. Das 
+	ist leider bei den Fluxbox Mustern nicht der Fall. Diese sehen zwar auch sehr sch&#xF6;n aus, da sie aber bei Bedarf
+	gerendert werden, haben die Anwendungen keine M&#xF6;glichkeit, darauf zur&#xFC;ck zu greifen.
+	<note>Bis zur Fluxbox Version 0.1.9 m&#xFC;ssen die Applikationen zum Setzen der Bildhintergr&#xFC;nde mit den jeweiligen
+	anderen Paketen installiert werden, so zum Beispiel <i>emerge Eterm</i> f&#xFC;r <i>Esetroot</i>. Das ist nun
+	nicht mehr notwendig. Das paket <i>commonbox-utils</i> enth&#xE4;lt bereits<i>Esetroot</i>, <i>bsetbg</i> und einige
+	anderen n&#xFC;tzlichen Tools.</note>
+	</p><p>
+	Mit der Installation von Fluxbox sollten standardm&#xE4;ssig schon einige Themen in /usr/share/commonbox/styles
+	abgelegt worden sein. Eine grosse Auswahl gibt es bei <uri link="http://themes.freshmeat.net/browse/962/?topic_id=962">
+	Freshmeat</uri>; um diese jedem Benutzer (auch von Blackbox, Openbox oder Hackedbox zur Verf&#xFC;gung zu stellen),
+	empfiehlt sich eine Installation in <path>/usr/share/commonbox/styles</path> (die Hintergrundbilder in:
+	<path>/usr/share/commonbox/backgrounds</path>). Mit  dem Anlegen von symbolischen Links
+	<pre>
+	# <i>ln -s /usr/share/commonbox/styles /home/username/.fluxbox/styles</i>
+	# <i>ln -s /usr/share/commonbox/backgrounds /home/username/.fluxbox/backgrounds</i>
+	</pre>
+	kann nun der Benutzer auf alle installierten Themen zugreifen.
+	<impo>Werden externe Themes installiert, die noch nicht im Portage Tree vorhanden sind, so sollte der Pfad in der jeweiligen
+	<i>styles</i> Datei den Gentoo  Verh&#xE4;ltnissen angepasst werden, also: <path>/usr/share/commonbox/backgrounds/Bildname.jpg</path>
+	</impo>
+	</p></body>
+</section>
+<section>
+	<title>Setzen des Hintergrundes</title>
+	<body><p>
+	Wem die gerenderten Hintergr&#xFC;nde von Fluxbox nicht zusagen, oder ein einfach spezielles Hintergrundbild gew&#xFC;nscht
+	wird, der kann dies mit:
+	<pre>
+	# <i>bsetbg -f /usr/share/commonbox/backkgrounds/meinbild.jpg</i>
+	</pre>
+	setzen. Die <comment>-f</comment> Option passt das Bild an die Bilschirmaufl&#xF6;sung an. F&#xFC;r geckachelte Bilder
+	bietet sich stattdessen<comment>-t</comment> an. Wer Transparenten Hintergrund in bestimmten Anwednungen, wie 
+	zum Beispiel <i>xchat</i> oder <i>Eterm</i> sehen m&#xF6;chte, sollte den Hintergrund besser mit Esetroot setzen:
+	<pre>
+	# <i>Esetroot -f /usr/share/commonbox/backkgrounds/meinbild.jpg</i>
+	</pre>
+	<note>
+	Nat&#xFC;rlich kann der Hintergrund &#xFC;ber <path>~/.xinitrc</path> bzw. <path>~/.xsession</path> bei jedem Start
+	aufgerufen werden, es empfiehlt sich aber, wie bereits oben beschrieben, die Anpassung der entsprechenden
+	Theme-Datei in <path>/usr/share/commonbox/styles</path>.
+	</note>
+	</p></body>
+</section>
+</chapter>
+
+<chapter>
+<title>Dateimanagement mit dem ROX-Filer</title>
+<section>
+	<title>Wozu ein Dateimanager?</title>
+	<body><p>
+	Was f&#xFC;r Gnome Nautilus und f&#xFC;r KDE Konqueror ist, da kommt Fluxbox zun&#xE4;chst ohne Dateimanager daher. Den Puristen
+	unter uns gen&#xFC;gt sowieso die Kommandozeile im Terminal, aber wenn es darum geht, bestimmte Icons auf dem Desktop
+	abzulegen wollen, ein Panel a la Gnome zu haben, oder mal schnell in einem Verzeichnis zu bl&#xE4;ttern kommt man um ein grafisches 
+	Dateimanagement kaum herum. Auswahl gibt es hier wie Sand am Meer, <i>endeavour</i>, <i>gentoo</i> um nur einige zu nennen. Ich
+	pers&#xF6;nlich bevorzuge den ROX-Filer, aber das ist Ansichtssache.
+	<pre>
+	# <i>emerge -p rox</i>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild  N   ] x11-misc/shared-mime-info-0.7 to /
+	[ebuild  N   ] app-misc/rox-1.3.2 to /
+
+	# <i>emerge rox</i>
+	</pre>
+	Nun sollte sich dieser mit <i>rox</i> aufrufen lassen.
+	</p></body>
+</section>
+<section>
+	<title>Konfiguration</title>
+	<body><p>Um mit dem ROX Filer Icons auf dem Panel abzulegen k&#xF6;nnen, muss dieser vor dem Start von Fluxbox
+	ausgef&#xFC;hrt werden. Damit jeder Benutzer in den Genuss kommt, habe ich die /etc/X11/Sessions/fluxbox wie
+	folgt erweitert:
+	<pre caption="Erweitertes /etc/X11/Sessions/fluxbox Skript">
+	#!/bin/sh
+	source /etc/profile
+	rox --bottom=mypanel &amp;
+	/usr/bin/fluxbox
+	</pre>
+	Die <i>-o</i> Option bewirkt, dass das Panel auf allen Arbeitsfl&#xE4;chen angezeigt wird, ansonsten
+	sind die Icons nur auf dem ersten Arbeitsplatz, der beim Start sichtbar wird, zu benutzen.
+	Beim n&#xE4;chsten Neustart von Fluxbox sollte nun unten ein Panel und darin ein Ordner mit dem Namen "Desktop" zu sehen sein. Mit
+	einem Linksklick darauf, &#xF6;ffnet sich der Dateimanager, und die Lieblingsanwendungen k&#xF6;nnen per Drag'n drop
+	auf dem Panel abgelegt werden. Mit Rechtsklick darauf kann ein Kontextmenue ge&#xF6;ffnet werden, das
+	benuzerdefinierte Einstellungen (anderes Icon, neuer Name etc...) erlaubt. Noch schneller geht es, wenn
+	man die Einstellungen direkt unter ~/Choices/ROX-Filer/pan_mypanel vornimmt.
+	<pre caption="Desktop Icons in ~/Choices/ROX-Filer/pan_mypanel">
+	&lt;?xml version=&quot;1.0&quot;?&gt;
+	&lt;panel&gt;
+  	&lt;start/&gt;
+  	&lt;end&gt;
+    	&lt;icon label="xchat"&gt;/usr/bin/xchat&lt;/icon&gt;
+    	&lt;icon label="xterm"&gt;/usr/bin/xterm&lt;/icon&gt;
+    	&lt;icon label="Home"&gt;/home/username&lt;/icon&gt;
+  	&lt;/end&gt;
+	&lt;/panel&gt;
+	</pre></p>
+
+	<p>
+	Im Dateimanager selber kann nun festgelegt werden, welche Anwendung sich beim Klicken auf die Datei &#xF6;ffnet.
+	F&#xFC;r Textdateien bietet sich <i>xedit</i> an:
+	<pre>
+	# <i>nano -w ~/Choices/MIME-types/text-plain</i>
+	</pre>
+	und tr&#xE4;gt folgende Werte ein:
+	<pre caption="Modifikationen an ~/Choices/MIME-types/text-plain">
+	#!/bin/sh
+	exec xedit "$1"
+	</pre>
+	Dies l&#xE4;sst sich beliebig f&#xFC;r alle MIME-Dateitypen vornehmen, die unter ~/Choices/MIME-Info/Standard eingetragen
+	sind. Weitere MIME-Info Vorlagen befinden sich unter /usr/share/mime-info.
+	</p></body>
+</section>
+</chapter>
+<chapter>
+<title>Bildschirmschoner</title>
+<section>
+	<title>Konfiguration von xscreensaver</title>
+	<body><p>
+	Obwohl bei den heutigen Monitoren die Gefahr des Einbrennens von Bildern schon lange nicht mehr gegeben ist,
+	lohnt sich die Installation von <i>xscreensaver</i>, da mit einigen Powermanagement-Optionen aufwarten kann
+	und dar&#xFC;berhinaus viele sch&#xF6;ne Motive, wie z.B. den schon lang vermissten "Blue Screen of Death" bereitstellt.
+	Die Installation ist denkbar einfach:
+	<pre>
+	# <i>emerge -p xscreensaver</i>
+	</pre>
+	Das Programm besteht aus zwei Teilen, dem <i>xscreensaver</i> Daemon und einer Applikation, die den Zugriff
+	f&#xFC;r alle Einstellungen daf&#xFC;r bereitstellt. Damit der Daemon bei jedem Start von Fluxbox geladen wird, legen wir
+	die <i>.xsession</i> Datei wie folgt an:
+	<pre caption="Beispiel f&#xFC;r ~/.xsession">
+	exec xscreensaver &amp;
+	</pre>
+	Dann setzen wir noch die korrekten Werte, damit das Skript auch ausgef&#xFC;hrt werden kann:
+	<pre>
+	# <i>chmod +744 .xsession</i>
+	</pre>
+	Mit <i>xscreensaver-demo</i> passen wir den Bilschirmschoner ganz unseren W&#xFC;nschen an. Empfehlensert ist es,
+	unter "Advanced" das H&#xE4;ckchen vor "Display Splash Screen on Startup" zu entfernen, um einen schnelleren
+	Start zu gew&#xE4;hrleisten. Nat&#xFC;rlich k&#xF6;nnen alle Einstellungen auch direkt in der <path>~/.xscreensaver</path>
+	Konfigurationsdatei vorgenommen werden.
+	</p></body>
+</section>
+</chapter>
+<chapter>
+<title>"Dockapps" und der mysteri&#xF6;se "Slit"</title>
+<section>
+	<title>Einf&#xFC;hrung</title>
+	<body><p>
+	"Dockapps" sind kleine Anwendungen, deren Aufgabe darin besteht, wichtige Systeminformationen oder allerhand unn&#xFC;tzes
+	Zeug dem Benutzer auf dem Bilschirm zu pr&#xE4;sentieren. Damit alle diese Anwendungen nicht kreuz und quer auf dem
+	Bilschirm verteilt sind und &#xFC;berdies auch noch ein eigenes Fenster ge&#xF6;ffnet haben, gibt es den sogenannten "Slit", eine
+	Art Men&#xFC;leiste, die alle diese Programme aufnehmen kann und je nach Benutzereinstellung diese immer im Vodergrund oder
+	weniger aufdringlich im Hintergrund auf allen Bilschirmen anzeigt. Da es Dockapps wie Sand am Meer gibt, werde ich hier
+	nur einige wenige exeplarisch vorstellen - ansonsten kann ich nur empfehlen im <uri link="http://www.bensinclair.com/dockapp/">Dockapp
+	Warehouse</uri> oder <uri link="http://www.linuks.mine.nu/cgi-bin/da.sh">WindowMaker</uri> zu st&#xF6;bern.
+	</p></body>
+</section>
+<section>
+	<title>Gkrellm</title>
+	<body><p>
+	Gkrellm ist so ziemlich das "Schweizer Taschenmesser" unter den ganzen Dockapps. Von Haus aus kann er schon ziemlich viel, z&#xE4;hlt
+	man die Plugins dazu dann findet man sicher nichts was es nicht gibt. Mit den entsprechenden Skins passt sich Gkrellm hervorragend
+	in die Fluxbox-Umgebung ein.
+	<pre>
+	# <i>emerge -p gkrellm-plugins</i>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild   R  ] app-admin/gkrellm-1.2.13 to /
+	[ebuild  N   ] x11-misc/gkrellm-mailwatch-0.7.2 to /
+	[ebuild  N   ] x11-misc/gkrellmwireless-0.2.2 to /
+	[ebuild  N   ] x11-misc/gkrellmouse-0.0.2 to /
+	[ebuild  N   ] x11-misc/gkrellm-gnome-0.1 to /
+	[ebuild  N   ] x11-misc/gkrellm-reminder-0.3.5 to /
+	[ebuild  N   ] x11-misc/gkrellm-volume-0.8-r1 to /
+	[ebuild  N   ] x11-misc/gkrellmwho-0.4 to /
+	[ebuild  N   ] x11-misc/gkrellmitime-0.4 to /
+	[ebuild  N   ] x11-misc/gkrellm-radio-0.3.3 to /
+	[ebuild  N   ] x11-misc/gkrellshoot-0.3.11 to /
+	[ebuild  N   ] x11-misc/gkrellmoon-0.3 to /
+	[ebuild  N   ] x11-misc/gkrellm-plugins-1.2.11-r1 to /
+
+	# <i>emerge gkrellm-plugins</i>
+	</pre>
+	Ich pers&#xF6;nlich benutze gkrellm nur, um meine POP3 Mailboxen zu &#xFC;berwachen und meine Laufwerke per 
+	Mausklick zu mounten. Man sollte sich aber bewusst machen, dass die Mailpassw&#xF6;rter im
+	Klartext in der Datei ~/.gkrellm/user_config gespeichert werden. Nun stellen wir noch sicher, dass
+	Gkrellm bei jedem Start automatisch im Slit landet:
+	<pre caption="Beispiel f&#xFC;r ~/.xsession">
+	exec xscreensaver &amp;
+	<comment>exec gkrellm -w &amp;</comment>
+	</pre>
+	</p></body>
+</section>
+
+<section>
+	<title>wmcpuload, wmmemload und wmmemmon</title>
+	<body><p>
+	Anzeigen &#xFC;ber die Prozessor, Arbeitsspeicher- und Swapauslastung sind immer praktisch. Kommen Sie
+	zus&#xE4;tzlich noch im schicken Digital-Look daher und lassen sich in ihrer farbe anpassen, dann haben
+	sie ihren Platz auf meinem Desktop redlich verdient.
+	<pre>
+	# <i>emerge -p WMCPULoad wmmemmon wmmemload</i>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild  N   ] x11-misc/WMCPULoad-0.8.1 to /
+	[ebuild  N   ] x11-misc/wmmemload-0.1.4 to /
+	[ebuild  N   ] x11-misc/wmemmon-0.7.0 to /
+
+	# <i>emerge WMCPULoad wmmemmon wmmemload</i>
+	emerge </pre>
+	<impo> Zur Zeit ist nur wmcpuload im Portage Verzeichnisbaum. Um wmemmon und wmmemload bequem installieren
+	zu k&#xF6;nnen, gibt es die ebuilds <uri link="http://cvs.berlios.de/cgi-bin/cvsweb.cgi/ebuilds/x11-misc/?cvsroot=gentoo-deutsch">
+	hier</uri>.</impo>
+	Nun passen wir das Startup-Skript an:
+	<pre caption="Beispiel f&#xFC;r ~/.xsession">
+	exec xscreensaver &amp;
+	<comment>exec wmmemload -b -lc rgb:9E/0/0 &amp;
+	exec wmmemmon -b -lc rgb:9E/0/0 &amp;
+	exec wmcpuload -a 90 -lc rgb:9E/0/0 &amp;</comment>
+	exec gkrellm -w &amp;
+	</pre>
+	Die Option <comment>-b</comment> k&#xFC;mmert sich darum, dass die Programme im Slit laufen. <comment>-a 90</comment> sorgt
+	daf&#xFC;r, dass ab 90% Prozessorauslastung eine Warnung in der Farbe <comment>-lc rgb.9E/0/0</comment> (hier also
+	ein dunkles Rot) ausgegeben wird.
+	</p></body>
+</section>
+<section>
+	<title>bbrun</title>
+	<body><p>
+	Mit bbrun besitzt der Benutzer eine kleine Kommandozeile. Das ist praktisch, da man ansonsten f&#xFC;r auszuf&#xFC;hrende
+	Programme ein Terminal &#xF6;ffnen muss.
+	<pre>
+	# <i>emerge -p bbrun</i>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild  N   ] x11-misc/bbrun-1.3 to /
+
+	# <i>emerge bbrun</i>
+	</pre>
+	Nun noch <i>bbrun &amp;</i> in die .xsession eintragen und mit einem Klick auf das kleine Zahnrad kann die
+	Befehlszeile aufgerufen werden.
+	</p></body>
+</section>
+<section>
+	<title>bbpager</title>
+	<body><p>
+	Mit bpager hat der Benutzer eine kleine Fenster&#xFC;bersicht und kann auch einzelne Fenster zwischen den Bildschirmen
+	verschieben.
+	<pre>
+	# <i>emerge -p bbpager</i>
+
+	These are the packages that I would merge, in order.
+
+	Calculating dependencies ...done!
+	[ebuild  N   ] x11-misc/bbpager-0.3.0-r3 to /
+
+	# <i>emerge bbpager</i>
+	</pre>
+	Nun noch <i>bbpager &amp;</i> in die .xsession eintragen und es startet automatisch.
+	<warn>Leider gibt es Probleme, wenn man bbpager im Slit laufen m&#xF6;chte. Ich rate zur Zeit davon ab.</warn>
+	</p></body>
+</section>
+</chapter>
+</guide>
+
+ 

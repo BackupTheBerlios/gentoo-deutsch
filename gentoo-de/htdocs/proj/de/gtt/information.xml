@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<info>
+<title>Informationen für zukünftige Übersetzer</title>
+<author title="Author">
+  <mail link="js@ameds.de">Jens Schittenhelm</mail>
+</author>
+<author title="Author">
+  <mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail>
+</author>
+
+<abstract>
+Dieser Guide ist als Muss für alle zukünftigen Übersetzer zu verstehen. Sie
+sollten ihn aufmerksam lesen, bei Fragen rund um die Übersetzung von
+Dokumentation wenden Sie sich an die Mailing Liste.
+</abstract>
+
+<version>1.0</version>
+<date>22. November 2003</date>
+
+<chapter>
+<title>Viele Fragen, die wichtigsten Antworten</title>
+<section>
+<body>
+
+<note>
+Bedingt dadurch, dass sich ständig irgendetwas verändert (meistens zum
+besseren) kann dieses Dokument nie vollständig sein. Sollten also Fragen
+offen bleiben, zögern Sie nicht uns zu kontaktieren.
+</note>
+
+</body>
+</section>
+<section>
+<title>Wie kann ich mithelfen Dokumentationen zu übersetzen?</title>
+<body>
+
+<p>
+Sie müssen sich zunächst bei <uri link="http://developer.berlios.de/account/register.php">berlios.de</uri>
+einen Account anlegen. Schicken Sie nun eine Email an einen der
+Projektadministratoren, damit dieser Ihnen Zugriff auf das CVS geben kann.
+</p>
+
+</body>
+</section>
+<section>
+<title>Wie läuft eine Übersetzung ab?</title>
+<body>
+
+<p>
+Wenn Sie selber ein Dokument übersetzen möchten, dann sollten Sie eine Nachricht
+an die gentoo-deutsch-dev Mailing Liste senden und sich vergewissern, dass noch
+niemand mit der Übersetzung begonnen hat. Wenn Sie das Dokument fertig
+übersetzt haben, können Sie es in das gentoo.de CVS einbringen. Gleichzeitg sollten
+Sie wieder eine Nachricht an die Mailing Liste senden, dass das Dokument fertig
+übersetzt ist und nun Korrektur gelesen werden muss. Ist dies geschehen, wird das
+Dokument auch bei <uri link="http://www.gentoo.org/doc/de/index.xml">www.gentoo.org</uri>
+eingebracht. Eventuelle Änderungen und Korrekturen fliessen wieder in das CVS von
+gentoo.de zurück.
+</p>
+
+<p>
+Ihre Arbeitskopie der englischen Dokumentation können Sie aus dem gentoo.org
+<uri link="http://www.gentoo.org/cgi-bin/viewcvs.cgi/xml/htdocs/doc/en/?cvsroot=gentoo#dirlist">ViewCVS</uri>
+beziehen.
+</p>
+
+<p>Hin und wieder (wie aktuell beim Handbuch) werden auf der Mailing Liste
+Übersetzer für bestimmte Dokumente gesucht. Der Arbeitsablauf ist für Sie nahezu
+identisch.
+</p>
+
+</body>
+</section>
+<section>
+<title>Mit welchem Editor kann ich die Dokumente bearbeiten?</title>
+<body>
+
+<p>
+Im Prinzip reicht ein einfacher Texteditor, der in UTF-8 abgespeicherte
+Dokumente bearbeiten kann, vollkommen aus. Bluefish bietet ein sehr schönes
+Syntax-Highlighting an. Aber auch die üblichen Verdächtigen, wie z.B.
+vim, sollten Sie durchaus in die nähere Auswahl mit einbeziehen.
+</p>
+
+<p>
+Wenn Sie vim benutzen haben wir noch ein paar zusätzliche Tipps für Sie, mit
+denen Sie sich das Editieren der Dokumente etwas vereinfachen können. Zunächst
+sollten Sie sich das von Lars Weiler an die Erfordernisse des Schreibens von
+Gentoo Dokumentation angepasste vim <uri link="http://dev.gentoo.org/~pylon/vim">xml-Plugin</uri>
+herunterladen und in das <path>~/.vim/ftplugins</path> Verzeichnis legen.
+Damit vim dieses Plugin lädt, müssen Sie noch eine Einstellung in der
+<path>.vimrc</path> erstellen. Bei der Gelegenheit bringen Sie vim auch noch
+UTF-8 bei und machen aus einem <c>tab</c> zwei Leerzeichen.
+</p>
+
+<pre caption="Einstellungen in der .vimrc zum komfortablen editieren der Dokumente">
+<codenote>Zunächst weisen Sie vim an, Filetype Plugins zu laden:</codenote>
+filetype plugin on
+<codenote>Nun setzen Sie das Encoding auf UTF-8:</codenote>
+set encoding=utf-8
+<codenote>Und nun machen Sie aus einem Tab zwei Leerzeichen, dies ist</codenote>
+<codenote>für das Editieren von Tabellen gemäß Coding Style sinnvoll.</codenote>
+set expandtab
+set tabstop=2
+set shiftwidth=2
+</pre>
+
+<note>
+Wenn Sie nur gelegentlich Gentoo Dokumentation bearbeiten, könnte es für Sie
+Sinn machen, auf das Setzen des Encoding in der <path>.vimrc</path> vorerst zu
+verzichten und nach dem Aufruf des Editor mit <c>:set encoding=utf-8</c> das
+Encoding "zu Fuß" zu ändern.
+</note>
+
+</body>
+</section>
+<section>
+<title>Was ist dies für eine komische HTML-ähnliche Syntax in den Dokumenten? Gibt
+es irgendwo eine Liste für die ganzen Optionen?</title>
+<body>
+
+<p>
+Klar. Der <uri link="/doc/de/xml-guide.xml">XML Guide Leitfaden</uri>
+gibt eine sehr schöne Einführung in das von uns benutzte GuideXML. Wenn Sie
+Dokumentation übersetzen wollen, müssen Sie nicht unbedingt sofort den Sinn
+eines jeden Tag verstehen, ich vermute aber mal dass Sie es trotzden
+wissen wollen ;)
+</p>
+
+</body>
+</section>
+<section>
+<title>Gibt es eine Richtlinie wie die Dokumente aussehen müssen?</title>
+<body>
+
+<p>
+Ja. Sowohl an der englischen Dokumentation, als auch an den deutschen 
+Übersetzungen arbeitet eine Vielzahl von Leuten mit. Damit sich alle innerhalb
+möglichst kurzer in einem Dokument zurecht finden können, ist ein
+<uri link="/doc/de/xml-guide.xml#header_3">"Coding Style"</uri>
+festgelegt worden. Im "Coding Style" wird festgelegt, wie die xml-Tags im
+Dokument zu platzieren sind, ausserdem gibt es einige Regeln, die dazu
+dienen, die Dokumentation so lesbar wie möglich zu halten. Um einen Eindruck zu
+erhalten, wie ein Dokument mit angewandtem Coding Style aussieht, schauen Sie
+sich zum Beispiel das gentoo-security.xml (oder dieses Dokument) in Ihrer lokalen
+Kopie des CVS Tree an.
+</p>
+
+<p>
+Ausserdem müssen alle übersetzen Dokumente einen Verweis auf die zugrundelegende
+englische Fassung beinhalten, um zukünftige Aktualisierungen zu vereinfachen.
+</p>
+
+<pre caption="Verweis auf die Version der zugrundeliegenden englischen Fassung">
+&lt;!-- English CVS Version: 1.0 --&gt;
+</pre>
+
+<note>
+Bitte beachten Sie das Datum im &lt;date&gt; Tag nicht mit dem aktuellen
+Tagesdatum, sondern mit dem Datum aus dem Original zu ersetzen.
+</note>
+
+</body>
+</section>
+<section>
+<title>Wie erhalte ich die GuideXML DTD (Document Type Definition) Datei?</title>
+<body>
+<p>
+<c>emerge gentoo-guide-xml-dtd</c>
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>CVS Zugang zu gentoo.de</title>
+<section>
+<title>Einleitung</title>
+<body>
+
+<note>
+Diese kurze Einführung beschreibt nur die notwendigsten Befehle, um den CVS Tree
+von gentoo.de auszuchecken und eigene Änderungen wieder einzubringen. Für
+weitergehende Informationen lesen Sie das <uri link="/doc/de/cvs-howto.xml">CVS Howto</uri>.
+</note>
+
+</body>
+</section>
+<section>
+<title>Vor dem Einbringen der Dokumentation</title>
+<body>
+
+<p>
+Bevor Sie Dokumentation in das CVS einbringen, sollten Sie noch kurz prüfen, ob
+das Dokument syntaktisch korrekt ist.
+</p>
+
+<pre caption="Prüfen der syntaktischen Korrektheit">
+# xmllint dokumentation.xml
+</pre>
+
+<p>
+Num können Sie sich die übersetzte Dokumentation anschauen. Dazu benötigen Sie
+die <path>guide.xsl</path>, <path>main.css</path> sowie optional einige
+Grafiken. Links zu allen Files finden sie auf Swifts
+<uri link="http://dev.gentoo.org/~swift/#doc_chap2_sect1">Entwicklerseite</uri>.
+</p>
+
+<p>
+Gemeinsam mit Ihrer lokalen Arbeitskopie stecken Sie diese Dateien alle in ein
+Verzeichnis, dann können Sie eine html Version generieren.
+</p>
+
+<pre caption="Eine html Version erstellen">
+# xsltproc --novalid guide.xsl doku.xml &gt; test.html
+</pre>
+
+<p>
+Da wir zwar nicht faul aber durchaus etwas bequem sind, erstellen wir uns ein
+kleines Makefile; ein <c>make dokument</c> geht nunmal schneller.
+</p>
+
+<pre caption="Ein kleines Makefile">
+dokument:
+  xsltproc --novalid guide.xsl dokument.xml &gt; test.html
+</pre>
+
+<p>
+Wenn Sie zu bequem sind, sich selber ein Makefile zu schreiben, dann versuchen
+Sie dieses <uri link="http://tobias.scherbaum.info/gentoo/doc/Makefile">hier</uri> ;)
+</p>
+
+</body>
+</section>
+<section>
+<title>Dokumentation ins CVS einbringen</title>
+<body>
+
+<p>
+Zunächst sollten Sie sich die Datei <path>.cvsrc</path> anlegen und folgende
+Zeilen eintragen, Sie machen Ihren Fingern das Leben leichter.
+</p>
+
+<pre caption="~/.cvsrc">
+cvs -q
+diff -u -b -B
+checkout -P
+update -d -P
+</pre>
+
+<p>
+Sie benötigen Ihre Zugangsdaten zum CVS Server bevor Sie fortfahren. Loggen
+Sie sich am CVS Server ein und checken das Modul <path>www-source</path> aus.
+Ersetzen Sie <c>developername</c> mit Ihrem Benutzernamen.
+</p>
+
+<pre caption="Eine lokale Kopie des CVS Tree erzeugen">
+# export CVS_RSH=ssh
+# cvs -z3 -ddevelopername@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co www-source
+</pre>
+
+<p>
+Nun können Sie das gewünschte Dokument editieren. Anschliessend bringen Sie Ihre
+Änderung in das CVS ein.
+</p>
+
+<pre caption="Eine Änderung in das CVS einbringen">
+# cvs commit -m 'Hier sollten Sie einen aussagekräftigen Kommentar eintragen' name-des-dokument.xml
+</pre>
+
+<p>
+Um ein Dokument dem CVS Tree hinzuzufügen benutzen Sie das <c>cvs add
+name-des-dokument.xml</c> Kommando, gefolgt von einem <c>cvs commit</c>. Mit
+<c>cvs update</c> können Sie Ihre lokale Kopie synchronisieren.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Ressourcen</title>
+<section>
+<body>
+
+<note>
+Einige Tipps und Tricks dieser Anleitung entstammen dem
+<uri link="http://www.gentoo.org/proj/en/gdp/doc/en/docdev.xml">Howto for
+Documentation Developers</uri>. Es kann nicht schaden auch dort einen Blick
+hineinzuwerfen, mit diesem Dokument sollten dennoch die meisten Ihrer Fragen
+geklärt sein.
+</note>
+
+<p>
+<b>Mailing Listen:</b> Sie sollten sich zumindest auf der <mail
+link="gentoo-doc-de@gentoo.org">gentoo-doc-de@gentoo.org</mail>
+Liste anmelden, da hierüber ein Großteil der Kommunikation unter den Übersetzern
+abläuft. Zum Anmelden senden Sie eine Nachricht an <mail
+link="gentoo-doc-de-subscribe@gentoo.org">gentoo-doc-de-subscribe@gentoo.org</mail>
+</p>
+
+<p>
+<b>Statusupdates:</b> Auf der Webseite von Lars Weiler finden Sie eine Übersicht
+über den aktuellen Status der Übersetzungen. Diese
+<uri link="http://dev.gentoo.org/~pylon/status-german-translations.de.html">Auflistung</uri>
+wird einmal am Tag neu generiert.
+</p>
+
+<p>
+<b>Englische Dokumente:</b> <uri link="http://www.gentoo.org/cgi-bin/viewcvs.cgi/xml/htdocs/doc/en?cvsroot=gentoo#dirlist">Hier</uri>
+finden Sie eine Übersicht der bisher auf Englisch verfügbaren Gentoo
+Dokumentation. Einen ständig aktuellen Schnappschuss können Sie auch als
+<uri link="http://www.gentoo.org/dyn/arch/xml-guide-latest.tar.gz">Tar-Archiv</uri>
+herunterladen. Zusätzlich bietet Ihnen das viewcvs auf gentoo.org die
+Möglichkeit in verschiedenen Ansichtsmodi zwischen den englischen Versionen zu
+diffen, ein interessantes Feature, wenn Sie bereits übersetzte Dokumentationen
+aktualisieren möchten.
+</p>
+
+<p>
+<b>Weiterführende Dokumentation:</b> Sie sollten je nach Vorkenntnissen einen
+Blick in den <uri link="/doc/de/cvs-howto.xml">CVS Guide</uri> werfen, sowie 
+das <uri link="/doc/de/xml-guide.xml">GuideXML Howto</uri> lesen.
+</p>
+
+</body>
+</section>
+</chapter>
+
+</info>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<info>
+<title>Willkommen</title>
+
+<author title="Author">
+  <mail link="sebastian@werner-productions.de">Sebastian Werner</mail>
+</author>
+<author title="Author">
+  <mail link="beejay@berlios.de">Benjamin Judas</mail>
+</author>
+<author title="Author">
+  <mail link="stkn@berlios.de">Stefan Knoblich</mail>
+</author>
+<author title="Author">
+  <mail link="cybersystem@gentoo.org">Sascha Schwabbauer</mail>
+</author>
+
+<date>26. Januar 2003</date>
+
+<chapter>
+<section>
+<body>
+<news type="news" date="29.12.2003" title="Gentoo-Newsletter" author="">
+
+<p>
+Der Gentoo Weekly Newsletter wird genau ein Jahr alt. Was gibt es besseres als dieses Ereignis mit
+einem Interview von Daniel Robbins zu feiern? Wie immer auch mit dem üblichen Mix aus Neuigkeiten
+und Wochenrückblick.
+<uri link="http://www.gentoo.org/news/en/gwn/20031229-newsletter.xml">Viel Spass beim Lesen</uri>.
+</p>
+
+</news>
+</body>
+</section>
+<section>
+<body>
+<news type="news" date="22.12.2003" title="Gentoo-Newsletter" author="">
+
+<p>
+In diesem GWN gibt es einen Vorgeschmack auf den nächsten GWN der dann sein 1jähriges Jubiläum feiern wird. Vorgestellt
+wird Hanno Böck. Des weiteren werden Forums-Diskussionen zu ICC 8.0 und Love-Sources in Portage aufgegriffen.
+<uri link="http://www.gentoo.org/news/en/gwn/20031222-newsletter.xml">Viel Spass beim Lesen</uri>.
+</p>
+
+</news>
+</body>
+</section>
+<section>
+<body>
+<news type="news" date="21.12.2003" title="Mailing Listen down" author="">
+
+<p>
+Die offiziellen @gentoo.org Mailing Listen sind seit ca. 23 Uhr gestern Abend nicht zu erreichen.
+Leider wird der Server wohl nicht vor Montag wieder online sein.
+Das bedeutet das alle gentoo-*@gentoo.org Adressen nicht funktionieren. Alle anderen @gentoo.org Adressen, wie z.B. www@gentoo.org oder auch Developer Emailadressen funktionieren weiterhin. 
+Alle Mails die an die Listen geschickt werden, kommen allerdings in die Warteschleife, somit sollten keine Mails verloren gehen.
+</p>
+
+<p>
+<b>Update:</b> Ueber das Wochenende leidete der Gentoo Mailing Listen Server unter starken Netzwerkproblemen.
+Um alle eingehenden Mails dennoch zu behalten, gingen diese in eine Warteschleife, in der Hoffnung, dass das Problem schnell behoben wird. 
+Heute wurden die Listen aus einem Backup wiederhergestellt; dennoch sind die Neuanmeldungen von Donnerstag und Freitag leider verloren.
+Alle die sich in dieser Zeit angemeldet haben, werden gebeten dies noch einmal zu tun.
+</p>
+
+</news>
+</body>
+</section>
+<section>
+<body>
+<news type="news" date="15.12.2003" title="Gentoo-Newsletter" author="">
+
+<p>
+In diesem GWN gibt es Informationen über das Gentoo-Manager-Treffen am 1. Dezember. Unter Anderem wurde das
+neue Release-Schema diskutiert, das ab dem nächsten Jahr Anwendung finden wird und auch die Verwirklichung von
+GLEP 14, die das automatische Prüfen eines Systems auf bekannte Sicherheitslücken und das automatische Beheben
+der selben beschreibt. Im Portrait wird in dieser Woche Robin Hugh Johnson vorgestellt, es gibt Tipps zur Verwendung
+von ls und natürlich viele weitere Informationen.
+<uri link="http://www.gentoo.org/news/de/gwn/20031215-newsletter.xml">Viel Spass beim Lesen</uri>.
+</p>
+
+</news>
+</body>
+</section>
+<section>
+<body>
+<news type="news" date="8.12.2003" title="Gentoo-Newsletter" author="">
+
+<p>
+Der zweite Gentoo Newsletter für Dezember berichtet über die Sicherheitsmeldungen im
+Zusammenhang mit dem Einbruch im Gentoo rsync Server in der letzten Woche, enthält Infomationen
+über den Gentoo Store in 2004, einen Artikel über Gentoo Linux im Linux Journal, eine
+Vorstellung des Entwickler Arcady Genkin, sowie Tips über Backup mittels tar.
+<uri link="http://www.gentoo.org/news/de/gwn/20031208-newsletter.xml">Viel Spass beim Lesen</uri>.
+</p>
+
+</news>
+</body>
+</section>
+<section>
+<body>
+<news type="other" date="04.12.2003" title="Ankündigung: Gentoo Bug Day" author="">
+
+<p>
+Das gleiche Spiel wie jeden Monat: Der erste Samstag im Dezember rückt näher,
+Zeit also den nächsten Bug Day am 06.12. anzukündigen. Wenn Sie mithelfen
+wollen, Bugs in Gentoo Linux zu beseitigen schauen Sie im #gentoo-bugs Channel
+im FreeNode Netz vorbei.
+</p>
+
+</news>
+</body>
+</section>
+<section>
+<body>
+<news type="release" date="4.12.2003" title="Gentoo 2004 und darüber hinaus">
+
+<p>
+Hiermit kündigen wir den Start drei weiterer Hauptprojekte an: Gentoo Linux 
+2004, Portage-ng and catalyst. Mit Beginn des nächsten Releases von Gentoo
+Linux <e>(Gentoo Linux 2004)</e>, wird Gentoo auf einen vierteljährlichen Release Plan
+umgestellt. Weitere Informationen finden Sie auf der
+<uri link="http://www.gentoo.org/proj/en/releng/">Gentoo Linux Roadmap</uri>.
+</p>
+
+<p>
+Darüber hinaus freuen wir uns, den Start der Entwicklung von <e>portage-ng</e>
+bekannt geben zu können. Dies wird der Nachfolger der außerordentlich
+populären Portage Paketverwaltung. Weitere Informationen und Spezifikationen
+für dieses Projekt finden Sie auf der 
+<uri link="http://www.gentoo.org/proj/en/portage/portage-ng/systemspec.xml">Portage-ng</uri>
+Projektseite. Portage-ng wird ein echtes Gemeinschaftsprojekt
+darstellen und wir freuen uns auf Ihre Mitarbeit.
+</p>
+
+<p>
+Zu guter Letzt ist <e>catalyst</e>. Mit Beginn von Gentoo Linux 2004 werden
+alle Releases (einschließlich der LiveCDs) für die Benutzer selbst
+zusammenstellbar. Mit Hilfe von catalyst können also selbst modifizierte
+Gentoo Releases, LiveCDs, GameCDs nach eigenen Vorstellungen verwirklicht
+werden. Die aktuelle Entwicklung von catalyst unterstützt das Erstellen
+verschiedener Stages und Gentoo Reference Platform (GRP) Sets auf AMD64
+<!--sowohl 64bit als auch 32bit) ???-->, x86 und PowerPC.
+Schon gegen Ende diesen Jahres kann mit dem Erstellen von LiveCDs und
+GameGDs begonnen werden. Immer auf dem Laufenden ist die aktuelle
+<uri link="http://www.gentoo.org/proj/en/releng/catalyst/">catalyst Projektseite.</uri>
+</p>
+
+</news>
+</body>
+</section>
+
+<section>
+<body>
+<news type="other" date="3.12.2003" title="Gentoo rsync Server kompromittiert" author="">
+
+<p>
+Am 2. Dezember gegen 3:45 UTC wurde einer der rsync.gentoo.org Rotation
+angehörenden Server durch einen remote exploit kompromittiert. Auf
+diesem System waren jedoch ein IDS und ein File Itegrity Checker installiert,
+sodass wir eine detaillierte forensische Spur haben, was alles getan wurde,
+nachdem in den Rechner eingebrochen wurde. So können wir ziemlich sicher bekannt
+geben, <e>dass der Portage Verzeichnisbaum nicht betroffen ist.</e>
+</p>
+
+<p>
+Im Zeitraum zwischen dem Einbruch und dem Entdecken des Einbruchs haben laut
+Log Dateien 20 Benutzer ihren Portage Tree an diesem Server synchronisiert. Falls
+Sie die Befürchtung haben, Ihre lokale Kopie des Portage Tree an diesem Server
+synchronisiert zu haben, oder eine zusätzliche Sicherheit möchten, führen Sie
+<c>emerge sync</c> aus.
+</p>
+
+<p>
+Der Rechner wurde aus allen rsync.*.gentoo.org Rotationen entfernt. Er wird bis
+zur endgültigen Auswertung und einer kompletten Neuinstallation nicht zugänglich
+bleiben. Da aktuell nahezu ausgeschlossen werden kann, dass der Gentoo Teil auf
+diesem Rechner kompromittiert wurde und der betreffende Server nicht dem Gentoo
+Infrastructure Team, sondern einem Sponsor untersteht, kommt Gentoo Linux dem
+Wunsch des Sponsors nach, den Namen des Servers bis zum Abschluss der
+Untersuchungen nicht bekannt zu geben.
+</p>
+
+<p>
+Weitere Informationen in unserem rsync <uri
+link="http://www.gentoo.org/security/en/glsa/glsa-200312-01.xml">GLSA</uri>,
+und im do_brk() <uri
+link="http://www.gentoo.org/security/en/glsa/glsa-200312-02.xml">GLSA</uri>.
+</p>
+
+</news>
+</body>
+</section>
+
+<section>
+<body>
+<news type="news" date="28.11.2003" title="LWN: Der Erfolg von Gentoo" author="">
+<p>
+
+<e>In einem Bericht auf <uri link="http://lwn.net">lwn.net</uri>
+wird der Erfolg von Gentoo analysiert.</e><br/>In einer Zeit, in der mehr und mehr
+neue Linuxdistributionen um Aufmerksamkeit kämpfen, habe Gentoo es geschafft,
+viele neue Benutzer anzusprechen. Als Gründe für den Erfolg werden die
+hinter Gentoo stehende Idee einer Sourcenbasierten Distribution, die Ausdauer
+in der Entwicklung sowie das Paketmanagementsystem <e>Portage</e> genannt. Die
+Dokumentation sei sehr ausführlich, in einem leicht zu verstehen Stil
+geschrieben und mit die beste Dokumentation zu einer Distribution. Besonders 
+hervor gehoben wird auch die sehr aktive Community, die sich sowohl an zahlreichen
+Mailinglisten als auch an einem sehr stark frequentierten Forum beteilige.
+<br/><e>Quelle:</e> <uri link="http://lwn.net/Articles/59138/">lwn.net</uri>
+</p>
+
+</news>
+</body>
+</section>
+</chapter>
+
+</info>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+
+<info>
+<title>Willkommen</title>
+<date>24. Dez. 2003</date>
+
+<chapter>
+
+<section>
+<body>
+<news
+  type="other"
+  date="28.12.2003"
+  title="Gentoo-Linux 2004.0 - Tester gesucht"
+  autor="Benjamin Judas">
+
+<p>
+Das anstehende Release von Gentoo-Linux 2004.0 braucht so schnell wie möglich
+Tester. Die folgenden Teile benötigen Tests:
+<ul>
+  <li>Die Live-CD und Installation über Live-CD</li>
+  <li>Die Stages und Installation über diese</li>
+  <li>Stage3 + GRP Installation</li>
+</ul>
+</p>
+
+<p>
+Wenn Sie beitragen wollen und über die notwendigen Ressourcen auf Ihrem System verfügen
+um eine Installation zu testen, dann brauchen wir Sie als einen Tester.
+</p>
+
+<p>
+Es werden sowohl normale Anwender als auch wirkliche Profis gebraucht um Bugs und eventuelle
+Unklarheiten aus diesem Release zu entfernen. Wenn Sie irgendwelche Bugs oder Unklarheiten finden,
+dann erstellen Sie bitte einen Bug auf <uri link="http://bugs.gentoo.org">Bugzilla</uri>. Als
+Produkt wählen Sie bitte "Gentoo LiveCD (all flavors)".
+</p>
+
+<p>
+Die Stages sind bereits herunterladbar auf
+<uri link="http://gentoo.oregonstate.edu/experimental/x86/stages/">http://gentoo.oregonstate.edu/experimental/x86/stages/</uri>.
+Die Live-CD-Images werden noch folgen, wobei aber angemerkt sein soll, dass eventuelle Bugs auf der Live-CD vermieden werden
+können, wenn diese bereits in den Stages behoben sind. Es wäre also vorteilhaft, wenn zuerst die Stages getestet werden.
+</p>
+
+<p>
+Wenn Sie dann einen Bug auf Bugzilla verfassen, dann schicken Sie zusätzlich bitte eine E-Mail an
+<uri link="mailto:NOSPAM_beejay_AT_gentoo_DOT_org">Benjamin Judas</uri> und an <uri link="mailto:NOSPAM_seemant_AT_gentoo_DOT_org">Seemant Kulleen</uri> (aber bitte
+auf Englisch) mit der Bug-ID und einer kurzen Beschreibung. Wir begrüssen jede Hilfe, die wir kriegen können.
+</p>
+
+</news>
+</body>
+</section>
+<section>
+<title>Information</title>
+<body>
+
+
+<p>
+Gentoo Linux ist eine portbasierte Distribution für den erfahrenen Linux User. Sie eignet sich hervorragend für
+alle Personen, die maximale Kontrolle über ihr System erhalten wollen. Man kann mit Gentoo alles machen
+- vom Server bis zum Desktop-System, vom Cluster bis zur einfachen Boot-CD.
+</p>
+
+<p>
+<warn>
+Gentoo-Linux ist nur bedingt eine Distribution für Linux-Einsteiger, es sei denn, Sie sind dazu bereit viele
+Dokumentationen zu lesen -- auch Englische. Es gibt keine grafischen Konfigurationshilfen, fast alles muss
+von Hand konfiguriert werden. Sollten Sie bisher nur über KDE, Gnome oder irgend einer anderen grafischen
+Oberfäche mit Linux in Berührung gekommen sein, dann ist Gentoo sicherlich nicht gleich die richtige
+Distribution für Sie. Wenn Sie mehr Geschwindigkeit wollen, dann kann es ratsamer sein Ihrem Rechner ein
+Speicherupgrade zu gönnen oder eine schnellere CPU anzuschaffen. Sie müssen kein Linux-Profi sein,
+aber der Status eines fortgeschrittenen Anwenders ist hilfreich - sonst könnte Ihr Ausflug ins Gentoo-Land
+recht bald einen herben Rückschlag erleiden.
+</warn>
+</p>
+
+</body>
+</section>
+<section>
+<title>Das Projekt</title>
+<body>
+
+<p>
+Das Projekt gentoo-deutsch soll als Sammelstelle für Anpassungen von Gentoo Linux an deutsche 
+Gegebenheiten dienen.
+</p>
+
+<p>
+An Mitarbeit interessierte Benutzer finden auf der <uri link="/inhalte/projekt/projekt/">Übersichtseite</uri> alle 
+Informationen, um sich aktiv bei uns engagieren zu können.  Gentoo.de hat es sich neben der Erstellung von 
+<uri link="http://www.gentoo.de/inhalte/download/ebuilds_de/">eigenen Ebuilds</uri> auch 
+zur Hauptaufgabe gemacht, die Übersetzung der Gentoo.org-Dokumentationen ins Deutsche durchzuführen. 
+<uri link="http://www.gentoo.de/inhalte/doku/">Hier</uri> sehen Sie einen Überblick über unsere bisherige Arbeit.
+</p>
+
+<p>
+Für die Community stellen wir <uri link="/inhalte/projekt/neuigkeiten/">aktuelle Neuigkeiten</uri> zur Verfügung. Weitergehende Informationen bei Problemen bieten unsere <uri link="/inhalte/community/mailinglisten/">
+Mailinglisten</uri>. Häufig gestellte Fragen werden in der <uri link="http://gentoo.diefleissigen.de/faq" target="_blank">Gentoo FAQ</uri> abgehandelt. Bekannt für seine Hilfsbereitschaft sind  unsere 
+<uri link="/inhalte/community/foren/">Foren</uri>. Auch im <uri link="/inhalte/community/irc/">
+IRC</uri> sind wir vertreten.
+</p>
+
+<p>
+Auch sonst ist die Gentoo Community sehr aktiv. Wer sich mit Gleichgesinnten in seiner Umgebung treffen 
+möchte, kann sich bei den <uri link="http://forums.gentoo.org/viewtopic.php?t=88917">User 
+Treffen</uri> bemerkbar machen. Des weiteren sind wir häufiger auf Veranstaltungen vertreten, um Gentoo 
+Linux zu promoten. Ein Beispiel ist der <uri link="/inhalte/projekt/lt2k3">LinuxTag 2003</uri>.         
+</p>
+
+</body>
+</section>
+</chapter>
+</info>
