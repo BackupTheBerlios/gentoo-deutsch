@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.6 2003/02/23 19:21:53 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.7 2003/03/04 19:05:39 mad Exp $
 
 #DEBUG=echo
 
@@ -31,7 +31,7 @@ start() {
 			for t in $(cat /etc/conf.d/vdr.$i | grep "^[A-Z]"); do
 				unset value option
 				value=$(echo $t| cut -d "=" -f 2 | tr -d "\"")
-				option=$(echo $t| cut -d "=" -f 1 | tr [:upper:] [:lower:])
+				option=$(echo $t| cut -d "=" -f 1 | tr "[:upper:]" "[:lower:]")
 				pluginopts="${pluginopts} --$option=$value"
 			done
 			vdropts="${vdropts} --plugin='$i ${pluginopts}'"
