@@ -12,7 +12,8 @@
     <title>Quick Links:</title>
     <p>
 		<ul>
-			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer aktuell (letzte: 17.11.03)</uri></b></li>
+			<li><b><uri link="/inhalte/projekt/neuigkeiten">Neuigkeiten - immer
+      aktuell (letzte: 28.11.03)</uri></b></li>
 			<li><uri link="http://www.gentoo.de/inhalte/doku/#header_8">Die Dokus auf einen Blick</uri></li>
 			<li><uri link="http://gentoo.diefleissigen.de/faq" target="_blank">Gentoo FAQ</uri></li>
 			<li><uri link="http://developer.berlios.de/project/memberlist.php?group_id=433">Das gentoo.de Team</uri></li>
