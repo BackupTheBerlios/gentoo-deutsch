@@ -16,13 +16,19 @@
     <title>Ihre Position</title>
     <p>
       Sie sehen die Ergebnisse
-      von <cgi:first_number/> bis <cgi:last_number/>
+      von <cgi:first_number/> bis <cgi:last_number/>.
     </p>
   </block>
   <block>
     <title>Weitere Daten</title>
     <p>
-      Es wurden <cgi:docs_total/> durchsucht.
+      Es wurden <cgi:docs_total/> Dokumente durchsucht.
+    </p>
+    <p>
+      Folgende Wörter wurden ignoriert: <cgi:ignored_words/>.
+    </p>
+    <p>
+      Sie Suche dauerte <cgi:search_time/>.
     </p>
   </block>
 
