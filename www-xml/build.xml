@@ -45,8 +45,8 @@ Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei
 automatisch aus dem Internet geladen.) Unsere zweite CD ist 
 <uri link="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">
 gentoo-i686-1.2.iso</uri>. Dieses Image ist etwas gr&#xF6;&#xDF;er (100+Mb) -- Es 
-enth&#xE4;lt es enth&#xE4;lt das gleiche Material wie auf unserem 16Mb Image,
-<e>plus</e> einem vorkompiliertem i686 Basissystem (<path>stage3-i686-1.2.tbz2</path>) 
+enth&#xE4;lt das gleiche Material wie auf unserem 16Mb Image, <e>plus</e> einem 
+vorkompiliertem i686 Basissystem (<path>stage3-i686-1.2.tbz2</path>) 
 sowie einem halb-fertigen <!-- nicht so gut. Alternativen?? --> 
 i686 Basissystem (<path>stage2-i686-1.2.tbz2</path>) in TAR-Archiven.
 Die beiden neuen TAR-Archive ben&#xF6;tigen einen Pentium Pro oder besser (K6 geht nicht). 
@@ -158,7 +158,7 @@ aufnehmen. Sie k&#xF6;nnen nat&#xFC;rlich die PCMCIA Karte auch nach dem Laden d
 einstecken.(Technisch gesehen m&#xFC;ssen Sie <i>cardmgr</i> nicht starten wenn Sie
 genau wissen welche Module Ihre PCMCIA Karte ben&#xF6;tigt. Aber wenn nicht, versuchen
 Sie nicht alle Module zu laden um zu sehen welches passt. Das wird nicht
-funktionieren da sich alle Module laden lassen und darauf warten, dass eine
+funktionieren, da sich alle Module laden lassen und darauf warten das eine
 passende PCMCIA Karte eingesteckt wird. Au&#xDF;erdem entfernt <c>cardmgr</c> die
 Module der Karte wieder wenn sie entnommen wird.)
 </p>
