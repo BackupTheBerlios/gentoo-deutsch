@@ -1,31 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-15"?>
-<xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cgi="http://www.sebastian-werner.net">
 
 <xsl:output method="html" encoding="iso-8859-15" indent="no"/>
 
-<xsl:template match="*">
-  <![CDATA[<!--cgi: ]]><xsl:value-of select="name()"/><![CDATA[-->]]>
-
-  <!--
-    query_str 		= Suchstring
-    baseurl 		= Durchsuchte URL
-    first_number	= Beginn Ergebnis-Liste
-    last_number		= Ende Ergebnis-Liste
-    results_num		= Anzahl der Ergebnisse
-    docs_total		= Anzahl indizierter Dokumente
-    search_time		= Dauer der Suche
-
-  -->
-</xsl:template>
-
-
-<xsl:template match="result_ignored_terms">
-  <![CDATA[
-  <!--cgi: ignored_terms-->
-  ]]>
-</xsl:template>  
-
-<xsl:template match="result_list">
+<xsl:template match="cgi:result_list">
   <dl>
     <![CDATA[<!--loop: results-->]]>
     <dt>
@@ -52,21 +30,7 @@
   </dl>
 </xsl:template>
 
-<xsl:template match="result_noentry">
-<p>Tipps, um das Ergebnis der Suche zu verbessern:</p>
-<ul>
-	<li>"Mindestens ein Wort finden" auswählen</li>
-	<li>Auf die korrekte Schreibweise der Wörter achten</li>
-	<li>Mit 
-	<![CDATA[
-	<a href="http://www.google.com/search?num=10&amp;query=<!--cgi: query_str_escaped-->">Google</a>
-	nach '<!--cgi: query_str-->' suchen
-	]]>
-	</li>
-</ul>
-</xsl:template>
-  
-<xsl:template match="result_navigation">  
+<xsl:template match="cgi:result_navigation">  
   <center>
     <![CDATA[<!--cgi: previous--> [ <!--cgi: navbar--> ] <!--cgi: next-->]]>
     <br/><br/>
@@ -100,7 +64,7 @@
   Seite <![CDATA[<!--cgi: current_page-->]]> von <![CDATA[<!--cgi: total_pages-->]]>
 </xsl:template>
 
-<xsl:template match="search_form">
+<xsl:template match="cgi:search_form">
   <form method="get" action="/cgi-bin/perlfect/search/search.pl">
     <input type="hidden" name="p" value="1"/>
     <input type="hidden" name="lang" value="de"/>
@@ -115,5 +79,21 @@
     <input type="submit" value="Suchen"/>
   </form>
 </xsl:template>
+
+<xsl:template match="cgi:*">
+  <![CDATA[<!--cgi: ]]><xsl:value-of select="name()"/><![CDATA[-->]]>
+
+  <!--
+    query_str 		= Suchstring
+    baseurl 		= Durchsuchte URL
+    first_number	= Beginn Ergebnis-Liste
+    last_number		= Ende Ergebnis-Liste
+    results_num		= Anzahl der Ergebnisse
+    docs_total		= Anzahl indizierter Dokumente
+    search_time		= Dauer der Suche
+    ignored_terms	= Ignorierte Wörter
+  -->
+</xsl:template>
+
 
 </xsl:stylesheet>

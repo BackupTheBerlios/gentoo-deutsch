@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
-<info>
+<info xmlns:cgi="http://www.sebastian-werner.net">
 <title>Suchen auf Gentoo.de</title>
 
 <box>
   <block>
     <title>Ihre Suche</title>
     <p>
-      nach<br/>
-      <query_str/>
-      in
-      <baseurl/>
+      nach <cgi:query_str/>
+      <br/>  
+      auf <cgi:baseurl/>
     </p>
     <p>
       ergab<br/>
-      <results_num/>
+      <cgi:results_num/>
 
     </p>
 
@@ -32,6 +31,12 @@
 
 <body>
 
+  <cgi:result_list/>
+  <cgi:result_navigation/>
+
+
+
+  <!--
   <search>
     <result_intro>
       Ihre Suche nach:
@@ -43,6 +48,7 @@
       <retry/>
     </result_navigation>  
   </search>
+  -->
 
 </body>
 
