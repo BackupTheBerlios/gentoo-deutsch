@@ -35,12 +35,16 @@
           <xsl:text>: </xsl:text>
         
           <xsl:for-each select="../pkg[category = $cname]">
+            <xsl:sort select="name"/>
+          
             <xsl:variable name="pname" select="name"/>
             
-
+            <xsl:if test="preceding-sibling::pkg/child::name != $pname">
+              <xsl:value-of select="name"/>
+              <xsl:text>, </xsl:text>
+                          
+            </xsl:if>
             
-            <xsl:value-of select="name"/>
-            <xsl:text>, </xsl:text>
           </xsl:for-each>
           
           <br/><br/>
