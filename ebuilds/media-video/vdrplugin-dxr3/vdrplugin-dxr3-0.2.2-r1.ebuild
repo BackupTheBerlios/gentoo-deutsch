@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dxr3/vdrplugin-dxr3-0.2.2-r1.ebuild,v 1.1 2004/04/23 19:14:27 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-dxr3/vdrplugin-dxr3-0.2.2-r1.ebuild,v 1.2 2004/04/23 19:23:34 austriancoder Exp $
 
 VDRPLUGIN="dxr3"
 
@@ -21,9 +21,10 @@ DEPEND=">=media-video/vdr-1.2.0
 
 src_unpack() {
 	unpack ${A}
+        cd ${S}
 
 	# patch: no glitches in *.vdr viewing mode
-	epatch ../$vdr/dxr3-plugin-0.2.2.patch
+	epatch ../dxr3-plugin-0.2.2.patch
 }
 
 src_compile() {
