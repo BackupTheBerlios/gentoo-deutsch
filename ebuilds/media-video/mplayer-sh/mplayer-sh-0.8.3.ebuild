@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/mplayer-sh/mplayer-sh-0.8.3.ebuild,v 1.1 2003/05/06 19:17:10 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/mplayer-sh/mplayer-sh-0.8.3.ebuild,v 1.2 2003/06/27 15:02:12 fow0ryl Exp $
 
 IUSE=""
 
@@ -12,8 +12,8 @@ KEYWORDS="x86"
 SLOT="0"
 LICENSE="GPL-2"
 
-DEPEND="virtual/vdr
-		>=media-video/mplayer-0.90_rc4"
+DEPEND=">=media-video/vdr-1.2.0
+	>=media-video/mplayer-0.90_rc4"
 
 VDRVERSION=$(awk -F'"' '/VDRVERSION/ {print $2}' /usr/include/vdr/config.h )
 

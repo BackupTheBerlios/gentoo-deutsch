@@ -1,10 +1,13 @@
 # ChangeLog for media-video/mplayer-sh
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/mplayer-sh/ChangeLog,v 1.4 2003/05/06 19:17:10 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/mplayer-sh/ChangeLog,v 1.5 2003/06/27 15:03:24 fow0ryl Exp $
 
 *mplayer-sh-0.8.3.ebuild (01 May 2003)
   05 May 2003; M.Hierling <mad@cc.fh-lippe.de> mplayer-sh-0.8.3.ebuild
   new mplayer.sh
+
+  27. June 2003; <henning.ryll@web.de>
+  DEPEND changed to media-video/vdr
 
 *mplayer-sh-0.8.2.ebuild (01 May 2003)
   01 May 2003; M.Hierling <mad@cc.fh-lippe.de> mplayer-sh-0.8.2.ebuild
