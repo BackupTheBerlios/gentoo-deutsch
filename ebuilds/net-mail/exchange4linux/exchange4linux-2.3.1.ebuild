@@ -1,6 +1,6 @@
 # Copyright 2003 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.1 2003/07/03 00:42:47 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-mail/exchange4linux/exchange4linux-2.3.1.ebuild,v 1.2 2003/07/03 16:09:48 holler Exp $
 
 DESCRIPTION="exchange4linux - exchange4linux is a production/stable server solution to store/exchange workgroup data on Linux in a style simular to Exchange. Main goal is to provide Outlook users a free and open server alternative on Linux."
 HOMEPAGE="http://www.exchange4linux.org/"
@@ -11,14 +11,12 @@ SLOT="0"
 KEYWORDS="~x86"
 
 # omniORBpy includes a dependency to omniORB
+# postgresql isn't included in depend because it needs to be build with
+# python as use-flag (see below)
 
 RDEPEND="virtual/glibc
     dev-lang/python
-    dev-python/omniORBpy
-    dev-db/postgresql"
-
-# postgresql isn't included in depend because it needs to be build with
-# python as use-flag (see below)
+    dev-python/omniORBpy"
 
 DEPEND="virtual/glibc
     dev-lang/python
@@ -36,7 +34,7 @@ pkg_setup() {
 
 src_compile() {
 
-  cd BILL-StorageServer-2.3.1
+  cd BILL-StorageServer-${PV}
   python /usr/lib/python2.2/compileall.py .
   mv server.sh server.sh.orig
   # The second replacement is for restarting the server after an failure (139)
@@ -49,9 +47,9 @@ src_compile() {
 
 src_install () {
   
-	dodoc README* BILL-StorageServer-2.3.1/LICENCE.TXT
+  dodoc README* BILL-StorageServer-${PV}/LICENCE.TXT
   insinto /etc
-  newins BILL-StorageServer-2.3.1/bill.conf.ex bill.conf
+  newins BILL-StorageServer-${PV}/bill.conf.ex bill.conf
   exeinto /etc/init.d
   doexe ${FILESDIR}/exchange4linux
   chown root.postgres ${D}etc/bill.conf
@@ -59,11 +57,11 @@ src_install () {
   touch ${D}etc/billpasswd
   chown root.postgres ${D}etc/billpasswd
   chmod 660 ${D}etc/billpasswd
-  rm BILL-StorageServer-2.3.1/bill.conf.ex
-  rm BILL-StorageServer-2.3.1/LICENCE.TXT
-  rm BILL-StorageServer-2.3.1/README.TXT
+  rm BILL-StorageServer-${PV}/bill.conf.ex
+  rm BILL-StorageServer-${PV}/LICENCE.TXT
+  rm BILL-StorageServer-${PV}/README.TXT
   mkdir ${D}usr/share/exchange4linux
-  mv BILL-StorageServer-2.3.1 ${D}usr/share/exchange4linux/BILL-StorageServer
+  mv BILL-StorageServer-${PV} ${D}usr/share/exchange4linux/BILL-StorageServer
   mkdir ${D}var
   mkdir ${D}var/run
   mkdir ${D}var/run/exchange4linux/
