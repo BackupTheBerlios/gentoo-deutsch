@@ -122,8 +122,8 @@ Sie direkt nach
 Das Gentoo Documentation Project hat mit der Entwicklung des <uri
 link="handbook/handbook.html">Gentoo Handbuch</uri> begonnen. Aktuell ist der
 erste Teil <uri link="handbook/handbook_part1.html">Gentoo installieren</uri>
-<!-- und der zweite Teil <uri link="handbook/handbook.xml?part=2">Arbeiten mit
-Gentoo</uri>-->
+und der zweite Teil <uri link="handbook/handbook.xml?part=2">Arbeiten mit
+Gentoo</uri>
 fertiggestellt worden und hat den "offiziellen" Status erreicht. Benutzer sind
 dazu aufgefordert diese Installationsanweisungen zu testen und uns
 <uri link="http://bugs.gentoo.org/enter_bug.cgi?product=Docs-user">Fehler</uri>
@@ -148,9 +148,9 @@ Homepage.
 
 <p>
 Die Installationshilfen liefern nützliche Informationen zur
-Installation von Gentoo Linux.  Diese beinhalten <!-- den Teil "Gentoo
+Installation von Gentoo Linux.  Diese beinhalten den Teil "Gentoo
 installieren" unseres Gentoo Handbuch genauso, wie die älteren, aber weiterhin
-gepflegten--> Architekturbezogene Installationsanleitungen und Anweisungen
+gepflegten Architekturbezogene Installationsanleitungen und Anweisungen
 denen während der Installation gefolgt werden kann (wie z.B. LVM).
 </p>
 
@@ -210,9 +210,12 @@ veröffentlicht wird. Sie sind für die folgenden Architekturen verfügbar:
 <p>
 Der Großteil der Benutzer wird vermutlich die <b><uri
 link="gentoo-x86-install">x86 Installationsanleitung</uri></b>
-verwenden.  Für erfahrene Benutzer bieten wir zusätzlich eine <b><uri
+verwenden.
+<!--
+Für erfahrene Benutzer bieten wir zusätzlich eine <b><uri
 link="gentoo-x86-quickinstall">x86
 Schellinstallationsanleitung</uri></b> an.
+-->
 </p>
 
 <!--
@@ -681,7 +684,7 @@ Für Personen, die einen kurzen Überblick lieber haben, hier gibt es ihn:
 <!--<tr><ti><uri link="gentoo-ppc-faq.xml">Gentoo PPC FAQ</uri></ti></tr>-->
 <tr><th>Installationshilfen</th></tr>
 <tr><ti><uri link="gentoo-x86-install">Gentoo x86 Installationsanleitung</uri></ti></tr>
-<tr><ti><uri link="gentoo-x86-quickinstall">Gentoo x86 Schnellinstallationsanleitung</uri></ti></tr>
+<!--<tr><ti><uri link="gentoo-x86-quickinstall">Gentoo x86 Schnellinstallationsanleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-alpha-install.xml">Gentoo Alpha Installationsanleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-hppa-install.xml">Gentoo HPPA Installationsanleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-ppc-install.xml">Gentoo PPC Installationsanleitung</uri></ti></tr>-->
