@@ -1,8 +1,0 @@
-# ChangeLog for net-misc/etherwake
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/etherwake/Attic/ChangeLog,v 1.1 2003/04/26 15:37:10 holler Exp $
-
-*etherwake-1.08 (26 Apr 2003)
-
-  26 Apr 2003; Alexander Holler <holler@ahsoftware.de>
-  
-  Initial checkin of this package.
