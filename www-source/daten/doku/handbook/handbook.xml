@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE book SYSTEM "/dtd/book.dtd">
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/handbook.xml,v 1.3 2003/11/22 22:24:39 dertobi123 Exp $ -->
-
 <!-- English CVS Version: 1.19 -->
+
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/handbook.xml,v 1.4 2003/11/22 22:45:24 dertobi123 Exp $ -->
 
 <book link="handbook.xml">
 <title>Gentoo Handbuch</title>
@@ -236,7 +236,7 @@ Installation zu booten.
 </chapter>
 
 <chapter>
-<title>Wie gehts nun weiter?</title>
+<title>Wie geht es weiter?</title>
 <abstract>
 Sie haben nun ihr Gentoo System, aber was nun?
 </abstract>
