@@ -495,6 +495,22 @@ nicht englischsprachige Benutzer.
 </p>
 
 <p>
+Das <b><uri link="burn-guide">CD-Brennen Howto</uri></b> führt Sie
+durch die Konfiguration und Installation benötigter Kernel Module und
+Programme hin zur selbstgebrannten CD.
+</p>
+
+<p>
+Die <b><uri link="dsl-guide">DSL Anleitung</uri></b> erläutert Ihnen
+die Einrichtung des DSL Anschlusses und die Einwahl ins Internet.
+</p>
+
+<p>
+Das <b><uri link="fluxbox">Fluxbox Handbuch</uri></b> führt Sie durch
+die Konfigurationsmöglichkeiten eines der beliebtesten Windowmanager.
+</p>
+
+<p>
 Die <b><uri link="dri-howto">Direct Rendering Anleitung</uri></b>
 erläutert, wie Sie funktionierende 3D-Beschleunigung mit Hilfe von
 XFree-DRM erhalten.
@@ -604,6 +620,11 @@ Verfügung stellen.
 -->
 
 <p>
+In der <b><uri link="eclasses-list">Eclasses Liste</uri></b> sind
+alle vorhandenen Eclasses und deren Funktion aufgelistet.
+</p>
+
+<p>
 Die <b><uri link="stage-building-guide">Stage Building
 Anleitung</uri></b> erklärt die Erstellung eines Stage Tar-Archiv.
 </p>
@@ -691,11 +712,14 @@ Upgrade Anleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="virt-mail-howto.xml">Virtual/Mailhost Howto</uri></ti></tr>-->
 <tr><th>Dokumentation für einen Arbeitsplatzrechner</th></tr>
 <tr><ti><uri link="desktop">Desktop Konfigurations-Leitfaden</uri></ti></tr>
- <tr><ti><uri link="alsa-guide">ALSA Konfigurations Leitfaden</uri></ti></tr>
+<tr><ti><uri link="alsa-guide">ALSA Konfigurations Leitfaden</uri></ti></tr>
 <tr><ti><uri link="java">Java Anleitung</uri></ti></tr>
 <tr><ti><uri link="guide-localization">Lokalisierungs Anleitung</uri></ti></tr>
 <tr><ti><uri link="dri-howto">Direct Rendering Anleitung</uri></ti></tr>
- <tr><ti><uri link="ati-faq">ATI FAQ</uri></ti></tr>
+<tr><ti><uri link="burn-guide">CD-Brennen Howto</uri></ti></tr>
+<tr><ti><uri link="dsl-guide">DSL Anleitung</uri></ti></tr>
+<tr><ti><uri link="fluxbox">Fluxbox Handbuch</uri></ti></tr>
+<tr><ti><uri link="ati-faq">ATI FAQ</uri></ti></tr>
 <tr><ti><uri link="nano-basics-guide">Nano Basics Anleitung</uri></ti></tr>
 <tr><ti><uri link="vi-guide">Vi Anleitung</uri></ti></tr>
 <!--<tr><ti><uri link="guide-to-mutt.xml">Schnellstarter Handbuch zu CLI E-mail Programmen</uri></ti></tr>-->
@@ -706,6 +730,7 @@ Upgrade Anleitung</uri></ti></tr>-->
 <!--<tr><ti><uri link="doc-policy.xml">Gentoo Linux Dokumentations Richtlinie</uri></ti></tr>-->
 <!--<tr><ti><uri link="gentoo-howto.xml">Ebuild Handbuch</uri></ti></tr>-->
 <!--<tr><ti><uri link="eclass-howto.xml">Eclass Handbuch</uri></ti></tr>-->
+<tr><ti><uri link="eclasses-list">Eclasses List</uri></ti></tr>
 <tr><ti><uri link="stage-building-guide">Stage Building Anleitung</uri></ti></tr>
 <tr><ti><uri link="ebuild-submit">Beisteuern von Ebuilds Anleitung</uri></ti></tr>
 <tr><ti><uri link="xml-guide">GuideXML Anleitung</uri></ti></tr>
