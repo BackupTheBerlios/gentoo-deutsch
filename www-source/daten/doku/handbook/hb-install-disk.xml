@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.21 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.6 2003/12/14 19:29:25 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-disk.xml,v 1.7 2003/12/15 18:48:38 tove Exp $ -->
 
 <sections>
 <section>
@@ -23,9 +23,10 @@ Dateisystemerstellung für Ihre Gentoo Linux Installation geführt.
 
 <p>
 Zu Beginn werden wir Ihnen <e>Block Devices</e> vorstellen. Das berühmteste
-Block Device is warscheinlich das, welches das erste IDE Laufwerk in einem Linux
-System repräsentiert, namentlich <path>/dev/hda</path>. Wenn Ihr System SCSI
-Laufwerke verwendet, dann wäre Ihre erste Festplatte <path>/dev/sda</path>.
+Block Device is warscheinlich das, welches das erste IDE Laufwerk in einem
+Linux System repräsentiert, namentlich <path>/dev/hda</path>. Wenn Ihr System
+SCSI Laufwerke verwendet, dann wäre Ihre erste Festplatte
+<path>/dev/sda</path>.
 </p>
 
 <p>
@@ -58,7 +59,7 @@ welche <e>Slices</e> genannt werden.
 <body>
 
 <p>
-Es wird unter drei Partitionstypen unterschieden:
+Es wird zwischen drei Partitionstypen unterschieden:
 <e>primar</e>, <e>erweitert</e> und <e>logisch</e>.
 </p>
 
@@ -71,7 +72,7 @@ können nur vier primäre Partitionen definiert werden (zum Beispiel
 
 <p>
 Eine <e>erweiterte</e> Partition ist eine spezielle primäre Partition (was
-bedeutet, dass eine erweiterte Partition eine der vier möglichen promären
+bedeutet, dass eine erweiterte Partition eine der vier möglichen primären
 Partitionen sein muss), welche mehrere Partitionen beinhaltet. Eine solche
 Partition existierte ursprünglich nicht, aber da vier Partitionen zu wenig sind,
 wurden sie erfunden, um das Format zu erweitern ohne die Rückwärtskompabilität
@@ -97,21 +98,21 @@ Volume Manager</e>
 </p>
 
 <p>
-Bei LVM erstellen Sie Partitionen (oder Slices) wie gewohnt, aber Sie werden sie
-nicht nutzen um ihr Linux System zu beherbergen. Stattdessen fügen Sie eine
+Bei LVM erstellen Sie Partitionen (oder Slices) wie gewohnt, aber Sie werden
+sie nicht nutzen um ihr Linux System zu beherbergen. Stattdessen fügen Sie eine
 weitere Ebene des Speichers (die LVM Ebene) hinzu, auf welcher Sie Gentoo Linux
 installieren. Aber was sind die Vorteile von LVM?
 </p>
 
 <p>
-Mit LVM können Sie ganz einfach die Größe des Volumes ändern, auf dem Sie Gentoo
-installiert haben.
+Mit LVM können Sie ganz einfach die Größe des Volumes ändern, auf dem Sie
+Gentoo installiert haben.
 Zudem können Sie Backups eines Volumes machen, ohne das System einzufrieren,
 wodurch Sie Ihre Backup Strategie für Ihre User transparenter (und weniger
-Problemreich) machen können.
+mühselig) machen können.
 Ein weiterer Vorteil ist, dass Sie mehrere Festplatten zu einem einzelnen
-Volume hinzufügen können (was bedeutet, wenn eines Ihrer Volumes wenig freien
-Speicherplatz zur verfügung hat, können Sie es erweitern ohne Dateien
+Volume zusammenfügen können (was bedeutet, wenn eines Ihrer Volumes wenig
+freien Speicherplatz zur Verfügung hat, können Sie es erweitern ohne Dateien
 rumkopieren zu müssen).
 </p>
 
@@ -148,14 +149,14 @@ sein (ca. 140 MB sollten genug sein).
 </subsection>
 </section>
 <section>
-<title>Erstellung eines Partitions Schemas</title>
+<title>Erstellung eines Partitionsschemas</title>
 <subsection>
-<title>Standard Partitions Schema</title>
+<title>Standard Partitionsschema</title>
 <body>
 
 <p>
-Wenn Sie nicht daran interessiert sind ein Partitions Schema für Ihr System zu
-erstellen, können Sie das (nicht LVM) Partitions Schema verwenden, welches wir
+Wenn Sie nicht daran interessiert sind ein Partitionsschema für Ihr System zu
+erstellen, können Sie das (nicht LVM) Partitionsschema verwenden, welches wir
 in diesem Handbuch benutzen:
 </p>
 
@@ -272,7 +273,7 @@ als Typ "Linux LVM" oder "LVM" (8e).
 
 <p>
 Um Gentoo von einer existierenden Distribution aus zu installieren, sollten
-Sie, zuerst Ihre bestehenden Partitionen verkleinern (wenn Sie keinen freien
+Sie zuerst Ihre bestehenden Partitionen verkleinern (wenn Sie keinen freien
 Speicherplatz verfügbar haben). Sie können <uri
 link="http://www.gnu.org/software/parted">GNU/Parted</uri> benutzen, um Ihre
 Partitionen zu verkleinern.
@@ -315,7 +316,7 @@ Ihrer Festplatte fort:
 <body>
 
 <p>
-Die Anzahl an Partitionen (oder logischen Volumes, wenn sie LVM nutzen wollen)
+Die Anzahl an Partitionen (oder logischen Volumes, wenn Sie LVM nutzen wollen)
 hängt von Ihrer Umgebung ab. Wenn Sie z.B. eine Menge User haben, wollen Sie
 höchst wahrscheinlich Ihr <path>/home</path> separat halten, da es die
 Sicherheit erhöht und Backups einfacher macht. Wenn Sie Gentoo installieren um
@@ -328,8 +329,8 @@ Sicherheit und Backups.
 </p>
 
 <p>
-Wie Sie sehen können hängt es sehr stark davon ab, was Sie erreichen wollen.
-Separate Partitionen oder Volumes haven folgende Vorteile:
+Wie Sie sehen können, hängt es sehr stark davon ab, was Sie erreichen wollen.
+Separate Partitionen oder Volumes haben folgende Vorteile:
 </p>
 
 <ul>
@@ -338,12 +339,11 @@ Separate Partitionen oder Volumes haven folgende Vorteile:
   jedes Volume auswählen
 </li>
 <li>
-  Ihr komplettes System kann nicht ohne freien Speicherplatz laufen, wenn ein
-  defektes Tool ununterbrochen Dateien auf eine Partition oder ein Volume
-  schreibt
+  Ihr System behält noch freien Speicherplatz, selbst wenn ein defektes Tool
+  ununterbrochen Dateien auf eine Partition oder ein Volume schreibt
 </li>
 <li>
-  Falls nötig können Dateisystem Checks Zeitlich verkürzt werden, in dem
+  Falls nötig können Dateisystem Checks zeitlich verkürzt werden, in dem
   mehrere Checks parallel durchgeführt werden können (obwohl dieser Vorteil eher
   mit mehreren Festplatten als mit mehreren Partitionen zum Tragen kommt)
 </li>
@@ -358,7 +358,7 @@ Separate Partitionen oder Volumes haven folgende Vorteile:
 Wie dem auch sei, mehrere Partitionen haben einen großen Nachteil (wenn Sie kein
 LVM benutzen): wenn sie nicht ordentlich konfiguriert werden, könnte das
 Resultat ein System sein, welches viel Speicherplatz auf der einen Partition und
-keinen auf einder anderen frei hat.
+keinen auf einer anderen frei hat.
 </p>
 
 <p>
@@ -432,8 +432,8 @@ Nur Benutzer mit <e>x86</e> basierten System sollten diesen Abschnitt lesen.
 </impo>
 
 <p>
-Die folgenden Teile erklären, wie das bereits beschriebene Beispiel Partitions
-Layout (ohne LVM) erstellt wird:
+Die folgenden Teile erklären, wie das bereits beschriebene Beispiel
+Partitionslayout (ohne LVM) erstellt wird:
 </p>
 
 <table>
@@ -456,7 +456,7 @@ Layout (ohne LVM) erstellt wird:
 </table>
 
 <p>
-Ändern Sie Ihr Partitionslayout nach Ihren eigenen Vorstellungen
+Ändern Sie Ihr Partitionslayout nach Ihren eigenen Vorstellungen.
 </p>
 
 </body>
@@ -531,8 +531,8 @@ Partition number (1-4): <i>1</i>
 </pre>
 
 <p>
-Die Partition wurde zur Löschung markiert und wird nicht mehr angezeigt, wenn
-Sie <c>p</c> drücken, aber wird nicht gelöscht, bis Ihre Änderungen
+Die Partition wurde zum Löschen markiert und wird nicht mehr angezeigt, wenn
+Sie <c>p</c> drücken, sie wird aber nicht gelöscht, bis Ihre Änderungen
 gespeichert sind. Wenn Sie einen Fehler gemacht haben und ohne zu Speichern
 abbrechen wollen, drücken Sie umgehend <c>q</c> und Enter; Ihre Partition wird
 dann nicht gelöscht.
@@ -557,9 +557,9 @@ Command (m for help):
 
 <p>
 Jetzt, da die Partitionstabelle im Speicher leer ist, sind wir vorbereitet, um
-die Partitionen zu erstellen. Wir werden ein Default Partitions Schema benutzen,
+die Partitionen zu erstellen. Wir werden ein Standard Partitionsschema benutzen,
 wie wir es zuvor angesprochen haben.
-Natürlich sollten Sie den Instruktionen nicht buchstäblich ausführen, wenn Sie
+Natürlich sollten Sie die Instruktionen nicht buchstäblich ausführen, wenn Sie
 ein anderes Partitions Schema verwenden wollen!
 </p>
 
@@ -584,13 +584,13 @@ Command action
   p   primary partition (1-4)
 <i>p</i>
 Partition number (1-4): <i>1</i>
-First cylinder (1-3876, default 1): <comment>(Hit Enter)</comment>
+First cylinder (1-3876, default 1): <comment>(Enter Taste drücken)</comment>
 Using default value 1
 Last cylinder or +size or +sizeM or +sizeK (1-3876, default 3876): <i>+32M</i>
 </pre>
 
 <p>
-Wenn Sie jetzt <c>p</c> drücken, solltgen Sie die folgende Partitionstabelle
+Wenn Sie jetzt <c>p</c> drücken, sollten Sie die folgende Partitionstabelle
 sehen:
 </p>
 
@@ -612,7 +612,7 @@ Device Boot    Start       End    Blocks   Id  System
 <body>
 
 <p>
-Nun erstellen Sie die Swap Partition. Um dies zu tun drücken Sie <c>n</c> um
+Nun erstellen Sie die Swap Partition. Dazu drücken Sie <c>n</c> um
 eine Partition zu erstellen, dann <c>p</c> um fdisk mitzuteilen, dass Sie eine
 primäre Partition anlegen möchten. Dann drücken Sie <c>2</c> um die zweite
 primäre Partition, <path>dev/hda2</path> in unserem Fall, anzulegen. Wenn Sie
@@ -645,7 +645,7 @@ Device Boot    Start       End    Blocks   Id  System
 <body>
 
 <p>
-Zum Schluss müssen sie noch die Root Partition erstellen. Um dies zu tun, drücken
+Zum Schluss müssen sie noch die Root Partition erstellen. Dazu drücken
 Sie <c>n</c> um eine Partition zu erstellen, dann <c>p</c> um fdisk mitzuteilen,
 dass Sie eine primäre Partition anlegen möchten. Dann drücken Sie <c>3</c> um die
 dritte primäre Partition, <path>dev/hda3</path> in unserem Fall, anzulegen. Wenn Sie
@@ -772,15 +772,15 @@ Starten Sie nun <c>fdisk</c>:
 <body>
 
 <p>
-Wir beginnen mit dem Löschen von allen Slices, <c>ausser</c> des 'c'-Slice.
+Wir beginnen mit dem Löschen von allen Slices, <c>außer</c> des 'c'-Slice.
 Nachfolgend zeigen wir Ihnen, wie Sie ein Slice (im Beispiel nutzen wir 'a')
-löschen können. Wiederholen Sie den Schritt für alle Slices (wieder: ausser des
+löschen können. Wiederholen Sie den Schritt für alle Slices (wieder: außer des
 'c'-Slice).
 </p>
 
 <p>
 Benutzen Sie <c>p</c> um alle existierenden Slices anzuzeigen. <c>d</c>
-benötigen Sie zum Löschen eines Slice.
+benötigen Sie zum Löschen eines Slices.
 </p>
 
 <pre caption="Löschen eines Slice">
@@ -864,7 +864,7 @@ BSD disklabel command (m for help): <i>p</i>
 <body>
 
 <p>
-Wir werden nun das Root Slice anlegen, beginnend vom ersten Zylinder <e>nach</e>
+Wir werden nun das Root Slice anlegen beginnend vom ersten Zylinder <e>nach</e>
 der Swap Slice. Benutzen Sie das <c>p</c> Kommando um zu schauen, wo das Swap
 Slice endet. In unserem Beispiel ist dies 1003, das Root Slice beginnt also
 bei 1004.
@@ -872,14 +872,14 @@ bei 1004.
 
 <p>
 Ein weiteres Problem ist, dass aktuell ein Bug in <c>fdisk</c> existiert.
-Dadurch denkt <c>fdisk</c>, dass die Anzahl verfügbarer Zylinder eine Nummer
-über der realen Zahl der Tylinder liegt. In anderen Worten, wenn Sie nach dem
+Dadurch denkt <c>fdisk</c>, dass die Anzahl verfügbarer Zylinder Eins
+über der realen Zahl der Zylinder liegt. In anderen Worten, wenn Sie nach dem
 letzten Zylinder gefragt werden, verkleinern Sie die Zylindernummer (in diesem
-Beispiel: 5290) mit eins.
+Beispiel: 5290) um eins.
 </p>
 
 <p>
-Wenn das Slice erstellt wurde ändern Sie den Typ auf <c>8</c> für <e>ext2</e>.
+Wenn das Slice erstellt wurde, ändern Sie den Typ auf <c>8</c> für <e>ext2</e>.
 </p>
 
 <pre caption="Erstellen des Root Slice">
@@ -910,7 +910,7 @@ BSD disklabel command (m for help): <i>p</i>
 </body>
 </subsection>
 <subsection>
-<title>Speichern des Slice Layout und beenden von fdisk</title>
+<title>Speichern des Slice Layout und Beenden von fdisk</title>
 <body>
 
 <p>
@@ -918,12 +918,12 @@ Schliessen Sie <c>fdisk</c> indem Sie <c>w</c> eingeben. Damit wird auch Ihr
 Slice Layout gespeichert.
 </p>
 
-<pre caption="Speichern und verlassen von fdisk">
+<pre caption="Speichern und Verlassen von fdisk">
 Command (m for help): <i>w</i>
 </pre>
 
 <p>
-Nachdem Ihre Slices nun erstellt sind können Sie mit dem
+Nachdem Ihre Slices nun erstellt sind, können Sie mit dem
 <uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
 Sie wollen LVM benutzen. In diesem Fall sollten Sie zuerst
 <uri link="#doc_chap8">Optional: LVM</uri> lesen.
@@ -942,8 +942,8 @@ Nur Benutzer mit <e>SPARC</e> basierten System sollten diesen Abschnitt lesen.
 </impo>
 
 <p>
-Die folgenden Teile erklären, wie das bereits beschriebene Beispiel
-Partitionslayout erstellt wird:</p>
+Die folgenden Teile erklären, wie das bereits beschriebene
+Partitionslayout Beispiel erstellt wird:</p>
 
 <table>
 <tr>
@@ -988,7 +988,7 @@ Starten Sie <c>fdisk</c> mit Ihrer Festplatte als Argument.
 </pre>
 
 <p>
-Sie sollten vom fdisk Prompt begrüsst werden:
+Sie sollten vom fdisk Prompt begrüßt werden:
 </p>
 
 <pre caption="Der fdisk Prompt">
@@ -996,7 +996,7 @@ Command (m for help):
 </pre>
 
 <p>
-Um die verfügbaren Partitionen anzuzeigen drücken Sie <c>p</c>:
+Um die verfügbaren Partitionen anzuzeigen, drücken Sie <c>p</c>:
 </p>
 
 <pre caption="Auflisten verfügbarer Partitionen">
@@ -1026,7 +1026,7 @@ Partitionstabelle hat.
 <body>
 
 <p>
-Es ist nun Zeit alle existierenden Partitionen zu löschen. Um dies zu tun
+Es ist nun Zeit alle existierenden Partitionen zu löschen. Dazu
 geben Sie <c>d</c> ein und drücken Enter. Sie werden dann nach einer
 Partitionsnummer gefragt, die Sie löschen möchten. Um eine bereits existierende
 <path>/dev/hda1</path> zu löschen, würden Sie folgendes eingeben:
@@ -1069,9 +1069,9 @@ Device Flag    Start       End    Blocks   Id  System
 
 <p>
 Nun, da die Partitionstabelle leer ist, sind wir bereit die Sun Disk Label
-Partition zu erstellen. Um dies zu tun drücken Sie <c>n</c> um eine neue
+Partition zu erstellen. Dazu drücken Sie <c>n</c> um eine neue
 Partition zu erstellen, dann drücken Sie <c>3</c> um die Partition zu erstellen.
-Wenn Sie nach dem ersten Zylinder gefragt werden drücken Sie Enter. Nachdem Sie
+Wenn Sie nach dem ersten Zylinder gefragt werden, drücken Sie Enter. Nachdem Sie
 dies getan haben, drücken Sie <c>t</c> um den Partitionstyp zu ändern und
 drücken dann <c>5</c>, um den Partitiontyp auf "Whole disk" zu setzen.
 </p>
@@ -1080,7 +1080,7 @@ drücken dann <c>5</c>, um den Partitiontyp auf "Whole disk" zu setzen.
 Command (m for help): <i>n</i>
 Partition number (1-4): <i>3</i>
 First cylinder (1-3876, default 0): <i>0</i>
-Last cylinder or +size or +sizeM or +sizeK (1-3876, default 3876): <comment>(Press Enter)</comment>
+Last cylinder or +size or +sizeM or +sizeK (1-3876, default 3876): <comment>(Enter Taste drücken)</comment>
 Using default value 3876
 
 Command (m for help): <i>t</i>
@@ -1122,7 +1122,7 @@ Festplatte liegt. Sie können die Ausgabe dieser Schritte hier sehen:
 <pre caption="Erstellen einer Boot Partition">
 Command (m for help): <i>n</i>
 Partition number (1-4): <i>1</i>
-First cylinder (1-3876, default 1): <comment>(Press Enter)</comment>
+First cylinder (1-3876, default 1): <comment>(Enter Taste drücken)</comment>
 Using default value 1
 Last cylinder or +size or +sizeM or +sizeK (1-3876, default 3876): <i>+32M</i>
 </pre>
@@ -1149,7 +1149,7 @@ Device Flag    Start       End    Blocks   Id  System
 <body>
 
 <p>
-Nun erstellen Sie die Swap Partition. Um dies zu tun drücken Sie <c>n</c> um
+Nun erstellen Sie die Swap Partition. Dazu drücken Sie <c>n</c> um
 eine Partition zu erstellen, dann <c>2</c> um die zweite Partition,
 <path>dev/hda2</path> in unserem Fall, anzulegen. Wenn Sie nach dem ersten
 Zylinder gefragt werden, drücken Sie Enter. Wenn Sie nach dem letzten Zylinder
@@ -1180,10 +1180,10 @@ Device Flag    Start       End    Blocks   Id  System
 <body>
 
 <p>
-Zum Schluss müssen sie noch die Root Partition erstellen. Um dies zu tun drücken
+Zum Schluss müssen sie noch die Root Partition erstellen. Dazu drücken
 Sie <c>n</c> um eine Partition zu erstellen, dann <c>p</c> um fdisk mitzuteilen,
-dass Sie eine primäre Partition anlegen möchten. Dann drücken Sie <c>4</c> um die
-dritte Partition, <path>dev/hda4</path> in unserem Fall, anzulegen. Wenn Sie
+dass Sie eine primäre Partition anlegen möchten. Dann drücken Sie <c>4</c> um
+die dritte Partition, <path>dev/hda4</path> in unserem Fall, anzulegen. Wenn Sie
 nach dem ersten Zylinder gefragt werden, drücken Sie Enter. Wenn Sie nach dem
 letzten Zylinder gefragt werden, drücken Sie Enter um eine Partition zu erstellen,
 die den restlichen freien Platz belegt. Nachdem Sie diese Schritte abgeschlossen
@@ -1220,7 +1220,7 @@ Command (m for help): <i>w</i>
 </pre>
 
 <p>
-Nachdem Ihre Partitionen nun erstellt sind können Sie mit dem
+Nachdem Ihre Partitionen nun erstellt sind, können Sie mit dem
 <uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
 Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
 </p>
@@ -1241,9 +1241,9 @@ An dieser Stelle erstellen Sie Ihre Partitionen mit <c>mac-fdisk</c>:
 </pre>
 
 <p>
-Löschen Sie zunächst die Partitionen, die Sie vorher gelöscht haben, um Platz
+Löschen Sie zunächst die Partitionen, die Sie vorher geleert haben, um Platz
 für Ihre Linux Partitionen zu schaffen. Benutzen Sie <c>d</c> in
-<c>mac-fdisk</c> um diese Partitionen zu löschen. Es wird sie beim Löschvorgang
+<c>mac-fdisk</c> um diese Partitionen zu löschen. Es wird Sie beim Löschvorgang
 nach einer Partitionsnummer fragen.
 </p>
 
@@ -1259,12 +1259,12 @@ Erstellen Sie nun eine Swap Partition indem Sie <c>c</c> drücken.
 Partition beginnen lassen wollen. Nachdem wir <c>3</c> vorher für die
 Apple_Bootstrap Partition gewählt haben, müssen Sie nun <c>4p</c> eingeben. Wenn
 Sie nach der Größe gefragt werden geben Sie <c>512M</c> ein (oder die Größe die Sie
-möchten ein, 512 ist empfholen). Wenn Sie nach einem Namen gefragt werden geben
+möchten ein, 512 ist empfholen). Wenn Sie nach einem Namen gefragt werden, geben
 Sie <c>swap</c> ein. (notwending).
 </p>
 
 <p>
-Um die Root Partition zu erstellen geben Sie <c>c</c> gefolgt von <c>5p</c> ein
+Um die Root Partition zu erstellen, geben Sie <c>c</c> gefolgt von <c>5p</c> ein
 um auszuwählen, an welchem Block die Root Partition beginnen soll. Wenn Sie nach
 der Größe gefragt werden, geben Sie wieder <c>5p</c> ein. <c>mac-fdisk</c>
 interpretiert dies als "Benutze den ganzen verfügbaren Platz". Wenn Sie nach dem
@@ -1277,7 +1277,7 @@ Abschliessend schreiben Sie die Partitionstabelle mit <c>w</c> und beenden
 </p>
 
 <p>
-Nachdem Ihre Partitionen nun erstellt sind können Sie mit dem
+Nachdem Ihre Partitionen nun erstellt sind, können Sie mit dem
 <uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
 Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
 </p>
@@ -1303,18 +1303,18 @@ Partitionstyp muss <e>f0</e> sein (Linux/PA-RISC boot).
 </p>
 
 <impo>
-Wenn Sie dies ignorieren und ohne spezielle PALO Partition fortfahren wird Ihr
+Wenn Sie dies ignorieren und ohne spezielle PALO Partition fortfahren, wird Ihr
 System aufhören Sie zu lieben und nicht mehr Starten.
 </impo>
 
 <p>
-Wenn Ihre Festplatte größer als 2GB ist, stellen Sie sich, dass die Boot
+Wenn Ihre Festplatte größer als 2GB ist, stellen Sie sicher, dass die Boot
 Partition innerhalb der ersten 2GB Ihrer Festplatte liegt. PALO kann keinen
 Kernel hinter der 2GB Grenze lesen.
 </p>
 
 <p>
-Nachdem Ihre Partitionen nun erstellt sind können Sie mit dem
+Nachdem Ihre Partitionen nun erstellt sind, können Sie mit dem
 <uri link="#doc_chap9">Erstellen der Dateisysteme</uri> fortfahren, es sei denn,
 Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
 </p>
@@ -1324,13 +1324,13 @@ Sie wollen <uri link="#doc_chap8">Optional: LVM</uri> benutzen.
 <section>
 <title>Optional: LVM</title>
 <subsection>
-<title>Partitionen Initialisieren</title>
+<title>Partitionen initialisieren</title>
 <body>
 
 <p>
-Um LVM benutzen zu können müssen Sie LVM aktivieren und Ihre erstellten
+Um LVM benutzen zu können, müssen Sie LVM aktivieren und Ihre erstellten
 Partitionen initialisieren. Um dies zu erledigen, benutzen Sie <c>vgscan</c>
-(aktivieren von LVM) und <c>pvcreate</c> (initialisieren der Partitionen.
+(aktivieren von LVM) und <c>pvcreate</c> (initialisieren der Partitionen).
 In diesem Beispiel gehen wir davon aus, dass <path>/dev/hda1</path> eine normale
 Boot Partition, <path>/dev/hda2</path> eine normale (aber nicht kleine) Root
 Partition und <path>/dev/hda3</path> eine große Partition für LVM ist.
@@ -1417,7 +1417,7 @@ Jetzt sind Ihre Partitionen (und logischen Volumes, wenn Sie LVM benutzen)
 erstellt, so dass es nun an der Zeit ist Dateisysteme anzulegen. Wenn Sie mit dem
 zufrieden sind, was wir Ihnen vorschlagen, dann fahren Sie mit
 <uri link="#doc_chap9_sect3">Dateisystem auf einer Partition anlegen</uri> fort.
-Wenn nicht lesen Sie weiter, um ein wenig mehr über Dateisysteme zu lernen ...
+Wenn nicht, lesen Sie weiter, um ein wenig mehr über Dateisysteme zu lernen ...
 </p>
 
 </body>
@@ -1472,8 +1472,8 @@ Booten sehr zeitaufwändig sein können. Es gibt mittlerweile eine Auswahl an
 journalisierenden Dateisystemen neuerer Generation, die die Konsistenzchecks sehr
 schnell erledigen und dadurch im Vergleich mit den nicht-journalisierenden
 Gegenstücken vorzuziehen sind. Jounalisierende Dateisysteme verhindern lange
-Verzögerungen beim Booten und was dazu führt, dass sich das Dateisystem in
-einem inkonsistenten Status befindet.
+Verzögerungen beim Booten, wenn sich das Dateisystem in einem inkonsistenten
+Zustand befindet.
 </p>
 
 <p>
@@ -1498,13 +1498,13 @@ sehr großen Dateien und Verzeichnissen mit tausenden von Dateien empfohlen.
 </p>
 
 <p>
-<b>XFS</b> ist ein Dateisytem mit metadata journaling, dass in Gentoo's
+<b>XFS</b> ist ein Dateisytem mit metadata journaling, das in Gentoos
 xfs-sources Kernel voll unterstützt wird. Es kommt mit einem robusten Feature-Set
 und ist auf Skalierbarkeit ausgelegt. Wir empfehlen den Einsatz dieses
 Dateisystems nur auf Linux Systemen mit High-End SCSI und/oder Fibre Channel
 Storage und einer redundaten Stromversorgung. Da XFS agressiv vom RAM gebraucht
 macht, können unsachgemäß designte Programme (solche die keine
-Vorsichtsmassnahmen treffen, wenn Sie auf die Festplatte schreiben und davon
+Vorsichtsmaßnahmen treffen, wenn Sie auf die Festplatte schreiben und davon
 gibt es einige) dazu führen, dass eine ganze Menge Daten verloren gehen, wenn
 das System unerwartet ausfällt.
 </p>
@@ -1585,7 +1585,7 @@ logischen Volumes).
 </pre>
 
 <p>
-Um die Swap Partition zu aktivieren benutzen Sie <c>swapon</c>:
+Um die Swap Partition zu aktivieren, benutzen Sie <c>swapon</c>:
 </p>
 
 <pre caption="Aktivieren der Swap Partition">
@@ -1606,7 +1606,7 @@ Erstellen und aktivieren Sie jetzt Ihre Swap Partition.
 <p>
 Nachdem Ihre Partitionen nun initialisiert sind und ein Dateisystem beinhalten,
 ist es an der Zeit diese Partitionen zu mounten. Benutzen Sie das <c>mount</c>
-Kommando, Vergessen Sie nicht die notwendigen Mount Verzeichnisse zu erstellen:
+Kommando. Vergessen Sie nicht die notwendigen Mount Verzeichnisse zu erstellen:
 </p>
 
 <pre caption="Mounten von Partitionen">
