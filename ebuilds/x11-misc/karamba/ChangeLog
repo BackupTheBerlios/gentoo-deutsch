@@ -1,8 +1,14 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# ChangeLog for x11-misc/karamba
 # Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-misc/karamba/Attic/ChangeLog,v 1.2 2003/04/05 06:02:08 shermann Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-misc/karamba/Attic/ChangeLog,v 1.3 2003/04/05 13:03:40 shermann Exp $
 
-*karamba-0.13-1 (05 Mar 2003)
+*karamba-0.14 (05 Mar 2003)
+
+  05 Mar 2003; Stephan Hermann <sh@sourcecode.de>
+  New version released. Improved wallpaper handling 
+  Changed index.docbook to reduce compile problems
+    
+*karamba-0.13 (05 Mar 2003)
 
   05 Mar 2003; Stephan Hermann <sh@sourcecode.de> :
   Changed description, used ${PV} instead of ${PN}
@@ -10,7 +16,7 @@
   05 Mar 2003; Stephan Hermann <sh@sourcecode.de> :
   New version released. Added notatun sensor.
 
-*karamba-0.12-1 (03 Mar 2003)
+*karamba-0.12 (03 Mar 2003)
 
   05 Mar 2003; Stephan Hermann <sh@sourcecode.de> :
   Changed description, used ${PV} instead of ${PN}
