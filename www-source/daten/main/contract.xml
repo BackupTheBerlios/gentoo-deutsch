@@ -3,74 +3,89 @@
 <!-- English CVS Version 1.5 -->
 
 <mainpage id="contract">
-<title>Gentoo Linux Social Contract</title>
+<title>Gentoo Linux Gesellschaftsvertrag</title>
 <author title="Author"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
 
 <abstract></abstract>
 
 <version>1.2</version>
-<date>19 July 2003</date>
+<date>19 Juli 2003</date>
 
 <chapter>
 	<title>Gentoo Linux Gesellschaftsvertrag</title>
-	<section>
-		<title>About the Gentoo Linux Social Contract</title>
-	<body>	
-		<p>This social contract
-		is intended to clearly describe the overall development policies and standards of the Gentoo Linux
-		development team.  Parts of this document have been derived from the <uri link="http://www.debian.org/social_contract">Debian Social Contract</uri>, and is generally very similar to it except that certain parts have been clarified and
-		augmented while other parts deemed redundant have been removed.  Comments are welcome.  Please send
-		them to our <mail link="gentoo-dev@gentoo.org">gentoo-dev@gentoo.org</mail> mailing list.</p>
-	</body>
-	</section>
+<section>
+	<title>Über den Gentoo Linux Gesellschaftsvertrag</title>
+<body>	
+		
+<p>
+Dieser Gesellschaftsvertrag ist gedacht, die allgemeinen Entwicklungsrichtlinien und Standards
+für das Gentoo Linux Entwicklungsteam aufzuzeigen. Teile dieses Dokumentes wurden von dem
+<uri link="http://www.debian.org/social_contract">Debian Social Contract</uri> abgeleitet, sodaß
+diese recht ähnlich sind. Einige Abschnitte wurden genauer ausgeführt, andere wiederum wurden
+aufgrund ihrer Redundanz entfernt. Ihre Meinung hierzu ist willkommen. Bitte senden Sie diese
+an unsere englischsprachige <mail link="gentoo-dev@gentoo.org">gentoo-dev@gentoo.org
+</mail> Mailing Liste.
+</p>
+	
+</body>
+</section>
 
-	<section>
-		<title>Gentoo Linux is and will remain Free Software</title>
-	<body>
+<section>
+	<title>Gentoo Linux ist und wird Freie Software bleiben</title>
+<body>
 
 <p>
-We will release our contributions to Gentoo Linux as free software, under the
-GNU General Public License version 2 (or later, at our discretion.) Any external
-contributions to Gentoo Linux (in the form of freely-distributable sources or
-binaries) may be incorporated into Gentoo Linux provided that we are legally
-entitled to do so.  However, Gentoo Linux will never <i>depend</i> upon a piece of
-software unless it conforms to the GNU General Public License, GNU Lesser 
-General Public License or some other license approved by the Open Source 
-Initiative 
-(<uri link="http://www.opensource.org/licenses/index.html">OSI</uri>.)
+Wir werden unsere Beiträge zu Gentoo Linux als Freie Software unter 
+GNU General Public License version 2 (oder später) veröffentlichen. Jeder
+externer Beitrag an Gentoo Linux (in Form von frei erhältlichen Quellcode
+oder Binärdateien) kann in Gentoo Linux unter der Voraussetzung, daß 
+wir die Ermächtigung hierzu erhalten, integriert werden. Jedoch wird Gentoo
+Linux niemals von einem Stück Software <i>abhängen</i>, welches nicht
+unter der GNU General Public License, GNU Lesser General Public License
+oder anderen Lizenzen, die nicht von der Open Source Initative (<uri 
+link="http://www.opensource.org/licenses/index.html">OSI</uri>)
+freigegeben wurden.
 </p>
 
-<note>We are considering extending the above clause to require that all core
-Gentoo Linux components must conform to a license approved by the OSI <e>and</e> Free
-Software Foundation (<uri link="http://www.gnu.org/">FSF</uri>.)</note>
+<note>
+Wir überlegen uns, ob die obere Klausel so zu erweitern, dass alle Kernkomponenten von
+Gentoo Linux mindestens einer von der OSI <e>und</e> der Free Software Foundation 
+(<uri link="http://www.gnu.org/">FSF</uri>.) genehmigten Lizenzen unterstehen.
+</note>
 
-	</body>
-	</section>
+</body>
+</section>
 
-	<section>
-		<title>We will give back to the Free Software Community</title>
-	<body>
+<section>
+	<title>Wir werden an die Freie Software Gemeinschaft zurückgeben</title>
+<body>
+
 <p>
-We will establish relationships with Free Software authors and collaborate when
-possible.  We will submit bug-fixes, improvements, user requests, etc. to the
-"upstream" authors of software included in our system.  We will also clearly
-document <e>our</e> contributions to Gentoo Linux as well any improvements or
-changes we make to external sources used by Gentoo Linux (whether in the form
-of patches, "sed tweaks" or some other form.)  We acknowledge that our
-improvements and patches are much more meaningful to the larger Free Software
-community if they are clearly documented and explained, since not everyone has
-the time or ability to understand the literal changes contained in the patches,
-tweaks, etc. themselves.
+Wir werden unsere Beziehungen mit Autoren von Freier Software pflegen und,
+wo immer möglich, zusammenarbeiten. Wir werden bug-fixes, Benutzerwünsche und
+Verbesserungen weitergeben. Wir werden auch <e>unsere</e> Beiträge klar dokumentieren,
+wie auch unsere Änderungen an externen Quelldateien, die von Gentoo Linux verwendet
+werden (ob in Form von "Patches", "sed tweaks" oder in anderer Form). Wir glauben auch,
+dass unsere Patches und Verbesserungen der Allgemeinen Free Software Gemeinschaft 
+besser zu Gute kommen, wenn sie sauber dokumentiert und erläutert werden, da nicht 
+jeder die Zeit oder die Möglichkeiten besitzt, die wörtlichen Änderungen in den Patches, 
+Tweaks etc.. nachzuvollziehen.
 </p>
-	</body>
-	</section>
+	
+</body>
+</section>
 
-	<section>
-		<title>We will not hide problems</title>
-	<body>
-<p>We will keep our <uri link="http://bugs.gentoo.org/">bug report database</uri> open for public view at all times.
-Reports that users file on-line will immediately become visible to others.</p>
-	</body>
-	</section>
+<section>
+	<title>Wir werden keine Probleme verstecken</title>
+<body>
+
+<p>
+Wir werden unsere <uri link="http://bugs.gentoo.org/">Bug Report Database</uri> offen halten, so daß jederzeit
+nachgeschaut werden kann. Fehlermeldungen, die von anderen Benutzern gemeldet werden, werden allen sofort
+zugänglich gemacht.
+.</p>
+
+</body>
+</section>
 </chapter>
 </mainpage>
