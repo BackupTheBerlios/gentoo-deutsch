@@ -3,6 +3,27 @@
 <info>
 <title>Suchen auf Gentoo.de</title>
 
+<box>
+  <block>
+    <title>Ihre Suche</title>
+    <p>
+      nach<br/>
+      <query_str/>
+      in
+      <baseurl/>
+    </p>
+    <p>
+      ergab<br/>
+      <results_num/>
+
+    </p>
+
+  </block>  
+
+
+</box>
+
+
 <chapter>
 
 <title>Übersicht</title>

@@ -3,27 +3,21 @@
 
 <xsl:output method="html" encoding="iso-8859-15" indent="no"/>
 
-<xsl:template match="search">
-  <xsl:apply-templates/>
+<xsl:template match="*">
+  <![CDATA[<!--cgi: ]]><xsl:value-of select="name()"/><![CDATA[-->]]>
+
+  <!--
+    query_str 		= Suchstring
+    baseurl 		= Durchsuchte URL
+    first_number	= Beginn Ergebnis-Liste
+    last_number		= Ende Ergebnis-Liste
+    results_num		= Anzahl der Ergebnisse
+    docs_total		= Anzahl indizierter Dokumente
+    search_time		= Dauer der Suche
+
+  -->
 </xsl:template>
 
-<xsl:template match="result_intro">
-  <xsl:apply-templates/> 
-  <![CDATA['<!--cgi: query_str-->']]>
-</xsl:template>
-
-<xsl:template match="result_overview">  
-  <table border="0" cellpadding="0" cellspacing="0" width="100%">
-  <tr>
-    <![CDATA[
-    <td valign="top"><!--cgi: baseurl--> wurde nach <strong><!--cgi: query_str--></strong> durchsucht</td>
-    <td align="right">Treffer
-    <strong><!--cgi: first_number--> - <!--cgi: last_number--></strong> von <strong><!--cgi: results_num--></strong>,
-    insgesamt <!--cgi: docs_total--> Dokumente durchsucht <!--cgi: search_time--></td>
-    ]]>
-  </tr>
-  </table>
-</xsl:template>
 
 <xsl:template match="result_ignored_terms">
   <![CDATA[
