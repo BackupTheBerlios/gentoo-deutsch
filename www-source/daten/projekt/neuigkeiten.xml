@@ -380,25 +380,21 @@ Guide gibt es hier : <uri link="http://www.gentoo.de/inhalte/doku/einrichtung/in
 
 
 <section>
-
-<title>[28. April 2003] Gentoo Newsletter </title>
-
 <body>
-<p>
-Der dieswöchige Newsletter bringt Neuigkeiten ber einen Vorschlag, wie das Management
-der Ebuilds ab demnächst gestaltet werden knnte. Desweiteren gibt es Informationen
-ber einige Änderungen bei den Mailinglisten, das wöchtentliche Entwicklerportrait
-und eine Warnung ber ein frühes Release von Tcl/Tk.
-<uri link="http://www.gentoo.org/news/de/gwn/20030428-newsletter.xml">Viel Spass beim Lesen!</uri>
-</p>
+<news sort="news" date="28. April 2003" title="Gentoo Newsletter">
+	Der dieswöchige Newsletter bringt Neuigkeiten ber einen Vorschlag, wie das Management
+	der Ebuilds ab demnächst gestaltet werden knnte. Desweiteren gibt es Informationen
+	ber einige Änderungen bei den Mailinglisten, das wöchtentliche Entwicklerportrait
+	und eine Warnung ber ein frühes Release von Tcl/Tk.
+	<uri link="http://www.gentoo.org/news/de/gwn/20030428-newsletter.xml">Viel Spass beim Lesen!</uri>
+</news>
 </body>
-
 </section>
 
 
 <section>
 <body>
-<news sort="news" date="20.04.2003" title="Planung des Usertreffens">
+<news sort="other" date="20.04.2003" title="Planung des Usertreffens">
 	Nachdem sich nun alle in die Liste für das Usertreffen eingetragen haben, stellt sich
 	nun die Frage, wo dieses stattfinden soll. Zu diesem Zwecke haben phoen][x und cybersystem
 	eine interaktive Karte eingerichtet, auf der Ihr Euch eintragen könnt. Die Karte sollte
@@ -410,12 +406,8 @@ und eine Warnung ber ein frühes Release von Tcl/Tk.
 </section>
 
 <section>
-<!--
-<title>[14. April 2003] Gentoo-Linux-1.4rc4 verffentlicht</title>
--->
 <body>
 <news sort="release" date="14.04.2003" title="Gentoo-Linux-1.4rc4 veröffentlicht">
-<p>
 Anfang der Woche wurde entschieden, daß die nächste Version von Gentoo-Linux 1.4 als
 Release-Candidate 4 an Stelle von Final veröffentlicht werden wrde. Die Verbesserungen
 enthalten wesentlich bessere Hardware-Erkennung auf der Live-CD sowie weitreichende Updates
@@ -435,7 +427,6 @@ einer Final-Version zu verffentlichen wurde aus folgenden Grnden getroffen:
 	Automatischer Kernelbau wird bisher noch getestet und wird in der 1.4-final verfügbar sein
 	</li>
 </ul>
-</p>
 </news>
 </body>
 </section>

@@ -482,7 +482,7 @@
 	<p style="font-size:medium; padding:3px; margin-top:0px">
 		<table>
 			<tr>
-				<td>
+				<td valign="top">
 					<img>
 						<xsl:attribute name="src">
 							http://www.gentoo.de/media/bilder/icons/news/<xsl:value-of select="@sort"/>.jpg
