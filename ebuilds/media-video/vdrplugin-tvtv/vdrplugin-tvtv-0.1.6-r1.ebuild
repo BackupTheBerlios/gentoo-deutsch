@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvtv/Attic/vdrplugin-tvtv-0.1.6-r0.ebuild,v 1.1 2003/10/10 11:11:04 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-tvtv/vdrplugin-tvtv-0.1.6-r1.ebuild,v 1.1 2003/10/22 20:45:14 martini Exp $
 
 IUSE=""
 PVERSION="0.1.6"
