@@ -4,12 +4,12 @@
 
 <guide link="/doc/faq.html">
 <title>Gentoo Linux Frequently Asked Questions 2</title>
-<author title="Verfasser"><mail link="drobbins@gentoo.org">Das gentoo.de Team</mail></author>
+<author title="Verfasser"><mail link="gentoo-deutsch-dev@lists.berlios.de">Das gentoo.de Team</mail></author>
 <abstract>Diese FAQ ist eine Sammlung von Fragen und Antworten gesammelt, die noch nicht
 in der offiziellen Gentoo FAQ auftauchen.</abstract>
 
-<version>1.1.1-de</version>
-<date> Juli 2002</date>
+<version>1.2.1-de</version>
+<date>August 2002</date>
 
 
 <chapter>
@@ -107,8 +107,7 @@ in der offiziellen Gentoo FAQ auftauchen.</abstract>
 		Um die Ebuilds von BerliOS dort abzulegen einfach folgende Befehle (als root) ausf&#252;hren:
 		<pre>
 		# cd /usr/local
-		# cvs -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
-		[Enter]
+		# cvs -d:pserver:anonymous:@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch login
 		# cvs -z3 -d:pserver:anonymous@cvs.gentoo-deutsch.berlios.de:/cvsroot/gentoo-deutsch co ebuilds
 		</pre>
 		Fertig. Diese Befehle m&#252;ssen nur einmal ausgef&#252;hrt werden. Zum Aktualisieren der 
