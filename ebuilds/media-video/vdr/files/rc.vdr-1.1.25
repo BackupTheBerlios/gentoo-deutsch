@@ -1,12 +1,13 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.7 2003/03/04 19:05:39 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.8 2003/03/05 20:02:14 mad Exp $
 
-#DEBUG=echo
+opts="${opts} fullrestart"
 
 depend() {
-	after *
+	need dvb
+	use lircd
 }
 
 start() {
@@ -25,6 +26,10 @@ start() {
 	[ -n "$RECORD" ] && vdropts="${vdropts} --record=${RECORD} "
 	[ -n "$PORT" ] && vdropts="${vdropts} --port=${PORT} "
 	[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIB} "
+
+	#
+	# building then options for the plugins
+	#
 	[ -n "$LIB" -a -n "$PLUGINS" ] && for i in ${PLUGINS}; do 
 		if  [ -f "/etc/conf.d/vdr.${i}" -a -n "$(grep "^[A-Z]" /etc/conf.d/vdr.${i} 2>/dev/null )" ]; then
 			unset pluginopts
@@ -58,7 +63,16 @@ start() {
 
 stop() {
 	ebegin "Stopping $(vdr -V)"
-
-	$DEBUG killall vdr
+	start-stop-daemon --stop --quiet --retry 15 --exec /usr/bin/vdr
 	eend $? "Failed to stop vdr."
 }
+
+fullrestart() {
+	ebegin "Fully restarting $(vdr -V) and DVB drivers"
+	/etc/init.d/vdr stop
+	/etc/init.d/dvb stop
+	sleep 5
+	/etc/init.d/dvb start
+	/etc/init.d/vdr start
+}
+
