@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.vdr,v 1.8 2003/09/21 17:30:10 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.vdr,v 1.9 2004/08/14 01:40:40 austriancoder Exp $
 
 opts="${opts} fullrestart"
 
@@ -31,6 +31,7 @@ start() {
 	[ -n "${PORT}" ] && vdropts="${vdropts} --port=${PORT} "
 	[ -n "${TERMINAL}" ] && vdropts="${vdropts} --terminal=${TERMINAL} "
 	[ -n "${LIB}" ] && vdropts="${vdropts} --lib=${LIB} "
+	[ -n "${MUTE}" ] && vdropts="${vdropts} --mute "
 	[ -n "${PLUGINS}" ] && for i in ${PLUGINS}; do 
 		#
 		# reading associated plugin config files and render the command options
@@ -73,7 +74,12 @@ start() {
 	# finaly start vdr
 	# 
 	#echo "/usr/bin/vdr --daemon ${vdropts}"
-	su - vdr -c "/usr/bin/vdr --daemon ${vdropts}"
+	VDRUSER=root
+	if [ -z "$TERMINAL" ]; then
+		start-stop-daemon --start --name vdr --chuid $VDRUSER --exec /usr/bin/vdr -- --daemon ${vdropts}
+	else
+		start-stop-daemon --start --name vdr --chuid $VDRUSER --background --exec /usr/bin/vdr -- ${vdropts}
+	fi
 	eend $? "Failed to start vdr."
 }
 
@@ -85,22 +91,21 @@ stop() {
 
 fullrestart() {
 	ebegin "Fully restarting $(vdr -V) and DVB drivers"
-	/etc/init.d/vdr stop
+	/etc/init.d/vdr pause
 	/etc/init.d/vdr zap
-	sleep 5
-	/bin/pidof /usr/bin/vdr && /bin/killall -9 vdr
-	sleep 5
-	/sbin/rmmod -v \
-			dvb-ttpci \
-			alps_bsrv2 \
-			grundig_29504-401 \
-			grundig_29504-491 \
-			ves1820 \
-			stv0299 \
-			alps_tdmb7 \
-			alps_tdlb7
-	sleep 3
+#	sleep 5
+#	/bin/pidof /usr/bin/vdr && /bin/killall -9 vdr
+#	sleep 3
+#	/sbin/rmmod -v \
+#			dvb-ttpci \
+#			alps_bsrv2 \
+#			grundig_29504-401 \
+#			grundig_29504-491 \
+#			ves1820 \
+#			stv0299 \
+#			alps_tdmb7 \
+#			alps_tdlb7
+#	sleep 3
 	/etc/init.d/vdr start
 }
-
 

@@ -1,0 +1,101 @@
+diff -Nur vdr-1.3.6/channels.c vdr-1.3.6_devel/channels.c
+--- vdr-1.3.6/channels.c	2004-02-13 16:37:42.000000000 +0100
++++ vdr-1.3.6_devel/channels.c	2004-03-28 17:19:39.000000000 +0200
+@@ -178,6 +178,7 @@
+   modification = CHANNELMOD_NONE;
+   linkChannels = NULL;
+   refChannel   = NULL;
++  disableEPG   = false;
+ }
+ 
+ cChannel::cChannel(const cChannel &Channel)
+@@ -592,8 +593,15 @@
+      q = caidbuf;
+      q += IntArrayToString(q, Channel->caids, 16);
+      *q = 0;
+-     asprintf(&buffer, "%s:%d:%s:%s:%d:%s:%s:%d:%s:%d:%d:%d:%d\n", s, Channel->frequency, Channel->ParametersToString(), cSource::ToString(Channel->source), Channel->srate, vpidbuf, apidbuf, Channel->tpid, caidbuf, Channel->sid, Channel->nid, Channel->tid, Channel->rid);
+-     }
++	 if(Channel->IsDisableEPG())
++	  {
++      asprintf(&buffer, "%s:%d:%s:%s:%d:%s:%s:%d:%s:%d:%d:%d:%d:%s\n", s, Channel->frequency, Channel->ParametersToString(), cSource::ToString(Channel->source), Channel->srate, vpidbuf, apidbuf, Channel->tpid, caidbuf, Channel->sid, Channel->nid, Channel->tid, Channel->rid, Channel->disableEPGstring);
++	  dsyslog("channel::totext: disableepgscan für %s:%s",s,Channel->disableEPGstring);
++	  } else {
++      asprintf(&buffer, "%s:%d:%s:%s:%d:%s:%s:%d:%s:%d:%d:%d:%d:%s\n", s, Channel->frequency, Channel->ParametersToString(), cSource::ToString(Channel->source), Channel->srate, vpidbuf, apidbuf, Channel->tpid, caidbuf, Channel->sid, Channel->nid, Channel->tid, Channel->rid, "");
++	  dsyslog("channel::totext: disableepgscan nicht aktiv für %s",s);
++	  }
++	 }
+   return buffer;
+ }
+ 
+@@ -626,8 +634,18 @@
+      char *vpidbuf = NULL;
+      char *apidbuf = NULL;
+      char *caidbuf = NULL;
+-     int fields = sscanf(s, "%a[^:]:%d :%a[^:]:%a[^:] :%d :%a[^:]:%a[^:]:%d :%a[^:]:%d :%d :%d :%d ", &namebuf, &frequency, &parambuf, &sourcebuf, &srate, &vpidbuf, &apidbuf, &tpid, &caidbuf, &sid, &nid, &tid, &rid);
+-     if (fields >= 9) {
++     char *disableEPGbuf = NULL;
++int fields = sscanf(s, "%a[^:]:%d :%a[^:]:%a[^:] :%d :%a[^:]:%a[^:]:%d :%a[^:]:%d :%d :%d :%d :%a[^:]", &namebuf, &frequency, &parambuf, &sourcebuf, &srate, &vpidbuf, &apidbuf, &tpid, &caidbuf, &sid, &nid, &tid, &rid, &disableEPGbuf);
++
++	 strn0cpy(disableEPGstring, disableEPGbuf, MaxChannelName);
++     if(strlen(disableEPGstring)>0)
++     {
++       disableEPG = true;
++	   dsyslog("disable fuer %s",namebuf);
++     }
++
++	 
++	 if (fields >= 9) {
+         if (fields == 9) {
+            // allow reading of old format
+            sid = atoi(caidbuf);
+@@ -714,6 +732,7 @@
+               caids[NumCaIds] = 0;
+               }
+            }
++        free(disableEPGbuf);
+         strn0cpy(name, namebuf, MaxChannelName);
+         free(parambuf);
+         free(sourcebuf);
+diff -Nur vdr-1.3.6/channels.h vdr-1.3.6_devel/channels.h
+--- vdr-1.3.6/channels.h	2004-02-13 16:16:36.000000000 +0100
++++ vdr-1.3.6_devel/channels.h	2004-03-28 16:41:31.000000000 +0200
+@@ -118,6 +118,8 @@
+   int modification;
+   cLinkChannels *linkChannels;
+   cChannel *refChannel;
++  char disableEPGstring[MaxChannelName];
++  bool disableEPG;
+   const char *ParametersToString(void);
+   bool StringToParameters(const char *s);
+ public:
+@@ -161,6 +163,7 @@
+   bool IsCable(void) const { return (source & cSource::st_Mask) == cSource::stCable; }
+   bool IsSat(void) const { return (source & cSource::st_Mask) == cSource::stSat; }
+   bool IsTerr(void) const { return (source & cSource::st_Mask) == cSource::stTerr; }
++  bool IsDisableEPG(void) { return disableEPG; };
+   tChannelID GetChannelID(void) const;
+   int Modification(int Mask = CHANNELMOD_ALL);
+   bool SetSatTransponderData(int Source, int Frequency, char Polarization, int Srate, int CoderateH, bool Log = true);
+diff -Nur vdr-1.3.6/eit.c vdr-1.3.6_devel/eit.c
+--- vdr-1.3.6/eit.c	2004-03-13 14:54:20.000000000 +0100
++++ vdr-1.3.6_devel/eit.c	2004-03-28 16:45:01.000000000 +0200
+@@ -35,6 +35,10 @@
+   if (!channel)
+      return; // only collect data for known channels
+ 
++  bool isDisableEPG = false;
++  if(channel)
++     isDisableEPG = channel->IsDisableEPG();
++
+   cEvent *rEvent = NULL;
+ 
+   cSchedule *pSchedule = (cSchedule *)Schedules->GetSchedule(channelID);
+@@ -56,6 +60,8 @@
+          // If we don't have that event yet, we create a new one.
+          // Otherwise we copy the information into the existing event anyway, because the data might have changed.
+          pEvent = pSchedule->AddEvent(new cEvent(channelID, SiEitEvent.getEventId()));
++         if(isDisableEPG)
++            break;
+          if (!pEvent)
+             continue;
+          }
