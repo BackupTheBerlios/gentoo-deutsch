@@ -8,7 +8,7 @@ img {
   border: 0px none;
 }
   
-div#logo, div#logobk, div#about, div#bar, div#special, div.menu{
+div#logo, div#logo_bg, div#about, div#submenu, div#gmenu{
   display: none;
 }
   
