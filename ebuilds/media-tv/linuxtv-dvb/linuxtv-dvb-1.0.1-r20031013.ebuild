@@ -1,32 +1,28 @@
-# Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/Attic/linuxtv-dvb-1.0.1-r20031013.ebuild,v 1.2 2003/10/28 22:10:51 martini Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb/Attic/linuxtv-dvb-1.0.1-r20031013.ebuild,v 1.3 2003/12/10 13:56:39 rootshell Exp $
 
-IUSE=""
-
+VERSION="2003-10-13"
 
 # Use this for CVS HEAD Versions by Klaus S.
-VERSION="2003-10-13"
-DESCRIPTION="This is the standalone DVB driver for Kernel 2.4.x (CVS HEAD)"
-SRC_URI="ftp://ftp.cadsoft.de/vdr/Developer/linux-dvb.${VERSION}.tar.bz2"
-
 # Use this if it is a pre/stable release
 #VERSION="1.0.1"
 #DESCRIPTION="This is the standalone DVB driver for Kernel 2.4.x"
 #SRC_URI="http://www.linuxtv.org/download/dvb/${PN}-${VERSION}.tar.gz"
 
-HOMEPAGE="http://linuxtv.org/"
-
 S=${WORKDIR}/linux-dvb.${VERSION}
-KEYWORDS="~x86"
-SLOT="1"
+DESCRIPTION="This is the standalone DVB driver for Kernel 2.4.x (CVS HEAD)"
+HOMEPAGE="http://linuxtv.org/"
+SRC_URI="ftp://ftp.cadsoft.de/vdr/Developer/linux-dvb.${VERSION}.tar.bz2"
 LICENSE="GPL"
-
+SLOT="1"
+KEYWORDS="~x86"
+IUSE=""
 DEPEND="virtual/glibc
-		virtual/linux-sources
-		!media-video/linuxdvb"
+	virtual/linux-sources
+	!media-video/linuxdvb"
 RDEPEND="virtual/glibc"
-	
+
 pkg_setup() {
 	if [ -z "$(modinfo -n input 2>/dev/null)" -o -z "$(modinfo -n evdev 2>/dev/null)" ]; then
 	ewarn
