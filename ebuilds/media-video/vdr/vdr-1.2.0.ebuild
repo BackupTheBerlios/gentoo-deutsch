@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.3 2003/06/05 07:39:07 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.0.ebuild,v 1.4 2003/06/05 10:15:36 mad Exp $
 
 IUSE="lirc"
 
@@ -8,7 +8,9 @@ S=${WORKDIR}/${P}
 DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="ftp://ftp.cadsoft.de/vdr/${P}.tar.bz2
-         http://www.akool.de/download/vdr-1.2.0.patch.bz2"
+         http://www.akool.de/download/vdr-1.2.0.patch.bz2
+		 http://www.akool.de/download/vdr-1.2.0-without-Elchi.patch.bz2
+		 http://linvdr.org/download/VDR-AIO/ElchiAIO3a-1.2.0.diff.gz"
 
 KEYWORDS="~x86"
 SLOT="0"
@@ -32,10 +34,24 @@ function vdr_opts {
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.diff
+
+
+	# Be AWARE that there is (at the moment) no logic to prevent
+	# double patches like akool (with Elchi included) and Elchi
+	# you will get a lot of errors !! Check VDR_OPTS
+	#
 
 	# needs app-admin/fam-oss
 	vdr_opts akool && epatch ../vdr-1.2.0.patch
+	vdr_opts akoolwoe && epatch ../vdr-1.2.0-without-Elchi.patch
+
+	# Elchi Patch
+	if [ "vdr_opts elchi" -a !"vdr_opts akool" -a !"vdr_opts akoolwoe" ] ; then
+		patch < ../ElchiAIO3a-1.2.0.diff
+		rm .dependencies # .deps file is in the DIFF ?? 
+	fi
+
+	epatch ${FILESDIR}/${P}-gentoo.diff
 }
 
 src_compile() {
