@@ -3,7 +3,7 @@
 
 <!-- English CVS Version: 1.19 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.1 2003/12/07 15:04:38 tove Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.2 2003/12/07 15:18:09 tove Exp $ -->
 
 <sections>
 <section>
@@ -212,8 +212,8 @@ Sie müssen auch den gesamten Quellcode von der CD kopieren.
 </pre>
 
 <p>
-Falls Sie GRP (vorkompilierte Binärpakete) nutzen wollen, lesen Sie bitte weiter.
-Anderen Falls geht es weiter mit der
+Falls Sie GRP (vorkompilierte Binärpakete) nutzen wollen, lesen Sie bitte
+weiter. Anderen Falls geht es weiter mit der
 <uri link="#doc_chap4">Konfiguration des Kompiler Optionen</uri>.
 </p>
 
@@ -234,7 +234,8 @@ diese nutzen kann.
 </pre>
 
 <p>
-Nun geht es weiter mit der <uri link="#doc_chap4">Konfiguration der Kompiler Optionen</uri>.
+Nun geht es weiter mit der
+<uri link="#doc_chap4">Konfiguration der Kompiler Optionen</uri>.
 </p>
 
 </body>
@@ -247,16 +248,17 @@ Nun geht es weiter mit der <uri link="#doc_chap4">Konfiguration der Kompiler Opt
 <body>
 
 <p>
-Um Gentoo zu optimieren, können Sie einige Variablen setzen die auf das Verhalten
-von Portage wirken. Alle diese Variablen können als Umgebungsvariablen gesetzt 
-werden (mit <c>export</c>), dies ist aber nicht dauerhaft. Um Ihre Einstellungen 
-zu behalten, bietet Portage Ihnen <path>/etc/make.conf</path>, eine 
-Konfigurationsdatei für Portage. Diese Datei werden wir nun bearbeiten. 
+Um Gentoo zu optimieren, können Sie einige Variablen setzen die auf das
+Verhalten von Portage wirken. Alle diese Variablen können als
+Umgebungsvariablen gesetzt werden (mit <c>export</c>), dies ist aber nicht
+dauerhaft. Um Ihre Einstellungen zu behalten, bietet Portage Ihnen
+<path>/etc/make.conf</path>, eine Konfigurationsdatei für Portage. Diese Datei
+werden wir nun bearbeiten.
 </p>
 
 <p>
-Starten Sie Ihren Lieblingseditor (in diesem Leitfaden nutzen wir <c>nano</c>) um
-die im Folgenden vorgestellten Optimierungsvariablen zu ändern.
+Starten Sie Ihren Lieblingseditor (in diesem Leitfaden nutzen wir <c>nano</c>)
+um die im Folgenden vorgestellten Optimierungsvariablen zu ändern.
 </p>
 
 <pre caption="Öffnen von /etc/make.conf">
@@ -264,10 +266,11 @@ die im Folgenden vorgestellten Optimierungsvariablen zu ändern.
 </pre>
 
 <p>
-Wie Sie sicher sofort bemerkt haben, schaut die Datei <path>make.conf</path> wie 
-eine typische Konfigurationsdatei aus: auskommentierte Zeilen beginnen mit einem
-"#", andere Zeilen definieren Variablen mittels einer <c>VARIABLE="content"</c>
-Syntax. Einige dieser Variablen werden nun vorgestellt. 
+Wie Sie sicher sofort bemerkt haben, schaut die Datei <path>make.conf</path>
+wie eine typische Konfigurationsdatei aus: auskommentierte Zeilen beginnen mit
+einem "#", andere Zeilen definieren Variablen mittels einer
+<c>VARIABLE="content"</c> Syntax. Einige dieser Variablen werden nun
+vorgestellt.
 </p>
 
 </body>
@@ -312,7 +315,7 @@ die Programme übersetzt. Zur Auswahl steht:
 </tr>
 <tr>
   <ti>x86</ti>
-  <ti>i686 oder höher (inkl. athlon)</ti>
+  <ti>i686 oder höher (inkl. Athlon)</ti>
   <ti>i686-pc-linux-gnu</ti>
 </tr>
 <tr>
@@ -356,10 +359,10 @@ die Programme übersetzt. Zur Auswahl steht:
 <p>
 
 Die <c>CFLAGS</c> und <c>CXXFLAGS</c> Variablen definieren die Optimierungen
-beispielsweise für den <c>gcc</c> C und C++ Kompiler. Obgleich wir diese hier nur
-allgemein definieren, erhalten Sie die maximale Leistung nur, wenn Sie die Flags
-für jedes Programm einzeln optimieren. Als Grund sei genannt: Jedes Programm 
-verhält sich anders.
+beispielsweise für den <c>gcc</c> C und C++ Kompiler. Obgleich wir diese hier
+nur allgemein definieren, erhalten Sie die maximale Leistung nur, wenn Sie die
+Flags für jedes Programm einzeln optimieren. Als Begründung sei genannt: Jedes
+Programm verhält sich anders.
 </p>
 
 <p>
@@ -381,7 +384,7 @@ lesen.
 </p>
 
 <p>
-Die erste Einstellung ist das <c>-march=</c> Flag, dieses spezifiziert den 
+Die erste Einstellung ist das <c>-march=</c> Flag, dieses spezifiziert den
 Namen der Zielarchitektur. Mögliche Optionen werden in <path>make.conf</path>
 (als Kommentare) beschrieben. Als Beispiel die Einstellung für eine x86 Athlon
 XP Architektur:
@@ -414,8 +417,8 @@ in einem Register gehalten).
 </p>
 
 <p>
-In <c>CFLAGS</c> und <c>CXXFLAGS</c> können Sie mehrere
-Optimierungsflags kombinieren, wie das folgende Beispiel zeigt:
+In <c>CFLAGS</c> und <c>CXXFLAGS</c> können Sie mehrere Optimierungsflags
+kombinieren, wie das folgende Beispiel zeigt:
 </p>
 
 <pre caption="Setzen der CFLAGS und CXXFLAGS Variablen">
@@ -440,10 +443,10 @@ anstelle von X11 Support (X-server) übersetzt werden.
 </p>
 
 <p>
-Die meisten Distributionen kompilieren ihre Pakete mit eingeschalteter 
-Unterstützung für alles was möglich ist. Dies vergrößert die Programme, 
+Die meisten Distributionen kompilieren ihre Pakete mit eingeschalteter
+Unterstützung für alles, was möglich ist. Dies vergrößert die Programme,
 verlängert die Startzeit und, nicht zu vergessen, erhöht die Abhängigkeiten.
-Mit Gentoo können Sie bestimmen, mit welchen Optionen ein Paket übersetzt 
+Mit Gentoo können Sie bestimmen, mit welchen Optionen ein Paket übersetzt
 werden soll. Hier kommen die <c>USE</c> Variable ins Spiel.
 </p>
 
@@ -464,8 +467,8 @@ Die Standardeinstellungen für <c>USE</c> sind in
 addiert. Wenn Sie der <c>USE</c> Einstellung etwas hinzufügen, werden die
 Standardvorgaben damit erweitert. Wenn Sie von der <c>USE</c> Einstellung
 etwas entfernen (mit einem Minuszeichen davor), so wird dies
-aus der Standardeinstellung entfernt (falls es überhaupt in dieser 
-vorhanden war). <e>Niemals</e> sollten Sie irgendwas in 
+aus der Standardeinstellung entfernt (falls es überhaupt in dieser
+vorhanden war). <e>Niemals</e> sollten Sie irgendwas in
 <path>/etc/make.profile</path> modifizieren; dies wird beim nächsten Portage
 Update überschrieben!
 </p>
@@ -492,7 +495,7 @@ USE="-gtk -gnome qt kde dvd alsa cdr"
 Ebuilds (das Paketformat von Gentoo) sind in drei Zweigen angesiedelt.
 Der erste wird <e>ARCH</e> genannt, darin liegen ebuilds, wenn sie und ihre 
 abhängigen Pakete als stabil und allgemein benutzbar betrachtet werden können.
-Die meisten Benutzer benutzen diese ebuilds. Falls Ihr System Pakete aus 
+Die meisten Benutzer benutzen diese Ebuilds. Falls Ihr System Pakete aus 
 <e>ARCH</e> benutzen soll, setzen Sie <c>ACCEPT_KEYWORDS</c> auf Ihre Architektur 
 (sei es <c>x86</c>, <c>alpha</c>, <c>ppc</c>, <c>sparc</c> oder <c>hppa</c>):
 </p>
@@ -514,7 +517,7 @@ Manche Architekturen durchlaufen nichtmals den Bootstrap erfolgreich, wenn
 Sie <e>~ARCH</e> benutzen (erwähnt sei SPARC).
 </p>
 
-<pre caption="ACCEPT_KEYWORDS für eine x86 Architektur mit ~ARCH Paketen">
+<pre caption="ACCEPT_KEYWORDS für eine x86 Architektur mit ~ARCH Ebuilds">
 ACCEPT_KEYWORDS="~x86"
 </pre>
 
@@ -528,7 +531,7 @@ große dicke Warnhinweis:
 <warn>
 Bearbeiten von <path>package.mask</path> ist schlecht für Ihr System, Ihre
 Gesundheit, und Ihr Humor wird auch darunter leiden! Ändern Sie diese Datei
-<e>nicht</e>, außer Sie lieben es Gentoo wieder neu zu installieren... 
+<e>nicht</e>, außer Sie lieben es Gentoo neu zu installieren...
 und neu zu installieren... und neu zu installieren...
 </warn>
 
@@ -539,9 +542,9 @@ und neu zu installieren... und neu zu installieren...
 <body>
 
 <p>
-Mit <c>MAKEOPTS</c> können Sie festlegen wie viele Kompilerprozesse parallel
+Mit <c>MAKEOPTS</c> können Sie festlegen, wieviele Kompilerprozesse parallel
 gestartet werden, wenn Sie ein Paket installieren. Die empfohlene Anzahl 
-spricht der Anzahl der CPUs in Ihrem System erhöht um Eins.
+entspricht der Anzahl der CPUs in Ihrem System erhöht um Eins.
 </p>
 
 <pre caption="MAKEOPTS eines gewöhnlichen 1-CPU Systems">
