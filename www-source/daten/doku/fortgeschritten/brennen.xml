@@ -7,9 +7,9 @@
 </author>
 
  
-<abstract>Eine Kurzübersicht zur Einrichtung von CD Brennern unter Gentoo Linux.</abstract> 
+<abstract>Eine Kurzübersicht zur Einrichtung von ATAPI IDE Brennern unter Gentoo Linux. Dieses Dokument ist noch nicht vollständig.</abstract> 
  
-<version>1.0</version> 
+<version>1.1</version> 
 <date>20. Oktober 2003</date> 
  
 <chapter> 
@@ -61,16 +61,17 @@ Brennen zu erhalten, dürfen Leser und Brenner nicht an dasselbe IDE Kabel anges
 	<title>Kernel-Optionen</title> 
 <body>
 <p> 
-Für Benutzer der 2.4. Kernel Reihe empfiehlt sich aus oben genannten Gründen die IDE-SCSI emulation. Aber
+Für Benutzer der 2.4. Kernel Reihe empfiehlt sich aus oben genannten Gründen die IDE-SCSI Emulation. Aber
 auch für die 2.6. Serie ist die Emulation keine schlechte Idee, da man so unter der CD-Brennsoftware die
 größte Auswahl hat. Wenn man aber sicher ist, dass die Software ATAPI Unterstützung anbietet, kann dieser
-Punkt übersprungen werden. Zurück zum 2.4. Kernel. Zur Benutzung der IDE-SCSI emulation
+Punkt übersprungen werden. Zurück zum 2.4. Kernel. Zur Benutzung der IDE-SCSI Emulation
 muss eventuell der Kernel mit den entsprechenden Optionen neu kompiliert werden, falls nicht bereits erfolgt.
 Sollten Sie bisher noch keinen Kernel neu kompiliert haben, sollten Sie in Abschnitt 16.3. der
-[uri link="http://www.gentoo.de/inhalte/doku/einrichtung/installation14/#header_16"Installationsanleitung[/uri]
-nachschlagen, wie ein Kernel manuell erstellt wird. Folgende Optionen werden benötigt:
+<uri link="http://www.gentoo.de/inhalte/doku/einrichtung/installation14/#header_16">Installationsanleitung</uri>
+nachschlagen, wie ein Kernel manuell erstellt wird. Als root führt man in <i>/usr/src/linux</i> ein <i>make
+menuconfig</i> aus. Folgende Optionen werden benötigt:
 </p>
-<pre> 
+<pre caption="Kernel Konfiguration"> 
 ATA/IDE/MFM/RLL support -&gt; IDE, ATA, and ATAPI Block Devices -&gt; &lt;*&gt; SCSI Emulation Support
 SCSI support -&gt; &lt;M&gt; SCSI support
 SCSI support -&gt; &lt;M&gt; SCSI CDROM support
@@ -84,37 +85,37 @@ die Möglichkeit, sie wieder zu entladen und danach in der richtigen Reihenfolge
 Kernel mit <i>make dep &amp;&amp; make clean bzImage modules modules_install</i>neu kompiliert werden und nach dem Mounten
 der /boot Partition hinüberkopiert werden.
 </p>
-<p>Nun muss der Bootloader entsprechend angepasst werden In GRUB editiert man dazu <i>/boot/grub/menu.lst</i> und
+<p>Nun muss der Bootloader entsprechend angepasst werden. In GRUB editiert man dazu <i>/boot/grub/menu.lst</i> und
 fügt die Zeile <i>hdX=ide-scsi</i> hinzu. Dabei sollte X durch die entsprechende Bezeichnung des CD-Brenners
 ersetzt werden. Ist z.B. der Brenner das Master-Gerät am IDE Bus 1, so lautet die Bezeichnung korrekt <i>hdc=ide-scsi</i>. Hier ein Beispiel für GRUB:
-<pre>
+<pre caption="/boot/grub/menu.lst">
 title Gentoo 2.4.22
 root (hd0,0)
 kernel (hd0,0)/bzImage-2422 root=/dev/hda3 hdb=ide-scsi
 </pre>
 Hier ist die Konfiguration für einen Brenner als Slave Gerät am IDE Bus 0. Benutzer von LILO fügen den
 Befehl mittels der <i>append</i> Zeile hinzu:
-<pre># Linux bootable partition config begins
+<pre caption="/etc/lilo.conf"># Linux bootable partition config begins
         image = /boot/bzImage-2422
-        append= "hda=ide-scsi"
+        append= "hdb=ide-scsi"
         root = /dev/hdc3
         label = Gentoo
         read-only # read-only for checking
 </pre>
-Hier ist der Brenner Master am Bus 0. Abspeichern der Änderungen nicht vergessen.</p>
+Hier ist der Brenner Master am Bus 0. Das Abspeichern der Änderungen nicht vergessen.</p>
 </body>
 </section>
 <section> 
 	<title>Konfigurationsdateien</title> 
 <body>
 <p>Um den Brenner wirklich sauber einzurichten, müssen noch einige Konfigurationsdateien geändert werden. Zum
-Beispiel sollte dem IDE-CDROM Treiber mitgeteilt werden, dass er den Brenner ignorieren darf. In <i>etc/modules.d/scsi</i> tragen wir folgende Zeilen ein:
-<pre>
+Beispiel sollte dem IDE-CDROM Treiber mitgeteilt werden, dass er den Brenner ignorieren darf. In <i>/etc/modules.d/scsi</i> tragen wir folgende Zeilen ein:
+<pre caption="/etc/modules.d/scsi">
 options ide-cd ignore='hdX'
 alias scsi_hostadapter ide-scsi
 </pre>
 Natürlich sollte das X wieder durch die korrekte Bezeichnung des Brenners ersetzt werden, also z.B. hda, hdc ...
-Sollte die Datei /etc/modules.d/scsi nicht existieren, so kann sie ruhig neu angelegt werden. Damit unsere
+Sollte die Datei <i>/etc/modules.d/scsi</i> nicht existieren, so kann sie ruhig neu angelegt werden. Damit unsere
 Änderungen auch in <i>/etc/modules.conf</i> übernommen werden, führen wir an der Kommandozeile ein
 <i>modules-update</i> aus.</p>
 <p>Als nächstes ist <i>/etc/devfsd.conf</i> dran. Hier sollte sichergestellt werden, dass das entsprechende
@@ -123,7 +124,7 @@ entsprechenden Eintrag angelegt, der nur noch auskommentiert werden muss. Die Be
 das erste CDROM des simulierten SCSI Bus. Sollte natürlich noch ein anderes CDROM am Bus hängen und der 
 Brenner erst an zweiter Stelle stehen, muss sr0 entsprechend geändert werden, z.B. sr1 für das zweite CDROM
 am SCSI Bus:</p> 
-<p><pre>
+<p><pre caption="/etc/devfsd.conf">
 # Create /dev/cdrw for the first cdrom on the scsi bus
 # (change 'sr0' to suite your setup)
 LOOKUP      ^cdrw$           CFUNCTION GLOBAL mksymlink sr0 cdrw
@@ -131,8 +132,8 @@ REGISTER    ^sr0$           CFUNCTION GLOBAL mksymlink $devname cdrw
 UNREGISTER  ^sr0$           CFUNCTION GLOBAL unlink cdrw
 </pre></p>
 <p>Als letzte Datei editieren wir <i>/etc/modules.autoload</i>. Da sr_mod beim Start schon automatisch
-geladen wird, genügt es, nur das Modul sg hinzuzufügen:
-<pre>
+geladen wird, genügt es, nur das Modul <i>sg</i> hinzuzufügen:
+<pre caption="/etc/modules.autoload">
 # /etc/modules.autoload:  kernel modules to load when system boots.
 #
 # Add the names of modules that you'd like to load when the system
@@ -149,7 +150,8 @@ sg
 	<title>Kontrolle beim Start</title> 
 <body>
 <p>Falls man den Kernel neu kompiliert hat kommt man um einen Neustart nicht herum. Beim Starten sollte man
-auf folgende Meldungen achten. Als Beispiel hier meine Meldungen mit einem ASUS CD-Writer an /dev/hdc:
+auf einige wichtige Meldungen bezüglich SCSI und dem Laufwerk achten. Als Beispiel hier meine Meldungen mit 
+einem ASUS CD-Writer, der an /dev/hdc angeschlossen ist:
 <pre>
 hdc: ASUS CRW-2410A, ATAPI CD/DVD-ROM drive
 ide-cd: passing drive hdc to ide-scsi emulation.
@@ -181,21 +183,24 @@ In diesem Fall wurde der Brenner erfolgreich vom IDE-CDROM Treiber ignoriert und
 	<title>cdrecord</title> 
 <body>
 <p> 
-Jörg Schillings fantastisches Programm <uri link="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html">cdrecord</uri> wird von fast allen grafischen Frontends under KDE und GNOME
+Jörg Schillings fantastisches Programm <uri link="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html">cdrecord</uri> 
+wird von fast allen grafischen Frontends unter KDE und GNOME
 verwendet. Natürlich ist es als Bestandteil des cdrtools Paketes in Portage zu haben:
-<pre>
+</p><pre>
 # emerge -p cdrtools
 
 These are the packages that I would merge, in order:
  
 Calculating dependencies ...done!
-[ebuild   N  ] app-cdr/cdrtools-2.01_alpha14 
-</pre>
+[ebuild   N  ] app-cdr/cdrtools-2.01_alpha14
+
+# emerge cdrtools 
+</pre><p>
 Nachdem das Programm und eventuell auch noch seine Abhängigkeiten von Portage kompiliert
 und installiert wurde, überprüfen wir gleich, ob unser Brenner korrekt erkannt wird. Für
-Benutzer eines SCSI CD-ROMs oder 2.4. Kernel Nutzer, die die IDE-SCSI emulation wie
+Benutzer eines SCSI CD-ROMs oder 2.4. Kernel Nutzer, die die IDE-SCSI Emulation wie
 oben beschrieben durchgeführt haben, geht dies mit <i>cdrecord -scanbus</i>.
-<pre> 
+</p><pre> 
 # cdrecord -scanbus
 Cdrecord-Clone 2.01a18 (i686-pc-linux-gnu) Copyright (C) 1995-2003 Jörg Schilling
 Linux sg driver version: 3.1.25
@@ -209,10 +214,10 @@ scsibus0:
         0,5,0     5) *
         0,6,0     6) *
         0,7,0     7) *
-</pre>
+</pre><p>
 Mit einer ähnlichen Ausgabe wie oben, ist Ihr Brenner erkannt worden und bereit für das Brennen.
-Benutzer des 2.4. Kernels, die statt der IDE-SCSI emulation direkt auf das CDROM Packet Interface
-zugreifen wollen, müssen den Bus direkt angeben mittels <i>cdrecord -dev=ATAPI -scanbus</i>. 
+Benutzer des 2.4. Kernels, die statt der IDE-SCSI Emulation direkt auf das CDROM Packet Interface
+zugreifen wollen, müssen den Bus explizit angeben mittels <i>cdrecord -dev=ATAPI -scanbus</i>. 
 Benutzer der 2.6. Kernel Serie können das Gerät direkt mit <i>cdrecord -dev=/dev/hdc</i> ansprechen. 
 </p>
 <p>Nun sollte man das CD-Brogramm seiner Wahl installieren. Für KDE-User empfiehlt sich k3b, welches
