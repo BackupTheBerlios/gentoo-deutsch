@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mailbox/vdrplugin-mailbox-0.1.0.ebuild,v 1.1 2003/12/07 16:26:19 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-mailbox/vdrplugin-mailbox-0.1.0.ebuild,v 1.2 2003/12/09 19:57:53 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="mailbox"
@@ -14,11 +14,10 @@ SLOT="0"
 LICENSE="GPL-2"
 
 DEPEND=">=media-video/vdr-1.2.6
-	net-libs/c-client"
+	>=net-libs/c-client-2002e-r1"
 
 src_unpack() {
 	unpack ${A}
-	cp ${FILESDIR}/linkage.c ${S}/AxMail/src/
 }
 
 src_compile() {
@@ -26,7 +25,7 @@ src_compile() {
 	sed -i "s/^DVBDIR.*$/DVBDIR = \/usr/" Makefile
 	sed -i "s/^VDRDIR.*$/VDRDIR = \/usr\/include\/vdr/" Makefile
 	sed -i "s/^LIBDIR.*$/LIBDIR = \/usr\/lib/" Makefile
-	#sed -i "s/@install.*$//" Makefile
+	sed -i "s/@install.*$//" Makefile
 	sed -i "/@install.*$/d" Makefile
 	make all || die "compile problem"
 }
