@@ -224,7 +224,7 @@ usb.c: registered new driver usbdnet
 
 <p>
 Nun richten wir das Netzwerk auf dem Zaurus ein. USB-Netzwerk ähnelt PPP, da beide 
-geräte auf jder Seite eine IP Adresse erhalten. Die IP-Adresse des Zaurus kann über
+Geräte auf jeder Seite eine IP Adresse erhalten. Die IP-Adresse des Zaurus kann über
 das "Network Setup Tool" gesetzt werden. Standardmäßig ist dies 192.168.129.201.
 Sollten Sie diese Einstellung geändert haben, müssen Sie natürlich die entsprechende
 IP Adresse angeben, wenn Sie den Zaurus wie in unserem Beispiel anpingen.
@@ -258,12 +258,12 @@ Webseite befolgen.
 
 </body>
 </section>
-	
-    <section>
-	<title>Verschiedenes</title>
-      <body>
+<section>
+<title>Verschiedenes</title>
+<body>
+
 <p>
-bevor Sie ein Programm zur Verwendung mit ihrem PDA kompilieren, sollten Sie die 
+Bevor Sie ein Programm zur Verwendung mit ihrem PDA kompilieren, sollten Sie die 
 <e>pda</e> USE Variable zu <path>/etc/make.conf</path> hinzufügen. Damit
 stellen Sie sicher, dass alle Programme mit der entsprechenden PDA Unterstützung
 (falls vorhanden) kompiliert werden.
@@ -325,7 +325,7 @@ für pilot-link geschrieben. Installieren Sie es wie folgt:
 </pre>
 
 <p>
-nach dem Laden aller notwendigen Module können Sie den
+Nach dem Laden aller notwendigen Module können Sie den
 Sync Knopf des Cradles drücken und starten nach einer
 kurzen Pause Coldsync mit folgendem Kommando:
 </p>
