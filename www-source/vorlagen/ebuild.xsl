@@ -2,7 +2,7 @@
 
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output method="xml" encoding="utf-8" indent="no"/>
+<xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
 <xsl:param name="listname" select="'gentoo_de'"/>
 
@@ -16,7 +16,7 @@
       <xsl:variable name="baselink">
         <xsl:choose>
 	<xsl:when test="$listname = 'gentoo_org'">
-	  <xsl:text>http://cvs.gentoo.org/cgi-bin/viewcvs.cgi/gentoo-x86</xsl:text>
+	  <xsl:text>http://www.gentoo.org/cgi-bin/viewcvs.cgi/gentoo-x86/</xsl:text>
 	</xsl:when>
 	<xsl:when test="$listname = 'gentoo_de'">
 	  <xsl:text>http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/ebuilds</xsl:text>
@@ -59,7 +59,7 @@
                   </div>
                 </td>
                 <td style="max-width:150px; width:30%; border-bottom: 1px dotted #45347B; background-color:#F2F0F9;">
-                  <b>Letzte Änderung:</b>
+                  <b>Letzte Ã„nderung:</b>
                   <br/>
                   <xsl:for-each select="../pkg[name = $pname]">
                     <xsl:sort select="date/@year"/>
