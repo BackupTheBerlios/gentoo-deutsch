@@ -28,10 +28,10 @@
 <font class="chapnum"><a name="doc_chap1">1.</a></font>Portage: Ein Überblick</p>
 <p class="secthead"><a name="_sect1">Überblick </a></p>
 	<p>
-        Portage ist ein sehr starkes und fortgeschrittenes Paketmanagement System.
+        Portage ist ein sehr mächtiges und fortgeschrittenes Paket-Management-System.
         Seine Flexibilität und Fähigkeit als einfaches Werkzeug zum Kompilieren
         von Software oder als Herzstück einer brandaktuellen Linux Distribution 
-        zu dienen ist beinahe einzigartig. Die Gentoo Linux Distribution wurde um 
+        zu dienen ist nahezu einzigartig. Die Gentoo Linux Distribution wurde um 
         Portage entwickelt.
 	</p>
 	<p>
@@ -45,15 +45,16 @@
         und der darauf laufenden Anwendungen darstellen.
 	</p>
 	<p>
-        Ein Gentoo Linux wird &quot;on-the-fly&quot; kompiliert, d.h. direkt auf dem entsprechenden 
+        Ein Gentoo Linux wird &quot;on-the-fly&quot; kompiliert, d.h. direkt auf den entsprechenden 
         Rechner angepasst und erstellt. Der Installationsprozess umfasst das Erstellen eines 
-        funktionierenden Compilers sowie einer minimalen Umgebung, in der Portage Sourcecode
+        funktionierenden Compilers sowie einer minimalen Umgebung, in der Portage Quelltexte
         aus dem Internet laden kann, um den Rest des &quot;Systemkerns&quot; und etwaige Anwendungen zu
         installieren. Auch wenn Portage die Benutzung von vorkompilierten Anwendungen 
         unterstützt, stellt diese nur einen Kompromiss dar und wird nur zur Installation 
-        auf langsamen Maschinen, bzw. von Entwicklern die schnell ein bestimmtes Paket 
-        wiederherstellen wollen oder von Benutzern, die Pakete auf einer schnellen Maschine 
-        kompilieren um sie dann auf einem langsamen Rechner zu installieren, verwendet.
+        auf langsamen Maschinen bzw. von Entwicklern die schnell ein bestimmtes Paket 
+        wiederherstellen wollen verwendet. Desweiteren gibt es einem die Møglichkeit, 
+        Pakete auf einer schnellen Maschine 
+        zu kompilieren um sie dann auf einem langsamen Rechner zu installieren.
 	</p>
 	<p>
         Durch das Kompilieren &quot;on-the-fly&quot; und der Tatsache, dass Portage stark konfigurierbar 
@@ -119,7 +120,7 @@
         oftmals beide Versionen nötig, um die Abhängigkeiten verschiedener Pakete zu erfüllen. 
         Die meisten Distributionen und Ports Systeme tendieren dazu, ein &quot;freetype&quot; Paket für 
         Freetype 1.x und ein &quot;freetype2&quot; Paket für Freetype 2.x zu führen. Dies betrachten wir 
-        als beinahe komplett beschädigtes Paketmanagemant System. Wir ergänzen einfach die 
+        als beinahe komplett beschädigtes Paketmanagement System. Wir ergänzen einfach die 
         <font class="input">SLOT</font> Nummer 1 zur ersten und Nummer 2 zur zweiten Version. Mit dieser 
         Information ist Portage in der Lage beide Reihen zu pflegen und, falls nötig, beide auf 
         höhere Versionen upzudaten.
@@ -130,12 +131,12 @@
         Portage unterstützt ein weiteres Konzept, sogenannte <font class="input">Profile</font>. Ein Profil enthält 
         eine Liste von Paketnamen und Versionen mit Anweisungen und einigen Standardoptionen, 
         welche von Portage benutzt werden sollen. Ein Profil enthält Informationen welche Pakete 
-        und welche Versionen jeweils erlaubt bzw. verboten oder als zwingend behandelt werden 
+        und welche Versionen jeweils erlaubt bzw. verboten oder als zwingend notwendig behandelt werden 
         sollen. Der Benutzer kann zwischen verschiedenen Profilen wechseln in dem er einfach 
         einen Symlink ändert (<font class="input">/etc/make.profile</font>).
 	</p>
 	<p>
-        Der gesamte Aufwand, welcher bei der Entwicklung von Gentoo Linux betrieben wurde 
+        Der gesamte Aufwand, welcher bei der Entwicklung von Gentoo Linux betrieben wurde, 
         resultiert in einer Sammlung von <font class="input">ebuilds</font> und einem Profil. Dieses Profil 
         beschreibt welche Pakete als Kernpakete für den Betrieb des Systems wichtig sind.
         Das Profil erlaubt darüber hinaus den Entwicklern bestimmte Pakete zu blockieren bzw.
@@ -187,8 +188,8 @@
 	Dies erlaubt eine Administrierbarkeit, wie die Pakete in Verbindung
 	mit den angegebenen Features in der USE-Variable, kompiliert werden.
 	Zum Beispiel, wenn ein Paket GNOME Support hat, können Sie diesen
-	Support abschalten, indem Sie in der USE-Variable <font class="input">-gnome</font> an-
-	geben. Wenn Sie jedoch den Support für die Software, die GNOME
+	Support abschalten, indem Sie in der USE-Variable <font class="input">-gnome</font> angeben. 
+        Wenn Sie jedoch den Support für die Software, die GNOME
 	unterstützt, aktivieren wollen, dann setzen Sie in der USE-Variable
 	ein <font class="input">gnome</font> ein.
 	</p>
@@ -253,10 +254,10 @@
 	(/etc/make.profile/use.defaults) definiert. Jeder Eintrag beinhaltet
 	eine USE Feature Bezeichnung und das dazugehörende Paket.
 	Wenn jenes Paket als USE Feature angegeben wurde, was bereits installiert
-	ist, wird es als eingeschaltet betrachtet. Zum Beispiel Sie installierten
-	das Paket <font class="input">x11-base/xfree</font> und haben nicht explizit das USE Feature
-	X abgeschaltet, dann wird es global eingeschaltet, solange das Paket
-	installiert ist. Es ist nicht zu empfehlen, diese Datei zu bearbeiten
+	ist, wird es als eingeschaltet betrachtet. 
+        Wenn Sie zum Beispiel das Paket <font class="input">x11-base/xfree</font> installieren und die USE-Option <font class="input">X</font>
+        nicht abschalten, so wird diese solange global eingeschaltet, wie das Paket installiert ist.
+        Es ist nicht zu empfehlen, diese Datei zu bearbeiten
 	aufgrund von zukünftigen Profiländerungen, die diese überschreiben
 	würden.</p>
 
@@ -282,9 +283,9 @@ USE=&quot;slang readline gpm berkdb gdbm tcpd pam libwww ssl gb tk
 
 	<p>
 	USE Features werden eingeschaltet, indem Sie einfach in der USE-Variable
-	angegeben werden. USE Features können jedoch auch mittels einem davorsetzen 
-        eines <font class="input">-</font> Zeichens deaktiviert werden. Zum Beispiel, <font class="input">gnome</font>
-	schaltet GNOME Support ein während <font class="input">-motif</font> den MOTIF Support
+	angegeben werden. USE Features können jedoch auch mittels 
+        Negation durch ein <font class="input">-</font> (Minus) vor dem Feature-Namen deaktiviert werden.
+        Zum Beispiel schaltet <font class="input">gnome</font> GNOME Support ein, während <font class="input">-motif</font> den MOTIF Support
 	abschaltet.
 	</p>
 	<p>
@@ -313,15 +314,14 @@ emerge net-im/gaim
 	Pakete ohne oder mit einem/mehrere USE Feature/s kompilieren kann.
 	Diese von Ihnen per Hand überschriebenen USE Features bleiben
 	bestehen, solange Sie in jener Shell Umgebung damit arbeiten.
-	Verlassen Sie Ihre Umgebung (&quot;exit&quot;), ist auch das USE Feature weg,
-	was Sie von Hand gesetzt haben. 
+	Verlassen Sie Ihre Umgebung (&quot;exit&quot;), ist auch das von Hand gesetzte USE Feature weg.
 	</p>
 	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
         Auch wenn Portage die aktuellen USE Einstellungen zum Zeitpunkt der 
         Installation des Pakets speichert, so sind diese Einstellungen nicht 
         dauerhaft gespeichert. Sollte dieses Paket in der Zukunft erneut installiert 
-        bzw. upgedated werden, wird nur die aktuell im System definierte USE Einstellung 
+        bzw. aktualisiert werden, wird nur die aktuell im System definierte USE Einstellung 
         angewendet und keinesfalls die zum Zeitpunkt der Erstinstallation geltende.</p></td></tr></table>
 
   <p class="secthead"><a name="_sect4">Compiler Optionen </a></p>
@@ -400,7 +400,7 @@ CONFIG_PROTECT_MASK=&quot;/etc/gconf /etc/init.d /etc/pam.d&quot;
 
 	<p>
         Benutzer können mehr Informationen über den Schutz von Konfigurations 
-        Dateien erfahren, indem sie folgendes in ihrer Shell eingeben:
+        Dateien erhalten, indem sie folgendes in ihrer Shell eingeben:
 	</p>
 
 <a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -439,19 +439,19 @@ emerge --help config
 	</ul>
 	</p>
 <p class="secthead"><a name="_sect8">Portage SYNC Einstellungen </a></p>
-	<p>Portage hat die Möglichkeit, den Portage Tree zu erneuern mit
-	zwei verschiedenen Methoden: rsync oder anonymous CVS. Sie können
-	angeben, welche Methode Portage benützen soll, um das update
+	<p>Portage bietet zwei verschiedenen Arten, den Portage Tree zu erneuern: 
+        rsync oder anonymous CVS. Sie können
+	angeben, welche Methode Portage benutzen soll, um das update
 	durchzuführen. Jene Methode können Sie über die <font class="input">SYNC</font>
 	Option, die sich in der Datei /etc/make.conf befindet, angeben.
 	</p>
 
 	<p><b>RSYNC</b></p>
 
-	<p>Es ist empfohlen, die rsync Methode zu benutzen, es sei denn Sie
-	planen, Ihre eigenen Ebuilds zu entwickeln. Das würde die Last unserer
-	Server deutlich reduzieren als wenn Sie anonymous CVS verwenden würden.
-	In jenem Fall, rsync ist die standard Methode, welche in /etc/make.conf
+	<p>Es wird empfohlen, die rsync-Methode zu benutzen, es sei denn Sie
+	planen, Ihre eigenen Ebuilds zu entwickeln. Diese entlastet unsere
+	Server deutlich - im Gegensatz zu Anonymous CVS.
+	Deshalb ist rsync die Standardmethode, welche in /etc/make.conf
 	angegeben wurde.
 	Sie können sie folgendermaßen angeben:
 	</p>
@@ -466,7 +466,7 @@ SYNC=&quot;rsync://cvs.gentoo.org/gentoo-x86-portage&quot;
 
 	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
-        Die Rsync Methode überschreibt blind alle Veränderungen, die an Ihrem 
+        Die rsync-Methode überschreibt blind alle Veränderungen, die an Ihrem 
         lokalen Portage Tree vorgenommen wurden. Falls Sie lokale Änderungen 
         behalten möchten, müssen Sie die Anonymous CVS Methode wählen.
         </p></td></tr></table>
@@ -474,7 +474,7 @@ SYNC=&quot;rsync://cvs.gentoo.org/gentoo-x86-portage&quot;
 	<p><b>Anonymous CVS</b></p>
 
 	<p>
-        Portage kann den lokalen Portage Tree mit einem bestimmen anonymen CVS 
+        Portage kann den lokalen Portage Tree mit einem bestimmten anonymen CVS 
         Server abgleichen. Dies ist besonders für Entwickler sinnvoll, die verhindern 
         wollen, dass Ihre Veränderungen am Portage Tree beim Abgleichen überschrieben 
         werden. Diese Methode kann folgendermaßen aktiviert werden:
@@ -489,16 +489,15 @@ SYNC=&quot;cvs://:pserver:anonymous@gentoo.org:/home/anoncvs&quot;
 </table>
 
 	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>Anonymous CVS ist langsam und sehr Ressourcenintensiv für
+<b>Anmerkung: </b>Anonymous CVS ist langsam und sehr ressourcenintensiv - sowohl für
 	den Server als auch für den Client (lokal). Wir möchten
 	Sie darum bitten, das Sie die rsync Methode verwenden, wenn Sie keine
-	änderungen im lokalen Portage Tree vornehmen wollen.
+	Änderungen im lokalen Portage Tree vornehmen wollen.
 	</p></td></tr></table>
 
 	<p>Bevor Sie beginnen Anonymous CVS zu benutzen, um Ihre lokale
-	Kopie mit jenem offiziellen Portage Tree zu synchronisieren, müssen
-	Sie zuerst den neuesten	Tree mittels des
-	cvs tools mit folgender Vorgangsweise herunterladen (&quot;checkout&quot;):
+	Kopie mit einem offiziellen Portage Tree zu synchronisieren, müssen
+	Sie zuerst den neuesten	Tree mittels <font class="code">cvs</font> durch folgende Vorgehensweise herunterladen (&quot;checkout&quot;):
 	</p>
 <a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -521,13 +520,13 @@ mv gentoo-x86 portage
 	<p><b>Entwickler CVS</b></p>
 
 	<p>
-        Entwickler mit vollem Zugang zum CVS können auch <font class="input">emerge</font> den lokalen
+        Entwickler mit vollem Zugang zum CVS können auch per <font class="input">emerge</font> den lokalen
         Tree mit dem CVS abgleichen lassen, welches sie mittels RSH oder SSH erreichen
         können.
 	</p>
 	<p>
 	Laden Sie einfach den CVS Tree mittels Ihres Accounts herunter (&quot;checkout&quot;),
-        verschieben Sie jenen nach /usr/portage und benutzen
+        verschieben Sie diesen nach /usr/portage und benutzen
 	Sie folgende <font class="input">SYNC</font> Option:
 	</p>
 
@@ -549,19 +548,19 @@ SYNC=&quot;cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot&quot;
 	wenn neue Releases gemacht wurden. Um das Leben von Benutzer, die
 	die Gentoo Distribution nutzen, zu erleichtern, spiegeln wir diese
 	Dateien. Das erlaubt ein schnelleres und sicheres Herunterladen
-	der Archivdateien von Spiegelungsservern, die näher an Ihrem
+	der Archivdateien von Spiegel-Servern, die näher an Ihrem
 	Standort liegen.
 	</p>
 	<p>
 	Wann auch immer Sie vorhaben, ein Paket herunterzuladen, indem Sie es
-	&quot;mergen&quot;, versucht Portage zu aller erst unseren Spiegelungsserver
-	für die angeforderten Archive zu erreichen . Wenn sich auf jenem
+	&quot;mergen&quot;, versucht Portage zu allererst unseren Spiegel-Server
+	für die angeforderten Archive zu erreichen . Wenn sich auf diesem
 	Server die benötigten Dateien nicht befinden, versucht Portage
-	den jeweiligen HTTP oder FTP Server, der im Ebuild Paket
+	den jeweiligen HTTP- oder FTP-Server, der im Ebuild Paket
 	angegeben ist.
 	</p>
 	<p>
-	Die Angabe des Spiegelungsserver, welchen Portage benutzt, erfolgt
+	Die Angabe des Spiegel-Server, welchen Portage benutzt, erfolgt
 	in der <font class="input">GENTOO_MIRRORS</font> Option, die sich in der Datei /etc/make.conf
 	befindet.
 
@@ -574,7 +573,7 @@ SYNC=&quot;cvs://Ihr_account@cvs.gentoo.org:/home/cvsroot&quot;
 GENTOO_MIRRORS=&quot;http://www.ibiblio.org/gentoo&quot;
 </pre></td></tr>
 </table>
-	<p>Für einen Gentoo Spiegelungsserver in Ihrer Nähe,
+	<p>Für einen Gentoo-Spiegel-Server in Ihrer Nähe,
 	besuchen Sie die Gentoo Webseite oder fragen Sie in Ihrer Mailinglist
 	nach einem für Sie günstigeren Server.
 	</p>
@@ -583,7 +582,7 @@ GENTOO_MIRRORS=&quot;http://www.ibiblio.org/gentoo&quot;
         Das Programm, welches von Portage zum Download der benötigten Dateien 
         genutzt wird, kann durch die Optionen <font class="input">FETCHCOMMAND</font> und 
 	<font class="input">RESUMECOMMAND</font> angegeben werden. Einige Beispiele werden in 
-        /etc/make.conf und /etc/make.globals gezeigt. Als Standard Toll verwendet 
+        /etc/make.conf und /etc/make.globals gezeigt. Als Standardprogramm verwendet 
         Portage wget, welches den meisten Anforderungen genügen sollte.
 	</p>
 
@@ -597,7 +596,7 @@ GENTOO_MIRRORS=&quot;http://www.ibiblio.org/gentoo&quot;
 	<p>
         Portage kann angewiesen werden, zum Download HTTP oder FTP Proxies zu nutzen 
         Die Proxies können bei den Optionen <font class="input">HTTP_PROXY</font> und <font class="input">FTP_PROXY</font> 
-        entweder in /etc/make.conf oder /etc/make.globals angegeben werden. Auch hier 
+        entweder in /etc/make.conf oder in /etc/make.globals angegeben werden. Auch hier 
         sollten die Einstellungen vorzugsweise in /etc/make.conf erfolgen. Wenn HTTP 
         und FTP über den gleichen Proxy erfolgen soll, können Sie auch einfach die 
         Option <font class="input">PROXY</font> nutzen.
@@ -658,7 +657,7 @@ RSYNC_PROXY=&quot;192.168.1.1:8080&quot;
 <p class="secthead"><a name="_sect1">Updaten des Portage Trees </a></p>
 	<p>
         Der Portage Tree, welcher in /usr/portage liegt, enthält die Bibliothek der 
-        &quot;Bauanleitungen&quot; für verschiedene Pakete (sogenannte <font class="input">ebuild</font>). Darüber 
+        &quot;Bauanleitungen&quot; für verschiedene Pakete (sogenannte <font class="input">ebuilds</font>). Darüber 
         hinaus enthält der Tree auch noch Informationen aus dem Profil und der Datei 
         package.mask, welche wichtig sind, um das System aktuell zu halten. Um 
         immer die aktuellsten Versionen und neuesten Bugfixes zu haben, ist es wichtig 
@@ -673,8 +672,8 @@ emerge rsync
 </pre></td></tr>
 </table>
 	<p>
-        Die Methode, welche von Portage genutzt wirds, kann geändert werden. Schauen Sie 
-        unter <font class="input">Portage SYNC Einstellungen</font> im <font class="input">Portage konfigurieren</font> Kapitel 
+        Die Methode, welche von Portage genutzt wird, kann geändert werden. Schauen Sie 
+        unter <font class="input">Portage SYNC Einstellungen</font> im Kapitel <font class="input">Portage konfigurieren</font> 
         nach, um weitere Informationen zu erhalten.
 	</p>
 <p class="secthead"><a name="_sect2">Pakete installieren (mergen) </a></p>
@@ -753,10 +752,12 @@ Calculating dependencies ...done!
 [ebuild  N   ] dev-util/kdevelop-2.0.2 to /
 </pre></td></tr>
 </table>
-	<p>Pakete, die mit einem <font class="input">N</font> gekennzeichnet sind, befinden
-	sich noch nicht installiert auf Ihrem Rechner, wobei durch diese
-	Aktion es installiert wird. Pakete, die mit einem <font class="input">U</font>
-	gekennzeichnet werden, befinden sich bereits installiert auf
+
+        <p>
+        Mit <font class="input">N</font> gekennzeichnete Pakete sind noch nicht auf ihrem Rechner installiert, 
+        würden aber durch die angegebene Aktion eingespielt werden.
+        Pakete, die mit einem <font class="input">U</font>
+	gekennzeichnet sind, befinden sich bereits installiert auf
 	Ihrem System (wobei es sich höchstwahrscheinlich um veraltete
 	Pakete handelt) und werden durch diese Aktion aktualisiert.
 	</p>
@@ -764,8 +765,8 @@ Calculating dependencies ...done!
 	Folgende Parameter sind ausserdem Verfügbar:
 	</p>
 	<p>
-	<font class="input">--fetchonly</font> : Ladet alle benötigten Dateien herunter, die
-	für das Kompilieren notwendig sind sowie alle Abhängigkeiten,
+	<font class="input">--fetchonly</font> : Läd alle benötigten Dateien herunter, die
+	für das Kompilieren notwendig sind, sowie alle Abhängigkeiten,
 	die dadurch entstehen.
 	</p>
 	<p>
@@ -896,15 +897,15 @@ emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
 	</p>
 	<p>Das Merkmal <font class="input">!mtime</font> sagt aus, dass die Datei geändert
         worden ist, nachdem das Paket installiert wurde. Das bedeutet, dass
-        Jemand diese Datei bearbeitet hat nach dem &quot;mergen&quot; des Paketes oder
-        andere Pakete es überschrieben haben zu einem späteren
-        Zeitpunkt. Dies erlaubt es, dass Pakete aktualisiert werden können, 
+        jemand nach dem &quot;mergen&quot; des Paketes diese Datei bearbeitet hat oder
+        zu einem späteren Zeitpunkt andere Pakete es überschrieben haben. 
+        Dies erlaubt es, dass Pakete aktualisiert werden können, 
         ohne die Gefahr, dass wichtige Dateien entfernt werden.
 	</p>
-	<p>Das Merkmal <font class="input">!empty</font> weist auf Verzeichnisse hin, welche
-        Portage verbietet, diese zu entfernen, die nicht leer sind
-        (Mehrere Pakete übernehmen oft den Besitz des selben
-        Verzeichnisses, welches das Paket, was &quot;unmerged&quot; wird, entweder
+	<p>Das Merkmal <font class="input">!empty</font> weist auf Verzeichnisse hin, welches
+        Portage verbietet, diese zu entfernen, da sie nicht leer sind
+        (Mehrere Pakete teilen sich oft das selbe
+        Verzeichniss, welches das Paket, was &quot;unmerged&quot; wird, entweder
         selbst angehört oder ebenfalls benutzt).
 
         Der Konfigurationsdatei Schutz-Mechanismus tritt dann ein, wenn
@@ -925,18 +926,12 @@ emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
         </p></td></tr></table>
 
 <p class="secthead"><a name="_sect4">System Update </a></p>
-	<p>Portage supports the ability to upgrade installed packages
-	automatically with a single command.  The system update feature
-	allows users to update the &quot;core&quot; packages to versions recommended
-	by Gentoo core developers as being important to the operation
-	of any Gentoo Linux system.  A system update does not update
-	nonessential packages, only those packages defined in the Portage
-	profile as being essential for the operation and maintaince of
-	a system.
-	</p>
-	<p>
-	To perform a system update issue the following command:
-	</p>
+<p>
+Portage unterstützt die Möglichkeit, alle installierten Pakete mit einem einzigen Befehl zu aktualisieren. Das System-Update-Feature ermöglicht es ihnen, die Kernpakete ihres Systems zu Versionen zu aktualisieren, die von den Gentoo-Entwicklern empfohlen werden und zum einwandfreien Betrieb von Gentoo Linux notwendig sind. Ein System-Update aktualisiert keine Pakete, die nicht als essenziell angesehen werden. Nur die Pakete, die im Portage Profil angegeben sind, werden als absolut wichtig für den Betrieb und die Aufrechterhaltung des Systems erachtet
+</p>
+<p>
+Um ein System-Update zu starten, geben sie den folgenden Befehl ein:
+</p>
 <a name="doc_pre18"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 18</p></td></tr>
@@ -944,39 +939,24 @@ emerge unmerge \&lt;=dev-utils/ltrace-0.3.15
 emerge --update system
 </pre></td></tr>
 </table>
-	<p>Portage will then compile and install updates depending on
-	what versions and packages you have installed and what is recommended
-	by the current Portage profile.  Users can use the <font class="input">--pretend</font>
-	argument with the above example to get a list of what would be
-	installed and upgraded during this action.
-	</p>
-	<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>You will notice in the install instructions that one of the
-	first steps is to run <font class="input">emerge system</font> to install the base
-	(or &quot;core&quot;) packages.  <font class="input">emerge --update system</font> updates
-	those base packages to the latest recommended versions.
-	</p></td></tr></table>
+<p>
+Portage wird nun, abhängig von den Versionen und Paketen, welche sie derzeit installiert haben, die Updates übersetzen und installieren, die vom aktuellen Portage-Profil empfohlen werden. Sie haben die Möglichkeit sich mit der Option <font class="input">--pretend</font> eine Liste mit den Paketen die installiert bzw. aktualisiert werden, ausgeben zu lassen, wenn das oben gezeigte Beispiel ausgeführt würde.
+</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Wie sie aus der Gentoo-Installationsanleitung erfahren können, ist einer der ersten Schritte der Befehl <font class="input">emerge system</font>, um das Grundsystem zu installieren. Mit <font class="input">emerge --update system</font> werden diese Basispakete auf den aktuellsten Stand gebracht.
+</p></td></tr></table>
 <p class="secthead"><a name="_sect5">World Update </a></p>
-	<p>Portage also supports the ability to automatically upgrade
-	selected non-essential packages with a single command.  The portage
-	system has a degree of intelligence built into it to allow for the 
-	safe upgrading of a system where multiple versions of conflicting 
-	packages may be available.</p>
-
-	<p>Portage's world update feature checks the system profile, the
-	list of blocked packages (<font class="input">package.mask</font>), the world profile and 
-	the dependencies (including version ranges) of packages listed 
-	in the world profile when determining which packages need upgrading.
-	A package is only upgraded if a newer version exists and the package
-	is listed in the world profile or is a dependency of a package in the 
-	world profile.  In addition the package or specific version of the 
-	package must not be blocked by the system profile or in 
-	<font class="input">package.mask</font>.
-	</p>
+<p>
+Portage unterstützt außerdem die Möglichkeit, alle nicht-essenziellen Pakete mit einem einzigen Befehl zu aktualisieren. Das Portage-System besitzt dafür einen gewissen Grad an &quot;Intelligenz&quot;, die es ermöglicht, ein System mit verschiedene Versionen von Paketen, die in Konflikt zueinander stehen, sicher zu aktualisieren .
+</p>
+<p>
+Das world-update-Feature von Portage überprüft das Systemprofil, die Liste der blockierten Pakete (<font class="input">package.mask</font>), das world-Profil und die Abhängigkeiten (inkl. Versionkontrolle) von Paketen die im world-Profil stehen. Dadurch findet es heraus, welche Pakete aktualisiert werden müssen. Ein Paket wird nur aktualisiert, wenn es eine neue Version gibt und das Paket im world-Profil aufgeführt wird oder ein anderes Paket, das im world-Profil steht von ihm abhängt. Selbstverständlich darf das Paket oder eine spezielle Version dessen nicht durch das Systemprofil oder die <font class="input">package.mask</font> blockiert sein.
+</p>
 
 	<p>When considering which packages to upgrade, Portage tries to 
 	upgrade all packages mentioned in the world profile to the newest
-	unblocked version available.  Portage also considers the dependencies
+	unblocked version available.Portage also considers the dependencies
 	of each package mentioned in the world profile and will try to
 	upgrade the dependency to a newer version if one is available, matches
 	the version ranges specified, and is not blocked by either the system
@@ -1253,6 +1233,8 @@ emerge --help
 <b><a class="altlink" href="mailto:sebastian@beneke-it.de">Sebastian Beneke</a></b>
 <br><i>Übersetzung</i><br><br>
 <b><a class="altlink" href="mailto:jazz_rabbit@berlios.de">Erwin Hengl</a></b>
+<br><i>Übersetzung</i><br><br>
+<b><a class="altlink" href="mailto:kontakt@hendrik-brandt.de">Hendrik Brandt</a></b>
 <br><i>Übersetzung</i><br><br>
 </td></tr>
 <tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
