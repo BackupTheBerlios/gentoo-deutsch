@@ -50,8 +50,6 @@ src_compile() {
 }
 
 src_install() {
-	insinto /etc/conf.d
-	doins ${FILESDIR}/vdr.${VDRPLUGIN}
 	insinto /usr/lib/vdr
 	insopts -m0755
 	newins libvdr-${VDRPLUGIN}.so libvdr-${VDRPLUGIN}.so.${PV}
