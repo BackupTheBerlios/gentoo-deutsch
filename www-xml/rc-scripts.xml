@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE guide SYSTEM "../dtd/guide.dtd">
+
+<guide link="/doc/rc-scripts.html">
+<title>Gentoo Linux 1.0 Init System</title>
+<author title="Autor"><mail link="azarah@gentoo.org">Martin Schlemmer</mail></author>
+<author title="Korrektur-Leser"><mail link="seemant@gentoo.org">Seemant Kulleen</mail></author>
+<author title="&#xDC;bersetzung"><mail link="egber@netzraum.com">Sebastian Egbers</mail></author>
+
+<abstract>Dieses ist eine Einf&#xFC;hrung in das Init-System von Gentoo Linux und erkl&#xE4;rt
+ebenfalls einige Details zum schreiben von rc-Skripten.</abstract>
+  
+<version>1.0.2-de</version>
+<date>4. Juli 2002</date>
+
+<chapter>
+<title>Einleitung</title>
+<section>
+<body>
+
+<p>Gentoo Linux benutzt ein Init-System das gr&#xF6;&#xDF;tenteils &#xFC;ber Abh&#xE4;ngigkeiten
+kontrolliert wird. Es sollte einfach zu warten und doch stark und flexibel genug sein f&#xFC;r
+jede Art von Konfiguration. Diesen Text sollte man nicht als eine Einleitung in die inneren
+Mechanismen verstehen, sondern vielmehr als eine einfach Anleitung um mit Gentoo's Init-System
+arbeiten zu k&#xF6;nnen. Leute die ernsthaft daran interessiert sind, die inneren Mechanismen
+zu verstehen .... lesen Sie den Quelltext ;-)
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Runlevel</title>
+<section>
+<body>
+
+<p>Im Gegensatz zu anderen initsystemen, bestehen Gentoo's runlevels nicht aus festen Namen oder
+Nummern, sonder vielmehr aus eigenen Namen, die auf die standard runlevel von init abgebildet
+werden.
+
+<note>Standardm&#xE4;&#xDF;ig gibt es drei runlevel, namentlich: <e>&quot;boot&quot;</e>,
+<e>&quot;default&quot;</e> und <e>&quot;nonetwork&quot;</e>.</note>
+</p>
+
+<p>Der &quot;boot&quot; runlevel sollte der standard Tyo f&#xFC;r die meisten Setups sein, und
+ist, wie der Name sagt, der erste runlevel der nach dem booten ausgef&#xFC;hrt wird. Als
+n&#xE4;chstes kommt <e>&quot;default&quot;</e>, welcher, wie der Name schon andeutet, der
+standard runlevel der nach dem booten gestartet wird. Zu letzt ist <e>&quot;nonetwork&quot;</e>,
+welcher ausschliesslich als Beispiel dient.</p>
+
+<p>Die runlevels liegen in <path>/etc/runlevels</path>, in einem Unterverzeichnis das
+nach dem Namen des runlevels benannt wurde; dieses Unterverzeichnis enth&#xE4;lt
+symbolischen Links zu den Diensten die in diesem runlevel geladen werden sollen.
+
+<note>Der bevorzugte Weg um einen Service hinzuzuf&#xFC;gen oder zu l&#xF6;schen wird sp&#xE4;ter
+in dem Abschnitt &quot;&#xDC;ber rc-update&quot; behandelt.</note>
+</p>
+
+<p>As already stated, the name could be changed to whatever suites the user,
+as the rule the entry in <path>/etc/inittab</path> is also changed to reflect
+the default runlevel's new name.
+
+<impo>Eine Ausnahme dieser Regel, die jedoch erw&#xE4;hnt werden sollte, stellt das runlevel
+<e>&quot;boot&quot;</e> dar.</impo>
+
+<warn>Bitte &#xE4;ndern Sie den Namen des <e>&quot;boot&quot;</e> runlevels NIEMALS, da es
+einige Dinge kaputt machen w&#xFC;rde.</warn>
+</p>
+
+<p>The <path>/sbin/rc</path> script makes all of this work, and can be invoked
+to switch between virtual runlevels on the fly.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Virtuelle runlevels</title>
+<body>
+
+<p>Da runlevels nicht statisch auf die von init abgebildet werden, kann man wesentlich mehr haben
+als init unterst&#xFC;tzt. Das erm&#xF6;glicht es dem Benutzer nach seinen bed&#xFC;rfnissen
+Profile und Virtuelle runlevel zu erstellen</p>
+
+<p>For example, a laptop user can have two default runlevels, called &quot;online&quot;
+and &quot;offline&quot;. This would allow for an active runlevel when the PCMCIA NIC is
+plugged in and a separate active runlevel when it is not. The PCMCIA scripts can then be
+configured to call <c>&quot;/sbin/rc online&quot;</c> or <c>&quot;/sbin/rc offline&quot;</c>
+as appropriate, in order to start and stop the correct services, depending on the status
+of the PCMCIA NIC.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Runlevels und XFree86</title>
+<body>
+
+<p>Nach Gentoo's Weg Dinge zu erledigeng haben wir keinen runlevel f&#xFC;r X, sondern stattdessen
+ein startup-Script. Es hat den Namen &quot;xdm&quot; und kann zu jedem runlevel hinzugef&#xFC;gt
+werden, wenn der Benutzer dieses w&#xFC;nscht.
+
+<note>It should be the main runlevel that the user wishes.</note>
+
+<warn>Adding it to the boot runlevel can result in unwanted side-effects.</warn>
+</p>
+   
+<p>By default, if you were to execute xdm, gdm or kdm before your gettys were started,
+X will be started on the next available console. On slower boxes this is not a problem
+if the Desktop Manager service is started towards the end of the runlevel's init process.
+The getty's will start before X and it will then start on console 7 as it should.
+On faster boxes however this is not the case. X gets started before the getty that
+usually starts on console number 2. When the getty then starts, it takes control
+of the keyboard, and the Desktop Manager will lose keyboard support.
+</p>
+
+<p>This is solved by having the DM's startup script on one of init's extra runlevels,
+namely runlevel 'a'. As runlevel 'a' is not a real runlevel, our &quot;xdm&quot;
+script just calls <c>&quot;telinit a&quot;</c>. This schedules all the services in runlevel 'a'
+to run after the current runlevel, thus after the gettys are up.
+
+<note>More info about runlevel 'a' can be acquired by reading init's man pages.</note>
+</p>
+   
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>RC-Scripts</title>
+<section>
+<body>
+
+<p>RC-Scripts are scripts that define the basic functions of each service, as well as
+its dependencies for start-up. They live in <path>/etc/init.d/</path>.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Grund-Layout eines rc-Skriptes</title>
+   
+<body>
+<pre caption="rc-script Layout">
+#!/sbin/runscript
+ 
+depend() {
+    need bar
+}
+ 
+start() {
+    ebegin &quot;Starting foo&quot;
+    /sbin/foo
+    eend $? &quot;Failed to start foo&quot;
+}
+ 
+stop() {
+    ebegin &quot;Stopping foo&quot;
+    kill $(cat /var/run/foo.pid)
+    eend $? &quot;Failed to stop foo&quot;
+}
+</pre>
+
+<p>
+<note>Der Interpreter ist &quot;/sbin/runscript&quot;.</note>
+<note>Die &quot;depend&quot; Funktion ist optional.</note>
+<note>Jedes rc-Skript braucht mindestens die &quot;start&quot; Funktion.</note>
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Kontrollieren des start-up</title>
+<body>
+
+<p>The general start-up order of services in a runlevel are alphabetic.
+This is due to the order of the output <path>/bin/ls</path> generate.
+</p>
+
+<p>The primary method to deviate from the default startup order, are dependencies.
+Alternatively if there is no relationship between services, the order types can be used.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Abh&#xE4;ngigkeitstypen</title>
+<section>
+<body>
+
+<p>Most services are related to or dependent upon some other service.
+</p>
+
+<p>Postfix for example, needs the network up and running, as well as a system logger.
+</p>
+
+<p>Samba on the other hand needs the network up. If CUPS was used for printing however,
+cupsd should be started before samba as well. Note that cups is not critical for starting samba.
+</p>
+
+<p>We thus have two ways to express dependency relationships between different services.
+These dependencies are always valid, whether the runlevel as a whole is changed,
+or whether a service is started or stopped manually after boot.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Der NEED Abh&#xE4;ngigkeitstyp</title>
+<body>
+
+<p>This is used if a service is critical for the startup of the current service.
+</p>
+
+<pre caption="adding logger and net as a NEED dependency">
+depend() {
+    need net logger
+}
+</pre>
+
+<p>
+<note>The services mentioned after <e>NEED</e> are critical in order for the current service
+to start. The current service will thus fail to start if any of the dependencies fail to start.</note>
+
+<impo>Any service in a <e>NEED</e> line will get started even if it is NOT added to the current or
+<e>&quot;boot&quot;</e> runlevel.</impo>
+
+<e>NEED</e> is thus a &quot;strong&quot; dependency.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Der USE Abh&#xE4;ngigkeitstyp</title>
+<body>
+
+<p>The service is not critical for starting the current service, but should be started before
+the current if it is used.
+</p>
+
+<pre caption="adding portmap as a USE dependency to netmount">
+depend() {
+    use portmap
+}
+</pre>
+
+<p>Netmount by default can handle NFS mounts, but will only depend on portmap if it is added
+to the current or boot runlevel. Any user with NFS mounts should by default add portmap to the
+default runlevel, causing netmount to see portmap as a USE dependency and starting that before itself.
+</p>
+
+<p>
+<impo>Any service in the <e>USE</e> line <e>*must*</e> be added to the current or boot runlevels to be
+considered a valid <e>USE</e> dependency.</impo>
+
+<e>USE</e> is thus a &quot;weak&quot; dependency.
+</p>
+
+<p>
+<note>If any service in a <e>USE</e> line fails to start, the current service will still start,
+as the service in the <e>USE</e> line should not be critical for startup.</note>
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Controlling order without dependency</title>
+<section>
+<body>
+
+<p>If no dependency relationship exists between two services, but it is necessary or desirable to
+explicitly start one service after another one, the <e>AFTER</e> and <e>BEFORE</e> relationships can be used.
+
+<note>These two types are only valid during a runlevel change.</note>
+</p>
+
+<p>Optionally these two can support the &quot;*&quot; glob for including all other services:
+</p>
+
+<pre caption="a glob example for AFTER">
+depend() {
+    after *
+}
+</pre>
+
+<p>This will cause local to start <e>*after*</e> all other services.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>The BEFORE order type</title>
+<body>
+
+<p>The current service gets started <e>*before*</e> those listed in the <e>BEFORE</e> line.
+</p>
+
+<pre caption="let foo start before bar (snippit of foo)">
+depend() {
+   before bar
+}
+</pre>
+
+</body>
+</section>
+
+<section>
+<title>The AFTER order type</title>
+<body>
+
+<p>The current service gets started <e>*after*</e> those listed in the <e>AFTER</e> line.
+</p>
+
+<pre caption="let bar start after foo (snippit of bar)">
+depend() {
+    after foo
+}
+</pre>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Virtuelle Dienste</title>
+<section>
+<body>
+
+<p>Services like most things in the unix world today, come in many flavours and colours.
+It is usually the choice of the user/administrator that determine which is used.
+</p>
+
+<p>System loggers are one example. As of this writing, Gentoo Linux users have a choice of four
+different ones. All services that need a system logger running before startup, cannot now <e>NEED</e>
+all four of them. To <e>USE</e> them is also too weak.
+</p>
+
+<p>This is where virtual services and the <e>PROVIDE</e> type comes into play.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Der PROVIDE Typ</title>
+<body>
+
+<p>The <e>PROVIDE</e> type defines a virtual service that other services can <e>NEED</e> or <e>USE</e>.
+</p>
+
+<pre caption="sysklogd providing logger">
+depend() {
+    provide logger
+}
+</pre>
+
+</body>
+</section>
+
+<section>
+<title>The LOGGER virtual service</title>
+<body>
+
+<p><e>LOGGER</e> is a predefined virtual service which is provided by all the system loggers.
+It can be used with either the <e>NEED</e> or <e>USE</e> dependency types.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>The NET virtual service</title>
+<body>
+
+<p>The <e>NET</e> service is another virtual service, but unlike <e>LOGGER</e>, it does not
+explicitly <e>PROVIDE</e> a service.
+</p>
+
+<p>
+<impo>To provide the <e>NET</e> virtual, a service must:
+<ul>
+<li>Be added to the current or boot runlevel.</li>
+<li>Have &quot;net.&quot; pre-pended.</li>
+<li>The part after &quot;net.&quot; must be the name of the actual network
+interface (net.eth0 or net.ppp1 for example).</li>
+</ul>
+</impo>
+</p>
+
+<p>For any valid net.* service, $IFACE will be set to the name of the network interface
+(&quot;eth0&quot; for net.eth0 for example).
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Default command line options</title>
+<section>
+<body>
+
+<p>Any service can be called with any of the default options. All of those mentioned,
+is already defined, except <e>START</e> and <e>STOP</e>, which the user should define
+as functions in his rc-script.
+
+<impo>The <e>start()</e> function <e>must</e> be defined.</impo>
+<note>The <e>stop()</e> function is less important, and can be left out.</note>
+</p>
+
+<p>
+<note>In general, the user will only define <e>start()</e>,<e>stop()</e> and
+<e>restart()</e>.  The rest is internal, and should be left alone.</note>
+</p>
+
+<pre caption="start the httpd service">
+# <c>/etc/init.d/httpd start</c>
+</pre>
+
+<p>
+<note>Command line options can be stacked.</note>
+</p>
+
+<pre caption="pause/start net.eth0">
+# <c>/etc/init.d/net.eth0 pause start</c>
+</pre>
+
+</body>
+</section>
+
+<section>
+<title>The START/STOP option</title>
+<body>
+
+<p><e>START</e> the service including any service that it depends on.
+</p>
+
+<p><e>STOP</e> the service including any service that depends on it.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Die RESTART Option</title>
+<body>
+
+<p>The service must be started for <e>RESTART</e> to work.
+It will restart the service as well as all the services that depend on it.
+
+<impo>If a custom <e>restart()</e> function is defined, the user should use <e>&quot;svc_start()&quot;</e>
+and <e>&quot;svc_stop()&quot;</e> to start and stop the service.</impo>
+
+<note>This is done to correctly handle all the dependent services.</note>
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Die PAUSE Option</title>
+<body>
+
+<p>This will stop the service, but unlike <e>STOP</e>, no dependent services will be stopped.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Die ZAP Option</title>
+<body>
+
+<p>Resets the status of the service to stopped.
+
+<note>Note that none of the commands in the <e>stop()</e> function are executed.
+The user should thus do any needed cleanup.</note>
+</p>
+
+</body>
+</section>
+
+<section>
+<title>The INEED/NEEDSME options</title>
+<body>
+
+<p><e>INEED</e> lists the services that this service <e>NEED</e>s.
+</p>
+
+<p><e>NEEDSME</e> lists the services that <e>NEED</e> this service.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>The IUSE/USESME options</title>
+<body>
+
+<p><e>IUSE</e> lists the services that this service <e>USE</e>s.
+</p>
+
+<p><e>USESME</e> lists the services that <e>USE</e> this service.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Die BROKEN Option</title>
+<body>
+
+<p>This lists the missing services (if any) that this service <e>NEED</e>s.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Adding custom command line options</title>
+<section>
+<body>
+
+<p>It is relatively easy to add custom command line options. A function with the option name
+needs to be defined in the rc-script, and added to the <e>$opts</e> variable, as shown below.
+</p>
+
+<pre caption="foo as a custom option">
+opts=&quot;${opts} foo&quot;
+ 
+foo() {
+    ............
+}
+</pre>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Konfiguration</title>
+<section>
+<body>
+
+<p>Configuration should generally be done via environment variables. These, however,
+should not be defined in the rc-script, but in one of three possible configuration files.
+</p>
+
+<p>One that is specific to the rc-script, and two global configuration files:
+</p>
+
+<pre caption="config files for rc-scripts">
+<path>/etc/conf.d/&lt;name of rc-script&gt;</path>
+<path>/etc/conf.d/basic</path>
+<path>/etc/rc.conf</path>
+</pre>
+
+<p>
+<note>These three configuration files get sourced automatically in the order listed.</note>
+
+<impo>All <e>NET</e> services also source <path>/etc/conf.d/net</path></impo>
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Utilities/helper scripts</title>
+
+<section>
+<title>The rc-update utility</title>
+<body>
+
+<p>rc-update is the primary tool for adding and removing services to and from a runlevel.
+It will also call &quot;depscan.sh&quot; to update the dependency cache.
+</p>
+
+<pre caption="add metalog to the default runlevel">
+# <c>rc-update add metalog default</c>
+</pre>
+
+<pre caption="remove metalog from the default runlevel">
+# <c>rc-update del metalog default</c>
+</pre>
+
+<p>
+<note>Running rc-update without arguments should give more help.</note>
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Das depscan.sh helfer Skript</title>
+<body>
+
+<p>For completeness, depscan.sh is mentioned here. It is used to create a dependency
+cache that basically is a map of dependencies between services.
+</p>
+
+<p>It should be run whenever a new rc-script is added to <path>/etc/init.d/</path>,
+but since rc-update automatically calls it, most users should not need to run it.
+</p>
+
+</body>
+</section>
+</chapter>
+</guide>
+
