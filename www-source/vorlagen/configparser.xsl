@@ -116,7 +116,7 @@
   
   <xsl:call-template name="menurecurser">
     <xsl:with-param name="level"></xsl:with-param>  
-    <xsl:with-param name="href">inhalte/</xsl:with-param>
+    <xsl:with-param name="href">inhalte</xsl:with-param>
     <xsl:with-param name="filename"><xsl:value-of select="$filename"/></xsl:with-param>
   </xsl:call-template>
   
