@@ -24,7 +24,20 @@
 
 <chapter>
 
+<section>
+<body>
+<news type="other" date="04.12.2003" title="Ankündigung: Gentoo Bug Day">
 
+<p>
+Das gleiche Spiel wie jeden Monat: Der erste Samstag im Dezember rückt näher,
+Zeit also den nächsten Bug Day am 06.12. anzukündigen. Wenn Sie mithelfen
+wollen, Bugs in Gentoo Linux zu beseitigen schauen Sie im #gentoo-bugs Channel
+im FreeNode Netz vorbei.
+</p>
+
+</news>
+</body>
+</section>
 
 <section>
 <body>
