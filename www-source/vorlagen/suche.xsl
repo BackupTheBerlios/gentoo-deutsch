@@ -40,33 +40,6 @@
 </xsl:template>
 
 
-<xsl:template match="cgi:result_list">
-  <dl>
-    <![CDATA[<!--loop: results-->]]>
-    <dt>
-      <![CDATA[<!--item: rank-->]]>. 
-      <![CDATA[<a href="<!--item: url-->"><!--item: title--></a>]]>
-      <br/>
-      <![CDATA[<!--item: description-->]]>
-      <br />
-      <strong>URL:</strong> 
-      <![CDATA[<!--item: visibleurl--> ]]>
-      &#160;
-      
-      <strong>Relevanz:</strong> 
-      <![CDATA[<!--item: score-->]]> &#160;
-      <strong>Datum:</strong> 
-      <![CDATA[<!--item: date-->]]> &#160;
-      <strong>Größe:</strong> 
-      <![CDATA[<!--item: size-->]]> kB
-      
-      <br/>
-      <br/>
-    </dt>
-    <![CDATA[<!--end: results-->]]>
-  </dl>
-</xsl:template>
-
 <xsl:template match="cgi:result_navigation">  
   <center>
     <![CDATA[<!--cgi: previous--> [ <!--cgi: navbar--> ] <!--cgi: next-->]]>
