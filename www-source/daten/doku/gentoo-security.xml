@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
- <!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-security.xml,v 1.16 2004/01/22 15:45:06 dertobi123 Exp $ -->
+ <!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/gentoo-security.xml,v 1.17 2004/01/25 16:06:39 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS Version: 1.37 -->
@@ -1482,7 +1482,7 @@ betreiben, der verschiedene IP-Adressen an verschiedenen Interfaces hat.
 Protokollieren von spoofed, source routed und umgeleiteten Pakete.
 </p>
 
-<pre caption="Aktivieren von IP forwarding">
+<pre caption="Deaktivieren von IP forwarding">
 # <i>/bin/echo "0" &gt; /proc/sys/net/ipv4/ip_forward</i>
 </pre>
 
