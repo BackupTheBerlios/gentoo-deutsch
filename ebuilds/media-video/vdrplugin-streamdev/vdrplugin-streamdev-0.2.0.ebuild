@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-streamdev/vdrplugin-streamdev-0.2.0.ebuild,v 1.1 2003/10/22 18:28:53 martini Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.4i.ebuild,v 1.1 2003/05/12 18:01:14 fow0ryl Exp $
+# $Header: /cvsroot/gentoo-deutsch/ebuilds/media-video/vdrplugin-streamdev/vdrplugin-streamdev-0.2.0.ebuild,v 1.1 2003/10/22 18:28:53 martini Exp
 
 IUSE=""
 VDRPLUGIN="streamdev"
