@@ -6,7 +6,7 @@
 
 <!-- English CVS Version: 1.26 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-system.xml,v 1.9 2004/01/11 10:29:47 dertobi123 Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-system.xml,v 1.10 2004/01/18 00:07:40 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -389,8 +389,8 @@ Sie beginnen die wichtigsten Pakete für Ihr System zu kompilieren.
 
 <p>
 <e>Alle</e> Systempakete? Nein, eigentlich nicht. In diesem Schritt werden Sie
-nur die Systempackete kompilieren und installieren, zu denen es keine
-Alternativpakete gibt. Einige Systempackete haben verschiedene Alternativen
+nur die Systempakete kompilieren und installieren, zu denen es keine
+Alternativpakete gibt. Einige Systempakete haben verschiedene Alternativen
 (als Beispiel seien hier die verschiedenen Logging Dienste genannt) und da
 Gentoo für seine Auswahlmöglichkeiten bekannt ist, wollen wir Sie nicht zu
 einer Entscheidung zwingen.
