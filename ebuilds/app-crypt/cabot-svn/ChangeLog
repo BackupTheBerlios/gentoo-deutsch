@@ -1,0 +1,8 @@
+# ChangeLog for app-crypt/cabot-svn
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-crypt/cabot-svn/ChangeLog,v 1.1 2004/06/19 11:54:12 tove Exp $
+
+*cabot-svn-0.1 (19 Jun 2004)
+
+  19 Jun 2004; Torsten Veller <bugs@veller.net>
+  Initial ebuild. 
