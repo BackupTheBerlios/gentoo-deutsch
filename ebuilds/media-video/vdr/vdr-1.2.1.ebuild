@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.1.ebuild,v 1.5 2003/07/03 05:49:48 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.1.ebuild,v 1.6 2003/08/05 17:15:31 mad Exp $
 
 IUSE="lirc"
 ANALOGTV_VN="0.8.0"
@@ -28,7 +28,7 @@ LICENSE="GPL-2"
 
 DEPEND="virtual/glibc
 		virtual/linux-sources
-		>=linuxtv-dvb-1.0.0_pre2-r20030524
+		>=linuxtv-dvb-1.0.0_pre3-r20030801
 		media-libs/jpeg
 		sys-libs/ncurses
 		app-admin/sudo

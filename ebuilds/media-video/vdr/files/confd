@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr:
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/confd,v 1.4 2003/06/10 19:53:03 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/confd,v 1.5 2003/08/05 17:15:31 mad Exp $
 
 # Global config file for vdr rc-scripts
 
@@ -57,3 +57,13 @@
 
 # controlling tty
 #TERMINAL=""
+
+
+# splash image iframes can be created with the 'convert' tool from imagemagick
+# and mpeg2encode from ftp.mpeg.org, and must have a supported
+# size, e.g. 702x576:
+# $ convert -sample 702x576\! test.jpg test.mpg
+#SPLASH_IMAGE="/usr/share/linuxtv-dvb/splash/gentoo.mpg"
+
+# time in secounds splash screen is shown
+#SPLASH_TIME="1"
