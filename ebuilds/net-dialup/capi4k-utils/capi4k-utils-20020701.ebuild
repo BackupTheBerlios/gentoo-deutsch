@@ -1,6 +1,6 @@
 # Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/capi4k-utils/Attic/capi4k-utils-20020701.ebuild,v 1.1 2002/07/18 18:30:48 holler Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-dialup/capi4k-utils/Attic/capi4k-utils-20020701.ebuild,v 1.2 2002/07/18 21:53:48 holler Exp $
 
 MY_P=capi4k-utils-2002-07-01
 S=${WORKDIR}/${PN}
@@ -11,9 +11,11 @@ SLOT="1"
 LICENSE="GPL-2"
 KEYWORDS="x86"
 
+RDEPEND="virtual/glibc"
+
 DEPEND="virtual/linux-sources
+	virtual/glibc
 	sys-devel/automake"
-# autoconf is a dependency of automake
 
 src_compile() {
 
