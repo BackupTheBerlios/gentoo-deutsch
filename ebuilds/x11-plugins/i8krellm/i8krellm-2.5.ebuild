@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-plugins/i8krellm/Attic/i8krellm-2.5.ebuild,v 1.1 2003/10/02 10:44:11 longint Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-plugins/i8krellm/Attic/i8krellm-2.5.ebuild,v 1.2 2003/10/02 10:58:16 longint Exp $
 
 IUSE="gtk2"
 
@@ -46,4 +46,9 @@ src_install () {
 		doins i8krellm.so
 	fi
 	dodoc README Changelog AUTHORS
+
+	einfo "PLEASE NOTE that the module is renamed:"
+	einfo "       gkrellm2: i8krellm (it was i8krellm2 in the past)"
+	einfo "       grellm:   i8krellm1 (the former i8krellm)"
+	einfo "Make sure to switch your plugin to the new one."
 }
