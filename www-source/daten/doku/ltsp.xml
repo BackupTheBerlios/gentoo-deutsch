@@ -16,7 +16,7 @@
   <mail link="swift@gentoo.org">Sven Vermeulen</mail>
 </author>
 <author title="Translator">
-  <mail link="gero.kunter@gmx.de">Gero Kunter</mail>
+  <mail link="gero.KEINSPAMkunter@gmx.de">Gero Kunter</mail>
 </author>
 
 <abstract>
@@ -398,8 +398,8 @@ Fehlersuche zurückgreifen können:
   <li>Der englische Gentoo-IRC-Channel: irc.freenode.org #gentoo</li>
   <li>Der deutsche Gentoo-IRC-Channel: irc.freenode.org #gentoo.de</li>
   <li>Der LTSP-IRC-Channel: irc.freenode.org #ltsp</li>
-  <li
-    >Die <uri link="http://ltsp.org/mailinglists.php">LTSP-Mailinglisten
+  <li>
+    Die <uri link="http://ltsp.org/mailinglists.php">LTSP-Mailinglisten
     </uri> sind eine Fundgrube für wirklich hilfreiche Informationen.
   </li>
 </ul>
