@@ -570,7 +570,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <!--<tr><ti><uri link="uml">User Mode Linux Handbuch</uri></ti></tr>-->
         <!--<tr><ti><uri link="ldap-howto">LDAP Authentification Handbuch</uri></ti></tr>-->
         <!--<tr><ti><uri link="openmosix-howto">OpenMosix Handbuch</uri></ti></tr>-->
-        <!--<tr><ti><uri link="ltsp">LTSP Handbuch</uri></ti></tr>-->
+        <tr><ti><uri link="ltsp">LTSP Handbuch</uri></ti></tr>
         <tr><ti><uri link="distcc">DistCC Handbuch</uri></ti></tr>
         <!--<tr><ti><uri link="devfs-guide">DevFS Handbuch</uri></ti></tr>-->
         <tr><ti><uri link="printing-howto">Drucken Handbuch</uri></ti></tr>
