@@ -990,21 +990,24 @@ stop() {
 </pre>
 
 <p>
-Add it to the run level with <c>rc-update add quotas default</c> and add a quotacheck (crontab -e) to do periodic scans once a week: <c>0 3 * * 0 /sbin/quotacheck -avug</c>.
+Fügen Sie es mittels <c>rc-update add quotas default</c> dem Runlevel hinzu und fügen Sie ausserdem
+quotacheck (crontab -e) der Crontabelle hinzu, sodass es einmal in der Woche ausgeführt wird : <c>0 3 * * 0 /sbin/quotacheck -avug</c>.
 </p>
 
 <p>
-After rebooting the machine, it is time to setup the quotes for users and groups. <c>edquota -u kn</c> will start the editor defined in $EDITOR (Default is nano) and let you edit the quotas of the user kn. -g will do the same thing just with groups.
+Nachdem Sie den Rechner neu gestartet haben, ist es an der Zeit, die Quotas für die Benutzer und Gruppen festzulegen.
+<c>edquota -u kn</c> wird den in $EDITOR festgelegten Editor starten (Standard ist nano) damit Sie die Quotas des
+Benutzers kn bearbeiten können. -g wird genau das Selbe, allerdings für Gruppen machen.
 </p>
 
-<pre caption="Setting up quota's for user kn">
+<pre caption="Bearbeiten der Quotas für den Benutzer kn">
 Quotas for user kn:
 /dev/sda4: blocks in use: 2594, limits (soft = 5000, hard = 6500)
          inodes in use: 356, limits (soft = 1000, hard = 1500)
 </pre>
 
 <p>
-For more detail read <e>man edquota</e> or <uri link="http://www.tldp.org/HOWTO/mini/Quota.html">The quota mini howto</uri>
+Für weitere Informationen lesen Sie bitte <e>man edquota</e> oder <uri link="http://www.tldp.org/HOWTO/mini/Quota.html">Das Quota Mini-Howto</uri>
 </p>
 
 </body>
@@ -1013,9 +1016,11 @@ For more detail read <e>man edquota</e> or <uri link="http://www.tldp.org/HOWTO/
 <section>
 <title>/etc/login.defs</title>
 <body>
-	    
+
 <p>
-If the policy states that users should change their password every other week. Change the value PASS_MAX_DAYS to 14, PASS_WARN_AGE to 7. It is also recommended that you use password aging since brute force will find any password, its just a matter of time. We also encourage you to set LOG_OK_LOGINS to yes.
+Wenn die Richtlinie besagt, dass die Anwender jede Woche ihr Passwort ändern müssen, dann setzen Sie die Variable PASS_MAX_DAYS auf 14
+und PASS_WARN_AGE auf 7. Es wird ausserdem empfohlen, dass Sie alternde Passwörter benutzen, da Brute-Force Angriffe jedes Passwort
+finden können - alles nur eine Frage der zeit. Wir empfehlen ausserdem, dass Sie LOG_OK_LOGINS auf yes setzen.
 </p>
 
 </body>
@@ -1025,9 +1030,13 @@ If the policy states that users should change their password every other week. C
 <title>/etc/login.access</title>
 <body>
 <p>
-The login.access file is also part of the shadow package, which gives a login access control table. The table is used to control who can and cannot login based on user name, group name or host name. Per default, all users on the system are allowed to login so the file is only filled with comments and examples. Whether you are securing your server or workstation, we recommend that you setup this file so no one other than yourself (the admin) has access to the console.
+Die login.access ist auch ein Teil des Shadow-Paketes, dass eine Login Zugangs-Kontrolltabelle anbietet. Die Tabelle wird benutzt um
+zu kontrollieren, wer und wer nicht einloggen darf, basierend auf dem Benutzernamen, dem Gruppennamen oder dem Hostnamen von dem der
+Versuch gestartet wird. Normalerweise sind alle Anwender des systems berechtigt sich anzumelden; aus diesem Grunde ist die Datei nur
+mit Kommentaren und Beispielen gefüllt. Je nachdem ob Sie Ihren Server oder Ihren Arbeitsplatzrechner schützen empfehlen wir die Datei
+so anzupassen, das niemand anderes als Sie selbst (also der Administrator) Zugang zur Konsole bekommt.
 </p>
-<note>These settings does not apply for root.</note>
+<note>Diese Einstellungen sind nicht für root anwendbar</note>
 
 <pre caption="/etc/login.access">
 -:ALL EXCEPT wheel sync:console
@@ -1035,14 +1044,15 @@ The login.access file is also part of the shadow package, which gives a login ac
 </pre>
 
 <warn>
-Be careful when configuring these options, since mistakes will leave you out with no access to the machine.
+Seien Sie vorsichtig bei der Bearbeitung der Datei. Wenn Sie nicht aufpassen, dann können Sie sich aussperren!
 </warn>
 <note>
 These settings does not apply to SSH since SSH does not execute /bin/login per default. This can be enabled by using the "UseLogin yes" in <path>/etc/ssh/sshd_config</path>. It will make SSH use login and the settings will apply.
 </note>
 
 <p>
-This will setup login access so members of wheel can login on the console or if their origin is from the gentoo.org domain. Maybe too paranoid, but better safe then sorry.
+This will setup login access so members of wheel can login on the console or if their origin is from the gentoo.org domain.
+Maybe too paranoid, but better safe then sorry.
 </p>
 
 </body>
