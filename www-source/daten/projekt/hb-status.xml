@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.21 2003/12/29 21:57:43 jay Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.22 2004/01/14 16:18:32 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/hb-status/">
@@ -178,7 +178,7 @@ ersetzt werden. Die Übersetzung des Handbuch hat daher höchste Priorität.
   <tr>
   <ti>hb-working-rcscripts.xml ( 5 )</ti>
   <ti>SirSeoman</ti>
-  <ti></ti>
+  <ti>X</ti>
   <ti></ti>
   <ti></ti>
   </tr>
