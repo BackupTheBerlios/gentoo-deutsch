@@ -45,7 +45,11 @@
           
             <xsl:variable name="pname" select="name"/>
             
+            <!--
             <xsl:if test="preceding-sibling::pkg/child::name != $pname">
+            -->
+            
+            <xsl:for-each select="../pkg[name = $pname][position() = 1]">
               <tr>
                 <xsl:attribute name="class">
                   <xsl:choose>
@@ -56,7 +60,6 @@
               
                 <td style="vertical-align:top; border-bottom: 1px dotted #45347B">
                   <b>
-                    <xsl:value-of select="number()"/>
                     <a class="uri" href="{$baselink}/{category}/{name}">
                       <xsl:value-of select="name"/>
                     </a>
@@ -90,8 +93,12 @@
                   </xsl:for-each>
                 </td>
               </tr>
-                          
+            
+            </xsl:for-each>  
+                            
+            <!--
             </xsl:if>
+            -->
             
           </xsl:for-each>
         </xsl:if>  
