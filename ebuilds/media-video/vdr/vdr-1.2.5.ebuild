@@ -1,12 +1,11 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.5.ebuild,v 1.1 2003/09/21 17:30:10 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/Attic/vdr-1.2.5.ebuild,v 1.2 2003/09/23 17:45:08 martini Exp $
 
 IUSE="lirc"
 #ANALOGTV_VN="0.9.8"
 #AC3_OVER_DVB="vdr-1.2.0-AC3overDVB-0.2.0"
 AKOOL_VN="1.2.5"
-#AKOOLWOE_VN="1.2.0"
 ELCHI_VN="1.2.5"
 
 S=${WORKDIR}/vdr-${PV}
@@ -62,40 +61,27 @@ src_unpack() {
 #	# AC3 over DVB Patch
 #	# needs app-admin/fam-oss
 #	if vdr_opts ac3; then
-#		if vdr_opts akoolwoe || vdr_opts akool; then
+#		if vdr_opts akool; then
 #			ewarn "ac3 patch is already part of akool patch ... skipping"
 #		fi
 #		einfo "Apply AC3 patch ..."
 #		epatch ../${AC3_OVER_DVB}.diff
 #	fi
 
-	# Akool Patches
+	# Akool Patch
 	if vdr_opts akool; then
-		if vdr_opts akoolwoe; then
-			eerror "ups, akool & akoolwoe patch will not work together"
-			die "incompatible VDR_OPTS"
-		fi
 		if vdr_opts elchi; then
 			ewarn "elchi patch is already part of akool patch ... skipping"
 		fi
 		einfo "Apply akool patch ..."
 		epatch ../vdr-${AKOOL_VN}.patch
-	elif vdr_opts akoolwoe; then
-		if vdr_opts elchi; then
-			eerror "ups, akoolwoe is 'akool without elchi'"
-			eerror "please recheck your decision, but aware:"
-			eerror "elchi patches are not compatible with DXR3"
-			die "incompatible VDR_OPTS"
-		fi
-		einfo "Apply akoolwoe patch ..."
-		epatch ../vdr-${AKOOLWOE_VN}-without-Elchi.patch
 	fi
 
 	# Elchi Patch
 	if vdr_opts elchi; then
 		if ! vdr_opts akool; then
 		cd ${S}
-			einfo "Apply ElchiAOI3a patch ..."
+			einfo "Apply ElchiAOI3b patch ..."
 			patch < ../vdr-${ELCHI_VN}-ElchiAIO3b.diff
 		fi
 	fi
