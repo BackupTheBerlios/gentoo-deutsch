@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6.ebuild,v 1.1 2004/03/14 23:34:07 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6.ebuild,v 1.2 2004/03/14 23:40:16 austriancoder Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.2.6-AC3overDVB-0.2.4"
@@ -89,7 +89,7 @@ src_unpack() {
 			ewarn "Elchi patch is already part of akool/complete patch ... skipping"
 		else
 			cd ${S}
-			epatch ../vdr-1.3.6-ElchiAIO4d.diff.gz
+			epatch ../vdr-1.3.6-ElchiAIO4d.diff
 			#if vdr_opts iosd
 			#then
 			#	epatch ../improvedosd-3a.diff
