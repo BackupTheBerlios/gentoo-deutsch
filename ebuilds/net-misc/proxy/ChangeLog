@@ -1,0 +1,9 @@
+# ChangeLog for net-misc/proxy
+# Copyright 2002 Alexander Holler
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/net-misc/proxy/ChangeLog,v 1.1 2002/07/17 15:44:04 holler Exp $
+
+*proxy-2.2.4 (17 Jul 2002)
+
+  17 Jul 2002; Alexander Holler <holler@ahsoftware.de>
+
+  Initial checkin of this package.
