@@ -102,32 +102,32 @@
   	 
 			<pre caption="Smart BootManager Optionen">
 <i>sbminst [-t theme] [-d drv] [-b backup_file] [-u backup_file]
-  	 
--t theme     select the theme to be used, in which the theme could be:
-			us = English theme       de = German theme
-			hu = Hungarian theme     zh = Chinese theme
-			ru = Russian theme       cz = Czech theme
-			es = Spanish theme       fr = French theme
-			pt = Portuguese theme
-  	 
-  	 
-			-d drv       	 set the drive that you want to install Smart BootManager on;
-  	  						 	 for Linux:
-  	               	 	/dev/fd0 is the first floppy driver,
-	  	               	/dev/hda is the first IDE harddisk driver.
-	  	               	/dev/sda is the first SCSI harddisk driver.
-  	                 for DOS:
-  	                 	0   is the first floppy drive
-  	                	128 is the first hard drive;
-  	 
-			-c           	 disable CD-ROM booting feature;
-  	 
-			-b backup_file backup the data that will be overwritten for
-  	                 future uninstallation;
-  	 
-			-u backup_file uninstall Smart BootManager, should be used alone;
-  	 
- 	    -y             do not ask any question or warning.</i>
+
+   -t theme     select the theme to be used, in which the theme could be:
+                   us = English theme       de = German theme 
+                  hu = Hungarian theme     zh = Chinese theme 
+                  ru = Russian theme       cz = Czech theme
+                  es = Spanish theme       fr = French theme 
+                   pt = Portuguese theme 
+
+                 
+  -d drv       set the drive that you want to install Smart BootManager on;
+                for Linux:
+                  /dev/fd0 is the first floppy driver, 
+                  /dev/hda is the first IDE harddisk driver.
+                   /dev/sda is the first SCSI harddisk driver.
+                for DOS:
+                   0   is the first floppy drive
+                   128 is the first hard drive;
+
+   -c             disable CD-ROM booting feature;
+
+   -b backup_file backup the data that will be overwritten for
+                  future uninstallation;
+
+   -u backup_file uninstall Smart BootManager, should be used alone;
+
+   -y             do not ask any question or warning.</i>
 			</pre>
   	 
 			<pre caption="Benutzen von sbminst um die Boot Diskette zu erstellen">
@@ -1049,7 +1049,7 @@ Minor    Start       End     Type      Filesystem  Flags
       </pre>
 
       <impo>
-        Seien Sie vorsichtig! Ihr Computer arbeitet. Werfen Sie einen Blick auf die Harware LEDs,
+        Seien Sie vorsichtig! Ihr Computer arbeitet. Werfen Sie einen Blick auf die Hardware LEDs,
         sie werden sehen dass ihr Computer wirklich arbeitet. Das resizen sollte zwischen
         2 und 30 Minuten dauern.
       </impo>
