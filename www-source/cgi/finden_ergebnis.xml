@@ -34,6 +34,7 @@
 
   <cgi:result_list/>
   <cgi:result_navigation/>
+  <cgi:result_newsearch/>
 
 </body>
 

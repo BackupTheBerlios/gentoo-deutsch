@@ -55,7 +55,7 @@
 </xsl:template>
 
 <xsl:template match="cgi:result_newsearch">  
-  <div style="text-align: center">
+  <div style="text-align: center; visibility: visible">
     <![CDATA[
     <form action="<!--cgi: search_url-->" method="get">
       <xsl:if test="retry">
