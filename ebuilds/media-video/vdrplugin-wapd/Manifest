@@ -1,3 +1,5 @@
-MD5 f23e6c97ff7c20614b6039540f9604e6 ChangeLog 325
-MD5 16d7b2493fbbe48e5f0a77583dd0b88e vdrplugin-wapd-0.0.4.ebuild 1299
+MD5 988ad4fdb793f2dc92e012c32d699e4d ChangeLog 443
+MD5 2f7827e8cfbd5522f2d0b839443f9025 vdrplugin-wapd-0.0.4.ebuild 1297
+MD5 2f7827e8cfbd5522f2d0b839443f9025 vdrplugin-wapd-0.0.5c.ebuild 1297
 MD5 27c502e30a32e5dd0567a514887556c7 files/digest-vdrplugin-wapd-0.0.4 62
+MD5 4f8b26255fec2f13aa24894ed8e6224b files/digest-vdrplugin-wapd-0.0.5c 63
