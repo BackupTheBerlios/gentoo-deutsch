@@ -1,7 +1,7 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
 # Author: Martin Schlemmer <azarah@gentoo.org>
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/openoffice-bin-de-1.0.0-r1.ebuild,v 1.1 2002/07/11 19:49:26 jay Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/app-i18n/openoffice-bin-de/openoffice-bin-de-1.0.0-r1.ebuild,v 1.2 2002/07/12 15:49:16 jay Exp $
 
 # NOTE:  There are two big issues that should be addressed.
 #
