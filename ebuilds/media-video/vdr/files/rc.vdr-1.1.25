@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.5 2003/02/23 15:17:22 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/Attic/rc.vdr-1.1.25,v 1.6 2003/02/23 19:21:53 mad Exp $
 
 #DEBUG=echo
 
@@ -10,7 +10,7 @@ depend() {
 }
 
 start() {
-	ebegin "Starting vdr"
+	ebegin "Starting $(vdr -V)"
 
 	#
 	# reading the default vdr options
@@ -26,15 +26,18 @@ start() {
 	[ -n "$PORT" ] && vdropts="${vdropts} --port=${PORT} "
 	[ -n "$LIB" ] && vdropts="${vdropts} --lib=${LIB} "
 	[ -n "$LIB" -a -n "$PLUGINS" ] && for i in ${PLUGINS}; do 
-		vdropts="${vdropts} -P'${i}"
-		if  [ -f "/etc/conf.d/vdr.${i}" ]; then
-				for t in $(cat /etc/conf.d/vdr.$i | grep "^[A-Z]"); do
-					value=$(echo $t| cut -d "=" -f 2 | tr -d "\"")
-					option=$(echo $t| cut -d "=" -f 1 | tr [:upper:] [:lower:])
-					vdropts="${vdropts} --$option=$value"
-				done
+		if  [ -f "/etc/conf.d/vdr.${i}" -a -n "$(grep "^[A-Z]" /etc/conf.d/vdr.${i} 2>/dev/null )" ]; then
+			unset pluginopts
+			for t in $(cat /etc/conf.d/vdr.$i | grep "^[A-Z]"); do
+				unset value option
+				value=$(echo $t| cut -d "=" -f 2 | tr -d "\"")
+				option=$(echo $t| cut -d "=" -f 1 | tr [:upper:] [:lower:])
+				pluginopts="${pluginopts} --$option=$value"
+			done
+			vdropts="${vdropts} --plugin='$i ${pluginopts}'"
+		else
+		vdropts="${vdropts} --plugin=$i"
 		fi
-		vdropts="${vdropts} '"
 	done
 
 	#
@@ -48,14 +51,13 @@ start() {
 
 	#
 	# finaly start vdr
-	#
-	echo /usr/bin/vdr --daemon ${vdropts}
-	/usr/bin/vdr --daemon ${vdropts}
+	# 
+	su -c "/usr/bin/vdr --daemon ${vdropts}"
 	eend $? "Failed to start vdr."
 }
 
 stop() {
-	ebegin "Stopping vdr"
+	ebegin "Stopping $(vdr -V)"
 
 	$DEBUG killall vdr
 	eend $? "Failed to stop vdr."
