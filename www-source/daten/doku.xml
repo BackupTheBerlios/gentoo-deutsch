@@ -28,14 +28,14 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
       <body>
 
         <ul>
-          <li><uri link="#doc_chap1">Einführung</uri></li>
-          <li><uri link="#doc_chap2">Installationshilfen</uri></li>
-          <li><uri link="#doc_chap3">Dokumentation zu Gentoo Entwicklungen</uri></li>
-          <li><uri link="#doc_chap4">Dokumentation zur Systemadministration</uri></li>
-          <li><uri link="#doc_chap5">Dokumentation für einen Arbeitsplatzrechner</uri></li>
-          <li><uri link="#doc_chap6">Dokumentation für Gentoo Entwickler</uri></li>
-          <li><uri link="#doc_chap7">Andere Dokumentation</uri></li>
-          <li><uri link="#doc_chap8">Überblick der verfügbaren Dokumente</uri></li>
+          <li><uri link="#header_1">Einführung</uri></li>
+          <li><uri link="#header_2">Installationshilfen</uri></li>
+          <li><uri link="#header_3">Dokumentation zu Gentoo Entwicklungen</uri></li>
+          <li><uri link="#header_4">Dokumentation zur Systemadministration</uri></li>
+          <li><uri link="#header_5">Dokumentation für einen Arbeitsplatzrechner</uri></li>
+          <li><uri link="#header_6">Dokumentation für Gentoo Entwickler</uri></li>
+          <li><uri link="#header_7">Andere Dokumentation</uri></li>
+          <li><uri link="#header_8">Überblick der verfügbaren Dokumente</uri></li>
         </ul>
 
       </body>
@@ -58,7 +58,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
       <body>
 
         <p>Die Dokumentation ist in verschiedenen Sprachen verfügbar, die 
-        Dokumente in andere Sprachen finden Sie auf <uri link="http://www.gentoo.org">
+        Dokumente in anderen Sprachen finden Sie auf <uri link="http://www.gentoo.org">
         www.gentoo.org</uri>.</p>
 
       </body>
@@ -69,20 +69,20 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 
         <p>Wie jedes großes Projekt hat auch Gentoo eine FAQ.  Wir bieten
         zuallererst eine offizielle FAQ, die vom Gentoo Documentation Project
-        gepflegt werden:</p>
+        gepflegt wird:</p>
 
         <ul>
-          <li>Die <b><uri link="faq.xml">Gentoo FAQ</uri></b> beantwortet häufig
+          <li>Die <b><uri link="faq">Gentoo FAQ</uri></b> beantwortet häufig
           gestellte Fragen über Gentoo Linux mit einem Fokus auf x86
           Plattformen.</li>
-          <li>Die <b><uri link="faq2.xml">FAQ Ergänzung</uri></b>beantwortet Fragen
+          <li>Die <b><uri link="faq2">FAQ Ergänzung</uri></b> beantwortet Fragen
           die im deutschsrpachigen Teil des Forums häufiger gestellt werden.</li>
           <li>Zusätzlich gibt es noch die <uri link="http://tobias.scherbaum.info/gentoo/faq">
           "Dynamische FAQ"</uri> in der weitere Fragen aufgegriffen werden.</li>
         </ul>
 
-        <p>Zusätzlich gibt es eine große Sammlung an FAQs in in unserem <uri
-        link="http://forums.gentoo.org">Forum</uri>.  Um diese zu sehen, gehen
+        <p>Zusätzlich gibt es eine große Sammlung an FAQs in in unserem <b><uri
+        link="http://forums.gentoo.org">Forum</uri></b>.  Um diese zu sehen, gehen
         Sie direkt nach
         <uri>http://forums.gentoo.org/viewforum.php?f=40</uri>.</p>
 
@@ -123,11 +123,11 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 <!--
           <tr>
             <ti>Alpha</ti>
-            <ti><b><uri link="gentoo-alpha-install.xml">Online</uri></b></ti>
+            <ti><b><uri link="gentoo-alpha-install">Online</uri></b></ti>
           </tr>
           <tr>
             <ti>HPPA</ti>
-            <ti><b><uri link="gentoo-hppa-install.xml">Online</uri></b></ti>
+            <ti><b><uri link="gentoo-hppa-install">Online</uri></b></ti>
           </tr>
 -->
           <tr>
@@ -137,7 +137,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 <!--
           <tr>
             <ti>Sparc</ti>
-            <ti><b><uri link="gentoo-sparc-install.xml">Online</uri></b></ti>
+            <ti><b><uri link="gentoo-sparc-install">Online</uri></b></ti>
           </tr>
 -->
 
@@ -151,7 +151,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 
 <!--
         <p>Alpha-Benutzer sind vielleicht auch an unserer <b><uri
-        link="gentoo-alpha-compaq-tools.xml">Compaq Alpha Tools
+        link="gentoo-alpha-compaq-tools">Compaq Alpha Tools
         Anleitung</uri></b> interessiert, in der erklärt wird, wie Sie das
         Compaq Tools package für Gentoo Alpha Benutzer aufsetzen.</p>
 -->
@@ -169,14 +169,14 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         von einem anderen Medium zu installieren (Distribution, bootbare CD,
         Booten via Netzwerk, usw.).</p>
 <!--
-        <p>Schauen Sie in unsere <b><uri link="lvm.xml">LVM Anleitung</uri></b>,
+        <p>Schauen Sie in unsere <b><uri link="lvmxml">LVM Anleitung</uri></b>,
         die erklärt, welche Schritte Sie für ein lauffähiges LVM-System
         durchführen müssen, wenn Sie sich für LVM interessieren.</p>
-
-        <p>Die <b><uri link="new-upgrade-to-gentoo-1.4.xml">Gentoo Linux 1.4
+-->
+        <p>Die <b><uri link="upgrade-to-gentoo-1.4">Gentoo Linux 1.4
         Upgrade Anleitung</uri></b> erklärt, wie Sie Ihr Gentoo Linux 1.x System
         auf Gentoo Linux 1.4 upgraden.</p>
--->
+
       </body>
     </section>
 
@@ -223,7 +223,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
       <body>
 
 <!--
-        <p>Das <b><uri link="env.d-howto.xml">ENV.D Handbuch</uri></b> erklärt,
+        <p>Das <b><uri link="env.d-howto">ENV.D Handbuch</uri></b> erklärt,
         wie Sie Umgebungsvariablen (wie <path>$PATH</path>) und den "dynamic
         linker cache" einfach verwalten.</p>
 -->
@@ -276,15 +276,15 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         Webseite.</p>
 
 <!--
-        <p>Das <b><uri link="prelink-howto.xml">Prelinking Handbuch</uri></b>
+        <p>Das <b><uri link="prelink-howto">Prelinking Handbuch</uri></b>
         erläutert, wie Sie Ihr System durch Verwendung von prelink verbessern
         können.  Durch prelinking starten große Applikationen schneller.</p>
 
-        <p>Das <b><uri link="ipv6.xml">IPv6-Handbuch</uri></b> zeigt, wie Sie
+        <p>Das <b><uri link="ipv6">IPv6-Handbuch</uri></b> zeigt, wie Sie
         IPv6 unter Gentoo Linux einrichten.  IPv6 ist das kommende Internet
         Protokoll und erfreut sich immer größerer Popularität.</p>
 
-        <p>Das <b><uri link="uml.xml">User Mode Linux Handbuch</uri></b> führt
+        <p>Das <b><uri link="uml">User Mode Linux Handbuch</uri></b> führt
         Sie in die Verwendung von User-Mode Linux unter Gentoo Linux ein.  User
         Mode Linux (UML) bietet ein nettes Feature für Linux: Starten von Linux
         in Linux (in Linux in Linux...).  Mit UML können Sie einfach virtuelle
@@ -298,15 +298,15 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
       <body>
 
 <!--
-        <p>Das <b><uri link="ldap-howto.xml">LDAP Authentification
+        <p>Das <b><uri link="ldap-howto">LDAP Authentification
         Handbuch</uri></b> erklärt, wie Sie Benutzeraccounts mit OpenLDAP
         zentralisiert administrieren.</p>
 
-        <p>Das <b><uri link="openmosix-howto.xml">OpenMosix Handbuch</uri></b>
+        <p>Das <b><uri link="openmosix-howto">OpenMosix Handbuch</uri></b>
         beschreibt Schritt für Schritt, wie Sie eine Farm voller plattenloser
         Rechner erstellen (ein Cluster mit mehreren PCs).</p>
 
-        <p>Das <b><uri link="ltsp.xml">LTSP Handbuch</uri></b> erläutert die
+        <p>Das <b><uri link="ltsp">LTSP Handbuch</uri></b> erläutert die
         Einrichtung eines Linux Terminal Servers mit Gentoo.</p>
 -->
 
@@ -314,17 +314,17 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         Sie über die Benutzung von distcc für ein verteiltes Kompilieren mit
         Gentoo Linux.</p>
 <!--
-        <p>Das <b><uri link="devfs-guide.xml">DevFS Handbuch</uri></b>
+        <p>Das <b><uri link="devfs-guide">DevFS Handbuch</uri></b>
         beschreibt wie DevFS funktioniert und wie es zu administrieren ist.</p>
 -->
         <p>Das <b><uri link="printing-howto">Drucken Handbuch</uri></b> ist
         eine kompakte Einführung zum Drucken mit Gentoo.</p>
 <!--
-        <p>Das <b><uri link="openafs.xml">OpenAFS Handbuch</uri></b>
+        <p>Das <b><uri link="openafs">OpenAFS Handbuch</uri></b>
         dokumentiert die Verwendung und Installation von OpenAFS, einer
         verteilten, netzwerkbasierten Datenaustausch-Technologie.</p>
 
-        <p>Das <b><uri link="virt-mail-howto.xml">Virtual/Mailhost
+        <p>Das <b><uri link="virt-mail-howto">Virtual/Mailhost
         Handbuch</uri></b> ist das unverzichtbare Handbuch für einen Mail
         Administrator.  Es beschreibt die Verwendung von MySQL für virtuelle
         Benutzer, webbasierter E-Mail-Software, Mailinglisten Software usw.</p>
@@ -378,11 +378,11 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 				durch die Konfigurationsmöglichkeiten eines der beliebtesten Windowmanager.</p>
 
 <!--
-        <p>Das <b><uri link="dri-howto.xml">Direct Rendering Handbuch</uri></b>
+        <p>Das <b><uri link="dri-howto">Direct Rendering Handbuch</uri></b>
         erläutert, wie Sie funktionierende 3D-Beschleunigung mit Hilfe von
         XFree-DRM erhalten.</p>
 
-        <p>Die <b><uri link="ati-faq.xml">ATI FAQ</uri></b> beantwortet häufig
+        <p>Die <b><uri link="ati-faq">ATI FAQ</uri></b> beantwortet häufig
         gestellte Fragen zu ATI Grafikkarten.</p>
 -->
 
@@ -400,10 +400,10 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         Spickzettel-Methode für eine Einführung in vi.</p>
 
 <!--
-        <p>Das <b><uri link="gnupg-user.xml">GnuPG Benutzer Handbuch</uri></b>
+        <p>Das <b><uri link="gnupg-user">GnuPG Benutzer Handbuch</uri></b>
         ist das klare Handbuch zu GnuPG.</p>
 
-        <p>Das <b><uri link="guide-to-mutt.xml">Schnellstarter Handbuch zu CLI
+        <p>Das <b><uri link="guide-to-mutt">Schnellstarter Handbuch zu CLI
         E-Mail Programmen</uri></b> erklärt, wie Sie fetchmail, procmail, mutt
         und nbsmtp benutzen.</p>
 -->
@@ -435,15 +435,15 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
       <title>Gentoo Entwicklungs-Richtlinien</title>
       <body>
 
-        <p>Die <b><uri link="policy.xml">Gentoo Linux
+        <p>Die <b><uri link="policy">Gentoo Linux
         Entwicklungs-Richtlinie</uri></b> beschreibt die aktuellen Grundsätze
         zum Erstellen von ebuilds.</p>
 
-        <p>Die <b><uri link="gentoo-release-policy.xml">Gentoo Linux Release
+        <p>Die <b><uri link="gentoo-release-policy">Gentoo Linux Release
         Richtlinie</uri></b> beschreibt die aktuellen Grundsätze für Gentoo
         Linux Releases.</p>
 
-        <p>Die <b><uri link="doc-policy.xml">Gentoo Linux Dokumentations
+        <p>Die <b><uri link="doc-policy">Gentoo Linux Dokumentations
         Richtlinie</uri></b> beschreibt die aktuellen Grundsätze zur Erstellung
         und dem Editieren von Dokumentation.</p>
 
@@ -457,7 +457,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <p>Das <b><uri link="gentoo-howto">Ebuild Handbuch</uri></b>
         erklärt, wir ebuilds erstellt werden.</p>
 <!--
-        <p>Das <b><uri link="eclass-howto.xml">Eclass Handbuch</uri></b> zeigt,
+        <p>Das <b><uri link="eclass-howto">Eclass Handbuch</uri></b> zeigt,
         wie ebuilds erstellt werden, die OOP-ähnliche Vererbungs-Features zur
         Verfügung stellen.</p>
 -->
@@ -484,6 +484,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 
         <ul>
           <li>Schauen Sie in unser <uri link="http://www.gentoo.org/cgi-bin/viewcvs.cgi">CVS repository</uri>, wenn Sie unseren Code oder unsere ebuilds sehen wollen.</li>
+          <li>Werfen Sie einen Blick in das <uri link="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/gentoo-deutsch/#dirlist">CVS repository</uri> von gentoo.de.</li>
           <li><b><uri link="http://www.gentoo.org/main/de/about.xml">Über</uri></b> das Gentoo Projekt.</li>
           <li>Gentoos <b><uri link="http://www.gentoo.org/main/en/contract.xml">gesellschaftliche Grundlage</uri></b>.</li>
           <li>Mehr über die <b><uri link="http://www.gentoo.org/proj/en/site.xml">XML Projekte</uri></b>, die Gentoo bestritten hat.</li>
@@ -500,8 +501,9 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
   </chapter>
   <chapter>
     <title>Dokumentliste</title>
+    <section>
     <body>
-
+			
       <p>
         Für Personen, die einen kurzen Überblick lieber haben, hier gibt es ihn:
       </p>
@@ -568,7 +570,8 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <!--<tr><ti><uri link="source_mirrors.xml">Gentoo Distfiles Mirror</uri></ti></tr>-->
       </table>
 
-    </body>
+	    </body>
+    </section>
   </chapter>
 </info>
 
