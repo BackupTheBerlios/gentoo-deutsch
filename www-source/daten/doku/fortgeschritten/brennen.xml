@@ -131,9 +131,17 @@ LOOKUP      ^cdrw$           CFUNCTION GLOBAL mksymlink sr0 cdrw
 REGISTER    ^sr0$           CFUNCTION GLOBAL mksymlink $devname cdrw
 UNREGISTER  ^sr0$           CFUNCTION GLOBAL unlink cdrw
 </pre></p>
+<p>
+Damit nicht nur root brennen kann, erweitern wir die Schreibrechte um die Gruppe cdrw, in die wir später unser
+Benutzerkonto aufnehmen werden. Dies legen wir ebenfalls in <i>/etc/devfsd.conf</i> fest:
+<pre caption="/etc/devfsd.conf">
+ # Give the cdrw group write permissions to /dev/sg0
+# This is done to have non root user use the burner (scan the scsi bus)
+REGISTER        ^scsi/host.*/bus.*/target.*/lun.*/generic  PERMISSIONS root.cdrw 660
+</pre></p>
 <p>Als letzte Datei editieren wir <i>/etc/modules.autoload</i>. Da sr_mod beim Start schon automatisch
-geladen wird, genügt es, nur das Modul <i>sg</i> hinzuzufügen:
-<pre caption="/etc/modules.autoload">
+geladen wird, genügt es, nur das Modul <i>sg</i> hinzuzufügen:</p>
+<p><pre caption="/etc/modules.autoload">
 # /etc/modules.autoload:  kernel modules to load when system boots.
 #
 # Add the names of modules that you'd like to load when the system
@@ -143,6 +151,13 @@ geladen wird, genügt es, nur das Modul <i>sg</i> hinzuzufügen:
 # The generic scsi support:
 sg
 </pre>
+</p><p>
+Damit der Brenner auch als normales CDROM verwendet werden kann, und wir die Daten auch mounten können,
+darf ein entsprechender Eintrag in der <i>/etc/fstab</i> nicht fehlen.</p>
+<pre caption="Beispiel für /etc/fstab">
+/dev/sr0                /mnt/cdrw       auto            user,defaults,noauto,ro,exec 0 0
+</pre>
+<p>Natürlich sollte /dev/sr0 an die eigenen Gegebenheiten angepasst werden.
 </p>
 </body>
 </section>
@@ -152,7 +167,7 @@ sg
 <p>Falls man den Kernel neu kompiliert hat kommt man um einen Neustart nicht herum. Beim Starten sollte man
 auf einige wichtige Meldungen bezüglich SCSI und dem Laufwerk achten. Als Beispiel hier meine Meldungen mit 
 einem ASUS CD-Writer, der an /dev/hdc angeschlossen ist:
-<pre>
+<pre caption="Ausgabe von dmesg">
 hdc: ASUS CRW-2410A, ATAPI CD/DVD-ROM drive
 ide-cd: passing drive hdc to ide-scsi emulation.
 
@@ -171,7 +186,8 @@ sr0: scsi3-mmc drive: 40x/40x writer cd/rw xa/form2 cdda tray
 * Loading driver sg...
 </pre>
 In diesem Fall wurde der Brenner erfolgreich vom IDE-CDROM Treiber ignoriert und an den IDE-SCSI Treiber
-übergeben, welcher den Brenner als erstes Laufwerk am SCSI Bus (sg0) eingerichtet hat.
+übergeben, welcher den Brenner als erstes Laufwerk am SCSI Bus (sg0) eingerichtet hat. Sollte die Ausgabe
+zu schnell vorbei laufen, hilft ein <i>dmesg</i> an der Kommandozeile weiter.
 </p>
 </body> 
 </section>
@@ -237,24 +253,24 @@ mkisofs und cdrecord verwenden. Die Manpages erläutern hier alle möglichen Opt
 <p>Brennen auf der Kommandozeile ist einfacher als man denkt! In diesem Abschnitt werde ich exemplarisch einige
 Beispiele vorstellen, mit denen man schnell und einfach seine CDs brennen kann, ohne XFree gestartet haben zu
 müssen. Dies ist sehr praktisch, wenn man z.B. von der Arbeit aus schnell auf dem Heimrechner ein paar
-Dateien sichern möchte (natürlich sollte im Laufwerk praktischerweise schon ein Rohling bereitliegen). Die Daten, 
+Dateien sichern möchte (natürlich sollte im Laufwerk am besten schon ein Rohling bereitliegen). Die Daten, 
 die auf einen Rohling gebrannt werden, müssen zunächst in einem Dateisystem zusammengefasst werden. Diese 
 werden mit Hilfe des Tools <i>mkisofs</i> in einem sogenanntem Image zusammengefasst, welches nach einem 
-kurzen Test mittels <i>cdrecord</i> auf die Scheibe geschrieben.
+kurzen Test mittels <i>cdrecord</i> auf die Scheibe geschrieben werden.
 </p>
 <pre caption="Beispiel für mkisofs">
-$ mkisofs -r -o cd_image bildergalerie/
+$ mkisofs -r -o image.iso bildergalerie/
 </pre>
 <p>
-Im obigen Beispiel werden die Daten im Verzeichnis <i>bildergalerie/</i> in das Image <i>cd_image</i> geschrieben. Die Option 
+Im obigen Beispiel werden die Daten im Verzeichnis <i>bildergalerie/</i> in das Image <i>image.iso</i> geschrieben. Die Option 
 <i>-r</i> stellt sicher, dass die Daten als Rock-Ridge-Extension gespeichert werden. Dabei werden die Daten in in das DOS-kompatible
-8.3 Format umgewandelt (unter Beibehaltung der alten Dateinamen) und die Zugriffsrechte auf öffentlich gesetzt. Möchte lieber
+8.3 Format umgewandelt (unter Beibehaltung der alten Dateinamen) und die Zugriffsrechte auf öffentlich gesetzt. Möchte man lieber
 das MS Joliet Dateisystem verwenden, benutzt man stattdessen die Option <i>-J</i>.</p>
 <p>
 Als nächstes kann die Integrität des Images überprüft werden. Dazu wird die Datei einfach als eine Partition gemountet. In unserem
 nächsten Beispiel mounten wir das Image auf <i>/cdrom</i> und werfen einen Blick auf das Dateilayout:</p>
 <pre caption="Beispiel für das Mounten eines Loopback Devices">
-$ mount -t iso9660 -o ro,loop/dev/loop0 cd_image /cdrom
+$ mount -t iso9660 -o ro,loop=/dev/loop0 image.iso /cdrom
 $ cd /cdrom
 $ ls -l
 </pre>
@@ -263,15 +279,18 @@ $ ls -l
 </p>
 <p>Nun wollen wir das Image auf CD brennen. Dazu sollten wir mit <i>cdrecord -scanbus</i> vorher herausgefunden haben, an
 welchem Bus unser Brenner hängt. Dies sowie die ID und LUN werden dabei als dreistellige Zahl, durch Kommata voneinander getrennt 
-angegeben. In meinem obigen Beispiel übergeben ist dies 0,0,0. Jeder Benutzer übergibt also mittels <i>dev=SCSI_BUS,SCSI_ID,SCSI_LUN</i>
+angegeben. In meinem obigen Beispiel ist dies 0,0,0. Jeder Benutzer übergibt also mittels <i>dev=SCSI_BUS,SCSI_ID,SCSI_LUN</i>
 die Korrekte Lage des Brenners an cdrecord:</p>
 <pre caption="Beispiel für cdrecord">
 $ cdrecord -v speed=12 dev=0,0,0 -data cd_image
 </pre>
 <p>
-<impo>Sollten der Rohling ein CD-RW Medium sein, muss die Option <i>blank=all</i> hinzugefügt werden.</impo>
+<impo>Sollten der Rohling ein CD-RW Medium sein, muss die Option <i>blank=fast</i> hinzugefügt werden.</impo>
+</p><p>
+<note>Mit <i>cdrecord dev=0,0,0 eject</i> kann man testen, ob man das richtige Laufwerk ausgewält hat. Dabei sollte sich die
+Schublade des entsprechenden Gerätes öffnen. Auch hier bitte 0,0,0 durch die eigenen Werte ersetzen.</note>
 </p><p> 
-Bei langsamen Rechner empfiehlt sich die <i>-dummy</i> Option. Dabei wird der Brennvorgang simuliert, aber der Laser nicht
+Bei langsameren Rechner kann die <i>-dummy</i> Option ausprobiert werden. Dabei wird der Brennvorgang simuliert, aber der Laser nicht
 eingeschaltet. So kann man überprüfen, ob die Übertragungsgeschwindigkeit zum Brenner ausreicht. Moderne scsi3-mmc kompatible 
 Brenner unterstützen auch den treiberspezifischen <i>driveropts=burnfree</i> Modus. Weitere Informationen findet man in der
 Manpage von cdrecord, die mit <i>man cdrecord</i> aufgerufen werden kann.
@@ -281,7 +300,172 @@ Manpage von cdrecord, die mit <i>man cdrecord</i> aufgerufen werden kann.
 <section>
 	<title>Audio CDs</title> 
 <body>
-<p>Noch zu erstellen</p> 
+<p>Im Gegensatz zu einer Daten CD besitzen Audio CDs kein Dateisystem. Stattdessen werden die Musikdaten direkt als 16bit Stereo 44.1 kHz 
+auf die CD gebrannt. Dabei gibt es zwei Möglichkeiten der Datenübertragung DAO ("Disk at once") und TAO ("Track at once"). Letzteres ist recht
+einfach mit <i>cdrecord</i> zu erstellen, hat aber den Nachteil, dass zwischen den einzelnen Stücken kurze Clicks und Pausen auftreten. Für
+DAO verwendet man das Tool <i>cdrdao</i>, welches auch die  Möglichkeit, des "on-the-fly" Kopieren unterstützt.</p>
+<p>
+Nun wollen wir zunächst einmal das Brennen im TAO Modus versuchen.  Mit dem Tool <i>cdda2wav</i> extrahieren wir einen Audio Track von
+einer Audio CD. In meinem Beispiel habe ich mit der Option <i>-t 3</i> das dritte Lied von der CD ausgewählt. Die Daten werden dank <i>-x</i>
+mit 16bit Stereo 44.1kHz Qualität in die Datei track03.wav geschrieben. Natürlich muss auch hier wieder <i>dev=SCSI_BUS,SCSI_ID,SCSI_LUN</i>
+an die eigenen Gegebenheiten angepasst werden.
+<pre caption="Beispiel für cdda2wav">
+$ cdda2wav -dev=0,0,0 -t 3 -x track03.wav
+
+Type: ROM, Vendor 'ASUS    ' Model 'CRW-2410A       ' Revision '1.0 ' MMC+CDDA
+724992 bytes buffer memory requested, 4 buffers, 75 sectors
+Read TOC CD Text failed (probably not supported).
+#Cdda2wav version 2.01a18_linux_2.4.22_i686_amd-athlon-tm--xp-1800+, real time sched., soundcard, libparanoia support
+AUDIOtrack pre-emphasis  copy-permitted tracktype channels
+      1-12           no              no     audio    2
+Table of Contents: total tracks:12, (total time 52:28.40)
+  1.( 3:18.62),  2.( 3:27.48),  3.( 4:13.65),  4.( 4:05.35),  5.( 4:47.17),
+  6.( 4:59.73),  7.( 4:42.32),  8.( 5:14.73),  9.( 4:22.00), 10.( 5:11.65),
+ 11.( 3:32.70), 12.( 4:31.25)
+ 
+Table of Contents: starting sectors
+  1.(       0),  2.(   14912),  3.(   30485),  4.(   49525),  5.(   67935),
+  6.(   89477),  7.(  111975),  8.(  133157),  9.(  156780), 10.(  176430),
+ 11.(  199820), 12.(  215790), lead-out(  236140)
+CDINDEX discid: aqqclv93yDV3zqBboWho5FBST0o-
+CDDB discid: 0xb00c4c0c
+CD-Text: not detected
+CD-Extra: not detected
+samplefile size will be 44782124 bytes.
+recording 253.8666 seconds stereo with 16 bits @ 44100.0 Hz ->'track03'...
+cdda2wav: Operation not permitted. cannot set posix realtime scheduling policy
+percent_done:
+100%  track  3 successfully recorded
+</pre>
+</p>
+<note> Möchte man alle Dateien aus der CD auf einmal extrahieren, erstellt cdda2wav mit der <i>-B</i> Option für jeden Track eine eigene Datei</note>
+<p>
+Nun haben wir eine große Datei namens track03.wav erstellt. Benutzer eines ALSA-Soundtreibers können mit
+bei Bedarf mit <i>aplay track03.wav</i> probehören. Nun schreiben wir diesen Track auf einen Rohling:
+<pre caption="Beispiel für TAO mit cdrecord">
+$ cdreocrd -v speed=12 dev=0,0,0 -audio track03.wav
+</pre>
+Natürlich kann man auch mehr als einen Audio Track auf die CD schreiben. Dazu fügt man einfach alle Namen der zu schreibenden Dateien hinter
+die <i>-audio</i> Option an. 
+</p>
+<impo>Cdrecord schreibt auch *.cdr und *.au Daten direkt auf die CD. Allerdings können enkodierte Formate wie z.B: 
+*.mp3 und *.ogg  nicht ohne weiteres verwendet werden. Diese müssen zunächst in *.wav oder *.cdr Dateien umgewandelt werden. Dies kann
+zum Beispiel mit mpg123 erfolgen.</impo>
+<p>
+Nachdem wir gelernt haben, wie man Daten im TAO-Modus schreiben kann, werfen wir jetzt einen Blick auf <i>cdrdao</i>, welches wir ja bereits
+installiert haben. Leider unterstützt cdrdao aufgrund veralteter libscg Bibliotheken bislang noch keinen direkten ATAPI Zugriff, sodass Benutzer
+der 2.6 Kernel  Serie sich entweder mit der IDE-SCSI Emulation oder einem echten SCSI Gerät behelfen muss. Alternativ kann man natürlich 
+versuchen, cdrdao gegen die neuesten Bibliotheken zu kompilieren. Weitere Informationen dazu <uri link="http://forums.gentoo.org/viewtopic.php?t=64657">hier</uri>.
+</p>
+<p>Als erstes lesen wir eine gesamte Audio CD aus und lassen von cdrdao gleich das notwendige TOC erstellen:</p>
+<pre caption="Beispiel für Datenextraktion mit cdrdao">
+$ cdrdao read-cd --driver generic-mmc --device 0,0,0 image.toc
+
+Cdrdao version 1.1.7 - (C) Andreas Mueller &lt;andreas*daneb.de&gt;
+  SCSI interface library - (C) Joerg Schilling
+  Paranoia DAE library - (C) Monty
+ 
+Check http://cdrdao.sourceforge.net/drives.html#dt for current driver tables.
+ 
+Using libscg version 'andreas-0.5-UNIXWARE_Patch'
+ 
+0,0,0: ASUS CRW-2410A   Rev: 1.0
+Using driver: Generic SCSI-3/MMC - Version 2.0 (options 0x0000)
+ 
+Reading toc and track data...
+ 
+Track   Mode    Flags  Start                Length
+------------------------------------------------------------
+ 1      AUDIO   0      00:00:00(     0)     04:32:20( 20420)
+ 2      AUDIO   0      04:32:20( 20420)     03:50:32( 17282)
+ 3      AUDIO   0      08:22:52( 37702)     04:09:30( 18705)
+ 4      AUDIO   0      12:32:07( 56407)     05:20:23( 24023)
+ 5      AUDIO   0      17:52:30( 80430)     02:15:50( 10175)
+ 6      AUDIO   0      20:08:05( 90605)     04:21:42( 19617)
+ 7      AUDIO   0      24:29:47(110222)     03:17:43( 14818)
+ 8      AUDIO   0      27:47:15(125040)     04:27:47( 20072)
+ 9      AUDIO   0      32:14:62(145112)     03:16:15( 14715)
+10      AUDIO   0      35:31:02(159827)     05:14:15( 23565)
+11      AUDIO   0      40:45:17(183392)     04:17:73( 19348)
+12      AUDIO   0      45:03:15(202740)     03:49:62( 17237)
+Leadout AUDIO   0      48:53:02(219977)
+ 
+PQ sub-channel reading (audio track) is supported, data format is BCD.
+Raw P-W sub-channel reading (audio track) is supported.
+Cooked R-W sub-channel reading (audio track) is supported.
+Copying audio tracks 1-12: start 00:00:00, length 48:53:02 to "data.bin"...
+Track 1...
+Track 2...
+Found pre-gap: 00:00:63
+Track 3...
+Found pre-gap: 00:01:00
+Track 4...
+Found pre-gap: 00:03:20
+Track 5...
+Found pre-gap: 00:03:38
+Track 6...
+Found pre-gap: 00:02:70
+Track 7...
+Found pre-gap: 00:02:27
+Track 8...
+Found pre-gap: 00:00:63
+Track 9...
+Found pre-gap: 00:03:20
+Track 10...
+Found pre-gap: 00:01:07
+Track 11...
+Found pre-gap: 00:01:35
+Track 12...
+Found pre-gap: 00:01:70
+Found 3567 Q sub-channels with CRC errors.
+Found disk catalogue number.
+Reading of toc and track data finished successfully.
+</pre>
+<p>
+Die Option <i>--driver generic-mmc</i> wird nur benötigt, wenn der Brenner noch nicht in der Treibertabelle enthalten ist. Da cdrdao schon
+seit längerer Zeit nicht mehr aktualisiert wurde, ist dies bei allen neueren Geräten sicherlich der Fall.</p>
+<p>Nun schreiben wir den Inhalt unseres TOC auf einen Rohling:</p>
+<pre caption="Beispiel für DAO mit cdrdao">
+$ cdrdao write --driver generic-mmc --device 0,0,0 image.toc
+
+Cdrdao version 1.1.7 - (C) Andreas Mueller &lt;andreas*daneb.de&gt;
+  SCSI interface library - (C) Joerg Schilling
+  Paranoia DAE library - (C) Monty
+ 
+Check http://cdrdao.sourceforge.net/drives.html#dt for current driver tables.
+ 
+Using libscg version 'andreas-0.5-UNIXWARE_Patch'
+ 
+0,0,0: ASUS CRW-2410A   Rev: 1.0
+Using driver: Generic SCSI-3/MMC - Version 2.0 (options 0x0000)
+ 
+Starting write at speed 16...
+Pausing 10 seconds - hit CTRL-C to abort.
+Process can be aborted with QUIT signal (usually CTRL-\).
+Turning BURN-Proof on
+Executing power calibration...
+Power calibration successful.
+Writing track 01 (mode AUDIO/AUDIO )...
+Writing track 02 (mode AUDIO/AUDIO )...
+Writing track 03 (mode AUDIO/AUDIO )...
+Writing track 04 (mode AUDIO/AUDIO )...
+Writing track 05 (mode AUDIO/AUDIO )...
+Writing track 06 (mode AUDIO/AUDIO )...
+Writing track 07 (mode AUDIO/AUDIO )...
+Writing track 08 (mode AUDIO/AUDIO )...
+Writing track 09 (mode AUDIO/AUDIO )...
+Writing track 10 (mode AUDIO/AUDIO )...
+Writing track 11 (mode AUDIO/AUDIO )...
+Writing track 12 (mode AUDIO/AUDIO )...
+Wrote 493 of 493 MB (Buffer 100%).
+Wrote 219977 blocks. Buffer fill min 84%/max 100%.
+Flushing cache...
+Writing finished successfully.
+</pre>
+<p>Jetzt haben Sie gelernt, wie man erfolgreich Daten und Audio CDs in Gentoo Linux
+auf der Kommandozeile gebrannt. Für weitere Details an den Optionen von cdrecord oder cdrdao
+empfehle ich die jeweiligen Manpages. Viel Spass mit Ihrem System!
+</p>
 </body>
 </section>
 <section>
