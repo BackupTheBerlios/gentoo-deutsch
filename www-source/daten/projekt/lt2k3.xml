@@ -67,7 +67,7 @@
 		vor, heute 240 CDs zu vergeben.
 	</p>
 	<p>
-		Um 12:30 treffen torbenh unf phoen][x ein; der Platz wird immer weniger und scheint
+		Um 12:30 treffen torbenh und phoen][x ein; der Platz wird immer weniger und scheint
 		sich zu unserem größten Problem zu entwickeln. Ich zähle 12 aktive Gentoo/Xine-Entwickler
 		auf 15m². Die Menge vor unserem Stand, sie sich die Kurzfilme und Trailer ansehen, die Xine
 		zeigt, habe ich nicht mitgezählt.
@@ -85,6 +85,18 @@
 		von Gentoo erklärt (wie <c>etcat</c>, <c>emerge</c>, Hinweise für gelegentliche Probleme und vielleicht
 		auch "Was ist zu tun, wenn....")
 	</p>
+	<p>
+		17:12 : "Platz" ist unser Wort des Tages. Zuletzt wurden 15 Computer/Laptops auf 15m² gezählt (die
+		netten kleinen Zaurus und iPaq Geräte wurden hierbei nicht mitgezählt)
+	</p>
+	<p>
+		17:14 : Ein weiterer Vorschlag kam auf : In den Kernel-ebuilds sollten funktionierende .config-Dateien
+		enthalten sein, oder diese sollten - wie bei anderen Distributionen - nach /boot kopiert werden. Der
+		Hintergrund hierfür ist, daß man dem Anwender so bessere und sicherere Einstellungen im Kernel geben kann,
+		als dies bei den Standard-Kernel-Einstellungen der Fall ist. Evtl. Könnten hierfür die .config-Dateien der
+		LiveCD benutzt werden.
+	</p>
+
 
 </body>
 </section>
