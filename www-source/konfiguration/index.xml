@@ -44,6 +44,7 @@
         <item href="nano" title="Nano-Editor"/>
         <item href="fluxbox" title="Fluxbox Window-Manager"/>
         <item href="portage" title="Portage"/>
+        <item href="vi-guide" title="vi-Guide"/>
       </item>
       <item href="fortgeschritten" title="Fortgeschritten">
         <item href="alsa" title="Soundsytem einrichten"/>
