@@ -1,3 +1,5 @@
-MD5 93e2a86a1b817c452344750ff3f5793b vdrplugin-osdpip-0.0.2.ebuild 1266
-MD5 2526ce01a1a89fecd225c340f39c5595 ChangeLog 547
+MD5 47f5602894c9cbb18fe30dfdc49cb375 vdrplugin-osdpip-0.0.2.ebuild 1264
+MD5 47f5602894c9cbb18fe30dfdc49cb375 vdrplugin-osdpip-0.0.4.ebuild 1264
+MD5 d5621a0f2cfea3ed357645fc8900ca3e ChangeLog 546
 MD5 4ae40156481c2efcace7d87947a4d291 files/digest-vdrplugin-osdpip-0.0.2 64
+MD5 704979b944d9d57bb434496c970cfae0 files/digest-vdrplugin-osdpip-0.0.4 64
