@@ -1,3 +1,5 @@
-MD5 d03ba3dc5b1bb46ac56c9262705d31c9 ChangeLog 331
-MD5 952055cad7403ccccdf8a88156db0913 vdrplugin-pilot-0.0.3.ebuild 1203
+MD5 c9c3b2f04576eca656daf218c2121de8 vdrplugin-pilot-0.0.3c.ebuild 1256
+MD5 4255d3b9d3f1cf222c15bbf53997f7a8 ChangeLog 331
+MD5 c9c3b2f04576eca656daf218c2121de8 vdrplugin-pilot-0.0.3.ebuild 1256
 MD5 04937f4a7500884b927475782cffd0d2 files/digest-vdrplugin-pilot-0.0.3 63
+MD5 03aab3c42eff54a07031b21c33315650 files/digest-vdrplugin-pilot-0.0.3c 64
