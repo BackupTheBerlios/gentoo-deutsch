@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.1.31.ebuild,v 1.1 2003/05/12 18:53:05 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.1.31.ebuild,v 1.2 2003/05/15 16:57:37 mad Exp $
 
 IUSE="lirc rcu vdr_vfat"
 
@@ -19,6 +19,8 @@ PROVIDE="virtual/vdr"
 
 src_unpack() {
 	unpack ${A}
+	cd ${S}
+	sed -i "2912s/=\ false//" menu.c
 }
 
 src_compile() {
