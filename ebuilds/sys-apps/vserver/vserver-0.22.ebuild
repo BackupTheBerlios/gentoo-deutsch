@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/vserver/Attic/vserver-0.22.ebuild,v 1.2 2003/08/22 12:10:17 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-apps/vserver/Attic/vserver-0.22.ebuild,v 1.3 2003/08/22 13:17:25 mad Exp $
 
 IUSE=""
 
@@ -23,7 +23,19 @@ src_compile() {
 }
 
 src_install() {
-	sed -i "/\.sysv.*v_/d" Makefile
+	sed -i \
+		-e "/\.sysv.*v_/d" \
+		-e "/vservers.sysv/d" \
+		Makefile
 	make install -e RPM_BUILD_ROOT=${D}
+	insinto /etc/init.d
+	doins ${FILESDIR}/rc.vservers
 }
 
+pkg_postinst(){
+	einfo
+	einfo "READ http://www.solucorp.qc.ca/miscprj/s_context.hc"
+	einfo "because you need much more than tis pkg to run "
+	einfo "vservers. Especially a patched Kernel."
+	einfo
+}
