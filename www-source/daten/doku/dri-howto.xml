@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <guide link="/doc/dri-howto.xml">
-<!-- Original English Version from June 19, 2003 -->
+<!-- Original English CVS Version 1.5 -->
 
 <title>Anleitung für Hardware 3D-Beschleunigung</title>
 
@@ -356,16 +356,60 @@ EndSection
 </body>
 </section>
 </chapter>
+
+<chapter>
+	<title>Problembehebung</title>
+	<section>
+		<title>Es funktiniert einfach nicht. Ich habe kein Rendering und ich weiss nicht warum.</title>
+		<body>
+		<p>Versuchen Sie ein <c>insmod radeon</c> vor dem Starten des X server. Versuchen Sie ausserdem apgart als Modul zu erstellen, statt direkt
+		in den Kernel zu kompilieren.</p>
+		</body>
+	</section>
+	<section>
+		<title>Beim Ausführen von <c>startx</c> erhalte ich folgenden Fehler: "[drm] failed to load kernel module agpgart"</title>
+		<body>
+		<p>Dies erscheint immer, wenn apgart direkt in den Kernel einkompiliert wird. Sie können dies getrost ignorieren.</p>
+		</body>
+	</section>
+	<section>
+		<title>Direct rendering funktioniert nicht und in <path>/var/log/XFree86.0.log</path> erhalte ich eine Fehlermeldung, das die Treiberversion falsch ist.</title>
+		<body>
+		<p>Sie benutzen nicht den xfree-drm Treiber. SInd Sie sicher, dass DRM und der Treiber in den richtigen Kernel kompiliert wurde?</p>
+		</body>
+	</section>
+	<section>
+		<title>Ich besitze eine Radeon und möchte TV-Out nutzen</title>
+		<body>
+		<p>Dafür gibt es die ati-gatos Treiber. <c>emerge -s gatos</c>.</p>
+		</body>
+	</section>
+	<section>
+		<title>Es funktioniert immer noch nicht. Meine Karte ist so neu und megaobercool, dass sie nicht unterstützt wird.</title>
+		<body>
+		<p>Probieren Sie die binären Treiber aus. Sollte für Ihre Karte noch keine Treiber geben, probieren Sie VESA. Es ist langsam, funktioniert aber. Halten Sie nach neuen Treibern Ausschau.</p>
+		</body>
+	</section>
+	<section>
+		<title>I habe eine PCI Karte, die nicht arbeiten will. Hilfe!</title>
+		<body>
+		<p>Im Abschnitt "Device" muss ForcePCIMode eingetragen sein. 
+<pre>Option "ForcePCIMode" "True"</pre></p>
+		</body>
+	</section>
+	 
+</chapter>
+
 <chapter>
 	<title>Referenzen</title>
 <section>
 <body>
-<p>
-   1.  http://forums.gentoo.org/viewtopic.php?t=46681
-   2. http://forums.gentoo.org/viewtopic.php?t=29264
-   3. http://dri.sourceforge.net/
-   4. http://www.retinalburn.net/linux/dri_status.html
-
+<p><ol>
+   <li>http://forums.gentoo.org/viewtopic.php?t=46681</li>
+   <li>http://forums.gentoo.org/viewtopic.php?t=29264</li>
+   <li>http://dri.sourceforge.net/</li>
+   <li>http://www.retinalburn.net/linux/dri_status.html</li>
+	</ol>
 </p>
 </body>
 </section>
