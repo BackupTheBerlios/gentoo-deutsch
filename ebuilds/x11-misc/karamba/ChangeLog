@@ -1,28 +1,45 @@
 # ChangeLog for x11-misc/karamba
 # Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-misc/karamba/Attic/ChangeLog,v 1.5 2003/04/07 02:43:33 shermann Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/x11-misc/karamba/Attic/ChangeLog,v 1.6 2003/04/11 02:50:23 shermann Exp $
 
-*karamba-0.15 (07 Mar 2003)
+*karamba-0.16 (11 Apr 2003)
+
+  11 Apr 2003; Stephan Hermann <sh@sourcecode.de>
+  New version.
+  From the authors changelog:
+  Memory sensor: added %fmb, %umb. Changed behaviour of %fm,%um.
+  Better Noatun support, support for noatun-xxxx dcop names.
+  The dcop name can be returned with format="%id"
+  Added a THEME tag to enable loading of themes inside a theme. 
+  It is possible to have a theme with only THEME tags.
+  Themes must have a KARAMBA tag to open a window.
+  %fmb and %umb added to the memory sensor
+  Added a CPU parameter to the CPU sensor
+  Thanks to Ralph Churchill:
+  Added a DEFAULTFONT tag
+  The image meter can show images from the web directly
+
+*karamba-0.15 (07 Apr 2003)
 
   07 Mar 2003; Stephan Hermann <sh@sourcecode.de>
   New release.
   Added a DEVICE parameter to the network sensor
   Disk sensor support for mounted network filesystems
 
-*karamba-0.14-r1 (05 Mar 2003)
+*karamba-0.14-r1 (05 Apr 2003)
 
   05 Mar 2003; Stephan Hermann <sh@sourcecode.de>
   Bugfix release.
   Compilation fix (karambarootpixmap.h)
 
-*karamba-0.14 (05 Mar 2003)
+*karamba-0.14 (05 Apr 2003)
 
   05 Mar 2003; Stephan Hermann <sh@sourcecode.de>
   New version released.
   Improved wallpaper handling 
   Changed index.docbook to reduce compile problems
     
-*karamba-0.13 (05 Mar 2003)
+*karamba-0.13 (05 Apr 2003)
 
   05 Mar 2003; Stephan Hermann <sh@sourcecode.de> :
   Changed description, used ${PV} instead of ${PN}
@@ -30,7 +47,7 @@
   05 Mar 2003; Stephan Hermann <sh@sourcecode.de> :
   New version released. Added notatun sensor.
 
-*karamba-0.12 (03 Mar 2003)
+*karamba-0.12 (03 Apr 2003)
 
   05 Mar 2003; Stephan Hermann <sh@sourcecode.de> :
   Changed description, used ${PV} instead of ${PN}
