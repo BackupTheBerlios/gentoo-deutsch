@@ -1,9 +1,0 @@
-# ChangeLog for dev-libs/firedns
-# Copyright 2003 Alexander Holler; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/dev-libs/firedns/Attic/ChangeLog,v 1.1 2003/08/22 15:27:33 fow0ryl Exp $
-
-*firedns-0.1.30 (21 Mar 2003)
-
-  21 mar 2003; Alexander Holler <holler@ahsoftware.de>
-
-  Initial checkin of this package.

@@ -1,8 +1,0 @@
-*xmms-plugins-1.0 (28 Jun 2003)
-
-  05 Jul 2003; Jan Schubert <Jan.Schubert@GMX.li> xmms-plugins-1.0.1
-	added some more plugins, deleted some, changed some dependencies
-
-  28 Jun 2003; Jan Schubert <Jan.Schubert@GMX.li> xmms-plugins-1.0: A
-  rollup package of all xmms-plugins in portage. If you add/delete any
-	xmms plugins, make sure to add an entry for your addition.

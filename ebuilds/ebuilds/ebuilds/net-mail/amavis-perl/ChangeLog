@@ -1,9 +1,0 @@
-# ChangeLog for net-mail/amavis-perl
-# Copyright 2002 Alexander Holler; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/ebuilds/ebuilds/net-mail/amavis-perl/Attic/ChangeLog,v 1.1 2003/08/22 15:27:29 fow0ryl Exp $
-
-*amavis-perl-11 (15 Aug 2002)
-
-  20 Aug 2002; Alexander Holler <holler@ahsoftware.de>
-
-  Initial ebuild.
