@@ -1,0 +1,268 @@
+diff -Nru o/osdpip-0.0.4/osd.c osdpip/osd.c
+--- o/osdpip-0.0.4/osd.c	2004-02-04 19:21:47.000000000 +0100
++++ osdpip/osd.c	2004-05-16 20:45:44.494450752 +0200
+@@ -129,6 +129,7 @@
+ 			case 4: m_Width = 280; m_Height = 224; break;
+ 			case 5: m_Width = 320; m_Height = 256; break;
+ 		}
++#if VDRVERSNUM < 10307
+ 		if (OsdPipSetup.ShowInfo) {
+ 			int x = 0;
+ 			int y = 0;
+@@ -158,8 +159,14 @@
+ #endif
+ 			ShowChannelInfo(Channels.GetByNumber(cDevice::ActualDevice()->CurrentChannel()));
+ 		}
++#endif
++#if VDRVERSNUM >= 10307
++		tArea window = { OsdPipSetup.XPosition, OsdPipSetup.YPosition, OsdPipSetup.XPosition + m_Width - 1, OsdPipSetup.YPosition + m_Height - 1, OsdPipSetup.ColorDepth == kDepthGrey16 ? 4 : 8 };
++		m_Osd->SetAreas(&window, 1);
++#else
+ 		m_Window = m_Osd->Create(OsdPipSetup.XPosition, OsdPipSetup.YPosition, 
+ 			m_Width, m_Height, OsdPipSetup.ColorDepth == kDepthGrey16 ? 4 : 8, false);
++#endif
+ 		m_Bitmap = new cBitmap(m_Width, m_Height,
+ 			OsdPipSetup.ColorDepth == kDepthGrey16 ? 4 : 8, false);
+ 		if (OsdPipSetup.ColorDepth == kDepthGrey128 ||
+@@ -207,14 +214,22 @@
+ 	
+ 	if (OsdPipSetup.ColorDepth == kDepthGrey16) {
+ 		outputImage = m_PicResample->data[0];
++#if VDRVERSNUM >= 10307
++		m_Bitmap->Reset();
++#else
+ 		m_Bitmap->Clear();
++#endif
+ 		for (int y = 0; y < m_Height; y++) {
+ 			for (int x = 0; x < m_Width; x++) {
+ 				value = outputImage[y * m_Width + x];
+ 				value = value / 16;
+ 				value = value * 16;
+ 				value = m_AlphaBase | (value << 16) | (value << 8) | value;
++#if VDRVERSNUM >= 10307
++				m_Bitmap->DrawPixel(x, y, (tColor) value);
++#else
+ 				m_Bitmap->SetPixel(x, y, (eDvbColor) value);
++#endif
+ 			}
+ 		}
+ 	}
+@@ -223,7 +238,11 @@
+ //		m_Bitmap->Clear();
+ 		for (int y = 0; y < m_Height; y++) {
+ 			for (int x = 0; x < m_Width; x++) {
++#if VDRVERSNUM >= 10307
++				m_Bitmap->DrawPixel(x, y, (tColor) m_Palette[m_PaletteLookup[outputImage[y * m_Width + x] & 0xFE]]);
++#else
+ 				m_Bitmap->SetPixel(x, y, (eDvbColor) m_Palette[m_PaletteLookup[outputImage[y * m_Width + x] & 0xFE]]);
++#endif
+ 			}
+ 		}
+ 	}
+@@ -255,7 +274,11 @@
+ //			m_Bitmap->Clear();
+ 			for (int y = 0; y < m_Height; y++) {
+ 				for (int x = 0; x < m_Width; x++) {
++#if VDRVERSNUM >= 10300
++					m_Bitmap->DrawPixel(x, y, (tColor) m_Palette[m_PaletteLookup[outputImage[y * m_Width + x]]]);
++#else
+ 					m_Bitmap->SetPixel(x, y, (eDvbColor) m_Palette[m_PaletteLookup[outputImage[y * m_Width + x]]]);
++#endif
+ 				}
+ 			}
+ 		} else {
+@@ -267,7 +290,11 @@
+ 
+ //			m_Bitmap->Clear();
+ 			for (int i = 0; i < 256; i++)
++#if VDRVERSNUM >= 10307
++				m_Bitmap->SetColor(i, (tColor) m_Palette[i]);
++#else
+ 				m_Bitmap->SetColor(i, (eDvbColor) m_Palette[i]);
++#endif
+ 			for (int y = 0; y < m_Height; y++) {
+ 				for (int x = 0; x < m_Width; x++) {
+ 					m_Bitmap->SetIndex(x, y, m_PaletteLookup[m_PaletteStart + outputImage[y * m_Width + x]]);
+@@ -281,10 +308,17 @@
+ 		}
+ 	}
+ 
++#if VDRVERSNUM >= 10307
++	m_Osd->SetPalette(*m_Bitmap, 0);
++	m_Osd->DrawBitmap(OsdPipSetup.XPosition, OsdPipSetup.YPosition, 
++			*m_Bitmap);
++	m_Osd->Flush();
++#else
+ 	m_Osd->Clear();
+ 	m_Osd->SetBitmap(OsdPipSetup.XPosition, OsdPipSetup.YPosition, 
+ 			*m_Bitmap);
+ 	m_Osd->Flush();
++#endif
+ }
+ 
+ void cOsdPipObject::Action(void) {
+@@ -336,6 +370,7 @@
+ 				usleep(1);
+ 			}
+ 		}
++#if VDRVERSNUM < 10307
+ 		if (m_ShowTime != 0) {
+ 			if (m_ShowInfo) {
+ 				m_Osd->Clear(m_WindowInfo);
+@@ -351,6 +386,7 @@
+ 				m_ShowTime = 0;
+ 			}
+ 		}
++#endif
+ 	}
+ 
+ 	if (OsdPipSetup.ColorDepth == kDepthColor128var ||
+@@ -368,12 +404,17 @@
+ }
+ 
+ void cOsdPipObject::Show(void) {
++#if VDRVERSNUM >= 10307
++	m_Osd = cOsdProvider::NewOsd(0, 0);
++#else
+ 	m_Osd = cOsd::OpenRaw(0, 0);
++#endif
+ 	if (m_Osd)
+ 		Start();
+ }
+ 
+ eOSState cOsdPipObject::ProcessKey(eKeys Key) {
++	tArea window;
+ 	eOSState state = cOsdObject::ProcessKey(Key);
+   if (state == osUnknown) {
+     switch (Key & ~k_Repeat) {
+@@ -390,7 +431,11 @@
+ 						if (OsdPipSetup.YPosition > 9) OsdPipSetup.YPosition -= 10;
+ 						break;
+ 					case k3:
++#if VDRVERSNUM >= 10307
++						if (OsdPipSetup.XPosition < Setup.OSDWidth)
++#else
+ 						if (OsdPipSetup.XPosition < Setup.OSDwidth * cOsd::CellWidth()) 
++#endif
+ 							OsdPipSetup.XPosition += 10;
+ 						if (OsdPipSetup.YPosition > 9) OsdPipSetup.YPosition -= 10;
+ 						break;
+@@ -398,26 +443,55 @@
+ 						if (OsdPipSetup.XPosition > 9) OsdPipSetup.XPosition -= 10;
+ 						break;
+ 					case k6:
++#if VDRVERSNUM >= 10307
++						if (OsdPipSetup.XPosition < Setup.OSDWidth)
++#else
+ 						if (OsdPipSetup.XPosition < Setup.OSDwidth * cOsd::CellWidth()) 
++#endif
+ 							OsdPipSetup.XPosition += 10;
+ 						break;
+ 					case k7:
+ 						if (OsdPipSetup.XPosition > 9) OsdPipSetup.XPosition -= 10;
++#if VDRVERSNUM >= 10307
++						if (OsdPipSetup.YPosition < Setup.OSDHeight);
++#else
+ 						if (OsdPipSetup.YPosition < Setup.OSDheight * cOsd::LineHeight()) 
++#endif
+ 							OsdPipSetup.YPosition += 10;
+ 						break;
+ 					case k8:
++#if VDRVERSNUM >= 10307
++						if (OsdPipSetup.YPosition < Setup.OSDHeight)
++#else
+ 						if (OsdPipSetup.YPosition < Setup.OSDheight * cOsd::LineHeight()) 
++#endif
+ 							OsdPipSetup.YPosition += 10;
+ 						break;
+ 					case k9:
++#if VDRVERSNUM >= 10307
++						if (OsdPipSetup.XPosition < Setup.OSDWidth)
++#else
+ 						if (OsdPipSetup.XPosition < Setup.OSDwidth * cOsd::CellWidth()) 
++#endif
+ 							OsdPipSetup.XPosition += 10;
++#if VDRVERSNUM >= 10307
++						if (OsdPipSetup.YPosition < Setup.OSDHeight)
++#else
+ 						if (OsdPipSetup.YPosition < Setup.OSDheight * cOsd::LineHeight()) 
++#endif
+ 							OsdPipSetup.YPosition += 10;
+ 						break;
+ 				}
++#if VDRVERSNUM >= 10307
++				window.x1 = OsdPipSetup.XPosition;
++				window.y1 = OsdPipSetup.YPosition;
++				window.x2 = OsdPipSetup.XPosition + m_Width - 1;
++				window.y2 = OsdPipSetup.YPosition + m_Height - 1;
++				window.bpp = OsdPipSetup.ColorDepth == kDepthGrey16 ? 4 : 8;
++				m_Osd->SetAreas(&window, 1);
++#else
+ 				m_Osd->Relocate(m_Window, OsdPipSetup.XPosition, OsdPipSetup.YPosition);
++#endif
+ 				break;
+ 
+ 			case kUp:
+@@ -454,6 +528,7 @@
+ }
+ 
+ void cOsdPipObject::ShowChannelInfo(const cChannel * channel) {
++#if VDRVERSNUM < 10307
+ 	char line1[100] = "";
+ 	char line2[100] = "";
+ 
+@@ -504,5 +579,6 @@
+ 	m_BitmapInfo->Text(0, 30, line2, (eDvbColor) 0xFFFFFFFF, (eDvbColor) 0xFF000000);
+ 	time(&m_ShowTime);
+ 	m_ShowInfo = true;
++#endif
+ }
+ 
+diff -Nru o/osdpip-0.0.4/osd.h osdpip/osd.h
+--- o/osdpip-0.0.4/osd.h	2004-02-01 14:49:35.000000000 +0100
++++ osdpip/osd.h	2004-05-16 19:33:55.372536856 +0200
+@@ -29,13 +29,17 @@
+ 
+ class cOsdPipObject: public cOsdObject, public cThread, public cStatus {
+ private:
++#if VDRVERSNUM >= 10307
++	cOsd *m_Osd;
++#else
+ 	cOsdBase *m_Osd;
++	tWindowHandle m_Window;
++	tWindowHandle m_WindowInfo;
++#endif
+ 	cRingBufferFrame *m_ESBuffer;
+ 	cOsdPipReceiver *m_Receiver;
+ 	const cChannel *m_Channel;
+-	tWindowHandle m_Window;
+ 	cBitmap * m_Bitmap;
+-	tWindowHandle m_WindowInfo;
+ 	cBitmap * m_BitmapInfo;
+ 
+ 	time_t m_ShowTime;
+diff -Nru o/osdpip-0.0.4/quantize.c osdpip/quantize.c
+--- o/osdpip-0.0.4/quantize.c	2004-01-28 10:25:34.000000000 +0100
++++ osdpip/quantize.c	2004-05-16 20:15:45.364960008 +0200
+@@ -10,6 +10,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "quantize.h"
++#include <vdr/config.h>
+ 
+ cQuantize::cQuantize() {
+ }
+@@ -43,8 +44,13 @@
+ 	for (int r = 0; r < redLevelCount; r++) {
+ 		for (int g = 0; g < greenLevelCount; g++) {
+ 			for (int b = 0; b < blueLevelCount; b++) {
++#if VDRVERSNUM >= 10307
++				paletteOutput[r * greenLevelCount * blueLevelCount + g * blueLevelCount + b] =
++					(blueLevels[b]) | (greenLevels[g] << 8) | (redLevels[r] << 16);
++#else
+ 				paletteOutput[r * greenLevelCount * blueLevelCount + g * blueLevelCount + b] =
+ 					(blueLevels[b] << 16) | (greenLevels[g] << 8) | redLevels[r];
++#endif
+ 			}
+ 		}
+ 	}
