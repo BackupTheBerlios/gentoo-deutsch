@@ -77,8 +77,8 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
           Plattformen.</li>
           <li>Die <b><uri link="faq2">FAQ Ergänzung</uri></b> beantwortet Fragen
           die im deutschsrpachigen Teil des Forums häufiger gestellt werden.</li>
-          <li>Zusätzlich gibt es noch die <uri link="http://tobias.scherbaum.info/gentoo/faq">
-          "Dynamische FAQ"</uri> in der weitere Fragen aufgegriffen werden.</li>
+          <li>Zusätzlich gibt es noch die <b><uri link="http://tobias.scherbaum.info/gentoo/faq">
+          "Dynamische FAQ"</uri></b> in der weitere Fragen aufgegriffen werden.</li>
         </ul>
 
         <p>Zusätzlich gibt es eine große Sammlung an FAQs in in unserem <b><uri
@@ -145,9 +145,9 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 
         <p>Der Großteil der Benutzer wird vermutlich die <b><uri
         link="gentoo-x86-install">x86 Installationsanleitung</uri></b>
-        verwenden.<!-- Für erfahrene Benutzer bieten wir zusätzlich eine <b><uri
+        verwenden. Für erfahrene Benutzer bieten wir zusätzlich eine <b><uri
         link="gentoo-x86-quickinstall">x86
-        Schellinstallationsanleitung</uri></b> an.--></p>
+        Schellinstallationsanleitung</uri></b> an.</p>
 
 <!--
         <p>Alpha-Benutzer sind vielleicht auch an unserer <b><uri
@@ -165,7 +165,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <p>Für einige Personen ist die oben genannte Installationsanleitung
         nicht ausreichend, da ihr System nicht von einer LiveCD gestartet werden
         kann.  Die <b><uri link="altinstall">Alternative
-        Installationsanleitung</uri></b> listet nötigen die Schritte, um Gentoo
+        Installationsanleitung</uri></b> listet die nötigen Schritte, um Gentoo
         von einem anderen Medium zu installieren (Distribution, bootbare CD,
         Booten via Netzwerk, usw.).</p>
 <!--
@@ -371,7 +371,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 				die Konfiguration und Installation benötigter Kernel Module und Programme
 				hin zur selbstgebrannten CD.</p>
 				
-				<p>Die <b><uri link="dsl-guide">DSL Anleitung</uri></b>erläutert Ihnen die
+				<p>Die <b><uri link="dsl-guide">DSL Anleitung</uri></b> erläutert Ihnen die
 				Einrichtung des DSL Anschlusses und die Einwahl ins Internet.</p>
 				
 				<p>Das <b><uri link="fluxbox">Fluxbox Handbuch</uri></b> führt Sie
@@ -511,6 +511,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
       <table>
         <tr><th>Regelmäßig gestellte Fragen</th></tr>
         <tr><ti><uri link="faq">Gentoo FAQ</uri></ti></tr>
+        <tr><ti><uri link="faq2">Gentoo FAQ Ergänzung</uri></ti></tr>
         <!--<tr><ti><uri link="gentoo-ppc-faq.xml">Gentoo PPC FAQ</uri></ti></tr>-->
         <tr><th>Installationshilfen</th></tr>
         <tr><ti><uri link="gentoo-x86-install">Gentoo x86 Installationsanleitung</uri></ti></tr>
@@ -565,7 +566,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
         <tr><ti><uri link="stage-building-guide">Stage Building Handbuch</uri></ti></tr>
         <tr><ti><uri link="ebuild-submit">Beisteuern von Ebuilds Handbuch</uri></ti></tr>
         <tr><ti><uri link="xml-guide">GuideXML Handbuch</uri></ti></tr>
-        <tr><th>Andere Dokumentation</th></tr>
+        <!--<tr><th>Andere Dokumentation</th></tr>-->
         <!--<tr><ti><uri link="rsync.xml">Gentoo RSync Mirror</uri></ti></tr>-->
         <!--<tr><ti><uri link="source_mirrors.xml">Gentoo Distfiles Mirror</uri></ti></tr>-->
       </table>
