@@ -1,5 +1,12 @@
 # ChangeLog for net-p2p/lmule
-# Copyright 2003 Stefan Knoblich <sk@netdomination.org>; Distributed under the GPL
+# Copyright 2003 Stefan Knoblich <stefan.knoblich@t-online.de>
+# Distributed under the GPL v2
+
+*lmule-1.2.0 (21 Apr 2003)
+
+  21 Apr 2003; Stefan Knoblich <stefan.knoblich@t-online.de> lmule-1.2.0.ebuild
+  
+  New lmule version.
 
 *lmule-1.1.13c (08 Apr 2003)
 
