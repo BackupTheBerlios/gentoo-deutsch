@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/desktop.xml,v 1.3 2003/11/15 10:18:42 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <!-- English CVS version: 1.42 -->
@@ -14,9 +15,10 @@
   <author title="Editor"><mail link="erwin@gentoo.org">Erwin</mail></author>
   <author title="Übersetzer"><mail link="gentoo@naggelgames.de">Hendrik Richter</mail></author>
   <author title="Übersetzer"><mail link="pylon@gentoo.org">Lars Weiler</mail></author>
+  <author title="Korrektur"><mail link="dertobi123@gentoo.org">Tobias Scherbaum</mail></author>
 
   <abstract>Mit Hilfe dieser Anleitung können Sie Ihr Gentoo Linux zu einem
-  vollwertigen Desktop-System einrichten. Sie erfahren, wie man X, KDE, OSS
+  vollwertigen Desktop-System einrichten. Sie erfahren, wie man X, KDE, Alsa
   (Sound), postfix (E-Mail) und Samba (Unix/Windows Dateiaustausch) installiert
   und konfiguriert.</abstract>
 
@@ -53,9 +55,9 @@
 
         <impo>Abhängig davon welchen Desktop Sie installieren werden, sollten
         Sie die Unterstützung für Desktops, die sie nicht verwenden in der
-        <path>/etc/make.conf</path> abschalten.  Fügen Sie zur <i>USE</i> Zeile
-        <e>-gnome -gtk</e> hinzu, wenn Sie KDE verwenden werden oder <e>-kde
-        -qt</e>, bei der Verwendung von GNOME.</impo>
+        <path>/etc/make.conf</path> abschalten.  Fügen Sie zur <c>USE</c> Zeile
+        <c>-gnome -gtk</c> hinzu, wenn Sie KDE verwenden werden oder <c>-kde
+        -qt</c>, bei der Verwendung von GNOME.</impo>
 
         <warn>Wenn Sie zwischendurch einen Fehler (Bug) finden, melden Sie ihn
         unter <uri>http://bugs.gentoo.org/</uri>.  Melden Sie ihn <e>nicht</e>
@@ -136,8 +138,8 @@
         werden normalerweise bei den Technischen Spezifikationen mit
         angegeben.</note>
 
-        <note>Benötigen Sie Umlaute oder "dead keys" (z.B. um è, é, ê, ë, ò, ó,
-        etc. mit dem Apostroph zu erstellen) auf Ihrer Tastatur, müssen Sie Ihre
+        <note>Benötigen Sie Umlaute oder "dead keys" (z.B. um &#232;, &#233;, 
+        &#234;, &#235;, &#242;, &#243; darzustellen) auf Ihrer Tastatur, müssen Sie Ihre
         locale angeben bevor Sie X starten.  Dazu erstellen Sie die Datei
         <path>/etc/env.d/02locale</path> und fügen die Zeile
         <c>LC_CTYPE="xx_XX"</c> ein, wobei <c>xx</c> für Ihre Sprache steht
@@ -249,12 +251,12 @@ Option  "Device"  "/dev/psaux"
 
         <p>Das erste was getan werden muss, ist die Installation der
         Kernel-Module.  Für die Verwendung einer USB-Maus werden die Module
-        <i>usbmouse</i>, <i>mousedev</i>, <i>hid</i>, <i>usbcore</i>,
-        <i>usb-uhci</i> und <i>input</i> benötigt.  Ist die benötigte
+        <c>usbmouse</c>, <c>mousedev</c>, <c>hid</c>, <c>usbcore</c>,
+        <c>usb-uhci</c> und <c>input</c> benötigt.  Ist die benötigte
         Kernelkonfiguration erledigt, laden Sie mit <c>insmod</c> die
         Module.</p>
 
-        <note>Verwenden Sie entweder <i>usbmouse</i> <b>oder</b> <i>hid</i>.
+        <note>Verwenden Sie entweder <c>usbmouse</c> <b>oder</b> <c>hid</c>.
         Laden Sie beide Module, wird die Maus ihre Tätigkeit einstellen.</note>
 
         <note>Bei der Konfiguration des Input Core Support für die Maus stellen
@@ -276,7 +278,7 @@ input0,hiddev0: USB HID v1.00 Mouse [Microsoft Microsoft IntelliMouse Optical] o
 # <i>cd /dev/input</i>
 # <i>cat mice</i>
 <comment>Bewegen Sie die Maus während Sie auf dem Device lauschen -- Sie sollten
-nun einen Haufen Müll sehen.  Zum Beenden drücken Sie <c>CTRL-c</c>.</comment>
+nun einen Haufen Müll sehen.  Zum Beenden drücken Sie <i>CTRL-c</i>.</comment>
         </pre>
 
         <p>Sobald die Maus vom System ordentlich entdeckt und installiert wurde,
@@ -309,7 +311,12 @@ Option  "ZAxisMapping"  "4 5"
         <path>/etc/modules.autoload.d/kernel-2.4</path> hinzuzufügen.</p>
 
         <pre caption="Module zur modules.autoload.d/kernel-2.4 hinzufügen">
-# <i>echo $'\n'mousedev $'\n'hid $'\n'usbcore $'\n'input &gt;&gt; /etc/modules.autoload.d/kernel-2.4</i>
+# <i>nano -w /etc/modules.autoload.d/kernel-2.4</i>
+<comment>Fügen Sie die folgenden Zeilen in die Datei ein:</comment>
+mousedev
+hid
+usbcore
+input
         </pre>
 
       </body>
@@ -359,7 +366,7 @@ Section "Device"
 EndSection
         </pre>
 
-        <p>Lassen Sie <c>startx</c> ein weiteres Mal laufen, um sicherzustellen,
+        <p>Lassen Sie <i>startx</i> ein weiteres Mal laufen, um sicherzustellen,
         dass X immer noch startet (dieses Mal mit einem NVIDIA-Logo, wenn die
         Treiber korrekt installiert wurden).</p>
 
@@ -410,7 +417,7 @@ EndSection
 
         <pre caption="Editieren der make.conf">
 # <i>nano -w /etc/make.conf</i>
-<comment>Innerhalb der <i>make.conf</i></comment>
+<comment>Innerhalb der make.conf</comment>
 
 USE="qt kde -gnome -gtk"
         </pre>
@@ -446,17 +453,21 @@ XSESSION="kde-3.1.2"
 
         <table>
           <tr><th>Paket</th><th>Beschreibung</th></tr>
+          <tr><ti>kdeaccessibility</ti><ti>Programme rund  um Zugänglichkeit</ti></tr>
           <tr><ti>kdebase</ti><ti>KDE Basispaket und notwendige Applikationen</ti></tr>
           <tr><ti>kdeaddons</ti><ti>Diverse ältere oder nicht mehr verwendete KDE Tools</ti></tr>
           <tr><ti>kdeadmin</ti><ti>KDE Administrationstools</ti></tr>
+          <tr><ti>kdeartwork</ti><ti>Styles für KDE</ti></tr>
           <tr><ti>kdeedu</ti><ti>KDE Lehrprogramme</ti></tr>
           <tr><ti>kdegames</ti><ti>KDE Spiele</ti></tr>
           <tr><ti>kdegraphics</ti><ti>Grafikprogramme für KDE</ti></tr>
           <tr><ti>kdemultimedia</ti><ti>Multimediaprogramme für KDE</ti></tr>
           <tr><ti>kdenetwork</ti><ti>KDE Netzwerktools</ti></tr>
           <tr><ti>kdepim</ti><ti>Personal Information Manager, KDE Kalender, Schreibtischnotizen etc.</ti></tr>
+          <tr><ti>kdesdk</ti><ti>Entwicklungs Tools</ti></tr>
           <tr><ti>kdetoys</ti><ti>Unterhaltungstools für den KDE Desktop</ti></tr>
           <tr><ti>kdeutils</ti><ti>Grafische Systemprogramme</ti></tr>
+          <tr><ti>kde-i18n</ti><ti>Sprachenpakete, beachten Sie die Anmerkung</ti></tr>
         </table>
 
         <note>Wenn Sie CUPS zum Drucken verwenden möchten, sollten Sie "cups"
@@ -465,6 +476,15 @@ XSESSION="kde-3.1.2"
         <c>USE="cups" emerge kde</c> machen.  Für eine komplette
         CUPS-Installation schauen Sie bitte im <uri
         link="printing-howto.xml">Gentoo Print Guide</uri> nach.</note>
+        
+        <p>Das kde-i18n Paket nutzt die LINGUAS Umgebungsvariable, um zu prüfen welche
+        Sprachen installiert werden sollen. Zum Beispiel würde <c>LINGUAS="fr it"</c> die
+        französische und italienische Sprachuntersützung installieren.
+        <!-- Folgendes existiert nicht in der englischen Vorlage -->
+        Um eine deutsche Sprachunterstützung für KDE zu installieren, sollte die LINGUAS 
+        Umgebungsvariable mindestens den Wert <c>de</c> erhalten, also
+        <c>LINGUAS="de"</c>.
+        </p>
 
         <p>Habe Sie nun ein nettes Nickerchen!</p>
 
@@ -475,7 +495,7 @@ XSESSION="kde-3.1.2"
 # <i>export PKGDIR=/mnt/cdrom/packages</i>
 <comment>Für gewöhnlich erwartet portage fertige Pakete in /usr/portage/packages</comment>
 # <i>emerge --usepkg /mnt/cdrom/packages/All/kdebase-x.y.z.tbz2</i>
-<comment>Die Angabe <c>--usepkg</c> stellt sicher, dass Binärpakete (falls
+<comment>Die Angabe -usepkg stellt sicher, dass Binärpakete (falls
 vorhanden) bei Abhängigkeiten verwendet werden.</comment>
 # <i>env-update &amp;&amp; source /etc/profile</i>
         </pre>
@@ -651,7 +671,7 @@ DISPLAYMANAGER="gdm"
       <body>
 
         <p>Zur Installation von ALSA, schauen Sie bitte in den <uri
-        link="alsa-guide.xml">Gentoo Linux ALSA Setup Guide</uri>.</p>
+        link="http://www.gentoo.org/doc/de/alsa-guide.xml">Gentoo Linux ALSA Setup Guide</uri>.</p>
 
       </body>
     </section>
@@ -676,7 +696,8 @@ DISPLAYMANAGER="gdm"
       <title>GNOME und Sound</title>
       <body>
         
-        <p>Wird in der nächsten Version eingefügt.</p>
+        <p>Sie können mit <c>gnome-alsamixer</c> Ihre Lautstärken einstellen.
+        Er ist der Teil des <path>media-sound/gnome-alsamixer</path> Paket.</p>
 
       </body>
     </section>

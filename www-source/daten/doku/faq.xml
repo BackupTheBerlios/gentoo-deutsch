@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding="UTF-8"?>
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/faq.xml,v 1.7 2003/11/15 10:23:34 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-<!-- English CVS Version 1.45 -->
+<!-- English CVS Version 1.46 -->
 
 <guide link="/doc/en/faq.xml">
 <title>Gentoo Linux Frequently Asked Questions</title>
