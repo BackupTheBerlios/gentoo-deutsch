@@ -1,52 +1,28 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <info>
-<title>Sonstige Downloads</title>
+	<title>Sonstige Downloads</title>
+	<author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
+	<date>11. Juli 2003</date>
 
-<author title="Author"><mail link="beejay@berlios.de">Benjamin Judas</mail></author>
+	<box>
+		<block>
+			<title>Information:</title>
+			<p>
+				Hier eine Liste mit sonstigen Gentoo-relevanten Downloads.
+				<br/>
+			</p>
+		</block>
+	</box>
 
-<date>18. Oktober 2002</date>
-
-<box>
-  <block>
-    <title>Information:</title>
-    <p>
-      Hier eine Liste mit sonstigen Gentoo-relevanten Downloads.
-      <br/>
-
-
-    </p>
-  </block>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</box>
-
-<chapter>
-<title>Sonstige Downloads</title>
-
-<section>
-
-<body>
-<p>
-   <uri link="http://www.judas-merlau.de/benni/downloads/gentoo-emergence.tar.gz">GDM-Thema : Gentoo-Emergence</uri><br/>
-   <uri link="http://www.themedepot.org/itemdetail.php4?id=816">GDM-Thema : Gentoo-Emergence II</uri><br/>
-</p>
-</body>
-
-</section>
-
-</chapter>
-
+	<chapter>
+		<title>Sonstige Downloads</title>
+		<section>
+			<body>
+				<p>
+					<uri link="http://www.judas-merlau.de/downloads/gentoo-emergence.tar.gz">GDM-Thema : Gentoo-Emergence</uri><br/>
+					<uri link="http://www.themedepot.org/itemdetail.php4?id=816">GDM-Thema : Gentoo-Emergence II</uri><br/>
+				</p>
+			</body>
+		</section>
+	</chapter>
 </info>
