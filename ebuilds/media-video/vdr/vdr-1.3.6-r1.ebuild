@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6-r1.ebuild,v 1.2 2004/04/25 16:59:40 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/vdr-1.3.6-r1.ebuild,v 1.3 2004/04/29 20:11:10 fow0ryl Exp $
 
 IUSE="lirc"
 AC3_OVER_DVB="vdr-1.3.6-AC3overDVB-0.2.4"
@@ -12,6 +12,7 @@ DESCRIPTION="The Video Disk Recorder"
 HOMEPAGE="http://linvdr.org/"
 SRC_URI="
 		ftp://ftp.cadsoft.de/vdr/Developer/vdr-${PV}.tar.bz2
+		ftp://ftp.cadsoft.de/vdr/Developer/libsi.diff
 		http://linvdr.org/download/VDR-AIO/vdr-1.3.6/${ELCHI}.diff.gz
 		http://www.fh-luh.de/~mad/vdr/xpmlogos.tar		
 		http://www.die-rylls.de/downloads/vdr/${AC3_OVER_DVB}.diff.gz
@@ -23,8 +24,10 @@ KEYWORDS="~x86 ~ppc"
 SLOT="0"
 LICENSE="GPL-2"
 
-if [ "${KV:0:3}" == "2.6" ] ; then 
-DEPEND="virtual/glibc
+if [ "${KV:0:3}" == "2.6" ]
+then
+	einfo "Kernel 2.6.x detected"
+	DEPEND="virtual/glibc
 		media-libs/jpeg
 		sys-libs/ncurses
 		app-admin/sudo
@@ -33,8 +36,11 @@ DEPEND="virtual/glibc
 		app-portage/gentoolkit
 		"
 fi
-if [ "${KV:0:3}" == "2.4" ] ; then
-DEPEND="virtual/glibc
+
+if [ "${KV:0:3}" == "2.4" ]
+then
+	einfo "Kernel 2.4.x detected"
+	DEPEND="virtual/glibc
 		virtual/linux-sources
 		>=linuxtv-dvb-1.0.0
 		media-libs/jpeg
@@ -71,6 +77,9 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
+	ewarn "Applying libsi patch"
+	epatch ${DISTDIR}/libsi.diff
+	
 	# AC3 over DVB Patch
 	# needs app-admin/fam-oss
 	if vdr_opts ac3
