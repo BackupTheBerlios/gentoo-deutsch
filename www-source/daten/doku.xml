@@ -101,6 +101,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 				<li><uri link="entwickler/einreichen">Ebuilds einreichen</uri></li>
 				<li><uri link="entwickler/mirror">Mirror einrichten</uri></li>
 				<li><uri link="entwickler/cvs-tutorial">CVS Tutorial</uri></li>
+				<li><uri link="entwickler/stage-building-guide">Gentoo Stage-Builder Anleitung</uri></li>
 			</ul>
 		</p>
 	</body>
