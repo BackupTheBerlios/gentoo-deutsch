@@ -2,9 +2,10 @@
 
 <!-- English CVS Version 1.2 -->
 
-<mainpage id="contract">
+<guide id="contract">
 <title>Gentoo Linux Gesellschaftsvertrag</title>
 <author title="Author"><mail link="drobbins@gentoo.org">Daniel Robbins</mail></author>
+<author title="Übersetzer"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
 
 <abstract></abstract>
 
@@ -28,45 +29,57 @@
 	<section>
 	<body>
 
-<p>I created Gentoo because I couldn't find a Linux distribution that I liked.
-The one predominant thing that I experienced with Linux distributions is that
-the "distro tools" that managed the entire system -- the tools that were
-supposed to make everything <e>easier</e> to use -- really seemed to want a lot
-of attention and really got in the way of what I wanted to do. I wanted to tell
-<e>them</e> what I wanted to do, but they seemed more interested in telling
-<e>me</e> what <e>they</e> wanted me to do.</p>
-
-<p>So, I created Gentoo Linux, and designed Portage to be a more perfect
-tool than what had existed before it. To do this, I made it very
-flexible in allowing me to do what I wanted to do, and also tried to
-make it flexible to allow others to do what I thought they might want to
-do.</p>
-
-<p>If others wanted to see how a package got built, they could look at a
-relatively easy-to-understand ebuild file and learn from it. If they
-wanted to tweak how it got built, they took advantage of USE variables.
-If they wanted to add a package, they created a new ebuild for the tree.
-If they wanted to use a package, they simply emerged it and dependencies
-were automatically resolved.
+<p>
+Ich habe Gentoo erschaffen, da ich keine Linux Distribution finden konnte, 
+die mir wirklich zugesagt hat. Beim Experimentieren mit den verschiedenen Linux
+Distributionen fiel mir immer wieder auf, dass die sogenannten "distro tools", welche
+das gesamte System managen  -- die Werkzeuge, die eigentlich die gesamte Benutzung
+<e>leichter</e> machen sollten -- hatten meine Aufmerksamkeit beansprucht und waren
+mir bei den Sachen, die ich eigentlich so erledigen wollten im Weg. Eigentlich wollte ich
+<e>ihnen</e> sagen, was ich machen wollte, stattdessen schienen sie mehr daran 
+interessiert zu sein <e>mir</e> zu sagen, was <e>ich</e> zu tun hätte.
 </p>
 
 <p>
-People liked the Portage concept, and Gentoo Linux grew rapidly. We have
-become known as a "from source" distribution, but the heart of the
-Gentoo concept is not "from source." "From source" is an important and
-key aspect of Gentoo, and something that was and will continue to be
-necessary for Gentoo, but it is not the only issue or most fundamental
-issue. <e>The most fundamental issue is designing a technology that allows
-us and others to do what they want to do, without restriction.</e>
+Aus diesem Grund habe ich Gentoo erschaffen und Portage so entwickelt,
+dass es ein verbessertes Tool, als alle bisherigen, darstellt. Um dies zu 
+ereichen, habe ich es so flexibel gestaltet, dass es mir ermöglicht zu tun, was
+ich schon immer tun wollte und habe auch versucht, es so flexibel zu machen, dass
+es auch anderen Benutzern erlauben soll, das zu machen, von dem ich glaube, was
+sie schon immer machen wollten. 
 </p>
 
 <p>
-To summarize the heart of Gentoo, imagine a user sitting in front of a
-Linux system. What does he or she want do to? The Gentoo philosophy is
-to allow this user to do what he or she wants to do, without getting in
-the way.</p>
+Wenn Andere sehen wollten, wie ein Paket aufgebaut ist, können sie einen
+Blick in das recht einfach zu verstehende ebuild werfen und davon profitieren.
+Wenn sie es in der Art des Zusammenbaus modifizieren wollen, nutzen sie
+die Vorteile der USE Variablen, wenn sie ein neues Paket hinzufügen
+wollen, erstellen sie einfach ein neues ebuild für den Verzeichnisbaum, wenn
+sie ein Paket verwenden wollen, dann führen sie einfach ein emerge durch, und
+alle Abhängigkeiten werden automatisch aufgelöst.
+</p>
 
 <p>
+Die Leute fanden Gefallen an dem Portage Konzept und Gentoo wuchs
+rasch. Wir sind nun als "source" Distribution bekannt, aber das Herz des
+Gentoo Konzeptes ist nicht aus der "source". Quelltextorierntiert ist zwar
+ein wichtiger Schlüsselaspekt von Gentoo und etwas, was weiterhin für
+Gentoo notwendig sein wird, aber es ist nicht der einzige oder gar der
+Hauptgrund. <e>Der Hauptgrund ist für uns immer noch die Entwicklung
+einer Technologie, die es uns und anderen Benutzern ermöglicht, das zu tun,
+was sie schon immer tun wollten und zwar ohne Einschränkung.</e>
+</p>
+
+<p>
+Zusammenfassend kann man sich das Herz von Gentoo so vorstellen:
+Ein Benutzer sitzt vor seinem Linux System. Was will er oder sie tun?
+Ziel der Gentoo Linux Philosophie ist es, dem Benutzer die Möglichkeit
+zu geben, das zu tun, was er machen möchte, ohne ihm in den Weg zu
+kommen.
+</p>
+
+<p>
+
 At around the time Gentoo was born, the thing that got in the way was
 the lack of an easy way to build packages from source, to a user's
 specifications. Currently, we've done that very well, but what we
@@ -130,4 +143,4 @@ Chief Architect
 	</body>
 	</section>
 </chapter>
-</mainpage>
+</guide>
