@@ -1,6 +1,6 @@
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-image/vdrplugin-image-0.0.5a.ebuild,v 1.2 2003/06/07 15:32:42 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.5a.ebuild,v 1.2 2003/04/15 08:17:08 fow0ryl Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-image/vdrplugin-image-0.0.5a.ebuild,v 1.3 2004/02/28 13:09:34 fow0ryl Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.0.5a.ebuild,v 1.2 2003/04/15 08:17:08 fow0ryl Exp $
 
 IUSE=""
 VDRPLUGIN="image"
@@ -8,7 +8,7 @@ VDRPLUGIN="image"
 S=${WORKDIR}/${VDRPLUGIN}-${PV}
 DESCRIPTION="Video Disk Recorder ${VDRPLUGIN} Plugin"
 HOMEPAGE="http://www.burwieck.net/"
-SRC_URI="http://www.burwieck.net/vdr/vdr-${VDRPLUGIN}-${PV}.tgz"
+SRC_URI="http://www.kordecki.de/vdr/html/Download/Plugin/vdr-${VDRPLUGIN}-${PV}.tgz"
 KEYWORDS="x86"
 SLOT="0"
 LICENSE="GPL-2"
