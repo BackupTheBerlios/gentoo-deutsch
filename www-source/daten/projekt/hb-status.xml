@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding="utf-8"?>
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.7 2003/12/03 18:09:03 dertobi123 Exp $-->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/projekt/hb-status.xml,v 1.8 2003/12/07 18:56:47 dertobi123 Exp $-->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
 <guide link="/inhalte/projekt/translation/hb-status/">
@@ -14,8 +14,8 @@
 Statusübersicht über den Stand der Handbuchübersetzung.
 </abstract>
 
-<version>1.0</version>
-<date>03. Dezember 2003</date>
+<version>1.1</version>
+<date>07. Dezember 2003</date>
 
 <chapter>
 <title>Über das Handbuch</title>
@@ -29,10 +29,12 @@ Roadmap</uri>) sollen die bisherigen Installationsanleitungen durch das Handbuch
 ersetzt werden. Die Übersetzung des Handbuch hat daher höchste Priorität.
 </p>
 
+<!--
 <p>
 Das gentoo.de XSL unterstützt die erforderlichen Funktionen für das Handbuch
 noch nicht, eine Lösung ist noch unbekannt.
 </p>
+-->
 
 </body>
 </section>
@@ -68,16 +70,16 @@ noch nicht, eine Lösung ist noch unbekannt.
   <tr>
   <ti>hb-install-medium.xml ( 2 )</ti>
   <ti>dertobi123</ti>
-  <ti></ti>
+  <ti>X</ti>
   <ti></ti>
   <ti></ti>
   </tr>
   <tr>
   <ti>hb-install-network.xml ( 3 )</ti>
   <ti>parity</ti>
-  <ti></ti>
-  <ti></ti>
-  <ti></ti>
+  <ti>X</ti>
+  <ti>dertobi123</ti>
+  <ti>X</ti>
   </tr>
   <tr>
   <ti>hb-install-disk.xml ( 4 )</ti>
@@ -89,9 +91,9 @@ noch nicht, eine Lösung ist noch unbekannt.
   <tr>
   <ti>hb-install-stage.xml ( 5 )</ti>
   <ti>tove</ti>
-  <ti></ti>
-  <ti></ti>
-  <ti></ti>
+  <ti>X</ti>
+  <ti>dertobi123</ti>
+  <ti>X</ti>
   </tr>
   <tr>
   <ti>hb-install-system.xml ( 6 )</ti>
