@@ -1,9 +1,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- English CVS Version: 1.20 -->
+<!-- English CVS Version: 1.22 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.5 2003/12/14 15:02:54 jay Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-install-stage.xml,v 1.6 2003/12/18 22:25:34 tove Exp $ -->
 
 <sections>
 <section>
@@ -348,6 +348,11 @@ die Programme übersetzt. Zur Auswahl steht:
   <ti>pa8000 oder höher</ti>
   <ti>hppa2.0-unknown-linux-gnu</ti>
 </tr>
+<tr>
+  <ti>mips</ti>
+  <ti> </ti>
+  <ti>mips-unknown-linux-gnu</ti>
+</tr>
 </table>
 
 </body>
@@ -496,9 +501,9 @@ USE="-gtk -gnome qt kde dvd alsa cdr"
 Ebuilds (das Paketformat von Gentoo) sind in drei Zweigen angesiedelt.
 Der erste wird <e>ARCH</e> genannt, darin liegen ebuilds, wenn sie und ihre
 abhängigen Pakete als stabil und allgemein benutzbar betrachtet werden können.
-Die meisten Benutzer benutzen diese Ebuilds. Falls Ihr System Pakete aus
-<e>ARCH</e> benutzen soll, setzen Sie <c>ACCEPT_KEYWORDS</c> auf Ihre Architektur
-(sei es <c>x86</c>, <c>alpha</c>, <c>ppc</c>, <c>sparc</c> oder <c>hppa</c>):
+Damit Ihr System Pakete aus <e>ARCH</e> benutzt, setzen Sie
+<c>ACCEPT_KEYWORDS</c> auf Ihre Architektur (sei es <c>x86</c>, <c>alpha</c>,
+<c>ppc</c>, <c>sparc</c> oder <c>hppa</c>):
 </p>
 
 <pre caption="ACCEPT_KEYWORDS für eine x86 Architektur mit ARCH Ebuilds">
@@ -506,35 +511,10 @@ ACCEPT_KEYWORDS="x86"
 </pre>
 
 <p>
-Ein neues Ebuild erscheint in Portage zuerst in <e>~ARCH</e>. Dies bedeutet,
-dass das Ebuild für den Entwickler funktioniert,dass das Paket aber noch
-Testläufe benötigt, bevor es in <e>ARCH</e> erscheinen kann.
-Falls Sie Pakete aus <e>~ARCH</e> auf Ihrem System benutzen möchten,
-dann sollte <c>ACCEPT_KEYWORDS</c> auf Ihre Architektur mit vorangestellter
-Tilde (<e>~</e>) gesetzt sein. Denken Sie <e>nicht</e>, dies sei ein
-Äquivalent für "testing" oder "unstable" in anderen Distributionen.
-Pakete innerhalb <e>~ARCH</e> <e>können</e> gelegentlich zerstörend wirken!
-Manche Architekturen durchlaufen nicht einmal den Bootstrap erfolgreich, wenn 
-Sie <e>~ARCH</e> benutzen (erwähnt sei SPARC).
+Die anderen beiden Zweige (<e>~ARCH</e> und maskierte Ebuilds) sind nicht dazu
+gedacht bei der Installation benutzt zu werden, da dabei der
+Installationsprozess eventuell nicht erfolgreich durchgeführt werden kann.
 </p>
-
-<pre caption="ACCEPT_KEYWORDS für eine x86 Architektur mit ~ARCH Ebuilds">
-ACCEPT_KEYWORDS="~x86"
-</pre>
-
-<p>
-Falls Sie Pakete nutzen wollen, die bekanntermaßen Ihr System stilllegen
-können, dann führt der Weg Sie direkt über Teufels Küche zum Auskommentieren
-in <path>/usr/portage/profiles/package.mask</path>. Doch hier ist noch der
-große dicke Warnhinweis:
-</p>
-
-<warn>
-Bearbeiten von <path>package.mask</path> ist schlecht für Ihr System, Ihre
-Gesundheit, und Ihr Humor wird auch darunter leiden! Ändern Sie diese Datei
-<e>nicht</e>, außer Sie lieben es Gentoo neu zu installieren...
-und neu zu installieren... und neu zu installieren...
-</warn>
 
 </body>
 </subsection>
