@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding="utf-8"?>
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/stage-building-guide.xml,v 1.3 2003/11/15 10:36:38 dertobi123 Exp $ -->
 <!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
 
-<!-- English CVS version 1.7 -->
+<!-- English CVS version 1.8 -->
 
 <guide link="/doc/de/stage-building-guide.xml">
 
