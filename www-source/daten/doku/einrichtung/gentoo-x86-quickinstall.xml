@@ -3,7 +3,7 @@
 
 <!-- English CVS Version 1.2 -->
 
-<title>Gentoo Linux Install Reference</title>
+<title>Kurzübersicht Installation (x86)</title>
 <author title="Author">Steven Wagner</author>
 <author title="Editor">
   <mail link="swift@gentoo.org">Sven Vermeulen</mail>
@@ -26,7 +26,6 @@ Gentoo Linux haben.
 
 <chapter>
   <section>
-    <title>Schnell Installations Referenz</title>
     <body>
 
       <p>
