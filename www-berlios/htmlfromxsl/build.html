@@ -55,22 +55,22 @@ war extrem langsam.) Um die Installation zu starten, laden Sie zuerst eines unse
 CD ISO Images von <a href="http://www.ibiblio.org/gentoo/releases/build/">http://www.ibiblio.org/gentoo/releases/build/</a>. Im Augenblick 
 haben wir zwei CDs verfügbar. Unsere erste CD ist 
 <a href="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-ix86-1.2.iso">
-gentoo-ix86-1.2.iso</a>. Dieses Image ist recht klein (16Mb) und enthält ein minimales 
+gentoo-ix86-1.2.iso</a>. Dieses Image ist recht klein (16MB) und enthält ein minimales 
 &quot;chrootfähiges&quot; 
 
 Image (<font class="path">stage1-ix86-1.2.tbz2</font>) -- alles was Sie benötigen um ein
-Gentoo Linux System von Grund auf aufzubauen (Die Quelldateien werden dabei 
-automatisch aus dem Internet geladen). Unsere zweite CD ist 
+Gentoo Linux System von Grund auf aufzubauen. (Die Quelldateien werden dabei 
+automatisch aus dem Internet geladen.) Unsere zweite CD ist 
 <a href="http://www.ibiblio.org/gentoo/releases/build/1.2/gentoo-i686-1.2.iso">
-gentoo-i686-1.2.iso</a>. Dieses Image ist etwas größer (100+Mb) -- Es
-enthält das gleiche Material wie auf unserem 16Mb Image, <font class="emphasis">plus</font> einem 
+gentoo-i686-1.2.iso</a>. Dieses Image ist etwas größer (100+MB) -- Es
+enthält das gleiche Material wie auf unserem 16MB Image, <font class="emphasis">plus</font> einem 
 vorkompiliertem i686 Basissystem (<font class="path">stage3-i686-1.2.tbz2</font>) 
 sowie ein teilweise kompiliertes 
 i686 Basissystem (<font class="path">stage2-i686-1.2.tbz2</font>) in TAR-Archiven.
 Die beiden neuen TAR-Archive benötigen einen Pentium Pro oder besser (auf einem K6-System und
 niedriger nicht einsetzbar). 
 Wenn Sie ein i686+ System verwenden und nicht alles von Grund auf neu kompilieren wollen,
-können Sie damit die Installationsdauer von Gentoo Linux deutlich verkzüen.
+können Sie damit die Installationsdauer von Gentoo Linux deutlich verkürzen.
 </p>
 
 <p>Jetzt lassen Sie uns kurz den den Installationsprozess skizzieren. Sie erstellen die Partitionen,
@@ -158,15 +158,15 @@ Verwenden Sie dazu <font class="code">modprobe</font>:</p>
 </table>
 
 <p>Mit den oben stehenden Befehlen haben Sie den SCSI Treiber <font class="code">aic7xxx</font> geladen und
-sichergestellt, das die Unterstützung für SCSI CD-ROMS (<font class="code">sr_mod</font>) und Festplatten 
+sichergestellt, dass die Unterstützung für SCSI CD-ROMS (<font class="code">sr_mod</font>) und Festplatten 
 (<font class="code">sd_mod</font>) aktiviert ist.</p>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>Version -r10 des ISO Images enthält jetzt auch <font class="code">hdparm</font>. Wenn eine Ihrer Festplatten
 optimiert werden muss, ist nun der richtige Zeitpunkt dafür. Auf einigermaßen moderner Hardware,
 sollte der Befehl <font class="code">hdparm -d 1 /dev/hdx</font> problemlos anzuwenden sein. Mit dem Befehl
-<font class="code">hdparm -v /dev/hdx</font>, können Sie die aktuellen Einstellungen Ihrer Festplatte prüfen 
-und mit <font class="code">hdparm -t /dev/hdx</font>, testen Sie die Performance Ihrer Festplatte.</p></td></tr></table>
+<font class="code">hdparm -v /dev/hdx</font> können Sie die aktuellen Einstellungen Ihrer Festplatte prüfen, 
+und mit <font class="code">hdparm -t /dev/hdx</font> testen Sie die Performance Ihrer Festplatte.</p></td></tr></table>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap4">4.</a></font>PCMCIA Kernel Module laden</p>
 <p>Wenn Sie eine PCMCIA Netzwerkkarte verwenden, müssen Sie noch einen
@@ -185,12 +185,12 @@ zusätzlichen Dreh anwenden.</p>
 <p>Während <font class="code">cardmgr</font> überprüft, welche Hardware vorhanden ist, sollten aus Ihrem
 Lautsprecher einige Piepser ertönen und die PCMCIA Netzwerkkarte ihre Arbeit
 aufnehmen. Sie können natürlich die PCMCIA Karte auch nach dem Laden des <font class="code">cardmgr</font>
-einstecken (Technisch gesehen müssen Sie <font class="input">cardmgr</font> nicht starten wenn Sie
+einstecken. (Technisch gesehen müssen Sie <font class="input">cardmgr</font> nicht starten wenn Sie
 genau wissen welche Module Ihre PCMCIA Karte benötigt. Aber wenn nicht, versuchen
 Sie nicht alle Module zu laden um zu sehen, welches passt. Das wird nicht
-funktionieren, da sich alle Module laden lassen und darauf warten, das eine
+funktionieren, da sich alle Module laden lassen und darauf warten, dass eine
 passende PCMCIA Karte eingesteckt wird. Außerdem entfernt <font class="code">cardmgr</font> die
-Module der Karte wieder, wenn sie entnommen wird).
+Module der Karte wieder, wenn sie entnommen wird.)
 </p>
 
 <p class="chaphead">
@@ -200,7 +200,7 @@ Module der Karte wieder, wenn sie entnommen wird).
 <font class="code">scp</font> oder <font class="code">wget</font> schon vor der eigentlichen Installation verwendet werden können. Auch
 wenn Sie diese Programme jetzt nicht brauchen, sollten Sie nun das Netzwerk konfigurieren. Einmal
 konfiguriert kann Portage diese Netzwerkverbindung nutzen, wenn Sie sich in der &quot;chroot&quot; Umgebung
-befinden (Für die Gentoo Linux Installation erforderlich).</p>
+befinden (für die Gentoo Linux Installation erforderlich).</p>
 
 <p class="secthead"><a name="_sect2">DHCP </a></p>
 <p>Mit DHCP ist die Netzwerkkonfiguration sehr einfach. Wenn Ihr Provider kein DHCP anbietet,
@@ -261,7 +261,7 @@ nameserver 10.0.0.2
 sekundären DNS Servers.</p>
 <p class="secthead"><a name="_sect4">Test der Netzwerkanbindung </a></p>
 <p>Da Ihre Netzwerkanbindung jetzt konfiguriert ist, sollte der Befehl <font class="code">/sbin/ifconfig -a</font> ausgeben,
- dass Ihre Netzwerkkarte (hoffentlich) arbeitet (achten Sie auf <font class="emphasis">UP</font> und <font class="emphasis">RUNNING</font> in der Ausgabe).
+ dass Ihre Netzwerkkarte (hoffentlich) arbeitet. (Achten Sie auf <font class="emphasis">UP</font> und <font class="emphasis">RUNNING</font> in der Ausgabe.)
 </p>
 
 <a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -296,12 +296,12 @@ bei Gentoo Linux. Wir erzeugen mindestens drei Partitionen: eine Swap
 Partition, eine Root Partition (hier liegt der Hauptteil von Gentoo Linux)
 und eine spezielle Boot Partition. Die Boot Partition ist dazu bestimmt den
 GRUB Bootmanager und den oder die Linux Kernel aufzunehmen. Die Boot Partition
-ist ein sicherer Platz um alle zum booten relevanten Dateien abzulegen.
+ist ein sicherer Platz, um alle zum booten relevanten Dateien abzulegen.
 Bei der täglichen Nutzung sollte die Boot Partition <font class="emphasis">nicht gemountet</font>
-bleiben. Dies verhindert, das der Kernel von GRUB nach einem System Absturz
+bleiben. Dies verhindert, dass der Kernel von GRUB nach einem System Absturz
 nicht mehr geladen werden kann (z.B. wegen einem beschädigten Dateisystem).
 Außerdem verhindert dies, dass das &quot;Henne-Ei-Problem&quot;, bei dem GRUB den Kernel
-wegen einem kaputten Dateisystem nicht mehr laden kann, Sie das Dateisystem aber
+wegen eines kaputten Dateisystems nicht mehr laden kann, Sie das Dateisystem aber
 reparieren könnten, wäre es nur möglich zu booten.</p>
 
 <p>Weiter geht es mit den verschiedenen Dateisystemen. Momentan stehen Ihnen
@@ -313,8 +313,8 @@ und ein effektives Daten Journaling. ReiserFS ist ein B*-tree basiertes
 Dateisystem, das eine sehr gute Performance bei der Handhabung kleiner Dateien
 verspricht und deutlich performanter (10x-15x) als ext2 und ext3 ist, wenn kleine 
 Dateien (kleiner 4k) im Spiel sind. Wie auch immer, momentan empfehlen wir die
-Verwendung von ReiserFS, wegen wiederholtem Auftreten von Dateisystemfehlern in 
-der 2.4.x Serie des Kernels, <font class="emphasis">nicht</font>. ReiserFS unterstützt Metadaten 
+Verwendung von ReiserFS <font class="emphasis">nicht</font>, wegen wiederholtem Auftreten von Dateisystemfehlern in 
+der 2.4.x Serie des Kernels. ReiserFS unterstützt Metadaten 
 Journaling aber kein Daten Journaling. 
 XFS ist ein &quot;high-performance, enterprise-class&quot; Dateisystem mit Metadaten
 Journaling und wird voll von Gentoo Linux unterstützt.</p>
@@ -322,7 +322,7 @@ Journaling und wird voll von Gentoo Linux unterstützt.</p>
 <p>
 Wenn Sie ein Standard Dateisystem suchen, nehmen Sie ext2. Wenn Sie ein robustes Journaling 
 Dateisystem brauchen, nehmen Sie ext3. Wenn Sie jedoch ein &quot;high performance&quot; Dateisystem benötigen,
-dass auch Journaling unterstützt, nehmen Sie XFS. Beide, ext3 und XFS sind bereits ausgreift. 
+das auch Journaling unterstützt, nehmen Sie XFS. Sowohl ext3 als auch XFS sind bereits ausgreift. 
 Alle Dateisysteme (bis auf ReiserFS) sind für den Produktionsbetrieb geeignet.
 Wir empfehlen folgende Dateisystemgrößen und -arten:</p>
 
@@ -334,19 +334,19 @@ Wir empfehlen folgende Dateisystemgrößen und -arten:</p>
   	<td bgcolor="#7a5ada" class="infohead"><b>Beispiel Device</b></td>
   </tr>
   <tr>
-  	<td bgcolor="#ddddff" class="tableinfo">Boot Partition, enthält den/die Kernel und alle zum booten relevanten Information</td>
+  	<td bgcolor="#ddddff" class="tableinfo">Boot Partition, enthält den/die Kernel und alle zum Booten relevanten Information</td>
 	<td bgcolor="#ddddff" class="tableinfo">100 Megabyte</td>
 	<td bgcolor="#ddddff" class="tableinfo">ext2/3 empfohlen (einfach); wenn Sie ReiserFS verwenden, mounten Sie es mit der <font class="code">-o notail</font> Option</td>
   	<td bgcolor="#ddddff" class="tableinfo">/dev/hda1</td>
   </tr>
    <tr>
   	<td bgcolor="#ddddff" class="tableinfo">Swap Partition (es gibt kein 128 Megabyte Limit mehr)</td>
-	<td bgcolor="#ddddff" class="tableinfo">&gt;=2*RAM wird empfohlen , ist aber seit Kernel 2.4.10 nicht mehr nötig</td>
+	<td bgcolor="#ddddff" class="tableinfo">&gt;=2*RAM wird empfohlen, ist aber seit Kernel 2.4.10 nicht mehr nötig</td>
 	<td bgcolor="#ddddff" class="tableinfo">Linux swap</td>
   	<td bgcolor="#ddddff" class="tableinfo">/dev/hda2</td>
   </tr>
   <tr>
-  	<td bgcolor="#ddddff" class="tableinfo">Root Partition, enthält das Hauptdateisystem (/usr, /home, usw.)</td>
+  	<td bgcolor="#ddddff" class="tableinfo">Root Partition, enthält das Hauptdateisystem (<font class="path">/usr</font>, <font class="path">/home</font>, usw.)</td>
 	<td bgcolor="#ddddff" class="tableinfo">&gt;=1.5 Gigabyte</td>
 	<td bgcolor="#ddddff" class="tableinfo">XFS, ext3 empfohlen; ext2 ok</td>
   	<td bgcolor="#ddddff" class="tableinfo">/dev/hda3</td>
@@ -374,8 +374,7 @@ diese zu initialisieren. Die Swap Partition richten Sie folgendermaßen ein:</p>
 # <font class="input">mke2fs /dev/hda1</font>
 </pre></td></tr>
 </table>
-<p>Um ein XFS Dateisystem zu erstellen, verwenden Sie <font class="code">mkfs.xfs</font>
-</p>
+<p>Um ein XFS Dateisystem zu erstellen, verwenden Sie <font class="code">mkfs.xfs</font>:</p>
 <a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 10</p></td></tr>
@@ -386,7 +385,7 @@ diese zu initialisieren. Die Swap Partition richten Sie folgendermaßen ein:</p>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
 Es kann sein, dass Sie <font class="code">mkfs.xfs</font> mit einigen Optionen verwenden wollen, 
-wie z.B.: <font class="code">-d agcount=3 -l size=32m</font>. Die Option <font class="code">-d agcount=3</font> verringert die Anzahl an
+wie z.B. <font class="code">-d agcount=3 -l size=32m</font>. Die Option <font class="code">-d agcount=3</font> verringert die Anzahl an
 &quot;allocation groups&quot;. XFS wird auf jeden Fall eine &quot;allocation group&quot; pro
 4GB auf der Partition einrichten, d.h. auf einer 20GB Partition ist der minimale Wert für
 <font class="emphasis">agcount</font> 5. Der Parameter <font class="code">-l size=32m</font> erhöht die Größe des Journals auf 32MB, was
@@ -394,12 +393,12 @@ die Performance verbessert.</p></td></tr></table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
 <b>Warnung: </b>Wenn Sie ein XFS Dateisystem auf eine bestehende ReiserFS Partition installieren, können spätere 
-Versuche die Partition zu mounten fehlschlagen, wenn Sie das Dateisystem nicht explizit angeben :
-<font class="code">mount -t xfs</font>. Um dies zu Umgehen, sollten Sie die alte ReiserFS Partition mit Nullen 
-überschreiben bevor Sie das XFS Dateisystem erstellen: 
+Versuche die Partition zu mounten fehlschlagen, wenn Sie das Dateisystem nicht explizit angeben:
+<font class="code">mount -t xfs</font>. Um dies zu umgehen, sollten Sie die alte ReiserFS Partition mit Nullen 
+überschreiben, bevor Sie das XFS Dateisystem erstellen: 
 <font class="code">dd if=/dev/zero of=/dev/hd<font class="comment">x</font> bs=1k</font>.</p></td></tr></table>
 
-<p>Wenn Sie ext3 verwenden wollen, erstellen Sie das Datesystem mit folgendem Befehl: <font class="code">mke2fs -j</font>:</p>
+<p>Wenn Sie ext3 verwenden wollen, erstellen Sie das Dateisystem mit dem Befehl <font class="code">mke2fs -j</font>:</p>
 <a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 11</p></td></tr>
@@ -418,9 +417,9 @@ Versuche die Partition zu mounten fehlschlagen, wenn Sie das Dateisystem nicht e
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
 <b>Warnung: </b>
-Um Sie noch einmal darauf hinzuweisen, momentan raten wir von ReiserFS ab. Obwohl ReiserFS bei 
+Um Sie noch einmal darauf hinzuweisen: Momentan raten wir von ReiserFS ab. Obwohl ReiserFS bei 
 vielen Benutzern fehlerfrei arbeitet, gibt es ein allgemeines Problem mit Dateisystemkorruption 
-bei ReiserFS in Verbindung mit einem Serie 2.4.x. Kernel</p></td></tr></table>
+bei ReiserFS in Verbindung mit einem 2.4-er Kernel.</p></td></tr></table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>Mehr Informationen zum Thema ext3 unter Linux 2.4 finden Sie hier: <a href="http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html">http://www.zip.com.au/~akpm/linux/ext3/ext3-usage.html</a>.</p></td></tr></table>
@@ -436,7 +435,7 @@ später noch benötigen:</p>
 # <font class="input">swapon /dev/hda2</font>
 </pre></td></tr>
 </table>
-<p>Als nächstes erstellen Sie die Verzeichnisse <font class="path">/mnt/gentoo</font> und <font class="path">/mnt/gentoo/boot</font>, anschliessend mounten Sie Ihre Partitionen:</p>
+<p>Als nächstes erstellen Sie die Verzeichnisse <font class="path">/mnt/gentoo</font> und <font class="path">/mnt/gentoo/boot</font>, anschließend mounten Sie Ihre Partitionen:</p>
 <a name="doc_pre14"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 14</p></td></tr>
@@ -459,7 +458,7 @@ sonst wird GRUB nicht richtig installiert. Stellen Sie auch sicher, dass die Opt
 dazu kommen wir gleich noch.</p></td></tr></table>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap8">8.</a></font>Die CD-ROM mounten</p>
-<p>Auch wenn Sie von der CD-ROM gebootet haben, ist diese, in der minimalen Linux Umgebung, nicht
+<p>Auch wenn Sie von der CD-ROM gebootet haben, ist diese in der minimalen Linux Umgebung nicht
 gemountet. Sie müssen die CD-ROM erst mounten, damit Sie auf die komprimierten Installationsarchive
 zugreifen zu können. Um die CD-ROM zu mounten, tippt man gewöhnlich:</p>
 <a name="doc_pre15"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -469,7 +468,7 @@ zugreifen zu können. Um die CD-ROM zu mounten, tippt man gewöhnlich:</p>
 # <font class="input">mount /dev/cdroms/cdrom0 /mnt/cdrom -o ro -t iso9660</font>
 </pre></td></tr>
 </table>
-<p>Wenn die CD-ROM gemountet ist, sollten Sie mit dem Befehl: <font class="code">ls /mnt/cdrom</font> in der Lage
+<p>Wenn die CD-ROM gemountet ist, sollten Sie mit dem Befehl <font class="code">ls /mnt/cdrom</font> in der Lage
 sein, die <font class="code">stage???.tbz2</font> Dateien zu sehen.</p>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap9">9.</a></font>Entpacken des gewünschten stage*.tbz2 Archivs</p>
@@ -486,8 +485,8 @@ Wenn Sie dies vergessen, werden die Rechte einiger Dateien nicht stimmen.</p></t
 verwenden Sie das <font class="path">stage1-ix86-1.2.tbz2</font> Archiv.
 Wenn Sie eine der größeren CDs verwenden, haben Sie die Wahl zwischen dem
 &quot;stage2&quot; und dem &quot;stage3&quot; Archiv. Diese Archive sparen Ihnen eventuell Zeit, das aber
-auf Kosten der Flexibilität (wir haben die Compiler Optimierung und USE Variablen
-für Sie ausgewählt). Das &quot;stage3&quot; Archiv enthält zusätzlich noch 
+auf Kosten der Flexibilität. (Wir haben die Compiler Optimierung und <font class="code">USE</font> Variablen
+für Sie ausgewählt.) Das &quot;stage3&quot; Archiv enthält zusätzlich noch 
 die Quellen des Linux Kernels und eine Kopie des &quot;Portage tree&quot;, um ein
  <font class="code">emerge rsync</font> zu einem späteren Zeitpunkt zu vermeiden.</p></td></tr></table>
 
@@ -534,19 +533,19 @@ sich mit rsync.gentoo.org zu verbinden und die aktuellste Version des Portage Ve
 </pre></td></tr>
 </table>
 
-<p>Das Portage Datenverzeichnis, dass heruntergeladen wird, ist ca. 10MB groß.</p>
+<p>Das Portage Datenverzeichnis, das heruntergeladen wird, ist ca. 10MB groß.</p>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
 <b>Wichtig: </b>Die aktuelle Adresse des &quot;rsync&quot; Servers ist momentan: rsync://rsync.gentoo.org/gentoo-portage. 
-Sollten Sie Schwierigkeiten haben den Server zu erreichen, uberprüfen Sie bitte, ob die <font class="input">SYNC</font>
+Sollten Sie Schwierigkeiten haben, den Server zu erreichen, überprüfen Sie bitte, ob die <font class="input">SYNC</font>
 Variable in Ihrer <font class="path">/etc/make.conf</font> auch auf diesen Server konfiguriert ist.
-setzen.</p></td></tr></table>
+</p></td></tr></table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
-<b>Anmerkung: </b>Sie können <font class="code">rsync</font> so konfigurieren, das es einen HTTP Proxy verwendet.
+<b>Anmerkung: </b>Sie können <font class="code">rsync</font> so konfigurieren, dass es einen HTTP Proxy verwendet.
 Dies ist nützlich, wenn Sie sich hinter einer Firewall befinden. Um dies zu 
 konfigurieren, tragen Sie die Variable <font class="input">RSYNC_PROXY=&quot;hostname:port&quot;</font> in die
-/etc/make.conf ein oder setzen dies als Umgebungsvariable.
+<font class="path">/etc/make.conf</font> ein oder setzen dies als Umgebungsvariable.
 </p></td></tr></table>
 
 <p class="chaphead">
@@ -571,8 +570,8 @@ In dieser Datei können Sie die <font class="code">USE</font> Variable an Ihre Ge
 in die Pakete eingebaut haben möchten. Normalerweise ist die vorgegebene Einstellung,
 eine <font class="emphasis">leere</font> oder ungesetzte <font class="code">USE</font> Variable, ausreichend. Wichtig ist, dass Sie 
 die passenden Werte für die <font class="code">CHOST</font>, <font class="code">CFLAGS</font> und <font class="code">CXXFLAGS</font> für
-Ihr System eintragen. (Kommentierte Beispiele befinden sich weiter unten in der Datei). 
-Falls Sie sich hinter einer Firewall befinden, sollten Sie dort auch ein Proxy 
+Ihr System eintragen. (Kommentierte Beispiele befinden sich weiter unten in der Datei.)
+Falls Sie sich hinter einer Firewall befinden, sollten Sie dort auch einen Proxy 
 eingetragen.</p>
 
 <a name="doc_pre19"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -589,14 +588,14 @@ Blick in die Datei <font class="path">/etc/make.globals</font> werfen. Diese Dat
 Gentoo Linux Vorgaben und sollte nicht verändert werden. Wem diese Vorgaben nicht
 genügen, sollte seine Änderungen in die Datei <font class="path">/etc/make.conf</font> eintragen,
 da Einträge in der <font class="path">make.conf</font> die vorgegebenen Werte der 
-<font class="path">make.globals</font> überschreiben. Wenn Sie die <font class="code">USE</font> Einstellungen tunen 
+<font class="path">make.globals</font> überschreiben. Wenn Sie die <font class="code">USE</font> Einstellungen optimieren 
 wollen, schauen Sie sich die Datei <font class="path">/etc/make.profile/make.defaults</font> 
 genauer an. Wenn Sie beispielsweise eine der vorhanden Einstellungen deaktivieren
-wollen, setzen Sie den entsprechenden <font class="code">USE=&quot;-foo&quot;</font> Eintrag in der /etc/make.conf.
-(Dies würde das <font class="code">USE</font> Flag <font class="code">foo</font> abschalten) </p></td></tr></table>
+wollen, setzen Sie den entsprechenden <font class="code">USE=&quot;-foo&quot;</font> Eintrag in der <font class="path">/etc/make.conf</font>.
+(Dies würde das <font class="code">USE</font> Flag <font class="code">foo</font> abschalten.)</p></td></tr></table>
 
 <p>Jetzt können Sie den &quot;bootstrap&quot; Prozess starten. Das dauert 1-2 Stunden; abhängig davon,
-wie flott Ihr Rechner ist. Auf einem 900Mhz AMD Athlon System dauert der Prozess ca. 1 Stunde.
+wie flott Ihr Rechner ist. Auf einem 900MHz AMD Athlon System dauert der Prozess ca. 1 Stunde.
 Während der Zeit wird der Rechner darauf vorbereitet, den Rest des Systems zu kompilieren.
 Die GNU Compiler Suite, sowie die GNU C Bibliothek werden gebaut. Dies sind zeitaufwendige 
 Vorgänge, die den Hauptteil des &quot;bootstrap&quot; Prozesses ausmachen: </p>
@@ -612,11 +611,11 @@ Vorgänge, die den Hauptteil des &quot;bootstrap&quot; Prozesses ausmachen: </p>
 <p>Der &quot;bootstrap&quot; Prozess startet.</p>
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
 <b>Anmerkung: </b>
-Normalerweise verwendet Portage <font class="code">/var/tmp</font> während des kompilierens der Pakete.
+Normalerweise verwendet Portage <font class="code">/var/tmp</font> während des Kompilierens der Pakete.
 Dabei kann es sein, dass mehrere hundert Megabyte des temporären Speichers verwendet 
-werden. Wenn Sie den Ort, wo Portage die temporären Dateien ablegt, ändern möchten,
-können Sie dies <font class="emphasis">vor</font> dem Starten des &quot;bootstrap&quot; Prozesses durch setzen der 
-<font class="code">PORTAGE_TMPDIR</font> Variable tun:</p></td></tr></table>
+werden. Wenn Sie den Pfad ändern möchten, an dem Portage die temporären Dateien ablegt,
+können Sie dies <font class="emphasis">vor</font> dem Starten des &quot;bootstrap&quot; Prozesses durch Setzen der 
+Umgebungsvariablen <font class="code">PORTAGE_TMPDIR</font> tun:</p></td></tr></table>
 <a name="doc_pre21"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 21</p></td></tr>
@@ -629,14 +628,14 @@ können Sie dies <font class="emphasis">vor</font> dem Starten des &quot;bootstra
 Das Skript <font class="code">bootstrap.sh</font> baut nun <font class="code">binutils</font>, <font class="code">gcc</font>, <font class="code">gettext</font> und
 <font class="code">glibc</font>. Danach werden <font class="code">binutils</font>, <font class="code">gcc</font> sowie <font class="code">gettext</font> mit der neuen
 <font class="code">glibc</font> erneut gebaut. Es muss nicht gesagt werden, dass dieser Prozess seine Zeit braucht.
-Machen Sie ein kleines Nickerchen und wenn der Prozess dann durchgelaufen ist, haben Sie den Stand 
+Machen Sie ein kleines Nickerchen, und wenn der Prozess dann durchgelaufen ist, haben Sie den Stand 
 des &quot;stage2&quot; Archivs erreicht.</p>
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap12">12.</a></font>Von &quot;stage2&quot; zu &quot;stage3&quot;</p>
 
-<p>Nachdem der &quot;bootstrap&quot; Prozess abgeschlossen ist und Sie nun bei &quot;stage2&quot; 
+<p>Nachdem der &quot;bootstrap&quot; Prozess abgeschlossen ist und Sie nun bei &quot;stage2&quot; angelangt sind
 (noch einmal, wenn Sie das &quot;stage3&quot; Archiv verwenden, sind alle diese Schritte 
-nicht nötig) angelangt sind, ist es an der Zeit, den Rest des Basissystems zu
+nicht nötig), ist es an der Zeit, den Rest des Basissystems zu
 bauen und zu installieren: </p>
 
 <a name="doc_pre22"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -668,10 +667,10 @@ sind Sie auf dem Stand des &quot;stage3&quot; Archivs.</p>
 
 <p>Sie sollten nun ein &quot;stage3&quot; System haben, das zur abschließenden Konfiguration bereit ist.
 Sie beginnen mit dem Einstellen der Zeitzone. Durch setzen der Zeitzone, bevor der Kernel
-gebaut wird, stellen Sie sicher, das Sie eine sinnvolle <font class="code">uname -a</font> Ausgabe bekommen.</p>
+gebaut wird, stellen Sie sicher, dass Sie eine sinnvolle Ausgabe von <font class="code">uname -a</font> bekommen.</p>
 
-<p>Sie finden die Zeitzonendateien (oder GMT, wenn Sie &quot;Greenwich Mean Time&quot; einstellen wollen)
-in <font class="path">/usr/share/zoneinfo</font>. Erstellen Sie nun einen symbolischen Link:</p>
+<p>Sie finden die Zeitzonendateien (beispielsweise <font class="path">GMT</font>, wenn Sie &quot;Greenwich Mean Time&quot; einstellen wollen)
+in <font class="path">/usr/share/zoneinfo/</font>. Erstellen Sie nun einen symbolischen Link:</p>
 
 <a name="doc_pre23"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -684,7 +683,7 @@ in <font class="path">/usr/share/zoneinfo</font>. Erstellen Sie nun einen symbol
 <font class="chapnum"><a name="doc_chap14">14.</a></font>Letze Schritte: Kernel und System Logger</p>
 <p>
 Wenn Sie mit dem &quot;stage3&quot; Archiv installieren, erleichtern wir Ihnen die Arbeit durch 
-bereitstellen der aktuellen Linux Quellen in <font class="path">/usr/src/linux</font>.
+Bereitstellen der aktuellen Linux Quellen in <font class="path">/usr/src/linux/</font>.
 Ansonsten müssen Sie die Linux Quellen mit <font class="code">emerge</font> nachinstallieren.
 Zur Zeit bieten wir folgende Pakete (ebuilds) an:</p>
 <table class="ntable">
@@ -698,7 +697,7 @@ Zur Zeit bieten wir folgende Pakete (ebuilds) an:</p>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="path">xfs-sources</font></td>
-<td bgcolor="#ddddff" class="tableinfo">Ein Auszug aus der SGI XFS CVS Linux Quellen. Verwenden Sie diesen Kernel wenn Sie XFS verwenden wollen</td>
+<td bgcolor="#ddddff" class="tableinfo">Ein Auszug der SGI-XFS-CVS Linux Quellen. Verwenden Sie diesen Kernel wenn Sie XFS verwenden wollen</td>
 </tr>
 <tr>
 <td bgcolor="#ddddff" class="tableinfo"><font class="path">openmosix-sources</font></td>
@@ -743,8 +742,8 @@ Damit Ihr Kernel fehlerfrei funktioniert, müssen Sie sicherstellen, dass einige 
 Optionen <font class="input">aktiviert</font> sind und <font class="input">nicht</font> als Modul kompiliert werden. Sie müssen die
 Option <font class="input">&quot;Code maturity level options --&gt; Prompt for development and/or incomplete code/drivers&quot;</font>
 aktivieren, damit alle nötigen Optionen verfügbar sind.
-Im Menü &quot;File systems&quot; aktivieren Sie den Punkt <font class="input">&quot;Device File System&quot;</font> (beachten Sie, dass
-Sie die &quot;/dev/pts file system support&quot; Option <font class="emphasis">nicht</font> aktivieren müssen). Sie müssen
+Im Menü &quot;File systems&quot; aktivieren Sie den Punkt <font class="input">&quot;Device File System&quot;</font>. (Beachten Sie, dass
+Sie die &quot;/dev/pts file system support&quot; Option <font class="emphasis">nicht</font> aktivieren müssen.) Sie müssen
 außerdem noch den Punkt <font class="input">&quot;Virtual Memory Filesystem&quot;</font> aktivieren. Entsprechend der 
 Dateisysteme, die Sie verwenden wollen, aktivieren Sie die Unterstützung für ReiserFS 
 (<font class="input">&quot;Reiserfs support&quot;</font>), Ext3 (<font class="input">&quot;Ext3 journalling file system support&quot;</font>) oder 
@@ -777,7 +776,7 @@ Sie verlieren viele der neuen Fähigkeiten, die ein 2.4er Kernel bietet (z.B.: di
 tmpfs Dateisysteme, iptables, uvm.); aber es gibt Patches, damit ReiserFS und devfs
 auch von einem 2.2er Kernel unterstützt werden.
 Die Gentoo Linux Boot Scripte benötigen entweder &quot;tmpfs&quot; oder &quot;ramdisk&quot; Support im
-Kernel, d.h. Anwender des 2.2er Kernels müssen sicherstellen, das der Kernel 
+Kernel, d.h. Anwender des 2.2er Kernels müssen sicherstellen, dass der Kernel 
 mit &quot;ramdisk support&quot; kompiliert wird (nicht als Modul). Es ist <font class="emphasis">entscheidend</font>,
 das bei einem 2.2er Kernel in der <font class="path">/boot/grub/menu.lst</font> die Option
 <font class="emphasis">gentoo=notmpfs</font> angegeben wird, damit von den Boot Scripten anstelle des 
@@ -788,7 +787,7 @@ tragen Sie dort stattdessen <font class="emphasis">gentoo=notmpfs,nodevfs</font>
 <p>Ihr eigener Kernel (und die Module) sind jetzt installiert. Als nächstes sollten
 Sie das Logsystem installieren. Wir bieten mit <font class="code">sysklogd</font> das übliche Set von 
 &quot;logging daemons&quot;. Außerdem stehen noch <font class="code">syslog-ng</font> und <font class="code">metalog</font> zur
-Verfügung.Power User scheinen sich von sysklogd (schlechte Performance) abzuwenden und
+Verfügung. Power User scheinen sich von sysklogd (schlechte Performance) abzuwenden und
 sich für syslog-ng oder metalog zu entscheiden. Wenn Sie sich nicht sicher sind, 
 versuchen Sie metalog, da es ziemlich populär zu sein scheint.
 Um einen der Logger zu installieren, tippen Sie <font class="emphasis">eine</font> der folgenden drei Zeilen: 
@@ -811,7 +810,7 @@ Um einen der Logger zu installieren, tippen Sie <font class="emphasis">eine</fon
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
 <b>Warnung: </b>
 Wenn Sie syslog-ng installieren, müssen Sie auch <font class="path">/etc/syslog-ng/syslog-ng.conf</font> erstellen.
-Eine Beispielkonfiguration finden Sie in <font class="path">/etc/syslog-ng</font> </p></td></tr></table>
+Eine Beispielkonfiguration finden Sie in <font class="path">/etc/syslog-ng</font>.</p></td></tr></table>
 
 <table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
 <b>Wichtig: </b>
@@ -845,8 +844,8 @@ Sie können jetzt ein beliebiges &quot;cron&quot; Paket zur Installation auswähle
 <p class="chaphead">
 <font class="chapnum"><a name="doc_chap15">15.</a></font>Letzte Schritte: Zusätzlich Pakete installieren</p>
 <p>
-Wenn Sie optionale Features, wie XFS oder LVM (Logical Volume Manager) verwenden, benötigen 
-Sie noch zusätzliche Pakete. Wenn Sie XFS verwenden, sollten Sie das Paket <font class="code">xfsprogs</font> 
+Wenn Sie optionale Features wie XFS oder LVM (Logical Volume Manager) verwenden wollen, benötigen 
+Sie noch zusätzliche Pakete. Wenn Sie XFS verwenden wollen, sollten Sie das Paket <font class="code">xfsprogs</font> 
 installieren:</p>
 <a name="doc_pre28"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
@@ -890,9 +889,9 @@ die entsprechenden Geräte einzutragen (z.B.: <font class="code">hda1</font>, usw
 <font class="comment">
 # /etc/fstab: static file system information.
 #
-# &quot;noatime&quot; schaltet &quot;atimes&quot; (man mount) ab und erhöht so die Performance (&quot;atimes&quot;
+# &quot;noatime&quot; schaltet &quot;atimes&quot; (man mount) ab und erhöht so die Performance. (&quot;atimes&quot;
 # wird normalerweise nicht benötigt und &quot;notail&quot; erhöht die Leistung eines ReiserFS
-# Dateisystems, allerdings auf Kosten der Speicherausnutzung). Wenn Sie frei zwischen
+# Dateisystems, allerdings auf Kosten der Speicherausnutzung.) Wenn Sie frei zwischen
 # &quot;tail&quot; oder &quot;notail&quot; wählen wollen, lassen Sie die &quot;noatime&quot; Option sicherheitshalber
 # weg.
 
@@ -910,7 +909,7 @@ proc                /proc       proc	 defaults        0 0
 </table>
 
 <p class="secthead"><a name="_sect2">Letzte Schritte: Das Passwort für &quot;root&quot; setzten: </a></p>
-<p>Bevor Sie es vergessen, das &quot;root&quot; Passwort setzen Sie durch eingeben von:</p>
+<p>Bevor Sie es vergessen: Das &quot;root&quot; Passwort setzen Sie durch die Eingabe von:</p>
 <a name="doc_pre32"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 32</p></td></tr>
@@ -926,7 +925,7 @@ in einer einzelnen Zeile, ein (<font class="code">mymachine.mydomain.com</font>)
 <p class="secthead"><a name="_sect4">Letzte Schritte: /etc/hosts </a></p>
 <p>Diese Datei enthält eine Liste von IP Adressen, mit den dazu gehörigen Rechnernamen.
 Das System verwendet diese Daten, um einem Rechnernamen die IP Adresse zuordnen zu können,
-falls Ihr Nameserver ausgefallen ist oder es nicht selbst tut. Hier ein Beispiel:</p>
+falls Ihr Nameserver ausgefallen ist oder es nicht selbst kann. Hier ein Beispiel:</p>
 <a name="doc_pre33"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 33</p></td></tr>
@@ -990,7 +989,7 @@ am Kopf der Datei <font class="path">/etc/init.d/net.ethx</font> ein,
 damit die PCMCIA Treiber automatisch geladen werden, wenn die Netzwerkverbindung
 aufgebaut wird.
 </p>
-<p class="secthead"><a name="_sect6"> Letzte Schritte: Tunen der Festplatten (hdparm) </a></p>
+<p class="secthead"><a name="_sect6"> Letzte Schritte: Optimieren der Festplatten-Parameter (hdparm) </a></p>
 <p>
 Dummerweise gehen die Einstellungen, die Sie mit <font class="code">hdparm</font> am Anfang der 
 Installation vorgenommen haben, bei einen Reboot verloren. Um die
@@ -1000,14 +999,14 @@ Festplatten bei bei jedem Bootvorgang neu zu optimieren, schreiben Sie die
 <a name="doc_pre38"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 38</p></td></tr>
-<tr><td bgcolor="#ddddff"><pre>    
-# <font class="input">nano -w /etc/conf.d/local.start</font>    
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/conf.d/local.start</font>
 </pre></td></tr>
 </table>    
 <a name="doc_pre39"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
 			Beispiel 39: hdparm Optimierungen in der /etc/conf.d/local.start</p></td></tr>
-<tr><td bgcolor="#ddddff"><pre>    
+<tr><td bgcolor="#ddddff"><pre>
 # This is a good place to load any misc.    
 # programs on startup ( 1&gt;&amp;2 )        
 
@@ -1029,14 +1028,14 @@ Folgen Sie den Anleitungen in der Datei, um die Einstellungen anzupassen.
 Jeder Anwender sollte sicherstellen, dass der <font class="code">CLOCK</font> Eintrag, 
 entsprechend den persönlichen Vorlieben eingestellt ist. Das 
 Tastaturlayout kann über die <font class="code">KEYMAP</font> Variable angepasst werden
-(in <font class="path">/usr/share/keymaps</font> finden Sie verschiedene Möglichkeiten).
+(in <font class="path">/usr/share/keymaps/</font> finden Sie verschiedene Möglichkeiten).
 </p>
 <p class="secthead"><a name="_sect8">Letzte Schritte: GRUB konfigurieren </a></p>
 <p>
 Ein kritischer Punkt im Umgang mit GRUB, ist zu verstehen, wie GRUB Festplatten 
 und Partitionen referenziert. Ihre Linux Partition <font class="path">/dev/hda1</font> wird
 von GRUB als <font class="path">(hd0,0)</font> angesprochen. Beachten Sie bitte die Klammer, um 
-hd0,0 - sie ist <font class="input">wichtig</font>. Festplatten werden mit 0 anstatt mit &quot;a&quot; beginnend 
+hd0,0 - sie ist <font class="comment">wichtig</font>. Festplatten werden mit 0 anstatt mit &quot;a&quot; beginnend 
 hochgezählt und auch die Partitionen starten mit 0 und nicht mit 1.
 So wird aus <font class="path">/dev/hdb3</font> <font class="path">(hd1,2)</font> und aus <font class="path">/dev/hdd7</font>
 wird <font class="path">(hd3,6)</font>. Nachdem Sie ein Gefühl dafür bekommen haben, notieren
@@ -1057,7 +1056,7 @@ einzutippen:</p>
 Sie werden nun vom <font class="code">grub&gt;</font> Prompt und der GRUB Kommandozeile begrüßt.
 Sie müssen nun die passenden Kommandos eingeben, um den GRUB &quot;Bootloader&quot;
 auf Ihrer Festplatte zu installieren. In der Beispielkonfiguration wird GRUB
-im &quot;Master Boot Record (MBR)&quot; der Festplatte installiert. In diesem Fall
+im &quot;Master Boot Record&quot; (MBR) der Festplatte installiert. In diesem Fall
 geben Sie folgende Kommandos am GRUB Prompt ein:
 </p>
 
@@ -1070,19 +1069,19 @@ grub&gt; <font class="input">quit</font>
 </pre></td></tr>
 </table>
 
-<p>Was genau tun die zwei Befehle? Mit dem <font class="code">root ( )</font> Kommando bekommt
+<p>Was genau bewirken die zwei Befehle? Mit dem <font class="code">root ( )</font> Kommando bekommt
 GRUB die Position Ihrer Bootpartition mitgeteilt (in diesem Beispiel <font class="path">/dev/hda1</font>
 oder besser <font class="path">(hd0,0)</font>, um bei der GRUB Terminologie zu bleiben).
 Der zweite Befehl <font class="code">setup ( )</font> bestimmt, wohin GRUB den Bootloader schreiben soll.
 Dieser wird dann so konfiguriert, dass er seine speziellen Dateien auf der mit dem  
 <font class="code">root ( )</font> Kommando vorgegebenen Partition sucht. In diesem Beispiel soll der 
 Bootloader im MBR (Master Boot Record) der Festplatte installiert werden. In diesem Fall 
-kann einfach<font class="path">/dev/hda</font> oder besser <font class="path">(hd0)</font> als Position angegeben werden.
+kann einfach <font class="path">/dev/hda</font> oder besser <font class="path">(hd0)</font> als Position angegeben werden.
 Soll GRUB als sekundärer Bootloader installiert werden, wird er einfach in den
 Bootrecord der entsprechen Partition geschrieben. 
 Wenn GRUB den Bootrecord erzeugt hat, können Sie GRUB durch eingeben des Befehls
 <font class="code">quit</font> beenden. Jetzt ist Gentoo Linux installiert. Es muss nur noch die
-Datei <font class="path">/boot/grub/menu.lst</font> so angepasst werden, das GRUB beim Booten
+Datei <font class="path">/boot/grub/menu.lst</font> so angepasst werden, dass GRUB beim Booten
 ein nettes Bootmenü anzeigt.</p>
  
 <p>Erzeugen Sie die Datei <font class="path">/boot/grub/menu.lst</font> (<font class="code">nano -w /boot/grub/menu.lst</font>), und
@@ -1170,7 +1169,7 @@ vornehmen, die dann zu einer <font class="path">/etc/modules.conf</font> zusamme
 <p>Wenn Sie Fragen zum Thema Gentoo Linux haben, oder bei Entwicklung von Gentoo Linux 
 mithelfen möchten, tragen Sie sich doch in die Mailing Listen &quot;gentoo-user&quot; und 
 &quot;gentoo-dev&quot; ein. (Es gibt einen &quot;click to subscribe&quot; Link auf der 
-<a href="http://www.gentoo.org">Gentoo Linux Homepage</a>). Zusätzlich haben wir
+<a href="http://www.gentoo.org">Gentoo Linux Homepage</a>.) Zusätzlich haben wir
 noch eine <a href="/doc/desktop.html">Desktop Konfigurationsanleitung</a>, die
 Sie bei der weitergehenden Konfiguration von Gentoo Linux unterstützt und ein
 nützliches  <a href="/doc/portage-user.html">Portage Handbuch</a>, das mit den
