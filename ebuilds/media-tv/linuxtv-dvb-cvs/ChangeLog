@@ -1,0 +1,12 @@
+# ChangeLog for media-video/linuxdvb
+# Copyright 2003 Martin Hierling; Distributed under the GPL
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-tv/linuxtv-dvb-cvs/ChangeLog,v 1.1 2004/01/15 18:06:35 fow0ryl Exp $
+
+*linuxtv-dvb-cvs (14 Jan 2004)
+  14 Jan 2004; Henning Ryll <henning.ryll@web.de>
+  initial CVS ebuild,
+  some parts are from Martin Holzers/Thomas Raschbachers ebuild,
+  some parts has grown at gentoo.de cvs over the last months.
+  because this is from the cvs drivers (new vdr version only runs with them)
+  it is considered unstable
+

@@ -1,0 +1,5 @@
+MD5 62529edbe3a3dfe3a728c84735dbb3d6 linuxtv-dvb-cvs-0.0.1.ebuild 3168
+MD5 a0e0fd38012792b5f6126ba073e35b55 files/stillimage.patch 1503
+MD5 d41d8cd98f00b204e9800998ecf8427e files/digest-linuxtv-dvb-cvs-0.0.1 0
+MD5 e6f2294c44181342dca21f784e264e81 files/av7110_ir-permission-666.diff 434
+MD5 1f06460cbd98da52da40f2ebd328386d files/gentoo.mpg 10447
