@@ -84,6 +84,7 @@ Hier finden Sie eine Übersicht unserer Dokumentationen
 		<p>
 			<ul>
 				<li><uri link="fortgeschritten/alsa">Soundsystem (ALSA) einrichten</uri></li>
+				<li><uri link="fortgeschritten/brennen">CD-Brennen HowTo</uri></li>
 				<li><uri link="fortgeschritten/sicherheit">Sicherheitsleitfaden</uri></li>
 				<li><uri link="fortgeschritten/systemstart">Systemstart</uri></li>
 				<li><uri link="fortgeschritten/distcc">Distcc</uri></li>
