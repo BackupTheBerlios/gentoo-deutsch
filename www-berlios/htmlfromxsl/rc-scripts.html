@@ -1,0 +1,642 @@
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-15" http-equiv="Content-Type">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	Gentoo Linux Init System</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead">Gentoo Linux Init System</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Einleitung</option>
+<option value="#doc_chap2">2. Runlevel</option>
+<option value="#doc_chap3">3. RC-Scripts</option>
+<option value="#doc_chap4">4. Abhängigkeitstypen</option>
+<option value="#doc_chap5">5. Kontrollieren der Reihenfolge ohne Abhängigkeiten</option>
+<option value="#doc_chap6">6. Virtuelle Dienste</option>
+<option value="#doc_chap7">7. Standard Kommandozeilen Optionen</option>
+<option value="#doc_chap8">8. Eigene Kommandozeilen Optionen ergänzen</option>
+<option value="#doc_chap9">9. Konfiguration</option>
+<option value="#doc_chap10">10. Utilities und hilfreiche Scripts</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Einleitung</p>
+
+<p>Gentoo Linux benutzt ein Init-System das größtenteils über Abhängigkeiten
+kontrolliert wird. Es sollte einfach zu warten und doch stark und flexibel genug sein für
+jede Art von Konfiguration. Diesen Text sollte man nicht als eine Einleitung in die inneren
+Mechanismen verstehen, sondern vielmehr als eine einfach Anleitung um mit Gentoo's Init-System
+arbeiten zu können. Leute die ernsthaft daran interessiert sind, die inneren Mechanismen
+zu verstehen .... lesen Sie den Quelltext ;-)
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Runlevel</p>
+
+<p>Im Gegensatz zu anderen Init-Systemen, bestehen Gentoos Runlevel nicht aus festen Namen oder
+Nummern, sonder vielmehr aus eigenen Namen, die auf die standard Runlevel von init abgebildet
+werden.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Standardmäßig gibt es drei Runlevel, namentlich: <font class="emphasis">&quot;boot&quot;</font>,
+<font class="emphasis">&quot;default&quot;</font> und <font class="emphasis">&quot;nonetwork&quot;</font>.</p></td></tr></table>
+</p>
+
+<p>Das &quot;boot&quot; Runlevel sollte der standard Typ für die meisten Setups sein, und
+ist, wie der Name sagt, das erste Runlevel das nach dem booten ausgeführt wird. Als
+nächstes kommt <font class="emphasis">&quot;default&quot;</font>, welches, wie der Name schon andeutet, das
+standard Runlevel welches nach dem booten gestartet wird. Zuletzt folgt <font class="emphasis">&quot;nonetwork&quot;</font>,
+welches ausschließlich als Beispiel dient.</p>
+
+<p>Die Runlevels liegen in <font class="path">/etc/runlevels</font>, in einem Unterverzeichnis das
+nach dem Namen des Runlevels benannt wurde; dieses Unterverzeichnis enthält
+symbolische Links zu den Diensten, die in diesem Runlevel geladen werden sollen.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Der bevorzugte Weg um einen Service hinzuzufügen oder zu löschen wird später
+in dem Abschnitt &quot;Über rc-update&quot; behandelt.</p></td></tr></table>
+</p>
+
+<p>
+Wie bereits erwähnt, kann der Name frei gewählt werden, solange die Datei <font class="path">/etc/inittab</font> 
+entsprechend dem neuen Namen des Runlevels angepasst wird.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Eine Ausnahme dieser Regel, die jedoch erwähnt werden sollte, stellt das Runlevel
+<font class="emphasis">&quot;boot&quot;</font> dar.</p></td></tr></table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Bitte ändern Sie den Namen des <font class="emphasis">&quot;boot&quot;</font> Runlevels NIEMALS, da es
+einige Dinge kaputt machen würde.</p></td></tr></table>
+</p>
+
+<p>
+Die ganze Arbeit wird vom <font class="path">/sbin/rc</font> Script erledigt, mit diesem können Sie auch im 
+laufenden Betrieb zwischen den virtuellen Runleveln wechseln.
+</p>
+
+<p class="secthead"><a name="_sect2">Virtuelle Runlevel </a></p>
+
+<p>Da Runlevel nicht statisch auf die von Init gebunden sind, kann man wesentlich mehr haben
+als init unterstützt. Das ermöglicht es dem Benutzer nach seinen Bedürfnissen
+Profile und Virtuelle Runlevel zu erstellen</p>
+
+<p>
+Zum Beispiel könnte ein Laptop Benutzer zwei standard Runlevel haben, &quot;online&quot; 
+und &quot;offline&quot;. Das würde erlauben ein aktives Runlevel zu benutzen, wenn die PCMCIA 
+Netzwerkkarte eingesteckt ist, und ein weiteres Runlevel zu haben, wenn sie es nicht ist. 
+Die PCMCIA Scripts könnten dann so konfiguriert werden, dass sie <font class="code">&quot;/sbin/rc online&quot;</font> 
+oder <font class="code">&quot;/sbin/rc offline&quot;</font> aufrufen, um die richtigen Dienste zu starten oder zu stoppen, 
+jeweils abhängig vom Status der PCMCIA Netzwerkkarte.
+</p>
+
+<p class="secthead"><a name="_sect3">Runlevel und XFree86 </a></p>
+
+<p>Nach Gentoos Weg, Dinge zu erledigen haben wir kein Runlevel für X, sondern stattdessen
+ein startup-Script. Es hat den Namen &quot;xdm&quot; und kann zu jedem Runlevel hinzugefügt
+werden, wenn der Benutzer dieses wünscht.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Dies sollte das hauptsächlich genutzte Runlevel des Nutzers sein.</p></td></tr></table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Es zum Boot Runlevel zu ergänzen kann in unerwünschten Nebeneffekten enden.</p></td></tr></table>
+</p>
+   
+<p>
+Wenn xdm, gdm oder kdm vor Ihren Gettys gestartet wird, startet X standardmäßig auf der nächsten 
+freien Konsole. Auf langsameren Rechner ist das kein Problem, solange der Desktop Manager am Ende 
+des Runlevel Init Vorganges startet. Die Gettys werden vor X starten, welches dann auf Konsole 7 
+startet. Auf schnelleren Rechnern ist dies nicht der Fall. X wird hier vorher auf Konsole zwei 
+starten. Wenn nun die Gettys starten, übernehmen diese die Kontrolle über die Tastatur, dadurch 
+verliert der Desktop Manager die Kontrolle der Tastatur.
+</p>
+
+<p>
+Dies wird dadurch verhindert, dass das Desktop Manager Startscript über ein &quot;Extra-Runlevel&quot;, hier 
+das Runlevel &quot;a&quot;, geführt wird. Da das Runlevel &quot;a&quot; kein richtiges Runlevel ist, ruft unser 
+&quot;xdm&quot; Script einfach <font class="code">&quot;telinit&quot;</font> auf. Dadurch werden alle Dienste des Runlevels &quot;a&quot; 
+erst nach dem aktuellen Runlevel gestartet, also nachdem die Gettys gestartet wurden.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Sie können mehr Informationen über Runlevel &quot;a&quot; erhalten, indem Sie die man pages von init lesen.</p></td></tr></table>
+</p>
+   
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>RC-Scripts</p>
+
+<p>
+Rc-Scripts sind Scripts, die die grundsätzlichen Funktionen, sowie die Abhängigkeiten von Diensten 
+beim Start definieren. Sie liegen in <font class="path">/etc/init.d/</font>.
+</p>
+
+<p class="secthead"><a name="_sect2">Grundlayout eines RC-Skriptes </a></p>
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1: rc-script Layout</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+#!/sbin/runscript
+ 
+depend() {
+    need bar
+}
+ 
+start() {
+    ebegin &quot;Starting foo&quot;
+    /sbin/foo
+    eend $? &quot;Failed to start foo&quot;
+}
+ 
+stop() {
+    ebegin &quot;Stopping foo&quot;
+    kill $(cat /var/run/foo.pid)
+    eend $? &quot;Failed to stop foo&quot;
+}
+</pre></td></tr>
+</table>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Der Interpreter ist &quot;/sbin/runscript&quot;.</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Die &quot;depend&quot; Funktion ist optional.</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Jedes rc-Script braucht mindestens die &quot;start&quot; Funktion.</p></td></tr></table>
+</p>
+
+<p class="secthead"><a name="_sect3">Kontrollieren des Start-up </a></p>
+
+<p>
+Die generelle Startreihenfolge der Dienste innerhalb eines Runlevels ist alphabetisch.
+Dies liegt an der Sortierung der Ausgabe von <font class="path">/bin/ls</font>.
+</p>
+
+<p>
+Die erste Möglichkeit von der Startreihenfolge abzuweichen sind Abhängigkeiten. Alternativ 
+können auch die sogenannten &quot;Order Types&quot; genutzt werden.
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap4">4.</a></font>Abhängigkeitstypen</p>
+
+<p>
+Die meisten Dienste sind mit anderen Diensten verbunden und hängen sogar von ihnen ab.
+</p>
+
+<p>
+Zum Beispiel benötigt Postfix ein laufendes Netzwerk, sowie einen Systemlogger.
+</p>
+
+<p>
+Samba benötigt ebenfalls ein laufendes Netzwerk. Wenn CUPS zum Drucken benutzt werden soll, 
+muss cupsd auf jeden Fall vor Samba gestartet werden. Beachten Sie, das CUPS nicht unbedingt 
+zum Starten von Samba nötig ist.
+</p>
+
+<p>
+Wir haben zwei verschiedene Möglichkeiten, um Abhängigkeiten zwischen verschiedenen Diensten 
+zu definieren. Diese Abhängigkeiten sind immer gültig, egal ob ein Runlevel als ganzes 
+gewechselt wird oder ein Service einfach nur manuell nach dem Booten gestartet wird.
+</p>
+
+<p class="secthead"><a name="_sect2">Der NEED Abhängigkeitstyp </a></p>
+
+<p>
+Dieser Typ wird benutzt, wenn ein Dienst für das Starten des aktuellen Dienstes dringend 
+nötig ist.
+</p>
+
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2: Logger und net werden als NEED Abhängigkeit definiert</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+depend() {
+    need net logger
+}
+</pre></td></tr>
+</table>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Die Dienste, welche nach <font class="emphasis">NEED</font> genannt werden, sind dringend erforderlich, damit 
+der aktuelle Dienst starten kann. Der aktuelle Dienst wird also nicht starten, wenn eine 
+der Abhängigkeiten nicht starten sollte.
+</p></td></tr></table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Jeder Dienst, der in der <font class="emphasis">NEED</font> Zeile steht, wird gestartet, auch wenn dieser NICHT zum 
+aktuellen oder <font class="emphasis">&quot;boot&quot;</font> Runlevel ergänzt wurde.</p></td></tr></table>
+
+<font class="emphasis">NEED</font> ist deshalb eine &quot;starke&quot; Abhängigkeit.
+</p>
+
+<p class="secthead"><a name="_sect3">Der USE Abhängigkeitstyp </a></p>
+
+<p>
+Dieser Dienst ist nicht unbedingt zum Starten des aktuellen Dienstes nötig, sollte jedoch 
+vor dem aktuellen gestartet werden.
+</p>
+
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3: Portmap wird als USE Abhängigkeit zu netmount ergänzt</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+depend() {
+    use portmap
+}
+</pre></td></tr>
+</table>
+
+<p>
+Netmount kann standardmäßig mit NFS Mounts umgehen, aber wird nur von Portmap abhängen, 
+wenn dieses zum aktuellen oder zum Boot Runlevel ergänzt wurde. Jeder Benutzer, der NFS 
+Mounts nutzt, sollte portmap zum Default Runlevel hinzufügen. Dadurch wird Portmap als USE 
+Abhängigkeit gesehen und vor netmount gestartet werden.
+</p>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>
+Jeder Dienst in der <font class="emphasis">USE</font> Zeile <font class="emphasis">*muss*</font> im aktuellen oder im Boot Runlevel vorhanden 
+sein, damit er als gültige <font class="emphasis">USE</font> Abhängigkeit anerkannt werden kann.
+</p></td></tr></table>
+
+<font class="emphasis">USE</font> is dadurch eine  &quot;schwache&quot; Abhängigkeit.
+</p>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Sollte ein Dienst in der <font class="emphasis">USE</font> Zeile nicht starten, so wird der aktuelle Dienst trotzdem 
+gestartet werden, da der Dienst der <font class="emphasis">USE</font> Zeile nicht zwingend für den Start des 
+aktuellen Dienstes nötig ist.
+</p></td></tr></table>
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap5">5.</a></font>Kontrollieren der Reihenfolge ohne Abhängigkeiten</p>
+
+<p>
+Sollte keine abhängige Verbindung zwischen zwei Diensten bestehen, es aber trotzdem nötig oder 
+gewünscht sein, einen Dienst nach einem bestimmten anderen zu starten, können die <font class="emphasis">AFTER</font> 
+und <font class="emphasis">BEFORE</font> Optionen genutzt werden.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Diese Beiden Typen sind nur während dem Wechseln eines Runlevels gültig.</p></td></tr></table>
+</p>
+
+<p>Optional können diese beiden Typen ein &quot;*&quot; Wildcard für das integrieren aller anderen Dienste enthalten:
+</p>
+
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4: Ein Beispiel für AFTER</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+depend() {
+    after *
+}
+</pre></td></tr>
+</table>
+
+<p>Dies wird den Dienst <font class="emphasis">*nach*</font> allen anderen Diensten starten.
+</p>
+
+<p class="secthead"><a name="_sect2">Die BEFORE Option </a></p>
+
+<p>der aktuelle Dienst wird <font class="emphasis">*vor*</font> den in der <font class="emphasis">BEFORE</font> Zeile aufgelisteten Diensten gestartet.
+</p>
+
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5: Lässt foo vor dem Dienst bar starten (Auszug von foo)</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+depend() {
+   before bar
+}
+</pre></td></tr>
+</table>
+
+<p class="secthead"><a name="_sect3">Die AFTER Option </a></p>
+
+<p>Der aktuelle Dienst wird <font class="emphasis">*nach*</font> den in der <font class="emphasis">AFTER</font> Zeile gelisteten Diensten gestartet.
+</p>
+
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6: Lässt bar nach foo starten (Auszug von bar)</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+depend() {
+    after foo
+}
+</pre></td></tr>
+</table>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap6">6.</a></font>Virtuelle Dienste</p>
+
+<p>
+Dienste, wie die meisten Dinge in der heutigen Unix Welt, kommen in verschiedenen Farben und 
+Geschmäckern daher. Normalerweise hat der Nutzer / Administrator die Wahl zu bestimmen welche 
+genutzt werden.
+</p>
+
+<p>
+Ein Beispiel dafür sind Systemlogger. Zum Zeitpunkt des Schreibens dieses Dokumentes, hat der Nutzer 
+von Gentoo Linux die Auswahl aus vier verschiedenen. Alle Dienste, die einen Logger benötigen, können 
+nicht alle vier mittels <font class="emphasis">NEED</font> Option anfordern. Die <font class="emphasis">USE</font> option ist zu schwach.
+</p>
+
+<p>Dies ist der Punkt, an dem Virtuelle Dienste und der <font class="emphasis">PROVIDE</font> Typ ins Spiel kommen.
+</p>
+
+<p class="secthead"><a name="_sect2">Der PROVIDE Typ </a></p>
+
+<p>
+Der <font class="emphasis">PROVIDE</font> Typ definiert einen virtuellen Dienst, welchen andere Dienste mittels <font class="emphasis">NEED</font> 
+und <font class="emphasis">USE</font> aufrufen können.
+</p>
+
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7: Sysklogd liefert logger</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+depend() {
+    provide logger
+}
+</pre></td></tr>
+</table>
+
+<p class="secthead"><a name="_sect3">Der Virtuelle Dienst LOGGER </a></p>
+
+<p>
+<font class="emphasis">LOGGER</font> ist ein vordefinierter virtueller Dienst, welcher von allen Systemloggern geliefert 
+wird. Er kann entweder mit <font class="emphasis">NEED</font> oder <font class="emphasis">USE</font> genutzt werden.
+</p>
+
+<p class="secthead"><a name="_sect4">Der virtuelle Dienst NET </a></p>
+
+<p>
+Der NET Dienst ist ein anderer virtueller Dienst, jedoch im Gegensatz zu <font class="emphasis">LOGGER</font> liefert 
+er nicht einen eindeutigen Dienst.
+</p>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Um den virtuellen <font class="emphasis">NET</font> Dienst zu unterstützen, muss ein Dienst:
+<ul>
+<li>Zum aktuellen oder Boot Runlevel gehören.</li>
+<li>Ein &quot;net&quot; vorangestellt haben.</li>
+<li>Der Teil nach &quot;net&quot; muss den Namen des eigentlichen Netzwerk Interfaces tragen (z.B. net.eth0 oder net.ppp1).</li>
+</ul>
+</p></td></tr></table>
+</p>
+
+<p>Für jeden gültigen net.* Dienst, wird $IFACE auf den Namen des Netzwerk Interfaces gesetzt(z.B. &quot;eth0&quot; für net.eth0).
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap7">7.</a></font>Standard Kommandozeilen Optionen</p>
+
+<p>
+Jeder Dienst kann mit einer der standard Optionen aufgerufen werden. All diese genannten sind bereits 
+definiert, mit Ausnahme von <font class="emphasis">START</font> und <font class="emphasis">STOP</font>, welche der Benutzer als Funktionen in seinem 
+Rc-Script definieren sollte.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Die <font class="emphasis">start()</font> Funktion <font class="emphasis">muss</font> definiert werden.</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Die <font class="emphasis">stop()</font> Funktion ist nicht ganz so wichtig und kann weggelassen werden.</p></td></tr></table>
+</p>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+In der Regel wird der Benutzer nur <font class="emphasis">start()</font>, <font class="emphasis">stop()</font> und <font class="emphasis">restart()</font> definieren. Der 
+Rest wird intern ablaufen und sollte in Ruhe gelassen werden.
+</p></td></tr></table>
+</p>
+
+<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8: Start des HTTPD Dienstes</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">/etc/init.d/httpd start</font>
+</pre></td></tr>
+</table>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Kommandozeilen Optionen können gestapelt, bzw. aufgereiht werden.</p></td></tr></table>
+</p>
+
+<a name="doc_pre9"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 9: Pausieren / Starten von net.eth0</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">/etc/init.d/net.eth0 pause start</font>
+</pre></td></tr>
+</table>
+
+<p class="secthead"><a name="_sect2">Die START/STOP Option </a></p>
+
+<p>
+<font class="emphasis">START</font>, startet den Dienst inklusive aller seiner Abhängigkeiten.
+</p>
+
+<p>
+<font class="emphasis">STOP</font>, stoppt den Dienst inklusive aller Dienste, welche von ihm abhängig sind.
+</p>
+
+<p class="secthead"><a name="_sect3">Die RESTART Option </a></p>
+
+<p>
+Damit <font class="emphasis">RESTART</font> funktioniert, muss der Dienst vorher gestartet sein. Dadurch wird der Dienst und 
+alle Dienste, die von ihm abhängen neu gestartet.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>
+Sollte eine eigene <font class="emphasis">restart()</font> Funktion definiert sein, sollte der Nutzer zum Starten und Stoppen 
+<font class="emphasis">&quot;svc_start()&quot;</font> und <font class="emphasis">&quot;svc_stop()&quot;</font> verwenden.
+</p></td></tr></table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Dies ist nötig, damit alle abhängigen Dienste richtig gehandhabt werden.</p></td></tr></table>
+</p>
+
+<p class="secthead"><a name="_sect4">Die PAUSE Option </a></p>
+
+<p>
+Dies wird den Dienst stoppen, nur im Gegensatz zu <font class="emphasis">STOP</font> wird kein abhängender Dienst angehalten.
+</p>
+
+<p class="secthead"><a name="_sect5">Die ZAP Option </a></p>
+
+<p>Setzt den Status eines Dienstes auf gestoppt.
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Beachten Sie, dass hier kein Kommando aus der <font class="emphasis">stop()</font> Funktion ausgeführt wird. Deshalb 
+sollte der Benutzer alle nötigen &quot;Aufräumarbeiten&quot; manuell durchführen.
+</p></td></tr></table>
+</p>
+
+<p class="secthead"><a name="_sect6">Die INEED/NEEDSME Optionen </a></p>
+
+<p>
+<font class="emphasis">INEED</font> listet alle Dienste auf, die vom aktuellen Dienst gebraucht werden.
+</p>
+
+<p>
+<font class="emphasis">NEEDSME</font> listet alle Dienste auf, die den aktuellen Dienst brauchen.
+</p>
+
+<p class="secthead"><a name="_sect7">Die IUSE/USESME Optionen </a></p>
+
+<p>
+<font class="emphasis">IUSE</font> listet alle Dienste auf, die der aktuelle Dienst benutzt (siehe USE Option / Typ weiter oben).
+</p>
+
+<p>
+<font class="emphasis">USESME</font> listet alle Dienste auf, die den aktuellen Dienst nutzen (siehe USE Option / Typ weiter oben).
+</p>
+
+<p class="secthead"><a name="_sect8">Die BROKEN Option </a></p>
+
+<p>
+Diese listet alle fehlenden Dienste (falls es welche gibt) auf, die der aktuelle Dienst braucht.
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap8">8.</a></font>Eigene Kommandozeilen Optionen ergänzen</p>
+
+<p>
+Eigene Kommandozeilen Optionen zu ergänzen ist relativ einfach. Eine Funktion mit dem Namen der Option 
+muss im Rc-Script definiert werden und zur <font class="emphasis">$opts</font> Variable ergänzt werden, siehe unten:
+</p>
+
+<a name="doc_pre10"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 10: foo als eigene Option</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+opts=&quot;${opts} foo&quot;
+ 
+foo() {
+    ............
+}
+</pre></td></tr>
+</table>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap9">9.</a></font>Konfiguration</p>
+
+<p>
+Konfiguration sollte generell durch Umgebungsvariablen erfolgen. Diese sollten *nicht* im 
+Rc-Script definiert werden, sondern in einer der drei möglichen Konfigurations Dateien.
+</p>
+
+<p>
+Eine, die speziell für das Rc-Script da ist und zwei globale Konfigurations Dateien:
+</p>
+
+<a name="doc_pre11"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 11: Konfigurations Dateien für Rc-Scripte</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<font class="path">/etc/conf.d/&lt;name of rc-script&gt;</font>
+<font class="path">/etc/conf.d/basic</font>
+<font class="path">/etc/rc.conf</font>
+</pre></td></tr>
+</table>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Diese drei werden in der aufgelisteten Reihenfolge eingelesen.
+</p></td></tr></table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffffbb"><p class="note">
+<b>Wichtig: </b>Alle <font class="emphasis">NET</font> Dienste lesen also <font class="path">/etc/conf.d/net</font> aus.</p></td></tr></table>
+</p>
+
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap10">10.</a></font>Utilities und hilfreiche Scripts</p>
+<p class="secthead"><a name="_sect1">Das rc-update Utility </a></p>
+
+<p>
+Rc-update ist das Hauptwerkzeug, um Dienste zu einem bestimmten Runlevel zu ergänzen oder 
+von einem solchen zu entfernen. Es wird darüber hinaus auch &quot;depscan&quot; aufrufen, um 
+den Abhängigkeits Cache zu aktualisieren.
+</p>
+
+<a name="doc_pre12"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 12: Metalog zum standard Runlevel ergänzen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">rc-update add metalog default</font>
+</pre></td></tr>
+</table>
+
+<a name="doc_pre13"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 13: Metalog vom standard Runlevel entfernen</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="code">rc-update del metalog default</font>
+</pre></td></tr>
+</table>
+
+<p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Um mehr Hilfe zu erhalten, rufen Sie einfach rc-update ohne weitere Argumente auf
+</p></td></tr></table>
+</p>
+
+<p class="secthead"><a name="_sect2">Das depscan.sh Helfer Script </a></p>
+
+<p>
+Um eine vollständige Dokumentation zu bieten, wird depscan.sh hier erwähnt. Es wird 
+genutzt um einen Abhängigkeits Cache zu erstellen, dieser ist eigentlich eine Aufzeichnung 
+der Abhängigkeiten zwischen den Diensten.
+</p>
+
+<p>
+Es sollte immer dann gestartet werden, wenn ein neues Rc-Script nach <font class="path">/etc/init.d/</font> 
+ergänzt wird. Da jedoch rc-update dieses Script automatisch aufruft, wird der normale Benutzer 
+normalerweise nicht mit depscan in Berührung kommen.
+</p>
+
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 4. Juli 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:azarah@gentoo.org">Martin Schlemmer</a></b><br><i>Autor</i><br><br><b><a class="altlink" href="mailto:seemant@gentoo.org">Seemant Kulleen</a></b><br><i>Korrektur-Leser</i><br><br><b><a class="altlink" href="mailto:egber@netzraum.com">Sebastian Egbers</a></b><br><i>Übersetzung</i><br><br><b><a class="altlink" href="mailto:sebastian@beneke-it.de">Sebastian Beneke</a></b><br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> Dieses ist eine Einführung in das Init-System von Gentoo Linux und erklärt
+ebenfalls einige Details zum Schreiben von rc-Skripten.</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
