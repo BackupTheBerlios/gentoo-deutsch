@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE guide SYSTEM "http://www.gentoo.org/dtd/guide.dtd">
+<!DOCTYPE guide SYSTEM "/home/schitten/guide.dtd">
 <guide> 
 <title>CDs Brennen in Gentoo</title> 
 <author title="Autor"><mail link="js@ameds.de"> 
@@ -203,6 +203,23 @@ In diesem Fall wurde der Brenner erfolgreich vom IDE-CDROM Treiber ignoriert und
 zu schnell vorbei laufen, hilft ein <i>dmesg</i> an der Kommandozeile weiter.
 </p>
 </body> 
+</section>
+<section> 
+	<title>SCSI Brenner</title> 
+<body>
+<p>Um einen echten SCSI Brenner in Linux einbinden zu können, muss statt der 
+Unterstützung für SCSI Emulation der passende Treiber für
+den SCSI Hostadapter geladen werden. Je nach Chipsatz wird der entsprechende
+SCSI Low-Level Treiber in den Kernel kompiliert.
+Ansonsten werden die SCSI Module wie gewohnt eingebunden:</p>
+<pre caption="Kernel Konfiguration"> 
+SCSI support -&gt; &lt;M&gt; SCSI support
+SCSI support -&gt; &lt;M&gt; SCSI CDROM support
+SCSI support -&gt; &lt;M&gt; SCSI generic support
+</pre> 
+<p>
+</p>
+</body>
 </section>
 </chapter>
 
