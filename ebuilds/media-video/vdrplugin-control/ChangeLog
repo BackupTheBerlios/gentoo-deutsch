@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr-control
 # Copyright 2004 Christian Gmeiner; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-control/ChangeLog,v 1.1 2004/07/22 21:29:55 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-control/ChangeLog,v 1.2 2004/08/11 19:48:17 austriancoder Exp $
+
+*vdrplugin-control-0.0.2a (11 Aug 2004)
+
+  11 Aug 2004; Christian Gmeiner <christian at visual-page dot de>
+  verssion bump
 
 *vdrplugin-control-0.0.2 (22 July 2004)
 
