@@ -1,6 +1,11 @@
 # ChangeLog for sys-kernel/cdfs
 # Copyright 2004 Christian Gmeiner; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-kernel/love-sources/ChangeLog,v 1.1 2004/06/19 09:07:53 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/sys-kernel/love-sources/ChangeLog,v 1.2 2004/07/18 19:40:42 austriancoder Exp $
+
+*love-sources-2.6.8_rc1-r1.ebuild (18 July 2004)
+
+  18 July 2004; Christian Gmeiner <christian at visual-page dot de>
+  version bump
 
 *love-sources (19 June 2004)
 
