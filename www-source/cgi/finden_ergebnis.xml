@@ -26,7 +26,7 @@
 
 <chapter>
 
-<title>Übersicht</title>
+<title>Ihr Suchergebnis</title>
 
 <section>
 
@@ -34,22 +34,6 @@
 
   <cgi:result_list/>
   <cgi:result_navigation/>
-
-
-
-  <!--
-  <search>
-    <result_intro>
-      Ihre Suche nach:
-    </result_intro>  
-    <result_overview/>
-    <result_ignored_terms/>
-    <result_list/>
-    <result_navigation>
-      <retry/>
-    </result_navigation>  
-  </search>
-  -->
 
 </body>
 
