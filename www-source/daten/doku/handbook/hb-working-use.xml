@@ -1,7 +1,7 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-working-use.xml,v 1.1 2004/01/15 15:24:20 baka Exp $ -->
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-working-use.xml,v 1.2 2004/01/24 21:20:32 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -22,17 +22,17 @@ einer Workstation für 3D-Rendering.
 Dies trifft nicht nur bei der Auswahl der Pakete die Sie installieren wollen zu, 
 sondern auch welche Funktionen ein Paket unterstützen soll. Wenn Sie OpenGL 
 nicht benötigen, warum sollten Sie sich die Mühe machen OpenGL zu installieren 
-und OpenGL-Unterstützung in die meissten Ihrer Pakete einzubauen? Wenn Sie KDE 
+und OpenGL-Unterstützung in die meisten Ihrer Pakete einzubauen? Wenn Sie KDE 
 nicht benutzen wollen, warum sollten Sie sich die Mühe machen Pakete mit 
 KDE-Unterstützung zu kompilieren, wenn diese Pakete auch ohne einwandfrei 
 funktionieren?
 </p>
 
 <p>
-Um den Benutzern bei der Enscheidung zu helfen was installiert/aktiviert und was 
-nicht alles werden soll, wollten wir, dass der Benutzer seine Umgebung auf eine 
+Um den Benutzern bei der Enscheidung zu helfen, was installiert/aktiviert werden
+soll und was nicht, wollen wir, dass der Benutzer seine Umgebung auf eine 
 einfache Weise spezifiziert. Dies zwingt den Benutzer dazu zu entscheiden, was 
-er wirklich will und vereinfachtet den Prozess für Portage, unser 
+er wirklich will und vereinfachtt den Prozess für Portage, unser 
 Paketmanagmentsystem, sinnvolle Entscheidungen zu treffen.
 </p>
 
@@ -43,7 +43,7 @@ Paketmanagmentsystem, sinnvolle Entscheidungen zu treffen.
 <body>
 
 <p>
-Geben Sie die USE-Flags ein. Solch ein Flag ist ein Schlüsselwort der 
+Geben Sie die USE-Flags ein. Solch ein Flag ist ein Schlüsselwort das 
 Unterstützungs- und Abhängigkeitsinformationen für ein bestimmtes Konzept 
 beinhaltet. Wenn Sie ein bestimmtes USE-Flag definieren wird Portage wissen, 
 dass Sie Unterstützung für das gewählte Schlüsselwort wollen. Natürlich 
@@ -55,7 +55,7 @@ Schauen wir uns ein spezifisches Beispiel an: das <c>kde</c> Schlüsselwort.
 Wenn Sie dieses Schlüsselwort nicht in Ihrer <c>USE</c> Variable haben, werden 
 alle Pakte die <e>optionale</e> KDE Unterstützung haben <e>ohne</e> KDE 
 Unterstützung kompiliert. Alle Pakete die eine <e>optionale</e> KDE Abhängigkeit 
-haben werden installiert <e>ohne</e> dass die KDE Bibliotheken (als 
+haben werden installiert, <e>ohne</e> dass die KDE Bibliotheken (als 
 Abhängigkeit) installiert werden. Wenn Sie das <c>kde</c>  Schlüsselwort 
 verwendet haben, dann <e>werden</e> diese Pakete mit KDE Unterstützung 
 kompiliert und die KDE Bibliotheken werden als Abhängigkeit installiert.
@@ -196,7 +196,7 @@ link="?part=2&amp;chap=2">Portage und Software</uri>.
 <body>
 
 <p>
-Eine Pakete hören nicht nur auf USE-Flags, sondern liefern auch USE-Flags. Wenn 
+Einige Pakete hören nicht nur auf USE-Flags, sondern liefern auch USE-Flags. Wenn 
 Sie solch ein Paket installieren, wird das USE-Flag zu Ihren USE Einstellungen 
 hinzugefügt. Eine Liste der Pakete, die ein USE-Flag mitliefern, finden Sie in 
 <path>/etc/make.profile/use.defaults</path>: 
@@ -263,7 +263,7 @@ Inhalt auf.
 
 <p>
 Im nächsten Kapitel über <uri link="?part=2&amp;chap=2">
-Portage and Software</uri> erklären wir wie Sie Ihre installierte Software 
+Portage and Software</uri> erklären wir, wie Sie Ihre installierte Software 
 organisieren können und wie man mit <c>emerge</c> umgeht. Jedoch geben wir 
 Ihnen nun einen kurzen Einblick in <c>emerge</c>, indem wir zeigen welche 
 USE-Flags ein Paket verwendet.

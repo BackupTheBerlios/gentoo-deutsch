@@ -4,8 +4,9 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-working-portage.xml,v 1.1 2004/01/20 22:37:18 tove Exp $ -->
 <!-- English CVS Version: 1.21 --> 
+
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-working-portage.xml,v 1.2 2004/01/24 21:20:32 dertobi123 Exp $ -->
 
 <sections>
 <section>
@@ -226,10 +227,10 @@ Searching...
 </pre>
 
 <p>
-Wie Sie sehen können, listet Sie die Ausgabe von <c>emerge</c> die Kategorie
+Wie Sie sehen können, listet Ihnen die Ausgabe von <c>emerge</c> die Kategorie
 und den Namen des Paketes, die neueste und die aktuell installierte Version,
 die Größe der herunterzuladenden Dateien, die zugehörige Homepage und eine
-kurze Beschreibung.
+kurze Beschreibung auf.
 </p>
 
 <p>
@@ -299,9 +300,9 @@ Fehlerbereinigungen und Heilmittel für mögliche Sicherheitslücken verpassen.
 </p>
 
 <p>
-Es gibt verschiedene Wege den Portage Baum zu aktualisieren. Am verbreitetsten
+Es gibt verschiedene Wege den Portage Baum zu aktualisieren. Am verbreitesten
 ist der Weg über einen unserer <uri link="/main/en/mirrors.xml">
-rsync Mirrors</uri>. Der Alternativweg führt über einen Portage Schnappschuss
+rsync Mirror</uri>. Der Alternativweg führt über einen Portage Schnappschuss
 (notwendig, falls Sie keinen rsync Mirror erreichen können, möglicherweise
 wegen einer Firewall oder weil der Rechner keinen Netzzugang hat.)
 </p>
@@ -314,7 +315,7 @@ wegen einer Firewall oder weil der Rechner keinen Netzzugang hat.)
 
 <p>
 Wir raten Ihnen als erstes einen schnellen und nahegelegenen
-<uri link="/main/en/mirrors.xml">Mirror</uri> auszuwählen.
+<uri link="http://www.gentoo.org/main/en/mirrors.xml">Mirror</uri> auszuwählen.
 Dies können Sie manuell (über das Setzen der <c>SYNC</c> Variable in
 <path>/etc/make.conf</path>) oder auch automatisch mit <c>mirrorselect</c>
 machen. Da die <c>SYNC</c> Variable später behandelt wird, werden wir uns nun
@@ -385,7 +386,7 @@ sehr viel Zeit (besonders wenn Sie große Pakete, wie
 <uri link="http://www.openoffice.org">OpenOffice.org</uri>, usw.
 auf kleinen Rechnern bauen wollen). Wenn Sie selbst kompilieren, können Sie
 mittels der <c>USE</c> Einstellungen das Paket an Ihre Bedürfnisse anpassen.
-Natürlich können Sie auch die Optimierereinstellungen (in den <c>CFLAGS</c>
+Natürlich können Sie auch die Optimiereinstellungen (in den <c>CFLAGS</c>
 und <c>CXXFLAGS</c> Variablen) anpassen.
 </p>
 
@@ -413,8 +414,8 @@ können (sonst müssten Sie es noch einmal herunterladen).
 <body>
 
 <p>
-Okay, genug geredet, kommen wir zum Punkt <!--(let's cut to the chase)-->.
-Um ein Paket zu installieren, benutzen wir das <c>emerge</c> Kommando. Falls
+Okay, genug geredet, kommen wir zur Sache:
+Um ein Paket zu installieren benutzen wir das <c>emerge</c> Kommando. Falls
 Sie keine vorkompilierten Pakete benutzen wollen, können Sie einfach
 <c>emerge &lt;Paketname&gt;</c> oder
 <c>emerge &lt;Kategorie&gt;/&lt;Packetname&gt;</c> benutzen. Beispielsweise
@@ -437,7 +438,7 @@ möchten, welche Pakete dies sind, benutzen Sie die <c>--pretend</c> Option
 </pre>
 
 <p>
-Wenn Sie den Quellcode des Paketes und alles benötigten Pakete herunterladen,
+Wenn Sie den Quellcode des Paketes und alle benötigten Pakete herunterladen,
 das Paket aber nicht erstellen möchten, benutzen Sie die <c>--fetchonly</c>
 Option (oder kurz <c>-f</c>):
 </p>
@@ -480,7 +481,7 @@ Selbstverständlich funktionieren auch "&gt;" (neuere Version) und "="
 Wenn Sie ein vorkompiliertes Paket installieren möchten, benutzen Sie die
 <c>--usepkg</c> Option (oder kurz <c>-k</c>). Damit werden die verfügbaren
 Binärpakete in <path>/usr/portage/packages/All</path> benutzt, <e>wenn</e>
-die Version des Paketes und die der zu installieren den Anwendung
+die Version des Paketes und die der zu installierenden Anwendung
 übereinstimmen.
 </p>
 
@@ -559,7 +560,7 @@ genaue Version).
 <body>
 
 <p>
-Portage biete eine weitgehende Unterstützung um mit Abhängigkeiten fetig zu
+Portage biete eine weitgehende Unterstützung um mit Abhängigkeiten fertig zu
 werden. Obwohl Sie im Allgemeinen gar nicht darüber nachdenken müssen (da
 Abhängigkeiten von Portage automatisch aufgelöst werden), möchten vielleicht
 doch einige Benutzer wissen, wie sie mit <c>emerge</c> und Abhängigkeiten
@@ -685,7 +686,6 @@ Buchstaben). Diese geben weiter Informationen über das Paket:
     wird eine Vorgängerversion installiert
   </li>
   <li>
-  	<!-- Übersetzer fragt: ? den sinn getroffen ?  -->
     <e>U-</e> (slot warning) Von dem geslotteten Paket auf Ihrem System ist
     bekannt, dass es mit einer bestimmten anderen Version nicht koexistieren
     kann. Das Update wird installiert und die ältere Version wird entfernt.
@@ -798,7 +798,7 @@ die <c>ACCEPT_KEYWORDS</c> Variable in <path>/etc/make.conf</path> auf
 
 <p>
 Beachten Sie jedoch, dass es nicht trivial (vielleicht sogar unmöglich) sein
-kann, von <e>ARCH</e> zu <e>~ARCH</e> zurück zu wechseln.
+kann, von <e>ARCH</e> zu <e>~ARCH</e> und wieder zurück zu wechseln.
 </p>
 
 <p>
@@ -833,7 +833,7 @@ Ein Paket kann aus den folgenden 2 Gründen maskiert sein:
 
 <p>
 Wenn ein Paket aus dem ersten Grund maskiert ist, Sie es aber <e>unbedingt</e>
-installieren möchten (wissend, da <e>sind</e> Gründe, weshalb es nicht in
+installieren möchten (wissen, da <e>sind</e> Gründe, weshalb es nicht in
 <e>ARCH</e> ist), so können sie kurzzeitig <e>~ARCH</e> Pakete akzeptieren:
 </p>
 
@@ -849,7 +849,7 @@ wurde (gewöhnlich gibt es einen Kommentar zu jedem Paket). Wenn Sie ein solches
 Paket trotzdem installieren möchten (ungeachtet aller Warnung von uns bezüglich
 "zerstörten Systemen", "beeinträchtigen anderen Paketen", "frühen Versionen"),
 erstellen Sie die Datei <path>/etc/portage/package.unmask</path> und fügen Sie
-das Paket diese Datei hinzu (benutzen Sie dazu das gleiche Format wie es in
+das Paket dieser Datei hinzu (benutzen Sie dazu das gleiche Format wie es in
 <path>/usr/portage/profiles/package.mask</path> benutzt wird).
 </p>
 

@@ -1,13 +1,13 @@
 <!-- The content of this document is licensed under the CC-BY-SA license -->
 <!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
 
-<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-working-rcscripts.xml,v 1.1 2004/01/04 18:06:25 sirseoman Exp $ -->
-
 <!-- English CVS Version: 1.7-->
+
+<!-- $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/www-source/daten/doku/handbook/hb-working-rcscripts.xml,v 1.2 2004/01/24 21:20:32 dertobi123 Exp $ -->
 
 <sections>
 <section>
-<title>Runlevels</title>
+<title>Runlevel</title>
 <subsection>
 <title>Der Startvorgang</title>
 <body>
@@ -267,7 +267,7 @@ Um auch nachzufragen, was von dem Dienst alles abhängt, können sie die
 Argumente <c>iuse</c> oder <c>ineed</c> nutzen. Mit <c>ineed</c> wird alles
 angezeigt, was zum ordnungsgemäßen Funktionieren des Dienstes nötig ist.
 <c>iuse</c> andererseits zeigt alle Dienste an, die von diesem Dienst benutzt
-werden können, aber nicht notwendig zur ordnugsgemäßen Funktion des
+werden können, aber nicht notwendig zur ordnungsgemäßen Funktion des
 Dienstes sind.
 </p>
 
@@ -501,7 +501,7 @@ Wie Sie sehen können, der Postfix - Dienst:
 <ul>
   <li>
     benötigt die (virtual) <c>net</c> Abhängigkeit (die z.B. von
-    <path>/etc/init.d/net.eth0</path> beritgestellt wird)
+    <path>/etc/init.d/net.eth0</path> bereitgestellt wird)
   </li>
   <li>
     nutzt die (virtual) <c>logger</c> Abhängigkeit (die z.B. von
@@ -512,7 +512,7 @@ Wie Sie sehen können, der Postfix - Dienst:
   <path>/etc/init.d/named</path> bereitgestellt wird)
   </li>
   <li>
-    stelllt die (virtual) <c>mta</c> Abhängigkeit (die allen Mail - Servern gemein
+    stellt die (virtual) <c>mta</c> Abhängigkeit (die allen Mail - Servern gemein
     ist) zur Verfügung
   </li>
 </ul>
@@ -563,7 +563,7 @@ depend() {
 <body>
 
 <p>
-Neben der <c>depend()</c> Funktionalität benötigen Sie veilleicht auch
+Neben der <c>depend()</c> Funktionalität benötigen Sie vielleicht auch
 die <c>start</c> Funktion. Diese enthält alle Befehle, die zum Starten Ihres
 Dienstes notwendig sind. Es ist ratsam, die <c>ebegin</c> und <c>eend</c>
 Funktionen zu nutzen, um dem User mitzuteilen, was passiert:
