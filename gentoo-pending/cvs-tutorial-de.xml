@@ -113,7 +113,7 @@
 				# <i>./configure</i>
 				# <i>make</i>
 				# <i>make install</i> 
-			<pre> 
+			</pre> 
 		<p>
 		Nun sollte CVS auf ihrem System installiert sein.
 		</p>
@@ -407,7 +407,7 @@
 	</p> 
 	<pre> 
 	export EDITOR=jpico 
-	<pre> 
+	</pre> 
 	<p> 
 	Alternativ zum Verwenden eines Editors können Sie CVS den Log-Eintrag auch direkt über die Kommandozeile mitteilen. Verwenden Sie
 	hierzu die -m-Option. 
@@ -542,7 +542,7 @@ cvs [add aborted]: no repository
 
 	<pre> 
 	A [Pfad] 
-	<pre> 
+	</pre> 
 	<p> 
 	Diese Datei ist vorgsehen in das Repository eingefügt zu werden, und wird beim nächsten "cvs commit" beigefügt werden. 
 	</p> 
@@ -568,7 +568,7 @@ cvs [add aborted]: no repository
 	</p> 
 	<pre> 
 	C [Pfad]
-	<pre> 
+	</pre> 
 	<p>
 	Der Buchstabe "C" bedeutet, dass ein Konflikt vorliegt. Manuelles einbinden der Änderungen wird nötig sein, bevor Sie 
 	"cvs commit" ausführen können. 
@@ -803,7 +803,5 @@ cvs [add aborted]: no repository
 	</note>
 	</body>
 </section>
-
+</chapter>
 </guide>
-		
-		
