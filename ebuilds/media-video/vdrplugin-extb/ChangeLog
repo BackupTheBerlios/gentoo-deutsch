@@ -1,8 +1,21 @@
 # ChangeLog for media-video/vdr-extb
 # Copyright 2004 Christian Gmeiner; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-extb/ChangeLog,v 1.1 2004/07/22 21:37:22 austriancoder Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdrplugin-extb/ChangeLog,v 1.2 2004/07/24 14:38:58 austriancoder Exp $
+
++vdrplugin-extb-0.2.8-r1 (24 July 2004)
+
+  24 July 2004; Lars Altenhain <lars at altenhain dot de>
+  updated extb-powerof script to version 0.2.9
+  (see http://www.vdrportal.de/board/thread.php?postid=168363#post168363)
+  changed configuration directory to /etc/extb
+
++vdrplugin-extb-0.2.8 (23 July 2004)
+
+  23 July 2004; Lars Altenhain <lars at altenhain dot de>
+  version bump
+  install scripts (tx.sh, etc.) to /usr/bin/ instead of /opt/extb/
 
 *vdrplugin-extb-0.2.7 (22 July 2004)
 
   22 July 2004; Lars Altenhain <lars at altenhain dot de>
-  initla ebuild
+  inital ebuild
