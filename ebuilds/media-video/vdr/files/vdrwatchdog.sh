@@ -18,6 +18,7 @@ while sleep 8; do
 		/etc/init.d/vdr stop 2>&1 >/dev/null
 		/etc/init.d/vdr zap 2>&1 >/dev/null
 		/etc/init.d/dvb stop 2>&1 >/dev/null
+		/etc/init.d/dvb zap 2>&1 >/dev/null
 		sleep 2
 		/etc/init.d/dvb start 2>&1 >/dev/null
 		/etc/init.d/vdr start 2>&1 >/dev/null
