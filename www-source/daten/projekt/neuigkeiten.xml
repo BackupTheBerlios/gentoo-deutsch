@@ -23,21 +23,37 @@
 </box>
 
 <chapter>
+
+<section>
+  <body>
+  <news type="news" date="17.11.2003" title="Gentoo-Newsletter">
+    <p>
+		In diesem Newsletter wird die neue <uri link="http://packages.gentoo.org/">Online-Paketdatenbank</uri> vorgestellt -
+		viele interessante Möglichkeiten warten darauf entdeckt und benutzt zu werden. Ausserdem gibts einen Hilferuf
+		der Gentoo/BSD-Entwickler, die Hilfe bei der Portierung der Sandbox auf die BSD-libc gebrauchen könnten. Im
+		Entwicklerportrait der Woche wird luke-jr vorgestellt, einen Tip zum file-Kommando und einige weitere unserer
+		wöchentlichen Rubriken. <uri link="http://www.gentoo.org/news/en/gwn/20031117-newsletter.xml">Viel Spass beim Lesen</uri>.
+    </p>
+  </news>
+  </body>
+</section>
+
+
 <section>
 	<body>
 	<news type="release" date="16.11.2003" title="Gentoo für PowerPC G5 erhältlich">
 		<p>
-		Wir freuen uns bekanntgeben zu können, dass Gentoo nun auch für den PowerPC G5 erhältlich ist. Die 32bit LiveCD isos sind 
+		Wir freuen uns bekanntgeben zu können, dass Gentoo nun auch für den PowerPC G5 erhältlich ist. Die 32bit LiveCD isos sind
 		ab sofort auf unseren Mirrors erhältlich und können heruntergeladen werden.
                  </p><p>
 		Die LiveCD wurde auf einem Dual 2GHz G5 SMP PowerPC mit 2.5GB RAM, einem 1.6GHz G5 und anderen Modellen getestet. Enthalten ist
 		der yaboot-loader Version 1.3.11 und ein 2.6.0-test9 benh Kernel. Die Geschwindigkeit ist auf 100% eingestellt, sodaß die Kühler
 		zur Zeit noch unter voller Geschwindigkeit laufen. Usere Entwickler arbeiten aber daran, die Kühler bei Bedarf abzuschalten können.
-		Optimierte Stages werden demnächst erhältlich sein. Im Moment kann ein Bootstrap für ein G5 optimiertes System von der generischen Stage 3 
+		Optimierte Stages werden demnächst erhältlich sein. Im Moment kann ein Bootstrap für ein G5 optimiertes System von der generischen Stage 3
 		Installation in 20 Minuten ausgeführt werden.
 		</p><p>
 		Wir bedanken uns bei benh (PPC kernel developer) für diese exzellente Arbeit, alle User, welche die isos getestet haben und insbesondere auch
-		Eric Van Hensbergen (IBM System Software researcher) fürs eine wunderbare Hilfe beim Entwickeln der LiveCD.	
+		Eric Van Hensbergen (IBM System Software researcher) fürs eine wunderbare Hilfe beim Entwickeln der LiveCD.
 		</p>
 	</news>
 	</body>
