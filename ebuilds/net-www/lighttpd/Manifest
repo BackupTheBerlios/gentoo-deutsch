@@ -1,0 +1,6 @@
+MD5 dd1ec11460ec2664892b8224f05b8fab lighttpd-1.1.4.ebuild 1436
+MD5 e6c4040a65c48372f44891ff7910aaf2 metadata.xml 668
+MD5 f86f4e124454ebb1a1621e5d18820bbf ChangeLog 283
+MD5 90d99f1513227845c5f532d944e8194e files/digest-lighttpd-1.1.4 66
+MD5 14a50580193d96f98f93f3306fd51b2f files/lighttpd-1.1.4-gentoo.diff 852
+MD5 69fcc46206e1d5bb30c8a324e0ef536f files/lighttpd.initd 538
