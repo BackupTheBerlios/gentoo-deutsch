@@ -1,6 +1,11 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.12 2003/04/14 18:47:41 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.13 2003/04/22 18:51:13 mad Exp $
+
+*vdr-1.1.28 (11 Apr 2003)
+  22 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.28.ebuild
+  new version, version needs cvs head driver from 2002-04-21
+  and is therefore marked unstable, nothing new
 
 *vdr-1.1.27 (11 Apr 2003)
   14 Apr 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.27.ebuild
