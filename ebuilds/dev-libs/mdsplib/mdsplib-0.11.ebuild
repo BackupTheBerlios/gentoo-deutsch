@@ -1,6 +1,6 @@
 # Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/dev-libs/mdsplib/mdsplib-0.11.ebuild,v 1.1 2003/10/15 20:08:37 martini Exp ${VDRPLUGIN}/vdr-${VDRPLUGIN}-0.5.0.ebuild,v 1.1 2003/05/03 14:48:26 fow0ryl Exp $
+# $Header: /cvsroot/gentoo-deutsch/ebuilds/dev-libs/mdsplib/mdsplib-0.11.ebuild,v 1.1 2003/10/15 20:08:37 martini Exp 
 
 S=${WORKDIR}/${P}
 DESCRIPTION="METAR Decoder Software Package Library"
