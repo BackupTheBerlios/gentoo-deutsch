@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<guide>
+<title>Informationen für Übersetzer</title>
+<author title="Author"><mail link="js@ameds.de">Jens Schittenhelm</mail></author>
+
+<abstract>
+Diese Seite enthält Dokumentationen, die die Arbeit am gentoo.de Projekt
+betreffen
+</abstract>
+
+<version>0.1</version>
+<date>31 Oktober 2003</date>
+
+<chapter>
+<title>Willkommen</title>
+
+<section>
+	<title>Fragen und Antworten</title>
+<body>
+	<p>Dieses Dokument ist noch unvollständig. Weitere Informationen werden von Zeit zu Zeit
+	 hinzugefügt.
+	</p>
+	<p><b>Wo befinden Sich die XML Vorlagen der Originaldokumente auf gentoo.org?</b>
+	</p>
+	<p><uri link="http://www.gentoo.org/cgi-bin/viewcvs.cgi/xml/htdocs/doc/?cvsroot=gentoo#dirlist">Hier</uri>.
+	 Einen ständig aktuellen Schnappschuss der Vorlagen kann man auch als <uri link="http://www.gentoo.org/dyn/arch/xml-guide-latest.tar.gz">
+		Tar-Archiv</uri> herunterladen.
+	</p>
+	<p><b>Mit welchem XML Editor kann ich die Dokumente bearbeiten?</b>
+	</p>
+	<p>Im Prinzip reicht ein einfacher Texteditor, der in UTF-8 abgespeicherte Dokumente 
+	 bearbeiten kann, vollkommen aus. Bluefish bietet sehr schönes Syntax-Highlighting an.
+	 Conglomerate kann zwar auch zum Bearbeiten verwendet werden, stellt bisher die guide XML
+	 	Syntax nicht ganz korrekt dar.
+	</p>
+	<p><b>Was ist dies für eine komische HTML-ähnliche Syntax in den Dokumenten? Gibt es
+	irgendwo eine Liste für die ganzen Optionen?</b>
+	</p>
+	<p> Klar. Der <uri link="	http://www.gentoo.de/inhalte/doku/xml-guide/">XML Guide Leitfaden</uri>
+	gibt eine sher schöne Einführung. Durchlesen empfehlenswert!
+	</p>
+
+	<p><b>Wie erhalte ich die Guide XML DTD (Document Type Definition) Datei?</b>
+	</p>
+	<p>emerge gentoo-guide-xml-dtd
+	</p>
+
+	<p><b>Ich habe noch Fragen, die hier nicht beantwortet werden oder möchte mich mit den anderen Entwicklern absprechen. Wie nehme ich Kontakt auf?</b>
+	</p>
+	<p>Über unsere <uri link="http://www.gentoo.de/inhalte/community/mailinglisten/">Mailingliste</uri>.
+	</p>
+</body>
+</section>
+</chapter>
+</guide>
