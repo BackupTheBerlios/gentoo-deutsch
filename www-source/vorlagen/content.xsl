@@ -38,7 +38,7 @@
 />
 
 
-<xsl:variable name="baseurl">http://www.gentoo.de/neu/</xsl:variable>
+<xsl:variable name="baseurl">http://www.gentoo.de/</xsl:variable>
 <xsl:variable name="styleurl"><xsl:value-of select="$baseurl"/>media/stile/</xsl:variable>
 <xsl:variable name="scripturl"><xsl:value-of select="$baseurl"/>media/skripte/</xsl:variable>
 <xsl:variable name="imageurl"><xsl:value-of select="$baseurl"/>media/bilder/</xsl:variable>
