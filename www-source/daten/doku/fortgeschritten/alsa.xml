@@ -39,8 +39,8 @@ Konfiguration vermitteln.
 <body>
 <p>
 Da wir zur Zeit noch die 2.4.x Kernel Serie benutzen, müssen die Kernel und ALSA Module 
-separat kompiliert werden. Wenn Sie bereits einen 2.6.x benutzen, können dies in der
-Kernel Configuration einstellen, da die ALSA Module ab 2.5 in den Kernel Sourcen enthalten
+separat kompiliert werden. Wenn Sie bereits einen 2.6.x Kernel benutzen, können dies in der
+Kernel Konfiguration einstellen, da die ALSA Module ab 2.5 in den Kernel Sourcen enthalten
 sind.
 </p>
 <p>
@@ -129,7 +129,7 @@ nur die Treiber, die wir wirklich brauchen auch kompilieren wird. Bei mir sieht 
 </p>
 <p>
 <note>
-Sie können diese Variable auch in die <path>/etc/make.conf</path> eintragen, so dass sie die ALSA Module später mit 
+Sie können diese Variable auch in die <path>/etc/make.conf</path> eintragen, so dass Sie die ALSA Module später mit 
 <c>emerge alsa-driver</c> übersetzen können.
 Beispiel: <c>echo 'ALSA_CARDS="emu10k1"' >> /etc/make.conf</c>
 </note>
@@ -349,7 +349,7 @@ Für weitere Informationen rund um ALSA empfehle ich folgende Links:
 </p>
 <p>
 <ul>
-<li><uri link="http://www.gentoo.org/doc/en/desktop.xml">The Gentoo Linux Desktop Configuration Guide</uri></li>
+<li><uri link="http://www.gentoo.org/doc/de/desktop.xml">The Gentoo Linux Desktop Configuration Guide</uri></li>
 <li><uri link="http://www.alsa-project.org">ALSA Project Homepage</uri></li>
 <li><uri link="http://www.alsa-project.org/documentation.php3">ALSA Users Documentation</uri></li>
 <li><uri link="http://www.djcj.org">ALSA Howto's and FAQ's</uri></li>
