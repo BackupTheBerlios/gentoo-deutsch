@@ -8,6 +8,7 @@
     <title>Ihre Suche</title>
     <p>
       nach &#171;<cgi:query_str/>&#187; 
+      in <cgi:docs_total/> Dokumenten
       ergab <cgi:results_num/> Treffer.
       <br/>
     </p>
@@ -17,18 +18,6 @@
     <p>
       Sie sehen die Ergebnisse
       von <cgi:first_number/> bis <cgi:last_number/>.
-    </p>
-  </block>
-  <block>
-    <title>Weitere Daten</title>
-    <p>
-      Es wurden <cgi:docs_total/> Dokumente durchsucht.
-    </p>
-    <p>
-      Folgende Wörter wurden ignoriert: <cgi:ignored_terms/>.
-    </p>
-    <p>
-      Sie Suche dauerte <cgi:search_time/>.
     </p>
   </block>
 
