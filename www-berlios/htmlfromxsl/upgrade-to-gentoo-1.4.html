@@ -1,0 +1,301 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<link title="new" rel="stylesheet" href="http://www.gentoo.org/main-new.css" type="text/css">
+<link REL="shortcut icon" HREF="http://www.gentoo.org/favicon.ico" TYPE="image/x-icon">
+<title>Gentoo Linux 
+	
+		Dokumentation
+	
+-- 
+	 Gentoo 1.4 Upgrade Anleitung</title>
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" bgcolor="#ffffff"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="125" bgcolor="#45347b"><table cellspacing="0" cellpadding="0" border="0" width="193">
+<tr><td class="logobg" valign="top" align="center" height="88"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gtop-s.jpg"></a></td></tr>
+<tr><td class="logobg" valign="top" align="center" height="36"><a href="/index.html"><img border="0" src="http://www.ibiblio.org/gentoo/images/gbot-s.gif"></a></td></tr>
+</table></td></tr>
+<tr><td valign="top" align="right" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>
+<td width="99%" class="content" valign="top" align="left">
+<br><p class="dochead"> Gentoo 1.4 Upgrade Anleitung</p>
+<form>
+<b>Inhalt</b>:
+	<select name="url" size="1" OnChange="location.href=form.url.options[form.url.selectedIndex].value" style="font-family:Arial,Helvetica, sans-serif; font-size:10"><option value="#doc_chap1">1. Bevor sie anfangen</option>
+<option value="#doc_chap2">2. Das Upgrade</option>
+<option value="#doc_chap3">3. Abschließende Überlegungen</option></select>
+</form>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap1">1.</a></font>Bevor sie anfangen</p>
+<p class="secthead"><a name="_sect1">Ein Hinweis für Ungeduldige </a></p>
+<p>
+<b>WENN SIE NICHT SCHITT-FÜR-SCHRITT VORGEHEN WOLLEN</b> sollten sie nur das &quot;Vorgehen in Kürze&quot; in Abschnitt 2 lesen.</p>
+<p class="secthead"><a name="_sect2">Warnung an die Zartbesaiteden </a></p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>
+Die geschilderte Prozedur wurde zwar ausgiebig getestet, trotzdem kann es ihr System unbenutzbar machen!
+</p></td></tr></table>
+
+<p>
+Mit dieser Warnung im Kopf sollten sie wissen, dass die ganze Prozedur gefährlich und zeitaufwändig ist.
+Wenn ihr Computer bereits mit der Installation von <font class="input">stage1</font> zu kämpfen hatte, sollten sie lieber kein Upgrade durchführen.
+Bitte lesen sie das gesamte Dokument, ehe sie anfangen und überlegen sie es sich zweimal, bevor sie das Upgrade starten.
+Wenn sie nicht viel Linux-Erfahrung haben, sollten sie von dem Ganze lieber die Finger lassen.
+</p>
+<p>
+Einige der Texte in dieser Datei wurden aus der Datei README aus den Upgrade-Skripten von <a href="mailto:carpaski@gentoo.org">Nicholas Jones</a> entnommen.
+</p>
+<p class="secthead"><a name="_sect3">Benötigte Dateien und allgemeine Informationen </a></p>
+<p>
+Sie benötigen die vier Skripte von Nicholas Jones. 
+Diese erhalten sie <a href="http://www.gentoo.org/~carpaski/system_update/">hier</a>.
+Nehmen sie die Dateien mit den Namen <font class="input">update-step1.sh</font>, <font class="input">update-step2.sh</font>, <font class="input">update-step3.sh</font> and <font class="input">update-step4.sh</font>.
+Vergessen sie nicht die Zugriffsrechte der Dateien zu ändern und sie ausführbar zu machen.
+</p>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>
+<b>Starten sie die Skripte NIE alle mit einem Kommando!</b> z.B.: <font class="input">update-step1.sh &amp;&amp; update-step2.sh &amp;&amp; ...</font>
+</p></td></tr></table>
+
+<p>
+<a href="http://www.gentoo.org/~carpaski/system_update/update-step1.sh">Skript 1</a> führt einige Tests durch, um zu sehen, ob alles in Ordnung ist.
+Außerdem wird es Sicherheitskopien von GCC, glibc, binutils, ncurses, gettext und texinfo erstellen.
+Sie werden diese benötigen, wenn etwas wirklich schief geht.
+Dies wäre sehr unangenehm (wir haben es bisher noch nicht erlebt, trotzdem kann es passieren), deshalb ist es besser darauf vorbereitet zu sein.
+</p>
+
+<p>
+<a href="http://www.gentoo.org/~carpaski/system_update/update-step2.sh">Skript 2</a> startet den ersten Teil des Upgrades, es verändert die Profil-Systemlinks, spielt Portage ein und wird ein build+bootstap des <font class="input">GCC</font> und der <font class="input">binutils</font> durchführen.
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Um dieses Skript auch auf nicht-x86-Rechnern zum Laufen zu bringen, müssen sie die Variable ARCH am Skriptanfang anpassen.
+Sie können <font class="input">x86</font>, <font class="input">ppc</font>, <font class="input">sparc</font> und <font class="input">sparc64</font> verwenden.
+</p></td></tr></table>
+</p>
+
+<p>
+<a href="http://www.gentoo.org/~carpaski/system_update/update-step3.sh">Skript 3</a> setzt das Upgrade fort und wird ein komplettes stage3-Bootstrap abhängig von ihrer <font class="path">/etc/make.conf</font> durchführen, dies betrifft GCC, glibc, binutils .....
+</p>
+
+<p>
+<a href="http://www.gentoo.org/~carpaski/system_update/update-step4.sh">Skript 4</a> ist optional und würde alle beschädigten Pakete die eventuell nach Skript 3 existieren unmerge und wieder re-emerge (löschen und neu einspielen).
+Sie haben ebenfalls die Möglichkeit, anstatt Skript 4 ein <font class="code">emerge -e world</font> durchzuführen, um ihr komplettes System mit dem gcc 3.2 und den neuen CFLAGS neu zu bauen - allerdings wird dies ungleich länger dauern.
+</p>
+<p class="secthead"><a name="_sect4">Ratschläge der Autoren </a></p>
+<p>
+<font class="emphasis">Übertakten sie ihr System wärend des Upgrades nicht!</font> 
+Gustavo Felisberto (einer der Autoren) hatte eine sehr schmerzliche Erfahrung im Verlaufe seines Upgrades. 
+Sein Dual-P3-866mhz-System war auf 1007MHz übertaktet - offenbar war das dem Hauptspeicher nicht recht und er erzeugte wiederholt Speicherzugriffsfehler.
+</p>
+
+<p>
+Melden sie sich nachdem sie das zweite Skript gestartet haben NICHT ab, bis Skript 3 beendet wurde!
+Das Upgrade verändert <font class="input">init</font> und <font class="input">login</font> und wird die Konsolen auf Grund fehlender Bibliotheken sperren.
+Sie würden eine Auflistungen von massenhaft Fehlermeldungen erhalten. 
+Konsolenunabhängige Dienste wie SSH werden auch weiterhin funktionieren, vorausgesetzt es sind keine C++ Programme.
+</p>
+
+<p>
+Verändern sie NIE ihre CFLAGS, bevor Skript 2 nicht beendet wurde.
+Durch das Hinzufügen von gcc3-Flags zur make.conf vor Skript 2 würde einige Teile des Skripts fehlschlagen.
+</p>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap2">2.</a></font>Das Upgrade</p>
+<p class="secthead"><a name="_sect1">Vorgehen in Kürze </a></p>
+<a name="doc_pre1"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 1</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge rsync</font>      <font class="comment">// Ein existierender Baum ist wichtig</font>
+# <font class="input">emerge -u world</font>   <font class="comment">// Spart ihnen eine Menge Zeit und Nerven</font>
+
+#                        <font class="comment">// Setzen sie ihre CFLAGS für bootstrap</font>
+# <font class="input">nano -w /etc/make.conf</font> <font class="comment">// Verwenden sie KEINE gcc 3.2-Spezifischen Flags.</font>
+
+# <font class="input">./update-step1.sh</font> <font class="comment">// Kurzes Skript, das Sicherheitskopien von gcc,glibc,usw. anlegt</font>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b><b>STARTEN SIE DAS SYSTEM NICHT NEU</b>, nachdem sie das Skript 2 begonnen haben!
+Ihr System wird wahrscheinlich nicht starten, bevor Skript 3 nicht vollständig durchgeführt wurde.
+</p></td></tr></table>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>An dieser Stelle sollten sie sich an sovielen Konsolen anmelden, wie sie glauben zu brauchen bis Skript 3 abgearbeitet ist.</p></td></tr></table>
+# <font class="input">nano -w update-step2.sh</font> <font class="comment">// Überprüft die Variable ARCH. (x86,ppc,sparc,sparc64)</font>
+# <font class="input">./update-step2.sh</font>       <font class="comment">// Ändert das Profil, build-bootstrap gcc und glibc.</font>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Fehlermeldungen und Fehlschläge vor diesem Punkt sind meist auf die fehlerhafte CFLAGS zurück zuführen.</p></td></tr></table>
+# <font class="input">nano -w /etc/make.conf</font>  <font class="comment">// Verändern sie hier ihre CFLAGS.</font>
+# <font class="input">./update-step3.sh</font>       <font class="comment">// bootstraps gcc und erneuert Login-kritische Pakete.</font>
+# <font class="input">etc-update</font>              <font class="comment">// Überprüfung ALLER Änderung.</font>
+
+# <font class="comment">// An dieser Stelle müssen sie entscheiden, ob sie alles neu übersetzen wollen oder aber relativ schnell ein laufendes System haben möchten.</font>
+# <font class="input">./update-step4.sh</font> <font class="comment">// Optional. Erneuert nur beschädigte Pakete.</font>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Dies wird ALLE beschädigten Pakete entfernen, um sie anschließend wieder einzuspielen.</p></td></tr></table>
+# <font class="input">emerge -e world</font>   <font class="comment">// Optional. Übersetzt das gesamte System mit den von ihnen angegebenen gcc-3.2 Optimierungen neu.</font>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>Beide Möglichkeiten in der gegebenen Reihenfolge auszuführen sollte problemlos funktionieren.</p></td></tr></table>
+</pre></td></tr>
+</table>
+<p class="secthead"><a name="_sect2">Skript 1 </a></p>
+<p>Bevor sie damit anfangen irgendeines der Skripte auszuführen, sollten sie ihren Portage-Tree aktualisieren (<font class="code">emerge rsync</font>) und gegebenenfalls ihr System aktualisieren (<font class="code">emerge -u world</font>).</p>
+
+<a name="doc_pre2"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 2</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">emerge rsync</font>
+# <font class="input">emerge -u world</font>  <font class="comment">// Dies ist zwar optional, aber eine gute Idee bevor sie fortfahren</font>
+# <font class="input">./update-step1.sh</font></pre></td></tr>
+</table>
+
+<p>
+Skript 1 wird einige Tests auf ihrem System durchführen und gegebenenfalls das <font class="input">gentoolkit</font> installieren, falls sie es noch nicht getan haben.
+Der wichtigste Teil ist aber, dass Sicherheitskopien wichtiger Pakete in dem Pfad <font class="path">/usr/portage/packages/All</font> angelegt werden.
+Dies wird etwa 10 Minuten dauern.
+</p>
+<p class="secthead"><a name="_sect3">Skript 2 </a></p>
+<p>Dieses Skript wird den System-Link von <font class="path">/etc/make.profile</font> auf den richtige Pfad für das Upgrade setzen.
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#ffbbbb"><p class="note">
+<b>Warnung: </b>Wenn sie nicht auf einer x86-Architektur arbeiten MÜSSEN sie die Variable ARCH am Anfang dieser Datei auf den richtigen Wert für <b>ihre Architektur</b> setzen (nochmal: gute Werte sind x86, ppc, sparc und sparc64).</p></td></tr></table>
+</p>
+
+<a name="doc_pre3"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 3</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+<font class="comment">// Bezieht sich nur auf die vorangegangene Warnung:</font>
+# <font class="input">nano -w update-step2.sh</font></pre></td></tr>
+</table>
+<p>Dieses Skript wird viel länger laufen, als das vorherige - in etwa 30 Minuten auf einem Dual-Pentium3-866MHz mit 256MB RAM.</p>
+<a name="doc_pre4"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 4</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">./update-step2.sh</font></pre></td></tr>
+</table>
+<p class="secthead"><a name="_sect4">Skript 3 </a></p>
+<p>Okay, jetzt haben sie das System bootfähig (eng. bootstrapped) gemacht und die Grundpakete mit allgemeinen Flags übersetzt. 
+Jetzt ist es an der Zeit, erneut das Boot-System zu übersetzen - diesmal mit GCC 3.2 und den von ihnen angepassten Flags.
+Bearbeiten sie <font class="path">make.conf</font> um sicherzustellen, dass alles in Ordnung ist.</p>
+<a name="doc_pre5"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 5</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">nano -w /etc/make.conf</font>
+# <font class="input">./update-step3.sh</font>
+</pre></td></tr>
+</table>
+
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Wenn sie von GCC 2.x aktualisieren, beachten sie bitte, dass mit Version 3.x und darüber neue Flags eingeführt wurden.
+Schauen sie unter <a href="http://www.freehackers.org/gentoo/gccflags/">http://www.freehackers.org/gentoo/gccflags/</a> nach, um Informationen darüber und andere GCC-Flags zu bekommen.
+</p></td></tr></table>
+
+<p>
+Jetzt einfach das Skript ausführen.
+Ich hätte gerne die Zeit gestoppt, um ihnen eine Vorstellung zu vermitteln, wie lang das Ganze dauert - aber dies ist wirklich systemabhängig.
+Fahren sie deshalb einfach fort und führen sie das Skript aus. Dies kann einige Zeit dauern, auf einem Dual-AthlonMP mit 1.5GHz z.B. 156 Minuten. Der Autor empfiehlt den Film Star Wars Episode IV, damit die Zeit schneller vergeht.
+</p>
+<p>
+Nach der Abarbeitung werden sie einige weiterführende Anweisungen bekommen.
+Es ist sehr wichtig, dass sie ihre Konfigurationsdateien aktualisieren, da viele wichtige Dateien geändert wurden.
+Der einfachste Weg dies zu machen, ist es <font class="code">etc-update</font> auszuführen.
+</p>
+<a name="doc_pre6"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 6</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">etc-update</font>
+</pre></td></tr>
+</table>
+<p>
+Dieses Upgrade wird zumeist Probleme mit <font class="input">init</font> und <font class="input">login</font> verursachen.
+Es gibt zwei Wege diese zu beseitigen, zum einen können sie <font class="code">sync ; init u</font> ausführen oder einfach das System neu starten.
+SSH sollte auch weiterhin funktionieren, somit können sie sich jederzeit am Rechner anmelden, falls er blockiert ist.
+Starten sie den Rechner neu, falls sich die Konsole aufhöngt oder sie anfängt massenweise Fehlermeldungen auszugeben.
+</p>
+<a name="doc_pre7"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 7</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">sync</font>
+# <font class="input">init u</font>
+
+<font class="comment">// Wenn sich die Konsole aufhängt oder sie massenweise Fehlermeldungen ausgibt:</font>
+# <font class="input">reboot</font></pre></td></tr>
+</table>
+<p class="secthead"><a name="_sect5">Skript 4 </a></p>
+<p>
+Wenn alles glatt geht haben sie jetzt ein fertiges GCC-3.2-System, allerdings teilweise mit beschädigten Paketen.
+Skript 4 wird diese für sie suchen und reparieren.
+Erneut sei darauf hingewiesen, dass dies ein optionaler Schritt ist - ihr Basissystem ist bereits nach dem 1.4-Profil aktualisiert.
+Der Grund dafür, dass einige Pakete kaputt sind ist, dass einige Bibliotheken neu übersetzt oder aktualisiert wurden und Programme die von ihnen abhängen nicht funktionieren werden, bis sie ebenfalls neu übersetzt wurden.
+</p>
+<a name="doc_pre8"></a><table class="ntable" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td class="infohead" bgcolor="#7a5ada"><p class="caption">
+			Beispiel 8</p></td></tr>
+<tr><td bgcolor="#ddddff"><pre>
+# <font class="input">./update-step4.sh</font></pre></td></tr>
+</table>
+<p>
+Dieser Vorgang wird sehr viel mehr Zeit in Anspruch nehmen, als alle anderen Schritte zusammen.
+Wenn sie jetzt schon Star Wars Episode IV gesehen haben, würde ich ihnen empfehlen sich die anderen vier Episoden anzuschauen.
+Sollten sie einen wirklich langsamen Rechner besitzen, ist die Sammlung aller Seinfeld Episoden (ja, alle 180) eine noch bessere Idee.
+Nur um ihnen eine Vorstellung zu geben: auf meinem 1.5GHz-Dual-AthlonMP hat der gesamte Vorgang 400 Minuten gedauert und er wurde  bei einigen Paketen, wie z.B. Evolution und Mozilla, unterbrochen, so dass ich diese erneut übersetzen musste.
+Und wir alle wissen wie lange allein Mozilla dafür braucht.
+</p>
+
+<p>
+Nach der Abarbeitung, wird Skript 4 die Pakete, die es nicht übersetzen konnte auflisten.
+Einige Paketübersetzungen werden fehlschlagen, da diese noch auf GCC-3.2 angepasst sind.
+Somit müssen sie entweder warten oder selbst einige Veränderung in den Ebuilds vornehmen, wenn sie wissen was sie tun!
+</p>
+<table class="ncontent" width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#bbffbb"><p class="note">
+<b>Anmerkung: </b>
+Skript 4 wird nicht alle ihre installierten Pakete neu übersetzen.
+Wenn sie wirklich alle Pakete auf ihrem System neu übersetzen wollen, müssen sie <font class="code">emerge -e world</font> ausführen.
+Sie können dies anstatt oder nach Skript 4 ausführen, aber seien sie darauf vorbereitet, dass nicht alle ihre Pakete übersetzt werden können.
+Wenn sie das ganze nach Skript 4 starten, erhöhen sie die Chance, dass C++ Programme korrekt neu übersetzt werden.
+</p></td></tr></table>
+<p class="chaphead">
+<font class="chapnum"><a name="doc_chap3">3.</a></font>Abschließende Überlegungen</p>
+<p>
+Wie sie festellen werden, ist das ganze eine sehr heikle Angelegenheit. Einer der Autoren und verschiedene andere Leute sind sehr zufrieden mit dem Ergebnis. Der andere Autor hatte jedoch ein paar Probleme, darunter ein schwerwiegendes (KDE verweigerte die Arbeit, obwohl es eingespielt wurde).
+</p>
+<p>
+Eine mögliche Alternative zum Upgrade ist eine Neuinstallation von Gentoo 1.4.
+Sichern sie einfach nur ihr <font class="path">/home</font> und ihr <font class="path">/etc</font> - sie werden ihre Benutzer glücklich machen, wenn sie deren Dateien sichern, und mit den gesicherten Konfigurationsdateien wird die Installation des neuen Systems einfacher.
+Es ist wirklich wichtig, dass sie jedes Paket auf ihrem System aktualisieren und sicherstellen, dass deren Konfigurationsdateien vorhanden sind bevor sie dies versuchen, da das neue System die neuste Version aller Pakete installiert.
+Durch gegensätzliche Konfigurationen könnten Programme fehlerhaft starten oder sich abnormal verhalten.
+</p>
+<br><br>
+</td>
+<td width="1%" bgcolor="#dddaec" valign="top"><table border="0" cellspacing="5" cellpadding="0">
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td align="center" class="alttext">
+						letzte Änderung 17. September 2002</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b><a class="altlink" href="mailto:gustavo@felisberto.net">
+	Gustavo Felisberto</a></b>
+<br><i>Author</i><br><br><b><a class="altlink" href="mailto:rjlouro@rjlouro.org">
+	Ricardo Loureiro</a></b>
+<br><i>Author</i><br><br><b><a class="altlink" href="mailto:zhen@gentoo.org"></a></b><br><i>Copy Editor</i><br><br><b><a class="altlink" href="mailto:kontakt@hendrik-brandt.de">Hendrik Brandt</a></b>
+<br><i>Übersetzung</i><br><br>
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+<tr><td class="alttext">
+<b>Zusammenfassung:</b> 
+Diese Anleitung zeigt ihnen, wie sie ein älteres Gentoo-Linux-System (Gentoo 1.1a, 1.2 oder 1.3) zum neuen Gentoo 1.4 aktualisieren.
+</td></tr>
+<tr><td><img src="http://www.ibiblio.org/gentoo/images/line.gif"></td></tr>
+</table></td>
+</tr></table></td></tr>
+<tr><td align="right" class="infohead" width="100%" bgcolor="#7a5ada">
+			Fragen, Kommentare, Korretkuren?  Email <a class="highlight" href="mailto:gentoo-deutsch-dev@lists.berlios.de">gentoo-deutsch-dev@lists.berlios.de</a>.
+			</td></tr>
+</table></body>
+</html>
