@@ -1,0 +1,724 @@
+<!-- The content of this document is licensed under the CC-BY-SA license -->
+<!-- See http://creativecommons.org/licenses/by-sa/1.0 -->
+
+
+
+<sections>
+<section>
+<title>Installieren der Quellen</title>
+<subsection>
+<title>Auswählen eines Kernels</title>
+<body>
+
+<p>
+Der Kern um den herum alle Distributionen gebaut sind ist der Linux Kernel. Es
+ist die Ebene zwischen den Benutzerprogrammen und der Systemhardware. Gentoo
+bietet seinen Benutzern verschiedene mögliche Kernelquellen. Eine komplette
+Liste mit Beschreibungen finden Sie im <uri link="/doc/en/gentoo-kernel.xml">
+Gentoo Kernel Guide</uri>.
+</p>
+
+<p>
+Für x86-basierende Systeme haben wir unter den Kerneln die
+<c>vanilla-sources</c> (die Standardkernelquelle wie entwickelt von den Linux
+Kernelentwicklern), die <c>gentoo-sources</c> (Kernelquelle modifiziert für
+Performance verbessernde Eigenschaften), die<c>xfs-sources</c> (Kernelquelle mit
+der aktuellsten XFS Unterstützung), die <c>gs-sources</c> (Kernelquelle
+modifiziert für Serverbenutzung), die <c>gaming-sources</c> (Kernelquelle
+modifiziert für optimale Spielperformance),...
+</p>
+
+<p>
+Für Alpha-basierende Systeme haben wir die <c>vanilla-sources</c> (die
+Standardkernelquelle wie entwickelt von den Linux-Kernel Entwicklern), die
+<c>alpha-sources</c> (Kernelquelle optimiert für Alpha Benutzer) und die
+<c>compaq-sources</c> (Kernelquelle wie von RedHat für Alpha benutzt, wird
+unterhalten von Compaq).
+</p>
+
+<p>
+Für Sparc-basierenden Systeme haben wir die <c>vanilla-sources</c> (die
+Standardkernelquelle wie entwickelt von den Linux-Kernel Entwicklern) und die
+<c>sparc-sources</c> (Kernelquelle optimiert für SPARC Benutzer).
+</p>
+
+<p>
+Bei anderen Architekturen sollten die Kernelquelle benutzen, die spezifisch
+optimiert ist für ihre Architektur: <c>hppa-sources</c> (HPPA) und
+<c>ppc-sources</c> (PowerPC).
+</p>
+
+<p>
+Wählen Sie Ihre Kernelquelle aus und installieren Sie diese mit <c>emerge</c>.
+Im nächsten Beispiel installieren wir die <c>vanilla-sources</c> (da die
+<c>gentoo-sources</c> nicht für alle Architekturen verfügbar ist). Natürlich
+müssen Sie die nun die Quelle verwenden, die Sie gewählt haben:
+</p>
+
+<pre caption="Installieren einer Kernelquelle">
+# <i>emerge -k vanilla-sources</i>
+</pre>
+
+<p>
+Wenn Sie einen Blick in <path>/usr/src</path> werfen, sollten Sie einen Symlink
+sehen, genannt <path>linux</path>, der auf Ihre Kernelquelle verweist.
+</p>
+
+<pre caption="Anzeigen des Kernelquellen Symlinks">
+# <i>ls -l /usr/src/linux</i>
+lrwxrwxrwx    1 root     root           12 Oct 13 11:04 /usr/src/linux -&gt; linux-2.4.22
+</pre>
+
+<p>
+Wenn das nicht der Fall ist (also der Symlink auf eine andere Kernelquelle
+verweist) ändern Sie den Symlink bevor sie weitermachen:
+</p>
+
+<pre caption="Ändern des Kernelquellen Symlinks">
+# <i>rm /usr/src/linux &amp;&amp; ln -s /usr/src/linux-2.4.22 /usr/src/linux</i>
+</pre>
+
+<p>
+Nun ist es Zeit Ihre Kernelquelle zu konfigurieren und zu kompilieren. Die
+x86-basierenden Architekturen können <c>genkernel</c> verwenden, welches einen
+gängigen Kernel erstellt, einen wie er von der LiveCD verwendet wird. Wir
+erklären die "manuelle" Konfiguration jedoch zuerst, denn es ist der beste Weg
+Ihre Umgebung zu optimieren.
+</p>
+
+<p>
+Wenn Sie Ihren Kernel manuell konfigurieren wollen fahren Sie nun fort mit <uri
+link="#doc_chap2">Standard: Manuelle Konfiguration</uri>. Wenn Sie ein
+x86-Benutzer sind und Sie <c>genkernel</c> benutzen wollen, sollten Sie
+stattdessen <uri link="#doc_chap3">Alternative: Benutzung von Genkernel</uri>
+lesen.
+</p>
+
+</body>
+</subsection>
+</section>
+<section>
+<title>Standard: Manuelle Konfiguration</title>
+<subsection>
+<title>Einführung</title>
+<body>
+
+<p>
+Einen Kernel manuell zu konfigurieren wird oft als der schwierigste Teil
+gesehen, den jeder Linux Benutzer insgesamt meistern muss. Nichts ist weiter von
+der Wahrheit entfernt -- nach der Konfiguration von einigen Kerneln werden Sie
+sich gar nicht daran erinnern, dass es schwer war ;-)
+</p>
+
+<p>
+Jedoch eine Sache <e>ist</e> wahr: Sie müssen Ihr System kennen, wenn Sie
+beginnen einen Kernel manuell zu konfigurieren. Die meissten Informationen
+können gesammelt werden indem man sich <path>/proc/pci</path> ansieht (oder
+durch die Benutzung von <c>lspci</c>, wenn vorhanden). Sie können auch
+<c>lsmod</c> ausführen um zu sehen welche Kernelmodule die LiveCD verwendet
+(es kann ihnen einen netten Hinweis darauf geben was zu aktivieren ist).
+</p>
+
+<p>
+Gehen Sie nun in Ihr Kernelquellverzeichnis und führen Sie <c>make menuconfig
+</c> aus. Dies startet ein ncurses-basierendes Konfigurationsmenü.
+</p>
+
+<pre caption="Menuconfig starten">
+# <i>cd /usr/src/linux</i>
+# <i>make menuconfig</i>
+</pre>
+
+<p>
+Ihnen werden verschiedene Konfigurationssektionen präsentiert. Wir listen
+zunächst einige Optionen auf, die sie aktivieren müssen (ansonsten wird Gentoo
+nicht funktionieren oder nicht richtig funktionieren ohne zusätzliche
+Veränderungen).
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Aktivieren der benötigten Optionen</title>
+<body>
+
+<p>
+Zunächst aktivieren Sie die Benutzung von Entwicklungs- und Experiementellem/n
+Code/Treiber(n). Sie brauchen dies, denn ansonten werden einige wichtige
+Codeabschnitte/Treiber nicht erscheinen.
+</p>
+
+<pre caption="Selektieren experimenteller/n Codes/Treiber">
+Code maturity level options ---&gt;
+  [*] Prompt for development and/or incomplete code/drivers"
+</pre>
+
+<p>
+Gehen Sie nun in <c>File Systems</c> und selektieren Sie Unterstützung für die
+Dateisysteme die Sie benutzen. Kompilieren Sie diese <e>nicht</e> als Module,
+ansonsten wird ihr Gentoo System nicht fähig sein Ihre Partitionen zu mounten.
+Selektieren Sie auch <c>Virtual memory</c>, <c>/proc file system</c>, <c>/dev
+file system</c> + <c>Automatically mount at boot</c>:
+</p>
+
+<pre caption="Selektieren notwendiger Dateisysteme">
+File systems ---&gt;
+  [*] Virtual memory file system support (former shm fs)
+  [*] /proc file system support
+  [*] /dev file system support (EXPERIMENTAL)
+  [*]   Automatically mount at boot
+
+<comment>(Deaktivieren Sie folgende Option sofern Sie nicht einen 2.6 Kernel
+haben)
+</comment>
+  [ ] /dev/pts file system for Unix98 PTYs
+
+<comment>(Selektieren Sie eine oder mehrere der folgenden Optionen, wie benötigt
+von Ihrem System)
+</comment>
+  &lt;*&gt; Reiserfs support
+  &lt;*&gt; Ext3 journalling file system support
+  &lt;*&gt; JFS filesystem support
+  &lt;*&gt; Second extended fs support
+  &lt;*&gt; XFS filesystem support
+</pre>
+
+<p>
+Wenn Sie PPPoE benutzen um sich ins Internet einzuwählen, brauchen Sie folgende
+Optionen im Kernel:
+</p>
+
+<pre caption="Auswählen PPPoE notwendiger Treiber">
+Network device support ---&gt;
+  &lt;*&gt; PPP (point-to-point protocol) support
+  &lt;*&gt;   PPP support for async serial ports
+  &lt;*&gt;   PPP support for sync tty ports
+</pre>
+
+<p>
+Die zwei Komprimierungsoptionen werden nicht schaden, aber werden auch nicht
+definitiv gebraucht, ebenso die <c>PPP over Ethernet</c> Option, die vielleicht
+nur von <c>rp-pppoe</c> verwendet wird, wenn so konfiguriert, dass Kernelmodus
+PPPoE benutzt wird.
+</p>
+
+<p>
+Wenn Sie LVM benutzen, müssen Sie dies im Kernel aktivieren:
+</p>
+
+<pre caption="Auswählen von LVM Unterstützung">
+Multi-device support (RAID and LVM) ---&gt;
+  [*] Multiple devices driver support (RAID and LVM)
+  &lt;*&gt;  Logical volume manager (LVM) support
+</pre>
+
+<p>
+Wenn Sie es benötigen, vergessen Sie nicht Ünterstützung für Ihre Netzwerkkarte
+in Ihren Kernel einzubinden.
+</p>
+
+<p>
+Nun müssen Sie vielleicht noch, abhänging von Ihrer Architektur, weitere
+Optionen auswählen:
+</p>
+
+<ul>
+<li><uri link="#doc_chap2_sect3">Aktivieren von Alpha-empfohlenen Optionen</uri></li>
+<li><uri link="#doc_chap2_sect4">Aktivieren von HPPA-empfohlenen Optionen</uri></li>
+<li><uri link="#doc_chap2_sect5">Aktivieren von PPC-empfohlenen Optionen</uri></li>
+<li><uri link="#doc_chap2_sect6">Aktivieren von SPARC-empfohlenen Optionen</uri></li>
+</ul>
+
+<p>
+Wenn Sie ein x86-basierendes System haben, können Sie direkt weitermachen mit
+<uri link="#doc_chap2_sect7">Kompilierung und Installation</uri>.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Aktivieren von Alpha-empfohlenen Optionen</title>
+<body>
+
+<p>
+Die folgenden Optionen werden für Alpha-Benutzer empfohlen:
+</p>
+
+<pre caption="Alpha-spezifische Optionen">
+General setup ---&gt;
+  &lt;*&gt; SRM environment through procfs
+  &lt;*&gt; Configure uac policy via sysctl
+
+Plug and Play configuration ---&gt;
+  &lt;*&gt; Plug and Play support
+  &lt;M&gt;   ISA Plug and Play support
+
+SCSI support ---&gt;
+  SCSI low-level drivers ---&gt;
+    &lt;*&gt; SYM53C8XX Version 2 SCSI support (NEW)
+    &lt;*&gt; Qlogic ISP SCSI support
+
+Network device support ---&gt;
+  Ethernet (10 or 100 Mbit) ---&gt;
+    &lt;M&gt; DECchip Tulip (dc21x4x) PCI support
+    &lt;M&gt; Generic DECchip &amp; DIGITAL EtherWORKS PCI/EISA
+    &lt;M&gt; EtherExpressPro/100 support (eepro100)
+    &lt;M&gt; EtherExpressPro/100 support (e100)
+  Ethernet (1000 Mbit) ---&gt;
+    &lt;M&gt; Alteon AceNIC
+      [*] Omit support for old Tigon I
+    &lt;M&gt; Broadcom Tigon3
+  [*] FDDI driver support
+  &lt;M&gt; Digital DEFEA and DEFPA
+  &lt;*&gt; PPP support
+    &lt;*&gt; PPP Deflate compression
+
+Character devices ---&gt;
+  [*] Support for console on serial port
+  [*] Direct Rendering Manager
+
+File systems ---&gt;
+  &lt;*&gt; Kernel automounter version 4 support
+  Network File Systems ---&gt;
+    &lt;*&gt; NFS
+      [*] NFSv3 client
+      &lt;*&gt; NFS server
+      [*] NFSv3 server
+  Partition Types ---&gt;
+    [*] Advanced partition selection
+    [*] Alpha OSF partition support
+  Native Language Support
+    &lt;*&gt; NLS ISO 8859-1
+
+Sound ---&gt;
+  &lt;M&gt; Sound card support
+    &lt;M&gt; OSS sound modules
+      [*] Verbose initialisation
+      [*] Persistent DMA buffers
+      &lt;M&gt; 100% Sound Blaster compatibles
+</pre>
+
+<p>
+Wenn Sie fertig sind mit der Konfiguration des Kernels, fahren sie fort mit der
+<uri link="#doc_chap2_sect7">Kompilierung und Installation</uri>.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Aktivieren von HPPA-empfohlenen Optionen</title>
+<body>
+
+<p>
+Wenn Sie eine HIL Maus oder Tastatur haben vergessen Sie nicht Unterstützung für
+diese einzukompilieren.
+</p>
+
+<pre caption="Aktivieren von HIL Unterstützung">
+Input core support ---&gt;
+  [*] Keyboard support
+  [*] Mouse support
+  [*] Event interface support
+</pre>
+
+<p>
+Wenn Sie keine Maus haben an ihrem HIL Anschluss, sollten Sie nur die
+Standardunterstützung verwenden:
+</p>
+
+<pre caption="Grundlegende HIL Unterstützung">
+HIL support ---&gt;
+  [*] HIL Keyboard (basic) support
+</pre>
+
+<p>
+Wenn Sie jedoch <e>volle</e> HIL Unterstützung wollen, wählen Sie folgende
+Optionen aus:
+</p>
+
+<pre caption="Volle HIL Unterstützung">
+HIL support ---&gt;
+  [*] HP System Device Controller i8042 Support
+  [*] HIL MLC Support
+  [*] HIL Keyboard (full) support
+  [*] HIL Mouse &amp; Pointer support
+</pre>
+
+<p>
+Wenn Sie fertig sind mit der Konfiguration des Kernels, fahren Sie fort mit der
+<uri link="#doc_chap2_sect7">Kompilierung und Installation</uri>.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Aktivierung der PPC-empfohlenen Optionen</title>
+<body>
+
+<p>
+Deaktivieren Sie zunächst die ADB Raw Keycodes:
+</p>
+
+<pre caption="Deaktivieren der ADB Raw Keycodes">
+Macintosh Device Drivers ---&gt;
+  [ ] Support for ADB raw keycodes
+</pre>
+
+<p>
+Wählen Sie auch die korrekte RTC Unterstützung (<e>deaktivieren</e> Sie die
+<c>Enhanced RTC</c> Option):
+</p>
+
+<pre caption="Aktivieren der korrekten RTC Option">
+Character devices ---&gt;
+  [ ] Enhanced RTC
+
+General setup ---&gt;
+  [*] Support for /dev/rtc
+</pre>
+
+<p>
+Benutzer der OldWorld Maschinen werden HSF Unterstützung wollen, damit Sie
+kompilierte Kernel auf Ihre MacOS Partition kopieren können.
+</p>
+
+<pre caption="Aktivieren der HSF Unterstützung">
+File Systems ---&gt;
+  [*] HFS Support
+</pre>
+
+<p>
+Wenn Sie fertig sind mit der Konfiguration Ihres Kernels, fahren Sie fort mit
+der <uri link="#doc_chap2_sect7">Kompilierung und Installation</uri>.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Aktivieren der SPARC-empfohlenen Optionen</title>
+<body>
+
+<p>
+Aktivieren Sie zuerst die korrekte Bus-Unterstützung:
+</p>
+
+<pre caption="Aktivieren von SBUS/UPA">
+Console drivers ---&gt;
+  Frame-buffer support ---&gt;
+    [*] SBUS and UPA framebuffers
+      [*] Creator/Creator3D support     <comment>(Nur für UPA Slot-Adapter, verwendet in vielen Ultras))</comment>
+    [*] CGsix (GX,TurboGX) support      <comment>(Nur für SBUS Slot-Adapter, verwendet in vielen SPARCStations)</comment>
+</pre>
+
+<p>
+Natürlich wollen Sie Unterstützung für die OBP:
+</p>
+
+<pre caption="Aktivieren von OBP Unterstützung">
+Misc Linux/SPARC drivers ---&gt;
+  [*]  /dev/openprom device support
+</pre>
+
+<p>
+Sie werden auch SCSI-spezifische Unterstützung benötigen:
+</p>
+
+<pre caption="Aktivieren von SCSI-spezifischer Unterstützung">
+SCSI support ---&gt;
+  SCSI low-level drivers ---&gt;
+    &lt;*&gt; Sparc ESP Scsi Driver             <comment>(Nur für SPARC ESP On-Board SCSI Adapter)</comment>
+    &lt;*&gt; PTI Qlogic, ISP Driver            <comment>(Nur für SBUS SCSI Controller von PTI und QLogic)</comment>
+    &lt;*&gt; SYM53C8XX Version 2 SCSI support  <comment>(Nur für Ultra 60 On-Board SCSI Adapter</comment>
+</pre>
+
+<p>
+Um Ihre Netzwerkkarte zu unterstützen, wählen Sie eines der folgenden:
+</p>
+
+<pre caption="Aktivieren von Neztwerkunterstützung">
+Network device support ---&gt;
+  Ethernet (10 or 100Mbit) ---&gt;
+    &lt;*&gt; Sun LANCE support                   <comment>(Nur für SPARCStation, ältere Ultra Systeme und als Sbus Option)</comment>
+    &lt;*&gt; Sun Happy Meal 10/100baseT support  <comment>(Nur für Ultra; unterstützt auch "qfe" Quad-Ethernet auf PCI und Sbus)
+</comment>
+</pre>
+
+<p>
+Wenn Sie fertig sind mit der Konfiguration Ihres Kernels, fahren sie fort mit
+der <uri link="#doc_chap2_sect7">Kompilierung und Installation</uri>.
+Überprüfen Sie aber nach dem kompilieren des Kernels seine Größe:
+</p>
+
+<pre caption="Überprüfen der Kernelgröße">
+# <i>ls -lh vmlinux</i>
+-rw-r--r--    1 root     root         2.4M Oct 25 14:38 vmlinux
+</pre>
+
+<p>
+Wenn die (unkomprimierte) Größe größer ist als 2.5MB (für Sparc32) oder 3.5MB
+(für Sparc64), dann konfigurieren Sie ihren Kernel solange erneut bis der Kernel
+diese Grenzen nicht mehr überschreitet. Ignoriert man dies, kann es dazu führen
+dass der Kernel nicht bootet.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Kompilierung und Installation</title>
+<body>
+
+<p>
+Nun da Ihr Kernel konfiguriert ist, ist es Zeit ihn zu kompilieren und zu
+installieren. Verlassen Sie die Konfiguration und führen Sie <c>make dep
+&amp;&amp; make bzImage modules modules_install</c> aus:
+</p>
+
+<pre caption="Kompilieren des Kernels">
+<comment>(Für x86-basierende Systeme, 2.4 Kernel)</comment>
+# <i>make dep &amp;&amp; make bzImage modules modules_install</i>
+
+<comment>(Für andere Systeme, 2.4 Kernel)</comment>
+# <i>make dep &amp;&amp; make vmlinux modules modules_install</i>
+
+<comment>(Für 2.6 Kernel)</comment>
+# <i>make &amp;&amp; make modules_install</i>
+</pre>
+
+<p>
+Wenn der Kernel fertig ist mit der Kompilierung, kopieren Sie das Kernel-Image
+nach <path>/boot</path>. Im nächsten Beispiel nehmen wir an, dass Sie die
+<c>vanilla-sources-2.4.22</c> konfiguriert und kompiliert haben:
+</p>
+
+<pre caption="Installieren des Kernels">
+<comment>(Für x86-basierende Systeme)</comment>
+# <i>cp arch/i386/boot/bzImage /boot/kernel-2.4.22</i>
+# <i>cp System.map /boot/System.map-2.4.22</i>
+
+<comment>(Für andere Systeme)</comment>
+# <i>cp vmlinux /boot/kernel-2.4.22</i>
+# <i>cp System.map /boot/System.map-2.4.22</i>
+</pre>
+
+<p>
+Es ist auch weise Ihre Kernelkonfiguration nach <path>/boot</path> zu kopieren,
+nur für alle Fälle :)
+</p>
+
+<pre caption="Erstellen eines Backups der Kernelkonfiguration ">
+# <i>cp .config /boot/config-2.4.22</i>
+</pre>
+
+<p>
+Fahren Sie nun fort mit <uri link="#doc_chap4">Installieren separater
+Kernelmodule</uri>.
+</p>
+
+</body>
+</subsection>
+</section>
+<section>
+<title>Alternative: Benutzung von Genkernel</title>
+<body>
+
+<p>
+Wenn Sie diesen Abschnitt lesen, haben Sie sich entschieden unser
+<c>genkernel</c> Script zu benutzen um Ihren Kernel für Sie zu konfigurieren.
+Dies bedeutet auch, dass Sie ein x86-basierendes System haben. Andere
+Architekturen werden <e>nicht unterstützt</e> von <c>genkernel</c>.
+</p>
+
+<p>
+Nun da Ihr Kernelquellbaum installiert ist, ist es nun Zeit Ihren Kernel zu
+kompilieren durch die Benutzung unseres <c>genkernel</c> Scripts um automatisch
+einen Kernel für Sie zu erstellen. <c>genkernel</c> arbeitet so dass es einen
+Kernel konfiguriert, der fast identisch ist zu der Art wie unser LiveCD Kernel
+konfiguriert ist. Dies bedeutet, dass wenn Sie <c>genkernel</c> benutzen um
+Ihren Kernel zu erstellen, wird Ihr System generell alle Hardware beim Booten
+erkennen, genau wie es unsere LiveCD tut. Weil Genkernel keine manuelle
+Kernelkonfiguration erfordert ist es eine ideale Lösung für die Benutzer, denen
+unwohl ist bei der Kompilierung eines eigenen Kernels.
+</p>
+
+<p>
+Nun lassen Sie uns sehen wie man Genkernel benutzt. Zuerst emergen Sie das
+Genkernel Ebuild:
+</p>
+
+<pre caption="Genkernel emergen">
+# <i>emerge -k genkernel</i>
+</pre>
+
+<p>
+Kompilieren Sie nun Ihre Kernelquellen durch ausführen von <c>genkernel</c>.
+Seien Sie sich aber bewusst, dass <c>genkernel</c> einen Kernel kompiliert der
+fast alle Hardware unterstützt, was bedeutet dass das Kompilieren durchaus
+eine ganze Weile dauert!
+</p>
+
+<pre caption="Ausführen von Genkernel">
+# <i>genkernel</i>
+Gentoo Linux genkernel, version 1.4
+Copyright 2003 Gentoo Technologies, Inc., Bob Johnson, Daniel Robbins
+Distributed under the GNU General Public License version 2
+
+Settings:
+compile optimization: 1 processor(s)
+source tree: /usr/src/linux-2.4.22
+config: gentoo (customized)
+config loc: /etc/kernels/config-2.4.22
+initrd config: (default) /etc/kernels/settings
+
+* Running "make oldconfig"...                                                                     [ ok ]
+* Logging to /var/log/genkernel.log...                                                            [ ok ]
+* Starting 2.4.22 build...                                                                        [ ok ]
+* Running "make dep"...                                                                           [ ok ]
+* Running "make bzImage"...                                                                       [ ok ]
+* Running "make modules"...                                                                       [ ok ]
+* Running "make modules_install"...                                                               [ ok ]
+* Moving bzImage to /boot/kernel-2.4.22...                                                        [ ok ]
+* Building busybox...                                                                             [ ok ]
+* Creating initrd...                                                                              [ ok ]
+
+* Build completed successfully!
+
+* Please specify /boot/kernel-2.4.22 and /boot/initrd-2.4.22
+* when customizing your boot loader configuration files.
+</pre>
+
+<p>
+Sobald <c>genkernel</c> beendet ist werden ein Kernel, ein voller Satz Module
+und eine <e>initial root disk</e> (initrd) erstellt sein. Wir werden den Kernel
+und initrd benutzen wenn wir später in diesem Dokument einen Bootloader
+konfigurieren. Schreiben Sie den Namen des Kernels und den von initrd auf, da
+Sie diese brauchen werden, wenn Sie die Bootloader Konfigurationsdatei
+schreiben. Die initrd wird direkt nach dem booten gestarten um die Hardware
+Autoerkennung zu starten (genau wie auf der LiveCD) bevor ihr "wahres" System
+startet.
+</p>
+
+<p>
+Nun lassen Sie uns einen weiteren Schritt tun, der unser System dazu bringt mehr
+wie die LiveCD zu sein -- lassen Sie uns <c>hotplug</c> emergen. Während das
+initrd die Hardware automatisch erkennt, die nötig ist um Ihr System zu starten,
+wird <c>hotplug</c> automatisch alles andere erkennen. Um <c>hotplug</c> zu
+installieren und zu aktivieren tippen sie folgendes:
+</p>
+
+<pre caption="Emergen und aktivieren von Hotplug">
+# <i>emerge -k hotplug</i>
+# <i>rc-update add hotplug default</i>
+</pre>
+
+</body>
+</section>
+<section>
+<title>Installieren separater Kernelmodule</title>
+<body>
+
+<p>
+Letztendlich sollten Sie mit emerge Ebuilds installieren für jegliche
+zusätzliche Hardware die in Ihrem System steckt. Hier ist eine Liste von Kernel-
+relevanten Ebuilds die Sie emergen können:
+</p>
+
+<table>
+<tcolumn width="1in"/>
+<tcolumn width="4in"/>
+<tcolumn width="2in"/>
+<tr>
+  <th>Ebuild</th>
+  <th>Zweck</th>
+  <th>Befehl</th>
+</tr>
+<tr>
+  <ti>nvidia-kernel</ti>
+  <ti>Beschleunigte NVIDIA Darstellungen für XFree86</ti>
+  <ti><c>emerge -k nvidia-kernel</c></ti>
+</tr>
+<tr>
+  <ti>nforce-net</ti>
+  <ti>On-board Netzwerkkarten auf NVIDIA NForce(2) Motherboards</ti>
+  <ti><c>emerge nforce-net</c></ti>
+</tr>
+<tr>
+  <ti>nforce-audio</ti>
+  <ti>On-board Soundkarten auf NVIDIA NForce(2) Motherboards</ti>
+  <ti><c>emerge nforce-audio</c></ti>
+</tr>
+<tr>
+  <ti>e100</ti>
+  <ti>Intel e100 Fast Ethernet Adapter</ti>
+  <ti><c>emerge e100</c></ti>
+</tr>
+<tr>
+  <ti>e1000</ti>
+  <ti>Intel e1000 Gigabit Ethernet Adapter</ti>
+  <ti><c>emerge e1000</c></ti>
+</tr>
+<tr>
+  <ti>emu10k1</ti>
+  <ti>Creative Sound Blaster Live!/Audigy Unterstützung</ti>
+  <ti><c>emerge emu10k1</c></ti>
+</tr>
+<tr>
+  <ti>ati-drivers</ti>
+  <ti>Beschleunigte ATI Radeon 8500+/FireGL Darstellungen für XFree86</ti>
+  <ti><c>emerge ati-drivers</c></ti>
+</tr>
+<tr>
+  <ti>xfree-drm</ti>
+  <ti>
+    Beschleunigte Darstellungen für ATI Radeon bis zu 9200, Rage128, Matrox,
+    Voodoo und andere Karten für XFree86
+  </ti>
+  <ti><c>VIDEO_CARDS="IhreKarte" emerge xfree-drm</c></ti>
+</tr>
+</table>
+
+<p>
+Beachten Sie jedoch, dass einige dieser Ebuilds große Abhängigkeiten (sog.
+Dependencies) mit sich bringen können. Um zu erfahren, welche Pakete installiert
+werden durch das emergen eines Ebuilds, benutzen Sie <c>emerge -p</c>. Zum
+Beispiel für das <c>emu10k1</c> Paket:
+</p>
+
+<pre caption="Betrachten der vollen Liste der zu installierenden Pakete">
+# <i>emerge -p emu10k1</i>
+</pre>
+
+<p>
+Wenn Sie die Pakete nicht mögen, die es installieren will, benutzen Sie
+<c>emerge -pv</c> um zu sehen welche USE-Flags überprüft werden wenn die
+Abhängigkeiten entschieden werden:
+</p>
+
+<pre caption="Betrachten der USE-Flag Benutzung">
+# <i>emerge -pv emu10k1</i>
+<comment>...</comment>
+[ebuild  N    ] media-sound/aumix-2.8  +gpm +nls +gtk +gnome +alsa -gtk2
+</pre>
+
+<p>
+Im vorigen Beispiel können Sie sehen, dass eine von <c>emu10k1</c>s
+Abhängigkeiten (<c>aumix</c>) die <c>gtk</c> und <c>gnome</c> USE-Flags sind,
+was dazu führt dass gtk (was abhängig ist von XFree) mit ihm kompiliert wird.
+</p>
+
+<p>
+Wenn Sie nicht wollen, dass all dies mitkompiliert wird, deselektieren Sie alle
+USE-Flags; zum Beispiel:
+</p>
+
+<pre caption="emu10k1 mit allen USE-Flags deaktiviert">
+# <i>USE="-gpm -nls -gtk -gnome -alsa" emerge -p emu10k1</i>
+</pre>
+
+<p>
+Wenn Sie zufrieden sind mit dem Resultat entfternen Sie das <c>-p</c> um die
+Installation von <c>emu10k1</c> zu starten.
+</p>
+
+</body>
+</section>
+</sections>
