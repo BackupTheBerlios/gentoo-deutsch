@@ -1,0 +1,24 @@
+diff -rub VDR.org/PLUGINS/src/streamdev-0.3.1/server/connectionVTP.c VDR/PLUGINS/src/streamdev-0.3.1/server/connectionVTP.c
+--- VDR.org/PLUGINS/src/streamdev-0.3.1/server/connectionVTP.c	2004-02-16 19:19:12.000000000 +0100
++++ VDR/PLUGINS/src/streamdev-0.3.1/server/connectionVTP.c	2004-03-15 23:08:33.000000000 +0100
+@@ -436,16 +436,16 @@
+         if (timer) {
+            cTimer t = *timer;
+            if (strcasecmp(tail, "ON") == 0)
+-              t.SetActive(taActive);
++              t.SetFlags(tfActive);
+            else if (strcasecmp(tail, "OFF") == 0)
+-              t.SetActive(taInactive);
++              t.SetFlags(tfNone);
+            else if (!t.Parse(tail)) {
+               Reply(501, "Error in timer settings");
+               EXIT_WRAPPER();
+               }
+            *timer = t;
+            Timers.Save();
+-           isyslog("timer %d modified (%s)", timer->Index() + 1, timer->Active() ? "active" : "inactive");
++           isyslog("timer %d modified (%s)", timer->Index() + 1, timer->Flags() ? "active" : "inactive");
+            Reply(250, "%d %s", timer->Index() + 1, timer->ToText(true));
+            }
+         else
+Only in VDR/PLUGINS/src/streamdev-0.3.1: vdr-1.3.6-streamdev-0.3.1.diff
