@@ -456,7 +456,7 @@
   <b><xsl:apply-templates/></b>
 </xsl:template>
 
-<xsl:template match="i">
+<xsl:template match="i|e">
   <span class="input"><xsl:apply-templates/></span>
 </xsl:template>
 
@@ -476,5 +476,41 @@
   <li><xsl:apply-templates/></li>
 </xsl:template>
 
+<xsl:template match="figure">
+  <xsl:param name="chid"/>
+  <xsl:variable name="fignum">
+    <xsl:number level="any" from="chapter" count="figure"/>
+  </xsl:variable>
+  <xsl:variable name="figid">doc_chap<xsl:value-of select="$chid"/>_fig<xsl:value-of select="$fignum"/></xsl:variable>
+  <br/>
+  <a name="{$figid}"/>
+  <table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td class="head" nowrap="nowrap">
+        <xsl:choose>
+          <xsl:when test="@caption">
+            Grafik <xsl:value-of select="$chid"/>.<xsl:value-of select="$fignum"/>: <xsl:value-of select="@caption"/>
+          </xsl:when>
+          <xsl:otherwise>
+            Grafik <xsl:value-of select="$chid"/>.<xsl:value-of select="$fignum"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <xsl:choose>
+          <xsl:when test="@short">
+            <img src="{@link}" alt="Grafik {$fignum}: {@short}"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <img src="{@link}" alt="Grafik {$fignum}"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </td>
+    </tr>
+  </table>
+  <br/>
+</xsl:template>
 
 </xsl:stylesheet>
