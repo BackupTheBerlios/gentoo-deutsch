@@ -1,6 +1,10 @@
 # ChangeLog for media-video/tosvcd
 # Copyright 2003 Henning Ryll; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/tosvcd/ChangeLog,v 1.2 2003/03/28 17:23:30 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/tosvcd/ChangeLog,v 1.3 2003/05/03 14:46:04 fow0ryl Exp $
+
+*tosvcd.0.90-r2 (03 May 2003)
+  03 May 2003; Henning Ryll
+  Dependency modified
 
 *tosvcd-0.90-r1 (28 March 2003)
   28 March 2003; M.Hierling <mad@cc.fh-lippe.de> tosvcd-0.90-r1.ebuild
@@ -9,7 +13,7 @@
 *tosvcd.0.90 (05 March 2003)
   initial
 
-  05 March 2003; H.Ryll <henning.ryll@web.de> ChangeLog :
+  05 March 2003; Henning Ryll
 
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that
