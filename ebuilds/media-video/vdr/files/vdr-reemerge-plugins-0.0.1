@@ -1,0 +1,40 @@
+#!/bin/sh
+
+V=0.0.1
+qpkg=/usr/bin/qpkg
+emerge=/usr/bin/emerge
+
+
+echo
+echo vdr-reemerge-plugins v${V}
+echo
+
+showhelp()
+{
+	cat <<-EOT
+Simply start this program after you emerged vdr
+to reemerge all vdrplugins
+
+Options:
+  -h    Show this help
+  -p    Show what emerge would do
+  
+	EOT
+	exit 0
+}
+
+
+if [ "${1}" == "-h" ]; then
+	showhelp
+fi
+
+if test -x $qpkg; then
+	INSTALLED_PLUGINS=$($qpkg -I -nc -v vdrplugin)
+	CMD=""
+	for i in ${INSTALLED_PLUGINS}; do
+		CMD="$CMD =${i}"
+	done
+	ACCEPT_KEYWORDS="~x86" $emerge --oneshot ${CMD} $@
+else
+	echo "You need to emerge gentoolkit!"
+fi

@@ -1,5 +1,5 @@
 # /etc/conf.d/vdr:
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/confd,v 1.5 2003/08/05 17:15:31 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/confd,v 1.6 2004/07/21 00:35:31 austriancoder Exp $
 
 # Global config file for vdr rc-scripts
 
@@ -9,6 +9,10 @@
 
 # send Dolby Digital audio to stdin of command CMD
 #AUDIO="" 
+
+# mute audio of the primary DVB device at startup
+# (default is to unmute)
+#MUTE="1"
 
 # read config files from DIR (default is to read them
 # from /etc/vdr directory)
