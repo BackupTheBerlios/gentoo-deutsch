@@ -54,8 +54,9 @@
                       <xsl:value-of select="name"/>
                     </a>
                   </b>
-                  <br/>
-                  <xsl:value-of select="description"/>
+                  <div style="margin-top: 5px">
+                    <xsl:value-of select="description"/>
+                  </div>
                 </td>
                 <td style="max-width:150px; width:30%; border-bottom: 1px dotted #45347B; background-color:#F2F0F9;">
                   <b>Letzte Änderung:</b>
