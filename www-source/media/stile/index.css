@@ -261,6 +261,10 @@ table.resultlist td.info{
 	background-color:#F2F0F9;
 }
 
+table.resultlist td.description{
+	height: 100%;
+}
+
 td{
 	padding:0.3em 0.5em 0.3em 0.5em
 }
