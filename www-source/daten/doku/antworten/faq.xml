@@ -49,21 +49,22 @@
 <body>
 
 <ul>
-<li><uri link="#doc_chap3_sect1">Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</uri></li>
-<li><uri link="#doc_chap3_sect2">Warum werden .iso und .tbz2 Dateien mit unterschiedlichen -r (Revisionen) erstellt/veröffentlicht?</uri></li>
-<li><uri link="#doc_chap3_sect3">Mir erscheint das ganze sehr instabil und ich benutze "-O9 -ffast-math -fomit-frame-pointer" optimierungen. Warum?</uri></li>
-<li><uri link="#doc_chap3_sect4">Wie lautet das Standard root Passwort nach der Installation?</uri></li>
-<li><uri link="#doc_chap3_sect5">Wie kann ich bei root (oder einem anderen User) das Passwort ändern?</uri></li>
-<li><uri link="#doc_chap3_sect6">Wie kann man einen normalen Benutzer hinzufügen?</uri></li>
-<li><uri link="#doc_chap3_sect7">Warum kann ein Benutzer nicht mit su zu root werden?</uri></li>
-<li><uri link="#doc_chap3_sect8">Wie kann ich devfs aktivieren?</uri></li>
-<li><uri link="#doc_chap3_sect9">Wie kann ich devfs deaktivieren?</uri></li>
-<li><uri link="#doc_chap3_sect10">Wie erhalte ich bei Benutzung von devfs ein /dev/mouse das nach dem Booten nicht wieder verloren geht?</uri></li>
-<li><uri link="#doc_chap3_sect11">Grub kann die stage x.y nicht finden.</uri></li>
-<li><uri link="#doc_chap3_sect12">Mein ASUS CUV4X-D will nicht booten und es friert bei manchen Kernel-Prozessen und der Hardware-Suche ein.</uri></li>
-<li><uri link="#doc_chap3_sect13">Wenn ich ein Gentoo 1.4_rc1 habe, kann ich mein System dann ohne Neuinstallation auf 1.4_rc2, 1.4_final/_rc3  aktualisieren?</uri></li>
-<li><uri link="#doc_chap3_sect14">Mein Kernel bootet nicht (richtig), was kann ich tun?</uri></li>
-<li><uri link="#doc_chap3_sect15">Mein Proxy verlangt Authentifizierung, was habe ich zu tun?</uri></li>
+<li><uri link="#doc_chap3_sect1">Wo soll ich Bugs melden?</uri></li>
+<li><uri link="#doc_chap3_sect2">Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</uri></li>
+<li><uri link="#doc_chap3_sect3">Warum werden .iso und .tbz2 Dateien mit unterschiedlichen -r (Revisionen) erstellt/veröffentlicht?</uri></li>
+<li><uri link="#doc_chap3_sect4">Mir erscheint das ganze sehr instabil und ich benutze "-O9 -ffast-math -fomit-frame-pointer" optimierungen. Warum?</uri></li>
+<li><uri link="#doc_chap3_sect5">Wie lautet das Standard root Passwort nach der Installation?</uri></li>
+<li><uri link="#doc_chap3_sect6">Wie kann ich bei root (oder einem anderen User) das Passwort ändern?</uri></li>
+<li><uri link="#doc_chap3_sect7">Wie kann man einen normalen Benutzer hinzufügen?</uri></li>
+<li><uri link="#doc_chap3_sect8">Warum kann ein Benutzer nicht mit su zu root werden?</uri></li>
+<li><uri link="#doc_chap3_sect9">Wie kann ich devfs aktivieren?</uri></li>
+<li><uri link="#doc_chap3_sect10">Wie kann ich devfs deaktivieren?</uri></li>
+<li><uri link="#doc_chap3_sect11">Wie erhalte ich bei Benutzung von devfs ein /dev/mouse das nach dem Booten nicht wieder verloren geht?</uri></li>
+<li><uri link="#doc_chap3_sect12">Grub kann die stage x.y nicht finden.</uri></li>
+<li><uri link="#doc_chap3_sect13">Mein ASUS CUV4X-D will nicht booten und es friert bei manchen Kernel-Prozessen und der Hardware-Suche ein.</uri></li>
+<li><uri link="#doc_chap3_sect14">Wenn ich ein Gentoo 1.4_rc1 habe, kann ich mein System dann ohne Neuinstallation auf 1.4_rc2, 1.4_final/_rc3  aktualisieren?</uri></li>
+<li><uri link="#doc_chap3_sect15">Mein Kernel bootet nicht (richtig), was kann ich tun?</uri></li>
+<li><uri link="#doc_chap3_sect16">Mein Proxy verlangt Authentifizierung, was habe ich zu tun?</uri></li>
 </ul>
 </body>
 
@@ -186,7 +187,7 @@
 <chapter>
   <title>Installation</title>
     <section>
-      <title>Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</title>
+      <title>Wo soll ich Bugs melden?</title>
       <body>
 
       <warn>
@@ -194,7 +195,15 @@
         Bugs nicht Upstream (den originalen Autoren). Berichten Sie Bugs an
         Gentoo, wenn nötig leiten wir diese an die Autoren weiter.
       </warn>
-      
+
+      </body>
+    </section>
+
+    
+    <section>
+      <title>Wo ist der Unterschied zwischen .iso und .tbz2 Dateien?</title>
+      <body>
+
       <p>
         Die fertigen <e>.tbz2</e> Dateien sind ein Minimal-Archiv von System
         Dateien die Ihnen den bootstrap und die Installation von Gentoo Linux
