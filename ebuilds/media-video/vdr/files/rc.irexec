@@ -1,12 +1,11 @@
 #!/sbin/runscript
 # Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.irexec,v 1.1 2003/04/03 18:15:34 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/files/rc.irexec,v 1.2 2003/04/26 13:16:35 mad Exp $
 
 
 depend() {
-	need vdr lirc
-	after vdr
+	need lircd
 }
 
 start() {
