@@ -1,6 +1,14 @@
 # ChangeLog for media-video/vdr
 # Copyright 2003 Martin Hierling; Distributed under the GPL
-# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.17 2003/05/15 16:57:37 mad Exp $
+# $Header: /home/xubuntu/berlios_backup/github/tmp-cvs/gentoo-deutsch/Repository/ebuilds/media-video/vdr/ChangeLog,v 1.18 2003/06/04 10:20:52 mad Exp $
+
+*vdr-1.2.0 (04 Jun 2003)
+  12 May 2003; M.Hierling <mad@cc.fh-lippe.de>
+  jumped to version 1.2.0, vdr now runs with uid vdr and gid video,
+  pluginnames changed, some default dirs changed, added default
+  plugins, moved plugindir to /usr/lib/vdr 
+  added VDR_OPTS (vfat, rcu, akool) to steer the installation of
+  patches and vdr addons
 
 *vdr-1.1.31 (12 May 2003)
   12 May 2003; M.Hierling <mad@cc.fh-lippe.de> vdr-1.1.31.ebuild

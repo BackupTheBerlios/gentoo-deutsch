@@ -1,0 +1,229 @@
+diff -Nru vdr-1.2.0/Makefile vdr-1.2.0.gentoo/Makefile
+--- vdr-1.2.0/Makefile	2003-01-06 13:28:09.000000000 +0100
++++ vdr-1.2.0.gentoo/Makefile	2003-06-02 21:41:02.000000000 +0200
+@@ -14,12 +14,11 @@
+ CXX      ?= g++
+ CXXFLAGS ?= -g -O2 -Wall -Woverloaded-virtual
+ 
+-DVBDIR   = ../DVB
+ DTVDIR   = ./libdtv
+-MANDIR   = /usr/local/man
+-BINDIR   = /usr/local/bin
++MANDIR   = /usr/man
++BINDIR   = /usr/bin
+ 
+-PLUGINDIR= ./PLUGINS
++PLUGINDIR= /usr/lib/vdr
+ 
+ VIDEODIR = /video
+ 
+@@ -28,8 +27,6 @@
+ 
+ -include Make.config
+ 
+-INCLUDES = -I$(DVBDIR)/include
+-
+ DTVLIB   = $(DTVDIR)/libdtv.a
+ 
+ OBJS = audio.o channels.o ci.o config.o cutter.o device.o diseqc.o dvbdevice.o dvbosd.o\
+@@ -117,12 +114,18 @@
+ # Install the files:
+ 
+ install:
+-	@cp vdr runvdr $(BINDIR)
+-	@gzip -c vdr.1 > $(MANDIR)/man1/vdr.1.gz
+-	@gzip -c vdr.5 > $(MANDIR)/man5/vdr.5.gz
++	@mkdir -p $(DESTDIR)$(BINDIR)
++	@mkdir -p $(BINDIR)
++	@cp vdr runvdr $(DESTDIR)$(BINDIR)
++	@mkdir -p $(DESTDIR)$(MANDIR)/man1
++	@mkdir -p $(DESTDIR)$(MANDIR)/man5
++	@mkdir -p $(MANDIR)/man1
++	@mkdir -p $(MANDIR)/man5
++	@gzip -c vdr.1 > $(DESTDIR)$(MANDIR)/man1/vdr.1.gz
++	@gzip -c vdr.5 > $(DESTDIR)$(MANDIR)/man5/vdr.5.gz
+ 	@if [ ! -d $(VIDEODIR) ]; then\
+-            mkdir $(VIDEODIR);\
+-            cp *.conf $(VIDEODIR);\
++            mkdir $(DESTDIR)$(VIDEODIR);\
++            cp *.conf $(DESTDIR)$(VIDEODIR);\
+             fi
+ 
+ # Source documentation:
+diff -Nru vdr-1.2.0/plugin.c vdr-1.2.0.gentoo/plugin.c
+--- vdr-1.2.0/plugin.c	2003-05-09 17:01:26.000000000 +0200
++++ vdr-1.2.0.gentoo/plugin.c	2003-06-02 21:33:11.000000000 +0200
+@@ -16,7 +16,7 @@
+ #include "config.h"
+ 
+ #define LIBVDR_PREFIX  "libvdr-"
+-#define SO_INDICATOR   ".so."
++#define SO_INDICATOR   ".so"
+ 
+ #define MAXPLUGINARGS  1024
+ #define HOUSEKEEPINGDELTA 10 // seconds
+@@ -283,7 +283,7 @@
+   if (p)
+      *p = 0;
+   char *buffer = NULL;
+-  asprintf(&buffer, "%s/%s%s%s%s", directory, LIBVDR_PREFIX, s, SO_INDICATOR, VDRVERSION);
++  asprintf(&buffer, "%s/%s%s%s", directory, LIBVDR_PREFIX, s, SO_INDICATOR);
+   dlls.Add(new cDll(buffer, Args));
+   free(buffer);
+   free(s);
+diff -Nru vdr-1.2.0/PLUGINS/src/hello/hello.c vdr-1.2.0.gentoo/PLUGINS/src/hello/hello.c
+--- vdr-1.2.0/PLUGINS/src/hello/hello.c	2002-12-13 16:01:43.000000000 +0100
++++ vdr-1.2.0.gentoo/PLUGINS/src/hello/hello.c	2003-06-04 10:53:11.000000000 +0200
+@@ -8,8 +8,8 @@
+ 
+ #include <getopt.h>
+ #include <stdlib.h>
+-#include <vdr/interface.h>
+-#include <vdr/plugin.h>
++#include <interface.h>
++#include <plugin.h>
+ #include "i18n.h"
+ 
+ static const char *VERSION        = "0.1.0";
+diff -Nru vdr-1.2.0/PLUGINS/src/hello/i18n.h vdr-1.2.0.gentoo/PLUGINS/src/hello/i18n.h
+--- vdr-1.2.0/PLUGINS/src/hello/i18n.h	2002-05-11 16:48:16.000000000 +0200
++++ vdr-1.2.0.gentoo/PLUGINS/src/hello/i18n.h	2003-06-04 10:53:33.000000000 +0200
+@@ -9,7 +9,7 @@
+ #ifndef _I18N__H
+ #define _I18N__H
+ 
+-#include <vdr/i18n.h>
++#include <i18n.h>
+ 
+ extern const tI18nPhrase Phrases[];
+ 
+diff -Nru vdr-1.2.0/PLUGINS/src/hello/Makefile vdr-1.2.0.gentoo/PLUGINS/src/hello/Makefile
+--- vdr-1.2.0/PLUGINS/src/hello/Makefile	2002-12-13 15:54:14.000000000 +0100
++++ vdr-1.2.0.gentoo/PLUGINS/src/hello/Makefile	2003-06-04 10:54:25.000000000 +0200
+@@ -40,7 +40,7 @@
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
++INCLUDES += -I$(VDRDIR) -I$(DVBDIR)/include
+ 
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ 
+@@ -68,7 +68,6 @@
+ 
+ libvdr-$(PLUGIN).so: $(OBJS)
+ 	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
+-	@cp $@ $(LIBDIR)/$@.$(VDRVERSION)
+ 
+ dist: clean
+ 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
+diff -Nru vdr-1.2.0/PLUGINS/src/osddemo/Makefile vdr-1.2.0.gentoo/PLUGINS/src/osddemo/Makefile
+--- vdr-1.2.0/PLUGINS/src/osddemo/Makefile	2002-12-13 15:54:29.000000000 +0100
++++ vdr-1.2.0.gentoo/PLUGINS/src/osddemo/Makefile	2003-06-04 10:54:11.000000000 +0200
+@@ -40,7 +40,7 @@
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
++INCLUDES += -I$(VDRDIR) -I$(DVBDIR)/include
+ 
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ 
+@@ -68,7 +68,6 @@
+ 
+ libvdr-$(PLUGIN).so: $(OBJS)
+ 	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
+-	@cp $@ $(LIBDIR)/$@.$(VDRVERSION)
+ 
+ dist: clean
+ 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
+diff -Nru vdr-1.2.0/PLUGINS/src/osddemo/osddemo.c vdr-1.2.0.gentoo/PLUGINS/src/osddemo/osddemo.c
+--- vdr-1.2.0/PLUGINS/src/osddemo/osddemo.c	2002-12-13 16:02:01.000000000 +0100
++++ vdr-1.2.0.gentoo/PLUGINS/src/osddemo/osddemo.c	2003-06-04 10:53:49.000000000 +0200
+@@ -6,7 +6,7 @@
+  * $Id: vdr-1.2.0-gentoo.diff,v 1.1 2003/06/04 10:20:53 mad Exp $
+  */
+ 
+-#include <vdr/plugin.h>
++#include <plugin.h>
+ 
+ static const char *VERSION        = "0.1.0";
+ static const char *DESCRIPTION    = "Demo of arbitrary OSD setup";
+diff -Nru vdr-1.2.0/PLUGINS/src/sky/Makefile vdr-1.2.0.gentoo/PLUGINS/src/sky/Makefile
+--- vdr-1.2.0/PLUGINS/src/sky/Makefile	2002-12-13 15:54:24.000000000 +0100
++++ vdr-1.2.0.gentoo/PLUGINS/src/sky/Makefile	2003-06-04 10:54:50.000000000 +0200
+@@ -40,7 +40,7 @@
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
++INCLUDES += -I$(VDRDIR) -I$(DVBDIR)/include
+ 
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ 
+@@ -68,7 +68,6 @@
+ 
+ libvdr-$(PLUGIN).so: $(OBJS)
+ 	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
+-	@cp $@ $(LIBDIR)/$@.$(VDRVERSION)
+ 
+ dist: clean
+ 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
+diff -Nru vdr-1.2.0/PLUGINS/src/sky/sky.c vdr-1.2.0.gentoo/PLUGINS/src/sky/sky.c
+--- vdr-1.2.0/PLUGINS/src/sky/sky.c	2003-05-09 17:27:16.000000000 +0200
++++ vdr-1.2.0.gentoo/PLUGINS/src/sky/sky.c	2003-06-04 10:54:38.000000000 +0200
+@@ -11,8 +11,8 @@
+ #include <sys/time.h>
+ #include <sys/un.h>
+ #include <unistd.h>
+-#include <vdr/plugin.h>
+-#include <vdr/sources.h>
++#include <plugin.h>
++#include <sources.h>
+ 
+ static const char *VERSION        = "0.1.1";
+ static const char *DESCRIPTION    = "Sky Digibox interface";
+diff -Nru vdr-1.2.0/PLUGINS/src/status/Makefile vdr-1.2.0.gentoo/PLUGINS/src/status/Makefile
+--- vdr-1.2.0/PLUGINS/src/status/Makefile	2002-12-13 15:54:19.000000000 +0100
++++ vdr-1.2.0.gentoo/PLUGINS/src/status/Makefile	2003-06-04 10:55:03.000000000 +0200
+@@ -40,7 +40,7 @@
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-INCLUDES += -I$(VDRDIR)/include -I$(DVBDIR)/include
++INCLUDES += -I$(VDRDIR) -I$(DVBDIR)/include
+ 
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ 
+diff -Nru vdr-1.2.0/PLUGINS/src/status/status.c vdr-1.2.0.gentoo/PLUGINS/src/status/status.c
+--- vdr-1.2.0/PLUGINS/src/status/status.c	2002-12-13 16:01:53.000000000 +0100
++++ vdr-1.2.0.gentoo/PLUGINS/src/status/status.c	2003-06-04 10:55:12.000000000 +0200
+@@ -6,8 +6,8 @@
+  * $Id: vdr-1.2.0-gentoo.diff,v 1.1 2003/06/04 10:20:53 mad Exp $
+  */
+ 
+-#include <vdr/plugin.h>
+-#include <vdr/status.h>
++#include <plugin.h>
++#include <status.h>
+ 
+ static const char *VERSION        = "0.1.0";
+ static const char *DESCRIPTION    = "Status monitor test";
+diff -Nru vdr-1.2.0/vdr.c vdr-1.2.0.gentoo/vdr.c
+--- vdr-1.2.0/vdr.c	2003-05-29 14:27:26.000000000 +0200
++++ vdr-1.2.0.gentoo/vdr.c	2003-06-02 22:15:32.000000000 +0200
+@@ -92,11 +92,12 @@
+ 
+ #define DEFAULTSVDRPPORT 2001
+ #define DEFAULTWATCHDOG     0 // seconds
+-#define DEFAULTPLUGINDIR "./PLUGINS/lib"
++#define DEFAULTPLUGINDIR "/usr/lib/vdr"
++#define DEFAULTCONFIGDIR "/etc/vdr"
+ 
+   int SVDRPport = DEFAULTSVDRPPORT;
+   const char *AudioCommand = NULL;
+-  const char *ConfigDirectory = NULL;
++  const char *ConfigDirectory = DEFAULTCONFIGDIR;
+   bool DisplayHelp = false;
+   bool DisplayVersion = false;
+   bool DaemonMode = false;
